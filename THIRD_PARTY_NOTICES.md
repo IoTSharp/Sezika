@@ -1,6 +1,14 @@
 # Third-party notices
 
-截至 2026-09-23，本仓库未包含第三方模型权重、tokenizer、训练数据或复制的上游实现。
+截至 2026-09-23，模型权重和 tokenizer 只作为本机 `.artifacts` 中的已校验开发资产，不随 Git 仓库、NuGet 或可执行文件分发；训练数据未随本项目分发。
+
+## Laya multilingual / mmBERT
+
+- 来源：<https://huggingface.co/convaiinnovations/laya-multilingual>
+- 固定 revision：`052592a15d198d9ad47da779604259b10b47b7aa`。
+- 模型卡许可证：Apache-2.0；`model.safetensors` 与 `tokenizer/tokenizer.json` 的 SHA-256 记录在 `docs/model-source.md` 与本机 `source_lock.json`。
+- 底座来源：`jhu-clsp/mmBERT-base` revision `c5955035435e2bf121cde7f3c8863ef52ff35d82`，模型卡声明 MIT；tokenizer 架构注明 Gemma 2 来源。
+- 用途：真实本地 encoder、决策 head、tokenizer oracle 与 CUDA 数值验证。资产不嵌入二进制。
 
 ## Laya
 
@@ -20,7 +28,7 @@
 
 ## ILGPU 与 CUDA Driver
 
-- ILGPU 来源：https://github.com/m4rs-mt/ILGPU 。计划只作为构建期 C# → PTX 编译器，尚未加入包依赖。锁定版本时须核对 LICENSE/第三方组件与生成产物的分发义务。
-- NVIDIA CUDA Driver 由系统显卡驱动提供，计划作为运行时设备接口，不由本仓库重新授权或默认打包。最低驱动版本和 PTX 兼容矩阵需实测记录。
+- ILGPU 来源：https://github.com/m4rs-mt/ILGPU ，固定构建期包版本 1.5.3；只用于 C# → PTX 编译工具，不进入发布运行时项目。分发生成 PTX 前仍需按其 LICENSE/第三方组件要求核对。
+- NVIDIA CUDA Driver 由系统显卡驱动提供，作为运行时设备接口，不由本仓库重新授权或默认打包。已记录 RTX 4070 Laptop、driver 596.08、PTX 7.0 / CC 8.9 证据。
 
 后续新增代码依赖、转换工具、权重、数据或校准集时，在本文件与对应 manifest/model card 中记录具体版本、来源、许可与分发条件。

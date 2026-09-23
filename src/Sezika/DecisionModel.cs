@@ -8,7 +8,7 @@ public sealed class DecisionModel
         string revision,
         string tokenizerRevision,
         Tokenizer tokenizer,
-        TransformerEncoder encoder,
+        IEncoder encoder,
         ReadOnlySpan<float> headWeights,
         float headBias,
         string backend = "cpu")
@@ -30,7 +30,7 @@ public sealed class DecisionModel
     public string Revision { get; }
     public string TokenizerRevision { get; }
     public Tokenizer Tokenizer { get; }
-    public TransformerEncoder Encoder { get; }
+    public IEncoder Encoder { get; }
     public float[] HeadWeights { get; }
     public float HeadBias { get; }
     public string Backend { get; }

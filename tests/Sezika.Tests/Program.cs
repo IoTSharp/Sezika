@@ -54,6 +54,24 @@ try
     ], epochs: 20);
     Check(trained.Weights[0] > 0 && double.IsFinite(trained.FinalLogLoss), "frozen encoder head training");
 
+    var realTokenizerPath = Path.Combine(".artifacts", "models", "laya-mmbert", "tokenizer", "tokenizer.json");
+    var oraclePath = Path.Combine("tests", "fixtures", "tokenizer-mmbert-oracle.json");
+    if (File.Exists(realTokenizerPath) && File.Exists(oraclePath))
+    {
+        var realTokenizer = new TokenizerJson(realTokenizerPath);
+        using var oracle = JsonDocument.Parse(File.ReadAllBytes(oraclePath));
+        foreach (var item in oracle.RootElement.GetProperty("cases").EnumerateArray())
+        {
+            var text = item.GetProperty("text").GetString() ?? string.Empty;
+            var expected = item.GetProperty("ids").EnumerateArray().Select(value => value.GetInt32()).ToArray();
+            Check(realTokenizer.Encode(text, 1024).SequenceEqual(expected), $"mmBERT tokenizer oracle: {text}");
+        }
+    }
+    else
+    {
+        Console.WriteLine("SKIP: mmBERT tokenizer oracle (download the pinned model asset first)");
+    }
+
     var tempDirectory = Path.Combine(Path.GetTempPath(), $"sezika-tests-{Guid.NewGuid():N}");
     Directory.CreateDirectory(tempDirectory);
     try

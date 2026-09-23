@@ -1,0 +1,568 @@
+{
+  "schemaVersion": 1,
+  "compiler": "ILGPU",
+  "compilerVersion": "1.5.3",
+  "target": "sm_70",
+  "ptxVersion": "7.0",
+  "sourceSha256": "35A25F3B52B2C359FC929524A55A6D9CF489BB930441DF03016630DBA00FD00D",
+  "kernels": [
+    {
+      "name": "VectorAdd",
+      "entry": "Kernel_VectorAdd",
+      "ptx": "VectorAdd.ptx",
+      "sha256": "08458319F80B0A61105077E12DC4D616249F49A26A2E5BD871288A6DA5EE6659",
+      "blockSize": 256,
+      "parameters": [
+        {
+          "name": "a",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "b",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "output",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "count",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        }
+      ]
+    },
+    {
+      "name": "Linear",
+      "entry": "Kernel_Linear",
+      "ptx": "Linear.ptx",
+      "sha256": "A0F62382B0EB1D90046F3821C4A32BB59625D8CC82A533B1E95697E551BE40B8",
+      "blockSize": 256,
+      "parameters": [
+        {
+          "name": "a",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "b",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "output",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "rows",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "shared",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "columns",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "transposed",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        }
+      ]
+    },
+    {
+      "name": "Embedding",
+      "entry": "Kernel_Embedding",
+      "ptx": "Embedding.ptx",
+      "sha256": "2AAEE7FA710BFB26E47CD8614747D85FD4F39161EEC91B52E8F7461A013644B6",
+      "blockSize": 256,
+      "parameters": [
+        {
+          "name": "ids",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "weights",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "output",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "rows",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "hidden",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        }
+      ]
+    },
+    {
+      "name": "Norm",
+      "entry": "Kernel_Norm",
+      "ptx": "Norm.ptx",
+      "sha256": "2244DA7CFB89DE25628C1824C4C0F7B5D40F53139FFA5355B444CBF83DACCBB0",
+      "blockSize": 256,
+      "parameters": [
+        {
+          "name": "input",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "gamma",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "beta",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "output",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "rows",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "hidden",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "epsilon",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "hasBeta",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        }
+      ]
+    },
+    {
+      "name": "SplitQkv",
+      "entry": "Kernel_SplitQkv",
+      "ptx": "SplitQkv.ptx",
+      "sha256": "09A72C32CC0B17539791923ABB70BA47C9DB8EA14AA4F2D4BF0E80DBB9997D5C",
+      "blockSize": 256,
+      "parameters": [
+        {
+          "name": "fused",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "q",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "k",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "v",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "rows",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "hidden",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        }
+      ]
+    },
+    {
+      "name": "Rope",
+      "entry": "Kernel_Rope",
+      "ptx": "Rope.ptx",
+      "sha256": "935FB2ACA76D6ECE01ABF38D323993ADC59A1F4FD96AAD7DAC65B96514334DDC",
+      "blockSize": 256,
+      "parameters": [
+        {
+          "name": "q",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "k",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "rows",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "heads",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "headDimension",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "theta",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        }
+      ]
+    },
+    {
+      "name": "AttentionScores",
+      "entry": "Kernel_AttentionScores",
+      "ptx": "AttentionScores.ptx",
+      "sha256": "DF284BDE766D1A6FB44801CC5BFEEE3605D9C1041BD57B9A69D2F731EF797E4C",
+      "blockSize": 256,
+      "parameters": [
+        {
+          "name": "q",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "k",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "scores",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "rows",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "heads",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "headDimension",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "localWindow",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        }
+      ]
+    },
+    {
+      "name": "Softmax",
+      "entry": "Kernel_Softmax",
+      "ptx": "Softmax.ptx",
+      "sha256": "8867084A6C9F17C211565E7ABE7BA261C32C9CBFC22E41E787A154D2D949DFF9",
+      "blockSize": 256,
+      "parameters": [
+        {
+          "name": "values",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "rows",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "columns",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        }
+      ]
+    },
+    {
+      "name": "AttentionContext",
+      "entry": "Kernel_AttentionContext",
+      "ptx": "AttentionContext.ptx",
+      "sha256": "0BB4538790872F9AFBD487A0ADD2CF9ED99A553901CC1B95C72C9484889A4B15",
+      "blockSize": 256,
+      "parameters": [
+        {
+          "name": "scores",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "v",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "output",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "rows",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "heads",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "headDimension",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        }
+      ]
+    },
+    {
+      "name": "Add",
+      "entry": "Kernel_Add",
+      "ptx": "Add.ptx",
+      "sha256": "22AD13DFE2FEE0A449C2E58B6C8EDA524CFBD87C29116C81DD7FEA36EAD3A8A2",
+      "blockSize": 256,
+      "parameters": [
+        {
+          "name": "input",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "update",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "count",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        }
+      ]
+    },
+    {
+      "name": "Activate",
+      "entry": "Kernel_Activate",
+      "ptx": "Activate.ptx",
+      "sha256": "BCDE6A84E77D7EBF8F88B93E7A9FBB3880D5270D1BD2C1975FEDB59AD13AA4F8",
+      "blockSize": 256,
+      "parameters": [
+        {
+          "name": "input",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "output",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "count",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "relu",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        }
+      ]
+    },
+    {
+      "name": "GatedGelu",
+      "entry": "Kernel_GatedGelu",
+      "ptx": "GatedGelu.ptx",
+      "sha256": "FBE1F44AEAB289C15252016E1C1C235DADD92597AA6C0F568A5F99003077B828",
+      "blockSize": 256,
+      "parameters": [
+        {
+          "name": "input",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "output",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "rows",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "intermediate",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        }
+      ]
+    },
+    {
+      "name": "RowBias",
+      "entry": "Kernel_RowBias",
+      "ptx": "RowBias.ptx",
+      "sha256": "9FE276E194BAC9075708D3610D68847942627000BF5CDA2578C9965A549070BC",
+      "blockSize": 256,
+      "parameters": [
+        {
+          "name": "input",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "bias",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "rows",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "hidden",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        }
+      ]
+    },
+    {
+      "name": "TypeEmbeddingAdd",
+      "entry": "Kernel_TypeEmbeddingAdd",
+      "ptx": "TypeEmbeddingAdd.ptx",
+      "sha256": "5E651DFC2F4BA7127A942A21E5FAE775379723F5977F074C46A1F8CF018E6E3F",
+      "blockSize": 256,
+      "parameters": [
+        {
+          "name": "input",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "weights",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "rows",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "hidden",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "typeId",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        }
+      ]
+    }
+  ]
+}

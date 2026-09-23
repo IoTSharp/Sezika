@@ -1,0 +1,2578 @@
+{
+  "schema_version": 1,
+  "model_id": "convaiinnovations/laya-multilingual",
+  "revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+  "architecture": "ModernBertForSequenceClassification",
+  "license": "Apache-2.0",
+  "source_url": "https://huggingface.co/convaiinnovations/laya-multilingual",
+  "source_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+  "tokenizer_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+  "tokenizer_file": "tokenizer/tokenizer.json",
+  "weights_file": "model.safetensors",
+  "weights_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+  "tokenizer_sha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+  "dtype": "F16",
+  "tensor_layout": "row-major pytorch [out,in]",
+  "tensors": [
+    {
+      "name": "temperature",
+      "file": "model.safetensors",
+      "sha256": "8a31a40ecac0ceb4d87b30bd156ca7a547e8e33dc071454b765fbc777d1c34a1",
+      "dtype": "F32",
+      "shape": [
+        3
+      ],
+      "offsets": [
+        0,
+        12
+      ]
+    },
+    {
+      "name": "act_head.0.bias",
+      "file": "model.safetensors",
+      "sha256": "ec3e4da700f47022fa03293fc1a99df899abaad1cf15f7831bd823ead536541a",
+      "dtype": "F16",
+      "shape": [
+        256
+      ],
+      "offsets": [
+        12,
+        524
+      ]
+    },
+    {
+      "name": "act_head.0.weight",
+      "file": "model.safetensors",
+      "sha256": "1bba98a32e6d1293d702f6379722345516f219de5bc683e91d81962197c9a8aa",
+      "dtype": "F16",
+      "shape": [
+        256,
+        772
+      ],
+      "offsets": [
+        524,
+        395788
+      ]
+    },
+    {
+      "name": "act_head.2.bias",
+      "file": "model.safetensors",
+      "sha256": "131154880f01f03755fd53095f2796dbfb701106a2ae68b5ef32c17498195e55",
+      "dtype": "F16",
+      "shape": [
+        2
+      ],
+      "offsets": [
+        395788,
+        395792
+      ]
+    },
+    {
+      "name": "act_head.2.weight",
+      "file": "model.safetensors",
+      "sha256": "7cd93c8deb4e7344abb1f881433e97542468c1eda56ed373174470f0f49dc3ac",
+      "dtype": "F16",
+      "shape": [
+        2,
+        256
+      ],
+      "offsets": [
+        395792,
+        396816
+      ]
+    },
+    {
+      "name": "encoder.embeddings.norm.weight",
+      "file": "model.safetensors",
+      "sha256": "172d3ac262f7c5569318bdafd92c0a94d4c5c97cb302bc6943928aed022b062d",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        396816,
+        398352
+      ]
+    },
+    {
+      "name": "encoder.embeddings.tok_embeddings.weight",
+      "file": "model.safetensors",
+      "sha256": "58608f7bbd72e03adb3e2db8c4942407058eaeaac38e3abec1d6cb01c1512265",
+      "dtype": "F16",
+      "shape": [
+        256000,
+        768
+      ],
+      "offsets": [
+        398352,
+        393614352
+      ]
+    },
+    {
+      "name": "encoder.final_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "356a2983de131c32fc38f8826b7142da13a97058f6538a57331b0e3a01e54a5e",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        393614352,
+        393615888
+      ]
+    },
+    {
+      "name": "encoder.layers.0.attn.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "d241c4d324e1ab6affdde80fdec65b93779cb3b96d91f1785cd4c04483d08cf9",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        393615888,
+        394795536
+      ]
+    },
+    {
+      "name": "encoder.layers.0.attn.Wqkv.weight",
+      "file": "model.safetensors",
+      "sha256": "51897af58748872b655429c78408b217f724851e22653cae0a538fa0b90aa2a7",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        394795536,
+        398334480
+      ]
+    },
+    {
+      "name": "encoder.layers.0.mlp.Wi.weight",
+      "file": "model.safetensors",
+      "sha256": "a0f0223204b31ef51138cba6573cc8e75d8922ecdc3cf8da35dd99760e2baea3",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        398334480,
+        401873424
+      ]
+    },
+    {
+      "name": "encoder.layers.0.mlp.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "c90fd471c06456cd5e329934c20d031f169b3630a559e978f3c06699ebdf4e6c",
+      "dtype": "F16",
+      "shape": [
+        768,
+        1152
+      ],
+      "offsets": [
+        401873424,
+        403642896
+      ]
+    },
+    {
+      "name": "encoder.layers.0.mlp_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "fdee7c57a36898a8ad8eca11326ed3cfafa78f5e11f51f0c592d085eb5100a52",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        403642896,
+        403644432
+      ]
+    },
+    {
+      "name": "encoder.layers.1.attn.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "637d5071f764406daa51abb8a3dd9729707414419d0c757fd805feb139099bd3",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        403644432,
+        404824080
+      ]
+    },
+    {
+      "name": "encoder.layers.1.attn.Wqkv.weight",
+      "file": "model.safetensors",
+      "sha256": "2d6abca3e02021b1bf8996803280b344d3a046ab6d215221f6fc0df13a7cf084",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        404824080,
+        408363024
+      ]
+    },
+    {
+      "name": "encoder.layers.1.attn_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "c354396ca064f56166f0c71682c3344f576db0ae7ec495c2c8af77bb1ec42ea8",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        408363024,
+        408364560
+      ]
+    },
+    {
+      "name": "encoder.layers.1.mlp.Wi.weight",
+      "file": "model.safetensors",
+      "sha256": "358962b547247605a62d9821c4aa68c797a475420693cd6ecdf3e25e891e43ff",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        408364560,
+        411903504
+      ]
+    },
+    {
+      "name": "encoder.layers.1.mlp.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "ab08904effebdb7d77df95d90b3b2cff26b23fbd3682c6bdea807874e6a30723",
+      "dtype": "F16",
+      "shape": [
+        768,
+        1152
+      ],
+      "offsets": [
+        411903504,
+        413672976
+      ]
+    },
+    {
+      "name": "encoder.layers.1.mlp_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "ff2a2ed1b472d22c1cd8d03c0910ee03fe5948585a728efe63ce51270b61d043",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        413672976,
+        413674512
+      ]
+    },
+    {
+      "name": "encoder.layers.10.attn.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "b1ee2782d7f3a878acded441ae397a52ec2ae1fc58e08bd0e54b28083ad81252",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        413674512,
+        414854160
+      ]
+    },
+    {
+      "name": "encoder.layers.10.attn.Wqkv.weight",
+      "file": "model.safetensors",
+      "sha256": "6f3ebe494e9b741c21686a932f2d8c70143b039560846788658fef02d049a7ec",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        414854160,
+        418393104
+      ]
+    },
+    {
+      "name": "encoder.layers.10.attn_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "db2a9e1db424a4f303c80bb81967b9f2b6517d9fdde8e4686762bee2d1860d0b",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        418393104,
+        418394640
+      ]
+    },
+    {
+      "name": "encoder.layers.10.mlp.Wi.weight",
+      "file": "model.safetensors",
+      "sha256": "245b9e020d944f7ce454e0bee91473deb19286421cd9278c76e91641222c97a2",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        418394640,
+        421933584
+      ]
+    },
+    {
+      "name": "encoder.layers.10.mlp.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "7dfabbeece6e63618170a2b2462618cb34ab1a988b2a14e2dab7ccf707cef459",
+      "dtype": "F16",
+      "shape": [
+        768,
+        1152
+      ],
+      "offsets": [
+        421933584,
+        423703056
+      ]
+    },
+    {
+      "name": "encoder.layers.10.mlp_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "02c18d31d7961400146df1ed0bcfde1f5f10d80f59bb410e6cf3f68cd7f3c70b",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        423703056,
+        423704592
+      ]
+    },
+    {
+      "name": "encoder.layers.11.attn.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "6d99e6566f345f0f53a1467ca46926f9aeddb81fcbca45cfe9b1a380ed566a1c",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        423704592,
+        424884240
+      ]
+    },
+    {
+      "name": "encoder.layers.11.attn.Wqkv.weight",
+      "file": "model.safetensors",
+      "sha256": "154b6132e0153448039c5862ca9f074726bf50902b53b583cea03b856b3ca901",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        424884240,
+        428423184
+      ]
+    },
+    {
+      "name": "encoder.layers.11.attn_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "aa8f92d73afd65493d59f643da536968f5cd12b723a752760c46e1d4a285960e",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        428423184,
+        428424720
+      ]
+    },
+    {
+      "name": "encoder.layers.11.mlp.Wi.weight",
+      "file": "model.safetensors",
+      "sha256": "eafe0de2be1bb696d3f1b34c3ba4078e87452af32e5e158b262d41dbeb099553",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        428424720,
+        431963664
+      ]
+    },
+    {
+      "name": "encoder.layers.11.mlp.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "8f6ac5e49c4fa4927c531ecfb4f6fa9efd52a935b9668a3d7da122c5929c456c",
+      "dtype": "F16",
+      "shape": [
+        768,
+        1152
+      ],
+      "offsets": [
+        431963664,
+        433733136
+      ]
+    },
+    {
+      "name": "encoder.layers.11.mlp_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "72bc5063544b3383a676c4f58071890f89b0bd01a8887d0d32613971a7ddb5a2",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        433733136,
+        433734672
+      ]
+    },
+    {
+      "name": "encoder.layers.12.attn.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "b4c0ca4c8565e902454919e9c4e3b3ecd4fee221253108929e05e08752175852",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        433734672,
+        434914320
+      ]
+    },
+    {
+      "name": "encoder.layers.12.attn.Wqkv.weight",
+      "file": "model.safetensors",
+      "sha256": "581784db3e86e6f4de7186238c7ab63786c0691a66086324c3c8e7de1ee06535",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        434914320,
+        438453264
+      ]
+    },
+    {
+      "name": "encoder.layers.12.attn_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "4658a746771b27a83697052778c8287a316e9abab340495edcd7ea816b46c888",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        438453264,
+        438454800
+      ]
+    },
+    {
+      "name": "encoder.layers.12.mlp.Wi.weight",
+      "file": "model.safetensors",
+      "sha256": "02003bb64d81f14e81f9a0954e4bda43f76056522c514b01a96d29608be06b86",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        438454800,
+        441993744
+      ]
+    },
+    {
+      "name": "encoder.layers.12.mlp.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "566cea832f70ffc17d4ad82895d9f62e589e75a0dfc73698473789aff5b35aee",
+      "dtype": "F16",
+      "shape": [
+        768,
+        1152
+      ],
+      "offsets": [
+        441993744,
+        443763216
+      ]
+    },
+    {
+      "name": "encoder.layers.12.mlp_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "e3519623d64e2528c21d6becc21688870b10895c3197043d4129e1716ec003ac",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        443763216,
+        443764752
+      ]
+    },
+    {
+      "name": "encoder.layers.13.attn.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "1e15a7dc8bf4446e8d1d3f1338606f630df878e60a161382bb0f4d9e637363c9",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        443764752,
+        444944400
+      ]
+    },
+    {
+      "name": "encoder.layers.13.attn.Wqkv.weight",
+      "file": "model.safetensors",
+      "sha256": "8f32ca03a1183f42997b20825e42b3d227f79004389778b10d3d7804a3ebbffd",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        444944400,
+        448483344
+      ]
+    },
+    {
+      "name": "encoder.layers.13.attn_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "9601efcb7d5ffd3004b3b150140e8c5102ed85938cc056144e0461b6a0755a63",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        448483344,
+        448484880
+      ]
+    },
+    {
+      "name": "encoder.layers.13.mlp.Wi.weight",
+      "file": "model.safetensors",
+      "sha256": "fb4af9d4d48e1e9298d5af1087a1b41e1a8b1a2ac89bd6af12da58ae36a67c9c",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        448484880,
+        452023824
+      ]
+    },
+    {
+      "name": "encoder.layers.13.mlp.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "5a7b2539c7d215b01e6fa7ccef2ba8ca9b1751e4e78b7a4d00b1043ec68c683a",
+      "dtype": "F16",
+      "shape": [
+        768,
+        1152
+      ],
+      "offsets": [
+        452023824,
+        453793296
+      ]
+    },
+    {
+      "name": "encoder.layers.13.mlp_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "ed39cde9812ded8fb65aca44da6c2bb38d7750b90deb72aab83459d109f1a845",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        453793296,
+        453794832
+      ]
+    },
+    {
+      "name": "encoder.layers.14.attn.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "ffdce954f78554f037216a3699c0ad80cbedbad2a58eb514ca3dab2943f6ca6d",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        453794832,
+        454974480
+      ]
+    },
+    {
+      "name": "encoder.layers.14.attn.Wqkv.weight",
+      "file": "model.safetensors",
+      "sha256": "b01686ad47162d67eb55b983a255675ab6799ba789f95ea100c7eba4cc2d2224",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        454974480,
+        458513424
+      ]
+    },
+    {
+      "name": "encoder.layers.14.attn_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "1ae6797c2f3fc48f9f6ad2bb5abb5b03e02326a9b0c04e3aa67df6c9992b837a",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        458513424,
+        458514960
+      ]
+    },
+    {
+      "name": "encoder.layers.14.mlp.Wi.weight",
+      "file": "model.safetensors",
+      "sha256": "28b0a33742a0d5b13d56b261f98fa3050dee8a9bc10a60f16588dca762adb6c1",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        458514960,
+        462053904
+      ]
+    },
+    {
+      "name": "encoder.layers.14.mlp.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "8609004db0844da5886fa444e407013cff1f7a977be25a32f7c072bbbf4ea109",
+      "dtype": "F16",
+      "shape": [
+        768,
+        1152
+      ],
+      "offsets": [
+        462053904,
+        463823376
+      ]
+    },
+    {
+      "name": "encoder.layers.14.mlp_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "cb5e04842dce9216d17c1510677a8aecb8236cbf5785865c93dc1460eeb17087",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        463823376,
+        463824912
+      ]
+    },
+    {
+      "name": "encoder.layers.15.attn.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "1af56472abb2f5c8bdb9c9c02218e92c7d4ca4d10effc58b2003fa9a50913758",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        463824912,
+        465004560
+      ]
+    },
+    {
+      "name": "encoder.layers.15.attn.Wqkv.weight",
+      "file": "model.safetensors",
+      "sha256": "d43bdb894ec5b350fb3293e70a88879e7c19bb86e102db9b87db737df8f73eb3",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        465004560,
+        468543504
+      ]
+    },
+    {
+      "name": "encoder.layers.15.attn_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "844e606a3fea49d48c3ffa26415dc013156852cf22e7bc011fc18f33c710be71",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        468543504,
+        468545040
+      ]
+    },
+    {
+      "name": "encoder.layers.15.mlp.Wi.weight",
+      "file": "model.safetensors",
+      "sha256": "7bab528e23c41257a5d2e653ba2189662f92afee57b06beb23266258cd61545a",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        468545040,
+        472083984
+      ]
+    },
+    {
+      "name": "encoder.layers.15.mlp.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "9c3cb38e054691bda4b6c47eba94a0783825be9bf0a2a0f176a110772a8a1bca",
+      "dtype": "F16",
+      "shape": [
+        768,
+        1152
+      ],
+      "offsets": [
+        472083984,
+        473853456
+      ]
+    },
+    {
+      "name": "encoder.layers.15.mlp_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "776607fce8f811556fdce015d90932efd44481d8087253421785207e103bb6fa",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        473853456,
+        473854992
+      ]
+    },
+    {
+      "name": "encoder.layers.16.attn.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "594e7662cdf8116a47cf763230e4835c7d0aca83fb2bdd3eb982e4b4426007dc",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        473854992,
+        475034640
+      ]
+    },
+    {
+      "name": "encoder.layers.16.attn.Wqkv.weight",
+      "file": "model.safetensors",
+      "sha256": "3c6582a2f7834b711f192494a0cb99f4910136903799d87ae455d4e1370808f7",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        475034640,
+        478573584
+      ]
+    },
+    {
+      "name": "encoder.layers.16.attn_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "1925dce53d2117d490e8cfa4417bcd076b0ec9cc81fa89a26c199d76723db9c6",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        478573584,
+        478575120
+      ]
+    },
+    {
+      "name": "encoder.layers.16.mlp.Wi.weight",
+      "file": "model.safetensors",
+      "sha256": "0977bbd0a9a1d29f9b976ddd8762c56cfa3e6177fc4c997c6be774af52ad33b8",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        478575120,
+        482114064
+      ]
+    },
+    {
+      "name": "encoder.layers.16.mlp.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "b4d07f2143b95da4990cf3309b7ca1e50fb9af0705412d9e4f7219b6f3318994",
+      "dtype": "F16",
+      "shape": [
+        768,
+        1152
+      ],
+      "offsets": [
+        482114064,
+        483883536
+      ]
+    },
+    {
+      "name": "encoder.layers.16.mlp_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "96085e7cdfcc01b61e9287d0af6951b5f69634412afda771036d5ed49d89cb7c",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        483883536,
+        483885072
+      ]
+    },
+    {
+      "name": "encoder.layers.17.attn.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "38b7416f5585993525e894241ef691b4940d391a0a8960f2ee3cb62e7c3e8e91",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        483885072,
+        485064720
+      ]
+    },
+    {
+      "name": "encoder.layers.17.attn.Wqkv.weight",
+      "file": "model.safetensors",
+      "sha256": "677bd7ba829f5ae68e265db3bd07580951bf091c10825f1de5a89d65d57ef896",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        485064720,
+        488603664
+      ]
+    },
+    {
+      "name": "encoder.layers.17.attn_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "1c14836564b7215f7c8cf2dc18e5030611a44a51ce65183703ff2a51bd5a2391",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        488603664,
+        488605200
+      ]
+    },
+    {
+      "name": "encoder.layers.17.mlp.Wi.weight",
+      "file": "model.safetensors",
+      "sha256": "e111e392ee999bc880eb5602c49bc1c5c45fe9dba3498b74e0a0e23438b8179e",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        488605200,
+        492144144
+      ]
+    },
+    {
+      "name": "encoder.layers.17.mlp.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "7c42cee6ab7b209e65f95c708c7c385af433867bc1d11db3bfaaafd05bfa568d",
+      "dtype": "F16",
+      "shape": [
+        768,
+        1152
+      ],
+      "offsets": [
+        492144144,
+        493913616
+      ]
+    },
+    {
+      "name": "encoder.layers.17.mlp_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "ad8c15649200ed761150d1716c469cb6948f29ea4eef40584f62556e2d7d7eb6",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        493913616,
+        493915152
+      ]
+    },
+    {
+      "name": "encoder.layers.18.attn.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "4f5bb49553ac36d4624e539ab5d432fe52c8421612effd9e2e5acad7bc71843f",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        493915152,
+        495094800
+      ]
+    },
+    {
+      "name": "encoder.layers.18.attn.Wqkv.weight",
+      "file": "model.safetensors",
+      "sha256": "f491686c2e8dcfc1b59f9a968fe051eb8e57e5a9f5b25802cd8eb2c594fe06eb",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        495094800,
+        498633744
+      ]
+    },
+    {
+      "name": "encoder.layers.18.attn_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "7e52089026e2a58ef056ad0116dc89f1c6742c5a9b89db7357a10fb33d957962",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        498633744,
+        498635280
+      ]
+    },
+    {
+      "name": "encoder.layers.18.mlp.Wi.weight",
+      "file": "model.safetensors",
+      "sha256": "4aa52ba09337078de85f81215d56575c68f326657c51d4120fe20360a8daa63b",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        498635280,
+        502174224
+      ]
+    },
+    {
+      "name": "encoder.layers.18.mlp.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "fc7c37b4f3147333942635417f2bf2da5bb227464a761451126b862649acb068",
+      "dtype": "F16",
+      "shape": [
+        768,
+        1152
+      ],
+      "offsets": [
+        502174224,
+        503943696
+      ]
+    },
+    {
+      "name": "encoder.layers.18.mlp_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "7b506930def2e1de15adaa9c129a7d9f94d96f26c92909c0efeeec8bfc40810a",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        503943696,
+        503945232
+      ]
+    },
+    {
+      "name": "encoder.layers.19.attn.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "5cded70de10784d6a0c1a1a05652fcdc685f6d43103a72b2e352c4e43f65c44d",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        503945232,
+        505124880
+      ]
+    },
+    {
+      "name": "encoder.layers.19.attn.Wqkv.weight",
+      "file": "model.safetensors",
+      "sha256": "760a08a686123163675e8cb4b0ab1457de745dcd960ca92c2b5cbad1d70916b1",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        505124880,
+        508663824
+      ]
+    },
+    {
+      "name": "encoder.layers.19.attn_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "1c0aebc9f143821797e699c6c0dadbd7b1edacd93cad2b695bf12c4b8d20f893",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        508663824,
+        508665360
+      ]
+    },
+    {
+      "name": "encoder.layers.19.mlp.Wi.weight",
+      "file": "model.safetensors",
+      "sha256": "84c7ad47d43154589d678893ee9258da84bc8222a83cd2e8cfc568acb53daf7f",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        508665360,
+        512204304
+      ]
+    },
+    {
+      "name": "encoder.layers.19.mlp.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "85cf0a01b4506ab4d15e21ca2a96e779074487c683e6501327ab322e9a02cbd7",
+      "dtype": "F16",
+      "shape": [
+        768,
+        1152
+      ],
+      "offsets": [
+        512204304,
+        513973776
+      ]
+    },
+    {
+      "name": "encoder.layers.19.mlp_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "b944f401f38b34a6af3e7b7b5ed21c6ac7f328c81828d84d519460ee2bb3847a",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        513973776,
+        513975312
+      ]
+    },
+    {
+      "name": "encoder.layers.2.attn.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "0b961887b2c3fe31a72de9743887235b192d67f4c6bc526979375e8858812530",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        513975312,
+        515154960
+      ]
+    },
+    {
+      "name": "encoder.layers.2.attn.Wqkv.weight",
+      "file": "model.safetensors",
+      "sha256": "68e71980b4d52d12642bb23b69cc6fb4b2effff8680111c8b2105f178a734926",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        515154960,
+        518693904
+      ]
+    },
+    {
+      "name": "encoder.layers.2.attn_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "8bde17cbe04d61c7dcbc6e33698a24e0aea9b9d60936f83853dc5b6ca91aa004",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        518693904,
+        518695440
+      ]
+    },
+    {
+      "name": "encoder.layers.2.mlp.Wi.weight",
+      "file": "model.safetensors",
+      "sha256": "9b2bacc7e8eeb2b8cfccef9485064bcbfd1d491ddac48c08dc9e7aed2bb83049",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        518695440,
+        522234384
+      ]
+    },
+    {
+      "name": "encoder.layers.2.mlp.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "19917a76105cd0f6e33380c5738d8e268337c73aa5dae6354dbf31475241bfc1",
+      "dtype": "F16",
+      "shape": [
+        768,
+        1152
+      ],
+      "offsets": [
+        522234384,
+        524003856
+      ]
+    },
+    {
+      "name": "encoder.layers.2.mlp_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "7d1df9a68a9d2517690f955f9071293050a983dca270836dd7fe270099332d92",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        524003856,
+        524005392
+      ]
+    },
+    {
+      "name": "encoder.layers.20.attn.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "142e774eeeb0fdc23dcc651e362f80d61c0df63c56ff8418b06ab5d1e2f5105d",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        524005392,
+        525185040
+      ]
+    },
+    {
+      "name": "encoder.layers.20.attn.Wqkv.weight",
+      "file": "model.safetensors",
+      "sha256": "ff934859a2fddda6cc18109fe96a119a1d7cb5aeb2c508c798b73bffeac90555",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        525185040,
+        528723984
+      ]
+    },
+    {
+      "name": "encoder.layers.20.attn_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "82029760dd473468ab70c3ea273fd308f7007682f9ef4f42e089a65ee72e07b3",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        528723984,
+        528725520
+      ]
+    },
+    {
+      "name": "encoder.layers.20.mlp.Wi.weight",
+      "file": "model.safetensors",
+      "sha256": "06a85aa630296e677ffa682652b1394a8fe879d80984b6d04a48790762231e80",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        528725520,
+        532264464
+      ]
+    },
+    {
+      "name": "encoder.layers.20.mlp.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "db50d7f9f33acfaab5d7c8ac6e20fed5534e4e811d1374fe50bae024c08ec0c4",
+      "dtype": "F16",
+      "shape": [
+        768,
+        1152
+      ],
+      "offsets": [
+        532264464,
+        534033936
+      ]
+    },
+    {
+      "name": "encoder.layers.20.mlp_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "4f04d972ffc9fa66500874dc406182211145e2d3ba3cb657a731d18ce90c319c",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        534033936,
+        534035472
+      ]
+    },
+    {
+      "name": "encoder.layers.21.attn.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "3d32c1b0cd0905a0a33e995ef2940acc5802719be401e094ca64123645e60f4a",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        534035472,
+        535215120
+      ]
+    },
+    {
+      "name": "encoder.layers.21.attn.Wqkv.weight",
+      "file": "model.safetensors",
+      "sha256": "d3f781dfc45211b2c167aae78a98bc245da9c2486ba8040344d545fa335590e9",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        535215120,
+        538754064
+      ]
+    },
+    {
+      "name": "encoder.layers.21.attn_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "9a1c31045e30c2cb809a287e4d79b386dd9c505d54d7425367e6f189ecf23113",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        538754064,
+        538755600
+      ]
+    },
+    {
+      "name": "encoder.layers.21.mlp.Wi.weight",
+      "file": "model.safetensors",
+      "sha256": "5387004f0c9936812b70f824b3a3c343010d383987e0000f13bfb4c007d0827d",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        538755600,
+        542294544
+      ]
+    },
+    {
+      "name": "encoder.layers.21.mlp.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "4af20707d751386f1a6bc27a046b8ca15359bc3bce0c8830b46fdfdb654c5d54",
+      "dtype": "F16",
+      "shape": [
+        768,
+        1152
+      ],
+      "offsets": [
+        542294544,
+        544064016
+      ]
+    },
+    {
+      "name": "encoder.layers.21.mlp_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "9e2752a4a4cd205ff48503628832b429f12384ba84b44dbd376b9bb297ae9bc0",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        544064016,
+        544065552
+      ]
+    },
+    {
+      "name": "encoder.layers.3.attn.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "4d279ba97ed0b5117426f0d0eb996e2a2e4a37a55ae87d1b53a9899994b59155",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        544065552,
+        545245200
+      ]
+    },
+    {
+      "name": "encoder.layers.3.attn.Wqkv.weight",
+      "file": "model.safetensors",
+      "sha256": "d69c9c550c07348d2dbf9efa588f109b54858c8c24c60c1f816b0abfb7f3832d",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        545245200,
+        548784144
+      ]
+    },
+    {
+      "name": "encoder.layers.3.attn_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "c2f17bfeae933aed2bb1db84f53ddcbe1e17e2b8f3fdd8e92c787131cd62b2ce",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        548784144,
+        548785680
+      ]
+    },
+    {
+      "name": "encoder.layers.3.mlp.Wi.weight",
+      "file": "model.safetensors",
+      "sha256": "90747f3647c0f4dba04f35adee1f2fae88caf85b7051a466bcfa3ea71d194340",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        548785680,
+        552324624
+      ]
+    },
+    {
+      "name": "encoder.layers.3.mlp.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "3582d852d1f92403eff344d46fc6d5b189580a30924fa24e1b28ffcc43fe6507",
+      "dtype": "F16",
+      "shape": [
+        768,
+        1152
+      ],
+      "offsets": [
+        552324624,
+        554094096
+      ]
+    },
+    {
+      "name": "encoder.layers.3.mlp_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "bc68b7bc92b5f9a0f8e042d2afd300058c2061254e1e085ccb69560eccbc139f",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        554094096,
+        554095632
+      ]
+    },
+    {
+      "name": "encoder.layers.4.attn.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "a6f383c1632b4fb1625925c1d37a7f7fa1e20701a9b89a2479da6176f725c577",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        554095632,
+        555275280
+      ]
+    },
+    {
+      "name": "encoder.layers.4.attn.Wqkv.weight",
+      "file": "model.safetensors",
+      "sha256": "a80f5d402b67bf47ea4eeea163ccf20c1a0c54893c320599774d12c08cc13091",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        555275280,
+        558814224
+      ]
+    },
+    {
+      "name": "encoder.layers.4.attn_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "56da3ffb44c0a7cb8477d46f151b868cbf5c4ec8ae3a3dd5782efa245473b2b4",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        558814224,
+        558815760
+      ]
+    },
+    {
+      "name": "encoder.layers.4.mlp.Wi.weight",
+      "file": "model.safetensors",
+      "sha256": "ddf2627f7ef07eda4f9f60da6a9f1a444e15dc3ea06eb3cdae2ab45e88bdeb6b",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        558815760,
+        562354704
+      ]
+    },
+    {
+      "name": "encoder.layers.4.mlp.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "ac4f3c849d9c7ed9dc161b992502760cb1c9e5eb81d66cb74a4802a9dbde7b37",
+      "dtype": "F16",
+      "shape": [
+        768,
+        1152
+      ],
+      "offsets": [
+        562354704,
+        564124176
+      ]
+    },
+    {
+      "name": "encoder.layers.4.mlp_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "b356b58d7cd8fee3957a3dd9bd2d7d50860da0b1adfdecbc0ff5245f49860647",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        564124176,
+        564125712
+      ]
+    },
+    {
+      "name": "encoder.layers.5.attn.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "f618d1c2bd1237db1995416516f1f43c7d098cf59892542bf936327768a36be3",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        564125712,
+        565305360
+      ]
+    },
+    {
+      "name": "encoder.layers.5.attn.Wqkv.weight",
+      "file": "model.safetensors",
+      "sha256": "9bac2a77cee5bc61106eb3a0a2c096f72153ce8082333542cd0ff6e354ccaa52",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        565305360,
+        568844304
+      ]
+    },
+    {
+      "name": "encoder.layers.5.attn_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "32f3ceafd566e9b2fae0036cc7b87d36d36f62a4e3aa940bf4e32f913df2ca95",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        568844304,
+        568845840
+      ]
+    },
+    {
+      "name": "encoder.layers.5.mlp.Wi.weight",
+      "file": "model.safetensors",
+      "sha256": "cb7dc0b56307db7ed733e03106247e575245e521be0f5e29dbc69a4712d17643",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        568845840,
+        572384784
+      ]
+    },
+    {
+      "name": "encoder.layers.5.mlp.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "391d6dccbc3803579f94cefa732a6aa9a62d48b33ecafea642b7e14e830145a4",
+      "dtype": "F16",
+      "shape": [
+        768,
+        1152
+      ],
+      "offsets": [
+        572384784,
+        574154256
+      ]
+    },
+    {
+      "name": "encoder.layers.5.mlp_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "abcfbd52f4604c4ee8e9b7c94b58b424571a14f24dc7d8804207986dd280c95e",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        574154256,
+        574155792
+      ]
+    },
+    {
+      "name": "encoder.layers.6.attn.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "767cab737c8ae9c89e8bffc560fda2f230abbee3b4c2ba83dd5c1058f5348dd6",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        574155792,
+        575335440
+      ]
+    },
+    {
+      "name": "encoder.layers.6.attn.Wqkv.weight",
+      "file": "model.safetensors",
+      "sha256": "e5edd906f73da7074901f3126e9e806fbd357cf05514790f76bf4947bdd52437",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        575335440,
+        578874384
+      ]
+    },
+    {
+      "name": "encoder.layers.6.attn_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "bf7fbe7dae5b0715519f80aa71b590abe2c2b36576f6f545eeb90d5d62641ab7",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        578874384,
+        578875920
+      ]
+    },
+    {
+      "name": "encoder.layers.6.mlp.Wi.weight",
+      "file": "model.safetensors",
+      "sha256": "58ce1d5126f34eeeec9cd4aa900e453031c219310b927d8bcddbe2021f6a8fcf",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        578875920,
+        582414864
+      ]
+    },
+    {
+      "name": "encoder.layers.6.mlp.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "db88eed306054437756dfa12b4d2d8a0f883b1dad318512a0017b77d4071aaf2",
+      "dtype": "F16",
+      "shape": [
+        768,
+        1152
+      ],
+      "offsets": [
+        582414864,
+        584184336
+      ]
+    },
+    {
+      "name": "encoder.layers.6.mlp_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "3bddb3648da7c47b9cb4d30a50b75595b068ea79bb44d6a4a802e65711238347",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        584184336,
+        584185872
+      ]
+    },
+    {
+      "name": "encoder.layers.7.attn.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "19fc4b85cd5eaa7f7f352535f4e0db8afcfb674e09465a135041a624420d37c5",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        584185872,
+        585365520
+      ]
+    },
+    {
+      "name": "encoder.layers.7.attn.Wqkv.weight",
+      "file": "model.safetensors",
+      "sha256": "9bfc411ed16ac004348e54d54f5a08a182d1a6f38a9f53e4eee941ed2ab4ed93",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        585365520,
+        588904464
+      ]
+    },
+    {
+      "name": "encoder.layers.7.attn_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "171c944448673a899ec51e21e1e43b8714be7c24641056e9c43decae757f19be",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        588904464,
+        588906000
+      ]
+    },
+    {
+      "name": "encoder.layers.7.mlp.Wi.weight",
+      "file": "model.safetensors",
+      "sha256": "6f533908dafcd9a3dc2dd70ed21e3757e27e369ee85ea7d8d01f3807c5012f35",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        588906000,
+        592444944
+      ]
+    },
+    {
+      "name": "encoder.layers.7.mlp.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "c4eb8b6d075d121b1adeb8f0ea1bfd5f2bc0478898f05360dcf5689024437028",
+      "dtype": "F16",
+      "shape": [
+        768,
+        1152
+      ],
+      "offsets": [
+        592444944,
+        594214416
+      ]
+    },
+    {
+      "name": "encoder.layers.7.mlp_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "02896b7b6f4f27a6538b14742b806f7db659d12fb56e237e274474d107e3eda9",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        594214416,
+        594215952
+      ]
+    },
+    {
+      "name": "encoder.layers.8.attn.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "40bba02b9a37137f9b48e556c18101e06096d15ac5f33e6a3543b0a8d3a84cbc",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        594215952,
+        595395600
+      ]
+    },
+    {
+      "name": "encoder.layers.8.attn.Wqkv.weight",
+      "file": "model.safetensors",
+      "sha256": "35e788efa3c8975a27414ffcb43824994b7c47df208b62fe0a701ef16f2aab4b",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        595395600,
+        598934544
+      ]
+    },
+    {
+      "name": "encoder.layers.8.attn_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "0a30963a6f787ce254ae920489394e13520d1337fee1267e8529089bf4b0a0b2",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        598934544,
+        598936080
+      ]
+    },
+    {
+      "name": "encoder.layers.8.mlp.Wi.weight",
+      "file": "model.safetensors",
+      "sha256": "b82910faa7a42d495c559cb92a0bb843faaadad81229f09d797734727749982b",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        598936080,
+        602475024
+      ]
+    },
+    {
+      "name": "encoder.layers.8.mlp.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "6905d8a707c06c14f7eb58c067a9d3577ff3de1bc27b5fd601ca654a4684bc4f",
+      "dtype": "F16",
+      "shape": [
+        768,
+        1152
+      ],
+      "offsets": [
+        602475024,
+        604244496
+      ]
+    },
+    {
+      "name": "encoder.layers.8.mlp_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "2e65624b41aab51e563fb778e00834e26a9fe665643a021a7966bfb3b96a3714",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        604244496,
+        604246032
+      ]
+    },
+    {
+      "name": "encoder.layers.9.attn.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "a8c269e93d07bd121fb85ec048b1b867eaa8b297fdad34416514b107f149fd2c",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        604246032,
+        605425680
+      ]
+    },
+    {
+      "name": "encoder.layers.9.attn.Wqkv.weight",
+      "file": "model.safetensors",
+      "sha256": "c2e29045e28efb1d20fb6f5a37ab0bb8bf89474aee3fe328ec1dda5656548cea",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        605425680,
+        608964624
+      ]
+    },
+    {
+      "name": "encoder.layers.9.attn_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "0b1509e9fd82b92dea0d884309907ceb8900d4ab37d6cf821d21ea2907293d42",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        608964624,
+        608966160
+      ]
+    },
+    {
+      "name": "encoder.layers.9.mlp.Wi.weight",
+      "file": "model.safetensors",
+      "sha256": "c97f2891829baa1a8123de56a70c667ab1e7e73cea51ef8598d59f666fabcee6",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        608966160,
+        612505104
+      ]
+    },
+    {
+      "name": "encoder.layers.9.mlp.Wo.weight",
+      "file": "model.safetensors",
+      "sha256": "5028f8cf7cdea08eac7a993e85fa7c67649bda0201c57631c8264c1a9acf7efb",
+      "dtype": "F16",
+      "shape": [
+        768,
+        1152
+      ],
+      "offsets": [
+        612505104,
+        614274576
+      ]
+    },
+    {
+      "name": "encoder.layers.9.mlp_norm.weight",
+      "file": "model.safetensors",
+      "sha256": "5d42a8339ec8f380b838871f5dc42bc05fb19fa83647765ce1140da41bd9bb45",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        614274576,
+        614276112
+      ]
+    },
+    {
+      "name": "head.layers.0.linear1.bias",
+      "file": "model.safetensors",
+      "sha256": "0f00c12aa55af86c06526521dd89806fbd6929ebcdcc33090f114480860ccb3f",
+      "dtype": "F16",
+      "shape": [
+        3072
+      ],
+      "offsets": [
+        614276112,
+        614282256
+      ]
+    },
+    {
+      "name": "head.layers.0.linear1.weight",
+      "file": "model.safetensors",
+      "sha256": "facb83cb01ba9c8ff4ee104ffb020e68f2cdf5c05032fe95cc99c1102d89aa92",
+      "dtype": "F16",
+      "shape": [
+        3072,
+        768
+      ],
+      "offsets": [
+        614282256,
+        619000848
+      ]
+    },
+    {
+      "name": "head.layers.0.linear2.bias",
+      "file": "model.safetensors",
+      "sha256": "c4e3e80c021ce772d21820eae9952e6579950c6997580d85be94d0c19169dc01",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        619000848,
+        619002384
+      ]
+    },
+    {
+      "name": "head.layers.0.linear2.weight",
+      "file": "model.safetensors",
+      "sha256": "79ad83c12eb3a732bf314d34e0123a8650f1a25d01e9e94e8f5bf031723fb26c",
+      "dtype": "F16",
+      "shape": [
+        768,
+        3072
+      ],
+      "offsets": [
+        619002384,
+        623720976
+      ]
+    },
+    {
+      "name": "head.layers.0.norm1.bias",
+      "file": "model.safetensors",
+      "sha256": "ca4034eb39ff467921643cdd34248f84ab6ef8393eeec247f8d1c96ace23ef0c",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        623720976,
+        623722512
+      ]
+    },
+    {
+      "name": "head.layers.0.norm1.weight",
+      "file": "model.safetensors",
+      "sha256": "1f579abe3b4b599cb547f35359f2ccd891ac276837435fb73e22eb895fd56901",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        623722512,
+        623724048
+      ]
+    },
+    {
+      "name": "head.layers.0.norm2.bias",
+      "file": "model.safetensors",
+      "sha256": "47ebc1c236aa4d90bf1b772ea0665cd2ec900f2840bbed70162a0c505b53a6e2",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        623724048,
+        623725584
+      ]
+    },
+    {
+      "name": "head.layers.0.norm2.weight",
+      "file": "model.safetensors",
+      "sha256": "98a8f51f5908fffae1d2038b54a24bdd75b6ec8fb192cc23f90d49a984f7b75c",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        623725584,
+        623727120
+      ]
+    },
+    {
+      "name": "head.layers.0.self_attn.in_proj_bias",
+      "file": "model.safetensors",
+      "sha256": "4df9696280a56c8fbd8ba972946db30355ccf4a790304d5d611cbdf250918218",
+      "dtype": "F16",
+      "shape": [
+        2304
+      ],
+      "offsets": [
+        623727120,
+        623731728
+      ]
+    },
+    {
+      "name": "head.layers.0.self_attn.in_proj_weight",
+      "file": "model.safetensors",
+      "sha256": "4d93807228987a4b00e688686b09c0ec9168d07ba2ff24650ed32ba172a4e6ce",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        623731728,
+        627270672
+      ]
+    },
+    {
+      "name": "head.layers.0.self_attn.out_proj.bias",
+      "file": "model.safetensors",
+      "sha256": "fef31ef05caaec390d259e7263401fda278d7121c049fd11ecbb738876d036c6",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        627270672,
+        627272208
+      ]
+    },
+    {
+      "name": "head.layers.0.self_attn.out_proj.weight",
+      "file": "model.safetensors",
+      "sha256": "e1e2312656ab0399eb9bc434b95e9eee96161c0d0e9be6e75036e166865455b0",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        627272208,
+        628451856
+      ]
+    },
+    {
+      "name": "head.layers.1.linear1.bias",
+      "file": "model.safetensors",
+      "sha256": "9a29de52992c7dd7779517b23ea895a9617a5dbb135ae859e15a58d3e47f706f",
+      "dtype": "F16",
+      "shape": [
+        3072
+      ],
+      "offsets": [
+        628451856,
+        628458000
+      ]
+    },
+    {
+      "name": "head.layers.1.linear1.weight",
+      "file": "model.safetensors",
+      "sha256": "26bd6b883a23be1e4fdc532e637127c2be16225ef1fbb07bd03ddccb80734c51",
+      "dtype": "F16",
+      "shape": [
+        3072,
+        768
+      ],
+      "offsets": [
+        628458000,
+        633176592
+      ]
+    },
+    {
+      "name": "head.layers.1.linear2.bias",
+      "file": "model.safetensors",
+      "sha256": "9f81507d88495bb01205c3476b6e4ab03336ae2085db7de86849b260ac54ae5c",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        633176592,
+        633178128
+      ]
+    },
+    {
+      "name": "head.layers.1.linear2.weight",
+      "file": "model.safetensors",
+      "sha256": "369500ed334b6094fcd5b1a44ffd9cb429525184afdbc783fd04d565a64f98ed",
+      "dtype": "F16",
+      "shape": [
+        768,
+        3072
+      ],
+      "offsets": [
+        633178128,
+        637896720
+      ]
+    },
+    {
+      "name": "head.layers.1.norm1.bias",
+      "file": "model.safetensors",
+      "sha256": "5efa09a2667870cfbdea34fb5636c658f22c4b3b05861ee4f450e104c93f9615",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        637896720,
+        637898256
+      ]
+    },
+    {
+      "name": "head.layers.1.norm1.weight",
+      "file": "model.safetensors",
+      "sha256": "ab444a707a70afb00b63039fc8d85ef74771022fccea2ac39a836c87e967d635",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        637898256,
+        637899792
+      ]
+    },
+    {
+      "name": "head.layers.1.norm2.bias",
+      "file": "model.safetensors",
+      "sha256": "bab742dcb5b2fba3dd1bf0f6829a39a818e754dc0b59198b387d0b1ca357a035",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        637899792,
+        637901328
+      ]
+    },
+    {
+      "name": "head.layers.1.norm2.weight",
+      "file": "model.safetensors",
+      "sha256": "c78be529a6669b05e58c86ec7fba2b3cf03a3900e34347e44f55fed7b33f109b",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        637901328,
+        637902864
+      ]
+    },
+    {
+      "name": "head.layers.1.self_attn.in_proj_bias",
+      "file": "model.safetensors",
+      "sha256": "e35829d30137fed5d2f85aa4b279e6b29be1d68b4cd5f934866f760f6040fc8d",
+      "dtype": "F16",
+      "shape": [
+        2304
+      ],
+      "offsets": [
+        637902864,
+        637907472
+      ]
+    },
+    {
+      "name": "head.layers.1.self_attn.in_proj_weight",
+      "file": "model.safetensors",
+      "sha256": "b905af7dafca3c5da9334fa8407bc1d07a0ddc01172b753bb63933c83965a08f",
+      "dtype": "F16",
+      "shape": [
+        2304,
+        768
+      ],
+      "offsets": [
+        637907472,
+        641446416
+      ]
+    },
+    {
+      "name": "head.layers.1.self_attn.out_proj.bias",
+      "file": "model.safetensors",
+      "sha256": "2f65c02673e5d11dcb4bcf18d2c83b9c86f263c14c14e891a6f525139eb42f94",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        641446416,
+        641447952
+      ]
+    },
+    {
+      "name": "head.layers.1.self_attn.out_proj.weight",
+      "file": "model.safetensors",
+      "sha256": "5bd1580bfa29fbd31db9be3916087d508550491c6151d1a0d067dd95193ece87",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        641447952,
+        642627600
+      ]
+    },
+    {
+      "name": "scorer.0.bias",
+      "file": "model.safetensors",
+      "sha256": "0a819110421e012d0fc7c9d100f2f54bdb5322daa22602f295ab4e09e2e324b4",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        642627600,
+        642629136
+      ]
+    },
+    {
+      "name": "scorer.0.weight",
+      "file": "model.safetensors",
+      "sha256": "5bc32862b018e270951b5a27bf3ae0407d19d135bec54152d1488930ce7a6c54",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        642629136,
+        642630672
+      ]
+    },
+    {
+      "name": "scorer.1.bias",
+      "file": "model.safetensors",
+      "sha256": "bcb5d9320b4be975f665070fc4a6d68ff3c63ef8550cfe37e44f12d89373368e",
+      "dtype": "F16",
+      "shape": [
+        768
+      ],
+      "offsets": [
+        642630672,
+        642632208
+      ]
+    },
+    {
+      "name": "scorer.1.weight",
+      "file": "model.safetensors",
+      "sha256": "5b84908fe8f1981b0fb69cc6154dafc8a82005b214416724ffc31552d2d12f18",
+      "dtype": "F16",
+      "shape": [
+        768,
+        768
+      ],
+      "offsets": [
+        642632208,
+        643811856
+      ]
+    },
+    {
+      "name": "scorer.3.bias",
+      "file": "model.safetensors",
+      "sha256": "913ff7834221bb7056374f12c0971fa66884577980ee4b4aae2215f32e46b354",
+      "dtype": "F16",
+      "shape": [
+        1
+      ],
+      "offsets": [
+        643811856,
+        643811858
+      ]
+    },
+    {
+      "name": "scorer.3.weight",
+      "file": "model.safetensors",
+      "sha256": "239a0f9e248bae8a226ddacfe50d466fff87c538142f3fafdde0f8b46e3d5476",
+      "dtype": "F16",
+      "shape": [
+        1,
+        768
+      ],
+      "offsets": [
+        643811858,
+        643813394
+      ]
+    },
+    {
+      "name": "type_emb.weight",
+      "file": "model.safetensors",
+      "sha256": "0fcf7cccff06d8133b68548c0c557ff6b7cc914a0ead9adb4337e0dc5aa15e1e",
+      "dtype": "F16",
+      "shape": [
+        3,
+        768
+      ],
+      "offsets": [
+        643813394,
+        643818002
+      ]
+    }
+  ],
+  "tokenizer": {
+    "pipeline": "huggingface-tokenizers-json",
+    "normalizer": "Replace(space->▁)+Metaspace",
+    "pre_tokenizer": "Metaspace",
+    "model": "BPE",
+    "post_processor": "TemplateProcessing"
+  },
+  "special_tokens": {
+    "pad": 0,
+    "eos": 1,
+    "bos": 2,
+    "unk": 3,
+    "mask": 4,
+    "start_of_turn": 106,
+    "end_of_turn": 107
+  },
+  "encoder": {
+    "vocab_size": 256000,
+    "hidden_size": 768,
+    "intermediate_size": 1152,
+    "layer_count": 22,
+    "head_count": 12,
+    "max_tokens": 1024,
+    "global_attention_every": 3,
+    "local_attention": 128,
+    "global_rope_theta": 160000,
+    "local_rope_theta": 160000,
+    "norm_epsilon": 1E-05
+  },
+  "head": {
+    "hidden_size": 768,
+    "layers": 2,
+    "intermediate_size": 3072,
+    "max_tokens": 256
+  },
+  "calibration": {
+    "status": "uncalibrated",
+    "temperature": [
+      1,
+      1,
+      1
+    ]
+  },
+  "tensor_mapping": {
+    "embedding": "encoder.embeddings.tok_embeddings.weight",
+    "embedding_norm": "encoder.embeddings.norm.weight",
+    "final_norm": "encoder.final_norm.weight",
+    "layers": [
+      {
+        "index": 0,
+        "qkv": "encoder.layers.0.attn.Wqkv.weight",
+        "attention_output": "encoder.layers.0.attn.Wo.weight",
+        "attention_norm": null,
+        "mlp_input": "encoder.layers.0.mlp.Wi.weight",
+        "mlp_output": "encoder.layers.0.mlp.Wo.weight",
+        "mlp_norm": "encoder.layers.0.mlp_norm.weight"
+      },
+      {
+        "index": 1,
+        "qkv": "encoder.layers.1.attn.Wqkv.weight",
+        "attention_output": "encoder.layers.1.attn.Wo.weight",
+        "attention_norm": "encoder.layers.1.attn_norm.weight",
+        "mlp_input": "encoder.layers.1.mlp.Wi.weight",
+        "mlp_output": "encoder.layers.1.mlp.Wo.weight",
+        "mlp_norm": "encoder.layers.1.mlp_norm.weight"
+      },
+      {
+        "index": 2,
+        "qkv": "encoder.layers.2.attn.Wqkv.weight",
+        "attention_output": "encoder.layers.2.attn.Wo.weight",
+        "attention_norm": "encoder.layers.2.attn_norm.weight",
+        "mlp_input": "encoder.layers.2.mlp.Wi.weight",
+        "mlp_output": "encoder.layers.2.mlp.Wo.weight",
+        "mlp_norm": "encoder.layers.2.mlp_norm.weight"
+      },
+      {
+        "index": 3,
+        "qkv": "encoder.layers.3.attn.Wqkv.weight",
+        "attention_output": "encoder.layers.3.attn.Wo.weight",
+        "attention_norm": "encoder.layers.3.attn_norm.weight",
+        "mlp_input": "encoder.layers.3.mlp.Wi.weight",
+        "mlp_output": "encoder.layers.3.mlp.Wo.weight",
+        "mlp_norm": "encoder.layers.3.mlp_norm.weight"
+      },
+      {
+        "index": 4,
+        "qkv": "encoder.layers.4.attn.Wqkv.weight",
+        "attention_output": "encoder.layers.4.attn.Wo.weight",
+        "attention_norm": "encoder.layers.4.attn_norm.weight",
+        "mlp_input": "encoder.layers.4.mlp.Wi.weight",
+        "mlp_output": "encoder.layers.4.mlp.Wo.weight",
+        "mlp_norm": "encoder.layers.4.mlp_norm.weight"
+      },
+      {
+        "index": 5,
+        "qkv": "encoder.layers.5.attn.Wqkv.weight",
+        "attention_output": "encoder.layers.5.attn.Wo.weight",
+        "attention_norm": "encoder.layers.5.attn_norm.weight",
+        "mlp_input": "encoder.layers.5.mlp.Wi.weight",
+        "mlp_output": "encoder.layers.5.mlp.Wo.weight",
+        "mlp_norm": "encoder.layers.5.mlp_norm.weight"
+      },
+      {
+        "index": 6,
+        "qkv": "encoder.layers.6.attn.Wqkv.weight",
+        "attention_output": "encoder.layers.6.attn.Wo.weight",
+        "attention_norm": "encoder.layers.6.attn_norm.weight",
+        "mlp_input": "encoder.layers.6.mlp.Wi.weight",
+        "mlp_output": "encoder.layers.6.mlp.Wo.weight",
+        "mlp_norm": "encoder.layers.6.mlp_norm.weight"
+      },
+      {
+        "index": 7,
+        "qkv": "encoder.layers.7.attn.Wqkv.weight",
+        "attention_output": "encoder.layers.7.attn.Wo.weight",
+        "attention_norm": "encoder.layers.7.attn_norm.weight",
+        "mlp_input": "encoder.layers.7.mlp.Wi.weight",
+        "mlp_output": "encoder.layers.7.mlp.Wo.weight",
+        "mlp_norm": "encoder.layers.7.mlp_norm.weight"
+      },
+      {
+        "index": 8,
+        "qkv": "encoder.layers.8.attn.Wqkv.weight",
+        "attention_output": "encoder.layers.8.attn.Wo.weight",
+        "attention_norm": "encoder.layers.8.attn_norm.weight",
+        "mlp_input": "encoder.layers.8.mlp.Wi.weight",
+        "mlp_output": "encoder.layers.8.mlp.Wo.weight",
+        "mlp_norm": "encoder.layers.8.mlp_norm.weight"
+      },
+      {
+        "index": 9,
+        "qkv": "encoder.layers.9.attn.Wqkv.weight",
+        "attention_output": "encoder.layers.9.attn.Wo.weight",
+        "attention_norm": "encoder.layers.9.attn_norm.weight",
+        "mlp_input": "encoder.layers.9.mlp.Wi.weight",
+        "mlp_output": "encoder.layers.9.mlp.Wo.weight",
+        "mlp_norm": "encoder.layers.9.mlp_norm.weight"
+      },
+      {
+        "index": 10,
+        "qkv": "encoder.layers.10.attn.Wqkv.weight",
+        "attention_output": "encoder.layers.10.attn.Wo.weight",
+        "attention_norm": "encoder.layers.10.attn_norm.weight",
+        "mlp_input": "encoder.layers.10.mlp.Wi.weight",
+        "mlp_output": "encoder.layers.10.mlp.Wo.weight",
+        "mlp_norm": "encoder.layers.10.mlp_norm.weight"
+      },
+      {
+        "index": 11,
+        "qkv": "encoder.layers.11.attn.Wqkv.weight",
+        "attention_output": "encoder.layers.11.attn.Wo.weight",
+        "attention_norm": "encoder.layers.11.attn_norm.weight",
+        "mlp_input": "encoder.layers.11.mlp.Wi.weight",
+        "mlp_output": "encoder.layers.11.mlp.Wo.weight",
+        "mlp_norm": "encoder.layers.11.mlp_norm.weight"
+      },
+      {
+        "index": 12,
+        "qkv": "encoder.layers.12.attn.Wqkv.weight",
+        "attention_output": "encoder.layers.12.attn.Wo.weight",
+        "attention_norm": "encoder.layers.12.attn_norm.weight",
+        "mlp_input": "encoder.layers.12.mlp.Wi.weight",
+        "mlp_output": "encoder.layers.12.mlp.Wo.weight",
+        "mlp_norm": "encoder.layers.12.mlp_norm.weight"
+      },
+      {
+        "index": 13,
+        "qkv": "encoder.layers.13.attn.Wqkv.weight",
+        "attention_output": "encoder.layers.13.attn.Wo.weight",
+        "attention_norm": "encoder.layers.13.attn_norm.weight",
+        "mlp_input": "encoder.layers.13.mlp.Wi.weight",
+        "mlp_output": "encoder.layers.13.mlp.Wo.weight",
+        "mlp_norm": "encoder.layers.13.mlp_norm.weight"
+      },
+      {
+        "index": 14,
+        "qkv": "encoder.layers.14.attn.Wqkv.weight",
+        "attention_output": "encoder.layers.14.attn.Wo.weight",
+        "attention_norm": "encoder.layers.14.attn_norm.weight",
+        "mlp_input": "encoder.layers.14.mlp.Wi.weight",
+        "mlp_output": "encoder.layers.14.mlp.Wo.weight",
+        "mlp_norm": "encoder.layers.14.mlp_norm.weight"
+      },
+      {
+        "index": 15,
+        "qkv": "encoder.layers.15.attn.Wqkv.weight",
+        "attention_output": "encoder.layers.15.attn.Wo.weight",
+        "attention_norm": "encoder.layers.15.attn_norm.weight",
+        "mlp_input": "encoder.layers.15.mlp.Wi.weight",
+        "mlp_output": "encoder.layers.15.mlp.Wo.weight",
+        "mlp_norm": "encoder.layers.15.mlp_norm.weight"
+      },
+      {
+        "index": 16,
+        "qkv": "encoder.layers.16.attn.Wqkv.weight",
+        "attention_output": "encoder.layers.16.attn.Wo.weight",
+        "attention_norm": "encoder.layers.16.attn_norm.weight",
+        "mlp_input": "encoder.layers.16.mlp.Wi.weight",
+        "mlp_output": "encoder.layers.16.mlp.Wo.weight",
+        "mlp_norm": "encoder.layers.16.mlp_norm.weight"
+      },
+      {
+        "index": 17,
+        "qkv": "encoder.layers.17.attn.Wqkv.weight",
+        "attention_output": "encoder.layers.17.attn.Wo.weight",
+        "attention_norm": "encoder.layers.17.attn_norm.weight",
+        "mlp_input": "encoder.layers.17.mlp.Wi.weight",
+        "mlp_output": "encoder.layers.17.mlp.Wo.weight",
+        "mlp_norm": "encoder.layers.17.mlp_norm.weight"
+      },
+      {
+        "index": 18,
+        "qkv": "encoder.layers.18.attn.Wqkv.weight",
+        "attention_output": "encoder.layers.18.attn.Wo.weight",
+        "attention_norm": "encoder.layers.18.attn_norm.weight",
+        "mlp_input": "encoder.layers.18.mlp.Wi.weight",
+        "mlp_output": "encoder.layers.18.mlp.Wo.weight",
+        "mlp_norm": "encoder.layers.18.mlp_norm.weight"
+      },
+      {
+        "index": 19,
+        "qkv": "encoder.layers.19.attn.Wqkv.weight",
+        "attention_output": "encoder.layers.19.attn.Wo.weight",
+        "attention_norm": "encoder.layers.19.attn_norm.weight",
+        "mlp_input": "encoder.layers.19.mlp.Wi.weight",
+        "mlp_output": "encoder.layers.19.mlp.Wo.weight",
+        "mlp_norm": "encoder.layers.19.mlp_norm.weight"
+      },
+      {
+        "index": 20,
+        "qkv": "encoder.layers.20.attn.Wqkv.weight",
+        "attention_output": "encoder.layers.20.attn.Wo.weight",
+        "attention_norm": "encoder.layers.20.attn_norm.weight",
+        "mlp_input": "encoder.layers.20.mlp.Wi.weight",
+        "mlp_output": "encoder.layers.20.mlp.Wo.weight",
+        "mlp_norm": "encoder.layers.20.mlp_norm.weight"
+      },
+      {
+        "index": 21,
+        "qkv": "encoder.layers.21.attn.Wqkv.weight",
+        "attention_output": "encoder.layers.21.attn.Wo.weight",
+        "attention_norm": "encoder.layers.21.attn_norm.weight",
+        "mlp_input": "encoder.layers.21.mlp.Wi.weight",
+        "mlp_output": "encoder.layers.21.mlp.Wo.weight",
+        "mlp_norm": "encoder.layers.21.mlp_norm.weight"
+      }
+    ]
+  }
+}

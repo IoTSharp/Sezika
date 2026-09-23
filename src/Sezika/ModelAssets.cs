@@ -54,14 +54,18 @@ public static class ModelAssetVerifier
         if (manifest is null) throw new DecisionException("decision_manifest_invalid", "model.json is empty.");
         ValidateManifest(manifest);
         var total = 0L;
+        var verifiedFiles = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         foreach (var tensor in manifest.Tensors)
         {
             cancellationToken.ThrowIfCancellationRequested();
             var path = CombineWithin(root, tensor.File);
-            VerifyFile(path, tensor.Sha256, cancellationToken);
-            var info = new FileInfo(path);
-            total = checked(total + info.Length);
-            if (total > manifest.MaxResidentBytes) throw new DecisionException("decision_model_memory_limit_exceeded", "Model assets exceed the resident byte budget.");
+            if (verifiedFiles.Add(path))
+            {
+                VerifyFile(path, tensor.Sha256, cancellationToken);
+                var info = new FileInfo(path);
+                total = checked(total + info.Length);
+                if (total > manifest.MaxResidentBytes) throw new DecisionException("decision_model_memory_limit_exceeded", "Model assets exceed the resident byte budget.");
+            }
         }
         VerifyFile(CombineWithin(root, manifest.TokenizerFile), null, cancellationToken);
         VerifyFile(CombineWithin(root, manifest.WeightsFile), null, cancellationToken);
@@ -84,7 +88,7 @@ public static class ModelAssetVerifier
             long elements = 1;
             foreach (var dimension in tensor.Shape)
             {
-                if (dimension <= 0 || (elements = checked(elements * dimension)) > 100_000_000)
+                if (dimension <= 0 || (elements = checked(elements * dimension)) > 300_000_000)
                     throw new DecisionException("decision_manifest_memory_limit_exceeded", "Tensor shape exceeds the configured limit.");
             }
         }
@@ -129,7 +133,7 @@ public sealed record SafeTensor
 /// <summary>Reads the safe-tensors container without deserializing executable or pickle content.</summary>
 public static class SafeTensorReader
 {
-    public static IReadOnlyDictionary<string, SafeTensor> Read(string path, long maxHeaderBytes = 16 * 1024 * 1024, long maxElements = 100_000_000, CancellationToken cancellationToken = default)
+    public static IReadOnlyDictionary<string, SafeTensor> Read(string path, long maxHeaderBytes = 16 * 1024 * 1024, long maxElements = 300_000_000, CancellationToken cancellationToken = default)
     {
         using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read, 64 * 1024, FileOptions.SequentialScan);
         Span<byte> lengthBytes = stackalloc byte[8];

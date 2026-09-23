@@ -1,6 +1,6 @@
 # Sezika 架构设计
 
-状态：实现与设计并存，2026-09-23。当前库包含 bounded asset/tokenizer/CPU typed decision 实现，以及 CUDA Driver 固定 PTX/GEMM 原型；尚无发布模型或完整 GPU Transformer encoder。阶段验收见 [ROADMAP](../ROADMAP.md)。
+状态：实现与设计并存，2026-09-23。当前库包含 bounded asset/tokenizer、固定真实 Laya/mmBERT 开发资产、CPU typed decision 实现，以及由构建期 ILGPU 产物驱动的 CUDA Driver 完整 encoder/head。模型权重不随仓库发布；多语言质量、跨平台性能和 Tomur 接入仍按阶段证据验收。阶段入口见 [ROADMAP](../ROADMAP.md)。
 
 ## 1. 目标与非目标
 
@@ -26,7 +26,7 @@ flowchart LR
 
 ILGPU 用作构建期编译器。最终 AOT 运行时不引用 ILGPU 的动态编译/动态 launcher 路径。CUDA Driver 可以将 PTX 编译到当前设备并加载执行；这是驱动处理 GPU 指令，不是 .NET 运行时生成托管代码。需要避免冷启动驱动编译时可评估预生成 cubin，但其架构矩阵与构建依赖另行记录，不能默认已经解决。
 
-不声称“原版 ILGPU 可直接 Native AOT 发布”。必须先通过最小 C# kernel → ILGPU 导出 → AOT Driver loader → 实卡数值结果的原型，核对参数 ABI、launch 与内存生命周期。详见 [GPU / AOT 决策](gpu-aot.md)。
+不声称“原版 ILGPU 可直接 Native AOT 发布”。当前已通过最小 C# kernel → ILGPU 导出 → AOT Driver loader → RTX 4070 实卡数值结果关口，并将同一静态 PTX/ABI 产物用于完整 encoder/head；逐算子差异、性能矩阵和其他 RID 仍按 [GPU / AOT 决策](gpu-aot.md) 的边界记录。
 
 ## 3. 工程结构
 

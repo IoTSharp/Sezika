@@ -12,7 +12,7 @@ public sealed class CudaVectorAdd : IDisposable
     {
         _device = device;
         _module = device.LoadModule(CudaPtx.VectorAdd);
-        _function = device.GetFunction(_module, "vector_add");
+        _function = device.GetFunction(_module, GeneratedKernelArtifacts.VectorAddDescriptor.Entry);
     }
 
     public void Execute(ReadOnlySpan<float> left, ReadOnlySpan<float> right, Span<float> destination)
@@ -31,14 +31,14 @@ public sealed class CudaVectorAdd : IDisposable
 
         unsafe
         {
-            ulong leftPointer = leftBuffer.DevicePointer;
-            ulong rightPointer = rightBuffer.DevicePointer;
-            ulong destinationPointer = destinationBuffer.DevicePointer;
+            CudaArrayView leftView = new(leftBuffer.DevicePointer, left.Length);
+            CudaArrayView rightView = new(rightBuffer.DevicePointer, right.Length);
+            CudaArrayView destinationView = new(destinationBuffer.DevicePointer, destination.Length);
             uint length = checked((uint)left.Length);
             nint* parameters = stackalloc nint[4];
-            parameters[0] = (nint)(&leftPointer);
-            parameters[1] = (nint)(&rightPointer);
-            parameters[2] = (nint)(&destinationPointer);
+            parameters[0] = (nint)(&leftView);
+            parameters[1] = (nint)(&rightView);
+            parameters[2] = (nint)(&destinationView);
             parameters[3] = (nint)(&length);
             _device.Launch(_function, checked((uint)((left.Length + 255L) / 256L)), 1, 256, 1, new ReadOnlySpan<nint>(parameters, 4));
         }

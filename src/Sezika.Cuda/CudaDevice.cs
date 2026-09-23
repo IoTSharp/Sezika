@@ -122,6 +122,17 @@ public sealed class CudaDevice : IDisposable
         }
     }
 
+    internal unsafe void CopyToDevice(CudaDeviceBuffer destination, ReadOnlySpan<int> source)
+    {
+        ThrowIfDisposed();
+        nuint bytes = checked((nuint)(source.Length * sizeof(int)));
+        EnsureFits(destination, bytes);
+        fixed (int* sourcePointer = source)
+        {
+            CudaNative.Check(CudaNative.MemcpyHtoD(destination.DevicePointer, (nint)sourcePointer, bytes), "cuMemcpyHtoD");
+        }
+    }
+
     internal unsafe void CopyFromDevice(Span<float> destination, CudaDeviceBuffer source)
     {
         ThrowIfDisposed();

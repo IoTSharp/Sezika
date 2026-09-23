@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>Sezika.RealModel.Smoke</AssemblyName>
+    <RootNamespace>Sezika.RealModel.Smoke</RootNamespace>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/Sezika/Sezika.csproj" />
+    <ProjectReference Include="../../src/Sezika.Cuda/Sezika.Cuda.csproj" />
+  </ItemGroup>
+</Project>

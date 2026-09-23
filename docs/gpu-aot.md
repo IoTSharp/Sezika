@@ -1,12 +1,12 @@
 # 纯 C# GPU 与 Native AOT
 
-决策日期：2026-09-23。状态：固定 PTX/Driver/AOT 最小原型已通过；完整 C# kernel compiler、GPU encoder 与性能矩阵仍待执行。
+决策日期：2026-09-23。状态：构建期 C# kernel compiler、可信 PTX/ABI 产物、完整 GPU encoder/head 与 win-x64 Native AOT smoke 已通过；跨平台性能矩阵仍待执行。
 
 ## 结论
 
 Sezika 可以以纯 C# 编写模型和 GPU 算子，并使用操作系统/显卡驱动运行。推荐把 ILGPU 放到构建工具中，由它将固定 C# kernels 编译为 PTX；发布的 Native AOT 程序通过 C# CUDA Driver 绑定加载和执行这些产物。
 
-**原版 ILGPU 的常规运行时编译/launcher 路径不能直接当作 Native AOT 兼容实现。** 当前没有核实到可直接用于本项目的官方完整 AOT 发布方案；构建期导出方案需要实现并验证 ABI 与 driver loader。
+**原版 ILGPU 的常规运行时编译/launcher 路径不能直接当作 Native AOT 兼容实现。** 本仓库已将 ILGPU 1.5.3 限定在 `tools/Sezika.KernelCompiler`，构建后提交 PTX、ABI manifest、源码/PTX SHA-256 和静态 C# launch descriptors；发布的 AOT 项目只引用生成的字节数组与 CUDA Driver 绑定。
 
 ## 来源与兼容性证据
 
@@ -47,7 +47,7 @@ Sezika 可以以纯 C# 编写模型和 GPU 算子，并使用操作系统/显卡
 
 驱动调用范围预计包括设备/context、显存、异步 copy、module/function、launch、stream/event 与错误查询。具体 API 列表以最小原型为准，不在没有调用代码前声明驱动兼容已验证。
 
-## 第一个实现关口：GPU / AOT 最小原型
+## 第一个实现关口：GPU / AOT 最小原型（已通过）
 
 此关口优先于完整 Transformer 的 GPU 开发。
 
@@ -57,11 +57,11 @@ Sezika 可以以纯 C# 编写模型和 GPU 算子，并使用操作系统/显卡
 4. 与纯 C# CPU 标量结果对比，覆盖错误尺寸、越界防护、显存不足、设备缺失、取消/超时、重复加载/卸载与 module/stream/buffer 回收。
 5. 先验证 win-x64 + 一张明确型号的 NVIDIA GPU，再验证 linux-x64；记录 SDK、ILGPU commit、driver、PTX、SM、数值误差、kernel 时间、端到端时间与冷加载时间。
 
-通过原型才把该 backend 标为可用；失败时记录具体 ABI/编译器/驱动原因并修复，不能改用 native 计算库伪装为纯 C# 完成。
+实测设备为 NVIDIA GeForce RTX 4070 Laptop GPU，driver 596.08，compute capability 8.9，显存 8188 MiB。ILGPU 1.5.3 构建工具生成 14 个 kernel；ABI manifest 记录 `sourceSha256=35A25F3B52B2C359FC929524A55A6D9CF489BB930441DF03016630DBA00FD00D` 和逐 kernel SHA-256。非整齐 vector-add/GEMM、真实 mmBERT encoder/head、取消、module/buffer 回收与 win-x64 Native AOT 发布物均通过。真实 head logits 的 CPU/CUDA 最大绝对差为 `9.536743e-7`；逐算子 Trace 在同一输入上最大绝对差 `1.7578125e-2`，该差异来自 FP32 标量与 GPU FMA/数学指令顺序，当前作为数值证据记录而不宣称 bit-exact。
 
 ## 完整推理的性能工作
 
-GPU 速度来自正确的并行策略、数据复用和精度，而不仅是换执行设备。后续需要 C# 实现并验证：GEMM/batched GEMM、layer norm、softmax/reduction、RoPE、embedding/gather、激活与局部/全局 attention；再评估 shared memory、tiling、fusion、量化和 Tensor Core 路线。
+GPU 速度来自正确的并行策略、数据复用和精度，而不仅是换执行设备。已实现并验证：GEMM、layer norm、softmax/reduction、RoPE、embedding/gather、激活、gated GELU 与局部/全局 attention。后续仍需评估 shared memory、tiling、fusion、量化和 Tensor Core 路线，并补齐 linux-x64、冷启动/热推理、峰值显存和 p50/p95/p99 矩阵。
 
 初始不承诺达到高度优化的 native 数学库速度。小 batch、短序列、逐算子 host-device 往返和未预热的 driver 编译可能让 GPU 更慢。CPU/GPU 对比必须用同一模型、dtype、输入和时间边界。
 

@@ -2,9 +2,15 @@
   <Folder Name="/src/">
     <Project Path="src/Sezika/Sezika.csproj" />
     <Project Path="src/Sezika.Cuda/Sezika.Cuda.csproj" />
+    <Project Path="src/Sezika.Kernels/Sezika.Kernels.csproj" />
     <Project Path="tests/Sezika.Tests/Sezika.Tests.csproj" />
   </Folder>
   <Folder Name="/samples/">
     <Project Path="samples/Sezika.Cuda.Smoke/Sezika.Cuda.Smoke.csproj" />
+    <Project Path="samples/Sezika.RealModel.Smoke/Sezika.RealModel.Smoke.csproj" />
+  </Folder>
+  <Folder Name="/tools/">
+    <Project Path="tools/Sezika.ModelTool/Sezika.ModelTool.csproj" />
+    <Project Path="tools/Sezika.KernelCompiler/Sezika.KernelCompiler.csproj" />
   </Folder>
 </Solution>

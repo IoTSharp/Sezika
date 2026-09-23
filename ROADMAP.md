@@ -17,7 +17,7 @@
 | 6 | 🚧 | Tomur R22 对接 | 同进程 provider、模型资产、专用 API、只读工具、诊断 |
 | 7 | ⏳ | 开源发布 | NuGet、CLI、模型卡、许可清单、跨平台发布与示例 |
 
-当前已具备可执行的纯 C# CPU 推理闭环、SafeTensors 资产边界、校准评估器，以及 CUDA Driver 固定 PTX probe、GPU 决策头和 win-x64 Native AOT smoke。真实发布模型、逐语言质量证据、完整 GPU encoder 和 Tomur 宿主接入仍按各自证据门槛推进；详见 [阶段证据](docs/stage-evidence.md)。
+当前已具备固定 Apache-2.0 mmBERT/Laya 模型资产、C# tokenizer oracle、真实 CPU scalar encoder、ILGPU 构建期 PTX/ABI 产物、CUDA Driver resident encoder/head 和 win-x64 Native AOT smoke。逐语言质量、跨平台性能矩阵和 Tomur 宿主接入仍按各自证据门槛推进；详见 [阶段证据](docs/stage-evidence.md)。
 
 ## 0. 研究与契约
 
@@ -31,7 +31,7 @@
 
 用户要求 GPU 支持且保持模型、算子与调度源代码纯 C#，运行时只允许系统/显卡驱动例外。采用 **C# kernels → 构建期 ILGPU → PTX + ABI manifest → Native AOT C# CUDA Driver loader** 的设计。原版 ILGPU 常规运行时依赖 IL 读取与 Reflection.Emit，不能直接纳入 AOT 运行路径。
 
-完整 GPU encoder 开发前，用 vector add 和小型 GEMM 验证构建产物、参数布局、实卡 launch、结果、资源回收及 AOT 依赖图。该原型初始预计 1–2 工程周，结果可能影响后续架构与排期；尚未执行。具体证据与验收见 [GPU / AOT 设计](docs/gpu-aot.md)。
+完整 GPU encoder 开发前，用 vector add 和小型 GEMM 验证构建产物、参数布局、实卡 launch、结果、资源回收及 AOT 依赖图。该关口已在 RTX 4070 Laptop GPU（driver 596.08、CC 8.9）通过；完整 encoder/head 的逐算子数值差异和性能矩阵仍按 [GPU / AOT 设计](docs/gpu-aot.md) 的边界记录。
 
 ## 1. 模型资产与 tokenizer
 

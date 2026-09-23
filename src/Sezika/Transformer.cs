@@ -67,7 +67,7 @@ public sealed class TransformerWeights
 }
 
 /// <summary>Scalar FP32 reference encoder. It is intentionally simple and deterministic.</summary>
-public sealed class TransformerEncoder
+public sealed class TransformerEncoder : IEncoder
 {
     private readonly TransformerConfig _config;
     private readonly TransformerWeights _weights;
