@@ -1,6 +1,6 @@
 # Sezika 架构设计
 
-状态：实现与设计并存，2026-09-23。当前库包含 bounded asset/tokenizer、固定真实 Laya/mmBERT 开发资产、CPU typed decision 实现，以及由构建期 ILGPU 产物驱动的 CUDA Driver 完整 encoder/head。模型权重不随仓库发布；多语言质量、跨平台性能和 Tomur 接入仍按阶段证据验收。阶段入口见 [ROADMAP](../ROADMAP.md)。
+状态：实现与设计并存，2026-09-23。当前库包含 bounded asset/tokenizer、固定真实 Laya/mmBERT 开发资产、CPU typed decision 实现，以及由构建期 ILGPU 产物驱动的 CUDA Driver 完整 encoder/head。模型权重不随仓库发布；多语言质量和跨平台性能仍按阶段证据验收。阶段入口见 [ROADMAP](../ROADMAP.md)。
 
 ## 1. 目标与非目标
 
@@ -42,7 +42,7 @@ tests/                     数值、资产、契约、CPU/GPU/AOT 生命周期�
 docs/                      设计、模型卡、校准与发布证据
 ```
 
-`KernelCompiler` 是开发/发布工具，可运行普通 .NET JIT；不得作为 AOT 应用子进程或运行时依赖。最终 runtime 依赖图与构建工具图分离。核心 `Sezika` 库不依赖 Tomur。
+`KernelCompiler` 是开发/发布工具，可运行普通 .NET JIT；不得作为 AOT 应用子进程或运行时依赖。最终 runtime 依赖图与构建工具图分离。核心库不依赖外部宿主。
 
 ## 4. 模型数据路径
 

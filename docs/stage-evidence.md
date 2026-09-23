@@ -1,6 +1,6 @@
 # 阶段 1–6 实现证据
 
-状态（2026-09-23）：固定真实模型资产、tokenizer oracle、CPU/CUDA encoder、真实 marker-head typed smoke 与 Native AOT smoke 已落地；多语言质量报告和 Tomur 主仓库 provider 仍需分别验收。
+状态（2026-09-23）：固定真实模型资产、tokenizer oracle、CPU/CUDA encoder、真实 marker-head typed smoke 与 Native AOT smoke 已落地；多语言质量报告和跨平台性能矩阵仍需分别验收。
 
 路线图任务编号见 [ROADMAP.md 的编号任务板](../ROADMAP.md#编号任务板)。本表只记录已经存在的证据，任务状态不会因为设计文档或构建成功自动升级。
 
@@ -11,8 +11,7 @@
 | 3 决策闭环 | Choice/Score/Boolean、稳定 softmax、温度 profile、concentration/abstention、session/deadline/token budget、source-generated JSON；typed response 现在保留 raw logits，`PrimitiveAlignment` 对齐 logits/probabilities/legend/abstention；session 增加 micro-batch/workspace/resident memory 预算与 unload fail-closed | 4 个中英文固定输入 fixture 通过逐键数值/legend/abstention 对齐，22 项核心测试覆盖 typed output、S3 对齐契约、模型安装/lease 及资源边界；真实模型质量仍单独验收 |
 | 4 多语言/校准 | 冻结 encoder 的可复现二分类 head trainer、温度拟合、NLL/Brier/ECE/accuracy/macro-F1/coverage/selective-risk 计算；新增许可明确原创中英×领域×primitive fixture、数据卡、manifest hash 与 12 个绑定 profile | `tools/Validate-S4Data.ps1` 通过 `24 records, 8 files, fixture_only`；S4-03 profile 全部 `pending_measurement`，门槛已冻结但未运行真实模型，不能视为多语言质量达标（[数据卡](data-card-s4-02.md)、[校准报告](calibration-report-s4-03.md)） |
 | 5 CUDA/AOT | `Sezika.Kernels` C# → ILGPU 1.5.3 构建期导出 14 个 PTX、ABI manifest、源码/PTX SHA-256 与静态 launch descriptors；CUDA Driver `LibraryImport`/SafeHandle；完整 resident GPU encoder/head；CPU win-x64/linux-x64 Native AOT smoke | RTX 4070 Laptop GPU / driver 596.08 / CC 8.9 实测；真实 mmBERT CPU/CUDA head logits `[1.0985773,0.55617267]` vs `[1.0985773,0.5561736]`，最大绝对误差 `9.536743e-7`；非整齐 vector/GEMM、取消、module/buffer 回收通过；生成器已固定 UTF-8 无 BOM/Unix 换行并与提交 PTX/manifest 字节一致；性能矩阵、SIMD/量化与 GPU 多 RID 仍未验收 |
-| 6 Tomur R22 | Sezika 已提供 `DecisionStatus`/typed engine 语义；Tomur `providers/Abstractions/DecisionContracts.cs` 已建立 `managed-decision` 窄契约并通过 M1 契约测试（对应 S6-01） | Sezika provider/API/Catalog 尚未接入；Tomur 侧仍需完成 S6-02/S6-03 及对应 T22 任务。本次测试使用 DTO/多态运行时序列化，宿主 source-generated 注册与 AOT 仍待 S6-03 验收 |
-| 7 开源发布 | 核心类库已可构建开发 NuGet 包，包内带 README、Apache-2.0 LICENSE、NOTICE 与第三方声明 | `.artifacts/packages/Sezika.0.1.0-dev.nupkg` 已生成；正式发布版本、CLI、模型/数据卡、签名、真实模型跨平台发布与 NuGet 上传仍未验收 |
+| 6 开源发布 | 核心类库已可构建开发 NuGet 包，包内带 README、Apache-2.0 LICENSE、NOTICE 与第三方声明 | `.artifacts/packages/Sezika.0.1.0-dev.nupkg` 已生成；正式发布版本、CLI、模型/数据卡、签名、真实模型跨平台发布与 NuGet 上传仍未验收 |
 
 ## 已执行命令
 

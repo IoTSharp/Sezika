@@ -19,7 +19,7 @@ public static class DecisionStatusFactory
 {
     public static DecisionStatus FromModel(DecisionModel model, string calibrationStatus = "uncalibrated") => new()
     {
-        Provider = "managed-decision",
+        Provider = "sezika-decision",
         Backend = model.Backend,
         Model = model.ModelId,
         ModelRevision = model.Revision,

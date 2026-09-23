@@ -16,7 +16,7 @@ Sezika 面向本地软件中的语义判断，目标是使用 **C#、.NET 10 与
 
 ## 项目状态
 
-当前仓库包含可运行的纯 C# FP32 encoder、固定真实 Laya/mmBERT 开发资产的安全加载、真实 marker-head 的 Choice/Score/Boolean typed smoke、tokenizer oracle、校准评估器，以及 ILGPU 构建期 PTX/ABI、CUDA Driver 完整 encoder/head 和 win-x64 Native AOT smoke。**模型权重仍不随仓库发布；逐语言质量报告、跨平台性能矩阵与 Tomur 宿主接入仍未完成。** 验收边界与命令见 [阶段证据](docs/stage-evidence.md)。
+当前仓库包含可运行的纯 C# FP32 encoder、固定真实 Laya/mmBERT 开发资产的安全加载、真实 marker-head 的 Choice/Score/Boolean typed smoke、tokenizer oracle、校准评估器，以及 ILGPU 构建期 PTX/ABI、CUDA Driver 完整 encoder/head 和 win-x64 Native AOT smoke。**模型权重仍不随仓库发布；逐语言质量报告与跨平台性能矩阵仍未完成。** 验收边界与命令见 [阶段证据](docs/stage-evidence.md)。
 
 ## 独立使用
 
@@ -48,10 +48,6 @@ dotnet run --project src/Sezika.Cli -c Release --no-build -- predict --model .ar
 - 类库静态纳入宿主；使用 source-generated JSON，保持 Native AOT/trimming 可分析性。
 - 模型资产、context、问题/候选数量、并发、工作空间和取消均有明确边界。
 - 多语言能力逐语言评测；概率、分布集中度、校准有效范围与拒答分别表达。
-
-## 与 Tomur 集成
-
-Sezika 保持独立开源仓库。Tomur 计划通过同进程 C# provider 调用固定版本的库，统一管理模型下载、加载、诊断与决策 API。接入计划见 [Tomur 集成设计](docs/tomur-integration.md)，当前尚未对接。
 
 ## 文档与工程
 

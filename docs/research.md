@@ -111,10 +111,10 @@ Laya [源码许可证](https://github.com/NandhaKishorM/laya/blob/c7527708f9f522
 2. 首先选择一个固定版本的多语 encoder，实现 tokenizer、safetensors 读取和明确的 tensor 映射，建立 token IDs、intermediate tensors、logits、probabilities 的上游对齐样本。
 3. 使用 C# 实现所需 embedding、attention、位置编码、norm、FFN 和 decision head；以正确的标量实现为基线，再逐步引入 Span、SIMD、内存映射与低精度优化。内存上限、形状校验和取消必须贯穿加载和计算。
 4. 先验证真实权重推理和 AOT 发布，再开展自有微调权重、数据、温度拟合及多语言基准。沿用外部权重和训练自有模型是不同交付，应分别记录来源与能力证据。
-5. Tomur 通过稳定 C# 契约静态引用 Sezika，模型仍由 Tomur 的模型资产目录和生命周期管理；decision endpoint 与普通 chat endpoint 分开表达。模型缺失、格式不支持、预算超限和未校准应有明确诊断。
+5. 调用方通过稳定 C# 契约使用 Sezika；模型资产目录、生命周期和协议适配由调用方自行管理。模型缺失、格式不支持、预算超限和未校准应有明确诊断。
 
 Native AOT 能与 ONNX Runtime 等 native 库共存，但这不属于纯托管推理。Sezika 若承诺纯 C#，不应通过未声明的 P/Invoke、Python 子进程或远程 API 满足推理路径。纯 C# 的主要投入在 tokenizer 精确一致性、数值内核、内存效率和性能验证，不能仅靠重写 SDK 接口获得模型能力。
 
 用户已进一步明确 GPU 要求：算子仍由 C# 编写，系统/显卡驱动调用是允许的例外。采用 ILGPU 构建期生成 PTX、Native AOT C# 调用 CUDA Driver 的路线；原版 ILGPU 动态运行路径的限制与待验证事项见 [GPU / AOT 设计](gpu-aot.md)。该驱动例外不允许以 cuBLAS/cuDNN 等 native 数值库替代 C# 算子。
 
-Tomur 可以用概率结果选择本地模型、筛选候选工具或标记需要确认的请求。任何有副作用的动作仍由 Tomur 既有显式 allowlist 与确认机制授权；Sezika 的输出不能绕过该边界。
+调用方可以用概率结果选择本地模型、筛选候选工具或标记需要确认的请求。任何有副作用的动作都必须由调用方自己的 allowlist、参数校验和确认机制授权；Sezika 的输出不能绕过该边界。

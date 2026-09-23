@@ -1,8 +1,8 @@
 # 独立运行 Sezika
 
-本文说明在不接入 Tomur 的情况下，如何准备固定的 Laya/mmBERT 模型包，并在本地进程中加载模型执行 `Choice`、`Score` 和 `Boolean` 决策。
+本文说明如何准备固定的 Laya/mmBERT 模型包，并在本地进程中加载模型执行 `Choice`、`Score` 和 `Boolean` 决策。
 
-当前仓库提供可复用的 .NET 类库、模型资产工具、开发期 CLI 和真实模型 smoke。`src/Sezika.Cli` 和 `DecisionModelRuntime` 的 typed 决策入口当前使用 CPU；CUDA encoder/head 有单独的 smoke 路径，尚未接入这些入口的 backend 选择。正式发布、跨平台发布和模型卡仍属于 S7-02。`Sezika.ModelTool` 只负责准备和验证模型资产，不执行推理。
+当前仓库提供可复用的 .NET 类库、模型资产工具、开发期 CLI 和真实模型 smoke。`src/Sezika.Cli` 和 `DecisionModelRuntime` 的 typed 决策入口当前使用 CPU；CUDA encoder/head 有单独的 smoke 路径，尚未接入这些入口的 backend 选择。正式发布、跨平台发布和模型卡仍属于 S6-02。`Sezika.ModelTool` 只负责准备和验证模型资产，不执行推理。
 
 ## 环境与固定资产
 
@@ -151,7 +151,7 @@ dotnet run --project samples/Sezika.RealModel.Smoke/Sezika.RealModel.Smoke.cspro
 - `model.safetensors` 和 tokenizer 必须单独准备，模型权重不会被打包进程序或 NuGet。
 - 当前 head 未完成真实语言质量、校准、跨平台性能和延迟矩阵验收；不要把集中度当作准确率，也不要把 fixture smoke 当作质量报告。
 - Sezika 只返回决策建议，不生成开放式解释、不执行工具或业务动作。调用方必须自行实施授权、人工确认和失败处理。
-- 独立 `sezika doctor`、正式安装包、签名和跨平台发布仍属于 S7-02；当前 `src/Sezika.Cli` 的 `inspect`/`predict` 只应作为开发验证路径。
+- 独立 `sezika doctor`、正式安装包、签名和跨平台发布仍属于 S6-02；当前 `src/Sezika.Cli` 的 `inspect`/`predict` 只应作为开发验证路径。
 
 相关设计和证据见[模型发布目录](model-packaging.md)、[请求校验](request-validation.md)、[阶段证据](stage-evidence.md)和[路线图](../ROADMAP.md)。
 

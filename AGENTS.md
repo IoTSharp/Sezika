@@ -3,7 +3,7 @@
 - Sezika 是独立的 multilingual, non-autoregressive System 1 decision engine，使用 C# / .NET 10；核心部署目标为 Native AOT。
 - 模型、CPU/GPU 算子及调度必须使用 C#。运行时只允许调用系统/显卡驱动 API，如 CUDA Driver；不允许 C++ bridge、ONNX Runtime、LibTorch、cuBLAS/cuDNN、远端 API 或关键词规则替代本项目推理。
 - GPU 采用构建期 ILGPU 将 C# kernels 导出为 PTX/ABI，Native AOT runtime 通过静态 C# Driver 绑定执行。禁止在 AOT 运行时依赖 ILGPU 的 Reflection.Emit、IL 读取或动态 launcher；该路径通过原型前不得写成已支持。
-- Tomur 通过固定版本的类库与薄 provider 同进程调用；Sezika 核心不得反向引用 Tomur，不内置业务动作执行器。
+- Sezika 核心保持独立，不内置业务动作执行器。
 - 代码、模型、tokenizer、数据与校准文件分别管理许可、来源和版本。不得把模型权重嵌入二进制或 NuGet。
 - 文档默认中文；README 是项目首页，ROADMAP.md 是唯一阶段计划，CHANGELOG.md 记录已完成历史，docs 保存设计与证据。
 - 新能力先记 ROADMAP；草案/代码/数值对齐/真实推理/语言质量/AOT/性能分别表述。禁止伪造模型输出、benchmark 或“已校准”状态。
