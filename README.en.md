@@ -6,7 +6,7 @@ Sezika targets local, typed semantic decisions using **C#, .NET 10 and Native AO
 
 ## Status
 
-This repository contains research, an implementation roadmap, a .NET 10 library, bounded loading for the pinned Laya/mmBERT development asset, tokenizer oracle fixtures, a scalar FP32 encoder/head, typed decision inference, calibration metrics, build-time ILGPU PTX/ABI artifacts, a resident CUDA encoder/head, and a win-x64 Native AOT smoke. **Model weights are not bundled for release; multilingual quality evidence and Tomur integration remain open.**
+This repository contains research, an implementation roadmap, a .NET 10 library, bounded loading for the pinned Laya/mmBERT development asset, tokenizer oracle fixtures, a scalar FP32 encoder/head, real marker-head Choice/Score/Boolean typed smoke, calibration metrics, build-time ILGPU PTX/ABI artifacts, a resident CUDA encoder/head, and a win-x64 Native AOT smoke. **Model weights are not bundled for release; multilingual quality evidence, cross-platform performance, and Tomur integration remain open.**
 
 ## Design
 
@@ -20,6 +20,6 @@ This repository contains research, an implementation roadmap, a .NET 10 library,
 
 Sezika is an independent project. Tomur integration is planned through a statically referenced C# library and an in-process decision provider, with model assets managed by Tomur. Integration is not implemented yet.
 
-See the [roadmap](ROADMAP.md), [research](docs/research.md), [architecture](docs/architecture.md), [GPU/AOT design](docs/gpu-aot.md) and [Tomur integration design](docs/tomur-integration.md). Project documentation is primarily in Chinese.
+See the [roadmap](ROADMAP.md), [stage evidence](docs/stage-evidence.md), [closure audit](docs/closure-audit-2026-09-23.md), [research](docs/research.md), [architecture](docs/architecture.md), [GPU/AOT design](docs/gpu-aot.md) and [Tomur integration design](docs/tomur-integration.md). Project documentation is primarily in Chinese.
 
 Owned source is licensed under [Apache-2.0](LICENSE). See [third-party notices](THIRD_PARTY_NOTICES.md). Sezika does not claim to reproduce Jev's closed model or inherit another project's performance results.

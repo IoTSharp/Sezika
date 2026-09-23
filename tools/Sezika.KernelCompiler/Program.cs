@@ -49,9 +49,15 @@ foreach (var name in names)
     records.Add(new KernelRecord(name, entry, file, Convert.ToHexString(SHA256.HashData(ptxBytes)), 256, abi));
 }
 source.Append("}\n");
-File.WriteAllText(Path.Combine(outputDirectory, "GeneratedKernelArtifacts.g.cs"), source.ToString(), Encoding.UTF8);
+// Use a BOM-free encoding so generated artifacts are byte-for-byte reproducible
+// across the Windows and Linux build tools. The manifest and checked-in source
+// are hashed as bytes, so an implicit UTF-8 BOM would invalidate the manifest.
+var utf8NoBom = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
+File.WriteAllText(Path.Combine(outputDirectory, "GeneratedKernelArtifacts.g.cs"), source.ToString(), utf8NoBom);
 var manifest = new { schemaVersion = 1, compiler = "ILGPU", compilerVersion = "1.5.3", target = "sm_70", ptxVersion = "7.0", sourceSha256 = sourceHash, kernels = records };
-File.WriteAllText(Path.Combine(outputDirectory, "kernel-manifest.json"), JsonSerializer.Serialize(manifest, new JsonSerializerOptions { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase }), Encoding.UTF8);
+var manifestJson = JsonSerializer.Serialize(manifest, new JsonSerializerOptions { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase })
+    .Replace("\r\n", "\n", StringComparison.Ordinal);
+File.WriteAllText(Path.Combine(outputDirectory, "kernel-manifest.json"), manifestJson, utf8NoBom);
 Console.WriteLine($"Generated {records.Count} PTX kernels at {outputDirectory}.");
 
 static KernelParameter[] ParseAbi(string ptx, MethodInfo method)

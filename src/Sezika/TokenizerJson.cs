@@ -12,6 +12,7 @@ public sealed class TokenizerJson
     private readonly int _unknown;
     private readonly int _bos;
     private readonly int _eos;
+    private readonly int _mask;
 
     public TokenizerJson(string tokenizerJsonPath, CancellationToken cancellationToken = default)
     {
@@ -38,9 +39,14 @@ public sealed class TokenizerJson
             if (string.IsNullOrEmpty(pair) || !_mergeRanks.TryAdd(pair, rank++)) throw new DecisionException("tokenizer_schema_invalid", "Tokenizer merges contain duplicates or invalid pairs.");
         }
         var unkToken = model.GetProperty("unk_token").GetString() ?? "<unk>";
-        _unknown = IdOf(unkToken); _bos = IdOf("<bos>"); _eos = IdOf("<eos>");
+        _unknown = IdOf(unkToken); _bos = IdOf("<bos>"); _eos = IdOf("<eos>"); _mask = IdOf("<mask>");
         if (_vocabulary.Count > 256_000 || _unknown < 0 || _bos < 0 || _eos < 0) throw new DecisionException("tokenizer_schema_invalid", "Tokenizer vocabulary or special tokens are invalid.");
     }
+
+    /// <summary>Special token IDs from the pinned tokenizer template.</summary>
+    public int BosId => _bos;
+    public int EosId => _eos;
+    public int MaskId => _mask;
 
     public int[] Encode(string text, int maxTokens, bool addSpecialTokens = true)
     {

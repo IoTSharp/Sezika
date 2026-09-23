@@ -128,6 +128,7 @@ public sealed record SafeTensor
     public required string Dtype { get; init; }
     public required int[] Shape { get; init; }
     public required float[] Values { get; init; }
+    public string Sha256 { get; init; } = string.Empty;
 }
 
 /// <summary>Reads the safe-tensors container without deserializing executable or pickle content.</summary>
@@ -172,18 +173,20 @@ public static class SafeTensorReader
         foreach (var descriptor in descriptors)
         {
             cancellationToken.ThrowIfCancellationRequested();
+            var values = ReadValues(stream, descriptor.start, descriptor.count, descriptor.dtype, cancellationToken);
             result.Add(descriptor.name, new SafeTensor
             {
                 Name = descriptor.name,
                 Dtype = descriptor.dtype,
                 Shape = descriptor.shape,
-                Values = ReadValues(stream, descriptor.start, descriptor.count, descriptor.dtype, cancellationToken),
+                Values = values.Values,
+                Sha256 = values.Sha256,
             });
         }
         return result;
     }
 
-    private static float[] ReadValues(FileStream stream, ulong offset, int count, string dtype, CancellationToken cancellationToken)
+    private static (float[] Values, string Sha256) ReadValues(FileStream stream, ulong offset, int count, string dtype, CancellationToken cancellationToken)
     {
         stream.Position = checked((long)offset);
         var bytes = new byte[checked(count * (dtype == "F32" ? 4 : 2))];
@@ -201,7 +204,7 @@ public static class SafeTensorReader
             if (!float.IsFinite(values[i])) throw new DecisionException("decision_tensor_numeric_invalid", "Tensor contains NaN or infinity.");
             cancellationToken.ThrowIfCancellationRequested();
         }
-        return values;
+        return (values, Convert.ToHexString(SHA256.HashData(bytes)));
     }
 
     private static void ReadExactly(Stream stream, Span<byte> buffer)

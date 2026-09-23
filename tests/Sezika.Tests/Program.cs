@@ -12,6 +12,28 @@ void Check(bool condition, string name)
     Console.WriteLine($"PASS: {name}");
 }
 
+void ExpectDecisionCode(Action action, string expectedCode, string name)
+{
+    try
+    {
+        action();
+        throw new InvalidOperationException($"Expected {expectedCode}.");
+    }
+    catch (DecisionException exception) when (exception.Code == expectedCode)
+    {
+        Check(true, name);
+    }
+}
+
+byte[] SafeTensorFile(string headerJson, int payloadBytes)
+{
+    var header = Encoding.UTF8.GetBytes(headerJson);
+    var file = new byte[8 + header.Length + payloadBytes];
+    BinaryPrimitives.WriteUInt64LittleEndian(file.AsSpan(0, 8), (ulong)header.Length);
+    header.CopyTo(file.AsSpan(8));
+    return file;
+}
+
 try
 {
     try
@@ -87,6 +109,18 @@ try
         var tensors = SafeTensorReader.Read(tensorPath);
         Check(tensors["tensor"].Values.SequenceEqual([1.5f, -2f]), "safe-tensors FP32 reader");
         Check(Convert.ToHexString(SHA256.HashData(file)).Length == 64, "asset hash primitive");
+
+        var overlapPath = Path.Combine(tempDirectory, "overlap.safetensors");
+        File.WriteAllBytes(overlapPath, SafeTensorFile("{\"a\":{\"dtype\":\"F32\",\"shape\":[2],\"data_offsets\":[0,8]},\"b\":{\"dtype\":\"F32\",\"shape\":[2],\"data_offsets\":[4,12]}}", 12));
+        ExpectDecisionCode(() => SafeTensorReader.Read(overlapPath), "decision_tensor_overlap", "safe-tensors overlap rejection");
+
+        var boundsPath = Path.Combine(tempDirectory, "bounds.safetensors");
+        File.WriteAllBytes(boundsPath, SafeTensorFile("{\"tensor\":{\"dtype\":\"F32\",\"shape\":[3],\"data_offsets\":[0,12]}}", 8));
+        ExpectDecisionCode(() => SafeTensorReader.Read(boundsPath), "decision_tensor_bounds_invalid", "safe-tensors bounds rejection");
+
+        var dtypePath = Path.Combine(tempDirectory, "dtype.safetensors");
+        File.WriteAllBytes(dtypePath, SafeTensorFile("{\"tensor\":{\"dtype\":\"I32\",\"shape\":[2],\"data_offsets\":[0,8]}}", 8));
+        ExpectDecisionCode(() => SafeTensorReader.Read(dtypePath), "decision_tensor_dtype_unsupported", "safe-tensors dtype rejection");
     }
     finally
     {

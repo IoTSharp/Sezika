@@ -16,7 +16,7 @@ Sezika 面向本地软件中的语义判断，目标是使用 **C#、.NET 10 与
 
 ## 项目状态
 
-当前仓库包含可运行的纯 C# FP32 encoder、固定真实 Laya/mmBERT 开发资产的安全加载、类型化决策闭环、tokenizer oracle、校准评估器，以及 ILGPU 构建期 PTX/ABI、CUDA Driver 完整 encoder/head 和 win-x64 Native AOT smoke。**模型权重仍不随仓库发布；逐语言质量报告与 Tomur 宿主接入仍未完成。** 验收边界与命令见 [阶段证据](docs/stage-evidence.md)。
+当前仓库包含可运行的纯 C# FP32 encoder、固定真实 Laya/mmBERT 开发资产的安全加载、真实 marker-head 的 Choice/Score/Boolean typed smoke、tokenizer oracle、校准评估器，以及 ILGPU 构建期 PTX/ABI、CUDA Driver 完整 encoder/head 和 win-x64 Native AOT smoke。**模型权重仍不随仓库发布；逐语言质量报告、跨平台性能矩阵与 Tomur 宿主接入仍未完成。** 验收边界与命令见 [阶段证据](docs/stage-evidence.md)。
 
 ## 决策原语
 
@@ -47,6 +47,7 @@ Sezika 保持独立开源仓库。Tomur 计划通过同进程 C# provider 调用
 - [架构设计](docs/architecture.md)：推理路径、模型资产、契约、校准与资源约束。
 - [纯 C# GPU 与 Native AOT](docs/gpu-aot.md)：ILGPU 编译期边界、CUDA Driver 路径及最小验证关口。
 - [阶段路线图](ROADMAP.md)：实现顺序、验收条件与工作量判断。
+- [闭环审计](docs/closure-audit-2026-09-23.md)：逐阶段证据、状态与剩余条件。
 - `src/Sezika`：.NET 10 核心类库、模型加载、tokenizer、CPU encoder 与 typed decision engine。
 - [English](README.en.md)
 

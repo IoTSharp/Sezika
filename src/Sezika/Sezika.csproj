@@ -1,7 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Description>Draft contracts for a multilingual non-autoregressive decision engine.</Description>
-    <IsPackable>false</IsPackable>
+    <Description>Managed multilingual non-autoregressive typed decision engine for .NET.</Description>
+    <PackageId>Sezika</PackageId>
+    <PackageTags>machine-learning;decision-engine;multilingual;native-aot</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/IoTSharp/Sezika</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/IoTSharp/Sezika</PackageProjectUrl>
+    <IsPackable>true</IsPackable>
     <IsAotCompatible>true</IsAotCompatible>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="README.md" />
+    <None Include="../../LICENSE" Pack="true" PackagePath="LICENSE" />
+    <None Include="../../NOTICE" Pack="true" PackagePath="NOTICE" />
+    <None Include="../../THIRD_PARTY_NOTICES.md" Pack="true" PackagePath="THIRD_PARTY_NOTICES.md" />
+  </ItemGroup>
 </Project>

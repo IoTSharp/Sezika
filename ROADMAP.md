@@ -15,9 +15,9 @@
 | 4 | 🚧 | 多语言数据、适配与校准 | 分语言数据集、可复现 head 训练、独立校准与测试报告 |
 | 5 | 🚧 | AOT 与 CPU/GPU 性能 | SIMD、C# GPU kernels、量化、AOT 二进制、资源与延迟证据 |
 | 6 | 🚧 | Tomur R22 对接 | 同进程 provider、模型资产、专用 API、只读工具、诊断 |
-| 7 | ⏳ | 开源发布 | NuGet、CLI、模型卡、许可清单、跨平台发布与示例 |
+| 7 | 🚧 | 开源发布 | NuGet、CLI、模型卡、许可清单、跨平台发布与示例 |
 
-当前已具备固定 Apache-2.0 mmBERT/Laya 模型资产、C# tokenizer oracle、真实 CPU scalar encoder、ILGPU 构建期 PTX/ABI 产物、CUDA Driver resident encoder/head 和 win-x64 Native AOT smoke。逐语言质量、跨平台性能矩阵和 Tomur 宿主接入仍按各自证据门槛推进；详见 [阶段证据](docs/stage-evidence.md)。
+当前已具备固定 Apache-2.0 mmBERT/Laya 模型资产、C# tokenizer oracle、真实 CPU scalar encoder、真实 marker-head typed smoke、ILGPU 构建期 PTX/ABI 产物、CUDA Driver resident encoder/head 和多 RID tiny Native AOT smoke。逐语言质量、跨平台性能矩阵和 Tomur 宿主接入仍按各自证据门槛推进；详见 [阶段证据](docs/stage-evidence.md) 与 [闭环审计](docs/closure-audit-2026-09-23.md)。
 
 ## 0. 研究与契约
 
@@ -27,11 +27,11 @@
 - 定义自有协议版本；初始 C# 接口允许在 0.x 阶段经记录后调整，1.0 前冻结。
 - 名称 Sezika 是自造品牌名，灵感来自“直觉式判断”；当前 GitHub/NuGet 检索不构成商标或全局唯一性结论。
 
-## 0.1. ⏳ GPU / AOT 可行性关口
+## 0.1. ✅ GPU / AOT 最小可行性关口
 
 用户要求 GPU 支持且保持模型、算子与调度源代码纯 C#，运行时只允许系统/显卡驱动例外。采用 **C# kernels → 构建期 ILGPU → PTX + ABI manifest → Native AOT C# CUDA Driver loader** 的设计。原版 ILGPU 常规运行时依赖 IL 读取与 Reflection.Emit，不能直接纳入 AOT 运行路径。
 
-完整 GPU encoder 开发前，用 vector add 和小型 GEMM 验证构建产物、参数布局、实卡 launch、结果、资源回收及 AOT 依赖图。该关口已在 RTX 4070 Laptop GPU（driver 596.08、CC 8.9）通过；完整 encoder/head 的逐算子数值差异和性能矩阵仍按 [GPU / AOT 设计](docs/gpu-aot.md) 的边界记录。
+完整 GPU encoder 开发前，用 vector add 和小型 GEMM 验证构建产物、参数布局、实卡 launch、结果、资源回收及 AOT 依赖图。该最小关口已在 RTX 4070 Laptop GPU（driver 596.08、CC 8.9）通过，并有 win-x64 Native AOT smoke；完整 encoder/head 的逐算子数值差异和性能矩阵仍按 [GPU / AOT 设计](docs/gpu-aot.md) 的边界记录，不能由本关口推导为阶段 5 已完成。
 
 ## 1. 模型资产与 tokenizer
 
@@ -101,6 +101,7 @@
 
 ## 7. 发布与后续研究
 
+- 当前可构建带 README、许可证和第三方声明的开发包 `Sezika.0.1.0-dev.nupkg`；正式版本号、签名、NuGet 发布、CLI、模型卡/数据卡和真实模型跨平台发布仍未完成。
 - 提供库、Native AOT CLI、模型卡、数据卡、校准报告、C# 示例和 Tomur 接入示例；代码/资产分别发布，不把权重打包进 NuGet 或可执行文件。
 - 正式发布前核对名称、远端归属、包 ID 与签名/许可证信息。
 - state 编码共享、更多问题/候选、长上下文、AMD/Intel/Apple GPU、全量 encoder 训练、蒸馏与新架构均在独立实验中评估；共享 state 会改变 cross-encoder 语义，不能作为无损缓存直接加入。

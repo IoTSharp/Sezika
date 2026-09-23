@@ -11,6 +11,7 @@ public sealed class ModernBertModelPackage : IDisposable
     public required TokenizerJson Tokenizer { get; init; }
     public required ModernBertEncoder Encoder { get; init; }
     public required DecisionHeadWeights Head { get; init; }
+    public required int HeadMaxTokens { get; init; }
     public required float[] Temperature { get; init; }
 
     public void Dispose() { }
@@ -37,6 +38,7 @@ public static class ModernBertModelLoader
             throw new DecisionException("decision_manifest_invalid", "The model manifest is not the pinned Apache-2.0 Laya revision.");
         VerifyHash(weightsPath, PinnedWeightsSha256, cancellationToken); VerifyHash(tokenizerPath, PinnedTokenizerSha256, cancellationToken);
         var tensors = SafeTensorReader.Read(weightsPath, maxElements: 300_000_000, cancellationToken: cancellationToken);
+        VerifyManifestTensors(json, tensors);
         var encoderJson = json.GetProperty("encoder");
         var config = new ModernBertConfig
         {
@@ -48,6 +50,9 @@ public static class ModernBertModelLoader
             NormEpsilon = encoderJson.GetProperty("norm_epsilon").GetSingle(),
         };
         config.Validate();
+        var headMaxTokens = json.GetProperty("head").GetProperty("max_tokens").GetInt32();
+        if (headMaxTokens < 2 || headMaxTokens > config.MaxTokens)
+            throw new DecisionException("decision_manifest_invalid", "The decision head token budget is outside the encoder budget.");
         var embedding = Tensor(tensors, "encoder.embeddings.tok_embeddings.weight"); var embeddingNorm = Tensor(tensors, "encoder.embeddings.norm.weight"); var finalNorm = Tensor(tensors, "encoder.final_norm.weight");
         var layers = new ModernBertLayerWeights[config.LayerCount];
         for (var index = 0; index < layers.Length; index++)
@@ -86,13 +91,32 @@ public static class ModernBertModelLoader
         _ = new ModernBertDecisionPipeline(encoder, head);
         var temperature = Tensor(tensors, "temperature");
         if (temperature.Length != 3 || temperature.Any(value => !float.IsFinite(value) || value <= 0)) throw new DecisionException("model_calibration_invalid", "The pinned temperature tensor is invalid.");
-        return new ModernBertModelPackage { ModelId = PinnedModelId, Revision = PinnedRevision, License = "Apache-2.0", Tokenizer = new TokenizerJson(tokenizerPath, cancellationToken), Encoder = encoder, Head = head, Temperature = temperature };
+        return new ModernBertModelPackage { ModelId = PinnedModelId, Revision = PinnedRevision, License = "Apache-2.0", Tokenizer = new TokenizerJson(tokenizerPath, cancellationToken), Encoder = encoder, Head = head, HeadMaxTokens = headMaxTokens, Temperature = temperature };
     }
 
     private static float[] Tensor(IReadOnlyDictionary<string, SafeTensor> tensors, string name)
     {
         if (!tensors.TryGetValue(name, out var tensor)) throw new DecisionException("model_tensor_missing", $"Pinned model tensor '{name}' is missing.");
         return tensor.Values;
+    }
+
+    private static void VerifyManifestTensors(JsonElement manifest, IReadOnlyDictionary<string, SafeTensor> tensors)
+    {
+        if (!manifest.TryGetProperty("tensors", out var entries) || entries.ValueKind != JsonValueKind.Array)
+            throw new DecisionException("decision_manifest_invalid", "The pinned model manifest has no tensor mapping.");
+        var seen = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var entry in entries.EnumerateArray())
+        {
+            var name = entry.GetProperty("name").GetString();
+            var expectedHash = entry.GetProperty("sha256").GetString();
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(expectedHash) || !seen.Add(name) ||
+                !tensors.TryGetValue(name, out var tensor) || !tensor.Sha256.Equals(expectedHash, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new DecisionException("decision_manifest_tensor_mismatch", $"Pinned tensor '{name ?? "<missing>"}' does not match its manifest hash.");
+            }
+        }
+        if (seen.Count != tensors.Count)
+            throw new DecisionException("decision_manifest_tensor_mismatch", "The pinned tensor manifest does not cover every SafeTensors entry.");
     }
 
     private static string Within(string root, string relative)

@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Text.Json;
 using Sezika;
 using Sezika.Cuda;
 
@@ -25,6 +26,54 @@ var scoreWatch = Stopwatch.StartNew();
 var logits = pipeline.Score(maskTokens, typeId: 0, markerPositions: new[] { 2, 3 }, timeout.Token);
 scoreWatch.Stop();
 Console.WriteLine($"cpu_head marker_logits=[{string.Join(',', logits.Select(x => x.ToString("R", System.Globalization.CultureInfo.InvariantCulture)))}] seconds={scoreWatch.Elapsed.TotalSeconds:F3}");
+
+// Exercise the public typed request contract against the real marker head.
+// This is separate from the tiny DecisionEngine smoke: the pinned Laya model
+// requires the [MASK] marker sequence and its two-layer head.
+using var stateDocument = JsonDocument.Parse("{\"message\":\"duplicate invoice charge\"}");
+using var instructionDocument = JsonDocument.Parse("\"choose or score the request\"");
+using var billingDocument = JsonDocument.Parse("\"billing or refund\"");
+using var technicalDocument = JsonDocument.Parse("\"software problem\"");
+using var lowDocument = JsonDocument.Parse("\"minor impact\"");
+using var highDocument = JsonDocument.Parse("\"critical impact\"");
+using var trueDocument = JsonDocument.Parse("\"the request is a billing issue\"");
+using var falseDocument = JsonDocument.Parse("\"the request is unrelated to billing\"");
+using var typedEngine = new ModernBertDecisionEngine(model, budget: new DecisionResourceBudget { MaxTokens = 256, Deadline = TimeSpan.FromMinutes(5) });
+var typedResponse = typedEngine.Evaluate(new DecisionRequest
+{
+    Model = model.ModelId,
+    State = stateDocument.RootElement.Clone(),
+    Questions = new Dictionary<string, Question>(StringComparer.Ordinal)
+    {
+        ["intent"] = new ChoiceQuestion
+        {
+            Instructions = instructionDocument.RootElement.Clone(),
+            Criteria = new Dictionary<string, JsonElement>(StringComparer.Ordinal)
+            {
+                ["billing"] = billingDocument.RootElement.Clone(),
+                ["technical"] = technicalDocument.RootElement.Clone(),
+            },
+        },
+        ["severity"] = new ScoreQuestion
+        {
+            Instructions = instructionDocument.RootElement.Clone(),
+            Criteria = [lowDocument.RootElement.Clone(), highDocument.RootElement.Clone()],
+        },
+        ["is_billing"] = new BooleanQuestion
+        {
+            Instructions = instructionDocument.RootElement.Clone(),
+            Criteria = new BooleanCriteria { WhenTrue = trueDocument.RootElement.Clone(), WhenFalse = falseDocument.RootElement.Clone() },
+        },
+    },
+});
+if (typedResponse.Answers["intent"] is not ChoiceAnswer choice || choice.Probabilities.Count != 2 ||
+    Math.Abs(choice.Probabilities.Values.Sum() - 1d) > 1e-5 ||
+    typedResponse.Answers["severity"] is not ScoreAnswer score || score.Score is < 0 or > 1 ||
+    typedResponse.Answers["is_billing"] is not BooleanAnswer boolean || !double.IsFinite(boolean.ProbabilityTrue))
+{
+    throw new InvalidOperationException("Real typed primitive smoke failed.");
+}
+Console.WriteLine($"real_typed_decisions passed: choice={choice.Choice}, score={score.Score:R}, probability_true={boolean.ProbabilityTrue:R}, tokens={typedResponse.Usage?.TokenCount}");
 
 if (CudaDevice.IsAvailable)
 {

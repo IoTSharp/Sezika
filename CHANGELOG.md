@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Added the real mmBERT marker-head request path (`ModernBertDecisionEngine`) with bounded total-token/deadline/head budgets and Choice/Score/Boolean typed smoke coverage. Added negative SafeTensors tests for overlapping, out-of-bounds, and unsupported-dtype ranges, plus CPU win-x64/linux-x64 Native AOT smoke samples. Kernel artifact generation is now BOM-free and newline-stable, with byte-identical PTX/manifest regeneration evidence.
+- Made the core library packable as the development `Sezika.0.1.0-dev` NuGet package with repository documentation and license notices included.
+- The pinned model loader now checks every manifest tensor's dtype/shape entry and raw-byte SHA-256 before constructing the encoder or decision head.
 - Added bounded request parsing, duplicate-property rejection, SafeTensors model assets, the pinned Apache-2.0 Laya/mmBERT package manifest and tokenizer oracle, scalar FP32 encoder/head, typed Choice/Score/Boolean engine, calibration metrics, ILGPU 1.5.3 build-time PTX/ABI artifacts, resident CUDA encoder/head, and Native AOT GPU smoke evidence. The ignored model artifact is not a release or multilingual quality claim.
 - 建立独立本地 Git 仓库、项目定位、参考分析、架构、路线图与 Tomur 对接设计。
 - 加入 .NET 10 类库工程及 typed decision 契约草案。
