@@ -1,9 +1,6 @@
 namespace Sezika;
 
-/// <summary>
-/// Draft contract for bounded inference over a loaded decision model.
-/// This repository does not yet contain an implementation.
-/// </summary>
+/// <summary>Bounded inference over a verified, loaded decision model.</summary>
 public interface IDecisionEngine
 {
     DecisionResponse Evaluate(

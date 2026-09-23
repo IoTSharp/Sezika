@@ -16,7 +16,7 @@ Sezika 面向本地软件中的语义判断，目标是使用 **C#、.NET 10 与
 
 ## 项目状态
 
-当前仓库包含参考项目研究、架构与阶段规划、.NET 10 类库骨架和类型化契约草案。**尚未实现模型加载、tokenizer、encoder 或真实决策推理；没有发布模型或 NuGet 包。** Native AOT 兼容是工程目标，尚未执行构建、测试或发布验证。
+当前仓库包含可运行的纯 C# FP32 encoder、类型化决策闭环、安全模型资产读取、校准评估器，以及 CUDA Driver 固定 PTX/GEMM 决策头和 win-x64 Native AOT smoke。**尚未发布真实第三方模型；完整 GPU encoder、逐语言质量报告与 Tomur 宿主接入仍未完成。** 验收边界与命令见 [阶段证据](docs/stage-evidence.md)。
 
 ## 决策原语
 
@@ -32,7 +32,7 @@ Sezika 面向本地软件中的语义判断，目标是使用 **C#、.NET 10 与
 
 - 首个候选架构采用 mmBERT-base 类多语言 encoder 加类型化决策头。权重、tokenizer 和训练数据逐项审核许可，独立于引擎代码发布。
 - 基础推理使用 C# 实现算子，不依赖 Python、PyTorch、ONNX Runtime、cuBLAS/cuDNN 或另一服务进程。开发阶段可使用固定参考实现生成数值对照数据。
-- GPU 首先规划 NVIDIA CUDA：构建期用 ILGPU 将 C# kernels 编译为 PTX，Native AOT 运行时通过 C# CUDA Driver 绑定执行。ILGPU 的常规运行时 JIT 路径不作为 AOT 兼容方案；完整路径待原型验证。
+- GPU 当前已有 NVIDIA CUDA Driver 原型：C# 维护的固定 PTX vector-add/GEMM 由 Native AOT 通过静态 Driver 绑定执行，并接入 `IDecisionScorer`。完整 Transformer GPU kernels 仍需单独实现和验证；不使用 cuBLAS/cuDNN。
 - 类库静态纳入宿主；使用 source-generated JSON，保持 Native AOT/trimming 可分析性。
 - 模型资产、context、问题/候选数量、并发、工作空间和取消均有明确边界。
 - 多语言能力逐语言评测；概率、分布集中度、校准有效范围与拒答分别表达。

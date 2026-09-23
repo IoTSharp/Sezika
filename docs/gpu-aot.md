@@ -1,6 +1,6 @@
 # 纯 C# GPU 与 Native AOT
 
-决策日期：2026-09-23。状态：采用设计方向，原型与实卡验证待执行。
+决策日期：2026-09-23。状态：固定 PTX/Driver/AOT 最小原型已通过；完整 C# kernel compiler、GPU encoder 与性能矩阵仍待执行。
 
 ## 结论
 

@@ -6,7 +6,7 @@ Sezika targets local, typed semantic decisions using **C#, .NET 10 and Native AO
 
 ## Status
 
-This repository contains research, an implementation roadmap, architecture notes, a .NET 10 library skeleton and draft contracts. **Model loading, tokenization, encoder execution and real inference are not implemented.** No model, NuGet package, build, test or Native AOT publication has been completed.
+This repository contains research, an implementation roadmap, a .NET 10 library, bounded model asset loading, deterministic tokenization, a scalar FP32 encoder, typed decision inference, calibration metrics, and a CUDA Driver fixed PTX/GEMM Native AOT smoke. **No third-party release model is bundled; complete GPU encoder kernels, multilingual quality evidence and Tomur integration remain open.**
 
 ## Design
 

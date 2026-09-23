@@ -9,15 +9,15 @@
 | 顺序 | 状态 | 范围 | 验收产物 |
 | --- | --- | --- | --- |
 | 0 | ✅ | 研究、仓库与契约草案 | 固定参考版本、架构决策、C# 契约草案、Tomur 对接计划；未执行验证 |
-| 1 | ⏳ | 模型资产与 tokenizer | 可验证 manifest、安全张量格式、与固定 tokenizer 一致的 token IDs |
-| 2 | ⏳ | 纯 C# encoder | embedding、attention、RoPE、norm、MLP 的标量正确性与逐层 oracle |
-| 3 | ⏳ | 决策头与完整推理 | choice / score / boolean 的真实本地输出、预算、取消、session 生命周期 |
-| 4 | ⏳ | 多语言数据、适配与校准 | 分语言数据集、可复现 head 训练、独立校准与测试报告 |
-| 5 | ⏳ | AOT 与 CPU/GPU 性能 | SIMD、C# GPU kernels、量化、AOT 二进制、资源与延迟证据 |
-| 6 | ⏳ | Tomur R22 对接 | 同进程 provider、模型资产、专用 API、只读工具、诊断 |
+| 1 | 🚧 | 模型资产与 tokenizer | 可验证 manifest、安全张量格式、与固定 tokenizer 一致的 token IDs |
+| 2 | 🚧 | 纯 C# encoder | embedding、attention、RoPE、norm、MLP 的标量正确性与逐层 oracle |
+| 3 | 🚧 | 决策头与完整推理 | choice / score / boolean 的真实本地输出、预算、取消、session 生命周期 |
+| 4 | 🚧 | 多语言数据、适配与校准 | 分语言数据集、可复现 head 训练、独立校准与测试报告 |
+| 5 | 🚧 | AOT 与 CPU/GPU 性能 | SIMD、C# GPU kernels、量化、AOT 二进制、资源与延迟证据 |
+| 6 | 🚧 | Tomur R22 对接 | 同进程 provider、模型资产、专用 API、只读工具、诊断 |
 | 7 | ⏳ | 开源发布 | NuGet、CLI、模型卡、许可清单、跨平台发布与示例 |
 
-当前只有研究、工程骨架与契约草案；尚无可用推理实现或发行模型。没有执行构建、测试、模型下载、训练或 AOT publish。
+当前已具备可执行的纯 C# CPU 推理闭环、SafeTensors 资产边界、校准评估器，以及 CUDA Driver 固定 PTX probe、GPU 决策头和 win-x64 Native AOT smoke。真实发布模型、逐语言质量证据、完整 GPU encoder 和 Tomur 宿主接入仍按各自证据门槛推进；详见 [阶段证据](docs/stage-evidence.md)。
 
 ## 0. 研究与契约
 

@@ -1,5 +1,10 @@
 <Solution>
   <Folder Name="/src/">
     <Project Path="src/Sezika/Sezika.csproj" />
+    <Project Path="src/Sezika.Cuda/Sezika.Cuda.csproj" />
+    <Project Path="tests/Sezika.Tests/Sezika.Tests.csproj" />
+  </Folder>
+  <Folder Name="/samples/">
+    <Project Path="samples/Sezika.Cuda.Smoke/Sezika.Cuda.Smoke.csproj" />
   </Folder>
 </Solution>

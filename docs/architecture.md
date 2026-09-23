@@ -1,6 +1,6 @@
 # Sezika 架构设计
 
-状态：设计草案，2026-09-23。当前库仅包含契约，尚无模型或 GPU 推理实现。阶段验收见 [ROADMAP](../ROADMAP.md)。
+状态：实现与设计并存，2026-09-23。当前库包含 bounded asset/tokenizer/CPU typed decision 实现，以及 CUDA Driver 固定 PTX/GEMM 原型；尚无发布模型或完整 GPU Transformer encoder。阶段验收见 [ROADMAP](../ROADMAP.md)。
 
 ## 1. 目标与非目标
 

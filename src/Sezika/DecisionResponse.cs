@@ -9,6 +9,14 @@ public sealed record DecisionResponse
     public required string ModelRevision { get; init; }
     public required string Backend { get; init; }
     public required Dictionary<string, Answer> Answers { get; init; }
+    public DecisionUsage? Usage { get; init; }
+}
+
+public sealed record DecisionUsage
+{
+    public required int QuestionCount { get; init; }
+    public required int TokenCount { get; init; }
+    public required int MicroBatchCount { get; init; }
 }
 
 [JsonPolymorphic(TypeDiscriminatorPropertyName = "type")]
