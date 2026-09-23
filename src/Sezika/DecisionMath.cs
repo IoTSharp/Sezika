@@ -80,11 +80,19 @@ public sealed record DecisionResourceBudget
 {
     public int MaxQuestions { get; init; } = 32;
     public int MaxTokens { get; init; } = 4096;
+    /// <summary>Maximum number of questions evaluated in one logical micro-batch.</summary>
+    public int MaxMicroBatchQuestions { get; init; } = 4;
+    /// <summary>Upper bound for transient encoder/head workspace per request.</summary>
+    public long MaxWorkspaceBytes { get; init; } = 512L * 1024 * 1024;
+    /// <summary>Upper bound for the resident model package accepted by a session.</summary>
+    public long MaxResidentBytes { get; init; } = 2L * 1024 * 1024 * 1024;
     public TimeSpan Deadline { get; init; } = TimeSpan.FromSeconds(30);
 
     public void Validate()
     {
-        if (MaxQuestions <= 0 || MaxTokens <= 0 || Deadline <= TimeSpan.Zero || Deadline > TimeSpan.FromMinutes(5))
+        if (MaxQuestions <= 0 || MaxTokens <= 0 || MaxMicroBatchQuestions <= 0 ||
+            MaxWorkspaceBytes <= 0 || MaxResidentBytes <= 0 ||
+            Deadline <= TimeSpan.Zero || Deadline > TimeSpan.FromMinutes(5))
             throw new DecisionException("decision_budget_invalid", "Decision resource budget is invalid.");
     }
 }

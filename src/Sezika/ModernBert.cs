@@ -67,25 +67,45 @@ public sealed class ModernBertWeights
     }
 }
 
-/// <summary>Independent FP32 scalar oracle for the fixed ModernBERT architecture; no SIMD or native math library.</summary>
-public sealed class ModernBertEncoder : IEncoder
+/// <summary>Fixed ModernBERT encoder with scalar reference and explicitly selected CPU SIMD kernels.</summary>
+public sealed class ModernBertEncoder : IEncoder, IDisposable
 {
     public ModernBertConfig Config { get; }
     public ModernBertWeights Weights { get; }
     public Action<string, float[]>? Trace { get; set; }
+    public EncoderExecutionOptions ExecutionOptions { get; }
+    public EncoderWorkspacePool WorkspacePool { get; }
 
-    public ModernBertEncoder(ModernBertConfig config, ModernBertWeights weights)
+    public ModernBertEncoder(ModernBertConfig config, ModernBertWeights weights, EncoderExecutionOptions? executionOptions = null)
     {
-        weights.Validate(config); Config = config; Weights = weights;
+        ArgumentNullException.ThrowIfNull(config);
+        ArgumentNullException.ThrowIfNull(weights);
+        weights.Validate(config);
+        ExecutionOptions = executionOptions ?? EncoderExecutionOptions.Default;
+        ExecutionOptions.Validate();
+        Config = config; Weights = weights;
+        WorkspacePool = new EncoderWorkspacePool(ExecutionOptions);
     }
 
     public float[] Encode(ReadOnlySpan<int> tokenIds, CancellationToken cancellationToken = default)
     {
         using var deadline = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
-        deadline.CancelAfter(TimeSpan.FromMinutes(10));
+        deadline.CancelAfter(ExecutionOptions.Deadline);
         var ct = deadline.Token;
-        ct.ThrowIfCancellationRequested();
+        var deadlineStart = System.Diagnostics.Stopwatch.GetTimestamp();
+        var deadlineTicks = Math.Max(1L, checked((long)Math.Ceiling(ExecutionOptions.Deadline.TotalSeconds * System.Diagnostics.Stopwatch.Frequency)));
+        void CheckDeadline()
+        {
+            if (System.Diagnostics.Stopwatch.GetTimestamp() - deadlineStart >= deadlineTicks)
+            {
+                deadline.Cancel();
+            }
+            ct.ThrowIfCancellationRequested();
+        }
+        CheckDeadline();
         if (tokenIds.Length < 2 || tokenIds.Length > Config.MaxTokens) throw new DecisionException("decision_token_limit_exceeded", "ModernBERT sequence exceeds its token budget.");
+        using var workspace = WorkspacePool.Acquire(tokenIds.Length, Config, ct);
+        CheckDeadline();
         var n = tokenIds.Length; var h = Config.HiddenSize; var width = Config.IntermediateSize;
         var hidden = new float[n * h];
         for (var row = 0; row < n; row++)
@@ -94,15 +114,15 @@ public sealed class ModernBertEncoder : IEncoder
             Weights.TokenEmbeddings.AsSpan(tokenIds[row] * h, h).CopyTo(hidden.AsSpan(row * h));
         }
         Emit("embedding/raw", hidden);
-        hidden = ScalarOps.Norm(hidden, n, h, Weights.EmbeddingNorm, null, Config.NormEpsilon, ct);
+        hidden = Norm(hidden, n, h, Weights.EmbeddingNorm, null, Config.NormEpsilon, ct);
         Emit("embedding/norm", hidden);
         for (var index = 0; index < Weights.Layers.Length; index++)
         {
-            ct.ThrowIfCancellationRequested();
+            CheckDeadline();
             var l = Weights.Layers[index]; var prefix = $"layer/{index}/";
-            var normalized = l.AttentionNorm is null ? hidden : ScalarOps.Norm(hidden, n, h, l.AttentionNorm, null, Config.NormEpsilon, ct);
+            var normalized = l.AttentionNorm is null ? hidden : Norm(hidden, n, h, l.AttentionNorm, null, Config.NormEpsilon, ct);
             Emit(prefix + "norm1", normalized);
-            var qkv = ScalarOps.Linear(normalized, l.Qkv, null, n, h, 3 * h, ct);
+            var qkv = Linear(normalized, l.Qkv, null, n, h, 3 * h, ct);
             Emit(prefix + "qkv", qkv);
             ScalarOps.SplitQkv(qkv, n, h, out var q, out var k, out var v);
             var global = index % Config.GlobalAttentionEvery == 0;
@@ -110,26 +130,56 @@ public sealed class ModernBertEncoder : IEncoder
             Emit(prefix + "rope_q", q); Emit(prefix + "rope_k", k);
             var attention = ScalarOps.Attention(q, k, v, n, h, Config.HeadCount, global ? -1 : Config.LocalAttention / 2, ct);
             Emit(prefix + "attention", attention);
-            var projected = ScalarOps.Linear(attention, l.AttentionOutput, null, n, h, h, ct);
+            var projected = Linear(attention, l.AttentionOutput, null, n, h, h, ct);
             Emit(prefix + "projected", projected);
-            hidden = ScalarOps.Add(hidden, projected); Emit(prefix + "residual", hidden);
-            normalized = ScalarOps.Norm(hidden, n, h, l.MlpNorm, null, Config.NormEpsilon, ct); Emit(prefix + "norm2", normalized);
-            var up = ScalarOps.Linear(normalized, l.MlpUp, null, n, h, 2 * width, ct); Emit(prefix + "up", up);
-            var gated = new float[n * width];
-            for (var row = 0; row < n; row++)
-            {
-                ct.ThrowIfCancellationRequested();
-                for (var j = 0; j < width; j++) gated[row * width + j] = ScalarOps.Gelu(up[row * 2 * width + j]) * up[row * 2 * width + width + j];
-            }
+            hidden = Add(hidden, projected, ct); Emit(prefix + "residual", hidden);
+            normalized = Norm(hidden, n, h, l.MlpNorm, null, Config.NormEpsilon, ct); Emit(prefix + "norm2", normalized);
+            var up = Linear(normalized, l.MlpUp, null, n, h, 2 * width, ct); Emit(prefix + "up", up);
+            var gated = ExecutionOptions.Kernel == EncoderKernelMode.Simd
+                ? SimdOps.GatedGelu(up, n, width, ct)
+                : ScalarGatedGelu(up, n, width, ct);
             Emit(prefix + "gelu", gated);
-            var mlp = ScalarOps.Linear(gated, l.MlpDown, null, n, width, h, ct); Emit(prefix + "mlp", mlp);
-            hidden = ScalarOps.Add(hidden, mlp); Emit(prefix + "hidden", hidden);
+            var mlp = Linear(gated, l.MlpDown, null, n, width, h, ct); Emit(prefix + "mlp", mlp);
+            hidden = Add(hidden, mlp, ct); Emit(prefix + "hidden", hidden);
+            CheckDeadline();
         }
-        hidden = ScalarOps.Norm(hidden, n, h, Weights.FinalNorm, null, Config.NormEpsilon, ct);
+        hidden = Norm(hidden, n, h, Weights.FinalNorm, null, Config.NormEpsilon, ct);
         Emit("encoder/final", hidden); ct.ThrowIfCancellationRequested(); return hidden;
     }
 
+    private float[] Linear(float[] input, float[] weights, float[]? bias, int rows, int inputSize, int outputSize, CancellationToken cancellationToken) =>
+        ExecutionOptions.Kernel == EncoderKernelMode.Simd
+            ? SimdOps.Linear(input, weights, bias, rows, inputSize, outputSize, cancellationToken)
+            : ScalarOps.Linear(input, weights, bias, rows, inputSize, outputSize, cancellationToken);
+
+    private float[] Norm(float[] input, int rows, int width, float[] gamma, float[]? beta, float epsilon, CancellationToken cancellationToken) =>
+        ExecutionOptions.Kernel == EncoderKernelMode.Simd
+            ? SimdOps.Norm(input, rows, width, gamma, beta, epsilon, cancellationToken)
+            : ScalarOps.Norm(input, rows, width, gamma, beta, epsilon, cancellationToken);
+
+    private float[] Add(float[] a, float[] b, CancellationToken cancellationToken) =>
+        ExecutionOptions.Kernel == EncoderKernelMode.Simd
+            ? SimdOps.Add(a, b, cancellationToken)
+            : ScalarOps.Add(a, b);
+
     private void Emit(string name, float[] values) => Trace?.Invoke(name, (float[])values.Clone());
+
+    private static float[] ScalarGatedGelu(float[] up, int rows, int width, CancellationToken cancellationToken)
+    {
+        var output = new float[checked(rows * width)];
+        for (var row = 0; row < rows; row++)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            for (var j = 0; j < width; j++)
+            {
+                if ((j & 255) == 0) cancellationToken.ThrowIfCancellationRequested();
+                output[row * width + j] = ScalarOps.Gelu(up[row * 2 * width + j]) * up[row * 2 * width + width + j];
+            }
+        }
+        return output;
+    }
+
+    public void Dispose() => WorkspacePool.Dispose();
 }
 
 public static class ScalarOps

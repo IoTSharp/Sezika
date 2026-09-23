@@ -1,0 +1,53 @@
+{
+  "schema_version": "sezika.primitive-reference.v1",
+  "model_revision": "fixture-revision",
+  "tokenizer_revision": "fixture-tokenizer",
+  "prompt_schema": "sezika.prompt.v1",
+  "cases": [
+    {
+      "case_id": "en-choice-001",
+      "language": "en",
+      "primitive": "choice",
+      "input": { "state": { "request": "invoice copy" }, "instructions": "route the request", "criteria": { "billing": "billing team", "support": "support team" } },
+      "model_revision": "fixture-revision",
+      "tokenizer_revision": "fixture-tokenizer",
+      "logits": { "billing": 0.5, "support": -0.5 },
+      "probabilities": { "billing": 0.7310585786300049, "support": 0.2689414213699951 },
+      "status": "answered"
+    },
+    {
+      "case_id": "zh-choice-001",
+      "language": "zh",
+      "primitive": "choice",
+      "input": { "state": { "请求": "发票副本" }, "instructions": "选择处理团队", "criteria": { "账单": "账单团队", "支持": "支持团队" } },
+      "model_revision": "fixture-revision",
+      "tokenizer_revision": "fixture-tokenizer",
+      "logits": { "账单": -0.25, "支持": 0.25 },
+      "probabilities": { "账单": 0.37754066879814546, "支持": 0.6224593312018546 },
+      "status": "answered"
+    },
+    {
+      "case_id": "en-score-001",
+      "language": "en",
+      "primitive": "score",
+      "input": { "state": { "service": "response was quick" }, "instructions": "rate response speed", "criteria": [ "slow", "acceptable", "fast" ] },
+      "model_revision": "fixture-revision",
+      "tokenizer_revision": "fixture-tokenizer",
+      "logits": { "0": 0.2, "1": 0.0, "2": -0.2 },
+      "probabilities": { "0": 0.4017595785333554, "1": 0.3289329222889067, "2": 0.2693074991777379 },
+      "legend": { "0": "slow", "1": "acceptable", "2": "fast" },
+      "status": "answered"
+    },
+    {
+      "case_id": "zh-boolean-001",
+      "language": "zh",
+      "primitive": "boolean",
+      "input": { "state": { "账户": "已启用保护" }, "instructions": "判断保护是否启用", "criteria": { "true": "已启用", "false": "未启用" } },
+      "model_revision": "fixture-revision",
+      "tokenizer_revision": "fixture-tokenizer",
+      "logits": { "true": 0.4, "false": -0.4 },
+      "probabilities": { "true": 0.6899744811276125, "false": 0.31002551887238755 },
+      "status": "answered"
+    }
+  ]
+}

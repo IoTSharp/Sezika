@@ -5,16 +5,48 @@ namespace Sezika;
 
 public sealed class ModernBertModelPackage : IDisposable
 {
+    private int _disposed;
+
     public required string ModelId { get; init; }
     public required string Revision { get; init; }
+    public string TokenizerRevision { get; init; } = string.Empty;
     public required string License { get; init; }
     public required TokenizerJson Tokenizer { get; init; }
     public required ModernBertEncoder Encoder { get; init; }
     public required DecisionHeadWeights Head { get; init; }
     public required int HeadMaxTokens { get; init; }
     public required float[] Temperature { get; init; }
+    public long EstimatedResidentBytes { get; init; }
+    public bool IsDisposed => Volatile.Read(ref _disposed) != 0;
 
-    public void Dispose() { }
+    /// <summary>Unload model tensors from the managed session and make future use fail closed.</summary>
+    public void Dispose()
+    {
+        if (Interlocked.Exchange(ref _disposed, 1) != 0) return;
+        Clear(Encoder.Weights.TokenEmbeddings);
+        Clear(Encoder.Weights.EmbeddingNorm);
+        Clear(Encoder.Weights.FinalNorm);
+        foreach (var layer in Encoder.Weights.Layers)
+        {
+            Clear(layer.AttentionNorm); Clear(layer.Qkv); Clear(layer.AttentionOutput);
+            Clear(layer.MlpNorm); Clear(layer.MlpUp); Clear(layer.MlpDown);
+        }
+        Clear(Head.TypeEmbeddings); Clear(Head.ScorerNorm); Clear(Head.ScorerNormBias);
+        Clear(Head.ScorerDense); Clear(Head.ScorerDenseBias); Clear(Head.ScorerOutput); Clear(Head.ScorerOutputBias);
+        foreach (var layer in Head.Layers)
+        {
+            Clear(layer.Qkv); Clear(layer.QkvBias); Clear(layer.AttentionOutput); Clear(layer.AttentionOutputBias);
+            Clear(layer.AttentionNorm); Clear(layer.AttentionNormBias); Clear(layer.MlpUp); Clear(layer.MlpUpBias);
+            Clear(layer.MlpDown); Clear(layer.MlpDownBias); Clear(layer.MlpNorm); Clear(layer.MlpNormBias);
+        }
+        Clear(Temperature);
+        Encoder.Dispose();
+    }
+
+    private static void Clear(float[]? values)
+    {
+        if (values is not null) Array.Clear(values);
+    }
 }
 
 /// <summary>Loads the pinned Laya/mmBERT package from verified JSON + SafeTensors only.</summary>
@@ -34,7 +66,8 @@ public static class ModernBertModelLoader
         using var manifest = JsonDocument.Parse(File.ReadAllBytes(manifestPath), new JsonDocumentOptions { MaxDepth = 32 });
         var json = manifest.RootElement;
         if (json.GetProperty("schema_version").GetInt32() != 1 || json.GetProperty("model_id").GetString() != PinnedModelId ||
-            json.GetProperty("revision").GetString() != PinnedRevision || json.GetProperty("license").GetString() != "Apache-2.0")
+            json.GetProperty("revision").GetString() != PinnedRevision || json.GetProperty("tokenizer_revision").GetString() != PinnedRevision ||
+            json.GetProperty("license").GetString() != "Apache-2.0")
             throw new DecisionException("decision_manifest_invalid", "The model manifest is not the pinned Apache-2.0 Laya revision.");
         VerifyHash(weightsPath, PinnedWeightsSha256, cancellationToken); VerifyHash(tokenizerPath, PinnedTokenizerSha256, cancellationToken);
         var tensors = SafeTensorReader.Read(weightsPath, maxElements: 300_000_000, cancellationToken: cancellationToken);
@@ -91,7 +124,8 @@ public static class ModernBertModelLoader
         _ = new ModernBertDecisionPipeline(encoder, head);
         var temperature = Tensor(tensors, "temperature");
         if (temperature.Length != 3 || temperature.Any(value => !float.IsFinite(value) || value <= 0)) throw new DecisionException("model_calibration_invalid", "The pinned temperature tensor is invalid.");
-        return new ModernBertModelPackage { ModelId = PinnedModelId, Revision = PinnedRevision, License = "Apache-2.0", Tokenizer = new TokenizerJson(tokenizerPath, cancellationToken), Encoder = encoder, Head = head, HeadMaxTokens = headMaxTokens, Temperature = temperature };
+        var residentBytes = tensors.Values.Sum(tensor => checked((long)tensor.Values.Length * sizeof(float)));
+        return new ModernBertModelPackage { ModelId = PinnedModelId, Revision = PinnedRevision, TokenizerRevision = PinnedRevision, License = "Apache-2.0", Tokenizer = new TokenizerJson(tokenizerPath, cancellationToken), Encoder = encoder, Head = head, HeadMaxTokens = headMaxTokens, Temperature = temperature, EstimatedResidentBytes = residentBytes };
     }
 
     private static float[] Tensor(IReadOnlyDictionary<string, SafeTensor> tensors, string name)

@@ -9,8 +9,8 @@
 | 顺序 | 状态 | 范围 | 验收产物 |
 | --- | --- | --- | --- |
 | 0 | ✅ | 研究、仓库与契约草案 | 固定参考版本、架构决策、C# 契约草案、Tomur 对接计划；未执行验证 |
-| 1 | 🚧 | 模型资产与 tokenizer | 可验证 manifest、安全张量格式、与固定 tokenizer 一致的 token IDs |
-| 2 | 🚧 | 纯 C# encoder | embedding、attention、RoPE、norm、MLP 的标量正确性与逐层 oracle |
+| 1 | ✅ | 模型资产与 tokenizer | 可验证 manifest、安全张量格式、与固定 tokenizer 一致的 token IDs；发布目录、loopback 断点下载、安装清单和 lease 卸载已通过有界验收 |
+| 2 | ✅ | 纯 C# encoder | embedding、attention、RoPE、norm、MLP 的标量正确性与逐层 oracle；SIMD/资源边界已完成 |
 | 3 | 🚧 | 决策头与完整推理 | choice / score / boolean 的真实本地输出、预算、取消、session 生命周期 |
 | 4 | 🚧 | 多语言数据、适配与校准 | 分语言数据集、可复现 head 训练、独立校准与测试报告 |
 | 5 | 🚧 | AOT 与 CPU/GPU 性能 | SIMD、C# GPU kernels、量化、AOT 二进制、资源与延迟证据 |
@@ -18,6 +18,41 @@
 | 7 | 🚧 | 开源发布 | NuGet、CLI、模型卡、许可清单、跨平台发布与示例 |
 
 当前已具备固定 Apache-2.0 mmBERT/Laya 模型资产、C# tokenizer oracle、真实 CPU scalar encoder、真实 marker-head typed smoke、ILGPU 构建期 PTX/ABI 产物、CUDA Driver resident encoder/head 和多 RID tiny Native AOT smoke。逐语言质量、跨平台性能矩阵和 Tomur 宿主接入仍按各自证据门槛推进；详见 [阶段证据](docs/stage-evidence.md) 与 [闭环审计](docs/closure-audit-2026-09-23.md)。
+
+## 编号任务板
+
+任务使用 `S0`–`S7` 阶段编号和两位序号。状态只表示当前证据：`✅ 已完成`、`🚧 进行中`、`⏳ 计划中`、`⛔ 阻塞`。同一泳道内的任务可以并行；跨泳道按依赖推进。实现、真实推理、质量、AOT 和性能分别验收，不能用构建成功替代真实模型证据。
+
+| 编号 | 泳道 | 状态 | 任务 | 依赖 | 验收产物 |
+| --- | --- | --- | --- | --- | --- |
+| S0-01 | A 契约 | ✅ 已完成 | 固定模型身份、请求/响应、错误码、概率/集中度/拒答语义 | — | `src/Sezika` 契约与架构文档 |
+| S0-02 | A 契约 | ✅ 已完成 | 冻结纯 C#、CUDA Driver 例外、AOT 与不使用 native 数值库的边界 | S0-01 | [GPU/AOT 设计](docs/gpu-aot.md) |
+| S1-01 | B 资产 | ✅ 已完成 | 锁定 mmBERT/Laya revision、许可证、model.json v1 与 tensor hash | S0-01 | `model-manifests/laya-mmbert` 与模型来源记录 |
+| S1-02 | B 资产 | ✅ 已完成 | 实现 tokenizer JSON、Unicode/byte fallback 规则和中英/CJK/RTL oracle | S1-01 | `tests/fixtures/tokenizer-mmbert-oracle.json` 与 tokenizer smoke |
+| S1-03 | B 资产 | ✅ 已完成 | 实现 SafeTensors F16/F32/BF16 读取及重叠、越界、dtype、hash 负向校验 | S1-01 | `ModelAssetVerifier`、`SafeTensorReader` 与负向测试 |
+| S1-04 | B 资产 | ✅ 已完成 | 完成发布目录、断点/下载、安装清单和模型卸载生命周期 | S1-01,S1-03 | `ModelPackageStore`、loopback Range 断点/校验、安装清单、staging 修复和 lease 卸载测试；不下载真实模型 |
+| S2-01 | C CPU | ✅ 已完成 | 完成 scalar embedding、attention、RoPE、norm、MLP、mask 与形状检查 | S1-01,S1-02 | 真实 encoder smoke 与配置校验 |
+| S2-02 | C CPU | ✅ 已完成 | 固定小模型和真实模型的逐层/逐算子 oracle 夹具 | S2-01 | trace 文件、误差容差与生成版本 |
+| S2-03 | C CPU | ✅ 已完成 | 建立 SIMD/scalar 对齐、取消、deadline、工作空间和并发矩阵 | S2-01,S2-02 | `EncoderWorkspacePool`、Vector<float> kernels、逐 trace 对齐与有界资源测试；S5-04 性能矩阵另行验收 |
+| S3-01 | C 推理 | ✅ 已完成 | 实现 marker 序列、Choice/Score/Boolean、稳定 softmax 和 expected score | S2-01,S2-02 | 三种 primitive 的 typed CPU smoke |
+| S3-02 | C 推理 | ✅ 已完成 | 实现输入结构校验、重复属性拒绝、候选/token/问题预算和结构化错误 | S0-01,S1-02 | `DecisionRequestParser` 与限制负向测试 |
+| S3-03 | C 推理 | ✅ 已完成 | 与固定参考实现逐 primitive 对齐 logits、概率、legend 和 abstention | S3-01,S3-02 | `PrimitiveAlignment`、4 个中英文固定输入 fixture、逐键数值/legend/abstention 对齐测试；真实模型质量另行验收 |
+| S3-04 | C 资源 | ✅ 已完成 | 完成 session busy、micro-batch、取消、deadline、unload 和内存上限矩阵 | S3-01,S3-02 | session gate、每问题 bounded micro-batch、workspace/resident budget、取消/deadline/unload 测试证据 |
+| S4-01 | D 质量 | ✅ 已完成 | 提供冻结 encoder head trainer、温度拟合与 accuracy/F1/NLL/Brier/ECE 评估器 | S3-01 | 可复现 trainer/metrics 输入输出 |
+| S4-02 | D 质量 | ✅ 已完成 | 建立许可明确、按语言/领域隔离的中英测试与校准数据集 | S4-01 | 24 条原创中英 fixture、数据卡、SHA-256 manifest、split/entity/fingerprint 隔离与有界验证脚本；fixture 不代表质量分数 |
+| S4-03 | D 质量 | ✅ 已完成 | 绑定模型/tokenizer/prompt/primitive/split 的校准 profile 并冻结门槛 | S4-02 | 12 个严格 hash 绑定 profile、冻结质量门槛和安全加载器；profile 保持 `pending_measurement`，真实质量另行验收 |
+| S5-01 | E GPU/AOT | ✅ 已完成 | 生成带 hash/ABI 的 C# kernel PTX 与静态 Driver loader | S0-02 | 14 个 kernel manifest/PTX 和生成复现记录 |
+| S5-02 | E GPU/AOT | ✅ 已完成 | 完成 resident CUDA encoder/head 与 CPU logits 对齐 | S2-01,S5-01 | RTX 4070 实卡 head 误差报告 |
+| S5-03 | E GPU/AOT | ✅ 已完成 | 完成 tiny CPU/CUDA win-x64 与 CPU linux-x64 Native AOT smoke | S5-01 | 发布物、运行输出、依赖图 |
+| S5-04 | E 性能 | ⏳ 计划中 | 建立 scalar/SIMD/量化 CPU 与 CUDA 冷/热、H2D、kernel、端到端基准 | S2-03,S5-02 | 固定硬件/线程/模型 hash 的 p50/p95 和峰值资源 |
+| S5-05 | E 性能 | ⏳ 计划中 | 完成真实模型 CPU/CUDA AOT、多 RID、显存/内存回收和失败诊断 | S3-04,S5-02,S5-03 | win/linux 目标矩阵与真实模型 smoke |
+| S6-01 | F Tomur | ✅ 已完成 | 将 decision provider/session 契约静态纳入 Tomur，保持与文本生成解耦 | S0-01,S3-01 | Tomur `providers/Abstractions/DecisionContracts.cs`、M1 契约测试；宿主 source-generated 注册仍归 S6-03 |
+| S6-02 | F Tomur | ⏳ 计划中 | 固定 Sezika 包并实现 `managed-decision` 薄适配与 CPU/CUDA backend 选择 | S5-02,S6-01 | 无兄弟目录引用的 provider 装配与状态 |
+| S6-03 | F Tomur | ⏳ 计划中 | 接入 Catalog/pull/installed、status/predict API、资源预算、诊断和只读 Agent 工具 | S1-04,S3-04,S6-02 | 缺资产/超限/取消/鉴权/卸载错误与 Chat 回归 |
+| S7-01 | G 发布 | ✅ 已完成 | 生成带 README、许可证、NOTICE 和第三方声明的开发 NuGet 包 | S0-02 | `.artifacts/packages/Sezika.0.1.0-dev.nupkg` |
+| S7-02 | G 发布 | ⏳ 计划中 | 完成正式版本、CLI、模型卡/数据卡、签名、NuGet 发布和示例 | S4-03,S5-05,S6-03 | 发布清单、签名校验、跨平台包与文档 |
+
+本轮已闭环并标记完成：S1-04、S2-03、S3-03、S3-04、S4-02、S4-03。S5-04 可在 S2-03 资源边界基础上继续并行推进；S5-05、S6-02、S6-03、S7-02 必须等待对应依赖。S4-03 的 profile 仍保持 `pending_measurement`，不把 fixture 或冻结门槛写成多语言质量已达标；S6-01 的契约落地也不等同于 Tomur provider/API 已接通。
 
 ## 0. 研究与契约
 

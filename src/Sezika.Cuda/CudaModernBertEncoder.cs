@@ -21,7 +21,12 @@ public sealed class CudaModernBertEncoder : IEncoder, IDisposable
         ArgumentNullException.ThrowIfNull(config);
         ArgumentNullException.ThrowIfNull(weights);
         // The scalar encoder validates the shared tensor contract without running inference.
-        _ = new ModernBertEncoder(config, weights);
+        using (var validatedEncoder = new ModernBertEncoder(config, weights))
+        {
+            // Construction validates the shared tensor contract before any
+            // device allocation. Its bounded workspace is immediately
+            // released because CUDA owns the resident execution buffers.
+        }
         Config = config;
         Weights = weights;
         _device = device;

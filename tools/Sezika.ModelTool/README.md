@@ -12,3 +12,9 @@ dotnet run --project tools/Sezika.ModelTool -- verify --timeout-seconds 1200
 The model and tokenizer revisions and expected hashes are constants in `Program.cs`. Downloads
 resume a partial file once and make at most one proxy retry through `127.0.0.1:7890`. Generated
 files remain under `.artifacts/models/laya-mmbert`, which is ignored by Git.
+
+The reusable library lifecycle is documented in [model packaging](../../docs/model-packaging.md).
+`ModelPackageStore` installs a verified directory through a staging rename, writes
+`installation.json`, and refuses uninstall/replacement while a `ModelPackageLease` is active. The
+build-time tool remains the only command in this project that knows the pinned Hugging Face URLs;
+the library does not discover or download arbitrary model files.

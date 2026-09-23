@@ -1,0 +1,13 @@
+{
+  "schema_id": "sezika.prompt.v1",
+  "version": 1,
+  "encoding": "UTF-8",
+  "fields": ["state", "instructions", "criteria"],
+  "serialization": "JSON object keys are compared ordinally; arrays preserve order; no implicit language or domain rewriting",
+  "choice_order": "ordinal",
+  "score_labels": "zero_based_index",
+  "boolean_order": ["when_true", "when_false"],
+  "normalization": "The engine receives the caller JSON values after bounded parsing; prompt text uses their JSON representation",
+  "license": "Apache-2.0",
+  "provenance": "Original Sezika prompt contract, authored for this repository"
+}

@@ -11,6 +11,10 @@ namespace Sezika;
 [JsonSerializable(typeof(DecisionUsage))]
 [JsonSerializable(typeof(ModelManifest))]
 [JsonSerializable(typeof(TensorManifest))]
+[JsonSerializable(typeof(ModelAssetFile))]
+[JsonSerializable(typeof(ModelDownloadFile))]
+[JsonSerializable(typeof(ModelPackageSpec))]
+[JsonSerializable(typeof(InstalledModelRecord))]
 [JsonSerializable(typeof(TokenizerSpec))]
 [JsonSerializable(typeof(TransformerConfig))]
 [JsonSerializable(typeof(Question))]
@@ -21,6 +25,15 @@ namespace Sezika;
 [JsonSerializable(typeof(ChoiceAnswer))]
 [JsonSerializable(typeof(ScoreAnswer))]
 [JsonSerializable(typeof(BooleanAnswer))]
+[JsonSerializable(typeof(CalibrationGates))]
+[JsonSerializable(typeof(CalibrationMetricSnapshot))]
+[JsonSerializable(typeof(CalibrationProfileEntry))]
+[JsonSerializable(typeof(CalibrationProfileManifest))]
+[JsonSerializable(typeof(CalibrationProfileBinding))]
+[JsonSerializable(typeof(PrimitiveReferenceFixture))]
+[JsonSerializable(typeof(PrimitiveReferenceCase))]
+[JsonSerializable(typeof(PrimitiveReferenceInput))]
+[JsonSerializable(typeof(PrimitiveAlignmentReport))]
 public partial class DecisionJsonContext : JsonSerializerContext
 {
 }

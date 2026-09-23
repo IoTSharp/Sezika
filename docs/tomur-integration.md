@@ -1,6 +1,6 @@
 # Tomur 集成设计
 
-状态：规划，尚未接入。Sezika 核心模型与 AOT/GPU 运行证据完成后，在 Tomur R22 落地。
+状态：分阶段推进。Tomur 已接入 R22 的 host-side decision provider/session 窄契约与 M1 契约测试；Sezika 固定包、provider 适配、模型资产、API、诊断和真实 smoke 仍按 R22 T22-03 及后续任务推进。
 
 ## 1. 依赖方向
 
@@ -100,4 +100,4 @@ Tomur 使用 `InvariantGlobalization=true`。必须在实际 AOT 发布物中验
 4. 既有 chat/Agent/Realtime 功能及工具确认边界不被绕过。
 5. CPU 与 CUDA 各自取得真实模型和 Native AOT 运行证据；协议通过、多语质量、校准、延迟、资源回收各有独立记录。
 
-本次没有修改 Tomur 运行代码、下载模型、执行构建测试或真实 smoke。
+本轮只完成 Tomur host-side 契约与兼容性测试；没有接入 Sezika 固定包、下载模型、实现 provider/API、执行真实模型 smoke 或 AOT 宿主验证。契约测试通过，但 source-generated JSON 注册仍归 T22-07。

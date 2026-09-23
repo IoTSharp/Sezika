@@ -76,6 +76,12 @@ try
     ], epochs: 20);
     Check(trained.Weights[0] > 0 && double.IsFinite(trained.FinalLogLoss), "frozen encoder head training");
 
+    var closureChecks = global::Sezika.Tests.ModelPackageLifecycleChecks.Run();
+    Check(closureChecks == 4, "model package install/lease/uninstall lifecycle");
+    Check(global::Sezika.Tests.EncoderExecutionChecks.Run(), "SIMD/scalar cancellation, deadline, workspace and concurrency bounds");
+    Check(global::Sezika.Tests.PrimitiveAlignmentChecks.Run(), "typed primitive reference alignment contract");
+    Check(global::Sezika.Tests.CalibrationProfileChecks.Run(), "calibration profile binding and pending gate semantics");
+
     var realTokenizerPath = Path.Combine(".artifacts", "models", "laya-mmbert", "tokenizer", "tokenizer.json");
     var oraclePath = Path.Combine("tests", "fixtures", "tokenizer-mmbert-oracle.json");
     if (File.Exists(realTokenizerPath) && File.Exists(oraclePath))

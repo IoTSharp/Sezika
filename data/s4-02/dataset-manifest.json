@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "dataset_id": "sezika-s4-02-en-zh-decision-fixture",
+  "status": "fixture_only",
+  "license": "Apache-2.0",
+  "copyright": "Copyright 2026 Sezika contributors",
+  "authorship": "All records are original short-form examples authored for this repository.",
+  "data_card": "docs/data-card-s4-02.md",
+  "prompt_schema": {
+    "id": "sezika.prompt.v1",
+    "path": "data/s4-02/prompt-schema-v1.json",
+    "sha256": "76e551b8b13a49debae6641af72241c052e8db6111dba0e82a0bde0aa8f653e5"
+  },
+  "source_policy": {
+    "external_sources": false,
+    "teacher_generated": false,
+    "translation_or_rewrite": false,
+    "personally_identifiable_information": false,
+    "license_review": "All records are repository-authored Apache-2.0 fixtures; no external text is redistributed."
+  },
+  "split_policy": {
+    "required_splits": [
+      "calibration",
+      "test"
+    ],
+    "grouping_keys": [
+      "language",
+      "domain",
+      "primitive"
+    ],
+    "entity_isolation": "source_entity is unique across calibration and test within every language/domain group",
+    "time_isolation": "calibration records precede test records; dates are metadata for the fixture and are not a temporal quality claim"
+  },
+  "record_schema": {
+    "required": [
+      "id",
+      "language",
+      "domain",
+      "split",
+      "source_entity",
+      "source_date",
+      "primitive",
+      "state",
+      "instructions",
+      "criteria",
+      "label"
+    ],
+    "languages": [
+      "en",
+      "zh"
+    ],
+    "domains": [
+      "general",
+      "support"
+    ],
+    "primitives": [
+      "choice",
+      "score",
+      "boolean"
+    ]
+  },
+  "files": [
+    {
+      "language": "en",
+      "domain": "general",
+      "split": "calibration",
+      "path": "data/s4-02/en/general/calibration.jsonl",
+      "record_count": 3,
+      "sha256": "f03bd606a46af7b714bb933b899adf4b0f2058bf02b8a77884a388d9472dee0c"
+    },
+    {
+      "language": "en",
+      "domain": "general",
+      "split": "test",
+      "path": "data/s4-02/en/general/test.jsonl",
+      "record_count": 3,
+      "sha256": "a707f5ec2cbcf9139d7a0402e5fd229013fe9cabf90d8945b263fc15b282b5f5"
+    },
+    {
+      "language": "en",
+      "domain": "support",
+      "split": "calibration",
+      "path": "data/s4-02/en/support/calibration.jsonl",
+      "record_count": 3,
+      "sha256": "a0e39f834a6df5cf6542771d575104773da8211296145aef613b8228bc1f3295"
+    },
+    {
+      "language": "en",
+      "domain": "support",
+      "split": "test",
+      "path": "data/s4-02/en/support/test.jsonl",
+      "record_count": 3,
+      "sha256": "cb5af00180696c9995460698223d013d3c32f72cfd967d005a69aa72060f387b"
+    },
+    {
+      "language": "zh",
+      "domain": "general",
+      "split": "calibration",
+      "path": "data/s4-02/zh/general/calibration.jsonl",
+      "record_count": 3,
+      "sha256": "3b6a697803baed1dafc2bf8add935df34fbb7dc3a84c876823318ce4b75772e5"
+    },
+    {
+      "language": "zh",
+      "domain": "general",
+      "split": "test",
+      "path": "data/s4-02/zh/general/test.jsonl",
+      "record_count": 3,
+      "sha256": "aa029d8c914c3a09c32eef8b9e58a7383e7daa1c19e0dd3517637fcbc04af8f1"
+    },
+    {
+      "language": "zh",
+      "domain": "support",
+      "split": "calibration",
+      "path": "data/s4-02/zh/support/calibration.jsonl",
+      "record_count": 3,
+      "sha256": "0bc1ddd9cd4e0aa6edc19ce9239fe2a754987c492eb9d6d1959e22096508edc7"
+    },
+    {
+      "language": "zh",
+      "domain": "support",
+      "split": "test",
+      "path": "data/s4-02/zh/support/test.jsonl",
+      "record_count": 3,
+      "sha256": "a2225fa59c1a115ec68291b6d0caff18a315819b85e97cb29dd2067855907345"
+    }
+  ],
+  "record_count": 24,
+  "quality_evidence": {
+    "metrics": null,
+    "real_model_run": false,
+    "reason": "Fixtures establish schema, provenance and split isolation only; no model output or quality claim is included."
+  }
+}

@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>Sezika.Resources.Tests</AssemblyName>
+    <RootNamespace>Sezika.Resources.Tests</RootNamespace>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/Sezika/Sezika.csproj" />
+  </ItemGroup>
+</Project>

@@ -43,8 +43,15 @@ public sealed class DecisionEngine : IDecisionEngine, IDisposable
             throw new DecisionException("decision_question_limit_exceeded", $"Question count exceeds the session budget ({_options.Budget.MaxQuestions}).");
         if (!string.Equals(request.Model, _model.ModelId, StringComparison.Ordinal))
             throw new DecisionException("decision_model_not_installed", $"Model '{request.Model}' is not loaded.");
-        if (!_sessionGate.Wait(0, cancellationToken))
-            throw new DecisionException("decision_session_busy", "The decision model session is busy.");
+        try
+        {
+            if (!_sessionGate.Wait(0, cancellationToken))
+                throw new DecisionException("decision_session_busy", "The decision model session is busy.");
+        }
+        catch (OperationCanceledException exception)
+        {
+            throw new DecisionException("decision_cancelled", "Decision evaluation was cancelled before the session was acquired.", exception);
+        }
 
         using var deadline = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
         deadline.CancelAfter(_options.Budget.Deadline);
@@ -62,6 +69,7 @@ public sealed class DecisionEngine : IDecisionEngine, IDisposable
             {
                 Model = _model.ModelId,
                 ModelRevision = _model.Revision,
+                TokenizerRevision = _model.TokenizerRevision,
                 Backend = _model.Backend,
                 Answers = answers,
                 Usage = new DecisionUsage { QuestionCount = answers.Count, TokenCount = tokenCount, MicroBatchCount = answers.Count },
@@ -124,6 +132,7 @@ public sealed class DecisionEngine : IDecisionEngine, IDisposable
             Calibration = calibration,
             Choice = labels[selected],
             Concentration = concentration,
+            Logits = labels.Select((label, i) => (label, value: (double)logits[i])).ToDictionary(x => x.label, x => x.value, StringComparer.Ordinal),
             Probabilities = labels.Select((label, i) => (label, value: probabilities[i])).ToDictionary(x => x.label, x => x.value, StringComparer.Ordinal),
         };
     }
@@ -152,6 +161,7 @@ public sealed class DecisionEngine : IDecisionEngine, IDisposable
             Score = expected,
             Concentration = concentration,
             Legend = legend,
+            Logits = Enumerable.Range(0, logits.Length).ToDictionary(i => i.ToString(System.Globalization.CultureInfo.InvariantCulture), i => (double)logits[i], StringComparer.Ordinal),
             Probabilities = probabilities.Select((value, i) => (key: i.ToString(System.Globalization.CultureInfo.InvariantCulture), value)).ToDictionary(x => x.key, x => x.value, StringComparer.Ordinal),
         };
     }
@@ -175,6 +185,7 @@ public sealed class DecisionEngine : IDecisionEngine, IDisposable
             AbstentionReason = abstained ? "low_concentration" : null,
             Calibration = calibration,
             ProbabilityTrue = probability,
+            Logits = new Dictionary<string, double>(StringComparer.Ordinal) { ["true"] = trueLogit, ["false"] = falseLogit },
         };
     }
 
