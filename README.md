@@ -18,9 +18,21 @@ Sezika 面向本地软件中的语义判断，目标是使用 **C#、.NET 10 与
 
 当前仓库包含可运行的纯 C# FP32 encoder、固定真实 Laya/mmBERT 开发资产的安全加载、真实 marker-head 的 Choice/Score/Boolean typed smoke、tokenizer oracle、校准评估器，以及 ILGPU 构建期 PTX/ABI、CUDA Driver 完整 encoder/head 和 win-x64 Native AOT smoke。**模型权重仍不随仓库发布；逐语言质量报告、跨平台性能矩阵与 Tomur 宿主接入仍未完成。** 验收边界与命令见 [阶段证据](docs/stage-evidence.md)。
 
+## 独立使用
+
+Sezika 可以独立加载固定模型包并执行决策。先按[独立使用说明](docs/standalone-usage.md)准备并验证模型资产；在仓库根目录执行：
+
+```powershell
+dotnet build Sezika.slnx -c Release
+dotnet run --project src/Sezika.Cli -c Release --no-build -- inspect --model .artifacts/models/laya-mmbert
+dotnet run --project src/Sezika.Cli -c Release --no-build -- predict --model .artifacts/models/laya-mmbert --input samples/requests/decision.zh.json --deadline-seconds 300
+```
+
+`predict` 使用 CPU 返回 Choice、Score、Boolean 的 JSON 答案；[中文](samples/requests/decision.zh.json)与[英文](samples/requests/decision.en.json)请求均可直接修改。`inspect` 是固定资产预检查，完整张量配置仍在加载时验证。C# 宿主可以使用 `DecisionModelRuntime.Load(...)` 和 `Evaluate(...)` 复用同一 session；API 示例和输出语义见[独立使用说明](docs/standalone-usage.md)。当前结果为 `uncalibrated`；开发期 CLI 尚未正式发布。
+
 ## 决策原语
 
-| 原语 | 语义 | 计划输出 |
+| 原语 | 语义 | 输出 |
 | --- | --- | --- |
 | Choice | 从请求给定的有限候选中选择 | 选中项、完整概率分布、集中度 |
 | Score | 按有序 rubric 评分 | 概率加权期望、各级概率、等级说明 |
@@ -43,6 +55,7 @@ Sezika 保持独立开源仓库。Tomur 计划通过同进程 C# provider 调用
 
 ## 文档与工程
 
+- [独立使用](docs/standalone-usage.md)：固定模型准备、CLI、C# 调用和决策输入输出。
 - [参考项目分析](docs/research.md)：Laya 的可审计模型实现，以及 TypeSafe Jev 的公开协议与边界。
 - [架构设计](docs/architecture.md)：推理路径、模型资产、契约、校准与资源约束。
 - [纯 C# GPU 与 Native AOT](docs/gpu-aot.md)：ILGPU 编译期边界、CUDA Driver 路径及最小验证关口。

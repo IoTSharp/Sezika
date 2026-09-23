@@ -16,47 +16,71 @@ public sealed class ModernBertDecisionEngine : IDecisionEngine, IDisposable
     private readonly DecisionResourceBudget _budget;
     private readonly double _minimumConcentration;
     private readonly SemaphoreSlim _sessionGate = new(1, 1);
+    private readonly object _lifecycleSync = new();
     private bool _disposed;
+    private bool _sessionActive;
+    private bool _resourcesDisposed;
 
+    /// <summary>Creates a session and transfers ownership of the supplied model package.</summary>
     public ModernBertDecisionEngine(
         ModernBertModelPackage model,
         DecisionLimits? limits = null,
         DecisionResourceBudget? budget = null,
         double minimumConcentration = 0d)
     {
-        _model = model ?? throw new ArgumentNullException(nameof(model));
-        _pipeline = new ModernBertDecisionPipeline(_model.Encoder, _model.Head);
-        _limits = limits ?? DecisionLimits.Default;
-        _limits.Validate();
-        _budget = budget ?? new DecisionResourceBudget();
-        _budget.Validate();
-        if (_model.IsDisposed)
-            throw new DecisionException("decision_model_unloaded", "The model package has already been unloaded.");
-        if (_model.EstimatedResidentBytes > _budget.MaxResidentBytes)
-            throw new DecisionException("decision_model_memory_limit_exceeded", $"The loaded model requires {_model.EstimatedResidentBytes} bytes, above the session limit ({_budget.MaxResidentBytes}).");
-        if (!double.IsFinite(minimumConcentration) || minimumConcentration < 0 || minimumConcentration > 1)
-            throw new ArgumentOutOfRangeException(nameof(minimumConcentration));
-        _minimumConcentration = minimumConcentration;
+        ArgumentNullException.ThrowIfNull(model);
+        try
+        {
+            var pipeline = new ModernBertDecisionPipeline(model.Encoder, model.Head);
+            var effectiveLimits = limits ?? DecisionLimits.Default;
+            effectiveLimits.Validate();
+            var effectiveBudget = budget ?? new DecisionResourceBudget();
+            effectiveBudget.Validate();
+            if (model.IsDisposed)
+                throw new DecisionException("decision_model_unloaded", "The model package has already been unloaded.");
+            if (model.EstimatedResidentBytes > effectiveBudget.MaxResidentBytes)
+                throw new DecisionException("decision_model_memory_limit_exceeded", $"The loaded model requires {model.EstimatedResidentBytes} bytes, above the session limit ({effectiveBudget.MaxResidentBytes}).");
+            if (!double.IsFinite(minimumConcentration) || minimumConcentration < 0 || minimumConcentration > 1)
+                throw new ArgumentOutOfRangeException(nameof(minimumConcentration));
+
+            _model = model;
+            _pipeline = pipeline;
+            _limits = effectiveLimits;
+            _budget = effectiveBudget;
+            _minimumConcentration = minimumConcentration;
+        }
+        catch
+        {
+            // The engine owns the package after construction is attempted;
+            // reject paths must release all model tensors as well.
+            model.Dispose();
+            _sessionGate.Dispose();
+            throw;
+        }
     }
 
     public DecisionResponse Evaluate(DecisionRequest request, CancellationToken cancellationToken = default)
     {
-        ObjectDisposedException.ThrowIf(_disposed, this);
-        if (_model.IsDisposed)
-            throw new DecisionException("decision_model_unloaded", "The model package has been unloaded.");
-        DecisionRequestValidator.Validate(request, _limits);
-        if (request.Questions.Count > _budget.MaxQuestions)
-            throw new DecisionException("decision_question_limit_exceeded", $"Question count exceeds the session budget ({_budget.MaxQuestions}).");
-        if (!string.Equals(request.Model, _model.ModelId, StringComparison.Ordinal))
-            throw new DecisionException("decision_model_not_installed", $"Model '{request.Model}' is not loaded.");
-        try
+        lock (_lifecycleSync)
         {
-            if (!_sessionGate.Wait(0, cancellationToken))
-                throw new DecisionException("decision_session_busy", "The decision model session is busy.");
-        }
-        catch (OperationCanceledException exception)
-        {
-            throw new DecisionException("decision_cancelled", "Decision evaluation was cancelled before the session was acquired.", exception);
+            ObjectDisposedException.ThrowIf(_disposed, this);
+            if (_model.IsDisposed)
+                throw new DecisionException("decision_model_unloaded", "The model package has been unloaded.");
+            DecisionRequestValidator.Validate(request, _limits);
+            if (request.Questions.Count > _budget.MaxQuestions)
+                throw new DecisionException("decision_question_limit_exceeded", $"Question count exceeds the session budget ({_budget.MaxQuestions}).");
+            if (!string.Equals(request.Model, _model.ModelId, StringComparison.Ordinal))
+                throw new DecisionException("decision_model_not_installed", $"Model '{request.Model}' is not loaded.");
+            try
+            {
+                if (!_sessionGate.Wait(0, cancellationToken))
+                    throw new DecisionException("decision_session_busy", "The decision model session is busy.");
+                _sessionActive = true;
+            }
+            catch (OperationCanceledException exception)
+            {
+                throw new DecisionException("decision_cancelled", "Decision evaluation was cancelled before the session was acquired.", exception);
+            }
         }
 
         using var deadline = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
@@ -102,7 +126,13 @@ public sealed class ModernBertDecisionEngine : IDecisionEngine, IDisposable
         }
         finally
         {
-            _sessionGate.Release();
+            lock (_lifecycleSync)
+            {
+                _sessionGate.Release();
+                _sessionActive = false;
+                if (_disposed)
+                    DisposeResourcesLocked();
+            }
         }
     }
 
@@ -220,11 +250,26 @@ public sealed class ModernBertDecisionEngine : IDecisionEngine, IDisposable
                        (long)candidateCount * hiddenSize * sizeof(float) * 8L);
     }
 
+    /// <summary>
+    /// Rejects new requests immediately. If a bounded request is in flight,
+    /// its completion path releases the model and gate after the last access.
+    /// </summary>
     public void Dispose()
     {
-        if (_disposed) return;
-        _disposed = true;
-        _sessionGate.Dispose();
+        lock (_lifecycleSync)
+        {
+            if (_disposed) return;
+            _disposed = true;
+            if (!_sessionActive)
+                DisposeResourcesLocked();
+        }
+    }
+
+    private void DisposeResourcesLocked()
+    {
+        if (_resourcesDisposed) return;
+        _resourcesDisposed = true;
         _model.Dispose();
+        _sessionGate.Dispose();
     }
 }

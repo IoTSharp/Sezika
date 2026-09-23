@@ -1,0 +1,185 @@
+{
+  "schema_version": "sezika.standalone-smoke.v1",
+  "date": "2026-09-23",
+  "evidence_type": "real_model_cli_smoke",
+  "base_commit": "098a363958868f54aed5388d646e6c52601751a8",
+  "includes_uncommitted_changes": true,
+  "environment": {
+    "powershell": "7.6.6",
+    "os": "Windows x64",
+    "native_aot": false,
+    "dotnet_sdk": "10.0.401",
+    "configuration": "Release"
+  },
+  "model_weights_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+  "tokenizer_sha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+  "cli_source_sha256": "89eeadaed4fe823ea4beff3f38074a5c47f7efac09888f7762e22f20178b908a",
+  "core_assembly_sha256": "f7daa862df854d3feddfc02948c1d8746d8960f10579e17ac5ada8a2340d72f4",
+  "cli_assembly_sha256": "688f15b068bfd97cf58e642d271964e964f95a02cede531f04299d43764847eb",
+  "hash_scope": "Source and assembly hashes identify the smoke build before the later inspect field rename and 1 MiB manifest read limit.",
+  "scope": "Two input smoke cases; not an independent-reference, calibration, language-quality or performance benchmark.",
+  "runs": [
+    {
+      "request": "samples/requests/decision.en.json",
+      "request_sha256": "92ef8d40f828a71cd0c3d23c5e0caff85e6d70c94fa27d799cc66a7494f01229",
+      "input_mode": "file",
+      "command": [
+        "src/Sezika.Cli/bin/Release/net10.0/Sezika.Cli.dll",
+        "predict",
+        "--model",
+        ".artifacts/models/laya-mmbert",
+        "--input",
+        "samples/requests/decision.en.json",
+        "--deadline-seconds",
+        "300"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds_including_load": 21.0244733,
+      "response": {
+        "model": "convaiinnovations/laya-multilingual",
+        "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+        "tokenizer_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+        "backend": "cpu-modernbert-marker-head",
+        "answers": {
+          "intent": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.9981719656486204,
+              "technical": 0.0018280343513795614
+            },
+            "logits": {
+              "billing": 3.9151418209075928,
+              "technical": -2.387542486190796
+            },
+            "concentration": 0.9807382457305607,
+            "status": "answered",
+            "calibration": {
+              "status": "uncalibrated"
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 0.4970742574478553,
+            "legend": {
+              "0": "minor impact",
+              "1": "critical impact"
+            },
+            "probabilities": {
+              "0": 0.5029257425521446,
+              "1": 0.4970742574478553
+            },
+            "logits": {
+              "0": -0.2987229824066162,
+              "1": -0.31042608618736267
+            },
+            "concentration": 2.4698991991423114E-05,
+            "status": "answered",
+            "calibration": {
+              "status": "uncalibrated"
+            }
+          },
+          "is_billing": {
+            "type": "boolean",
+            "probability_true": 0.7912798104284786,
+            "logits": {
+              "true": 0.38852977752685547,
+              "false": -0.9441273212432861
+            },
+            "status": "answered",
+            "calibration": {
+              "status": "uncalibrated"
+            }
+          }
+        },
+        "usage": {
+          "question_count": 3,
+          "token_count": 95,
+          "micro_batch_count": 3,
+          "workspace_bytes": 1413120
+        }
+      }
+    },
+    {
+      "request": "samples/requests/decision.zh.json",
+      "request_sha256": "a22a63b8e8a7a856dd7a40be9d46f7d190ed266bbe60b4a63ee373bea549f77e",
+      "input_mode": "stdin",
+      "command": [
+        "src/Sezika.Cli/bin/Release/net10.0/Sezika.Cli.dll",
+        "predict",
+        "--model",
+        ".artifacts/models/laya-mmbert",
+        "--input",
+        "-",
+        "--deadline-seconds",
+        "300"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds_including_load": 27.403892,
+      "response": {
+        "model": "convaiinnovations/laya-multilingual",
+        "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+        "tokenizer_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+        "backend": "cpu-modernbert-marker-head",
+        "answers": {
+          "intent": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.9999694083387579,
+              "technical": 3.059166124211925E-05
+            },
+            "logits": {
+              "billing": 6.170414924621582,
+              "technical": -4.224337577819824
+            },
+            "concentration": 0.99949709832745,
+            "status": "answered",
+            "calibration": {
+              "status": "uncalibrated"
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 0.3048455154999901,
+            "legend": {
+              "0": "影响轻微",
+              "1": "影响严重"
+            },
+            "probabilities": {
+              "0": 0.6951544845000099,
+              "1": 0.3048455154999901
+            },
+            "logits": {
+              "0": 0.9442944526672363,
+              "1": 0.11996550112962723
+            },
+            "concentration": 0.11286638400620608,
+            "status": "answered",
+            "calibration": {
+              "status": "uncalibrated"
+            }
+          },
+          "is_billing": {
+            "type": "boolean",
+            "probability_true": 0.9297814520348091,
+            "logits": {
+              "true": -0.4921792149543762,
+              "false": -3.0755162239074707
+            },
+            "status": "answered",
+            "calibration": {
+              "status": "uncalibrated"
+            }
+          }
+        },
+        "usage": {
+          "question_count": 3,
+          "token_count": 119,
+          "micro_batch_count": 3,
+          "workspace_bytes": 1560576
+        }
+      }
+    }
+  ]
+}

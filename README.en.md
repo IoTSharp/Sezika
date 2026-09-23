@@ -8,6 +8,18 @@ Sezika targets local, typed semantic decisions using **C#, .NET 10 and Native AO
 
 This repository contains research, an implementation roadmap, a .NET 10 library, bounded loading for the pinned Laya/mmBERT development asset, tokenizer oracle fixtures, a scalar FP32 encoder/head, real marker-head Choice/Score/Boolean typed smoke, calibration metrics, build-time ILGPU PTX/ABI artifacts, a resident CUDA encoder/head, and a win-x64 Native AOT smoke. **Model weights are not bundled for release; multilingual quality evidence, cross-platform performance, and Tomur integration remain open.**
 
+## Standalone use
+
+Sezika can load the pinned model package and evaluate typed decisions without a host integration. Prepare and verify the model assets using the [standalone guide](docs/standalone-usage.md), then run these commands from the repository root with the .NET 10 SDK:
+
+```powershell
+dotnet build Sezika.slnx -c Release
+dotnet run --project src/Sezika.Cli -c Release --no-build -- inspect --model .artifacts/models/laya-mmbert
+dotnet run --project src/Sezika.Cli -c Release --no-build -- predict --model .artifacts/models/laya-mmbert --input samples/requests/decision.en.json --deadline-seconds 300
+```
+
+The CLI uses CPU inference and returns Choice, Score and Boolean answers as JSON. Edit the supplied [English](samples/requests/decision.en.json) or [Chinese](samples/requests/decision.zh.json) request to try your own input. `inspect` checks pinned assets; loading still validates the complete tensor configuration. C# hosts can reuse a session through `DecisionModelRuntime.Load(...)` and `Evaluate(...)`. See the guide for the API example and output semantics. Results remain `uncalibrated`, and the development CLI has not been formally released.
+
 ## Design
 
 - C# model code and CPU/GPU kernels with explicit resource limits, cancellation and source-generated JSON. Runtime native calls are limited to operating-system/device drivers.

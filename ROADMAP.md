@@ -38,6 +38,7 @@
 | S3-02 | C 推理 | ✅ 已完成 | 实现输入结构校验、重复属性拒绝、候选/token/问题预算和结构化错误 | S0-01,S1-02 | `DecisionRequestParser` 与限制负向测试 |
 | S3-03 | C 推理 | ✅ 已完成 | 与固定参考实现逐 primitive 对齐 logits、概率、legend 和 abstention | S3-01,S3-02 | `PrimitiveAlignment`、4 个中英文固定输入 fixture、逐键数值/legend/abstention 对齐测试；真实模型质量另行验收 |
 | S3-04 | C 资源 | ✅ 已完成 | 完成 session busy、micro-batch、取消、deadline、unload 和内存上限矩阵 | S3-01,S3-02 | session gate、每问题 bounded micro-batch、workspace/resident budget、取消/deadline/unload 测试证据 |
+| S3-05 | C 独立使用 | ✅ 已完成 | 提供独立模型 session 与 inspect/predict CLI，读取 JSON 并输出真实 typed decision | S3-01,S3-02,S3-04 | `DecisionModelRuntime`、CPU CLI、中英文三种问题的真实模型文件/stdin 推理、并发卸载回归和结构化错误；[运行证据](docs/standalone-cli-smoke.md)，正式发布归 S7-02 |
 | S4-01 | D 质量 | ✅ 已完成 | 提供冻结 encoder head trainer、温度拟合与 accuracy/F1/NLL/Brier/ECE 评估器 | S3-01 | 可复现 trainer/metrics 输入输出 |
 | S4-02 | D 质量 | ✅ 已完成 | 建立许可明确、按语言/领域隔离的中英测试与校准数据集 | S4-01 | 24 条原创中英 fixture、数据卡、SHA-256 manifest、split/entity/fingerprint 隔离与有界验证脚本；fixture 不代表质量分数 |
 | S4-03 | D 质量 | ✅ 已完成 | 绑定模型/tokenizer/prompt/primitive/split 的校准 profile 并冻结门槛 | S4-02 | 12 个严格 hash 绑定 profile、冻结质量门槛和安全加载器；profile 保持 `pending_measurement`，真实质量另行验收 |
@@ -95,7 +96,7 @@
 2. 实现稳定 softmax、版本化温度校准、choice argmax、score 期望与 boolean 的 P(true)。Score 的第 i 个等级取数值 i（0 起），结果为 Σ i×pᵢ，范围 [0,K−1]，legend/probabilities 键为不带前导零的十进制 i。概率必须有限、非负且归一化；NaN/Inf、候选数不合法、重复 ID、未知类型和无效温度返回诊断。JSON 入口在反序列化成 Dictionary 之前检查重复 question/criteria 属性，不能指望后续 DTO validator 发现被覆盖的键。
 3. 第一版每问题重复编码 state，与参考检查点保持一致；支持有界 micro-batch。一请求可能包含多次 micro-batch forward，报告实际次数与 token 用量，不宣传任意问题数量固定成本。
 4. 概率与分布集中度分开返回。未校准标为 `uncalibrated`；校准不匹配标为 `out_of_scope`。决策状态为 `answered` 或 `abstained`，运行失败走结构化错误，不能填充示例概率。
-5. 接入真实权重后才添加 `sezika predict` CLI；`inspect`/`doctor` 报告 provider、资产、session、校准与验证状态。CLI 使用 source-generated JSON，与库共用实现。
+5. 已提供源码运行的 `inspect`/`predict` CLI 与 `DecisionModelRuntime`：指定固定模型目录和 JSON 请求，使用 CPU 返回真实决策，JSON 使用 source generation。`inspect` 执行资产预检查；正式可安装 CLI 与完整 `doctor` 仍归 S7-02，独立使用见 [使用说明](docs/standalone-usage.md)。
 6. decision engine 不生成自然语言回答、不执行工具。需要解释或开放式文本时，由调用方明确转入 Tomur 的生成模型。
 
 验收：三个 primitive 都有真实模型的 C# / 参考输出对齐；预算与取消生效；缺模型、未知算子或架构不能隐式回退到关键词、远端 API 或 native runtime。

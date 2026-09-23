@@ -16,6 +16,10 @@
 
 ## 已执行命令
 
+独立使用入口（S3-05）已完成：`DecisionModelRuntime` 拥有模型和 CPU session；CLI 通过文件/stdin 读取请求并返回结构化结果。最终 Release solution build 为 0 警告/0 错误，核心测试为 23/23（包含并发 unload 回归）。固定真实模型的英文文件请求和中文 stdin 请求均返回 Choice/Score/Boolean，分别使用 95/119 tokens；运行记录见 [独立 CLI smoke](standalone-cli-smoke.md)，原始结果及输入 hash 见 [JSON 证据](evidence/standalone-cli-2026-09-23.json)。本轮未执行 CUDA、AOT 或语言质量评测。
+
+以下保留之前阶段验证的命令与结果：
+
 在 PowerShell 7.6.6、.NET SDK 10.0.401 下：
 
 ```text

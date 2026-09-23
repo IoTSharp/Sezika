@@ -1,0 +1,27 @@
+{
+  "model": "convaiinnovations/laya-multilingual",
+  "state": { "message": "发票重复扣款，请帮我核对。" },
+  "questions": {
+    "intent": {
+      "type": "choice",
+      "instructions": "选择请求类别",
+      "criteria": {
+        "billing": "扣款、发票或退款",
+        "technical": "软件故障"
+      }
+    },
+    "severity": {
+      "type": "score",
+      "instructions": "按影响从低到高评分",
+      "criteria": [ "影响轻微", "影响严重" ]
+    },
+    "is_billing": {
+      "type": "boolean",
+      "instructions": "是否涉及账单问题？",
+      "criteria": {
+        "true": "涉及账单问题",
+        "false": "与账单无关"
+      }
+    }
+  }
+}

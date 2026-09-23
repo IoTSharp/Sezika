@@ -52,6 +52,7 @@ public sealed class ModernBertModelPackage : IDisposable
 /// <summary>Loads the pinned Laya/mmBERT package from verified JSON + SafeTensors only.</summary>
 public static class ModernBertModelLoader
 {
+    private const int MaxManifestBytes = 1 * 1024 * 1024;
     public const string PinnedModelId = "convaiinnovations/laya-multilingual";
     public const string PinnedRevision = "052592a15d198d9ad47da779604259b10b47b7aa";
     public const string PinnedWeightsSha256 = "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204";
@@ -63,7 +64,18 @@ public static class ModernBertModelLoader
         var root = Path.GetFullPath(packageDirectory);
         var manifestPath = Within(root, "model.json"); var weightsPath = Within(root, "model.safetensors"); var tokenizerPath = Within(root, "tokenizer/tokenizer.json");
         if (!File.Exists(manifestPath) || !File.Exists(weightsPath) || !File.Exists(tokenizerPath)) throw new DecisionException("decision_model_not_installed", "Pinned model package is incomplete.");
-        using var manifest = JsonDocument.Parse(File.ReadAllBytes(manifestPath), new JsonDocumentOptions { MaxDepth = 32 });
+        byte[] manifestBytes;
+        using (var manifestStream = new FileStream(manifestPath, FileMode.Open, FileAccess.Read, FileShare.Read))
+        {
+            if (manifestStream.Length > MaxManifestBytes)
+                throw new DecisionException("decision_manifest_limit_exceeded", "model.json exceeds the 1 MiB metadata limit.");
+
+            manifestBytes = new byte[(int)manifestStream.Length];
+            manifestStream.ReadExactly(manifestBytes);
+        }
+
+        cancellationToken.ThrowIfCancellationRequested();
+        using var manifest = JsonDocument.Parse(manifestBytes, new JsonDocumentOptions { MaxDepth = 32 });
         var json = manifest.RootElement;
         if (json.GetProperty("schema_version").GetInt32() != 1 || json.GetProperty("model_id").GetString() != PinnedModelId ||
             json.GetProperty("revision").GetString() != PinnedRevision || json.GetProperty("tokenizer_revision").GetString() != PinnedRevision ||

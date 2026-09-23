@@ -1,0 +1,27 @@
+{
+  "model": "convaiinnovations/laya-multilingual",
+  "state": { "message": "duplicate invoice charge" },
+  "questions": {
+    "intent": {
+      "type": "choice",
+      "instructions": "choose the request type",
+      "criteria": {
+        "billing": "billing or refund",
+        "technical": "software problem"
+      }
+    },
+    "severity": {
+      "type": "score",
+      "instructions": "score the impact from low to high",
+      "criteria": [ "minor impact", "critical impact" ]
+    },
+    "is_billing": {
+      "type": "boolean",
+      "instructions": "is this a billing issue?",
+      "criteria": {
+        "true": "the request is a billing issue",
+        "false": "the request is unrelated to billing"
+      }
+    }
+  }
+}

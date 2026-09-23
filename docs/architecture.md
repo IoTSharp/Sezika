@@ -30,14 +30,14 @@ ILGPU 用作构建期编译器。最终 AOT 运行时不引用 ILGPU 的动态�
 
 ## 3. 工程结构
 
-当前实际工程是 `src/Sezika` 类库。按功能出现再增加如下模块，避免建立没有实现的空壳服务：
+当前实现包括核心类库、CPU 独立 CLI、CUDA backend 以及独立构建工具：
 
 ```text
 src/Sezika/                 核心契约、加载、tokenizer、CPU 推理、后处理
 src/Sezika.Cuda/            AOT 兼容 C# CUDA Driver backend
 kernels/Sezika.Kernels/     C# kernel 源码（构建期引用 ILGPU）
 tools/Sezika.KernelCompiler/ 构建期编译、导出 PTX、生成 ABI manifest
-src/Sezika.Cli/             inspect / doctor / predict
+src/Sezika.Cli/             inspect / predict（CPU typed 决策）
 tests/                     数值、资产、契约、CPU/GPU/AOT 生命周期测试
 docs/                      设计、模型卡、校准与发布证据
 ```
@@ -57,7 +57,7 @@ docs/                      设计、模型卡、校准与发布证据
 
 ## 5. 公共契约草案
 
-`IDecisionEngine.Evaluate` 接收 `DecisionRequest` 与 CancellationToken，返回 `DecisionResponse`；CPU/GPU session 的工作空间与设备流属于 engine 实现。初始接口为同步计算契约，宿主在有界执行队列中调用，不在库里无条件 `Task.Run`。加载/session 工厂在阶段 1–3 确定后再公开。
+`IDecisionEngine.Evaluate` 接收 `DecisionRequest` 与 CancellationToken，返回 `DecisionResponse`。`DecisionModelRuntime.Load` 加载固定模型包并拥有 CPU session，`Evaluate` 支持 DTO 和 UTF-8 JSON；调用方可顺序复用同一个 runtime。并发调用返回 busy；Dispose 后拒绝新请求，正在执行的有界请求结束后再释放模型和工作空间，避免清空活跃推理权重。接口为同步计算契约，宿主在有界执行队列中调用，不在库里无条件 `Task.Run`。CLI 与 facade 当前使用 CPU marker-head；CUDA typed backend 选择尚未接入这两个入口。
 
 - `state` 支持 string/object/array，由 `JsonElement` 表示。
 - `questions` 是 ID → Question 映射；ID 只用于结果对应，不自动加入模型语义。
