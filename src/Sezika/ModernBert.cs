@@ -67,16 +67,24 @@ public sealed class ModernBertWeights
     }
 }
 
-/// <summary>Fixed ModernBERT encoder with scalar reference and explicitly selected CPU SIMD kernels.</summary>
+/// <summary>Fixed ModernBERT encoder with scalar, SIMD and W8A32 CPU kernels.</summary>
 public sealed class ModernBertEncoder : IEncoder, IDisposable
 {
+    private Int8WeightCache? _quantizedWeights;
     public ModernBertConfig Config { get; }
     public ModernBertWeights Weights { get; }
     public Action<string, float[]>? Trace { get; set; }
     public EncoderExecutionOptions ExecutionOptions { get; }
     public EncoderWorkspacePool WorkspacePool { get; }
+    /// <summary>Additional int8/scales tensor payload; the original float32 model is retained.</summary>
+    public long QuantizedWeightBytes => Volatile.Read(ref _quantizedWeights)?.StorageBytes ?? 0;
 
     public ModernBertEncoder(ModernBertConfig config, ModernBertWeights weights, EncoderExecutionOptions? executionOptions = null)
+        : this(config, weights, executionOptions, CancellationToken.None)
+    {
+    }
+
+    public ModernBertEncoder(ModernBertConfig config, ModernBertWeights weights, EncoderExecutionOptions? executionOptions, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(config);
         ArgumentNullException.ThrowIfNull(weights);
@@ -84,6 +92,20 @@ public sealed class ModernBertEncoder : IEncoder, IDisposable
         ExecutionOptions = executionOptions ?? EncoderExecutionOptions.Default;
         ExecutionOptions.Validate();
         Config = config; Weights = weights;
+        if (ExecutionOptions.Kernel == EncoderKernelMode.QuantizedInt8)
+        {
+            var cache = new Int8WeightCache();
+            using var deadline = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+            deadline.CancelAfter(ExecutionOptions.Deadline);
+            foreach (var layer in weights.Layers)
+            {
+                cache.Add(layer.Qkv, config.HiddenSize, 3 * config.HiddenSize, deadline.Token);
+                cache.Add(layer.AttentionOutput, config.HiddenSize, config.HiddenSize, deadline.Token);
+                cache.Add(layer.MlpUp, config.HiddenSize, 2 * config.IntermediateSize, deadline.Token);
+                cache.Add(layer.MlpDown, config.IntermediateSize, config.HiddenSize, deadline.Token);
+            }
+            _quantizedWeights = cache;
+        }
         WorkspacePool = new EncoderWorkspacePool(ExecutionOptions);
     }
 
@@ -103,6 +125,9 @@ public sealed class ModernBertEncoder : IEncoder, IDisposable
             ct.ThrowIfCancellationRequested();
         }
         CheckDeadline();
+        // Keep an immutable cache alive through this request even if Dispose
+        // concurrently drops the session's reference to it.
+        var quantizedWeights = Volatile.Read(ref _quantizedWeights);
         if (tokenIds.Length < 2 || tokenIds.Length > Config.MaxTokens) throw new DecisionException("decision_token_limit_exceeded", "ModernBERT sequence exceeds its token budget.");
         using var workspace = WorkspacePool.Acquire(tokenIds.Length, Config, ct);
         CheckDeadline();
@@ -122,7 +147,7 @@ public sealed class ModernBertEncoder : IEncoder, IDisposable
             var l = Weights.Layers[index]; var prefix = $"layer/{index}/";
             var normalized = l.AttentionNorm is null ? hidden : Norm(hidden, n, h, l.AttentionNorm, null, Config.NormEpsilon, ct);
             Emit(prefix + "norm1", normalized);
-            var qkv = Linear(normalized, l.Qkv, null, n, h, 3 * h, ct);
+            var qkv = Linear(normalized, l.Qkv, null, n, h, 3 * h, quantizedWeights, ct);
             Emit(prefix + "qkv", qkv);
             ScalarOps.SplitQkv(qkv, n, h, out var q, out var k, out var v);
             var global = index % Config.GlobalAttentionEvery == 0;
@@ -130,16 +155,16 @@ public sealed class ModernBertEncoder : IEncoder, IDisposable
             Emit(prefix + "rope_q", q); Emit(prefix + "rope_k", k);
             var attention = ScalarOps.Attention(q, k, v, n, h, Config.HeadCount, global ? -1 : Config.LocalAttention / 2, ct);
             Emit(prefix + "attention", attention);
-            var projected = Linear(attention, l.AttentionOutput, null, n, h, h, ct);
+            var projected = Linear(attention, l.AttentionOutput, null, n, h, h, quantizedWeights, ct);
             Emit(prefix + "projected", projected);
             hidden = Add(hidden, projected, ct); Emit(prefix + "residual", hidden);
             normalized = Norm(hidden, n, h, l.MlpNorm, null, Config.NormEpsilon, ct); Emit(prefix + "norm2", normalized);
-            var up = Linear(normalized, l.MlpUp, null, n, h, 2 * width, ct); Emit(prefix + "up", up);
+            var up = Linear(normalized, l.MlpUp, null, n, h, 2 * width, quantizedWeights, ct); Emit(prefix + "up", up);
             var gated = ExecutionOptions.Kernel == EncoderKernelMode.Simd
                 ? SimdOps.GatedGelu(up, n, width, ct)
                 : ScalarGatedGelu(up, n, width, ct);
             Emit(prefix + "gelu", gated);
-            var mlp = Linear(gated, l.MlpDown, null, n, width, h, ct); Emit(prefix + "mlp", mlp);
+            var mlp = Linear(gated, l.MlpDown, null, n, width, h, quantizedWeights, ct); Emit(prefix + "mlp", mlp);
             hidden = Add(hidden, mlp, ct); Emit(prefix + "hidden", hidden);
             CheckDeadline();
         }
@@ -147,10 +172,13 @@ public sealed class ModernBertEncoder : IEncoder, IDisposable
         Emit("encoder/final", hidden); ct.ThrowIfCancellationRequested(); return hidden;
     }
 
-    private float[] Linear(float[] input, float[] weights, float[]? bias, int rows, int inputSize, int outputSize, CancellationToken cancellationToken) =>
-        ExecutionOptions.Kernel == EncoderKernelMode.Simd
-            ? SimdOps.Linear(input, weights, bias, rows, inputSize, outputSize, cancellationToken)
-            : ScalarOps.Linear(input, weights, bias, rows, inputSize, outputSize, cancellationToken);
+    private float[] Linear(float[] input, float[] weights, float[]? bias, int rows, int inputSize, int outputSize, Int8WeightCache? quantizedWeights, CancellationToken cancellationToken) =>
+        ExecutionOptions.Kernel switch
+        {
+            EncoderKernelMode.Simd => SimdOps.Linear(input, weights, bias, rows, inputSize, outputSize, cancellationToken),
+            EncoderKernelMode.QuantizedInt8 => QuantizedOps.Linear(input, quantizedWeights!.Get(weights), bias, rows, cancellationToken),
+            _ => ScalarOps.Linear(input, weights, bias, rows, inputSize, outputSize, cancellationToken),
+        };
 
     private float[] Norm(float[] input, int rows, int width, float[] gamma, float[]? beta, float epsilon, CancellationToken cancellationToken) =>
         ExecutionOptions.Kernel == EncoderKernelMode.Simd
@@ -179,7 +207,11 @@ public sealed class ModernBertEncoder : IEncoder, IDisposable
         return output;
     }
 
-    public void Dispose() => WorkspacePool.Dispose();
+    public void Dispose()
+    {
+        WorkspacePool.Dispose();
+        Interlocked.Exchange(ref _quantizedWeights, null);
+    }
 }
 
 public static class ScalarOps

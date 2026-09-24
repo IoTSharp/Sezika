@@ -5,12 +5,14 @@ public enum EncoderKernelMode
 {
     Scalar,
     Simd,
+    /// <summary>Per-output-row symmetric int8 weights with float32 activations and accumulation (W8A32).</summary>
+    QuantizedInt8,
 }
 
 /// <summary>
 /// Bounded execution policy for a CPU encoder. Scalar remains the numerical
-/// reference; SIMD only changes the explicitly vectorized reductions and
-/// elementwise operations.
+/// reference; SIMD changes explicitly vectorized operations. QuantizedInt8
+/// changes linear weights only; original float32 tensors remain resident.
 /// </summary>
 public sealed record EncoderExecutionOptions
 {

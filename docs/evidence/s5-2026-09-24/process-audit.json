@@ -1,0 +1,198 @@
+{
+  "SchemaVersion": 1,
+  "Status": "passed",
+  "CapturedAtUtc": "2026-09-23T19:04:30.4890188Z",
+  "PowerShellVersion": "7.6.6",
+  "TaskRoot": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924",
+  "Scope": "Read-only final process audit; no build, test, process termination or file cleanup was performed by the audit.",
+  "Limits": {
+    "ResultFiles": 64,
+    "WallClockSeconds": 30,
+    "WindowsSnapshotCount": 1,
+    "WindowsSnapshotTimeoutSeconds": 20,
+    "WindowsSnapshotMaxItems": 16384,
+    "IdentitiesPerResult": 2048,
+    "LinuxTimeoutSeconds": 10,
+    "LinuxRunnerTimeoutSeconds": 20,
+    "Cancellation": "PowerShell cancellation/interrupt; deadlines checked for every bounded batch item."
+  },
+  "Windows": {
+    "SnapshotAtUtc": "2026-09-23T19:04:29.6191689Z",
+    "SnapshotProcessCount": 1062,
+    "ResultLogCount": 19,
+    "RecordedIdentityCount": 70,
+    "FastExitRootsWithoutTrackedIdentity": 5,
+    "ConfirmedExitedEntries": 75,
+    "MatchingLiveProcesses": [],
+    "ReusedPids": [],
+    "UnverifiableLiveProcesses": [],
+    "CleanupErrors": [],
+    "IdentityComparison": "PID + UTC creation date + exact case-sensitive full command line + parent PID. Missing fast-exit root identities are reported; PID reuse is distinguished using the root identity file start time."
+  },
+  "Linux": {
+    "Distribution": "Ubuntu",
+    "Command": "/usr/bin/timeout 10s /bin/ps -eo pid,ppid,lstart,args",
+    "RunnerResult": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-190159-985-s5-final-process-audit-wsl.result.json",
+    "SnapshotLog": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-190159-985-s5-final-process-audit-wsl.stdout.log",
+    "SnapshotLineCount": 42,
+    "ExactTaskPathFilter": "/mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/aot-final/",
+    "MatchingProcesses": [],
+    "NoFinalBenchmarkRemains": true
+  },
+  "LogResults": [
+    {
+      "Log": "20260923-182240-557-s5-aot-selftest.result.json",
+      "Status": "Succeeded",
+      "Pid": 48924,
+      "ExitCode": 0,
+      "TrackedProcesses": 0,
+      "CleanupErrorCount": 0
+    },
+    {
+      "Log": "20260923-182243-231-s5-aot-int8-trial.result.json",
+      "Status": "Succeeded",
+      "Pid": 2648,
+      "ExitCode": 0,
+      "TrackedProcesses": 2,
+      "CleanupErrorCount": 0
+    },
+    {
+      "Log": "20260923-182433-659-s5-win-scalar.result.json",
+      "Status": "Succeeded",
+      "Pid": 37192,
+      "ExitCode": 0,
+      "TrackedProcesses": 2,
+      "CleanupErrorCount": 0
+    },
+    {
+      "Log": "20260923-183234-386-s5-final-build.result.json",
+      "Status": "Succeeded",
+      "Pid": 53240,
+      "ExitCode": 0,
+      "TrackedProcesses": 18,
+      "CleanupErrorCount": 0
+    },
+    {
+      "Log": "20260923-183234-410-s5-final-publish-linux.result.json",
+      "Status": "Succeeded",
+      "Pid": 80540,
+      "ExitCode": 0,
+      "TrackedProcesses": 5,
+      "CleanupErrorCount": 0
+    },
+    {
+      "Log": "20260923-183427-051-s5-final-core-tests.result.json",
+      "Status": "Succeeded",
+      "Pid": 48816,
+      "ExitCode": 0,
+      "TrackedProcesses": 1,
+      "CleanupErrorCount": 0
+    },
+    {
+      "Log": "20260923-183427-065-s5-final-publish-win.result.json",
+      "Status": "Succeeded",
+      "Pid": 86620,
+      "ExitCode": 0,
+      "TrackedProcesses": 14,
+      "CleanupErrorCount": 0
+    },
+    {
+      "Log": "20260923-183430-958-s5-final-cuda-tests.result.json",
+      "Status": "Succeeded",
+      "Pid": 71708,
+      "ExitCode": 0,
+      "TrackedProcesses": 0,
+      "CleanupErrorCount": 0
+    },
+    {
+      "Log": "20260923-183541-582-s5-final-win-simd.result.json",
+      "Status": "Succeeded",
+      "Pid": 18768,
+      "ExitCode": 0,
+      "TrackedProcesses": 2,
+      "CleanupErrorCount": 0
+    },
+    {
+      "Log": "20260923-183910-626-s5-final-win-cuda.result.json",
+      "Status": "Succeeded",
+      "Pid": 58208,
+      "ExitCode": 0,
+      "TrackedProcesses": 2,
+      "CleanupErrorCount": 0
+    },
+    {
+      "Log": "20260923-183930-707-s5-final-win-int8.result.json",
+      "Status": "Succeeded",
+      "Pid": 24572,
+      "ExitCode": 0,
+      "TrackedProcesses": 2,
+      "CleanupErrorCount": 0
+    },
+    {
+      "Log": "20260923-184801-966-s5-final-win-scalar.result.json",
+      "Status": "Succeeded",
+      "Pid": 66816,
+      "ExitCode": 0,
+      "TrackedProcesses": 2,
+      "CleanupErrorCount": 0
+    },
+    {
+      "Log": "20260923-185407-425-s5-native-dependencies-win.result.json",
+      "Status": "Succeeded",
+      "Pid": 21404,
+      "ExitCode": 0,
+      "TrackedProcesses": 0,
+      "CleanupErrorCount": 0
+    },
+    {
+      "Log": "20260923-185407-441-s5-native-dependencies-linux.result.json",
+      "Status": "Succeeded",
+      "Pid": 53156,
+      "ExitCode": 0,
+      "TrackedProcesses": 0,
+      "CleanupErrorCount": 0
+    },
+    {
+      "Log": "20260923-185532-769-s5-final-linux-simd.result.json",
+      "Status": "Succeeded",
+      "Pid": 67888,
+      "ExitCode": 0,
+      "TrackedProcesses": 5,
+      "CleanupErrorCount": 0
+    },
+    {
+      "Log": "20260923-185605-231-s5-final-linux-cuda.result.json",
+      "Status": "Succeeded",
+      "Pid": 83788,
+      "ExitCode": 0,
+      "TrackedProcesses": 5,
+      "CleanupErrorCount": 0
+    },
+    {
+      "Log": "20260923-185630-386-s5-final-linux-int8.result.json",
+      "Status": "Succeeded",
+      "Pid": 87928,
+      "ExitCode": 0,
+      "TrackedProcesses": 5,
+      "CleanupErrorCount": 0
+    },
+    {
+      "Log": "20260923-185715-870-s5-final-linux-scalar.result.json",
+      "Status": "Succeeded",
+      "Pid": 84728,
+      "ExitCode": 0,
+      "TrackedProcesses": 5,
+      "CleanupErrorCount": 0
+    },
+    {
+      "Log": "20260923-190159-985-s5-final-process-audit-wsl.result.json",
+      "Status": "Succeeded",
+      "Pid": 89116,
+      "ExitCode": 0,
+      "TrackedProcesses": 0,
+      "CleanupErrorCount": 0
+    }
+  ],
+  "Retention": "C-drive task artifacts and process logs are retained as evidence. No deletion or retry of previously rejected cleanup was attempted.",
+  "Limitations": "A point-in-time snapshot cannot prove absence of short-lived historical descendants that escaped runner sampling. Matching Linux processes are limited to the exact final-artifact task path. Complete unrelated process command lines are compared in memory but not copied into this evidence."
+}

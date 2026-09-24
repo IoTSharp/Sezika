@@ -8,6 +8,8 @@ internal static partial class CudaNative
     private const string LibraryName = "nvcuda";
     internal const int Success = 0;
     internal const int ErrorNoDevice = 100;
+    internal const int AttributeComputeCapabilityMajor = 75;
+    internal const int AttributeComputeCapabilityMinor = 76;
 
     static CudaNative()
     {
@@ -48,7 +50,7 @@ internal static partial class CudaNative
         throw new CudaException(
             $"cuda_{result}",
             $"CUDA Driver operation '{operation}' failed with CUresult {result}.",
-            result);
+            result, operation: operation);
     }
 
     internal static bool IsDriverAvailable()
@@ -81,11 +83,26 @@ internal static partial class CudaNative
     [LibraryImport(LibraryName, EntryPoint = "cuDeviceGet")]
     internal static partial int DeviceGet(out int device, int ordinal);
 
+    [LibraryImport(LibraryName, EntryPoint = "cuDriverGetVersion")]
+    internal static partial int DriverGetVersion(out int version);
+
+    [LibraryImport(LibraryName, EntryPoint = "cuDeviceGetName")]
+    internal static unsafe partial int DeviceGetName(byte* name, int length, int device);
+
+    [LibraryImport(LibraryName, EntryPoint = "cuDeviceGetAttribute")]
+    internal static partial int DeviceGetAttribute(out int value, int attribute, int device);
+
+    [LibraryImport(LibraryName, EntryPoint = "cuDeviceTotalMem_v2")]
+    internal static partial int DeviceTotalMemory(out nuint bytes, int device);
+
     [LibraryImport(LibraryName, EntryPoint = "cuCtxCreate_v2")]
     internal static partial int ContextCreate(out IntPtr context, uint flags, int device);
 
     [LibraryImport(LibraryName, EntryPoint = "cuCtxDestroy_v2")]
     internal static partial int ContextDestroy(IntPtr context);
+
+    [LibraryImport(LibraryName, EntryPoint = "cuCtxSetCurrent")]
+    internal static partial int ContextSetCurrent(IntPtr context);
 
     [LibraryImport(LibraryName, EntryPoint = "cuCtxSynchronize")]
     internal static partial int ContextSynchronize();
@@ -104,6 +121,24 @@ internal static partial class CudaNative
 
     [LibraryImport(LibraryName, EntryPoint = "cuMemFree_v2")]
     internal static partial int MemFree(ulong devicePointer);
+
+    [LibraryImport(LibraryName, EntryPoint = "cuMemGetInfo_v2")]
+    internal static partial int MemoryGetInfo(out nuint freeBytes, out nuint totalBytes);
+
+    [LibraryImport(LibraryName, EntryPoint = "cuEventCreate")]
+    internal static partial int EventCreate(out IntPtr cudaEvent, uint flags);
+
+    [LibraryImport(LibraryName, EntryPoint = "cuEventRecord")]
+    internal static partial int EventRecord(CudaEventHandle cudaEvent, IntPtr stream);
+
+    [LibraryImport(LibraryName, EntryPoint = "cuEventSynchronize")]
+    internal static partial int EventSynchronize(CudaEventHandle cudaEvent);
+
+    [LibraryImport(LibraryName, EntryPoint = "cuEventElapsedTime")]
+    internal static partial int EventElapsedTime(out float milliseconds, CudaEventHandle start, CudaEventHandle end);
+
+    [LibraryImport(LibraryName, EntryPoint = "cuEventDestroy_v2")]
+    internal static partial int EventDestroy(IntPtr cudaEvent);
 
     [LibraryImport(LibraryName, EntryPoint = "cuMemcpyHtoD_v2")]
     internal static partial int MemcpyHtoD(ulong destinationDevice, nint sourceHost, nuint byteCount);

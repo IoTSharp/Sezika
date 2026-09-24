@@ -10,27 +10,53 @@ internal sealed class CudaContextHandle : SafeHandleZeroOrMinusOneIsInvalid
         SetHandle(handle);
     }
 
-    protected override bool ReleaseHandle() => CudaNative.ContextDestroy(handle) == CudaNative.Success;
+    // A native invocation that throws must not be reported as a successful release.
+    internal int ReleaseResult { get; private set; } = -1;
+
+    protected override bool ReleaseHandle()
+    {
+        ReleaseResult = CudaNative.ContextDestroy(handle);
+        return ReleaseResult == CudaNative.Success;
+    }
 }
 
 internal sealed class CudaModuleHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
-    internal CudaModuleHandle(IntPtr handle)
+    private readonly CudaDevice _owner;
+
+    internal CudaModuleHandle(IntPtr handle, CudaDevice owner)
         : base(ownsHandle: true)
     {
+        _owner = owner;
         SetHandle(handle);
     }
 
-    protected override bool ReleaseHandle() => CudaNative.ModuleUnload(handle) == CudaNative.Success;
+    protected override bool ReleaseHandle() => _owner.ReleaseModule(this, handle);
+}
+
+internal sealed class CudaEventHandle : SafeHandleZeroOrMinusOneIsInvalid
+{
+    private readonly CudaDevice _owner;
+
+    internal CudaEventHandle(IntPtr handle, CudaDevice owner)
+        : base(ownsHandle: true)
+    {
+        _owner = owner;
+        SetHandle(handle);
+    }
+
+    protected override bool ReleaseHandle() => _owner.ReleaseEvent(handle);
 }
 
 internal sealed class CudaDeviceBuffer : IDisposable
 {
     private ulong _devicePointer;
+    private readonly CudaDevice _owner;
 
-    internal CudaDeviceBuffer(ulong devicePointer, nuint byteLength)
+    internal CudaDeviceBuffer(ulong devicePointer, nuint byteLength, CudaDevice owner)
     {
         _devicePointer = devicePointer;
+        _owner = owner;
         ByteLength = byteLength;
     }
 
@@ -42,10 +68,10 @@ internal sealed class CudaDeviceBuffer : IDisposable
 
     public void Dispose()
     {
-        ulong devicePointer = Interlocked.Exchange(ref _devicePointer, 0);
-        if (devicePointer != 0)
+        ulong devicePointer = _devicePointer;
+        if (devicePointer != 0 && _owner.ReleaseBuffer(this, devicePointer))
         {
-            _ = CudaNative.MemFree(devicePointer);
+            _devicePointer = 0;
         }
     }
 }

@@ -6,7 +6,9 @@ Sezika targets local, typed semantic decisions using **C#, .NET 10 and Native AO
 
 ## Status
 
-This repository contains research, an implementation roadmap, a .NET 10 library, bounded loading for the pinned Laya/mmBERT development asset, tokenizer oracle fixtures, a scalar FP32 encoder/head, real marker-head Choice/Score/Boolean typed smoke, calibration metrics, build-time ILGPU PTX/ABI artifacts, a resident CUDA encoder/head, and a win-x64 Native AOT smoke. **Model weights are not bundled for release; multilingual quality evidence and cross-platform performance remain open.**
+This repository includes bounded loading for the pinned Laya/mmBERT model, tokenizer oracle fixtures, C# scalar/SIMD FP32 and W8A32 encoder/head paths, real Choice/Score/Boolean decisions, calibration metrics, build-time ILGPU PTX/ABI artifacts, and resident CUDA inference. S5-04/S5-05 are complete within the measured scope: Windows `win-x64` Native AOT benchmarks cover all four backends at 1/8/32 questions with five samples per configuration; Ubuntu WSL2 `linux-x64` real-model Native AOT smoke covers all four backends at three questions with one sample each. **WSL smoke does not establish bare-metal Linux performance. Multilingual quality remains unaccepted, and model weights are not bundled for release.** See the [S5 performance and AOT evidence](docs/s5-performance-aot.md) and [raw reports](docs/evidence/s5-2026-09-24/).
+
+The current W8A32 path is slower than SIMD. It retains the original FP32 weights and adds quantized caches, so it does not reduce total resident memory. Numerical alignment, actual inference, AOT compatibility, language quality and performance benefits remain separate claims.
 
 ## Standalone use
 
@@ -30,6 +32,6 @@ The CLI uses CPU inference and returns Choice, Score and Boolean answers as JSON
 - Code, model weights, tokenizers and training datasets retain separate licenses and distribution checks.
 - Callers control actions and permissions. The engine makes predictions and can abstain; it does not execute tools.
 
-See the [roadmap](ROADMAP.md), [stage evidence](docs/stage-evidence.md), [closure audit](docs/closure-audit-2026-09-23.md), [research](docs/research.md), [architecture](docs/architecture.md) and [GPU/AOT design](docs/gpu-aot.md). Project documentation is primarily in Chinese.
+See the [roadmap](ROADMAP.md), [stage evidence](docs/stage-evidence.md), [S5 performance and AOT evidence](docs/s5-performance-aot.md), [closure audit](docs/closure-audit-2026-09-23.md), [research](docs/research.md), [architecture](docs/architecture.md) and [GPU/AOT design](docs/gpu-aot.md). Bare-metal Linux performance and stronger tail-latency estimates need separate measurements. Project documentation is primarily in Chinese.
 
 Owned source is licensed under [Apache-2.0](LICENSE). See [third-party notices](THIRD_PARTY_NOTICES.md). Sezika does not claim to reproduce Jev's closed model or inherit another project's performance results.

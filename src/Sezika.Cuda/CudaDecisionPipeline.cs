@@ -3,7 +3,7 @@ using Sezika;
 namespace Sezika.Cuda;
 
 /// <summary>Runs the checkpoint's type embedding, Transformer head and marker scorer on the CUDA device.</summary>
-public sealed class CudaDecisionPipeline : IDisposable
+public sealed class CudaDecisionPipeline : IMarkerDecisionPipeline, IDisposable
 {
     private readonly CudaDevice _device;
     private readonly CudaModernBertEncoder _encoder;
@@ -26,12 +26,15 @@ public sealed class CudaDecisionPipeline : IDisposable
         ArgumentNullException.ThrowIfNull(device);
         ArgumentNullException.ThrowIfNull(encoder);
         ArgumentNullException.ThrowIfNull(head);
+        cancellationToken.ThrowIfCancellationRequested();
+        if (!ReferenceEquals(device, encoder.Device))
+            throw new CudaException("cuda_context_mismatch", "The CUDA decision head and encoder must use the same CudaDevice instance.");
         _device = device;
         _encoder = encoder;
-        _kernels = new CudaKernels(device);
         _layers = new Layer[head.Layers.Length];
         using var deadline = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
         deadline.CancelAfter(TimeSpan.FromMinutes(10));
+        _kernels = new CudaKernels(device, deadline.Token);
         try
         {
             var hidden = encoder.Config.HiddenSize;
@@ -82,9 +85,9 @@ public sealed class CudaDecisionPipeline : IDisposable
                 throw new DecisionException("decision_head_input_invalid", "A candidate marker position is outside the input sequence.");
         if (!_gate.Wait(0, cancellationToken))
             throw new DecisionException("decision_session_busy", "The CUDA decision head session is busy.");
-        var markers = markerPositions.ToArray();
         try
         {
+            var markers = markerPositions.ToArray();
             return _encoder.RunOnDevice(tokenIds,
                 (hidden, rows, token) => ScoreOnDevice(hidden, rows, typeId, markers, token), cancellationToken);
         }

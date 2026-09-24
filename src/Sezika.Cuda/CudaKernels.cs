@@ -9,8 +9,11 @@ internal sealed class CudaKernels : IDisposable
     private readonly IntPtr _attentionScores, _softmax, _attentionContext, _add, _activate, _gatedGelu, _rowBias, _typeEmbeddingAdd;
     private bool _disposed;
 
-    internal CudaKernels(CudaDevice device)
+    internal CudaKernels(CudaDevice device, CancellationToken cancellationToken = default)
     {
+        using var deadline = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        deadline.CancelAfter(TimeSpan.FromMinutes(10));
+        deadline.Token.ThrowIfCancellationRequested();
         _device = device;
         var images = new (byte[] Image, string Entry)[]
         {
@@ -26,9 +29,11 @@ internal sealed class CudaKernels : IDisposable
         {
             for (var i = 0; i < images.Length; i++)
             {
+                deadline.Token.ThrowIfCancellationRequested();
                 _modules[i] = device.LoadModule(images[i].Image);
                 functions[i] = device.GetFunction(_modules[i], images[i].Entry);
             }
+            deadline.Token.ThrowIfCancellationRequested();
         }
         catch
         {

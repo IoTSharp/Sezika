@@ -1,6 +1,6 @@
 # 纯 C# GPU 与 Native AOT
 
-决策日期：2026-09-23。状态：构建期 C# kernel compiler、可信 PTX/ABI 产物、完整 GPU encoder/head 与 win-x64 Native AOT smoke 已通过；跨平台性能矩阵仍待执行。
+决策日期：2026-09-23；状态更新：2026-09-24。构建期 C# kernel compiler、可信 PTX/ABI 产物和完整 GPU encoder/head 已通过验证；S5-04/S5-05 完成 Windows `win-x64` 四后端 Native AOT 基准与 Ubuntu WSL2 `linux-x64` 四后端真实模型 AOT smoke。范围及原始输出见 [S5 性能与 AOT 证据](s5-performance-aot.md)和[证据目录](evidence/s5-2026-09-24/)。
 
 ## 结论
 
@@ -61,7 +61,9 @@ Sezika 可以以纯 C# 编写模型和 GPU 算子，并使用操作系统/显卡
 
 ## 完整推理的性能工作
 
-GPU 速度来自正确的并行策略、数据复用和精度，而不仅是换执行设备。已实现并验证：GEMM、layer norm、softmax/reduction、RoPE、embedding/gather、激活、gated GELU 与局部/全局 attention。后续仍需评估 shared memory、tiling、fusion、量化和 Tensor Core 路线，并补齐 linux-x64、冷启动/热推理、峰值显存和 p50/p95/p99 矩阵。
+GPU 速度来自正确的并行策略、数据复用和精度，而不仅是换执行设备。已实现并验证：GEMM、layer norm、softmax/reduction、RoPE、embedding/gather、激活、gated GELU 与局部/全局 attention。S5 已记录 Windows scalar/SIMD/int8/CUDA 四后端的首请求、热推理 p50/p95/p99、RSS 和 CUDA owned 显存：每后端覆盖 1/8/32 问、每项 5 次正式采样。Ubuntu WSL2 的四后端 `linux-x64` AOT 验证使用真实模型，各为 3 问、1 次采样；它只建立该环境中的 smoke 证据，不代表裸机 Linux 性能。两 RID 的 AOT 发布均无警告。
+
+CUDA event 遥测来自独立 instrumented pass，module-load 墙钟时间不能称为纯 PTX JIT 时间；owned 显存不包含全部驱动/context 开销。首请求是一次进程内观测，未清空 OS/driver 缓存，同进程重载不是独立 cold start。五次热采样的最近秩尾分位数仍需更多样本支持。当前 W8A32 慢于 SIMD，且保留 FP32 原权重并增加缓存，没有降低总驻留内存。后续优化仍需评估 shared memory、tiling、fusion、量化和 Tensor Core 路线；多语言质量不由这些性能结果替代。
 
 初始不承诺达到高度优化的 native 数学库速度。小 batch、短序列、逐算子 host-device 往返和未预热的 driver 编译可能让 GPU 更慢。CPU/GPU 对比必须用同一模型、dtype、输入和时间边界。
 

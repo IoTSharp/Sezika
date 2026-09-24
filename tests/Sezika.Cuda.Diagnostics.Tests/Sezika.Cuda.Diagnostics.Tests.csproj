@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>Sezika.Cuda.Diagnostics.Tests</AssemblyName>
+    <RootNamespace>Sezika.Cuda.Diagnostics.Tests</RootNamespace>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/Sezika.Cuda/Sezika.Cuda.csproj" />
+  </ItemGroup>
+</Project>

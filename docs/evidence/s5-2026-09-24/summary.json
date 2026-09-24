@@ -1,0 +1,1275 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "generated_utc": "2026-09-23T19:01:11.7583976+00:00",
+  "matrix_verified": true,
+  "report_count": 8,
+  "rows": [
+    {
+      "source_path": "D:\\source\\Sezika\\docs\\evidence\\s5-2026-09-24\\win-scalar.json",
+      "source_sha256": "6c069f2ed2f13bf15b5cfd5a95ab1ade855d562a7d3f621c301ac09978c07c1e",
+      "started_utc": "2026-09-24T02:48:02.0169414+08:00",
+      "rid": "win-x64",
+      "backend": "scalar",
+      "native_aot": true,
+      "runtime": ".NET 10.0.12",
+      "precision": "FP32",
+      "samples": 5,
+      "warmup": 1,
+      "hardware": {
+        "cpu": "Intel Core Ultra 9 185H",
+        "gpu": null,
+        "operating_system": "Microsoft Windows 10.0.26200",
+        "environment_label": "Windows 11 native",
+        "logical_processors": 22,
+        "inference_threads": 1,
+        "vector_float_width": 4
+      },
+      "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+      "weights_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+      "tokenizer_sha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+      "manifest_sha256": "cf870335dee647a053a5416918d3cd79e61cca6416122cb8353014fc3ea119f6",
+      "executable_sha256": "3fb16c92838bdc730818d46bece7402eea04554ebf3b622020c9721badb2d1b8",
+      "process_first_request": {
+        "cycle": 0,
+        "model_load_milliseconds": 3016.3644,
+        "backend_load_milliseconds": 0.0123,
+        "first_request_milliseconds": 4795.469,
+        "total_to_first_response_milliseconds": 7812.8616
+      },
+      "same_process_reload": [
+        {
+          "cycle": 1,
+          "model_load_milliseconds": 3106.3304,
+          "backend_load_milliseconds": 0.0023,
+          "first_request_milliseconds": 3716.4416,
+          "total_to_first_response_milliseconds": 6822.815
+        }
+      ],
+      "questions": [
+        {
+          "questions": 1,
+          "input_sha256": "d2a7c1cdd70595d1eefc9c787768c9875df37ce7af10c4db303e128f87333763",
+          "token_count": 13,
+          "candidates_per_question": 2,
+          "samples": 5,
+          "p50": 1239.075,
+          "p95": 1501.7202,
+          "p99": 1501.7202,
+          "raw_milliseconds": [
+            1501.7202,
+            1239.075,
+            1307.5245,
+            1226.0486,
+            1215.8796
+          ],
+          "allocated_bytes": [
+            16936928,
+            16936928,
+            16936928,
+            16936928,
+            16936928
+          ],
+          "requests_per_second": 0.7703865980219338,
+          "questions_per_second": 0.7703865980219338
+        },
+        {
+          "questions": 8,
+          "input_sha256": "cfeae22d6c0f6af64b4c991cee75f96f52ff0ee01d68e97c8fd4530f0786c5ef",
+          "token_count": 104,
+          "candidates_per_question": 2,
+          "samples": 5,
+          "p50": 9728.9824,
+          "p95": 10357.2546,
+          "p99": 10357.2546,
+          "raw_milliseconds": [
+            9602.2996,
+            9647.968,
+            9728.9824,
+            9931.0495,
+            10357.2546
+          ],
+          "allocated_bytes": [
+            135468248,
+            135468248,
+            135468248,
+            135468248,
+            135468248
+          ],
+          "requests_per_second": 0.10148666990553931,
+          "questions_per_second": 0.8118933592443145
+        },
+        {
+          "questions": 32,
+          "input_sha256": "c89b9ab6333604ae96dfe2fee27cd7bd547a1cb7e49e008e13f29e431b92cf8f",
+          "token_count": 416,
+          "candidates_per_question": 2,
+          "samples": 5,
+          "p50": 41743.8094,
+          "p95": 65340.5581,
+          "p99": 65340.5581,
+          "raw_milliseconds": [
+            41743.8094,
+            40667.7599,
+            44407.6234,
+            65340.5581,
+            39508.8495
+          ],
+          "allocated_bytes": [
+            541859080,
+            541857736,
+            541857736,
+            541858584,
+            541867200
+          ],
+          "requests_per_second": 0.021582553671603465,
+          "questions_per_second": 0.6906417174913109
+        }
+      ],
+      "peak_working_set_bytes": 3656912896,
+      "cuda_peak_owned_bytes": null,
+      "cuda_before_unload": null,
+      "cuda_after_unload": null,
+      "cuda_load": null,
+      "cuda_profiled_forward": null,
+      "profiled_forward_wall_milliseconds": null,
+      "managed_bytes_before": 83576,
+      "managed_bytes_after_collection": 67600528,
+      "model_objects_collected": true,
+      "diagnostics": [
+        "decision_cancelled",
+        "cancel_after_first_encoder_trace_ms=0.1495",
+        "decision_head_input_invalid",
+        "recovery_after_cancel_and_invalid_input",
+        "cycle_0_unload_fail_closed",
+        "cycle_1_unload_fail_closed",
+        "model_encoder_head_pipeline_embedding_sentinels_collected_after_unload"
+      ],
+      "alignment": {
+        "tokens": [
+          2,
+          4,
+          4,
+          1
+        ],
+        "reference_logits": [
+          -0.057375,
+          0.24228567,
+          -0.33555993,
+          -0.039743207,
+          -0.13712718,
+          0.12859309
+        ],
+        "actual_logits": [
+          -0.057375,
+          0.24228567,
+          -0.33555993,
+          -0.039743207,
+          -0.13712718,
+          0.12859309
+        ],
+        "encoder_max_absolute_error": 0,
+        "logits_max_absolute_error": 0,
+        "probability_max_absolute_error": 0,
+        "head_only_max_absolute_error": 0,
+        "encoder_tolerance": 0.05,
+        "logits_tolerance": 0.005,
+        "probability_tolerance": 0.002
+      },
+      "quantized_encoder_bytes": 0,
+      "quantized_head_bytes": 0,
+      "timing_scope": "E2E: parse request JSON + tokenize + sequential per-question encoder/head + typed response JSON; model load excluded. Cold = first request in this process, OS/driver disk caches not flushed. CUDA events measured in a separate instrumented forward.",
+      "resource_scope": "PeakWorkingSetBytes is OS process lifetime high-water RSS. CUDA owned peak counts successful driver allocations (not driver/context overhead); free/total memory is device-wide. FP32 source tensors retained in W8A32 mode. Managed bytes after full collection do not imply immediate OS RSS return.",
+      "quality_scope": "Numerical smoke on fixed inputs only; no language accuracy or calibrated quality claim. Percentiles use nearest rank; small sample counts are exploratory and p95/p99 may coincide."
+    },
+    {
+      "source_path": "D:\\source\\Sezika\\docs\\evidence\\s5-2026-09-24\\win-simd.json",
+      "source_sha256": "174080825a158a78b646c3f5eafe98595247f22caa07dcac24c09a5201c2cd05",
+      "started_utc": "2026-09-24T02:35:41.7181581+08:00",
+      "rid": "win-x64",
+      "backend": "simd",
+      "native_aot": true,
+      "runtime": ".NET 10.0.12",
+      "precision": "FP32",
+      "samples": 5,
+      "warmup": 1,
+      "hardware": {
+        "cpu": "Intel Core Ultra 9 185H",
+        "gpu": null,
+        "operating_system": "Microsoft Windows 10.0.26200",
+        "environment_label": "Windows 11 native",
+        "logical_processors": 22,
+        "inference_threads": 1,
+        "vector_float_width": 4
+      },
+      "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+      "weights_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+      "tokenizer_sha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+      "manifest_sha256": "cf870335dee647a053a5416918d3cd79e61cca6416122cb8353014fc3ea119f6",
+      "executable_sha256": "3fb16c92838bdc730818d46bece7402eea04554ebf3b622020c9721badb2d1b8",
+      "process_first_request": {
+        "cycle": 0,
+        "model_load_milliseconds": 5229.5843,
+        "backend_load_milliseconds": 0.0228,
+        "first_request_milliseconds": 3226.5345,
+        "total_to_first_response_milliseconds": 8458.3647
+      },
+      "same_process_reload": [
+        {
+          "cycle": 1,
+          "model_load_milliseconds": 3147.438,
+          "backend_load_milliseconds": 0.0027,
+          "first_request_milliseconds": 1907.1982,
+          "total_to_first_response_milliseconds": 5054.6757
+        }
+      ],
+      "questions": [
+        {
+          "questions": 1,
+          "input_sha256": "d2a7c1cdd70595d1eefc9c787768c9875df37ce7af10c4db303e128f87333763",
+          "token_count": 13,
+          "candidates_per_question": 2,
+          "samples": 5,
+          "p50": 1289.8712,
+          "p95": 1395.5422,
+          "p99": 1395.5422,
+          "raw_milliseconds": [
+            1192.3954,
+            1349.173,
+            1289.8712,
+            1395.5422,
+            1195.2637
+          ],
+          "allocated_bytes": [
+            17038824,
+            17038824,
+            17038824,
+            17038824,
+            17038824
+          ],
+          "requests_per_second": 0.7785438909179039,
+          "questions_per_second": 0.7785438909179039
+        },
+        {
+          "questions": 8,
+          "input_sha256": "cfeae22d6c0f6af64b4c991cee75f96f52ff0ee01d68e97c8fd4530f0786c5ef",
+          "token_count": 104,
+          "candidates_per_question": 2,
+          "samples": 5,
+          "p50": 6913.9854,
+          "p95": 7789.6788,
+          "p99": 7789.6788,
+          "raw_milliseconds": [
+            6715.8157,
+            6913.9854,
+            6975.8521,
+            6556.8417,
+            7789.6788
+          ],
+          "allocated_bytes": [
+            136283456,
+            136283456,
+            136283456,
+            136283456,
+            136283456
+          ],
+          "requests_per_second": 0.14305261935683275,
+          "questions_per_second": 1.144420954854662
+        },
+        {
+          "questions": 32,
+          "input_sha256": "c89b9ab6333604ae96dfe2fee27cd7bd547a1cb7e49e008e13f29e431b92cf8f",
+          "token_count": 416,
+          "candidates_per_question": 2,
+          "samples": 5,
+          "p50": 21038.749,
+          "p95": 24921.7198,
+          "p99": 24921.7198,
+          "raw_milliseconds": [
+            24921.7198,
+            22777.8721,
+            21023.012,
+            20990.5674,
+            21038.749
+          ],
+          "allocated_bytes": [
+            545127664,
+            545118576,
+            545118576,
+            545118576,
+            545118576
+          ],
+          "requests_per_second": 0.04514594407443426,
+          "questions_per_second": 1.4446702103818962
+        }
+      ],
+      "peak_working_set_bytes": 4263575552,
+      "cuda_peak_owned_bytes": null,
+      "cuda_before_unload": null,
+      "cuda_after_unload": null,
+      "cuda_load": null,
+      "cuda_profiled_forward": null,
+      "profiled_forward_wall_milliseconds": null,
+      "managed_bytes_before": 83552,
+      "managed_bytes_after_collection": 67599744,
+      "model_objects_collected": true,
+      "diagnostics": [
+        "decision_cancelled",
+        "cancel_after_first_encoder_trace_ms=0.0081",
+        "decision_head_input_invalid",
+        "recovery_after_cancel_and_invalid_input",
+        "cycle_0_unload_fail_closed",
+        "cycle_1_unload_fail_closed",
+        "model_encoder_head_pipeline_embedding_sentinels_collected_after_unload"
+      ],
+      "alignment": {
+        "tokens": [
+          2,
+          4,
+          4,
+          1
+        ],
+        "reference_logits": [
+          -0.057375,
+          0.24228567,
+          -0.33555993,
+          -0.039743207,
+          -0.13712718,
+          0.12859309
+        ],
+        "actual_logits": [
+          -0.057373077,
+          0.24228716,
+          -0.33555734,
+          -0.03974235,
+          -0.13712628,
+          0.12859347
+        ],
+        "encoder_max_absolute_error": 3.6239624E-05,
+        "logits_max_absolute_error": 2.592802E-06,
+        "probability_max_absolute_error": 4.2281619E-07,
+        "head_only_max_absolute_error": 1.6987324E-06,
+        "encoder_tolerance": 0.05,
+        "logits_tolerance": 0.005,
+        "probability_tolerance": 0.002
+      },
+      "quantized_encoder_bytes": 0,
+      "quantized_head_bytes": 0,
+      "timing_scope": "E2E: parse request JSON + tokenize + sequential per-question encoder/head + typed response JSON; model load excluded. Cold = first request in this process, OS/driver disk caches not flushed. CUDA events measured in a separate instrumented forward.",
+      "resource_scope": "PeakWorkingSetBytes is OS process lifetime high-water RSS. CUDA owned peak counts successful driver allocations (not driver/context overhead); free/total memory is device-wide. FP32 source tensors retained in W8A32 mode. Managed bytes after full collection do not imply immediate OS RSS return.",
+      "quality_scope": "Numerical smoke on fixed inputs only; no language accuracy or calibrated quality claim. Percentiles use nearest rank; small sample counts are exploratory and p95/p99 may coincide."
+    },
+    {
+      "source_path": "D:\\source\\Sezika\\docs\\evidence\\s5-2026-09-24\\win-int8.json",
+      "source_sha256": "ab95e200e9e0028aa45720bd5ddfdf6f7e9d1cd41fe1fa99b897d390aab5d116",
+      "started_utc": "2026-09-24T02:39:30.7532983+08:00",
+      "rid": "win-x64",
+      "backend": "int8",
+      "native_aot": true,
+      "runtime": ".NET 10.0.12",
+      "precision": "W8A32 row-symmetric int8 linear weights, FP32 activations/accumulation; embeddings/norm FP32",
+      "samples": 5,
+      "warmup": 1,
+      "hardware": {
+        "cpu": "Intel Core Ultra 9 185H",
+        "gpu": null,
+        "operating_system": "Microsoft Windows 10.0.26200",
+        "environment_label": "Windows 11 native",
+        "logical_processors": 22,
+        "inference_threads": 1,
+        "vector_float_width": 4
+      },
+      "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+      "weights_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+      "tokenizer_sha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+      "manifest_sha256": "cf870335dee647a053a5416918d3cd79e61cca6416122cb8353014fc3ea119f6",
+      "executable_sha256": "3fb16c92838bdc730818d46bece7402eea04554ebf3b622020c9721badb2d1b8",
+      "process_first_request": {
+        "cycle": 0,
+        "model_load_milliseconds": 4023.6294,
+        "backend_load_milliseconds": 124.3714,
+        "first_request_milliseconds": 5366.0401,
+        "total_to_first_response_milliseconds": 9514.8986
+      },
+      "same_process_reload": [
+        {
+          "cycle": 1,
+          "model_load_milliseconds": 4125.1403,
+          "backend_load_milliseconds": 143.0906,
+          "first_request_milliseconds": 4659.0864,
+          "total_to_first_response_milliseconds": 8927.357
+        }
+      ],
+      "questions": [
+        {
+          "questions": 1,
+          "input_sha256": "d2a7c1cdd70595d1eefc9c787768c9875df37ce7af10c4db303e128f87333763",
+          "token_count": 13,
+          "candidates_per_question": 2,
+          "samples": 5,
+          "p50": 1578.1794,
+          "p95": 1630.0174,
+          "p99": 1630.0174,
+          "raw_milliseconds": [
+            1630.0174,
+            1578.1794,
+            1520.7222,
+            1591.2026,
+            1565.6277
+          ],
+          "allocated_bytes": [
+            16936920,
+            16936920,
+            16936920,
+            16936920,
+            16936920
+          ],
+          "requests_per_second": 0.6340551556717635,
+          "questions_per_second": 0.6340551556717635
+        },
+        {
+          "questions": 8,
+          "input_sha256": "cfeae22d6c0f6af64b4c991cee75f96f52ff0ee01d68e97c8fd4530f0786c5ef",
+          "token_count": 104,
+          "candidates_per_question": 2,
+          "samples": 5,
+          "p50": 14098.1081,
+          "p95": 14739.4058,
+          "p99": 14739.4058,
+          "raw_milliseconds": [
+            13758.0778,
+            13210.404,
+            14739.4058,
+            14098.1081,
+            14357.4686
+          ],
+          "allocated_bytes": [
+            135468248,
+            135468248,
+            135468248,
+            135468248,
+            135468248
+          ],
+          "requests_per_second": 0.0712621597277659,
+          "questions_per_second": 0.5700972778221272
+        },
+        {
+          "questions": 32,
+          "input_sha256": "c89b9ab6333604ae96dfe2fee27cd7bd547a1cb7e49e008e13f29e431b92cf8f",
+          "token_count": 416,
+          "candidates_per_question": 2,
+          "samples": 5,
+          "p50": 66723.8454,
+          "p95": 82011.9718,
+          "p99": 82011.9718,
+          "raw_milliseconds": [
+            82011.9718,
+            68925.5109,
+            66723.8454,
+            60675.6827,
+            53233.9255
+          ],
+          "allocated_bytes": [
+            541867200,
+            541858584,
+            541857736,
+            541857784,
+            541867144
+          ],
+          "requests_per_second": 0.01507972941113295,
+          "questions_per_second": 0.4825513411562544
+        }
+      ],
+      "peak_working_set_bytes": 3907104768,
+      "cuda_peak_owned_bytes": null,
+      "cuda_before_unload": null,
+      "cuda_after_unload": null,
+      "cuda_load": null,
+      "cuda_profiled_forward": null,
+      "profiled_forward_wall_milliseconds": null,
+      "managed_bytes_before": 83552,
+      "managed_bytes_after_collection": 67599880,
+      "model_objects_collected": true,
+      "diagnostics": [
+        "decision_cancelled",
+        "cancel_after_first_encoder_trace_ms=0.0082",
+        "decision_head_input_invalid",
+        "recovery_after_cancel_and_invalid_input",
+        "cycle_0_unload_fail_closed",
+        "cycle_1_unload_fail_closed",
+        "model_encoder_head_pipeline_embedding_sentinels_collected_after_unload"
+      ],
+      "alignment": {
+        "tokens": [
+          2,
+          4,
+          4,
+          1
+        ],
+        "reference_logits": [
+          -0.057375,
+          0.24228567,
+          -0.33555993,
+          -0.039743207,
+          -0.13712718,
+          0.12859309
+        ],
+        "actual_logits": [
+          -0.09626067,
+          0.2064826,
+          -0.37166414,
+          -0.07722621,
+          -0.16832098,
+          0.09723002
+        ],
+        "encoder_max_absolute_error": 1.5139353,
+        "logits_max_absolute_error": 0.038885668,
+        "probability_max_absolute_error": 0.00075342547,
+        "head_only_max_absolute_error": 0.017830715,
+        "encoder_tolerance": 2,
+        "logits_tolerance": 0.5,
+        "probability_tolerance": 0.1
+      },
+      "quantized_encoder_bytes": 110837760,
+      "quantized_head_bytes": 14804740,
+      "timing_scope": "E2E: parse request JSON + tokenize + sequential per-question encoder/head + typed response JSON; model load excluded. Cold = first request in this process, OS/driver disk caches not flushed. CUDA events measured in a separate instrumented forward.",
+      "resource_scope": "PeakWorkingSetBytes is OS process lifetime high-water RSS. CUDA owned peak counts successful driver allocations (not driver/context overhead); free/total memory is device-wide. FP32 source tensors retained in W8A32 mode. Managed bytes after full collection do not imply immediate OS RSS return.",
+      "quality_scope": "Numerical smoke on fixed inputs only; no language accuracy or calibrated quality claim. Percentiles use nearest rank; small sample counts are exploratory and p95/p99 may coincide."
+    },
+    {
+      "source_path": "D:\\source\\Sezika\\docs\\evidence\\s5-2026-09-24\\win-cuda.json",
+      "source_sha256": "806169c38299535281712c34b61f24f2944d9fbd80540d32879bd12691dfd91c",
+      "started_utc": "2026-09-24T02:39:10.6759649+08:00",
+      "rid": "win-x64",
+      "backend": "cuda",
+      "native_aot": true,
+      "runtime": ".NET 10.0.12",
+      "precision": "FP32",
+      "samples": 5,
+      "warmup": 1,
+      "hardware": {
+        "cpu": "Intel Core Ultra 9 185H",
+        "gpu": {
+          "name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+          "driver_version": 13020,
+          "compute_capability_major": 8,
+          "compute_capability_minor": 9,
+          "total_memory_bytes": 8585216000
+        },
+        "operating_system": "Microsoft Windows 10.0.26200",
+        "environment_label": "Windows 11 native",
+        "logical_processors": 22,
+        "inference_threads": 1,
+        "vector_float_width": 4
+      },
+      "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+      "weights_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+      "tokenizer_sha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+      "manifest_sha256": "cf870335dee647a053a5416918d3cd79e61cca6416122cb8353014fc3ea119f6",
+      "executable_sha256": "3fb16c92838bdc730818d46bece7402eea04554ebf3b622020c9721badb2d1b8",
+      "process_first_request": {
+        "cycle": 0,
+        "model_load_milliseconds": 2956.2318,
+        "backend_load_milliseconds": 319.6728,
+        "first_request_milliseconds": 131.4283,
+        "total_to_first_response_milliseconds": 3408.2271
+      },
+      "same_process_reload": [
+        {
+          "cycle": 1,
+          "model_load_milliseconds": 3463.9794,
+          "backend_load_milliseconds": 252.1742,
+          "first_request_milliseconds": 160.9924,
+          "total_to_first_response_milliseconds": 3877.1956
+        }
+      ],
+      "questions": [
+        {
+          "questions": 1,
+          "input_sha256": "d2a7c1cdd70595d1eefc9c787768c9875df37ce7af10c4db303e128f87333763",
+          "token_count": 13,
+          "candidates_per_question": 2,
+          "samples": 5,
+          "p50": 40.0566,
+          "p95": 41.002,
+          "p99": 41.002,
+          "raw_milliseconds": [
+            40.0566,
+            38.2203,
+            40.1235,
+            41.002,
+            39.7577
+          ],
+          "allocated_bytes": [
+            35040,
+            35040,
+            35040,
+            35040,
+            35040
+          ],
+          "requests_per_second": 25.105430254353152,
+          "questions_per_second": 25.105430254353152
+        },
+        {
+          "questions": 8,
+          "input_sha256": "cfeae22d6c0f6af64b4c991cee75f96f52ff0ee01d68e97c8fd4530f0786c5ef",
+          "token_count": 104,
+          "candidates_per_question": 2,
+          "samples": 5,
+          "p50": 311.1369,
+          "p95": 316.5158,
+          "p99": 316.5158,
+          "raw_milliseconds": [
+            316.5158,
+            311.1369,
+            310.788,
+            310.4935,
+            312.9186
+          ],
+          "allocated_bytes": [
+            253200,
+            253200,
+            253200,
+            253200,
+            253200
+          ],
+          "requests_per_second": 3.2013260148459572,
+          "questions_per_second": 25.610608118767658
+        },
+        {
+          "questions": 32,
+          "input_sha256": "c89b9ab6333604ae96dfe2fee27cd7bd547a1cb7e49e008e13f29e431b92cf8f",
+          "token_count": 416,
+          "candidates_per_question": 2,
+          "samples": 5,
+          "p50": 1228.3339,
+          "p95": 1236.0288,
+          "p99": 1236.0288,
+          "raw_milliseconds": [
+            1228.2878,
+            1234.7657,
+            1225.3138,
+            1228.3339,
+            1236.0288
+          ],
+          "allocated_bytes": [
+            997536,
+            997536,
+            997536,
+            997536,
+            997536
+          ],
+          "requests_per_second": 0.8126473939210725,
+          "questions_per_second": 26.00471660547432
+        }
+      ],
+      "peak_working_set_bytes": 3497668608,
+      "cuda_peak_owned_bytes": 1288116684,
+      "cuda_before_unload": {
+        "total_bytes": 8585216000,
+        "free_bytes": 5997854720,
+        "owned_bytes": 1286842372,
+        "peak_owned_bytes": 1288116684,
+        "owned_allocation_count": 165,
+        "loaded_module_count": 28,
+        "release_failure_count": 0
+      },
+      "cuda_after_unload": {
+        "total_bytes": 8585216000,
+        "free_bytes": 7411335168,
+        "owned_bytes": 0,
+        "peak_owned_bytes": 1288116684,
+        "owned_allocation_count": 0,
+        "loaded_module_count": 0,
+        "release_failure_count": 0
+      },
+      "cuda_load": {
+        "profiling_enabled": true,
+        "host_to_device_milliseconds": 180.4739999999999,
+        "host_to_device_bytes": 1286842372,
+        "device_to_host_milliseconds": 0,
+        "device_to_host_bytes": 0,
+        "module_load_milliseconds": 14.6198,
+        "kernel_milliseconds": 0,
+        "kernel_launch_count": 0
+      },
+      "cuda_profiled_forward": {
+        "profiling_enabled": true,
+        "host_to_device_milliseconds": 0.05550000000000001,
+        "host_to_device_bytes": 156,
+        "device_to_host_milliseconds": 0.2072,
+        "device_to_host_bytes": 156,
+        "module_load_milliseconds": 0,
+        "kernel_milliseconds": 112.19558325782418,
+        "kernel_launch_count": 1053
+      },
+      "profiled_forward_wall_milliseconds": 127.3499,
+      "managed_bytes_before": 83552,
+      "managed_bytes_after_collection": 67610872,
+      "model_objects_collected": true,
+      "diagnostics": [
+        "decision_cancelled",
+        "cancel_after_first_encoder_trace_ms=0.0306",
+        "decision_head_input_invalid",
+        "cuda_cancelled_constructor",
+        "recovery_after_cancel_and_invalid_input",
+        "cycle_0_unload_fail_closed",
+        "cycle_1_unload_fail_closed",
+        "model_encoder_head_pipeline_embedding_sentinels_collected_after_unload"
+      ],
+      "alignment": {
+        "tokens": [
+          2,
+          4,
+          4,
+          1
+        ],
+        "reference_logits": [
+          -0.057375,
+          0.24228567,
+          -0.33555993,
+          -0.039743207,
+          -0.13712718,
+          0.12859309
+        ],
+        "actual_logits": [
+          -0.05737535,
+          0.24228553,
+          -0.33556002,
+          -0.039743133,
+          -0.1371277,
+          0.12859324
+        ],
+        "encoder_max_absolute_error": 1.2397766E-05,
+        "logits_max_absolute_error": 5.2154064E-07,
+        "probability_max_absolute_error": 1.6837372E-07,
+        "head_only_max_absolute_error": null,
+        "encoder_tolerance": 0.05,
+        "logits_tolerance": 0.005,
+        "probability_tolerance": 0.002
+      },
+      "quantized_encoder_bytes": 0,
+      "quantized_head_bytes": 0,
+      "timing_scope": "E2E: parse request JSON + tokenize + sequential per-question encoder/head + typed response JSON; model load excluded. Cold = first request in this process, OS/driver disk caches not flushed. CUDA events measured in a separate instrumented forward.",
+      "resource_scope": "PeakWorkingSetBytes is OS process lifetime high-water RSS. CUDA owned peak counts successful driver allocations (not driver/context overhead); free/total memory is device-wide. FP32 source tensors retained in W8A32 mode. Managed bytes after full collection do not imply immediate OS RSS return.",
+      "quality_scope": "Numerical smoke on fixed inputs only; no language accuracy or calibrated quality claim. Percentiles use nearest rank; small sample counts are exploratory and p95/p99 may coincide."
+    },
+    {
+      "source_path": "D:\\source\\Sezika\\docs\\evidence\\s5-2026-09-24\\linux-scalar.json",
+      "source_sha256": "56f8c823553fa523f3412e97ff3112607d61f56443f2973ed926e5fd05d021fd",
+      "started_utc": "2026-09-24T02:57:16.0432579+08:00",
+      "rid": "linux-x64",
+      "backend": "scalar",
+      "native_aot": true,
+      "runtime": ".NET 10.0.12",
+      "precision": "FP32",
+      "samples": 1,
+      "warmup": 0,
+      "hardware": {
+        "cpu": "Intel Core Ultra 9 185H",
+        "gpu": null,
+        "operating_system": "Ubuntu 24.04.4 LTS",
+        "environment_label": "Ubuntu WSL2",
+        "logical_processors": 22,
+        "inference_threads": 1,
+        "vector_float_width": 4
+      },
+      "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+      "weights_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+      "tokenizer_sha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+      "manifest_sha256": "cf870335dee647a053a5416918d3cd79e61cca6416122cb8353014fc3ea119f6",
+      "executable_sha256": "f4863a48d6a29defd071bf844bdc1c0117806d8838c686724d5f8eeb00e7da07",
+      "process_first_request": {
+        "cycle": 0,
+        "model_load_milliseconds": 10968.3456,
+        "backend_load_milliseconds": 0.0112,
+        "first_request_milliseconds": 3308.3787,
+        "total_to_first_response_milliseconds": 14281.3287
+      },
+      "same_process_reload": [
+        {
+          "cycle": 1,
+          "model_load_milliseconds": 9061.2115,
+          "backend_load_milliseconds": 0.0032,
+          "first_request_milliseconds": 4070.3482,
+          "total_to_first_response_milliseconds": 13131.6121
+        }
+      ],
+      "questions": [
+        {
+          "questions": 3,
+          "input_sha256": "6c79effc526a04310aaa047af6c0d9cd09c6c0776cbc6fb4420473959629ea49",
+          "token_count": 39,
+          "candidates_per_question": 2,
+          "samples": 1,
+          "p50": 3263.7319,
+          "p95": 3263.7319,
+          "p99": 3263.7319,
+          "raw_milliseconds": [
+            3263.7319
+          ],
+          "allocated_bytes": [
+            50802040
+          ],
+          "requests_per_second": 0.3063977160624008,
+          "questions_per_second": 0.9191931481872024
+        }
+      ],
+      "peak_working_set_bytes": 3512184832,
+      "cuda_peak_owned_bytes": null,
+      "cuda_before_unload": null,
+      "cuda_after_unload": null,
+      "cuda_load": null,
+      "cuda_profiled_forward": null,
+      "profiled_forward_wall_milliseconds": null,
+      "managed_bytes_before": 75752,
+      "managed_bytes_after_collection": 67560960,
+      "model_objects_collected": true,
+      "diagnostics": [
+        "decision_cancelled",
+        "cancel_after_first_encoder_trace_ms=0.0119",
+        "decision_head_input_invalid",
+        "recovery_after_cancel_and_invalid_input",
+        "cycle_0_unload_fail_closed",
+        "cycle_1_unload_fail_closed",
+        "model_encoder_head_pipeline_embedding_sentinels_collected_after_unload"
+      ],
+      "alignment": {
+        "tokens": [
+          2,
+          4,
+          4,
+          1
+        ],
+        "reference_logits": [
+          -0.057376042,
+          0.2422853,
+          -0.33556065,
+          -0.0397434,
+          -0.13712792,
+          0.12859315
+        ],
+        "actual_logits": [
+          -0.057376042,
+          0.2422853,
+          -0.33556065,
+          -0.0397434,
+          -0.13712792,
+          0.12859315
+        ],
+        "encoder_max_absolute_error": 0,
+        "logits_max_absolute_error": 0,
+        "probability_max_absolute_error": 0,
+        "head_only_max_absolute_error": 0,
+        "encoder_tolerance": 0.05,
+        "logits_tolerance": 0.005,
+        "probability_tolerance": 0.002
+      },
+      "quantized_encoder_bytes": 0,
+      "quantized_head_bytes": 0,
+      "timing_scope": "E2E: parse request JSON + tokenize + sequential per-question encoder/head + typed response JSON; model load excluded. Cold = first request in this process, OS/driver disk caches not flushed. CUDA events measured in a separate instrumented forward.",
+      "resource_scope": "PeakWorkingSetBytes is OS process lifetime high-water RSS. CUDA owned peak counts successful driver allocations (not driver/context overhead); free/total memory is device-wide. FP32 source tensors retained in W8A32 mode. Managed bytes after full collection do not imply immediate OS RSS return.",
+      "quality_scope": "Numerical smoke on fixed inputs only; no language accuracy or calibrated quality claim. Percentiles use nearest rank; small sample counts are exploratory and p95/p99 may coincide."
+    },
+    {
+      "source_path": "D:\\source\\Sezika\\docs\\evidence\\s5-2026-09-24\\linux-simd.json",
+      "source_sha256": "3b4d48e3579141f55b51cd72bbc78b0ff2eba9c3f6d7a08f31c783006cd68afc",
+      "started_utc": "2026-09-24T02:55:32.9246208+08:00",
+      "rid": "linux-x64",
+      "backend": "simd",
+      "native_aot": true,
+      "runtime": ".NET 10.0.12",
+      "precision": "FP32",
+      "samples": 1,
+      "warmup": 0,
+      "hardware": {
+        "cpu": "Intel Core Ultra 9 185H",
+        "gpu": null,
+        "operating_system": "Ubuntu 24.04.4 LTS",
+        "environment_label": "Ubuntu WSL2",
+        "logical_processors": 22,
+        "inference_threads": 1,
+        "vector_float_width": 4
+      },
+      "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+      "weights_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+      "tokenizer_sha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+      "manifest_sha256": "cf870335dee647a053a5416918d3cd79e61cca6416122cb8353014fc3ea119f6",
+      "executable_sha256": "f4863a48d6a29defd071bf844bdc1c0117806d8838c686724d5f8eeb00e7da07",
+      "process_first_request": {
+        "cycle": 0,
+        "model_load_milliseconds": 10864.1646,
+        "backend_load_milliseconds": 0.0116,
+        "first_request_milliseconds": 1756.2788,
+        "total_to_first_response_milliseconds": 12626.1677
+      },
+      "same_process_reload": [
+        {
+          "cycle": 1,
+          "model_load_milliseconds": 9170.6756,
+          "backend_load_milliseconds": 0.0038,
+          "first_request_milliseconds": 1810.7756,
+          "total_to_first_response_milliseconds": 10981.5039
+        }
+      ],
+      "questions": [
+        {
+          "questions": 3,
+          "input_sha256": "6c79effc526a04310aaa047af6c0d9cd09c6c0776cbc6fb4420473959629ea49",
+          "token_count": 39,
+          "candidates_per_question": 2,
+          "samples": 1,
+          "p50": 1839.7478,
+          "p95": 1839.7478,
+          "p99": 1839.7478,
+          "raw_milliseconds": [
+            1839.7478
+          ],
+          "allocated_bytes": [
+            51107744
+          ],
+          "requests_per_second": 0.5435527630471959,
+          "questions_per_second": 1.6306582891415877
+        }
+      ],
+      "peak_working_set_bytes": 3516088320,
+      "cuda_peak_owned_bytes": null,
+      "cuda_before_unload": null,
+      "cuda_after_unload": null,
+      "cuda_load": null,
+      "cuda_profiled_forward": null,
+      "profiled_forward_wall_milliseconds": null,
+      "managed_bytes_before": 75744,
+      "managed_bytes_after_collection": 67565368,
+      "model_objects_collected": true,
+      "diagnostics": [
+        "decision_cancelled",
+        "cancel_after_first_encoder_trace_ms=0.0123",
+        "decision_head_input_invalid",
+        "recovery_after_cancel_and_invalid_input",
+        "cycle_0_unload_fail_closed",
+        "cycle_1_unload_fail_closed",
+        "model_encoder_head_pipeline_embedding_sentinels_collected_after_unload"
+      ],
+      "alignment": {
+        "tokens": [
+          2,
+          4,
+          4,
+          1
+        ],
+        "reference_logits": [
+          -0.057376042,
+          0.2422853,
+          -0.33556065,
+          -0.0397434,
+          -0.13712792,
+          0.12859315
+        ],
+        "actual_logits": [
+          -0.057372987,
+          0.24228692,
+          -0.33555722,
+          -0.03974247,
+          -0.1371261,
+          0.12859336
+        ],
+        "encoder_max_absolute_error": 2.2888184E-05,
+        "logits_max_absolute_error": 3.427267E-06,
+        "probability_max_absolute_error": 6.123544E-07,
+        "head_only_max_absolute_error": 1.758337E-06,
+        "encoder_tolerance": 0.05,
+        "logits_tolerance": 0.005,
+        "probability_tolerance": 0.002
+      },
+      "quantized_encoder_bytes": 0,
+      "quantized_head_bytes": 0,
+      "timing_scope": "E2E: parse request JSON + tokenize + sequential per-question encoder/head + typed response JSON; model load excluded. Cold = first request in this process, OS/driver disk caches not flushed. CUDA events measured in a separate instrumented forward.",
+      "resource_scope": "PeakWorkingSetBytes is OS process lifetime high-water RSS. CUDA owned peak counts successful driver allocations (not driver/context overhead); free/total memory is device-wide. FP32 source tensors retained in W8A32 mode. Managed bytes after full collection do not imply immediate OS RSS return.",
+      "quality_scope": "Numerical smoke on fixed inputs only; no language accuracy or calibrated quality claim. Percentiles use nearest rank; small sample counts are exploratory and p95/p99 may coincide."
+    },
+    {
+      "source_path": "D:\\source\\Sezika\\docs\\evidence\\s5-2026-09-24\\linux-int8.json",
+      "source_sha256": "1065bb2248bdf7f62961345d1e57159d9609f0740c3240a5dbf9317baa38e601",
+      "started_utc": "2026-09-24T02:56:30.5941552+08:00",
+      "rid": "linux-x64",
+      "backend": "int8",
+      "native_aot": true,
+      "runtime": ".NET 10.0.12",
+      "precision": "W8A32 row-symmetric int8 linear weights, FP32 activations/accumulation; embeddings/norm FP32",
+      "samples": 1,
+      "warmup": 0,
+      "hardware": {
+        "cpu": "Intel Core Ultra 9 185H",
+        "gpu": null,
+        "operating_system": "Ubuntu 24.04.4 LTS",
+        "environment_label": "Ubuntu WSL2",
+        "logical_processors": 22,
+        "inference_threads": 1,
+        "vector_float_width": 4
+      },
+      "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+      "weights_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+      "tokenizer_sha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+      "manifest_sha256": "cf870335dee647a053a5416918d3cd79e61cca6416122cb8353014fc3ea119f6",
+      "executable_sha256": "f4863a48d6a29defd071bf844bdc1c0117806d8838c686724d5f8eeb00e7da07",
+      "process_first_request": {
+        "cycle": 0,
+        "model_load_milliseconds": 11453.8983,
+        "backend_load_milliseconds": 111.5772,
+        "first_request_milliseconds": 4196.0609,
+        "total_to_first_response_milliseconds": 15767.7742
+      },
+      "same_process_reload": [
+        {
+          "cycle": 1,
+          "model_load_milliseconds": 9845.3115,
+          "backend_load_milliseconds": 110.8034,
+          "first_request_milliseconds": 4593.8502,
+          "total_to_first_response_milliseconds": 14550.0211
+        }
+      ],
+      "questions": [
+        {
+          "questions": 3,
+          "input_sha256": "6c79effc526a04310aaa047af6c0d9cd09c6c0776cbc6fb4420473959629ea49",
+          "token_count": 39,
+          "candidates_per_question": 2,
+          "samples": 1,
+          "p50": 4169.6844,
+          "p95": 4169.6844,
+          "p99": 4169.6844,
+          "raw_milliseconds": [
+            4169.6844
+          ],
+          "allocated_bytes": [
+            50802032
+          ],
+          "requests_per_second": 0.23982630436010935,
+          "questions_per_second": 0.7194789130803281
+        }
+      ],
+      "peak_working_set_bytes": 3751522304,
+      "cuda_peak_owned_bytes": null,
+      "cuda_before_unload": null,
+      "cuda_after_unload": null,
+      "cuda_load": null,
+      "cuda_profiled_forward": null,
+      "profiled_forward_wall_milliseconds": null,
+      "managed_bytes_before": 75744,
+      "managed_bytes_after_collection": 67560952,
+      "model_objects_collected": true,
+      "diagnostics": [
+        "decision_cancelled",
+        "cancel_after_first_encoder_trace_ms=0.0111",
+        "decision_head_input_invalid",
+        "recovery_after_cancel_and_invalid_input",
+        "cycle_0_unload_fail_closed",
+        "cycle_1_unload_fail_closed",
+        "model_encoder_head_pipeline_embedding_sentinels_collected_after_unload"
+      ],
+      "alignment": {
+        "tokens": [
+          2,
+          4,
+          4,
+          1
+        ],
+        "reference_logits": [
+          -0.057376042,
+          0.2422853,
+          -0.33556065,
+          -0.0397434,
+          -0.13712792,
+          0.12859315
+        ],
+        "actual_logits": [
+          -0.09625959,
+          0.20648475,
+          -0.37166256,
+          -0.077224046,
+          -0.16831946,
+          0.09723151
+        ],
+        "encoder_max_absolute_error": 1.5139763,
+        "logits_max_absolute_error": 0.038883545,
+        "probability_max_absolute_error": 0.00075352733,
+        "head_only_max_absolute_error": 0.017830402,
+        "encoder_tolerance": 2,
+        "logits_tolerance": 0.5,
+        "probability_tolerance": 0.1
+      },
+      "quantized_encoder_bytes": 110837760,
+      "quantized_head_bytes": 14804740,
+      "timing_scope": "E2E: parse request JSON + tokenize + sequential per-question encoder/head + typed response JSON; model load excluded. Cold = first request in this process, OS/driver disk caches not flushed. CUDA events measured in a separate instrumented forward.",
+      "resource_scope": "PeakWorkingSetBytes is OS process lifetime high-water RSS. CUDA owned peak counts successful driver allocations (not driver/context overhead); free/total memory is device-wide. FP32 source tensors retained in W8A32 mode. Managed bytes after full collection do not imply immediate OS RSS return.",
+      "quality_scope": "Numerical smoke on fixed inputs only; no language accuracy or calibrated quality claim. Percentiles use nearest rank; small sample counts are exploratory and p95/p99 may coincide."
+    },
+    {
+      "source_path": "D:\\source\\Sezika\\docs\\evidence\\s5-2026-09-24\\linux-cuda.json",
+      "source_sha256": "1e62e5ab329fff2176b4afd48e9cee79701357dc408bbb624b3ec756cec2a657",
+      "started_utc": "2026-09-24T02:56:05.3850136+08:00",
+      "rid": "linux-x64",
+      "backend": "cuda",
+      "native_aot": true,
+      "runtime": ".NET 10.0.12",
+      "precision": "FP32",
+      "samples": 1,
+      "warmup": 0,
+      "hardware": {
+        "cpu": "Intel Core Ultra 9 185H",
+        "gpu": {
+          "name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+          "driver_version": 13020,
+          "compute_capability_major": 8,
+          "compute_capability_minor": 9,
+          "total_memory_bytes": 8585216000
+        },
+        "operating_system": "Ubuntu 24.04.4 LTS",
+        "environment_label": "Ubuntu WSL2",
+        "logical_processors": 22,
+        "inference_threads": 1,
+        "vector_float_width": 4
+      },
+      "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+      "weights_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+      "tokenizer_sha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+      "manifest_sha256": "cf870335dee647a053a5416918d3cd79e61cca6416122cb8353014fc3ea119f6",
+      "executable_sha256": "f4863a48d6a29defd071bf844bdc1c0117806d8838c686724d5f8eeb00e7da07",
+      "process_first_request": {
+        "cycle": 0,
+        "model_load_milliseconds": 10366.2637,
+        "backend_load_milliseconds": 796.2254,
+        "first_request_milliseconds": 161.5612,
+        "total_to_first_response_milliseconds": 11327.0187
+      },
+      "same_process_reload": [
+        {
+          "cycle": 1,
+          "model_load_milliseconds": 9302.8598,
+          "backend_load_milliseconds": 303.7368,
+          "first_request_milliseconds": 157.3703,
+          "total_to_first_response_milliseconds": 9764.032
+        }
+      ],
+      "questions": [
+        {
+          "questions": 3,
+          "input_sha256": "6c79effc526a04310aaa047af6c0d9cd09c6c0776cbc6fb4420473959629ea49",
+          "token_count": 39,
+          "candidates_per_question": 2,
+          "samples": 1,
+          "p50": 136.201,
+          "p95": 136.201,
+          "p99": 136.201,
+          "raw_milliseconds": [
+            136.201
+          ],
+          "allocated_bytes": [
+            96392
+          ],
+          "requests_per_second": 7.342089999339212,
+          "questions_per_second": 22.026269998017636
+        }
+      ],
+      "peak_working_set_bytes": 3554103296,
+      "cuda_peak_owned_bytes": 1288116684,
+      "cuda_before_unload": {
+        "total_bytes": 8585216000,
+        "free_bytes": 5983174656,
+        "owned_bytes": 1286842372,
+        "peak_owned_bytes": 1288116684,
+        "owned_allocation_count": 165,
+        "loaded_module_count": 28,
+        "release_failure_count": 0
+      },
+      "cuda_after_unload": {
+        "total_bytes": 8585216000,
+        "free_bytes": 7396655104,
+        "owned_bytes": 0,
+        "peak_owned_bytes": 1288116684,
+        "owned_allocation_count": 0,
+        "loaded_module_count": 0,
+        "release_failure_count": 0
+      },
+      "cuda_load": {
+        "profiling_enabled": true,
+        "host_to_device_milliseconds": 165.2847,
+        "host_to_device_bytes": 1286842372,
+        "device_to_host_milliseconds": 0,
+        "device_to_host_bytes": 0,
+        "module_load_milliseconds": 320.95330000000007,
+        "kernel_milliseconds": 0,
+        "kernel_launch_count": 0
+      },
+      "cuda_profiled_forward": {
+        "profiling_enabled": true,
+        "host_to_device_milliseconds": 0.055099999999999996,
+        "host_to_device_bytes": 156,
+        "device_to_host_milliseconds": 0.2944,
+        "device_to_host_bytes": 156,
+        "module_load_milliseconds": 0,
+        "kernel_milliseconds": 109.82415925664827,
+        "kernel_launch_count": 1053
+      },
+      "profiled_forward_wall_milliseconds": 146.4248,
+      "managed_bytes_before": 75744,
+      "managed_bytes_after_collection": 67570520,
+      "model_objects_collected": true,
+      "diagnostics": [
+        "decision_cancelled",
+        "cancel_after_first_encoder_trace_ms=0.042",
+        "decision_head_input_invalid",
+        "cuda_cancelled_constructor",
+        "recovery_after_cancel_and_invalid_input",
+        "cycle_0_unload_fail_closed",
+        "cycle_1_unload_fail_closed",
+        "model_encoder_head_pipeline_embedding_sentinels_collected_after_unload"
+      ],
+      "alignment": {
+        "tokens": [
+          2,
+          4,
+          4,
+          1
+        ],
+        "reference_logits": [
+          -0.057376042,
+          0.2422853,
+          -0.33556065,
+          -0.0397434,
+          -0.13712792,
+          0.12859315
+        ],
+        "actual_logits": [
+          -0.05737535,
+          0.24228553,
+          -0.33556002,
+          -0.039743133,
+          -0.1371277,
+          0.12859324
+        ],
+        "encoder_max_absolute_error": 1.1444092E-05,
+        "logits_max_absolute_error": 6.92904E-07,
+        "probability_max_absolute_error": 1.09286894E-07,
+        "head_only_max_absolute_error": null,
+        "encoder_tolerance": 0.05,
+        "logits_tolerance": 0.005,
+        "probability_tolerance": 0.002
+      },
+      "quantized_encoder_bytes": 0,
+      "quantized_head_bytes": 0,
+      "timing_scope": "E2E: parse request JSON + tokenize + sequential per-question encoder/head + typed response JSON; model load excluded. Cold = first request in this process, OS/driver disk caches not flushed. CUDA events measured in a separate instrumented forward.",
+      "resource_scope": "PeakWorkingSetBytes is OS process lifetime high-water RSS. CUDA owned peak counts successful driver allocations (not driver/context overhead); free/total memory is device-wide. FP32 source tensors retained in W8A32 mode. Managed bytes after full collection do not imply immediate OS RSS return.",
+      "quality_scope": "Numerical smoke on fixed inputs only; no language accuracy or calibrated quality claim. Percentiles use nearest rank; small sample counts are exploratory and p95/p99 may coincide."
+    }
+  ],
+  "scope": {
+    "aggregation": "Each source report remains a separate row; samples are never pooled across RID, backend, executable or run.",
+    "cold": "Cycle 0 is one first-request observation in one process. OS/driver caches were not flushed. Later cycles are same-process reload observations, not independent cold starts.",
+    "hot": "Per-question-count raw samples and nearest-rank p50/p95/p99 are preserved. Small samples are exploratory; p95/p99 can coincide and do not establish stable tail latency.",
+    "cuda": "CUDA event telemetry is from a separate instrumented pass. Module-load time is not pure PTX JIT. Owned peak excludes driver/context overhead; free/total memory is device-wide.",
+    "memory": "Peak working set is the process lifetime high-water mark. W8A32 retains FP32 source weights. Collected model/session sentinels do not prove every array was checked or immediate OS RSS release.",
+    "validation": "This tool validates supplied schema-1 passed reports and their consistency; it does not execute inference, download weights, calibrate probabilities or establish language quality."
+  }
+}

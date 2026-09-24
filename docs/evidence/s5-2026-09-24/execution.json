@@ -1,0 +1,1567 @@
+{
+  "SchemaVersion": 1,
+  "CapturedUtc": "2026-09-24T03:05:42.1517023+08:00",
+  "Purpose": "S5-04/S5-05 final build, tests, Native AOT publish and real-model run execution evidence; pilot measurements excluded.",
+  "RepositoryRoot": "D:\\source\\Sezika",
+  "TaskArtifactsRoot": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924",
+  "Toolchains": {
+    "PowerShell": "7.6.6",
+    "WindowsDotnetSdk": "10.0.401",
+    "LinuxDotnetSdk": "10.0.112",
+    "LinuxDistribution": "Ubuntu",
+    "LinuxClang": "18.1.3",
+    "LinuxGcc": "13.3.0",
+    "WindowsCoffPeDumper": "14.51.36260.0"
+  },
+  "VerificationProcess": {
+    "Pid": 83396,
+    "ParentPid": 65768,
+    "Started": "2026-09-24T03:05:40.335249+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference = 'Stop'\n$taskRoot = 'C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924'\n$repositoryRoot = 'D:\\source\\Sezika'\n$evidenceRoot = Join-Path $repositoryRoot 'docs\\evidence\\s5-2026-09-24'\n$generationClock = [Diagnostics.Stopwatch]::StartNew()\n$generationCancellation = [Threading.CancellationTokenSource]::new([TimeSpan]::FromSeconds(60))\n$artifactReads = 0\nfunction Check-GenerationBound {\n    $generationCancellation.Token.ThrowIfCancellationRequested()\n    if ($generationClock.Elapsed.TotalSeconds -ge 60) { throw 'Evidence generation exceeded 60 seconds.' }\n}\nfunction Read-ArtifactDigest([string] $path) {\n    Check-GenerationBound\n    $script:artifactReads++\n    if ($script:artifactReads -gt 256) { throw 'Artifact hash bound exceeded 256 files.' }\n    $item = Get-Item -LiteralPath $path\n    if ($item.Length -gt 64MB) { throw 'Artifact exceeds the 64 MiB per-file read bound.' }\n    [ordered]@{ Path = $item.FullName; Bytes = $item.Length; Sha256 = (Get-FileHash -LiteralPath $item.FullName -Algorithm SHA256).Hash.ToLowerInvariant() }\n}\ntry {\n    $runs = @(\n        @{ Base = '20260923-183234-386-s5-final-build'; Kind = 'solution_build'; Directory = \\\"$taskRoot\\processes\\\" },\n        @{ Base = '20260923-183234-410-s5-final-publish-linux'; Kind = 'native_aot_publish'; Rid = 'linux-x64'; Directory = \\\"$taskRoot\\processes\\\" },\n        @{ Base = '20260923-183427-051-s5-final-core-tests'; Kind = 'tests'; TestSuite = 'core'; TestCount = 37; Directory = \\\"$taskRoot\\processes\\\" },\n        @{ Base = '20260923-183430-958-s5-final-cuda-tests'; Kind = 'tests'; TestSuite = 'cuda'; TestCount = 43; Directory = \\\"$taskRoot\\processes\\\" },\n        @{ Base = '20260923-183427-065-s5-final-publish-win'; Kind = 'native_aot_publish'; Rid = 'win-x64'; Directory = \\\"$taskRoot\\processes\\\" },\n        @{ Base = '20260923-183541-582-s5-final-win-simd'; Kind = 'real_model_native_aot'; Rid = 'win-x64'; Backend = 'simd'; Directory = \\\"$taskRoot\\processes\\\" },\n        @{ Base = '20260923-183910-626-s5-final-win-cuda'; Kind = 'real_model_native_aot'; Rid = 'win-x64'; Backend = 'cuda'; Directory = \\\"$taskRoot\\processes\\\" },\n        @{ Base = '20260923-183930-707-s5-final-win-int8'; Kind = 'real_model_native_aot'; Rid = 'win-x64'; Backend = 'int8'; Directory = \\\"$taskRoot\\processes\\\" },\n        @{ Base = '20260923-184801-966-s5-final-win-scalar'; Kind = 'real_model_native_aot'; Rid = 'win-x64'; Backend = 'scalar'; Directory = \\\"$taskRoot\\processes\\\" },\n        @{ Base = '20260923-185407-425-s5-native-dependencies-win'; Kind = 'native_dependencies'; Rid = 'win-x64'; Directory = \\\"$taskRoot\\processes\\\" },\n        @{ Base = '20260923-185407-441-s5-native-dependencies-linux'; Kind = 'native_dependencies'; Rid = 'linux-x64'; Directory = \\\"$taskRoot\\processes\\\" },\n        @{ Base = '20260923-185532-769-s5-final-linux-simd'; Kind = 'real_model_native_aot'; Rid = 'linux-x64'; Backend = 'simd'; Directory = \\\"$taskRoot\\processes\\\" },\n        @{ Base = '20260923-185605-231-s5-final-linux-cuda'; Kind = 'real_model_native_aot'; Rid = 'linux-x64'; Backend = 'cuda'; Directory = \\\"$taskRoot\\processes\\\" },\n        @{ Base = '20260923-185630-386-s5-final-linux-int8'; Kind = 'real_model_native_aot'; Rid = 'linux-x64'; Backend = 'int8'; Directory = \\\"$taskRoot\\processes\\\" },\n        @{ Base = '20260923-185715-870-s5-final-linux-scalar'; Kind = 'real_model_native_aot'; Rid = 'linux-x64'; Backend = 'scalar'; Directory = \\\"$taskRoot\\processes\\\" },\n        @{ Base = '20260923-181524-415-s5-resources-tests'; Kind = 'tests'; TestSuite = 'resources'; TestCount = 35; Directory = \\\"$repositoryRoot\\.artifacts\\processes\\\" },\n        @{ Base = '20260923-180956-728-s5-sdk-win'; Kind = 'toolchain_version'; Rid = 'win-x64'; Directory = \\\"$repositoryRoot\\.artifacts\\processes\\\" },\n        @{ Base = '20260923-180958-807-s5-sdk-linux'; Kind = 'toolchain_version'; Rid = 'linux-x64'; Directory = \\\"$repositoryRoot\\.artifacts\\processes\\\" }\n    )\n    if ($runs.Count -gt 32) { throw 'Run bound exceeded.' }\n    $runEvidence = [Collections.Generic.List[object]]::new()\n    for ($runIndex = 0; $runIndex -lt $runs.Count; $runIndex++) {\n        Check-GenerationBound\n        $run = $runs[$runIndex]\n        $prefix = Join-Path $run.Directory $run.Base\n        $identity = Get-Content -LiteralPath \\\"$prefix.identity.json\\\" -Raw | ConvertFrom-Json\n        $result = Get-Content -LiteralPath \\\"$prefix.result.json\\\" -Raw | ConvertFrom-Json\n        $stdout = [IO.File]::ReadAllText(\\\"$prefix.stdout.log\\\")\n        $stderr = [IO.File]::ReadAllText(\\\"$prefix.stderr.log\\\")\n        $entry = [ordered]@{\n            Id = $run.Base; Kind = $run.Kind; Rid = $run.Rid; Backend = $run.Backend\n            ProcessIdentity = $identity\n            Status = $result.Status; ExitCode = $result.ExitCode; ElapsedSeconds = $result.ElapsedSeconds\n            TimeoutSeconds = $result.TimeoutSeconds; Error = $result.Error; RunnerCleanupErrors = @($result.CleanupErrors)\n            TrackingLimitation = $result.Limitation\n            IdentityLog = Read-ArtifactDigest \\\"$prefix.identity.json\\\"\n            ResultLog = Read-ArtifactDigest \\\"$prefix.result.json\\\"\n            StdoutLog = Read-ArtifactDigest \\\"$prefix.stdout.log\\\"\n            StderrLog = Read-ArtifactDigest \\\"$prefix.stderr.log\\\"\n        }\n        if ($run.Kind -in @('solution_build', 'native_aot_publish')) {\n            $combined = $stdout + [Environment]::NewLine + $stderr\n            $entry.DiagnosticWarningCount = [regex]::Matches($combined, '(?im)\\bwarning\\s+[A-Z]{1,6}\\d{3,}\\b', [Text.RegularExpressions.RegexOptions]::None, [TimeSpan]::FromSeconds(1)).Count\n            $entry.DiagnosticErrorCount = [regex]::Matches($combined, '(?im)\\berror\\s+[A-Z]{1,6}\\d{3,}\\b', [Text.RegularExpressions.RegexOptions]::None, [TimeSpan]::FromSeconds(1)).Count\n            $entry.DiagnosticCountMeaning = 'Compiler/MSBuild warning/error diagnostic lines in stdout+stderr; successful solution build additionally prints 0 warnings and 0 errors.'\n        }\n        if ($run.Kind -eq 'tests') {\n            $entry.TestSuite = $run.TestSuite\n            $entry.PassedCheckCount = $run.TestCount\n            $entry.TestCountConfirmedInStdout = [regex]::IsMatch($stdout, '(?:tests passed: |diagnostics: )' + $run.TestCount + '\\b', [Text.RegularExpressions.RegexOptions]::IgnoreCase, [TimeSpan]::FromSeconds(1))\n            if (-not $entry.TestCountConfirmedInStdout) { throw \\\"Unconfirmed test count: $($run.Base)\\\" }\n        }\n        if ($run.Kind -in @('native_dependencies', 'toolchain_version')) { $entry.StdoutText = $stdout }\n        if ($result.Status -ne 'Succeeded' -or $result.ExitCode -ne 0) { throw \\\"Final run did not succeed: $($run.Base)\\\" }\n        $runEvidence.Add($entry)\n        if (($runIndex % 4) -eq 0) { Write-Host \\\"Recorded final command $($runIndex + 1)/$($runs.Count)\\\" }\n    }\n    $sourceManifestPath = Join-Path $evidenceRoot 'source-hashes.json'\n    $sourceManifest = Get-Content -LiteralPath $sourceManifestPath -Raw | ConvertFrom-Json\n    if ($sourceManifest.Files.Count -gt 256) { throw 'Source manifest exceeds 256 files.' }\n    $sourceClock = [Diagnostics.Stopwatch]::StartNew()\n    $verifiedSources = [Collections.Generic.List[object]]::new()\n    $mismatches = [Collections.Generic.List[object]]::new()\n    for ($sourceIndex = 0; $sourceIndex -lt $sourceManifest.Files.Count; $sourceIndex++) {\n        Check-GenerationBound\n        if ($sourceClock.Elapsed.TotalSeconds -ge 30) { throw 'Source verification exceeded 30 seconds.' }\n        $source = $sourceManifest.Files[$sourceIndex]\n        $path = [IO.Path]::GetFullPath((Join-Path $repositoryRoot $source.Path))\n        if (-not $path.StartsWith($repositoryRoot + '\\', [StringComparison]::OrdinalIgnoreCase)) { throw 'Source manifest escapes repository root.' }\n        $digest = Read-ArtifactDigest $path\n        $record = [ordered]@{ Path = $source.Path; ExpectedSha256 = $source.Sha256; ActualSha256 = $digest.Sha256; Matches = $source.Sha256 -eq $digest.Sha256 }\n        $verifiedSources.Add($record)\n        if (-not $record.Matches) { $mismatches.Add($record) }\n        if (($sourceIndex % 16) -eq 0) { Write-Host \\\"Verified source $($sourceIndex + 1)/$($sourceManifest.Files.Count)\\\" }\n    }\n    $reportNames = @('summary.json', 'win-scalar.json', 'win-simd.json', 'win-int8.json', 'win-cuda.json', 'linux-scalar.json', 'linux-simd.json', 'linux-int8.json', 'linux-cuda.json')\n    $reportDigests = [Collections.Generic.List[object]]::new()\n    for ($reportIndex = 0; $reportIndex -lt 9; $reportIndex++) { $reportDigests.Add((Read-ArtifactDigest (Join-Path $evidenceRoot $reportNames[$reportIndex]))) }\n    $binaryDigests = [Collections.Generic.List[object]]::new()\n    $dependencyEvidence = [Collections.Generic.List[object]]::new()\n    $runtimeIds = @('win-x64', 'linux-x64')\n    for ($ridIndex = 0; $ridIndex -lt 2; $ridIndex++) {\n        Check-GenerationBound\n        $rid = $runtimeIds[$ridIndex]\n        $binaryName = if ($rid -eq 'win-x64') { 'Sezika.Benchmarks.exe' } else { 'Sezika.Benchmarks' }\n        $binary = Read-ArtifactDigest (Join-Path \\\"$taskRoot\\aot-final\\$rid\\\" $binaryName)\n        $binary.Rid = $rid\n        $binaryDigests.Add($binary)\n        $buildDirectory = if ($rid -eq 'win-x64') { 'build-win' } else { 'build-linux' }\n        $assetsPath = Join-Path \\\"$taskRoot\\$buildDirectory\\\" 'obj\\Sezika.Benchmarks\\project.assets.json'\n        $assets = Get-Content -LiteralPath $assetsPath -Raw | ConvertFrom-Json -AsHashtable\n        if ($assets.libraries.Count -gt 128) { throw 'Dependency library bound exceeded.' }\n        $libraries = @($assets.libraries.Keys | Sort-Object)\n        $dependencyEvidence.Add([ordered]@{\n            Rid = $rid; Assets = Read-ArtifactDigest $assetsPath; Libraries = $libraries\n            IlgpuPresentInRuntimeProjectDependencyGraph = [bool](@($libraries | Where-Object { $_ -match '(?i)^ILGPU(?:[/.]|$)' }).Count -gt 0)\n            Interpretation = 'Native AOT benchmark runtime project.assets.json has no ILGPU dependency. Native import output is recorded separately; dynamically loaded CUDA Driver is not expected in static import listings.'\n        })\n    }\n    $currentProcess = Get-CimInstance -ClassName Win32_Process -Filter \\\"ProcessId = $PID\\\"\n    $evidence = [ordered]@{\n        SchemaVersion = 1; CapturedUtc = [DateTimeOffset]::UtcNow.ToString('O')\n        Purpose = 'S5-04/S5-05 final build, tests, Native AOT publish and real-model run execution evidence; pilot measurements excluded.'\n        RepositoryRoot = $repositoryRoot; TaskArtifactsRoot = $taskRoot\n        Toolchains = [ordered]@{ PowerShell = $PSVersionTable.PSVersion.ToString(); WindowsDotnetSdk = '10.0.401'; LinuxDotnetSdk = '10.0.112'; LinuxDistribution = 'Ubuntu'; LinuxClang = '18.1.3'; LinuxGcc = '13.3.0'; WindowsCoffPeDumper = '14.51.36260.0' }\n        VerificationProcess = [ordered]@{ Pid = $PID; ParentPid = $currentProcess.ParentProcessId; Started = $currentProcess.CreationDate; CommandLine = $currentProcess.CommandLine; TimeoutSeconds = 60; MaximumArtifactFiles = 256; HashedArtifactReads = $artifactReads; CreatedFiles = @('docs/evidence/s5-2026-09-24/execution.json'); Deletions = @(); SpawnedChildProcesses = @() }\n        Runs = $runEvidence.ToArray(); NativeAotBinaries = $binaryDigests.ToArray(); RuntimeDependencyGraphs = $dependencyEvidence.ToArray(); Reports = $reportDigests.ToArray()\n        SourceVerification = [ordered]@{ Manifest = Read-ArtifactDigest $sourceManifestPath; CapturedUtc = $sourceManifest.CapturedUtc; MaximumFiles = 256; TimeoutSeconds = 30; CheckedFiles = $verifiedSources.Count; ElapsedSeconds = [Math]::Round($sourceClock.Elapsed.TotalSeconds, 3); AllMatched = $mismatches.Count -eq 0; Mismatches = $mismatches.ToArray(); Files = $verifiedSources.ToArray() }\n        Scope = 'Core/resources/CUDA counts are executable assertion checks, not model quality metrics. Native AOT runs cover final win-x64 and Ubuntu linux-x64 binaries. Process cleanup auditing is maintained separately.'\n    }\n    $outputPath = Join-Path $evidenceRoot 'execution.json'\n    $json = $evidence | ConvertTo-Json -Depth 40\n    [IO.File]::WriteAllText($outputPath, $json + [Environment]::NewLine, [Text.UTF8Encoding]::new($false))\n    [pscustomobject]@{ Output = $outputPath; Runs = $runEvidence.Count; VerifiedSources = $verifiedSources.Count; SourceMismatches = $mismatches.Count; Reports = $reportDigests.Count; HashedArtifacts = $artifactReads; Bytes = (Get-Item -LiteralPath $outputPath).Length; ElapsedSeconds = [Math]::Round($generationClock.Elapsed.TotalSeconds,3) } | ConvertTo-Json\n} finally { $generationCancellation.Dispose() }\"",
+    "TimeoutSeconds": 60,
+    "MaximumArtifactFiles": 256,
+    "HashedArtifactReads": 143,
+    "CreatedFiles": [
+      "docs/evidence/s5-2026-09-24/execution.json"
+    ],
+    "Deletions": [],
+    "SpawnedChildProcesses": []
+  },
+  "Runs": [
+    {
+      "Id": "20260923-183234-386-s5-final-build",
+      "Kind": "solution_build",
+      "Rid": null,
+      "Backend": null,
+      "ProcessIdentity": {
+        "Pid": 53240,
+        "Started": "2026-09-23T18:32:34.4196766Z",
+        "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build Sezika.slnx -c Release --artifacts-path C:/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/solution --nologo --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+        "ParentPid": 20772,
+        "TimeoutSeconds": 180,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "build",
+          "Sezika.slnx",
+          "-c",
+          "Release",
+          "--artifacts-path",
+          "C:/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/solution",
+          "--nologo",
+          "--disable-build-servers",
+          "-m:1",
+          "-nr:false",
+          "-p:UseSharedCompilation=false"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      },
+      "Status": "Succeeded",
+      "ExitCode": 0,
+      "ElapsedSeconds": 46.442,
+      "TimeoutSeconds": 180,
+      "Error": null,
+      "RunnerCleanupErrors": [],
+      "TrackingLimitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking.",
+      "IdentityLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183234-386-s5-final-build.identity.json",
+        "Bytes": 762,
+        "Sha256": "d8ff80b4544be28e51dbe7fc8347221c30d395a6cb5bfe4a502aacbfaeee4f42"
+      },
+      "ResultLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183234-386-s5-final-build.result.json",
+        "Bytes": 7576,
+        "Sha256": "93b053b50bd11029f5421c3524e2ee415db40ed0e60c2b9559d499fefff88d63"
+      },
+      "StdoutLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183234-386-s5-final-build.stdout.log",
+        "Bytes": 3199,
+        "Sha256": "788fcccfd9d1038e0f4bf77ca0bba4cf4e09845817b7ac290583643e9f34c58c"
+      },
+      "StderrLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183234-386-s5-final-build.stderr.log",
+        "Bytes": 0,
+        "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "DiagnosticWarningCount": 0,
+      "DiagnosticErrorCount": 0,
+      "DiagnosticCountMeaning": "Compiler/MSBuild warning/error diagnostic lines in stdout+stderr; successful solution build additionally prints 0 warnings and 0 errors."
+    },
+    {
+      "Id": "20260923-183234-410-s5-final-publish-linux",
+      "Kind": "native_aot_publish",
+      "Rid": "linux-x64",
+      "Backend": null,
+      "ProcessIdentity": {
+        "Pid": 80540,
+        "Started": "2026-09-23T18:32:34.4494196Z",
+        "CommandLine": "\"C:\\Windows\\system32\\wsl.exe\" -d Ubuntu -- bash -lc \"set -euo pipefail\ncd /mnt/d/source/Sezika\nexport DOTNET_CLI_DO_NOT_USE_MSBUILD_SERVER=1 MSBUILDDISABLENODEREUSE=1 DOTNET_PROCESSOR_COUNT=2\nexec /usr/bin/timeout --signal=TERM --kill-after=10s 560s bash -c 'ps -p $$ -o pid,ppid,lstart,args; exec /usr/bin/dotnet publish tools/Sezika.Benchmarks/Sezika.Benchmarks.csproj -c Release -r linux-x64 --self-contained true -p:PublishAot=true -p:StripSymbols=true -p:IlcMaxDegreeOfParallelism=2 --artifacts-path /mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/build-linux -o /mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/aot-final/linux-x64 --nologo --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false'\"",
+        "ParentPid": 39368,
+        "TimeoutSeconds": 600,
+        "FilePath": "C:\\Windows\\system32\\wsl.exe",
+        "Arguments": [
+          "-d",
+          "Ubuntu",
+          "--",
+          "bash",
+          "-lc",
+          "set -euo pipefail\ncd /mnt/d/source/Sezika\nexport DOTNET_CLI_DO_NOT_USE_MSBUILD_SERVER=1 MSBUILDDISABLENODEREUSE=1 DOTNET_PROCESSOR_COUNT=2\nexec /usr/bin/timeout --signal=TERM --kill-after=10s 560s bash -c 'ps -p $$ -o pid,ppid,lstart,args; exec /usr/bin/dotnet publish tools/Sezika.Benchmarks/Sezika.Benchmarks.csproj -c Release -r linux-x64 --self-contained true -p:PublishAot=true -p:StripSymbols=true -p:IlcMaxDegreeOfParallelism=2 --artifacts-path /mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/build-linux -o /mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/aot-final/linux-x64 --nologo --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false'"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      },
+      "Status": "Succeeded",
+      "ExitCode": 0,
+      "ElapsedSeconds": 41.203,
+      "TimeoutSeconds": 600,
+      "Error": null,
+      "RunnerCleanupErrors": [],
+      "TrackingLimitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking.",
+      "IdentityLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183234-410-s5-final-publish-linux.identity.json",
+        "Bytes": 1750,
+        "Sha256": "f1d41b4cbc0f871291b634090c2c1619d148c501c145dc3588a35cd9cbf2e4ac"
+      },
+      "ResultLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183234-410-s5-final-publish-linux.result.json",
+        "Bytes": 4596,
+        "Sha256": "530ee22278c098660e55a476a13d8b82ae16ddd6c671de11383c05724a28fbd7"
+      },
+      "StdoutLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183234-410-s5-final-publish-linux.stdout.log",
+        "Bytes": 1223,
+        "Sha256": "685ec88de5df83eb72beb140f5e234814d059b90f677223d6a39018bf15683db"
+      },
+      "StderrLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183234-410-s5-final-publish-linux.stderr.log",
+        "Bytes": 51,
+        "Sha256": "b9295050338450e1f2fe7f4bd4411764002b46d9dfe5fea0bc86c964e426bc8c"
+      },
+      "DiagnosticWarningCount": 0,
+      "DiagnosticErrorCount": 0,
+      "DiagnosticCountMeaning": "Compiler/MSBuild warning/error diagnostic lines in stdout+stderr; successful solution build additionally prints 0 warnings and 0 errors."
+    },
+    {
+      "Id": "20260923-183427-051-s5-final-core-tests",
+      "Kind": "tests",
+      "Rid": null,
+      "Backend": null,
+      "ProcessIdentity": {
+        "Pid": 48816,
+        "Started": "2026-09-23T18:34:27.0970147Z",
+        "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" C:/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/solution/bin/Sezika.Tests/release/Sezika.Tests.dll",
+        "ParentPid": 39600,
+        "TimeoutSeconds": 90,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "C:/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/solution/bin/Sezika.Tests/release/Sezika.Tests.dll"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      },
+      "Status": "Succeeded",
+      "ExitCode": 0,
+      "ElapsedSeconds": 3.83,
+      "TimeoutSeconds": 90,
+      "Error": null,
+      "RunnerCleanupErrors": [],
+      "TrackingLimitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking.",
+      "IdentityLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183427-051-s5-final-core-tests.identity.json",
+        "Bytes": 517,
+        "Sha256": "fff578a54ba89daf22d04ef0d7861e19d53c09e3d408dd25d416fdfd5918de3e"
+      },
+      "ResultLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183427-051-s5-final-core-tests.result.json",
+        "Bytes": 1386,
+        "Sha256": "325145d1088518ae40dce4a5a2cd60925e46dee45bcd4dc16c32e07c299c97d2"
+      },
+      "StdoutLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183427-051-s5-final-core-tests.stdout.log",
+        "Bytes": 2071,
+        "Sha256": "f95f81ea4d0b8c7e1b420d9733e1cad1ed97453dab2604616d0a8c1f36a38613"
+      },
+      "StderrLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183427-051-s5-final-core-tests.stderr.log",
+        "Bytes": 0,
+        "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "TestSuite": "core",
+      "PassedCheckCount": 37,
+      "TestCountConfirmedInStdout": true
+    },
+    {
+      "Id": "20260923-183430-958-s5-final-cuda-tests",
+      "Kind": "tests",
+      "Rid": null,
+      "Backend": null,
+      "ProcessIdentity": {
+        "Pid": 71708,
+        "Started": "2026-09-23T18:34:30.9651672Z",
+        "CommandLine": null,
+        "ParentPid": null,
+        "TimeoutSeconds": 45,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "C:/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/solution/bin/Sezika.Cuda.Diagnostics.Tests/release/Sezika.Cuda.Diagnostics.Tests.dll"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      },
+      "Status": "Succeeded",
+      "ExitCode": 0,
+      "ElapsedSeconds": 2.564,
+      "TimeoutSeconds": 45,
+      "Error": null,
+      "RunnerCleanupErrors": [],
+      "TrackingLimitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking.",
+      "IdentityLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183430-958-s5-final-cuda-tests.identity.json",
+        "Bytes": 407,
+        "Sha256": "261c2fee8897224e00008e9c1adaa7367af34fa7035665db27edfbae59f2127f"
+      },
+      "ResultLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183430-958-s5-final-cuda-tests.result.json",
+        "Bytes": 1022,
+        "Sha256": "d0fc8eeaab34cb81a3d73f207f25414d0b6f954bb6231cd63f2d4c324e7cc300"
+      },
+      "StdoutLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183430-958-s5-final-cuda-tests.stdout.log",
+        "Bytes": 2239,
+        "Sha256": "64fb01e921f284fa8d452038846644267ee2616b826abedcb361a119854ae93e"
+      },
+      "StderrLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183430-958-s5-final-cuda-tests.stderr.log",
+        "Bytes": 0,
+        "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "TestSuite": "cuda",
+      "PassedCheckCount": 43,
+      "TestCountConfirmedInStdout": true
+    },
+    {
+      "Id": "20260923-183427-065-s5-final-publish-win",
+      "Kind": "native_aot_publish",
+      "Rid": "win-x64",
+      "Backend": null,
+      "ProcessIdentity": {
+        "Pid": 86620,
+        "Started": "2026-09-23T18:34:27.1137529Z",
+        "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish tools/Sezika.Benchmarks/Sezika.Benchmarks.csproj -c Release -r win-x64 --self-contained true -p:PublishAot=true -p:StripSymbols=true -p:IlcMaxDegreeOfParallelism=2 --artifacts-path C:/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/build-win -o C:/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/aot-final/win-x64 --nologo --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+        "ParentPid": 73940,
+        "TimeoutSeconds": 600,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "publish",
+          "tools/Sezika.Benchmarks/Sezika.Benchmarks.csproj",
+          "-c",
+          "Release",
+          "-r",
+          "win-x64",
+          "--self-contained",
+          "true",
+          "-p:PublishAot=true",
+          "-p:StripSymbols=true",
+          "-p:IlcMaxDegreeOfParallelism=2",
+          "--artifacts-path",
+          "C:/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/build-win",
+          "-o",
+          "C:/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/aot-final/win-x64",
+          "--nologo",
+          "--disable-build-servers",
+          "-m:1",
+          "-nr:false",
+          "-p:UseSharedCompilation=false"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      },
+      "Status": "Succeeded",
+      "ExitCode": 0,
+      "ElapsedSeconds": 30.43,
+      "TimeoutSeconds": 600,
+      "Error": null,
+      "RunnerCleanupErrors": [],
+      "TrackingLimitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking.",
+      "IdentityLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183427-065-s5-final-publish-win.identity.json",
+        "Bytes": 1270,
+        "Sha256": "b6f878f3511511734cdf0fde1d8a0e9adf93ac31d1e4aa18886a0e677f02d9a5"
+      },
+      "ResultLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183427-065-s5-final-publish-win.result.json",
+        "Bytes": 6960,
+        "Sha256": "e69340ebdac2c0df5d31fec0a814f855c2565f453530387bd737382bec1a8dc2"
+      },
+      "StdoutLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183427-065-s5-final-publish-win.stdout.log",
+        "Bytes": 582,
+        "Sha256": "9983939396ceea684d0021045b90656a1a3498210e62d2d3204f113aa9c067e3"
+      },
+      "StderrLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183427-065-s5-final-publish-win.stderr.log",
+        "Bytes": 0,
+        "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "DiagnosticWarningCount": 0,
+      "DiagnosticErrorCount": 0,
+      "DiagnosticCountMeaning": "Compiler/MSBuild warning/error diagnostic lines in stdout+stderr; successful solution build additionally prints 0 warnings and 0 errors."
+    },
+    {
+      "Id": "20260923-183541-582-s5-final-win-simd",
+      "Kind": "real_model_native_aot",
+      "Rid": "win-x64",
+      "Backend": "simd",
+      "ProcessIdentity": {
+        "Pid": 18768,
+        "Started": "2026-09-23T18:35:41.6399854Z",
+        "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\aot-final\\win-x64\\Sezika.Benchmarks.exe\" --backend simd --samples 5 --warmup 1 --cycles 2 --questions 1,8,32 --timeout-seconds 1200 --cpu \"Intel Core Ultra 9 185H\" --environment \"Windows 11 native\" --require-aot --output C:/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/final-win-simd.json",
+        "ParentPid": 16684,
+        "TimeoutSeconds": 1215,
+        "FilePath": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\aot-final\\win-x64\\Sezika.Benchmarks.exe",
+        "Arguments": [
+          "--backend",
+          "simd",
+          "--samples",
+          "5",
+          "--warmup",
+          "1",
+          "--cycles",
+          "2",
+          "--questions",
+          "1,8,32",
+          "--timeout-seconds",
+          "1200",
+          "--cpu",
+          "Intel Core Ultra 9 185H",
+          "--environment",
+          "Windows 11 native",
+          "--require-aot",
+          "--output",
+          "C:/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/final-win-simd.json"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      },
+      "Status": "Succeeded",
+      "ExitCode": 0,
+      "ElapsedSeconds": 208.975,
+      "TimeoutSeconds": 1215,
+      "Error": null,
+      "RunnerCleanupErrors": [],
+      "TrackingLimitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking.",
+      "IdentityLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183541-582-s5-final-win-simd.identity.json",
+        "Bytes": 1089,
+        "Sha256": "851d69a8569b06cc646493d51c4fecc672cbbfcaa39bd77a46245894ab45eece"
+      },
+      "ResultLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183541-582-s5-final-win-simd.result.json",
+        "Bytes": 2252,
+        "Sha256": "b16fc369dad75f87f1dae003b73b0158b8c0aeb6d4429d9ba8f2d4e7dff07664"
+      },
+      "StdoutLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183541-582-s5-final-win-simd.stdout.log",
+        "Bytes": 652,
+        "Sha256": "384fa3f7fff897e97802ba634b5458fd6b3255931b730df145df61f349e3918e"
+      },
+      "StderrLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183541-582-s5-final-win-simd.stderr.log",
+        "Bytes": 0,
+        "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "Id": "20260923-183910-626-s5-final-win-cuda",
+      "Kind": "real_model_native_aot",
+      "Rid": "win-x64",
+      "Backend": "cuda",
+      "ProcessIdentity": {
+        "Pid": 58208,
+        "Started": "2026-09-23T18:39:10.6306558Z",
+        "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\aot-final\\win-x64\\Sezika.Benchmarks.exe\" --backend cuda --samples 5 --warmup 1 --cycles 2 --questions 1,8,32 --timeout-seconds 1200 --cpu \"Intel Core Ultra 9 185H\" --environment \"Windows 11 native\" --require-aot --output C:/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/final-win-cuda.json",
+        "ParentPid": 16684,
+        "TimeoutSeconds": 1215,
+        "FilePath": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\aot-final\\win-x64\\Sezika.Benchmarks.exe",
+        "Arguments": [
+          "--backend",
+          "cuda",
+          "--samples",
+          "5",
+          "--warmup",
+          "1",
+          "--cycles",
+          "2",
+          "--questions",
+          "1,8,32",
+          "--timeout-seconds",
+          "1200",
+          "--cpu",
+          "Intel Core Ultra 9 185H",
+          "--environment",
+          "Windows 11 native",
+          "--require-aot",
+          "--output",
+          "C:/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/final-win-cuda.json"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      },
+      "Status": "Succeeded",
+      "ExitCode": 0,
+      "ElapsedSeconds": 20.069,
+      "TimeoutSeconds": 1215,
+      "Error": null,
+      "RunnerCleanupErrors": [],
+      "TrackingLimitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking.",
+      "IdentityLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183910-626-s5-final-win-cuda.identity.json",
+        "Bytes": 1089,
+        "Sha256": "8ac9b33e763bbad43ff53fb2042ae98fa2947b50b7f027c28b4a60de89d0981a"
+      },
+      "ResultLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183910-626-s5-final-win-cuda.result.json",
+        "Bytes": 2251,
+        "Sha256": "984ec9330ccfd4ac298f18e2ea787f263bfcb658a40411ada744f03c1869aafb"
+      },
+      "StdoutLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183910-626-s5-final-win-cuda.stdout.log",
+        "Bytes": 652,
+        "Sha256": "f0affe822206f2b7058bb52b2ba3fdd12e2149370e2cc37e37f44be3fb540ebd"
+      },
+      "StderrLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183910-626-s5-final-win-cuda.stderr.log",
+        "Bytes": 0,
+        "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "Id": "20260923-183930-707-s5-final-win-int8",
+      "Kind": "real_model_native_aot",
+      "Rid": "win-x64",
+      "Backend": "int8",
+      "ProcessIdentity": {
+        "Pid": 24572,
+        "Started": "2026-09-23T18:39:30.7091117Z",
+        "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\aot-final\\win-x64\\Sezika.Benchmarks.exe\" --backend int8 --samples 5 --warmup 1 --cycles 2 --questions 1,8,32 --timeout-seconds 1200 --cpu \"Intel Core Ultra 9 185H\" --environment \"Windows 11 native\" --require-aot --output C:/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/final-win-int8.json",
+        "ParentPid": 16684,
+        "TimeoutSeconds": 1215,
+        "FilePath": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\aot-final\\win-x64\\Sezika.Benchmarks.exe",
+        "Arguments": [
+          "--backend",
+          "int8",
+          "--samples",
+          "5",
+          "--warmup",
+          "1",
+          "--cycles",
+          "2",
+          "--questions",
+          "1,8,32",
+          "--timeout-seconds",
+          "1200",
+          "--cpu",
+          "Intel Core Ultra 9 185H",
+          "--environment",
+          "Windows 11 native",
+          "--require-aot",
+          "--output",
+          "C:/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/final-win-int8.json"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      },
+      "Status": "Succeeded",
+      "ExitCode": 0,
+      "ElapsedSeconds": 511.245,
+      "TimeoutSeconds": 1215,
+      "Error": null,
+      "RunnerCleanupErrors": [],
+      "TrackingLimitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking.",
+      "IdentityLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183930-707-s5-final-win-int8.identity.json",
+        "Bytes": 1089,
+        "Sha256": "ba838ebd1bf78ec037d511cbbd3754453b042269cfb9bfc0b8202e44600f8863"
+      },
+      "ResultLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183930-707-s5-final-win-int8.result.json",
+        "Bytes": 2252,
+        "Sha256": "0a02f5d85afc0fc77329f24c2930b567918d22aeed2fd111913569d8c7c48203"
+      },
+      "StdoutLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183930-707-s5-final-win-int8.stdout.log",
+        "Bytes": 652,
+        "Sha256": "61cf351414bb54d69ad2276fdecd73a44746a2617089879d35525eb9aa3de6d5"
+      },
+      "StderrLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-183930-707-s5-final-win-int8.stderr.log",
+        "Bytes": 0,
+        "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "Id": "20260923-184801-966-s5-final-win-scalar",
+      "Kind": "real_model_native_aot",
+      "Rid": "win-x64",
+      "Backend": "scalar",
+      "ProcessIdentity": {
+        "Pid": 66816,
+        "Started": "2026-09-23T18:48:01.969825Z",
+        "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\aot-final\\win-x64\\Sezika.Benchmarks.exe\" --backend scalar --samples 5 --warmup 1 --cycles 2 --questions 1,8,32 --timeout-seconds 1200 --cpu \"Intel Core Ultra 9 185H\" --environment \"Windows 11 native\" --require-aot --output C:/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/final-win-scalar.json",
+        "ParentPid": 16684,
+        "TimeoutSeconds": 1215,
+        "FilePath": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\aot-final\\win-x64\\Sezika.Benchmarks.exe",
+        "Arguments": [
+          "--backend",
+          "scalar",
+          "--samples",
+          "5",
+          "--warmup",
+          "1",
+          "--cycles",
+          "2",
+          "--questions",
+          "1,8,32",
+          "--timeout-seconds",
+          "1200",
+          "--cpu",
+          "Intel Core Ultra 9 185H",
+          "--environment",
+          "Windows 11 native",
+          "--require-aot",
+          "--output",
+          "C:/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/final-win-scalar.json"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      },
+      "Status": "Succeeded",
+      "ExitCode": 0,
+      "ElapsedSeconds": 361.55,
+      "TimeoutSeconds": 1215,
+      "Error": null,
+      "RunnerCleanupErrors": [],
+      "TrackingLimitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking.",
+      "IdentityLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-184801-966-s5-final-win-scalar.identity.json",
+        "Bytes": 1096,
+        "Sha256": "2d59ad006ec7029914df99721f53a747da17d239ee34d1f3946cb8147bb4ab65"
+      },
+      "ResultLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-184801-966-s5-final-win-scalar.result.json",
+        "Bytes": 2263,
+        "Sha256": "7ed35f2e7063b8b7642e9d9a1c16b0efe21909967ef75e4d675ed95f6f73b76f"
+      },
+      "StdoutLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-184801-966-s5-final-win-scalar.stdout.log",
+        "Bytes": 658,
+        "Sha256": "5f4dbf82cec24190e5c5ca078e56f10b233674bdbd6e724223605967a2324fc2"
+      },
+      "StderrLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-184801-966-s5-final-win-scalar.stderr.log",
+        "Bytes": 0,
+        "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "Id": "20260923-185407-425-s5-native-dependencies-win",
+      "Kind": "native_dependencies",
+      "Rid": "win-x64",
+      "Backend": null,
+      "ProcessIdentity": {
+        "Pid": 21404,
+        "Started": "2026-09-23T18:54:07.4633689Z",
+        "CommandLine": null,
+        "ParentPid": null,
+        "TimeoutSeconds": 20,
+        "FilePath": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\dumpbin.exe",
+        "Arguments": [
+          "/dependents",
+          "C:/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/aot-final/win-x64/Sezika.Benchmarks.exe"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      },
+      "Status": "Succeeded",
+      "ExitCode": 0,
+      "ElapsedSeconds": 1.97,
+      "TimeoutSeconds": 20,
+      "Error": null,
+      "RunnerCleanupErrors": [],
+      "TrackingLimitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking.",
+      "IdentityLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185407-425-s5-native-dependencies-win.identity.json",
+        "Bytes": 464,
+        "Sha256": "e1d021946095221fef418bce481e4d2589c2806eb3f326c72a14391d081a0b12"
+      },
+      "ResultLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185407-425-s5-native-dependencies-win.result.json",
+        "Bytes": 1092,
+        "Sha256": "c3ced88099806738f3753dc5fbf42bd001adb04f894cd0037b16a2fee8f4bd4c"
+      },
+      "StdoutLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185407-425-s5-native-dependencies-win.stdout.log",
+        "Bytes": 783,
+        "Sha256": "0771952d4578f639b6fb56108178bb09d36fcd225a2dab3bf6a4ee1dc3f8b894"
+      },
+      "StderrLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185407-425-s5-native-dependencies-win.stderr.log",
+        "Bytes": 0,
+        "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "StdoutText": "Microsoft (R) COFF/PE Dumper Version 14.51.36260.0\r\nCopyright (C) Microsoft Corporation.  All rights reserved.\r\n\r\n\r\nDump of file C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\aot-final\\win-x64\\Sezika.Benchmarks.exe\r\n\r\nFile Type: EXECUTABLE IMAGE\r\n\r\n  Image has the following dependencies:\r\n\r\n    ADVAPI32.dll\r\n    bcrypt.dll\r\n    KERNEL32.dll\r\n    ole32.dll\r\n    USER32.dll\r\n    api-ms-win-crt-math-l1-1-0.dll\r\n    api-ms-win-crt-heap-l1-1-0.dll\r\n    api-ms-win-crt-string-l1-1-0.dll\r\n    api-ms-win-crt-convert-l1-1-0.dll\r\n    api-ms-win-crt-stdio-l1-1-0.dll\r\n    api-ms-win-crt-runtime-l1-1-0.dll\r\n    api-ms-win-crt-locale-l1-1-0.dll\r\n\r\n  Summary\r\n\r\n       57000 .data\r\n       28000 .pdata\r\n      1CB000 .rdata\r\n       21000 .reloc\r\n        1000 .rsrc\r\n      269000 .text\r\n"
+    },
+    {
+      "Id": "20260923-185407-441-s5-native-dependencies-linux",
+      "Kind": "native_dependencies",
+      "Rid": "linux-x64",
+      "Backend": null,
+      "ProcessIdentity": {
+        "Pid": 53156,
+        "Started": "2026-09-23T18:54:07.4777033Z",
+        "CommandLine": null,
+        "ParentPid": null,
+        "TimeoutSeconds": 25,
+        "FilePath": "C:\\Windows\\system32\\wsl.exe",
+        "Arguments": [
+          "-d",
+          "Ubuntu",
+          "--",
+          "/usr/bin/timeout",
+          "15s",
+          "ldd",
+          "/mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/aot-final/linux-x64/Sezika.Benchmarks"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      },
+      "Status": "Succeeded",
+      "ExitCode": 0,
+      "ElapsedSeconds": 1.906,
+      "TimeoutSeconds": 25,
+      "Error": null,
+      "RunnerCleanupErrors": [],
+      "TrackingLimitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking.",
+      "IdentityLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185407-441-s5-native-dependencies-linux.identity.json",
+        "Bytes": 443,
+        "Sha256": "194c7c6fc1af2e491c01e9eacc25ab624851c43c4ee4a305d6cf57352b75bc96"
+      },
+      "ResultLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185407-441-s5-native-dependencies-linux.result.json",
+        "Bytes": 1076,
+        "Sha256": "95a97c9d9b306c8eaecb0837fc772ad93fc5d6c4da5ecf83e27aeff828f0c433"
+      },
+      "StdoutLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185407-441-s5-native-dependencies-linux.stdout.log",
+        "Bytes": 222,
+        "Sha256": "9af95e5709629e9f28efe8a9f22c0405e58b8cbbe2ff97299b536d0c06686062"
+      },
+      "StderrLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185407-441-s5-native-dependencies-linux.stderr.log",
+        "Bytes": 0,
+        "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "StdoutText": "\tlinux-vdso.so.1 (0x00007ffdea3a8000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x000073d206e8d000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x000073d206c00000)\n\t/lib64/ld-linux-x86-64.so.2 (0x000073d207549000)\n"
+    },
+    {
+      "Id": "20260923-185532-769-s5-final-linux-simd",
+      "Kind": "real_model_native_aot",
+      "Rid": "linux-x64",
+      "Backend": "simd",
+      "ProcessIdentity": {
+        "Pid": 67888,
+        "Started": "2026-09-23T18:55:32.7989888Z",
+        "CommandLine": "\"C:\\Windows\\system32\\wsl.exe\" -d Ubuntu --cd /mnt/d/source/Sezika --exec /usr/bin/timeout --signal=TERM --kill-after=10s 185s /bin/bash -c \"ps -p \\\"$BASHPID\\\" -o pid,ppid,lstart,args; exec \\\"$@\\\"\" sezika-s5 /mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/aot-final/linux-x64/Sezika.Benchmarks --backend simd --samples 1 --warmup 0 --cycles 2 --questions 3 --timeout-seconds 180 --cpu \"Intel Core Ultra 9 185H\" --environment \"Ubuntu WSL2\" --require-aot --output /mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/final-linux-simd.json",
+        "ParentPid": 56212,
+        "TimeoutSeconds": 205,
+        "FilePath": "C:\\Windows\\system32\\wsl.exe",
+        "Arguments": [
+          "-d",
+          "Ubuntu",
+          "--cd",
+          "/mnt/d/source/Sezika",
+          "--exec",
+          "/usr/bin/timeout",
+          "--signal=TERM",
+          "--kill-after=10s",
+          "185s",
+          "/bin/bash",
+          "-c",
+          "ps -p \"$BASHPID\" -o pid,ppid,lstart,args; exec \"$@\"",
+          "sezika-s5",
+          "/mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/aot-final/linux-x64/Sezika.Benchmarks",
+          "--backend",
+          "simd",
+          "--samples",
+          "1",
+          "--warmup",
+          "0",
+          "--cycles",
+          "2",
+          "--questions",
+          "3",
+          "--timeout-seconds",
+          "180",
+          "--cpu",
+          "Intel Core Ultra 9 185H",
+          "--environment",
+          "Ubuntu WSL2",
+          "--require-aot",
+          "--output",
+          "/mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/final-linux-simd.json"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      },
+      "Status": "Succeeded",
+      "ExitCode": 0,
+      "ElapsedSeconds": 32.41,
+      "TimeoutSeconds": 205,
+      "Error": null,
+      "RunnerCleanupErrors": [],
+      "TrackingLimitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking.",
+      "IdentityLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185532-769-s5-final-linux-simd.identity.json",
+        "Bytes": 1598,
+        "Sha256": "5284893777a7a46c0ae27e37e5c7e34b62499f6ad5b8e4a602af2e6376485dfd"
+      },
+      "ResultLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185532-769-s5-final-linux-simd.result.json",
+        "Bytes": 4261,
+        "Sha256": "1071d5b8a5d5fec69a672e72387943179d36ad04d33dd14d8a9e264dcdabd9bd"
+      },
+      "StdoutLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185532-769-s5-final-linux-simd.stdout.log",
+        "Bytes": 662,
+        "Sha256": "272f889ea67f6af545ff5fbdfda9457f15379e93c1394eef73b13021c4091251"
+      },
+      "StderrLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185532-769-s5-final-linux-simd.stderr.log",
+        "Bytes": 51,
+        "Sha256": "b9295050338450e1f2fe7f4bd4411764002b46d9dfe5fea0bc86c964e426bc8c"
+      }
+    },
+    {
+      "Id": "20260923-185605-231-s5-final-linux-cuda",
+      "Kind": "real_model_native_aot",
+      "Rid": "linux-x64",
+      "Backend": "cuda",
+      "ProcessIdentity": {
+        "Pid": 83788,
+        "Started": "2026-09-23T18:56:05.2355718Z",
+        "CommandLine": "\"C:\\Windows\\system32\\wsl.exe\" -d Ubuntu --cd /mnt/d/source/Sezika --exec /usr/bin/timeout --signal=TERM --kill-after=10s 185s /bin/bash -c \"ps -p \\\"$BASHPID\\\" -o pid,ppid,lstart,args; exec \\\"$@\\\"\" sezika-s5 /mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/aot-final/linux-x64/Sezika.Benchmarks --backend cuda --samples 1 --warmup 0 --cycles 2 --questions 3 --timeout-seconds 180 --cpu \"Intel Core Ultra 9 185H\" --environment \"Ubuntu WSL2\" --require-aot --output /mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/final-linux-cuda.json",
+        "ParentPid": 56212,
+        "TimeoutSeconds": 205,
+        "FilePath": "C:\\Windows\\system32\\wsl.exe",
+        "Arguments": [
+          "-d",
+          "Ubuntu",
+          "--cd",
+          "/mnt/d/source/Sezika",
+          "--exec",
+          "/usr/bin/timeout",
+          "--signal=TERM",
+          "--kill-after=10s",
+          "185s",
+          "/bin/bash",
+          "-c",
+          "ps -p \"$BASHPID\" -o pid,ppid,lstart,args; exec \"$@\"",
+          "sezika-s5",
+          "/mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/aot-final/linux-x64/Sezika.Benchmarks",
+          "--backend",
+          "cuda",
+          "--samples",
+          "1",
+          "--warmup",
+          "0",
+          "--cycles",
+          "2",
+          "--questions",
+          "3",
+          "--timeout-seconds",
+          "180",
+          "--cpu",
+          "Intel Core Ultra 9 185H",
+          "--environment",
+          "Ubuntu WSL2",
+          "--require-aot",
+          "--output",
+          "/mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/final-linux-cuda.json"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      },
+      "Status": "Succeeded",
+      "ExitCode": 0,
+      "ElapsedSeconds": 25.139,
+      "TimeoutSeconds": 205,
+      "Error": null,
+      "RunnerCleanupErrors": [],
+      "TrackingLimitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking.",
+      "IdentityLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185605-231-s5-final-linux-cuda.identity.json",
+        "Bytes": 1598,
+        "Sha256": "52f080684bd078104a06c4e634f924480222c0f3b9ec9d33c5d170b8791c0877"
+      },
+      "ResultLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185605-231-s5-final-linux-cuda.result.json",
+        "Bytes": 4264,
+        "Sha256": "eb4b890fab0a554abfb86a835d0815efd78a7ba86591fe48b4ad5101abe5f4f6"
+      },
+      "StdoutLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185605-231-s5-final-linux-cuda.stdout.log",
+        "Bytes": 662,
+        "Sha256": "a230fb2a4a9b5984456af17ebfc59615fb470b64f3c24c0fcf841da568398afa"
+      },
+      "StderrLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185605-231-s5-final-linux-cuda.stderr.log",
+        "Bytes": 51,
+        "Sha256": "b9295050338450e1f2fe7f4bd4411764002b46d9dfe5fea0bc86c964e426bc8c"
+      }
+    },
+    {
+      "Id": "20260923-185630-386-s5-final-linux-int8",
+      "Kind": "real_model_native_aot",
+      "Rid": "linux-x64",
+      "Backend": "int8",
+      "ProcessIdentity": {
+        "Pid": 87928,
+        "Started": "2026-09-23T18:56:30.3900681Z",
+        "CommandLine": "\"C:\\Windows\\system32\\wsl.exe\" -d Ubuntu --cd /mnt/d/source/Sezika --exec /usr/bin/timeout --signal=TERM --kill-after=10s 185s /bin/bash -c \"ps -p \\\"$BASHPID\\\" -o pid,ppid,lstart,args; exec \\\"$@\\\"\" sezika-s5 /mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/aot-final/linux-x64/Sezika.Benchmarks --backend int8 --samples 1 --warmup 0 --cycles 2 --questions 3 --timeout-seconds 180 --cpu \"Intel Core Ultra 9 185H\" --environment \"Ubuntu WSL2\" --require-aot --output /mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/final-linux-int8.json",
+        "ParentPid": 56212,
+        "TimeoutSeconds": 205,
+        "FilePath": "C:\\Windows\\system32\\wsl.exe",
+        "Arguments": [
+          "-d",
+          "Ubuntu",
+          "--cd",
+          "/mnt/d/source/Sezika",
+          "--exec",
+          "/usr/bin/timeout",
+          "--signal=TERM",
+          "--kill-after=10s",
+          "185s",
+          "/bin/bash",
+          "-c",
+          "ps -p \"$BASHPID\" -o pid,ppid,lstart,args; exec \"$@\"",
+          "sezika-s5",
+          "/mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/aot-final/linux-x64/Sezika.Benchmarks",
+          "--backend",
+          "int8",
+          "--samples",
+          "1",
+          "--warmup",
+          "0",
+          "--cycles",
+          "2",
+          "--questions",
+          "3",
+          "--timeout-seconds",
+          "180",
+          "--cpu",
+          "Intel Core Ultra 9 185H",
+          "--environment",
+          "Ubuntu WSL2",
+          "--require-aot",
+          "--output",
+          "/mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/final-linux-int8.json"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      },
+      "Status": "Succeeded",
+      "ExitCode": 0,
+      "ElapsedSeconds": 45.462,
+      "TimeoutSeconds": 205,
+      "Error": null,
+      "RunnerCleanupErrors": [],
+      "TrackingLimitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking.",
+      "IdentityLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185630-386-s5-final-linux-int8.identity.json",
+        "Bytes": 1598,
+        "Sha256": "0a305d7494bf503444a95bfd1bdcd979572e000d461c78539fe547e716abaf46"
+      },
+      "ResultLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185630-386-s5-final-linux-int8.result.json",
+        "Bytes": 4264,
+        "Sha256": "c730e8af9dc69f472239c1b733d8307625d011f115794221b04f204b7b9f55ce"
+      },
+      "StdoutLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185630-386-s5-final-linux-int8.stdout.log",
+        "Bytes": 662,
+        "Sha256": "2a886e4d1525966d406f502f8617e80415e312e54e4e4b072283fc01e94af315"
+      },
+      "StderrLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185630-386-s5-final-linux-int8.stderr.log",
+        "Bytes": 51,
+        "Sha256": "b9295050338450e1f2fe7f4bd4411764002b46d9dfe5fea0bc86c964e426bc8c"
+      }
+    },
+    {
+      "Id": "20260923-185715-870-s5-final-linux-scalar",
+      "Kind": "real_model_native_aot",
+      "Rid": "linux-x64",
+      "Backend": "scalar",
+      "ProcessIdentity": {
+        "Pid": 84728,
+        "Started": "2026-09-23T18:57:15.8737988Z",
+        "CommandLine": "\"C:\\Windows\\system32\\wsl.exe\" -d Ubuntu --cd /mnt/d/source/Sezika --exec /usr/bin/timeout --signal=TERM --kill-after=10s 185s /bin/bash -c \"ps -p \\\"$BASHPID\\\" -o pid,ppid,lstart,args; exec \\\"$@\\\"\" sezika-s5 /mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/aot-final/linux-x64/Sezika.Benchmarks --backend scalar --samples 1 --warmup 0 --cycles 2 --questions 3 --timeout-seconds 180 --cpu \"Intel Core Ultra 9 185H\" --environment \"Ubuntu WSL2\" --require-aot --output /mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/final-linux-scalar.json",
+        "ParentPid": 56212,
+        "TimeoutSeconds": 205,
+        "FilePath": "C:\\Windows\\system32\\wsl.exe",
+        "Arguments": [
+          "-d",
+          "Ubuntu",
+          "--cd",
+          "/mnt/d/source/Sezika",
+          "--exec",
+          "/usr/bin/timeout",
+          "--signal=TERM",
+          "--kill-after=10s",
+          "185s",
+          "/bin/bash",
+          "-c",
+          "ps -p \"$BASHPID\" -o pid,ppid,lstart,args; exec \"$@\"",
+          "sezika-s5",
+          "/mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/aot-final/linux-x64/Sezika.Benchmarks",
+          "--backend",
+          "scalar",
+          "--samples",
+          "1",
+          "--warmup",
+          "0",
+          "--cycles",
+          "2",
+          "--questions",
+          "3",
+          "--timeout-seconds",
+          "180",
+          "--cpu",
+          "Intel Core Ultra 9 185H",
+          "--environment",
+          "Ubuntu WSL2",
+          "--require-aot",
+          "--output",
+          "/mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/final-linux-scalar.json"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      },
+      "Status": "Succeeded",
+      "ExitCode": 0,
+      "ElapsedSeconds": 40.024,
+      "TimeoutSeconds": 205,
+      "Error": null,
+      "RunnerCleanupErrors": [],
+      "TrackingLimitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking.",
+      "IdentityLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185715-870-s5-final-linux-scalar.identity.json",
+        "Bytes": 1606,
+        "Sha256": "a91adb3a828784b6c11f1ecdcd5f3014ff6f2ca836cf5ed94c828259d7480544"
+      },
+      "ResultLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185715-870-s5-final-linux-scalar.result.json",
+        "Bytes": 4278,
+        "Sha256": "9dcf2caf6848f67255787789a26aed6222bae94ea7167e3a87ae625ac5438526"
+      },
+      "StdoutLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185715-870-s5-final-linux-scalar.stdout.log",
+        "Bytes": 672,
+        "Sha256": "4748bef2e2599090601ec439b8caeec636d15ee00a01be9640cc2253efd1c4bf"
+      },
+      "StderrLog": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\processes\\20260923-185715-870-s5-final-linux-scalar.stderr.log",
+        "Bytes": 51,
+        "Sha256": "b9295050338450e1f2fe7f4bd4411764002b46d9dfe5fea0bc86c964e426bc8c"
+      }
+    },
+    {
+      "Id": "20260923-181524-415-s5-resources-tests",
+      "Kind": "tests",
+      "Rid": null,
+      "Backend": null,
+      "ProcessIdentity": {
+        "Pid": 76548,
+        "Started": "2026-09-23T18:15:24.4523875Z",
+        "CommandLine": null,
+        "ParentPid": null,
+        "TimeoutSeconds": 60,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "tests/Sezika.Resources.Tests/bin/Release/net10.0/Sezika.Resources.Tests.dll"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      },
+      "Status": "Succeeded",
+      "ExitCode": 0,
+      "ElapsedSeconds": 2.06,
+      "TimeoutSeconds": 60,
+      "Error": null,
+      "RunnerCleanupErrors": [],
+      "TrackingLimitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking.",
+      "IdentityLog": {
+        "Path": "D:\\source\\Sezika\\.artifacts\\processes\\20260923-181524-415-s5-resources-tests.identity.json",
+        "Bytes": 345,
+        "Sha256": "725177dea550968a729762b6bdb73423f940fb0b7783d05822f9643963aa525a"
+      },
+      "ResultLog": {
+        "Path": "D:\\source\\Sezika\\.artifacts\\processes\\20260923-181524-415-s5-resources-tests.result.json",
+        "Bytes": 901,
+        "Sha256": "a04dd569798a0f5a5f78d8580fc7240701792bbb42b2b12e49e1a952685030de"
+      },
+      "StdoutLog": {
+        "Path": "D:\\source\\Sezika\\.artifacts\\processes\\20260923-181524-415-s5-resources-tests.stdout.log",
+        "Bytes": 1889,
+        "Sha256": "99e47d5dd96d8483fc1118689f62ff92e3c3fb0ded626c32d31ee2400646149c"
+      },
+      "StderrLog": {
+        "Path": "D:\\source\\Sezika\\.artifacts\\processes\\20260923-181524-415-s5-resources-tests.stderr.log",
+        "Bytes": 0,
+        "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "TestSuite": "resources",
+      "PassedCheckCount": 35,
+      "TestCountConfirmedInStdout": true
+    },
+    {
+      "Id": "20260923-180956-728-s5-sdk-win",
+      "Kind": "toolchain_version",
+      "Rid": "win-x64",
+      "Backend": null,
+      "ProcessIdentity": {
+        "Pid": 35308,
+        "Started": "2026-09-23T18:09:56.7656346Z",
+        "CommandLine": null,
+        "ParentPid": null,
+        "TimeoutSeconds": 15,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "--version"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      },
+      "Status": "Succeeded",
+      "ExitCode": 0,
+      "ElapsedSeconds": 2.023,
+      "TimeoutSeconds": 15,
+      "Error": null,
+      "RunnerCleanupErrors": [],
+      "TrackingLimitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Very short-lived intermediate Windows processes can escape polling.",
+      "IdentityLog": {
+        "Path": "D:\\source\\Sezika\\.artifacts\\processes\\20260923-180956-728-s5-sdk-win.identity.json",
+        "Bytes": 279,
+        "Sha256": "954964631b471ff889221f7bf63aa0067f969af8ce400d2df671f01f28a6ddac"
+      },
+      "ResultLog": {
+        "Path": "D:\\source\\Sezika\\.artifacts\\processes\\20260923-180956-728-s5-sdk-win.result.json",
+        "Bytes": 743,
+        "Sha256": "bacaaa40178ace73c5e55cde07c1b6a6ed4cc81ec3da3deb2f8035eb239f6a5e"
+      },
+      "StdoutLog": {
+        "Path": "D:\\source\\Sezika\\.artifacts\\processes\\20260923-180956-728-s5-sdk-win.stdout.log",
+        "Bytes": 10,
+        "Sha256": "3db6bca4b50618b2e0d2d55d23b3d0541fe039ab6f731df0e9c47317b400ce52"
+      },
+      "StderrLog": {
+        "Path": "D:\\source\\Sezika\\.artifacts\\processes\\20260923-180956-728-s5-sdk-win.stderr.log",
+        "Bytes": 0,
+        "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "StdoutText": "10.0.401\r\n"
+    },
+    {
+      "Id": "20260923-180958-807-s5-sdk-linux",
+      "Kind": "toolchain_version",
+      "Rid": "linux-x64",
+      "Backend": null,
+      "ProcessIdentity": {
+        "Pid": 78828,
+        "Started": "2026-09-23T18:09:58.8116636Z",
+        "CommandLine": null,
+        "ParentPid": null,
+        "TimeoutSeconds": 20,
+        "FilePath": "C:\\Windows\\system32\\wsl.exe",
+        "Arguments": [
+          "-d",
+          "Ubuntu",
+          "--",
+          "/usr/bin/timeout",
+          "15s",
+          "bash",
+          "-lc",
+          "dotnet --version; clang --version | head -1; gcc --version | head -1"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      },
+      "Status": "Succeeded",
+      "ExitCode": 0,
+      "ElapsedSeconds": 1.923,
+      "TimeoutSeconds": 20,
+      "Error": null,
+      "RunnerCleanupErrors": [],
+      "TrackingLimitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Very short-lived intermediate Windows processes can escape polling.",
+      "IdentityLog": {
+        "Path": "D:\\source\\Sezika\\.artifacts\\processes\\20260923-180958-807-s5-sdk-linux.identity.json",
+        "Bytes": 430,
+        "Sha256": "119c95cf359a26852a75468320ec0de391b569cfe43f4c06ec84c69cf988b24b"
+      },
+      "ResultLog": {
+        "Path": "D:\\source\\Sezika\\.artifacts\\processes\\20260923-180958-807-s5-sdk-linux.result.json",
+        "Bytes": 898,
+        "Sha256": "33680e0deadfaefcdf57beef934bd23d4a4ad9cda3bd33c774feb2d33edfa41f"
+      },
+      "StdoutLog": {
+        "Path": "D:\\source\\Sezika\\.artifacts\\processes\\20260923-180958-807-s5-sdk-linux.stdout.log",
+        "Bytes": 92,
+        "Sha256": "513c39ad06e72c2517d9c98324bde00498f2ae9d5450149a694f832117a98f20"
+      },
+      "StderrLog": {
+        "Path": "D:\\source\\Sezika\\.artifacts\\processes\\20260923-180958-807-s5-sdk-linux.stderr.log",
+        "Bytes": 0,
+        "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "StdoutText": "10.0.112\nUbuntu clang version 18.1.3 (1ubuntu1)\ngcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\n"
+    }
+  ],
+  "NativeAotBinaries": [
+    {
+      "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\aot-final\\win-x64\\Sezika.Benchmarks.exe",
+      "Bytes": 4973056,
+      "Sha256": "3fb16c92838bdc730818d46bece7402eea04554ebf3b622020c9721badb2d1b8",
+      "Rid": "win-x64"
+    },
+    {
+      "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\aot-final\\linux-x64\\Sezika.Benchmarks",
+      "Bytes": 4870208,
+      "Sha256": "f4863a48d6a29defd071bf844bdc1c0117806d8838c686724d5f8eeb00e7da07",
+      "Rid": "linux-x64"
+    }
+  ],
+  "RuntimeDependencyGraphs": [
+    {
+      "Rid": "win-x64",
+      "Assets": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\build-win\\obj\\Sezika.Benchmarks\\project.assets.json",
+        "Bytes": 30349,
+        "Sha256": "14fd4639aceeef7421f46b7284397590e45fc666a4b640637117196f7dc5a008"
+      },
+      "Libraries": [
+        "Microsoft.DotNet.ILCompiler/10.0.12",
+        "Microsoft.NET.ILLink.Tasks/10.0.12",
+        "runtime.win-x64.Microsoft.DotNet.ILCompiler/10.0.12",
+        "Sezika.Cuda/0.1.0-dev",
+        "Sezika/0.1.0-dev"
+      ],
+      "IlgpuPresentInRuntimeProjectDependencyGraph": false,
+      "Interpretation": "Native AOT benchmark runtime project.assets.json has no ILGPU dependency. Native import output is recorded separately; dynamically loaded CUDA Driver is not expected in static import listings."
+    },
+    {
+      "Rid": "linux-x64",
+      "Assets": {
+        "Path": "C:\\Users\\mysti\\AppData\\Local\\Temp\\sezika-s5-20260924\\build-linux\\obj\\Sezika.Benchmarks\\project.assets.json",
+        "Bytes": 26871,
+        "Sha256": "4b69607460aa38c837ad19886668155c1658f72bdf100eb6022434127005d5a8"
+      },
+      "Libraries": [
+        "Microsoft.DotNet.ILCompiler/10.0.12",
+        "Microsoft.NET.ILLink.Tasks/10.0.12",
+        "Sezika.Cuda/0.1.0-dev",
+        "Sezika/0.1.0-dev"
+      ],
+      "IlgpuPresentInRuntimeProjectDependencyGraph": false,
+      "Interpretation": "Native AOT benchmark runtime project.assets.json has no ILGPU dependency. Native import output is recorded separately; dynamically loaded CUDA Driver is not expected in static import listings."
+    }
+  ],
+  "Reports": [
+    {
+      "Path": "D:\\source\\Sezika\\docs\\evidence\\s5-2026-09-24\\summary.json",
+      "Bytes": 49741,
+      "Sha256": "0724ed98a5b377782a3fb86cf430835f80787e6d7c4460378df9f2bbdef91545"
+    },
+    {
+      "Path": "D:\\source\\Sezika\\docs\\evidence\\s5-2026-09-24\\win-scalar.json",
+      "Bytes": 40432,
+      "Sha256": "6c069f2ed2f13bf15b5cfd5a95ab1ade855d562a7d3f621c301ac09978c07c1e"
+    },
+    {
+      "Path": "D:\\source\\Sezika\\docs\\evidence\\s5-2026-09-24\\win-simd.json",
+      "Bytes": 40407,
+      "Sha256": "174080825a158a78b646c3f5eafe98595247f22caa07dcac24c09a5201c2cd05"
+    },
+    {
+      "Path": "D:\\source\\Sezika\\docs\\evidence\\s5-2026-09-24\\win-int8.json",
+      "Bytes": 40564,
+      "Sha256": "ab95e200e9e0028aa45720bd5ddfdf6f7e9d1cd41fe1fa99b897d390aab5d116"
+    },
+    {
+      "Path": "D:\\source\\Sezika\\docs\\evidence\\s5-2026-09-24\\win-cuda.json",
+      "Bytes": 41652,
+      "Sha256": "806169c38299535281712c34b61f24f2944d9fbd80540d32879bd12691dfd91c"
+    },
+    {
+      "Path": "D:\\source\\Sezika\\docs\\evidence\\s5-2026-09-24\\linux-scalar.json",
+      "Bytes": 7474,
+      "Sha256": "56f8c823553fa523f3412e97ff3112607d61f56443f2973ed926e5fd05d021fd"
+    },
+    {
+      "Path": "D:\\source\\Sezika\\docs\\evidence\\s5-2026-09-24\\linux-simd.json",
+      "Bytes": 7513,
+      "Sha256": "3b4d48e3579141f55b51cd72bbc78b0ff2eba9c3f6d7a08f31c783006cd68afc"
+    },
+    {
+      "Path": "D:\\source\\Sezika\\docs\\evidence\\s5-2026-09-24\\linux-int8.json",
+      "Bytes": 7609,
+      "Sha256": "1065bb2248bdf7f62961345d1e57159d9609f0740c3240a5dbf9317baa38e601"
+    },
+    {
+      "Path": "D:\\source\\Sezika\\docs\\evidence\\s5-2026-09-24\\linux-cuda.json",
+      "Bytes": 8761,
+      "Sha256": "1e62e5ab329fff2176b4afd48e9cee79701357dc408bbb624b3ec756cec2a657"
+    }
+  ],
+  "SourceVerification": {
+    "Manifest": {
+      "Path": "D:\\source\\Sezika\\docs\\evidence\\s5-2026-09-24\\source-hashes.json",
+      "Bytes": 8621,
+      "Sha256": "948c2cef62146e8b80a29a4945d4f2f73d478626e005d3b24fa648f23454d0ea"
+    },
+    "CapturedUtc": "2026-09-24T02:36:40.2884031+08:00",
+    "MaximumFiles": 256,
+    "TimeoutSeconds": 30,
+    "CheckedFiles": 57,
+    "ElapsedSeconds": 1.134,
+    "AllMatched": true,
+    "Mismatches": [],
+    "Files": [
+      {
+        "Path": "src/Sezika.Kernels/TransformerKernels.cs",
+        "ExpectedSha256": "35a25f3b52b2c359fc929524a55a6d9cf489bb930441df03016630dba00fd00d",
+        "ActualSha256": "35a25f3b52b2c359fc929524a55a6d9cf489bb930441df03016630dba00fd00d",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika.Kernels/Sezika.Kernels.csproj",
+        "ExpectedSha256": "878a4420d76fdc9e29d3253f1b9272925ae1224c32697fb83ae88353492846f8",
+        "ActualSha256": "878a4420d76fdc9e29d3253f1b9272925ae1224c32697fb83ae88353492846f8",
+        "Matches": true
+      },
+      {
+        "Path": "tools/Sezika.Benchmarks/Sezika.Benchmarks.csproj",
+        "ExpectedSha256": "b3e103ba923e9a311eb6d79381ef939545a1e15ce639e87f339c6e50b39fae5c",
+        "ActualSha256": "b3e103ba923e9a311eb6d79381ef939545a1e15ce639e87f339c6e50b39fae5c",
+        "Matches": true
+      },
+      {
+        "Path": "tools/Sezika.Benchmarks/Report.cs",
+        "ExpectedSha256": "5c1bc245202e0459980d5af86fe80ff3b87efec87a4294b5d00a8db598e1bf6d",
+        "ActualSha256": "5c1bc245202e0459980d5af86fe80ff3b87efec87a4294b5d00a8db598e1bf6d",
+        "Matches": true
+      },
+      {
+        "Path": "tools/Sezika.Benchmarks/Program.cs",
+        "ExpectedSha256": "ad3acce394c8283638649d6ad1214bb66a6f833ba742061bc72c58eb1bcf1780",
+        "ActualSha256": "ad3acce394c8283638649d6ad1214bb66a6f833ba742061bc72c58eb1bcf1780",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika.Cuda/Sezika.Cuda.csproj",
+        "ExpectedSha256": "ee8fc3f74c7b7cd21995646046dfdb7511170ffa6ce7f9faf5d7eacf67d513c7",
+        "ActualSha256": "ee8fc3f74c7b7cd21995646046dfdb7511170ffa6ce7f9faf5d7eacf67d513c7",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika.Cuda/Generated/GeneratedKernelArtifacts.g.cs",
+        "ExpectedSha256": "5494409cd0704c52db187028f082b3c93fdc26c1df77c4fa40d5c7f649b6bcfe",
+        "ActualSha256": "5494409cd0704c52db187028f082b3c93fdc26c1df77c4fa40d5c7f649b6bcfe",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika.Cuda/CudaVectorAdd.cs",
+        "ExpectedSha256": "28bc64a69a01faa598e10cc408f9e0cd078e91213819c5a2c9d1c950dbd985b4",
+        "ActualSha256": "28bc64a69a01faa598e10cc408f9e0cd078e91213819c5a2c9d1c950dbd985b4",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika.Cuda/CudaPtx.cs",
+        "ExpectedSha256": "9f672b1947d36090e049f63081dbc11c9ec019b9a56c557cbe7119466ec040c1",
+        "ActualSha256": "9f672b1947d36090e049f63081dbc11c9ec019b9a56c557cbe7119466ec040c1",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika.Cuda/CudaNative.cs",
+        "ExpectedSha256": "b9b294a6f5a7087bc9c2f97bfbd9a1d2093ea7bcc158ed4ba5b3208796c1d09b",
+        "ActualSha256": "b9b294a6f5a7087bc9c2f97bfbd9a1d2093ea7bcc158ed4ba5b3208796c1d09b",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika.Cuda/CudaModernBertEncoder.cs",
+        "ExpectedSha256": "0278d245b936b1f1867c3666b4dbc68a5396bc9d4f65dad7aaa553a177d5c014",
+        "ActualSha256": "0278d245b936b1f1867c3666b4dbc68a5396bc9d4f65dad7aaa553a177d5c014",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika.Cuda/CudaKernels.cs",
+        "ExpectedSha256": "41ad8e95d830cd60ff6608a5aea7418c12d2cfeaf162446ca747c649fe1bc80f",
+        "ActualSha256": "41ad8e95d830cd60ff6608a5aea7418c12d2cfeaf162446ca747c649fe1bc80f",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika.Cuda/CudaHandles.cs",
+        "ExpectedSha256": "da2add853ad0bdbf38c71f198c878037bd43b1fd5dfeadc530b94f55d7b1c07e",
+        "ActualSha256": "da2add853ad0bdbf38c71f198c878037bd43b1fd5dfeadc530b94f55d7b1c07e",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika.Cuda/CudaGemm.cs",
+        "ExpectedSha256": "29030e0ff38c0649b547a5583854cdbde90f38cff9ad0d7186a716567b20d10b",
+        "ActualSha256": "29030e0ff38c0649b547a5583854cdbde90f38cff9ad0d7186a716567b20d10b",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika.Cuda/CudaException.cs",
+        "ExpectedSha256": "639d86a4e51c82ed80351dba1847e284147f3f9118a374d3ced510a744547a0f",
+        "ActualSha256": "639d86a4e51c82ed80351dba1847e284147f3f9118a374d3ced510a744547a0f",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika.Cuda/CudaDiagnostics.cs",
+        "ExpectedSha256": "84bf71ad4d6c50e116f897d1606b1880abf159899bc9ab26d78b212849c32c1c",
+        "ActualSha256": "84bf71ad4d6c50e116f897d1606b1880abf159899bc9ab26d78b212849c32c1c",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika.Cuda/CudaDevice.cs",
+        "ExpectedSha256": "9fd7f8180eb4bcd9acbb0b29dd2516b9e642412eb531e9edb3f67fd3745ecf8a",
+        "ActualSha256": "9fd7f8180eb4bcd9acbb0b29dd2516b9e642412eb531e9edb3f67fd3745ecf8a",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika.Cuda/CudaDecisionScorer.cs",
+        "ExpectedSha256": "e36ae0bde044f478ea86bb330bef5f34ed385c81af805939db949f0f6d01803a",
+        "ActualSha256": "e36ae0bde044f478ea86bb330bef5f34ed385c81af805939db949f0f6d01803a",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika.Cuda/CudaDecisionPipeline.cs",
+        "ExpectedSha256": "123109277a97cddb268ba427de87269d2a13e34080d221e52540ba2fd4ea8a66",
+        "ActualSha256": "123109277a97cddb268ba427de87269d2a13e34080d221e52540ba2fd4ea8a66",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika.Cuda/CudaArrayView.cs",
+        "ExpectedSha256": "d2035fc97459d140533c59d3efa2be182129640c1c50cdf210e1d05fd83c0381",
+        "ActualSha256": "d2035fc97459d140533c59d3efa2be182129640c1c50cdf210e1d05fd83c0381",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/Transformer.cs",
+        "ExpectedSha256": "62f05771ca0aa9d1ca36f9bb79a9a906840f4ea71cbe31122a7c12c142b92919",
+        "ActualSha256": "62f05771ca0aa9d1ca36f9bb79a9a906840f4ea71cbe31122a7c12c142b92919",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/TokenizerJson.cs",
+        "ExpectedSha256": "0c60fcb3396ed68196a575eb1310867d5eec2243259a9ed97919999a1aa8a91c",
+        "ActualSha256": "0c60fcb3396ed68196a575eb1310867d5eec2243259a9ed97919999a1aa8a91c",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/Tokenizer.cs",
+        "ExpectedSha256": "5dee338b8dfaf8cbcc5a52a0fae1806fbb7b2560be6a11eec35d5d0aa9e0166b",
+        "ActualSha256": "5dee338b8dfaf8cbcc5a52a0fae1806fbb7b2560be6a11eec35d5d0aa9e0166b",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/SimdOps.cs",
+        "ExpectedSha256": "2adeecca13ce47158989eb7ec722cc1070c4d6d971fea55a92f2a1edde412436",
+        "ActualSha256": "2adeecca13ce47158989eb7ec722cc1070c4d6d971fea55a92f2a1edde412436",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/Sezika.csproj",
+        "ExpectedSha256": "dd6bbc36ced1d6210e1c53bf251c7b1bc7255a0b94fb74aa405f4fd466e7f407",
+        "ActualSha256": "dd6bbc36ced1d6210e1c53bf251c7b1bc7255a0b94fb74aa405f4fd466e7f407",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/QuantizedOps.cs",
+        "ExpectedSha256": "d55fecf9a70923e08b223384fb585dcc4e6d38404cbb5097592cfd62be37a912",
+        "ActualSha256": "d55fecf9a70923e08b223384fb585dcc4e6d38404cbb5097592cfd62be37a912",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/PrimitiveAlignment.cs",
+        "ExpectedSha256": "2e595d001fc445132fa8d95b54e84dbe7665502d3960200e8e28ca0ab7882364",
+        "ActualSha256": "2e595d001fc445132fa8d95b54e84dbe7665502d3960200e8e28ca0ab7882364",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/ModernBertModelLoader.cs",
+        "ExpectedSha256": "02da1d4c9fd2484aee5ae01e733779c7e1cfe481fdf4a38df3eefe9731d4bb38",
+        "ActualSha256": "02da1d4c9fd2484aee5ae01e733779c7e1cfe481fdf4a38df3eefe9731d4bb38",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/ModernBertDecisionEngine.cs",
+        "ExpectedSha256": "41dfcae7ee61198f75ddd9ec1c6d315c97fc8211376fada571bbe5b8de72dc77",
+        "ActualSha256": "41dfcae7ee61198f75ddd9ec1c6d315c97fc8211376fada571bbe5b8de72dc77",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/ModernBert.cs",
+        "ExpectedSha256": "cec059614a9a934cba26e65dedce67be624526639431f74aae6633bd7fdde4be",
+        "ActualSha256": "cec059614a9a934cba26e65dedce67be624526639431f74aae6633bd7fdde4be",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/ModelPackage.cs",
+        "ExpectedSha256": "20b8c064a885f3eba90fae784d7fdae8a3b73151313662f40150e1be092c428d",
+        "ActualSha256": "20b8c064a885f3eba90fae784d7fdae8a3b73151313662f40150e1be092c428d",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/ModelAssets.cs",
+        "ExpectedSha256": "c8dd4c2d43d1e6611a4f5a07c30d16d956f6177e8bee2deb14c2ae7109faed43",
+        "ActualSha256": "c8dd4c2d43d1e6611a4f5a07c30d16d956f6177e8bee2deb14c2ae7109faed43",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/IMarkerDecisionPipeline.cs",
+        "ExpectedSha256": "fa5a4b863430db43509ae12f8c43f96e35b465ed733eaddc46576eab1736e69a",
+        "ActualSha256": "fa5a4b863430db43509ae12f8c43f96e35b465ed733eaddc46576eab1736e69a",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/IDecisionEngine.cs",
+        "ExpectedSha256": "d036309f01d3b0a7d25446fd321cfd6f2b35c44e1a85b9adbfa99de232918a87",
+        "ActualSha256": "d036309f01d3b0a7d25446fd321cfd6f2b35c44e1a85b9adbfa99de232918a87",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/HeadTraining.cs",
+        "ExpectedSha256": "030790f9a6436651c10615193f453006893215d15e01731ef457fdba19e4a535",
+        "ActualSha256": "030790f9a6436651c10615193f453006893215d15e01731ef457fdba19e4a535",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/EncoderExecution.cs",
+        "ExpectedSha256": "d9842d37fefa35d3359ed5cc4b410b63251abfe49abb03c927fff34e5284bff5",
+        "ActualSha256": "d9842d37fefa35d3359ed5cc4b410b63251abfe49abb03c927fff34e5284bff5",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/DemoModelFactory.cs",
+        "ExpectedSha256": "acadfef3156478ee96a01c2e7337450540dfa5664c0804ea4362852d814c33b4",
+        "ActualSha256": "acadfef3156478ee96a01c2e7337450540dfa5664c0804ea4362852d814c33b4",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/DecisionStatus.cs",
+        "ExpectedSha256": "433f285d98da61b7e646ace5cf9b288fe858bd8464506c0b8df6fd19ba66ec59",
+        "ActualSha256": "433f285d98da61b7e646ace5cf9b288fe858bd8464506c0b8df6fd19ba66ec59",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/DecisionScorer.cs",
+        "ExpectedSha256": "dc0b17156992bf2f969cff1c37b82f458b690e8903f74f1b62c750d04e4cc907",
+        "ActualSha256": "dc0b17156992bf2f969cff1c37b82f458b690e8903f74f1b62c750d04e4cc907",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/DecisionResponse.cs",
+        "ExpectedSha256": "3db03bfa7c82356f71adead7ad3c46b226d3966f2a71f3a0532441e663e3e3c8",
+        "ActualSha256": "3db03bfa7c82356f71adead7ad3c46b226d3966f2a71f3a0532441e663e3e3c8",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/DecisionRequestParser.cs",
+        "ExpectedSha256": "6cb2eaeb58022be33ce8014eb7fb7696d3139df2221641c5669c6ed01ff1a931",
+        "ActualSha256": "6cb2eaeb58022be33ce8014eb7fb7696d3139df2221641c5669c6ed01ff1a931",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/DecisionRequest.cs",
+        "ExpectedSha256": "f6a3ea1a9dcb9d0326e055d9831da82ce4730d80861e6a2a697a50833270945d",
+        "ActualSha256": "f6a3ea1a9dcb9d0326e055d9831da82ce4730d80861e6a2a697a50833270945d",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/DecisionModelRuntime.cs",
+        "ExpectedSha256": "9bdb6fa8b5be275a4816d0f9f4fd765480e528017f84f331e88b31dd5ef3a3cf",
+        "ActualSha256": "9bdb6fa8b5be275a4816d0f9f4fd765480e528017f84f331e88b31dd5ef3a3cf",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/DecisionModelAssetLoader.cs",
+        "ExpectedSha256": "77ebfe1e1b4bf3dfd371c6a3336d151df5841236ddab26f813bb8e54b2373f6a",
+        "ActualSha256": "77ebfe1e1b4bf3dfd371c6a3336d151df5841236ddab26f813bb8e54b2373f6a",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/DecisionModel.cs",
+        "ExpectedSha256": "2fd341a3d5c01c499c496b0e44a560a6a9d668c63f4c0bfb0b709ebc097c8352",
+        "ActualSha256": "2fd341a3d5c01c499c496b0e44a560a6a9d668c63f4c0bfb0b709ebc097c8352",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/DecisionMath.cs",
+        "ExpectedSha256": "db926b3168ecdfb5414f5d96463f3ad9c336db7fc61a430e516630bb4644e8ca",
+        "ActualSha256": "db926b3168ecdfb5414f5d96463f3ad9c336db7fc61a430e516630bb4644e8ca",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/DecisionLimits.cs",
+        "ExpectedSha256": "ddac104470fcf389cadf6cbb52bda7735b1fd75cfc19b6a26c38dc9df3142f68",
+        "ActualSha256": "ddac104470fcf389cadf6cbb52bda7735b1fd75cfc19b6a26c38dc9df3142f68",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/DecisionJsonContext.cs",
+        "ExpectedSha256": "bdc5845ad74791ad803d4a9fb618a2a8e2df72c08a5f66efc7ba0240dd6104fc",
+        "ActualSha256": "bdc5845ad74791ad803d4a9fb618a2a8e2df72c08a5f66efc7ba0240dd6104fc",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/DecisionHead.cs",
+        "ExpectedSha256": "2f5809496ad9846efface01525a79634a4554d46daadda40d78cf1e6508abe40",
+        "ActualSha256": "2f5809496ad9846efface01525a79634a4554d46daadda40d78cf1e6508abe40",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/DecisionException.cs",
+        "ExpectedSha256": "88d07ec94da0b75cedb867ce574d08fc2bce7e343a47aadb515ec358d3aa5a4b",
+        "ActualSha256": "88d07ec94da0b75cedb867ce574d08fc2bce7e343a47aadb515ec358d3aa5a4b",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/DecisionEngine.cs",
+        "ExpectedSha256": "c6962918ebf8e6641c866c38d0f5cc4a14f88ce2bc374002e9ef6938473eeefd",
+        "ActualSha256": "c6962918ebf8e6641c866c38d0f5cc4a14f88ce2bc374002e9ef6938473eeefd",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/CalibrationProfiles.cs",
+        "ExpectedSha256": "352be8b5d581bac805455670ac9fd043c43133b39334f364b8cb3e3aea6187dc",
+        "ActualSha256": "352be8b5d581bac805455670ac9fd043c43133b39334f364b8cb3e3aea6187dc",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika/Calibration.cs",
+        "ExpectedSha256": "c3cd2323f0793758bed5e1794e80c4005508c526ee4d7f144b5fe3cbd889de0d",
+        "ActualSha256": "c3cd2323f0793758bed5e1794e80c4005508c526ee4d7f144b5fe3cbd889de0d",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika.Cli/Sezika.Cli.csproj",
+        "ExpectedSha256": "f0b0e5adf205ca907d7f69427ac285a7261e11382bbc105a60bdd420f58233dd",
+        "ActualSha256": "f0b0e5adf205ca907d7f69427ac285a7261e11382bbc105a60bdd420f58233dd",
+        "Matches": true
+      },
+      {
+        "Path": "src/Sezika.Cli/Program.cs",
+        "ExpectedSha256": "f165185690a6a99745b1cf307985ac7a2f1c18dfbee1c0b0077dfec4d4f315c2",
+        "ActualSha256": "f165185690a6a99745b1cf307985ac7a2f1c18dfbee1c0b0077dfec4d4f315c2",
+        "Matches": true
+      },
+      {
+        "Path": "Directory.Build.props",
+        "ExpectedSha256": "d415e4369b20fc4dc6696da7e9741dadb03a89357a6ced7506846312c90b5ec7",
+        "ActualSha256": "d415e4369b20fc4dc6696da7e9741dadb03a89357a6ced7506846312c90b5ec7",
+        "Matches": true
+      },
+      {
+        "Path": "Sezika.slnx",
+        "ExpectedSha256": "838a0343151f610b27766d7ac47b4965914f1bd096ba42788390df56031149b0",
+        "ActualSha256": "838a0343151f610b27766d7ac47b4965914f1bd096ba42788390df56031149b0",
+        "Matches": true
+      }
+    ]
+  },
+  "Scope": "Core/resources/CUDA counts are executable assertion checks, not model quality metrics. Native AOT runs cover final win-x64 and Ubuntu linux-x64 binaries. Process cleanup auditing is maintained separately."
+}

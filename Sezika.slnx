@@ -6,6 +6,7 @@
     <Project Path="src/Sezika.Kernels/Sezika.Kernels.csproj" />
     <Project Path="tests/Sezika.Tests/Sezika.Tests.csproj" />
     <Project Path="tests/Sezika.Resources.Tests/Sezika.Resources.Tests.csproj" />
+    <Project Path="tests/Sezika.Cuda.Diagnostics.Tests/Sezika.Cuda.Diagnostics.Tests.csproj" />
   </Folder>
   <Folder Name="/samples/">
     <Project Path="samples/Sezika.Cpu.Smoke/Sezika.Cpu.Smoke.csproj" />
@@ -13,6 +14,7 @@
     <Project Path="samples/Sezika.RealModel.Smoke/Sezika.RealModel.Smoke.csproj" />
   </Folder>
   <Folder Name="/tools/">
+    <Project Path="tools/Sezika.Benchmarks/Sezika.Benchmarks.csproj" />
     <Project Path="tools/Sezika.ModelTool/Sezika.ModelTool.csproj" />
     <Project Path="tools/Sezika.KernelCompiler/Sezika.KernelCompiler.csproj" />
   </Folder>

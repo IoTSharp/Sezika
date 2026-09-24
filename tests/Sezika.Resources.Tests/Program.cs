@@ -132,4 +132,5 @@ catch (OperationCanceledException)
 }
 Check(deadlineEncoder.WorkspacePool.ActiveCount == 0, "deadline leaves no active workspace");
 
+QuantizedChecks.Run(Check);
 Console.WriteLine($"Sezika resource tests passed: {passed}; max_trace_abs_error={maxDifference:G9}");

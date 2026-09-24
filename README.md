@@ -16,7 +16,9 @@ Sezika 面向本地软件中的语义判断，目标是使用 **C#、.NET 10 与
 
 ## 项目状态
 
-当前仓库包含可运行的纯 C# FP32 encoder、固定真实 Laya/mmBERT 开发资产的安全加载、真实 marker-head 的 Choice/Score/Boolean typed smoke、tokenizer oracle、校准评估器，以及 ILGPU 构建期 PTX/ABI、CUDA Driver 完整 encoder/head 和 win-x64 Native AOT smoke。**模型权重仍不随仓库发布；逐语言质量报告与跨平台性能矩阵仍未完成。** 验收边界与命令见 [阶段证据](docs/stage-evidence.md)。
+当前仓库包含可运行的纯 C# scalar/SIMD FP32 与 W8A32 encoder/head、固定真实 Laya/mmBERT 开发资产的安全加载、Choice/Score/Boolean typed decision、tokenizer oracle、校准评估器，以及 ILGPU 构建期 PTX/ABI 和 CUDA Driver 完整推理路径。S5-04/S5-05 已完成：Windows `win-x64` Native AOT 四后端各覆盖 1/8/32 问、每项 5 次正式采样；Ubuntu WSL2 `linux-x64` 四后端通过真实模型 Native AOT smoke，各为 3 问、1 次采样。**WSL smoke 不代表裸机 Linux 性能；逐语言质量仍未验收，模型权重不随仓库发布。** 具体范围见 [S5 性能与 AOT 证据](docs/s5-performance-aot.md)及[原始报告](docs/evidence/s5-2026-09-24/)。
+
+当前 W8A32 路径慢于 SIMD，且在保留 FP32 原权重之外增加量化缓存，没有降低总驻留内存。数值对齐、真实推理、AOT 与语言质量分别验收，不将量化实现视为已经取得性能或内存收益。
 
 ## 独立使用
 
@@ -55,12 +57,13 @@ dotnet run --project src/Sezika.Cli -c Release --no-build -- predict --model .ar
 - [参考项目分析](docs/research.md)：Laya 的可审计模型实现，以及 TypeSafe Jev 的公开协议与边界。
 - [架构设计](docs/architecture.md)：推理路径、模型资产、契约、校准与资源约束。
 - [纯 C# GPU 与 Native AOT](docs/gpu-aot.md)：ILGPU 编译期边界、CUDA Driver 路径及最小验证关口。
+- [S5 性能与 AOT 证据](docs/s5-performance-aot.md)：Windows 四后端基准、Ubuntu WSL2 真实模型 AOT smoke、计时与内存边界。
 - [阶段路线图](ROADMAP.md)：实现顺序、验收条件与工作量判断。
 - [闭环审计](docs/closure-audit-2026-09-23.md)：逐阶段证据、状态与剩余条件。
 - `src/Sezika`：.NET 10 核心类库、模型加载、tokenizer、CPU encoder 与 typed decision engine。
 - [English](README.en.md)
 
-真实模型、CUDA 与 AOT 命令及实测结果见 [阶段证据](docs/stage-evidence.md) 和 [GPU/AOT 设计](docs/gpu-aot.md)；多语言质量和跨平台性能矩阵仍待执行。
+真实模型、CUDA 与 AOT 命令及实测结果见 [阶段证据](docs/stage-evidence.md) 和 [GPU/AOT 设计](docs/gpu-aot.md)；多语言质量、裸机 Linux 性能和更充分的尾延迟采样仍需独立证据。
 
 ## 开源许可
 

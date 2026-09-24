@@ -58,8 +58,13 @@ public static class ModernBertModelLoader
     public const string PinnedWeightsSha256 = "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204";
     public const string PinnedTokenizerSha256 = "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f";
 
-    public static ModernBertModelPackage Load(string packageDirectory, CancellationToken cancellationToken = default)
+    public static ModernBertModelPackage Load(string packageDirectory, CancellationToken cancellationToken = default) =>
+        Load(packageDirectory, EncoderExecutionOptions.Default, cancellationToken);
+
+    public static ModernBertModelPackage Load(string packageDirectory, EncoderExecutionOptions executionOptions, CancellationToken cancellationToken = default)
     {
+        ArgumentNullException.ThrowIfNull(executionOptions);
+        executionOptions.Validate();
         if (string.IsNullOrWhiteSpace(packageDirectory)) throw new ArgumentException("Package directory is required.", nameof(packageDirectory));
         var root = Path.GetFullPath(packageDirectory);
         var manifestPath = Within(root, "model.json"); var weightsPath = Within(root, "model.safetensors"); var tokenizerPath = Within(root, "tokenizer/tokenizer.json");
@@ -110,34 +115,44 @@ public static class ModernBertModelLoader
                 MlpUp = Tensor(tensors, prefix + "mlp.Wi.weight"), MlpDown = Tensor(tensors, prefix + "mlp.Wo.weight"),
             };
         }
-        var encoder = new ModernBertEncoder(config, new ModernBertWeights { TokenEmbeddings = embedding, EmbeddingNorm = embeddingNorm, FinalNorm = finalNorm, Layers = layers });
-        var headLayers = new DecisionHeadLayerWeights[2];
-        for (var index = 0; index < 2; index++)
+        var encoder = new ModernBertEncoder(config, new ModernBertWeights { TokenEmbeddings = embedding, EmbeddingNorm = embeddingNorm, FinalNorm = finalNorm, Layers = layers }, executionOptions, cancellationToken);
+        try
         {
-            var prefix = $"head.layers.{index}.";
-            headLayers[index] = new DecisionHeadLayerWeights
+            var headLayers = new DecisionHeadLayerWeights[2];
+            for (var index = 0; index < 2; index++)
             {
-                Qkv = Tensor(tensors, prefix + "self_attn.in_proj_weight"), QkvBias = Tensor(tensors, prefix + "self_attn.in_proj_bias"),
-                AttentionOutput = Tensor(tensors, prefix + "self_attn.out_proj.weight"), AttentionOutputBias = Tensor(tensors, prefix + "self_attn.out_proj.bias"),
-                AttentionNorm = Tensor(tensors, prefix + "norm1.weight"), AttentionNormBias = Tensor(tensors, prefix + "norm1.bias"),
-                MlpUp = Tensor(tensors, prefix + "linear1.weight"), MlpUpBias = Tensor(tensors, prefix + "linear1.bias"),
-                MlpDown = Tensor(tensors, prefix + "linear2.weight"), MlpDownBias = Tensor(tensors, prefix + "linear2.bias"),
-                MlpNorm = Tensor(tensors, prefix + "norm2.weight"), MlpNormBias = Tensor(tensors, prefix + "norm2.bias"),
+                var prefix = $"head.layers.{index}.";
+                headLayers[index] = new DecisionHeadLayerWeights
+                {
+                    Qkv = Tensor(tensors, prefix + "self_attn.in_proj_weight"), QkvBias = Tensor(tensors, prefix + "self_attn.in_proj_bias"),
+                    AttentionOutput = Tensor(tensors, prefix + "self_attn.out_proj.weight"), AttentionOutputBias = Tensor(tensors, prefix + "self_attn.out_proj.bias"),
+                    AttentionNorm = Tensor(tensors, prefix + "norm1.weight"), AttentionNormBias = Tensor(tensors, prefix + "norm1.bias"),
+                    MlpUp = Tensor(tensors, prefix + "linear1.weight"), MlpUpBias = Tensor(tensors, prefix + "linear1.bias"),
+                    MlpDown = Tensor(tensors, prefix + "linear2.weight"), MlpDownBias = Tensor(tensors, prefix + "linear2.bias"),
+                    MlpNorm = Tensor(tensors, prefix + "norm2.weight"), MlpNormBias = Tensor(tensors, prefix + "norm2.bias"),
+                };
+            }
+            var head = new DecisionHeadWeights
+            {
+                TypeEmbeddings = Tensor(tensors, "type_emb.weight"), Layers = headLayers,
+                ScorerNorm = Tensor(tensors, "scorer.0.weight"), ScorerNormBias = Tensor(tensors, "scorer.0.bias"),
+                ScorerDense = Tensor(tensors, "scorer.1.weight"), ScorerDenseBias = Tensor(tensors, "scorer.1.bias"),
+                ScorerOutput = Tensor(tensors, "scorer.3.weight"), ScorerOutputBias = Tensor(tensors, "scorer.3.bias"),
             };
+            // Validate before GPU allocation without preparing a redundant head cache.
+            ModernBertDecisionPipeline.ValidateWeights(config, head);
+            var temperature = Tensor(tensors, "temperature");
+            if (temperature.Length != 3 || temperature.Any(value => !float.IsFinite(value) || value <= 0)) throw new DecisionException("model_calibration_invalid", "The pinned temperature tensor is invalid.");
+            // W8A32 currently retains original FP32 tensors for oracle/CUDA use.
+            // A runtime head's additional cache is accounted by its owning session.
+            var residentBytes = checked(tensors.Values.Sum(tensor => checked((long)tensor.Values.Length * sizeof(float))) + encoder.QuantizedWeightBytes);
+            return new ModernBertModelPackage { ModelId = PinnedModelId, Revision = PinnedRevision, TokenizerRevision = PinnedRevision, License = "Apache-2.0", Tokenizer = new TokenizerJson(tokenizerPath, cancellationToken), Encoder = encoder, Head = head, HeadMaxTokens = headMaxTokens, Temperature = temperature, EstimatedResidentBytes = residentBytes };
         }
-        var head = new DecisionHeadWeights
+        catch
         {
-            TypeEmbeddings = Tensor(tensors, "type_emb.weight"), Layers = headLayers,
-            ScorerNorm = Tensor(tensors, "scorer.0.weight"), ScorerNormBias = Tensor(tensors, "scorer.0.bias"),
-            ScorerDense = Tensor(tensors, "scorer.1.weight"), ScorerDenseBias = Tensor(tensors, "scorer.1.bias"),
-            ScorerOutput = Tensor(tensors, "scorer.3.weight"), ScorerOutputBias = Tensor(tensors, "scorer.3.bias"),
-        };
-        // Validate all mapped tensors through the scalar head constructor before any GPU allocation.
-        _ = new ModernBertDecisionPipeline(encoder, head);
-        var temperature = Tensor(tensors, "temperature");
-        if (temperature.Length != 3 || temperature.Any(value => !float.IsFinite(value) || value <= 0)) throw new DecisionException("model_calibration_invalid", "The pinned temperature tensor is invalid.");
-        var residentBytes = tensors.Values.Sum(tensor => checked((long)tensor.Values.Length * sizeof(float)));
-        return new ModernBertModelPackage { ModelId = PinnedModelId, Revision = PinnedRevision, TokenizerRevision = PinnedRevision, License = "Apache-2.0", Tokenizer = new TokenizerJson(tokenizerPath, cancellationToken), Encoder = encoder, Head = head, HeadMaxTokens = headMaxTokens, Temperature = temperature, EstimatedResidentBytes = residentBytes };
+            encoder.Dispose();
+            throw;
+        }
     }
 
     private static float[] Tensor(IReadOnlyDictionary<string, SafeTensor> tensors, string name)

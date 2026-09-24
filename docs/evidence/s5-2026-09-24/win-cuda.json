@@ -1,0 +1,1114 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-09-23T18:39:10.6759649+00:00",
+  "status": "passed",
+  "phase": "complete",
+  "error_code": null,
+  "error": null,
+  "backend": "cuda",
+  "precision": "FP32",
+  "runtime": ".NET 10.0.12",
+  "rid": "win-x64",
+  "operating_system": "Microsoft Windows 10.0.26200",
+  "cpu": "Intel Core Ultra 9 185H",
+  "environment_label": "Windows 11 native",
+  "native_aot": true,
+  "logical_processors": 22,
+  "inference_threads": 1,
+  "vector_float_width": 4,
+  "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+  "weights_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+  "tokenizer_sha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+  "manifest_sha256": "cf870335dee647a053a5416918d3cd79e61cca6416122cb8353014fc3ea119f6",
+  "executable_sha256": "3fb16c92838bdc730818d46bece7402eea04554ebf3b622020c9721badb2d1b8",
+  "arguments": [
+    "--backend",
+    "cuda",
+    "--samples",
+    "5",
+    "--warmup",
+    "1",
+    "--cycles",
+    "2",
+    "--questions",
+    "1,8,32",
+    "--timeout-seconds",
+    "1200",
+    "--cpu",
+    "Intel Core Ultra 9 185H",
+    "--environment",
+    "Windows 11 native",
+    "--require-aot",
+    "--output",
+    "C:/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/final-win-cuda.json"
+  ],
+  "samples": 5,
+  "warmup": 1,
+  "timeout_seconds": 1200,
+  "loads": [
+    {
+      "cycle": 0,
+      "model_load_milliseconds": 2956.2318,
+      "backend_load_milliseconds": 319.6728,
+      "first_request_milliseconds": 131.4283,
+      "total_to_first_response_milliseconds": 3408.2271
+    },
+    {
+      "cycle": 1,
+      "model_load_milliseconds": 3463.9794,
+      "backend_load_milliseconds": 252.1742,
+      "first_request_milliseconds": 160.9924,
+      "total_to_first_response_milliseconds": 3877.1956
+    }
+  ],
+  "requests": [
+    {
+      "questions": 1,
+      "input_json": "{\u0022model\u0022:\u0022convaiinnovations/laya-multilingual\u0022,\u0022state\u0022:\u0022help\u0022,\u0022questions\u0022:{\u0022q0\u0022:{\u0022type\u0022:\u0022choice\u0022,\u0022criteria\u0022:{\u0022a\u0022:\u0022yes\u0022,\u0022b\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022}}}",
+      "input_sha256": "d2a7c1cdd70595d1eefc9c787768c9875df37ce7af10c4db303e128f87333763",
+      "token_count": 13,
+      "candidates_per_question": 2,
+      "milliseconds": [
+        40.0566,
+        38.2203,
+        40.1235,
+        41.002,
+        39.7577
+      ],
+      "allocated_bytes": [
+        35040,
+        35040,
+        35040,
+        35040,
+        35040
+      ],
+      "latency": {
+        "count": 5,
+        "minimum": 38.2203,
+        "p50": 40.0566,
+        "p95": 41.002,
+        "p99": 41.002,
+        "maximum": 41.002
+      },
+      "requests_per_second": 25.105430254353152,
+      "questions_per_second": 25.105430254353152,
+      "response": {
+        "model": "convaiinnovations/laya-multilingual",
+        "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+        "tokenizer_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+        "backend": "cuda-modernbert-marker-head",
+        "answers": {
+          "q0": {
+            "type": "choice",
+            "choice": "a",
+            "probabilities": {
+              "a": 0.7493217986819529,
+              "b": 0.250678201318047
+            },
+            "logits": {
+              "a": 0.034609172493219376,
+              "b": -1.0603892803192139
+            },
+            "concentration": 0.18764872035934332,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          }
+        },
+        "usage": {
+          "question_count": 1,
+          "token_count": 13,
+          "micro_batch_count": 1,
+          "workspace_bytes": 528384
+        }
+      }
+    },
+    {
+      "questions": 8,
+      "input_json": "{\u0022model\u0022:\u0022convaiinnovations/laya-multilingual\u0022,\u0022state\u0022:\u0022help\u0022,\u0022questions\u0022:{\u0022q0\u0022:{\u0022type\u0022:\u0022choice\u0022,\u0022criteria\u0022:{\u0022a\u0022:\u0022yes\u0022,\u0022b\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q1\u0022:{\u0022type\u0022:\u0022score\u0022,\u0022criteria\u0022:[\u0022yes\u0022,\u0022no\u0022],\u0022instructions\u0022:\u0022type\u0022},\u0022q2\u0022:{\u0022type\u0022:\u0022boolean\u0022,\u0022criteria\u0022:{\u0022true\u0022:\u0022yes\u0022,\u0022false\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q3\u0022:{\u0022type\u0022:\u0022choice\u0022,\u0022criteria\u0022:{\u0022a\u0022:\u0022yes\u0022,\u0022b\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q4\u0022:{\u0022type\u0022:\u0022score\u0022,\u0022criteria\u0022:[\u0022yes\u0022,\u0022no\u0022],\u0022instructions\u0022:\u0022type\u0022},\u0022q5\u0022:{\u0022type\u0022:\u0022boolean\u0022,\u0022criteria\u0022:{\u0022true\u0022:\u0022yes\u0022,\u0022false\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q6\u0022:{\u0022type\u0022:\u0022choice\u0022,\u0022criteria\u0022:{\u0022a\u0022:\u0022yes\u0022,\u0022b\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q7\u0022:{\u0022type\u0022:\u0022score\u0022,\u0022criteria\u0022:[\u0022yes\u0022,\u0022no\u0022],\u0022instructions\u0022:\u0022type\u0022}}}",
+      "input_sha256": "cfeae22d6c0f6af64b4c991cee75f96f52ff0ee01d68e97c8fd4530f0786c5ef",
+      "token_count": 104,
+      "candidates_per_question": 2,
+      "milliseconds": [
+        316.5158,
+        311.1369,
+        310.788,
+        310.4935,
+        312.9186
+      ],
+      "allocated_bytes": [
+        253200,
+        253200,
+        253200,
+        253200,
+        253200
+      ],
+      "latency": {
+        "count": 5,
+        "minimum": 310.4935,
+        "p50": 311.1369,
+        "p95": 316.5158,
+        "p99": 316.5158,
+        "maximum": 316.5158
+      },
+      "requests_per_second": 3.2013260148459572,
+      "questions_per_second": 25.610608118767658,
+      "response": {
+        "model": "convaiinnovations/laya-multilingual",
+        "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+        "tokenizer_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+        "backend": "cuda-modernbert-marker-head",
+        "answers": {
+          "q0": {
+            "type": "choice",
+            "choice": "a",
+            "probabilities": {
+              "a": 0.7493217986819529,
+              "b": 0.250678201318047
+            },
+            "logits": {
+              "a": 0.034609172493219376,
+              "b": -1.0603892803192139
+            },
+            "concentration": 0.18764872035934332,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q1": {
+            "type": "score",
+            "score": 0.24845257468489176,
+            "legend": {
+              "0": "yes",
+              "1": "no"
+            },
+            "probabilities": {
+              "0": 0.7515474253151083,
+              "1": 0.24845257468489176
+            },
+            "logits": {
+              "0": -0.18419796228408813,
+              "1": -1.291080355644226
+            },
+            "concentration": 0.19118371154047686,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q2": {
+            "type": "boolean",
+            "probability_true": 0.721427952001384,
+            "logits": {
+              "true": -0.04610344022512436,
+              "false": -0.9976592063903809
+            },
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q3": {
+            "type": "choice",
+            "choice": "a",
+            "probabilities": {
+              "a": 0.7493217986819529,
+              "b": 0.250678201318047
+            },
+            "logits": {
+              "a": 0.034609172493219376,
+              "b": -1.0603892803192139
+            },
+            "concentration": 0.18764872035934332,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q4": {
+            "type": "score",
+            "score": 0.24845257468489176,
+            "legend": {
+              "0": "yes",
+              "1": "no"
+            },
+            "probabilities": {
+              "0": 0.7515474253151083,
+              "1": 0.24845257468489176
+            },
+            "logits": {
+              "0": -0.18419796228408813,
+              "1": -1.291080355644226
+            },
+            "concentration": 0.19118371154047686,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q5": {
+            "type": "boolean",
+            "probability_true": 0.721427952001384,
+            "logits": {
+              "true": -0.04610344022512436,
+              "false": -0.9976592063903809
+            },
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q6": {
+            "type": "choice",
+            "choice": "a",
+            "probabilities": {
+              "a": 0.7493217986819529,
+              "b": 0.250678201318047
+            },
+            "logits": {
+              "a": 0.034609172493219376,
+              "b": -1.0603892803192139
+            },
+            "concentration": 0.18764872035934332,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q7": {
+            "type": "score",
+            "score": 0.24845257468489176,
+            "legend": {
+              "0": "yes",
+              "1": "no"
+            },
+            "probabilities": {
+              "0": 0.7515474253151083,
+              "1": 0.24845257468489176
+            },
+            "logits": {
+              "0": -0.18419796228408813,
+              "1": -1.291080355644226
+            },
+            "concentration": 0.19118371154047686,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          }
+        },
+        "usage": {
+          "question_count": 8,
+          "token_count": 104,
+          "micro_batch_count": 8,
+          "workspace_bytes": 528384
+        }
+      }
+    },
+    {
+      "questions": 32,
+      "input_json": "{\u0022model\u0022:\u0022convaiinnovations/laya-multilingual\u0022,\u0022state\u0022:\u0022help\u0022,\u0022questions\u0022:{\u0022q0\u0022:{\u0022type\u0022:\u0022choice\u0022,\u0022criteria\u0022:{\u0022a\u0022:\u0022yes\u0022,\u0022b\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q1\u0022:{\u0022type\u0022:\u0022score\u0022,\u0022criteria\u0022:[\u0022yes\u0022,\u0022no\u0022],\u0022instructions\u0022:\u0022type\u0022},\u0022q2\u0022:{\u0022type\u0022:\u0022boolean\u0022,\u0022criteria\u0022:{\u0022true\u0022:\u0022yes\u0022,\u0022false\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q3\u0022:{\u0022type\u0022:\u0022choice\u0022,\u0022criteria\u0022:{\u0022a\u0022:\u0022yes\u0022,\u0022b\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q4\u0022:{\u0022type\u0022:\u0022score\u0022,\u0022criteria\u0022:[\u0022yes\u0022,\u0022no\u0022],\u0022instructions\u0022:\u0022type\u0022},\u0022q5\u0022:{\u0022type\u0022:\u0022boolean\u0022,\u0022criteria\u0022:{\u0022true\u0022:\u0022yes\u0022,\u0022false\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q6\u0022:{\u0022type\u0022:\u0022choice\u0022,\u0022criteria\u0022:{\u0022a\u0022:\u0022yes\u0022,\u0022b\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q7\u0022:{\u0022type\u0022:\u0022score\u0022,\u0022criteria\u0022:[\u0022yes\u0022,\u0022no\u0022],\u0022instructions\u0022:\u0022type\u0022},\u0022q8\u0022:{\u0022type\u0022:\u0022boolean\u0022,\u0022criteria\u0022:{\u0022true\u0022:\u0022yes\u0022,\u0022false\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q9\u0022:{\u0022type\u0022:\u0022choice\u0022,\u0022criteria\u0022:{\u0022a\u0022:\u0022yes\u0022,\u0022b\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q10\u0022:{\u0022type\u0022:\u0022score\u0022,\u0022criteria\u0022:[\u0022yes\u0022,\u0022no\u0022],\u0022instructions\u0022:\u0022type\u0022},\u0022q11\u0022:{\u0022type\u0022:\u0022boolean\u0022,\u0022criteria\u0022:{\u0022true\u0022:\u0022yes\u0022,\u0022false\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q12\u0022:{\u0022type\u0022:\u0022choice\u0022,\u0022criteria\u0022:{\u0022a\u0022:\u0022yes\u0022,\u0022b\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q13\u0022:{\u0022type\u0022:\u0022score\u0022,\u0022criteria\u0022:[\u0022yes\u0022,\u0022no\u0022],\u0022instructions\u0022:\u0022type\u0022},\u0022q14\u0022:{\u0022type\u0022:\u0022boolean\u0022,\u0022criteria\u0022:{\u0022true\u0022:\u0022yes\u0022,\u0022false\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q15\u0022:{\u0022type\u0022:\u0022choice\u0022,\u0022criteria\u0022:{\u0022a\u0022:\u0022yes\u0022,\u0022b\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q16\u0022:{\u0022type\u0022:\u0022score\u0022,\u0022criteria\u0022:[\u0022yes\u0022,\u0022no\u0022],\u0022instructions\u0022:\u0022type\u0022},\u0022q17\u0022:{\u0022type\u0022:\u0022boolean\u0022,\u0022criteria\u0022:{\u0022true\u0022:\u0022yes\u0022,\u0022false\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q18\u0022:{\u0022type\u0022:\u0022choice\u0022,\u0022criteria\u0022:{\u0022a\u0022:\u0022yes\u0022,\u0022b\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q19\u0022:{\u0022type\u0022:\u0022score\u0022,\u0022criteria\u0022:[\u0022yes\u0022,\u0022no\u0022],\u0022instructions\u0022:\u0022type\u0022},\u0022q20\u0022:{\u0022type\u0022:\u0022boolean\u0022,\u0022criteria\u0022:{\u0022true\u0022:\u0022yes\u0022,\u0022false\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q21\u0022:{\u0022type\u0022:\u0022choice\u0022,\u0022criteria\u0022:{\u0022a\u0022:\u0022yes\u0022,\u0022b\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q22\u0022:{\u0022type\u0022:\u0022score\u0022,\u0022criteria\u0022:[\u0022yes\u0022,\u0022no\u0022],\u0022instructions\u0022:\u0022type\u0022},\u0022q23\u0022:{\u0022type\u0022:\u0022boolean\u0022,\u0022criteria\u0022:{\u0022true\u0022:\u0022yes\u0022,\u0022false\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q24\u0022:{\u0022type\u0022:\u0022choice\u0022,\u0022criteria\u0022:{\u0022a\u0022:\u0022yes\u0022,\u0022b\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q25\u0022:{\u0022type\u0022:\u0022score\u0022,\u0022criteria\u0022:[\u0022yes\u0022,\u0022no\u0022],\u0022instructions\u0022:\u0022type\u0022},\u0022q26\u0022:{\u0022type\u0022:\u0022boolean\u0022,\u0022criteria\u0022:{\u0022true\u0022:\u0022yes\u0022,\u0022false\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q27\u0022:{\u0022type\u0022:\u0022choice\u0022,\u0022criteria\u0022:{\u0022a\u0022:\u0022yes\u0022,\u0022b\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q28\u0022:{\u0022type\u0022:\u0022score\u0022,\u0022criteria\u0022:[\u0022yes\u0022,\u0022no\u0022],\u0022instructions\u0022:\u0022type\u0022},\u0022q29\u0022:{\u0022type\u0022:\u0022boolean\u0022,\u0022criteria\u0022:{\u0022true\u0022:\u0022yes\u0022,\u0022false\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q30\u0022:{\u0022type\u0022:\u0022choice\u0022,\u0022criteria\u0022:{\u0022a\u0022:\u0022yes\u0022,\u0022b\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q31\u0022:{\u0022type\u0022:\u0022score\u0022,\u0022criteria\u0022:[\u0022yes\u0022,\u0022no\u0022],\u0022instructions\u0022:\u0022type\u0022}}}",
+      "input_sha256": "c89b9ab6333604ae96dfe2fee27cd7bd547a1cb7e49e008e13f29e431b92cf8f",
+      "token_count": 416,
+      "candidates_per_question": 2,
+      "milliseconds": [
+        1228.2878,
+        1234.7657,
+        1225.3138,
+        1228.3339,
+        1236.0288
+      ],
+      "allocated_bytes": [
+        997536,
+        997536,
+        997536,
+        997536,
+        997536
+      ],
+      "latency": {
+        "count": 5,
+        "minimum": 1225.3138,
+        "p50": 1228.3339,
+        "p95": 1236.0288,
+        "p99": 1236.0288,
+        "maximum": 1236.0288
+      },
+      "requests_per_second": 0.8126473939210725,
+      "questions_per_second": 26.00471660547432,
+      "response": {
+        "model": "convaiinnovations/laya-multilingual",
+        "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+        "tokenizer_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+        "backend": "cuda-modernbert-marker-head",
+        "answers": {
+          "q0": {
+            "type": "choice",
+            "choice": "a",
+            "probabilities": {
+              "a": 0.7493217986819529,
+              "b": 0.250678201318047
+            },
+            "logits": {
+              "a": 0.034609172493219376,
+              "b": -1.0603892803192139
+            },
+            "concentration": 0.18764872035934332,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q1": {
+            "type": "score",
+            "score": 0.24845257468489176,
+            "legend": {
+              "0": "yes",
+              "1": "no"
+            },
+            "probabilities": {
+              "0": 0.7515474253151083,
+              "1": 0.24845257468489176
+            },
+            "logits": {
+              "0": -0.18419796228408813,
+              "1": -1.291080355644226
+            },
+            "concentration": 0.19118371154047686,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q2": {
+            "type": "boolean",
+            "probability_true": 0.721427952001384,
+            "logits": {
+              "true": -0.04610344022512436,
+              "false": -0.9976592063903809
+            },
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q3": {
+            "type": "choice",
+            "choice": "a",
+            "probabilities": {
+              "a": 0.7493217986819529,
+              "b": 0.250678201318047
+            },
+            "logits": {
+              "a": 0.034609172493219376,
+              "b": -1.0603892803192139
+            },
+            "concentration": 0.18764872035934332,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q4": {
+            "type": "score",
+            "score": 0.24845257468489176,
+            "legend": {
+              "0": "yes",
+              "1": "no"
+            },
+            "probabilities": {
+              "0": 0.7515474253151083,
+              "1": 0.24845257468489176
+            },
+            "logits": {
+              "0": -0.18419796228408813,
+              "1": -1.291080355644226
+            },
+            "concentration": 0.19118371154047686,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q5": {
+            "type": "boolean",
+            "probability_true": 0.721427952001384,
+            "logits": {
+              "true": -0.04610344022512436,
+              "false": -0.9976592063903809
+            },
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q6": {
+            "type": "choice",
+            "choice": "a",
+            "probabilities": {
+              "a": 0.7493217986819529,
+              "b": 0.250678201318047
+            },
+            "logits": {
+              "a": 0.034609172493219376,
+              "b": -1.0603892803192139
+            },
+            "concentration": 0.18764872035934332,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q7": {
+            "type": "score",
+            "score": 0.24845257468489176,
+            "legend": {
+              "0": "yes",
+              "1": "no"
+            },
+            "probabilities": {
+              "0": 0.7515474253151083,
+              "1": 0.24845257468489176
+            },
+            "logits": {
+              "0": -0.18419796228408813,
+              "1": -1.291080355644226
+            },
+            "concentration": 0.19118371154047686,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q8": {
+            "type": "boolean",
+            "probability_true": 0.721427952001384,
+            "logits": {
+              "true": -0.04610344022512436,
+              "false": -0.9976592063903809
+            },
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q9": {
+            "type": "choice",
+            "choice": "a",
+            "probabilities": {
+              "a": 0.7493217986819529,
+              "b": 0.250678201318047
+            },
+            "logits": {
+              "a": 0.034609172493219376,
+              "b": -1.0603892803192139
+            },
+            "concentration": 0.18764872035934332,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q10": {
+            "type": "score",
+            "score": 0.24845257468489176,
+            "legend": {
+              "0": "yes",
+              "1": "no"
+            },
+            "probabilities": {
+              "0": 0.7515474253151083,
+              "1": 0.24845257468489176
+            },
+            "logits": {
+              "0": -0.18419796228408813,
+              "1": -1.291080355644226
+            },
+            "concentration": 0.19118371154047686,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q11": {
+            "type": "boolean",
+            "probability_true": 0.721427952001384,
+            "logits": {
+              "true": -0.04610344022512436,
+              "false": -0.9976592063903809
+            },
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q12": {
+            "type": "choice",
+            "choice": "a",
+            "probabilities": {
+              "a": 0.7493217986819529,
+              "b": 0.250678201318047
+            },
+            "logits": {
+              "a": 0.034609172493219376,
+              "b": -1.0603892803192139
+            },
+            "concentration": 0.18764872035934332,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q13": {
+            "type": "score",
+            "score": 0.24845257468489176,
+            "legend": {
+              "0": "yes",
+              "1": "no"
+            },
+            "probabilities": {
+              "0": 0.7515474253151083,
+              "1": 0.24845257468489176
+            },
+            "logits": {
+              "0": -0.18419796228408813,
+              "1": -1.291080355644226
+            },
+            "concentration": 0.19118371154047686,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q14": {
+            "type": "boolean",
+            "probability_true": 0.721427952001384,
+            "logits": {
+              "true": -0.04610344022512436,
+              "false": -0.9976592063903809
+            },
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q15": {
+            "type": "choice",
+            "choice": "a",
+            "probabilities": {
+              "a": 0.7493217986819529,
+              "b": 0.250678201318047
+            },
+            "logits": {
+              "a": 0.034609172493219376,
+              "b": -1.0603892803192139
+            },
+            "concentration": 0.18764872035934332,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q16": {
+            "type": "score",
+            "score": 0.24845257468489176,
+            "legend": {
+              "0": "yes",
+              "1": "no"
+            },
+            "probabilities": {
+              "0": 0.7515474253151083,
+              "1": 0.24845257468489176
+            },
+            "logits": {
+              "0": -0.18419796228408813,
+              "1": -1.291080355644226
+            },
+            "concentration": 0.19118371154047686,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q17": {
+            "type": "boolean",
+            "probability_true": 0.721427952001384,
+            "logits": {
+              "true": -0.04610344022512436,
+              "false": -0.9976592063903809
+            },
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q18": {
+            "type": "choice",
+            "choice": "a",
+            "probabilities": {
+              "a": 0.7493217986819529,
+              "b": 0.250678201318047
+            },
+            "logits": {
+              "a": 0.034609172493219376,
+              "b": -1.0603892803192139
+            },
+            "concentration": 0.18764872035934332,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q19": {
+            "type": "score",
+            "score": 0.24845257468489176,
+            "legend": {
+              "0": "yes",
+              "1": "no"
+            },
+            "probabilities": {
+              "0": 0.7515474253151083,
+              "1": 0.24845257468489176
+            },
+            "logits": {
+              "0": -0.18419796228408813,
+              "1": -1.291080355644226
+            },
+            "concentration": 0.19118371154047686,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q20": {
+            "type": "boolean",
+            "probability_true": 0.721427952001384,
+            "logits": {
+              "true": -0.04610344022512436,
+              "false": -0.9976592063903809
+            },
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q21": {
+            "type": "choice",
+            "choice": "a",
+            "probabilities": {
+              "a": 0.7493217986819529,
+              "b": 0.250678201318047
+            },
+            "logits": {
+              "a": 0.034609172493219376,
+              "b": -1.0603892803192139
+            },
+            "concentration": 0.18764872035934332,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q22": {
+            "type": "score",
+            "score": 0.24845257468489176,
+            "legend": {
+              "0": "yes",
+              "1": "no"
+            },
+            "probabilities": {
+              "0": 0.7515474253151083,
+              "1": 0.24845257468489176
+            },
+            "logits": {
+              "0": -0.18419796228408813,
+              "1": -1.291080355644226
+            },
+            "concentration": 0.19118371154047686,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q23": {
+            "type": "boolean",
+            "probability_true": 0.721427952001384,
+            "logits": {
+              "true": -0.04610344022512436,
+              "false": -0.9976592063903809
+            },
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q24": {
+            "type": "choice",
+            "choice": "a",
+            "probabilities": {
+              "a": 0.7493217986819529,
+              "b": 0.250678201318047
+            },
+            "logits": {
+              "a": 0.034609172493219376,
+              "b": -1.0603892803192139
+            },
+            "concentration": 0.18764872035934332,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q25": {
+            "type": "score",
+            "score": 0.24845257468489176,
+            "legend": {
+              "0": "yes",
+              "1": "no"
+            },
+            "probabilities": {
+              "0": 0.7515474253151083,
+              "1": 0.24845257468489176
+            },
+            "logits": {
+              "0": -0.18419796228408813,
+              "1": -1.291080355644226
+            },
+            "concentration": 0.19118371154047686,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q26": {
+            "type": "boolean",
+            "probability_true": 0.721427952001384,
+            "logits": {
+              "true": -0.04610344022512436,
+              "false": -0.9976592063903809
+            },
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q27": {
+            "type": "choice",
+            "choice": "a",
+            "probabilities": {
+              "a": 0.7493217986819529,
+              "b": 0.250678201318047
+            },
+            "logits": {
+              "a": 0.034609172493219376,
+              "b": -1.0603892803192139
+            },
+            "concentration": 0.18764872035934332,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q28": {
+            "type": "score",
+            "score": 0.24845257468489176,
+            "legend": {
+              "0": "yes",
+              "1": "no"
+            },
+            "probabilities": {
+              "0": 0.7515474253151083,
+              "1": 0.24845257468489176
+            },
+            "logits": {
+              "0": -0.18419796228408813,
+              "1": -1.291080355644226
+            },
+            "concentration": 0.19118371154047686,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q29": {
+            "type": "boolean",
+            "probability_true": 0.721427952001384,
+            "logits": {
+              "true": -0.04610344022512436,
+              "false": -0.9976592063903809
+            },
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q30": {
+            "type": "choice",
+            "choice": "a",
+            "probabilities": {
+              "a": 0.7493217986819529,
+              "b": 0.250678201318047
+            },
+            "logits": {
+              "a": 0.034609172493219376,
+              "b": -1.0603892803192139
+            },
+            "concentration": 0.18764872035934332,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q31": {
+            "type": "score",
+            "score": 0.24845257468489176,
+            "legend": {
+              "0": "yes",
+              "1": "no"
+            },
+            "probabilities": {
+              "0": 0.7515474253151083,
+              "1": 0.24845257468489176
+            },
+            "logits": {
+              "0": -0.18419796228408813,
+              "1": -1.291080355644226
+            },
+            "concentration": 0.19118371154047686,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          }
+        },
+        "usage": {
+          "question_count": 32,
+          "token_count": 416,
+          "micro_batch_count": 32,
+          "workspace_bytes": 528384
+        }
+      }
+    }
+  ],
+  "diagnostics": [
+    "decision_cancelled",
+    "cancel_after_first_encoder_trace_ms=0.0306",
+    "decision_head_input_invalid",
+    "cuda_cancelled_constructor",
+    "recovery_after_cancel_and_invalid_input",
+    "cycle_0_unload_fail_closed",
+    "cycle_1_unload_fail_closed",
+    "model_encoder_head_pipeline_embedding_sentinels_collected_after_unload"
+  ],
+  "gpu": {
+    "name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+    "driver_version": 13020,
+    "compute_capability_major": 8,
+    "compute_capability_minor": 9,
+    "total_memory_bytes": 8585216000
+  },
+  "cuda_load": {
+    "profiling_enabled": true,
+    "host_to_device_milliseconds": 180.4739999999999,
+    "host_to_device_bytes": 1286842372,
+    "device_to_host_milliseconds": 0,
+    "device_to_host_bytes": 0,
+    "module_load_milliseconds": 14.6198,
+    "kernel_milliseconds": 0,
+    "kernel_launch_count": 0
+  },
+  "cuda_profiled_forward": {
+    "profiling_enabled": true,
+    "host_to_device_milliseconds": 0.05550000000000001,
+    "host_to_device_bytes": 156,
+    "device_to_host_milliseconds": 0.2072,
+    "device_to_host_bytes": 156,
+    "module_load_milliseconds": 0,
+    "kernel_milliseconds": 112.19558325782418,
+    "kernel_launch_count": 1053
+  },
+  "profiled_forward_wall_milliseconds": 127.3499,
+  "cuda_before_unload": {
+    "total_bytes": 8585216000,
+    "free_bytes": 5997854720,
+    "owned_bytes": 1286842372,
+    "peak_owned_bytes": 1288116684,
+    "owned_allocation_count": 165,
+    "loaded_module_count": 28,
+    "release_failure_count": 0
+  },
+  "cuda_after_unload": {
+    "total_bytes": 8585216000,
+    "free_bytes": 7411335168,
+    "owned_bytes": 0,
+    "peak_owned_bytes": 1288116684,
+    "owned_allocation_count": 0,
+    "loaded_module_count": 0,
+    "release_failure_count": 0
+  },
+  "alignment": {
+    "tokens": [
+      2,
+      4,
+      4,
+      1
+    ],
+    "reference_logits": [
+      -0.057375,
+      0.24228567,
+      -0.33555993,
+      -0.039743207,
+      -0.13712718,
+      0.12859309
+    ],
+    "actual_logits": [
+      -0.05737535,
+      0.24228553,
+      -0.33556002,
+      -0.039743133,
+      -0.1371277,
+      0.12859324
+    ],
+    "encoder_max_absolute_error": 1.2397766E-05,
+    "logits_max_absolute_error": 5.2154064E-07,
+    "probability_max_absolute_error": 1.6837372E-07,
+    "head_only_max_absolute_error": null,
+    "encoder_tolerance": 0.05,
+    "logits_tolerance": 0.005,
+    "probability_tolerance": 0.002
+  },
+  "quantized_encoder_bytes": 0,
+  "quantized_head_bytes": 0,
+  "managed_bytes_before": 83552,
+  "managed_bytes_after_collection": 67610872,
+  "model_objects_collected": true,
+  "peak_working_set_bytes": 3497668608,
+  "elapsed_milliseconds": 19018.0832,
+  "timing_scope": "E2E: parse request JSON \u002B tokenize \u002B sequential per-question encoder/head \u002B typed response JSON; model load excluded. Cold = first request in this process, OS/driver disk caches not flushed. CUDA events measured in a separate instrumented forward.",
+  "resource_scope": "PeakWorkingSetBytes is OS process lifetime high-water RSS. CUDA owned peak counts successful driver allocations (not driver/context overhead); free/total memory is device-wide. FP32 source tensors retained in W8A32 mode. Managed bytes after full collection do not imply immediate OS RSS return.",
+  "quality_scope": "Numerical smoke on fixed inputs only; no language accuracy or calibrated quality claim. Percentiles use nearest rank; small sample counts are exploratory and p95/p99 may coincide."
+}

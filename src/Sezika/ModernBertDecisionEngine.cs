@@ -11,7 +11,8 @@ namespace Sezika;
 public sealed class ModernBertDecisionEngine : IDecisionEngine, IDisposable
 {
     private readonly ModernBertModelPackage _model;
-    private readonly ModernBertDecisionPipeline _pipeline;
+    private readonly IMarkerDecisionPipeline _pipeline;
+    private readonly string _backend;
     private readonly DecisionLimits _limits;
     private readonly DecisionResourceBudget _budget;
     private readonly double _minimumConcentration;
@@ -21,9 +22,19 @@ public sealed class ModernBertDecisionEngine : IDecisionEngine, IDisposable
     private bool _sessionActive;
     private bool _resourcesDisposed;
 
-    /// <summary>Creates a session and transfers ownership of the supplied model package.</summary>
+    /// <summary>Creates a session and transfers ownership of the supplied model package and optional pipeline.</summary>
+    /// <remarks>An injected pipeline must use this model's tokenizer/weights contract. Its encoder/device lifetime remains the caller's responsibility.</remarks>
     public ModernBertDecisionEngine(
         ModernBertModelPackage model,
+        DecisionLimits? limits = null,
+        DecisionResourceBudget? budget = null,
+        double minimumConcentration = 0d)
+        : this(model, null, "cpu-modernbert-marker-head", limits, budget, minimumConcentration) { }
+
+    public ModernBertDecisionEngine(
+        ModernBertModelPackage model,
+        IMarkerDecisionPipeline? pipeline,
+        string backend,
         DecisionLimits? limits = null,
         DecisionResourceBudget? budget = null,
         double minimumConcentration = 0d)
@@ -31,20 +42,24 @@ public sealed class ModernBertDecisionEngine : IDecisionEngine, IDisposable
         ArgumentNullException.ThrowIfNull(model);
         try
         {
-            var pipeline = new ModernBertDecisionPipeline(model.Encoder, model.Head);
+            pipeline ??= new ModernBertDecisionPipeline(model.Encoder, model.Head);
             var effectiveLimits = limits ?? DecisionLimits.Default;
             effectiveLimits.Validate();
             var effectiveBudget = budget ?? new DecisionResourceBudget();
             effectiveBudget.Validate();
             if (model.IsDisposed)
                 throw new DecisionException("decision_model_unloaded", "The model package has already been unloaded.");
-            if (model.EstimatedResidentBytes > effectiveBudget.MaxResidentBytes)
-                throw new DecisionException("decision_model_memory_limit_exceeded", $"The loaded model requires {model.EstimatedResidentBytes} bytes, above the session limit ({effectiveBudget.MaxResidentBytes}).");
+            var residentBytes = checked(model.EstimatedResidentBytes +
+                (pipeline is ModernBertDecisionPipeline cpu ? cpu.QuantizedWeightBytes : 0));
+            if (residentBytes > effectiveBudget.MaxResidentBytes)
+                throw new DecisionException("decision_model_memory_limit_exceeded", $"The loaded model requires {residentBytes} bytes, above the session limit ({effectiveBudget.MaxResidentBytes}).");
             if (!double.IsFinite(minimumConcentration) || minimumConcentration < 0 || minimumConcentration > 1)
                 throw new ArgumentOutOfRangeException(nameof(minimumConcentration));
 
             _model = model;
             _pipeline = pipeline;
+            ArgumentException.ThrowIfNullOrWhiteSpace(backend);
+            _backend = backend;
             _limits = effectiveLimits;
             _budget = effectiveBudget;
             _minimumConcentration = minimumConcentration;
@@ -53,8 +68,8 @@ public sealed class ModernBertDecisionEngine : IDecisionEngine, IDisposable
         {
             // The engine owns the package after construction is attempted;
             // reject paths must release all model tensors as well.
-            model.Dispose();
-            _sessionGate.Dispose();
+            try { pipeline?.Dispose(); }
+            finally { try { model.Dispose(); } finally { _sessionGate.Dispose(); } }
             throw;
         }
     }
@@ -101,7 +116,7 @@ public sealed class ModernBertDecisionEngine : IDecisionEngine, IDisposable
                 Model = _model.ModelId,
                 ModelRevision = _model.Revision,
                 TokenizerRevision = _model.TokenizerRevision,
-                Backend = "cpu-modernbert-marker-head",
+                Backend = _backend,
                 Answers = answers,
                 Usage = new DecisionUsage
                 {
@@ -269,7 +284,7 @@ public sealed class ModernBertDecisionEngine : IDecisionEngine, IDisposable
     {
         if (_resourcesDisposed) return;
         _resourcesDisposed = true;
-        _model.Dispose();
-        _sessionGate.Dispose();
+        try { _pipeline.Dispose(); }
+        finally { try { _model.Dispose(); } finally { _sessionGate.Dispose(); } }
     }
 }

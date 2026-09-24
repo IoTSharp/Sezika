@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-09-23T18:55:32.9246208+00:00",
+  "status": "passed",
+  "phase": "complete",
+  "error_code": null,
+  "error": null,
+  "backend": "simd",
+  "precision": "FP32",
+  "runtime": ".NET 10.0.12",
+  "rid": "linux-x64",
+  "operating_system": "Ubuntu 24.04.4 LTS",
+  "cpu": "Intel Core Ultra 9 185H",
+  "environment_label": "Ubuntu WSL2",
+  "native_aot": true,
+  "logical_processors": 22,
+  "inference_threads": 1,
+  "vector_float_width": 4,
+  "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+  "weights_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+  "tokenizer_sha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+  "manifest_sha256": "cf870335dee647a053a5416918d3cd79e61cca6416122cb8353014fc3ea119f6",
+  "executable_sha256": "f4863a48d6a29defd071bf844bdc1c0117806d8838c686724d5f8eeb00e7da07",
+  "arguments": [
+    "--backend",
+    "simd",
+    "--samples",
+    "1",
+    "--warmup",
+    "0",
+    "--cycles",
+    "2",
+    "--questions",
+    "3",
+    "--timeout-seconds",
+    "180",
+    "--cpu",
+    "Intel Core Ultra 9 185H",
+    "--environment",
+    "Ubuntu WSL2",
+    "--require-aot",
+    "--output",
+    "/mnt/c/Users/mysti/AppData/Local/Temp/sezika-s5-20260924/final-linux-simd.json"
+  ],
+  "samples": 1,
+  "warmup": 0,
+  "timeout_seconds": 180,
+  "loads": [
+    {
+      "cycle": 0,
+      "model_load_milliseconds": 10864.1646,
+      "backend_load_milliseconds": 0.0116,
+      "first_request_milliseconds": 1756.2788,
+      "total_to_first_response_milliseconds": 12626.1677
+    },
+    {
+      "cycle": 1,
+      "model_load_milliseconds": 9170.6756,
+      "backend_load_milliseconds": 0.0038,
+      "first_request_milliseconds": 1810.7756,
+      "total_to_first_response_milliseconds": 10981.5039
+    }
+  ],
+  "requests": [
+    {
+      "questions": 3,
+      "input_json": "{\u0022model\u0022:\u0022convaiinnovations/laya-multilingual\u0022,\u0022state\u0022:\u0022help\u0022,\u0022questions\u0022:{\u0022q0\u0022:{\u0022type\u0022:\u0022choice\u0022,\u0022criteria\u0022:{\u0022a\u0022:\u0022yes\u0022,\u0022b\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022},\u0022q1\u0022:{\u0022type\u0022:\u0022score\u0022,\u0022criteria\u0022:[\u0022yes\u0022,\u0022no\u0022],\u0022instructions\u0022:\u0022type\u0022},\u0022q2\u0022:{\u0022type\u0022:\u0022boolean\u0022,\u0022criteria\u0022:{\u0022true\u0022:\u0022yes\u0022,\u0022false\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022}}}",
+      "input_sha256": "6c79effc526a04310aaa047af6c0d9cd09c6c0776cbc6fb4420473959629ea49",
+      "token_count": 39,
+      "candidates_per_question": 2,
+      "milliseconds": [
+        1839.7478
+      ],
+      "allocated_bytes": [
+        51107744
+      ],
+      "latency": {
+        "count": 1,
+        "minimum": 1839.7478,
+        "p50": 1839.7478,
+        "p95": 1839.7478,
+        "p99": 1839.7478,
+        "maximum": 1839.7478
+      },
+      "requests_per_second": 0.5435527630471959,
+      "questions_per_second": 1.6306582891415877,
+      "response": {
+        "model": "convaiinnovations/laya-multilingual",
+        "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+        "tokenizer_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+        "backend": "simd-modernbert-marker-head",
+        "answers": {
+          "q0": {
+            "type": "choice",
+            "choice": "a",
+            "probabilities": {
+              "a": 0.7493211940944733,
+              "b": 0.25067880590552677
+            },
+            "logits": {
+              "a": 0.034606993198394775,
+              "b": -1.060388207435608
+            },
+            "concentration": 0.18764776526435611,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q1": {
+            "type": "score",
+            "score": 0.24845333149923196,
+            "legend": {
+              "0": "yes",
+              "1": "no"
+            },
+            "probabilities": {
+              "0": 0.7515466685007681,
+              "1": 0.24845333149923196
+            },
+            "logits": {
+              "0": -0.1842004358768463,
+              "1": -1.2910786867141724
+            },
+            "concentration": 0.19118250299067274,
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          },
+          "q2": {
+            "type": "boolean",
+            "probability_true": 0.7214276645118853,
+            "logits": {
+              "true": -0.04610484838485718,
+              "false": -0.9976592063903809
+            },
+            "status": "answered",
+            "abstention_reason": null,
+            "calibration": {
+              "status": "uncalibrated",
+              "profile_id": null,
+              "scope": null
+            }
+          }
+        },
+        "usage": {
+          "question_count": 3,
+          "token_count": 39,
+          "micro_batch_count": 3,
+          "workspace_bytes": 528384
+        }
+      }
+    }
+  ],
+  "diagnostics": [
+    "decision_cancelled",
+    "cancel_after_first_encoder_trace_ms=0.0123",
+    "decision_head_input_invalid",
+    "recovery_after_cancel_and_invalid_input",
+    "cycle_0_unload_fail_closed",
+    "cycle_1_unload_fail_closed",
+    "model_encoder_head_pipeline_embedding_sentinels_collected_after_unload"
+  ],
+  "gpu": null,
+  "cuda_load": null,
+  "cuda_profiled_forward": null,
+  "profiled_forward_wall_milliseconds": null,
+  "cuda_before_unload": null,
+  "cuda_after_unload": null,
+  "alignment": {
+    "tokens": [
+      2,
+      4,
+      4,
+      1
+    ],
+    "reference_logits": [
+      -0.057376042,
+      0.2422853,
+      -0.33556065,
+      -0.0397434,
+      -0.13712792,
+      0.12859315
+    ],
+    "actual_logits": [
+      -0.057372987,
+      0.24228692,
+      -0.33555722,
+      -0.03974247,
+      -0.1371261,
+      0.12859336
+    ],
+    "encoder_max_absolute_error": 2.2888184E-05,
+    "logits_max_absolute_error": 3.427267E-06,
+    "probability_max_absolute_error": 6.123544E-07,
+    "head_only_max_absolute_error": 1.758337E-06,
+    "encoder_tolerance": 0.05,
+    "logits_tolerance": 0.005,
+    "probability_tolerance": 0.002
+  },
+  "quantized_encoder_bytes": 0,
+  "quantized_head_bytes": 0,
+  "managed_bytes_before": 75744,
+  "managed_bytes_after_collection": 67565368,
+  "model_objects_collected": true,
+  "peak_working_set_bytes": 3516088320,
+  "elapsed_milliseconds": 30014.7995,
+  "timing_scope": "E2E: parse request JSON \u002B tokenize \u002B sequential per-question encoder/head \u002B typed response JSON; model load excluded. Cold = first request in this process, OS/driver disk caches not flushed. CUDA events measured in a separate instrumented forward.",
+  "resource_scope": "PeakWorkingSetBytes is OS process lifetime high-water RSS. CUDA owned peak counts successful driver allocations (not driver/context overhead); free/total memory is device-wide. FP32 source tensors retained in W8A32 mode. Managed bytes after full collection do not imply immediate OS RSS return.",
+  "quality_scope": "Numerical smoke on fixed inputs only; no language accuracy or calibrated quality claim. Percentiles use nearest rank; small sample counts are exploratory and p95/p99 may coincide."
+}

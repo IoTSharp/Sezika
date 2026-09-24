@@ -80,6 +80,7 @@ try
     Check(closureChecks == 4, "model package install/lease/uninstall lifecycle");
     Check(global::Sezika.Tests.EncoderExecutionChecks.Run(), "SIMD/scalar cancellation, deadline, workspace and concurrency bounds");
     Check(global::Sezika.Tests.DecisionModelRuntimeChecks.Run(), "standalone model runtime load/parse/evaluate/dispose facade");
+    global::Sezika.Tests.BackendInjectionChecks.Run(Check);
     Check(global::Sezika.Tests.PrimitiveAlignmentChecks.Run(), "typed primitive reference alignment contract");
     Check(global::Sezika.Tests.CalibrationProfileChecks.Run(), "calibration profile binding and pending gate semantics");
 

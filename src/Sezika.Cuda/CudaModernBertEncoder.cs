@@ -20,6 +20,7 @@ public sealed class CudaModernBertEncoder : IEncoder, IDisposable
         ArgumentNullException.ThrowIfNull(device);
         ArgumentNullException.ThrowIfNull(config);
         ArgumentNullException.ThrowIfNull(weights);
+        cancellationToken.ThrowIfCancellationRequested();
         // The scalar encoder validates the shared tensor contract without running inference.
         using (var validatedEncoder = new ModernBertEncoder(config, weights))
         {
@@ -30,10 +31,10 @@ public sealed class CudaModernBertEncoder : IEncoder, IDisposable
         Config = config;
         Weights = weights;
         _device = device;
-        _kernels = new CudaKernels(device);
         _layers = new Layer[config.LayerCount];
         using var deadline = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
         deadline.CancelAfter(TimeSpan.FromMinutes(10));
+        _kernels = new CudaKernels(device, deadline.Token);
         try
         {
             _embeddings = Upload(weights.TokenEmbeddings, deadline.Token);
@@ -59,6 +60,7 @@ public sealed class CudaModernBertEncoder : IEncoder, IDisposable
 
     public ModernBertConfig Config { get; }
     public ModernBertWeights Weights { get; }
+    internal CudaDevice Device => _device;
 
     /// <summary>Optional diagnostic snapshots; enabling this copies each named operator output to the host.</summary>
     public Action<string, float[]>? Trace { get; set; }
@@ -81,11 +83,11 @@ public sealed class CudaModernBertEncoder : IEncoder, IDisposable
                 throw new DecisionException("tokenizer_token_out_of_range", $"Token ID {value} is outside the vocabulary.");
         if (!_gate.Wait(0, cancellationToken))
             throw new DecisionException("decision_session_busy", "The CUDA encoder session is busy.");
-        using var deadline = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
-        deadline.CancelAfter(TimeSpan.FromMinutes(10));
-        var ct = deadline.Token;
         try
         {
+            using var deadline = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+            deadline.CancelAfter(TimeSpan.FromMinutes(10));
+            var ct = deadline.Token;
             ct.ThrowIfCancellationRequested();
             _device.ThrowIfDisposed();
             var rows = tokenIds.Length;

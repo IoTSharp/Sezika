@@ -13,10 +13,10 @@
 | 2 | ✅ | 纯 C# encoder | embedding、attention、RoPE、norm、MLP 的标量正确性与逐层 oracle；SIMD/资源边界已完成 |
 | 3 | 🚧 | 决策头与完整推理 | choice / score / boolean 的真实本地输出、预算、取消、session 生命周期 |
 | 4 | 🚧 | 多语言数据、适配与校准 | 分语言数据集、可复现 head 训练、独立校准与测试报告 |
-| 5 | 🚧 | AOT 与 CPU/GPU 性能 | SIMD、C# GPU kernels、量化、AOT 二进制、资源与延迟证据 |
+| 5 | ✅ | AOT 与 CPU/GPU 性能 | scalar/SIMD/W8A32/CUDA 的 Windows 基准与 Windows / Ubuntu WSL2 真实模型 AOT、资源回收证据 |
 | 6 | 🚧 | 开源发布 | NuGet、CLI、模型卡、许可清单、跨平台发布与示例 |
 
-当前已具备固定 Apache-2.0 mmBERT/Laya 模型资产、C# tokenizer oracle、真实 CPU scalar encoder、真实 marker-head typed smoke、ILGPU 构建期 PTX/ABI 产物、CUDA Driver resident encoder/head 和多 RID tiny Native AOT smoke。逐语言质量与跨平台性能矩阵仍按各自证据门槛推进；详见 [阶段证据](docs/stage-evidence.md) 与 [闭环审计](docs/closure-audit-2026-09-23.md)。
+当前已具备固定 Apache-2.0 mmBERT/Laya 模型资产、C# tokenizer oracle、真实 CPU encoder/marker-head typed inference、ILGPU 构建期 PTX/ABI 产物、CUDA Driver resident encoder/head，以及 win-x64 / linux-x64 四后端真实模型 Native AOT 验证。阶段 5 已完成本机 Windows 基准与 Ubuntu WSL2 验收范围；更广硬件、长输入性能及逐语言质量仍需独立证据。详见 [S5 性能与 AOT 证据](docs/s5-performance-aot.md)、[阶段证据](docs/stage-evidence.md) 与历史[闭环审计](docs/closure-audit-2026-09-23.md)。
 
 ## 编号任务板
 
@@ -44,12 +44,12 @@
 | S5-01 | E GPU/AOT | ✅ 已完成 | 生成带 hash/ABI 的 C# kernel PTX 与静态 Driver loader | S0-02 | 14 个 kernel manifest/PTX 和生成复现记录 |
 | S5-02 | E GPU/AOT | ✅ 已完成 | 完成 resident CUDA encoder/head 与 CPU logits 对齐 | S2-01,S5-01 | RTX 4070 实卡 head 误差报告 |
 | S5-03 | E GPU/AOT | ✅ 已完成 | 完成 tiny CPU/CUDA win-x64 与 CPU linux-x64 Native AOT smoke | S5-01 | 发布物、运行输出、依赖图 |
-| S5-04 | E 性能 | ⏳ 计划中 | 建立 scalar/SIMD/量化 CPU 与 CUDA 冷/热、H2D、kernel、端到端基准 | S2-03,S5-02 | 固定硬件/线程/模型 hash 的 p50/p95 和峰值资源 |
-| S5-05 | E 性能 | ⏳ 计划中 | 完成真实模型 CPU/CUDA AOT、多 RID、显存/内存回收和失败诊断 | S3-04,S5-02,S5-03 | win/linux 目标矩阵与真实模型 smoke |
+| S5-04 | E 性能 | ✅ 已完成 | 建立 scalar/SIMD/量化 CPU 与 CUDA 冷/热、H2D、kernel、端到端基准 | S2-03,S5-02 | Windows 四后端、固定模型/hash/硬件/线程、1/8/32 问各 5 样本，冷启动/重载、p50/p95/p99、吞吐/分配/RSS/显存及独立 CUDA 分项；[实测与限制](docs/s5-performance-aot.md) |
+| S5-05 | E 性能 | ✅ 已完成 | 完成真实模型 CPU/CUDA AOT、多 RID、显存/内存回收和失败诊断 | S3-04,S5-02,S5-03 | win-x64 / Ubuntu WSL2 linux-x64 四后端真实模型 AOT，预取消/执行中取消/失败恢复、两轮 unload 和对象回收；[8 份报告矩阵](docs/evidence/s5-2026-09-24/summary.json) |
 | S6-01 | F 发布 | ✅ 已完成 | 生成带 README、许可证、NOTICE 和第三方声明的开发 NuGet 包 | S0-02 | `.artifacts/packages/Sezika.0.1.0-dev.nupkg` |
 | S6-02 | F 发布 | ⏳ 计划中 | 完成正式版本、CLI、模型卡/数据卡、签名、NuGet 发布和示例 | S4-03,S5-05 | 发布清单、签名校验、跨平台包与文档 |
 
-本轮已闭环并标记完成：S1-04、S2-03、S3-03、S3-04、S4-02、S4-03。S5-04 可在 S2-03 资源边界基础上继续并行推进；S5-05、S6-02 必须等待对应依赖。S4-03 的 profile 仍保持 `pending_measurement`，不把 fixture 或冻结门槛写成多语言质量已达标。
+S5-04、S5-05 已在固定硬件与两个 RID 的记录范围内闭环；Linux 使用 Ubuntu WSL2 smoke，未测量裸机 Linux 性能。S6-02 正式发布仍未完成。S4-03 的 profile 仍保持 `pending_measurement`，不把 fixture、数值对齐或性能基准写成多语言质量已达标。
 
 ## 0. 研究与契约
 

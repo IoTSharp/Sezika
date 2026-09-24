@@ -12,7 +12,15 @@ public sealed class CudaVectorAdd : IDisposable
     {
         _device = device;
         _module = device.LoadModule(CudaPtx.VectorAdd);
-        _function = device.GetFunction(_module, GeneratedKernelArtifacts.VectorAddDescriptor.Entry);
+        try
+        {
+            _function = device.GetFunction(_module, GeneratedKernelArtifacts.VectorAddDescriptor.Entry);
+        }
+        catch
+        {
+            _module.Dispose();
+            throw;
+        }
     }
 
     public void Execute(ReadOnlySpan<float> left, ReadOnlySpan<float> right, Span<float> destination)
