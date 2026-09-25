@@ -40,7 +40,8 @@ try
     {
         if (args[0] == "--prompt-contract-aot")
             Check(!System.Runtime.CompilerServices.RuntimeFeature.IsDynamicCodeSupported &&
-                !System.Runtime.CompilerServices.RuntimeFeature.IsDynamicCodeCompiled,
+                !System.Runtime.CompilerServices.RuntimeFeature.IsDynamicCodeCompiled &&
+                AppContext.GetData("TRUSTED_PLATFORM_ASSEMBLIES") is null,
                 "prompt contract executes with Native AOT dynamic code disabled");
         global::Sezika.Tests.BackendInjectionChecks.Run(Check);
         global::Sezika.Tests.PromptContractChecks.Run(Check);

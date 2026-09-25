@@ -1,0 +1,20 @@
+{
+  "Pid": 79140,
+  "Started": "2026-09-25T16:12:31.1019931Z",
+  "CommandLine": "\"D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\tests\\win-x64\\Sezika.Tests.exe\" --prompt-contract-aot",
+  "ParentPid": 62076,
+  "ObservedParentPid": 62076,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 62076,
+    "Started": "2026-09-26T00:12:29.617354+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$file = [IO.File]::Open('D:\\source\\Sezika\\.artifacts\\processes\\20260925-160829-055-s3-aot-linux-sdk-setup.stderr.log', [IO.FileMode]::Open, [IO.FileAccess]::Read, [IO.FileShare]::ReadWrite)\ntry { $reader = [IO.StreamReader]::new($file); $log = $reader.ReadToEnd(); $log.Substring([Math]::Max(0,$log.Length-1600)) } finally { $file.Dispose() }\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\tests\\win-x64\\Sezika.Tests.exe' -ArgumentList @('--prompt-contract-aot') -TimeoutSeconds 180 -LogName 's3-aot-win-prompt-tests'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 180,
+  "FilePath": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\tests\\win-x64\\Sezika.Tests.exe",
+  "Arguments": [
+    "--prompt-contract-aot"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

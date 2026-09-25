@@ -1,0 +1,49 @@
+{
+  "parent": {
+    "pid": 1569,
+    "ppid": 1568,
+    "group": 1568,
+    "start_ticks": 17771444,
+    "command": "/usr/bin/python3 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py 15 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-managed-negative-process.json /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/dotnet .artifacts/s3-aot-20260926/build-linux-final/bin/Sezika.OracleCapture/release_linux-x64/Sezika.OracleCapture.dll --reference tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json --model .artifacts/models/laya-mmbert --cases tests/fixtures/laya-oracle/cases.v1.json --contract tests/fixtures/laya-oracle/contract.v1.json --output .artifacts/s3-aot-20260926/linux-managed-should-not-exist --require-aot ",
+    "observed_utc": "2026-09-25T16:29:43.146511+00:00"
+  },
+  "root": {
+    "pid": 1570,
+    "ppid": 1569,
+    "group": 1570,
+    "start_ticks": 17771453,
+    "command": "",
+    "observed_utc": "2026-09-25T16:29:43.151320+00:00"
+  },
+  "command": [
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/dotnet",
+    ".artifacts/s3-aot-20260926/build-linux-final/bin/Sezika.OracleCapture/release_linux-x64/Sezika.OracleCapture.dll",
+    "--reference",
+    "tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json",
+    "--model",
+    ".artifacts/models/laya-mmbert",
+    "--cases",
+    "tests/fixtures/laya-oracle/cases.v1.json",
+    "--contract",
+    "tests/fixtures/laya-oracle/contract.v1.json",
+    "--output",
+    ".artifacts/s3-aot-20260926/linux-managed-should-not-exist",
+    "--require-aot"
+  ],
+  "timeout_seconds": 15,
+  "elapsed_seconds": 1.013878603989724,
+  "exit_code": 2,
+  "cancelled": false,
+  "completed": false,
+  "forced_cleanup_pids": [],
+  "processes": [
+    {
+      "pid": 1570,
+      "ppid": 1569,
+      "group": 1570,
+      "start_ticks": 17771453,
+      "command": "",
+      "observed_utc": "2026-09-25T16:29:43.151320+00:00"
+    }
+  ]
+}

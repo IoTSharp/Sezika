@@ -1,0 +1,30 @@
+{
+  "Pid": 51792,
+  "Started": "2026-09-25T16:49:57.9463864Z",
+  "CommandLine": "\"C:\\Windows\\system32\\wsl.exe\" -d Ubuntu --cd /mnt/d/source/Sezika --exec /usr/bin/timeout --signal=TERM --kill-after=5s 20s /usr/bin/python3 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/audit-linux-processes.py",
+  "ParentPid": 79104,
+  "ObservedParentPid": 79104,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 79104,
+    "Started": "2026-09-26T00:49:56.570041+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Windows\\system32\\wsl.exe' -ArgumentList @('-d','Ubuntu','--cd','/mnt/d/source/Sezika','--exec','/usr/bin/timeout','--signal=TERM','--kill-after=5s','20s','/usr/bin/python3','/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/audit-linux-processes.py') -TimeoutSeconds 30 -LogName 's3-aot-linux-final-cleanup-audit'\n& ./.artifacts/s3-aot-20260926/audit-processes.ps1\n$report = Get-Content -LiteralPath '.artifacts/s3-aot-20260926/linux-simd-final-comparison.json' -Raw -Encoding utf8 | ConvertFrom-Json\n[ordered]@{passed=$report.passed;logit=$report.max_logit_error;probability=$report.max_probability_error} | ConvertTo-Json\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 30,
+  "FilePath": "C:\\Windows\\system32\\wsl.exe",
+  "Arguments": [
+    "-d",
+    "Ubuntu",
+    "--cd",
+    "/mnt/d/source/Sezika",
+    "--exec",
+    "/usr/bin/timeout",
+    "--signal=TERM",
+    "--kill-after=5s",
+    "20s",
+    "/usr/bin/python3",
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/audit-linux-processes.py"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

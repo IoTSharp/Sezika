@@ -1,0 +1,27 @@
+{
+  "Pid": 14404,
+  "Started": "2026-09-25T16:13:11.1285399Z",
+  "CommandLine": null,
+  "ParentPid": 37536,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 37536,
+    "Started": "2026-09-26T00:13:09.790973+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('.artifacts/s3-aot-20260926/build-compare/bin/Sezika.OracleCompare/release/Sezika.OracleCompare.dll','tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json','.artifacts/s3-aot-20260926/win-cuda-smoke/capture.json','tests/fixtures/laya-oracle/contract.v1.json','tests/fixtures/laya-oracle/cases.v1.json','.artifacts/s3-aot-20260926/win-cuda-smoke-comparison.json','30','choice-en-short') -TimeoutSeconds 45 -LogName 's3-aot-win-cuda-smoke-compare'\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native\\win-x64\\Sezika.OracleCapture.exe' -ArgumentList @('--reference','tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json','--model','.artifacts/models/laya-mmbert','--cases','tests/fixtures/laya-oracle/cases.v1.json','--contract','tests/fixtures/laya-oracle/contract.v1.json','--output','.artifacts/s3-aot-20260926/win-cuda-full','--backend','cuda','--max-cases','46','--timeout-seconds','300','--require-aot') -TimeoutSeconds 330 -LogName 's3-aot-win-cuda-full'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 45,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/s3-aot-20260926/build-compare/bin/Sezika.OracleCompare/release/Sezika.OracleCompare.dll",
+    "tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json",
+    ".artifacts/s3-aot-20260926/win-cuda-smoke/capture.json",
+    "tests/fixtures/laya-oracle/contract.v1.json",
+    "tests/fixtures/laya-oracle/cases.v1.json",
+    ".artifacts/s3-aot-20260926/win-cuda-smoke-comparison.json",
+    "30",
+    "choice-en-short"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

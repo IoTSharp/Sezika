@@ -28,7 +28,10 @@ internal static class CaptureRunner
         try
         {
             var token = deadline.Token;
-            if (options.RequireAot && (RuntimeFeature.IsDynamicCodeSupported || RuntimeFeature.IsDynamicCodeCompiled))
+            // PublishAot also disables dynamic-code feature switches in its intermediate
+            // managed runtimeconfig. Those switches alone do not identify a native process.
+            var managedHostDetected = AppContext.GetData("TRUSTED_PLATFORM_ASSEMBLIES") is not null;
+            if (options.RequireAot && (managedHostDetected || RuntimeFeature.IsDynamicCodeSupported || RuntimeFeature.IsDynamicCodeCompiled))
                 throw new InvalidOperationException("--require-aot requires a Native AOT executable with dynamic code disabled.");
             Console.Error.WriteLine("Read bounded local reference inputs and frozen identities; reference numerical outputs are not deserialized.");
             var referenceBytes = await ReadAsync(options.Reference, token);
@@ -64,6 +67,7 @@ internal static class CaptureRunner
                     RuntimeIdentifier = RuntimeInformation.RuntimeIdentifier, RequireAot = options.RequireAot,
                     IsDynamicCodeSupported = RuntimeFeature.IsDynamicCodeSupported,
                     IsDynamicCodeCompiled = RuntimeFeature.IsDynamicCodeCompiled,
+                    ManagedHostDetected = managedHostDetected,
                     ProcessId = Environment.ProcessId, ProcessStartedUtc = process.StartTime.ToUniversalTime(),
                     Arguments = Environment.GetCommandLineArgs(), TimeoutSeconds = options.TimeoutSeconds, MaxCases = options.MaxCases,
                 },

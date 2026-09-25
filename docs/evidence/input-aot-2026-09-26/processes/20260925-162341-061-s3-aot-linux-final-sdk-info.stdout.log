@@ -1,0 +1,47 @@
+{"event": "started", "parent": {"pid": 416, "ppid": 314, "group": 314, "start_ticks": 17735669, "command": "/usr/bin/python3 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py 25 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-sdk-info-process.json /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/dotnet --info ", "observed_utc": "2026-09-25T16:23:45.459554+00:00"}, "root": {"pid": 417, "ppid": 416, "group": 417, "start_ticks": 17735678, "command": "", "observed_utc": "2026-09-25T16:23:45.463287+00:00"}, "timeout_seconds": 25}
+linux PID 417: 0.0s/25s
+.NET SDK:
+ Version:           10.0.202
+ Commit:            1e7d5a8ae3
+ Workload version:  10.0.200-manifests.f96d7f23
+ MSBuild version:   18.3.3+1e7d5a8ae
+
+Runtime Environment:
+ OS Name:     ubuntu
+ OS Version:  24.04
+ OS Platform: Linux
+ RID:         linux-x64
+ Base Path:   /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/sdk/10.0.202/
+
+.NET workloads installed:
+There are no installed workloads to display.
+Configured to use workload sets when installing new manifests.
+No workload sets are installed. Run "dotnet workload restore" to install a workload set.
+
+Host:
+  Version:      10.0.6
+  Architecture: x64
+  Commit:       47fb725acf
+
+.NET SDKs installed:
+  10.0.202 [/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/sdk]
+
+.NET runtimes installed:
+  Microsoft.AspNetCore.App 10.0.6 [/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/shared/Microsoft.AspNetCore.App]
+  Microsoft.NETCore.App 10.0.6 [/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/shared/Microsoft.NETCore.App]
+
+Other architectures found:
+  None
+
+Environment variables:
+  Not set
+
+global.json file:
+  /mnt/d/source/Sezika/global.json
+
+Learn more:
+  https://aka.ms/dotnet/info
+
+Download .NET:
+  https://aka.ms/dotnet/download
+{"parent": {"pid": 416, "ppid": 314, "group": 314, "start_ticks": 17735669, "command": "/usr/bin/python3 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py 25 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-sdk-info-process.json /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/dotnet --info ", "observed_utc": "2026-09-25T16:23:45.459554+00:00"}, "root": {"pid": 417, "ppid": 416, "group": 417, "start_ticks": 17735678, "command": "", "observed_utc": "2026-09-25T16:23:45.463287+00:00"}, "command": ["/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/dotnet", "--info"], "timeout_seconds": 25, "elapsed_seconds": 2.012474888993893, "exit_code": 0, "cancelled": false, "completed": true, "forced_cleanup_pids": [], "processes": [{"pid": 417, "ppid": 416, "group": 417, "start_ticks": 17735678, "command": "", "observed_utc": "2026-09-25T16:23:45.463287+00:00"}]}

@@ -1,0 +1,39 @@
+{
+  "Pid": 25868,
+  "Started": "2026-09-25T16:15:54.1167736Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish tools/Sezika.OracleCapture/Sezika.OracleCapture.csproj -c Release -r win-x64 --self-contained true -p:PublishAot=true -p:StripSymbols=true -p:IlcMaxDegreeOfParallelism=2 --artifacts-path .artifacts/s3-aot-20260926/build-win-final -o .artifacts/s3-aot-20260926/native-final/win-x64 --nologo --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+  "ParentPid": 79708,
+  "ObservedParentPid": 79708,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 79708,
+    "Started": "2026-09-26T00:15:51.937608+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference = 'Stop'\n$identityFile = Get-ChildItem -LiteralPath '.artifacts/processes' -Filter '*s3-aot-win-simd-full.identity.json' | Select-Object -First 1\n$record = Get-Content -LiteralPath $identityFile.FullName -Raw -Encoding utf8 | ConvertFrom-Json\n$current = Get-CimInstance Win32_Process -Filter \\\"ProcessId=$($record.Pid)\\\" -OperationTimeoutSec 2\nif ($current -and $current.CommandLine -ceq $record.CommandLine -and $current.ParentProcessId -eq $record.ParentPid) {\n$owned = [Diagnostics.Process]::GetProcessById($record.Pid)\ntry { if ([Math]::Abs(($owned.StartTime.ToUniversalTime() - $record.Started.ToUniversalTime()).Ticks) -gt 10) { throw 'Process identity changed.' }; $owned.Kill(); [void]$owned.WaitForExit(2000); Write-Output \\\"Stopped superseded pilot PID $($record.Pid); final AOT guard requires rebuilt evidence.\\\" } finally { $owned.Dispose() }\n}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('publish','tools/Sezika.OracleCapture/Sezika.OracleCapture.csproj','-c','Release','-r','win-x64','--self-contained','true','-p:PublishAot=true','-p:StripSymbols=true','-p:IlcMaxDegreeOfParallelism=2','--artifacts-path','.artifacts/s3-aot-20260926/build-win-final','-o','.artifacts/s3-aot-20260926/native-final/win-x64','--nologo','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false') -TimeoutSeconds 600 -LogName 's3-aot-win-final-publish' -Environment @{ DOTNET_PROCESSOR_COUNT='2' }\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 600,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "publish",
+    "tools/Sezika.OracleCapture/Sezika.OracleCapture.csproj",
+    "-c",
+    "Release",
+    "-r",
+    "win-x64",
+    "--self-contained",
+    "true",
+    "-p:PublishAot=true",
+    "-p:StripSymbols=true",
+    "-p:IlcMaxDegreeOfParallelism=2",
+    "--artifacts-path",
+    ".artifacts/s3-aot-20260926/build-win-final",
+    "-o",
+    ".artifacts/s3-aot-20260926/native-final/win-x64",
+    "--nologo",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

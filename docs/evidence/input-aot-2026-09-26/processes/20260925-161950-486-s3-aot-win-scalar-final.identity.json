@@ -1,0 +1,38 @@
+{
+  "Pid": 21676,
+  "Started": "2026-09-25T16:19:51.9460689Z",
+  "CommandLine": "\"D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native-final\\win-x64\\Sezika.OracleCapture.exe\" --reference D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\reference.cpu-fp32.v1.json --model D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert --cases D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\cases.v1.json --contract D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json --output D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-scalar-final --backend scalar --max-cases 3 --timeout-seconds 1700 --require-aot --case-ids sequence-1024,score-en-long,boolean-zh-long",
+  "ParentPid": 67228,
+  "ObservedParentPid": 67228,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 67228,
+    "Started": "2026-09-26T00:19:36.53176+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/s3-aot-20260926/run-capture.ps1 -Platform win -Backend scalar\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 1730,
+  "FilePath": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native-final\\win-x64\\Sezika.OracleCapture.exe",
+  "Arguments": [
+    "--reference",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\reference.cpu-fp32.v1.json",
+    "--model",
+    "D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert",
+    "--cases",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\cases.v1.json",
+    "--contract",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json",
+    "--output",
+    "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-scalar-final",
+    "--backend",
+    "scalar",
+    "--max-cases",
+    "3",
+    "--timeout-seconds",
+    "1700",
+    "--require-aot",
+    "--case-ids",
+    "sequence-1024,score-en-long,boolean-zh-long"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

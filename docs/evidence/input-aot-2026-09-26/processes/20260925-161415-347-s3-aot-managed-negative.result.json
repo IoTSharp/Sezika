@@ -1,0 +1,56 @@
+{
+  "Status": "Succeeded",
+  "Pid": 61348,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 9.914,
+  "TimeoutSeconds": 30,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/s3-aot-20260926/build-win/bin/Sezika.OracleCapture/release_win-x64/Sezika.OracleCapture.dll",
+    "--reference",
+    "tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json",
+    "--model",
+    ".artifacts/models/laya-mmbert",
+    "--cases",
+    "tests/fixtures/laya-oracle/cases.v1.json",
+    "--contract",
+    "tests/fixtures/laya-oracle/contract.v1.json",
+    "--output",
+    ".artifacts/s3-aot-20260926/managed-should-not-exist",
+    "--require-aot"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:14:16.6146177Z",
+  "ParentPid": 26868,
+  "Launcher": {
+    "Pid": 26868,
+    "Started": "2026-09-26T00:14:14.726788+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference = 'Stop'\ntry {\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('.artifacts/s3-aot-20260926/build-win/bin/Sezika.OracleCapture/release_win-x64/Sezika.OracleCapture.dll','--reference','tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json','--model','.artifacts/models/laya-mmbert','--cases','tests/fixtures/laya-oracle/cases.v1.json','--contract','tests/fixtures/laya-oracle/contract.v1.json','--output','.artifacts/s3-aot-20260926/managed-should-not-exist','--require-aot') -TimeoutSeconds 30 -LogName 's3-aot-managed-negative'\nthrow 'Managed execution unexpectedly accepted --require-aot.'\n} catch {\nif ($_.Exception.Message -ne 'Process failed with exit code 2.') { throw }\nif (Test-Path -LiteralPath '.artifacts/s3-aot-20260926/managed-should-not-exist') { throw 'Negative gate created an output directory.' }\nWrite-Output 'Expected managed --require-aot rejection: exit 2, no output directory.'\n}\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161415-347-s3-aot-managed-negative.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161415-347-s3-aot-managed-negative.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 61348,
+      "CreationDate": "2026-09-26T00:14:16.614617+08:00",
+      "Started": "2026-09-25T16:14:16.614617Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" .artifacts/s3-aot-20260926/build-win/bin/Sezika.OracleCapture/release_win-x64/Sezika.OracleCapture.dll --reference tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json --model .artifacts/models/laya-mmbert --cases tests/fixtures/laya-oracle/cases.v1.json --contract tests/fixtures/laya-oracle/contract.v1.json --output .artifacts/s3-aot-20260926/managed-should-not-exist --require-aot",
+      "ParentPid": 26868,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 75528,
+      "CreationDate": "2026-09-26T00:14:16.676249+08:00",
+      "Started": "2026-09-25T16:14:16.676249Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 61348,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

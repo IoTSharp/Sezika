@@ -1,0 +1,38 @@
+{
+  "parent": {
+    "pid": 1505,
+    "ppid": 1504,
+    "group": 1504,
+    "start_ticks": 17770637,
+    "command": "/usr/bin/python3 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py 150 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-prompt-tests-process.json /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/tests-final/linux-x64/Sezika.Tests --prompt-contract-aot ",
+    "observed_utc": "2026-09-25T16:29:35.065685+00:00"
+  },
+  "root": {
+    "pid": 1506,
+    "ppid": 1505,
+    "group": 1506,
+    "start_ticks": 17770645,
+    "command": "",
+    "observed_utc": "2026-09-25T16:29:35.072585+00:00"
+  },
+  "command": [
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/tests-final/linux-x64/Sezika.Tests",
+    "--prompt-contract-aot"
+  ],
+  "timeout_seconds": 150,
+  "elapsed_seconds": 2.516577823989792,
+  "exit_code": 0,
+  "cancelled": false,
+  "completed": true,
+  "forced_cleanup_pids": [],
+  "processes": [
+    {
+      "pid": 1506,
+      "ppid": 1505,
+      "group": 1506,
+      "start_ticks": 17770645,
+      "command": "",
+      "observed_utc": "2026-09-25T16:29:35.072585+00:00"
+    }
+  ]
+}

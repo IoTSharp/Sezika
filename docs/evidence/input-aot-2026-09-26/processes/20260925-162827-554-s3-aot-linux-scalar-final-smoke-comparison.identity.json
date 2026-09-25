@@ -1,0 +1,27 @@
+{
+  "Pid": 37448,
+  "Started": "2026-09-25T16:28:28.3416387Z",
+  "CommandLine": null,
+  "ParentPid": 67184,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 67184,
+    "Started": "2026-09-26T00:28:03.135186+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/s3-aot-20260926/run-capture.ps1 -Platform linux -Backend scalar\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 45,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\build-compare\\bin\\Sezika.OracleCompare\\release\\Sezika.OracleCompare.dll",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\reference.cpu-fp32.v1.json",
+    "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-scalar-final-smoke\\capture.json",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\cases.v1.json",
+    "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-scalar-final-smoke-comparison.json",
+    "30",
+    "choice-en-short"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

@@ -1,0 +1,68 @@
+{
+  "Status": "Succeeded",
+  "Pid": 75144,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 7.706,
+  "TimeoutSeconds": 50,
+  "FilePath": "C:\\Windows\\system32\\wsl.exe",
+  "Arguments": [
+    "-d",
+    "Ubuntu",
+    "--cd",
+    "/mnt/d/source/Sezika",
+    "--exec",
+    "/usr/bin/timeout",
+    "--signal=TERM",
+    "--kill-after=10s",
+    "40s",
+    "/usr/bin/python3",
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py",
+    "25",
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-sdk-info-process.json",
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/dotnet",
+    "--info"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:23:42.1230021Z",
+  "ParentPid": 70440,
+  "Launcher": {
+    "Pid": 70440,
+    "Started": "2026-09-26T00:23:40.499008+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Windows\\system32\\wsl.exe' -ArgumentList @('-d','Ubuntu','--cd','/mnt/d/source/Sezika','--exec','/usr/bin/timeout','--signal=TERM','--kill-after=10s','40s','/usr/bin/python3','/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py','25','/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-sdk-info-process.json','/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/dotnet','--info') -TimeoutSeconds 50 -LogName 's3-aot-linux-final-sdk-info'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162341-061-s3-aot-linux-final-sdk-info.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162341-061-s3-aot-linux-final-sdk-info.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 75144,
+      "CreationDate": "2026-09-26T00:23:42.123002+08:00",
+      "Started": "2026-09-25T16:23:42.123002Z",
+      "CommandLine": "\"C:\\Windows\\system32\\wsl.exe\" -d Ubuntu --cd /mnt/d/source/Sezika --exec /usr/bin/timeout --signal=TERM --kill-after=10s 40s /usr/bin/python3 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py 25 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-sdk-info-process.json /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/dotnet --info",
+      "ParentPid": 70440,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 59436,
+      "CreationDate": "2026-09-26T00:23:42.17254+08:00",
+      "Started": "2026-09-25T16:23:42.17254Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 75144,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 78744,
+      "CreationDate": "2026-09-26T00:23:42.242518+08:00",
+      "Started": "2026-09-25T16:23:42.242518Z",
+      "CommandLine": "\"C:\\Windows\\system32\\wsl.exe\" -d Ubuntu --cd /mnt/d/source/Sezika --exec /usr/bin/timeout --signal=TERM --kill-after=10s 40s /usr/bin/python3 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py 25 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-sdk-info-process.json /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/dotnet --info",
+      "ParentPid": 75144,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

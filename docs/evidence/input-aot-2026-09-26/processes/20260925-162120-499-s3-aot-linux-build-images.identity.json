@@ -1,0 +1,23 @@
+{
+  "Pid": 58948,
+  "Started": "2026-09-25T16:21:21.1087418Z",
+  "CommandLine": null,
+  "ParentPid": 60396,
+  "ObservedParentPid": 60396,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 60396,
+    "Started": "2026-09-26T00:21:19.863475+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe' -ArgumentList @('image','ls','--format','{{.Repository}}:{{.Tag}} {{.ID}}') -TimeoutSeconds 20 -LogName 's3-aot-linux-build-images'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 20,
+  "FilePath": "C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe",
+  "Arguments": [
+    "image",
+    "ls",
+    "--format",
+    "{{.Repository}}:{{.Tag}} {{.ID}}"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

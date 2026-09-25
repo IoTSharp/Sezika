@@ -1,0 +1,63 @@
+{
+  "Status": "Succeeded",
+  "Pid": 21676,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 451.847,
+  "TimeoutSeconds": 1730,
+  "FilePath": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native-final\\win-x64\\Sezika.OracleCapture.exe",
+  "Arguments": [
+    "--reference",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\reference.cpu-fp32.v1.json",
+    "--model",
+    "D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert",
+    "--cases",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\cases.v1.json",
+    "--contract",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json",
+    "--output",
+    "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-scalar-final",
+    "--backend",
+    "scalar",
+    "--max-cases",
+    "3",
+    "--timeout-seconds",
+    "1700",
+    "--require-aot",
+    "--case-ids",
+    "sequence-1024,score-en-long,boolean-zh-long"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:19:51.9460689Z",
+  "ParentPid": 67228,
+  "Launcher": {
+    "Pid": 67228,
+    "Started": "2026-09-26T00:19:36.53176+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/s3-aot-20260926/run-capture.ps1 -Platform win -Backend scalar\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161950-486-s3-aot-win-scalar-final.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161950-486-s3-aot-win-scalar-final.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 21676,
+      "CreationDate": "2026-09-26T00:19:51.946068+08:00",
+      "Started": "2026-09-25T16:19:51.946068Z",
+      "CommandLine": "\"D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native-final\\win-x64\\Sezika.OracleCapture.exe\" --reference D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\reference.cpu-fp32.v1.json --model D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert --cases D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\cases.v1.json --contract D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json --output D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-scalar-final --backend scalar --max-cases 3 --timeout-seconds 1700 --require-aot --case-ids sequence-1024,score-en-long,boolean-zh-long",
+      "ParentPid": 67228,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 65640,
+      "CreationDate": "2026-09-26T00:19:52.000437+08:00",
+      "Started": "2026-09-25T16:19:52.000437Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 21676,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

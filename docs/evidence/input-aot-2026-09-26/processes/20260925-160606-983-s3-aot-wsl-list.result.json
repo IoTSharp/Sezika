@@ -1,0 +1,27 @@
+{
+  "Status": "Succeeded",
+  "Pid": 4508,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 2.015,
+  "TimeoutSeconds": 20,
+  "FilePath": "C:\\Windows\\system32\\wsl.exe",
+  "Arguments": [
+    "--list",
+    "--verbose"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:06:07.6015957Z",
+  "ParentPid": 58708,
+  "Launcher": {
+    "Pid": 58708,
+    "Started": "2026-09-26T00:06:06.528545+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Windows\\system32\\wsl.exe' -ArgumentList @('--list','--verbose') -TimeoutSeconds 20 -LogName 's3-aot-wsl-list'\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Windows\\system32\\wsl.exe' -ArgumentList @('-d','Ubuntu','--exec','/usr/bin/timeout','--signal=TERM','--kill-after=5s','20s','/bin/bash','-lc','id; printf \\\"%s\\n\\\" \\\"$HOME\\\" \\\"$PATH\\\"; ls -ld /opt/dotnet/dotnet /usr/local/share/dotnet/dotnet /usr/lib/llvm-18/bin/clang /usr/bin/clang-18 /root/.dotnet/dotnet /home/mysti/.dotnet/dotnet 2>/dev/null || true; cat /etc/wsl.conf 2>/dev/null || true') -TimeoutSeconds 30 -LogName 's3-aot-linux-known-paths'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160606-983-s3-aot-wsl-list.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160606-983-s3-aot-wsl-list.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

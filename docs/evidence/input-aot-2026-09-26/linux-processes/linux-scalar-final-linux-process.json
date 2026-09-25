@@ -1,0 +1,56 @@
+{
+  "parent": {
+    "pid": 1133,
+    "ppid": 1132,
+    "group": 1132,
+    "start_ticks": 17764326,
+    "command": "/usr/bin/python3 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py 1710 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-scalar-final-linux-process.json /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/native-final/linux-x64/Sezika.OracleCapture --reference /mnt/d/source/Sezika/tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json --model /mnt/d/source/Sezika/.artifacts/models/laya-mmbert --cases /mnt/d/source/Sezika/tests/fixtures/laya-oracle/cases.v1.json --contract /mnt/d/source/Sezika/tests/fixtures/laya-oracle/contract.v1.json --output /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-scalar-final --backend scalar --max-cases 3 --timeout-seconds 1700 --require-aot --case-ids sequence-1024,score-en-long,boolean-zh-long ",
+    "observed_utc": "2026-09-25T16:28:31.983640+00:00"
+  },
+  "root": {
+    "pid": 1134,
+    "ppid": 1133,
+    "group": 1134,
+    "start_ticks": 17764332,
+    "command": "",
+    "observed_utc": "2026-09-25T16:28:31.985577+00:00"
+  },
+  "command": [
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/native-final/linux-x64/Sezika.OracleCapture",
+    "--reference",
+    "/mnt/d/source/Sezika/tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json",
+    "--model",
+    "/mnt/d/source/Sezika/.artifacts/models/laya-mmbert",
+    "--cases",
+    "/mnt/d/source/Sezika/tests/fixtures/laya-oracle/cases.v1.json",
+    "--contract",
+    "/mnt/d/source/Sezika/tests/fixtures/laya-oracle/contract.v1.json",
+    "--output",
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-scalar-final",
+    "--backend",
+    "scalar",
+    "--max-cases",
+    "3",
+    "--timeout-seconds",
+    "1700",
+    "--require-aot",
+    "--case-ids",
+    "sequence-1024,score-en-long,boolean-zh-long"
+  ],
+  "timeout_seconds": 1710,
+  "elapsed_seconds": 424.7486044819816,
+  "exit_code": 0,
+  "cancelled": false,
+  "completed": true,
+  "forced_cleanup_pids": [],
+  "processes": [
+    {
+      "pid": 1134,
+      "ppid": 1133,
+      "group": 1134,
+      "start_ticks": 17764332,
+      "command": "",
+      "observed_utc": "2026-09-25T16:28:31.985577+00:00"
+    }
+  ]
+}

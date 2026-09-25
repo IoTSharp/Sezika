@@ -1,0 +1,37 @@
+{
+  "Status": "Failed",
+  "Pid": 32796,
+  "ExitCode": 2,
+  "Error": "Process failed with exit code 2.",
+  "ElapsedSeconds": 5.491,
+  "TimeoutSeconds": 30,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/s3-aot-20260926/build-win-final/bin/Sezika.OracleCapture/release_win-x64/Sezika.OracleCapture.dll",
+    "--reference",
+    "tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json",
+    "--model",
+    ".artifacts/models/laya-mmbert",
+    "--cases",
+    "tests/fixtures/laya-oracle/cases.v1.json",
+    "--contract",
+    "tests/fixtures/laya-oracle/contract.v1.json",
+    "--output",
+    ".artifacts/s3-aot-20260926/managed-final-should-not-exist",
+    "--require-aot"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:22:28.4301512Z",
+  "ParentPid": 21768,
+  "Launcher": {
+    "Pid": 21768,
+    "Started": "2026-09-26T00:22:25.626086+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference = 'Stop'\ntry {\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('.artifacts/s3-aot-20260926/build-win-final/bin/Sezika.OracleCapture/release_win-x64/Sezika.OracleCapture.dll','--reference','tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json','--model','.artifacts/models/laya-mmbert','--cases','tests/fixtures/laya-oracle/cases.v1.json','--contract','tests/fixtures/laya-oracle/contract.v1.json','--output','.artifacts/s3-aot-20260926/managed-final-should-not-exist','--require-aot') -TimeoutSeconds 30 -LogName 's3-aot-managed-final-negative'\nthrow 'Managed execution unexpectedly accepted --require-aot.'\n} catch {\nif ($_.Exception.Message -ne 'Process failed with exit code 2.') { throw }\nif (Test-Path -LiteralPath '.artifacts/s3-aot-20260926/managed-final-should-not-exist') { throw 'Negative gate created an output directory.' }\nWrite-Output 'Expected managed --require-aot rejection: exit 2, no output directory.'\n}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('publish','tests/Sezika.Tests/Sezika.Tests.csproj','-c','Release','-r','win-x64','--self-contained','true','-p:PublishAot=true','-p:StripSymbols=true','-p:IlcMaxDegreeOfParallelism=2','--artifacts-path','.artifacts/s3-aot-20260926/build-tests-win-final','-o','.artifacts/s3-aot-20260926/tests-final/win-x64','--nologo','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false') -TimeoutSeconds 600 -LogName 's3-aot-win-final-tests-publish' -Environment @{ DOTNET_PROCESSOR_COUNT='2' }\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\tests-final\\win-x64\\Sezika.Tests.exe' -ArgumentList @('--prompt-contract-aot') -TimeoutSeconds 180 -LogName 's3-aot-win-final-prompt-tests'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162226-725-s3-aot-managed-final-negative.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162226-725-s3-aot-managed-final-negative.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

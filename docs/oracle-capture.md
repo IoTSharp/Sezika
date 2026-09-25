@@ -37,6 +37,11 @@
 | `--max-cases` | 1–46；默认 1。未指定 ID 时选取参考文件中的前 N 行，并明确保存全部所选与未覆盖 ID。 |
 | `--case-ids` | 逗号分隔的明确 ID；数量必须不超过 `--max-cases`，不存在或重复的 ID 会使运行失败。 |
 | `--timeout-seconds` | 1–1800；默认 180。每个类型化请求另受最多 5 分钟的运行时预算限制。 |
+| `--require-aot` | 可选无值开关；在读参考、加载模型和创建输出目录前拒绝托管宿主或启用了动态代码的进程。必须直接启动本次发布的原生可执行文件。 |
+
+AOT 验收使用 `dotnet publish -c Release -r <win-x64或linux-x64> --self-contained true -p:PublishAot=true` 的原生发布物，并传入 `--require-aot`。`implementation` 保存 RID、两项动态代码能力、`managed_host_detected`、是否要求 AOT 和实际进程文件 SHA-256。`PublishAot` 的中间托管 DLL 会继承禁用动态代码的 runtimeconfig，因此两项能力均为 false 本身不能证明原生执行；门槛同时检查托管宿主的 `TRUSTED_PLATFORM_ASSEMBLIES`，并在独立证据中记录发布命令、二进制格式和依赖。
+
+输入契约可在独立发布的 `Sezika.Tests` 原生程序中使用 `--prompt-contract-aot` 验收。该入口先检查原生执行门槛，再运行原有输入、JSON、strict 拒绝与取消检查；它不替代真实 scalar/SIMD/CUDA 推理 capture 和冻结容差比较。
 
 ## 身份、失败与支持范围
 
@@ -51,3 +56,5 @@ Choice 仍仅支持 2–32 个候选，Score 仍仅支持 2–10 个等级。输
 比较器支持可选第 7 参数 CSV case ID。它先校验两份完整文件的身份和全部行，再比较明确选择的子集，同时保存完整文件哈希、原始行数和排除 ID。因此支持范围比较直接使用原始 capture，不需要另造去掉失败行的参考文件。`passed=true` 仅表示所选 case 比较通过；`full_manifest_passed` 与相对于原始清单的覆盖率另行给出。
 
 本文描述工具合同。构建、实测数值、Native AOT 与性能的验收状态分别以本轮产生的日志和比较报告为准。
+
+2026-09-26 的 `win-x64` / Ubuntu WSL2 `linux-x64` 实际发布命令、原生长输入结果、托管宿主负向检查及清理记录见[独立 AOT 回归报告](evidence/input-aot-2026-09-26.md)。

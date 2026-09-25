@@ -1,0 +1,29 @@
+{
+  "Pid": 66844,
+  "Started": "2026-09-25T16:08:29.9684289Z",
+  "CommandLine": "\"C:\\Windows\\system32\\wsl.exe\" -d Ubuntu --exec /usr/bin/timeout --signal=TERM --kill-after=10s 420s /bin/bash -lc \"set -euo pipefail; ps -p $$ -o pid,ppid,lstart,args; mkdir -p /tmp/sezika-s3-aot-20260926/sdk; curl -fL --connect-timeout 10 --max-time 300 --retry 0 --output /tmp/sezika-s3-aot-20260926/sdk.tar.gz https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.400/dotnet-sdk-10.0.400-linux-x64.tar.gz; curl -fL --connect-timeout 10 --max-time 30 --retry 0 --output /tmp/sezika-s3-aot-20260926/sdk.tar.gz.sha512 https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.400/dotnet-sdk-10.0.400-linux-x64.tar.gz.sha512; cd /tmp/sezika-s3-aot-20260926; sha512sum sdk.tar.gz; cat sdk.tar.gz.sha512; test \\\"$(sha512sum sdk.tar.gz | cut -d \\\" \\\" -f1)\\\" = \\\"$(cut -d \\\" \\\" -f1 sdk.tar.gz.sha512 | tr -d \\\"\\r\\n\\\")\\\"; tar -xzf sdk.tar.gz -C sdk; exec ./sdk/dotnet --info\"",
+  "ParentPid": 53600,
+  "ObservedParentPid": 53600,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 53600,
+    "Started": "2026-09-26T00:08:28.585348+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Windows\\system32\\wsl.exe' -ArgumentList @('-d','Ubuntu','--exec','/usr/bin/timeout','--signal=TERM','--kill-after=10s','420s','/bin/bash','-lc','set -euo pipefail; ps -p $$ -o pid,ppid,lstart,args; mkdir -p /tmp/sezika-s3-aot-20260926/sdk; curl -fL --connect-timeout 10 --max-time 300 --retry 0 --output /tmp/sezika-s3-aot-20260926/sdk.tar.gz https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.400/dotnet-sdk-10.0.400-linux-x64.tar.gz; curl -fL --connect-timeout 10 --max-time 30 --retry 0 --output /tmp/sezika-s3-aot-20260926/sdk.tar.gz.sha512 https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.400/dotnet-sdk-10.0.400-linux-x64.tar.gz.sha512; cd /tmp/sezika-s3-aot-20260926; sha512sum sdk.tar.gz; cat sdk.tar.gz.sha512; test \\\"$(sha512sum sdk.tar.gz | cut -d \\\" \\\" -f1)\\\" = \\\"$(cut -d \\\" \\\" -f1 sdk.tar.gz.sha512 | tr -d \\\"\\r\\n\\\")\\\"; tar -xzf sdk.tar.gz -C sdk; exec ./sdk/dotnet --info') -TimeoutSeconds 440 -LogName 's3-aot-linux-sdk-setup'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 440,
+  "FilePath": "C:\\Windows\\system32\\wsl.exe",
+  "Arguments": [
+    "-d",
+    "Ubuntu",
+    "--exec",
+    "/usr/bin/timeout",
+    "--signal=TERM",
+    "--kill-after=10s",
+    "420s",
+    "/bin/bash",
+    "-lc",
+    "set -euo pipefail; ps -p $$ -o pid,ppid,lstart,args; mkdir -p /tmp/sezika-s3-aot-20260926/sdk; curl -fL --connect-timeout 10 --max-time 300 --retry 0 --output /tmp/sezika-s3-aot-20260926/sdk.tar.gz https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.400/dotnet-sdk-10.0.400-linux-x64.tar.gz; curl -fL --connect-timeout 10 --max-time 30 --retry 0 --output /tmp/sezika-s3-aot-20260926/sdk.tar.gz.sha512 https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.400/dotnet-sdk-10.0.400-linux-x64.tar.gz.sha512; cd /tmp/sezika-s3-aot-20260926; sha512sum sdk.tar.gz; cat sdk.tar.gz.sha512; test \"$(sha512sum sdk.tar.gz | cut -d \" \" -f1)\" = \"$(cut -d \" \" -f1 sdk.tar.gz.sha512 | tr -d \"\\r\\n\")\"; tar -xzf sdk.tar.gz -C sdk; exec ./sdk/dotnet --info"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

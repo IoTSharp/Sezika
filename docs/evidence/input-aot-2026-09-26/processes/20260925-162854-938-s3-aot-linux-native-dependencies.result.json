@@ -1,0 +1,47 @@
+{
+  "Status": "Succeeded",
+  "Pid": 56732,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 5.331,
+  "TimeoutSeconds": 30,
+  "FilePath": "C:\\Windows\\system32\\wsl.exe",
+  "Arguments": [
+    "-d",
+    "Ubuntu",
+    "--cd",
+    "/mnt/d/source/Sezika",
+    "--exec",
+    "/usr/bin/timeout",
+    "--signal=TERM",
+    "--kill-after=5s",
+    "20s",
+    "/bin/bash",
+    "-lc",
+    "set -euo pipefail; ps -p $$ -o pid,ppid,lstart,args; file .artifacts/s3-aot-20260926/native-final/linux-x64/Sezika.OracleCapture; readelf -d .artifacts/s3-aot-20260926/native-final/linux-x64/Sezika.OracleCapture; /usr/lib/wsl/lib/nvidia-smi --query-gpu=name,driver_version --format=csv,noheader"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:28:56.7027054Z",
+  "ParentPid": 24380,
+  "Launcher": {
+    "Pid": 24380,
+    "Started": "2026-09-26T00:28:54.275665+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Windows\\system32\\wsl.exe' -ArgumentList @('-d','Ubuntu','--cd','/mnt/d/source/Sezika','--exec','/usr/bin/timeout','--signal=TERM','--kill-after=5s','20s','/bin/bash','-lc','set -euo pipefail; ps -p $$ -o pid,ppid,lstart,args; file .artifacts/s3-aot-20260926/native-final/linux-x64/Sezika.OracleCapture; readelf -d .artifacts/s3-aot-20260926/native-final/linux-x64/Sezika.OracleCapture; /usr/lib/wsl/lib/nvidia-smi --query-gpu=name,driver_version --format=csv,noheader') -TimeoutSeconds 30 -LogName 's3-aot-linux-native-dependencies'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162854-938-s3-aot-linux-native-dependencies.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162854-938-s3-aot-linux-native-dependencies.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 56732,
+      "CreationDate": "2026-09-26T00:28:56.702705+08:00",
+      "Started": "2026-09-25T16:28:56.702705Z",
+      "CommandLine": null,
+      "ParentPid": 24380,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

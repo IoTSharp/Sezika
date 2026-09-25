@@ -1,0 +1,36 @@
+{
+  "Status": "Succeeded",
+  "Pid": 52196,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 2.289,
+  "TimeoutSeconds": 30,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "--info"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:05:16.9725397Z",
+  "ParentPid": 75440,
+  "Launcher": {
+    "Pid": 75440,
+    "Started": "2026-09-26T00:05:15.953376+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference = 'Stop'\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('--info') -TimeoutSeconds 30 -LogName 's3-aot-dotnet-info'\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Windows\\system32\\wsl.exe' -ArgumentList @('-d','Ubuntu','--exec','/usr/bin/timeout','--signal=TERM','--kill-after=5s','20s','/bin/bash','-lc','set -euo pipefail; /usr/bin/dotnet --info; /usr/bin/clang --version; command -v pwsh; command -v python3; uname -a') -TimeoutSeconds 30 -LogName 's3-aot-linux-info'\nGet-Item -LiteralPath '.artifacts/models/laya-mmbert/model.json', '.artifacts/models/laya-mmbert/tokenizer/tokenizer.json' | Select-Object FullName,Length\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160516-439-s3-aot-dotnet-info.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160516-439-s3-aot-dotnet-info.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 52196,
+      "CreationDate": "2026-09-26T00:05:16.972539+08:00",
+      "Started": "2026-09-25T16:05:16.972539Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" --info",
+      "ParentPid": 75440,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

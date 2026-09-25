@@ -1,0 +1,63 @@
+{
+  "Status": "Succeeded",
+  "Pid": 30324,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 4.395,
+  "TimeoutSeconds": 30,
+  "FilePath": "C:\\Windows\\system32\\wsl.exe",
+  "Arguments": [
+    "-d",
+    "Ubuntu",
+    "--exec",
+    "/usr/bin/timeout",
+    "--signal=TERM",
+    "--kill-after=5s",
+    "20s",
+    "/bin/bash",
+    "-lc",
+    "for t in dotnet clang gcc pwsh python3 setsid; do command -v \"$t\" || true; done; ls -ld \"$HOME/.dotnet/dotnet\" /usr/share/dotnet/dotnet /usr/bin/clang /usr/bin/gcc 2>/dev/null; cat /etc/os-release; uname -a"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:05:44.2921068Z",
+  "ParentPid": 77772,
+  "Launcher": {
+    "Pid": 77772,
+    "Started": "2026-09-26T00:05:43.372513+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Windows\\system32\\wsl.exe' -ArgumentList @('-d','Ubuntu','--exec','/usr/bin/timeout','--signal=TERM','--kill-after=5s','20s','/bin/bash','-lc','for t in dotnet clang gcc pwsh python3 setsid; do command -v \\\"$t\\\" || true; done; ls -ld \\\"$HOME/.dotnet/dotnet\\\" /usr/share/dotnet/dotnet /usr/bin/clang /usr/bin/gcc 2>/dev/null; cat /etc/os-release; uname -a') -TimeoutSeconds 30 -LogName 's3-aot-linux-discovery'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160543-815-s3-aot-linux-discovery.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160543-815-s3-aot-linux-discovery.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 30324,
+      "CreationDate": "2026-09-26T00:05:44.292106+08:00",
+      "Started": "2026-09-25T16:05:44.292106Z",
+      "CommandLine": "\"C:\\Windows\\system32\\wsl.exe\" -d Ubuntu --exec /usr/bin/timeout --signal=TERM --kill-after=5s 20s /bin/bash -lc \"for t in dotnet clang gcc pwsh python3 setsid; do command -v \\\"$t\\\" || true; done; ls -ld \\\"$HOME/.dotnet/dotnet\\\" /usr/share/dotnet/dotnet /usr/bin/clang /usr/bin/gcc 2>/dev/null; cat /etc/os-release; uname -a\"",
+      "ParentPid": 77772,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 12780,
+      "CreationDate": "2026-09-26T00:05:44.419631+08:00",
+      "Started": "2026-09-25T16:05:44.419631Z",
+      "CommandLine": "\"C:\\Windows\\system32\\wsl.exe\" -d Ubuntu --exec /usr/bin/timeout --signal=TERM --kill-after=5s 20s /bin/bash -lc \"for t in dotnet clang gcc pwsh python3 setsid; do command -v \\\"$t\\\" || true; done; ls -ld \\\"$HOME/.dotnet/dotnet\\\" /usr/share/dotnet/dotnet /usr/bin/clang /usr/bin/gcc 2>/dev/null; cat /etc/os-release; uname -a\"",
+      "ParentPid": 30324,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 36044,
+      "CreationDate": "2026-09-26T00:05:44.342308+08:00",
+      "Started": "2026-09-25T16:05:44.342308Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 30324,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

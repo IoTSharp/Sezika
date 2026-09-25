@@ -1,0 +1,32 @@
+{
+  "Pid": 65304,
+  "Started": "2026-09-25T16:17:07.019391Z",
+  "CommandLine": "\"C:\\Windows\\system32\\curl.exe\" --fail --location --silent --show-error --connect-timeout 10 --max-time 180 --retry 0 --output .artifacts/s3-aot-20260926/sdk-blob-linux-x64.tar.gz https://dotnetcli.blob.core.windows.net/dotnet/Sdk/10.0.400/dotnet-sdk-10.0.400-linux-x64.tar.gz",
+  "ParentPid": 57004,
+  "ObservedParentPid": 57004,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 57004,
+    "Started": "2026-09-26T00:17:05.934954+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Windows\\system32\\curl.exe' -ArgumentList @('--fail','--location','--silent','--show-error','--connect-timeout','10','--max-time','180','--retry','0','--output','.artifacts/s3-aot-20260926/sdk-blob-linux-x64.tar.gz','https://dotnetcli.blob.core.windows.net/dotnet/Sdk/10.0.400/dotnet-sdk-10.0.400-linux-x64.tar.gz') -TimeoutSeconds 200 -LogName 's3-aot-linux-sdk-blob'\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Windows\\system32\\curl.exe' -ArgumentList @('--fail','--location','--silent','--show-error','--connect-timeout','10','--max-time','30','--retry','0','--output','.artifacts/s3-aot-20260926/sdk-blob-linux-x64.tar.gz.sha512','https://dotnetcli.blob.core.windows.net/dotnet/Sdk/10.0.400/dotnet-sdk-10.0.400-linux-x64.tar.gz.sha512') -TimeoutSeconds 40 -LogName 's3-aot-linux-sdk-blob-hash'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 200,
+  "FilePath": "C:\\Windows\\system32\\curl.exe",
+  "Arguments": [
+    "--fail",
+    "--location",
+    "--silent",
+    "--show-error",
+    "--connect-timeout",
+    "10",
+    "--max-time",
+    "180",
+    "--retry",
+    "0",
+    "--output",
+    ".artifacts/s3-aot-20260926/sdk-blob-linux-x64.tar.gz",
+    "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/10.0.400/dotnet-sdk-10.0.400-linux-x64.tar.gz"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

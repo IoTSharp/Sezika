@@ -78,6 +78,7 @@ internal sealed record ExecutionIdentity
     public required bool RequireAot { get; init; }
     public required bool IsDynamicCodeSupported { get; init; }
     public required bool IsDynamicCodeCompiled { get; init; }
+    public required bool ManagedHostDetected { get; init; }
     public required Dictionary<string, string> BinarySha256 { get; init; }
     public required int ProcessId { get; init; }
     public required DateTimeOffset ProcessStartedUtc { get; init; }

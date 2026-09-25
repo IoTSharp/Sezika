@@ -1,0 +1,36 @@
+{
+  "Pid": 30680,
+  "Started": "2026-09-25T16:11:16.1415373Z",
+  "CommandLine": "\"D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native\\win-x64\\Sezika.OracleCapture.exe\" --reference tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json --model .artifacts/models/laya-mmbert --cases tests/fixtures/laya-oracle/cases.v1.json --contract tests/fixtures/laya-oracle/contract.v1.json --output .artifacts/s3-aot-20260926/win-simd-full --backend simd --max-cases 46 --timeout-seconds 1700 --require-aot",
+  "ParentPid": 2688,
+  "ObservedParentPid": 2688,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 2688,
+    "Started": "2026-09-26T00:11:15.152239+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native\\win-x64\\Sezika.OracleCapture.exe' -ArgumentList @('--reference','tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json','--model','.artifacts/models/laya-mmbert','--cases','tests/fixtures/laya-oracle/cases.v1.json','--contract','tests/fixtures/laya-oracle/contract.v1.json','--output','.artifacts/s3-aot-20260926/win-simd-full','--backend','simd','--max-cases','46','--timeout-seconds','1700','--require-aot') -TimeoutSeconds 1800 -LogName 's3-aot-win-simd-full' -Environment @{ DOTNET_PROCESSOR_COUNT='4' }\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 1800,
+  "FilePath": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native\\win-x64\\Sezika.OracleCapture.exe",
+  "Arguments": [
+    "--reference",
+    "tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json",
+    "--model",
+    ".artifacts/models/laya-mmbert",
+    "--cases",
+    "tests/fixtures/laya-oracle/cases.v1.json",
+    "--contract",
+    "tests/fixtures/laya-oracle/contract.v1.json",
+    "--output",
+    ".artifacts/s3-aot-20260926/win-simd-full",
+    "--backend",
+    "simd",
+    "--max-cases",
+    "46",
+    "--timeout-seconds",
+    "1700",
+    "--require-aot"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

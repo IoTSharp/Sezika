@@ -1,0 +1,146 @@
+{"event": "started", "parent": {"pid": 1505, "ppid": 1504, "group": 1504, "start_ticks": 17770637, "command": "/usr/bin/python3 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py 150 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-prompt-tests-process.json /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/tests-final/linux-x64/Sezika.Tests --prompt-contract-aot ", "observed_utc": "2026-09-25T16:29:35.065685+00:00"}, "root": {"pid": 1506, "ppid": 1505, "group": 1506, "start_ticks": 17770645, "command": "", "observed_utc": "2026-09-25T16:29:35.072585+00:00"}, "timeout_seconds": 150}
+linux PID 1506: 0.0s/150s
+PASS: prompt contract executes with Native AOT dynamic code disabled
+PASS: injected backend preserves model provenance and backend identity
+PASS: shared typed engine dispatches choice/score/boolean type IDs
+PASS: injected fixture logits preserve input choice order and choice temperature
+PASS: injected fixture logits preserve score order and expected-value semantics
+PASS: injected fixture logits map false/true markers and true probability through temperature
+PASS: injected fixture predictions remain explicitly uncalibrated
+PASS: all injected backend calls receive shared BOS/prompt/markers/criteria/state/EOS tokens
+PASS: shared typed usage accounts injected backend calls
+PASS: typed session owns and releases injected pipeline and model tensors
+PASS: pipeline disposal failure still unloads owned model tensors
+PASS: disposal failure leaves typed session disposal idempotent
+PASS: typed session rejects requests after a backend disposal failure
+PASS: constructor budget rejection releases injected pipeline and model
+PASS: constructor cleanup unloads model even when injected pipeline disposal throws
+PASS: shared marker sequence measures exact 1024/1025/1026 token boundary independently of prefix budget
+PASS: production engine accepts exactly 1024 tokens with a 256-token prefix budget
+PASS: 1025-token strict input reports the production budget code
+PASS: over-budget strict input rejects before backend execution
+PASS: explicit compatibility mode reports the one discarded state token
+PASS: real Laya prompt tokens/markers/labels: choice-en-short
+PASS: real Laya state rendering and retained range: choice-en-short
+PASS: real Laya prompt tokens/markers/labels: choice-en-medium
+PASS: real Laya state rendering and retained range: choice-en-medium
+PASS: real Laya prompt tokens/markers/labels: choice-en-long
+PASS: real Laya state rendering and retained range: choice-en-long
+PASS: real Laya prompt tokens/markers/labels: choice-zh-short
+PASS: real Laya state rendering and retained range: choice-zh-short
+PASS: real Laya prompt tokens/markers/labels: choice-zh-medium
+PASS: real Laya state rendering and retained range: choice-zh-medium
+PASS: real Laya prompt tokens/markers/labels: choice-zh-long
+PASS: real Laya state rendering and retained range: choice-zh-long
+PASS: real Laya prompt tokens/markers/labels: score-en-short
+PASS: real Laya state rendering and retained range: score-en-short
+PASS: real Laya prompt tokens/markers/labels: score-en-medium
+PASS: real Laya state rendering and retained range: score-en-medium
+PASS: real Laya prompt tokens/markers/labels: score-en-long
+PASS: real Laya state rendering and retained range: score-en-long
+PASS: real Laya prompt tokens/markers/labels: score-zh-short
+PASS: real Laya state rendering and retained range: score-zh-short
+PASS: real Laya prompt tokens/markers/labels: score-zh-medium
+PASS: real Laya state rendering and retained range: score-zh-medium
+PASS: real Laya prompt tokens/markers/labels: score-zh-long
+PASS: real Laya state rendering and retained range: score-zh-long
+PASS: real Laya prompt tokens/markers/labels: boolean-en-short
+PASS: real Laya state rendering and retained range: boolean-en-short
+PASS: real Laya prompt tokens/markers/labels: boolean-en-medium
+PASS: real Laya state rendering and retained range: boolean-en-medium
+PASS: real Laya prompt tokens/markers/labels: boolean-en-long
+PASS: real Laya state rendering and retained range: boolean-en-long
+PASS: real Laya prompt tokens/markers/labels: boolean-zh-short
+PASS: real Laya state rendering and retained range: boolean-zh-short
+PASS: real Laya prompt tokens/markers/labels: boolean-zh-medium
+PASS: real Laya state rendering and retained range: boolean-zh-medium
+PASS: real Laya prompt tokens/markers/labels: boolean-zh-long
+PASS: real Laya state rendering and retained range: boolean-zh-long
+PASS: real Laya prompt tokens/markers/labels: choice-order-reversed
+PASS: real Laya state rendering and retained range: choice-order-reversed
+PASS: real Laya prompt tokens/markers/labels: choice-label-only-and-structured
+PASS: real Laya state rendering and retained range: choice-label-only-and-structured
+PASS: real Laya prompt tokens/markers/labels: state-object-unicode
+PASS: real Laya state rendering and retained range: state-object-unicode
+PASS: real Laya prompt tokens/markers/labels: state-conversation-left-truncation
+PASS: real Laya state rendering and retained range: state-conversation-left-truncation
+PASS: strict mode retains truncation evidence: state-conversation-left-truncation
+PASS: real Laya prompt tokens/markers/labels: state-string-right-truncation
+PASS: real Laya state rendering and retained range: state-string-right-truncation
+PASS: strict mode retains truncation evidence: state-string-right-truncation
+PASS: real Laya prompt tokens/markers/labels: mask-in-state-instructions-options
+PASS: real Laya state rendering and retained range: mask-in-state-instructions-options
+PASS: real Laya prompt tokens/markers/labels: boolean-display-labels
+PASS: real Laya state rendering and retained range: boolean-display-labels
+PASS: real Laya prompt tokens/markers/labels: boolean-default-criteria
+PASS: real Laya state rendering and retained range: boolean-default-criteria
+PASS: real Laya prompt tokens/markers/labels: sequence-255
+PASS: real Laya state rendering and retained range: sequence-255
+PASS: real Laya prompt tokens/markers/labels: sequence-256
+PASS: real Laya state rendering and retained range: sequence-256
+PASS: real Laya prompt tokens/markers/labels: sequence-257
+PASS: real Laya state rendering and retained range: sequence-257
+PASS: real Laya prompt tokens/markers/labels: sequence-1023
+PASS: real Laya state rendering and retained range: sequence-1023
+PASS: real Laya prompt tokens/markers/labels: sequence-1024
+PASS: real Laya state rendering and retained range: sequence-1024
+PASS: real Laya prompt tokens/markers/labels: sequence-1025
+PASS: real Laya state rendering and retained range: sequence-1025
+PASS: strict mode retains truncation evidence: sequence-1025
+POLICY: choice-one-candidate exceeds Sezika's explicit candidate-count contract.
+PASS: real Laya prompt tokens/markers/labels: choice-two-candidates
+PASS: real Laya state rendering and retained range: choice-two-candidates
+PASS: real Laya prompt tokens/markers/labels: choice-32-candidates
+PASS: real Laya state rendering and retained range: choice-32-candidates
+PASS: strict mode retains truncation evidence: choice-32-candidates
+POLICY: choice-33-candidates exceeds Sezika's explicit candidate-count contract.
+POLICY: score-one-level exceeds Sezika's explicit candidate-count contract.
+PASS: real Laya prompt tokens/markers/labels: score-two-levels
+PASS: real Laya state rendering and retained range: score-two-levels
+PASS: real Laya prompt tokens/markers/labels: score-ten-levels
+PASS: real Laya state rendering and retained range: score-ten-levels
+POLICY: score-eleven-levels exceeds Sezika's explicit candidate-count contract.
+PASS: real Laya prompt tokens/markers/labels: options-48-token-cap
+PASS: real Laya state rendering and retained range: options-48-token-cap
+PASS: strict mode retains truncation evidence: options-48-token-cap
+PASS: real Laya prompt tokens/markers/labels: prefix-instruction-truncation
+PASS: real Laya state rendering and retained range: prefix-instruction-truncation
+PASS: strict mode retains truncation evidence: prefix-instruction-truncation
+PASS: full input inventory accounts supported inputs, policy differences and reference failures
+PASS: tokenizer observes cancellation before allocating a prompt
+PASS: source-generated request JSON retains explicit length policy and default boolean criteria
+PASS: length policy round-trips with the frozen JSON name
+PASS: demonstration engine accepts optional Boolean criteria
+PASS: demonstration engine explicitly rejects unsupported Laya length policy
+PASS: JSON prompt: integer and float types, negative zeros, exponent notation
+PASS: JSON prompt: fixed/scientific notation transition at minus four and sixteen
+PASS: JSON prompt: trailing mantissa zeros do not lose decimal position
+PASS: JSON prompt: JSON float parses to binary64 before shortest formatting
+PASS: JSON prompt: large integers bypass Int64 and binary64
+PASS: JSON prompt: finite binary64 extremes and subnormal
+PASS: JSON prompt: underflow and overflow retain CPython signs and spellings
+PASS: JSON prompt: uppercase input exponent canonicalizes to lowercase
+PASS: JSON prompt: root strings pass through without JSON quotes
+PASS: JSON prompt: structured state preserves property order and Unicode
+PASS: JSON prompt: structured instructions use JSON instead of Python repr
+PASS: JSON prompt: structured criteria use the same JSON separators
+PASS: JSON prompt: escaped unicode is decoded before ensure_ascii false rendering
+PASS: JSON prompt: JSON punctuation escapes remain minimal and lowercase
+PASS: JSON prompt: HTML and line separator characters remain Unicode text
+PASS: JSON prompt: mask literal sanitization occurs after JSON rendering
+PASS: JSON prompt: empty structures retain their type
+PASS: JSON prompt numeric punctuation does not depend on process culture
+PASS: JSON prompt root string accepts the exact character limit
+PASS: JSON prompt rejects decision_input_limit_exceeded
+PASS: JSON prompt structured character limit includes syntax
+PASS: JSON prompt rejects decision_input_limit_exceeded
+PASS: JSON prompt rejects decision_duplicate_property
+PASS: JSON prompt rejects decision_input_depth_exceeded
+PASS: JSON prompt rejects decision_prompt_value_invalid
+PASS: JSON prompt rendering respects cancellation
+PASS: JSON prompt rejects decision_boolean_labels_invalid
+PASS: JSON prompt rejects decision_input_limit_exceeded
+PASS: JSON prompt rejects decision_input_limit_exceeded
+PASS: standalone model runtime load/parse/evaluate/dispose facade
+Sezika prompt contract checks passed: 138
+{"parent": {"pid": 1505, "ppid": 1504, "group": 1504, "start_ticks": 17770637, "command": "/usr/bin/python3 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py 150 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-prompt-tests-process.json /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/tests-final/linux-x64/Sezika.Tests --prompt-contract-aot ", "observed_utc": "2026-09-25T16:29:35.065685+00:00"}, "root": {"pid": 1506, "ppid": 1505, "group": 1506, "start_ticks": 17770645, "command": "", "observed_utc": "2026-09-25T16:29:35.072585+00:00"}, "command": ["/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/tests-final/linux-x64/Sezika.Tests", "--prompt-contract-aot"], "timeout_seconds": 150, "elapsed_seconds": 2.516577823989792, "exit_code": 0, "cancelled": false, "completed": true, "forced_cleanup_pids": [], "processes": [{"pid": 1506, "ppid": 1505, "group": 1506, "start_ticks": 17770645, "command": "", "observed_utc": "2026-09-25T16:29:35.072585+00:00"}]}

@@ -1,0 +1,38 @@
+{
+  "parent": {
+    "pid": 416,
+    "ppid": 314,
+    "group": 314,
+    "start_ticks": 17735669,
+    "command": "/usr/bin/python3 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py 25 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-sdk-info-process.json /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/dotnet --info ",
+    "observed_utc": "2026-09-25T16:23:45.459554+00:00"
+  },
+  "root": {
+    "pid": 417,
+    "ppid": 416,
+    "group": 417,
+    "start_ticks": 17735678,
+    "command": "",
+    "observed_utc": "2026-09-25T16:23:45.463287+00:00"
+  },
+  "command": [
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/dotnet",
+    "--info"
+  ],
+  "timeout_seconds": 25,
+  "elapsed_seconds": 2.012474888993893,
+  "exit_code": 0,
+  "cancelled": false,
+  "completed": true,
+  "forced_cleanup_pids": [],
+  "processes": [
+    {
+      "pid": 417,
+      "ppid": 416,
+      "group": 417,
+      "start_ticks": 17735678,
+      "command": "",
+      "observed_utc": "2026-09-25T16:23:45.463287+00:00"
+    }
+  ]
+}

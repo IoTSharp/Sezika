@@ -1,0 +1,42 @@
+{
+  "Status": "Failed",
+  "Pid": 49612,
+  "ExitCode": 1,
+  "Error": "Process failed with exit code 1.",
+  "ElapsedSeconds": 3.596,
+  "TimeoutSeconds": 45,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\build-compare\\bin\\Sezika.OracleCompare\\release\\Sezika.OracleCompare.dll",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\reference.cpu-fp32.v1.json",
+    "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-cuda-final\\capture.json",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\cases.v1.json",
+    "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-cuda-final-full-comparison.json",
+    "30"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:20:57.8499834Z",
+  "ParentPid": 34128,
+  "Launcher": {
+    "Pid": 34128,
+    "Started": "2026-09-26T00:20:49.170549+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/s3-aot-20260926/run-capture.ps1 -Platform win -Backend cuda -CompareOnly\nrg -n 'NativeCompilationDuringPublish|Cross-OS|cross-OS|ILCompilerVersion|IlcPackageVersion' 'C:\\Users\\mysti\\.nuget\\packages\\microsoft.dotnet.ilcompiler\\10.0.6\\build'\nGet-Content -LiteralPath 'C:\\Users\\mysti\\.nuget\\packages\\microsoft.dotnet.ilcompiler\\10.0.6\\build\\Microsoft.NETCore.Native.Publish.targets' -Encoding utf8 -TotalCount 95\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162057-080-s3-aot-win-cuda-final-full-comparison.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162057-080-s3-aot-win-cuda-final-full-comparison.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 49612,
+      "CreationDate": "2026-09-26T00:20:57.849983+08:00",
+      "Started": "2026-09-25T16:20:57.849983Z",
+      "CommandLine": null,
+      "ParentPid": 34128,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

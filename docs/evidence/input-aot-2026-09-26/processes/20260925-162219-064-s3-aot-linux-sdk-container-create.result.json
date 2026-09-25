@@ -1,0 +1,31 @@
+{
+  "Status": "Succeeded",
+  "Pid": 78920,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 2.885,
+  "TimeoutSeconds": 30,
+  "FilePath": "C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe",
+  "Arguments": [
+    "create",
+    "--name",
+    "sezika-s3-aot-sdk-20260926",
+    "--network",
+    "none",
+    "adc02be8b879"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:22:19.5898632Z",
+  "ParentPid": 47788,
+  "Launcher": {
+    "Pid": 47788,
+    "Started": "2026-09-26T00:22:15.3559+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference = 'Stop'\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe' -ArgumentList @('image','inspect','adc02be8b879','--format','{{.Id}} {{json .RepoDigests}} {{.Created}}') -TimeoutSeconds 20 -LogName 's3-aot-linux-sdk-image-identity'\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe' -ArgumentList @('create','--name','sezika-s3-aot-sdk-20260926','--network','none','adc02be8b879') -TimeoutSeconds 30 -LogName 's3-aot-linux-sdk-container-create'\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe' -ArgumentList @('cp','sezika-s3-aot-sdk-20260926:/usr/share/dotnet','D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-dotnet') -TimeoutSeconds 180 -LogName 's3-aot-linux-sdk-extract'\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe' -ArgumentList @('rm','sezika-s3-aot-sdk-20260926') -TimeoutSeconds 30 -LogName 's3-aot-linux-sdk-container-remove'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162219-064-s3-aot-linux-sdk-container-create.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162219-064-s3-aot-linux-sdk-container-create.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

@@ -6,6 +6,8 @@
 
 ## 共享输入构造器
 
+2026-09-26 补充：[修正路径两 RID Native AOT 回归](evidence/input-aot-2026-09-26.md)已完成。Windows / Ubuntu WSL2 原生输入检查各138项通过；SIMD/CUDA 的支持范围真实数值与 scalar 三条明确长输入分别通过冻结容差。此证据补齐 S3-10 的 AOT 门槛，不改变本文合同或将旧质量报告迁移到新输入。
+
 `PromptSequenceBuilder.Build(TokenizerJson, JsonElement state, Question, PromptSequenceOptions?, CancellationToken)` 同时供 `ModernBertDecisionEngine` 和离线导出使用，返回 `PromptSequence`：`TokenIds`、`MarkerPositions`、`CandidateLabels`、`TypeId` 与完整诊断 `Diagnostics`。
 
 序列为 `BOS + 题型/说明 + EOS + (MASK + 候选文本) × N + EOS + state + EOS`。三个题型分别使用 `choice question: `、`score question: `、`noul question: `；type ID 为 0、1、2。公共 JSON 问题类型仍为 `choice`、`score`、`boolean`。

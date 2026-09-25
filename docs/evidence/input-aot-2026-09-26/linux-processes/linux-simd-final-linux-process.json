@@ -1,0 +1,54 @@
+{
+  "parent": {
+    "pid": 677,
+    "ppid": 676,
+    "group": 676,
+    "start_ticks": 17757957,
+    "command": "/usr/bin/python3 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py 1710 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-simd-final-linux-process.json /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/native-final/linux-x64/Sezika.OracleCapture --reference /mnt/d/source/Sezika/tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json --model /mnt/d/source/Sezika/.artifacts/models/laya-mmbert --cases /mnt/d/source/Sezika/tests/fixtures/laya-oracle/cases.v1.json --contract /mnt/d/source/Sezika/tests/fixtures/laya-oracle/contract.v1.json --output /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-simd-final --backend simd --max-cases 46 --timeout-seconds 1700 --require-aot ",
+    "observed_utc": "2026-09-25T16:27:28.333720+00:00"
+  },
+  "root": {
+    "pid": 678,
+    "ppid": 677,
+    "group": 678,
+    "start_ticks": 17757964,
+    "command": "",
+    "observed_utc": "2026-09-25T16:27:28.337995+00:00"
+  },
+  "command": [
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/native-final/linux-x64/Sezika.OracleCapture",
+    "--reference",
+    "/mnt/d/source/Sezika/tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json",
+    "--model",
+    "/mnt/d/source/Sezika/.artifacts/models/laya-mmbert",
+    "--cases",
+    "/mnt/d/source/Sezika/tests/fixtures/laya-oracle/cases.v1.json",
+    "--contract",
+    "/mnt/d/source/Sezika/tests/fixtures/laya-oracle/contract.v1.json",
+    "--output",
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-simd-final",
+    "--backend",
+    "simd",
+    "--max-cases",
+    "46",
+    "--timeout-seconds",
+    "1700",
+    "--require-aot"
+  ],
+  "timeout_seconds": 1710,
+  "elapsed_seconds": 1250.9114155069983,
+  "exit_code": 0,
+  "cancelled": false,
+  "completed": true,
+  "forced_cleanup_pids": [],
+  "processes": [
+    {
+      "pid": 678,
+      "ppid": 677,
+      "group": 678,
+      "start_ticks": 17757964,
+      "command": "",
+      "observed_utc": "2026-09-25T16:27:28.337995+00:00"
+    }
+  ]
+}

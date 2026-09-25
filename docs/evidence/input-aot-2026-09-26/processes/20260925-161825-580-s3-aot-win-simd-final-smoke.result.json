@@ -1,0 +1,61 @@
+{
+  "Status": "Succeeded",
+  "Pid": 57948,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 7.901,
+  "TimeoutSeconds": 210,
+  "FilePath": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native-final\\win-x64\\Sezika.OracleCapture.exe",
+  "Arguments": [
+    "--reference",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\reference.cpu-fp32.v1.json",
+    "--model",
+    "D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert",
+    "--cases",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\cases.v1.json",
+    "--contract",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json",
+    "--output",
+    "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-simd-final-smoke",
+    "--backend",
+    "simd",
+    "--max-cases",
+    "1",
+    "--timeout-seconds",
+    "180",
+    "--require-aot"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:18:26.3689285Z",
+  "ParentPid": 41728,
+  "Launcher": {
+    "Pid": 41728,
+    "Started": "2026-09-26T00:18:25.104779+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/s3-aot-20260926/run-capture.ps1 -Platform win -Backend simd\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161825-580-s3-aot-win-simd-final-smoke.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161825-580-s3-aot-win-simd-final-smoke.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 57948,
+      "CreationDate": "2026-09-26T00:18:26.368928+08:00",
+      "Started": "2026-09-25T16:18:26.368928Z",
+      "CommandLine": "\"D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native-final\\win-x64\\Sezika.OracleCapture.exe\" --reference D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\reference.cpu-fp32.v1.json --model D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert --cases D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\cases.v1.json --contract D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json --output D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-simd-final-smoke --backend simd --max-cases 1 --timeout-seconds 180 --require-aot",
+      "ParentPid": 41728,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 72232,
+      "CreationDate": "2026-09-26T00:18:26.517479+08:00",
+      "Started": "2026-09-25T16:18:26.517479Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 57948,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

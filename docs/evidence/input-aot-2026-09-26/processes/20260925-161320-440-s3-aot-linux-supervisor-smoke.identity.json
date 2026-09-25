@@ -1,0 +1,36 @@
+{
+  "Pid": 69356,
+  "Started": "2026-09-25T16:13:21.2908313Z",
+  "CommandLine": null,
+  "ParentPid": 73188,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 73188,
+    "Started": "2026-09-26T00:13:20.010089+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Windows\\system32\\wsl.exe' -ArgumentList @('-d','Ubuntu','--cd','/mnt/d/source/Sezika','--exec','/usr/bin/timeout','--signal=TERM','--kill-after=10s','20s','/usr/bin/python3','/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py','5','/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-supervisor-smoke.json','/usr/bin/stat','-c','%s','/tmp/sezika-s3-aot-20260926/sdk.tar.gz') -TimeoutSeconds 30 -LogName 's3-aot-linux-supervisor-smoke'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 30,
+  "FilePath": "C:\\Windows\\system32\\wsl.exe",
+  "Arguments": [
+    "-d",
+    "Ubuntu",
+    "--cd",
+    "/mnt/d/source/Sezika",
+    "--exec",
+    "/usr/bin/timeout",
+    "--signal=TERM",
+    "--kill-after=10s",
+    "20s",
+    "/usr/bin/python3",
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py",
+    "5",
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-supervisor-smoke.json",
+    "/usr/bin/stat",
+    "-c",
+    "%s",
+    "/tmp/sezika-s3-aot-20260926/sdk.tar.gz"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

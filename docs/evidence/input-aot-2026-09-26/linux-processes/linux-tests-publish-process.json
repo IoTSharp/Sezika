@@ -1,0 +1,170 @@
+{
+  "parent": {
+    "pid": 522,
+    "ppid": 521,
+    "group": 521,
+    "start_ticks": 17756221,
+    "command": "/usr/bin/python3 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py 630 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-tests-publish-process.json /usr/bin/env DOTNET_CLI_DO_NOT_USE_MSBUILD_SERVER=1 MSBUILDDISABLENODEREUSE=1 DOTNET_PROCESSOR_COUNT=2 NUGET_PACKAGES=/mnt/c/Users/mysti/.nuget/packages DOTNET_CLI_HOME=/tmp/sezika-s3-aot-20260926/cli /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/dotnet publish tests/Sezika.Tests/Sezika.Tests.csproj -c Release -r linux-x64 --self-contained true -p:PublishAot=true -p:StripSymbols=true -p:IlcMaxDegreeOfParallelism=2 -p:CppCompilerAndLinker=gcc --artifacts-path /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/build-tests-linux-final -o /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/tests-final/linux-x64 --source /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/empty-feed --nologo --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false ",
+    "observed_utc": "2026-09-25T16:27:11.004654+00:00"
+  },
+  "root": {
+    "pid": 523,
+    "ppid": 522,
+    "group": 523,
+    "start_ticks": 17756231,
+    "command": "/usr/bin/env DOTNET_CLI_DO_NOT_USE_MSBUILD_SERVER=1 MSBUILDDISABLENODEREUSE=1 DOTNET_PROCESSOR_COUNT=2 NUGET_PACKAGES=/mnt/c/Users/mysti/.nuget/packages DOTNET_CLI_HOME=/tmp/sezika-s3-aot-20260926/cli /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/dotnet publish tests/Sezika.Tests/Sezika.Tests.csproj -c Release -r linux-x64 --self-contained true -p:PublishAot=true -p:StripSymbols=true -p:IlcMaxDegreeOfParallelism=2 -p:CppCompilerAndLinker=gcc --artifacts-path /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/build-tests-linux-final -o /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/tests-final/linux-x64 --source /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/empty-feed --nologo --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false ",
+    "observed_utc": "2026-09-25T16:27:11.005517+00:00"
+  },
+  "command": [
+    "/usr/bin/env",
+    "DOTNET_CLI_DO_NOT_USE_MSBUILD_SERVER=1",
+    "MSBUILDDISABLENODEREUSE=1",
+    "DOTNET_PROCESSOR_COUNT=2",
+    "NUGET_PACKAGES=/mnt/c/Users/mysti/.nuget/packages",
+    "DOTNET_CLI_HOME=/tmp/sezika-s3-aot-20260926/cli",
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/dotnet",
+    "publish",
+    "tests/Sezika.Tests/Sezika.Tests.csproj",
+    "-c",
+    "Release",
+    "-r",
+    "linux-x64",
+    "--self-contained",
+    "true",
+    "-p:PublishAot=true",
+    "-p:StripSymbols=true",
+    "-p:IlcMaxDegreeOfParallelism=2",
+    "-p:CppCompilerAndLinker=gcc",
+    "--artifacts-path",
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/build-tests-linux-final",
+    "-o",
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/tests-final/linux-x64",
+    "--source",
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/empty-feed",
+    "--nologo",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "timeout_seconds": 630,
+  "elapsed_seconds": 105.23378809998394,
+  "exit_code": 0,
+  "cancelled": false,
+  "completed": true,
+  "forced_cleanup_pids": [],
+  "processes": [
+    {
+      "pid": 523,
+      "ppid": 522,
+      "group": 523,
+      "start_ticks": 17756231,
+      "command": "/usr/bin/env DOTNET_CLI_DO_NOT_USE_MSBUILD_SERVER=1 MSBUILDDISABLENODEREUSE=1 DOTNET_PROCESSOR_COUNT=2 NUGET_PACKAGES=/mnt/c/Users/mysti/.nuget/packages DOTNET_CLI_HOME=/tmp/sezika-s3-aot-20260926/cli /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/dotnet publish tests/Sezika.Tests/Sezika.Tests.csproj -c Release -r linux-x64 --self-contained true -p:PublishAot=true -p:StripSymbols=true -p:IlcMaxDegreeOfParallelism=2 -p:CppCompilerAndLinker=gcc --artifacts-path /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/build-tests-linux-final -o /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/tests-final/linux-x64 --source /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/empty-feed --nologo --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false ",
+      "observed_utc": "2026-09-25T16:27:11.005517+00:00"
+    },
+    {
+      "pid": 634,
+      "ppid": 523,
+      "group": 523,
+      "start_ticks": 17757524,
+      "command": "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/sdk/10.0.202/Roslyn/bincore/csc /noconfig @/tmp/MSBuildTempwAmOw2/tmpb6f98417f5e74482b039a4b877a75bf2.rsp ",
+      "observed_utc": "2026-09-25T16:27:26.074235+00:00"
+    },
+    {
+      "pid": 744,
+      "ppid": 523,
+      "group": 523,
+      "start_ticks": 17758612,
+      "command": "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/sdk/10.0.202/Roslyn/bincore/csc /noconfig @/tmp/MSBuildTempwAmOw2/tmp2e7da3196d1147b2a1bff9820f094bb5.rsp ",
+      "observed_utc": "2026-09-25T16:27:35.078835+00:00"
+    },
+    {
+      "pid": 855,
+      "ppid": 523,
+      "group": 523,
+      "start_ticks": 17760251,
+      "command": "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/dotnet /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/sdk/10.0.202/MSBuild.dll  /nologo /nodemode:2 /nodereuse:False /low:False ",
+      "observed_utc": "2026-09-25T16:27:53.107941+00:00"
+    },
+    {
+      "pid": 872,
+      "ppid": 523,
+      "group": 523,
+      "start_ticks": 17760281,
+      "command": "/usr/bin/sh -c . /tmp/MSBuildTempD1dnBl/tmp4bb3bf08245543679d2c2eb1d6281caa.exec.cmd ",
+      "observed_utc": "2026-09-25T16:27:53.108006+00:00"
+    },
+    {
+      "pid": 873,
+      "ppid": 872,
+      "group": 523,
+      "start_ticks": 17760281,
+      "command": "/mnt/c/Users/mysti/.nuget/packages/runtime.linux-x64.microsoft.dotnet.ilcompiler/10.0.6/tools/ilc @/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/build-tests-linux-final/obj/Sezika.Tests/release_linux-x64/native/Sezika.Tests.ilc.rsp ",
+      "observed_utc": "2026-09-25T16:27:53.108058+00:00"
+    },
+    {
+      "pid": 1008,
+      "ppid": 523,
+      "group": 523,
+      "start_ticks": 17762283,
+      "command": "/usr/bin/sh -c . /tmp/MSBuildTempD1dnBl/tmpa2de7ec076054a30b729015f55c3493c.exec.cmd ",
+      "observed_utc": "2026-09-25T16:28:14.126660+00:00"
+    },
+    {
+      "pid": 1009,
+      "ppid": 1008,
+      "group": 523,
+      "start_ticks": 17762283,
+      "command": "gcc /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/build-tests-linux-final/obj/Sezika.Tests/release_linux-x64/native/Sezika.Tests.o -o /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/build-tests-linux-final/bin/Sezika.Tests/release_linux-x64/native/Sezika.Tests -Wl,--version-script=/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/build-tests-linux-final/obj/Sezika.Tests/release_linux-x64/native/Sezika.Tests.exports -Wl,--export-dynamic -gz=zlib -fuse-ld=bfd /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libSystem.Native.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libSystem.Globalization.Native.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libSystem.IO.Compression.Native.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libSystem.Net.Security.Native.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libSystem.Security.Cryptography.Native.OpenSsl.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libbootstrapper.o /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libRuntime.WorkstationGC.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libeventpipe-disabled.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libRuntime.VxsortDisabled.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libstandalonegc-disabled.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libaotminipal.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libstdc++compat.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libz.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libbrotlienc.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libbrotlidec.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libbrotlicommon.a -g -Wl,--build-id=sha1 -Wl,--as-needed -pthread -ldl -lrt -lm -pie -Wl,-pie -Wl,-z,relro -Wl,-z,now -Wl,--eh-frame-hdr -Wl,--discard-all -Wl,--gc-sections ",
+      "observed_utc": "2026-09-25T16:28:14.126707+00:00"
+    },
+    {
+      "pid": 1012,
+      "ppid": 1009,
+      "group": 523,
+      "start_ticks": 17762335,
+      "command": "/usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccHu04mJ.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -fuse-ld=bfd --compress-debug-sections=zlib -z relro -o /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/build-tests-linux-final/bin/Sezika.Tests/release_linux-x64/native/Sezika.Tests /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/build-tests-linux-final/obj/Sezika.Tests/release_linux-x64/native/Sezika.Tests.o --version-script=/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/build-tests-linux-final/obj/Sezika.Tests/release_linux-x64/native/Sezika.Tests.exports --export-dynamic /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libSystem.Native.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libSystem.Globalization.Native.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libSystem.IO.Compression.Native.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libSystem.Net.Security.Native.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libSystem.Security.Cryptography.Native.OpenSsl.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libbootstrapper.o /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libRuntime.WorkstationGC.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libeventpipe-disabled.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libRuntime.VxsortDisabled.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libstandalonegc-disabled.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libaotminipal.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libstdc++compat.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libz.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libbrotlienc.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libbrotlidec.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libbrotlicommon.a --build-id=sha1 --as-needed -ldl -lrt -lm -pie -z relro -z now --eh-frame-hdr --discard-all --gc-sections -lgcc --push-state --as-needed -lgcc_s --pop-state -lpthread -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o ",
+      "observed_utc": "2026-09-25T16:28:14.126755+00:00"
+    },
+    {
+      "pid": 1013,
+      "ppid": 1012,
+      "group": 523,
+      "start_ticks": 17762350,
+      "command": "/usr/bin/ld.bfd -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccHu04mJ.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now --compress-debug-sections=zlib -z relro -o /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/build-tests-linux-final/bin/Sezika.Tests/release_linux-x64/native/Sezika.Tests /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/build-tests-linux-final/obj/Sezika.Tests/release_linux-x64/native/Sezika.Tests.o --version-script=/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/build-tests-linux-final/obj/Sezika.Tests/release_linux-x64/native/Sezika.Tests.exports --export-dynamic /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libSystem.Native.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libSystem.Globalization.Native.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libSystem.IO.Compression.Native.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libSystem.Net.Security.Native.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libSystem.Security.Cryptography.Native.OpenSsl.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libbootstrapper.o /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libRuntime.WorkstationGC.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libeventpipe-disabled.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libRuntime.VxsortDisabled.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libstandalonegc-disabled.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libaotminipal.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libstdc++compat.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libz.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libbrotlienc.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libbrotlidec.a /mnt/c/Users/mysti/.nuget/packages/microsoft.netcore.app.runtime.nativeaot.linux-x64/10.0.6/runtimes/linux-x64/native/libbrotlicommon.a --build-id=sha1 --as-needed -ldl -lrt -lm -pie -z relro -z now --eh-frame-hdr --discard-all --gc-sections -lgcc --push-state --as-needed -lgcc_s --pop-state -lpthread -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o ",
+      "observed_utc": "2026-09-25T16:28:14.126873+00:00"
+    },
+    {
+      "pid": 1169,
+      "ppid": 523,
+      "group": 523,
+      "start_ticks": 17764863,
+      "command": "/usr/bin/sh -c . /tmp/MSBuildTempD1dnBl/tmp27e86b085d1a418caa13571de9a382d5.exec.cmd ",
+      "observed_utc": "2026-09-25T16:28:38.162273+00:00"
+    },
+    {
+      "pid": 1170,
+      "ppid": 1169,
+      "group": 523,
+      "start_ticks": 17764863,
+      "command": "objcopy --only-keep-debug /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/build-tests-linux-final/bin/Sezika.Tests/release_linux-x64/native/Sezika.Tests /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/build-tests-linux-final/bin/Sezika.Tests/release_linux-x64/native/Sezika.Tests.dbg ",
+      "observed_utc": "2026-09-25T16:28:38.162328+00:00"
+    },
+    {
+      "pid": 1254,
+      "ppid": 523,
+      "group": 523,
+      "start_ticks": 17766353,
+      "command": "/usr/bin/sh -c . /tmp/MSBuildTempD1dnBl/tmpeef35aaf74f841b2b3b8a0a897d018d6.exec.cmd ",
+      "observed_utc": "2026-09-25T16:28:53.195184+00:00"
+    },
+    {
+      "pid": 1255,
+      "ppid": 1254,
+      "group": 523,
+      "start_ticks": 17766353,
+      "command": "objcopy --add-gnu-debuglink=/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/build-tests-linux-final/bin/Sezika.Tests/release_linux-x64/native/Sezika.Tests.dbg /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/build-tests-linux-final/bin/Sezika.Tests/release_linux-x64/native/Sezika.Tests ",
+      "observed_utc": "2026-09-25T16:28:53.195222+00:00"
+    }
+  ]
+}

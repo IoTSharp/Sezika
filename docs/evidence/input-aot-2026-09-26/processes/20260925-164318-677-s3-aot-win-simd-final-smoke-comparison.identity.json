@@ -1,0 +1,27 @@
+{
+  "Pid": 58088,
+  "Started": "2026-09-25T16:43:19.5053272Z",
+  "CommandLine": null,
+  "ParentPid": 59940,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 59940,
+    "Started": "2026-09-26T00:43:18.0925+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/s3-aot-20260926/run-capture.ps1 -Platform win -Backend simd -CompareOnly\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 45,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\build-compare\\bin\\Sezika.OracleCompare\\release\\Sezika.OracleCompare.dll",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\reference.cpu-fp32.v1.json",
+    "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-simd-final-smoke\\capture.json",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\cases.v1.json",
+    "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-simd-final-smoke-comparison.json",
+    "30",
+    "choice-en-short"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

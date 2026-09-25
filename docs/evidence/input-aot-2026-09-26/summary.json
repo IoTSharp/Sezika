@@ -1,0 +1,2275 @@
+{
+  "schema_version": "sezika.input-aot-regression.v1",
+  "captured_utc": "2026-09-25T16:50:32.8669786+00:00",
+  "smoke_archive_only": false,
+  "matrix": [
+    {
+      "rid": "win-x64",
+      "backend": "scalar",
+      "capture_rows": 3,
+      "answered_pairs": 3,
+      "failure_pairs": 0,
+      "selected_passed": true,
+      "full_manifest_passed": false,
+      "max_tokens": 1024.0,
+      "max_logit_error": 1.1444091796875E-05,
+      "max_probability_error": 1.6324255610600247E-06,
+      "native_binary": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native-final\\win-x64\\Sezika.OracleCapture.exe",
+      "native_binary_sha256": "dc0ab1a05abb909748fd74c597c04102fb3fa391b1464235beeeec87c66ce839",
+      "runtime": ".NET 10.0.11",
+      "selected_case_ids": [
+        "score-en-long",
+        "boolean-zh-long",
+        "sequence-1024"
+      ]
+    },
+    {
+      "rid": "win-x64",
+      "backend": "simd",
+      "capture_rows": 46,
+      "answered_pairs": 38,
+      "failure_pairs": 4,
+      "selected_passed": true,
+      "full_manifest_passed": false,
+      "max_tokens": 1024.0,
+      "max_logit_error": 2.9712915420532227E-05,
+      "max_probability_error": 7.2504154782215835E-06,
+      "native_binary": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native-final\\win-x64\\Sezika.OracleCapture.exe",
+      "native_binary_sha256": "dc0ab1a05abb909748fd74c597c04102fb3fa391b1464235beeeec87c66ce839",
+      "runtime": ".NET 10.0.11",
+      "selected_case_ids": [
+        "choice-en-short",
+        "choice-en-medium",
+        "choice-en-long",
+        "choice-zh-short",
+        "choice-zh-medium",
+        "choice-zh-long",
+        "score-en-short",
+        "score-en-medium",
+        "score-en-long",
+        "score-zh-short",
+        "score-zh-medium",
+        "score-zh-long",
+        "boolean-en-short",
+        "boolean-en-medium",
+        "boolean-en-long",
+        "boolean-zh-short",
+        "boolean-zh-medium",
+        "boolean-zh-long",
+        "choice-order-reversed",
+        "choice-label-only-and-structured",
+        "state-object-unicode",
+        "state-conversation-left-truncation",
+        "state-string-right-truncation",
+        "mask-in-state-instructions-options",
+        "boolean-display-labels",
+        "boolean-default-criteria",
+        "sequence-255",
+        "sequence-256",
+        "sequence-257",
+        "sequence-1023",
+        "sequence-1024",
+        "sequence-1025",
+        "choice-two-candidates",
+        "choice-32-candidates",
+        "score-two-levels",
+        "score-ten-levels",
+        "options-48-token-cap",
+        "prefix-instruction-truncation",
+        "invalid-empty-choice",
+        "invalid-null-score-level",
+        "invalid-boolean-criteria-key",
+        "invalid-duplicate-boolean-display-label"
+      ]
+    },
+    {
+      "rid": "win-x64",
+      "backend": "cuda",
+      "capture_rows": 46,
+      "answered_pairs": 38,
+      "failure_pairs": 4,
+      "selected_passed": true,
+      "full_manifest_passed": false,
+      "max_tokens": 1024.0,
+      "max_logit_error": 8.749961853027344E-05,
+      "max_probability_error": 1.3765951183242198E-05,
+      "native_binary": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native-final\\win-x64\\Sezika.OracleCapture.exe",
+      "native_binary_sha256": "dc0ab1a05abb909748fd74c597c04102fb3fa391b1464235beeeec87c66ce839",
+      "runtime": ".NET 10.0.11",
+      "selected_case_ids": [
+        "choice-en-short",
+        "choice-en-medium",
+        "choice-en-long",
+        "choice-zh-short",
+        "choice-zh-medium",
+        "choice-zh-long",
+        "score-en-short",
+        "score-en-medium",
+        "score-en-long",
+        "score-zh-short",
+        "score-zh-medium",
+        "score-zh-long",
+        "boolean-en-short",
+        "boolean-en-medium",
+        "boolean-en-long",
+        "boolean-zh-short",
+        "boolean-zh-medium",
+        "boolean-zh-long",
+        "choice-order-reversed",
+        "choice-label-only-and-structured",
+        "state-object-unicode",
+        "state-conversation-left-truncation",
+        "state-string-right-truncation",
+        "mask-in-state-instructions-options",
+        "boolean-display-labels",
+        "boolean-default-criteria",
+        "sequence-255",
+        "sequence-256",
+        "sequence-257",
+        "sequence-1023",
+        "sequence-1024",
+        "sequence-1025",
+        "choice-two-candidates",
+        "choice-32-candidates",
+        "score-two-levels",
+        "score-ten-levels",
+        "options-48-token-cap",
+        "prefix-instruction-truncation",
+        "invalid-empty-choice",
+        "invalid-null-score-level",
+        "invalid-boolean-criteria-key",
+        "invalid-duplicate-boolean-display-label"
+      ]
+    },
+    {
+      "rid": "linux-x64",
+      "backend": "scalar",
+      "capture_rows": 3,
+      "answered_pairs": 3,
+      "failure_pairs": 0,
+      "selected_passed": true,
+      "full_manifest_passed": false,
+      "max_tokens": 1024.0,
+      "max_logit_error": 8.463859558105469E-06,
+      "max_probability_error": 1.7737071893453304E-06,
+      "native_binary": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native-final\\linux-x64\\Sezika.OracleCapture",
+      "native_binary_sha256": "313d7dad3063ef92303c8d1049cd9aeff0b00661aa067b49bb28511e6ba0dc76",
+      "runtime": ".NET 10.0.6",
+      "selected_case_ids": [
+        "score-en-long",
+        "boolean-zh-long",
+        "sequence-1024"
+      ]
+    },
+    {
+      "rid": "linux-x64",
+      "backend": "simd",
+      "capture_rows": 46,
+      "answered_pairs": 38,
+      "failure_pairs": 4,
+      "selected_passed": true,
+      "full_manifest_passed": false,
+      "max_tokens": 1024.0,
+      "max_logit_error": 3.62396240234375E-05,
+      "max_probability_error": 4.952731611718164E-06,
+      "native_binary": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native-final\\linux-x64\\Sezika.OracleCapture",
+      "native_binary_sha256": "313d7dad3063ef92303c8d1049cd9aeff0b00661aa067b49bb28511e6ba0dc76",
+      "runtime": ".NET 10.0.6",
+      "selected_case_ids": [
+        "choice-en-short",
+        "choice-en-medium",
+        "choice-en-long",
+        "choice-zh-short",
+        "choice-zh-medium",
+        "choice-zh-long",
+        "score-en-short",
+        "score-en-medium",
+        "score-en-long",
+        "score-zh-short",
+        "score-zh-medium",
+        "score-zh-long",
+        "boolean-en-short",
+        "boolean-en-medium",
+        "boolean-en-long",
+        "boolean-zh-short",
+        "boolean-zh-medium",
+        "boolean-zh-long",
+        "choice-order-reversed",
+        "choice-label-only-and-structured",
+        "state-object-unicode",
+        "state-conversation-left-truncation",
+        "state-string-right-truncation",
+        "mask-in-state-instructions-options",
+        "boolean-display-labels",
+        "boolean-default-criteria",
+        "sequence-255",
+        "sequence-256",
+        "sequence-257",
+        "sequence-1023",
+        "sequence-1024",
+        "sequence-1025",
+        "choice-two-candidates",
+        "choice-32-candidates",
+        "score-two-levels",
+        "score-ten-levels",
+        "options-48-token-cap",
+        "prefix-instruction-truncation",
+        "invalid-empty-choice",
+        "invalid-null-score-level",
+        "invalid-boolean-criteria-key",
+        "invalid-duplicate-boolean-display-label"
+      ]
+    },
+    {
+      "rid": "linux-x64",
+      "backend": "cuda",
+      "capture_rows": 46,
+      "answered_pairs": 38,
+      "failure_pairs": 4,
+      "selected_passed": true,
+      "full_manifest_passed": false,
+      "max_tokens": 1024.0,
+      "max_logit_error": 8.749961853027344E-05,
+      "max_probability_error": 1.3765951183242198E-05,
+      "native_binary": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native-final\\linux-x64\\Sezika.OracleCapture",
+      "native_binary_sha256": "313d7dad3063ef92303c8d1049cd9aeff0b00661aa067b49bb28511e6ba0dc76",
+      "runtime": ".NET 10.0.6",
+      "selected_case_ids": [
+        "choice-en-short",
+        "choice-en-medium",
+        "choice-en-long",
+        "choice-zh-short",
+        "choice-zh-medium",
+        "choice-zh-long",
+        "score-en-short",
+        "score-en-medium",
+        "score-en-long",
+        "score-zh-short",
+        "score-zh-medium",
+        "score-zh-long",
+        "boolean-en-short",
+        "boolean-en-medium",
+        "boolean-en-long",
+        "boolean-zh-short",
+        "boolean-zh-medium",
+        "boolean-zh-long",
+        "choice-order-reversed",
+        "choice-label-only-and-structured",
+        "state-object-unicode",
+        "state-conversation-left-truncation",
+        "state-string-right-truncation",
+        "mask-in-state-instructions-options",
+        "boolean-display-labels",
+        "boolean-default-criteria",
+        "sequence-255",
+        "sequence-256",
+        "sequence-257",
+        "sequence-1023",
+        "sequence-1024",
+        "sequence-1025",
+        "choice-two-candidates",
+        "choice-32-candidates",
+        "score-two-levels",
+        "score-ten-levels",
+        "options-48-token-cap",
+        "prefix-instruction-truncation",
+        "invalid-empty-choice",
+        "invalid-null-score-level",
+        "invalid-boolean-criteria-key",
+        "invalid-duplicate-boolean-display-label"
+      ]
+    }
+  ],
+  "validations": [
+    {
+      "label": "win-final-prompt-tests",
+      "pid": 60212,
+      "started": "2026-09-25T16:23:15.1594311Z",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "checks": 138,
+      "elapsed_seconds": 5.821,
+      "timeout_seconds": 180,
+      "result": "processes/"
+    },
+    {
+      "label": "linux-final-prompt-tests",
+      "pid": 33116,
+      "started": "2026-09-25T16:29:34.6921177Z",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "checks": 138,
+      "elapsed_seconds": 8.04,
+      "timeout_seconds": 180,
+      "result": "processes/"
+    },
+    {
+      "label": "win-final-publish",
+      "pid": 25868,
+      "started": "2026-09-25T16:15:54.1167736Z",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "checks": 0,
+      "elapsed_seconds": 28.664,
+      "timeout_seconds": 600,
+      "result": "processes/20260925-161553-512-s3-aot-win-final-publish.result.json"
+    },
+    {
+      "label": "linux-final-publish",
+      "pid": 60692,
+      "started": "2026-09-25T16:24:22.8841997Z",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "checks": 0,
+      "elapsed_seconds": 78.084,
+      "timeout_seconds": 670,
+      "result": "processes/20260925-162421-305-s3-aot-linux-final-publish.result.json"
+    },
+    {
+      "label": "win-final-tests-publish",
+      "pid": 11448,
+      "started": "2026-09-25T16:22:33.719854Z",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "checks": 0,
+      "elapsed_seconds": 41.757,
+      "timeout_seconds": 600,
+      "result": "processes/20260925-162232-326-s3-aot-win-final-tests-publish.result.json"
+    },
+    {
+      "label": "linux-final-tests-publish",
+      "pid": 37740,
+      "started": "2026-09-25T16:27:10.6924573Z",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "checks": 0,
+      "elapsed_seconds": 108.4,
+      "timeout_seconds": 670,
+      "result": "processes/20260925-162709-827-s3-aot-linux-final-tests-publish.result.json"
+    },
+    {
+      "label": "managed-final-negative",
+      "pid": 32796,
+      "started": "2026-09-25T16:22:28.4301512Z",
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "checks": 0,
+      "elapsed_seconds": 5.491,
+      "timeout_seconds": 30,
+      "result": "processes/20260925-162226-725-s3-aot-managed-final-negative.result.json"
+    },
+    {
+      "label": "linux-managed-negative",
+      "pid": 78236,
+      "started": "2026-09-25T16:29:42.8171262Z",
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "checks": 0,
+      "elapsed_seconds": 7.032,
+      "timeout_seconds": 35,
+      "result": "processes/20260925-162941-881-s3-aot-linux-managed-negative.result.json"
+    }
+  ],
+  "verified_source_files": 88,
+  "timeout_seconds": 90,
+  "maximum_files": 512,
+  "files": [
+    {
+      "path": "win-scalar-capture.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-scalar-final\\capture.json",
+      "sha256": "61c47039bfc5edd6d955b06a26f30465ff8fffb8a96a7fac076c0ec7c1318ed8",
+      "bytes": 96405
+    },
+    {
+      "path": "win-scalar-comparison.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-scalar-final-comparison.json",
+      "sha256": "932d88f60bcc00b794fa5cb75117b13dd08985d4184e40b72d74da8885bc47b3",
+      "bytes": 5144
+    },
+    {
+      "path": "win-scalar-smoke-capture.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-scalar-final-smoke\\capture.json",
+      "sha256": "9142646f3defd47dd5713c5411a84978e05dd6f7a502cdab835f1647873a221b",
+      "bytes": 8135
+    },
+    {
+      "path": "win-scalar-smoke-comparison.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-scalar-final-smoke-comparison.json",
+      "sha256": "943fcffc18f900a25787862c8ee9187c60d83f8f4772ef2e6102499a5344c6a2",
+      "bytes": 5141
+    },
+    {
+      "path": "win-simd-capture.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-simd-final\\capture.json",
+      "sha256": "aba184a2de76f737b78ec3109e017e9d31de9e5b2b5dec084faaf2b2b35c5bdc",
+      "bytes": 662348
+    },
+    {
+      "path": "win-simd-comparison.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-simd-final-comparison.json",
+      "sha256": "47de2e6c8c7fc41d29a7074f43541fa8e9805c433246d3e0eeb37ef71d436f9a",
+      "bytes": 5263
+    },
+    {
+      "path": "win-simd-smoke-capture.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-simd-final-smoke\\capture.json",
+      "sha256": "fe968f0d2014162e036040a8ac382ffbd028964a68ebb5091a5b916a65aa05d7",
+      "bytes": 8122
+    },
+    {
+      "path": "win-simd-smoke-comparison.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-simd-final-smoke-comparison.json",
+      "sha256": "106ad2161542c20ca7be99d3a7b917be45e93a8f12de17c7dcf9e51a4650d25e",
+      "bytes": 5146
+    },
+    {
+      "path": "win-simd-full-comparison.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-simd-final-full-comparison.json",
+      "sha256": "6662776f8df5d2442328132f46b1da2753a22db95cfe07c920f6669581b0d796",
+      "bytes": 6287
+    },
+    {
+      "path": "win-cuda-capture.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-cuda-final\\capture.json",
+      "sha256": "06237e0e1c19e501c70083b44224e18509ea13cd7134faac0931b320c542a451",
+      "bytes": 662261
+    },
+    {
+      "path": "win-cuda-comparison.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-cuda-final-comparison.json",
+      "sha256": "4f5245f4b09f75c37211f802a0b5a10cc85d552413852b57162324ef3950ce98",
+      "bytes": 5262
+    },
+    {
+      "path": "win-cuda-smoke-capture.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-cuda-final-smoke\\capture.json",
+      "sha256": "ebf04bf83013412e3db3b83d32f261e3a93ef058f6f8c9e47a86e332710567f6",
+      "bytes": 8122
+    },
+    {
+      "path": "win-cuda-smoke-comparison.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-cuda-final-smoke-comparison.json",
+      "sha256": "567aed5c70b10285383c8ff19713fbc1a26a470374431e35a16711a9d94588f3",
+      "bytes": 5144
+    },
+    {
+      "path": "win-cuda-full-comparison.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-cuda-final-full-comparison.json",
+      "sha256": "afbb1ff869481638e593bb63ee29eb91966fb32e98bd3c238270124cf1d43ea6",
+      "bytes": 6287
+    },
+    {
+      "path": "linux-scalar-capture.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-scalar-final\\capture.json",
+      "sha256": "a2c4b83512575260caf8a8425e1d795bf2e2ca05ee529333054f33ddaa85ab76",
+      "bytes": 93062
+    },
+    {
+      "path": "linux-scalar-comparison.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-scalar-final-comparison.json",
+      "sha256": "777b61e060929e3a1dcdb4f36b82de7b4579da6badd478bde7785c93902f906e",
+      "bytes": 5146
+    },
+    {
+      "path": "linux-scalar-smoke-capture.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-scalar-final-smoke\\capture.json",
+      "sha256": "c043239547fc7729a22e2acaf280f8bd3e8f1d158e92a6c66d01ea748fbec14c",
+      "bytes": 7844
+    },
+    {
+      "path": "linux-scalar-smoke-comparison.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-scalar-final-smoke-comparison.json",
+      "sha256": "fe6bf928ebecdfb1f61d994a4c8a01cd41e13fb84c07f4106f3598bbe9a41973",
+      "bytes": 5146
+    },
+    {
+      "path": "linux-simd-capture.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-simd-final\\capture.json",
+      "sha256": "fbf2a499204add5be280d0ece765dbbe97b5bf9c1b8e1a77397c0bc5e98cbc35",
+      "bytes": 641738
+    },
+    {
+      "path": "linux-simd-comparison.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-simd-final-comparison.json",
+      "sha256": "d42151aa49fb821319e0753ec2b2090ae786dbfcd2621792b653885f7363a5e4",
+      "bytes": 5259
+    },
+    {
+      "path": "linux-simd-smoke-capture.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-simd-final-smoke\\capture.json",
+      "sha256": "999be70feb66b4071441c4dd692d36f816d41fa37c3c84c2f99c1e041c9eb2a2",
+      "bytes": 7836
+    },
+    {
+      "path": "linux-simd-smoke-comparison.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-simd-final-smoke-comparison.json",
+      "sha256": "83617144ebe11df1dc50c0fa301dc789bd096fd98fe831e19a75757aebe5930e",
+      "bytes": 5146
+    },
+    {
+      "path": "linux-simd-full-comparison.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-simd-final-full-comparison.json",
+      "sha256": "27a3cada9955c6237a1fcc32ebccb7c655903b882f1f7757f625b37d58aceb2f",
+      "bytes": 6285
+    },
+    {
+      "path": "linux-cuda-capture.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-cuda-final\\capture.json",
+      "sha256": "8b3d98271b013d73bc87d798eb003a26d2332309c33a98bd75b0f00aa77c52dd",
+      "bytes": 641671
+    },
+    {
+      "path": "linux-cuda-comparison.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-cuda-final-comparison.json",
+      "sha256": "c068678506c6888b15f737d1b40b9dca661e59a185374dc6b5ae7bf1bc5f679e",
+      "bytes": 5262
+    },
+    {
+      "path": "linux-cuda-smoke-capture.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-cuda-final-smoke\\capture.json",
+      "sha256": "7855a2416f78d8441d635463044efdc5efadff7ab1bba9be92ce056d2d9bcfcf",
+      "bytes": 7833
+    },
+    {
+      "path": "linux-cuda-smoke-comparison.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-cuda-final-smoke-comparison.json",
+      "sha256": "cbfe2f7475ea8f770f3ec248edf7e955357045b18837c26a6cbbd686277954ca",
+      "bytes": 5143
+    },
+    {
+      "path": "linux-cuda-full-comparison.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-cuda-final-full-comparison.json",
+      "sha256": "aae3c6d0b8b7712de6f7a0a2d3cb5716e856861867a3af421d0710e1ddad356d",
+      "bytes": 6287
+    },
+    {
+      "path": "source-hashes.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\source-hashes.json",
+      "sha256": "a633f053494bb91f22e0a4323a1ce57dd5755077c3d24ea28ce72ae8d8b54d52",
+      "bytes": 13492
+    },
+    {
+      "path": "runtime-dependencies.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\runtime-dependencies.json",
+      "sha256": "94ef2686b69a9c9577c35a97616ec836c49558cd33a7e83f5df0b74db7a8edd7",
+      "bytes": 936
+    },
+    {
+      "path": "win-pe-identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-pe-identity.json",
+      "sha256": "4aef774f4858874cf36ed48f86bd6daccc7e7206c3c9ce8667c48025da1c6e36",
+      "bytes": 217
+    },
+    {
+      "path": "native-binary-hashes.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native-binary-hashes.json",
+      "sha256": "a0bb09920564258650979e8f05ec1620162839f1150e81d32bb70677411a125c",
+      "bytes": 696
+    },
+    {
+      "path": "diagnostic/managed-pilot-capture.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\managed-should-not-exist\\capture.json",
+      "sha256": "2c9ede32199a58b089c34b6f11a24afd6f76e67730a735c8a00feeb41e80cabb",
+      "bytes": 8184
+    },
+    {
+      "path": "diagnostic/managed-pilot.runtimeconfig.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\build-win\\bin\\Sezika.OracleCapture\\release_win-x64\\Sezika.OracleCapture.runtimeconfig.json",
+      "sha256": "df2daadf4d98f6ebe462116b0bb5ad98ca6d2c3dd79e157affd97e3777e44dab",
+      "bytes": 2026
+    },
+    {
+      "path": "scripts/linux-process.py",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-process.py",
+      "sha256": "5acad7d8245ed3ec2c91aedeaaeca925bcf3c51ea445c06eb4429e511cf87e0f",
+      "bytes": 3634
+    },
+    {
+      "path": "scripts/run-capture.ps1",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\run-capture.ps1",
+      "sha256": "28515fecfde9fc3f365c0b78dc9270ce1e053374043aed26af2e4dd0e9f80d41",
+      "bytes": 4628
+    },
+    {
+      "path": "scripts/collect-evidence.ps1",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\collect-evidence.ps1",
+      "sha256": "ed7c9f2d0b6529fbd4537fab3826c7c9282df556f18400284a188cbe88f7becd",
+      "bytes": 10553
+    },
+    {
+      "path": "scripts/audit-processes.ps1",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\audit-processes.ps1",
+      "sha256": "545782ddca029546b10ef71dcef8ac6b3f55b411bbba9b55cba3267d811ba25b",
+      "bytes": 2332
+    },
+    {
+      "path": "scripts/audit-linux-processes.py",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\audit-linux-processes.py",
+      "sha256": "47b5064e342e54a8bfed4b9661d4d6e2a29c20c54bcc193947de426928e78a5a",
+      "bytes": 1438
+    },
+    {
+      "path": "windows-cleanup-audit.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\windows-cleanup-audit.json",
+      "sha256": "4b145d02fcc83a775b956639757b1db593a62b502c9ac9da33ff7172aac40417",
+      "bytes": 395
+    },
+    {
+      "path": "linux-cleanup-audit.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-cleanup-audit.json",
+      "sha256": "03f7cff98cab01f9bd1b8da6f7210333316c06f531a17c546384c4f29226d5f8",
+      "bytes": 176
+    },
+    {
+      "path": "processes/20260925-160516-439-s3-aot-dotnet-info.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160516-439-s3-aot-dotnet-info.identity.json",
+      "sha256": "88a0163a28bb6cf0de0f4204153e0176e2c388c39d2d082d374a58aa1da0661e",
+      "bytes": 1426
+    },
+    {
+      "path": "processes/20260925-160516-439-s3-aot-dotnet-info.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160516-439-s3-aot-dotnet-info.result.json",
+      "sha256": "90b7e93014a2f107f0fdefd3454a92ae115d9b50c81aef262c328b6daa1c4534",
+      "bytes": 2225
+    },
+    {
+      "path": "processes/20260925-160516-439-s3-aot-dotnet-info.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160516-439-s3-aot-dotnet-info.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-160516-439-s3-aot-dotnet-info.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160516-439-s3-aot-dotnet-info.stdout.log",
+      "sha256": "4c227ddc4eb7c7be8ca8ec6f017359c53b9d3c00165b994e905ac9132313012f",
+      "bytes": 4153
+    },
+    {
+      "path": "processes/20260925-160518-781-s3-aot-linux-info.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160518-781-s3-aot-linux-info.identity.json",
+      "sha256": "75a9bc85707e8f73d026033a702548d1212a4f5a6d4fde04801f6fa14f1a9971",
+      "bytes": 1867
+    },
+    {
+      "path": "processes/20260925-160518-781-s3-aot-linux-info.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160518-781-s3-aot-linux-info.result.json",
+      "sha256": "d00b5c7f8b0bbf37344c5d598c6b924b0b2f37b1315e50a375c57c77b63a262e",
+      "bytes": 3474
+    },
+    {
+      "path": "processes/20260925-160518-781-s3-aot-linux-info.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160518-781-s3-aot-linux-info.stderr.log",
+      "sha256": "024a2e4a80d25a4dbeca4282eddc7e4f5dbeb0f19ab3ed80db5fe2ed2244f75e",
+      "bytes": 62
+    },
+    {
+      "path": "processes/20260925-160518-781-s3-aot-linux-info.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160518-781-s3-aot-linux-info.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-160543-815-s3-aot-linux-discovery.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160543-815-s3-aot-linux-discovery.identity.json",
+      "sha256": "7e7cd1a5ff781e9e64ba0b525e6c5df779751df0ad6718754b06fff3b38e44bd",
+      "bytes": 1826
+    },
+    {
+      "path": "processes/20260925-160543-815-s3-aot-linux-discovery.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160543-815-s3-aot-linux-discovery.result.json",
+      "sha256": "9ff59f4c36822b23df2c26d1898f07803a5c8f9c25a1187f544be2ce924d7f7a",
+      "bytes": 3518
+    },
+    {
+      "path": "processes/20260925-160543-815-s3-aot-linux-discovery.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160543-815-s3-aot-linux-discovery.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-160543-815-s3-aot-linux-discovery.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160543-815-s3-aot-linux-discovery.stdout.log",
+      "sha256": "077d2de3f1ee9ca7c60b3e086b7bc7ba6f3af6b4086c922de4c23e5def469293",
+      "bytes": 640
+    },
+    {
+      "path": "processes/20260925-160606-983-s3-aot-wsl-list.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160606-983-s3-aot-wsl-list.identity.json",
+      "sha256": "4707a2b1e923c970d0c194bc7131745ae90b6a0ed0ac4cb8447cd87e683165e3",
+      "bytes": 1357
+    },
+    {
+      "path": "processes/20260925-160606-983-s3-aot-wsl-list.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160606-983-s3-aot-wsl-list.result.json",
+      "sha256": "2593983a2fedf17502c686f2b6a65d97b7b17c6ed6471d92da16ca9fc6cc9ae8",
+      "bytes": 1895
+    },
+    {
+      "path": "processes/20260925-160606-983-s3-aot-wsl-list.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160606-983-s3-aot-wsl-list.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-160606-983-s3-aot-wsl-list.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160606-983-s3-aot-wsl-list.stdout.log",
+      "sha256": "c72dc6957bb71f0f7d032525a14a3d6ca9cb3c7307ddceac2cc648d51492b6c0",
+      "bytes": 246
+    },
+    {
+      "path": "processes/20260925-160609-040-s3-aot-linux-known-paths.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160609-040-s3-aot-linux-known-paths.identity.json",
+      "sha256": "eac8df2202f2e050c00f4fd285a99db0eed911dad3cea7a8b707f2c60c9e3c25",
+      "bytes": 2120
+    },
+    {
+      "path": "processes/20260925-160609-040-s3-aot-linux-known-paths.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160609-040-s3-aot-linux-known-paths.result.json",
+      "sha256": "6057d12d845012c2c33057c1efb44915b2baf4ccf02c1a92cf2ad45789edb13a",
+      "bytes": 3860
+    },
+    {
+      "path": "processes/20260925-160609-040-s3-aot-linux-known-paths.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160609-040-s3-aot-linux-known-paths.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-160609-040-s3-aot-linux-known-paths.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160609-040-s3-aot-linux-known-paths.stdout.log",
+      "sha256": "7d8d1cc066bcec40a0cc4cc675cf327ee004492f1ca5c692f99764f8a931b19f",
+      "bytes": 2161
+    },
+    {
+      "path": "processes/20260925-160713-009-s3-aot-win-capture-publish.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160713-009-s3-aot-win-capture-publish.identity.json",
+      "sha256": "7ef99d9817d55a8084d04a31842a54d7f35187972e6bde62ecb6995fc20f3d1d",
+      "bytes": 2164
+    },
+    {
+      "path": "processes/20260925-160713-009-s3-aot-win-capture-publish.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160713-009-s3-aot-win-capture-publish.result.json",
+      "sha256": "910e3d0dc0fb01b1e9ffc5b9b4ccd0601f6531a49289615cd1f9ad9d34a5b2de",
+      "bytes": 7578
+    },
+    {
+      "path": "processes/20260925-160713-009-s3-aot-win-capture-publish.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160713-009-s3-aot-win-capture-publish.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-160713-009-s3-aot-win-capture-publish.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160713-009-s3-aot-win-capture-publish.stdout.log",
+      "sha256": "58d034b2c5bd58bb0672d514aabc9afecfa9561f3b7bc0df5b2700f183b83b14",
+      "bytes": 774
+    },
+    {
+      "path": "processes/20260925-160744-118-s3-aot-linux-sdk-probe.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160744-118-s3-aot-linux-sdk-probe.identity.json",
+      "sha256": "26e963d8074eed2e3ccc2ac5880319222c6b6ee0d10e2d9371b648ba07a9c5f4",
+      "bytes": 2082
+    },
+    {
+      "path": "processes/20260925-160744-118-s3-aot-linux-sdk-probe.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160744-118-s3-aot-linux-sdk-probe.result.json",
+      "sha256": "78ad4180ca04b87303cb784ccbe665ff1991d5db0cf5accd535e6a99d62e5063",
+      "bytes": 4540
+    },
+    {
+      "path": "processes/20260925-160744-118-s3-aot-linux-sdk-probe.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160744-118-s3-aot-linux-sdk-probe.stderr.log",
+      "sha256": "52356bd9d3a4e6eb7db7935e2d6a810aaca112413794c443f8c01d513789d7be",
+      "bytes": 791
+    },
+    {
+      "path": "processes/20260925-160744-118-s3-aot-linux-sdk-probe.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160744-118-s3-aot-linux-sdk-probe.stdout.log",
+      "sha256": "92b8768064e7c6ce64c0cd90d512111b6988c5a6e3fced23104d26be256093c6",
+      "bytes": 968
+    },
+    {
+      "path": "processes/20260925-160829-055-s3-aot-linux-sdk-setup.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160829-055-s3-aot-linux-sdk-setup.identity.json",
+      "sha256": "78a4f4a9040dee3f38ab76189d2df0cd2665d2f6f43527b932bce03cb8b907be",
+      "bytes": 3469
+    },
+    {
+      "path": "processes/20260925-160829-055-s3-aot-linux-sdk-setup.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160829-055-s3-aot-linux-sdk-setup.result.json",
+      "sha256": "1a64f2722be47d57554d08a13af11280cfd44230fb576e5ce03fc28bf136d9b9",
+      "bytes": 6425
+    },
+    {
+      "path": "processes/20260925-160829-055-s3-aot-linux-sdk-setup.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160829-055-s3-aot-linux-sdk-setup.stderr.log",
+      "sha256": "4d0821e0356d148aca317530649f2eee60acd3693fbfcf2f2ed4f0424cdf2e6b",
+      "bytes": 24041
+    },
+    {
+      "path": "processes/20260925-160829-055-s3-aot-linux-sdk-setup.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160829-055-s3-aot-linux-sdk-setup.stdout.log",
+      "sha256": "014020f54bcfa2c961de2ccc9f0d8e53f6e8871d2a4996f7e56bfe687b83b36b",
+      "bytes": 840
+    },
+    {
+      "path": "processes/20260925-160839-346-s3-aot-win-simd-smoke.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160839-346-s3-aot-win-simd-smoke.identity.json",
+      "sha256": "9c4ae49cd2252ca2e6bcce268d89471a3ecf1f7d605c7685314e63240316699e",
+      "bytes": 2147
+    },
+    {
+      "path": "processes/20260925-160839-346-s3-aot-win-simd-smoke.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160839-346-s3-aot-win-simd-smoke.result.json",
+      "sha256": "4eefd648336ce444636249903c45d98cb5c3eff84e90d5c45825cea199fd15e3",
+      "bytes": 3247
+    },
+    {
+      "path": "processes/20260925-160839-346-s3-aot-win-simd-smoke.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160839-346-s3-aot-win-simd-smoke.stderr.log",
+      "sha256": "45ddf29bf0512f56c7698cddc0c04b9f92705330472f66b23cd238c8d6cfce78",
+      "bytes": 332
+    },
+    {
+      "path": "processes/20260925-160839-346-s3-aot-win-simd-smoke.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160839-346-s3-aot-win-simd-smoke.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-160953-612-s3-aot-compare-build.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160953-612-s3-aot-compare-build.identity.json",
+      "sha256": "590bdefeca243c55ddf36cfdd384fa2c61b493cd0e9d05e45f90834e57b5f980",
+      "bytes": 2132
+    },
+    {
+      "path": "processes/20260925-160953-612-s3-aot-compare-build.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160953-612-s3-aot-compare-build.result.json",
+      "sha256": "fd00b6149cc1bfbe6bbf5049ecca6f74c2e311f014f1053c98c912f9fac15502",
+      "bytes": 3230
+    },
+    {
+      "path": "processes/20260925-160953-612-s3-aot-compare-build.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160953-612-s3-aot-compare-build.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-160953-612-s3-aot-compare-build.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160953-612-s3-aot-compare-build.stdout.log",
+      "sha256": "5c77f263882ea2206ae2bf4fa74c905c13824532c1c9dc57bc281cb5bf85ac3f",
+      "bytes": 372
+    },
+    {
+      "path": "processes/20260925-161001-442-s3-aot-win-simd-smoke-compare.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161001-442-s3-aot-win-simd-smoke-compare.identity.json",
+      "sha256": "5f52983a9174c2cda97941d3d5dd5f2b5b41e52e2c184fcb4de9b45d5e23a154",
+      "bytes": 2021
+    },
+    {
+      "path": "processes/20260925-161001-442-s3-aot-win-simd-smoke-compare.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161001-442-s3-aot-win-simd-smoke-compare.result.json",
+      "sha256": "709add129e7489d75af341e8e7acd77091518bd23d08086ef8e391c652146df3",
+      "bytes": 2586
+    },
+    {
+      "path": "processes/20260925-161001-442-s3-aot-win-simd-smoke-compare.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161001-442-s3-aot-win-simd-smoke-compare.stderr.log",
+      "sha256": "f5601d367b51e8c16a285c3f4465518cac694109dc1f89feeda3a0cf12d2287c",
+      "bytes": 198
+    },
+    {
+      "path": "processes/20260925-161001-442-s3-aot-win-simd-smoke-compare.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161001-442-s3-aot-win-simd-smoke-compare.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-161115-551-s3-aot-win-simd-full.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161115-551-s3-aot-win-simd-full.identity.json",
+      "sha256": "7115588b31a0a5bbde3350e3affd3f436d4e2d1cf0a2b470c776f723e60f48ca",
+      "bytes": 2196
+    },
+    {
+      "path": "processes/20260925-161115-551-s3-aot-win-simd-full.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161115-551-s3-aot-win-simd-full.result.json",
+      "sha256": "5df0daa9f778be9def4d6db81ccff88694148456ab2e208eaf0d5579643b3c1d",
+      "bytes": 3325
+    },
+    {
+      "path": "processes/20260925-161115-551-s3-aot-win-simd-full.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161115-551-s3-aot-win-simd-full.stderr.log",
+      "sha256": "2b625758f78bd4522054166093d6aaf0b7241f33af25635a07dad2b3807abd49",
+      "bytes": 476
+    },
+    {
+      "path": "processes/20260925-161115-551-s3-aot-win-simd-full.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161115-551-s3-aot-win-simd-full.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-161125-909-s3-aot-win-tests-publish.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161125-909-s3-aot-win-tests-publish.identity.json",
+      "sha256": "c2edb9722c4c76afeb7d8d56230f064dfd8a11ea7e0e73403fdba6aa2f26ab01",
+      "bytes": 2129
+    },
+    {
+      "path": "processes/20260925-161125-909-s3-aot-win-tests-publish.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161125-909-s3-aot-win-tests-publish.result.json",
+      "sha256": "045b9b565c4ce3315c04bedb9b6a7109140dc3a331cab6847f9f22781f86d849",
+      "bytes": 7530
+    },
+    {
+      "path": "processes/20260925-161125-909-s3-aot-win-tests-publish.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161125-909-s3-aot-win-tests-publish.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-161125-909-s3-aot-win-tests-publish.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161125-909-s3-aot-win-tests-publish.stdout.log",
+      "sha256": "b930c0626f3dd293e1e445436797841eca7f566f26d79d909c7f819c2b5d5203",
+      "bytes": 543
+    },
+    {
+      "path": "processes/20260925-161230-169-s3-aot-win-prompt-tests.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161230-169-s3-aot-win-prompt-tests.identity.json",
+      "sha256": "1bb104db5bb9182ca9345ebea6500721bb922574e4c367488c7d1133cff80ff6",
+      "bytes": 1409
+    },
+    {
+      "path": "processes/20260925-161230-169-s3-aot-win-prompt-tests.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161230-169-s3-aot-win-prompt-tests.result.json",
+      "sha256": "1c92f3629c5e8137456f22395cf593fda26e0f33b63b790a46657063d56d2faf",
+      "bytes": 2218
+    },
+    {
+      "path": "processes/20260925-161230-169-s3-aot-win-prompt-tests.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161230-169-s3-aot-win-prompt-tests.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-161230-169-s3-aot-win-prompt-tests.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161230-169-s3-aot-win-prompt-tests.stdout.log",
+      "sha256": "cc2a23850a482713108b9dfc5c9622aa60bc002c5404cc18bd81552c5a601f79",
+      "bytes": 10025
+    },
+    {
+      "path": "processes/20260925-161235-571-s3-aot-win-cuda-smoke.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161235-571-s3-aot-win-cuda-smoke.identity.json",
+      "sha256": "ddf2a44429c83eae40f031bafe352f896ef8eaa2a102b4f66fb5098c8f325fe2",
+      "bytes": 2150
+    },
+    {
+      "path": "processes/20260925-161235-571-s3-aot-win-cuda-smoke.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161235-571-s3-aot-win-cuda-smoke.result.json",
+      "sha256": "fd7a6e09f55a7315e07b5fa129285430d52b451a3878c9bae5d71a9241e1c83b",
+      "bytes": 3250
+    },
+    {
+      "path": "processes/20260925-161235-571-s3-aot-win-cuda-smoke.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161235-571-s3-aot-win-cuda-smoke.stderr.log",
+      "sha256": "2717ca8ad0a9ceec4154fcbdc439bc751f8d0b52ebcb5720184a3dbc2ca66464",
+      "bytes": 332
+    },
+    {
+      "path": "processes/20260925-161235-571-s3-aot-win-cuda-smoke.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161235-571-s3-aot-win-cuda-smoke.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-161310-233-s3-aot-win-cuda-smoke-compare.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161310-233-s3-aot-win-cuda-smoke-compare.identity.json",
+      "sha256": "1dafce17297bf2c478b527c453de5b31f76fd9aafaed34713d701ff963b3d149",
+      "bytes": 2202
+    },
+    {
+      "path": "processes/20260925-161310-233-s3-aot-win-cuda-smoke-compare.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161310-233-s3-aot-win-cuda-smoke-compare.result.json",
+      "sha256": "05e1900bb01bfb72d94f859da83471943f2dee45fdb8a6644af9785db21db772",
+      "bytes": 2768
+    },
+    {
+      "path": "processes/20260925-161310-233-s3-aot-win-cuda-smoke-compare.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161310-233-s3-aot-win-cuda-smoke-compare.stderr.log",
+      "sha256": "f5601d367b51e8c16a285c3f4465518cac694109dc1f89feeda3a0cf12d2287c",
+      "bytes": 198
+    },
+    {
+      "path": "processes/20260925-161310-233-s3-aot-win-cuda-smoke-compare.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161310-233-s3-aot-win-cuda-smoke-compare.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-161312-910-s3-aot-win-cuda-full.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161312-910-s3-aot-win-cuda-full.identity.json",
+      "sha256": "db868a9d4a2c0ae87a6ba6f998fe14126d043ef6732d738804d295fb2a424a42",
+      "bytes": 2698
+    },
+    {
+      "path": "processes/20260925-161312-910-s3-aot-win-cuda-full.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161312-910-s3-aot-win-cuda-full.result.json",
+      "sha256": "911bae386ecaa3f47ac6a8a82a5623d61f796b58631589a27de0e10f51954044",
+      "bytes": 3797
+    },
+    {
+      "path": "processes/20260925-161312-910-s3-aot-win-cuda-full.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161312-910-s3-aot-win-cuda-full.stderr.log",
+      "sha256": "f7a66dcf1cee2645af20ef023fb16cbe7257c8a01e0104563c04ce7831d0d486",
+      "bytes": 1945
+    },
+    {
+      "path": "processes/20260925-161312-910-s3-aot-win-cuda-full.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161312-910-s3-aot-win-cuda-full.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-161320-440-s3-aot-linux-supervisor-smoke.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161320-440-s3-aot-linux-supervisor-smoke.identity.json",
+      "sha256": "affbd10806182f89e57d742fe65332e66ec4473b1738416dbbef7d32cac91a6f",
+      "bytes": 1599
+    },
+    {
+      "path": "processes/20260925-161320-440-s3-aot-linux-supervisor-smoke.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161320-440-s3-aot-linux-supervisor-smoke.result.json",
+      "sha256": "8cd7f871cc478b594a062ef5e6271b29b8bf307c40e1f75cad8cc76826137dc4",
+      "bytes": 2165
+    },
+    {
+      "path": "processes/20260925-161320-440-s3-aot-linux-supervisor-smoke.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161320-440-s3-aot-linux-supervisor-smoke.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-161320-440-s3-aot-linux-supervisor-smoke.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161320-440-s3-aot-linux-supervisor-smoke.stdout.log",
+      "sha256": "b3b604ade018952d76c6e123710825593f318faa04c542d546b515b60bdf80f8",
+      "bytes": 1569
+    },
+    {
+      "path": "processes/20260925-161404-871-s3-aot-linux-sdk-proxy.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161404-871-s3-aot-linux-sdk-proxy.identity.json",
+      "sha256": "d20c348a41061da816a6e18f2dc38e3d01f2a34de87bf2f9970c62093d9fcb15",
+      "bytes": 2205
+    },
+    {
+      "path": "processes/20260925-161404-871-s3-aot-linux-sdk-proxy.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161404-871-s3-aot-linux-sdk-proxy.result.json",
+      "sha256": "c8dec7774f222585e3dc03c19407900a3d43ea7998408eb47e1a5a6330c7b1cb",
+      "bytes": 3333
+    },
+    {
+      "path": "processes/20260925-161404-871-s3-aot-linux-sdk-proxy.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161404-871-s3-aot-linux-sdk-proxy.stderr.log",
+      "sha256": "0d732fab81b5ad5e38cc3b7518e181ed0e8a02ea700d98d6dce4dbb6b811dd8f",
+      "bytes": 103
+    },
+    {
+      "path": "processes/20260925-161404-871-s3-aot-linux-sdk-proxy.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161404-871-s3-aot-linux-sdk-proxy.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-161415-347-s3-aot-managed-negative.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161415-347-s3-aot-managed-negative.identity.json",
+      "sha256": "f75bbba871bf9004d8826f1761ed25a023a320d5646e29606d5eca8cda108899",
+      "bytes": 2546
+    },
+    {
+      "path": "processes/20260925-161415-347-s3-aot-managed-negative.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161415-347-s3-aot-managed-negative.result.json",
+      "sha256": "a35334eb59e70775341d4d9be8a2ec4411125369013fecc125b24991b1c789e5",
+      "bytes": 3650
+    },
+    {
+      "path": "processes/20260925-161415-347-s3-aot-managed-negative.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161415-347-s3-aot-managed-negative.stderr.log",
+      "sha256": "62d96d4407c469817439a6515d0c42e97082aeca92a97dd237152922a87ca922",
+      "bytes": 342
+    },
+    {
+      "path": "processes/20260925-161415-347-s3-aot-managed-negative.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161415-347-s3-aot-managed-negative.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-161553-512-s3-aot-win-final-publish.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161553-512-s3-aot-win-final-publish.identity.json",
+      "sha256": "65cb53336bd9087ab719ce8f239e253d68e31d9bd83f6f24069123124ec6316d",
+      "bytes": 3094
+    },
+    {
+      "path": "processes/20260925-161553-512-s3-aot-win-final-publish.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161553-512-s3-aot-win-final-publish.result.json",
+      "sha256": "92e60bb1f40a0ef2feabfcc08be55823802896d71c15bff668166c69c757c423",
+      "bytes": 8756
+    },
+    {
+      "path": "processes/20260925-161553-512-s3-aot-win-final-publish.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161553-512-s3-aot-win-final-publish.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-161553-512-s3-aot-win-final-publish.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161553-512-s3-aot-win-final-publish.stdout.log",
+      "sha256": "6f7f016879431262e851118c721c7ef991dfac6fb7784578d041a63176fde23e",
+      "bytes": 802
+    },
+    {
+      "path": "processes/20260925-161706-436-s3-aot-linux-sdk-blob.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161706-436-s3-aot-linux-sdk-blob.identity.json",
+      "sha256": "28e41a445a5f2541bb066236158887207d36ec1eef69c88e6c79d3a21cff670c",
+      "bytes": 2134
+    },
+    {
+      "path": "processes/20260925-161706-436-s3-aot-linux-sdk-blob.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161706-436-s3-aot-linux-sdk-blob.result.json",
+      "sha256": "e7a06e3073d207c3ade6b5e36a8fbdd37b2ed94e8451588fdbcf36b346ad8f93",
+      "bytes": 3265
+    },
+    {
+      "path": "processes/20260925-161706-436-s3-aot-linux-sdk-blob.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161706-436-s3-aot-linux-sdk-blob.stderr.log",
+      "sha256": "6e7a2888d335fe9bcb718b46e7f34fe6565fe77cf6abc0d0783fb211d26c548e",
+      "bytes": 103
+    },
+    {
+      "path": "processes/20260925-161706-436-s3-aot-linux-sdk-blob.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161706-436-s3-aot-linux-sdk-blob.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-161825-580-s3-aot-win-simd-final-smoke.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161825-580-s3-aot-win-simd-final-smoke.identity.json",
+      "sha256": "e4d78e2c5e562f8cb85bd949190fb36d867446367cddc30c53b0e14fb141175f",
+      "bytes": 1908
+    },
+    {
+      "path": "processes/20260925-161825-580-s3-aot-win-simd-final-smoke.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161825-580-s3-aot-win-simd-final-smoke.result.json",
+      "sha256": "a7930121b98f5540e8fac59aca7bd974319828ad5b79429d4c8305138c16ed45",
+      "bytes": 3020
+    },
+    {
+      "path": "processes/20260925-161825-580-s3-aot-win-simd-final-smoke.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161825-580-s3-aot-win-simd-final-smoke.stderr.log",
+      "sha256": "9e78ea380e5df62df6ea9085dac6258362d98d0bacb7afad69da3593b83242cd",
+      "bytes": 338
+    },
+    {
+      "path": "processes/20260925-161825-580-s3-aot-win-simd-final-smoke.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161825-580-s3-aot-win-simd-final-smoke.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-161833-524-s3-aot-win-simd-final.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161833-524-s3-aot-win-simd-final.identity.json",
+      "sha256": "aa4918fdb0c91778c407500f77c0f1aa44b7568d9e6482f5c16cefaf020d659a",
+      "bytes": 1901
+    },
+    {
+      "path": "processes/20260925-161833-524-s3-aot-win-simd-final.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161833-524-s3-aot-win-simd-final.result.json",
+      "sha256": "11392f58b88aa5775bbd3899d1fd0cd458fa2bcea92472fefcf140678d8b2dd2",
+      "bytes": 3004
+    },
+    {
+      "path": "processes/20260925-161833-524-s3-aot-win-simd-final.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161833-524-s3-aot-win-simd-final.stderr.log",
+      "sha256": "26bc039318b2508c2e33694e2d79383736458f4b44f0732c73d8885fd4004369",
+      "bytes": 1946
+    },
+    {
+      "path": "processes/20260925-161833-524-s3-aot-win-simd-final.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161833-524-s3-aot-win-simd-final.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-161836-011-s3-aot-win-cuda-final-smoke.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161836-011-s3-aot-win-cuda-final-smoke.identity.json",
+      "sha256": "c75843be25c2fc57528b82f48f8a8b68446508f69d9313e033913fd91a1acf88",
+      "bytes": 1908
+    },
+    {
+      "path": "processes/20260925-161836-011-s3-aot-win-cuda-final-smoke.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161836-011-s3-aot-win-cuda-final-smoke.result.json",
+      "sha256": "f0101f8219d7b16d319b2722fde6cb5ed907edfbc7625a92a2e66bfb85386375",
+      "bytes": 3020
+    },
+    {
+      "path": "processes/20260925-161836-011-s3-aot-win-cuda-final-smoke.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161836-011-s3-aot-win-cuda-final-smoke.stderr.log",
+      "sha256": "a2f4952487e8ed127baecd586303ff74bac614dab283885851ee539e9d857ba1",
+      "bytes": 338
+    },
+    {
+      "path": "processes/20260925-161836-011-s3-aot-win-cuda-final-smoke.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161836-011-s3-aot-win-cuda-final-smoke.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-161843-314-s3-aot-win-cuda-final.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161843-314-s3-aot-win-cuda-final.identity.json",
+      "sha256": "2aee5e2a5b0c8566620fe7bc537dfc814cb5a36654041f5248293bd78718ee75",
+      "bytes": 1898
+    },
+    {
+      "path": "processes/20260925-161843-314-s3-aot-win-cuda-final.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161843-314-s3-aot-win-cuda-final.result.json",
+      "sha256": "8f1c4d6e17a583284964ed43f49c55744c50369d02c1b9a8667bb2a11b0e9d79",
+      "bytes": 2997
+    },
+    {
+      "path": "processes/20260925-161843-314-s3-aot-win-cuda-final.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161843-314-s3-aot-win-cuda-final.stderr.log",
+      "sha256": "5f5f9dcab1b5f892760572e3f86e3e2a127fca4f7a8e45f4e621572ce39276e5",
+      "bytes": 1946
+    },
+    {
+      "path": "processes/20260925-161843-314-s3-aot-win-cuda-final.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161843-314-s3-aot-win-cuda-final.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-161937-021-s3-aot-win-scalar-final-smoke.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161937-021-s3-aot-win-scalar-final-smoke.identity.json",
+      "sha256": "cc60caa88f78c8e7c05feb2a5afdfe33cf4b25535b2f5ba3c3dff658b527c120",
+      "bytes": 1917
+    },
+    {
+      "path": "processes/20260925-161937-021-s3-aot-win-scalar-final-smoke.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161937-021-s3-aot-win-scalar-final-smoke.result.json",
+      "sha256": "1f1dae715db2e0fc1243c5108ae13588f44917f6333e2690b7c294ef944dae2d",
+      "bytes": 3030
+    },
+    {
+      "path": "processes/20260925-161937-021-s3-aot-win-scalar-final-smoke.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161937-021-s3-aot-win-scalar-final-smoke.stderr.log",
+      "sha256": "1954e9f7959fd666651c39acabfab3901e9952fd46b29e8c3e3849e9ae05033f",
+      "bytes": 342
+    },
+    {
+      "path": "processes/20260925-161937-021-s3-aot-win-scalar-final-smoke.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161937-021-s3-aot-win-scalar-final-smoke.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-161950-486-s3-aot-win-scalar-final.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161950-486-s3-aot-win-scalar-final.identity.json",
+      "sha256": "388c10621ca0d68e69897b8fec06a7fbb3897f5cd10c76fead4cbc22ea5632b4",
+      "bytes": 2034
+    },
+    {
+      "path": "processes/20260925-161950-486-s3-aot-win-scalar-final.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161950-486-s3-aot-win-scalar-final.result.json",
+      "sha256": "50dbc02e0b13b7ba4280fad7e33da6a03e61a3b568a5a1e51da694c5a1d8a249",
+      "bytes": 3140
+    },
+    {
+      "path": "processes/20260925-161950-486-s3-aot-win-scalar-final.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161950-486-s3-aot-win-scalar-final.stderr.log",
+      "sha256": "33dbcf1621ac2d47b708fd994985e0b47ece09a5cb0a9946aed765c675504143",
+      "bytes": 392
+    },
+    {
+      "path": "processes/20260925-161950-486-s3-aot-win-scalar-final.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161950-486-s3-aot-win-scalar-final.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162049-802-s3-aot-win-cuda-final-smoke-comparison.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162049-802-s3-aot-win-cuda-final-smoke-comparison.identity.json",
+      "sha256": "b3f8540256cc965b6f1e650dfb85b1e90cfa74664cda1c70457d5b83203af4c8",
+      "bytes": 1680
+    },
+    {
+      "path": "processes/20260925-162049-802-s3-aot-win-cuda-final-smoke-comparison.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162049-802-s3-aot-win-cuda-final-smoke-comparison.result.json",
+      "sha256": "0627ac711a4d97cc55241bd5b413746e49703b9414c3a1cb05a609c4e1a00090",
+      "bytes": 2264
+    },
+    {
+      "path": "processes/20260925-162049-802-s3-aot-win-cuda-final-smoke-comparison.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162049-802-s3-aot-win-cuda-final-smoke-comparison.stderr.log",
+      "sha256": "f5601d367b51e8c16a285c3f4465518cac694109dc1f89feeda3a0cf12d2287c",
+      "bytes": 198
+    },
+    {
+      "path": "processes/20260925-162049-802-s3-aot-win-cuda-final-smoke-comparison.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162049-802-s3-aot-win-cuda-final-smoke-comparison.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162052-883-s3-aot-win-cuda-final-comparison.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162052-883-s3-aot-win-cuda-final-comparison.identity.json",
+      "sha256": "e3f88e108bb82ef220ceab4c863dc18eceb0832bc460f961b766ab22b4d74c8f",
+      "bytes": 2489
+    },
+    {
+      "path": "processes/20260925-162052-883-s3-aot-win-cuda-final-comparison.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162052-883-s3-aot-win-cuda-final-comparison.result.json",
+      "sha256": "4c6df02fb8345795f8bf51b51b43c1324c7c285323dc63764c8757f68e84c930",
+      "bytes": 3316
+    },
+    {
+      "path": "processes/20260925-162052-883-s3-aot-win-cuda-final-comparison.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162052-883-s3-aot-win-cuda-final-comparison.stderr.log",
+      "sha256": "6a116d2523de5c4580e292b3e85eaa0e44677fe048eefcba82311ed7283b399d",
+      "bytes": 1669
+    },
+    {
+      "path": "processes/20260925-162052-883-s3-aot-win-cuda-final-comparison.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162052-883-s3-aot-win-cuda-final-comparison.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162057-080-s3-aot-win-cuda-final-full-comparison.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162057-080-s3-aot-win-cuda-final-full-comparison.identity.json",
+      "sha256": "285d323271cf5cff17af4671bb15734daa428a59848b59e4089132278683b9e4",
+      "bytes": 1650
+    },
+    {
+      "path": "processes/20260925-162057-080-s3-aot-win-cuda-final-full-comparison.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162057-080-s3-aot-win-cuda-final-full-comparison.result.json",
+      "sha256": "f12ce6c5298db5b0fe5ee1c692f987dab6b606a3a9a05f01f8829968c9501b6f",
+      "bytes": 2514
+    },
+    {
+      "path": "processes/20260925-162057-080-s3-aot-win-cuda-final-full-comparison.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162057-080-s3-aot-win-cuda-final-full-comparison.stderr.log",
+      "sha256": "d902870475ba8ecc70ba7b826dc3acb285d147165f7f698f150e6e0205b8f146",
+      "bytes": 1812
+    },
+    {
+      "path": "processes/20260925-162057-080-s3-aot-win-cuda-final-full-comparison.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162057-080-s3-aot-win-cuda-final-full-comparison.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162120-499-s3-aot-linux-build-images.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162120-499-s3-aot-linux-build-images.identity.json",
+      "sha256": "f85c95f376ed9f5b8f4f3a36633254eb4d99e42e1ab6310c02625843d279cdd2",
+      "bytes": 1002
+    },
+    {
+      "path": "processes/20260925-162120-499-s3-aot-linux-build-images.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162120-499-s3-aot-linux-build-images.result.json",
+      "sha256": "488bffad4de36cd7fa10f620cf1c57bc3c2ae75d21ade41e48624233bb1be253",
+      "bytes": 1815
+    },
+    {
+      "path": "processes/20260925-162120-499-s3-aot-linux-build-images.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162120-499-s3-aot-linux-build-images.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162120-499-s3-aot-linux-build-images.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162120-499-s3-aot-linux-build-images.stdout.log",
+      "sha256": "1713fedf5a0b03024972138c2f6c0624e828b8635272a3c3c6cf4138568eb491",
+      "bytes": 2965
+    },
+    {
+      "path": "processes/20260925-162215-935-s3-aot-linux-sdk-image-identity.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162215-935-s3-aot-linux-sdk-image-identity.identity.json",
+      "sha256": "c4904f91d0ed5f38fa293d3fa9626900d3c98be1602e982906907d262bdafa65",
+      "bytes": 1903
+    },
+    {
+      "path": "processes/20260925-162215-935-s3-aot-linux-sdk-image-identity.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162215-935-s3-aot-linux-sdk-image-identity.result.json",
+      "sha256": "eb0b25ce1176bc8f154373420d04f2ae5c46fdb84547544e240102f149062f94",
+      "bytes": 2473
+    },
+    {
+      "path": "processes/20260925-162215-935-s3-aot-linux-sdk-image-identity.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162215-935-s3-aot-linux-sdk-image-identity.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162215-935-s3-aot-linux-sdk-image-identity.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162215-935-s3-aot-linux-sdk-image-identity.stdout.log",
+      "sha256": "87f3788ba71749a816c08e2da5bf3f78fdbf77c90460c24b5e122a777293edaf",
+      "bytes": 208
+    },
+    {
+      "path": "processes/20260925-162219-064-s3-aot-linux-sdk-container-create.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162219-064-s3-aot-linux-sdk-container-create.identity.json",
+      "sha256": "09c387d5af1d57b47d08aebe0d8ed54ea1f8c5156e1fb8a3ede073095649d18c",
+      "bytes": 1901
+    },
+    {
+      "path": "processes/20260925-162219-064-s3-aot-linux-sdk-container-create.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162219-064-s3-aot-linux-sdk-container-create.result.json",
+      "sha256": "147cd480561eec990606034134d65a6840da615a5579e1a33816f485c38a25d2",
+      "bytes": 2475
+    },
+    {
+      "path": "processes/20260925-162219-064-s3-aot-linux-sdk-container-create.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162219-064-s3-aot-linux-sdk-container-create.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162219-064-s3-aot-linux-sdk-container-create.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162219-064-s3-aot-linux-sdk-container-create.stdout.log",
+      "sha256": "8c90274ab60555d21b0ed9f36b853557d06255d3d110781d65044f1fa8ca03e4",
+      "bytes": 65
+    },
+    {
+      "path": "processes/20260925-162221-969-s3-aot-linux-sdk-extract.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162221-969-s3-aot-linux-sdk-extract.identity.json",
+      "sha256": "3594ee4674ad9374d750841b0458e3db43fc4e79e3842792d4440cf34c0e45d7",
+      "bytes": 2093
+    },
+    {
+      "path": "processes/20260925-162221-969-s3-aot-linux-sdk-extract.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162221-969-s3-aot-linux-sdk-extract.result.json",
+      "sha256": "5afa21ecf046a6f66b4e23ce2edfba52e8fe6dc06c52a9d03d1086c3780aa4f7",
+      "bytes": 3198
+    },
+    {
+      "path": "processes/20260925-162221-969-s3-aot-linux-sdk-extract.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162221-969-s3-aot-linux-sdk-extract.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162221-969-s3-aot-linux-sdk-extract.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162221-969-s3-aot-linux-sdk-extract.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162226-725-s3-aot-managed-final-negative.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162226-725-s3-aot-managed-final-negative.identity.json",
+      "sha256": "ac4de296c84ceae0d382cba0ffd64bee6efeaf4fa9699de82137e7416fbb37b0",
+      "bytes": 3002
+    },
+    {
+      "path": "processes/20260925-162226-725-s3-aot-managed-final-negative.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162226-725-s3-aot-managed-final-negative.result.json",
+      "sha256": "ea28daa6b554377767461b8d504b95604157de5e30dd83151d3c327dac12ced4",
+      "bytes": 3595
+    },
+    {
+      "path": "processes/20260925-162226-725-s3-aot-managed-final-negative.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162226-725-s3-aot-managed-final-negative.stderr.log",
+      "sha256": "fcf635a1e8d820728ccd0a1aa027ace2972a12cc0ca23c185b50d6eb121fd03e",
+      "bytes": 119
+    },
+    {
+      "path": "processes/20260925-162226-725-s3-aot-managed-final-negative.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162226-725-s3-aot-managed-final-negative.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162232-326-s3-aot-win-final-tests-publish.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162232-326-s3-aot-win-final-tests-publish.identity.json",
+      "sha256": "78202bd0a72a7062ca1ce0c71e9e4a4260c5d3c1ba87e66cdb883b2aca3ef1f8",
+      "bytes": 3420
+    },
+    {
+      "path": "processes/20260925-162232-326-s3-aot-win-final-tests-publish.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162232-326-s3-aot-win-final-tests-publish.result.json",
+      "sha256": "72c9b3925bd8dd8f81852db5f9cae7b2ff0408b210609e9d6586f0c8349494aa",
+      "bytes": 8588
+    },
+    {
+      "path": "processes/20260925-162232-326-s3-aot-win-final-tests-publish.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162232-326-s3-aot-win-final-tests-publish.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162232-326-s3-aot-win-final-tests-publish.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162232-326-s3-aot-win-final-tests-publish.stdout.log",
+      "sha256": "535646caafb61929a17e96bc17848c135d431673acf1a2e93c1e5fd4e82ee0c9",
+      "bytes": 561
+    },
+    {
+      "path": "processes/20260925-162237-765-s3-aot-linux-sdk-container-remove.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162237-765-s3-aot-linux-sdk-container-remove.identity.json",
+      "sha256": "43c94ef812340edc570e44ff80cbf91ca05767636d9279f46048b40a80d7f31b",
+      "bytes": 1830
+    },
+    {
+      "path": "processes/20260925-162237-765-s3-aot-linux-sdk-container-remove.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162237-765-s3-aot-linux-sdk-container-remove.result.json",
+      "sha256": "3ebad79b51432bfc0557351b292bae43cd30b7d3c3602c439116d854460abb9b",
+      "bytes": 2404
+    },
+    {
+      "path": "processes/20260925-162237-765-s3-aot-linux-sdk-container-remove.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162237-765-s3-aot-linux-sdk-container-remove.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162237-765-s3-aot-linux-sdk-container-remove.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162237-765-s3-aot-linux-sdk-container-remove.stdout.log",
+      "sha256": "b0afbb1094cd2ddc60b2bf5569a99ddb6f6b2aed520562c81bf5c2c9f5be4d73",
+      "bytes": 27
+    },
+    {
+      "path": "processes/20260925-162314-125-s3-aot-win-final-prompt-tests.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162314-125-s3-aot-win-final-prompt-tests.identity.json",
+      "sha256": "cc922f5ed96c5c900a6dc30a5430365839a4842b55a95b38c1126fb56824a2b0",
+      "bytes": 2590
+    },
+    {
+      "path": "processes/20260925-162314-125-s3-aot-win-final-prompt-tests.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162314-125-s3-aot-win-final-prompt-tests.result.json",
+      "sha256": "ecd8df071bc237548a92cb2e6a7fd2e7368833a1e4bbc857e3b578a4e7845ee3",
+      "bytes": 3411
+    },
+    {
+      "path": "processes/20260925-162314-125-s3-aot-win-final-prompt-tests.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162314-125-s3-aot-win-final-prompt-tests.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162314-125-s3-aot-win-final-prompt-tests.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162314-125-s3-aot-win-final-prompt-tests.stdout.log",
+      "sha256": "cc2a23850a482713108b9dfc5c9622aa60bc002c5404cc18bd81552c5a601f79",
+      "bytes": 10025
+    },
+    {
+      "path": "processes/20260925-162341-061-s3-aot-linux-final-sdk-info.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162341-061-s3-aot-linux-final-sdk-info.identity.json",
+      "sha256": "7f996987e8991a04555eec36b808bc3dca5a7917d5e0c7bba2e367ff0f459639",
+      "bytes": 1975
+    },
+    {
+      "path": "processes/20260925-162341-061-s3-aot-linux-final-sdk-info.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162341-061-s3-aot-linux-final-sdk-info.result.json",
+      "sha256": "acbf821a6660799076570d9a842f020fad2fa42d39a10d33bfb9c800ae37afb3",
+      "bytes": 3701
+    },
+    {
+      "path": "processes/20260925-162341-061-s3-aot-linux-final-sdk-info.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162341-061-s3-aot-linux-final-sdk-info.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162341-061-s3-aot-linux-final-sdk-info.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162341-061-s3-aot-linux-final-sdk-info.stdout.log",
+      "sha256": "8ebc9fde3372b89b5e0984bcf9992e8acf615e506e4851bdae87757dea532299",
+      "bytes": 2738
+    },
+    {
+      "path": "processes/20260925-162421-305-s3-aot-linux-final-publish.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162421-305-s3-aot-linux-final-publish.identity.json",
+      "sha256": "68f118773159536b0a8b57d557f69e828476bf4c129e8543f3a0396435d2f2b7",
+      "bytes": 4505
+    },
+    {
+      "path": "processes/20260925-162421-305-s3-aot-linux-final-publish.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162421-305-s3-aot-linux-final-publish.result.json",
+      "sha256": "3e13d5e43dc2dfe80d67b35e794a05f9b07d99c1e0d02e647f1daf52b2091c67",
+      "bytes": 7627
+    },
+    {
+      "path": "processes/20260925-162421-305-s3-aot-linux-final-publish.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162421-305-s3-aot-linux-final-publish.stderr.log",
+      "sha256": "98a2bcae83224528b5329897910101e28ac0f6abf6472dfb144bb715826ffc6a",
+      "bytes": 1046
+    },
+    {
+      "path": "processes/20260925-162421-305-s3-aot-linux-final-publish.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162421-305-s3-aot-linux-final-publish.stdout.log",
+      "sha256": "23cb1b2580cde4c1811750a5da92e71ca781795e33a38186983ac55c202b6953",
+      "bytes": 21602
+    },
+    {
+      "path": "processes/20260925-162604-557-s3-aot-win-native-dependencies.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162604-557-s3-aot-win-native-dependencies.identity.json",
+      "sha256": "83c610cdc7b0abd31bc44d095f61a3b9846f6566eb8c2b92a20ab90a478fc344",
+      "bytes": 2086
+    },
+    {
+      "path": "processes/20260925-162604-557-s3-aot-win-native-dependencies.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162604-557-s3-aot-win-native-dependencies.result.json",
+      "sha256": "372bc7e65e62391dfdfd1d2206ed1af1c49763bd7c969bf318984717bfa02ca9",
+      "bytes": 2654
+    },
+    {
+      "path": "processes/20260925-162604-557-s3-aot-win-native-dependencies.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162604-557-s3-aot-win-native-dependencies.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162604-557-s3-aot-win-native-dependencies.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162604-557-s3-aot-win-native-dependencies.stdout.log",
+      "sha256": "a675571bcc9bbc151ec328f1c32aac8b9edb96e4f0698e8a9fefcae18ec0aac9",
+      "bytes": 763
+    },
+    {
+      "path": "processes/20260925-162649-191-s3-aot-linux-simd-final-smoke.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162649-191-s3-aot-linux-simd-final-smoke.identity.json",
+      "sha256": "f3bc5910a398e792ba04e75da041aba1c1c7cbc70bcd61b6180754871f065143",
+      "bytes": 2605
+    },
+    {
+      "path": "processes/20260925-162649-191-s3-aot-linux-simd-final-smoke.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162649-191-s3-aot-linux-simd-final-smoke.result.json",
+      "sha256": "42b45a9588f32d510e9d6bf990aeb2d6a52dab0f2ab964b76809c70583743997",
+      "bytes": 5487
+    },
+    {
+      "path": "processes/20260925-162649-191-s3-aot-linux-simd-final-smoke.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162649-191-s3-aot-linux-simd-final-smoke.stderr.log",
+      "sha256": "a85c07f759e3da8caccb7c33c474debd872bf90e7a5ed34ab5417479a671f24c",
+      "bytes": 340
+    },
+    {
+      "path": "processes/20260925-162649-191-s3-aot-linux-simd-final-smoke.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162649-191-s3-aot-linux-simd-final-smoke.stdout.log",
+      "sha256": "67c6d89a8b25f4650aaa6b6afcf82d697c0a575e84ba069bf4debd85b222867d",
+      "bytes": 2938
+    },
+    {
+      "path": "processes/20260925-162659-367-s3-aot-linux-cuda-final-smoke.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162659-367-s3-aot-linux-cuda-final-smoke.identity.json",
+      "sha256": "a4cb184bcb98f4b60481ee1f4764f5056ff08f2616e4bc5b2b934fc3f8d02e0a",
+      "bytes": 2606
+    },
+    {
+      "path": "processes/20260925-162659-367-s3-aot-linux-cuda-final-smoke.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162659-367-s3-aot-linux-cuda-final-smoke.result.json",
+      "sha256": "064f0d718ce293d387498e4c928bdc2c1f4ba80864b4810aa8343f1eb8c902b7",
+      "bytes": 5490
+    },
+    {
+      "path": "processes/20260925-162659-367-s3-aot-linux-cuda-final-smoke.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162659-367-s3-aot-linux-cuda-final-smoke.stderr.log",
+      "sha256": "d36967d085e2f0357db71077b20aeb404ace45c791712989dc96bc9982d95cab",
+      "bytes": 340
+    },
+    {
+      "path": "processes/20260925-162659-367-s3-aot-linux-cuda-final-smoke.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162659-367-s3-aot-linux-cuda-final-smoke.stdout.log",
+      "sha256": "a2de023e151ef626ceb2adece0a09d8cd1f8e7fedfbca83a521245b48adda745",
+      "bytes": 2937
+    },
+    {
+      "path": "processes/20260925-162709-827-s3-aot-linux-final-tests-publish.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162709-827-s3-aot-linux-final-tests-publish.identity.json",
+      "sha256": "771f97fec739728eef6f020d6ec7b610eccb9158f2d8f939f7c10b2a83cf65c2",
+      "bytes": 4365
+    },
+    {
+      "path": "processes/20260925-162709-827-s3-aot-linux-final-tests-publish.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162709-827-s3-aot-linux-final-tests-publish.result.json",
+      "sha256": "adaeff0cb00b27031fa8ae709d00402dab09aacabe83c7e9485e5ade9686157b",
+      "bytes": 7486
+    },
+    {
+      "path": "processes/20260925-162709-827-s3-aot-linux-final-tests-publish.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162709-827-s3-aot-linux-final-tests-publish.stderr.log",
+      "sha256": "98a2bcae83224528b5329897910101e28ac0f6abf6472dfb144bb715826ffc6a",
+      "bytes": 1046
+    },
+    {
+      "path": "processes/20260925-162709-827-s3-aot-linux-final-tests-publish.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162709-827-s3-aot-linux-final-tests-publish.stdout.log",
+      "sha256": "99d9786d60c4f3611249fd30f2babc2c55da6c0c7a9a65ef53c2cb04580e95ee",
+      "bytes": 21027
+    },
+    {
+      "path": "processes/20260925-162721-291-s3-aot-linux-simd-final-smoke-comparison.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162721-291-s3-aot-linux-simd-final-smoke-comparison.identity.json",
+      "sha256": "dfdc71f86e9e29c7b8afbe3e9042a1fe193c6d58d8d38d11d613a88984a9a19c",
+      "bytes": 1320
+    },
+    {
+      "path": "processes/20260925-162721-291-s3-aot-linux-simd-final-smoke-comparison.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162721-291-s3-aot-linux-simd-final-smoke-comparison.result.json",
+      "sha256": "9b5ce0ba9076c7e79b4e7449fc4da10064193fcba96c61de684aa42c8db7ef35",
+      "bytes": 2163
+    },
+    {
+      "path": "processes/20260925-162721-291-s3-aot-linux-simd-final-smoke-comparison.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162721-291-s3-aot-linux-simd-final-smoke-comparison.stderr.log",
+      "sha256": "f5601d367b51e8c16a285c3f4465518cac694109dc1f89feeda3a0cf12d2287c",
+      "bytes": 198
+    },
+    {
+      "path": "processes/20260925-162721-291-s3-aot-linux-simd-final-smoke-comparison.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162721-291-s3-aot-linux-simd-final-smoke-comparison.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162724-588-s3-aot-linux-cuda-final-smoke-comparison.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162724-588-s3-aot-linux-cuda-final-smoke-comparison.identity.json",
+      "sha256": "db61d568ce8f3247954fb6e54ca5c5fb44ffac181893e12bf2304b9322b5dc06",
+      "bytes": 1319
+    },
+    {
+      "path": "processes/20260925-162724-588-s3-aot-linux-cuda-final-smoke-comparison.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162724-588-s3-aot-linux-cuda-final-smoke-comparison.result.json",
+      "sha256": "6837566cce27d899f0628898a7af89337cbbe277bf5b4c7db89a71b334551288",
+      "bytes": 1907
+    },
+    {
+      "path": "processes/20260925-162724-588-s3-aot-linux-cuda-final-smoke-comparison.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162724-588-s3-aot-linux-cuda-final-smoke-comparison.stderr.log",
+      "sha256": "f5601d367b51e8c16a285c3f4465518cac694109dc1f89feeda3a0cf12d2287c",
+      "bytes": 198
+    },
+    {
+      "path": "processes/20260925-162724-588-s3-aot-linux-cuda-final-smoke-comparison.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162724-588-s3-aot-linux-cuda-final-smoke-comparison.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162727-006-s3-aot-linux-simd-final.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162727-006-s3-aot-linux-simd-final.identity.json",
+      "sha256": "6d85c14be58e46644533bf889635848747f6dcaf966597076e7d9c7932a88f5e",
+      "bytes": 2591
+    },
+    {
+      "path": "processes/20260925-162727-006-s3-aot-linux-simd-final.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162727-006-s3-aot-linux-simd-final.result.json",
+      "sha256": "6bed08aae8ab9f7e855d78f7f51c763523d50d3860b6628e317131a0fe315ae9",
+      "bytes": 5458
+    },
+    {
+      "path": "processes/20260925-162727-006-s3-aot-linux-simd-final.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162727-006-s3-aot-linux-simd-final.stderr.log",
+      "sha256": "25e9276a9fb5592687a38d1f3e224f79eca69cc30ea47228a855a17af4a63cdc",
+      "bytes": 1903
+    },
+    {
+      "path": "processes/20260925-162727-006-s3-aot-linux-simd-final.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162727-006-s3-aot-linux-simd-final.stdout.log",
+      "sha256": "abb7ca003b28e9edd772350c376d17631326a05bd2b191c052c8ba9cc4538d36",
+      "bytes": 4072
+    },
+    {
+      "path": "processes/20260925-162728-439-s3-aot-linux-cuda-final.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162728-439-s3-aot-linux-cuda-final.identity.json",
+      "sha256": "44fcbf960b36cfd64b81fea1b0c83b1e8a2522e2524358111a1714e13d50dfdb",
+      "bytes": 2584
+    },
+    {
+      "path": "processes/20260925-162728-439-s3-aot-linux-cuda-final.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162728-439-s3-aot-linux-cuda-final.result.json",
+      "sha256": "f6ee8ccbf2b68de5a395c41d83af383c4281786700be308f99d45c496cacd161",
+      "bytes": 5445
+    },
+    {
+      "path": "processes/20260925-162728-439-s3-aot-linux-cuda-final.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162728-439-s3-aot-linux-cuda-final.stderr.log",
+      "sha256": "3bd55486e921aa82198df4c09d2f6fde725b7fa373015a7c44c5c0577c9e6d0e",
+      "bytes": 1903
+    },
+    {
+      "path": "processes/20260925-162728-439-s3-aot-linux-cuda-final.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162728-439-s3-aot-linux-cuda-final.stdout.log",
+      "sha256": "1fdf5f73d11d460fe827f27d871b712ac052007916e46f513191fe99a039df16",
+      "bytes": 2936
+    },
+    {
+      "path": "processes/20260925-162803-793-s3-aot-linux-scalar-final-smoke.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162803-793-s3-aot-linux-scalar-final-smoke.identity.json",
+      "sha256": "c437fd9f3d9bc1fc17e79a176c0d0b04e7f2940a0ef22c996789f7fbc56fa1ea",
+      "bytes": 2620
+    },
+    {
+      "path": "processes/20260925-162803-793-s3-aot-linux-scalar-final-smoke.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162803-793-s3-aot-linux-scalar-final-smoke.result.json",
+      "sha256": "98db9e0d802fd686bfc7211d591a47b151279096b7ee555a9a6fbaf4644819ec",
+      "bytes": 5507
+    },
+    {
+      "path": "processes/20260925-162803-793-s3-aot-linux-scalar-final-smoke.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162803-793-s3-aot-linux-scalar-final-smoke.stderr.log",
+      "sha256": "c9a3f373cc2fc81a445c77e4afc090fa20ea396dfa67210d173150a6a8e962a9",
+      "bytes": 344
+    },
+    {
+      "path": "processes/20260925-162803-793-s3-aot-linux-scalar-final-smoke.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162803-793-s3-aot-linux-scalar-final-smoke.stdout.log",
+      "sha256": "0bb753870e8ff69e7288360d563a4b90785cb3e0dc4e6f444d903a70adaa4095",
+      "bytes": 2954
+    },
+    {
+      "path": "processes/20260925-162816-051-s3-aot-linux-cuda-final-comparison.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162816-051-s3-aot-linux-cuda-final-comparison.identity.json",
+      "sha256": "855a481e5ef8ee0583bb1381f5a8661b942d6754d9b6128aa500902b698f837c",
+      "bytes": 2128
+    },
+    {
+      "path": "processes/20260925-162816-051-s3-aot-linux-cuda-final-comparison.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162816-051-s3-aot-linux-cuda-final-comparison.result.json",
+      "sha256": "892a1c1339aa06fd11e7a2637fac19e7d1eb0f580ff48114a49eb8b98a2a9c0d",
+      "bytes": 2956
+    },
+    {
+      "path": "processes/20260925-162816-051-s3-aot-linux-cuda-final-comparison.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162816-051-s3-aot-linux-cuda-final-comparison.stderr.log",
+      "sha256": "6a116d2523de5c4580e292b3e85eaa0e44677fe048eefcba82311ed7283b399d",
+      "bytes": 1669
+    },
+    {
+      "path": "processes/20260925-162816-051-s3-aot-linux-cuda-final-comparison.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162816-051-s3-aot-linux-cuda-final-comparison.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162822-848-s3-aot-linux-cuda-final-full-comparison.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162822-848-s3-aot-linux-cuda-final-full-comparison.identity.json",
+      "sha256": "07ff24b77b95fb65e993c2b744b5af763cf893a373feda6c85ebc0acf88ec973",
+      "bytes": 1288
+    },
+    {
+      "path": "processes/20260925-162822-848-s3-aot-linux-cuda-final-full-comparison.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162822-848-s3-aot-linux-cuda-final-full-comparison.result.json",
+      "sha256": "9b1f0ec3d4b4001349f54e589734602d645df7efbd2e288db7c37dea6e2817c9",
+      "bytes": 1901
+    },
+    {
+      "path": "processes/20260925-162822-848-s3-aot-linux-cuda-final-full-comparison.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162822-848-s3-aot-linux-cuda-final-full-comparison.stderr.log",
+      "sha256": "d902870475ba8ecc70ba7b826dc3acb285d147165f7f698f150e6e0205b8f146",
+      "bytes": 1812
+    },
+    {
+      "path": "processes/20260925-162822-848-s3-aot-linux-cuda-final-full-comparison.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162822-848-s3-aot-linux-cuda-final-full-comparison.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162827-554-s3-aot-linux-scalar-final-smoke-comparison.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162827-554-s3-aot-linux-scalar-final-smoke-comparison.identity.json",
+      "sha256": "b8b26beb86d64c23ec79438f14746c7bb1b7ecb322cf25666d20e54f38f552ff",
+      "bytes": 1325
+    },
+    {
+      "path": "processes/20260925-162827-554-s3-aot-linux-scalar-final-smoke-comparison.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162827-554-s3-aot-linux-scalar-final-smoke-comparison.result.json",
+      "sha256": "746dae461adc0972df2539e87441f4730b38ab95b04880c3018271053f25e586",
+      "bytes": 1917
+    },
+    {
+      "path": "processes/20260925-162827-554-s3-aot-linux-scalar-final-smoke-comparison.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162827-554-s3-aot-linux-scalar-final-smoke-comparison.stderr.log",
+      "sha256": "f5601d367b51e8c16a285c3f4465518cac694109dc1f89feeda3a0cf12d2287c",
+      "bytes": 198
+    },
+    {
+      "path": "processes/20260925-162827-554-s3-aot-linux-scalar-final-smoke-comparison.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162827-554-s3-aot-linux-scalar-final-smoke-comparison.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162830-592-s3-aot-linux-scalar-final.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162830-592-s3-aot-linux-scalar-final.identity.json",
+      "sha256": "0cec939b8f44dd6da38239b087b08b11ae1e6812ec05d31479d15298c0ed0134",
+      "bytes": 2728
+    },
+    {
+      "path": "processes/20260925-162830-592-s3-aot-linux-scalar-final.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162830-592-s3-aot-linux-scalar-final.result.json",
+      "sha256": "8804b7678d06ae7a5415652e895abcd6df8cfb953736ca32a234fc545d144d93",
+      "bytes": 5656
+    },
+    {
+      "path": "processes/20260925-162830-592-s3-aot-linux-scalar-final.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162830-592-s3-aot-linux-scalar-final.stderr.log",
+      "sha256": "e54c1c3a8de3394e4ce8ae891b641dda3bf9c29d1bb31ab8abde47461764a288",
+      "bytes": 392
+    },
+    {
+      "path": "processes/20260925-162830-592-s3-aot-linux-scalar-final.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162830-592-s3-aot-linux-scalar-final.stdout.log",
+      "sha256": "5f6ec1c675315e113d94ccdaeda87efb300f16b1f60011b55ab04f09e05c2bf2",
+      "bytes": 3521
+    },
+    {
+      "path": "processes/20260925-162846-850-s3-aot-win-scalar-final-smoke-comparison.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162846-850-s3-aot-win-scalar-final-smoke-comparison.identity.json",
+      "sha256": "d3532ae60eb2ce97d5f17284212dfb6cff56bca44709caa1ee66d527ab74100e",
+      "bytes": 1332
+    },
+    {
+      "path": "processes/20260925-162846-850-s3-aot-win-scalar-final-smoke-comparison.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162846-850-s3-aot-win-scalar-final-smoke-comparison.result.json",
+      "sha256": "57fe13a461d0860d95c6cff9ecf3efb18fbb09edf3c6fbc7aaaad2aef3b0e34e",
+      "bytes": 1920
+    },
+    {
+      "path": "processes/20260925-162846-850-s3-aot-win-scalar-final-smoke-comparison.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162846-850-s3-aot-win-scalar-final-smoke-comparison.stderr.log",
+      "sha256": "f5601d367b51e8c16a285c3f4465518cac694109dc1f89feeda3a0cf12d2287c",
+      "bytes": 198
+    },
+    {
+      "path": "processes/20260925-162846-850-s3-aot-win-scalar-final-smoke-comparison.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162846-850-s3-aot-win-scalar-final-smoke-comparison.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162851-126-s3-aot-win-scalar-final-comparison.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162851-126-s3-aot-win-scalar-final-comparison.identity.json",
+      "sha256": "7981a5c9dc805c8c371536e27f1af2bf98d344b418f5da567d62535afcb1378d",
+      "bytes": 1348
+    },
+    {
+      "path": "processes/20260925-162851-126-s3-aot-win-scalar-final-comparison.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162851-126-s3-aot-win-scalar-final-comparison.result.json",
+      "sha256": "f00a1605331e16e460eb650d64280a52b85b03904cc81d0bf5eb7d25b69190b4",
+      "bytes": 1924
+    },
+    {
+      "path": "processes/20260925-162851-126-s3-aot-win-scalar-final-comparison.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162851-126-s3-aot-win-scalar-final-comparison.stderr.log",
+      "sha256": "61e553f87b6589191d854bbcbdad118bdf56a6d417d245b44849299cd5e78625",
+      "bytes": 254
+    },
+    {
+      "path": "processes/20260925-162851-126-s3-aot-win-scalar-final-comparison.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162851-126-s3-aot-win-scalar-final-comparison.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162854-938-s3-aot-linux-native-dependencies.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162854-938-s3-aot-linux-native-dependencies.identity.json",
+      "sha256": "49d90ec79ae3b51a3dc9582731477b1a0dd89a6ef74bfda99f1ac562a222d1f7",
+      "bytes": 1731
+    },
+    {
+      "path": "processes/20260925-162854-938-s3-aot-linux-native-dependencies.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162854-938-s3-aot-linux-native-dependencies.result.json",
+      "sha256": "a49306976623e5a9b078f31527da736d7f20d6af1c93fd2dac5c56ffd36c16f6",
+      "bytes": 2558
+    },
+    {
+      "path": "processes/20260925-162854-938-s3-aot-linux-native-dependencies.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162854-938-s3-aot-linux-native-dependencies.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162854-938-s3-aot-linux-native-dependencies.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162854-938-s3-aot-linux-native-dependencies.stdout.log",
+      "sha256": "2d61193ffc700e7000d6b3ca739dcacb541f60c36b2cf85a12abdaf0010a0914",
+      "bytes": 2419
+    },
+    {
+      "path": "processes/20260925-162932-876-s3-aot-linux-final-prompt-tests.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162932-876-s3-aot-linux-final-prompt-tests.identity.json",
+      "sha256": "da15ddbba1b1cc8bf1bde775b732370ce4d92e39cee8593b173657a46c558b5d",
+      "bytes": 2088
+    },
+    {
+      "path": "processes/20260925-162932-876-s3-aot-linux-final-prompt-tests.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162932-876-s3-aot-linux-final-prompt-tests.result.json",
+      "sha256": "37d64bbd483ec8ee13c27c05e18ffc08b00f76739c7da3bf313fa44154a8fe5d",
+      "bytes": 4539
+    },
+    {
+      "path": "processes/20260925-162932-876-s3-aot-linux-final-prompt-tests.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162932-876-s3-aot-linux-final-prompt-tests.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-162932-876-s3-aot-linux-final-prompt-tests.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162932-876-s3-aot-linux-final-prompt-tests.stdout.log",
+      "sha256": "960ab742840f37a15a44e4267bd619f2b0b895064b64fefa02d9c2acfd8b67fd",
+      "bytes": 11495
+    },
+    {
+      "path": "processes/20260925-162941-881-s3-aot-linux-managed-negative.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162941-881-s3-aot-linux-managed-negative.identity.json",
+      "sha256": "773e6de0f8dd7f98bb3d8059b630e33babac82a4c98d7152c7d1095cb3474f08",
+      "bytes": 3707
+    },
+    {
+      "path": "processes/20260925-162941-881-s3-aot-linux-managed-negative.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162941-881-s3-aot-linux-managed-negative.result.json",
+      "sha256": "03e12a99c87fbd175027ce4ecdabf0177ee57127e7eee65272f5365d84e0c56b",
+      "bytes": 4555
+    },
+    {
+      "path": "processes/20260925-162941-881-s3-aot-linux-managed-negative.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162941-881-s3-aot-linux-managed-negative.stderr.log",
+      "sha256": "f240d4200bc103f449f9db4492c188d4eaeaaf4d2355893fe876665f8580a523",
+      "bytes": 118
+    },
+    {
+      "path": "processes/20260925-162941-881-s3-aot-linux-managed-negative.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162941-881-s3-aot-linux-managed-negative.stdout.log",
+      "sha256": "ff9026a1123998d4a3e2c00a1f4ed2157542a14e2a27077f1669dcd953b0de33",
+      "bytes": 2745
+    },
+    {
+      "path": "processes/20260925-163537-820-s3-aot-linux-scalar-final-comparison.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-163537-820-s3-aot-linux-scalar-final-comparison.identity.json",
+      "sha256": "045e2ea6043abd7ac22e6f06bbb121550694603217fbe5d23b940b21a3eebe73",
+      "bytes": 1341
+    },
+    {
+      "path": "processes/20260925-163537-820-s3-aot-linux-scalar-final-comparison.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-163537-820-s3-aot-linux-scalar-final-comparison.result.json",
+      "sha256": "280cb8d03c734fc949c211ca8984e9095ae3a844bbae2cf2d2a7d928ebd9d130",
+      "bytes": 1921
+    },
+    {
+      "path": "processes/20260925-163537-820-s3-aot-linux-scalar-final-comparison.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-163537-820-s3-aot-linux-scalar-final-comparison.stderr.log",
+      "sha256": "61e553f87b6589191d854bbcbdad118bdf56a6d417d245b44849299cd5e78625",
+      "bytes": 254
+    },
+    {
+      "path": "processes/20260925-163537-820-s3-aot-linux-scalar-final-comparison.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-163537-820-s3-aot-linux-scalar-final-comparison.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-164318-677-s3-aot-win-simd-final-smoke-comparison.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164318-677-s3-aot-win-simd-final-smoke-comparison.identity.json",
+      "sha256": "0d7fb361cf556ea8f47a72fe81ec0c25f5d65d1a833c9c43aac394f9db472ae2",
+      "bytes": 1324
+    },
+    {
+      "path": "processes/20260925-164318-677-s3-aot-win-simd-final-smoke-comparison.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164318-677-s3-aot-win-simd-final-smoke-comparison.result.json",
+      "sha256": "c04d74880cc7e203b24adebc56d147db0a1428587a288b46fe29b23e7a529b23",
+      "bytes": 1908
+    },
+    {
+      "path": "processes/20260925-164318-677-s3-aot-win-simd-final-smoke-comparison.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164318-677-s3-aot-win-simd-final-smoke-comparison.stderr.log",
+      "sha256": "f5601d367b51e8c16a285c3f4465518cac694109dc1f89feeda3a0cf12d2287c",
+      "bytes": 198
+    },
+    {
+      "path": "processes/20260925-164318-677-s3-aot-win-simd-final-smoke-comparison.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164318-677-s3-aot-win-simd-final-smoke-comparison.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-164320-943-s3-aot-win-simd-final-comparison.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164320-943-s3-aot-win-simd-final-comparison.identity.json",
+      "sha256": "c35f9a604a1555be5d21b38fc22f2181a4b20660331c72d313711fdf983991fa",
+      "bytes": 2133
+    },
+    {
+      "path": "processes/20260925-164320-943-s3-aot-win-simd-final-comparison.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164320-943-s3-aot-win-simd-final-comparison.result.json",
+      "sha256": "cedafa80d1605acc616953b79b3ec9e01c55af8dbf09fcb73c0851181a34a1da",
+      "bytes": 2960
+    },
+    {
+      "path": "processes/20260925-164320-943-s3-aot-win-simd-final-comparison.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164320-943-s3-aot-win-simd-final-comparison.stderr.log",
+      "sha256": "6a116d2523de5c4580e292b3e85eaa0e44677fe048eefcba82311ed7283b399d",
+      "bytes": 1669
+    },
+    {
+      "path": "processes/20260925-164320-943-s3-aot-win-simd-final-comparison.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164320-943-s3-aot-win-simd-final-comparison.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-164324-463-s3-aot-win-simd-final-full-comparison.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164324-463-s3-aot-win-simd-final-full-comparison.identity.json",
+      "sha256": "c3b21116ddda609eaa663f24ad64556db8a17c9eac362677409655d781fe7417",
+      "bytes": 1294
+    },
+    {
+      "path": "processes/20260925-164324-463-s3-aot-win-simd-final-full-comparison.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164324-463-s3-aot-win-simd-final-full-comparison.result.json",
+      "sha256": "5b8e73318aaf4cf0c02878cf0916196229f68f1b7f2572636c54b9196c322bf7",
+      "bytes": 2157
+    },
+    {
+      "path": "processes/20260925-164324-463-s3-aot-win-simd-final-full-comparison.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164324-463-s3-aot-win-simd-final-full-comparison.stderr.log",
+      "sha256": "d902870475ba8ecc70ba7b826dc3acb285d147165f7f698f150e6e0205b8f146",
+      "bytes": 1812
+    },
+    {
+      "path": "processes/20260925-164324-463-s3-aot-win-simd-final-full-comparison.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164324-463-s3-aot-win-simd-final-full-comparison.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-164820-602-s3-aot-linux-simd-final-comparison.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164820-602-s3-aot-linux-simd-final-comparison.identity.json",
+      "sha256": "4a74940a767764219f5be154ba7c9bac7794e4d786dd8c784e0d103ff8303c55",
+      "bytes": 2127
+    },
+    {
+      "path": "processes/20260925-164820-602-s3-aot-linux-simd-final-comparison.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164820-602-s3-aot-linux-simd-final-comparison.result.json",
+      "sha256": "95ccb9f2668f0b0c684c01438f4fa50e7108622045ccd2c22f615953c436bda2",
+      "bytes": 2703
+    },
+    {
+      "path": "processes/20260925-164820-602-s3-aot-linux-simd-final-comparison.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164820-602-s3-aot-linux-simd-final-comparison.stderr.log",
+      "sha256": "6a116d2523de5c4580e292b3e85eaa0e44677fe048eefcba82311ed7283b399d",
+      "bytes": 1669
+    },
+    {
+      "path": "processes/20260925-164820-602-s3-aot-linux-simd-final-comparison.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164820-602-s3-aot-linux-simd-final-comparison.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-164823-171-s3-aot-linux-simd-final-full-comparison.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164823-171-s3-aot-linux-simd-final-full-comparison.identity.json",
+      "sha256": "e37035c97efce6d1a388af9a3de0bdfe117e1af1c9f650e9dc1d79c2680c34a1",
+      "bytes": 1289
+    },
+    {
+      "path": "processes/20260925-164823-171-s3-aot-linux-simd-final-full-comparison.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164823-171-s3-aot-linux-simd-final-full-comparison.result.json",
+      "sha256": "b9d581cdc9029e1df31fef5e5b6e8798b92cc56bd1252a4b3f408022d996c07b",
+      "bytes": 2157
+    },
+    {
+      "path": "processes/20260925-164823-171-s3-aot-linux-simd-final-full-comparison.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164823-171-s3-aot-linux-simd-final-full-comparison.stderr.log",
+      "sha256": "d902870475ba8ecc70ba7b826dc3acb285d147165f7f698f150e6e0205b8f146",
+      "bytes": 1812
+    },
+    {
+      "path": "processes/20260925-164823-171-s3-aot-linux-simd-final-full-comparison.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164823-171-s3-aot-linux-simd-final-full-comparison.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-164957-035-s3-aot-linux-final-cleanup-audit.identity.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164957-035-s3-aot-linux-final-cleanup-audit.identity.json",
+      "sha256": "e734c7a3babc6c588bbe8dd81fb449bac30f1cb175b656724516bc45d7649dc4",
+      "bytes": 1812
+    },
+    {
+      "path": "processes/20260925-164957-035-s3-aot-linux-final-cleanup-audit.result.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164957-035-s3-aot-linux-final-cleanup-audit.result.json",
+      "sha256": "8d17d8d534eb57244839f64f4600ef4e7f7e220f79bfc68a01acca5e49cf20a8",
+      "bytes": 3403
+    },
+    {
+      "path": "processes/20260925-164957-035-s3-aot-linux-final-cleanup-audit.stderr.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164957-035-s3-aot-linux-final-cleanup-audit.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "processes/20260925-164957-035-s3-aot-linux-final-cleanup-audit.stdout.log",
+      "source": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164957-035-s3-aot-linux-final-cleanup-audit.stdout.log",
+      "sha256": "9caec8150ce249bf285beaaad7cdd33b2e8c2878c89d8cfad2361b25e187ea8b",
+      "bytes": 162
+    },
+    {
+      "path": "linux-processes/linux-capture-publish-process.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-capture-publish-process.json",
+      "sha256": "309de89edc423ab379d8283fd76fd566afe0c14acd13d2ff08b602faeaf6e380",
+      "bytes": 19563
+    },
+    {
+      "path": "linux-processes/linux-cuda-final-linux-process.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-cuda-final-linux-process.json",
+      "sha256": "228034c7ff9cddd1b3d7c6b6921720dc3aaf3e31003514afaa22743a30546d24",
+      "bytes": 2066
+    },
+    {
+      "path": "linux-processes/linux-cuda-final-smoke-linux-process.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-cuda-final-smoke-linux-process.json",
+      "sha256": "d9960cb5fa085bf262aa5cba0a36e629057facc2afc0c42d8268f53e1884b511",
+      "bytes": 2082
+    },
+    {
+      "path": "linux-processes/linux-managed-negative-process.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-managed-negative-process.json",
+      "sha256": "c0f29424b1052cd8df3a33b5b684761685cf98cfe435b44f2f0cce8fe98ea4aa",
+      "bytes": 1931
+    },
+    {
+      "path": "linux-processes/linux-prompt-tests-process.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-prompt-tests-process.json",
+      "sha256": "8a49ebee7503efcf00711c2ac1c370a2566ac4d762164691517ba107f03e2fc3",
+      "bytes": 1121
+    },
+    {
+      "path": "linux-processes/linux-scalar-final-linux-process.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-scalar-final-linux-process.json",
+      "sha256": "8ef426e77c0c49c60ccad4c0c9888a7a4a6b1ac4b25f78b2373cb2b84efe0e31",
+      "bytes": 2211
+    },
+    {
+      "path": "linux-processes/linux-scalar-final-smoke-linux-process.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-scalar-final-smoke-linux-process.json",
+      "sha256": "9d03ce4147411dd4c9bf6fa12f50f11f76aa7718eb0dc3374e855ede68a3e32a",
+      "bytes": 2093
+    },
+    {
+      "path": "linux-processes/linux-sdk-info-process.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-sdk-info-process.json",
+      "sha256": "576714df7e6cfc301ad7d6d1468cf5941356aa8c6c26beaa564fecacb655405c",
+      "bytes": 1046
+    },
+    {
+      "path": "linux-processes/linux-simd-final-linux-process.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-simd-final-linux-process.json",
+      "sha256": "cc6756ea36f5ed2887c08f14f76cb416b7da9115f847b86712dcf195f8868737",
+      "bytes": 2071
+    },
+    {
+      "path": "linux-processes/linux-simd-final-smoke-linux-process.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-simd-final-smoke-linux-process.json",
+      "sha256": "32994f25698c0c57433a81a4ad8f4fd3a417cd9791f8b2d8112b50602552c850",
+      "bytes": 2083
+    },
+    {
+      "path": "linux-processes/linux-tests-publish-process.json",
+      "source": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-tests-publish-process.json",
+      "sha256": "64f1bc39a802637952e63da1aa3162f52de3fb721600a2beb210b08725865a8b",
+      "bytes": 19175
+    }
+  ],
+  "scope": "Native AOT corrected-input FP32 regression only. Scalar covers three explicit long cases; SIMD/CUDA cover 42/46 supported cases with four API differences retained. No language-quality, calibration, W8A32, bare-metal Linux or performance claim."
+}

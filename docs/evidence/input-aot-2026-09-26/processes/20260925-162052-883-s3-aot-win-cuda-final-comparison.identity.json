@@ -1,0 +1,27 @@
+{
+  "Pid": 72300,
+  "Started": "2026-09-25T16:20:53.7080986Z",
+  "CommandLine": null,
+  "ParentPid": 34128,
+  "ObservedParentPid": 34128,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 34128,
+    "Started": "2026-09-26T00:20:49.170549+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/s3-aot-20260926/run-capture.ps1 -Platform win -Backend cuda -CompareOnly\nrg -n 'NativeCompilationDuringPublish|Cross-OS|cross-OS|ILCompilerVersion|IlcPackageVersion' 'C:\\Users\\mysti\\.nuget\\packages\\microsoft.dotnet.ilcompiler\\10.0.6\\build'\nGet-Content -LiteralPath 'C:\\Users\\mysti\\.nuget\\packages\\microsoft.dotnet.ilcompiler\\10.0.6\\build\\Microsoft.NETCore.Native.Publish.targets' -Encoding utf8 -TotalCount 95\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 45,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\build-compare\\bin\\Sezika.OracleCompare\\release\\Sezika.OracleCompare.dll",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\reference.cpu-fp32.v1.json",
+    "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-cuda-final\\capture.json",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\cases.v1.json",
+    "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\win-cuda-final-comparison.json",
+    "30",
+    "choice-en-short,choice-en-medium,choice-en-long,choice-zh-short,choice-zh-medium,choice-zh-long,score-en-short,score-en-medium,score-en-long,score-zh-short,score-zh-medium,score-zh-long,boolean-en-short,boolean-en-medium,boolean-en-long,boolean-zh-short,boolean-zh-medium,boolean-zh-long,choice-order-reversed,choice-label-only-and-structured,state-object-unicode,state-conversation-left-truncation,state-string-right-truncation,mask-in-state-instructions-options,boolean-display-labels,boolean-default-criteria,sequence-255,sequence-256,sequence-257,sequence-1023,sequence-1024,sequence-1025,choice-two-candidates,choice-32-candidates,score-two-levels,score-ten-levels,options-48-token-cap,prefix-instruction-truncation,invalid-empty-choice,invalid-null-score-level,invalid-boolean-criteria-key,invalid-duplicate-boolean-display-label"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

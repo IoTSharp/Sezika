@@ -1,0 +1,27 @@
+{
+  "Pid": 65272,
+  "Started": "2026-09-25T16:48:21.6406925Z",
+  "CommandLine": null,
+  "ParentPid": 79800,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 79800,
+    "Started": "2026-09-26T00:26:48.456448+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/s3-aot-20260926/run-capture.ps1 -Platform linux -Backend simd\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 45,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\build-compare\\bin\\Sezika.OracleCompare\\release\\Sezika.OracleCompare.dll",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\reference.cpu-fp32.v1.json",
+    "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-simd-final\\capture.json",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\cases.v1.json",
+    "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\linux-simd-final-comparison.json",
+    "30",
+    "choice-en-short,choice-en-medium,choice-en-long,choice-zh-short,choice-zh-medium,choice-zh-long,score-en-short,score-en-medium,score-en-long,score-zh-short,score-zh-medium,score-zh-long,boolean-en-short,boolean-en-medium,boolean-en-long,boolean-zh-short,boolean-zh-medium,boolean-zh-long,choice-order-reversed,choice-label-only-and-structured,state-object-unicode,state-conversation-left-truncation,state-string-right-truncation,mask-in-state-instructions-options,boolean-display-labels,boolean-default-criteria,sequence-255,sequence-256,sequence-257,sequence-1023,sequence-1024,sequence-1025,choice-two-candidates,choice-32-candidates,score-two-levels,score-ten-levels,options-48-token-cap,prefix-instruction-truncation,invalid-empty-choice,invalid-null-score-level,invalid-boolean-criteria-key,invalid-duplicate-boolean-display-label"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

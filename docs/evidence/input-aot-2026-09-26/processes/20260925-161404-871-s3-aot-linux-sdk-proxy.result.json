@@ -1,0 +1,59 @@
+{
+  "Status": "Failed",
+  "Pid": 75580,
+  "ExitCode": 28,
+  "Error": "Process failed with exit code 28.",
+  "ElapsedSeconds": 303.074,
+  "TimeoutSeconds": 320,
+  "FilePath": "C:\\Windows\\system32\\curl.exe",
+  "Arguments": [
+    "--fail",
+    "--location",
+    "--silent",
+    "--show-error",
+    "--proxy",
+    "http://127.0.0.1:7890",
+    "--connect-timeout",
+    "10",
+    "--max-time",
+    "300",
+    "--retry",
+    "0",
+    "--output",
+    ".artifacts/s3-aot-20260926/sdk-linux-x64.tar.gz",
+    "https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.400/dotnet-sdk-10.0.400-linux-x64.tar.gz"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:14:05.4221508Z",
+  "ParentPid": 66164,
+  "Launcher": {
+    "Pid": 66164,
+    "Started": "2026-09-26T00:14:04.454955+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Windows\\system32\\curl.exe' -ArgumentList @('--fail','--location','--silent','--show-error','--proxy','http://127.0.0.1:7890','--connect-timeout','10','--max-time','300','--retry','0','--output','.artifacts/s3-aot-20260926/sdk-linux-x64.tar.gz','https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.400/dotnet-sdk-10.0.400-linux-x64.tar.gz') -TimeoutSeconds 320 -LogName 's3-aot-linux-sdk-proxy'\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Windows\\system32\\curl.exe' -ArgumentList @('--fail','--location','--silent','--show-error','--connect-timeout','10','--max-time','30','--retry','0','--output','.artifacts/s3-aot-20260926/sdk-linux-x64.tar.gz.sha512','https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.400/dotnet-sdk-10.0.400-linux-x64.tar.gz.sha512') -TimeoutSeconds 40 -LogName 's3-aot-linux-sdk-hash'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161404-871-s3-aot-linux-sdk-proxy.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161404-871-s3-aot-linux-sdk-proxy.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 75580,
+      "CreationDate": "2026-09-26T00:14:05.42215+08:00",
+      "Started": "2026-09-25T16:14:05.42215Z",
+      "CommandLine": "\"C:\\Windows\\system32\\curl.exe\" --fail --location --silent --show-error --proxy http://127.0.0.1:7890 --connect-timeout 10 --max-time 300 --retry 0 --output .artifacts/s3-aot-20260926/sdk-linux-x64.tar.gz https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.400/dotnet-sdk-10.0.400-linux-x64.tar.gz",
+      "ParentPid": 66164,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 9220,
+      "CreationDate": "2026-09-26T00:14:05.47522+08:00",
+      "Started": "2026-09-25T16:14:05.47522Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 75580,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

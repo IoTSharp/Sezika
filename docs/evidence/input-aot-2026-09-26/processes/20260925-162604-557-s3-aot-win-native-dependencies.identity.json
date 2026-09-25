@@ -1,0 +1,21 @@
+{
+  "Pid": 34208,
+  "Started": "2026-09-25T16:26:05.7416268Z",
+  "CommandLine": null,
+  "ParentPid": 50524,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 50524,
+    "Started": "2026-09-26T00:26:03.884404+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\Microsoft Visual Studio\\18\\Professional\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\dumpbin.exe' -ArgumentList @('/dependents','.artifacts/s3-aot-20260926/native-final/win-x64/Sezika.OracleCapture.exe') -TimeoutSeconds 30 -LogName 's3-aot-win-native-dependencies'\n$nativeBytes = [IO.File]::ReadAllBytes('D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native-final\\win-x64\\Sezika.OracleCapture.exe')\n$peOffset = [BitConverter]::ToInt32($nativeBytes,0x3c)\n$optionalHeader = $peOffset + 24\n[ordered]@{ format='PE32+'; machine=[BitConverter]::ToUInt16($nativeBytes,$peOffset+4); optional_header_magic=[BitConverter]::ToUInt16($nativeBytes,$optionalHeader); clr_directory_rva=[BitConverter]::ToUInt32($nativeBytes,$optionalHeader+112+14*8); clr_directory_size=[BitConverter]::ToUInt32($nativeBytes,$optionalHeader+112+14*8+4);sha256=(Get-FileHash -LiteralPath '.artifacts/s3-aot-20260926/native-final/win-x64/Sezika.OracleCapture.exe').Hash.ToLowerInvariant()} | ConvertTo-Json | Set-Content -LiteralPath '.artifacts/s3-aot-20260926/win-pe-identity.json' -Encoding utf8NoBOM\nGet-Content -LiteralPath '.artifacts/s3-aot-20260926/win-pe-identity.json' -Raw -Encoding utf8\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 30,
+  "FilePath": "C:\\Program Files\\Microsoft Visual Studio\\18\\Professional\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\dumpbin.exe",
+  "Arguments": [
+    "/dependents",
+    ".artifacts/s3-aot-20260926/native-final/win-x64/Sezika.OracleCapture.exe"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

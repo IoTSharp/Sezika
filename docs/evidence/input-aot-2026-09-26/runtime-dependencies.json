@@ -1,0 +1,26 @@
+[
+  {
+    "path": ".artifacts/s3-aot-20260926/build-win-final/obj/Sezika.OracleCapture/project.assets.json",
+    "sha256": "9cf7c134ac993807f87a691f657b7de0f0eba4945d49935a2397a191e17f2a2b",
+    "libraries": [
+      "Microsoft.DotNet.ILCompiler/10.0.11",
+      "Microsoft.NET.ILLink.Tasks/10.0.11",
+      "runtime.win-x64.Microsoft.DotNet.ILCompiler/10.0.11",
+      "Sezika.Cuda/0.1.0-dev",
+      "Sezika/0.1.0-dev"
+    ],
+    "ilgpu_present": false
+  },
+  {
+    "path": ".artifacts/s3-aot-20260926/build-linux-final/obj/Sezika.OracleCapture/project.assets.json",
+    "sha256": "c99c36fc78502fcfd4be368052f30f62d4512c0bb6dc45ea7c9fcdbff64e3def",
+    "libraries": [
+      "Microsoft.DotNet.ILCompiler/10.0.6",
+      "Microsoft.NET.ILLink.Tasks/10.0.6",
+      "runtime.linux-x64.Microsoft.DotNet.ILCompiler/10.0.6",
+      "Sezika.Cuda/0.1.0-dev",
+      "Sezika/0.1.0-dev"
+    ],
+    "ilgpu_present": false
+  }
+]

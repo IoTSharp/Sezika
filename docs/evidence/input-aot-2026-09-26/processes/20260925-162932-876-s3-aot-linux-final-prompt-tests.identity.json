@@ -1,0 +1,34 @@
+{
+  "Pid": 33116,
+  "Started": "2026-09-25T16:29:34.6921177Z",
+  "CommandLine": "\"C:\\Windows\\system32\\wsl.exe\" -d Ubuntu --cd /mnt/d/source/Sezika --exec /usr/bin/timeout --signal=TERM --kill-after=10s 170s /usr/bin/python3 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py 150 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-prompt-tests-process.json /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/tests-final/linux-x64/Sezika.Tests --prompt-contract-aot",
+  "ParentPid": 79164,
+  "ObservedParentPid": 79164,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 79164,
+    "Started": "2026-09-26T00:29:32.30271+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Windows\\system32\\wsl.exe' -ArgumentList @('-d','Ubuntu','--cd','/mnt/d/source/Sezika','--exec','/usr/bin/timeout','--signal=TERM','--kill-after=10s','170s','/usr/bin/python3','/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py','150','/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-prompt-tests-process.json','/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/tests-final/linux-x64/Sezika.Tests','--prompt-contract-aot') -TimeoutSeconds 180 -LogName 's3-aot-linux-final-prompt-tests'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 180,
+  "FilePath": "C:\\Windows\\system32\\wsl.exe",
+  "Arguments": [
+    "-d",
+    "Ubuntu",
+    "--cd",
+    "/mnt/d/source/Sezika",
+    "--exec",
+    "/usr/bin/timeout",
+    "--signal=TERM",
+    "--kill-after=10s",
+    "170s",
+    "/usr/bin/python3",
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py",
+    "150",
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-prompt-tests-process.json",
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/tests-final/linux-x64/Sezika.Tests",
+    "--prompt-contract-aot"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

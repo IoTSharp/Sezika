@@ -1,0 +1,61 @@
+{
+  "Status": "Failed",
+  "Pid": 78236,
+  "ExitCode": 2,
+  "Error": "Process failed with exit code 2.",
+  "ElapsedSeconds": 7.032,
+  "TimeoutSeconds": 35,
+  "FilePath": "C:\\Windows\\system32\\wsl.exe",
+  "Arguments": [
+    "-d",
+    "Ubuntu",
+    "--cd",
+    "/mnt/d/source/Sezika",
+    "--exec",
+    "/usr/bin/timeout",
+    "--signal=TERM",
+    "--kill-after=5s",
+    "25s",
+    "/usr/bin/python3",
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py",
+    "15",
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-managed-negative-process.json",
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/dotnet",
+    ".artifacts/s3-aot-20260926/build-linux-final/bin/Sezika.OracleCapture/release_linux-x64/Sezika.OracleCapture.dll",
+    "--reference",
+    "tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json",
+    "--model",
+    ".artifacts/models/laya-mmbert",
+    "--cases",
+    "tests/fixtures/laya-oracle/cases.v1.json",
+    "--contract",
+    "tests/fixtures/laya-oracle/contract.v1.json",
+    "--output",
+    ".artifacts/s3-aot-20260926/linux-managed-should-not-exist",
+    "--require-aot"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:29:42.8171262Z",
+  "ParentPid": 61048,
+  "Launcher": {
+    "Pid": 61048,
+    "Started": "2026-09-26T00:29:41.233425+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference = 'Stop'\ntry {\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Windows\\system32\\wsl.exe' -ArgumentList @('-d','Ubuntu','--cd','/mnt/d/source/Sezika','--exec','/usr/bin/timeout','--signal=TERM','--kill-after=5s','25s','/usr/bin/python3','/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py','15','/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-managed-negative-process.json','/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/dotnet','.artifacts/s3-aot-20260926/build-linux-final/bin/Sezika.OracleCapture/release_linux-x64/Sezika.OracleCapture.dll','--reference','tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json','--model','.artifacts/models/laya-mmbert','--cases','tests/fixtures/laya-oracle/cases.v1.json','--contract','tests/fixtures/laya-oracle/contract.v1.json','--output','.artifacts/s3-aot-20260926/linux-managed-should-not-exist','--require-aot') -TimeoutSeconds 35 -LogName 's3-aot-linux-managed-negative'\nthrow 'Linux managed host unexpectedly passed AOT guard.'\n} catch {\nif ($_.Exception.Message -ne 'Process failed with exit code 2.') { throw }\nif (Test-Path -LiteralPath '.artifacts/s3-aot-20260926/linux-managed-should-not-exist') { throw 'Negative gate created output.' }\nWrite-Output 'Linux managed AOT guard rejected before reading inputs: exit 2 and no output.'\n}\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162941-881-s3-aot-linux-managed-negative.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162941-881-s3-aot-linux-managed-negative.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 78236,
+      "CreationDate": "2026-09-26T00:29:42.817126+08:00",
+      "Started": "2026-09-25T16:29:42.817126Z",
+      "CommandLine": "\"C:\\Windows\\system32\\wsl.exe\" -d Ubuntu --cd /mnt/d/source/Sezika --exec /usr/bin/timeout --signal=TERM --kill-after=5s 25s /usr/bin/python3 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py 15 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-managed-negative-process.json /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/dotnet .artifacts/s3-aot-20260926/build-linux-final/bin/Sezika.OracleCapture/release_linux-x64/Sezika.OracleCapture.dll --reference tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json --model .artifacts/models/laya-mmbert --cases tests/fixtures/laya-oracle/cases.v1.json --contract tests/fixtures/laya-oracle/contract.v1.json --output .artifacts/s3-aot-20260926/linux-managed-should-not-exist --require-aot",
+      "ParentPid": 61048,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

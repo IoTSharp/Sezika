@@ -84,3 +84,5 @@ Windows PowerShell 7.6.6，.NET SDK 10.0.400，运行时 .NET 10.0.11，Windows 
 完整比较使用 `OracleCompare reference actual contract cases new-report 30`；支持范围比较额外传入完整 42 个 ID 的 CSV，精确 argv 见 runner JSON 与报告 `requested_case_ids`。最终构建为 `dotnet build Sezika.slnx -c Release --artifacts-path .artifacts/build/s3-contract-final --nologo -v minimal -p:UseSharedCompilation=false -nodeReuse:false -m:2`；测试运行该隔离目录下的 DLL，核心测试使用 `--prompt-contract`，没有调用默认套件中的示例训练器。
 
 本次 CPU/CUDA 任务部分并行，耗时包含加载、验证、记录和资源竞争，只证明在预算内完成，不能据此声称后端速度比。修正后的 PAWS/Nimble 质量、校准、近并列候选、两 RID Native AOT、真实长输入性能与多题矩阵仍分别验收。没有训练、模型权重下载或发布；旧质量和性能记录保持其原输入版本的范围。
+
+2026-09-26 后续证据：[修正路径两 RID Native AOT 长输入回归](input-aot-2026-09-26.md)已完成，SIMD/CUDA支持范围和scalar明确长输入分别通过，两RID输入检查各138项通过。本文以上内容继续保留2026-09-25的JIT捕获范围，AOT结论以新增报告为准。

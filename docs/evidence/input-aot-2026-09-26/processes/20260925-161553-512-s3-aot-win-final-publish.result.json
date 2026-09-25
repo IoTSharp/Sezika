@@ -1,0 +1,181 @@
+{
+  "Status": "Succeeded",
+  "Pid": 25868,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 28.664,
+  "TimeoutSeconds": 600,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "publish",
+    "tools/Sezika.OracleCapture/Sezika.OracleCapture.csproj",
+    "-c",
+    "Release",
+    "-r",
+    "win-x64",
+    "--self-contained",
+    "true",
+    "-p:PublishAot=true",
+    "-p:StripSymbols=true",
+    "-p:IlcMaxDegreeOfParallelism=2",
+    "--artifacts-path",
+    ".artifacts/s3-aot-20260926/build-win-final",
+    "-o",
+    ".artifacts/s3-aot-20260926/native-final/win-x64",
+    "--nologo",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:15:54.1167736Z",
+  "ParentPid": 79708,
+  "Launcher": {
+    "Pid": 79708,
+    "Started": "2026-09-26T00:15:51.937608+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference = 'Stop'\n$identityFile = Get-ChildItem -LiteralPath '.artifacts/processes' -Filter '*s3-aot-win-simd-full.identity.json' | Select-Object -First 1\n$record = Get-Content -LiteralPath $identityFile.FullName -Raw -Encoding utf8 | ConvertFrom-Json\n$current = Get-CimInstance Win32_Process -Filter \\\"ProcessId=$($record.Pid)\\\" -OperationTimeoutSec 2\nif ($current -and $current.CommandLine -ceq $record.CommandLine -and $current.ParentProcessId -eq $record.ParentPid) {\n$owned = [Diagnostics.Process]::GetProcessById($record.Pid)\ntry { if ([Math]::Abs(($owned.StartTime.ToUniversalTime() - $record.Started.ToUniversalTime()).Ticks) -gt 10) { throw 'Process identity changed.' }; $owned.Kill(); [void]$owned.WaitForExit(2000); Write-Output \\\"Stopped superseded pilot PID $($record.Pid); final AOT guard requires rebuilt evidence.\\\" } finally { $owned.Dispose() }\n}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('publish','tools/Sezika.OracleCapture/Sezika.OracleCapture.csproj','-c','Release','-r','win-x64','--self-contained','true','-p:PublishAot=true','-p:StripSymbols=true','-p:IlcMaxDegreeOfParallelism=2','--artifacts-path','.artifacts/s3-aot-20260926/build-win-final','-o','.artifacts/s3-aot-20260926/native-final/win-x64','--nologo','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false') -TimeoutSeconds 600 -LogName 's3-aot-win-final-publish' -Environment @{ DOTNET_PROCESSOR_COUNT='2' }\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161553-512-s3-aot-win-final-publish.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-161553-512-s3-aot-win-final-publish.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 25868,
+      "CreationDate": "2026-09-26T00:15:54.116773+08:00",
+      "Started": "2026-09-25T16:15:54.116773Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish tools/Sezika.OracleCapture/Sezika.OracleCapture.csproj -c Release -r win-x64 --self-contained true -p:PublishAot=true -p:StripSymbols=true -p:IlcMaxDegreeOfParallelism=2 --artifacts-path .artifacts/s3-aot-20260926/build-win-final -o .artifacts/s3-aot-20260926/native-final/win-x64 --nologo --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+      "ParentPid": 79708,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 668,
+      "CreationDate": "2026-09-26T00:16:07.929578+08:00",
+      "Started": "2026-09-25T16:16:07.929578Z",
+      "CommandLine": "\"C:\\Windows\\system32\\cmd.exe\"  /Q /D /C C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcfn4gmaq.4mx\\tmpd9846a3dee4d428e90b7ab40afb383fb.exec.cmd",
+      "ParentPid": 25868,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 21076,
+      "CreationDate": "2026-09-26T00:15:56.217013+08:00",
+      "Started": "2026-09-25T16:15:56.217013Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.400\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcfn4gmaq.4mx\\tmp7fda37c351cc4b7f93cd8655c544681d.rsp\"",
+      "ParentPid": 25868,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 42496,
+      "CreationDate": "2026-09-26T00:16:05.076914+08:00",
+      "Started": "2026-09-25T16:16:05.076914Z",
+      "CommandLine": null,
+      "ParentPid": 25868,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 63152,
+      "CreationDate": "2026-09-26T00:16:12.177372+08:00",
+      "Started": "2026-09-25T16:16:12.177372Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.400\\MSBuild.exe\" /nologo /nodemode:2 /nodereuse:False /low:False /parentpacketversion:4 ",
+      "ParentPid": 25868,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 68348,
+      "CreationDate": "2026-09-26T00:16:12.46891+08:00",
+      "Started": "2026-09-25T16:16:12.46891Z",
+      "CommandLine": "\"C:\\Windows\\system32\\cmd.exe\"  /Q /D /C C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcfn4gmaq.4mx\\tmpa65e784fd1d54cf1a012cefc5e87b1b2.exec.cmd",
+      "ParentPid": 25868,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 70792,
+      "CreationDate": "2026-09-26T00:16:02.38753+08:00",
+      "Started": "2026-09-25T16:16:02.38753Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.400\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcfn4gmaq.4mx\\tmp436d799377f040c4a15ba116b2897009.rsp\"",
+      "ParentPid": 25868,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 76720,
+      "CreationDate": "2026-09-26T00:15:54.172259+08:00",
+      "Started": "2026-09-25T16:15:54.172259Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 25868,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 48384,
+      "CreationDate": "2026-09-26T00:15:56.323789+08:00",
+      "Started": "2026-09-25T16:15:56.323789Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 21076,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 60560,
+      "CreationDate": "2026-09-26T00:16:02.424161+08:00",
+      "Started": "2026-09-25T16:16:02.424161Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 70792,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 63432,
+      "CreationDate": "2026-09-26T00:16:12.520666+08:00",
+      "Started": "2026-09-25T16:16:12.520666Z",
+      "CommandLine": "\"C:\\Users\\mysti\\.nuget\\packages\\runtime.win-x64.microsoft.dotnet.ilcompiler\\10.0.11\\tools\\\\ilc\"  @\"D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\build-win-final\\obj\\Sezika.OracleCapture\\release_win-x64\\native\\Sezika.OracleCapture.ilc.rsp\"",
+      "ParentPid": 68348,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 69108,
+      "CreationDate": "2026-09-26T00:16:05.135846+08:00",
+      "Started": "2026-09-25T16:16:05.135846Z",
+      "CommandLine": null,
+      "ParentPid": 42496,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 75616,
+      "CreationDate": "2026-09-26T00:16:07.939198+08:00",
+      "Started": "2026-09-25T16:16:07.939198Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 668,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 75960,
+      "CreationDate": "2026-09-26T00:16:12.22448+08:00",
+      "Started": "2026-09-25T16:16:12.22448Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 63152,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 79504,
+      "CreationDate": "2026-09-26T00:16:12.480165+08:00",
+      "Started": "2026-09-25T16:16:12.480165Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 68348,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

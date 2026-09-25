@@ -1,0 +1,359 @@
+{
+  "captured_utc": "2026-09-25T16:23:49.7277108+00:00",
+  "maximum_files": 256,
+  "timeout_seconds": 30,
+  "files": [
+    {
+      "path": "tests/Sezika.Tests/StageClosureChecks.cs",
+      "sha256": "033b376c4db9a330efea0cade770955806c93135f08bcb28d0e1e7eda45babf9"
+    },
+    {
+      "path": "tests/Sezika.Tests/Sezika.Tests.csproj",
+      "sha256": "0a860c99caec2be94eaad4cc55c2acc3ad95d3c24db505dd95d3edefd5feb2c6"
+    },
+    {
+      "path": "tests/Sezika.Tests/PromptJsonChecks.cs",
+      "sha256": "c20fc8f92358852e73de42bc3bce8deb2a91ab1b1da90855e3af706eb5d9781d"
+    },
+    {
+      "path": "tests/Sezika.Tests/PromptContractChecks.cs",
+      "sha256": "ad8dcf2612d810abf6f8ac79d9a7d7ed99a379ce9e1663b82843232cbf46adb5"
+    },
+    {
+      "path": "tests/Sezika.Tests/Program.cs",
+      "sha256": "d54647b5b53e8fb0486922fae34a011c16d403e43cbb17c5caa6f18b75bc4ee2"
+    },
+    {
+      "path": "tests/Sezika.Tests/ModelPackageLifecycleChecks.cs",
+      "sha256": "3079c28daf6cd7db6102b438f835050d0c7e365ae2a4344de4eb3c3fc602313a"
+    },
+    {
+      "path": "tests/Sezika.Tests/DecisionModelRuntimeChecks.cs",
+      "sha256": "06b725967cc25eb01834fe9875f3beb5b44bf73ac5620ac1dff40dbedad68480"
+    },
+    {
+      "path": "tests/Sezika.Tests/BackendInjectionChecks.cs",
+      "sha256": "c1a0c42d3072dbb34d3eb9a3f533b409c4bfb8119b28e7c5cd09d8d8e67a07b2"
+    },
+    {
+      "path": "tools/Sezika.OracleCapture/Sezika.OracleCapture.csproj",
+      "sha256": "b3e103ba923e9a311eb6d79381ef939545a1e15ce639e87f339c6e50b39fae5c"
+    },
+    {
+      "path": "src/Sezika/Transformer.cs",
+      "sha256": "62f05771ca0aa9d1ca36f9bb79a9a906840f4ea71cbe31122a7c12c142b92919"
+    },
+    {
+      "path": "src/Sezika/TokenizerJson.cs",
+      "sha256": "c87840fcbc976e1409d18641f756643dd9b6fd1dcd329af0a750aad2605ae7ca"
+    },
+    {
+      "path": "tools/Sezika.OracleCapture/RecordingPipeline.cs",
+      "sha256": "08a700b3a60448d6a251302bc839d5755d2ef538c680829d9c56b1fd25da1c2a"
+    },
+    {
+      "path": "src/Sezika/Tokenizer.cs",
+      "sha256": "5dee338b8dfaf8cbcc5a52a0fae1806fbb7b2560be6a11eec35d5d0aa9e0166b"
+    },
+    {
+      "path": "src/Sezika/SimdOps.cs",
+      "sha256": "2adeecca13ce47158989eb7ec722cc1070c4d6d971fea55a92f2a1edde412436"
+    },
+    {
+      "path": "tools/Sezika.OracleCapture/Program.cs",
+      "sha256": "fd5f0775c9992eefb2c280e27248026547dab17b693fcdaa340363daf52acacf"
+    },
+    {
+      "path": "src/Sezika/Sezika.csproj",
+      "sha256": "dd6bbc36ced1d6210e1c53bf251c7b1bc7255a0b94fb74aa405f4fd466e7f407"
+    },
+    {
+      "path": "tools/Sezika.OracleCapture/Options.cs",
+      "sha256": "0dad4e20a9ed99e3bdbf78dee65f1ee35eae5290d808533d38f182d7ce1e88ad"
+    },
+    {
+      "path": "src/Sezika/QuantizedOps.cs",
+      "sha256": "d55fecf9a70923e08b223384fb585dcc4e6d38404cbb5097592cfd62be37a912"
+    },
+    {
+      "path": "tools/Sezika.OracleCapture/InputAdapter.cs",
+      "sha256": "e8df3b4303c704f13da2af248a6e721318ae43ffd859cf4ef6c69c8d61d76ea1"
+    },
+    {
+      "path": "src/Sezika/PromptSequenceBuilder.cs",
+      "sha256": "05af28be34e8284fee48c3f0221b8844ffbb8f993db7e5ee8d64ddcb928b0309"
+    },
+    {
+      "path": "tools/Sezika.OracleCapture/Contract.cs",
+      "sha256": "43b97b80884c0e75e607f1839597620d13c940a9d81bde0e035c9b1481df52ca"
+    },
+    {
+      "path": "src/Sezika/PromptSequence.cs",
+      "sha256": "ffaea65324a4261cb7d0970a26c0736961bc1a73cf24efafa237c251d27cfb4e"
+    },
+    {
+      "path": "src/Sezika/PromptJsonText.cs",
+      "sha256": "abdaa47e6e6a7acb32de81cfd48d2195bb2eb7e80ac0c244fc2e65c10de0cab6"
+    },
+    {
+      "path": "src/Sezika/PrimitiveAlignment.cs",
+      "sha256": "2e595d001fc445132fa8d95b54e84dbe7665502d3960200e8e28ca0ab7882364"
+    },
+    {
+      "path": "src/Sezika/ModernBertModelLoader.cs",
+      "sha256": "b5e45940540081486f52932c64a33918051f0a1b40f70ee8380fd49062ddfa5d"
+    },
+    {
+      "path": "src/Sezika/ModernBertDecisionEngine.cs",
+      "sha256": "8adb88426ac2c4bd844c27d127ae9b5b260d454a1812c00ab6a05ee6da091c5f"
+    },
+    {
+      "path": "src/Sezika/ModernBert.cs",
+      "sha256": "cec059614a9a934cba26e65dedce67be624526639431f74aae6633bd7fdde4be"
+    },
+    {
+      "path": "src/Sezika/ModelPackage.cs",
+      "sha256": "20b8c064a885f3eba90fae784d7fdae8a3b73151313662f40150e1be092c428d"
+    },
+    {
+      "path": "src/Sezika/ModelAssets.cs",
+      "sha256": "c8dd4c2d43d1e6611a4f5a07c30d16d956f6177e8bee2deb14c2ae7109faed43"
+    },
+    {
+      "path": "src/Sezika/MarkerSequenceBuilder.cs",
+      "sha256": "1ac7790567c9d2e5f0f34ee374bace0b3c660f9091317505903e97e55c60510d"
+    },
+    {
+      "path": "src/Sezika/IMarkerDecisionPipeline.cs",
+      "sha256": "fa5a4b863430db43509ae12f8c43f96e35b465ed733eaddc46576eab1736e69a"
+    },
+    {
+      "path": "src/Sezika/IDecisionEngine.cs",
+      "sha256": "d036309f01d3b0a7d25446fd321cfd6f2b35c44e1a85b9adbfa99de232918a87"
+    },
+    {
+      "path": "src/Sezika/HeadTraining.cs",
+      "sha256": "030790f9a6436651c10615193f453006893215d15e01731ef457fdba19e4a535"
+    },
+    {
+      "path": "src/Sezika/EncoderExecution.cs",
+      "sha256": "d9842d37fefa35d3359ed5cc4b410b63251abfe49abb03c927fff34e5284bff5"
+    },
+    {
+      "path": "src/Sezika/DemoModelFactory.cs",
+      "sha256": "acadfef3156478ee96a01c2e7337450540dfa5664c0804ea4362852d814c33b4"
+    },
+    {
+      "path": "src/Sezika/DecisionStatus.cs",
+      "sha256": "433f285d98da61b7e646ace5cf9b288fe858bd8464506c0b8df6fd19ba66ec59"
+    },
+    {
+      "path": "src/Sezika/DecisionScorer.cs",
+      "sha256": "dc0b17156992bf2f969cff1c37b82f458b690e8903f74f1b62c750d04e4cc907"
+    },
+    {
+      "path": "src/Sezika/DecisionResponse.cs",
+      "sha256": "05b07fc2eccafd7e14bf42661cda44a003650abfc32c99d4be151379e63a4bd0"
+    },
+    {
+      "path": "src/Sezika/DecisionRequestParser.cs",
+      "sha256": "2b76aa431b02018334edd147b5f979b84a297d0bda2f259db23389b4caec425c"
+    },
+    {
+      "path": "src/Sezika/DecisionRequest.cs",
+      "sha256": "39910d7dd6f8a44ac81ef2e09bd81a38a624af2fef914a1ead9b855e9723c1a4"
+    },
+    {
+      "path": "src/Sezika/DecisionModelRuntime.cs",
+      "sha256": "644aee59b82926b5c7a89ec0d97f6ad9af105d71e64cfe2745e0a02cd4d89018"
+    },
+    {
+      "path": "src/Sezika/DecisionModelAssetLoader.cs",
+      "sha256": "77ebfe1e1b4bf3dfd371c6a3336d151df5841236ddab26f813bb8e54b2373f6a"
+    },
+    {
+      "path": "src/Sezika/DecisionModel.cs",
+      "sha256": "2fd341a3d5c01c499c496b0e44a560a6a9d668c63f4c0bfb0b709ebc097c8352"
+    },
+    {
+      "path": "src/Sezika/DecisionMath.cs",
+      "sha256": "db926b3168ecdfb5414f5d96463f3ad9c336db7fc61a430e516630bb4644e8ca"
+    },
+    {
+      "path": "src/Sezika/DecisionLimits.cs",
+      "sha256": "ddac104470fcf389cadf6cbb52bda7735b1fd75cfc19b6a26c38dc9df3142f68"
+    },
+    {
+      "path": "src/Sezika/DecisionJsonContext.cs",
+      "sha256": "7b23a02fcaa745cb34fbd33b47da33e857e57f388966b12453586a63b9bbf841"
+    },
+    {
+      "path": "src/Sezika/DecisionHead.cs",
+      "sha256": "347bcde005ecefb189b99e1320f27a041fe019774c36fa179d442547c47c9836"
+    },
+    {
+      "path": "src/Sezika/DecisionException.cs",
+      "sha256": "88d07ec94da0b75cedb867ce574d08fc2bce7e343a47aadb515ec358d3aa5a4b"
+    },
+    {
+      "path": "src/Sezika/DecisionEngine.cs",
+      "sha256": "be14d0dc679b9581eacaea3aab4286547789768a5a79c1563a4ae78a5dd4bce7"
+    },
+    {
+      "path": "src/Sezika/CalibrationProfiles.cs",
+      "sha256": "352be8b5d581bac805455670ac9fd043c43133b39334f364b8cb3e3aea6187dc"
+    },
+    {
+      "path": "src/Sezika/Calibration.cs",
+      "sha256": "c3cd2323f0793758bed5e1794e80c4005508c526ee4d7f144b5fe3cbd889de0d"
+    },
+    {
+      "path": "src/Sezika/AssemblyInfo.cs",
+      "sha256": "471b50939a02fdd51cf506cacbeeb8a9b739ffce009dad2f8f94fa65dc0622c2"
+    },
+    {
+      "path": "tools/Sezika.OracleCompare/Contract.cs",
+      "sha256": "bddf89980b543042f735f75861a9ccc7f0ddf3c967a79a86359efed879904fd5"
+    },
+    {
+      "path": "tools/Sezika.OracleCompare/Sezika.OracleCompare.csproj",
+      "sha256": "0ef79f8f64adbf28e0f46bdf7f384d3c3d6ab3c14b4a8ad9354045fc21292839"
+    },
+    {
+      "path": "tools/Sezika.OracleCompare/Program.cs",
+      "sha256": "e3717a2a09fe62ba57c7f180ac8b3e0000a6a43d3717df198d026ed6904f3970"
+    },
+    {
+      "path": "src/Sezika.Cuda/Sezika.Cuda.csproj",
+      "sha256": "ee8fc3f74c7b7cd21995646046dfdb7511170ffa6ce7f9faf5d7eacf67d513c7"
+    },
+    {
+      "path": "src/Sezika.Cuda/CudaGemm.cs",
+      "sha256": "29030e0ff38c0649b547a5583854cdbde90f38cff9ad0d7186a716567b20d10b"
+    },
+    {
+      "path": "src/Sezika.Cuda/CudaModernBertEncoder.cs",
+      "sha256": "0278d245b936b1f1867c3666b4dbc68a5396bc9d4f65dad7aaa553a177d5c014"
+    },
+    {
+      "path": "src/Sezika.Cuda/CudaDecisionScorer.cs",
+      "sha256": "e36ae0bde044f478ea86bb330bef5f34ed385c81af805939db949f0f6d01803a"
+    },
+    {
+      "path": "src/Sezika.Cuda/CudaHandles.cs",
+      "sha256": "da2add853ad0bdbf38c71f198c878037bd43b1fd5dfeadc530b94f55d7b1c07e"
+    },
+    {
+      "path": "src/Sezika.Cuda/CudaDiagnostics.cs",
+      "sha256": "84bf71ad4d6c50e116f897d1606b1880abf159899bc9ab26d78b212849c32c1c"
+    },
+    {
+      "path": "src/Sezika.Cuda/CudaException.cs",
+      "sha256": "639d86a4e51c82ed80351dba1847e284147f3f9118a374d3ced510a744547a0f"
+    },
+    {
+      "path": "src/Sezika.Cuda/CudaKernels.cs",
+      "sha256": "41ad8e95d830cd60ff6608a5aea7418c12d2cfeaf162446ca747c649fe1bc80f"
+    },
+    {
+      "path": "src/Sezika.Cuda/CudaArrayView.cs",
+      "sha256": "d2035fc97459d140533c59d3efa2be182129640c1c50cdf210e1d05fd83c0381"
+    },
+    {
+      "path": "src/Sezika.Cuda/CudaDecisionPipeline.cs",
+      "sha256": "123109277a97cddb268ba427de87269d2a13e34080d221e52540ba2fd4ea8a66"
+    },
+    {
+      "path": "src/Sezika.Cuda/CudaPtx.cs",
+      "sha256": "9f672b1947d36090e049f63081dbc11c9ec019b9a56c557cbe7119466ec040c1"
+    },
+    {
+      "path": "src/Sezika.Cuda/CudaNative.cs",
+      "sha256": "b9b294a6f5a7087bc9c2f97bfbd9a1d2093ea7bcc158ed4ba5b3208796c1d09b"
+    },
+    {
+      "path": "src/Sezika.Cuda/CudaVectorAdd.cs",
+      "sha256": "28bc64a69a01faa598e10cc408f9e0cd078e91213819c5a2c9d1c950dbd985b4"
+    },
+    {
+      "path": "src/Sezika.Cuda/CudaDevice.cs",
+      "sha256": "9fd7f8180eb4bcd9acbb0b29dd2516b9e642412eb531e9edb3f67fd3745ecf8a"
+    },
+    {
+      "path": "src/Sezika.Cuda/Generated/VectorAdd.ptx",
+      "sha256": "08458319f80b0a61105077e12dc4d616249f49a26a2e5bd871288a6da5ee6659"
+    },
+    {
+      "path": "src/Sezika.Cuda/Generated/TypeEmbeddingAdd.ptx",
+      "sha256": "5e651dfc2f4ba7127a942a21e5fae775379723f5977f074c46a1f8cf018e6e3f"
+    },
+    {
+      "path": "src/Sezika.Cuda/Generated/SplitQkv.ptx",
+      "sha256": "09a72c32cc0b17539791923abb70ba47c9db8ea14aa4f2d4bf0e80dbb9997d5c"
+    },
+    {
+      "path": "src/Sezika.Cuda/Generated/Softmax.ptx",
+      "sha256": "8867084a6c9f17c211565e7abe7ba261c32c9cbfc22e41e787a154d2d949dff9"
+    },
+    {
+      "path": "src/Sezika.Cuda/Generated/RowBias.ptx",
+      "sha256": "9fe276e194bac9075708d3610d68847942627000bf5cda2578c9965a549070bc"
+    },
+    {
+      "path": "src/Sezika.Cuda/Generated/Rope.ptx",
+      "sha256": "935fb2aca76d6ece01abf38d323993adc59a1f4fd96aad7dac65b96514334ddc"
+    },
+    {
+      "path": "src/Sezika.Cuda/Generated/Norm.ptx",
+      "sha256": "2244da7cfb89de25628c1824c4c0f7b5d40f53139ffa5355b444cbf83daccbb0"
+    },
+    {
+      "path": "src/Sezika.Cuda/Generated/Linear.ptx",
+      "sha256": "a0f62382b0eb1d90046f3821c4a32bb59625d8cc82a533b1e95697e551be40b8"
+    },
+    {
+      "path": "src/Sezika.Cuda/Generated/kernel-manifest.json",
+      "sha256": "3a8f7e5102eeee814f1cacfb301b6147722b2c888d2fa956aef5f24adf69dfe3"
+    },
+    {
+      "path": "src/Sezika.Cuda/Generated/GeneratedKernelArtifacts.g.cs",
+      "sha256": "5494409cd0704c52db187028f082b3c93fdc26c1df77c4fa40d5c7f649b6bcfe"
+    },
+    {
+      "path": "src/Sezika.Cuda/Generated/GatedGelu.ptx",
+      "sha256": "fbe1f44aeab289c15252016e1c1c235dadd92597aa6c0f568a5f99003077b828"
+    },
+    {
+      "path": "src/Sezika.Cuda/Generated/Embedding.ptx",
+      "sha256": "2aaee7fa710bfb26e47cd8614747d85fd4f39161eec91b52e8f7461a013644b6"
+    },
+    {
+      "path": "src/Sezika.Cuda/Generated/AttentionScores.ptx",
+      "sha256": "df284bde766d1a6fb44801cc5bfeee3605d9c1041bd57b9a69d2f731ef797e4c"
+    },
+    {
+      "path": "src/Sezika.Cuda/Generated/AttentionContext.ptx",
+      "sha256": "0bb4538790872f9afbd487a0add2cf9ed99a553901cc1b95c72c9484889a4b15"
+    },
+    {
+      "path": "src/Sezika.Cuda/Generated/Add.ptx",
+      "sha256": "22ad13dfe2fee0a449c2e58b6c8eda524cfbd87c29116c81dd7fea36ead3a8a2"
+    },
+    {
+      "path": "src/Sezika.Cuda/Generated/Activate.ptx",
+      "sha256": "bcde6a84e77d7ebf8f88b93e7a9fbb3880d5270d1bd2c1975fedb59ad13aa4f8"
+    },
+    {
+      "path": "Directory.Build.props",
+      "sha256": "d415e4369b20fc4dc6696da7e9741dadb03a89357a6ced7506846312c90b5ec7"
+    },
+    {
+      "path": "global.json",
+      "sha256": "20c93ca7812d0a9825eef71217156f95ab2f4fe5aadfeb22ebc1c24b630018d3"
+    },
+    {
+      "path": "tools/Invoke-BoundedProcess.ps1",
+      "sha256": "d2f2791c82b1378fb09cd331034390b7aa79b4b1bcb816ea006266cc4ca81019"
+    }
+  ]
+}

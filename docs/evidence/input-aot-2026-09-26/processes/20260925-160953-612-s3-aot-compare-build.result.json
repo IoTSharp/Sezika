@@ -1,0 +1,55 @@
+{
+  "Status": "Succeeded",
+  "Pid": 17736,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 7.786,
+  "TimeoutSeconds": 180,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "tools/Sezika.OracleCompare/Sezika.OracleCompare.csproj",
+    "-c",
+    "Release",
+    "--artifacts-path",
+    ".artifacts/s3-aot-20260926/build-compare",
+    "--nologo",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:09:54.2372441Z",
+  "ParentPid": 66036,
+  "Launcher": {
+    "Pid": 66036,
+    "Started": "2026-09-26T00:09:53.164758+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build','tools/Sezika.OracleCompare/Sezika.OracleCompare.csproj','-c','Release','--artifacts-path','.artifacts/s3-aot-20260926/build-compare','--nologo','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false') -TimeoutSeconds 180 -LogName 's3-aot-compare-build'\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('.artifacts/s3-aot-20260926/build-compare/bin/Sezika.OracleCompare/release/Sezika.OracleCompare.dll','tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json','.artifacts/s3-aot-20260926/win-simd-smoke/capture.json','tests/fixtures/laya-oracle/contract.v1.json','tests/fixtures/laya-oracle/cases.v1.json','.artifacts/s3-aot-20260926/win-simd-smoke-comparison.json','30','choice-en-short') -TimeoutSeconds 45 -LogName 's3-aot-win-simd-smoke-compare'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160953-612-s3-aot-compare-build.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-160953-612-s3-aot-compare-build.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 17736,
+      "CreationDate": "2026-09-26T00:09:54.237244+08:00",
+      "Started": "2026-09-25T16:09:54.237244Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.OracleCompare/Sezika.OracleCompare.csproj -c Release --artifacts-path .artifacts/s3-aot-20260926/build-compare --nologo --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+      "ParentPid": 66036,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 50000,
+      "CreationDate": "2026-09-26T00:09:54.281071+08:00",
+      "Started": "2026-09-25T16:09:54.281071Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 17736,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

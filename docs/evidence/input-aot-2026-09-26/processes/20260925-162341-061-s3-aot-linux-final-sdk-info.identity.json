@@ -1,0 +1,34 @@
+{
+  "Pid": 75144,
+  "Started": "2026-09-25T16:23:42.1230021Z",
+  "CommandLine": "\"C:\\Windows\\system32\\wsl.exe\" -d Ubuntu --cd /mnt/d/source/Sezika --exec /usr/bin/timeout --signal=TERM --kill-after=10s 40s /usr/bin/python3 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py 25 /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-sdk-info-process.json /mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/dotnet --info",
+  "ParentPid": 70440,
+  "ObservedParentPid": 70440,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 70440,
+    "Started": "2026-09-26T00:23:40.499008+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Windows\\system32\\wsl.exe' -ArgumentList @('-d','Ubuntu','--cd','/mnt/d/source/Sezika','--exec','/usr/bin/timeout','--signal=TERM','--kill-after=10s','40s','/usr/bin/python3','/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py','25','/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-sdk-info-process.json','/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/dotnet','--info') -TimeoutSeconds 50 -LogName 's3-aot-linux-final-sdk-info'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 50,
+  "FilePath": "C:\\Windows\\system32\\wsl.exe",
+  "Arguments": [
+    "-d",
+    "Ubuntu",
+    "--cd",
+    "/mnt/d/source/Sezika",
+    "--exec",
+    "/usr/bin/timeout",
+    "--signal=TERM",
+    "--kill-after=10s",
+    "40s",
+    "/usr/bin/python3",
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-process.py",
+    "25",
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-sdk-info-process.json",
+    "/mnt/d/source/Sezika/.artifacts/s3-aot-20260926/linux-dotnet/dotnet",
+    "--info"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

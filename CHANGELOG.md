@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- 完成 S3-10 修正输入路径的 win-x64 / Ubuntu WSL2 linux-x64 Native AOT 长输入回归：两 RID 的 SIMD/CUDA 各完成46条捕获，38回答+4非法拒绝通过冻结合同；scalar各3条960/1024-token长输入通过；两个原生输入测试程序各138项检查通过，四次最终AOT发布无编译/trim警告。新增 `OracleCapture --require-aot` 与运行时身份记录，修复中间托管DLL继承禁用动态代码开关后被误计为AOT的门槛漏洞；两RID负向检查均exit2且未创建输出目录。归档程序/源文件哈希、比较报告和进程清理证据，保留4条候选数量合同差异；见[完整证据](docs/evidence/input-aot-2026-09-26.md)。本项不增加语言质量、校准或性能结论。
+
 - 完成 S3-08 固定 Laya 0.3.20 的独立 oracle：隔离环境和现有权重先完成 1 条 smoke，再捕获 46 条真实参考（42 answered、4非法拒绝）。新增 `OracleCapture` 执行 C# 生产引擎，`OracleCompare` 在原文件身份/哈希校验后显式比较子集，保留覆盖率和完整合同差异；负向回归验证 token 变更和无效选择会被拒绝。
 - 实现 S3-09/S3-10 共享 `PromptSequenceBuilder`：题型前缀、原始候选顺序、Python JSON 文本语义、mask 清理、Boolean false/true 映射与默认描述；256 前缀和 1024 总长度分离，默认 strict，显式 laya_compatible 截断并返回轻量诊断。tokenizer 支持取消，移除 bytes/4 估算 token 的提前拒绝。
 - SIMD/CUDA 分别完成 46 条真实捕获，其中38条数值输出与4条非法拒绝通过冻结参考合同；scalar完成18条三题型×中英×短中长核心矩阵。Choice 1/33、Score 1/11 四条数量限制差异单列，完整上游合同未通过。最终 solution build 零警告/错误，prompt/runtime、资源、CUDA 诊断分别137/35/43项通过；见[实测证据](docs/evidence/laya-parity-2026-09-25.md)。本轮未训练、下载权重或发布，修正路径的AOT、质量与性能仍须独立验收。
