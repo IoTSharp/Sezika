@@ -32,3 +32,9 @@
 - NVIDIA CUDA Driver 由系统显卡驱动提供，作为运行时设备接口，不由本仓库重新授权或默认打包。已记录 RTX 4070 Laptop、driver 596.08、PTX 7.0 / CC 8.9 证据。
 
 后续新增代码依赖、转换工具、权重、数据或校准集时，在本文件与对应 manifest/model card 中记录具体版本、来源、许可与分发条件。
+
+## 离线 PAWS 评测数据准备
+
+- [DuckDB.NET.Data.Full 1.5.3](https://github.com/Giorgi/DuckDB.NET) 及其依赖 `DuckDB.NET.Bindings.Full 1.5.3` 的 NuGet 元数据均声明 MIT；仅 `tools/Sezika.DatasetTool` 离线读取固定 Parquet，不进入模型推理、AOT 或 NuGet 运行时包。若分发该数据工具及依赖，仍须随包保留相应许可文本。
+- [Google PAWS](https://huggingface.co/datasets/google-research-datasets/paws) 的人标 test 数据，固定提交与文件 SHA-256 见 [质量证据](docs/evidence/quality-2026-09-25.md)；数据卡注明可免费用于任何用途并要求标注来源。原始数据和由其构造的评测 JSONL 仅保留在本机忽略目录，未随仓库分发。
+- Nimble 的固定 PAWS ID 清单及 324 条合成题来自提交 `62076b4f2d365b5879dafcf7f6dd072a1fe76df7`。ID 清单只用于选择人标测试行；合成题仅本地评测，未用作训练且未随仓库分发。

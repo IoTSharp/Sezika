@@ -38,18 +38,28 @@
 | S3-03 | C 推理 | ✅ 已完成 | 与固定参考实现逐 primitive 对齐 logits、概率、legend 和 abstention | S3-01,S3-02 | `PrimitiveAlignment`、4 个中英文固定输入 fixture、逐键数值/legend/abstention 对齐测试；真实模型质量另行验收 |
 | S3-04 | C 资源 | ✅ 已完成 | 完成 session busy、micro-batch、取消、deadline、unload 和内存上限矩阵 | S3-01,S3-02 | session gate、每问题 bounded micro-batch、workspace/resident budget、取消/deadline/unload 测试证据 |
 | S3-05 | C 独立使用 | ✅ 已完成 | 提供独立模型 session 与 inspect/predict CLI，读取 JSON 并输出真实 typed decision | S3-01,S3-02,S3-04 | `DecisionModelRuntime`、CPU CLI、中英文三种问题的真实模型文件/stdin 推理、并发卸载回归和结构化错误；[运行证据](docs/standalone-cli-smoke.md)，正式发布归 S6-02 |
+| S3-06 | C 数值诊断 | 🚧 进行中 | 固定权重与提示，对短/中/长可处理输入核对 CPU SIMD 和 CUDA marker logits | S3-03,S5-02 | 已完成 107/222-token 本机三后端单条核对，见[222-token 证据](docs/evidence/paws-long-parity-p0-2026-09-25.json)；更多长度及参考实现长输入 oracle 待验收 |
 | S4-01 | D 质量 | ✅ 已完成 | 提供冻结 encoder head trainer、温度拟合与 accuracy/F1/NLL/Brier/ECE 评估器 | S3-01 | 可复现 trainer/metrics 输入输出 |
 | S4-02 | D 质量 | ✅ 已完成 | 建立许可明确、按语言/领域隔离的中英测试与校准数据集 | S4-01 | 24 条原创中英 fixture、数据卡、SHA-256 manifest、split/entity/fingerprint 隔离与有界验证脚本；fixture 不代表质量分数 |
 | S4-03 | D 质量 | ✅ 已完成 | 绑定模型/tokenizer/prompt/primitive/split 的校准 profile 并冻结门槛 | S4-02 | 12 个严格 hash 绑定 profile、冻结质量门槛和安全加载器；profile 保持 `pending_measurement`，真实质量另行验收 |
+| S4-04 | D 质量 | 🚧 进行中 | 以冻结竞品公开题集建立真实模型基线、精确 token 覆盖率和错误分类 | S3-05,S4-03 | Nimble 324 与 PAWS 250 的复评、混淆矩阵/AUROC、精确长度和失败分类见[质量证据](docs/evidence/quality-2026-09-25.md)；Choice/Score、中文及其他语言外部质量仍待测 |
+| S4-05 | D 数据 | ⏳ 计划中 | 审核公开训练数据、构建无泄漏的多语言/反事实数据流水线 | S4-04 | 每来源许可与用途清单、原始版本/hash、家庭级 split、人工复核及污染检查；商业与开源可用性分别标注 |
+| S4-06 | D 训练 | ⏳ 计划中 | 建立开源与商业两条 C# 训练/校准路线 | S4-04,S4-05 | 基线、冻结 encoder/完整 head、LoRA/蒸馏分阶段消融；独立权重、数据卡、模型卡、校准 profile 与固定测试集 |
 | S5-01 | E GPU/AOT | ✅ 已完成 | 生成带 hash/ABI 的 C# kernel PTX 与静态 Driver loader | S0-02 | 14 个 kernel manifest/PTX 和生成复现记录 |
 | S5-02 | E GPU/AOT | ✅ 已完成 | 完成 resident CUDA encoder/head 与 CPU logits 对齐 | S2-01,S5-01 | RTX 4070 实卡 head 误差报告 |
 | S5-03 | E GPU/AOT | ✅ 已完成 | 完成 tiny CPU/CUDA win-x64 与 CPU linux-x64 Native AOT smoke | S5-01 | 发布物、运行输出、依赖图 |
 | S5-04 | E 性能 | ✅ 已完成 | 建立 scalar/SIMD/量化 CPU 与 CUDA 冷/热、H2D、kernel、端到端基准 | S2-03,S5-02 | Windows 四后端、固定模型/hash/硬件/线程、1/8/32 问各 5 样本，冷启动/重载、p50/p95/p99、吞吐/分配/RSS/显存及独立 CUDA 分项；[实测与限制](docs/s5-performance-aot.md) |
 | S5-05 | E 性能 | ✅ 已完成 | 完成真实模型 CPU/CUDA AOT、多 RID、显存/内存回收和失败诊断 | S3-04,S5-02,S5-03 | win-x64 / Ubuntu WSL2 linux-x64 四后端真实模型 AOT，预取消/执行中取消/失败恢复、两轮 unload 和对象回收；[8 份报告矩阵](docs/evidence/s5-2026-09-24/summary.json) |
+| S5-06 | E 性能 | ⏳ 计划中 | 在固定质量与数值门槛下优化 CPU/CUDA 全推理和多问题成本 | S4-04,S5-05 | 真实短/中/长输入的算子画像；CPU blocked GEMM/内存复用和 GPU tiled GEMM/融合/有界批处理逐项消融；端到端 p50/p95、吞吐、内存与 AOT 回归 |
 | S6-01 | F 发布 | ✅ 已完成 | 生成带 README、许可证、NOTICE 和第三方声明的开发 NuGet 包 | S0-02 | `.artifacts/packages/Sezika.0.1.0-dev.nupkg` |
 | S6-02 | F 发布 | ⏳ 计划中 | 完成正式版本、CLI、模型卡/数据卡、签名、NuGet 发布和示例 | S4-03,S5-05 | 发布清单、签名校验、跨平台包与文档 |
+| S6-03 | F 集成 | ⏳ 计划中 | 为 IoTSharp 组织项目提供进程内适配和独立服务试点 | S4-04,S5-06 | 保持核心无业务执行器；Tomur/IoTSharp/SonnetDB 等试点合同、版本化 HTTP API、鉴权/限流/租户预算、负载与失败回退证据 |
 
 S5-04、S5-05 已在固定硬件与两个 RID 的记录范围内闭环；Linux 使用 Ubuntu WSL2 smoke，未测量裸机 Linux 性能。S6-02 正式发布仍未完成。S4-03 的 profile 仍保持 `pending_measurement`，不把 fixture、数值对齐或性能基准写成多语言质量已达标。
+
+新增的质量、训练、性能和生态研究入口见 [下一阶段研究与执行方案](docs/next-stage-research-2026-09-25.md)。S4-04 已有首轮真实评测但未完成；S4-05 至 S6-03 的新增事项仍是计划。任何竞品分数、论文加速比或云端算力规格均不能替代本项目实测。
+
+本轮 P0 顺序：先完成 S3-06 与 S4-04 的数值核对、精确长度分布和错误统计；仅在独立开发集上评估提示、阈值或训练策略。随后按 S4-05 数据许可/隔离、S4-06 当前权重的真实 head 训练和独立校准、S5-06 CPU/CUDA 画像与优化逐项验收。当前 P0 不包含训练、权重更新、上调 head 长度或准确率提升声明。
 
 ## 0. 研究与契约
 

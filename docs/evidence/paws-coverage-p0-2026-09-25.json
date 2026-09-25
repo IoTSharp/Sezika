@@ -1,0 +1,2529 @@
+{
+  "ModelId": "convaiinnovations/laya-multilingual",
+  "ModelRevision": "052592a15d198d9ad47da779604259b10b47b7aa",
+  "TokenizerSha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+  "DatasetSha256": "c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3",
+  "Processed": 250,
+  "HeadMaxTokens": 256,
+  "EncoderMaxTokens": 1024,
+  "DiagnosticTokenCap": 32768,
+  "TokenEligible": 249,
+  "HeadFits": 249,
+  "EncoderFits": 250,
+  "Unmeasured": 0,
+  "ByType": [
+    {
+      "Type": "boolean",
+      "Total": 250,
+      "TokenEligible": 249,
+      "HeadFits": 249,
+      "EncoderFits": 250
+    }
+  ],
+  "ByFailureCode": {
+    "decision_token_limit_exceeded": 1,
+    "eligible": 249
+  },
+  "Rows": [
+    {
+      "Id": "paws-1",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 107,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1032",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 121,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1079",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 113,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1112",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 96,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1175",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 153,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1187",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 74,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1231",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 122,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1309",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 89,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1320",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 107,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1338",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 150,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1360",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 98,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1378",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 112,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1388",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 116,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1407",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 108,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1421",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 138,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1449",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 79,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1460",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 100,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1503",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 95,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1522",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 83,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1530",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 97,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1539",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 116,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-16",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 137,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1625",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 143,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1694",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 108,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1708",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 85,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1714",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 114,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1716",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 89,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-174",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 90,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1746",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 78,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-175",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 195,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1777",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 79,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-180",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 120,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1889",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 89,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-190",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 108,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-1951",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 127,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2019",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 92,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2041",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 100,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2067",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 108,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2086",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 87,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2087",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 98,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2094",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 102,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2148",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 102,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2171",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 121,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2218",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 96,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2224",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 106,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2237",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 123,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2247",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 88,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2418",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 102,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2464",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 105,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2478",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 126,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2497",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 126,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2520",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 99,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2540",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 117,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2547",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 106,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2576",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 106,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2585",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 88,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2634",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 111,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2717",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 128,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2730",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 213,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2750",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 144,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2753",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 99,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2791",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 109,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2805",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 119,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2849",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 144,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2850",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 136,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2864",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 138,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2882",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 99,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2897",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 166,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2903",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 96,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2918",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 87,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2938",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 99,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2988",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 112,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2998",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 168,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-2999",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 90,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3005",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 102,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3030",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 142,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3059",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 90,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3119",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 85,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3151",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 104,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3167",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 87,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3173",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 142,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3220",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 110,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3222",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 87,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3226",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 141,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3234",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 113,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3260",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 214,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3312",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 85,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3324",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 77,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3339",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 81,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3409",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 74,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3446",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 90,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3447",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 129,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3448",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 90,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3468",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 81,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3514",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 119,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-356",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 96,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3586",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 95,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3603",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 136,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3671",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 90,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3711",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 148,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-373",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 104,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3745",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 125,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3778",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 260,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "paws-3792",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 107,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3800",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 122,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3814",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 79,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3861",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 140,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3892",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 108,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3932",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 91,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-394",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 103,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-3959",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 122,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4023",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 78,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4045",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 93,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4093",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 147,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4139",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 98,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-414",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 87,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4155",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 73,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4180",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 119,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4207",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 100,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4240",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 87,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4266",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 106,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4305",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 82,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4329",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 85,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-434",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 103,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4344",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 217,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4358",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 94,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4376",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 98,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4419",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 103,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4422",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 80,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4433",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 110,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4525",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 68,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4642",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 102,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-466",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 100,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4763",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 82,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4802",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 165,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4811",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 148,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4825",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 155,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4850",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 101,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4886",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 96,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4915",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 108,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4923",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 113,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4932",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 90,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4934",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 103,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-4957",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 107,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5019",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 75,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5054",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 81,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5077",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 98,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5100",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 84,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5165",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 108,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5168",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 88,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5259",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 73,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5298",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 163,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5307",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 103,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5334",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 106,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5344",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 113,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5356",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 78,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5358",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 107,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5404",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 99,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5516",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 103,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5585",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 110,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5639",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 86,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-565",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 77,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5657",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 119,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-567",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 83,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5773",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 78,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5790",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 98,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5822",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 90,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5835",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 81,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5841",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 104,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5857",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 98,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5892",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 83,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5906",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 90,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5945",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 107,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-5979",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 111,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6000",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 99,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6005",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 86,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6009",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 73,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6017",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 101,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-602",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 90,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6055",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 100,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6080",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 103,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6199",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 112,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6323",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 98,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6375",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 103,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6391",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 125,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6415",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 115,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6421",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 110,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6477",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 105,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6478",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 114,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6541",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 93,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6579",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 86,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-658",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 97,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6707",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 110,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6715",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 97,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6742",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 111,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6788",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 109,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6835",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 104,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6839",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 80,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6892",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 84,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6920",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 106,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6948",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 106,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6968",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 93,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-6985",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 136,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7030",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 102,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7043",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 149,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7081",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 121,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7085",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 97,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7098",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 155,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7102",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 121,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7103",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 133,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7120",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 99,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7137",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 100,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7145",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 76,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7187",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 96,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7210",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 87,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7227",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 83,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7228",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 113,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-723",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 82,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7253",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 79,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7261",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 82,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-731",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 117,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7341",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 129,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7413",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 107,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7415",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 73,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7483",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 94,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7511",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 101,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7540",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 92,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7541",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 112,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7619",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 92,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7631",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 143,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7633",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 94,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7704",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 75,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7707",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 74,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7719",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 103,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7731",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 127,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7771",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 120,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7777",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 101,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7877",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 118,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7893",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 123,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7929",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 92,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-796",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 121,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7966",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 78,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7967",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 117,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-7995",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 222,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-870",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 93,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-958",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 122,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-964",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 98,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-966",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 89,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-969",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 104,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "paws-974",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 97,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    }
+  ]
+}

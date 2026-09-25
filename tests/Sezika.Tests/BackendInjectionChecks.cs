@@ -61,6 +61,7 @@ public static class BackendInjectionChecks
             CheckThrowingDispose(tokenizerPath, request, check, deadline.Token);
             CheckConstructorRejection(tokenizerPath, check, deadline.Token, throwOnDispose: false);
             CheckConstructorRejection(tokenizerPath, check, deadline.Token, throwOnDispose: true);
+            CheckTokenBoundary(tokenizerPath, check, deadline.Token);
         }
         finally
         {
@@ -124,6 +125,70 @@ public static class BackendInjectionChecks
         {
             model.Dispose();
         }
+    }
+
+    private static void CheckTokenBoundary(string tokenizerPath, Action<bool, string> check, CancellationToken cancellationToken)
+    {
+        var tokenizer = new TokenizerJson(tokenizerPath, cancellationToken);
+        var first = BoundaryRequest(1);
+        var question = (BooleanQuestion)first.Questions["decision"];
+        var criteria = new[] { question.Criteria!.WhenTrue, question.Criteria.WhenFalse };
+        var baseLength = MarkerSequenceBuilder.Build(tokenizer, first.State, question.Instructions, criteria,
+            512, cancellationToken).Tokens.Length;
+        var stateLength = 257 - baseLength;
+        if (stateLength is < 1 or > 256) throw new InvalidOperationException("Unexpected fixture token length.");
+        var atLimit = BoundaryRequest(stateLength);
+        var oneOver = BoundaryRequest(stateLength + 1);
+        var twoOver = BoundaryRequest(stateLength + 2);
+        int Length(DecisionRequest request) => MarkerSequenceBuilder.Build(tokenizer, request.State,
+            request.Questions["decision"].Instructions, criteria, 512, cancellationToken).Tokens.Length;
+        check(Length(atLimit) == 256 && Length(oneOver) == 257 && Length(twoOver) == 258,
+            "shared marker sequence measures exact 256/257/258 token boundary");
+
+        var model = Package(tokenizerPath, cancellationToken);
+        var pipeline = new FixturePipeline();
+        using var engine = new ModernBertDecisionEngine(model, pipeline, "fixture-token-boundary");
+        var response = engine.Evaluate(atLimit, cancellationToken);
+        check(response.Usage?.TokenCount == 256 && pipeline.Calls.Count == 1,
+            "production engine accepts exactly 256 marker tokens");
+        try
+        {
+            engine.Evaluate(oneOver, cancellationToken);
+            throw new InvalidOperationException("257-token fixture was accepted.");
+        }
+        catch (DecisionException exception) when (exception.Code == "decision_token_budget_exceeded")
+        {
+            check(true, "257-token final EOS reports the production budget code");
+        }
+        try
+        {
+            engine.Evaluate(twoOver, cancellationToken);
+            throw new InvalidOperationException("258-token fixture was accepted.");
+        }
+        catch (DecisionException exception) when (exception.Code == "decision_token_limit_exceeded")
+        {
+            check(pipeline.Calls.Count == 1, "258-token tokenizer limit rejects before backend execution");
+        }
+    }
+
+    private static DecisionRequest BoundaryRequest(int stateLength)
+    {
+        using var state = JsonDocument.Parse($"{{\"s\":\"{new string('a', stateLength)}\"}}");
+        using var instruction = JsonDocument.Parse("\"q\"");
+        using var a = JsonDocument.Parse("\"a\"");
+        using var b = JsonDocument.Parse("\"b\"");
+        return new DecisionRequest
+        {
+            Model = "fixture-backend-injection", State = state.RootElement.Clone(),
+            Questions = new Dictionary<string, Question>(StringComparer.Ordinal)
+            {
+                ["decision"] = new BooleanQuestion
+                {
+                    Instructions = instruction.RootElement.Clone(),
+                    Criteria = new BooleanCriteria { WhenTrue = a.RootElement.Clone(), WhenFalse = b.RootElement.Clone() },
+                },
+            },
+        };
     }
 
     private static bool MatchesPrompt(Call call, TokenizerJson tokenizer, string first, string second)

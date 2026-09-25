@@ -170,7 +170,9 @@ public sealed class ModernBertDecisionEngine : IDecisionEngine, IDisposable
             _ => throw new DecisionException("decision_criteria_required", "Boolean criteria are required."),
         };
 
-        var (tokens, markers) = BuildMarkerSequence(state, question.Instructions, criteria.Select(item => item.Value).ToArray(), cancellationToken);
+        var tokenBudget = Math.Min(_limits.MaxTokensPerQuestion, Math.Min(_model.Encoder.Config.MaxTokens, _model.HeadMaxTokens));
+        var (tokens, markers) = MarkerSequenceBuilder.Build(_model.Tokenizer, state, question.Instructions,
+            criteria.Select(item => item.Value).ToArray(), tokenBudget, cancellationToken);
         tokenCount = checked(tokenCount + tokens.Length);
         if (tokenCount > _budget.MaxTokens)
             throw new DecisionException("decision_token_budget_exceeded", "The request exceeds the total token budget.");
@@ -219,41 +221,6 @@ public sealed class ModernBertDecisionEngine : IDecisionEngine, IDisposable
             _ => throw new DecisionException("decision_question_type_unsupported", "Question type is unsupported."),
         };
     }
-
-    private (int[] Tokens, int[] Markers) BuildMarkerSequence(
-        JsonElement state,
-        JsonElement instructions,
-        JsonElement[] criteria,
-        CancellationToken cancellationToken)
-    {
-        var tokenBudget = Math.Min(_limits.MaxTokensPerQuestion, Math.Min(_model.Encoder.Config.MaxTokens, _model.HeadMaxTokens));
-        var tokens = new List<int>(tokenBudget) { _model.Tokenizer.BosId };
-        AddText(tokens, $"type question: {ToPromptText(instructions)}", cancellationToken);
-        tokens.Add(_model.Tokenizer.EosId);
-        var markers = new int[criteria.Length];
-        for (var index = 0; index < criteria.Length; index++)
-        {
-            markers[index] = tokens.Count;
-            tokens.Add(_model.Tokenizer.MaskId);
-            AddText(tokens, ToPromptText(criteria[index]), cancellationToken);
-        }
-        tokens.Add(_model.Tokenizer.EosId);
-        AddText(tokens, ToPromptText(state), cancellationToken);
-        tokens.Add(_model.Tokenizer.EosId);
-        if (tokens.Count > tokenBudget)
-            throw new DecisionException("decision_token_budget_exceeded", $"The encoded question exceeds the model head token budget ({tokenBudget}).");
-        return (tokens.ToArray(), markers);
-    }
-
-    private void AddText(List<int> tokens, string text, CancellationToken cancellationToken)
-    {
-        cancellationToken.ThrowIfCancellationRequested();
-        var remaining = Math.Min(_limits.MaxTokensPerQuestion, Math.Min(_model.Encoder.Config.MaxTokens, _model.HeadMaxTokens)) - tokens.Count;
-        if (remaining < 2) throw new DecisionException("decision_token_budget_exceeded", "The encoded question exceeds the token budget.");
-        tokens.AddRange(_model.Tokenizer.Encode(text, remaining, addSpecialTokens: false));
-    }
-
-    private static string ToPromptText(JsonElement value) => value.ValueKind == JsonValueKind.String ? value.GetString() ?? string.Empty : value.GetRawText();
 
     private static long EstimateWorkspaceBytes(int tokenCount, int hiddenSize, int candidateCount)
     {

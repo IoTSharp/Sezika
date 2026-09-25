@@ -118,14 +118,16 @@ static async Task DownloadOneAsync(string url, string destination, long expected
                 var end = Math.Min(expectedSize - 1, existing + chunkBytes - 1);
                 using var request = new HttpRequestMessage(HttpMethod.Get, url);
                 request.Headers.Range = new RangeHeaderValue(existing, end);
-                using var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
+                using var requestDeadline = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+                requestDeadline.CancelAfter(TimeSpan.FromSeconds(attempt == 1 ? 15 : 120));
+                using var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, requestDeadline.Token);
                 response.EnsureSuccessStatusCode();
                 if (response.StatusCode != HttpStatusCode.PartialContent)
                 {
                     if (existing != 0) throw new InvalidDataException("server ignored bounded Range request");
                     if (response.Content.Headers.ContentLength is not null && response.Content.Headers.ContentLength > expectedSize) throw new InvalidDataException("Downloaded file exceeded pinned size");
                 }
-                await using var source = await response.Content.ReadAsStreamAsync(cancellationToken);
+                await using var source = await response.Content.ReadAsStreamAsync(requestDeadline.Token);
                 var remaining = end - existing + 1;
                 var buffer = ArrayPool<byte>.Shared.Rent(1024 * 1024);
                 try
@@ -133,19 +135,22 @@ static async Task DownloadOneAsync(string url, string destination, long expected
                     while (remaining > 0)
                     {
                         cancellationToken.ThrowIfCancellationRequested();
-                        var count = await source.ReadAsync(buffer.AsMemory(0, (int)Math.Min(buffer.Length, remaining)), cancellationToken);
+                        var count = await source.ReadAsync(buffer.AsMemory(0, (int)Math.Min(buffer.Length, remaining)), requestDeadline.Token);
                         if (count == 0) throw new EndOfStreamException("bounded range ended early");
-                        await target.WriteAsync(buffer.AsMemory(0, count), cancellationToken);
+                        await target.WriteAsync(buffer.AsMemory(0, count), requestDeadline.Token);
                         existing += count;
                         remaining -= count;
                     }
                 }
                 finally { ArrayPool<byte>.Shared.Return(buffer); }
+                Console.WriteLine($"Downloaded {Path.GetFileName(destination)}: {existing:N0}/{expectedSize:N0} bytes");
             }
-            if (new FileInfo(destination).Length != expectedSize) throw new InvalidDataException($"Unexpected size for {destination}");
+            await target.FlushAsync(cancellationToken);
+            if (target.Length != expectedSize) throw new InvalidDataException($"Unexpected size for {destination}");
             return;
         }
-        catch (Exception exception) when (exception is HttpRequestException or IOException or InvalidDataException)
+        catch (Exception exception) when (exception is HttpRequestException or IOException or InvalidDataException ||
+            (exception is OperationCanceledException && !cancellationToken.IsCancellationRequested))
         {
             firstFailure ??= exception;
             if (attempt == 2) throw new IOException($"Download failed after direct/proxy attempts: {destination}", firstFailure);

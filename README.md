@@ -55,6 +55,8 @@ dotnet run --project src/Sezika.Cli -c Release --no-build -- predict --model .ar
 
 - [独立使用](docs/standalone-usage.md)：固定模型准备、CLI、C# 调用和决策输入输出。
 - [参考项目分析](docs/research.md)：Laya 的可审计模型实现，以及 TypeSafe Jev 的公开协议与边界。
+- [下一阶段研究](docs/next-stage-research-2026-09-25.md)：Sezika、Laya、Jev、Nimble 的路线比较，CPU/CUDA 优化、双模型训练与 IoTSharp 集成计划。
+- [固定题集质量证据](docs/evidence/quality-2026-09-25.md)：Nimble 324 题与 PAWS 250 题的真实模型覆盖率、正确率和失败切片。
 - [架构设计](docs/architecture.md)：推理路径、模型资产、契约、校准与资源约束。
 - [纯 C# GPU 与 Native AOT](docs/gpu-aot.md)：ILGPU 编译期边界、CUDA Driver 路径及最小验证关口。
 - [S5 性能与 AOT 证据](docs/s5-performance-aot.md)：Windows 四后端基准、Ubuntu WSL2 真实模型 AOT smoke、计时与内存边界。
@@ -63,7 +65,7 @@ dotnet run --project src/Sezika.Cli -c Release --no-build -- predict --model .ar
 - `src/Sezika`：.NET 10 核心类库、模型加载、tokenizer、CPU encoder 与 typed decision engine。
 - [English](README.en.md)
 
-真实模型、CUDA 与 AOT 命令及实测结果见 [阶段证据](docs/stage-evidence.md) 和 [GPU/AOT 设计](docs/gpu-aot.md)；多语言质量、裸机 Linux 性能和更充分的尾延迟采样仍需独立证据。
+真实模型、CUDA 与 AOT 命令及实测结果见 [阶段证据](docs/stage-evidence.md) 和 [GPU/AOT 设计](docs/gpu-aot.md)；首轮英语 PAWS 质量不及多数类基线，多语言质量、裸机 Linux 性能和更充分的尾延迟采样仍需独立证据。
 
 ## 开源许可
 

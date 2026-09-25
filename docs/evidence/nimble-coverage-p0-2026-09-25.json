@@ -1,0 +1,3284 @@
+{
+  "ModelId": "convaiinnovations/laya-multilingual",
+  "ModelRevision": "052592a15d198d9ad47da779604259b10b47b7aa",
+  "TokenizerSha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+  "DatasetSha256": "8e9e48b8de5206593912ae01ddc95bd77e40ad2ecf4c9292c1711290eca0d896",
+  "Processed": 324,
+  "HeadMaxTokens": 256,
+  "EncoderMaxTokens": 1024,
+  "DiagnosticTokenCap": 32768,
+  "TokenEligible": 8,
+  "HeadFits": 8,
+  "EncoderFits": 324,
+  "Unmeasured": 0,
+  "ByType": [
+    {
+      "Type": "boolean",
+      "Total": 114,
+      "TokenEligible": 8,
+      "HeadFits": 8,
+      "EncoderFits": 114
+    },
+    {
+      "Type": "choice",
+      "Total": 146,
+      "TokenEligible": 0,
+      "HeadFits": 0,
+      "EncoderFits": 146
+    },
+    {
+      "Type": "score",
+      "Total": 64,
+      "TokenEligible": 0,
+      "HeadFits": 0,
+      "EncoderFits": 64
+    }
+  ],
+  "ByFailureCode": {
+    "decision_token_budget_exceeded": 12,
+    "decision_token_limit_exceeded": 304,
+    "eligible": 8
+  },
+  "Rows": [
+    {
+      "Id": "scale-diverse-007-001-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 420,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-007-001-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 418,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-007-004-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 432,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-007-004-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 432,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-007-005-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 419,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-007-005-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 419,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-008-003-base",
+      "Type": "choice",
+      "Candidates": 5,
+      "RequiredTokens": 562,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_budget_exceeded"
+    },
+    {
+      "Id": "scale-diverse-008-003-counterfactual",
+      "Type": "choice",
+      "Candidates": 5,
+      "RequiredTokens": 564,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_budget_exceeded"
+    },
+    {
+      "Id": "scale-diverse-008-005-base",
+      "Type": "choice",
+      "Candidates": 5,
+      "RequiredTokens": 542,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_budget_exceeded"
+    },
+    {
+      "Id": "scale-diverse-008-005-counterfactual",
+      "Type": "choice",
+      "Candidates": 5,
+      "RequiredTokens": 545,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_budget_exceeded"
+    },
+    {
+      "Id": "scale-diverse-009-001-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 333,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-009-001-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 333,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-009-003-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 334,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-009-003-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 334,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-010-001-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 305,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-010-001-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 305,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-010-004-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 276,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-010-004-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 276,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-011-004-base",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 516,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-011-004-counterfactual",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 516,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-079-001-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 487,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-079-001-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 487,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-079-002-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 671,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-079-002-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 671,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-079-003-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 499,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-079-003-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 499,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-080-003-base",
+      "Type": "choice",
+      "Candidates": 5,
+      "RequiredTokens": 559,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-080-003-counterfactual",
+      "Type": "choice",
+      "Candidates": 5,
+      "RequiredTokens": 559,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-081-005-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 382,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-081-005-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 377,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-082-004-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 397,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-082-004-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 397,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-083-004-base",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 483,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-083-004-counterfactual",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 483,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-084-002-base",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 432,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-084-002-counterfactual",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 443,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-084-003-base",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 450,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-084-003-counterfactual",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 451,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-084-004-base",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 449,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-084-004-counterfactual",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 451,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-097-002-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 603,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-097-002-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 603,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-097-005-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 641,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-097-005-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 641,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-099-001-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 412,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-099-001-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 412,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-099-002-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 357,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-099-002-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 357,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-099-003-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 369,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-099-003-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 375,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-169-001-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 718,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-169-001-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 718,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-169-002-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 474,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-169-002-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 474,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-169-004-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 482,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-169-004-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 482,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-171-001-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 308,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-171-001-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 308,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-171-002-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 307,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-171-002-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 307,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-173-001-base",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 471,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-173-001-counterfactual",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 471,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-173-002-base",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 497,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-173-002-counterfactual",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 497,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-173-004-base",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 682,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-173-004-counterfactual",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 687,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-174-003-base",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 405,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-174-003-counterfactual",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 405,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-174-004-base",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 413,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-174-004-counterfactual",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 413,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-211-004-base",
+      "Type": "choice",
+      "Candidates": 6,
+      "RequiredTokens": 490,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-211-004-counterfactual",
+      "Type": "choice",
+      "Candidates": 6,
+      "RequiredTokens": 492,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-211-006-base",
+      "Type": "choice",
+      "Candidates": 6,
+      "RequiredTokens": 473,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-211-006-counterfactual",
+      "Type": "choice",
+      "Candidates": 6,
+      "RequiredTokens": 473,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-213-001-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 328,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-213-001-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 324,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-213-003-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 394,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-213-003-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 394,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-214-003-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 437,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-214-003-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 437,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-215-003-base",
+      "Type": "score",
+      "Candidates": 5,
+      "RequiredTokens": 417,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-215-003-counterfactual",
+      "Type": "score",
+      "Candidates": 5,
+      "RequiredTokens": 429,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-215-004-base",
+      "Type": "score",
+      "Candidates": 5,
+      "RequiredTokens": 403,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-215-004-counterfactual",
+      "Type": "score",
+      "Candidates": 5,
+      "RequiredTokens": 404,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-216-005-base",
+      "Type": "score",
+      "Candidates": 5,
+      "RequiredTokens": 671,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-216-005-counterfactual",
+      "Type": "score",
+      "Candidates": 5,
+      "RequiredTokens": 626,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-273-001-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 465,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-273-001-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 465,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-273-003-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 519,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-273-003-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 519,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-274-004-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 402,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-274-004-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 396,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-275-002-base",
+      "Type": "score",
+      "Candidates": 3,
+      "RequiredTokens": 468,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-275-002-counterfactual",
+      "Type": "score",
+      "Candidates": 3,
+      "RequiredTokens": 468,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-275-003-base",
+      "Type": "score",
+      "Candidates": 3,
+      "RequiredTokens": 466,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-275-003-counterfactual",
+      "Type": "score",
+      "Candidates": 3,
+      "RequiredTokens": 466,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-275-004-base",
+      "Type": "score",
+      "Candidates": 3,
+      "RequiredTokens": 422,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-275-004-counterfactual",
+      "Type": "score",
+      "Candidates": 3,
+      "RequiredTokens": 422,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-275-005-base",
+      "Type": "score",
+      "Candidates": 3,
+      "RequiredTokens": 643,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "scale-diverse-275-005-counterfactual",
+      "Type": "score",
+      "Candidates": 3,
+      "RequiredTokens": 643,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-007-003-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 416,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-007-003-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 416,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-007-005-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 440,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-007-005-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 440,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-007-006-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 383,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-007-006-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 383,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-007-009-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 398,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-007-009-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 398,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-007-010-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 410,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-007-010-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 410,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-008-009-base",
+      "Type": "choice",
+      "Candidates": 5,
+      "RequiredTokens": 520,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_budget_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-008-009-counterfactual",
+      "Type": "choice",
+      "Candidates": 5,
+      "RequiredTokens": 521,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_budget_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-008-011-base",
+      "Type": "choice",
+      "Candidates": 5,
+      "RequiredTokens": 515,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_budget_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-008-011-counterfactual",
+      "Type": "choice",
+      "Candidates": 5,
+      "RequiredTokens": 516,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_budget_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-009-001-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 294,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-009-001-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 294,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-009-002-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 295,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-009-002-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 295,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-009-003-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 284,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-009-003-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 284,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-009-004-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 309,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-009-004-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 309,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-009-005-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 287,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-009-005-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 287,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-009-007-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 304,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-009-007-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 304,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-009-008-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 276,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-009-008-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 276,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-010-004-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 302,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-010-004-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 302,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-079-003-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 517,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-079-003-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 525,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-079-011-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 475,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-079-011-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 475,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-079-012-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 519,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-079-012-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 519,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-079-015-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 473,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-079-015-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 473,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-082-006-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 361,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-082-006-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 361,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-084-006-base",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 449,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-084-006-counterfactual",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 450,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-099-001-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 370,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-099-001-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 370,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-099-003-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 345,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-099-003-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 345,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-099-008-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 349,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-099-008-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 349,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-171-001-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 305,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-171-001-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 305,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-171-003-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 266,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-171-003-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 266,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-171-004-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 306,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-171-004-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 306,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-171-006-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 281,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-171-006-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 281,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-171-007-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 257,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_budget_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-171-007-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 257,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_budget_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-171-008-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 276,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-171-008-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 276,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-174-001-base",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 358,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-174-001-counterfactual",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 358,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-174-005-base",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 339,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-174-005-counterfactual",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 339,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-174-007-base",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 366,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-174-007-counterfactual",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 366,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-211-018-base",
+      "Type": "choice",
+      "Candidates": 6,
+      "RequiredTokens": 479,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-211-018-counterfactual",
+      "Type": "choice",
+      "Candidates": 6,
+      "RequiredTokens": 476,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-211-020-base",
+      "Type": "choice",
+      "Candidates": 6,
+      "RequiredTokens": 416,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-211-020-counterfactual",
+      "Type": "choice",
+      "Candidates": 6,
+      "RequiredTokens": 414,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-212-023-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 370,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-212-023-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 371,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-212-028-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 369,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-212-028-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 369,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-212-032-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 364,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-212-032-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 364,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-212-034-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 370,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-212-034-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 370,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-212-037-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 363,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-212-037-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 364,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-212-042-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 375,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-212-042-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 375,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-212-045-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 362,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-212-045-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 362,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-212-059-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 387,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-212-059-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 387,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-213-001-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 329,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-213-001-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 330,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-213-016-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 285,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-213-016-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 285,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-216-009-base",
+      "Type": "score",
+      "Candidates": 5,
+      "RequiredTokens": 643,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-216-009-counterfactual",
+      "Type": "score",
+      "Candidates": 5,
+      "RequiredTokens": 642,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-273-007-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 433,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-273-007-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 433,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-273-008-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 389,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-273-008-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 389,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-274-002-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 347,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-274-002-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 348,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-274-004-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 383,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-274-004-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 384,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-275-013-base",
+      "Type": "score",
+      "Candidates": 3,
+      "RequiredTokens": 544,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-41-diverse-275-013-counterfactual",
+      "Type": "score",
+      "Candidates": 3,
+      "RequiredTokens": 544,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-007-002-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 369,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-007-002-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 368,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-007-012-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 361,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-007-012-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 364,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-008-010-base",
+      "Type": "choice",
+      "Candidates": 5,
+      "RequiredTokens": 530,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_budget_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-008-010-counterfactual",
+      "Type": "choice",
+      "Candidates": 5,
+      "RequiredTokens": 530,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_budget_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-010-001-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 240,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "fast-43-diverse-010-001-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 240,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "fast-43-diverse-079-003-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 522,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-003-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 522,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-015-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 473,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-015-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 473,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-019-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 547,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-019-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 547,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-022-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 475,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-022-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 475,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-023-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 515,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-023-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 515,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-037-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 525,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-037-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 525,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-045-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 494,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-045-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 494,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-046-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 480,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-046-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 480,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-054-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 455,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-054-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 455,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-055-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 524,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-055-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 524,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-056-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 530,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-056-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 530,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-057-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 525,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-057-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 525,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-058-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 528,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-058-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 528,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-059-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 518,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-059-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 518,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-060-base",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 520,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-079-060-counterfactual",
+      "Type": "choice",
+      "Candidates": 4,
+      "RequiredTokens": 520,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-081-014-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 312,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-081-014-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 314,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-081-016-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 324,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-081-016-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 328,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-081-019-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 313,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-081-019-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 314,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-081-022-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 330,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-081-022-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 331,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-012-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 445,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-012-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 445,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-020-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 447,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-020-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 447,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-023-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 504,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-023-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 504,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-024-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 453,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-024-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 453,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-053-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 463,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-053-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 463,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-064-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 458,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-064-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 458,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-065-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 445,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-065-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 445,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-066-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 450,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-066-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 450,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-068-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 445,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-068-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 445,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-070-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 445,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-070-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 445,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-071-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 457,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-071-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 457,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-085-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 453,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-085-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 453,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-087-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 470,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-087-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 470,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-097-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 446,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-097-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 446,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-099-base",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 453,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-169-099-counterfactual",
+      "Type": "choice",
+      "Candidates": 3,
+      "RequiredTokens": 453,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-171-001-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 323,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-171-001-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 323,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-171-002-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 250,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "fast-43-diverse-171-002-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 250,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "fast-43-diverse-171-003-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 278,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-171-003-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 278,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-171-004-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 258,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-171-004-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 258,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-171-006-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 283,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-171-006-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 283,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-171-008-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 272,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-171-008-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 272,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-171-010-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 237,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "fast-43-diverse-171-010-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 237,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "fast-43-diverse-171-012-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 270,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-171-012-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 270,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-171-013-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 263,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-171-013-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 263,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-171-015-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 290,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-171-015-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 290,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-171-016-base",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 255,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "fast-43-diverse-171-016-counterfactual",
+      "Type": "boolean",
+      "Candidates": 2,
+      "RequiredTokens": 255,
+      "MeasurementFailure": null,
+      "HeadFits": true,
+      "EncoderFits": true,
+      "FailureCode": null
+    },
+    {
+      "Id": "fast-43-diverse-174-001-base",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 438,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-174-001-counterfactual",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 438,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-174-005-base",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 431,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-174-005-counterfactual",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 431,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-174-006-base",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 410,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-174-006-counterfactual",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 410,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-174-007-base",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 428,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-174-007-counterfactual",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 428,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-174-008-base",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 382,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-174-008-counterfactual",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 382,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-174-009-base",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 436,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-174-009-counterfactual",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 436,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-174-010-base",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 406,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-174-010-counterfactual",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 406,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-174-011-base",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 431,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-174-011-counterfactual",
+      "Type": "score",
+      "Candidates": 4,
+      "RequiredTokens": 431,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-215-039-base",
+      "Type": "score",
+      "Candidates": 5,
+      "RequiredTokens": 405,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-215-039-counterfactual",
+      "Type": "score",
+      "Candidates": 5,
+      "RequiredTokens": 405,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-272-004-base",
+      "Type": "choice",
+      "Candidates": 5,
+      "RequiredTokens": 460,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-272-004-counterfactual",
+      "Type": "choice",
+      "Candidates": 5,
+      "RequiredTokens": 460,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-272-009-base",
+      "Type": "choice",
+      "Candidates": 5,
+      "RequiredTokens": 440,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-272-009-counterfactual",
+      "Type": "choice",
+      "Candidates": 5,
+      "RequiredTokens": 440,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-272-025-base",
+      "Type": "choice",
+      "Candidates": 5,
+      "RequiredTokens": 438,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    },
+    {
+      "Id": "fast-43-diverse-272-025-counterfactual",
+      "Type": "choice",
+      "Candidates": 5,
+      "RequiredTokens": 438,
+      "MeasurementFailure": null,
+      "HeadFits": false,
+      "EncoderFits": true,
+      "FailureCode": "decision_token_limit_exceeded"
+    }
+  ]
+}
