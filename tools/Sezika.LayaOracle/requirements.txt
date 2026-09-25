@@ -1,0 +1,8 @@
+# Development-only dependencies for offline inference capture.
+# Install into an isolated CPython 3.12.10 environment only after execution authorization.
+torch==2.8.0
+transformers==4.57.1
+tokenizers==0.22.2
+safetensors==0.6.2
+huggingface-hub==0.35.3
+numpy==2.3.3

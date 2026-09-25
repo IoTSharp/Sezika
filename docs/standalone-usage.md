@@ -121,6 +121,8 @@ Console.WriteLine(JsonSerializer.Serialize(
 
 三个问题可以放在同一个请求中；每个问题仍按固定 marker 序列单独编码，并由 response 的 `usage.micro_batch_count` 报告实际批次数。`state` 和 criterion 可以是字符串、数字、数组或对象；运行时使用其 JSON 文本作为提示内容。
 
+请求默认使用 `"length_policy": "strict"`：说明或候选前缀需要裁剪，或整条输入超过模型的 1024-token 总上限时，在推理前拒绝。256 是说明与候选前缀预算，不是总长上限。要复现固定 Laya 的裁剪语义，必须显式指定 `"length_policy": "laya_compatible"`；成功 answer 的 `input_diagnostics` 会报告原始/保留 token 数、丢弃的 state token 数及截断方向。数组 state 保留末尾，其他 state 保留开头。Choice 维持输入候选顺序；Boolean 的语义 marker 顺序固定为 false、true，criteria 可省略以使用默认描述。详见[输入合同](input-contract-s3-09.md)。
+
 ## 输出语义
 
 响应包含模型 revision、backend、每个问题的 typed answer，以及 token、问题数、micro-batch 和 workspace 用量。

@@ -36,6 +36,19 @@ byte[] SafeTensorFile(string headerJson, int payloadBytes)
 
 try
 {
+    if (args.Length == 1 && args[0] is "--prompt-contract" or "--prompt-contract-aot")
+    {
+        if (args[0] == "--prompt-contract-aot")
+            Check(!System.Runtime.CompilerServices.RuntimeFeature.IsDynamicCodeSupported &&
+                !System.Runtime.CompilerServices.RuntimeFeature.IsDynamicCodeCompiled,
+                "prompt contract executes with Native AOT dynamic code disabled");
+        global::Sezika.Tests.BackendInjectionChecks.Run(Check);
+        global::Sezika.Tests.PromptContractChecks.Run(Check);
+        global::Sezika.Tests.PromptJsonChecks.Run(Check);
+        Check(global::Sezika.Tests.DecisionModelRuntimeChecks.Run(), "standalone model runtime load/parse/evaluate/dispose facade");
+        Console.WriteLine($"Sezika prompt contract checks passed: {passed}");
+        return 0;
+    }
     try
     {
         DecisionRequestParser.Parse(Encoding.UTF8.GetBytes("{\"model\":\"x\",\"model\":\"y\"}"));

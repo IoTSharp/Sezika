@@ -1,0 +1,26 @@
+{
+  "Pid": 22276,
+  "Started": "2026-09-25T14:23:24.8525959Z",
+  "CommandLine": null,
+  "ParentPid": 53724,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 53724,
+    "Started": "2026-09-25T22:23:23.391151+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('tools/Sezika.OracleCompare/bin/Release/net10.0/Sezika.OracleCompare.dll','tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json','.artifacts/laya-oracle-work/csharp-cuda-full-01/capture.json','tests/fixtures/laya-oracle/contract.v1.json','tests/fixtures/laya-oracle/cases.v1.json','.artifacts/laya-oracle-work/compare-cuda-full-01.json','30') -TimeoutSeconds 60 -LogName 's3-compare-cuda-full'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 60,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "tools/Sezika.OracleCompare/bin/Release/net10.0/Sezika.OracleCompare.dll",
+    "tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json",
+    ".artifacts/laya-oracle-work/csharp-cuda-full-01/capture.json",
+    "tests/fixtures/laya-oracle/contract.v1.json",
+    "tests/fixtures/laya-oracle/cases.v1.json",
+    ".artifacts/laya-oracle-work/compare-cuda-full-01.json",
+    "30"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

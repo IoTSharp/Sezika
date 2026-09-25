@@ -42,7 +42,7 @@ public sealed class DecisionModelRuntime : IDecisionEngine, IDisposable
         EstimatedResidentBytes = model.EstimatedResidentBytes;
     }
 
-    /// <summary>Loads the pinned package and creates an owning decision runtime.</summary>
+    /// <summary>Loads a verified model package and creates a runtime that owns its resources.</summary>
     public static DecisionModelRuntime Load(
         string packageDirectory,
         DecisionLimits? limits = null,

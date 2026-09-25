@@ -1,0 +1,55 @@
+{
+  "Status": "Succeeded",
+  "Pid": 34896,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 6.78,
+  "TimeoutSeconds": 1800,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "tools/Sezika.OracleCapture/bin/Release/net10.0/Sezika.OracleCapture.dll",
+    "--reference",
+    ".artifacts/laya-oracle-work/smoke-01/capture.json",
+    "--model",
+    ".artifacts/models/laya-mmbert",
+    "--cases",
+    "tests/fixtures/laya-oracle/cases.v1.json",
+    "--contract",
+    "tests/fixtures/laya-oracle/contract.v1.json",
+    "--output",
+    ".artifacts/laya-oracle-work/csharp-simd-smoke-01",
+    "--backend",
+    "simd",
+    "--length-policy",
+    "laya_compatible",
+    "--max-cases",
+    "1",
+    "--timeout-seconds",
+    "1800"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-141101-509-s3-csharp-simd-smoke.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-141101-509-s3-csharp-simd-smoke.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 34896,
+      "CreationDate": "2026-09-25T22:11:01.532687+08:00",
+      "Started": "2026-09-25T14:11:01.532687Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" tools/Sezika.OracleCapture/bin/Release/net10.0/Sezika.OracleCapture.dll --reference .artifacts/laya-oracle-work/smoke-01/capture.json --model .artifacts/models/laya-mmbert --cases tests/fixtures/laya-oracle/cases.v1.json --contract tests/fixtures/laya-oracle/contract.v1.json --output .artifacts/laya-oracle-work/csharp-simd-smoke-01 --backend simd --length-policy laya_compatible --max-cases 1 --timeout-seconds 1800",
+      "ParentPid": 66076,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 64068,
+      "CreationDate": "2026-09-25T22:11:01.571046+08:00",
+      "Started": "2026-09-25T14:11:01.571046Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 34896,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

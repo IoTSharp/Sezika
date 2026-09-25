@@ -1,0 +1,27 @@
+{
+  "Pid": 45236,
+  "Started": "2026-09-25T14:38:48.2642221Z",
+  "CommandLine": null,
+  "ParentPid": 54788,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 54788,
+    "Started": "2026-09-25T22:38:47.36044+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$scalarCoreManifest = Get-Content -LiteralPath 'tests/fixtures/laya-oracle/cases.v1.json' -Raw -Encoding utf8 | ConvertFrom-Json; $scalarCoreIds = @($scalarCoreManifest.cases | Select-Object -First 18 -ExpandProperty id); if ($scalarCoreIds.Count -ne 18 -or @($scalarCoreIds | Select-Object -Unique).Count -ne 18) { throw 'Expected exactly 18 distinct core IDs' }; $scalarCoreCsv = $scalarCoreIds -join ','; & ./tools/Invoke-BoundedProcess.ps1 -FilePath dotnet -ArgumentList @('tools/Sezika.OracleCompare/bin/Release/net10.0/Sezika.OracleCompare.dll','.artifacts/laya-oracle-work/full-01/capture.json','.artifacts/laya-oracle-work/csharp-scalar-core-01/capture.json','tests/fixtures/laya-oracle/contract.v1.json','tests/fixtures/laya-oracle/cases.v1.json','.artifacts/laya-oracle-work/csharp-scalar-core-01/comparison.json','30',$scalarCoreCsv) -TimeoutSeconds 60 -LogName oracle-compare-scalar-core -LogDirectory .artifacts/laya-oracle-work/scalar-processes-01\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 60,
+  "FilePath": "dotnet",
+  "Arguments": [
+    "tools/Sezika.OracleCompare/bin/Release/net10.0/Sezika.OracleCompare.dll",
+    ".artifacts/laya-oracle-work/full-01/capture.json",
+    ".artifacts/laya-oracle-work/csharp-scalar-core-01/capture.json",
+    "tests/fixtures/laya-oracle/contract.v1.json",
+    "tests/fixtures/laya-oracle/cases.v1.json",
+    ".artifacts/laya-oracle-work/csharp-scalar-core-01/comparison.json",
+    "30",
+    "choice-en-short,choice-en-medium,choice-en-long,choice-zh-short,choice-zh-medium,choice-zh-long,score-en-short,score-en-medium,score-en-long,score-zh-short,score-zh-medium,score-zh-long,boolean-en-short,boolean-en-medium,boolean-en-long,boolean-zh-short,boolean-zh-medium,boolean-zh-long"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

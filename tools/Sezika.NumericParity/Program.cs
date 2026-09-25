@@ -17,14 +17,16 @@ internal static class NumericParity
         if (args.Length is not (7 or 8) || !validSkip || !int.TryParse(args[3], CultureInfo.InvariantCulture, out var maxRecords) ||
             maxRecords is < 1 or > 64 || !int.TryParse(args[4], CultureInfo.InvariantCulture, out var timeoutSeconds) ||
             timeoutSeconds is < 1 or > 1800 || !int.TryParse(args[5], CultureInfo.InvariantCulture, out var longInputTokens) ||
-            longInputTokens is < 1 or > 256 || skipRecords is < 0 or > 9999 ||
+            longInputTokens is < 1 or > 1024 || skipRecords is < 0 or > 9999 ||
             skipRecords + maxRecords > 10000 || args[6].Length != 64 || !args[6].All(Uri.IsHexDigit))
         {
-            Console.Error.WriteLine("Usage: Sezika.NumericParity <model-dir> <eval.jsonl> <output.json> <1..64 records> <1..1800 timeout-seconds> <1..256 long-input-tokens> <dataset-sha256> [0..9999 skip-records]");
+            Console.Error.WriteLine("Usage: Sezika.NumericParity <model-dir> <eval.jsonl> <output.json> <1..64 records> <1..1800 timeout-seconds> <1..1024 long-input-tokens> <dataset-sha256> [0..9999 skip-records]");
             return 2;
         }
 
         using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(timeoutSeconds));
+        ConsoleCancelEventHandler cancel = (_, eventArgs) => { eventArgs.Cancel = true; deadline.Cancel(); };
+        Console.CancelKeyPress += cancel;
         var started = DateTimeOffset.UtcNow;
         var watch = Stopwatch.StartNew();
         try
@@ -41,9 +43,9 @@ internal static class NumericParity
             RunBackend(samples, args[0], "scalar", deadline.Token);
             RunBackend(samples, args[0], "simd", deadline.Token);
             try { RunBackend(samples, args[0], "cuda", deadline.Token); }
-            catch (CudaException exception) { MarkBackendFailure(samples, "cuda", exception.Code); }
-            catch (DllNotFoundException) { MarkBackendFailure(samples, "cuda", "cuda_driver_unavailable"); }
-            catch (BadImageFormatException) { MarkBackendFailure(samples, "cuda", "cuda_driver_incompatible"); }
+            catch (CudaException exception) { MarkBackendFailure(samples, "cuda", exception.Code, deadline.Token); }
+            catch (DllNotFoundException) { MarkBackendFailure(samples, "cuda", "cuda_driver_unavailable", deadline.Token); }
+            catch (BadImageFormatException) { MarkBackendFailure(samples, "cuda", "cuda_driver_incompatible", deadline.Token); }
 
             var rows = samples.Select(sample => Compare(sample)).ToList();
             var longRows = rows.Where(row => row.TokenCount >= longInputTokens &&
@@ -67,6 +69,7 @@ internal static class NumericParity
             Console.Error.WriteLine($"numeric-parity: {exception.GetType().Name}: {exception.Message}");
             return 1;
         }
+        finally { Console.CancelKeyPress -= cancel; }
     }
 
     private static List<Sample> ReadSamples(string path, int skipRecords, int maxRecords, CancellationToken cancellationToken)
@@ -118,6 +121,7 @@ internal static class NumericParity
             samples.Add(new Sample(id, rowNumber, new DecisionRequest
             {
                 Model = ModernBertModelLoader.PinnedModelId,
+                LengthPolicy = PromptLengthPolicy.Strict,
                 State = input.GetProperty("state").Clone(),
                 Questions = new Dictionary<string, Question>(StringComparer.Ordinal) { ["decision"] = mapped },
             }));
@@ -171,10 +175,13 @@ internal static class NumericParity
         }
     }
 
-    private static void MarkBackendFailure(List<Sample> samples, string backend, string code)
+    private static void MarkBackendFailure(List<Sample> samples, string backend, string code, CancellationToken cancellationToken)
     {
         foreach (var sample in samples)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
             sample.Results.TryAdd(backend, new BackendResult("failed", code, null, null));
+        }
         Console.WriteLine($"{backend}: unavailable ({code}); no logits compared.");
     }
 
@@ -232,7 +239,14 @@ internal sealed record ParityRow(string Id, int SourceRowNumber, int? TokenCount
 internal sealed record ParityReport(DateTimeOffset StartedUtc, double ElapsedMilliseconds, string ModelId,
     string ModelRevision, string WeightsSha256, string TokenizerSha256, string DatasetSha256, int SampleCount,
     int LongInputThresholdTokens, int LongInputCount, int SimdCompared, int CudaCompared,
-    double? MaxSimdAbsoluteError, double? MaxCudaAbsoluteError, List<ParityRow> Rows);
+    double? MaxSimdAbsoluteError, double? MaxCudaAbsoluteError, List<ParityRow> Rows)
+{
+    public int SchemaVersion { get; init; } = 2;
+    public string RenderingVersion { get; init; } = "sezika.prompt.laya-4066d5d5.v2";
+    public PromptLengthPolicy LengthPolicy { get; init; } = PromptLengthPolicy.Strict;
+    public int PrefixTokenBudget { get; init; } = 256;
+    public int TotalTokenBudget { get; init; } = 1024;
+}
 
 [JsonSourceGenerationOptions(PropertyNamingPolicy = JsonKnownNamingPolicy.SnakeCaseLower,
     DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,

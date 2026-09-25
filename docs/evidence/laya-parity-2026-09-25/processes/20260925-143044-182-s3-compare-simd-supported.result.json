@@ -1,0 +1,33 @@
+{
+  "Status": "Succeeded",
+  "Pid": 38468,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 2.117,
+  "TimeoutSeconds": 60,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "tools/Sezika.OracleCompare/bin/Release/net10.0/Sezika.OracleCompare.dll",
+    "tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json",
+    ".artifacts/laya-oracle-work/csharp-simd-full-01/capture.json",
+    "tests/fixtures/laya-oracle/contract.v1.json",
+    "tests/fixtures/laya-oracle/cases.v1.json",
+    ".artifacts/laya-oracle-work/compare-simd-supported-01.json",
+    "30",
+    "choice-en-short,choice-en-medium,choice-en-long,choice-zh-short,choice-zh-medium,choice-zh-long,score-en-short,score-en-medium,score-en-long,score-zh-short,score-zh-medium,score-zh-long,boolean-en-short,boolean-en-medium,boolean-en-long,boolean-zh-short,boolean-zh-medium,boolean-zh-long,choice-order-reversed,choice-label-only-and-structured,state-object-unicode,state-conversation-left-truncation,state-string-right-truncation,mask-in-state-instructions-options,boolean-display-labels,boolean-default-criteria,sequence-255,sequence-256,sequence-257,sequence-1023,sequence-1024,sequence-1025,choice-two-candidates,choice-32-candidates,score-two-levels,score-ten-levels,options-48-token-cap,prefix-instruction-truncation,invalid-empty-choice,invalid-null-score-level,invalid-boolean-criteria-key,invalid-duplicate-boolean-display-label"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T14:30:44.684582Z",
+  "ParentPid": 71580,
+  "Launcher": {
+    "Pid": 71580,
+    "Started": "2026-09-25T22:30:43.718677+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$selection = (Get-Content -LiteralPath tests/fixtures/laya-oracle/cases.v1.json -Raw | ConvertFrom-Json).cases.id | Where-Object { $_ -notin @('choice-one-candidate','choice-33-candidates','score-one-level','score-eleven-levels') }; if ($selection.Count -ne 42) { throw 'Invalid supported selection.' }; & tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('tools/Sezika.OracleCompare/bin/Release/net10.0/Sezika.OracleCompare.dll','tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json','.artifacts/laya-oracle-work/csharp-simd-full-01/capture.json','tests/fixtures/laya-oracle/contract.v1.json','tests/fixtures/laya-oracle/cases.v1.json','.artifacts/laya-oracle-work/compare-simd-supported-01.json','30',($selection -join ',')) -TimeoutSeconds 60 -LogName 's3-compare-simd-supported'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-143044-182-s3-compare-simd-supported.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-143044-182-s3-compare-simd-supported.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

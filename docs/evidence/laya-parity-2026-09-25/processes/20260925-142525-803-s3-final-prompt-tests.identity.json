@@ -1,0 +1,21 @@
+{
+  "Pid": 71236,
+  "Started": "2026-09-25T14:25:26.5054192Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" .artifacts/build/s3-contract-final/bin/Sezika.Tests/release/Sezika.Tests.dll --prompt-contract",
+  "ParentPid": 76156,
+  "ObservedParentPid": 76156,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 76156,
+    "Started": "2026-09-25T22:25:25.226951+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('.artifacts/build/s3-contract-final/bin/Sezika.Tests/release/Sezika.Tests.dll','--prompt-contract') -TimeoutSeconds 180 -LogName 's3-final-prompt-tests'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 180,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/build/s3-contract-final/bin/Sezika.Tests/release/Sezika.Tests.dll",
+    "--prompt-contract"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

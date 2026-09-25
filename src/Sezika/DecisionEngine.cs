@@ -39,6 +39,8 @@ public sealed class DecisionEngine : IDecisionEngine, IDisposable
     {
         ObjectDisposedException.ThrowIf(_disposed, this);
         DecisionRequestValidator.Validate(request, _options.Limits);
+        if (request.LengthPolicy != PromptLengthPolicy.Strict)
+            throw new DecisionException("decision_length_policy_unsupported", "The demonstration engine supports only strict input length; Laya compatibility requires a marker model session.");
         if (request.Questions.Count > _options.Budget.MaxQuestions)
             throw new DecisionException("decision_question_limit_exceeded", $"Question count exceeds the session budget ({_options.Budget.MaxQuestions}).");
         if (!string.Equals(request.Model, _model.ModelId, StringComparison.Ordinal))
@@ -168,10 +170,10 @@ public sealed class DecisionEngine : IDecisionEngine, IDisposable
 
     private BooleanAnswer EvaluateBoolean(JsonElement state, string instruction, BooleanQuestion question, CalibrationInfo calibration, CancellationToken cancellationToken, ref int tokenCount)
     {
-        var criteria = question.Criteria ?? throw new DecisionException("decision_criteria_required", "Boolean criteria are required.");
+        var criteria = question.Criteria;
         var pooledStates = new float[checked(2 * _model.HeadWeights.Length)];
-        EncodeCandidate(state, instruction, ToPromptText(criteria.WhenTrue), pooledStates.AsSpan(0, _model.HeadWeights.Length), cancellationToken, ref tokenCount);
-        EncodeCandidate(state, instruction, ToPromptText(criteria.WhenFalse), pooledStates.AsSpan(_model.HeadWeights.Length, _model.HeadWeights.Length), cancellationToken, ref tokenCount);
+        EncodeCandidate(state, instruction, BooleanText(criteria?.WhenTrue ?? default, "yes, the statement holds"), pooledStates.AsSpan(0, _model.HeadWeights.Length), cancellationToken, ref tokenCount);
+        EncodeCandidate(state, instruction, BooleanText(criteria?.WhenFalse ?? default, "no, the statement does not hold"), pooledStates.AsSpan(_model.HeadWeights.Length, _model.HeadWeights.Length), cancellationToken, ref tokenCount);
         var logits = new float[2];
         _scorer.Score(pooledStates, 2, _model.HeadWeights, _model.HeadBias, logits, cancellationToken);
         var trueLogit = logits[0];
@@ -207,6 +209,10 @@ public sealed class DecisionEngine : IDecisionEngine, IDisposable
     }
 
     private static string ToPromptText(JsonElement value) => value.ValueKind == JsonValueKind.String ? value.GetString() ?? string.Empty : value.GetRawText();
+
+    private static string BooleanText(JsonElement value, string fallback) =>
+        value.ValueKind is JsonValueKind.Undefined or JsonValueKind.Null ||
+        value.ValueKind == JsonValueKind.String && value.GetString() == string.Empty ? fallback : ToPromptText(value);
 
     public void Dispose()
     {

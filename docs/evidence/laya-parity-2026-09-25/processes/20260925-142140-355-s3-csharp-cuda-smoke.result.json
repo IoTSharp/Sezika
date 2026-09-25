@@ -1,0 +1,63 @@
+{
+  "Status": "Succeeded",
+  "Pid": 71448,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 6.405,
+  "TimeoutSeconds": 1800,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "tools/Sezika.OracleCapture/bin/Release/net10.0/Sezika.OracleCapture.dll",
+    "--reference",
+    ".artifacts/laya-oracle-work/smoke-01/capture.json",
+    "--model",
+    ".artifacts/models/laya-mmbert",
+    "--cases",
+    "tests/fixtures/laya-oracle/cases.v1.json",
+    "--contract",
+    "tests/fixtures/laya-oracle/contract.v1.json",
+    "--output",
+    ".artifacts/laya-oracle-work/csharp-cuda-smoke-01",
+    "--backend",
+    "cuda",
+    "--length-policy",
+    "laya_compatible",
+    "--max-cases",
+    "1",
+    "--timeout-seconds",
+    "1800"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T14:21:41.0129206Z",
+  "ParentPid": 71380,
+  "Launcher": {
+    "Pid": 71380,
+    "Started": "2026-09-25T22:21:39.763288+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('tools/Sezika.OracleCapture/bin/Release/net10.0/Sezika.OracleCapture.dll','--reference','.artifacts/laya-oracle-work/smoke-01/capture.json','--model','.artifacts/models/laya-mmbert','--cases','tests/fixtures/laya-oracle/cases.v1.json','--contract','tests/fixtures/laya-oracle/contract.v1.json','--output','.artifacts/laya-oracle-work/csharp-cuda-smoke-01','--backend','cuda','--length-policy','laya_compatible','--max-cases','1','--timeout-seconds','1800') -TimeoutSeconds 1800 -LogName 's3-csharp-cuda-smoke'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-142140-355-s3-csharp-cuda-smoke.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-142140-355-s3-csharp-cuda-smoke.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 71448,
+      "CreationDate": "2026-09-25T22:21:41.01292+08:00",
+      "Started": "2026-09-25T14:21:41.01292Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" tools/Sezika.OracleCapture/bin/Release/net10.0/Sezika.OracleCapture.dll --reference .artifacts/laya-oracle-work/smoke-01/capture.json --model .artifacts/models/laya-mmbert --cases tests/fixtures/laya-oracle/cases.v1.json --contract tests/fixtures/laya-oracle/contract.v1.json --output .artifacts/laya-oracle-work/csharp-cuda-smoke-01 --backend cuda --length-policy laya_compatible --max-cases 1 --timeout-seconds 1800",
+      "ParentPid": 71380,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 70420,
+      "CreationDate": "2026-09-25T22:21:41.071827+08:00",
+      "Started": "2026-09-25T14:21:41.071827Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 71448,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

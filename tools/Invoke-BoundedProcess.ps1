@@ -111,6 +111,11 @@ $errStream = $null
 $stdout = $null
 $stderr = $null
 $copyCancellation = [Threading.CancellationTokenSource]::new()
+$launcherIdentity = Get-CimInstance Win32_Process -Filter "ProcessId=$PID" -OperationTimeoutSec 2
+$launcher = [pscustomobject]@{
+    Pid=$PID; Started=$launcherIdentity.CreationDate; CommandLine=$launcherIdentity.CommandLine
+    ParentPid=$launcherIdentity.ParentProcessId
+}
 try {
     # Copy directly into logs so partial output survives timeout or cancellation.
     $outStream = [IO.File]::Create($stdoutPath)
@@ -126,7 +131,9 @@ try {
     elseif (-not $process.HasExited) { throw 'Could not record the running root process identity.' }
     [IO.File]::WriteAllText($identityPath, ([pscustomobject]@{
         Pid=$taskPid; Started=$process.StartTime.ToUniversalTime(); CommandLine=$identity.CommandLine
-        ParentPid=$identity.ParentProcessId; TimeoutSeconds=$TimeoutSeconds; FilePath=$FilePath
+        ParentPid=$PID; ObservedParentPid=$identity.ParentProcessId
+        ParentIdentitySource='Process.Start caller'; Launcher=$launcher
+        TimeoutSeconds=$TimeoutSeconds; FilePath=$FilePath
         Arguments=$ArgumentList; WorkingDirectory=$start.WorkingDirectory
     } | ConvertTo-Json -Depth 4))
     Write-Output "Started PID $($process.Id), timeout ${TimeoutSeconds}s: $FilePath $($ArgumentList -join ' ')"
@@ -213,6 +220,7 @@ try {
         Status=$status; Pid=$taskPid; ExitCode=$exitCode; Error=$failure
         ElapsedSeconds=[Math]::Round($watch.Elapsed.TotalSeconds,3); TimeoutSeconds=$TimeoutSeconds
         FilePath=$FilePath; Arguments=$ArgumentList; WorkingDirectory=$start.WorkingDirectory
+        Started=$rootStarted; ParentPid=$PID; Launcher=$launcher
         StdoutPath=$stdoutPath; StderrPath=$stderrPath; CleanupErrors=@($cleanupErrors.ToArray())
         Processes=@($tracked.Values | Sort-Object Depth,Pid)
         Limitation='WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking.'

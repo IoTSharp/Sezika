@@ -1,0 +1,33 @@
+{
+  "Status": "Succeeded",
+  "Pid": 78768,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 2.174,
+  "TimeoutSeconds": 60,
+  "FilePath": "dotnet",
+  "Arguments": [
+    "tools/Sezika.OracleCompare/bin/Release/net10.0/Sezika.OracleCompare.dll",
+    ".artifacts/laya-oracle-work/smoke-01/capture.json",
+    ".artifacts/laya-oracle-work/csharp-scalar-smoke-01/capture.json",
+    "tests/fixtures/laya-oracle/contract.v1.json",
+    "tests/fixtures/laya-oracle/cases.v1.json",
+    ".artifacts/laya-oracle-work/csharp-scalar-smoke-01/comparison.json",
+    "30",
+    "choice-en-short"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T14:24:34.9375863Z",
+  "ParentPid": 62144,
+  "Launcher": {
+    "Pid": 62144,
+    "Started": "2026-09-25T22:24:33.771814+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath dotnet -ArgumentList @('tools/Sezika.OracleCompare/bin/Release/net10.0/Sezika.OracleCompare.dll','.artifacts/laya-oracle-work/smoke-01/capture.json','.artifacts/laya-oracle-work/csharp-scalar-smoke-01/capture.json','tests/fixtures/laya-oracle/contract.v1.json','tests/fixtures/laya-oracle/cases.v1.json','.artifacts/laya-oracle-work/csharp-scalar-smoke-01/comparison.json','30','choice-en-short') -TimeoutSeconds 60 -LogName oracle-compare-scalar-smoke -LogDirectory .artifacts/laya-oracle-work/scalar-processes-01\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\scalar-processes-01\\20260925-142434-247-oracle-compare-scalar-smoke.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\scalar-processes-01\\20260925-142434-247-oracle-compare-scalar-smoke.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

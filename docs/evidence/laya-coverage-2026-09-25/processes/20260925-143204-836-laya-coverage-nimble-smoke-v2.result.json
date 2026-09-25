@@ -1,0 +1,43 @@
+{
+  "Status": "Succeeded",
+  "Pid": 49892,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 2.666,
+  "TimeoutSeconds": 180,
+  "FilePath": "C:/Program Files/dotnet/dotnet.exe",
+  "Arguments": [
+    "D:/source/Sezika/.artifacts/build/s3-contract-final/bin/Sezika.Coverage/release/Sezika.Coverage.dll",
+    "D:/source/Sezika/.artifacts/models/laya-mmbert",
+    "D:/source/Sezika/.artifacts/datasets/nimble-2026-09-24/eval.jsonl",
+    "D:\\source\\Sezika\\docs\\evidence\\laya-coverage-2026-09-25\\nimble-smoke.v2.json",
+    "8e9e48b8de5206593912ae01ddc95bd77e40ad2ecf4c9292c1711290eca0d896",
+    "1",
+    "120",
+    "strict"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T14:32:05.3323329Z",
+  "ParentPid": 65944,
+  "Launcher": {
+    "Pid": 65944,
+    "Started": "2026-09-25T22:32:04.464316+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$coverageOutput = [IO.Path]::GetFullPath('docs/evidence/laya-coverage-2026-09-25/nimble-smoke.v2.json'); if (Test-Path -LiteralPath $coverageOutput) { throw 'Refusing to overwrite existing coverage evidence.' }; & 'D:/source/Sezika/tools/Invoke-BoundedProcess.ps1' -FilePath 'C:/Program Files/dotnet/dotnet.exe' -ArgumentList @('D:/source/Sezika/.artifacts/build/s3-contract-final/bin/Sezika.Coverage/release/Sezika.Coverage.dll','D:/source/Sezika/.artifacts/models/laya-mmbert','D:/source/Sezika/.artifacts/datasets/nimble-2026-09-24/eval.jsonl',$coverageOutput,'8e9e48b8de5206593912ae01ddc95bd77e40ad2ecf4c9292c1711290eca0d896','1','120','strict') -TimeoutSeconds 180 -LogName 'laya-coverage-nimble-smoke-v2' -LogDirectory 'D:/source/Sezika/docs/evidence/laya-coverage-2026-09-25/processes'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\docs\\evidence\\laya-coverage-2026-09-25\\processes\\20260925-143204-836-laya-coverage-nimble-smoke-v2.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\docs\\evidence\\laya-coverage-2026-09-25\\processes\\20260925-143204-836-laya-coverage-nimble-smoke-v2.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 49892,
+      "CreationDate": "2026-09-25T22:32:05.332332+08:00",
+      "Started": "2026-09-25T14:32:05.332332Z",
+      "CommandLine": "\"C:/Program Files/dotnet/dotnet.exe\" D:/source/Sezika/.artifacts/build/s3-contract-final/bin/Sezika.Coverage/release/Sezika.Coverage.dll D:/source/Sezika/.artifacts/models/laya-mmbert D:/source/Sezika/.artifacts/datasets/nimble-2026-09-24/eval.jsonl D:\\source\\Sezika\\docs\\evidence\\laya-coverage-2026-09-25\\nimble-smoke.v2.json 8e9e48b8de5206593912ae01ddc95bd77e40ad2ecf4c9292c1711290eca0d896 1 120 strict",
+      "ParentPid": 65944,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

@@ -49,7 +49,7 @@ public sealed class ModernBertModelPackage : IDisposable
     }
 }
 
-/// <summary>Loads the pinned Laya/mmBERT package from verified JSON + SafeTensors only.</summary>
+/// <summary>Loads a model package from verified JSON metadata and SafeTensors weights.</summary>
 public static class ModernBertModelLoader
 {
     private const int MaxManifestBytes = 1 * 1024 * 1024;

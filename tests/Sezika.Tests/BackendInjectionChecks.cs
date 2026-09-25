@@ -36,20 +36,20 @@ public static class BackendInjectionChecks
                 var choice = response.Answers["choice"] as ChoiceAnswer;
                 var score = response.Answers["score"] as ScoreAnswer;
                 var boolean = response.Answers["boolean"] as BooleanAnswer;
-                check(choice is not null && choice.Logits is not null && choice.Choice == "z" && choice.Logits["a"] == 0d && choice.Logits["z"] == 2d &&
-                    Near(choice.Probabilities["z"], Math.Exp(2) / (1 + Math.Exp(2))),
-                    "injected fixture logits use sorted choice keys and choice temperature");
+                check(choice is not null && choice.Logits is not null && choice.Choice == "a" && choice.Logits["z"] == 0d && choice.Logits["a"] == 2d &&
+                    Near(choice.Probabilities["a"], Math.Exp(2) / (1 + Math.Exp(2))),
+                    "injected fixture logits preserve input choice order and choice temperature");
                 check(score is not null && Near(score.Score, Math.Exp(1) / (1 + Math.Exp(1))) &&
                     score.Legend["0"].GetString() == "b" && score.Legend["1"].GetString() == "a",
                     "injected fixture logits preserve score order and expected-value semantics");
-                check(boolean is not null && boolean.Logits is not null && Near(boolean.ProbabilityTrue, 1 / (1 + Math.Exp(0.5))) &&
-                    boolean.Logits["true"] == 0d && boolean.Logits["false"] == 2d,
-                    "injected fixture logits preserve boolean true/false order and temperature");
+                check(boolean is not null && boolean.Logits is not null && Near(boolean.ProbabilityTrue, Math.Exp(0.5) / (1 + Math.Exp(0.5))) &&
+                    boolean.Logits["false"] == 0d && boolean.Logits["true"] == 2d,
+                    "injected fixture logits map false/true markers and true probability through temperature");
                 check(response.Answers.Values.All(answer => answer.Calibration.Status == "uncalibrated" && answer.Status == "answered"),
                     "injected fixture predictions remain explicitly uncalibrated");
-                check(MatchesPrompt(backend.Calls[0], model.Tokenizer, "a", "b") &&
-                    MatchesPrompt(backend.Calls[1], model.Tokenizer, "b", "a") &&
-                    MatchesPrompt(backend.Calls[2], model.Tokenizer, "a", "b"),
+                check(MatchesPrompt(backend.Calls[0], model.Tokenizer, "choice", "z: b", "a: a") &&
+                    MatchesPrompt(backend.Calls[1], model.Tokenizer, "score", "level 0: b", "level 1: a") &&
+                    MatchesPrompt(backend.Calls[2], model.Tokenizer, "noul", "false: b", "true: a"),
                     "all injected backend calls receive shared BOS/prompt/markers/criteria/state/EOS tokens");
                 check(response.Usage is not null && response.Usage.QuestionCount == 3 && response.Usage.MicroBatchCount == 3 &&
                     response.Usage.TokenCount == backend.Calls.Sum(call => call.Tokens.Length),
@@ -132,43 +132,46 @@ public static class BackendInjectionChecks
         var tokenizer = new TokenizerJson(tokenizerPath, cancellationToken);
         var first = BoundaryRequest(1);
         var question = (BooleanQuestion)first.Questions["decision"];
-        var criteria = new[] { question.Criteria!.WhenTrue, question.Criteria.WhenFalse };
-        var baseLength = MarkerSequenceBuilder.Build(tokenizer, first.State, question.Instructions, criteria,
-            512, cancellationToken).Tokens.Length;
-        var stateLength = 257 - baseLength;
-        if (stateLength is < 1 or > 256) throw new InvalidOperationException("Unexpected fixture token length.");
+        var options = new PromptSequenceOptions { TotalTokenBudget = 2048 };
+        var baseLength = PromptSequenceBuilder.Build(tokenizer, first.State, question, options, cancellationToken).TokenIds.Length;
+        var stateLength = 1025 - baseLength;
+        if (stateLength is < 1 or > 1024) throw new InvalidOperationException("Unexpected fixture token length.");
         var atLimit = BoundaryRequest(stateLength);
         var oneOver = BoundaryRequest(stateLength + 1);
         var twoOver = BoundaryRequest(stateLength + 2);
-        int Length(DecisionRequest request) => MarkerSequenceBuilder.Build(tokenizer, request.State,
-            request.Questions["decision"].Instructions, criteria, 512, cancellationToken).Tokens.Length;
-        check(Length(atLimit) == 256 && Length(oneOver) == 257 && Length(twoOver) == 258,
-            "shared marker sequence measures exact 256/257/258 token boundary");
+        int Length(DecisionRequest request) => PromptSequenceBuilder.Build(tokenizer, request.State,
+            request.Questions["decision"], options, cancellationToken).TokenIds.Length;
+        check(Length(atLimit) == 1024 && Length(oneOver) == 1025 && Length(twoOver) == 1026,
+            "shared marker sequence measures exact 1024/1025/1026 token boundary independently of prefix budget");
 
         var model = Package(tokenizerPath, cancellationToken);
         var pipeline = new FixturePipeline();
         using var engine = new ModernBertDecisionEngine(model, pipeline, "fixture-token-boundary");
         var response = engine.Evaluate(atLimit, cancellationToken);
-        check(response.Usage?.TokenCount == 256 && pipeline.Calls.Count == 1,
-            "production engine accepts exactly 256 marker tokens");
+        check(response.Usage?.TokenCount == 1024 && pipeline.Calls.Count == 1,
+            "production engine accepts exactly 1024 tokens with a 256-token prefix budget");
         try
         {
             engine.Evaluate(oneOver, cancellationToken);
-            throw new InvalidOperationException("257-token fixture was accepted.");
+            throw new InvalidOperationException("1025-token strict fixture was accepted.");
         }
         catch (DecisionException exception) when (exception.Code == "decision_token_budget_exceeded")
         {
-            check(true, "257-token final EOS reports the production budget code");
+            check(true, "1025-token strict input reports the production budget code");
         }
         try
         {
             engine.Evaluate(twoOver, cancellationToken);
-            throw new InvalidOperationException("258-token fixture was accepted.");
+            throw new InvalidOperationException("1026-token strict fixture was accepted.");
         }
-        catch (DecisionException exception) when (exception.Code == "decision_token_limit_exceeded")
+        catch (DecisionException exception) when (exception.Code == "decision_token_budget_exceeded")
         {
-            check(pipeline.Calls.Count == 1, "258-token tokenizer limit rejects before backend execution");
+            check(pipeline.Calls.Count == 1, "over-budget strict input rejects before backend execution");
         }
+        var compatible = engine.Evaluate(oneOver with { LengthPolicy = PromptLengthPolicy.LayaCompatible }, cancellationToken);
+        check(compatible.Usage?.TokenCount == 1024 && pipeline.Calls.Count == 2 &&
+            compatible.Answers["decision"].InputDiagnostics?.DroppedStateTokens == 1,
+            "explicit compatibility mode reports the one discarded state token");
     }
 
     private static DecisionRequest BoundaryRequest(int stateLength)
@@ -191,19 +194,19 @@ public static class BackendInjectionChecks
         };
     }
 
-    private static bool MatchesPrompt(Call call, TokenizerJson tokenizer, string first, string second)
+    private static bool MatchesPrompt(Call call, TokenizerJson tokenizer, string type, string first, string second)
     {
         var expected = new List<int> { tokenizer.BosId };
-        expected.AddRange(tokenizer.Encode("type question: q", 256, addSpecialTokens: false));
+        expected.AddRange(tokenizer.Encode($"{type} question: q", 256, addSpecialTokens: false));
         expected.Add(tokenizer.EosId);
         var firstMarker = expected.Count;
         expected.Add(tokenizer.MaskId);
-        expected.AddRange(tokenizer.Encode(first, 256, addSpecialTokens: false));
+        expected.AddRange(tokenizer.Encode(" " + first, 256, addSpecialTokens: false));
         var secondMarker = expected.Count;
         expected.Add(tokenizer.MaskId);
-        expected.AddRange(tokenizer.Encode(second, 256, addSpecialTokens: false));
+        expected.AddRange(tokenizer.Encode(" " + second, 256, addSpecialTokens: false));
         expected.Add(tokenizer.EosId);
-        expected.AddRange(tokenizer.Encode("{\"s\":\"a\"}", 256, addSpecialTokens: false));
+        expected.AddRange(tokenizer.Encode("{\"s\": \"a\"}", 256, addSpecialTokens: false));
         expected.Add(tokenizer.EosId);
         return call.Tokens.SequenceEqual(expected) && call.Markers.SequenceEqual([firstMarker, secondMarker]);
     }
@@ -229,7 +232,7 @@ public static class BackendInjectionChecks
     private static ModernBertModelPackage Package(string tokenizerPath, CancellationToken cancellationToken)
     {
         const int h = 4;
-        var config = new ModernBertConfig { VocabularySize = 16, HiddenSize = h, IntermediateSize = 8, LayerCount = 1, HeadCount = 2, MaxTokens = 256 };
+        var config = new ModernBertConfig { VocabularySize = 16, HiddenSize = h, IntermediateSize = 8, LayerCount = 1, HeadCount = 2, MaxTokens = 1024 };
         var tokenizer = new TokenizerJson(tokenizerPath, cancellationToken);
         var encoder = new ModernBertEncoder(config, new ModernBertWeights
         {
@@ -272,7 +275,7 @@ public static class BackendInjectionChecks
         public float[] Score(ReadOnlySpan<int> tokenIds, int typeId, ReadOnlySpan<int> markerPositions, CancellationToken cancellationToken = default)
         {
             cancellationToken.ThrowIfCancellationRequested();
-            if (Calls.Count >= 3 || markerPositions.Length != 2 || tokenIds.Length > 256)
+            if (Calls.Count >= 3 || markerPositions.Length != 2 || tokenIds.Length > 1024)
                 throw new InvalidOperationException("Injected fixture call exceeded its fixed bounds.");
             Calls.Add(new Call(tokenIds.ToArray(), typeId, markerPositions.ToArray()));
             return [0f, 2f];

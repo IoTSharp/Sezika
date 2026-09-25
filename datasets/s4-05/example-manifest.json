@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "dataset_id": "sezika-s4-05-admission-example-v1",
+  "stage": "FixtureOnly",
+  "intended_use": "Research",
+  "records": {
+    "path": "example-records.jsonl",
+    "sha256": "e1717d4cd2acb50020b327f87f70a6eebe63e3fe9dac1436cb2cbd05b42e907b"
+  },
+  "sources": [
+    {
+      "id": "repository-original-example",
+      "upstream_id": "sezika/repository-authored/s4-05-example",
+      "upstream_split": "original-example-inventory",
+      "revision": "s4-05-example-v1",
+      "origin": "Original",
+      "raw": {
+        "path": "example-records.jsonl",
+        "sha256": "e1717d4cd2acb50020b327f87f70a6eebe63e3fe9dac1436cb2cbd05b42e907b"
+      },
+      "license_expression": "Apache-2.0",
+      "license_review": "Pending",
+      "license_reviewer": null,
+      "license_reviewed_utc": null,
+      "license_evidence": null,
+      "allowed_uses": [],
+      "allowed_splits": ["Development", "Calibration", "SealedTest"],
+      "exposure": "DevelopmentViewed"
+    }
+  ],
+  "test_seal": {
+    "status": "Unsealed",
+    "custodian": null,
+    "sealed_utc": null,
+    "evidence": null
+  }
+}

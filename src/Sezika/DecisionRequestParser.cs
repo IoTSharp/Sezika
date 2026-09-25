@@ -130,6 +130,8 @@ public static class DecisionRequestValidator
         {
             throw new DecisionException("decision_model_required", "Model is required.");
         }
+        if (!Enum.IsDefined(request.LengthPolicy))
+            throw new DecisionException("decision_length_policy_invalid", "Length policy must be strict or laya_compatible.");
         if (request.State.ValueKind is JsonValueKind.Undefined or JsonValueKind.Null)
         {
             throw new DecisionException("decision_state_required", "State is required.");
@@ -182,8 +184,9 @@ public static class DecisionRequestValidator
                         $"Question '{id}' uses an unsupported question type.");
             }
 
-            var estimatedTokens = EstimateTokens(questionBytes);
-            EnsureTokenBudget(estimatedTokens, effectiveLimits);
+            // Byte counts guard allocation; a bytes/4 estimate is not a tokenizer
+            // length and must not reject text before the explicit length policy.
+            // Both engines enforce exact counts during tokenization.
             totalBytes = checked(totalBytes + questionBytes);
         }
 
@@ -192,8 +195,8 @@ public static class DecisionRequestValidator
     }
 
     /// <summary>
-    /// Applies an exact model-tokenizer count after the structural pass. The
-    /// UTF-8 estimate above is only a pre-allocation guard.
+    /// Applies an exact model-tokenizer count after the structural byte/depth
+    /// pass. Diagnostic UTF-8 estimates never enforce a token limit.
     /// </summary>
     public static void EnsureTokenBudget(int tokenCount, DecisionLimits? limits = null)
     {
@@ -227,7 +230,7 @@ public static class DecisionRequestValidator
         {
             ValidateIdentifier(criterionId, "criterion", limits.MaxIdentifierLength);
             var bytes = GetJsonBytes(criterion);
-            if (criterion.ValueKind is JsonValueKind.Undefined or JsonValueKind.Null)
+            if (criterion.ValueKind == JsonValueKind.Undefined)
             {
                 throw new DecisionException("decision_criteria_invalid",
                     $"Choice criterion '{criterionId}' has no value.");
@@ -263,16 +266,18 @@ public static class DecisionRequestValidator
 
     private static void ValidateBoolean(string id, BooleanQuestion question, ref int questionBytes)
     {
-        if (question.Criteria is null ||
-            question.Criteria.WhenTrue.ValueKind is JsonValueKind.Undefined or JsonValueKind.Null ||
-            question.Criteria.WhenFalse.ValueKind is JsonValueKind.Undefined or JsonValueKind.Null)
+        if (question.Criteria is not null)
         {
-            throw new DecisionException("decision_criteria_required",
-                $"Boolean question '{id}' requires true and false criteria.");
+            questionBytes = checked(questionBytes + GetJsonBytes(question.Criteria.WhenTrue) +
+                GetJsonBytes(question.Criteria.WhenFalse));
         }
-
-        questionBytes = checked(questionBytes + GetJsonBytes(question.Criteria.WhenTrue) +
-            GetJsonBytes(question.Criteria.WhenFalse));
+        if (question.Labels is not { } labels) return;
+        if (string.IsNullOrWhiteSpace(labels.WhenFalse) || string.IsNullOrWhiteSpace(labels.WhenTrue) ||
+            string.Equals(labels.WhenFalse.Trim(), labels.WhenTrue.Trim(), StringComparison.Ordinal))
+            throw new DecisionException("decision_boolean_labels_invalid",
+                $"Boolean question '{id}' requires distinct non-empty true and false display labels.");
+        questionBytes = checked(questionBytes + Encoding.UTF8.GetByteCount(labels.WhenFalse) +
+            Encoding.UTF8.GetByteCount(labels.WhenTrue));
     }
 
     private static void ValidateIdentifier(string value, string kind, int maxLength)

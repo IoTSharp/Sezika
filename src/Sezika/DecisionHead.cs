@@ -28,7 +28,7 @@ public sealed class DecisionHeadWeights
     public required float[] ScorerOutputBias { get; init; }
 }
 
-/// <summary>CPU decision head with scalar, SIMD and W8A32 linear kernels for the Laya marker contract.</summary>
+/// <summary>Scores candidate markers using scalar, SIMD or W8A32 linear kernels.</summary>
 public sealed class ModernBertDecisionPipeline : IMarkerDecisionPipeline, IDisposable
 {
     private readonly ModernBertEncoder _encoder;

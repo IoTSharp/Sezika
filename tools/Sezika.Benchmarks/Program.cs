@@ -23,6 +23,10 @@ internal static class Benchmark
         {
             var options = Options.Parse(args);
             if (options.SelfTest) { SelfTest(); return 0; }
+            if (options.Mode == "profile") report.Profile = new PerformanceProfile
+            {
+                SelectedLengths = options.Lengths, SelectedQuestions = options.Questions,
+            };
             var destination = Path.GetFullPath(options.Output);
             if (File.Exists(destination)) throw new ArgumentException("Report already exists; choose a new output path.");
             output = destination;
@@ -39,12 +43,13 @@ internal static class Benchmark
             report.Samples = options.Samples;
             report.Warmup = options.Warmup;
             report.TimeoutSeconds = options.TimeoutSeconds;
-            if (options.RequireAot && !report.NativeAot) throw new InvalidOperationException("Native AOT was required but this process supports dynamic code.");
             using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(options.TimeoutSeconds));
             ConsoleCancelEventHandler cancel = (_, e) => { e.Cancel = true; timeout.Cancel(); };
             Console.CancelKeyPress += cancel;
             try
             {
+                if (report.Profile is not null) PerformanceProfiler.PreparePlan(options, report.Profile, timeout.Token);
+                if (options.RequireAot && !report.NativeAot) throw new InvalidOperationException("Native AOT was required but this process supports dynamic code.");
                 report.Phase = "identity";
                 report.ManifestSha256 = FileHash(Path.Combine(options.Model, "model.json"));
                 report.ExecutableSha256 = FileHash(Environment.ProcessPath!);
@@ -70,6 +75,7 @@ internal static class Benchmark
         catch (Exception exception)
         {
             report.Status = "failed";
+            if (report.Profile is not null) report.Profile.Status = "incomplete";
             report.ErrorCode = exception switch
             {
                 DecisionException decision => decision.Code,
@@ -83,8 +89,22 @@ internal static class Benchmark
         finally
         {
             report.ElapsedMilliseconds = watch.Elapsed.TotalMilliseconds;
-            using var process = Process.GetCurrentProcess();
-            report.PeakWorkingSetBytes = process.PeakWorkingSet64;
+            try
+            {
+                using var process = Process.GetCurrentProcess();
+                report.PeakWorkingSetBytes = process.PeakWorkingSet64;
+            }
+            catch (Exception exception)
+            {
+                report.Diagnostics.Add($"process_peak_observation_failed: {exception.GetType().Name}: {exception.Message}");
+                if (report.Status != "failed")
+                {
+                    report.Status = "failed";
+                    report.ErrorCode = "process_peak_observation_failed";
+                    report.Error = exception.Message;
+                }
+                if (report.Profile is not null) report.Profile.Status = "incomplete";
+            }
             if (output is not null)
             {
                 try
@@ -121,6 +141,7 @@ internal static class Benchmark
         CudaModernBertEncoder? gpuEncoder = null;
         IMarkerDecisionPipeline? pipeline = null;
         ModernBertDecisionEngine? engine = null;
+        ProfiledPipeline? profiledPipeline = null;
         try
         {
             watch.Restart();
@@ -140,6 +161,11 @@ internal static class Benchmark
                 report.QuantizedHeadBytes = cpu.QuantizedWeightBytes;
                 pipeline = cpu;
             }
+            if (options.Mode == "profile")
+            {
+                profiledPipeline = new ProfiledPipeline(pipeline);
+                pipeline = profiledPipeline;
+            }
             engine = new ModernBertDecisionEngine(model, budget: new DecisionResourceBudget
             {
                 MaxTokens = 32768, Deadline = TimeSpan.FromMinutes(5), MaxResidentBytes = 4L * 1024 * 1024 * 1024,
@@ -153,35 +179,40 @@ internal static class Benchmark
             Validate(cold, 3);
             if (cycle == 0)
             {
-                foreach (var count in options.Questions)
+                if (profiledPipeline is not null)
+                    PerformanceProfiler.Run(options, report, model, engine, profiledPipeline, device, token);
+                else
                 {
-                    var json = RequestJson(count);
-                    report.Phase = $"benchmark_{count}_questions";
-                    for (var iteration = 0; iteration < options.Warmup; iteration++)
+                    foreach (var count in options.Questions)
                     {
-                        token.ThrowIfCancellationRequested();
-                        _ = Evaluate(engine, json, token);
+                        var json = RequestJson(count);
+                        report.Phase = $"benchmark_{count}_questions";
+                        for (var iteration = 0; iteration < options.Warmup; iteration++)
+                        {
+                            token.ThrowIfCancellationRequested();
+                            _ = Evaluate(engine, json, token);
+                        }
+                        var times = new double[options.Samples];
+                        var allocations = new long[options.Samples];
+                        DecisionResponse response = cold;
+                        for (var iteration = 0; iteration < options.Samples; iteration++)
+                        {
+                            token.ThrowIfCancellationRequested();
+                            Console.WriteLine($"{report.Phase}: sample {iteration + 1}/{options.Samples}");
+                            var before = GC.GetTotalAllocatedBytes(true);
+                            watch.Restart();
+                            response = Evaluate(engine, json, token);
+                            times[iteration] = watch.Elapsed.TotalMilliseconds;
+                            allocations[iteration] = GC.GetTotalAllocatedBytes(true) - before;
+                            Validate(response, count);
+                        }
+                        var requestsPerSecond = times.Length * 1000 / times.Sum();
+                        report.Requests.Add(new(count, json, Hash(Encoding.UTF8.GetBytes(json)), response.Usage!.TokenCount,
+                            2, times, allocations, Distribution.From(times), requestsPerSecond, requestsPerSecond * count, response));
                     }
-                    var times = new double[options.Samples];
-                    var allocations = new long[options.Samples];
-                    DecisionResponse response = cold;
-                    for (var iteration = 0; iteration < options.Samples; iteration++)
-                    {
-                        token.ThrowIfCancellationRequested();
-                        Console.WriteLine($"{report.Phase}: sample {iteration + 1}/{options.Samples}");
-                        var before = GC.GetTotalAllocatedBytes(true);
-                        watch.Restart();
-                        response = Evaluate(engine, json, token);
-                        times[iteration] = watch.Elapsed.TotalMilliseconds;
-                        allocations[iteration] = GC.GetTotalAllocatedBytes(true) - before;
-                        Validate(response, count);
-                    }
-                    var requestsPerSecond = times.Length * 1000 / times.Sum();
-                    report.Requests.Add(new(count, json, Hash(Encoding.UTF8.GetBytes(json)), response.Usage!.TokenCount,
-                        2, times, allocations, Distribution.From(times), requestsPerSecond, requestsPerSecond * count, response));
                 }
                 report.Phase = "alignment";
-                report.Alignment = Align(model, pipeline, gpuEncoder, options.Backend, token);
+                report.Alignment = Align(model, profiledPipeline?.Inner ?? pipeline, gpuEncoder, options.Backend, token);
                 var alignment = report.Alignment;
                 Require(alignment.EncoderMaxAbsoluteError <= alignment.EncoderTolerance &&
                     alignment.LogitsMaxAbsoluteError <= alignment.LogitsTolerance &&
@@ -235,7 +266,7 @@ internal static class Benchmark
         }
     }
 
-    private static DecisionResponse Evaluate(ModernBertDecisionEngine engine, string json, CancellationToken token)
+    internal static DecisionResponse Evaluate(ModernBertDecisionEngine engine, string json, CancellationToken token)
     {
         var response = engine.Evaluate(Parse(json), token);
         _ = JsonSerializer.Serialize(response, DecisionJsonContext.Default.DecisionResponse);
@@ -317,9 +348,9 @@ internal static class Benchmark
         report.Diagnostics.Add("recovery_after_cancel_and_invalid_input");
     }
 
-    private static string RequestJson(int count)
+    internal static string RequestJson(int count, string? stateText = null)
     {
-        using var state = JsonDocument.Parse("\"help\"");
+        using var state = JsonDocument.Parse(JsonSerializer.Serialize(stateText ?? "help", ReportJsonContext.Default.String));
         using var instruction = JsonDocument.Parse("\"type\"");
         using var yes = JsonDocument.Parse("\"yes\"");
         using var no = JsonDocument.Parse("\"no\"");
@@ -340,7 +371,7 @@ internal static class Benchmark
             State = state.RootElement.Clone(), Questions = questions }, DecisionJsonContext.Default.DecisionRequest);
     }
 
-    private static void Validate(DecisionResponse response, int count)
+    internal static void Validate(DecisionResponse response, int count)
     {
         Require(response.Answers.Count == count && response.Usage?.MicroBatchCount == count && response.Usage.TokenCount > 0,
             "Question/token/micro-batch accounting is inconsistent.");
@@ -401,11 +432,12 @@ internal static class Benchmark
 }
 
 internal sealed record Options(string Model, string Backend, string Output, int Samples, int Warmup, int Cycles,
-    int TimeoutSeconds, int[] Questions, string Cpu, string EnvironmentLabel, bool RequireAot, bool SelfTest)
+    int TimeoutSeconds, int[] Questions, string Cpu, string EnvironmentLabel, bool RequireAot, bool SelfTest,
+    string Mode, string[] Lengths)
 {
     public static Options Parse(string[] args)
     {
-        if (args.Length > 32) throw new ArgumentException("At most 32 arguments are accepted.");
+        if (args.Length > 40) throw new ArgumentException("At most 40 arguments are accepted.");
         var values = new Dictionary<string, string>(StringComparer.Ordinal);
         var requireAot = false; var selfTest = false;
         for (var i = 0; i < args.Length; i++)
@@ -414,7 +446,7 @@ internal sealed record Options(string Model, string Backend, string Output, int 
             if (args[i] == "--self-test") { selfTest = true; continue; }
             var key = args[i];
             if (key is not ("--model" or "--backend" or "--output" or "--samples" or "--warmup" or "--cycles" or
-                "--timeout-seconds" or "--questions" or "--cpu" or "--environment") || ++i >= args.Length || !values.TryAdd(key, args[i]))
+                "--timeout-seconds" or "--questions" or "--cpu" or "--environment" or "--mode" or "--lengths") || ++i >= args.Length || !values.TryAdd(key, args[i]))
                 throw new ArgumentException($"Unknown, duplicate or incomplete option: {key}.");
         }
         string Get(string key, string fallback) => values.GetValueOrDefault(key, fallback);
@@ -429,8 +461,17 @@ internal sealed record Options(string Model, string Backend, string Output, int 
         var parts = Get("--questions", "1,8,32").Split(',');
         if (parts.Length is < 1 or > 3) throw new ArgumentException("Supply at most three question counts.");
         var counts = parts.Select(part => int.TryParse(part, out var n) && n is >= 1 and <= 32 ? n : throw new ArgumentException("Questions must be 1..32.")).ToArray();
+        var mode = Get("--mode", "benchmark");
+        if (mode is not ("benchmark" or "profile")) throw new ArgumentException("Mode must be benchmark or profile.");
+        var lengths = Get("--lengths", "short,medium,long").Split(',');
+        if (lengths.Length is < 1 or > 3 || lengths.Distinct(StringComparer.Ordinal).Count() != lengths.Length ||
+            lengths.Any(length => length is not ("short" or "medium" or "long")))
+            throw new ArgumentException("Lengths must be unique short,medium,long entries (at most three).");
+        if (mode == "benchmark" && values.ContainsKey("--lengths")) throw new ArgumentException("--lengths requires --mode profile.");
+        if (mode == "profile" && (counts.Distinct().Count() != counts.Length || counts.Any(count => count is not (1 or 8 or 32))))
+            throw new ArgumentException("Profile question counts must be unique entries from 1,8,32.");
         return new(Get("--model", ".artifacts/models/laya-mmbert"), backend, Get("--output", ".artifacts/s5/report.json"),
             Number("--samples", 5, 1, 30), Number("--warmup", 1, 0, 5), Number("--cycles", 2, 1, 2),
-            Number("--timeout-seconds", 1200, 1, 1800), counts, Get("--cpu", "unspecified"), Get("--environment", "unspecified"), requireAot, selfTest);
+            Number("--timeout-seconds", 1200, 1, 1800), counts, Get("--cpu", "unspecified"), Get("--environment", "unspecified"), requireAot, selfTest, mode, lengths);
     }
 }

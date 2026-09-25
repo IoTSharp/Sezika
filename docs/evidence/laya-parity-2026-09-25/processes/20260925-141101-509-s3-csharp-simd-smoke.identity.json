@@ -1,0 +1,30 @@
+{
+  "Pid": 34896,
+  "Started": "2026-09-25T14:11:01.5326871Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" tools/Sezika.OracleCapture/bin/Release/net10.0/Sezika.OracleCapture.dll --reference .artifacts/laya-oracle-work/smoke-01/capture.json --model .artifacts/models/laya-mmbert --cases tests/fixtures/laya-oracle/cases.v1.json --contract tests/fixtures/laya-oracle/contract.v1.json --output .artifacts/laya-oracle-work/csharp-simd-smoke-01 --backend simd --length-policy laya_compatible --max-cases 1 --timeout-seconds 1800",
+  "ParentPid": 66076,
+  "TimeoutSeconds": 1800,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "tools/Sezika.OracleCapture/bin/Release/net10.0/Sezika.OracleCapture.dll",
+    "--reference",
+    ".artifacts/laya-oracle-work/smoke-01/capture.json",
+    "--model",
+    ".artifacts/models/laya-mmbert",
+    "--cases",
+    "tests/fixtures/laya-oracle/cases.v1.json",
+    "--contract",
+    "tests/fixtures/laya-oracle/contract.v1.json",
+    "--output",
+    ".artifacts/laya-oracle-work/csharp-simd-smoke-01",
+    "--backend",
+    "simd",
+    "--length-policy",
+    "laya_compatible",
+    "--max-cases",
+    "1",
+    "--timeout-seconds",
+    "1800"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

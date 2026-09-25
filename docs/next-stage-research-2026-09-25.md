@@ -1,6 +1,6 @@
 # 下一阶段算法、质量、训练与生态研究
 
-研究日期：2026-09-25。本文是 S4-04 至 S6-03 的设计与验证计划，不表示相关能力已经实现。仓库当前真实模型为 `convaiinnovations/laya-multilingual@052592a15d198d9ad47da779604259b10b47b7aa`；固定权重和 tokenizer 的来源见[模型记录](model-source.md)。竞品数字仅按其对应版本、数据和硬件引用，不作为 Sezika 成绩。
+研究日期：2026-09-25。本文保留算法与生态的背景研究；当前唯一执行顺序以 [ROADMAP](../ROADMAP.md) 为准。仓库当前真实模型为 `convaiinnovations/laya-multilingual@052592a15d198d9ad47da779604259b10b47b7aa`；固定权重和 tokenizer 的来源见[模型记录](model-source.md)。竞品数字仅按其对应版本、数据和硬件引用，不作为 Sezika 成绩。Laya 最新源码与长度语义的更正见[固定提交审阅](laya-upstream-review-2026-09-25.md)。
 
 ## 1. 当前算法及已知差距
 
@@ -30,7 +30,7 @@ Jev 的内部模型和训练代码未公开，不能声称复现其架构或 RLC
 
 | 项目 | 实现路线及模型可见性 | 主要优势 | 主要代价或未知项 |
 | --- | --- | --- | --- |
-| Sezika 当前版 | 纯 C#/.NET 10、固定 Laya 多语 mmBERT 权重、双向 cross-encoder + marker head，CPU/CUDA Driver、Native AOT | 本地可审计、无远端依赖、类型/预算/失败语义明确，322M 权重低于 Nimble 9B | 语义质量尚弱；head 256-token 预算造成长题大量拒绝；每题重复 state，CUDA GEMM/launch 尚未充分优化 |
+| Sezika 当前版 | 纯 C#/.NET 10、固定 Laya 多语 mmBERT 权重、双向 cross-encoder + marker head，CPU/CUDA Driver、Native AOT | 本地可审计、无远端依赖、类型/预算/失败语义明确，322M 权重低于 Nimble 9B | 旧实现把 256-token 前缀预算误作完整序列上限且 prompt/候选未与 Laya 对齐；每题重复 state，CUDA GEMM/launch 尚未充分优化 |
 | [Laya 0.3.6](https://github.com/NandhaKishorM/laya/tree/c7527708f9f5220c669d8aa385077cd28d04708a) | PyTorch/Transformers，多检查点 Router，mmBERT/ModernBERT 双向 encoder + marker head；训练 notebook/权重公开 | 可复用的非自回归决策结构、不同语言检查点及上游基准 | 依赖 Python/GPU 框架；多问题仍重复 state；上游专项检查点成绩不能移植给多语权重 |
 | TypeSafe [Jev](https://docs.typesafe.ai/concepts/system-one.md) 1.13.0 | 托管 API；公开描述 System One、并行输出、RLCD，核心结构和权重未公开 | 已公开类型化多题 API、置信与服务口径；Nimble 固定题集公开复测质量较强 | 本地算子/训练无法审计或迁入 Sezika；API 成本、网络、服务限制和数据治理需评估 |
 | [Nimble](https://github.com/bespokelabsai/nimble/tree/62076b4f2d365b5879dafcf7f6dd072a1fe76df7) | Qwen3.5-9B decoder + 单 token 候选码、LoRA hard-label 训练；MLX 共享前缀，CUDA 逐题评分 | 数据/训练/评测配方公开，反事实成对训练和人标公开子集可复现 | BF16 仅权重约 18 GB；代码依赖 Python/MLX/PyTorch；其模型/数据许可及测试泄漏需逐项审查 |
@@ -59,9 +59,9 @@ Jev 的内部模型和训练代码未公开，不能声称复现其架构或 RLC
 
 公开训练数据的首批许可清单：HF 模型卡分别标 [Civil Comments](https://huggingface.co/datasets/google/civil_comments) `CC0-1.0`、[MASSIVE](https://huggingface.co/datasets/AmazonScience/massive) `CC-BY-4.0`、[HelpSteer2](https://huggingface.co/datasets/nvidia/HelpSteer2) `CC-BY-4.0`、[Aegis 2](https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0) `CC-BY-4.0`、[BoolQ](https://huggingface.co/datasets/google/boolq) `CC-BY-SA-3.0`。这些是候选，不等于已经批准训练或重新分发：逐项核对原始条款、标注来源、字段、可商用范围、衍生权重义务和版本。CC-BY-SA 与许可不明的数据先隔离；Nimble 仓库的公开数据尤其不能因“可下载”便用于商业模型。
 
-**本轮实测已改变优先级。** [逐题质量证据](evidence/quality-2026-09-25.md)显示 Nimble 324 题仅 8 题可回答、4 题正确，首先要解决输入预算/长序列成本；PAWS 固定 250 ID 有 249 题回答、124 题正确，且负类仅 4/128 正确，需优先查明是否为头部训练目标、类别先验、提示敏感性或表示不足。温度不会改变固定 0.5 决策的 logits 排序；阈值/提示只能在独立开发集确定，不能用 PAWS test 调参。PAWS 只是英语 Noul 一项，不能推导中文或 Choice/Score 表现。
+**本轮实测及后续源码复核已改变优先级。** [逐题质量证据](evidence/quality-2026-09-25.md)显示旧 Sezika 实现对 Nimble 324 题仅回答 8 题、4 题正确，PAWS 250 ID 中回答 249 题、正确 124 题，负类仅 4/128 正确。先修正 Laya 输入/预算契约并建立同权重 oracle，重测后再判断训练目标、类别先验、提示敏感性或表示是否不足。温度不会改变固定 0.5 决策的 logits 排序；阈值/提示只能在独立开发集确定，不能用 PAWS test 调参。PAWS 只是英语 Noul 一项，不能推导中文或 Choice/Score 表现。
 
-P0 精确长度复核进一步确认 Nimble 324 题全部在 1024-token encoder 上限内，只有 8 题落在当前 256-token head 上限内；PAWS Boolean AUROC 为 0.537642。222-token 单条的 CPU/CUDA 原始 logits 误差为百万分之几，尚不能替代长输入参考实现 oracle 或证明语义质量。详见[同日质量证据](evidence/quality-2026-09-25.md)。
+P0 用旧 Sezika 渲染测得 Nimble 324 题的完整长度均在 1024 内、只有 8 题在旧实现的 256-token 完整序列限制内；这不代表上游 Laya 的 head 只能处理 256-token 完整输入。PAWS Boolean AUROC 为 0.537642；222-token 单条的 CPU/CUDA 原始 logits 误差为百万分之几，尚不能替代 Laya 独立参考 oracle 或证明语义质量。详见[同日质量证据](evidence/quality-2026-09-25.md)。
 
 数据流水线：固定原始来源和 SHA-256 → 显式字段映射 → 去重/近重复与实体/家族隔离 → 人工抽检歧义及标签 → 按语言、领域、时间切 train/calibration/test → 冻结测试集并禁止调参读取。英文数据不能代替中文质量；中文及目标语言需许可明确的原生标注，翻译改写对必须留在同一 split。对照样本要保留原规则和唯一变化事实，人工核验反事实确实翻转标签。
 
@@ -93,4 +93,4 @@ P0 精确长度复核进一步确认 Nimble 324 题全部在 1024-token encoder 
 
 ## 7. 下一次实证的通过条件
 
-固定 Nimble 324 题与 PAWS 人标 250 ID 的首轮真实结果已见[质量证据](evidence/quality-2026-09-25.md)；S4-04 仍未完成，因为 Choice/Score 与中文/多语言外部质量、跨提示稳定性和可回答长题基线尚缺。优化与训练实验都不得重用最终测试题作为训练数据；任何新分数须附模型、硬件、软件、prompt 与数据 revision。下一次先做独立开发/校准集、长题预算画像和按类错误诊断，再决定 head 训练、LoRA 或新架构。
+固定 Nimble 324 题与 PAWS 人标 250 ID 的首轮真实结果已见[质量证据](evidence/quality-2026-09-25.md)；S4-04 仍未完成，因为同权重 Laya 对齐、Choice/Score 与中文/多语言外部质量、跨提示稳定性仍缺。优化与训练实验都不得重用已查看的题作为选参或训练数据；任何新分数须附模型、硬件、软件、prompt 与数据 revision。具体任务依赖、性能并行画像及训练验收以 [ROADMAP 当前执行顺序](../ROADMAP.md) 为准。

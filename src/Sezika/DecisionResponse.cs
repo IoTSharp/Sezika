@@ -32,6 +32,8 @@ public abstract record Answer
     public required string Status { get; init; }
     public string? AbstentionReason { get; init; }
     public required CalibrationInfo Calibration { get; init; }
+    /// <summary>Actual per-question rendering and truncation, when using the marker prompt contract.</summary>
+    public PromptInputDiagnostics? InputDiagnostics { get; init; }
 }
 
 public sealed record ChoiceAnswer : Answer

@@ -1,0 +1,27 @@
+{
+  "Pid": 69180,
+  "Started": "2026-09-25T14:38:54.0733205Z",
+  "CommandLine": "\"C:/Program Files/dotnet/dotnet.exe\" D:/source/Sezika/.artifacts/build/s3-contract-final/bin/Sezika.Coverage/release/Sezika.Coverage.dll D:/source/Sezika/.artifacts/models/laya-mmbert D:/source/Sezika/.artifacts/datasets/paws-public-benchmark/eval.jsonl D:\\source\\Sezika\\docs\\evidence\\laya-coverage-2026-09-25\\paws-250.v2.json c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3 250 120 strict",
+  "ParentPid": 31060,
+  "ObservedParentPid": 31060,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 31060,
+    "Started": "2026-09-25T22:38:53.311513+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$coverageOutput = [IO.Path]::GetFullPath('docs/evidence/laya-coverage-2026-09-25/paws-250.v2.json'); if (Test-Path -LiteralPath $coverageOutput) { throw 'Refusing to overwrite existing coverage evidence.' }; & 'D:/source/Sezika/tools/Invoke-BoundedProcess.ps1' -FilePath 'C:/Program Files/dotnet/dotnet.exe' -ArgumentList @('D:/source/Sezika/.artifacts/build/s3-contract-final/bin/Sezika.Coverage/release/Sezika.Coverage.dll','D:/source/Sezika/.artifacts/models/laya-mmbert','D:/source/Sezika/.artifacts/datasets/paws-public-benchmark/eval.jsonl',$coverageOutput,'c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3','250','120','strict') -TimeoutSeconds 180 -LogName 'laya-coverage-paws-250-v2' -LogDirectory 'D:/source/Sezika/docs/evidence/laya-coverage-2026-09-25/processes'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 180,
+  "FilePath": "C:/Program Files/dotnet/dotnet.exe",
+  "Arguments": [
+    "D:/source/Sezika/.artifacts/build/s3-contract-final/bin/Sezika.Coverage/release/Sezika.Coverage.dll",
+    "D:/source/Sezika/.artifacts/models/laya-mmbert",
+    "D:/source/Sezika/.artifacts/datasets/paws-public-benchmark/eval.jsonl",
+    "D:\\source\\Sezika\\docs\\evidence\\laya-coverage-2026-09-25\\paws-250.v2.json",
+    "c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3",
+    "250",
+    "120",
+    "strict"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

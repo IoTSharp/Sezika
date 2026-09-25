@@ -3,10 +3,8 @@ using System.Text.Json;
 namespace Sezika;
 
 /// <summary>
-/// Typed request evaluator for the pinned Laya/mmBERT marker-head contract.
-/// The generic <see cref="DecisionEngine"/> remains the small reference model
-/// path; this evaluator constructs the real marker sequence and runs the two
-/// layer decision head from <see cref="ModernBertModelPackage"/>.
+/// Evaluates typed requests by constructing candidate marker sequences and
+/// running the two-layer decision head from <see cref="ModernBertModelPackage"/>.
 /// </summary>
 public sealed class ModernBertDecisionEngine : IDecisionEngine, IDisposable
 {
@@ -108,7 +106,7 @@ public sealed class ModernBertDecisionEngine : IDecisionEngine, IDisposable
             foreach (var (questionId, question) in request.Questions)
             {
                 deadline.Token.ThrowIfCancellationRequested();
-                var answer = EvaluateQuestion(request.State, question, deadline.Token, ref tokenCount, ref workspaceBytes);
+                var answer = EvaluateQuestion(request.State, question, request.LengthPolicy, deadline.Token, ref tokenCount, ref workspaceBytes);
                 answers.Add(questionId, answer);
             }
             return new DecisionResponse
@@ -151,32 +149,23 @@ public sealed class ModernBertDecisionEngine : IDecisionEngine, IDisposable
         }
     }
 
-    private Answer EvaluateQuestion(JsonElement state, Question question, CancellationToken cancellationToken, ref int tokenCount, ref long workspaceBytes)
+    private Answer EvaluateQuestion(JsonElement state, Question question, PromptLengthPolicy lengthPolicy, CancellationToken cancellationToken, ref int tokenCount, ref long workspaceBytes)
     {
-        var typeId = question switch
+        var sequence = PromptSequenceBuilder.Build(_model.Tokenizer, state, question, new PromptSequenceOptions
         {
-            ChoiceQuestion => 0,
-            ScoreQuestion => 1,
-            BooleanQuestion => 2,
-            _ => throw new DecisionException("decision_question_type_unsupported", "Question type is unsupported."),
-        };
-
-        var criteria = question switch
-        {
-            ChoiceQuestion choice => choice.Criteria.OrderBy(item => item.Key, StringComparer.Ordinal).Select(item => (Key: item.Key, Value: item.Value)).ToArray(),
-            ScoreQuestion score => score.Criteria.Select((value, index) => (Key: index.ToString(System.Globalization.CultureInfo.InvariantCulture), Value: value)).ToArray(),
-            BooleanQuestion boolean when boolean.Criteria is not null =>
-                new[] { (Key: "true", Value: boolean.Criteria.WhenTrue), (Key: "false", Value: boolean.Criteria.WhenFalse) },
-            _ => throw new DecisionException("decision_criteria_required", "Boolean criteria are required."),
-        };
-
-        var tokenBudget = Math.Min(_limits.MaxTokensPerQuestion, Math.Min(_model.Encoder.Config.MaxTokens, _model.HeadMaxTokens));
-        var (tokens, markers) = MarkerSequenceBuilder.Build(_model.Tokenizer, state, question.Instructions,
-            criteria.Select(item => item.Value).ToArray(), tokenBudget, cancellationToken);
+            PrefixTokenBudget = _model.HeadMaxTokens,
+            TotalTokenBudget = Math.Min(_limits.MaxTokensPerQuestion, _model.Encoder.Config.MaxTokens),
+            LengthPolicy = lengthPolicy,
+        }, cancellationToken);
+        var tokens = sequence.TokenIds;
+        var markers = sequence.MarkerPositions;
+        var labels = sequence.CandidateLabels;
+        var typeId = sequence.TypeId;
+        var inputDiagnostics = PromptInputDiagnostics.From(sequence);
         tokenCount = checked(tokenCount + tokens.Length);
         if (tokenCount > _budget.MaxTokens)
             throw new DecisionException("decision_token_budget_exceeded", "The request exceeds the total token budget.");
-        var requiredWorkspace = EstimateWorkspaceBytes(tokens.Length, _model.Encoder.Config.HiddenSize, criteria.Length);
+        var requiredWorkspace = EstimateWorkspaceBytes(tokens.Length, _model.Encoder.Config.HiddenSize, labels.Length);
         if (requiredWorkspace > _budget.MaxWorkspaceBytes)
             throw new DecisionException("decision_workspace_limit_exceeded", $"The encoded question requires {requiredWorkspace} workspace bytes, above the session limit ({_budget.MaxWorkspaceBytes}).");
         workspaceBytes = Math.Max(workspaceBytes, requiredWorkspace);
@@ -193,29 +182,30 @@ public sealed class ModernBertDecisionEngine : IDecisionEngine, IDisposable
             ChoiceQuestion => new ChoiceAnswer
             {
                 Status = abstained ? "abstained" : "answered", AbstentionReason = abstained ? "low_concentration" : null,
-                Calibration = calibration, Choice = criteria[DecisionMath.ArgMax(probabilities)].Key, Concentration = concentration,
-                Logits = criteria.Select((item, index) => (item.Key, Value: (double)logits[index]))
+                Calibration = calibration, InputDiagnostics = inputDiagnostics, Choice = labels[DecisionMath.ArgMax(probabilities)], Concentration = concentration,
+                Logits = labels.Select((label, index) => (Key: label, Value: (double)logits[index]))
                     .ToDictionary(item => item.Key, item => item.Value, StringComparer.Ordinal),
-                Probabilities = criteria.Select((item, index) => (item.Key, Value: (double)probabilities[index]))
+                Probabilities = labels.Select((label, index) => (Key: label, Value: (double)probabilities[index]))
                     .ToDictionary(item => item.Key, item => item.Value, StringComparer.Ordinal),
             },
-            ScoreQuestion => new ScoreAnswer
+            ScoreQuestion score => new ScoreAnswer
             {
                 Status = abstained ? "abstained" : "answered", AbstentionReason = abstained ? "low_concentration" : null,
-                Calibration = calibration, Score = probabilities.Select((value, index) => index * (double)value).Sum(), Concentration = concentration,
-                Legend = criteria.ToDictionary(item => item.Key, item => item.Value.Clone(), StringComparer.Ordinal),
-                Logits = criteria.Select((item, index) => (item.Key, Value: (double)logits[index]))
+                Calibration = calibration, InputDiagnostics = inputDiagnostics, Score = probabilities.Select((value, index) => index * (double)value).Sum(), Concentration = concentration,
+                Legend = labels.Select((label, index) => (Key: label, Value: score.Criteria[index].Clone()))
                     .ToDictionary(item => item.Key, item => item.Value, StringComparer.Ordinal),
-                Probabilities = criteria.Select((item, index) => (item.Key, Value: (double)probabilities[index]))
+                Logits = labels.Select((label, index) => (Key: label, Value: (double)logits[index]))
+                    .ToDictionary(item => item.Key, item => item.Value, StringComparer.Ordinal),
+                Probabilities = labels.Select((label, index) => (Key: label, Value: (double)probabilities[index]))
                     .ToDictionary(item => item.Key, item => item.Value, StringComparer.Ordinal),
             },
             BooleanQuestion => new BooleanAnswer
             {
                 Status = abstained ? "abstained" : "answered", AbstentionReason = abstained ? "low_concentration" : null,
-                Calibration = calibration, ProbabilityTrue = probabilities[0],
+                Calibration = calibration, InputDiagnostics = inputDiagnostics, ProbabilityTrue = probabilities[1],
                 Logits = new Dictionary<string, double>(StringComparer.Ordinal)
                 {
-                    ["true"] = logits[0], ["false"] = logits[1],
+                    ["false"] = logits[0], ["true"] = logits[1],
                 },
             },
             _ => throw new DecisionException("decision_question_type_unsupported", "Question type is unsupported."),

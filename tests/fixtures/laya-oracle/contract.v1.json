@@ -1,0 +1,44 @@
+{
+  "schema_version": "sezika.laya-oracle-contract.v1",
+  "output_schema_version": "sezika.laya-oracle.v1",
+  "status": "frozen_before_measurement",
+  "scope": "Same checkpoint, same realized input, CPU FP32 independent upstream reference versus Sezika FP32 scalar/SIMD/CUDA. Quantized paths require a separate contract.",
+  "identity_fields": [
+    "model_id", "model_revision", "weights_sha256", "tokenizer_sha256",
+    "upstream_source_revision", "cases_sha256", "contract_sha256",
+    "max_len", "head_max_len", "temperature_policy"
+  ],
+  "exact_fields": ["id", "primitive", "status", "input", "token_ids", "marker_positions", "candidate_labels"],
+  "tolerances": {
+    "raw_logits": {"absolute": 0.0005, "relative": 0.0001},
+    "probabilities": {"absolute": 0.0001, "relative": 0.0001},
+    "score": {"absolute": 0.001, "relative": 0.0001},
+    "near_tie_logit_margin": 0.001
+  },
+  "comparison": {
+    "formula": "abs(actual-reference) <= absolute + relative * abs(reference)",
+    "finite_values_required": true,
+    "probability_sum_absolute_tolerance": 0.000002,
+    "choice_and_boolean_predictions": "exact_even_near_ties",
+    "near_tie_handling": "Report separately; a differing label/boolean remains a failed comparison. Do not widen tolerance after seeing measurements without creating a new version.",
+    "boolean_semantic_order": ["false", "true"],
+    "boolean_threshold": 0.5,
+    "boolean_threshold_equality": true,
+    "score_definition": "sum(index * unrounded_probability), zero-based",
+    "failure_comparison": "Exact normalized stage/type; preserve upstream class/message as evidence. An observed failure is never an answered decision.",
+    "upstream_rounded_answer": "Evidence only; upstream rounds to four decimals. Numerical comparison uses unrounded arrays.",
+    "missing_or_partial_cases": "No full-suite pass; compare only explicitly selected IDs and record coverage."
+  },
+  "limits": {
+    "max_cases": 64,
+    "max_questions_per_case": 1,
+    "max_candidates": 64,
+    "max_fixture_bytes": 1048576,
+    "max_state_characters": 131072,
+    "max_state_tokens": 16384,
+    "max_generated_repetitions": 4096,
+    "max_boundary_probes": 32,
+    "max_timeout_seconds": 1800
+  },
+  "evidence_policy": "Inputs and recipes are authored fixtures with no accuracy labels. Tokens, logits, probabilities and failures may only be written by an authorized real upstream execution. This contract does not claim calibration, language quality or numeric parity."
+}

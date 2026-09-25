@@ -34,6 +34,7 @@ internal sealed class BenchmarkReport
     public int TimeoutSeconds { get; set; }
     public List<LoadMeasurement> Loads { get; } = [];
     public List<RequestMeasurement> Requests { get; } = [];
+    public PerformanceProfile? Profile { get; set; }
     public List<string> Diagnostics { get; } = [];
     public CudaDeviceInfo? Gpu { get; set; }
     public CudaTelemetrySnapshot? CudaLoad { get; set; }
@@ -47,7 +48,7 @@ internal sealed class BenchmarkReport
     public long ManagedBytesBefore { get; set; }
     public long ManagedBytesAfterCollection { get; set; }
     public bool ModelObjectsCollected { get; set; }
-    public long PeakWorkingSetBytes { get; set; }
+    public long? PeakWorkingSetBytes { get; set; }
     public double ElapsedMilliseconds { get; set; }
     public string TimingScope { get; init; } = "E2E: parse request JSON + tokenize + sequential per-question encoder/head + typed response JSON; model load excluded. Cold = first request in this process, OS/driver disk caches not flushed. CUDA events measured in a separate instrumented forward.";
     public string ResourceScope { get; init; } = "PeakWorkingSetBytes is OS process lifetime high-water RSS. CUDA owned peak counts successful driver allocations (not driver/context overhead); free/total memory is device-wide. FP32 source tensors retained in W8A32 mode. Managed bytes after full collection do not imply immediate OS RSS return.";
@@ -76,4 +77,5 @@ internal sealed record AlignmentMeasurement(int[] Tokens, float[] ReferenceLogit
 
 [JsonSourceGenerationOptions(PropertyNamingPolicy = JsonKnownNamingPolicy.SnakeCaseLower, WriteIndented = true)]
 [JsonSerializable(typeof(BenchmarkReport))]
+[JsonSerializable(typeof(string))]
 internal partial class ReportJsonContext : JsonSerializerContext;

@@ -1,6 +1,6 @@
 # Sezika 基准与生命周期检查工具
 
-本工具使用已安装的固定版本 Laya/mmBERT 模型包，执行真实 encoder/marker-head 推理，输出 JSON 证据。输入是工具生成的固定短请求，问题按 choice、score、boolean 循环排列，每题两个候选；它不接受任意业务数据集，也不测语言准确率。
+本工具使用已安装的固定版本 Laya/mmBERT 模型包，执行真实 encoder/marker-head 推理，输出 JSON 证据。默认模式输入为固定短请求；新增 `--mode profile` 选择短/中/长与 1/8/32 问的性能画像。问题按 choice、score、boolean 循环排列，每题两个候选；它不接受任意业务数据集，也不测语言准确率。画像模式已随本轮 solution 构建通过，尚未执行真实性能矩阵，不能替代 S5-06 实测验收。
 
 模型必须已在本地准备好；工具不会下载模型，不执行校准，也不会把权重写进可执行文件或发布物。模型、tokenizer、许可与校准资料仍独立管理。构建、发布及运行应分别在获得相应授权后进行，下面的运行示例假定对应产物已经存在。
 
@@ -18,17 +18,33 @@
 | `--model` | `.artifacts/models/laya-mmbert` | 本地模型包目录。相对路径以进程工作目录为基准。 |
 | `--output` | `.artifacts/s5/report.json` | 新的 JSON 报告路径；已有文件不会覆盖。每次运行使用独立文件名。 |
 | `--backend` | `simd` | 上表四种后端之一。 |
+| `--mode` | `benchmark` | `benchmark` 保留既有短请求基准与报告；`profile` 增加版本化输入清单、分项计时与失败覆盖率，写入报告的 `profile` 字段。 |
+| `--lengths` | `short,medium,long` | 仅适用于 `profile`，选取 1–3 个不重复长度预设；长度按固定文本重复次数定义，真实 token 数另行记录。 |
 | `--samples` | `5` | 每个问题数的正式样本数，`1..30`。 |
 | `--warmup` | `1` | 每个问题数的预热次数，`0..5`；预热不进入正式样本。 |
 | `--cycles` | `2` | 加载/卸载轮数，`1..2`。完整性能采样、数值对齐和诊断只在第 0 轮执行；每轮都执行加载后的首请求与卸载检查。 |
-| `--questions` | `1,8,32` | 逗号分隔，最多三个问题数，每项 `1..32`。这是每个请求的问题数，当前每题独立一次 forward。 |
+| `--questions` | `1,8,32` | 逗号分隔，最多三个问题数，每项 `1..32`；画像模式只接受不重复的 `1`、`8`、`32`。这是每个请求的问题数，当前每题独立一次 forward。 |
 | `--timeout-seconds` | `1200` | 工具内共享取消期限，`1..1800` 秒；还应配合外部进程超时。 |
 | `--cpu` | `unspecified` | 人工填写实际 CPU 型号，工具不自动检测型号。 |
 | `--environment` | `unspecified` | 人工填写执行环境，例如 `windows-local`、`wsl-ubuntu`。 |
 | `--require-aot` | 未启用 | 检查当前进程不支持动态代码；在普通 .NET 进程下失败。此参数不执行 AOT 编译。 |
 | `--self-test` | 未启用 | 仅检查最近秩分位数、固定请求序列化及参数边界；不加载模型、不生成基准报告，不替代真实推理验证。 |
 
-最多接受 32 个命令行参数元素。工具按顺序运行，报告中的单推理线程不代表 .NET GC、驱动或宿主进程没有其他线程。每次请求还受 session 的问题数、总 token、工作区、驻留内存及请求期限约束；工具的总期限不会解除这些限制。
+最多接受 40 个命令行参数元素。工具按顺序运行，报告中的单推理线程不代表 .NET GC、驱动或宿主进程没有其他线程。每次请求还受 session 的问题数、总 token、工作区、驻留内存及请求期限约束；工具的总期限不会解除这些限制。
+
+## S5-06 画像模式
+
+完整设计及报告字段口径见 [S5-06 工具准备记录](../../docs/performance-profile-s5-06.md)。画像输入集为 `sezika.performance-inputs.v1`，当前渲染版本为 `sezika.prompt.laya-4066d5d5.v2`，与修正后的生产引擎共用 `PromptSequenceBuilder`。`short`、`medium`、`long` 分别把 `The device is ready.` 以空格连接重复 4、20、100 次；完整 JSON、SHA-256、每题渲染长度/marker/token hash 保存在报告中，不能拿重复次数充当 token 长度。
+
+在获得运行授权并产生对应构建物后，可在以下 Windows runner 示例的参数中增加 `--mode profile --lengths short,medium,long`，并为 `--output` 选择独立的新文件；首次极小试运行使用 `--lengths short --questions 1 --samples 1 --warmup 0 --cycles 1`，核对后再扩大矩阵。本次仅准备代码，没有执行这些命令。
+
+当前 runtime 区分 256-token 前缀内容预算与 1024-token 完整序列预算。工具先按兼容策略离线计算拟保留序列及截断诊断，真实请求仍使用默认 strict；需要裁剪的请求记录 `rejected`、原始错误码、失败阶段和计时，仍进入覆盖率分母。没有进入真实 pipeline 的长度不能写成实际推理 token：`rendered_sequences` 与 `actual_sequences` 分开保留；成功请求必须逐 token、marker、type 与共享构造器结果一致，差异直接失败。旧渲染报告继续单独保留，不能作为当前路径的性能证据。
+
+正式 E2E 样本关闭分项 instrumentation；独立采集一次 tokenizer/渲染、一次真实 encoder/head 合并与 CUDA event 请求，以及 CPU 的独立 `Encode` / `ScoreEncoded` 分项。CPU head 分项包含保护性 hidden-state 复制；CUDA resident encoder/head 无独立计时边界，拆分字段为 `null` 并注明 `unavailable`，不借 host hidden-state 路径冒充 resident 性能。独立阶段计时不能相加或从 E2E 相减。`complete_with_rejections` 表示采集完成但矩阵有运行拒绝；顶层 `passed` 只表示工具及原有 smoke/回收检查通过，不表示所有长度都能推理。
+
+画像保持原有 cold 三题请求、数值 smoke 和生命周期检查，因此 `--warmup 0` 不会跳过发现输入的真实请求。每行额外保留 working-set 前后快照及进程生命周期高水位、CUDA owned/free/total 快照、托管分配；这些字段都不是隔离稳态峰值。旧 `Summarize-S5.ps1 -VerifyMatrix` 只面向旧 `requests` 报告，不用于验收画像模式。
+
+输入计划在模型身份检查、加载、CUDA 初始化和 cold 请求之前登记；覆盖率分母由参数选择的完整矩阵固定，前置失败仍保存计划并标记 `profile.status=incomplete`。RSS/CUDA 观测错误独立记在每行 `resource_observation_errors`，缺失数值为 `null`；后置快照失败不会覆盖原始推理错误，推理完成但资源观测失败的行也不计成功覆盖率。
 
 ## Windows：通过有界 runner 运行
 

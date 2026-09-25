@@ -1,0 +1,84 @@
+{
+  "schema_version": "sezika.coverage-derived-summary.v1",
+  "artifact_kind": "text-free projection of an original token-only schema-v2 coverage report; not the raw report",
+  "source_report_schema_version": 2,
+  "source_report_local_path": "D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\coverage-v2\\nimble-smoke.v2.json",
+  "source_report_sha256": "51d56a6631d906d208a73b09e5b53d48d1ffb2939161bf339673b185dfca4030",
+  "source_report_bytes": 6214,
+  "rendering_version": "sezika.prompt.laya-4066d5d5.v2",
+  "model_id": "convaiinnovations/laya-multilingual",
+  "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+  "tokenizer_sha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+  "dataset_sha256": "8e9e48b8de5206593912ae01ddc95bd77e40ad2ecf4c9292c1711290eca0d896",
+  "length_policy": "strict",
+  "processed": 1,
+  "strict_eligible": 1,
+  "compatible_eligible": 1,
+  "prefix_unclipped": 1,
+  "total_fits_after_prefix_clipping": 1,
+  "unmeasured": 0,
+  "prefix_token_budget": 256,
+  "total_token_budget": 1024,
+  "diagnostic_token_cap": 32768,
+  "original_total_tokens_min": 450,
+  "original_total_tokens_max": 450,
+  "retained_total_tokens_min": 450,
+  "retained_total_tokens_max": 450,
+  "instruction_truncated_rows": 0,
+  "options_truncated_rows": 0,
+  "state_truncated_rows": 0,
+  "final_sequence_truncated_rows": 0,
+  "dropped_instruction_tokens_total": 0,
+  "dropped_option_tokens_total": 0,
+  "dropped_state_tokens_total": 0,
+  "original_state_tokens_total": 281,
+  "retained_state_tokens_total": 281,
+  "by_type": [
+    {
+      "Type": "choice",
+      "Total": 1,
+      "TokenEligible": 1,
+      "StrictEligible": 1,
+      "CompatibleEligible": 1
+    }
+  ],
+  "by_selected_policy_failure_code": {
+    "eligible": 1
+  },
+  "rows": [
+    {
+      "id": "scale-diverse-007-001-base",
+      "type": "choice",
+      "original_total_tokens": 450,
+      "retained_total_tokens": 450,
+      "strict_failure_code": null,
+      "compatible_failure_code": null,
+      "candidate_count": 4,
+      "original_instruction_tokens": 35,
+      "retained_instruction_tokens": 35,
+      "original_option_tokens": [
+        28,
+        41,
+        38,
+        19
+      ],
+      "retained_option_tokens": [
+        28,
+        41,
+        38,
+        19
+      ],
+      "prefix_tokens_including_specials": 168,
+      "original_state_tokens": 281,
+      "retained_state_tokens": 281,
+      "dropped_state_tokens": 0,
+      "state_retained_start": 0,
+      "state_truncation_direction": "right",
+      "instruction_truncated": false,
+      "options_truncated": false,
+      "state_truncated": false,
+      "final_sequence_truncated": false,
+      "mask_text_removed": false
+    }
+  ]
+}

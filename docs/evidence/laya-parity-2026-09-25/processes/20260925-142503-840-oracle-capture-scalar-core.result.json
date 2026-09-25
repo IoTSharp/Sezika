@@ -1,0 +1,65 @@
+{
+  "Status": "Succeeded",
+  "Pid": 68324,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 805.786,
+  "TimeoutSeconds": 1800,
+  "FilePath": "dotnet",
+  "Arguments": [
+    "tools/Sezika.OracleCapture/bin/Release/net10.0/Sezika.OracleCapture.dll",
+    "--reference",
+    ".artifacts/laya-oracle-work/full-01/capture.json",
+    "--model",
+    ".artifacts/models/laya-mmbert",
+    "--cases",
+    "tests/fixtures/laya-oracle/cases.v1.json",
+    "--contract",
+    "tests/fixtures/laya-oracle/contract.v1.json",
+    "--output",
+    ".artifacts/laya-oracle-work/csharp-scalar-core-01",
+    "--backend",
+    "scalar",
+    "--length-policy",
+    "laya_compatible",
+    "--max-cases",
+    "18",
+    "--case-ids",
+    "choice-en-short,choice-en-medium,choice-en-long,choice-zh-short,choice-zh-medium,choice-zh-long,score-en-short,score-en-medium,score-en-long,score-zh-short,score-zh-medium,score-zh-long,boolean-en-short,boolean-en-medium,boolean-en-long,boolean-zh-short,boolean-zh-medium,boolean-zh-long",
+    "--timeout-seconds",
+    "1700"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T14:25:04.5039282Z",
+  "ParentPid": 69176,
+  "Launcher": {
+    "Pid": 69176,
+    "Started": "2026-09-25T22:25:03.301596+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$scalarSmokeReport = Get-Content -LiteralPath '.artifacts/laya-oracle-work/csharp-scalar-smoke-01/comparison.json' -Raw -Encoding utf8 | ConvertFrom-Json; if (-not $scalarSmokeReport.passed -or $scalarSmokeReport.answered_pairs -ne 1) { throw 'Scalar smoke comparison gate did not pass' }; $scalarCoreManifest = Get-Content -LiteralPath 'tests/fixtures/laya-oracle/cases.v1.json' -Raw -Encoding utf8 | ConvertFrom-Json; $scalarCoreIds = @($scalarCoreManifest.cases | Select-Object -First 18 -ExpandProperty id); if ($scalarCoreIds.Count -ne 18 -or @($scalarCoreIds | Select-Object -Unique).Count -ne 18) { throw 'Expected exactly 18 distinct core IDs' }; $scalarCoreCsv = $scalarCoreIds -join ','; & ./tools/Invoke-BoundedProcess.ps1 -FilePath dotnet -ArgumentList @('tools/Sezika.OracleCapture/bin/Release/net10.0/Sezika.OracleCapture.dll','--reference','.artifacts/laya-oracle-work/full-01/capture.json','--model','.artifacts/models/laya-mmbert','--cases','tests/fixtures/laya-oracle/cases.v1.json','--contract','tests/fixtures/laya-oracle/contract.v1.json','--output','.artifacts/laya-oracle-work/csharp-scalar-core-01','--backend','scalar','--length-policy','laya_compatible','--max-cases','18','--case-ids',$scalarCoreCsv,'--timeout-seconds','1700') -TimeoutSeconds 1800 -LogName oracle-capture-scalar-core -LogDirectory .artifacts/laya-oracle-work/scalar-processes-01\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\scalar-processes-01\\20260925-142503-840-oracle-capture-scalar-core.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\scalar-processes-01\\20260925-142503-840-oracle-capture-scalar-core.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 68324,
+      "CreationDate": "2026-09-25T22:25:04.503928+08:00",
+      "Started": "2026-09-25T14:25:04.503928Z",
+      "CommandLine": "\"dotnet\" tools/Sezika.OracleCapture/bin/Release/net10.0/Sezika.OracleCapture.dll --reference .artifacts/laya-oracle-work/full-01/capture.json --model .artifacts/models/laya-mmbert --cases tests/fixtures/laya-oracle/cases.v1.json --contract tests/fixtures/laya-oracle/contract.v1.json --output .artifacts/laya-oracle-work/csharp-scalar-core-01 --backend scalar --length-policy laya_compatible --max-cases 18 --case-ids choice-en-short,choice-en-medium,choice-en-long,choice-zh-short,choice-zh-medium,choice-zh-long,score-en-short,score-en-medium,score-en-long,score-zh-short,score-zh-medium,score-zh-long,boolean-en-short,boolean-en-medium,boolean-en-long,boolean-zh-short,boolean-zh-medium,boolean-zh-long --timeout-seconds 1700",
+      "ParentPid": 69176,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 34664,
+      "CreationDate": "2026-09-25T22:25:04.520329+08:00",
+      "Started": "2026-09-25T14:25:04.520329Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 68324,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

@@ -2,6 +2,8 @@ using System.Text.Json;
 
 namespace Sezika;
 
+// Historical prompt-v1 fixture helper only. Runtime and new captures use
+// PromptSequenceBuilder, which has the typed question and independent budgets.
 internal static class MarkerSequenceBuilder
 {
     internal static (int[] Tokens, int[] Markers) Build(

@@ -27,9 +27,7 @@ var logits = pipeline.Score(maskTokens, typeId: 0, markerPositions: new[] { 2, 3
 scoreWatch.Stop();
 Console.WriteLine($"cpu_head marker_logits=[{string.Join(',', logits.Select(x => x.ToString("R", System.Globalization.CultureInfo.InvariantCulture)))}] seconds={scoreWatch.Elapsed.TotalSeconds:F3}");
 
-// Exercise the public typed request contract against the real marker head.
-// This is separate from the tiny DecisionEngine smoke: the pinned Laya model
-// requires the [MASK] marker sequence and its two-layer head.
+// Exercise typed requests using [MASK] candidate sequences and the two-layer head.
 using var stateDocument = JsonDocument.Parse("{\"message\":\"duplicate invoice charge\"}");
 using var instructionDocument = JsonDocument.Parse("\"choose or score the request\"");
 using var billingDocument = JsonDocument.Parse("\"billing or refund\"");

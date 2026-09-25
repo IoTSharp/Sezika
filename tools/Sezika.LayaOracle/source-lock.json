@@ -1,0 +1,40 @@
+{
+  "schema_version": "sezika.laya-oracle-source.v1",
+  "upstream_url": "https://github.com/NandhaKishorM/laya",
+  "upstream_source_revision": "4066d5d5fbf08b66c6757ddeedbd797bd7655bc0",
+  "upstream_version": "0.3.20",
+  "upstream_license": "Apache-2.0",
+  "model_id": "convaiinnovations/laya-multilingual",
+  "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+  "model_license": "Apache-2.0",
+  "python_version": "3.12.10",
+  "dependencies": {
+    "torch": "2.8.0",
+    "transformers": "4.57.1",
+    "tokenizers": "0.22.2",
+    "safetensors": "0.6.2",
+    "huggingface-hub": "0.35.3",
+    "numpy": "2.3.3"
+  },
+  "files": {
+    "model.safetensors": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+    "tokenizer/tokenizer.json": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+    "encoder/config.json": "83f6916d13ef0f556ac461f28308dc2bffa7ebeadee8ec9e2db5812020ea5bb4",
+    "rl_agent_config.json": "25061739243b617ad88d1219ba6f8a9c86c5881ca28df024fa2d9b3b2fcc30c6",
+    "tokenizer/tokenizer_config.json": "424b69444bf7b5809dc2cd2e36d0bd71b8055124dd24274d6db3c655d38205e7"
+  },
+  "execution": {
+    "backend": "pytorch_cpu_fp32",
+    "threads": 1,
+    "seed": 0,
+    "max_len": 1024,
+    "head_max_len": 256,
+    "temperature_policy": "checkpoint_fixed_1_no_overrides",
+    "batch_size": 1,
+    "compile": false,
+    "fast": false,
+    "network": "offline_only"
+  },
+  "validation_status": "prepared_not_executed",
+  "dependency_note": "Direct numerical dependencies are version-pinned. Transitive versions and platform wheel builds are recorded at export, not yet a validated hash-locked environment."
+}

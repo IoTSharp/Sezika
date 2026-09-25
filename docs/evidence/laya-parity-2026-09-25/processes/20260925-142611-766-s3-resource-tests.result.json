@@ -1,0 +1,26 @@
+{
+  "Status": "Succeeded",
+  "Pid": 78452,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 3.224,
+  "TimeoutSeconds": 180,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/build/s3-contract-final/bin/Sezika.Resources.Tests/release/Sezika.Resources.Tests.dll"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T14:26:12.7249736Z",
+  "ParentPid": 59000,
+  "Launcher": {
+    "Pid": 59000,
+    "Started": "2026-09-25T22:26:11.147394+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('.artifacts/build/s3-contract-final/bin/Sezika.Resources.Tests/release/Sezika.Resources.Tests.dll') -TimeoutSeconds 180 -LogName 's3-resource-tests'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-142611-766-s3-resource-tests.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-142611-766-s3-resource-tests.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

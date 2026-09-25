@@ -20,6 +20,12 @@ Sezika 面向本地软件中的语义判断，目标是使用 **C#、.NET 10 与
 
 当前 W8A32 路径慢于 SIMD，且在保留 FP32 原权重之外增加量化缓存，没有降低总驻留内存。数值对齐、真实推理、AOT 与语言质量分别验收，不将量化实现视为已经取得性能或内存收益。
 
+2026-09-25 已完成固定 Laya 的 46 条真实 oracle 捕获，并修正题型前缀、候选渲染/顺序、JSON 文本和 256 前缀 / 1024 总长度语义。SIMD 与 CUDA 各在 38 条支持范围内的回答上通过冻结数值容差，4 条非法输入的失败语义一致；另 4 条候选数量合同差异明确保留，不能声称全上游合同通过。请求默认严格拒绝截断，显式 `length_policy: "laya_compatible"` 才采用兼容截断并返回诊断。详见[输入合同](docs/input-contract-s3-09.md)与[真实数值证据](docs/evidence/laya-parity-2026-09-25.md)。
+
+本轮 solution 构建为 0 警告/0 错误，输入与运行时、资源、CUDA 诊断分别通过 137/35/43 项检查；数据隔离与性能画像工具已同步到当前构建。修正后的质量、Native AOT 和性能仍分别验收，旧质量和性能报告继续限定于原有输入实现。执行依赖与剩余门槛见 [路线图](ROADMAP.md)。
+
+Scalar 另完成三题型×中英×短中长的 18 条核心数值对照。[token 覆盖率重测](docs/evidence/laya-coverage-2026-09-25.md)显示 PAWS 在 strict/compatible 下均为 250/250，Nimble 为 strict 306/324、compatible 324/324；这些是输入可构造率，不是推理成功率或答案正确率。
+
 ## 独立使用
 
 Sezika 可以独立加载固定模型包并执行决策。先按[独立使用说明](docs/standalone-usage.md)准备并验证模型资产；在仓库根目录执行：
@@ -57,6 +63,9 @@ dotnet run --project src/Sezika.Cli -c Release --no-build -- predict --model .ar
 - [参考项目分析](docs/research.md)：Laya 的可审计模型实现，以及 TypeSafe Jev 的公开协议与边界。
 - [下一阶段研究](docs/next-stage-research-2026-09-25.md)：Sezika、Laya、Jev、Nimble 的路线比较，CPU/CUDA 优化、双模型训练与 IoTSharp 集成计划。
 - [固定题集质量证据](docs/evidence/quality-2026-09-25.md)：Nimble 324 题与 PAWS 250 题的真实模型覆盖率、正确率和失败切片。
+- [Laya oracle 合同](docs/laya-oracle.md)、[C# 真实捕获](docs/oracle-capture.md)与[数值对照证据](docs/evidence/laya-parity-2026-09-25.md)：固定源码/资产/输入/容差，保留完整清单差异和支持范围的 token、marker、logits 验收结果。
+- [数据隔离审计](docs/data-isolation-s4-05.md)：来源、许可、用途、家族/实体/近重复与封存声明检查；示例不代表获准训练的数据集。
+- [长输入性能画像工具](docs/performance-profile-s5-06.md)：实际输入核对、阶段计时口径与超预算覆盖率；尚未测量新性能数据。
 - [架构设计](docs/architecture.md)：推理路径、模型资产、契约、校准与资源约束。
 - [纯 C# GPU 与 Native AOT](docs/gpu-aot.md)：ILGPU 编译期边界、CUDA Driver 路径及最小验证关口。
 - [S5 性能与 AOT 证据](docs/s5-performance-aot.md)：Windows 四后端基准、Ubuntu WSL2 真实模型 AOT smoke、计时与内存边界。

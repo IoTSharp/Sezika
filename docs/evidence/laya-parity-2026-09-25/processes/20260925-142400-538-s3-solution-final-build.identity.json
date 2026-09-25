@@ -1,0 +1,31 @@
+{
+  "Pid": 7804,
+  "Started": "2026-09-25T14:24:01.2525912Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build Sezika.slnx -c Release --artifacts-path .artifacts/build/s3-contract-final --nologo -v minimal -p:UseSharedCompilation=false -nodeReuse:false -m:2",
+  "ParentPid": 55272,
+  "ObservedParentPid": 55272,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 55272,
+    "Started": "2026-09-25T22:24:00.03503+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build','Sezika.slnx','-c','Release','--artifacts-path','.artifacts/build/s3-contract-final','--nologo','-v','minimal','-p:UseSharedCompilation=false','-nodeReuse:false','-m:2') -TimeoutSeconds 300 -LogName 's3-solution-final-build'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 300,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "Sezika.slnx",
+    "-c",
+    "Release",
+    "--artifacts-path",
+    ".artifacts/build/s3-contract-final",
+    "--nologo",
+    "-v",
+    "minimal",
+    "-p:UseSharedCompilation=false",
+    "-nodeReuse:false",
+    "-m:2"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

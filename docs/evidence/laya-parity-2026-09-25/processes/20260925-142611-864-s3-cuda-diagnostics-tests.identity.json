@@ -1,0 +1,20 @@
+{
+  "Pid": 69028,
+  "Started": "2026-09-25T14:26:13.0114545Z",
+  "CommandLine": null,
+  "ParentPid": 30920,
+  "ObservedParentPid": 30920,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 30920,
+    "Started": "2026-09-25T22:26:11.247916+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('.artifacts/build/s3-contract-final/bin/Sezika.Cuda.Diagnostics.Tests/release/Sezika.Cuda.Diagnostics.Tests.dll') -TimeoutSeconds 90 -LogName 's3-cuda-diagnostics-tests'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 90,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/build/s3-contract-final/bin/Sezika.Cuda.Diagnostics.Tests/release/Sezika.Cuda.Diagnostics.Tests.dll"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

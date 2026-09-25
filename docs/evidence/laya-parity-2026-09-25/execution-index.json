@@ -1,0 +1,113 @@
+{
+  "Scope": "Exact process evidence copies for S3 input and SIMD/CUDA parity; nonzero full comparisons retain four explicit contract differences.",
+  "Processes": [
+    {
+      "Prefix": "20260925-141101-509-s3-csharp-simd-smoke",
+      "Pid": 34896,
+      "ExitCode": 0,
+      "Status": "Succeeded",
+      "ElapsedSeconds": 6.78,
+      "TimeoutSeconds": 1800,
+      "ResultSha256": "f514c91a0b71eed6fe12774b93a96a266190b407c8d61115ff3226b451364357"
+    },
+    {
+      "Prefix": "20260925-141641-039-s3-csharp-simd-full",
+      "Pid": 25916,
+      "ExitCode": 0,
+      "Status": "Succeeded",
+      "ElapsedSeconds": 741.475,
+      "TimeoutSeconds": 1800,
+      "ResultSha256": "9d4fadf50dae778e668c649e71c4caf0948dee264d5879a06e0695430ae56783"
+    },
+    {
+      "Prefix": "20260925-142140-355-s3-csharp-cuda-smoke",
+      "Pid": 71448,
+      "ExitCode": 0,
+      "Status": "Succeeded",
+      "ElapsedSeconds": 6.405,
+      "TimeoutSeconds": 1800,
+      "ResultSha256": "6fc828487649fb56f358e0c131ba241e9ea935ae83a309ddb5998b3d0e1b3c78"
+    },
+    {
+      "Prefix": "20260925-142225-058-s3-csharp-cuda-full",
+      "Pid": 22404,
+      "ExitCode": 0,
+      "Status": "Succeeded",
+      "ElapsedSeconds": 33.217,
+      "TimeoutSeconds": 1800,
+      "ResultSha256": "cc225102388d2f59a50422adacac7a8bff288f1e985297432fa03e4508dbcc30"
+    },
+    {
+      "Prefix": "20260925-143026-796-s3-compare-simd-full",
+      "Pid": 20324,
+      "ExitCode": 1,
+      "Status": "Failed",
+      "ElapsedSeconds": 2.053,
+      "TimeoutSeconds": 60,
+      "ResultSha256": "53846a99a6607993fe1ee0986c981c94fed10f104d0fd614a6c7b9fb9d838c8e"
+    },
+    {
+      "Prefix": "20260925-143044-182-s3-compare-simd-supported",
+      "Pid": 38468,
+      "ExitCode": 0,
+      "Status": "Succeeded",
+      "ElapsedSeconds": 2.117,
+      "TimeoutSeconds": 60,
+      "ResultSha256": "06d836a76c995a479fa46119f7f30219e100d25a7bccb4e5074c01bed78b278a"
+    },
+    {
+      "Prefix": "20260925-142324-032-s3-compare-cuda-full",
+      "Pid": 22276,
+      "ExitCode": 1,
+      "Status": "Failed",
+      "ElapsedSeconds": 2.672,
+      "TimeoutSeconds": 60,
+      "ResultSha256": "75a1f640aba00d6449da4643ec44d84be50e1a828bc636b6fbdca0aa79741726"
+    },
+    {
+      "Prefix": "20260925-142346-249-s3-compare-cuda-supported",
+      "Pid": 40692,
+      "ExitCode": 0,
+      "Status": "Succeeded",
+      "ElapsedSeconds": 2.307,
+      "TimeoutSeconds": 60,
+      "ResultSha256": "1ff76d57ec34ad5a67216cf1424089c87d65521b026205a6a44d6c8a6b40471a"
+    },
+    {
+      "Prefix": "20260925-142400-538-s3-solution-final-build",
+      "Pid": 7804,
+      "ExitCode": 0,
+      "Status": "Succeeded",
+      "ElapsedSeconds": 33.402,
+      "TimeoutSeconds": 300,
+      "ResultSha256": "e317466342f5baca6e387ca8224aea3a2a771f6014b86252a75c7e3fa25dc9a9"
+    },
+    {
+      "Prefix": "20260925-142525-803-s3-final-prompt-tests",
+      "Pid": 71236,
+      "ExitCode": 0,
+      "Status": "Succeeded",
+      "ElapsedSeconds": 3.967,
+      "TimeoutSeconds": 180,
+      "ResultSha256": "12153b6b87452434484c0baaf13da76ccc0a5c5f86cea5723b9aecc5899b9cec"
+    },
+    {
+      "Prefix": "20260925-142611-766-s3-resource-tests",
+      "Pid": 78452,
+      "ExitCode": 0,
+      "Status": "Succeeded",
+      "ElapsedSeconds": 3.224,
+      "TimeoutSeconds": 180,
+      "ResultSha256": "6de7c5ddcc38f8727fd17dcc79330775885251c397fab5a6208fe36eb0eabf57"
+    },
+    {
+      "Prefix": "20260925-142611-864-s3-cuda-diagnostics-tests",
+      "Pid": 69028,
+      "ExitCode": 0,
+      "Status": "Succeeded",
+      "ElapsedSeconds": 4.343,
+      "TimeoutSeconds": 90,
+      "ResultSha256": "e7d1f93ac2f13d47fc4e6b3eca2c06c2d295354e8447da2f8d0950092e94b789"
+    }
+  ]
+}
