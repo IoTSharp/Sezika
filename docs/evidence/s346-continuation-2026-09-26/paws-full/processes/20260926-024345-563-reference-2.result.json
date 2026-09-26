@@ -1,0 +1,69 @@
+{
+  "Status": "Succeeded",
+  "Pid": 62852,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 62.018,
+  "TimeoutSeconds": 620,
+  "FilePath": "D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\venv\\Scripts\\python.exe",
+  "Arguments": [
+    "-B",
+    "D:\\source\\Sezika\\tools\\Sezika.LayaOracle\\export_oracle.py",
+    "--upstream",
+    "D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\upstream",
+    "--model",
+    "D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert",
+    "--output",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\paws-full\\batch-003\\reference",
+    "--cases",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\paws-plan-verified\\cases-003.json",
+    "--contract",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json",
+    "--max-cases",
+    "46",
+    "--timeout-seconds",
+    "600"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-26T02:43:46.4145985Z",
+  "ParentPid": 76224,
+  "Launcher": {
+    "Pid": 76224,
+    "Started": "2026-09-26T10:40:52.385118+08:00",
+    "CommandLine": "\"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.6.0_x64__8wekyb3d8bbwe\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Invoke-OracleBatches.ps1 -PlanPath .artifacts/s346-20260926/paws-plan-verified/batches.json -PythonPath .artifacts/laya-oracle-work/venv/Scripts/python.exe -UpstreamDirectory .artifacts/laya-oracle-work/upstream -ModelDirectory .artifacts/models/laya-mmbert -BuildDirectory .artifacts/build/s346-final-20260926/bin -OutputDirectory .artifacts/s346-20260926/paws-full -MaxBatches 6 -TimeoutSeconds 1100",
+    "ParentPid": 12644
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\paws-full\\processes\\20260926-024345-563-reference-2.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\paws-full\\processes\\20260926-024345-563-reference-2.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 62852,
+      "CreationDate": "2026-09-26T10:43:46.414598+08:00",
+      "Started": "2026-09-26T02:43:46.414598Z",
+      "CommandLine": "\"D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\venv\\Scripts\\python.exe\" -B D:\\source\\Sezika\\tools\\Sezika.LayaOracle\\export_oracle.py --upstream D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\upstream --model D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert --output D:\\source\\Sezika\\.artifacts\\s346-20260926\\paws-full\\batch-003\\reference --cases D:\\source\\Sezika\\.artifacts\\s346-20260926\\paws-plan-verified\\cases-003.json --contract D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json --max-cases 46 --timeout-seconds 600",
+      "ParentPid": 76224,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 12248,
+      "CreationDate": "2026-09-26T10:43:46.449415+08:00",
+      "Started": "2026-09-26T02:43:46.449415Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 62852,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 70844,
+      "CreationDate": "2026-09-26T10:43:46.499335+08:00",
+      "Started": "2026-09-26T02:43:46.499335Z",
+      "CommandLine": "\"D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\python\\cpython-3.12.10-windows-x86_64-none\\python.exe\" -B D:\\source\\Sezika\\tools\\Sezika.LayaOracle\\export_oracle.py --upstream D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\upstream --model D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert --output D:\\source\\Sezika\\.artifacts\\s346-20260926\\paws-full\\batch-003\\reference --cases D:\\source\\Sezika\\.artifacts\\s346-20260926\\paws-plan-verified\\cases-003.json --contract D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json --max-cases 46 --timeout-seconds 600",
+      "ParentPid": 62852,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

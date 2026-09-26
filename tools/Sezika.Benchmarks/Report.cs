@@ -54,6 +54,8 @@ internal sealed class BenchmarkReport
     public long ManagedBytesBefore { get; set; }
     public long ManagedBytesAfterCollection { get; set; }
     public bool ModelObjectsCollected { get; set; }
+    public string CollectionStatus { get; set; } = "not_measured";
+    public List<CleanupMeasurement> Cleanup { get; } = [];
     public long? PeakWorkingSetBytes { get; set; }
     public double ElapsedMilliseconds { get; set; }
     public string TimingScope { get; init; } = "E2E: parse request JSON + tokenize + sequential per-question encoder/head + typed response JSON; model load excluded. Cold = first request in this process, OS/driver disk caches not flushed. CUDA events measured in a separate instrumented forward.";
@@ -64,6 +66,8 @@ internal sealed class BenchmarkReport
 internal sealed record LoadMeasurement(int Cycle, double ModelLoadMilliseconds, double BackendLoadMilliseconds,
     double FirstRequestMilliseconds, double TotalToFirstResponseMilliseconds);
 internal sealed record CodeArtifactIdentity(string Role, string Path, string Sha256);
+internal sealed record CleanupMeasurement(int Cycle, string Status, int? ActiveWorkspaces, long? OutstandingWorkspaceBytes,
+    CudaMemorySnapshot? CudaAfterRelease, List<string> Errors);
 internal sealed record RequestMeasurement(int Questions, string InputJson, string InputSha256, int TokenCount,
     int CandidatesPerQuestion, double[] Milliseconds, long[] AllocatedBytes, Distribution Latency,
     double RequestsPerSecond, double QuestionsPerSecond, DecisionResponse Response);

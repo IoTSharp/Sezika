@@ -1,0 +1,55 @@
+{
+  "Status": "Failed",
+  "Pid": 56120,
+  "ExitCode": 1,
+  "Error": "Process failed with exit code 1.",
+  "ElapsedSeconds": 1743.348,
+  "TimeoutSeconds": 1780,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/build/s346-20260926/bin/Sezika.NumericParity/release/Sezika.NumericParity.dll",
+    "--trace-oracle",
+    ".artifacts/models/laya-mmbert",
+    "tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json",
+    "tests/fixtures/laya-oracle/contract.v1.json",
+    ".artifacts/s346-20260926/trace-core18.json",
+    "choice-en-short,choice-en-medium,choice-en-long,choice-zh-short,choice-zh-medium,choice-zh-long,score-en-short,score-en-medium,score-en-long,score-zh-short,score-zh-medium,score-zh-long,boolean-en-short,boolean-en-medium,boolean-en-long,boolean-zh-short,boolean-zh-medium,boolean-zh-long",
+    "scalar,simd,cuda",
+    "1740",
+    "bf0d537305149672f07d34dc6b3e2d3614aeb2c26aa6d11aa7902578100c53fa",
+    "771ca781c52f1d6f9cb22859bed007ef483a54a2543c644de33f88d6e0687eee"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-26T02:05:32.8604979Z",
+  "ParentPid": 15216,
+  "Launcher": {
+    "Pid": 15216,
+    "Started": "2026-09-26T10:05:29.910122+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$coreCases = (Get-Content -LiteralPath 'tests/fixtures/laya-oracle/cases.v1.json' -Raw -Encoding utf8 | ConvertFrom-Json).cases | Where-Object { $_.tags -contains 'core' }; if ($coreCases.Count -ne 18) { throw 'Expected fixed 18-case core matrix.' }; & './tools/Invoke-BoundedProcess.ps1' -FilePath (Get-Command dotnet).Source -ArgumentList @('.artifacts/build/s346-20260926/bin/Sezika.NumericParity/release/Sezika.NumericParity.dll','--trace-oracle','.artifacts/models/laya-mmbert','tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json','tests/fixtures/laya-oracle/contract.v1.json','.artifacts/s346-20260926/trace-core18.json',($coreCases.id -join ','),'scalar,simd,cuda','1740','bf0d537305149672f07d34dc6b3e2d3614aeb2c26aa6d11aa7902578100c53fa','771ca781c52f1d6f9cb22859bed007ef483a54a2543c644de33f88d6e0687eee') -TimeoutSeconds 1780 -LogName 's3-trace-core18' -LogDirectory '.artifacts/s346-20260926/processes'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-020531-082-s3-trace-core18.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-020531-082-s3-trace-core18.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 56120,
+      "CreationDate": "2026-09-26T10:05:32.860497+08:00",
+      "Started": "2026-09-26T02:05:32.860497Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" .artifacts/build/s346-20260926/bin/Sezika.NumericParity/release/Sezika.NumericParity.dll --trace-oracle .artifacts/models/laya-mmbert tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json tests/fixtures/laya-oracle/contract.v1.json .artifacts/s346-20260926/trace-core18.json choice-en-short,choice-en-medium,choice-en-long,choice-zh-short,choice-zh-medium,choice-zh-long,score-en-short,score-en-medium,score-en-long,score-zh-short,score-zh-medium,score-zh-long,boolean-en-short,boolean-en-medium,boolean-en-long,boolean-zh-short,boolean-zh-medium,boolean-zh-long scalar,simd,cuda 1740 bf0d537305149672f07d34dc6b3e2d3614aeb2c26aa6d11aa7902578100c53fa 771ca781c52f1d6f9cb22859bed007ef483a54a2543c644de33f88d6e0687eee",
+      "ParentPid": 15216,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 79212,
+      "CreationDate": "2026-09-26T10:05:32.890231+08:00",
+      "Started": "2026-09-26T02:05:32.890231Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 56120,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

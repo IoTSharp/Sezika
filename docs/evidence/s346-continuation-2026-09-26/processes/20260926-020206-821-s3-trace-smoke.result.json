@@ -1,0 +1,55 @@
+{
+  "Status": "Succeeded",
+  "Pid": 13584,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 51.464,
+  "TimeoutSeconds": 210,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/build/s346-20260926/bin/Sezika.NumericParity/release/Sezika.NumericParity.dll",
+    "--trace-oracle",
+    ".artifacts/models/laya-mmbert",
+    "tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json",
+    "tests/fixtures/laya-oracle/contract.v1.json",
+    ".artifacts/s346-20260926/trace-smoke.json",
+    "choice-en-short",
+    "scalar,simd,cuda",
+    "180",
+    "bf0d537305149672f07d34dc6b3e2d3614aeb2c26aa6d11aa7902578100c53fa",
+    "771ca781c52f1d6f9cb22859bed007ef483a54a2543c644de33f88d6e0687eee"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-26T02:02:08.1073453Z",
+  "ParentPid": 79388,
+  "Launcher": {
+    "Pid": 79388,
+    "Started": "2026-09-26T10:02:05.764913+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& './tools/Invoke-BoundedProcess.ps1' -FilePath (Get-Command dotnet).Source -ArgumentList @('.artifacts/build/s346-20260926/bin/Sezika.NumericParity/release/Sezika.NumericParity.dll','--trace-oracle','.artifacts/models/laya-mmbert','tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json','tests/fixtures/laya-oracle/contract.v1.json','.artifacts/s346-20260926/trace-smoke.json','choice-en-short','scalar,simd,cuda','180','bf0d537305149672f07d34dc6b3e2d3614aeb2c26aa6d11aa7902578100c53fa','771ca781c52f1d6f9cb22859bed007ef483a54a2543c644de33f88d6e0687eee') -TimeoutSeconds 210 -LogName 's3-trace-smoke' -LogDirectory '.artifacts/s346-20260926/processes'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-020206-821-s3-trace-smoke.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-020206-821-s3-trace-smoke.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 13584,
+      "CreationDate": "2026-09-26T10:02:08.107345+08:00",
+      "Started": "2026-09-26T02:02:08.107345Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" .artifacts/build/s346-20260926/bin/Sezika.NumericParity/release/Sezika.NumericParity.dll --trace-oracle .artifacts/models/laya-mmbert tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json tests/fixtures/laya-oracle/contract.v1.json .artifacts/s346-20260926/trace-smoke.json choice-en-short scalar,simd,cuda 180 bf0d537305149672f07d34dc6b3e2d3614aeb2c26aa6d11aa7902578100c53fa 771ca781c52f1d6f9cb22859bed007ef483a54a2543c644de33f88d6e0687eee",
+      "ParentPid": 79388,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 16980,
+      "CreationDate": "2026-09-26T10:02:08.30254+08:00",
+      "Started": "2026-09-26T02:02:08.30254Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 13584,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

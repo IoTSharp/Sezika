@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "status": "original_fixture_audit_not_independent_quality_acceptance",
+  "license": "Apache-2.0",
+  "sources": [
+    {
+      "path": "data/s4-02/en/general/test.jsonl",
+      "sha256": "a707f5ec2cbcf9139d7a0402e5fd229013fe9cabf90d8945b263fc15b282b5f5"
+    },
+    {
+      "path": "data/s4-02/en/support/test.jsonl",
+      "sha256": "cb5af00180696c9995460698223d013d3c32f72cfd967d005a69aa72060f387b"
+    },
+    {
+      "path": "data/s4-02/zh/general/test.jsonl",
+      "sha256": "aa029d8c914c3a09c32eef8b9e58a7383e7daa1c19e0dd3517637fcbc04af8f1"
+    },
+    {
+      "path": "data/s4-02/zh/support/test.jsonl",
+      "sha256": "a2225fa59c1a115ec68291b6d0caff18a315819b85e97cb29dd2067855907345"
+    }
+  ],
+  "records": 12,
+  "dataset_sha256": "0aab426dbf4d69653527d402158693e10214c52a83a586728cd6247ea1e023f7",
+  "transformation": "Preserve original test inputs, labels and candidate order; map Boolean when_false/when_true to false/true. No calibration rows, prompt selection or model outputs."
+}

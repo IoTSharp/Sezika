@@ -1,0 +1,61 @@
+{
+  "Status": "Succeeded",
+  "Pid": 62232,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 3.769,
+  "TimeoutSeconds": 40,
+  "FilePath": ".artifacts/laya-oracle-work/venv/Scripts/python.exe",
+  "Arguments": [
+    "-B",
+    "tools/Sezika.LayaOracle/export_tokenizer_boundaries.py",
+    "--tokenizer",
+    ".artifacts/models/laya-mmbert/tokenizer/tokenizer.json",
+    "--output",
+    ".artifacts/s346-20260926/tokenizer-boundary-smoke.json",
+    "--max-cases",
+    "1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-26T03:03:01.3030497Z",
+  "ParentPid": 71356,
+  "Launcher": {
+    "Pid": 71356,
+    "Started": "2026-09-26T11:03:00.182742+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& './tools/Invoke-BoundedProcess.ps1' -FilePath '.artifacts/laya-oracle-work/venv/Scripts/python.exe' -ArgumentList @('-B','tools/Sezika.LayaOracle/export_tokenizer_boundaries.py','--tokenizer','.artifacts/models/laya-mmbert/tokenizer/tokenizer.json','--output','.artifacts/s346-20260926/tokenizer-boundary-smoke.json','--max-cases','1') -TimeoutSeconds 40 -LogName 'tokenizer-boundary-smoke' -LogDirectory '.artifacts/s346-20260926/processes'\nif ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }\n& './tools/Invoke-BoundedProcess.ps1' -FilePath '.artifacts/laya-oracle-work/venv/Scripts/python.exe' -ArgumentList @('-B','tools/Sezika.LayaOracle/export_tokenizer_boundaries.py','--tokenizer','.artifacts/models/laya-mmbert/tokenizer/tokenizer.json','--output','tests/fixtures/tokenizer-mmbert-boundaries.v1.json','--max-cases','300') -TimeoutSeconds 40 -LogName 'tokenizer-boundary-full' -LogDirectory '.artifacts/s346-20260926/processes'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-030300-710-tokenizer-boundary-smoke.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-030300-710-tokenizer-boundary-smoke.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 62232,
+      "CreationDate": "2026-09-26T11:03:01.303049+08:00",
+      "Started": "2026-09-26T03:03:01.303049Z",
+      "CommandLine": "\".artifacts/laya-oracle-work/venv/Scripts/python.exe\" -B tools/Sezika.LayaOracle/export_tokenizer_boundaries.py --tokenizer .artifacts/models/laya-mmbert/tokenizer/tokenizer.json --output .artifacts/s346-20260926/tokenizer-boundary-smoke.json --max-cases 1",
+      "ParentPid": 71356,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 62324,
+      "CreationDate": "2026-09-26T11:03:01.335951+08:00",
+      "Started": "2026-09-26T03:03:01.335951Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 62232,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 68456,
+      "CreationDate": "2026-09-26T11:03:01.357294+08:00",
+      "Started": "2026-09-26T03:03:01.357294Z",
+      "CommandLine": "\"D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\python\\cpython-3.12.10-windows-x86_64-none\\python.exe\" -B tools/Sezika.LayaOracle/export_tokenizer_boundaries.py --tokenizer .artifacts/models/laya-mmbert/tokenizer/tokenizer.json --output .artifacts/s346-20260926/tokenizer-boundary-smoke.json --max-cases 1",
+      "ParentPid": 62232,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

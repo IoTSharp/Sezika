@@ -1,0 +1,42 @@
+{
+  "Status": "Failed",
+  "Pid": 8624,
+  "ExitCode": 1,
+  "Error": "Process failed with exit code 1.",
+  "ElapsedSeconds": 2.425,
+  "TimeoutSeconds": 45,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\.artifacts\\build\\s346-final-20260926\\bin\\Sezika.OracleCompare\\release\\Sezika.OracleCompare.dll",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-full\\batch-002\\reference\\capture.json",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-full\\batch-002\\actual\\capture.json",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-plan\\cases-002.json",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-full\\batch-002\\comparison.json",
+    "30"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-26T02:59:33.1418228Z",
+  "ParentPid": 37520,
+  "Launcher": {
+    "Pid": 37520,
+    "Started": "2026-09-26T10:50:12.289111+08:00",
+    "CommandLine": "\"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.6.0_x64__8wekyb3d8bbwe\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Invoke-OracleBatches.ps1 -PlanPath .artifacts/s346-20260926/nimble-plan/batches.json -PythonPath .artifacts/laya-oracle-work/venv/Scripts/python.exe -UpstreamDirectory .artifacts/laya-oracle-work/upstream -ModelDirectory .artifacts/models/laya-mmbert -BuildDirectory .artifacts/build/s346-final-20260926/bin -OutputDirectory .artifacts/s346-20260926/nimble-full -MaxBatches 8 -TimeoutSeconds 1740",
+    "ParentPid": 61684
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-full\\processes\\20260926-025932-652-compare-1.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-full\\processes\\20260926-025932-652-compare-1.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 8624,
+      "CreationDate": "2026-09-26T10:59:33.141822+08:00",
+      "Started": "2026-09-26T02:59:33.141822Z",
+      "CommandLine": null,
+      "ParentPid": 37520,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

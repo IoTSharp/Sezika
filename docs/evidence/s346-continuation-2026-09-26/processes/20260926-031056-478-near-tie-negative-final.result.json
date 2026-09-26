@@ -1,0 +1,44 @@
+{
+  "Status": "Failed",
+  "Pid": 34424,
+  "ExitCode": 1,
+  "Error": "Process failed with exit code 1.",
+  "ElapsedSeconds": 3.613,
+  "TimeoutSeconds": 40,
+  "FilePath": "C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.6.0_x64__8wekyb3d8bbwe\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "tools/Sezika.NumericParity/Observe-QualityNearTies.ps1",
+    "-PawsRunDirectory",
+    ".artifacts/s346-20260926/language-smoke",
+    "-OutputPath",
+    ".artifacts/s346-20260926/near-tie-wrong-source-final.json",
+    "-MaxObservedRows",
+    "1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-26T03:10:57.6915486Z",
+  "ParentPid": 15492,
+  "Launcher": {
+    "Pid": 15492,
+    "Started": "2026-09-26T11:10:55.952316+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\ntry { & './tools/Invoke-BoundedProcess.ps1' -FilePath (Get-Command pwsh).Source -ArgumentList @('-NoProfile','-File','tools/Sezika.NumericParity/Observe-QualityNearTies.ps1','-PawsRunDirectory','.artifacts/s346-20260926/language-smoke','-OutputPath','.artifacts/s346-20260926/near-tie-wrong-source-final.json','-MaxObservedRows','1') -TimeoutSeconds 40 -LogName 'near-tie-negative-final' -LogDirectory '.artifacts/s346-20260926/processes' } catch { }\n$resultFile=@(Get-ChildItem -LiteralPath .artifacts/s346-20260926/processes -Filter '*-near-tie-negative-final.result.json' -File)\nif($resultFile.Count -ne 1){throw 'Expected one negative result.'}\n$r=Get-Content -LiteralPath $resultFile[0].FullName -Raw | ConvertFrom-Json\n$errorText=Get-Content -LiteralPath $r.StderrPath -Raw\n$expected='Source differs from the frozen observation plan.'\nif($r.ExitCode -ne 1 -or $r.CleanupErrors.Count -ne 0 -or -not $errorText.Contains($expected) -or (Test-Path -LiteralPath .artifacts/s346-20260926/near-tie-wrong-source-final.json)){throw 'Wrong-source negative check did not reject for the expected reason.'}\n$record=[ordered]@{passed=$true;positive='near-tie-smoke.json';negative_result=$resultFile[0].FullName;expected=$expected;exit_code=$r.ExitCode;output_exists=$false}\n[IO.File]::WriteAllText((Join-Path $PWD '.artifacts/s346-20260926/near-tie-negative-check.json'),($record | ConvertTo-Json),[Text.UTF8Encoding]::new($false))\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-031056-478-near-tie-negative-final.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-031056-478-near-tie-negative-final.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 34424,
+      "CreationDate": "2026-09-26T11:10:57.691548+08:00",
+      "Started": "2026-09-26T03:10:57.691548Z",
+      "CommandLine": "\"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.6.0_x64__8wekyb3d8bbwe\\pwsh.exe\" -NoProfile -File tools/Sezika.NumericParity/Observe-QualityNearTies.ps1 -PawsRunDirectory .artifacts/s346-20260926/language-smoke -OutputPath .artifacts/s346-20260926/near-tie-wrong-source-final.json -MaxObservedRows 1",
+      "ParentPid": 15492,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

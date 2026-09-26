@@ -86,13 +86,14 @@ public sealed record DecisionResourceBudget
     public long MaxWorkspaceBytes { get; init; } = 512L * 1024 * 1024;
     /// <summary>Upper bound for the resident model package accepted by a session.</summary>
     public long MaxResidentBytes { get; init; } = 2L * 1024 * 1024 * 1024;
+    /// <summary>Explicit whole-request deadline, at most 30 minutes; the default remains 30 seconds.</summary>
     public TimeSpan Deadline { get; init; } = TimeSpan.FromSeconds(30);
 
     public void Validate()
     {
         if (MaxQuestions <= 0 || MaxTokens <= 0 || MaxMicroBatchQuestions <= 0 ||
             MaxWorkspaceBytes <= 0 || MaxResidentBytes <= 0 ||
-            Deadline <= TimeSpan.Zero || Deadline > TimeSpan.FromMinutes(5))
+            Deadline <= TimeSpan.Zero || Deadline > TimeSpan.FromMinutes(30))
             throw new DecisionException("decision_budget_invalid", "Decision resource budget is invalid.");
     }
 }

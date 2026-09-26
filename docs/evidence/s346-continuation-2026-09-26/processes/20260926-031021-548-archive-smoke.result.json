@@ -1,0 +1,42 @@
+{
+  "Status": "Succeeded",
+  "Pid": 73152,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 3.436,
+  "TimeoutSeconds": 70,
+  "FilePath": "C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.6.0_x64__8wekyb3d8bbwe\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    ".artifacts/s346-20260926/Archive-Evidence.ps1",
+    "-Destination",
+    ".artifacts/s346-20260926/archive-smoke",
+    "-MaxFiles",
+    "1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-26T03:10:22.0900225Z",
+  "ParentPid": 53804,
+  "Launcher": {
+    "Pid": 53804,
+    "Started": "2026-09-26T11:10:21.038424+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& './tools/Invoke-BoundedProcess.ps1' -FilePath (Get-Command pwsh).Source -ArgumentList @('-NoProfile','-File','.artifacts/s346-20260926/Archive-Evidence.ps1','-Destination','.artifacts/s346-20260926/archive-smoke','-MaxFiles','1') -TimeoutSeconds 70 -LogName 'archive-smoke' -LogDirectory '.artifacts/s346-20260926/processes'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-031021-548-archive-smoke.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-031021-548-archive-smoke.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 73152,
+      "CreationDate": "2026-09-26T11:10:22.090022+08:00",
+      "Started": "2026-09-26T03:10:22.090022Z",
+      "CommandLine": null,
+      "ParentPid": 53804,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

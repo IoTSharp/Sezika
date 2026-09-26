@@ -1,0 +1,32 @@
+{
+  "Status": "Failed",
+  "Pid": 61048,
+  "ExitCode": 1,
+  "Error": "Process failed with exit code 1.",
+  "ElapsedSeconds": 2.712,
+  "TimeoutSeconds": 40,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/build/s3-summary-20260926/bin/Sezika.NumericParity/release/Sezika.NumericParity.dll",
+    "--trace-summary",
+    "bf0d537305149672f07d34dc6b3e2d3614aeb2c26aa6d11aa7902578100c53fa",
+    "771ca781c52f1d6f9cb22859bed007ef483a54a2543c644de33f88d6e0687eee",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\trace-partial-index.json",
+    ".artifacts/s346-20260926/trace-partial-summary.json",
+    "30"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-26T02:41:24.9951465Z",
+  "ParentPid": 48860,
+  "Launcher": {
+    "Pid": 48860,
+    "Started": "2026-09-26T10:41:23.408654+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$tracePath = [IO.Path]::GetFullPath('.artifacts/s346-20260926/trace-core18.json'); $indexPath = [IO.Path]::GetFullPath('.artifacts/s346-20260926/trace-partial-index.json'); $value = [ordered]@{schema_version='sezika.trace-report-index.v1';reports=@([ordered]@{path=$tracePath;sha256=(Get-FileHash -LiteralPath $tracePath -Algorithm SHA256).Hash.ToLowerInvariant()})}; [IO.File]::WriteAllText($indexPath,($value | ConvertTo-Json -Depth 10),[Text.UTF8Encoding]::new($false)); try { & './tools/Invoke-BoundedProcess.ps1' -FilePath (Get-Command dotnet).Source -ArgumentList @('.artifacts/build/s3-summary-20260926/bin/Sezika.NumericParity/release/Sezika.NumericParity.dll','--trace-summary','bf0d537305149672f07d34dc6b3e2d3614aeb2c26aa6d11aa7902578100c53fa','771ca781c52f1d6f9cb22859bed007ef483a54a2543c644de33f88d6e0687eee',$indexPath,'.artifacts/s346-20260926/trace-partial-summary.json','30') -TimeoutSeconds 40 -LogName 's3-partial-summary' -LogDirectory '.artifacts/s346-20260926/processes' } catch { Write-Output \\\"Inspect expected incomplete summary: $($_.Exception.Message)\\\" }; $summary = Get-Content -LiteralPath '.artifacts/s346-20260926/trace-partial-summary.json' -Raw -Encoding utf8 | ConvertFrom-Json; if ($summary.core_matrix_passed -or $summary.passed_backend_cells -ne 39 -or $summary.planned_backend_cells -ne 54 -or $summary.incomplete_runs -ne 1) { throw 'Partial summary failed denominator check.' }\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-024123-889-s3-partial-summary.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-024123-889-s3-partial-summary.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

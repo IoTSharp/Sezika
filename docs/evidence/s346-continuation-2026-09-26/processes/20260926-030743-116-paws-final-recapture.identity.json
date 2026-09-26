@@ -1,0 +1,41 @@
+{
+  "Pid": 72824,
+  "Started": "2026-09-26T03:07:43.9808795Z",
+  "CommandLine": "\"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.6.0_x64__8wekyb3d8bbwe\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Invoke-OracleBatches.ps1 -PlanPath .artifacts/s346-20260926/paws-plan-verified/batches.json -PythonPath .artifacts/laya-oracle-work/venv/Scripts/python.exe -UpstreamDirectory .artifacts/laya-oracle-work/upstream -ModelDirectory .artifacts/models/laya-mmbert -BuildDirectory .artifacts/build/s346-tokenizer-final-20260926/bin -OutputDirectory .artifacts/s346-20260926/paws-final -ReferenceIndexPath .artifacts/s346-20260926/paws-full/references.json -MaxBatches 6 -TimeoutSeconds 600",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 57120,
+  "ObservedParentPid": 57120,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 57120,
+    "Started": "2026-09-26T11:07:42.642141+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& './tools/Invoke-BoundedProcess.ps1' -FilePath (Get-Command pwsh).Source -ArgumentList @('-NoProfile','-File','tools/Sezika.Evaluation/Invoke-OracleBatches.ps1','-PlanPath','.artifacts/s346-20260926/paws-plan-verified/batches.json','-PythonPath','.artifacts/laya-oracle-work/venv/Scripts/python.exe','-UpstreamDirectory','.artifacts/laya-oracle-work/upstream','-ModelDirectory','.artifacts/models/laya-mmbert','-BuildDirectory','.artifacts/build/s346-tokenizer-final-20260926/bin','-OutputDirectory','.artifacts/s346-20260926/paws-final','-ReferenceIndexPath','.artifacts/s346-20260926/paws-full/references.json','-MaxBatches','6','-TimeoutSeconds','600') -TimeoutSeconds 630 -LogName 'paws-final-recapture' -LogDirectory '.artifacts/s346-20260926/processes'\nif ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }\n& './tools/Invoke-BoundedProcess.ps1' -FilePath (Get-Command pwsh).Source -ArgumentList @('-NoProfile','-File','tools/Sezika.Evaluation/Invoke-OracleBatches.ps1','-PlanPath','.artifacts/s346-20260926/language-plan/batches.json','-PythonPath','.artifacts/laya-oracle-work/venv/Scripts/python.exe','-UpstreamDirectory','.artifacts/laya-oracle-work/upstream','-ModelDirectory','.artifacts/models/laya-mmbert','-BuildDirectory','.artifacts/build/s346-tokenizer-final-20260926/bin','-OutputDirectory','.artifacts/s346-20260926/language-final','-ReferenceIndexPath','.artifacts/s346-20260926/language-full/references.json','-MaxBatches','2','-TimeoutSeconds','180') -TimeoutSeconds 210 -LogName 'language-final-recapture' -LogDirectory '.artifacts/s346-20260926/processes'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 630,
+  "FilePath": "C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.6.0_x64__8wekyb3d8bbwe\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "tools/Sezika.Evaluation/Invoke-OracleBatches.ps1",
+    "-PlanPath",
+    ".artifacts/s346-20260926/paws-plan-verified/batches.json",
+    "-PythonPath",
+    ".artifacts/laya-oracle-work/venv/Scripts/python.exe",
+    "-UpstreamDirectory",
+    ".artifacts/laya-oracle-work/upstream",
+    "-ModelDirectory",
+    ".artifacts/models/laya-mmbert",
+    "-BuildDirectory",
+    ".artifacts/build/s346-tokenizer-final-20260926/bin",
+    "-OutputDirectory",
+    ".artifacts/s346-20260926/paws-final",
+    "-ReferenceIndexPath",
+    ".artifacts/s346-20260926/paws-full/references.json",
+    "-MaxBatches",
+    "6",
+    "-TimeoutSeconds",
+    "600"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

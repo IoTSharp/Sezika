@@ -1,0 +1,18 @@
+[
+  {
+    "case": "duplicate",
+    "exit_code": 1,
+    "expected": "Duplicate case across capture batches.",
+    "observed": "evaluation-oracle: InvalidDataException: Duplicate case across capture batches.",
+    "result": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\aggregate-duplicate-logs\\20260926-021435-610-duplicate.result.json",
+    "passed": true
+  },
+  {
+    "case": "wrong-hash",
+    "exit_code": 1,
+    "expected": "Indexed evidence SHA-256 mismatch.",
+    "observed": "evaluation-oracle: InvalidDataException: Indexed evidence SHA-256 mismatch.",
+    "result": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\aggregate-wrong-hash-logs\\20260926-021438-041-wrong-hash.result.json",
+    "passed": true
+  }
+]

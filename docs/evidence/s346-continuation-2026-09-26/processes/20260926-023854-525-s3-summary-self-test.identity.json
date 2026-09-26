@@ -1,0 +1,22 @@
+{
+  "Pid": 40712,
+  "Started": "2026-09-26T02:38:55.1382733Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 65048,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 65048,
+    "Started": "2026-09-26T10:38:54.103629+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\nGet-Content -LiteralPath '.artifacts/s346-20260926/processes/20260926-023457-490-s3-trace-remaining5.stdout.log' -Encoding utf8 -Tail 6; & './tools/Invoke-BoundedProcess.ps1' -FilePath (Get-Command dotnet).Source -ArgumentList @('.artifacts/build/s3-summary-20260926/bin/Sezika.NumericParity/release/Sezika.NumericParity.dll','--trace-self-test') -TimeoutSeconds 30 -LogName 's3-summary-self-test' -LogDirectory '.artifacts/s346-20260926/processes'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 30,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/build/s3-summary-20260926/bin/Sezika.NumericParity/release/Sezika.NumericParity.dll",
+    "--trace-self-test"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

@@ -1,0 +1,227 @@
+{
+  "schema_version": "sezika.oracle-comparison.v1",
+  "started_utc": "2026-09-26T03:12:06.026484+00:00",
+  "reference_sha256": "0139022969701ef17ac30914f1e2c1189ffcef04206fac466e646b036a643093",
+  "actual_sha256": "12a852c10c1ffd78fb1473650650e39883eb6033d46d5942793de18a0ccfe570",
+  "contract_sha256": "771ca781c52f1d6f9cb22859bed007ef483a54a2543c644de33f88d6e0687eee",
+  "cases_sha256": "0eef0b2c3a6be128d2e16ae7ec74eb1cc51bec6a529f37067e21acfb875bd096",
+  "identity": {
+    "model_id": "convaiinnovations/laya-multilingual",
+    "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+    "weights_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+    "tokenizer_sha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+    "upstream_source_revision": "4066d5d5fbf08b66c6757ddeedbd797bd7655bc0",
+    "cases_sha256": "0eef0b2c3a6be128d2e16ae7ec74eb1cc51bec6a529f37067e21acfb875bd096",
+    "contract_sha256": "771ca781c52f1d6f9cb22859bed007ef483a54a2543c644de33f88d6e0687eee",
+    "max_len": 1024,
+    "head_max_len": 256,
+    "temperature_policy": "checkpoint_fixed_1_no_overrides"
+  },
+  "tolerances": {
+    "raw_logits": {
+      "absolute": 0.0005,
+      "relative": 0.0001
+    },
+    "probabilities": {
+      "absolute": 0.0001,
+      "relative": 0.0001
+    },
+    "score": {
+      "absolute": 0.001,
+      "relative": 0.0001
+    },
+    "near_tie_logit_margin": 0.001
+  },
+  "manifest_count": 46,
+  "selected_case_ids": [
+    "fast-41-diverse-212-059-base",
+    "fast-41-diverse-212-059-counterfactual",
+    "fast-41-diverse-213-001-base",
+    "fast-41-diverse-213-001-counterfactual",
+    "fast-41-diverse-213-016-base",
+    "fast-41-diverse-213-016-counterfactual",
+    "fast-41-diverse-216-009-base",
+    "fast-41-diverse-216-009-counterfactual",
+    "fast-41-diverse-273-007-base",
+    "fast-41-diverse-273-007-counterfactual",
+    "fast-41-diverse-273-008-base",
+    "fast-41-diverse-273-008-counterfactual",
+    "fast-41-diverse-274-002-base",
+    "fast-41-diverse-274-002-counterfactual",
+    "fast-41-diverse-274-004-base",
+    "fast-41-diverse-274-004-counterfactual",
+    "fast-41-diverse-275-013-base",
+    "fast-41-diverse-275-013-counterfactual",
+    "fast-43-diverse-007-002-base",
+    "fast-43-diverse-007-002-counterfactual",
+    "fast-43-diverse-007-012-base",
+    "fast-43-diverse-007-012-counterfactual",
+    "fast-43-diverse-008-010-base",
+    "fast-43-diverse-008-010-counterfactual",
+    "fast-43-diverse-010-001-base",
+    "fast-43-diverse-010-001-counterfactual",
+    "fast-43-diverse-079-003-base",
+    "fast-43-diverse-079-003-counterfactual",
+    "fast-43-diverse-079-015-base",
+    "fast-43-diverse-079-015-counterfactual",
+    "fast-43-diverse-079-019-base",
+    "fast-43-diverse-079-019-counterfactual",
+    "fast-43-diverse-079-022-base",
+    "fast-43-diverse-079-022-counterfactual",
+    "fast-43-diverse-079-023-base",
+    "fast-43-diverse-079-023-counterfactual",
+    "fast-43-diverse-079-037-base",
+    "fast-43-diverse-079-037-counterfactual",
+    "fast-43-diverse-079-045-base",
+    "fast-43-diverse-079-045-counterfactual",
+    "fast-43-diverse-079-046-base",
+    "fast-43-diverse-079-046-counterfactual",
+    "fast-43-diverse-079-054-base",
+    "fast-43-diverse-079-054-counterfactual",
+    "fast-43-diverse-079-055-base",
+    "fast-43-diverse-079-055-counterfactual"
+  ],
+  "missing_case_ids": [],
+  "input_coverage": 1,
+  "complete_input_coverage": true,
+  "reference_count": 46,
+  "actual_count": 46,
+  "reference_measurement_status": "complete",
+  "actual_measurement_status": "completed",
+  "selection_mode": "all_captured_cases",
+  "requested_case_ids": null,
+  "excluded_reference_case_ids": [],
+  "excluded_actual_case_ids": [],
+  "compared_count": 46,
+  "answered_pairs": 46,
+  "failure_pairs": 0,
+  "near_tie_cases": 0,
+  "max_logit_error": 0.5388624668121338,
+  "max_probability_error": 0.042691089947550775,
+  "passed": false,
+  "full_manifest_passed": false,
+  "issues": [
+    {
+      "case_id": "fast-41-diverse-274-002-base",
+      "field": "token_ids",
+      "message": "Ordered values differ (including missing values)."
+    },
+    {
+      "case_id": "fast-41-diverse-274-002-base",
+      "field": "raw_logits[0]",
+      "message": "Absolute error 0.18305063247680664 exceeds absolute \u002B relative * |reference| tolerance."
+    },
+    {
+      "case_id": "fast-41-diverse-274-002-base",
+      "field": "raw_logits[1]",
+      "message": "Absolute error 0.02307555079460144 exceeds absolute \u002B relative * |reference| tolerance."
+    },
+    {
+      "case_id": "fast-41-diverse-274-002-base",
+      "field": "probabilities[0]",
+      "message": "Absolute error 0.0067139370737671 exceeds absolute \u002B relative * |reference| tolerance."
+    },
+    {
+      "case_id": "fast-41-diverse-274-002-base",
+      "field": "probabilities[1]",
+      "message": "Absolute error 0.006713868155896696 exceeds absolute \u002B relative * |reference| tolerance."
+    },
+    {
+      "case_id": "fast-41-diverse-274-002-base",
+      "field": "prediction.probability_true",
+      "message": "P(true) differs beyond tolerance."
+    },
+    {
+      "case_id": "fast-41-diverse-274-002-counterfactual",
+      "field": "token_ids",
+      "message": "Ordered values differ (including missing values)."
+    },
+    {
+      "case_id": "fast-41-diverse-274-002-counterfactual",
+      "field": "raw_logits[0]",
+      "message": "Absolute error 0.167189359664917 exceeds absolute \u002B relative * |reference| tolerance."
+    },
+    {
+      "case_id": "fast-41-diverse-274-002-counterfactual",
+      "field": "raw_logits[1]",
+      "message": "Absolute error 0.06525498628616333 exceeds absolute \u002B relative * |reference| tolerance."
+    },
+    {
+      "case_id": "fast-41-diverse-274-002-counterfactual",
+      "field": "probabilities[0]",
+      "message": "Absolute error 0.008795633884211597 exceeds absolute \u002B relative * |reference| tolerance."
+    },
+    {
+      "case_id": "fast-41-diverse-274-002-counterfactual",
+      "field": "probabilities[1]",
+      "message": "Absolute error 0.008795648785372756 exceeds absolute \u002B relative * |reference| tolerance."
+    },
+    {
+      "case_id": "fast-41-diverse-274-002-counterfactual",
+      "field": "prediction.probability_true",
+      "message": "P(true) differs beyond tolerance."
+    },
+    {
+      "case_id": "fast-41-diverse-274-004-base",
+      "field": "token_ids",
+      "message": "Ordered values differ (including missing values)."
+    },
+    {
+      "case_id": "fast-41-diverse-274-004-base",
+      "field": "raw_logits[0]",
+      "message": "Absolute error 0.5388624668121338 exceeds absolute \u002B relative * |reference| tolerance."
+    },
+    {
+      "case_id": "fast-41-diverse-274-004-base",
+      "field": "raw_logits[1]",
+      "message": "Absolute error 0.07742298394441605 exceeds absolute \u002B relative * |reference| tolerance."
+    },
+    {
+      "case_id": "fast-41-diverse-274-004-base",
+      "field": "probabilities[0]",
+      "message": "Absolute error 0.03721029494996217 exceeds absolute \u002B relative * |reference| tolerance."
+    },
+    {
+      "case_id": "fast-41-diverse-274-004-base",
+      "field": "probabilities[1]",
+      "message": "Absolute error 0.03721035455460697 exceeds absolute \u002B relative * |reference| tolerance."
+    },
+    {
+      "case_id": "fast-41-diverse-274-004-base",
+      "field": "prediction.probability_true",
+      "message": "P(true) differs beyond tolerance."
+    },
+    {
+      "case_id": "fast-41-diverse-274-004-counterfactual",
+      "field": "token_ids",
+      "message": "Ordered values differ (including missing values)."
+    },
+    {
+      "case_id": "fast-41-diverse-274-004-counterfactual",
+      "field": "raw_logits[0]",
+      "message": "Absolute error 0.510019063949585 exceeds absolute \u002B relative * |reference| tolerance."
+    },
+    {
+      "case_id": "fast-41-diverse-274-004-counterfactual",
+      "field": "raw_logits[1]",
+      "message": "Absolute error 0.08037660270929337 exceeds absolute \u002B relative * |reference| tolerance."
+    },
+    {
+      "case_id": "fast-41-diverse-274-004-counterfactual",
+      "field": "probabilities[0]",
+      "message": "Absolute error 0.04269103779348653 exceeds absolute \u002B relative * |reference| tolerance."
+    },
+    {
+      "case_id": "fast-41-diverse-274-004-counterfactual",
+      "field": "probabilities[1]",
+      "message": "Absolute error 0.042691089947550775 exceeds absolute \u002B relative * |reference| tolerance."
+    },
+    {
+      "case_id": "fast-41-diverse-274-004-counterfactual",
+      "field": "prediction.probability_true",
+      "message": "P(true) differs beyond tolerance."
+    }
+  ],
+  "elapsed_milliseconds": 92.0562,
+  "scope": "Offline comparison of the explicitly reported selection only. Original complete file hashes and row counts remain bound to the report. A selected-subset pass is not a full-manifest pass. No inference, dataset quality, Native AOT or performance acceptance. Near ties never waive prediction mismatch. Failed pairs do not establish numerical parity."
+}

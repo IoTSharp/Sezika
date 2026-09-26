@@ -1,0 +1,43 @@
+{
+  "Status": "Succeeded",
+  "Pid": 60452,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 4.559,
+  "TimeoutSeconds": 45,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/build/s346-final-20260926/bin/Sezika.Evaluation/release/Sezika.Evaluation.dll",
+    "--score-captures",
+    ".artifacts/datasets/paws-public-benchmark/eval.jsonl",
+    "c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3",
+    "250",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\aggregate-baseline-index.json",
+    ".artifacts/s346-20260926/aggregate-baseline.json",
+    "30"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-26T02:13:52.5552567Z",
+  "ParentPid": 73720,
+  "Launcher": {
+    "Pid": 73720,
+    "Started": "2026-09-26T10:13:51.164893+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$capture = [IO.Path]::GetFullPath('.artifacts/s4-quality-20260926/paws-reference-smoke/capture.json'); $manifest = [IO.Path]::GetFullPath('.artifacts/s4-quality-20260926/paws-smoke-inputs.json'); $item = [ordered]@{capture=$capture; capture_sha256=(Get-FileHash -LiteralPath $capture -Algorithm SHA256).Hash.ToLowerInvariant(); manifest=$manifest; manifest_sha256=(Get-FileHash -LiteralPath $manifest -Algorithm SHA256).Hash.ToLowerInvariant()}; $path = [IO.Path]::GetFullPath('.artifacts/s346-20260926/aggregate-baseline-index.json'); if ([IO.Path]::Exists($path)) { throw 'Output exists.' }; [IO.File]::WriteAllText($path,([ordered]@{schema_version='sezika.evaluation-captures.v1';batches=@($item)} | ConvertTo-Json -Depth 10),[Text.UTF8Encoding]::new($false)); & './tools/Invoke-BoundedProcess.ps1' -FilePath (Get-Command dotnet).Source -ArgumentList @('.artifacts/build/s346-final-20260926/bin/Sezika.Evaluation/release/Sezika.Evaluation.dll','--score-captures','.artifacts/datasets/paws-public-benchmark/eval.jsonl','c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3','250',$path,'.artifacts/s346-20260926/aggregate-baseline.json','30') -TimeoutSeconds 45 -LogName 's4-aggregate-baseline' -LogDirectory '.artifacts/s346-20260926/processes'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-021351-688-s4-aggregate-baseline.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-021351-688-s4-aggregate-baseline.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 60452,
+      "CreationDate": "2026-09-26T10:13:52.555256+08:00",
+      "Started": "2026-09-26T02:13:52.555256Z",
+      "CommandLine": null,
+      "ParentPid": 73720,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

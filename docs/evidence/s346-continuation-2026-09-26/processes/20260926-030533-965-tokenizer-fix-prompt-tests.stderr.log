@@ -1,0 +1,6 @@
+System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Text.Json.JsonElement.GetProperty(String propertyName)
+   at Sezika.TokenizerJson..ctor(String tokenizerJsonPath, CancellationToken cancellationToken) in D:\source\Sezika\src\Sezika\TokenizerJson.cs:line 45
+   at Sezika.Tests.BackendInjectionChecks.Package(String tokenizerPath, CancellationToken cancellationToken) in D:\source\Sezika\tests\Sezika.Tests\BackendInjectionChecks.cs:line 236
+   at Sezika.Tests.BackendInjectionChecks.Run(Action`2 check) in D:\source\Sezika\tests\Sezika.Tests\BackendInjectionChecks.cs:line 26
+   at Program.<Main>$(String[] args) in D:\source\Sezika\tests\Sezika.Tests\Program.cs:line 46

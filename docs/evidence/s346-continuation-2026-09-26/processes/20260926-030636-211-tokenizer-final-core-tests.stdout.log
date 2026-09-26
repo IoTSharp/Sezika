@@ -1,0 +1,311 @@
+PASS: duplicate JSON property rejection
+PASS: CPU typed decision response
+PASS: score expected value bounds
+PASS: calibration metrics
+PASS: frozen encoder head training
+PASS: model package install/lease/uninstall lifecycle
+PASS: SIMD/scalar cancellation, deadline, workspace and concurrency bounds
+PASS: standalone model runtime load/parse/evaluate/dispose facade
+PASS: injected backend preserves model provenance and backend identity
+PASS: shared typed engine dispatches choice/score/boolean type IDs
+PASS: injected fixture logits preserve input choice order and choice temperature
+PASS: injected fixture logits preserve score order and expected-value semantics
+PASS: injected fixture logits map false/true markers and true probability through temperature
+PASS: injected fixture predictions remain explicitly uncalibrated
+PASS: all injected backend calls receive shared BOS/prompt/markers/criteria/state/EOS tokens
+PASS: shared typed usage accounts injected backend calls
+PASS: typed session owns and releases injected pipeline and model tensors
+PASS: pipeline disposal failure still unloads owned model tensors
+PASS: disposal failure leaves typed session disposal idempotent
+PASS: typed session rejects requests after a backend disposal failure
+PASS: constructor budget rejection releases injected pipeline and model
+PASS: constructor cleanup unloads model even when injected pipeline disposal throws
+PASS: shared marker sequence measures exact 1024/1025/1026 token boundary independently of prefix budget
+PASS: production engine accepts exactly 1024 tokens with a 256-token prefix budget
+PASS: 1025-token strict input reports the production budget code
+PASS: over-budget strict input rejects before backend execution
+PASS: explicit compatibility mode reports the one discarded state token
+PASS: typed primitive reference alignment contract
+PASS: calibration profile binding and pending gate semantics
+PASS: mmBERT tokenizer oracle: 
+PASS: mmBERT tokenizer oracle: Hello world
+PASS: mmBERT tokenizer oracle: 你好，世界
+PASS: mmBERT tokenizer oracle: café e?
+PASS: mmBERT tokenizer oracle: ????? ???????
+PASS: mmBERT tokenizer oracle: こんにちは世界
+PASS: mmBERT tokenizer oracle: foo??bar
+PASS: mmBERT tokenizer oracle: Café — mixed ??????? 中文
+PASS: independent added-token boundary inventory
+PASS: independent tokenizer boundary-001
+PASS: independent tokenizer boundary-002
+PASS: independent tokenizer boundary-003
+PASS: independent tokenizer boundary-004
+PASS: independent tokenizer boundary-005
+PASS: independent tokenizer boundary-006
+PASS: independent tokenizer boundary-007
+PASS: independent tokenizer boundary-008
+PASS: independent tokenizer boundary-009
+PASS: independent tokenizer boundary-010
+PASS: independent tokenizer boundary-011
+PASS: independent tokenizer boundary-012
+PASS: independent tokenizer boundary-013
+PASS: independent tokenizer boundary-014
+PASS: independent tokenizer boundary-015
+PASS: independent tokenizer boundary-016
+PASS: independent tokenizer boundary-017
+PASS: independent tokenizer boundary-018
+PASS: independent tokenizer boundary-019
+PASS: independent tokenizer boundary-020
+PASS: independent tokenizer boundary-021
+PASS: independent tokenizer boundary-022
+PASS: independent tokenizer boundary-023
+PASS: independent tokenizer boundary-024
+PASS: independent tokenizer boundary-025
+PASS: independent tokenizer boundary-026
+PASS: independent tokenizer boundary-027
+PASS: independent tokenizer boundary-028
+PASS: independent tokenizer boundary-029
+PASS: independent tokenizer boundary-030
+PASS: independent tokenizer boundary-031
+PASS: independent tokenizer boundary-032
+PASS: independent tokenizer boundary-033
+PASS: independent tokenizer boundary-034
+PASS: independent tokenizer boundary-035
+PASS: independent tokenizer boundary-036
+PASS: independent tokenizer boundary-037
+PASS: independent tokenizer boundary-038
+PASS: independent tokenizer boundary-039
+PASS: independent tokenizer boundary-040
+PASS: independent tokenizer boundary-041
+PASS: independent tokenizer boundary-042
+PASS: independent tokenizer boundary-043
+PASS: independent tokenizer boundary-044
+PASS: independent tokenizer boundary-045
+PASS: independent tokenizer boundary-046
+PASS: independent tokenizer boundary-047
+PASS: independent tokenizer boundary-048
+PASS: independent tokenizer boundary-049
+PASS: independent tokenizer boundary-050
+PASS: independent tokenizer boundary-051
+PASS: independent tokenizer boundary-052
+PASS: independent tokenizer boundary-053
+PASS: independent tokenizer boundary-054
+PASS: independent tokenizer boundary-055
+PASS: independent tokenizer boundary-056
+PASS: independent tokenizer boundary-057
+PASS: independent tokenizer boundary-058
+PASS: independent tokenizer boundary-059
+PASS: independent tokenizer boundary-060
+PASS: independent tokenizer boundary-061
+PASS: independent tokenizer boundary-062
+PASS: independent tokenizer boundary-063
+PASS: independent tokenizer boundary-064
+PASS: independent tokenizer boundary-065
+PASS: independent tokenizer boundary-066
+PASS: independent tokenizer boundary-067
+PASS: independent tokenizer boundary-068
+PASS: independent tokenizer boundary-069
+PASS: independent tokenizer boundary-070
+PASS: independent tokenizer boundary-071
+PASS: independent tokenizer boundary-072
+PASS: independent tokenizer boundary-073
+PASS: independent tokenizer boundary-074
+PASS: independent tokenizer boundary-075
+PASS: independent tokenizer boundary-076
+PASS: independent tokenizer boundary-077
+PASS: independent tokenizer boundary-078
+PASS: independent tokenizer boundary-079
+PASS: independent tokenizer boundary-080
+PASS: independent tokenizer boundary-081
+PASS: independent tokenizer boundary-082
+PASS: independent tokenizer boundary-083
+PASS: independent tokenizer boundary-084
+PASS: independent tokenizer boundary-085
+PASS: independent tokenizer boundary-086
+PASS: independent tokenizer boundary-087
+PASS: independent tokenizer boundary-088
+PASS: independent tokenizer boundary-089
+PASS: independent tokenizer boundary-090
+PASS: independent tokenizer boundary-091
+PASS: independent tokenizer boundary-092
+PASS: independent tokenizer boundary-093
+PASS: independent tokenizer boundary-094
+PASS: independent tokenizer boundary-095
+PASS: independent tokenizer boundary-096
+PASS: independent tokenizer boundary-097
+PASS: independent tokenizer boundary-098
+PASS: independent tokenizer boundary-099
+PASS: independent tokenizer boundary-100
+PASS: independent tokenizer boundary-101
+PASS: independent tokenizer boundary-102
+PASS: independent tokenizer boundary-103
+PASS: independent tokenizer boundary-104
+PASS: independent tokenizer boundary-105
+PASS: independent tokenizer boundary-106
+PASS: independent tokenizer boundary-107
+PASS: independent tokenizer boundary-108
+PASS: independent tokenizer boundary-109
+PASS: independent tokenizer boundary-110
+PASS: independent tokenizer boundary-111
+PASS: independent tokenizer boundary-112
+PASS: independent tokenizer boundary-113
+PASS: independent tokenizer boundary-114
+PASS: independent tokenizer boundary-115
+PASS: independent tokenizer boundary-116
+PASS: independent tokenizer boundary-117
+PASS: independent tokenizer boundary-118
+PASS: independent tokenizer boundary-119
+PASS: independent tokenizer boundary-120
+PASS: independent tokenizer boundary-121
+PASS: independent tokenizer boundary-122
+PASS: independent tokenizer boundary-123
+PASS: independent tokenizer boundary-124
+PASS: independent tokenizer boundary-125
+PASS: independent tokenizer boundary-126
+PASS: independent tokenizer boundary-127
+PASS: independent tokenizer boundary-128
+PASS: independent tokenizer boundary-129
+PASS: independent tokenizer boundary-130
+PASS: independent tokenizer boundary-131
+PASS: independent tokenizer boundary-132
+PASS: independent tokenizer boundary-133
+PASS: independent tokenizer boundary-134
+PASS: independent tokenizer boundary-135
+PASS: independent tokenizer boundary-136
+PASS: independent tokenizer boundary-137
+PASS: independent tokenizer boundary-138
+PASS: independent tokenizer boundary-139
+PASS: independent tokenizer boundary-140
+PASS: independent tokenizer boundary-141
+PASS: independent tokenizer boundary-142
+PASS: independent tokenizer boundary-143
+PASS: independent tokenizer boundary-144
+PASS: independent tokenizer boundary-145
+PASS: independent tokenizer boundary-146
+PASS: independent tokenizer boundary-147
+PASS: independent tokenizer boundary-148
+PASS: independent tokenizer boundary-149
+PASS: independent tokenizer boundary-150
+PASS: independent tokenizer boundary-151
+PASS: independent tokenizer boundary-152
+PASS: independent tokenizer boundary-153
+PASS: independent tokenizer boundary-154
+PASS: independent tokenizer boundary-155
+PASS: independent tokenizer boundary-156
+PASS: independent tokenizer boundary-157
+PASS: independent tokenizer boundary-158
+PASS: independent tokenizer boundary-159
+PASS: independent tokenizer boundary-160
+PASS: independent tokenizer boundary-161
+PASS: independent tokenizer boundary-162
+PASS: independent tokenizer boundary-163
+PASS: independent tokenizer boundary-164
+PASS: independent tokenizer boundary-165
+PASS: independent tokenizer boundary-166
+PASS: independent tokenizer boundary-167
+PASS: independent tokenizer boundary-168
+PASS: independent tokenizer boundary-169
+PASS: independent tokenizer boundary-170
+PASS: independent tokenizer boundary-171
+PASS: independent tokenizer boundary-172
+PASS: independent tokenizer boundary-173
+PASS: independent tokenizer boundary-174
+PASS: independent tokenizer boundary-175
+PASS: independent tokenizer boundary-176
+PASS: independent tokenizer boundary-177
+PASS: independent tokenizer boundary-178
+PASS: independent tokenizer boundary-179
+PASS: independent tokenizer boundary-180
+PASS: independent tokenizer boundary-181
+PASS: independent tokenizer boundary-182
+PASS: independent tokenizer boundary-183
+PASS: independent tokenizer boundary-184
+PASS: independent tokenizer boundary-185
+PASS: independent tokenizer boundary-186
+PASS: independent tokenizer boundary-187
+PASS: independent tokenizer boundary-188
+PASS: independent tokenizer boundary-189
+PASS: independent tokenizer boundary-190
+PASS: independent tokenizer boundary-191
+PASS: independent tokenizer boundary-192
+PASS: independent tokenizer boundary-193
+PASS: independent tokenizer boundary-194
+PASS: independent tokenizer boundary-195
+PASS: independent tokenizer boundary-196
+PASS: independent tokenizer boundary-197
+PASS: independent tokenizer boundary-198
+PASS: independent tokenizer boundary-199
+PASS: independent tokenizer boundary-200
+PASS: independent tokenizer boundary-201
+PASS: independent tokenizer boundary-202
+PASS: independent tokenizer boundary-203
+PASS: independent tokenizer boundary-204
+PASS: independent tokenizer boundary-205
+PASS: independent tokenizer boundary-206
+PASS: independent tokenizer boundary-207
+PASS: independent tokenizer boundary-208
+PASS: independent tokenizer boundary-209
+PASS: independent tokenizer boundary-210
+PASS: independent tokenizer boundary-211
+PASS: independent tokenizer boundary-212
+PASS: independent tokenizer boundary-213
+PASS: independent tokenizer boundary-214
+PASS: independent tokenizer boundary-215
+PASS: independent tokenizer boundary-216
+PASS: independent tokenizer boundary-217
+PASS: independent tokenizer boundary-218
+PASS: independent tokenizer boundary-219
+PASS: independent tokenizer boundary-220
+PASS: independent tokenizer boundary-221
+PASS: independent tokenizer boundary-222
+PASS: independent tokenizer boundary-223
+PASS: independent tokenizer boundary-224
+PASS: independent tokenizer boundary-225
+PASS: independent tokenizer boundary-226
+PASS: independent tokenizer boundary-227
+PASS: independent tokenizer boundary-228
+PASS: independent tokenizer boundary-229
+PASS: independent tokenizer boundary-230
+PASS: independent tokenizer boundary-231
+PASS: independent tokenizer boundary-232
+PASS: independent tokenizer boundary-233
+PASS: independent tokenizer boundary-234
+PASS: independent tokenizer boundary-235
+PASS: independent tokenizer boundary-236
+PASS: independent tokenizer boundary-237
+PASS: independent tokenizer boundary-238
+PASS: independent tokenizer boundary-239
+PASS: independent tokenizer boundary-240
+PASS: independent tokenizer boundary-241
+PASS: independent tokenizer boundary-242
+PASS: independent tokenizer boundary-243
+PASS: independent tokenizer boundary-244
+PASS: independent tokenizer boundary-245
+PASS: independent tokenizer boundary-246
+PASS: independent tokenizer boundary-247
+PASS: independent tokenizer boundary-248
+PASS: independent tokenizer boundary-249
+PASS: independent tokenizer boundary-250
+PASS: independent tokenizer boundary-251
+PASS: independent tokenizer boundary-252
+PASS: independent tokenizer boundary-253
+PASS: independent tokenizer boundary-254
+PASS: independent tokenizer boundary-255
+PASS: independent tokenizer boundary-256
+PASS: independent tokenizer boundary-257
+PASS: independent tokenizer boundary-258
+PASS: independent tokenizer boundary-259
+PASS: independent tokenizer boundary-260
+PASS: independent tokenizer boundary-261
+PASS: independent tokenizer boundary-262
+PASS: independent tokenizer boundary-263
+PASS: independent tokenizer boundary-264
+PASS: independent tokenizer boundary-265
+PASS: independent tokenizer boundary-266
+PASS: independent tokenizer boundary-267
+PASS: safe-tensors FP32 reader
+PASS: asset hash primitive
+PASS: safe-tensors overlap rejection
+PASS: safe-tensors bounds rejection
+PASS: safe-tensors dtype rejection
+Sezika tests passed: 310

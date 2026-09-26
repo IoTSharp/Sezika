@@ -19,6 +19,7 @@ internal static class Benchmark
         var report = new BenchmarkReport { Arguments = args };
         var watch = Stopwatch.StartNew();
         string? output = null;
+        var references = new List<WeakReference>();
         try
         {
             var options = Options.Parse(args);
@@ -30,6 +31,7 @@ internal static class Benchmark
             if (options.Mode == "profile") report.Profile = new PerformanceProfile
             {
                 SelectedLengths = options.Lengths, SelectedQuestions = options.Questions,
+                Detail = options.ProfileDetail,
             };
             var destination = Path.GetFullPath(options.Output);
             if (File.Exists(destination)) throw new ArgumentException("Report already exists; choose a new output path.");
@@ -46,6 +48,7 @@ internal static class Benchmark
             report.Samples = options.Samples;
             report.Warmup = options.Warmup;
             report.TimeoutSeconds = options.TimeoutSeconds;
+            report.RequestDeadlineSeconds = options.RequestDeadlineSeconds;
             using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(options.TimeoutSeconds));
             ConsoleCancelEventHandler cancel = (_, e) => { e.Cancel = true; timeout.Cancel(); };
             Console.CancelKeyPress += cancel;
@@ -70,18 +73,11 @@ internal static class Benchmark
                 }
                 report.ManagedBytesBefore = GC.GetTotalMemory(true);
                 // At most two complete load/unload cycles, all calls share a wall-clock cancellation token.
-                var references = new List<WeakReference>();
                 for (var cycle = 0; cycle < options.Cycles; cycle++)
                 {
                     timeout.Token.ThrowIfCancellationRequested();
-                    references.AddRange(RunCycle(options, report, cycle, timeout.Token));
+                    RunCycle(options, report, cycle, references, timeout.Token);
                 }
-                report.Phase = "collection";
-                GC.Collect(); GC.WaitForPendingFinalizers(); GC.Collect();
-                report.ManagedBytesAfterCollection = GC.GetTotalMemory(true);
-                report.ModelObjectsCollected = references.All(reference => !reference.IsAlive);
-                Require(report.ModelObjectsCollected, "Disposed model/session objects remain rooted.");
-                report.Diagnostics.Add("model_encoder_head_pipeline_embedding_sentinels_collected_after_unload");
                 report.Status = "passed";
                 report.Phase = "complete";
             }
@@ -103,6 +99,31 @@ internal static class Benchmark
         }
         finally
         {
+            // RunCycle has left its stack, including on failure. Observe disposal/collection without
+            // replacing the original inference error or claiming that skipped diagnostics ran.
+            if (references.Count > 0)
+            {
+                try
+                {
+                    GC.Collect(); GC.WaitForPendingFinalizers(); GC.Collect();
+                    report.ManagedBytesAfterCollection = GC.GetTotalMemory(true);
+                    report.ModelObjectsCollected = references.All(reference => !reference.IsAlive);
+                    report.CollectionStatus = report.ModelObjectsCollected ? "collected" : "objects_remain_rooted";
+                    if (!report.ModelObjectsCollected) throw new InvalidOperationException("Disposed model/session objects remain rooted.");
+                }
+                catch (Exception exception)
+                {
+                    report.CollectionStatus = "failed";
+                    report.Diagnostics.Add("collection_failed: " + exception.Message);
+                    if (report.Status != "failed") { report.Status = "failed"; report.ErrorCode = "collection_failed"; report.Error = exception.Message; }
+                }
+            }
+            if (report.Cleanup.Any(cycle => cycle.Status != "released") && report.Status != "failed")
+            {
+                report.Status = "failed"; report.ErrorCode = "resource_cleanup_failed";
+                report.Error = "Resource cleanup evidence contains failures.";
+            }
+            if (report.Status == "failed" && report.Profile is not null) report.Profile.Status = "incomplete";
             report.ElapsedMilliseconds = watch.Elapsed.TotalMilliseconds;
             try
             {
@@ -141,7 +162,7 @@ internal static class Benchmark
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    private static WeakReference[] RunCycle(Options options, BenchmarkReport report, int cycle, CancellationToken token)
+    private static void RunCycle(Options options, BenchmarkReport report, int cycle, List<WeakReference> references, CancellationToken token)
     {
         report.Phase = $"load_cycle_{cycle}";
         Console.WriteLine($"{report.Phase}: {options.Backend}");
@@ -150,7 +171,7 @@ internal static class Benchmark
         var mode = options.Backend switch { "simd" => EncoderKernelMode.Simd, "int8" => EncoderKernelMode.QuantizedInt8, _ => EncoderKernelMode.Scalar };
         using var model = ModernBertModelLoader.Load(options.Model, new EncoderExecutionOptions { Kernel = mode }, token);
         var loadMilliseconds = watch.Elapsed.TotalMilliseconds;
-        var weak = new WeakReference(model.Encoder.Weights.TokenEmbeddings);
+        references.AddRange([new(model.Encoder.Weights.TokenEmbeddings), new(model), new(model.Encoder), new(model.Head)]);
         report.QuantizedEncoderBytes = model.Encoder.QuantizedWeightBytes;
         CudaDevice? device = null;
         CudaModernBertEncoder? gpuEncoder = null;
@@ -181,14 +202,16 @@ internal static class Benchmark
                 profiledPipeline = new ProfiledPipeline(pipeline);
                 pipeline = profiledPipeline;
             }
+            references.Add(new(pipeline));
             var requestBudget = new DecisionResourceBudget
             {
-                MaxTokens = 32768, Deadline = TimeSpan.FromMinutes(5), MaxResidentBytes = 4L * 1024 * 1024 * 1024,
+                MaxTokens = 32768, Deadline = TimeSpan.FromSeconds(options.RequestDeadlineSeconds), MaxResidentBytes = 4L * 1024 * 1024 * 1024,
             };
             report.RequestTokenBudget = requestBudget.MaxTokens;
             report.RequestDeadlineSeconds = requestBudget.Deadline.TotalSeconds;
             engine = new ModernBertDecisionEngine(model, budget: requestBudget,
                 pipeline: pipeline, backend: options.Backend + "-modernbert-marker-head");
+            references.Add(new(engine));
             var backendMilliseconds = watch.Elapsed.TotalMilliseconds;
             var coldJson = RequestJson(3);
             watch.Restart();
@@ -272,16 +295,33 @@ internal static class Benchmark
             }
             try { _ = engine.Evaluate(Parse(coldJson), token); throw new InvalidOperationException("Disposed engine accepted a request."); }
             catch (ObjectDisposedException) { report.Diagnostics.Add($"cycle_{cycle}_unload_fail_closed"); }
-            return [weak, new(model), new(model.Encoder), new(model.Head), new(pipeline), new(engine)];
         }
         finally
         {
-            try { engine?.Dispose(); }
-            finally
+            var errors = new List<string>();
+            void Observe(string name, Action action)
             {
-                try { pipeline?.Dispose(); }
-                finally { try { gpuEncoder?.Dispose(); } finally { device?.Dispose(); } }
+                try { action(); } catch (Exception exception) { errors.Add($"{name}: {exception.GetType().Name}: {exception.Message}"); }
             }
+            Observe("engine_dispose", () => engine?.Dispose());
+            Observe("pipeline_dispose", () => pipeline?.Dispose());
+            Observe("encoder_dispose", () => gpuEncoder?.Dispose());
+            int? active = null; long? outstanding = null;
+            CudaMemorySnapshot? after = null;
+            Observe("cpu_workspace", () =>
+            {
+                active = model.Encoder.WorkspacePool.ActiveCount; outstanding = model.Encoder.WorkspacePool.OutstandingBytes;
+                Require(active == 0 && outstanding == 0, "CPU workspace remains after release.");
+            });
+            if (device is not null) Observe("cuda_release", () =>
+            {
+                after = device.GetMemorySnapshot();
+                report.CudaAfterUnload = after;
+                Require(after.OwnedBytes == 0 && after.OwnedAllocationCount == 0 && after.LoadedModuleCount == 0 && after.ReleaseFailureCount == 0,
+                    "CUDA resources remain after release.");
+            });
+            Observe("device_dispose", () => device?.Dispose());
+            report.Cleanup.Add(new(cycle, errors.Count == 0 ? "released" : "failed", active, outstanding, after, errors));
         }
     }
 
@@ -451,13 +491,25 @@ internal static class Benchmark
         Require(request.Questions.Count == 3 && request.Questions["q2"] is BooleanQuestion, "Source-generated request contract failed.");
         try { _ = Options.Parse(["--samples", "0"]); throw new InvalidOperationException("Unbounded samples accepted."); }
         catch (ArgumentException) { }
+        var profileOptions = Options.Parse(["--mode", "profile", "--request-deadline-seconds", "900"]);
+        Require(profileOptions.RequestDeadlineSeconds == 900 && Options.Parse([]).RequestDeadlineSeconds == 300,
+            "Explicit profile deadline or default changed.");
+        try { _ = Options.Parse(["--request-deadline-seconds", "900"]); throw new InvalidOperationException("Benchmark deadline override accepted."); }
+        catch (ArgumentException) { }
+        try { _ = Options.Parse(["--mode", "profile", "--request-deadline-seconds", "1801"]); throw new InvalidOperationException("Unbounded request deadline accepted."); }
+        catch (ArgumentException) { }
+        ProfileChecks.Run();
+        Require(Options.Parse(["--mode", "profile", "--profile-detail", "end_to_end"]).ProfileDetail == "end_to_end",
+            "Explicit end-to-end scope must be recorded.");
+        try { _ = Options.Parse(["--profile-detail", "end_to_end"]); throw new InvalidOperationException("Profile detail accepted outside profile mode."); }
+        catch (ArgumentException) { }
         Console.WriteLine("benchmark_self_test passed: percentiles, singleton, typed request, input bounds");
     }
 }
 
 internal sealed record Options(string Model, string Backend, string Output, int Samples, int Warmup, int Cycles,
     int TimeoutSeconds, int[] Questions, string Cpu, string EnvironmentLabel, bool RequireAot, bool SelfTest,
-    string Mode, string[] Lengths)
+    string Mode, string[] Lengths, int RequestDeadlineSeconds, string ProfileDetail)
 {
     public static Options Parse(string[] args)
     {
@@ -470,7 +522,7 @@ internal sealed record Options(string Model, string Backend, string Output, int 
             if (args[i] == "--self-test") { selfTest = true; continue; }
             var key = args[i];
             if (key is not ("--model" or "--backend" or "--output" or "--samples" or "--warmup" or "--cycles" or
-                "--timeout-seconds" or "--questions" or "--cpu" or "--environment" or "--mode" or "--lengths") || ++i >= args.Length || !values.TryAdd(key, args[i]))
+                "--timeout-seconds" or "--questions" or "--cpu" or "--environment" or "--mode" or "--lengths" or "--request-deadline-seconds" or "--profile-detail") || ++i >= args.Length || !values.TryAdd(key, args[i]))
                 throw new ArgumentException($"Unknown, duplicate or incomplete option: {key}.");
         }
         string Get(string key, string fallback) => values.GetValueOrDefault(key, fallback);
@@ -492,10 +544,15 @@ internal sealed record Options(string Model, string Backend, string Output, int 
             lengths.Any(length => length is not ("short" or "medium" or "long")))
             throw new ArgumentException("Lengths must be unique short,medium,long entries (at most three).");
         if (mode == "benchmark" && values.ContainsKey("--lengths")) throw new ArgumentException("--lengths requires --mode profile.");
+        if (mode != "profile" && values.ContainsKey("--request-deadline-seconds")) throw new ArgumentException("--request-deadline-seconds requires --mode profile.");
+        var detail = Get("--profile-detail", "full");
+        if (detail is not ("full" or "end_to_end") || mode != "profile" && values.ContainsKey("--profile-detail"))
+            throw new ArgumentException("--profile-detail requires profile mode and full or end_to_end.");
         if (mode == "profile" && (counts.Distinct().Count() != counts.Length || counts.Any(count => count is not (1 or 8 or 32))))
             throw new ArgumentException("Profile question counts must be unique entries from 1,8,32.");
         return new(Get("--model", ".artifacts/models/laya-mmbert"), backend, Get("--output", ".artifacts/s5/report.json"),
             Number("--samples", 5, 1, 30), Number("--warmup", 1, 0, 5), Number("--cycles", 2, 1, 2),
-            Number("--timeout-seconds", 1200, 1, 1800), counts, Get("--cpu", "unspecified"), Get("--environment", "unspecified"), requireAot, selfTest, mode, lengths);
+            Number("--timeout-seconds", 1200, 1, 1800), counts, Get("--cpu", "unspecified"), Get("--environment", "unspecified"), requireAot, selfTest, mode, lengths,
+            Number("--request-deadline-seconds", 300, 1, 1800), detail);
     }
 }

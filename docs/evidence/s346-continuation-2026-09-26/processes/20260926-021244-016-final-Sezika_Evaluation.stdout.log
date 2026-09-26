@@ -1,0 +1,18 @@
+PASS: explicit policy, optional false criterion and display labels are preserved
+PASS: candidate insertion order is preserved
+PASS: dataset type discriminator can occur after ordinary question properties
+PASS: duplicate dataset fields fail
+PASS: extra questions cannot silently disappear
+PASS: unknown Boolean criterion fails
+PASS: confusion, tied-rank AUROC denominator and abstention coverage
+PASS: Boolean threshold equality chooses true
+PASS: Score uses zero-based expectation and categorical Brier
+PASS: AUROC gives half credit to ties
+PASS: batch plan covers the full source once including the two-row tail
+PASS: minimal batch has one row and terminates
+PASS: too many batches reject before preparation
+PASS: overlapping captures cannot inflate coverage
+PASS: malformed explicit language cannot become unspecified
+PASS: missing language remains unspecified
+PASS: language slices retain failed rows and negative-class metrics
+Evaluation checks passed: 17; synthetic mechanics only, no model quality measurement.

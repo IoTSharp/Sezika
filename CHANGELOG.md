@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- 完成S5-06 schema v3有界实测：CPU/CUDA short-1及CPU long-1 full画像、CUDA long-32 end_to_end单样本通过数值与生命周期检查；当前long-1为42.183秒、CUDA long-32为38.319秒。3秒CUDA截止负例保留3次进入/2次完成/0正式样本，释放与对象回收通过。当前CPU long-32两遍估算约45分钟超30分钟工具预算，本轮未启动；独立分项/尾延迟/AOT/优化收益不作通过声明，见[续验证证据](docs/evidence/s346-continuation-2026-09-26.md)。
+- 将S4-04独立数值比较扩展至PAWS250+Nimble324共574/574条通过，修复后同一构建全量重捕获；双方正确率为170/250与137/324，均为compatible。另完成中英原创fixture12/12条对比，双方8/12正确；574条冻结近并列观察命中0，Boolean负类召回仍1/57，质量/校准门槛保持开放。原Nimble初轮276条中的8条token/数值失败、剩余参考时限和续跑均保留，见[续实现证据](docs/evidence/s346-continuation-2026-09-26.md)。
+- 推进 S3-06/S4-04：新增可保留取消结果的18条诊断选择、固定54格跨运行汇总、46条分批独立参考与跨capture质量评分、语言×题型切片及冻结近并列观察器。核心18组/54后端输出通过原冻结合同，首次超时保留后补齐，内部完整张量诊断共972次；独立层阈值仍未完成。全量Nimble参考暴露added-token边界缺陷，修复C# tokenizer的原始added-token切分及片段metaspace前缀，以267条独立微型参考、310项核心检查、137项输入契约和受影响例三后端真实回归验证；见[续实现证据](docs/evidence/s346-continuation-2026-09-26.md)。
+- 推进 S5-06 画像 schema v3：区分进入/完成的forward，失败路径也记录workspace、CUDA释放与对象回收；新增显式1–1800秒逐请求预算及`end_to_end`采集范围，跳过的分项明确未测。核心默认预算保持30秒，扩大预算不代表性能优化。runner修复快速退出进程的CIM身份查询竞争，并保留历史失败记录。
+
 - 新增修正输入路径的真实质量审计：固定权重 C# CUDA 实际完成 PAWS strict 250 题（170 正确，68%）和 Nimble compatible 324 题（137 正确，42.28%）；Nimble strict 另处理全部 324 题，306 次真实推理、133 正确、18 次 forward 前截断拒绝。报告绑定输入、实际 token、marker、logits、forward 次数及程序哈希。独立 Laya 参考只覆盖 PAWS 1 + Nimble 45 题，46 条数值/预测均通过冻结合同；Nimble 完整运行中的对应 45 行另与 C# capture 核对一致。完整题集参考、中文切片和校准仍未验收，Nimble Boolean 负类召回仅 1/57；见[质量证据](docs/evidence/quality-aligned-2026-09-26.md)。
 - 新增 `NumericParity --trace-oracle` 真实逐层诊断，单次显式选择最多 3 条冻结参考并校验生产 pipeline 的输入与输出；先完成英文 Choice 61-token smoke，再完成中文 Boolean 384-token、英文 Score/中文 Choice 各 960-token 三后端运行。四条输出通过冻结容差，每条 SIMD/CUDA 各完成 27 个 checkpoint 与本次 scalar 的完整张量诊断。内部层误差原样记录，真实近并列为 0，S3-06 全门槛未完成；见[诊断证据](docs/evidence/s3-diagnostics-2026-09-26.md)。
 - 完成 S3-10 修正输入路径的 win-x64 / Ubuntu WSL2 linux-x64 Native AOT 长输入回归：两 RID 的 SIMD/CUDA 各完成46条捕获，38回答+4非法拒绝通过冻结合同；scalar各3条960/1024-token长输入通过；两个原生输入测试程序各138项检查通过，四次最终AOT发布无编译/trim警告。新增 `OracleCapture --require-aot` 与运行时身份记录，修复中间托管DLL继承禁用动态代码开关后被误计为AOT的门槛漏洞；两RID负向检查均exit2且未创建输出目录。归档程序/源文件哈希、比较报告和进程清理证据，保留4条候选数量合同差异；见[完整证据](docs/evidence/input-aot-2026-09-26.md)。本项不增加语言质量、校准或性能结论。

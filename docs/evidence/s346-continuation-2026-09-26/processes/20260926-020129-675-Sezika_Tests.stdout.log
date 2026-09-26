@@ -1,0 +1,43 @@
+PASS: duplicate JSON property rejection
+PASS: CPU typed decision response
+PASS: score expected value bounds
+PASS: calibration metrics
+PASS: frozen encoder head training
+PASS: model package install/lease/uninstall lifecycle
+PASS: SIMD/scalar cancellation, deadline, workspace and concurrency bounds
+PASS: standalone model runtime load/parse/evaluate/dispose facade
+PASS: injected backend preserves model provenance and backend identity
+PASS: shared typed engine dispatches choice/score/boolean type IDs
+PASS: injected fixture logits preserve input choice order and choice temperature
+PASS: injected fixture logits preserve score order and expected-value semantics
+PASS: injected fixture logits map false/true markers and true probability through temperature
+PASS: injected fixture predictions remain explicitly uncalibrated
+PASS: all injected backend calls receive shared BOS/prompt/markers/criteria/state/EOS tokens
+PASS: shared typed usage accounts injected backend calls
+PASS: typed session owns and releases injected pipeline and model tensors
+PASS: pipeline disposal failure still unloads owned model tensors
+PASS: disposal failure leaves typed session disposal idempotent
+PASS: typed session rejects requests after a backend disposal failure
+PASS: constructor budget rejection releases injected pipeline and model
+PASS: constructor cleanup unloads model even when injected pipeline disposal throws
+PASS: shared marker sequence measures exact 1024/1025/1026 token boundary independently of prefix budget
+PASS: production engine accepts exactly 1024 tokens with a 256-token prefix budget
+PASS: 1025-token strict input reports the production budget code
+PASS: over-budget strict input rejects before backend execution
+PASS: explicit compatibility mode reports the one discarded state token
+PASS: typed primitive reference alignment contract
+PASS: calibration profile binding and pending gate semantics
+PASS: mmBERT tokenizer oracle: 
+PASS: mmBERT tokenizer oracle: Hello world
+PASS: mmBERT tokenizer oracle: 你好，世界
+PASS: mmBERT tokenizer oracle: café e?
+PASS: mmBERT tokenizer oracle: ????? ???????
+PASS: mmBERT tokenizer oracle: こんにちは世界
+PASS: mmBERT tokenizer oracle: foo??bar
+PASS: mmBERT tokenizer oracle: Café — mixed ??????? 中文
+PASS: safe-tensors FP32 reader
+PASS: asset hash primitive
+PASS: safe-tensors overlap rejection
+PASS: safe-tensors bounds rejection
+PASS: safe-tensors dtype rejection
+Sezika tests passed: 42

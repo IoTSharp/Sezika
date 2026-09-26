@@ -1,0 +1,27 @@
+{
+  "Pid": 40652,
+  "Started": "2026-09-26T03:09:57.4434997Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 38688,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 38688,
+    "Started": "2026-09-26T11:09:39.888408+08:00",
+    "CommandLine": "\"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.6.0_x64__8wekyb3d8bbwe\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Invoke-OracleBatches.ps1 -PlanPath .artifacts/s346-20260926/language-plan/batches.json -PythonPath .artifacts/laya-oracle-work/venv/Scripts/python.exe -UpstreamDirectory .artifacts/laya-oracle-work/upstream -ModelDirectory .artifacts/models/laya-mmbert -BuildDirectory .artifacts/build/s346-tokenizer-final-20260926/bin -OutputDirectory .artifacts/s346-20260926/language-final -ReferenceIndexPath .artifacts/s346-20260926/language-full/references.json -MaxBatches 2 -TimeoutSeconds 180",
+    "ParentPid": 57120
+  },
+  "TimeoutSeconds": 45,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\.artifacts\\build\\s346-tokenizer-final-20260926\\bin\\Sezika.OracleCompare\\release\\Sezika.OracleCompare.dll",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\language-full\\batch-002\\reference\\capture.json",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\language-final\\batch-002\\actual\\capture.json",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\language-plan\\cases-002.json",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\language-final\\batch-002\\comparison.json",
+    "30"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

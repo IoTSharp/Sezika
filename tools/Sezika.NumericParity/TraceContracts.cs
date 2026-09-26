@@ -42,7 +42,16 @@ internal sealed record TraceCaseReport(string Id, string Primitive, int TokenCou
     int[] TokenIds, int[] MarkerPositions, string[] CandidateLabels, List<TraceBackendReport> Backends);
 internal sealed record TraceReport
 {
-    public int SchemaVersion { get; init; } = 1;
+    public int SchemaVersion { get; init; } = 2;
+    public string Status { get; init; } = "complete";
+    public string? Error { get; init; }
+    public string[] UnprocessedCaseIds { get; init; } = [];
+    public int PlannedBackendRuns => SelectedCaseIds.Length * 3;
+    public int PassedBackendRuns => Cases.Sum(row => row.Backends.Count(backend =>
+        backend.Status == "compared" && backend.OracleComparison is { Passed: true } && backend.MissingTraces.Count == 0));
+    public double BackendCoverage => PlannedBackendRuns == 0 ? 0 : (double)PassedBackendRuns / PlannedBackendRuns;
+    public TraceCoverageCell[] CoreCoverage => TraceCoverage.Build(Cases);
+    public bool CoreMatrixPassed => CoreCoverage.All(cell => cell.PassedBackends == 3);
     public required DateTimeOffset StartedUtc { get; init; }
     public required double ElapsedMilliseconds { get; init; }
     public required string ReferenceSha256 { get; init; }
@@ -64,9 +73,27 @@ internal sealed record TraceReport
     public string Scope { get; init; } = "Layer differences compare Sezika scalar with SIMD/CUDA for internal diagnosis; no independent upstream layer tensors or frozen layer acceptance thresholds are present. Output comparisons use the frozen oracle contract. Selected cases do not establish full length/language/primitive coverage, near-tie acceptance when none were measured, Native AOT, quality, calibration or performance.";
 }
 
+internal sealed record TraceCoverageCell(string Id, string Primitive, string Language, string Length, int PassedBackends);
+
+internal static class TraceCoverage
+{
+    // IDs belong to the pinned core fixture; this is metadata, not language inference from text.
+    internal static TraceCoverageCell[] Build(List<TraceCaseReport> cases) =>
+        (from primitive in new[] { "choice", "score", "boolean" }
+         from language in new[] { "en", "zh" }
+         from length in new[] { "short", "medium", "long" }
+         let id = $"{primitive}-{language}-{length}"
+         let row = cases.SingleOrDefault(row => row.Id == id)
+         select new TraceCoverageCell(id, primitive, language, length,
+             row?.Backends.Where(backend => backend.Status == "compared" && backend.OracleComparison is { Passed: true } &&
+                 backend.MissingTraces.Count == 0).Select(backend => backend.Backend).Distinct(StringComparer.Ordinal).Count() ?? 0)).ToArray();
+}
+
 [JsonSourceGenerationOptions(PropertyNamingPolicy = JsonKnownNamingPolicy.SnakeCaseLower,
     WriteIndented = true, GenerationMode = JsonSourceGenerationMode.Metadata)]
 [JsonSerializable(typeof(TraceReference))]
 [JsonSerializable(typeof(TraceTolerances))]
 [JsonSerializable(typeof(TraceReport))]
+[JsonSerializable(typeof(TraceSummaryIndex))]
+[JsonSerializable(typeof(TraceSummaryReport))]
 internal partial class TraceJsonContext : JsonSerializerContext;

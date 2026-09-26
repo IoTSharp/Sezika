@@ -1,0 +1,54 @@
+Oracle batch 1/2, source offset 0, rows 6
+Reusing hash-bound independent reference for batch 1; no reference inference.
+Started PID 56004, timeout 154s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCapture\release\Sezika.OracleCapture.dll --reference D:\source\Sezika\.artifacts\s346-20260926\language-full\batch-001\reference\capture.json --model D:\source\Sezika\.artifacts\models\laya-mmbert --cases D:\source\Sezika\.artifacts\s346-20260926\language-plan\cases-001.json --contract D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json --output D:\source\Sezika\.artifacts\s346-20260926\language-final\batch-001\actual --backend cuda --length-policy laya_compatible --max-cases 6 --timeout-seconds 600
+
+Read bounded local reference inputs and frozen identities; reference numerical outputs are not deserialized.
+Loading verified local model for 6 case(s), backend=cuda, length_policy=LayaCompatible.
+capture 1/6: en-general-test-001
+capture 2/6: en-general-test-002
+capture 3/6: en-general-test-003
+capture 4/6: en-support-test-001
+capture 5/6: en-support-test-002
+capture 6/6: en-support-test-003
+completed: 6/6 selected rows; D:\source\Sezika\.artifacts\s346-20260926\language-final\batch-001\actual\capture.json
+
+Completed PID 56004, status Succeeded, exit 0, elapsed 7.106s; result: D:\source\Sezika\.artifacts\s346-20260926\language-final\processes\20260926-030940-565-capture-0.result.json
+Started PID 48116, timeout 45s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCompare\release\Sezika.OracleCompare.dll D:\source\Sezika\.artifacts\s346-20260926\language-full\batch-001\reference\capture.json D:\source\Sezika\.artifacts\s346-20260926\language-final\batch-001\actual\capture.json D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json D:\source\Sezika\.artifacts\s346-20260926\language-plan\cases-001.json D:\source\Sezika\.artifacts\s346-20260926\language-final\batch-001\comparison.json 30
+
+Loading four bounded local JSON files; no model inference.
+compare 1/6: en-general-test-001
+compare 2/6: en-general-test-002
+compare 3/6: en-general-test-003
+compare 4/6: en-support-test-001
+compare 5/6: en-support-test-002
+compare 6/6: en-support-test-003
+Comparison passed: 6 answered pairs, 0 failure pairs, 0 issues; coverage=6/6; full_manifest_passed=True.
+
+Completed PID 48116, status Succeeded, exit 0, elapsed 1.984s; result: D:\source\Sezika\.artifacts\s346-20260926\language-final\processes\20260926-030947-706-compare-0.result.json
+Oracle batch 2/2, source offset 6, rows 6
+Reusing hash-bound independent reference for batch 2; no reference inference.
+Started PID 27920, timeout 145s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCapture\release\Sezika.OracleCapture.dll --reference D:\source\Sezika\.artifacts\s346-20260926\language-full\batch-002\reference\capture.json --model D:\source\Sezika\.artifacts\models\laya-mmbert --cases D:\source\Sezika\.artifacts\s346-20260926\language-plan\cases-002.json --contract D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json --output D:\source\Sezika\.artifacts\s346-20260926\language-final\batch-002\actual --backend cuda --length-policy laya_compatible --max-cases 6 --timeout-seconds 600
+
+Read bounded local reference inputs and frozen identities; reference numerical outputs are not deserialized.
+Loading verified local model for 6 case(s), backend=cuda, length_policy=LayaCompatible.
+capture 1/6: zh-general-test-001
+capture 2/6: zh-general-test-002
+capture 3/6: zh-general-test-003
+capture 4/6: zh-support-test-001
+capture 5/6: zh-support-test-002
+capture 6/6: zh-support-test-003
+completed: 6/6 selected rows; D:\source\Sezika\.artifacts\s346-20260926\language-final\batch-002\actual\capture.json
+
+Completed PID 27920, status Succeeded, exit 0, elapsed 7.014s; result: D:\source\Sezika\.artifacts\s346-20260926\language-final\processes\20260926-030949-737-capture-1.result.json
+Started PID 40652, timeout 45s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCompare\release\Sezika.OracleCompare.dll D:\source\Sezika\.artifacts\s346-20260926\language-full\batch-002\reference\capture.json D:\source\Sezika\.artifacts\s346-20260926\language-final\batch-002\actual\capture.json D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json D:\source\Sezika\.artifacts\s346-20260926\language-plan\cases-002.json D:\source\Sezika\.artifacts\s346-20260926\language-final\batch-002\comparison.json 30
+
+Loading four bounded local JSON files; no model inference.
+compare 1/6: zh-general-test-001
+compare 2/6: zh-general-test-002
+compare 3/6: zh-general-test-003
+compare 4/6: zh-support-test-001
+compare 5/6: zh-support-test-002
+compare 6/6: zh-support-test-003
+Comparison passed: 6 answered pairs, 0 failure pairs, 0 issues; coverage=6/6; full_manifest_passed=True.
+
+Completed PID 40652, status Succeeded, exit 0, elapsed 2.021s; result: D:\source\Sezika\.artifacts\s346-20260926\language-final\processes\20260926-030956-763-compare-1.result.json

@@ -6,6 +6,8 @@
 
 详细字段、容差与限制见 [设计说明](../../docs/laya-oracle.md)。输入与合同分别位于 [cases.v1.json](../../tests/fixtures/laya-oracle/cases.v1.json) 和 [contract.v1.json](../../tests/fixtures/laya-oracle/contract.v1.json)。这些文件只有原创输入和事先冻结的工程门槛，没有模型输出或正确答案标签。
 
+`export_tokenizer_boundaries.py` 是独立 tokenizer 微型参考导出器，不加载模型权重。它直接使用已安装的 `tokenizers` 与固定 tokenizer hash，覆盖全部249个added tokens和原创边界文本，共267条，保存有/无BOS/EOS的结果。参数为 `--tokenizer <固定资产>`、`--output <全新文件>`、`--max-cases 1..300`；先以1条试运行，再导出全部。内部30秒上限，外层仍用40秒有界runner；不安装依赖或下载资产。已冻结结果见 [边界fixture](../../tests/fixtures/tokenizer-mmbert-boundaries.v1.json)，它用于验证C#分词实现，不属于语言质量数据。
+
 ## 固定条件
 
 - [source-lock.json](source-lock.json) 固定 Laya 提交 `4066d5d5fbf08b66c6757ddeedbd797bd7655bc0`、已锁定模型 revision 和五个资产的 SHA-256。源代码必须来自调用方提供的干净本地 Git checkout，不自动 clone、安装或下载。

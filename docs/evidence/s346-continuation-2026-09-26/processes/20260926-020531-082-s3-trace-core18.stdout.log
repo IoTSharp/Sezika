@@ -1,0 +1,55 @@
+trace case 1/18: choice-en-short
+trace backend scalar: choice-en-short, elapsed 0.3/1740s
+trace backend simd: choice-en-short, elapsed 19.8/1740s
+trace backend cuda: choice-en-short, elapsed 27.4/1740s
+trace case 2/18: choice-en-medium
+trace backend scalar: choice-en-medium, elapsed 33.5/1740s
+trace backend simd: choice-en-medium, elapsed 88.4/1740s
+trace backend cuda: choice-en-medium, elapsed 106.7/1740s
+trace case 3/18: choice-en-long
+trace backend scalar: choice-en-long, elapsed 110.7/1740s
+trace backend simd: choice-en-long, elapsed 319.2/1740s
+trace backend cuda: choice-en-long, elapsed 393.8/1740s
+trace case 4/18: choice-zh-short
+trace backend scalar: choice-zh-short, elapsed 399.9/1740s
+trace backend simd: choice-zh-short, elapsed 408.0/1740s
+trace backend cuda: choice-zh-short, elapsed 412.8/1740s
+trace case 5/18: choice-zh-medium
+trace backend scalar: choice-zh-medium, elapsed 416.3/1740s
+trace backend simd: choice-zh-medium, elapsed 459.8/1740s
+trace backend cuda: choice-zh-medium, elapsed 475.8/1740s
+trace case 6/18: choice-zh-long
+trace backend scalar: choice-zh-long, elapsed 479.8/1740s
+trace backend simd: choice-zh-long, elapsed 628.5/1740s
+trace backend cuda: choice-zh-long, elapsed 728.7/1740s
+trace case 7/18: score-en-short
+trace backend scalar: score-en-short, elapsed 736.2/1740s
+trace backend simd: score-en-short, elapsed 750.1/1740s
+trace backend cuda: score-en-short, elapsed 757.3/1740s
+trace case 8/18: score-en-medium
+trace backend scalar: score-en-medium, elapsed 762.1/1740s
+trace backend simd: score-en-medium, elapsed 827.8/1740s
+trace backend cuda: score-en-medium, elapsed 857.4/1740s
+trace case 9/18: score-en-long
+trace backend scalar: score-en-long, elapsed 862.9/1740s
+trace backend simd: score-en-long, elapsed 1097.3/1740s
+trace backend cuda: score-en-long, elapsed 1220.3/1740s
+trace case 10/18: score-zh-short
+trace backend scalar: score-zh-short, elapsed 1227.8/1740s
+trace backend simd: score-zh-short, elapsed 1240.8/1740s
+trace backend cuda: score-zh-short, elapsed 1247.7/1740s
+trace case 11/18: score-zh-medium
+trace backend scalar: score-zh-medium, elapsed 1252.6/1740s
+trace backend simd: score-zh-medium, elapsed 1322.5/1740s
+trace backend cuda: score-zh-medium, elapsed 1353.8/1740s
+trace case 12/18: score-zh-long
+trace backend scalar: score-zh-long, elapsed 1359.5/1740s
+trace backend simd: score-zh-long, elapsed 1558.6/1740s
+trace backend cuda: score-zh-long, elapsed 1668.6/1740s
+trace case 13/18: boolean-en-short
+trace backend scalar: boolean-en-short, elapsed 1676.3/1740s
+trace backend simd: boolean-en-short, elapsed 1687.4/1740s
+trace backend cuda: boolean-en-short, elapsed 1694.0/1740s
+trace case 14/18: boolean-en-medium
+trace backend scalar: boolean-en-medium, elapsed 1698.8/1740s
+Wrote D:\source\Sezika\.artifacts\s346-20260926\trace-core18.json; selected diagnostics passed=False; near-tie cases=0; full S3-06 gate remains separately assessed.

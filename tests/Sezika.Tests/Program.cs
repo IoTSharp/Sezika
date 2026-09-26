@@ -110,6 +110,20 @@ try
             var expected = item.GetProperty("ids").EnumerateArray().Select(value => value.GetInt32()).ToArray();
             Check(realTokenizer.Encode(text, 1024).SequenceEqual(expected), $"mmBERT tokenizer oracle: {text}");
         }
+        using var boundaries = JsonDocument.Parse(File.ReadAllBytes("tests/fixtures/tokenizer-mmbert-boundaries.v1.json"));
+        using var tokenizerDeadline = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+        var boundaryCases = boundaries.RootElement.GetProperty("cases");
+        Check(boundaryCases.GetArrayLength() == 267, "independent added-token boundary inventory");
+        foreach (var item in boundaryCases.EnumerateArray())
+        {
+            tokenizerDeadline.Token.ThrowIfCancellationRequested();
+            var text = item.GetProperty("text").GetString()!;
+            var expected = item.GetProperty("ids").EnumerateArray().Select(value => value.GetInt32());
+            var without = item.GetProperty("without_special_tokens").EnumerateArray().Select(value => value.GetInt32());
+            Check(realTokenizer.Encode(text, 1024, cancellationToken: tokenizerDeadline.Token).SequenceEqual(expected) &&
+                realTokenizer.Encode(text, 1024, false, tokenizerDeadline.Token).SequenceEqual(without),
+                $"independent tokenizer {item.GetProperty("id").GetString()}");
+        }
     }
     else
     {

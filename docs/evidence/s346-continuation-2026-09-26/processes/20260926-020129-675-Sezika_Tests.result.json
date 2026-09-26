@@ -1,0 +1,36 @@
+{
+  "Status": "Succeeded",
+  "Pid": 58508,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 5.149,
+  "TimeoutSeconds": 30,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/build/s346-20260926/bin/Sezika.Tests/release/Sezika.Tests.dll"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-26T02:01:30.4361818Z",
+  "ParentPid": 62636,
+  "Launcher": {
+    "Pid": 62636,
+    "Started": "2026-09-26T10:01:17.61811+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$checks = @(@('Sezika.NumericParity','--trace-self-test'),@('Sezika.Evaluation','--self-test'),@('Sezika.Benchmarks','--self-test'),@('Sezika.Tests'),@('Sezika.Resources.Tests')); $checkWatch = [Diagnostics.Stopwatch]::StartNew(); for ($index = 0; $index -lt $checks.Count; $index++) { if ($checkWatch.Elapsed.TotalSeconds -gt 180) { throw 'Check batch deadline exceeded.' }; $item = $checks[$index]; Write-Output \\\"Check $($index + 1)/$($checks.Count): $($item[0])\\\"; $arguments = @(\\\".artifacts/build/s346-20260926/bin/$($item[0])/release/$($item[0]).dll\\\"); if ($item.Count -gt 1) { $arguments += $item[1] }; & './tools/Invoke-BoundedProcess.ps1' -FilePath (Get-Command dotnet).Source -ArgumentList $arguments -TimeoutSeconds 30 -LogName $item[0] -LogDirectory '.artifacts/s346-20260926/processes' }\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-020129-675-Sezika_Tests.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-020129-675-Sezika_Tests.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 58508,
+      "CreationDate": "2026-09-26T10:01:30.436181+08:00",
+      "Started": "2026-09-26T02:01:30.436181Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" .artifacts/build/s346-20260926/bin/Sezika.Tests/release/Sezika.Tests.dll",
+      "ParentPid": 62636,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

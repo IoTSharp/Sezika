@@ -118,19 +118,24 @@ $launcher = [pscustomobject]@{
 }
 try {
     # Copy directly into logs so partial output survives timeout or cancellation.
-    $outStream = [IO.File]::Create($stdoutPath)
-    $errStream = [IO.File]::Create($stderrPath)
+    $outStream = [IO.FileStream]::new($stdoutPath, [IO.FileMode]::CreateNew, [IO.FileAccess]::Write, [IO.FileShare]::Read, 1)
+    $errStream = [IO.FileStream]::new($stderrPath, [IO.FileMode]::CreateNew, [IO.FileAccess]::Write, [IO.FileShare]::Read, 1)
     if (-not $process.Start()) { throw 'Process failed to start.' }
     $started = $true
     $taskPid = $process.Id
     $rootStarted = $process.StartTime.ToUniversalTime()
     $stdout = $process.StandardOutput.BaseStream.CopyToAsync($outStream, $copyCancellation.Token)
     $stderr = $process.StandardError.BaseStream.CopyToAsync($errStream, $copyCancellation.Token)
-    $identity = Get-CimInstance Win32_Process -Filter "ProcessId=$taskPid" -OperationTimeoutSec 2
+    # A short-lived child can exit while CIM is resolving its PID. Preserve the
+    # retained Process handle's start/exit facts; never treat a live unobserved root as safe.
+    $identity = $null
+    try { $identity = Get-CimInstance Win32_Process -Filter "ProcessId=$taskPid" -OperationTimeoutSec 2 }
+    catch { if (-not $process.HasExited) { throw } }
     if ($null -ne $identity) { Add-Identity $identity 0 }
     elseif (-not $process.HasExited) { throw 'Could not record the running root process identity.' }
     [IO.File]::WriteAllText($identityPath, ([pscustomobject]@{
-        Pid=$taskPid; Started=$process.StartTime.ToUniversalTime(); CommandLine=$identity.CommandLine
+        Pid=$taskPid; Started=$rootStarted; CommandLine=$identity.CommandLine
+        IdentityObservation=if ($null -ne $identity) { 'cim_snapshot' } else { 'exited_before_cim_snapshot_see_recorded_argv' }
         ParentPid=$PID; ObservedParentPid=$identity.ParentProcessId
         ParentIdentitySource='Process.Start caller'; Launcher=$launcher
         TimeoutSeconds=$TimeoutSeconds; FilePath=$FilePath

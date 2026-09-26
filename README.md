@@ -26,13 +26,13 @@ Sezika 面向本地软件中的语义判断，目标是使用 **C#、.NET 10 与
 
 Scalar 另完成三题型×中英×短中长的 18 条核心数值对照。[token 覆盖率重测](docs/evidence/laya-coverage-2026-09-25.md)显示 PAWS 在 strict/compatible 下均为 250/250，Nimble 为 strict 306/324、compatible 324/324；这些是输入可构造率，不是推理成功率或答案正确率。
 
-2026-09-26 的[修正路径质量实测](docs/evidence/quality-aligned-2026-09-26.md)实际加载固定权重，通过 C# CUDA encoder/head 完成 PAWS strict 250 题与 Nimble compatible 324 题，分别答对 **170/250（68.00%）** 和 **137/324（42.28%）**。每条回答均记录真实 forward 次数、输入与实际 token 哈希、marker 和 logits。独立 Python 参考只覆盖 PAWS 1 题及 Nimble 45 题，这 46 题与 C# 通过冻结数值容差，不能外推为全部 574 题完成独立对照。Nimble Boolean 负类召回仅 1/57，质量仍需改进；两题集没有显式语言元数据，不能充当逐语言质量验收。
+2026-09-26 的[本轮质量复测](docs/evidence/s346-continuation-2026-09-26.md)已把独立 Laya 与 C# CUDA 逐题数值比较扩展到 **PAWS 250 + Nimble 324，共574/574条通过**。全量参考发现并推动修复了 tokenizer 的 added-token 边界问题；修复后同一构建重新捕获全部题目，两实现分别答对 **170/250（68.00%）** 和 **137/324（42.28%）**，本轮均使用 `laya_compatible`。另12条原创中英fixture全部通过数值对比，双方8/12正确；该小型公开样本不构成语言质量验收。Nimble Boolean负类召回仍仅1/57，概率未校准，外部题集语言仍记 `unspecified`。
 
-Nimble strict 另完成全 324 题实测：306 题实际推理，133 题正确，已答准确率 43.46%，按全部处理题计为 41.05%；18 题在 forward 前因需要截断而拒绝。严格模式与兼容模式的覆盖率和分母分别报告，拒绝行不产生替代答案。
+此前构建的[Nimble strict实测](docs/evidence/quality-aligned-2026-09-26.md)处理全324题：306题实际推理，133题正确，已答准确率43.46%，按全部处理题计为41.05%；18题在forward前因需要截断而拒绝。该历史报告保留原程序身份，不与本轮tokenizer修复后的compatible结果混合。
 
-[逐层诊断](docs/evidence/s3-diagnostics-2026-09-26.md)另完成英文 Choice 61-token、中文 Boolean 384-token、英文 Score 与中文 Choice 各 960-token 的真实三后端运行，四条请求的输出满足冻结参考容差；每条 SIMD/CUDA 各比较 27 个完整 checkpoint。内部层差异原样记录，真实近并列样本仍为 0，尚未覆盖全部题型×语言×长度组合。构建检查、tokenizer 检查、离线评分、真实推理、答案正确率与性能报告均单独标识。
+[本轮分层诊断](docs/evidence/s346-continuation-2026-09-26.md)已补齐三题型×中英×短中长 **18 组、54 个三后端输出**，全部满足冻结输出合同，SIMD/CUDA 共记录 972 次完整张量诊断；首次超时与后续补齐分别保留。全量质量参考暴露并推动修复了 tokenizer 的 added-token 边界缺陷，修复后另通过 267 条独立分词参考、137 项输入契约和受影响案例三后端真实回归。内部层诊断仍缺独立上游张量及冻结阈值；新 tokenizer 实现的 AOT 尚未重测。各构建的数值、质量和性能证据按程序集哈希分别记录。
 
-[当前性能实测](docs/evidence/s5-profile-2026-09-26.md)使用 i9-13900HX / RTX 4070 Laptop，在普通 .NET 10.0.11 下执行真实 encoder/head：CUDA 短/中/长 × 1/8/32 问共九格各采 3 次，long-32 p50 为 **40.464 秒**；CPU SIMD 八格各完成 1 次正式样本，long-8 为 **141.973 秒**，long-32 在 discovery 达到 **300 秒单请求期限**后失败。完整失败报告保留，未生成该格正式延迟样本；当前数据说明长输入和逐题执行仍需优化，不构成稳定尾延迟、新 AOT 性能或全面高性能达标声明。
+[本轮性能工具验证](docs/evidence/s346-continuation-2026-09-26.md)在普通 .NET 10.0.11 / i9-13900HX / RTX4070 Laptop 下记录：CUDA long-32的`end_to_end`单样本 **38.319秒**，独立分项明确未测；SIMD long-1为 **42.183秒**。据当前单题耗时估算CPU long-32的discovery与正式两遍约45分钟，超过工具30分钟总上限，本轮未启动该格。受控CUDA截止测试正确保留3次进入、2次完成、0正式样本及资源回收证据。[历史九格画像和CPU 300秒失败](docs/evidence/s5-profile-2026-09-26.md)继续保留；这些数据不构成稳定尾延迟、新AOT性能或优化收益声明。
 
 ## 独立使用
 

@@ -1,0 +1,18 @@
+{
+  "schema_version": "sezika.near-tie-observation-plan.v1",
+  "status": "frozen_before_this_capture_run",
+  "model_id": "convaiinnovations/laya-multilingual",
+  "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+  "contract_sha256": "771ca781c52f1d6f9cb22859bed007ef483a54a2543c644de33f88d6e0687eee",
+  "sources_in_order": [
+    { "name": "paws-audit", "records": 250, "sha256": "c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3" },
+    { "name": "nimble-audit", "records": 324, "sha256": "8e9e48b8de5206593912ae01ddc95bd77e40ad2ecf4c9292c1711290eca0d896" }
+  ],
+  "planned_rows": 574,
+  "criterion": "For every completed independent reference answer, subtract the second-largest raw logit from the largest raw logit. Preserve every row and every hit; do not use correctness labels for selection.",
+  "maximum_margin": 0.001,
+  "maximum_followup_cases": 18,
+  "followup_order": "source order, then row order; record all hits, diagnose at most the first 18",
+  "zero_hits": "not_measured_for_real_near_tie_acceptance",
+  "scope": "Numerical boundary observation on already viewed audit data. No prompt, threshold, training or calibration selection; not an independent language quality test. Failed and unprocessed rows remain in the planned denominator."
+}

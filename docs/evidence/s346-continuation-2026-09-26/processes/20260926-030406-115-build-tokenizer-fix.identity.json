@@ -1,0 +1,30 @@
+{
+  "Pid": 65656,
+  "Started": "2026-09-26T03:04:06.9132838Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build Sezika.slnx -c Release --artifacts-path .artifacts/build/s346-tokenizer-final-20260926 --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 64012,
+  "ObservedParentPid": 64012,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 64012,
+    "Started": "2026-09-26T11:04:05.6114+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& './tools/Invoke-BoundedProcess.ps1' -FilePath (Get-Command dotnet).Source -ArgumentList @('build','Sezika.slnx','-c','Release','--artifacts-path','.artifacts/build/s346-tokenizer-final-20260926','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false') -TimeoutSeconds 240 -LogName 'build-tokenizer-fix' -LogDirectory '.artifacts/s346-20260926/processes'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 240,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "Sezika.slnx",
+    "-c",
+    "Release",
+    "--artifacts-path",
+    ".artifacts/build/s346-tokenizer-final-20260926",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

@@ -1,0 +1,73 @@
+{
+  "Status": "Succeeded",
+  "Pid": 45196,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 8.149,
+  "TimeoutSeconds": 220,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\.artifacts\\build\\s346-tokenizer-final-20260926\\bin\\Sezika.Benchmarks\\release\\Sezika.Benchmarks.dll",
+    "--model",
+    "D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert",
+    "--backend",
+    "cuda",
+    "--mode",
+    "profile",
+    "--lengths",
+    "short",
+    "--questions",
+    "1",
+    "--samples",
+    "1",
+    "--warmup",
+    "0",
+    "--cycles",
+    "1",
+    "--timeout-seconds",
+    "180",
+    "--request-deadline-seconds",
+    "300",
+    "--profile-detail",
+    "full",
+    "--cpu",
+    "Intel Core i9-13900HX",
+    "--environment",
+    "windows-local-serialized-task-model-runs",
+    "--output",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\profile-cuda-short1.json"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-26T03:32:56.9830678Z",
+  "ParentPid": 77920,
+  "Launcher": {
+    "Pid": 77920,
+    "Started": "2026-09-26T11:32:55.997286+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$r=Get-Content -LiteralPath .artifacts/s346-20260926/profile-simd-short1.json -Raw | ConvertFrom-Json\nif($r.status -ne 'passed' -or $r.profile.successful_cases -ne 1 -or $r.collection_status -ne 'collected' -or $r.cleanup[0].status -ne 'released'){throw 'CPU profile smoke did not pass.'}\n& './.artifacts/s346-20260926/Invoke-ProfileRun.ps1' -Backend cuda -Length short -Name 'profile-cuda-short1' -TimeoutSeconds 180\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-033256-504-profile-cuda-short1.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-033256-504-profile-cuda-short1.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 45196,
+      "CreationDate": "2026-09-26T11:32:56.983067+08:00",
+      "Started": "2026-09-26T03:32:56.983067Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" D:\\source\\Sezika\\.artifacts\\build\\s346-tokenizer-final-20260926\\bin\\Sezika.Benchmarks\\release\\Sezika.Benchmarks.dll --model D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert --backend cuda --mode profile --lengths short --questions 1 --samples 1 --warmup 0 --cycles 1 --timeout-seconds 180 --request-deadline-seconds 300 --profile-detail full --cpu \"Intel Core i9-13900HX\" --environment windows-local-serialized-task-model-runs --output D:\\source\\Sezika\\.artifacts\\s346-20260926\\profile-cuda-short1.json",
+      "ParentPid": 77920,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 10072,
+      "CreationDate": "2026-09-26T11:32:57.020471+08:00",
+      "Started": "2026-09-26T03:32:57.020471Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 45196,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

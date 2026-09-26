@@ -57,6 +57,21 @@ internal static class EvaluationChecks
                 "Score uses zero-based expectation and categorical Brier");
             var tied = new[] { BooleanRow("positive", "true", 0.5), BooleanRow("negative", "false", 0.5) };
             Check(BooleanMetrics.Compute(tied, deadline.Token).AurocOnAnswered == 0.5, "AUROC gives half credit to ties");
+            var ranges = EvaluationBatches.Ranges(324, 46);
+            Check(ranges.Length == 8 && ranges[^1] == (322, 2) && ranges.Sum(range => range.Count) == 324 &&
+                ranges.SelectMany(range => Enumerable.Range(range.Offset, range.Count)).SequenceEqual(Enumerable.Range(0, 324)),
+                "batch plan covers the full source once including the two-row tail");
+            Check(EvaluationBatches.Ranges(1, 1).SequenceEqual(new[] { (0, 1) }), "minimal batch has one row and terminates");
+            Reject(() => EvaluationBatches.Ranges(10000, 1), "too many batches reject before preparation");
+            var accumulated = new List<EvaluationRow>(); var seen = new HashSet<string>(StringComparer.Ordinal);
+            EvaluationBatches.AddUnique(accumulated, seen, [rows[0]]);
+            Reject(() => EvaluationBatches.AddUnique(accumulated, seen, [rows[0]]), "overlapping captures cannot inflate coverage");
+            using var badLanguage = JsonDocument.Parse("""{"language":42}""");
+            Reject(() => EvaluationInputs.Language(badLanguage.RootElement), "malformed explicit language cannot become unspecified");
+            Check(EvaluationInputs.Language(boolean.RootElement) == "unspecified", "missing language remains unspecified");
+            var group = Evaluation.Group("zh", rows, deadline.Token);
+            Check(group.Coverage == 0.8 && group.AccuracyOnAnswered == 0.5 && group.AccuracyOverProcessed == 0.4 &&
+                group.Boolean is { Unanswered: 1, TrueNegative: 1 }, "language slices retain failed rows and negative-class metrics");
             Console.WriteLine($"Evaluation checks passed: {passed}; synthetic mechanics only, no model quality measurement.");
             return 0;
         }

@@ -1,0 +1,21 @@
+trace case 1/5: boolean-en-medium
+trace backend scalar: boolean-en-medium, elapsed 0.1/1200s
+trace backend simd: boolean-en-medium, elapsed 81.7/1200s
+trace backend cuda: boolean-en-medium, elapsed 113.9/1200s
+trace case 2/5: boolean-en-long
+trace backend scalar: boolean-en-long, elapsed 120.0/1200s
+trace backend simd: boolean-en-long, elapsed 319.0/1200s
+trace backend cuda: boolean-en-long, elapsed 422.1/1200s
+trace case 3/5: boolean-zh-short
+trace backend scalar: boolean-zh-short, elapsed 433.8/1200s
+trace backend simd: boolean-zh-short, elapsed 447.6/1200s
+trace backend cuda: boolean-zh-short, elapsed 454.4/1200s
+trace case 4/5: boolean-zh-medium
+trace backend scalar: boolean-zh-medium, elapsed 459.8/1200s
+trace backend simd: boolean-zh-medium, elapsed 529.6/1200s
+trace backend cuda: boolean-zh-medium, elapsed 558.8/1200s
+trace case 5/5: boolean-zh-long
+trace backend scalar: boolean-zh-long, elapsed 565.0/1200s
+trace backend simd: boolean-zh-long, elapsed 779.6/1200s
+trace backend cuda: boolean-zh-long, elapsed 884.0/1200s
+Wrote D:\source\Sezika\.artifacts\s346-20260926\trace-remaining5.json; selected diagnostics passed=True; near-tie cases=0; full S3-06 gate remains separately assessed.

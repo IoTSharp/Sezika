@@ -15,8 +15,8 @@ internal static class Evaluation
     public static int Run(string[] args)
     {
         if (args is ["--self-test"]) return EvaluationChecks.Run();
-        if (args.Length > 0 && args[0] == "--prepare-oracle") return EvaluationOracle.Prepare(args);
-        if (args.Length > 0 && args[0] == "--score-capture") return EvaluationOracle.Score(args);
+        if (args.Length > 0 && args[0] is "--prepare-oracle" or "--prepare-oracle-batches") return EvaluationOracle.Prepare(args);
+        if (args.Length > 0 && args[0] is "--score-capture" or "--score-captures") return EvaluationOracle.Score(args);
         var namedDataset = args.Length is 9 or 10;
         var datasetName = namedDataset ? args[6] : "nimble-holdout";
         var validDatasetTotal = !namedDataset || int.TryParse(args[7], out _);
@@ -87,9 +87,7 @@ internal static class Evaluation
                 var kind = question.GetProperty("type").GetString() ?? throw new InvalidDataException("Missing question type.");
                 if (kind == "boolean") kind = "noul";
                 var target = ReferenceLabel(root.GetProperty("reference").GetProperty("target"), kind);
-                var language = root.TryGetProperty("language", out var languageValue) && languageValue.ValueKind == JsonValueKind.String
-                    ? languageValue.GetString()! : "unspecified";
-                if (language.Length is < 1 or > 80) throw new InvalidDataException("Invalid explicit language metadata.");
+                var language = EvaluationInputs.Language(root);
                 var inputHash = EvaluationInputs.TextHash(input.GetRawText());
                 var questionWatch = Stopwatch.StartNew();
                 pipeline.Begin();
@@ -249,22 +247,39 @@ internal static class Evaluation
             AnsweredCounterfactualPairs = pairedAnswered.Length,
             PredictionFlips = pairedAnswered.Count(group => group.Select(row => row.Selected).Distinct().Count() == 2),
             BothCorrectPairs = pairedAnswered.Count(group => group.All(row => row.Correct == true)),
-            ByType = Groups(rows, row => row.Type),
-            ByTarget = Groups(rows, row => row.Target),
-            ByDomain = Groups(rows, row => row.Domain),
-            BySourceFamily = Groups(rows, row => row.SourceFamily),
-            ByLanguage = Groups(rows, row => row.Language),
+            ByType = Groups(rows, row => row.Type, cancellationToken),
+            ByTarget = Groups(rows, row => row.Target, cancellationToken),
+            ByDomain = Groups(rows, row => row.Domain, cancellationToken),
+            BySourceFamily = Groups(rows, row => row.SourceFamily, cancellationToken),
+            ByLanguage = Groups(rows, row => row.Language, cancellationToken),
+            ByLanguageAndType = rows.GroupBy(row => (row.Language, row.Type)).OrderBy(group => group.Key.Language, StringComparer.Ordinal)
+                .ThenBy(group => group.Key.Type, StringComparer.Ordinal).Select(group => new EvaluationSlice(group.Key.Language,
+                    group.Key.Type, Group(group.Key.Type, group.ToArray(), cancellationToken))).ToList(),
             ByFailure = rows.GroupBy(row => row.ErrorCode ?? row.Status ?? "unknown").OrderBy(group => group.Key, StringComparer.Ordinal)
                 .ToDictionary(group => group.Key, group => group.Count(), StringComparer.Ordinal),
             Rows = rows,
         };
     }
 
-    private static List<EvaluationGroup> Groups(List<EvaluationRow> rows, Func<EvaluationRow, string> key) =>
+    private static List<EvaluationGroup> Groups(List<EvaluationRow> rows, Func<EvaluationRow, string> key, CancellationToken token) =>
         rows.GroupBy(key).OrderBy(group => group.Key, StringComparer.Ordinal)
-            .Select(group => new EvaluationGroup(group.Key, group.Count(), group.Count(row => row.Correct is not null),
-                group.Count(row => row.Correct == true), Ratio(group.Count(row => row.Correct == true),
-                    group.Count(row => row.Correct is not null)))).ToList();
+            .Select(group => Group(group.Key, group.ToArray(), token)).ToList();
+
+    internal static EvaluationGroup Group(string name, EvaluationRow[] rows, CancellationToken token)
+    {
+        token.ThrowIfCancellationRequested();
+        var answered = rows.Where(row => row.Correct is not null).ToArray();
+        var correct = answered.Count(row => row.Correct == true);
+        return new(name, rows.Length, answered.Length, correct, Ratio(correct, answered.Length))
+        {
+            Coverage = Ratio(answered.Length, rows.Length), AccuracyOverProcessed = Ratio(correct, rows.Length),
+            Boolean = BooleanMetrics.Compute(rows, token),
+            MeanBrier = answered.Length == 0 ? null : answered.Average(row => row.Brier!.Value),
+            MeanNll = answered.Length == 0 ? null : answered.Average(row => row.Nll!.Value), Ece10 = Ece(answered),
+            ScoreMae = answered.Any(row => row.ExpectedScore is not null) ? answered.Where(row => row.ExpectedScore is not null)
+                .Average(row => Math.Abs(row.ExpectedScore!.Value - int.Parse(row.Target, CultureInfo.InvariantCulture))) : null,
+        };
+    }
 
     private static double? Ratio(int numerator, int denominator) => denominator == 0 ? null : (double)numerator / denominator;
 
@@ -302,7 +317,17 @@ internal sealed record EvaluationRow(string Id, string Family, string SourceFami
 internal sealed record RejectedInput(int OriginalTotalTokens, bool InstructionTruncated, bool OptionsTruncated,
     bool StateTruncated, int DroppedStateTokens, string StateTruncationDirection);
 
-internal sealed record EvaluationGroup(string Name, int Total, int Answered, int Correct, double? AccuracyOnAnswered);
+internal sealed record EvaluationGroup(string Name, int Total, int Answered, int Correct, double? AccuracyOnAnswered)
+{
+    public double? Coverage { get; init; }
+    public double? AccuracyOverProcessed { get; init; }
+    public BooleanMetrics? Boolean { get; init; }
+    public double? MeanBrier { get; init; }
+    public double? MeanNll { get; init; }
+    public double? Ece10 { get; init; }
+    public double? ScoreMae { get; init; }
+}
+internal sealed record EvaluationSlice(string Language, string Type, EvaluationGroup Metrics);
 
 internal sealed class BooleanMetrics
 {
@@ -450,6 +475,9 @@ internal sealed class EvaluationReport
     public JsonElement? CaptureImplementation { get; set; }
     public string? CaptureCasesSha256 { get; set; }
     public string? CaptureContractSha256 { get; set; }
+    public List<CaptureBatchEvidence> CaptureBatches { get; set; } = [];
+    public int Unprocessed => DatasetTotal - Processed;
+    public double DatasetAnswerCoverage => (double)Answered / DatasetTotal;
     public string MeasurementOrigin { get; set; } = "csharp_runtime";
     public bool FullDatasetProcessed => Processed == DatasetTotal;
     public string EvaluationUse { get; init; } = "audit_only_not_training_or_calibration";
@@ -483,6 +511,7 @@ internal sealed class EvaluationReport
     public required List<EvaluationGroup> ByDomain { get; init; }
     public required List<EvaluationGroup> BySourceFamily { get; init; }
     public required List<EvaluationGroup> ByLanguage { get; init; }
+    public List<EvaluationSlice> ByLanguageAndType { get; init; } = [];
     public required Dictionary<string, int> ByFailure { get; init; }
     public required List<EvaluationRow> Rows { get; init; }
 }

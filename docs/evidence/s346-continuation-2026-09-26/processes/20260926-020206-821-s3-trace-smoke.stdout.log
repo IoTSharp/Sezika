@@ -1,0 +1,5 @@
+trace case 1/1: choice-en-short
+trace backend scalar: choice-en-short, elapsed 0.1/180s
+trace backend simd: choice-en-short, elapsed 20.2/180s
+trace backend cuda: choice-en-short, elapsed 32.4/180s
+Wrote D:\source\Sezika\.artifacts\s346-20260926\trace-smoke.json; selected diagnostics passed=True; near-tie cases=0; full S3-06 gate remains separately assessed.

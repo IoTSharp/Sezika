@@ -1,0 +1,15 @@
+{
+  "schema_version": "sezika.profile-budget-preflight.v1",
+  "status": "not_run_estimated_budget_exceeded",
+  "backend": "simd",
+  "requested_case": "long-32",
+  "source": "profile-simd-long1.json",
+  "source_sha256": "766e040a055981a241cfe483e6a96a8de92921d08d0b6fddecd4bbc345948ea0",
+  "measured_single_question_ms": 42183.4474,
+  "estimate_seconds": 2699.7406336,
+  "formula": "single-question measured E2E * 32 questions * (one discovery + one formal sample); excludes load and diagnostics",
+  "tool_total_limit_seconds": 1800,
+  "proposed_internal_seconds": 1740,
+  "formal_long32_samples": 0,
+  "scope": "Runtime estimate only. No CPU long-32 model run or formal latency observation was created in this continuation. Historical 300-second failure remains valid evidence of that earlier run."
+}

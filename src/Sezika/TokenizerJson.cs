@@ -9,6 +9,7 @@ public sealed class TokenizerJson
     private const char MetaSpace = '\u2581';
     private readonly Dictionary<string, int> _vocabulary;
     private readonly Dictionary<string, int> _mergeRanks;
+    private readonly Dictionary<char, AddedToken[]> _addedTokens;
     private readonly int _unknown;
     private readonly int _bos;
     private readonly int _eos;
@@ -41,6 +42,23 @@ public sealed class TokenizerJson
         var unkToken = model.GetProperty("unk_token").GetString() ?? "<unk>";
         _unknown = IdOf(unkToken); _bos = IdOf("<bos>"); _eos = IdOf("<eos>"); _mask = IdOf("<mask>");
         if (_vocabulary.Count > 256_000 || _unknown < 0 || _bos < 0 || _eos < 0) throw new DecisionException("tokenizer_schema_invalid", "Tokenizer vocabulary or special tokens are invalid.");
+        // Minimal portable fixtures may omit added tokens entirely.
+        if (!root.TryGetProperty("added_tokens", out var added)) { _addedTokens = []; return; }
+        if (added.GetArrayLength() > 256) throw new DecisionException("tokenizer_schema_invalid", "Added-token inventory exceeds the pinned bound.");
+        var entries = new List<AddedToken>();
+        var seen = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var item in added.EnumerateArray())
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            var content = item.GetProperty("content").GetString();
+            if (string.IsNullOrEmpty(content) || content.Length > 128 || !seen.Add(content) ||
+                item.GetProperty("single_word").GetBoolean() || item.GetProperty("normalized").GetBoolean() ||
+                item.GetProperty("rstrip").GetBoolean() || IdOf(content) != item.GetProperty("id").GetInt32())
+                throw new DecisionException("tokenizer_schema_invalid", "Unsupported added-token contract.");
+            entries.Add(new(content, item.GetProperty("id").GetInt32(), item.GetProperty("lstrip").GetBoolean()));
+        }
+        _addedTokens = entries.GroupBy(item => item.Content[0]).ToDictionary(group => group.Key,
+            group => group.OrderByDescending(item => item.Content.Length).ToArray());
     }
 
     /// <summary>Special token IDs defined by the tokenizer template.</summary>
@@ -55,6 +73,35 @@ public sealed class TokenizerJson
         if (maxTokens < 2) throw new ArgumentOutOfRangeException(nameof(maxTokens));
         var ids = new List<int>(Math.Min(maxTokens, text.Length + 2));
         if (addSpecialTokens) ids.Add(_bos);
+        var limit = maxTokens - (addSpecialTokens ? 1 : 0);
+        // Hugging Face extracts raw added tokens before normalization. Each remaining
+        // fragment gets its own Metaspace prepend, including text after a newline token.
+        var fragmentStart = 0;
+        for (var offset = 0; offset < text.Length;)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            AddedToken? matched = null;
+            if (_addedTokens.TryGetValue(text[offset], out var candidates))
+                foreach (var candidate in candidates)
+                    if (text.AsSpan(offset).StartsWith(candidate.Content, StringComparison.Ordinal)) { matched = candidate; break; }
+            if (matched is null) { offset++; continue; }
+            var fragmentEnd = offset;
+            if (matched.LeftStrip)
+                while (fragmentEnd > fragmentStart && char.IsWhiteSpace(text[fragmentEnd - 1]))
+                { cancellationToken.ThrowIfCancellationRequested(); fragmentEnd--; }
+            EncodeFragment(text[fragmentStart..fragmentEnd], ids, limit, cancellationToken);
+            ids.Add(matched.Id);
+            if (ids.Count > limit) throw new DecisionException("decision_token_limit_exceeded", $"Token count exceeds {maxTokens}.");
+            offset += matched.Content.Length;
+            fragmentStart = offset;
+        }
+        EncodeFragment(text[fragmentStart..], ids, limit, cancellationToken);
+        if (addSpecialTokens) ids.Add(_eos);
+        return ids.ToArray();
+    }
+
+    private void EncodeFragment(string text, List<int> ids, int limit, CancellationToken cancellationToken)
+    {
         var normalized = text.Replace(' ', MetaSpace);
         if (normalized.Length != 0 && normalized[0] != MetaSpace) normalized = MetaSpace + normalized;
         foreach (var segment in SplitSegments(normalized, cancellationToken))
@@ -73,17 +120,17 @@ public sealed class TokenizerJson
                         foreach (var value in bytes)
                         {
                             if (!_vocabulary.TryGetValue($"<0x{value:X2}>", out id)) id = _unknown;
-                            ids.Add(id); if (ids.Count > maxTokens - (addSpecialTokens ? 1 : 0)) throw new DecisionException("decision_token_limit_exceeded", $"Token count exceeds {maxTokens}.");
+                            ids.Add(id); if (ids.Count > limit) throw new DecisionException("decision_token_limit_exceeded", "Token count exceeds the requested budget.");
                         }
                     }
                     continue;
                 }
-                ids.Add(id); if (ids.Count > maxTokens - (addSpecialTokens ? 1 : 0)) throw new DecisionException("decision_token_limit_exceeded", $"Token count exceeds {maxTokens}.");
+                ids.Add(id); if (ids.Count > limit) throw new DecisionException("decision_token_limit_exceeded", "Token count exceeds the requested budget.");
             }
         }
-        if (addSpecialTokens) ids.Add(_eos);
-        return ids.ToArray();
     }
+
+    private sealed record AddedToken(string Content, int Id, bool LeftStrip);
 
     private IEnumerable<string> Bpe(string segment, CancellationToken cancellationToken)
     {

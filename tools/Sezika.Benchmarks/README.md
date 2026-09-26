@@ -1,5 +1,7 @@
 # Sezika 基准与生命周期检查工具
 
+画像schema v3的[本轮验证](../../docs/evidence/s346-continuation-2026-09-26.md)包含成功及失败后的资源回收、entered/completed计数、显式请求预算和end_to_end范围。CUDA long-32单样本38.319秒，分项未请求；CPU long-1为42.183秒，CPU long-32预算预估不满足而未运行。它们与下述历史九格矩阵分开记录，不据此宣称加速或完整性能验收。
+
 本工具使用已安装的固定版本 Laya/mmBERT 模型包，执行真实 encoder/marker-head 推理，输出 JSON 证据。默认模式输入为固定短请求；新增 `--mode profile` 选择短/中/长与 1/8/32 问的性能画像。问题按 choice、score、boolean 循环排列，每题两个候选；它不接受任意业务数据集，也不测语言准确率。[2026-09-26 实测](../../docs/evidence/s5-profile-2026-09-26.md)中 CUDA 九行全部通过；SIMD 八行 measured，long-32 触发 300 秒请求期限，保留完整失败报告和原始覆盖分母。整体 S5-06 状态分别验收。
 
 模型必须已在本地准备好；工具不会下载模型，不执行校准，也不会把权重写进可执行文件或发布物。模型、tokenizer、许可与校准资料仍独立管理。构建、发布及运行应分别在获得相应授权后进行，下面的运行示例假定对应产物已经存在。
@@ -25,12 +27,14 @@
 | `--cycles` | `2` | 加载/卸载轮数，`1..2`。完整性能采样、数值对齐和诊断只在第 0 轮执行；每轮都执行加载后的首请求与卸载检查。 |
 | `--questions` | `1,8,32` | 逗号分隔，最多三个问题数，每项 `1..32`；画像模式只接受不重复的 `1`、`8`、`32`。这是每个请求的问题数，当前每题独立一次 forward。 |
 | `--timeout-seconds` | `1200` | 工具内共享取消期限，`1..1800` 秒；还应配合外部进程超时。 |
+| `--request-deadline-seconds` | `300` | 仅限 `profile`，显式逐请求期限 `1..1800` 秒，仍受总期限约束；提高预算不代表加速或原 300 秒预算通过。 |
+| `--profile-detail` | `full` | 仅限 `profile`。`full` 包含独立 instrumented/CPU split；`end_to_end` 只做真实输入 discovery、warmup 和 E2E 样本，跳过项明确记未测，不代表完整分项画像。 |
 | `--cpu` | `unspecified` | 人工填写实际 CPU 型号，工具不自动检测型号。 |
 | `--environment` | `unspecified` | 人工填写执行环境，例如 `windows-local`、`wsl-ubuntu`。 |
 | `--require-aot` | 未启用 | 要求没有托管宿主，且动态代码 support/compiled 两个能力均为 false；普通 .NET 进程失败，包括关闭动态代码开关后由 dotnet 启动的中间 DLL。此参数不执行 AOT 编译。 |
 | `--self-test` | 未启用 | 仅检查最近秩分位数、固定请求序列化及参数边界；不加载模型、不生成基准报告，不替代真实推理验证。 |
 
-最多接受 40 个命令行参数元素。工具按顺序运行，报告中的单推理线程不代表 .NET GC、驱动或宿主进程没有其他线程。每次请求还受 session 的问题数、总 token、工作区、驻留内存及请求期限约束；工具的总期限不会解除这些限制。报告的 `request_token_budget` 和 `request_deadline_seconds` 直接记录实际 session 配置，当前分别为 32768 tokens 与 300 秒。
+最多接受 40 个命令行参数元素。工具按顺序运行，报告中的单推理线程不代表 .NET GC、驱动或宿主进程没有其他线程。每次请求还受 session 的问题数、总 token、工作区、驻留内存及请求期限约束；工具的总期限不会解除这些限制。报告的 `request_token_budget` 和 `request_deadline_seconds` 直接记录实际 session 配置，token 预算为 32768，期限默认 300 秒，画像模式可显式配置。
 
 ## S5-06 画像模式
 

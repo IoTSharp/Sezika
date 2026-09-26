@@ -1,0 +1,155 @@
+{
+  "Status": "Succeeded",
+  "Pid": 61912,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 263.778,
+  "TimeoutSeconds": 640,
+  "FilePath": "C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.6.0_x64__8wekyb3d8bbwe\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "tools/Sezika.Evaluation/Invoke-OracleBatches.ps1",
+    "-PlanPath",
+    ".artifacts/s346-20260926/nimble-plan/batches.json",
+    "-PythonPath",
+    ".artifacts/laya-oracle-work/venv/Scripts/python.exe",
+    "-UpstreamDirectory",
+    ".artifacts/laya-oracle-work/upstream",
+    "-ModelDirectory",
+    ".artifacts/models/laya-mmbert",
+    "-BuildDirectory",
+    ".artifacts/build/s346-tokenizer-final-20260926/bin",
+    "-OutputDirectory",
+    ".artifacts/s346-20260926/nimble-remaining",
+    "-MaxBatches",
+    "2",
+    "-BatchOffset",
+    "6",
+    "-TimeoutSeconds",
+    "600"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-26T03:19:40.300746Z",
+  "ParentPid": 49980,
+  "Launcher": {
+    "Pid": 49980,
+    "Started": "2026-09-26T11:19:39.140368+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$run=Get-Content -LiteralPath .artifacts/s346-20260926/nimble-full/run.json -Raw | ConvertFrom-Json\nif($run.completed_batches -ne 6 -or $run.status -ne 'incomplete'){throw 'Unexpected Nimble continuation boundary.'}\n& './tools/Invoke-BoundedProcess.ps1' -FilePath (Get-Command pwsh).Source -ArgumentList @('-NoProfile','-File','tools/Sezika.Evaluation/Invoke-OracleBatches.ps1','-PlanPath','.artifacts/s346-20260926/nimble-plan/batches.json','-PythonPath','.artifacts/laya-oracle-work/venv/Scripts/python.exe','-UpstreamDirectory','.artifacts/laya-oracle-work/upstream','-ModelDirectory','.artifacts/models/laya-mmbert','-BuildDirectory','.artifacts/build/s346-tokenizer-final-20260926/bin','-OutputDirectory','.artifacts/s346-20260926/nimble-remaining','-MaxBatches','2','-BatchOffset','6','-TimeoutSeconds','600') -TimeoutSeconds 640 -LogName 'nimble-reference-remaining' -LogDirectory '.artifacts/s346-20260926/processes'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-031939-654-nimble-reference-remaining.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-031939-654-nimble-reference-remaining.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 61912,
+      "CreationDate": "2026-09-26T11:19:40.300746+08:00",
+      "Started": "2026-09-26T03:19:40.300746Z",
+      "CommandLine": "\"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.6.0_x64__8wekyb3d8bbwe\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Invoke-OracleBatches.ps1 -PlanPath .artifacts/s346-20260926/nimble-plan/batches.json -PythonPath .artifacts/laya-oracle-work/venv/Scripts/python.exe -UpstreamDirectory .artifacts/laya-oracle-work/upstream -ModelDirectory .artifacts/models/laya-mmbert -BuildDirectory .artifacts/build/s346-tokenizer-final-20260926/bin -OutputDirectory .artifacts/s346-20260926/nimble-remaining -MaxBatches 2 -BatchOffset 6 -TimeoutSeconds 600",
+      "ParentPid": 49980,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 17980,
+      "CreationDate": "2026-09-26T11:22:31.989554+08:00",
+      "Started": "2026-09-26T03:22:31.989554Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" D:\\source\\Sezika\\.artifacts\\build\\s346-tokenizer-final-20260926\\bin\\Sezika.OracleCapture\\release\\Sezika.OracleCapture.dll --reference D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-remaining\\batch-007\\reference\\capture.json --model D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert --cases D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-plan\\cases-007.json --contract D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json --output D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-remaining\\batch-007\\actual --backend cuda --length-policy laya_compatible --max-cases 46 --timeout-seconds 600",
+      "ParentPid": 61912,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 33456,
+      "CreationDate": "2026-09-26T11:19:41.502785+08:00",
+      "Started": "2026-09-26T03:19:41.502785Z",
+      "CommandLine": "\"D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\venv\\Scripts\\python.exe\" -B D:\\source\\Sezika\\tools\\Sezika.LayaOracle\\export_oracle.py --upstream D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\upstream --model D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert --output D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-remaining\\batch-007\\reference --cases D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-plan\\cases-007.json --contract D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json --max-cases 46 --timeout-seconds 600",
+      "ParentPid": 61912,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 60540,
+      "CreationDate": "2026-09-26T11:23:18.985204+08:00",
+      "Started": "2026-09-26T03:23:18.985204Z",
+      "CommandLine": "\"D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\venv\\Scripts\\python.exe\" -B D:\\source\\Sezika\\tools\\Sezika.LayaOracle\\export_oracle.py --upstream D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\upstream --model D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert --output D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-remaining\\batch-008\\reference --cases D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-plan\\cases-008.json --contract D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json --max-cases 2 --timeout-seconds 600",
+      "ParentPid": 61912,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 69772,
+      "CreationDate": "2026-09-26T11:23:52.10273+08:00",
+      "Started": "2026-09-26T03:23:52.10273Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" D:\\source\\Sezika\\.artifacts\\build\\s346-tokenizer-final-20260926\\bin\\Sezika.OracleCapture\\release\\Sezika.OracleCapture.dll --reference D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-remaining\\batch-008\\reference\\capture.json --model D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert --cases D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-plan\\cases-008.json --contract D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json --output D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-remaining\\batch-008\\actual --backend cuda --length-policy laya_compatible --max-cases 2 --timeout-seconds 600",
+      "ParentPid": 61912,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 72348,
+      "CreationDate": "2026-09-26T11:19:40.31085+08:00",
+      "Started": "2026-09-26T03:19:40.31085Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 61912,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 38860,
+      "CreationDate": "2026-09-26T11:19:41.537261+08:00",
+      "Started": "2026-09-26T03:19:41.537261Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 33456,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 41676,
+      "CreationDate": "2026-09-26T11:23:52.115857+08:00",
+      "Started": "2026-09-26T03:23:52.115857Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 69772,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 42016,
+      "CreationDate": "2026-09-26T11:23:19.042048+08:00",
+      "Started": "2026-09-26T03:23:19.042048Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 60540,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 45940,
+      "CreationDate": "2026-09-26T11:22:32.004958+08:00",
+      "Started": "2026-09-26T03:22:32.004958Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 17980,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 60252,
+      "CreationDate": "2026-09-26T11:23:19.106907+08:00",
+      "Started": "2026-09-26T03:23:19.106907Z",
+      "CommandLine": "\"D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\python\\cpython-3.12.10-windows-x86_64-none\\python.exe\" -B D:\\source\\Sezika\\tools\\Sezika.LayaOracle\\export_oracle.py --upstream D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\upstream --model D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert --output D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-remaining\\batch-008\\reference --cases D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-plan\\cases-008.json --contract D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json --max-cases 2 --timeout-seconds 600",
+      "ParentPid": 60540,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 66688,
+      "CreationDate": "2026-09-26T11:19:41.601237+08:00",
+      "Started": "2026-09-26T03:19:41.601237Z",
+      "CommandLine": "\"D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\python\\cpython-3.12.10-windows-x86_64-none\\python.exe\" -B D:\\source\\Sezika\\tools\\Sezika.LayaOracle\\export_oracle.py --upstream D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\upstream --model D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert --output D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-remaining\\batch-007\\reference --cases D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-plan\\cases-007.json --contract D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json --max-cases 46 --timeout-seconds 600",
+      "ParentPid": 33456,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

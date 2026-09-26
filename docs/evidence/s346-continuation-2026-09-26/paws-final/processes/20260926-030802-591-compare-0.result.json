@@ -1,0 +1,32 @@
+{
+  "Status": "Succeeded",
+  "Pid": 72816,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 2.588,
+  "TimeoutSeconds": 45,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\.artifacts\\build\\s346-tokenizer-final-20260926\\bin\\Sezika.OracleCompare\\release\\Sezika.OracleCompare.dll",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\paws-full\\batch-001\\reference\\capture.json",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\paws-final\\batch-001\\actual\\capture.json",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\paws-plan-verified\\cases-001.json",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\paws-final\\batch-001\\comparison.json",
+    "30"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-26T03:08:03.3786602Z",
+  "ParentPid": 72824,
+  "Launcher": {
+    "Pid": 72824,
+    "Started": "2026-09-26T11:07:43.980879+08:00",
+    "CommandLine": "\"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.6.0_x64__8wekyb3d8bbwe\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Invoke-OracleBatches.ps1 -PlanPath .artifacts/s346-20260926/paws-plan-verified/batches.json -PythonPath .artifacts/laya-oracle-work/venv/Scripts/python.exe -UpstreamDirectory .artifacts/laya-oracle-work/upstream -ModelDirectory .artifacts/models/laya-mmbert -BuildDirectory .artifacts/build/s346-tokenizer-final-20260926/bin -OutputDirectory .artifacts/s346-20260926/paws-final -ReferenceIndexPath .artifacts/s346-20260926/paws-full/references.json -MaxBatches 6 -TimeoutSeconds 600",
+    "ParentPid": 57120
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\paws-final\\processes\\20260926-030802-591-compare-0.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\paws-final\\processes\\20260926-030802-591-compare-0.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

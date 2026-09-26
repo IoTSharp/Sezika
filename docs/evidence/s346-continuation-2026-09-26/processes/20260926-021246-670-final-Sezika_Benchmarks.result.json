@@ -1,0 +1,27 @@
+{
+  "Status": "Succeeded",
+  "Pid": 32792,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 3.091,
+  "TimeoutSeconds": 30,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/build/s346-final-20260926/bin/Sezika.Benchmarks/release/Sezika.Benchmarks.dll",
+    "--self-test"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-26T02:12:48.1010671Z",
+  "ParentPid": 72104,
+  "Launcher": {
+    "Pid": 72104,
+    "Started": "2026-09-26T10:12:43.432287+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$checks = @(@('Sezika.Evaluation','--self-test'),@('Sezika.Benchmarks','--self-test'),@('Sezika.Tests','--prompt-contract')); $checkWatch = [Diagnostics.Stopwatch]::StartNew(); for ($index = 0; $index -lt $checks.Count; $index++) { if ($checkWatch.Elapsed.TotalSeconds -gt 120) { throw 'Check batch deadline exceeded.' }; $item = $checks[$index]; Write-Output \\\"Final check $($index + 1)/$($checks.Count)\\\"; & './tools/Invoke-BoundedProcess.ps1' -FilePath (Get-Command dotnet).Source -ArgumentList @(\\\".artifacts/build/s346-final-20260926/bin/$($item[0])/release/$($item[0]).dll\\\",$item[1]) -TimeoutSeconds 30 -LogName \\\"final-$($item[0])\\\" -LogDirectory '.artifacts/s346-20260926/processes' }; $hash = (Get-Content -LiteralPath '.artifacts/s346-20260926/language-one/manifest.json' -Raw -Encoding utf8 | ConvertFrom-Json).dataset_sha256; & './tools/Invoke-BoundedProcess.ps1' -FilePath (Get-Command dotnet).Source -ArgumentList @('.artifacts/build/s346-final-20260926/bin/Sezika.Evaluation/release/Sezika.Evaluation.dll','--prepare-oracle-batches','.artifacts/s346-20260926/language-one/eval.jsonl',$hash,'1','1','.artifacts/s346-20260926/language-one-plan','30') -TimeoutSeconds 45 -LogName 's4-language-one-plan' -LogDirectory '.artifacts/s346-20260926/processes'; & './tools/Invoke-BoundedProcess.ps1' -FilePath (Get-Command dotnet).Source -ArgumentList @('.artifacts/build/s346-final-20260926/bin/Sezika.Evaluation/release/Sezika.Evaluation.dll','--prepare-oracle-batches','datasets/s4-04/language-audit-v1/eval.jsonl','0aab426dbf4d69653527d402158693e10214c52a83a586728cd6247ea1e023f7','12','6','.artifacts/s346-20260926/language-plan','30') -TimeoutSeconds 45 -LogName 's4-language-plan' -LogDirectory '.artifacts/s346-20260926/processes'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-021246-670-final-Sezika_Benchmarks.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-021246-670-final-Sezika_Benchmarks.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

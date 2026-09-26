@@ -1,0 +1,590 @@
+Oracle batch 1/6, source offset 0, rows 46
+Reusing hash-bound independent reference for batch 1; no reference inference.
+Started PID 79088, timeout 574s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCapture\release\Sezika.OracleCapture.dll --reference D:\source\Sezika\.artifacts\s346-20260926\paws-full\batch-001\reference\capture.json --model D:\source\Sezika\.artifacts\models\laya-mmbert --cases D:\source\Sezika\.artifacts\s346-20260926\paws-plan-verified\cases-001.json --contract D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json --output D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-001\actual --backend cuda --length-policy laya_compatible --max-cases 46 --timeout-seconds 600
+
+Read bounded local reference inputs and frozen identities; reference numerical outputs are not deserialized.
+Loading verified local model for 46 case(s), backend=cuda, length_policy=LayaCompatible.
+capture 1/46: paws-1
+capture 2/46: paws-1032
+capture 3/46: paws-1079
+capture 4/46: paws-1112
+capture 5/46: paws-1175
+capture 6/46: paws-1187
+capture 7/46: paws-1231
+capture 8/46: paws-1309
+capture 9/46: paws-1320
+capture 10/46: paws-1338
+capture 11/46: paws-1360
+capture 12/46: paws-1378
+capture 13/46: paws-1388
+capture 14/46: paws-1407
+capture 15/46: paws-1421
+capture 16/46: paws-1449
+capture 17/46: paws-1460
+capture 18/46: paws-1503
+capture 19/46: paws-1522
+capture 20/46: paws-1530
+capture 21/46: paws-1539
+capture 22/46: paws-16
+capture 23/46: paws-1625
+capture 24/46: paws-1694
+capture 25/46: paws-1708
+capture 26/46: paws-1714
+capture 27/46: paws-1716
+capture 28/46: paws-174
+capture 29/46: paws-1746
+capture 30/46: paws-175
+capture 31/46: paws-1777
+capture 32/46: paws-180
+capture 33/46: paws-1889
+capture 34/46: paws-190
+capture 35/46: paws-1951
+capture 36/46: paws-2019
+capture 37/46: paws-2041
+capture 38/46: paws-2067
+capture 39/46: paws-2086
+capture 40/46: paws-2087
+capture 41/46: paws-2094
+capture 42/46: paws-2148
+capture 43/46: paws-2171
+capture 44/46: paws-2218
+capture 45/46: paws-2224
+capture 46/46: paws-2237
+completed: 46/46 selected rows; D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-001\actual\capture.json
+
+Completed PID 79088, status Succeeded, exit 0, elapsed 17.993s; result: D:\source\Sezika\.artifacts\s346-20260926\paws-final\processes\20260926-030744-563-capture-0.result.json
+Started PID 72816, timeout 45s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCompare\release\Sezika.OracleCompare.dll D:\source\Sezika\.artifacts\s346-20260926\paws-full\batch-001\reference\capture.json D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-001\actual\capture.json D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json D:\source\Sezika\.artifacts\s346-20260926\paws-plan-verified\cases-001.json D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-001\comparison.json 30
+
+Loading four bounded local JSON files; no model inference.
+compare 1/46: paws-1
+compare 2/46: paws-1032
+compare 3/46: paws-1079
+compare 4/46: paws-1112
+compare 5/46: paws-1175
+compare 6/46: paws-1187
+compare 7/46: paws-1231
+compare 8/46: paws-1309
+compare 9/46: paws-1320
+compare 10/46: paws-1338
+compare 11/46: paws-1360
+compare 12/46: paws-1378
+compare 13/46: paws-1388
+compare 14/46: paws-1407
+compare 15/46: paws-1421
+compare 16/46: paws-1449
+compare 17/46: paws-1460
+compare 18/46: paws-1503
+compare 19/46: paws-1522
+compare 20/46: paws-1530
+compare 21/46: paws-1539
+compare 22/46: paws-16
+compare 23/46: paws-1625
+compare 24/46: paws-1694
+compare 25/46: paws-1708
+compare 26/46: paws-1714
+compare 27/46: paws-1716
+compare 28/46: paws-174
+compare 29/46: paws-1746
+compare 30/46: paws-175
+compare 31/46: paws-1777
+compare 32/46: paws-180
+compare 33/46: paws-1889
+compare 34/46: paws-190
+compare 35/46: paws-1951
+compare 36/46: paws-2019
+compare 37/46: paws-2041
+compare 38/46: paws-2067
+compare 39/46: paws-2086
+compare 40/46: paws-2087
+compare 41/46: paws-2094
+compare 42/46: paws-2148
+compare 43/46: paws-2171
+compare 44/46: paws-2218
+compare 45/46: paws-2224
+compare 46/46: paws-2237
+Comparison passed: 46 answered pairs, 0 failure pairs, 0 issues; coverage=46/46; full_manifest_passed=True.
+
+Completed PID 72816, status Succeeded, exit 0, elapsed 2.59s; result: D:\source\Sezika\.artifacts\s346-20260926\paws-final\processes\20260926-030802-591-compare-0.result.json
+Oracle batch 2/6, source offset 46, rows 46
+Reusing hash-bound independent reference for batch 2; no reference inference.
+Started PID 69508, timeout 554s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCapture\release\Sezika.OracleCapture.dll --reference D:\source\Sezika\.artifacts\s346-20260926\paws-full\batch-002\reference\capture.json --model D:\source\Sezika\.artifacts\models\laya-mmbert --cases D:\source\Sezika\.artifacts\s346-20260926\paws-plan-verified\cases-002.json --contract D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json --output D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-002\actual --backend cuda --length-policy laya_compatible --max-cases 46 --timeout-seconds 600
+
+Read bounded local reference inputs and frozen identities; reference numerical outputs are not deserialized.
+Loading verified local model for 46 case(s), backend=cuda, length_policy=LayaCompatible.
+capture 1/46: paws-2247
+capture 2/46: paws-2418
+capture 3/46: paws-2464
+capture 4/46: paws-2478
+capture 5/46: paws-2497
+capture 6/46: paws-2520
+capture 7/46: paws-2540
+capture 8/46: paws-2547
+capture 9/46: paws-2576
+capture 10/46: paws-2585
+capture 11/46: paws-2634
+capture 12/46: paws-2717
+capture 13/46: paws-2730
+capture 14/46: paws-2750
+capture 15/46: paws-2753
+capture 16/46: paws-2791
+capture 17/46: paws-2805
+capture 18/46: paws-2849
+capture 19/46: paws-2850
+capture 20/46: paws-2864
+capture 21/46: paws-2882
+capture 22/46: paws-2897
+capture 23/46: paws-2903
+capture 24/46: paws-2918
+capture 25/46: paws-2938
+capture 26/46: paws-2988
+capture 27/46: paws-2998
+capture 28/46: paws-2999
+capture 29/46: paws-3005
+capture 30/46: paws-3030
+capture 31/46: paws-3059
+capture 32/46: paws-3119
+capture 33/46: paws-3151
+capture 34/46: paws-3167
+capture 35/46: paws-3173
+capture 36/46: paws-3220
+capture 37/46: paws-3222
+capture 38/46: paws-3226
+capture 39/46: paws-3234
+capture 40/46: paws-3260
+capture 41/46: paws-3312
+capture 42/46: paws-3324
+capture 43/46: paws-3339
+capture 44/46: paws-3409
+capture 45/46: paws-3446
+capture 46/46: paws-3447
+completed: 46/46 selected rows; D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-002\actual\capture.json
+
+Completed PID 69508, status Succeeded, exit 0, elapsed 17.42s; result: D:\source\Sezika\.artifacts\s346-20260926\paws-final\processes\20260926-030805-204-capture-1.result.json
+Started PID 4104, timeout 45s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCompare\release\Sezika.OracleCompare.dll D:\source\Sezika\.artifacts\s346-20260926\paws-full\batch-002\reference\capture.json D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-002\actual\capture.json D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json D:\source\Sezika\.artifacts\s346-20260926\paws-plan-verified\cases-002.json D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-002\comparison.json 30
+
+Loading four bounded local JSON files; no model inference.
+compare 1/46: paws-2247
+compare 2/46: paws-2418
+compare 3/46: paws-2464
+compare 4/46: paws-2478
+compare 5/46: paws-2497
+compare 6/46: paws-2520
+compare 7/46: paws-2540
+compare 8/46: paws-2547
+compare 9/46: paws-2576
+compare 10/46: paws-2585
+compare 11/46: paws-2634
+compare 12/46: paws-2717
+compare 13/46: paws-2730
+compare 14/46: paws-2750
+compare 15/46: paws-2753
+compare 16/46: paws-2791
+compare 17/46: paws-2805
+compare 18/46: paws-2849
+compare 19/46: paws-2850
+compare 20/46: paws-2864
+compare 21/46: paws-2882
+compare 22/46: paws-2897
+compare 23/46: paws-2903
+compare 24/46: paws-2918
+compare 25/46: paws-2938
+compare 26/46: paws-2988
+compare 27/46: paws-2998
+compare 28/46: paws-2999
+compare 29/46: paws-3005
+compare 30/46: paws-3030
+compare 31/46: paws-3059
+compare 32/46: paws-3119
+compare 33/46: paws-3151
+compare 34/46: paws-3167
+compare 35/46: paws-3173
+compare 36/46: paws-3220
+compare 37/46: paws-3222
+compare 38/46: paws-3226
+compare 39/46: paws-3234
+compare 40/46: paws-3260
+compare 41/46: paws-3312
+compare 42/46: paws-3324
+compare 43/46: paws-3339
+compare 44/46: paws-3409
+compare 45/46: paws-3446
+compare 46/46: paws-3447
+Comparison passed: 46 answered pairs, 0 failure pairs, 0 issues; coverage=46/46; full_manifest_passed=True.
+
+Completed PID 4104, status Succeeded, exit 0, elapsed 1.589s; result: D:\source\Sezika\.artifacts\s346-20260926\paws-final\processes\20260926-030822-634-compare-1.result.json
+Oracle batch 3/6, source offset 92, rows 46
+Reusing hash-bound independent reference for batch 3; no reference inference.
+Started PID 61140, timeout 535s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCapture\release\Sezika.OracleCapture.dll --reference D:\source\Sezika\.artifacts\s346-20260926\paws-full\batch-003\reference\capture.json --model D:\source\Sezika\.artifacts\models\laya-mmbert --cases D:\source\Sezika\.artifacts\s346-20260926\paws-plan-verified\cases-003.json --contract D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json --output D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-003\actual --backend cuda --length-policy laya_compatible --max-cases 46 --timeout-seconds 600
+
+Read bounded local reference inputs and frozen identities; reference numerical outputs are not deserialized.
+Loading verified local model for 46 case(s), backend=cuda, length_policy=LayaCompatible.
+capture 1/46: paws-3448
+capture 2/46: paws-3468
+capture 3/46: paws-3514
+capture 4/46: paws-356
+capture 5/46: paws-3586
+capture 6/46: paws-3603
+capture 7/46: paws-3671
+capture 8/46: paws-3711
+capture 9/46: paws-373
+capture 10/46: paws-3745
+capture 11/46: paws-3778
+capture 12/46: paws-3792
+capture 13/46: paws-3800
+capture 14/46: paws-3814
+capture 15/46: paws-3861
+capture 16/46: paws-3892
+capture 17/46: paws-3932
+capture 18/46: paws-394
+capture 19/46: paws-3959
+capture 20/46: paws-4023
+capture 21/46: paws-4045
+capture 22/46: paws-4093
+capture 23/46: paws-4139
+capture 24/46: paws-414
+capture 25/46: paws-4155
+capture 26/46: paws-4180
+capture 27/46: paws-4207
+capture 28/46: paws-4240
+capture 29/46: paws-4266
+capture 30/46: paws-4305
+capture 31/46: paws-4329
+capture 32/46: paws-434
+capture 33/46: paws-4344
+capture 34/46: paws-4358
+capture 35/46: paws-4376
+capture 36/46: paws-4419
+capture 37/46: paws-4422
+capture 38/46: paws-4433
+capture 39/46: paws-4525
+capture 40/46: paws-4642
+capture 41/46: paws-466
+capture 42/46: paws-4763
+capture 43/46: paws-4802
+capture 44/46: paws-4811
+capture 45/46: paws-4825
+capture 46/46: paws-4850
+completed: 46/46 selected rows; D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-003\actual\capture.json
+
+Completed PID 61140, status Succeeded, exit 0, elapsed 17.021s; result: D:\source\Sezika\.artifacts\s346-20260926\paws-final\processes\20260926-030824-239-capture-2.result.json
+Started PID 48556, timeout 45s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCompare\release\Sezika.OracleCompare.dll D:\source\Sezika\.artifacts\s346-20260926\paws-full\batch-003\reference\capture.json D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-003\actual\capture.json D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json D:\source\Sezika\.artifacts\s346-20260926\paws-plan-verified\cases-003.json D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-003\comparison.json 30
+
+Loading four bounded local JSON files; no model inference.
+compare 1/46: paws-3448
+compare 2/46: paws-3468
+compare 3/46: paws-3514
+compare 4/46: paws-356
+compare 5/46: paws-3586
+compare 6/46: paws-3603
+compare 7/46: paws-3671
+compare 8/46: paws-3711
+compare 9/46: paws-373
+compare 10/46: paws-3745
+compare 11/46: paws-3778
+compare 12/46: paws-3792
+compare 13/46: paws-3800
+compare 14/46: paws-3814
+compare 15/46: paws-3861
+compare 16/46: paws-3892
+compare 17/46: paws-3932
+compare 18/46: paws-394
+compare 19/46: paws-3959
+compare 20/46: paws-4023
+compare 21/46: paws-4045
+compare 22/46: paws-4093
+compare 23/46: paws-4139
+compare 24/46: paws-414
+compare 25/46: paws-4155
+compare 26/46: paws-4180
+compare 27/46: paws-4207
+compare 28/46: paws-4240
+compare 29/46: paws-4266
+compare 30/46: paws-4305
+compare 31/46: paws-4329
+compare 32/46: paws-434
+compare 33/46: paws-4344
+compare 34/46: paws-4358
+compare 35/46: paws-4376
+compare 36/46: paws-4419
+compare 37/46: paws-4422
+compare 38/46: paws-4433
+compare 39/46: paws-4525
+compare 40/46: paws-4642
+compare 41/46: paws-466
+compare 42/46: paws-4763
+compare 43/46: paws-4802
+compare 44/46: paws-4811
+compare 45/46: paws-4825
+compare 46/46: paws-4850
+Comparison passed: 46 answered pairs, 0 failure pairs, 0 issues; coverage=46/46; full_manifest_passed=True.
+
+Completed PID 48556, status Succeeded, exit 0, elapsed 3.498s; result: D:\source\Sezika\.artifacts\s346-20260926\paws-final\processes\20260926-030841-268-compare-2.result.json
+Oracle batch 4/6, source offset 138, rows 46
+Reusing hash-bound independent reference for batch 4; no reference inference.
+Started PID 67792, timeout 514s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCapture\release\Sezika.OracleCapture.dll --reference D:\source\Sezika\.artifacts\s346-20260926\paws-full\batch-004\reference\capture.json --model D:\source\Sezika\.artifacts\models\laya-mmbert --cases D:\source\Sezika\.artifacts\s346-20260926\paws-plan-verified\cases-004.json --contract D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json --output D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-004\actual --backend cuda --length-policy laya_compatible --max-cases 46 --timeout-seconds 600
+
+Read bounded local reference inputs and frozen identities; reference numerical outputs are not deserialized.
+Loading verified local model for 46 case(s), backend=cuda, length_policy=LayaCompatible.
+capture 1/46: paws-4886
+capture 2/46: paws-4915
+capture 3/46: paws-4923
+capture 4/46: paws-4932
+capture 5/46: paws-4934
+capture 6/46: paws-4957
+capture 7/46: paws-5019
+capture 8/46: paws-5054
+capture 9/46: paws-5077
+capture 10/46: paws-5100
+capture 11/46: paws-5165
+capture 12/46: paws-5168
+capture 13/46: paws-5259
+capture 14/46: paws-5298
+capture 15/46: paws-5307
+capture 16/46: paws-5334
+capture 17/46: paws-5344
+capture 18/46: paws-5356
+capture 19/46: paws-5358
+capture 20/46: paws-5404
+capture 21/46: paws-5516
+capture 22/46: paws-5585
+capture 23/46: paws-5639
+capture 24/46: paws-565
+capture 25/46: paws-5657
+capture 26/46: paws-567
+capture 27/46: paws-5773
+capture 28/46: paws-5790
+capture 29/46: paws-5822
+capture 30/46: paws-5835
+capture 31/46: paws-5841
+capture 32/46: paws-5857
+capture 33/46: paws-5892
+capture 34/46: paws-5906
+capture 35/46: paws-5945
+capture 36/46: paws-5979
+capture 37/46: paws-6000
+capture 38/46: paws-6005
+capture 39/46: paws-6009
+capture 40/46: paws-6017
+capture 41/46: paws-602
+capture 42/46: paws-6055
+capture 43/46: paws-6080
+capture 44/46: paws-6199
+capture 45/46: paws-6323
+capture 46/46: paws-6375
+completed: 46/46 selected rows; D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-004\actual\capture.json
+
+Completed PID 67792, status Succeeded, exit 0, elapsed 17.05s; result: D:\source\Sezika\.artifacts\s346-20260926\paws-final\processes\20260926-030844-782-capture-3.result.json
+Started PID 67312, timeout 45s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCompare\release\Sezika.OracleCompare.dll D:\source\Sezika\.artifacts\s346-20260926\paws-full\batch-004\reference\capture.json D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-004\actual\capture.json D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json D:\source\Sezika\.artifacts\s346-20260926\paws-plan-verified\cases-004.json D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-004\comparison.json 30
+
+Loading four bounded local JSON files; no model inference.
+compare 1/46: paws-4886
+compare 2/46: paws-4915
+compare 3/46: paws-4923
+compare 4/46: paws-4932
+compare 5/46: paws-4934
+compare 6/46: paws-4957
+compare 7/46: paws-5019
+compare 8/46: paws-5054
+compare 9/46: paws-5077
+compare 10/46: paws-5100
+compare 11/46: paws-5165
+compare 12/46: paws-5168
+compare 13/46: paws-5259
+compare 14/46: paws-5298
+compare 15/46: paws-5307
+compare 16/46: paws-5334
+compare 17/46: paws-5344
+compare 18/46: paws-5356
+compare 19/46: paws-5358
+compare 20/46: paws-5404
+compare 21/46: paws-5516
+compare 22/46: paws-5585
+compare 23/46: paws-5639
+compare 24/46: paws-565
+compare 25/46: paws-5657
+compare 26/46: paws-567
+compare 27/46: paws-5773
+compare 28/46: paws-5790
+compare 29/46: paws-5822
+compare 30/46: paws-5835
+compare 31/46: paws-5841
+compare 32/46: paws-5857
+compare 33/46: paws-5892
+compare 34/46: paws-5906
+compare 35/46: paws-5945
+compare 36/46: paws-5979
+compare 37/46: paws-6000
+compare 38/46: paws-6005
+compare 39/46: paws-6009
+compare 40/46: paws-6017
+compare 41/46: paws-602
+compare 42/46: paws-6055
+compare 43/46: paws-6080
+compare 44/46: paws-6199
+compare 45/46: paws-6323
+compare 46/46: paws-6375
+Comparison passed: 46 answered pairs, 0 failure pairs, 0 issues; coverage=46/46; full_manifest_passed=True.
+
+Completed PID 67312, status Succeeded, exit 0, elapsed 1.9s; result: D:\source\Sezika\.artifacts\s346-20260926\paws-final\processes\20260926-030901-843-compare-3.result.json
+Oracle batch 5/6, source offset 184, rows 46
+Reusing hash-bound independent reference for batch 5; no reference inference.
+Started PID 66672, timeout 495s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCapture\release\Sezika.OracleCapture.dll --reference D:\source\Sezika\.artifacts\s346-20260926\paws-full\batch-005\reference\capture.json --model D:\source\Sezika\.artifacts\models\laya-mmbert --cases D:\source\Sezika\.artifacts\s346-20260926\paws-plan-verified\cases-005.json --contract D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json --output D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-005\actual --backend cuda --length-policy laya_compatible --max-cases 46 --timeout-seconds 600
+
+Read bounded local reference inputs and frozen identities; reference numerical outputs are not deserialized.
+Loading verified local model for 46 case(s), backend=cuda, length_policy=LayaCompatible.
+capture 1/46: paws-6391
+capture 2/46: paws-6415
+capture 3/46: paws-6421
+capture 4/46: paws-6477
+capture 5/46: paws-6478
+capture 6/46: paws-6541
+capture 7/46: paws-6579
+capture 8/46: paws-658
+capture 9/46: paws-6707
+capture 10/46: paws-6715
+capture 11/46: paws-6742
+capture 12/46: paws-6788
+capture 13/46: paws-6835
+capture 14/46: paws-6839
+capture 15/46: paws-6892
+capture 16/46: paws-6920
+capture 17/46: paws-6948
+capture 18/46: paws-6968
+capture 19/46: paws-6985
+capture 20/46: paws-7030
+capture 21/46: paws-7043
+capture 22/46: paws-7081
+capture 23/46: paws-7085
+capture 24/46: paws-7098
+capture 25/46: paws-7102
+capture 26/46: paws-7103
+capture 27/46: paws-7120
+capture 28/46: paws-7137
+capture 29/46: paws-7145
+capture 30/46: paws-7187
+capture 31/46: paws-7210
+capture 32/46: paws-7227
+capture 33/46: paws-7228
+capture 34/46: paws-723
+capture 35/46: paws-7253
+capture 36/46: paws-7261
+capture 37/46: paws-731
+capture 38/46: paws-7341
+capture 39/46: paws-7413
+capture 40/46: paws-7415
+capture 41/46: paws-7483
+capture 42/46: paws-7511
+capture 43/46: paws-7540
+capture 44/46: paws-7541
+capture 45/46: paws-7619
+capture 46/46: paws-7631
+completed: 46/46 selected rows; D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-005\actual\capture.json
+
+Completed PID 66672, status Succeeded, exit 0, elapsed 17.562s; result: D:\source\Sezika\.artifacts\s346-20260926\paws-final\processes\20260926-030903-755-capture-4.result.json
+Started PID 58304, timeout 45s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCompare\release\Sezika.OracleCompare.dll D:\source\Sezika\.artifacts\s346-20260926\paws-full\batch-005\reference\capture.json D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-005\actual\capture.json D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json D:\source\Sezika\.artifacts\s346-20260926\paws-plan-verified\cases-005.json D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-005\comparison.json 30
+
+Loading four bounded local JSON files; no model inference.
+compare 1/46: paws-6391
+compare 2/46: paws-6415
+compare 3/46: paws-6421
+compare 4/46: paws-6477
+compare 5/46: paws-6478
+compare 6/46: paws-6541
+compare 7/46: paws-6579
+compare 8/46: paws-658
+compare 9/46: paws-6707
+compare 10/46: paws-6715
+compare 11/46: paws-6742
+compare 12/46: paws-6788
+compare 13/46: paws-6835
+compare 14/46: paws-6839
+compare 15/46: paws-6892
+compare 16/46: paws-6920
+compare 17/46: paws-6948
+compare 18/46: paws-6968
+compare 19/46: paws-6985
+compare 20/46: paws-7030
+compare 21/46: paws-7043
+compare 22/46: paws-7081
+compare 23/46: paws-7085
+compare 24/46: paws-7098
+compare 25/46: paws-7102
+compare 26/46: paws-7103
+compare 27/46: paws-7120
+compare 28/46: paws-7137
+compare 29/46: paws-7145
+compare 30/46: paws-7187
+compare 31/46: paws-7210
+compare 32/46: paws-7227
+compare 33/46: paws-7228
+compare 34/46: paws-723
+compare 35/46: paws-7253
+compare 36/46: paws-7261
+compare 37/46: paws-731
+compare 38/46: paws-7341
+compare 39/46: paws-7413
+compare 40/46: paws-7415
+compare 41/46: paws-7483
+compare 42/46: paws-7511
+compare 43/46: paws-7540
+compare 44/46: paws-7541
+compare 45/46: paws-7619
+compare 46/46: paws-7631
+Comparison passed: 46 answered pairs, 0 failure pairs, 0 issues; coverage=46/46; full_manifest_passed=True.
+
+Completed PID 58304, status Succeeded, exit 0, elapsed 2.945s; result: D:\source\Sezika\.artifacts\s346-20260926\paws-final\processes\20260926-030921-327-compare-4.result.json
+Oracle batch 6/6, source offset 230, rows 20
+Reusing hash-bound independent reference for batch 6; no reference inference.
+Started PID 62016, timeout 475s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCapture\release\Sezika.OracleCapture.dll --reference D:\source\Sezika\.artifacts\s346-20260926\paws-full\batch-006\reference\capture.json --model D:\source\Sezika\.artifacts\models\laya-mmbert --cases D:\source\Sezika\.artifacts\s346-20260926\paws-plan-verified\cases-006.json --contract D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json --output D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-006\actual --backend cuda --length-policy laya_compatible --max-cases 20 --timeout-seconds 600
+
+Read bounded local reference inputs and frozen identities; reference numerical outputs are not deserialized.
+Loading verified local model for 20 case(s), backend=cuda, length_policy=LayaCompatible.
+capture 1/20: paws-7633
+capture 2/20: paws-7704
+capture 3/20: paws-7707
+capture 4/20: paws-7719
+capture 5/20: paws-7731
+capture 6/20: paws-7771
+capture 7/20: paws-7777
+capture 8/20: paws-7877
+capture 9/20: paws-7893
+capture 10/20: paws-7929
+capture 11/20: paws-796
+capture 12/20: paws-7966
+capture 13/20: paws-7967
+capture 14/20: paws-7995
+capture 15/20: paws-870
+capture 16/20: paws-958
+capture 17/20: paws-964
+capture 18/20: paws-966
+capture 19/20: paws-969
+capture 20/20: paws-974
+completed: 20/20 selected rows; D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-006\actual\capture.json
+
+Completed PID 62016, status Succeeded, exit 0, elapsed 11.625s; result: D:\source\Sezika\.artifacts\s346-20260926\paws-final\processes\20260926-030924-288-capture-5.result.json
+Started PID 53156, timeout 45s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCompare\release\Sezika.OracleCompare.dll D:\source\Sezika\.artifacts\s346-20260926\paws-full\batch-006\reference\capture.json D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-006\actual\capture.json D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json D:\source\Sezika\.artifacts\s346-20260926\paws-plan-verified\cases-006.json D:\source\Sezika\.artifacts\s346-20260926\paws-final\batch-006\comparison.json 30
+
+Loading four bounded local JSON files; no model inference.
+compare 1/20: paws-7633
+compare 2/20: paws-7704
+compare 3/20: paws-7707
+compare 4/20: paws-7719
+compare 5/20: paws-7731
+compare 6/20: paws-7771
+compare 7/20: paws-7777
+compare 8/20: paws-7877
+compare 9/20: paws-7893
+compare 10/20: paws-7929
+compare 11/20: paws-796
+compare 12/20: paws-7966
+compare 13/20: paws-7967
+compare 14/20: paws-7995
+compare 15/20: paws-870
+compare 16/20: paws-958
+compare 17/20: paws-964
+compare 18/20: paws-966
+compare 19/20: paws-969
+compare 20/20: paws-974
+Comparison passed: 20 answered pairs, 0 failure pairs, 0 issues; coverage=20/20; full_manifest_passed=True.
+
+Completed PID 53156, status Succeeded, exit 0, elapsed 2.38s; result: D:\source\Sezika\.artifacts\s346-20260926\paws-final\processes\20260926-030936-011-compare-5.result.json

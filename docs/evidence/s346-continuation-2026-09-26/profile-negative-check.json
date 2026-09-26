@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "positive": "profile-cuda-short1.json",
+  "negative": "profile-cuda-deadline.json",
+  "exit_code": 2,
+  "expected_error": "decision_deadline_exceeded",
+  "error_message": "Decision evaluation exceeded its deadline.",
+  "phase": "discovery",
+  "entered": 3,
+  "completed": 2,
+  "formal_samples": 0,
+  "cleanup": [
+    {
+      "cycle": 0,
+      "status": "released",
+      "active_workspaces": 0,
+      "outstanding_workspace_bytes": 0,
+      "cuda_after_release": {
+        "total_bytes": 8585216000,
+        "free_bytes": 7411335168,
+        "owned_bytes": 0,
+        "peak_owned_bytes": 1363124292,
+        "owned_allocation_count": 0,
+        "loaded_module_count": 0,
+        "release_failure_count": 0
+      },
+      "errors": []
+    }
+  ],
+  "collection": "collected"
+}

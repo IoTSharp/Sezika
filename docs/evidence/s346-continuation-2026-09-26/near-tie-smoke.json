@@ -1,0 +1,39 @@
+{
+  "schema_version": "sezika.near-tie-observations.v1",
+  "plan_sha256": "c47fd70610b7baa2b37e95e8da43e67325519fb4d1bc455aee9089ac216bb08d",
+  "planned": 574,
+  "observed": 1,
+  "unprocessed": 573,
+  "near_ties": 0,
+  "threshold": 0.001,
+  "sources": [
+    {
+      "name": "paws-audit",
+      "planned": 250,
+      "observed": 1,
+      "status": "partial",
+      "index_sha256": "4bf1f00dbaae0c50f36d7853bbb75dd762e9d37eee5bb713af3569ea0d368a08"
+    },
+    {
+      "name": "nimble-audit",
+      "planned": 324,
+      "observed": 0,
+      "status": "unprocessed"
+    }
+  ],
+  "selected_followup": [],
+  "rows": [
+    {
+      "source": "paws-audit",
+      "ordinal": 0,
+      "id": "paws-1",
+      "primitive": "boolean",
+      "status": "answered",
+      "margin": 0.3777424097061157,
+      "near_tie": false,
+      "reference": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\paws-full\\batch-001\\reference\\capture.json",
+      "reference_sha256": "2b55f30599e809e6bd311dbc66aecd76b74791a8e5b2e41dfc6ab39758a18e73"
+    }
+  ],
+  "scope": "Offline observation of existing independent reference logits; no model run, quality selection or calibration."
+}

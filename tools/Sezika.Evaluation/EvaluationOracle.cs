@@ -10,7 +10,7 @@ internal static class EvaluationOracle
 
     private static int Bounded(string[] args, bool score)
     {
-        // The reference export remains bounded to the explicitly selected first 46 rows.
+        var batches = args.Length > 0 && args[0] is "--prepare-oracle-batches" or "--score-captures";
         if (args.Length != 7 || !int.TryParse(args[3], out var total) || total is < 1 or > 10000 ||
             !int.TryParse(args[6], out var seconds) || seconds is < 1 or > 300 ||
             args[2].Length != 64 || !args[2].All(Uri.IsHexDigit) ||
@@ -18,6 +18,7 @@ internal static class EvaluationOracle
         {
             Console.Error.WriteLine("Usage: --prepare-oracle <dataset.jsonl> <sha256> <dataset-total> <first-records:1..46> <new-manifest.json> <seconds:1..300>");
             Console.Error.WriteLine("   or: --score-capture <dataset.jsonl> <sha256> <dataset-total> <capture.json> <new-report.json> <seconds:1..300>");
+            Console.Error.WriteLine("Batch variants: --prepare-oracle-batches uses records-per-batch 1..46 and a new output directory; --score-captures uses a hash-bound capture index and a new report.");
             return 2;
         }
         using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(seconds));
@@ -46,7 +47,15 @@ internal static class EvaluationOracle
             if (EvaluationInputs.FileHash(args[1], token) != datasetHash) throw new InvalidDataException("Dataset changed while reading audit inputs.");
             var output = Path.GetFullPath(args[5]);
             Directory.CreateDirectory(Path.GetDirectoryName(output)!);
-            if (score) WriteScore(args[4], output, rows, datasetHash, total, started, watch, token);
+            if (score)
+            {
+                var report = batches ? EvaluationBatches.Score(args[4], rows, datasetHash, total, started, watch, token)
+                    : ReadScore(args[4], rows, datasetHash, total, started, watch, token);
+                if (EvaluationInputs.FileHash(args[1], token) != datasetHash) throw new InvalidDataException("Dataset changed while scoring captures.");
+                using var destination = new FileStream(output, FileMode.CreateNew, FileAccess.Write, FileShare.None);
+                JsonSerializer.Serialize(destination, report, EvaluationJsonContext.Default.EvaluationReport);
+            }
+            else if (batches) EvaluationBatches.Prepare(output, rows, datasetHash, int.Parse(args[4], CultureInfo.InvariantCulture), token);
             else WriteManifest(output, rows, datasetHash, int.Parse(args[4], CultureInfo.InvariantCulture), token);
             Console.WriteLine($"Wrote {output}; no model was executed by this command.");
             return 0;
@@ -55,7 +64,7 @@ internal static class EvaluationOracle
         finally { Console.CancelKeyPress -= cancel; }
     }
 
-    private static void WriteManifest(string output, Dictionary<string, JsonElement> rows, string datasetHash, int count, CancellationToken token)
+    internal static void WriteManifest(string output, Dictionary<string, JsonElement> rows, string datasetHash, int count, CancellationToken token, int skip = 0)
     {
         using var bytes = new MemoryStream();
         using (var writer = new Utf8JsonWriter(bytes, new JsonWriterOptions { Indented = true }))
@@ -67,7 +76,7 @@ internal static class EvaluationOracle
             writer.WriteString("dataset_sha256", datasetHash);
             writer.WriteNumber("dataset_total", rows.Count);
             writer.WriteStartArray("cases");
-            foreach (var (id, row) in rows.Take(count))
+            foreach (var (id, row) in rows.Skip(skip).Take(count))
             {
                 token.ThrowIfCancellationRequested();
                 var input = row.GetProperty("input");
@@ -96,7 +105,7 @@ internal static class EvaluationOracle
         bytes.Position = 0; bytes.CopyTo(file);
     }
 
-    private static void WriteScore(string capturePath, string output, Dictionary<string, JsonElement> source, string datasetHash,
+    internal static EvaluationReport ReadScore(string capturePath, Dictionary<string, JsonElement> source, string datasetHash,
         int total, DateTimeOffset started, Stopwatch watch, CancellationToken token)
     {
         var captureHash = EvaluationInputs.FileHash(capturePath, token);
@@ -243,10 +252,8 @@ internal static class EvaluationOracle
         report.CaptureContractSha256 = provenance.GetProperty("contract_sha256").GetString();
         report.MeasurementOrigin = "offline_scoring_of_existing_capture_not_new_inference_or_parity_proof";
         if (EvaluationInputs.FileHash(capturePath, token) != captureHash) throw new InvalidDataException("Capture changed while scoring.");
-        using var destination = new FileStream(output, FileMode.CreateNew, FileAccess.Write, FileShare.None);
-        JsonSerializer.Serialize(destination, report, EvaluationJsonContext.Default.EvaluationReport);
+        return report;
     }
 
-    private static string Language(JsonElement row) => row.TryGetProperty("language", out var language) && language.ValueKind == JsonValueKind.String
-        ? language.GetString()! : "unspecified";
+    private static string Language(JsonElement row) => EvaluationInputs.Language(row);
 }

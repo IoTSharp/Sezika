@@ -1,0 +1,50 @@
+{
+  "status": "selected_batches_complete",
+  "error": null,
+  "plan": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\paws-plan-verified\\batches.json",
+  "plan_sha256": "70d2cf600a17b2e4383fbe50824b6ef2efbb9f5e9dea9d6c612fcbebfa3cdc04",
+  "dataset_total": 250,
+  "planned_batches": 6,
+  "batch_offset": 0,
+  "completed_batches": 6,
+  "comparisons": [
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\paws-full\\batch-001\\comparison.json",
+      "sha256": "59fe1826ed84c7de27de1758afc0db306560827054aebc335b707a79d802de1a",
+      "rows": 46,
+      "passed": true
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\paws-full\\batch-002\\comparison.json",
+      "sha256": "d384b76e0d752148a63d17b846230f561752038859739a8b53baf50607a12c81",
+      "rows": 46,
+      "passed": true
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\paws-full\\batch-003\\comparison.json",
+      "sha256": "d6197c250979412bafde9499aab13683449631e50a65b475ce491fd7c3b83a0f",
+      "rows": 46,
+      "passed": true
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\paws-full\\batch-004\\comparison.json",
+      "sha256": "abc432a6c9479c4b6cc0008df679f13a7db260de9913ead7e4a8e22fde7bd164",
+      "rows": 46,
+      "passed": true
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\paws-full\\batch-005\\comparison.json",
+      "sha256": "4bf407b9c49a1ec3f78c0bf3b6606781413b1dd03375a76c9e50f31b7d7c59c9",
+      "rows": 46,
+      "passed": true
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\paws-full\\batch-006\\comparison.json",
+      "sha256": "40d4883603b29addc210b668a1d62c1754dea46d1d756bed651594e7ed6812e1",
+      "rows": 20,
+      "passed": true
+    }
+  ],
+  "elapsed_seconds": 473.4925123,
+  "timeout_seconds": 1100
+}

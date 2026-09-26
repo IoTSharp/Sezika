@@ -20,6 +20,10 @@
 
 ## 当前执行顺序与门槛
 
+2026-09-26 本轮继续实现 S3-06、S4-04、S5-06：扩展有界三后端逐层诊断至完整 18 格核心矩阵，并保留失败/未测分母；为质量参考增加按来源顺序冻结的分批清单及跨 capture 汇总，覆盖全量来源而非只取前 46 题；为性能画像增加显式逐请求期限与已完成 forward 计数。构建、自检与有界真实模型验证已获本轮授权，执行结果另行记录；这些实现不自动关闭独立层阈值、真实近并列、多语言质量或性能验收门槛。
+
+本轮全量参考扩展发现 Nimble 中段包含双换行等 added-token 边界：旧 tokenizer 未执行 added-token 切分，导致后续文本缺少上游的 metaspace 前缀。修复纳入 S3-06/S4-04 的输入对齐前置工作；先保留失败捕获、冻结独立微型 tokenizer oracle，再修复并重新捕获，禁止放宽数值容差或覆写历史通过状态。
+
 2026-09-26 已完成 S3-10 修正输入路径的 `win-x64` / Ubuntu WSL2 `linux-x64` Native AOT 长输入回归：两 RID 的 SIMD/CUDA 各捕获 46 条，38 回答 + 4 非法拒绝通过冻结合同，4 条数量合同差异保留；scalar 各验证三条 960/1024-token 长输入。两个 RID 的输入契约各通过 138 项检查，原生/托管误用门槛、程序哈希和清理证据已归档。详见[独立 AOT 报告](docs/evidence/input-aot-2026-09-26.md)；本次不新增质量或性能结论。
 
 2026-09-25 对 [Laya 0.3.20 固定源码](docs/laya-upstream-review-2026-09-25.md)的复核改变了优先级：其 `head_max_len=256` 是说明与候选的前缀预算，整条序列仍可到 `max_len=1024`；Sezika 旧实现把 256 当整条序列上限。题型前缀、候选文本/顺序和 state 序列化也不同。本轮已修正共享输入构造器，并完成固定上游 46 条真实参考捕获；各后端数值与剩余门槛按下表分别验收。旧 [PAWS/Nimble 质量报告](docs/evidence/quality-2026-09-25.md)准确记录了当时实现的结果，但不能用来判定同权重 Laya 的质量或证明应先扩展 head。上游审阅 revision 与现有固定资产的权重、tokenizer、配置内容相同，无需为这项对齐重新下载模型。
@@ -56,7 +60,7 @@
 | S3-03 | C 推理 | ✅ 已完成 | 建立逐 primitive logits、概率、legend 和 abstention 的比较契约 | S3-01,S3-02 | `PrimitiveAlignment`、4 个合成固定输入 fixture；不代表真实 Laya 推理对齐 |
 | S3-04 | C 资源 | ✅ 已完成 | 完成 session busy、micro-batch、取消、deadline、unload 和内存上限矩阵 | S3-01,S3-02 | session gate、每问题 bounded micro-batch、workspace/resident budget、取消/deadline/unload 测试证据 |
 | S3-05 | C 独立使用 | ✅ 已完成 | 提供独立模型 session 与 inspect/predict CLI，读取 JSON 并输出真实 typed decision | S3-01,S3-02,S3-04 | `DecisionModelRuntime`、CPU CLI、中英文三种问题的真实模型文件/stdin 推理、并发卸载回归和结构化错误；[运行证据](docs/standalone-cli-smoke.md)，正式发布归 S6-02 |
-| S3-06 | C 数值诊断 | 🚧 进行中 | 在输入契约修复后核对 scalar/SIMD/CUDA 的短、中、长 marker logits 与边界附近预测 | S3-09,S3-10,S5-02 | [既有真实对照](docs/evidence/laya-parity-2026-09-25.md)与[两RID AOT](docs/evidence/input-aot-2026-09-26.md)保留；新增[四条真实三后端逐层诊断](docs/evidence/s3-diagnostics-2026-09-26.md)：英文Choice61、中文Boolean384、英文Score/中文Choice各960 tokens，各SIMD/CUDA的27个checkpoint完整且输出满足冻结容差；内部层差异单列，无独立逐层阈值。真实近并列为0，全部题型×语言×长度组合及边界附近预测仍未验收 |
+| S3-06 | C 数值诊断 | 🚧 进行中 | 在输入契约修复后核对 scalar/SIMD/CUDA 的短、中、长 marker logits 与边界附近预测 | S3-09,S3-10,S5-02 | [本轮续实现](docs/evidence/s346-continuation-2026-09-26.md)：核心18组/54个三后端输出通过冻结合同，972次内部完整张量诊断；首次1740秒超时保留，再以同程序补齐5组。全量质量参考发现added-token边界缺陷，修复后267条独立tokenizer参考、137项输入契约及受影响例三后端通过。独立层张量/阈值、真实近并列及新tokenizer实现的两RID AOT仍未验收 |
 | S3-07 | C 上游审阅 | ✅ 已完成 | 固定 Laya 0.3.20 源码与同权重资产，审计输入、预算、解码及加速路径 | S1-01 | [源码审阅记录](docs/laya-upstream-review-2026-09-25.md)；只读分析，未运行上游模型 |
 | S3-08 | C 参考 oracle | ✅ 已完成 | 固定 Laya 代码/依赖与已锁定权重，离线导出三种题型的 token IDs、marker、raw logits、概率和失败语义 | S3-07 | [固定真实捕获及执行证据](docs/evidence/laya-oracle-2026-09-25.md)：46/46，42 answered、4非法拒绝，覆盖三题型×中英×短中长及顺序/边界；容差未变；[比较器负向回归](docs/evidence/oracle-comparator-2026-09-25.md)通过 |
 | S3-09 | C 输入契约 | ✅ 已完成 | 对齐题型前缀、Choice/Score/Boolean 候选渲染及顺序、state/说明序列化和 mask 文本处理 | S3-08 | [共享输入构造器](docs/input-contract-s3-09.md)与[真实数值证据](docs/evidence/laya-parity-2026-09-25.md)：38条支持范围内逐token/marker/label相同，SIMD/CUDA数值通过，4条非法拒绝一致；4条数量合同差异明确保留，不宣称全上游合同兼容 |
@@ -64,7 +68,7 @@
 | S4-01 | D 质量 | ✅ 已完成 | 提供二分类线性头示例 trainer、温度拟合与 accuracy/F1/NLL/Brier/ECE 评估器 | S3-01 | 可复现示例 trainer/metrics；该 trainer 不更新真实 marker head |
 | S4-02 | D 质量 | ✅ 已完成 | 建立许可明确、按语言/领域隔离的中英测试与校准数据集 | S4-01 | 24 条原创中英 fixture、数据卡、SHA-256 manifest、split/entity/fingerprint 隔离与有界验证脚本；fixture 不代表质量分数 |
 | S4-03 | D 质量 | ✅ 已完成 | 绑定模型/tokenizer/prompt/primitive/split 的校准 profile 并冻结门槛 | S4-02 | 12 个严格 hash 绑定 profile、冻结质量门槛和安全加载器；profile 保持 `pending_measurement`，真实质量另行验收 |
-| S4-04 | D 质量 | 🚧 进行中 | 对修正后的相同权重/输入分别运行 Laya 与 Sezika，建立可比较质量和覆盖率基线 | S3-08,S3-09,S3-10 | [2026-09-26真实CUDA质量审计](docs/evidence/quality-aligned-2026-09-26.md)：PAWS strict250/250回答、170正确；Nimble兼容324/324回答、137正确，strict306/324回答、133正确及18次forward前拒绝；独立参考仅PAWS1+Nimble45共46题与C#逐题对照通过，未代表574题全参考覆盖；补齐输入/实际token/logit身份及失败校验，中文质量与完整同条件参考仍未验收，旧报告保留 |
+| S4-04 | D 质量 | 🚧 进行中 | 对修正后的相同权重/输入分别运行 Laya 与 Sezika，建立可比较质量和覆盖率基线 | S3-08,S3-09,S3-10 | [全量独立参考与修复后复测](docs/evidence/s346-continuation-2026-09-26.md)：PAWS250+Nimble324共574条独立比较通过，双方均170/250及137/324正确，均为compatible；另12条原创中英fixture逐题通过、双方8/12正确。初轮Nimble8条token差异和超时保留，修复后同一构建全量重捕获。574条近并列观察命中0；Boolean负类召回仍1/57、外部题集语言未标注、代表性中英质量与校准未验收；旧strict报告单列 |
 | S4-05 | D 数据 | 🚧 进行中 | 审核来源许可，构建无泄漏的开发/校准/封存测试及多语言反事实流水线 | S3-07 | [来源/用途准入与split隔离工具](docs/data-isolation-s4-05.md)构建通过，5条原创样例按预期blocked/exit3、10项阻断；[最小验证](docs/evidence/s3-supporting-tools-2026-09-25.md)。真实许可复核、人工复核和封存未完成；已查看PAWS/Nimble只作审计 |
 | S4-06 | D 诊断 | ⏳ 计划中 | 在独立开发集按角色、否定、词面相似性、语言和题型做提示/顺序/阈值消融 | S4-04,S4-05 | 保存 logits margin、AUROC、负类召回与错误分类；温度/阈值仅在独立校准集拟合，不将偏置误认作已修复 |
 | S4-07 | D 训练 | ⏳ 计划中 | 用 C# 训练当前检查点的真实 scorer/两层 marker head，冻结 encoder；head 不足时另测 C# LoRA | S4-05,S4-06 | 梯度检查、种子/数据顺序、optimizer/checkpoint 恢复、许可/模型卡和 head/LoRA 消融；不以线性示例 trainer 冒充完成 |
@@ -75,7 +79,7 @@
 | S5-03 | E GPU/AOT | ✅ 已完成 | 完成 tiny CPU/CUDA win-x64 与 CPU linux-x64 Native AOT smoke | S5-01 | 发布物、运行输出、依赖图 |
 | S5-04 | E 性能 | ✅ 已完成 | 建立 scalar/SIMD/量化 CPU 与 CUDA 冷/热、H2D、kernel、端到端基准 | S2-03,S5-02 | Windows 四后端、固定模型/hash/硬件/线程、1/8/32 问各 5 样本，冷启动/重载、p50/p95/p99、吞吐/分配/RSS/显存及独立 CUDA 分项；[实测与限制](docs/s5-performance-aot.md) |
 | S5-05 | E 性能 | ✅ 已完成 | 完成真实模型 CPU/CUDA AOT、多 RID、显存/内存回收和失败诊断 | S3-04,S5-02,S5-03 | win-x64 / Ubuntu WSL2 linux-x64 四后端真实模型 AOT，预取消/执行中取消/失败恢复、两轮 unload 和对象回收；[8 份报告矩阵](docs/evidence/s5-2026-09-24/summary.json) |
-| S5-06 | E 性能画像 | 🚧 进行中 | 对现有及对齐后序列建立短/中/长、1/8/32 问 CPU/CUDA 成本画像 | S5-05 | [真实画像](docs/evidence/s5-profile-2026-09-26.md)：CUDA九格各3样本，long-32 p50为40.464秒；SIMD八格各1样本，long-8为141.973秒，long-32在discovery达到单请求300秒期限失败，9格分母保留。实际token/marker/type、阶段计时及资源均有记录；SIMD失败矩阵未执行末尾数值/对象回收检查，独立smoke单列。当前为普通.NET、小样本，CPU完整成功矩阵、稳定尾延迟与优化收益未验收 |
+| S5-06 | E 性能画像 | 🚧 进行中 | 对现有及对齐后序列建立短/中/长、1/8/32 问 CPU/CUDA 成本画像 | S5-05 | [schema v3续验证](docs/evidence/s346-continuation-2026-09-26.md)：区分进入/完成forward，3秒CUDA负例为3进入/2完成/0正式样本且回收通过；本轮SIMD long-1单样本42.183秒，估算long-32两遍超1800秒上限而未启动，CPU完整矩阵仍未验收。CUDA long-32 end_to_end单样本38.319秒，分项明确未测。此前[九格画像及CPU300秒失败](docs/evidence/s5-profile-2026-09-26.md)保留；普通.NET小样本不能证明稳定尾延迟、AOT性能或优化收益 |
 | S5-07 | E 性能实现 | ⏳ 计划中 | 在 S3/S4 数值质量门槛下逐项优化 C# CPU/CUDA 算子、工作区和有界逐题批处理 | S3-06,S4-04,S5-06 | blocked/tiled GEMM、归约/融合/launch、受限批处理逐项消融；固定质量不降、成本改善，取消/卸载与两 RID AOT 回归；共享 state 改变语义须另立模型 |
 | S6-01 | F 发布 | ✅ 已完成 | 生成带 README、许可证、NOTICE 和第三方声明的开发 NuGet 包 | S0-02 | `.artifacts/packages/Sezika.0.1.0-dev.nupkg` |
 | S6-02 | F 发布 | ⏳ 计划中 | 完成正式版本、CLI、模型卡/数据卡、签名、NuGet 发布和示例 | S4-08,S5-07 | 发布清单、签名校验、跨平台包与文档；声明实际支持的检查点与质量范围 |

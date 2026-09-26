@@ -1,0 +1,43 @@
+{
+  "Status": "Succeeded",
+  "Pid": 34512,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 3.498,
+  "TimeoutSeconds": 40,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/build/s346-final-20260926/bin/Sezika.Evaluation/release/Sezika.Evaluation.dll",
+    "--score-captures",
+    ".artifacts/s346-20260926/language-one/eval.jsonl",
+    "41320ca9e944c64afde5170b8b0afce45cb3da1bde1b9a640170de937de9aefc",
+    "1",
+    ".artifacts/s346-20260926/language-smoke/references.json",
+    ".artifacts/s346-20260926/language-smoke-references-quality.json",
+    "30"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-26T02:47:06.5993373Z",
+  "ParentPid": 37508,
+  "Launcher": {
+    "Pid": 37508,
+    "Started": "2026-09-26T10:47:05.597657+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$items = @('references','actuals'); $scoreWatch = [Diagnostics.Stopwatch]::StartNew(); for ($i=0; $i -lt 2; $i++) { if ($scoreWatch.Elapsed.TotalSeconds -gt 80) { throw 'Smoke score batch timeout.' }; $item = $items[$i]; & './tools/Invoke-BoundedProcess.ps1' -FilePath (Get-Command dotnet).Source -ArgumentList @('.artifacts/build/s346-final-20260926/bin/Sezika.Evaluation/release/Sezika.Evaluation.dll','--score-captures','.artifacts/s346-20260926/language-one/eval.jsonl','41320ca9e944c64afde5170b8b0afce45cb3da1bde1b9a640170de937de9aefc','1',\\\".artifacts/s346-20260926/language-smoke/$item.json\\\",\\\".artifacts/s346-20260926/language-smoke-$item-quality.json\\\",'30') -TimeoutSeconds 40 -LogName \\\"s4-smoke-score-$item\\\" -LogDirectory '.artifacts/s346-20260926/processes' }\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-024706-045-s4-smoke-score-references.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-024706-045-s4-smoke-score-references.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 34512,
+      "CreationDate": "2026-09-26T10:47:06.599337+08:00",
+      "Started": "2026-09-26T02:47:06.599337Z",
+      "CommandLine": null,
+      "ParentPid": 37508,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

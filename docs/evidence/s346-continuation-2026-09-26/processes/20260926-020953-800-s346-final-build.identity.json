@@ -1,0 +1,31 @@
+{
+  "Pid": 76900,
+  "Started": "2026-09-26T02:09:54.8525569Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build Sezika.slnx -c Release --artifacts-path .artifacts/build/s346-final-20260926 --nologo --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 74608,
+  "ObservedParentPid": 74608,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 74608,
+    "Started": "2026-09-26T10:09:52.520306+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& './tools/Invoke-BoundedProcess.ps1' -FilePath (Get-Command dotnet).Source -ArgumentList @('build','Sezika.slnx','-c','Release','--artifacts-path','.artifacts/build/s346-final-20260926','--nologo','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false') -TimeoutSeconds 240 -LogName 's346-final-build' -LogDirectory '.artifacts/s346-20260926/processes'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 240,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "Sezika.slnx",
+    "-c",
+    "Release",
+    "--artifacts-path",
+    ".artifacts/build/s346-final-20260926",
+    "--nologo",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

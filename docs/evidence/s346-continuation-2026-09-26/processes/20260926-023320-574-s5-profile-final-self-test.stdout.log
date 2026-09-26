@@ -1,0 +1,5 @@
+PASS: interrupted request records two entries and only one completed forward
+PASS: independent instrumentation resets forward counts
+PASS: invalid logits do not count as a completed forward
+PASS: explicit longer budget preserves default and hard upper bound
+benchmark_self_test passed: percentiles, singleton, typed request, input bounds

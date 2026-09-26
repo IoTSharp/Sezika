@@ -60,6 +60,18 @@ internal static class TraceChecks
             Check(request.Questions["q"] is Sezika.BooleanQuestion { Criteria: null } && request.LengthPolicy == Sezika.PromptLengthPolicy.LayaCompatible,
                 "expanded Boolean type maps to the production discriminator and preserves default criteria");
             Reject(() => TraceDiagnostics.Request(booleanReference with { Primitive = "choice" }), "reference primitive disagreement rejects");
+            var coverage = TraceCoverage.Build([]);
+            Check(coverage.Length == 18 && coverage.All(cell => cell.PassedBackends == 0), "empty diagnostics retain all 18 core cells");
+            var backendReport = new TraceBackendReport("scalar", "compared", null, fixture.RawLogits, fixture.Probabilities,
+                equal, [], [], 0, 1);
+            var caseReport = new TraceCaseReport("choice-en-short", "choice", 4, fixture.TokenIds!, fixture.MarkerPositions!,
+                fixture.CandidateLabels!, [backendReport, backendReport]);
+            Check(TraceCoverage.Build([caseReport]).Single(cell => cell.Id == caseReport.Id).PassedBackends == 1,
+                "duplicate backend rows cannot inflate core coverage");
+            var failedAttempt = caseReport with { Backends = [backendReport with { Status = "failed" }] };
+            var summaryCells = TraceSummary.Build([caseReport with { Backends = [backendReport] }, failedAttempt], token);
+            Check(summaryCells.Length == 54 && summaryCells.Single(cell => cell.Id == caseReport.Id && cell.Backend == "scalar") is
+                { ObservedAttempts: 2, PassedAttempts: 1, Status: "failed" }, "trace aggregation cannot hide a failed attempt behind a passing retry");
             Console.WriteLine($"Trace diagnostic checks passed: {count}; synthetic values validate diagnostics only.");
             return 0;
         }

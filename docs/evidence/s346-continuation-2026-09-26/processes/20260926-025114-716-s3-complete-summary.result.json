@@ -1,0 +1,32 @@
+{
+  "Status": "Succeeded",
+  "Pid": 71240,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 2.084,
+  "TimeoutSeconds": 40,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/build/s3-summary-20260926/bin/Sezika.NumericParity/release/Sezika.NumericParity.dll",
+    "--trace-summary",
+    "bf0d537305149672f07d34dc6b3e2d3614aeb2c26aa6d11aa7902578100c53fa",
+    "771ca781c52f1d6f9cb22859bed007ef483a54a2543c644de33f88d6e0687eee",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\trace-complete-index.json",
+    ".artifacts/s346-20260926/trace-complete-summary.json",
+    "30"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-26T02:51:15.2374798Z",
+  "ParentPid": 67096,
+  "Launcher": {
+    "Pid": 67096,
+    "Started": "2026-09-26T10:51:14.308091+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$paths = @('.artifacts/s346-20260926/trace-core18.json','.artifacts/s346-20260926/trace-remaining5.json'); $items = [Collections.Generic.List[object]]::new(); for ($i=0; $i -lt 2; $i++) { $path = [IO.Path]::GetFullPath($paths[$i]); $items.Add([ordered]@{path=$path;sha256=(Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash.ToLowerInvariant()}) }; $indexPath = [IO.Path]::GetFullPath('.artifacts/s346-20260926/trace-complete-index.json'); [IO.File]::WriteAllText($indexPath,([ordered]@{schema_version='sezika.trace-report-index.v1';reports=$items.ToArray()} | ConvertTo-Json -Depth 10),[Text.UTF8Encoding]::new($false)); & './tools/Invoke-BoundedProcess.ps1' -FilePath (Get-Command dotnet).Source -ArgumentList @('.artifacts/build/s3-summary-20260926/bin/Sezika.NumericParity/release/Sezika.NumericParity.dll','--trace-summary','bf0d537305149672f07d34dc6b3e2d3614aeb2c26aa6d11aa7902578100c53fa','771ca781c52f1d6f9cb22859bed007ef483a54a2543c644de33f88d6e0687eee',$indexPath,'.artifacts/s346-20260926/trace-complete-summary.json','30') -TimeoutSeconds 40 -LogName 's3-complete-summary' -LogDirectory '.artifacts/s346-20260926/processes'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-025114-716-s3-complete-summary.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-025114-716-s3-complete-summary.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

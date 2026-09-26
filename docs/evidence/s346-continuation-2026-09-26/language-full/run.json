@@ -1,0 +1,26 @@
+{
+  "status": "selected_batches_complete",
+  "error": null,
+  "plan": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\language-plan\\batches.json",
+  "plan_sha256": "c74ba2aa55a8b3fbd4a06e2874ff1f898dbf797872786112449f194727f387a9",
+  "dataset_total": 12,
+  "planned_batches": 2,
+  "batch_offset": 0,
+  "completed_batches": 2,
+  "comparisons": [
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\language-full\\batch-001\\comparison.json",
+      "sha256": "2159217c8966a04515cfca47de5cc891abea22e7447ec0f4edee3cfa68d3459c",
+      "rows": 6,
+      "passed": true
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\language-full\\batch-002\\comparison.json",
+      "sha256": "7e1579f5be94099246eb96c911b605d984e6e5a2e4bbaa001985b5efeaeb41e0",
+      "rows": 6,
+      "passed": true
+    }
+  ],
+  "elapsed_seconds": 64.2448285,
+  "timeout_seconds": 480
+}

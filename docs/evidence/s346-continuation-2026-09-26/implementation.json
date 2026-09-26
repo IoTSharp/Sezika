@@ -1,0 +1,114 @@
+{
+  "base_commit": "236e6a18841eec5836b202daa3456db24e72df57",
+  "captured_utc": "2026-09-26T03:27:19.6864192Z",
+  "sdk": "10.0.400",
+  "runtime": "10.0.11",
+  "powershell": "7.6.6",
+  "source_files": [
+    {
+      "path": "datasets/s4-04/language-audit-v1/eval.jsonl",
+      "sha256": "0aab426dbf4d69653527d402158693e10214c52a83a586728cd6247ea1e023f7"
+    },
+    {
+      "path": "datasets/s4-04/language-audit-v1/manifest.json",
+      "sha256": "6d4490f5618c4f0783f00ce47e6813a467fca9df7dcee7728c6390b8d7752056"
+    },
+    {
+      "path": "src/Sezika/DecisionMath.cs",
+      "sha256": "b1e705e208ac0ddd3debfce2b8407ed8f011b62baeda1ad692e0500296aff051"
+    },
+    {
+      "path": "src/Sezika/TokenizerJson.cs",
+      "sha256": "2a6e193ff3b00b69c79f8b6b04a1b3427c92b5088b8a3fdbffe3ae0cabd2b60e"
+    },
+    {
+      "path": "tests/fixtures/laya-oracle/quality-near-tie-plan.v1.json",
+      "sha256": "c47fd70610b7baa2b37e95e8da43e67325519fb4d1bc455aee9089ac216bb08d"
+    },
+    {
+      "path": "tests/fixtures/tokenizer-mmbert-boundaries.v1.json",
+      "sha256": "97616e7dd2c57245386f9c9f17fc5763709cc02f926b009dbdc3e63b9e77c932"
+    },
+    {
+      "path": "tests/Sezika.Tests/Program.cs",
+      "sha256": "0afc41ec07a38e6f66f8a021aa47464167ce4b5c172ea49ac88dba518ecab36e"
+    },
+    {
+      "path": "tools/Invoke-BoundedProcess.ps1",
+      "sha256": "a9196c038f8b146d082c2d5d6b8c651ad51df1b83398ea70c461486b569b018b"
+    },
+    {
+      "path": "tools/Sezika.Benchmarks/PerformanceProfile.cs",
+      "sha256": "2a03c8aedb284e824462db35a82e42834e773561f593acaeb7106ddd7d7f2028"
+    },
+    {
+      "path": "tools/Sezika.Benchmarks/ProfileChecks.cs",
+      "sha256": "9208174ed89898c4c0d38eb503fe47838fe9bc40eb793301f6910fd68dabb03c"
+    },
+    {
+      "path": "tools/Sezika.Benchmarks/Program.cs",
+      "sha256": "457c60145f2d1b92318d5a4cfe8868535f4d0e670d4ef075c4f4df21f6b5df5f"
+    },
+    {
+      "path": "tools/Sezika.Benchmarks/Report.cs",
+      "sha256": "08717fe51bad29072b4d42edb66830c97c6d3921adace865f30c26fdb6d2cf16"
+    },
+    {
+      "path": "tools/Sezika.Evaluation/EvaluationBatches.cs",
+      "sha256": "43ef358d84270d6d538ac6dceb36ab338983fe29bef44747f264426ff629f389"
+    },
+    {
+      "path": "tools/Sezika.Evaluation/EvaluationChecks.cs",
+      "sha256": "8313c186299f69eef24ac54311570d8653200a88d394101b09895e9fe7a053fb"
+    },
+    {
+      "path": "tools/Sezika.Evaluation/EvaluationInputs.cs",
+      "sha256": "c4bde0900e7e7825854f44325e997b5d160192907b08c503cd60843ad405e95a"
+    },
+    {
+      "path": "tools/Sezika.Evaluation/EvaluationOracle.cs",
+      "sha256": "33e43650b934940188d98a3d2902b5cd64de09bba1cebebdc70159abcfa09f75"
+    },
+    {
+      "path": "tools/Sezika.Evaluation/Invoke-OracleBatches.ps1",
+      "sha256": "1392f61ec83b79a874a2cdd2bb40afb4ac938ecffa80377002bf4848de735652"
+    },
+    {
+      "path": "tools/Sezika.Evaluation/Prepare-LanguageAudit.ps1",
+      "sha256": "361b04b4dc70be777663a697cf8adc6264188c26c3aeb526bff4af229ca49d81"
+    },
+    {
+      "path": "tools/Sezika.Evaluation/Program.cs",
+      "sha256": "6b34c86b8e5394230e6cafe547c026fd6f57f3cbbc22b1f76b5f91a4c7e52cc3"
+    },
+    {
+      "path": "tools/Sezika.LayaOracle/export_tokenizer_boundaries.py",
+      "sha256": "8aa02c0a2ebf9b4291484581c5bebf8a124ee96c3876bfd672b72259c8ac7cd0"
+    },
+    {
+      "path": "tools/Sezika.LayaOracle/Invoke-LayaOracle.ps1",
+      "sha256": "d2804195e26e5a9337631a46efe2a162dc4cb4c89a29550136ae8b80cb6e3688"
+    },
+    {
+      "path": "tools/Sezika.NumericParity/Observe-QualityNearTies.ps1",
+      "sha256": "8b6f2801dd3aa37ce24b1d2e0591595aa673c3c1e9b4ff5a325efc34cdf3e104"
+    },
+    {
+      "path": "tools/Sezika.NumericParity/TraceChecks.cs",
+      "sha256": "4f23624ca2ad0a4fa39ecbd28a4de1e9b1115599813d7b6d6d0f9d00ee208b03"
+    },
+    {
+      "path": "tools/Sezika.NumericParity/TraceContracts.cs",
+      "sha256": "c102dfa3e2f9fe882d970e07d37c712dcb1a65e83768861da0dbb9767c5e655b"
+    },
+    {
+      "path": "tools/Sezika.NumericParity/TraceDiagnostics.cs",
+      "sha256": "f675ab4f1db2ffafcf47c021a0c8129399815f6254bbe9d61c1c355c76fbad64"
+    },
+    {
+      "path": "tools/Sezika.NumericParity/TraceSummary.cs",
+      "sha256": "bb7a3636fdc13359c3aae4da353277dac262737d2c30ec4df7bbf95e5fd73795"
+    }
+  ],
+  "scope": "Working-tree implementation identity; no commit, publish or model update. Real reports separately bind the executing binaries."
+}

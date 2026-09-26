@@ -1,12 +1,22 @@
 # S5-06：短、中、长输入性能画像工具准备
 
+本轮schema v3的[真实续验证](evidence/s346-continuation-2026-09-26.md)已完成四项正例及受控CUDA截止负例：long-32 end_to_end单样本38.319秒，独立分项未测；CPU long-1为42.183秒，long-32两遍估算超总预算而未启动。3进入/2完成/0正式样本及失败释放路径均有真实证据。下述旧矩阵结果继续按原构建身份保存。
+
 状态：2026-09-25 已实现工具代码并迁移到 S3-09/10 共用的 `PromptSequenceBuilder`，画像报告升级至 schema v2。2026-09-26 已完成真实 CUDA 九行 × 三正式样本；SIMD 九行尝试中八行各测得一个正式样本，long-32 在 discovery 触发既有单请求 300 秒期限，完整失败报告已保留。见 [CPU/CUDA 实测与输入预检证据](evidence/s5-profile-2026-09-26.md)。本页说明采集口径；整体阶段状态以执行证据及 [ROADMAP](../ROADMAP.md) 为准，不能将 SIMD 矩阵写成全部通过。token 预检和真实 encoder/head 测量分别记录。
 
-入口为 [Sezika.Benchmarks](../tools/Sezika.Benchmarks/README.md) 的 `--mode profile`，默认 `benchmark` 保留 S5-04/S5-05 短请求路径。后端仍为 scalar、SIMD、W8A32、CUDA，模型由既有 loader 检查固定版本和权重/tokenizer hash。报告位于 source-generated `BenchmarkReport.profile`，画像 schema v2；旧基准字段保持独立。
+入口为 [Sezika.Benchmarks](../tools/Sezika.Benchmarks/README.md) 的 `--mode profile`，默认 `benchmark` 保留 S5-04/S5-05 短请求路径。后端仍为 scalar、SIMD、W8A32、CUDA，模型由既有 loader 检查固定版本和权重/tokenizer hash。报告位于 source-generated `BenchmarkReport.profile`，当前画像 schema v3（原报告为 v2）；旧基准字段保持独立。
 
 报告的 `code_artifacts` 绑定实际进程可执行文件；普通 .NET 模式还在加载模型前对输出目录中三个固定应用程序集（`Sezika.Benchmarks.dll`、`Sezika.dll`、`Sezika.Cuda.dll`）记录路径和 SHA-256。任何程序集缺失即在身份阶段失败，避免仅保存 dotnet host/apphost 的哈希却无法识别真实实现。Native AOT 用原生可执行文件哈希标识代码，保持模型和 tokenizer 独立身份。
 
 ## 固定输入与渲染身份
+
+2026-09-26 续实现的画像 schema v3 新增 `discovery_completed_forwards`、`instrumented_entered_forwards` 和 `instrumented_completed_forwards`。进入 pipeline 后，只有后端返回有限且形状正确的 marker logits 才增加 completed；中断中的一次调用不计完成，部分完成也不算整请求或正式样本。
+
+`--profile-detail` 默认 `full`，保留独立分项采样；显式 `end_to_end` 用于将很慢的 CPU 长请求限定在输入 discovery 和正式 E2E 采样的窗口，分项状态写为 `not_requested_end_to_end_detail`，`cases_with_stage_timings` 为 0。数值 smoke、取消/恢复和资源检查仍执行。报告中的成功覆盖率只针对显式选定的测量范围，不能将 E2E 模式当作完整分项画像，或把另一行的分项时长填入本行。
+
+画像专用参数 `--request-deadline-seconds 1..1800` 可显式设置每个多题请求的期限，默认仍为 300 秒；工具总期限仍最多 1800 秒，两者共同约束。核心 `DecisionResourceBudget` 的显式上限相应扩展为 30 分钟，核心默认 30 秒及 CLI 的 300 秒参数上限保持原值。较长预算能用于测量慢请求，本身不构成性能优化，也不能满足旧 300 秒预算。新旧测量须按实际预算分别解释。
+
+成功及失败路径均在释放后记录 `cleanup`：CPU workspace、CUDA owned allocations/modules/release failures、单独的清理异常。`collection_status` 区分未测、回收成功和失败；通过弱引用观察本次确实加载的模型对象。原始推理错误不会被清理观测覆盖，取消后不会继续运行数值 smoke 或恢复诊断。进程被外层强制终止时，仍以 runner 的进程清理证据为准。
 
 输入集 `sezika.performance-inputs.v1` 使用 state 文本 `The device is ready.`，以单个空格连接；short/medium/long 分别重复 4/20/100 次。每个长度选择 1、8、32 问，共最多九行，每题两个候选，按 Choice/Score/Boolean 循环，说明为 `type`、候选为 `yes`/`no`。单题预设从 Choice 开始；只有 8/32 问行同时包含三种 primitive。所有问题依旧逐题独立 forward，不称作并行 GPU batch。
 
@@ -16,7 +26,7 @@
 
 预渲染使用核心 `PromptSequenceBuilder` 的 `laya_compatible` 策略，计算拟保留的 tokens、候选顺序和完整截断诊断；这次准备不执行 encoder，也不修改真实请求。每行 `runtime_prefix_token_budget` 记录模型 prefix 内容预算 256；`runtime_sequence_limit=min(default limit, encoder max)` 记录完整序列上限 1024。prefix 的 BOS/EOS 等固定开销不包含在 256 内容预算中，不能将完整序列与 256 比较。`original_total_tokens` 记录所有片段都未截断时的原始长度，`rendered_total_tokens` 记录兼容方案拟保留长度，`proposed_truncation` 标明是否有 token 丢失。
 
-真实请求仍使用其 `length_policy`，当前固定输入默认 `strict`。只要兼容方案需要截断，strict runtime 必须拒绝；工具保留发现请求的真实拒绝。将来显式兼容请求可以执行拟保留序列，但必须连同截断诊断报告，不能把原始长度冒充实际推理长度。顶层 `request_token_budget=32768` 与 `request_deadline_seconds=300` 来自实际创建的 session budget；工具总取消期限不会延长这个逐请求期限，长输入多题行可能在 token 合法时仍触发真实请求超时。
+真实请求仍使用其 `length_policy`，当前固定输入默认 `strict`。只要兼容方案需要截断，strict runtime 必须拒绝；工具保留发现请求的真实拒绝。将来显式兼容请求可以执行拟保留序列，但必须连同截断诊断报告，不能把原始长度冒充实际推理长度。顶层 `request_token_budget=32768` 与 `request_deadline_seconds` 来自实际创建的 session budget（期限默认 300 秒，可显式配置）；工具总取消期限不会延长这个逐请求期限，长输入多题行可能在 token 合法时仍触发真实请求超时。
 
 ## 真实输入核对和失败
 

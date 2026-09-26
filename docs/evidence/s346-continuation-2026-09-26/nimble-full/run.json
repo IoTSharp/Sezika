@@ -1,0 +1,50 @@
+{
+  "status": "incomplete",
+  "error": "Process timeout (126s).",
+  "plan": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-plan\\batches.json",
+  "plan_sha256": "545797418712d6cd853127d16069bd2fad7d595b7b0c8619b34b2a12ba995bcc",
+  "dataset_total": 324,
+  "planned_batches": 8,
+  "batch_offset": 0,
+  "completed_batches": 6,
+  "comparisons": [
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-full\\batch-001\\comparison.json",
+      "sha256": "b666417d50eaa0770a97a3ccb144c66d96f79db09034c0c29b34f1a856213398",
+      "rows": 46,
+      "passed": true
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-full\\batch-002\\comparison.json",
+      "sha256": "e6d2a2d46dc627aa33ba91e77c0624a7047a682e5b98194383914d2b1b3d71a4",
+      "rows": 46,
+      "passed": false
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-full\\batch-003\\comparison.json",
+      "sha256": "d7083ef9475dbc7ec49e1cbde7e653e946944a2f54965ca6ab9bc4ae491b8216",
+      "rows": 46,
+      "passed": true
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-full\\batch-004\\comparison.json",
+      "sha256": "957c05cbce8ec826e11969346c46b0a8e8ff92a8b2bfa570647b9e1d404e3e9a",
+      "rows": 46,
+      "passed": true
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-full\\batch-005\\comparison.json",
+      "sha256": "f5a0973fb3480b39741219aaead727efa414074b02c3140909b88b8356689ca9",
+      "rows": 46,
+      "passed": false
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-full\\batch-006\\comparison.json",
+      "sha256": "1956a450ab4ef984eb9eec0e3c083bf83e83c535a60cc1f791ba86ccbaeaa898",
+      "rows": 46,
+      "passed": true
+    }
+  ],
+  "elapsed_seconds": 1718.0963601,
+  "timeout_seconds": 1740
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": "sezika.oracle-comparison.v1",
+  "started_utc": "2026-09-26T02:40:26.3023781+00:00",
+  "reference_sha256": "8fa051acee7b6fbbc6c18f933c4b51720ca4f7c8c9fecdc036d8900e332aa07f",
+  "actual_sha256": "33eac0cfc4e137868e707b242be843f7caa6e811f5ca60ca348950b38ffb1cfa",
+  "contract_sha256": "771ca781c52f1d6f9cb22859bed007ef483a54a2543c644de33f88d6e0687eee",
+  "cases_sha256": "aeb5b743ae010ddd5df64f2d2310e398ed0402da0afabe304a63ca8056f0a558",
+  "identity": {
+    "model_id": "convaiinnovations/laya-multilingual",
+    "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+    "weights_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+    "tokenizer_sha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+    "upstream_source_revision": "4066d5d5fbf08b66c6757ddeedbd797bd7655bc0",
+    "cases_sha256": "aeb5b743ae010ddd5df64f2d2310e398ed0402da0afabe304a63ca8056f0a558",
+    "contract_sha256": "771ca781c52f1d6f9cb22859bed007ef483a54a2543c644de33f88d6e0687eee",
+    "max_len": 1024,
+    "head_max_len": 256,
+    "temperature_policy": "checkpoint_fixed_1_no_overrides"
+  },
+  "tolerances": {
+    "raw_logits": {
+      "absolute": 0.0005,
+      "relative": 0.0001
+    },
+    "probabilities": {
+      "absolute": 0.0001,
+      "relative": 0.0001
+    },
+    "score": {
+      "absolute": 0.001,
+      "relative": 0.0001
+    },
+    "near_tie_logit_margin": 0.001
+  },
+  "manifest_count": 1,
+  "selected_case_ids": [
+    "en-general-test-001"
+  ],
+  "missing_case_ids": [],
+  "input_coverage": 1,
+  "complete_input_coverage": true,
+  "reference_count": 1,
+  "actual_count": 1,
+  "reference_measurement_status": "complete",
+  "actual_measurement_status": "completed",
+  "selection_mode": "all_captured_cases",
+  "requested_case_ids": null,
+  "excluded_reference_case_ids": [],
+  "excluded_actual_case_ids": [],
+  "compared_count": 1,
+  "answered_pairs": 1,
+  "failure_pairs": 0,
+  "near_tie_cases": 0,
+  "max_logit_error": 1.430511474609375E-06,
+  "max_probability_error": 4.4262347898005316E-07,
+  "passed": true,
+  "full_manifest_passed": true,
+  "issues": [],
+  "elapsed_milliseconds": 72.6965,
+  "scope": "Offline comparison of the explicitly reported selection only. Original complete file hashes and row counts remain bound to the report. A selected-subset pass is not a full-manifest pass. No inference, dataset quality, Native AOT or performance acceptance. Near ties never waive prediction mismatch. Failed pairs do not establish numerical parity."
+}

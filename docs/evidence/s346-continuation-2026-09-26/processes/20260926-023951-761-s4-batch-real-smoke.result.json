@@ -1,0 +1,108 @@
+{
+  "Status": "Succeeded",
+  "Pid": 79148,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 36.742,
+  "TimeoutSeconds": 280,
+  "FilePath": "C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.6.0_x64__8wekyb3d8bbwe\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "tools/Sezika.Evaluation/Invoke-OracleBatches.ps1",
+    "-PlanPath",
+    ".artifacts/s346-20260926/language-one-plan/batches.json",
+    "-PythonPath",
+    ".artifacts/laya-oracle-work/venv/Scripts/python.exe",
+    "-UpstreamDirectory",
+    ".artifacts/laya-oracle-work/upstream",
+    "-ModelDirectory",
+    ".artifacts/models/laya-mmbert",
+    "-BuildDirectory",
+    ".artifacts/build/s346-final-20260926/bin",
+    "-OutputDirectory",
+    ".artifacts/s346-20260926/language-smoke",
+    "-MaxBatches",
+    "1",
+    "-TimeoutSeconds",
+    "240"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-26T02:39:52.3209985Z",
+  "ParentPid": 52396,
+  "Launcher": {
+    "Pid": 52396,
+    "Started": "2026-09-26T10:39:51.373769+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& './tools/Invoke-BoundedProcess.ps1' -FilePath (Get-Command pwsh).Source -ArgumentList @('-NoProfile','-File','tools/Sezika.Evaluation/Invoke-OracleBatches.ps1','-PlanPath','.artifacts/s346-20260926/language-one-plan/batches.json','-PythonPath','.artifacts/laya-oracle-work/venv/Scripts/python.exe','-UpstreamDirectory','.artifacts/laya-oracle-work/upstream','-ModelDirectory','.artifacts/models/laya-mmbert','-BuildDirectory','.artifacts/build/s346-final-20260926/bin','-OutputDirectory','.artifacts/s346-20260926/language-smoke','-MaxBatches','1','-TimeoutSeconds','240') -TimeoutSeconds 280 -LogName 's4-batch-real-smoke' -LogDirectory '.artifacts/s346-20260926/processes'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-023951-761-s4-batch-real-smoke.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\processes\\20260926-023951-761-s4-batch-real-smoke.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 79148,
+      "CreationDate": "2026-09-26T10:39:52.320998+08:00",
+      "Started": "2026-09-26T02:39:52.320998Z",
+      "CommandLine": "\"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.6.0_x64__8wekyb3d8bbwe\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Invoke-OracleBatches.ps1 -PlanPath .artifacts/s346-20260926/language-one-plan/batches.json -PythonPath .artifacts/laya-oracle-work/venv/Scripts/python.exe -UpstreamDirectory .artifacts/laya-oracle-work/upstream -ModelDirectory .artifacts/models/laya-mmbert -BuildDirectory .artifacts/build/s346-final-20260926/bin -OutputDirectory .artifacts/s346-20260926/language-smoke -MaxBatches 1 -TimeoutSeconds 240",
+      "ParentPid": 52396,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 8108,
+      "CreationDate": "2026-09-26T10:39:53.732142+08:00",
+      "Started": "2026-09-26T02:39:53.732142Z",
+      "CommandLine": "\"D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\venv\\Scripts\\python.exe\" -B D:\\source\\Sezika\\tools\\Sezika.LayaOracle\\export_oracle.py --upstream D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\upstream --model D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert --output D:\\source\\Sezika\\.artifacts\\s346-20260926\\language-smoke\\batch-001\\reference --cases D:\\source\\Sezika\\.artifacts\\s346-20260926\\language-one-plan\\cases-001.json --contract D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json --max-cases 1 --timeout-seconds 600",
+      "ParentPid": 79148,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 17180,
+      "CreationDate": "2026-09-26T10:40:20.221184+08:00",
+      "Started": "2026-09-26T02:40:20.221184Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" D:\\source\\Sezika\\.artifacts\\build\\s346-final-20260926\\bin\\Sezika.OracleCapture\\release\\Sezika.OracleCapture.dll --reference D:\\source\\Sezika\\.artifacts\\s346-20260926\\language-smoke\\batch-001\\reference\\capture.json --model D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert --cases D:\\source\\Sezika\\.artifacts\\s346-20260926\\language-one-plan\\cases-001.json --contract D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json --output D:\\source\\Sezika\\.artifacts\\s346-20260926\\language-smoke\\batch-001\\actual --backend cuda --length-policy laya_compatible --max-cases 1 --timeout-seconds 600",
+      "ParentPid": 79148,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 75400,
+      "CreationDate": "2026-09-26T10:39:52.329945+08:00",
+      "Started": "2026-09-26T02:39:52.329945Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 79148,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 44528,
+      "CreationDate": "2026-09-26T10:39:53.840829+08:00",
+      "Started": "2026-09-26T02:39:53.840829Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 8108,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 61956,
+      "CreationDate": "2026-09-26T10:40:20.272338+08:00",
+      "Started": "2026-09-26T02:40:20.272338Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 17180,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 75084,
+      "CreationDate": "2026-09-26T10:39:53.868113+08:00",
+      "Started": "2026-09-26T02:39:53.868113Z",
+      "CommandLine": "\"D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\python\\cpython-3.12.10-windows-x86_64-none\\python.exe\" -B D:\\source\\Sezika\\tools\\Sezika.LayaOracle\\export_oracle.py --upstream D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\upstream --model D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert --output D:\\source\\Sezika\\.artifacts\\s346-20260926\\language-smoke\\batch-001\\reference --cases D:\\source\\Sezika\\.artifacts\\s346-20260926\\language-one-plan\\cases-001.json --contract D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json --max-cases 1 --timeout-seconds 600",
+      "ParentPid": 8108,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

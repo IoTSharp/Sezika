@@ -1,0 +1,39 @@
+{
+  "Pid": 61688,
+  "Started": "2026-09-26T02:58:39.0171683Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" D:\\source\\Sezika\\.artifacts\\build\\s346-final-20260926\\bin\\Sezika.OracleCapture\\release\\Sezika.OracleCapture.dll --reference D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-full\\batch-002\\reference\\capture.json --model D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert --cases D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-plan\\cases-002.json --contract D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json --output D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-full\\batch-002\\actual --backend cuda --length-policy laya_compatible --max-cases 46 --timeout-seconds 600",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 37520,
+  "ObservedParentPid": 37520,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 37520,
+    "Started": "2026-09-26T10:50:12.289111+08:00",
+    "CommandLine": "\"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.6.0_x64__8wekyb3d8bbwe\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Invoke-OracleBatches.ps1 -PlanPath .artifacts/s346-20260926/nimble-plan/batches.json -PythonPath .artifacts/laya-oracle-work/venv/Scripts/python.exe -UpstreamDirectory .artifacts/laya-oracle-work/upstream -ModelDirectory .artifacts/models/laya-mmbert -BuildDirectory .artifacts/build/s346-final-20260926/bin -OutputDirectory .artifacts/s346-20260926/nimble-full -MaxBatches 8 -TimeoutSeconds 1740",
+    "ParentPid": 61684
+  },
+  "TimeoutSeconds": 620,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\.artifacts\\build\\s346-final-20260926\\bin\\Sezika.OracleCapture\\release\\Sezika.OracleCapture.dll",
+    "--reference",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-full\\batch-002\\reference\\capture.json",
+    "--model",
+    "D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert",
+    "--cases",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-plan\\cases-002.json",
+    "--contract",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json",
+    "--output",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-full\\batch-002\\actual",
+    "--backend",
+    "cuda",
+    "--length-policy",
+    "laya_compatible",
+    "--max-cases",
+    "46",
+    "--timeout-seconds",
+    "600"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

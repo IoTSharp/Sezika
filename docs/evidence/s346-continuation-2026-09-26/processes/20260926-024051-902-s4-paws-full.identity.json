@@ -1,0 +1,39 @@
+{
+  "Pid": 76224,
+  "Started": "2026-09-26T02:40:52.3851186Z",
+  "CommandLine": "\"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.6.0_x64__8wekyb3d8bbwe\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Invoke-OracleBatches.ps1 -PlanPath .artifacts/s346-20260926/paws-plan-verified/batches.json -PythonPath .artifacts/laya-oracle-work/venv/Scripts/python.exe -UpstreamDirectory .artifacts/laya-oracle-work/upstream -ModelDirectory .artifacts/models/laya-mmbert -BuildDirectory .artifacts/build/s346-final-20260926/bin -OutputDirectory .artifacts/s346-20260926/paws-full -MaxBatches 6 -TimeoutSeconds 1100",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 12644,
+  "ObservedParentPid": 12644,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 12644,
+    "Started": "2026-09-26T10:40:51.472793+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& './tools/Invoke-BoundedProcess.ps1' -FilePath (Get-Command pwsh).Source -ArgumentList @('-NoProfile','-File','tools/Sezika.Evaluation/Invoke-OracleBatches.ps1','-PlanPath','.artifacts/s346-20260926/paws-plan-verified/batches.json','-PythonPath','.artifacts/laya-oracle-work/venv/Scripts/python.exe','-UpstreamDirectory','.artifacts/laya-oracle-work/upstream','-ModelDirectory','.artifacts/models/laya-mmbert','-BuildDirectory','.artifacts/build/s346-final-20260926/bin','-OutputDirectory','.artifacts/s346-20260926/paws-full','-MaxBatches','6','-TimeoutSeconds','1100') -TimeoutSeconds 1140 -LogName 's4-paws-full' -LogDirectory '.artifacts/s346-20260926/processes'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 1140,
+  "FilePath": "C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.6.0_x64__8wekyb3d8bbwe\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "tools/Sezika.Evaluation/Invoke-OracleBatches.ps1",
+    "-PlanPath",
+    ".artifacts/s346-20260926/paws-plan-verified/batches.json",
+    "-PythonPath",
+    ".artifacts/laya-oracle-work/venv/Scripts/python.exe",
+    "-UpstreamDirectory",
+    ".artifacts/laya-oracle-work/upstream",
+    "-ModelDirectory",
+    ".artifacts/models/laya-mmbert",
+    "-BuildDirectory",
+    ".artifacts/build/s346-final-20260926/bin",
+    "-OutputDirectory",
+    ".artifacts/s346-20260926/paws-full",
+    "-MaxBatches",
+    "6",
+    "-TimeoutSeconds",
+    "1100"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

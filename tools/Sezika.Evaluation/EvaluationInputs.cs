@@ -9,6 +9,14 @@ internal static class EvaluationInputs
     public const int MaxDatasetBytes = 64 * 1024 * 1024;
     public const string RenderingVersion = "sezika.prompt.laya-4066d5d5.v2";
 
+    public static string Language(JsonElement row)
+    {
+        if (!row.TryGetProperty("language", out var language)) return "unspecified";
+        if (language.ValueKind != JsonValueKind.String || string.IsNullOrWhiteSpace(language.GetString()) || language.GetString()!.Length > 80)
+            throw new InvalidDataException("Invalid explicit language metadata.");
+        return language.GetString()!;
+    }
+
     public static DecisionRequest Request(JsonElement input, string modelId, PromptLengthPolicy policy)
     {
         var questions = input.GetProperty("questions");

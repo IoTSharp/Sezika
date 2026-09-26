@@ -11,17 +11,18 @@ internal static class TraceDiagnostics
     public static int Run(string[] args)
     {
         if (args is ["--trace-self-test"]) return TraceChecks.Run();
+        if (args.Length > 0 && args[0] == "--trace-summary") return TraceSummary.Run(args);
         if (args.Length != 10 || args[0] != "--trace-oracle" ||
             !int.TryParse(args[7], CultureInfo.InvariantCulture, out var seconds) || seconds is < 1 or > 1800 ||
             !IsSha(args[8]) || !IsSha(args[9]))
         {
-            Console.Error.WriteLine("Usage: --trace-oracle <model-dir> <reference.json> <contract.json> <output.json> <1..3 case-ids CSV> <scalar,simd,cuda> <1..1800 seconds> <reference-sha256> <contract-sha256>; or --trace-self-test");
+            Console.Error.WriteLine("Usage: --trace-oracle <model-dir> <reference.json> <contract.json> <output.json> <1..18 case-ids CSV> <scalar,simd,cuda> <1..1800 seconds> <reference-sha256> <contract-sha256>; or --trace-self-test");
             return 2;
         }
         var ids = args[5].Split(',');
-        if (ids.Length is < 1 or > 3 || ids.Any(string.IsNullOrWhiteSpace) || ids.Distinct(StringComparer.Ordinal).Count() != ids.Length || args[6] != "scalar,simd,cuda")
+        if (ids.Length is < 1 or > 18 || ids.Any(string.IsNullOrWhiteSpace) || ids.Distinct(StringComparer.Ordinal).Count() != ids.Length || args[6] != "scalar,simd,cuda")
         {
-            Console.Error.WriteLine("Select 1..3 distinct case IDs and all three backends in scalar,simd,cuda order.");
+            Console.Error.WriteLine("Select 1..18 distinct case IDs and all three backends in scalar,simd,cuda order.");
             return 2;
         }
         using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(seconds));
@@ -42,39 +43,54 @@ internal static class TraceDiagnostics
             ValidateReference(reference, args[9]);
             var selected = ids.Select(id => reference.Cases.SingleOrDefault(row => row.Id == id)
                 ?? throw new InvalidDataException($"Case ID not found: {id}.")).ToArray();
+            // Preflight the whole selection before loading any weights; do not lose its denominator.
+            foreach (var source in selected) { token.ThrowIfCancellationRequested(); ValidateAnswered(source); _ = Request(source); }
+            var binaryHashes = BinaryHashes(token);
             var rows = new List<TraceCaseReport>();
-            for (var index = 0; index < selected.Length; index++)
+            string? executionError = null;
+            try
             {
-                token.ThrowIfCancellationRequested();
-                var source = selected[index];
-                ValidateAnswered(source);
-                var request = Request(source);
-                var snapshots = new Dictionary<string, float[]>(StringComparer.Ordinal);
-                var backends = new List<TraceBackendReport>();
-                Console.WriteLine($"trace case {index + 1}/{selected.Length}: {source.Id}");
-                foreach (var backend in new[] { "scalar", "simd", "cuda" })
+                for (var index = 0; index < selected.Length; index++)
                 {
                     token.ThrowIfCancellationRequested();
-                    Console.WriteLine($"trace backend {backend}: {source.Id}, elapsed {watch.Elapsed.TotalSeconds:F1}/{seconds}s");
-                    backends.Add(RunBackend(args[1], backend, source, request, tolerances, snapshots, token));
+                    var source = selected[index];
+                    ValidateAnswered(source);
+                    var request = Request(source);
+                    var snapshots = new Dictionary<string, float[]>(StringComparer.Ordinal);
+                    var backends = new List<TraceBackendReport>();
+                    rows.Add(new(source.Id, source.Primitive, source.TokenIds!.Length, source.TokenIds,
+                        source.MarkerPositions!, source.CandidateLabels!, backends));
+                    Console.WriteLine($"trace case {index + 1}/{selected.Length}: {source.Id}");
+                    foreach (var backend in new[] { "scalar", "simd", "cuda" })
+                    {
+                        token.ThrowIfCancellationRequested();
+                        Console.WriteLine($"trace backend {backend}: {source.Id}, elapsed {watch.Elapsed.TotalSeconds:F1}/{seconds}s");
+                        backends.Add(RunBackend(args[1], backend, source, request, tolerances, snapshots, token));
+                    }
+                    snapshots.Clear();
                 }
-                rows.Add(new(source.Id, source.Primitive, source.TokenIds!.Length, source.TokenIds,
-                    source.MarkerPositions!, source.CandidateLabels!, backends));
-                snapshots.Clear();
+            }
+            catch (Exception exception) when (exception is IOException or InvalidOperationException or DecisionException or
+                CudaException or OperationCanceledException or DllNotFoundException or BadImageFormatException)
+            {
+                executionError = $"{exception.GetType().Name}: {exception.Message}";
+                Console.Error.WriteLine($"trace execution incomplete: {executionError}");
             }
             var passed = rows.Count == ids.Length && rows.All(row => row.Backends.Count == 3 && row.Backends.All(backend =>
-                backend.Status == "compared" && backend.OracleComparison is { Passed: true } && backend.MissingTraces.Count == 0));
+                backend.Status == "compared" && backend.OracleComparison is { Passed: true } && backend.MissingTraces.Count == 0)) && executionError is null;
             var report = new TraceReport
             {
                 StartedUtc = started, ElapsedMilliseconds = watch.Elapsed.TotalMilliseconds,
                 ReferenceSha256 = args[8].ToLowerInvariant(), ContractSha256 = args[9].ToLowerInvariant(),
                 Provenance = reference.Provenance, Tolerances = tolerances,
                 Framework = RuntimeInformation.FrameworkDescription, RuntimeIdentifier = RuntimeInformation.RuntimeIdentifier,
-                BinarySha256 = BinaryHashes(token), SelectedCaseIds = ids, ReferenceCases = reference.Cases.Count,
+                BinarySha256 = binaryHashes, SelectedCaseIds = ids, ReferenceCases = reference.Cases.Count,
+                Status = passed ? "complete" : "incomplete", Error = executionError,
+                UnprocessedCaseIds = ids.Where(id => !rows.Any(row => row.Id == id && row.Backends.Count == 3)).ToArray(),
                 NearTieCases = rows.Count(row => row.Backends.Any(backend => backend.OracleComparison is { NearTie: true })),
                 SelectedDiagnosticsPassed = passed, Cases = rows,
             };
-            token.ThrowIfCancellationRequested();
+            // Bounded failure evidence must survive cooperative cancellation; never manufacture missing rows.
             Directory.CreateDirectory(Path.GetDirectoryName(output)!);
             using (var stream = new FileStream(output, FileMode.CreateNew, FileAccess.Write, FileShare.None))
                 JsonSerializer.Serialize(stream, report, TraceJsonContext.Default.TraceReport);
@@ -234,7 +250,7 @@ internal static class TraceDiagnostics
             throw new InvalidDataException("Reference marker positions are invalid.");
     }
 
-    private static byte[] ReadFrozen(string path, string expectedSha, int maximumBytes, CancellationToken token)
+    internal static byte[] ReadFrozen(string path, string expectedSha, int maximumBytes, CancellationToken token)
     {
         using var input = File.OpenRead(Path.GetFullPath(path));
         if (input.Length > maximumBytes) throw new InvalidDataException("Frozen input exceeds its byte limit.");

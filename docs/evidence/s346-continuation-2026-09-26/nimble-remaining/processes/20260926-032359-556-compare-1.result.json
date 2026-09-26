@@ -1,0 +1,32 @@
+{
+  "Status": "Succeeded",
+  "Pid": 69728,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 2.238,
+  "TimeoutSeconds": 45,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\.artifacts\\build\\s346-tokenizer-final-20260926\\bin\\Sezika.OracleCompare\\release\\Sezika.OracleCompare.dll",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-remaining\\batch-008\\reference\\capture.json",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-remaining\\batch-008\\actual\\capture.json",
+    "D:\\source\\Sezika\\tests\\fixtures\\laya-oracle\\contract.v1.json",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-plan\\cases-008.json",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-remaining\\batch-008\\comparison.json",
+    "30"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-26T03:24:00.2195261Z",
+  "ParentPid": 61912,
+  "Launcher": {
+    "Pid": 61912,
+    "Started": "2026-09-26T11:19:40.300746+08:00",
+    "CommandLine": "\"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.6.0_x64__8wekyb3d8bbwe\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Invoke-OracleBatches.ps1 -PlanPath .artifacts/s346-20260926/nimble-plan/batches.json -PythonPath .artifacts/laya-oracle-work/venv/Scripts/python.exe -UpstreamDirectory .artifacts/laya-oracle-work/upstream -ModelDirectory .artifacts/models/laya-mmbert -BuildDirectory .artifacts/build/s346-tokenizer-final-20260926/bin -OutputDirectory .artifacts/s346-20260926/nimble-remaining -MaxBatches 2 -BatchOffset 6 -TimeoutSeconds 600",
+    "ParentPid": 49980
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-remaining\\processes\\20260926-032359-556-compare-1.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-remaining\\processes\\20260926-032359-556-compare-1.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

@@ -1,0 +1,775 @@
+Oracle batch 1/8, source offset 0, rows 46
+Reusing hash-bound independent reference for batch 1; no reference inference.
+Started PID 65188, timeout 620s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCapture\release\Sezika.OracleCapture.dll --reference D:\source\Sezika\.artifacts\s346-20260926\nimble-full\batch-001\reference\capture.json --model D:\source\Sezika\.artifacts\models\laya-mmbert --cases D:\source\Sezika\.artifacts\s346-20260926\nimble-plan\cases-001.json --contract D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json --output D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-001\actual --backend cuda --length-policy laya_compatible --max-cases 46 --timeout-seconds 600
+PID 65188 running: 38s
+
+Read bounded local reference inputs and frozen identities; reference numerical outputs are not deserialized.
+Loading verified local model for 46 case(s), backend=cuda, length_policy=LayaCompatible.
+capture 1/46: scale-diverse-007-001-base
+capture 2/46: scale-diverse-007-001-counterfactual
+capture 3/46: scale-diverse-007-004-base
+capture 4/46: scale-diverse-007-004-counterfactual
+capture 5/46: scale-diverse-007-005-base
+capture 6/46: scale-diverse-007-005-counterfactual
+capture 7/46: scale-diverse-008-003-base
+capture 8/46: scale-diverse-008-003-counterfactual
+capture 9/46: scale-diverse-008-005-base
+capture 10/46: scale-diverse-008-005-counterfactual
+capture 11/46: scale-diverse-009-001-base
+capture 12/46: scale-diverse-009-001-counterfactual
+capture 13/46: scale-diverse-009-003-base
+capture 14/46: scale-diverse-009-003-counterfactual
+capture 15/46: scale-diverse-010-001-base
+capture 16/46: scale-diverse-010-001-counterfactual
+capture 17/46: scale-diverse-010-004-base
+capture 18/46: scale-diverse-010-004-counterfactual
+capture 19/46: scale-diverse-011-004-base
+capture 20/46: scale-diverse-011-004-counterfactual
+capture 21/46: scale-diverse-079-001-base
+capture 22/46: scale-diverse-079-001-counterfactual
+capture 23/46: scale-diverse-079-002-base
+capture 24/46: scale-diverse-079-002-counterfactual
+capture 25/46: scale-diverse-079-003-base
+capture 26/46: scale-diverse-079-003-counterfactual
+capture 27/46: scale-diverse-080-003-base
+capture 28/46: scale-diverse-080-003-counterfactual
+capture 29/46: scale-diverse-081-005-base
+capture 30/46: scale-diverse-081-005-counterfactual
+capture 31/46: scale-diverse-082-004-base
+capture 32/46: scale-diverse-082-004-counterfactual
+capture 33/46: scale-diverse-083-004-base
+capture 34/46: scale-diverse-083-004-counterfactual
+capture 35/46: scale-diverse-084-002-base
+capture 36/46: scale-diverse-084-002-counterfactual
+capture 37/46: scale-diverse-084-003-base
+capture 38/46: scale-diverse-084-003-counterfactual
+capture 39/46: scale-diverse-084-004-base
+capture 40/46: scale-diverse-084-004-counterfactual
+capture 41/46: scale-diverse-097-002-base
+capture 42/46: scale-diverse-097-002-counterfactual
+capture 43/46: scale-diverse-097-005-base
+capture 44/46: scale-diverse-097-005-counterfactual
+capture 45/46: scale-diverse-099-001-base
+capture 46/46: scale-diverse-099-001-counterfactual
+completed: 46/46 selected rows; D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-001\actual\capture.json
+
+Completed PID 65188, status Succeeded, exit 0, elapsed 54.565s; result: D:\source\Sezika\.artifacts\s346-20260926\nimble-final\processes\20260926-032428-153-capture-0.result.json
+Started PID 67116, timeout 45s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCompare\release\Sezika.OracleCompare.dll D:\source\Sezika\.artifacts\s346-20260926\nimble-full\batch-001\reference\capture.json D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-001\actual\capture.json D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json D:\source\Sezika\.artifacts\s346-20260926\nimble-plan\cases-001.json D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-001\comparison.json 30
+
+Loading four bounded local JSON files; no model inference.
+compare 1/46: scale-diverse-007-001-base
+compare 2/46: scale-diverse-007-001-counterfactual
+compare 3/46: scale-diverse-007-004-base
+compare 4/46: scale-diverse-007-004-counterfactual
+compare 5/46: scale-diverse-007-005-base
+compare 6/46: scale-diverse-007-005-counterfactual
+compare 7/46: scale-diverse-008-003-base
+compare 8/46: scale-diverse-008-003-counterfactual
+compare 9/46: scale-diverse-008-005-base
+compare 10/46: scale-diverse-008-005-counterfactual
+compare 11/46: scale-diverse-009-001-base
+compare 12/46: scale-diverse-009-001-counterfactual
+compare 13/46: scale-diverse-009-003-base
+compare 14/46: scale-diverse-009-003-counterfactual
+compare 15/46: scale-diverse-010-001-base
+compare 16/46: scale-diverse-010-001-counterfactual
+compare 17/46: scale-diverse-010-004-base
+compare 18/46: scale-diverse-010-004-counterfactual
+compare 19/46: scale-diverse-011-004-base
+compare 20/46: scale-diverse-011-004-counterfactual
+compare 21/46: scale-diverse-079-001-base
+compare 22/46: scale-diverse-079-001-counterfactual
+compare 23/46: scale-diverse-079-002-base
+compare 24/46: scale-diverse-079-002-counterfactual
+compare 25/46: scale-diverse-079-003-base
+compare 26/46: scale-diverse-079-003-counterfactual
+compare 27/46: scale-diverse-080-003-base
+compare 28/46: scale-diverse-080-003-counterfactual
+compare 29/46: scale-diverse-081-005-base
+compare 30/46: scale-diverse-081-005-counterfactual
+compare 31/46: scale-diverse-082-004-base
+compare 32/46: scale-diverse-082-004-counterfactual
+compare 33/46: scale-diverse-083-004-base
+compare 34/46: scale-diverse-083-004-counterfactual
+compare 35/46: scale-diverse-084-002-base
+compare 36/46: scale-diverse-084-002-counterfactual
+compare 37/46: scale-diverse-084-003-base
+compare 38/46: scale-diverse-084-003-counterfactual
+compare 39/46: scale-diverse-084-004-base
+compare 40/46: scale-diverse-084-004-counterfactual
+compare 41/46: scale-diverse-097-002-base
+compare 42/46: scale-diverse-097-002-counterfactual
+compare 43/46: scale-diverse-097-005-base
+compare 44/46: scale-diverse-097-005-counterfactual
+compare 45/46: scale-diverse-099-001-base
+compare 46/46: scale-diverse-099-001-counterfactual
+Comparison passed: 46 answered pairs, 0 failure pairs, 0 issues; coverage=46/46; full_manifest_passed=True.
+
+Completed PID 67116, status Succeeded, exit 0, elapsed 1.582s; result: D:\source\Sezika\.artifacts\s346-20260926\nimble-final\processes\20260926-032522-752-compare-0.result.json
+Oracle batch 2/8, source offset 46, rows 46
+Reusing hash-bound independent reference for batch 2; no reference inference.
+Started PID 66168, timeout 620s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCapture\release\Sezika.OracleCapture.dll --reference D:\source\Sezika\.artifacts\s346-20260926\nimble-full\batch-002\reference\capture.json --model D:\source\Sezika\.artifacts\models\laya-mmbert --cases D:\source\Sezika\.artifacts\s346-20260926\nimble-plan\cases-002.json --contract D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json --output D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-002\actual --backend cuda --length-policy laya_compatible --max-cases 46 --timeout-seconds 600
+PID 66168 running: 41s
+
+Read bounded local reference inputs and frozen identities; reference numerical outputs are not deserialized.
+Loading verified local model for 46 case(s), backend=cuda, length_policy=LayaCompatible.
+capture 1/46: scale-diverse-099-002-base
+capture 2/46: scale-diverse-099-002-counterfactual
+capture 3/46: scale-diverse-099-003-base
+capture 4/46: scale-diverse-099-003-counterfactual
+capture 5/46: scale-diverse-169-001-base
+capture 6/46: scale-diverse-169-001-counterfactual
+capture 7/46: scale-diverse-169-002-base
+capture 8/46: scale-diverse-169-002-counterfactual
+capture 9/46: scale-diverse-169-004-base
+capture 10/46: scale-diverse-169-004-counterfactual
+capture 11/46: scale-diverse-171-001-base
+capture 12/46: scale-diverse-171-001-counterfactual
+capture 13/46: scale-diverse-171-002-base
+capture 14/46: scale-diverse-171-002-counterfactual
+capture 15/46: scale-diverse-173-001-base
+capture 16/46: scale-diverse-173-001-counterfactual
+capture 17/46: scale-diverse-173-002-base
+capture 18/46: scale-diverse-173-002-counterfactual
+capture 19/46: scale-diverse-173-004-base
+capture 20/46: scale-diverse-173-004-counterfactual
+capture 21/46: scale-diverse-174-003-base
+capture 22/46: scale-diverse-174-003-counterfactual
+capture 23/46: scale-diverse-174-004-base
+capture 24/46: scale-diverse-174-004-counterfactual
+capture 25/46: scale-diverse-211-004-base
+capture 26/46: scale-diverse-211-004-counterfactual
+capture 27/46: scale-diverse-211-006-base
+capture 28/46: scale-diverse-211-006-counterfactual
+capture 29/46: scale-diverse-213-001-base
+capture 30/46: scale-diverse-213-001-counterfactual
+capture 31/46: scale-diverse-213-003-base
+capture 32/46: scale-diverse-213-003-counterfactual
+capture 33/46: scale-diverse-214-003-base
+capture 34/46: scale-diverse-214-003-counterfactual
+capture 35/46: scale-diverse-215-003-base
+capture 36/46: scale-diverse-215-003-counterfactual
+capture 37/46: scale-diverse-215-004-base
+capture 38/46: scale-diverse-215-004-counterfactual
+capture 39/46: scale-diverse-216-005-base
+capture 40/46: scale-diverse-216-005-counterfactual
+capture 41/46: scale-diverse-273-001-base
+capture 42/46: scale-diverse-273-001-counterfactual
+capture 43/46: scale-diverse-273-003-base
+capture 44/46: scale-diverse-273-003-counterfactual
+capture 45/46: scale-diverse-274-004-base
+capture 46/46: scale-diverse-274-004-counterfactual
+completed: 46/46 selected rows; D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-002\actual\capture.json
+
+Completed PID 66168, status Succeeded, exit 0, elapsed 54.834s; result: D:\source\Sezika\.artifacts\s346-20260926\nimble-final\processes\20260926-032524-361-capture-1.result.json
+Started PID 64620, timeout 45s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCompare\release\Sezika.OracleCompare.dll D:\source\Sezika\.artifacts\s346-20260926\nimble-full\batch-002\reference\capture.json D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-002\actual\capture.json D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json D:\source\Sezika\.artifacts\s346-20260926\nimble-plan\cases-002.json D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-002\comparison.json 30
+
+Loading four bounded local JSON files; no model inference.
+compare 1/46: scale-diverse-099-002-base
+compare 2/46: scale-diverse-099-002-counterfactual
+compare 3/46: scale-diverse-099-003-base
+compare 4/46: scale-diverse-099-003-counterfactual
+compare 5/46: scale-diverse-169-001-base
+compare 6/46: scale-diverse-169-001-counterfactual
+compare 7/46: scale-diverse-169-002-base
+compare 8/46: scale-diverse-169-002-counterfactual
+compare 9/46: scale-diverse-169-004-base
+compare 10/46: scale-diverse-169-004-counterfactual
+compare 11/46: scale-diverse-171-001-base
+compare 12/46: scale-diverse-171-001-counterfactual
+compare 13/46: scale-diverse-171-002-base
+compare 14/46: scale-diverse-171-002-counterfactual
+compare 15/46: scale-diverse-173-001-base
+compare 16/46: scale-diverse-173-001-counterfactual
+compare 17/46: scale-diverse-173-002-base
+compare 18/46: scale-diverse-173-002-counterfactual
+compare 19/46: scale-diverse-173-004-base
+compare 20/46: scale-diverse-173-004-counterfactual
+compare 21/46: scale-diverse-174-003-base
+compare 22/46: scale-diverse-174-003-counterfactual
+compare 23/46: scale-diverse-174-004-base
+compare 24/46: scale-diverse-174-004-counterfactual
+compare 25/46: scale-diverse-211-004-base
+compare 26/46: scale-diverse-211-004-counterfactual
+compare 27/46: scale-diverse-211-006-base
+compare 28/46: scale-diverse-211-006-counterfactual
+compare 29/46: scale-diverse-213-001-base
+compare 30/46: scale-diverse-213-001-counterfactual
+compare 31/46: scale-diverse-213-003-base
+compare 32/46: scale-diverse-213-003-counterfactual
+compare 33/46: scale-diverse-214-003-base
+compare 34/46: scale-diverse-214-003-counterfactual
+compare 35/46: scale-diverse-215-003-base
+compare 36/46: scale-diverse-215-003-counterfactual
+compare 37/46: scale-diverse-215-004-base
+compare 38/46: scale-diverse-215-004-counterfactual
+compare 39/46: scale-diverse-216-005-base
+compare 40/46: scale-diverse-216-005-counterfactual
+compare 41/46: scale-diverse-273-001-base
+compare 42/46: scale-diverse-273-001-counterfactual
+compare 43/46: scale-diverse-273-003-base
+compare 44/46: scale-diverse-273-003-counterfactual
+compare 45/46: scale-diverse-274-004-base
+compare 46/46: scale-diverse-274-004-counterfactual
+Comparison passed: 46 answered pairs, 0 failure pairs, 0 issues; coverage=46/46; full_manifest_passed=True.
+
+Completed PID 64620, status Succeeded, exit 0, elapsed 2.577s; result: D:\source\Sezika\.artifacts\s346-20260926\nimble-final\processes\20260926-032619-216-compare-1.result.json
+Oracle batch 3/8, source offset 92, rows 46
+Reusing hash-bound independent reference for batch 3; no reference inference.
+Started PID 51744, timeout 620s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCapture\release\Sezika.OracleCapture.dll --reference D:\source\Sezika\.artifacts\s346-20260926\nimble-full\batch-003\reference\capture.json --model D:\source\Sezika\.artifacts\models\laya-mmbert --cases D:\source\Sezika\.artifacts\s346-20260926\nimble-plan\cases-003.json --contract D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json --output D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-003\actual --backend cuda --length-policy laya_compatible --max-cases 46 --timeout-seconds 600
+PID 51744 running: 39s
+
+Read bounded local reference inputs and frozen identities; reference numerical outputs are not deserialized.
+Loading verified local model for 46 case(s), backend=cuda, length_policy=LayaCompatible.
+capture 1/46: scale-diverse-275-002-base
+capture 2/46: scale-diverse-275-002-counterfactual
+capture 3/46: scale-diverse-275-003-base
+capture 4/46: scale-diverse-275-003-counterfactual
+capture 5/46: scale-diverse-275-004-base
+capture 6/46: scale-diverse-275-004-counterfactual
+capture 7/46: scale-diverse-275-005-base
+capture 8/46: scale-diverse-275-005-counterfactual
+capture 9/46: fast-41-diverse-007-003-base
+capture 10/46: fast-41-diverse-007-003-counterfactual
+capture 11/46: fast-41-diverse-007-005-base
+capture 12/46: fast-41-diverse-007-005-counterfactual
+capture 13/46: fast-41-diverse-007-006-base
+capture 14/46: fast-41-diverse-007-006-counterfactual
+capture 15/46: fast-41-diverse-007-009-base
+capture 16/46: fast-41-diverse-007-009-counterfactual
+capture 17/46: fast-41-diverse-007-010-base
+capture 18/46: fast-41-diverse-007-010-counterfactual
+capture 19/46: fast-41-diverse-008-009-base
+capture 20/46: fast-41-diverse-008-009-counterfactual
+capture 21/46: fast-41-diverse-008-011-base
+capture 22/46: fast-41-diverse-008-011-counterfactual
+capture 23/46: fast-41-diverse-009-001-base
+capture 24/46: fast-41-diverse-009-001-counterfactual
+capture 25/46: fast-41-diverse-009-002-base
+capture 26/46: fast-41-diverse-009-002-counterfactual
+capture 27/46: fast-41-diverse-009-003-base
+capture 28/46: fast-41-diverse-009-003-counterfactual
+capture 29/46: fast-41-diverse-009-004-base
+capture 30/46: fast-41-diverse-009-004-counterfactual
+capture 31/46: fast-41-diverse-009-005-base
+capture 32/46: fast-41-diverse-009-005-counterfactual
+capture 33/46: fast-41-diverse-009-007-base
+capture 34/46: fast-41-diverse-009-007-counterfactual
+capture 35/46: fast-41-diverse-009-008-base
+capture 36/46: fast-41-diverse-009-008-counterfactual
+capture 37/46: fast-41-diverse-010-004-base
+capture 38/46: fast-41-diverse-010-004-counterfactual
+capture 39/46: fast-41-diverse-079-003-base
+capture 40/46: fast-41-diverse-079-003-counterfactual
+capture 41/46: fast-41-diverse-079-011-base
+capture 42/46: fast-41-diverse-079-011-counterfactual
+capture 43/46: fast-41-diverse-079-012-base
+capture 44/46: fast-41-diverse-079-012-counterfactual
+capture 45/46: fast-41-diverse-079-015-base
+capture 46/46: fast-41-diverse-079-015-counterfactual
+completed: 46/46 selected rows; D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-003\actual\capture.json
+
+Completed PID 51744, status Succeeded, exit 0, elapsed 50.929s; result: D:\source\Sezika\.artifacts\s346-20260926\nimble-final\processes\20260926-032621-811-capture-2.result.json
+Started PID 640, timeout 45s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCompare\release\Sezika.OracleCompare.dll D:\source\Sezika\.artifacts\s346-20260926\nimble-full\batch-003\reference\capture.json D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-003\actual\capture.json D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json D:\source\Sezika\.artifacts\s346-20260926\nimble-plan\cases-003.json D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-003\comparison.json 30
+
+Loading four bounded local JSON files; no model inference.
+compare 1/46: scale-diverse-275-002-base
+compare 2/46: scale-diverse-275-002-counterfactual
+compare 3/46: scale-diverse-275-003-base
+compare 4/46: scale-diverse-275-003-counterfactual
+compare 5/46: scale-diverse-275-004-base
+compare 6/46: scale-diverse-275-004-counterfactual
+compare 7/46: scale-diverse-275-005-base
+compare 8/46: scale-diverse-275-005-counterfactual
+compare 9/46: fast-41-diverse-007-003-base
+compare 10/46: fast-41-diverse-007-003-counterfactual
+compare 11/46: fast-41-diverse-007-005-base
+compare 12/46: fast-41-diverse-007-005-counterfactual
+compare 13/46: fast-41-diverse-007-006-base
+compare 14/46: fast-41-diverse-007-006-counterfactual
+compare 15/46: fast-41-diverse-007-009-base
+compare 16/46: fast-41-diverse-007-009-counterfactual
+compare 17/46: fast-41-diverse-007-010-base
+compare 18/46: fast-41-diverse-007-010-counterfactual
+compare 19/46: fast-41-diverse-008-009-base
+compare 20/46: fast-41-diverse-008-009-counterfactual
+compare 21/46: fast-41-diverse-008-011-base
+compare 22/46: fast-41-diverse-008-011-counterfactual
+compare 23/46: fast-41-diverse-009-001-base
+compare 24/46: fast-41-diverse-009-001-counterfactual
+compare 25/46: fast-41-diverse-009-002-base
+compare 26/46: fast-41-diverse-009-002-counterfactual
+compare 27/46: fast-41-diverse-009-003-base
+compare 28/46: fast-41-diverse-009-003-counterfactual
+compare 29/46: fast-41-diverse-009-004-base
+compare 30/46: fast-41-diverse-009-004-counterfactual
+compare 31/46: fast-41-diverse-009-005-base
+compare 32/46: fast-41-diverse-009-005-counterfactual
+compare 33/46: fast-41-diverse-009-007-base
+compare 34/46: fast-41-diverse-009-007-counterfactual
+compare 35/46: fast-41-diverse-009-008-base
+compare 36/46: fast-41-diverse-009-008-counterfactual
+compare 37/46: fast-41-diverse-010-004-base
+compare 38/46: fast-41-diverse-010-004-counterfactual
+compare 39/46: fast-41-diverse-079-003-base
+compare 40/46: fast-41-diverse-079-003-counterfactual
+compare 41/46: fast-41-diverse-079-011-base
+compare 42/46: fast-41-diverse-079-011-counterfactual
+compare 43/46: fast-41-diverse-079-012-base
+compare 44/46: fast-41-diverse-079-012-counterfactual
+compare 45/46: fast-41-diverse-079-015-base
+compare 46/46: fast-41-diverse-079-015-counterfactual
+Comparison passed: 46 answered pairs, 0 failure pairs, 0 issues; coverage=46/46; full_manifest_passed=True.
+
+Completed PID 640, status Succeeded, exit 0, elapsed 1.535s; result: D:\source\Sezika\.artifacts\s346-20260926\nimble-final\processes\20260926-032712-762-compare-2.result.json
+Oracle batch 4/8, source offset 138, rows 46
+Reusing hash-bound independent reference for batch 4; no reference inference.
+Started PID 53532, timeout 620s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCapture\release\Sezika.OracleCapture.dll --reference D:\source\Sezika\.artifacts\s346-20260926\nimble-full\batch-004\reference\capture.json --model D:\source\Sezika\.artifacts\models\laya-mmbert --cases D:\source\Sezika\.artifacts\s346-20260926\nimble-plan\cases-004.json --contract D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json --output D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-004\actual --backend cuda --length-policy laya_compatible --max-cases 46 --timeout-seconds 600
+PID 53532 running: 39s
+
+Read bounded local reference inputs and frozen identities; reference numerical outputs are not deserialized.
+Loading verified local model for 46 case(s), backend=cuda, length_policy=LayaCompatible.
+capture 1/46: fast-41-diverse-082-006-base
+capture 2/46: fast-41-diverse-082-006-counterfactual
+capture 3/46: fast-41-diverse-084-006-base
+capture 4/46: fast-41-diverse-084-006-counterfactual
+capture 5/46: fast-41-diverse-099-001-base
+capture 6/46: fast-41-diverse-099-001-counterfactual
+capture 7/46: fast-41-diverse-099-003-base
+capture 8/46: fast-41-diverse-099-003-counterfactual
+capture 9/46: fast-41-diverse-099-008-base
+capture 10/46: fast-41-diverse-099-008-counterfactual
+capture 11/46: fast-41-diverse-171-001-base
+capture 12/46: fast-41-diverse-171-001-counterfactual
+capture 13/46: fast-41-diverse-171-003-base
+capture 14/46: fast-41-diverse-171-003-counterfactual
+capture 15/46: fast-41-diverse-171-004-base
+capture 16/46: fast-41-diverse-171-004-counterfactual
+capture 17/46: fast-41-diverse-171-006-base
+capture 18/46: fast-41-diverse-171-006-counterfactual
+capture 19/46: fast-41-diverse-171-007-base
+capture 20/46: fast-41-diverse-171-007-counterfactual
+capture 21/46: fast-41-diverse-171-008-base
+capture 22/46: fast-41-diverse-171-008-counterfactual
+capture 23/46: fast-41-diverse-174-001-base
+capture 24/46: fast-41-diverse-174-001-counterfactual
+capture 25/46: fast-41-diverse-174-005-base
+capture 26/46: fast-41-diverse-174-005-counterfactual
+capture 27/46: fast-41-diverse-174-007-base
+capture 28/46: fast-41-diverse-174-007-counterfactual
+capture 29/46: fast-41-diverse-211-018-base
+capture 30/46: fast-41-diverse-211-018-counterfactual
+capture 31/46: fast-41-diverse-211-020-base
+capture 32/46: fast-41-diverse-211-020-counterfactual
+capture 33/46: fast-41-diverse-212-023-base
+capture 34/46: fast-41-diverse-212-023-counterfactual
+capture 35/46: fast-41-diverse-212-028-base
+capture 36/46: fast-41-diverse-212-028-counterfactual
+capture 37/46: fast-41-diverse-212-032-base
+capture 38/46: fast-41-diverse-212-032-counterfactual
+capture 39/46: fast-41-diverse-212-034-base
+capture 40/46: fast-41-diverse-212-034-counterfactual
+capture 41/46: fast-41-diverse-212-037-base
+capture 42/46: fast-41-diverse-212-037-counterfactual
+capture 43/46: fast-41-diverse-212-042-base
+capture 44/46: fast-41-diverse-212-042-counterfactual
+capture 45/46: fast-41-diverse-212-045-base
+capture 46/46: fast-41-diverse-212-045-counterfactual
+completed: 46/46 selected rows; D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-004\actual\capture.json
+
+Completed PID 53532, status Succeeded, exit 0, elapsed 44.878s; result: D:\source\Sezika\.artifacts\s346-20260926\nimble-final\processes\20260926-032714-318-capture-3.result.json
+Started PID 57100, timeout 45s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCompare\release\Sezika.OracleCompare.dll D:\source\Sezika\.artifacts\s346-20260926\nimble-full\batch-004\reference\capture.json D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-004\actual\capture.json D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json D:\source\Sezika\.artifacts\s346-20260926\nimble-plan\cases-004.json D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-004\comparison.json 30
+
+Loading four bounded local JSON files; no model inference.
+compare 1/46: fast-41-diverse-082-006-base
+compare 2/46: fast-41-diverse-082-006-counterfactual
+compare 3/46: fast-41-diverse-084-006-base
+compare 4/46: fast-41-diverse-084-006-counterfactual
+compare 5/46: fast-41-diverse-099-001-base
+compare 6/46: fast-41-diverse-099-001-counterfactual
+compare 7/46: fast-41-diverse-099-003-base
+compare 8/46: fast-41-diverse-099-003-counterfactual
+compare 9/46: fast-41-diverse-099-008-base
+compare 10/46: fast-41-diverse-099-008-counterfactual
+compare 11/46: fast-41-diverse-171-001-base
+compare 12/46: fast-41-diverse-171-001-counterfactual
+compare 13/46: fast-41-diverse-171-003-base
+compare 14/46: fast-41-diverse-171-003-counterfactual
+compare 15/46: fast-41-diverse-171-004-base
+compare 16/46: fast-41-diverse-171-004-counterfactual
+compare 17/46: fast-41-diverse-171-006-base
+compare 18/46: fast-41-diverse-171-006-counterfactual
+compare 19/46: fast-41-diverse-171-007-base
+compare 20/46: fast-41-diverse-171-007-counterfactual
+compare 21/46: fast-41-diverse-171-008-base
+compare 22/46: fast-41-diverse-171-008-counterfactual
+compare 23/46: fast-41-diverse-174-001-base
+compare 24/46: fast-41-diverse-174-001-counterfactual
+compare 25/46: fast-41-diverse-174-005-base
+compare 26/46: fast-41-diverse-174-005-counterfactual
+compare 27/46: fast-41-diverse-174-007-base
+compare 28/46: fast-41-diverse-174-007-counterfactual
+compare 29/46: fast-41-diverse-211-018-base
+compare 30/46: fast-41-diverse-211-018-counterfactual
+compare 31/46: fast-41-diverse-211-020-base
+compare 32/46: fast-41-diverse-211-020-counterfactual
+compare 33/46: fast-41-diverse-212-023-base
+compare 34/46: fast-41-diverse-212-023-counterfactual
+compare 35/46: fast-41-diverse-212-028-base
+compare 36/46: fast-41-diverse-212-028-counterfactual
+compare 37/46: fast-41-diverse-212-032-base
+compare 38/46: fast-41-diverse-212-032-counterfactual
+compare 39/46: fast-41-diverse-212-034-base
+compare 40/46: fast-41-diverse-212-034-counterfactual
+compare 41/46: fast-41-diverse-212-037-base
+compare 42/46: fast-41-diverse-212-037-counterfactual
+compare 43/46: fast-41-diverse-212-042-base
+compare 44/46: fast-41-diverse-212-042-counterfactual
+compare 45/46: fast-41-diverse-212-045-base
+compare 46/46: fast-41-diverse-212-045-counterfactual
+Comparison passed: 46 answered pairs, 0 failure pairs, 0 issues; coverage=46/46; full_manifest_passed=True.
+
+Completed PID 57100, status Succeeded, exit 0, elapsed 2.441s; result: D:\source\Sezika\.artifacts\s346-20260926\nimble-final\processes\20260926-032759-213-compare-3.result.json
+Oracle batch 5/8, source offset 184, rows 46
+Reusing hash-bound independent reference for batch 5; no reference inference.
+Started PID 74020, timeout 620s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCapture\release\Sezika.OracleCapture.dll --reference D:\source\Sezika\.artifacts\s346-20260926\nimble-full\batch-005\reference\capture.json --model D:\source\Sezika\.artifacts\models\laya-mmbert --cases D:\source\Sezika\.artifacts\s346-20260926\nimble-plan\cases-005.json --contract D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json --output D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-005\actual --backend cuda --length-policy laya_compatible --max-cases 46 --timeout-seconds 600
+PID 74020 running: 38s
+
+Read bounded local reference inputs and frozen identities; reference numerical outputs are not deserialized.
+Loading verified local model for 46 case(s), backend=cuda, length_policy=LayaCompatible.
+capture 1/46: fast-41-diverse-212-059-base
+capture 2/46: fast-41-diverse-212-059-counterfactual
+capture 3/46: fast-41-diverse-213-001-base
+capture 4/46: fast-41-diverse-213-001-counterfactual
+capture 5/46: fast-41-diverse-213-016-base
+capture 6/46: fast-41-diverse-213-016-counterfactual
+capture 7/46: fast-41-diverse-216-009-base
+capture 8/46: fast-41-diverse-216-009-counterfactual
+capture 9/46: fast-41-diverse-273-007-base
+capture 10/46: fast-41-diverse-273-007-counterfactual
+capture 11/46: fast-41-diverse-273-008-base
+capture 12/46: fast-41-diverse-273-008-counterfactual
+capture 13/46: fast-41-diverse-274-002-base
+capture 14/46: fast-41-diverse-274-002-counterfactual
+capture 15/46: fast-41-diverse-274-004-base
+capture 16/46: fast-41-diverse-274-004-counterfactual
+capture 17/46: fast-41-diverse-275-013-base
+capture 18/46: fast-41-diverse-275-013-counterfactual
+capture 19/46: fast-43-diverse-007-002-base
+capture 20/46: fast-43-diverse-007-002-counterfactual
+capture 21/46: fast-43-diverse-007-012-base
+capture 22/46: fast-43-diverse-007-012-counterfactual
+capture 23/46: fast-43-diverse-008-010-base
+capture 24/46: fast-43-diverse-008-010-counterfactual
+capture 25/46: fast-43-diverse-010-001-base
+capture 26/46: fast-43-diverse-010-001-counterfactual
+capture 27/46: fast-43-diverse-079-003-base
+capture 28/46: fast-43-diverse-079-003-counterfactual
+capture 29/46: fast-43-diverse-079-015-base
+capture 30/46: fast-43-diverse-079-015-counterfactual
+capture 31/46: fast-43-diverse-079-019-base
+capture 32/46: fast-43-diverse-079-019-counterfactual
+capture 33/46: fast-43-diverse-079-022-base
+capture 34/46: fast-43-diverse-079-022-counterfactual
+capture 35/46: fast-43-diverse-079-023-base
+capture 36/46: fast-43-diverse-079-023-counterfactual
+capture 37/46: fast-43-diverse-079-037-base
+capture 38/46: fast-43-diverse-079-037-counterfactual
+capture 39/46: fast-43-diverse-079-045-base
+capture 40/46: fast-43-diverse-079-045-counterfactual
+capture 41/46: fast-43-diverse-079-046-base
+capture 42/46: fast-43-diverse-079-046-counterfactual
+capture 43/46: fast-43-diverse-079-054-base
+capture 44/46: fast-43-diverse-079-054-counterfactual
+capture 45/46: fast-43-diverse-079-055-base
+capture 46/46: fast-43-diverse-079-055-counterfactual
+completed: 46/46 selected rows; D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-005\actual\capture.json
+
+Completed PID 74020, status Succeeded, exit 0, elapsed 56.283s; result: D:\source\Sezika\.artifacts\s346-20260926\nimble-final\processes\20260926-032801-676-capture-4.result.json
+Started PID 37372, timeout 45s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCompare\release\Sezika.OracleCompare.dll D:\source\Sezika\.artifacts\s346-20260926\nimble-full\batch-005\reference\capture.json D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-005\actual\capture.json D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json D:\source\Sezika\.artifacts\s346-20260926\nimble-plan\cases-005.json D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-005\comparison.json 30
+
+Loading four bounded local JSON files; no model inference.
+compare 1/46: fast-41-diverse-212-059-base
+compare 2/46: fast-41-diverse-212-059-counterfactual
+compare 3/46: fast-41-diverse-213-001-base
+compare 4/46: fast-41-diverse-213-001-counterfactual
+compare 5/46: fast-41-diverse-213-016-base
+compare 6/46: fast-41-diverse-213-016-counterfactual
+compare 7/46: fast-41-diverse-216-009-base
+compare 8/46: fast-41-diverse-216-009-counterfactual
+compare 9/46: fast-41-diverse-273-007-base
+compare 10/46: fast-41-diverse-273-007-counterfactual
+compare 11/46: fast-41-diverse-273-008-base
+compare 12/46: fast-41-diverse-273-008-counterfactual
+compare 13/46: fast-41-diverse-274-002-base
+compare 14/46: fast-41-diverse-274-002-counterfactual
+compare 15/46: fast-41-diverse-274-004-base
+compare 16/46: fast-41-diverse-274-004-counterfactual
+compare 17/46: fast-41-diverse-275-013-base
+compare 18/46: fast-41-diverse-275-013-counterfactual
+compare 19/46: fast-43-diverse-007-002-base
+compare 20/46: fast-43-diverse-007-002-counterfactual
+compare 21/46: fast-43-diverse-007-012-base
+compare 22/46: fast-43-diverse-007-012-counterfactual
+compare 23/46: fast-43-diverse-008-010-base
+compare 24/46: fast-43-diverse-008-010-counterfactual
+compare 25/46: fast-43-diverse-010-001-base
+compare 26/46: fast-43-diverse-010-001-counterfactual
+compare 27/46: fast-43-diverse-079-003-base
+compare 28/46: fast-43-diverse-079-003-counterfactual
+compare 29/46: fast-43-diverse-079-015-base
+compare 30/46: fast-43-diverse-079-015-counterfactual
+compare 31/46: fast-43-diverse-079-019-base
+compare 32/46: fast-43-diverse-079-019-counterfactual
+compare 33/46: fast-43-diverse-079-022-base
+compare 34/46: fast-43-diverse-079-022-counterfactual
+compare 35/46: fast-43-diverse-079-023-base
+compare 36/46: fast-43-diverse-079-023-counterfactual
+compare 37/46: fast-43-diverse-079-037-base
+compare 38/46: fast-43-diverse-079-037-counterfactual
+compare 39/46: fast-43-diverse-079-045-base
+compare 40/46: fast-43-diverse-079-045-counterfactual
+compare 41/46: fast-43-diverse-079-046-base
+compare 42/46: fast-43-diverse-079-046-counterfactual
+compare 43/46: fast-43-diverse-079-054-base
+compare 44/46: fast-43-diverse-079-054-counterfactual
+compare 45/46: fast-43-diverse-079-055-base
+compare 46/46: fast-43-diverse-079-055-counterfactual
+Comparison passed: 46 answered pairs, 0 failure pairs, 0 issues; coverage=46/46; full_manifest_passed=True.
+
+Completed PID 37372, status Succeeded, exit 0, elapsed 1.97s; result: D:\source\Sezika\.artifacts\s346-20260926\nimble-final\processes\20260926-032857-974-compare-4.result.json
+Oracle batch 6/8, source offset 230, rows 46
+Reusing hash-bound independent reference for batch 6; no reference inference.
+Started PID 77572, timeout 603s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCapture\release\Sezika.OracleCapture.dll --reference D:\source\Sezika\.artifacts\s346-20260926\nimble-full\batch-006\reference\capture.json --model D:\source\Sezika\.artifacts\models\laya-mmbert --cases D:\source\Sezika\.artifacts\s346-20260926\nimble-plan\cases-006.json --contract D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json --output D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-006\actual --backend cuda --length-policy laya_compatible --max-cases 46 --timeout-seconds 600
+PID 77572 running: 41s
+
+Read bounded local reference inputs and frozen identities; reference numerical outputs are not deserialized.
+Loading verified local model for 46 case(s), backend=cuda, length_policy=LayaCompatible.
+capture 1/46: fast-43-diverse-079-056-base
+capture 2/46: fast-43-diverse-079-056-counterfactual
+capture 3/46: fast-43-diverse-079-057-base
+capture 4/46: fast-43-diverse-079-057-counterfactual
+capture 5/46: fast-43-diverse-079-058-base
+capture 6/46: fast-43-diverse-079-058-counterfactual
+capture 7/46: fast-43-diverse-079-059-base
+capture 8/46: fast-43-diverse-079-059-counterfactual
+capture 9/46: fast-43-diverse-079-060-base
+capture 10/46: fast-43-diverse-079-060-counterfactual
+capture 11/46: fast-43-diverse-081-014-base
+capture 12/46: fast-43-diverse-081-014-counterfactual
+capture 13/46: fast-43-diverse-081-016-base
+capture 14/46: fast-43-diverse-081-016-counterfactual
+capture 15/46: fast-43-diverse-081-019-base
+capture 16/46: fast-43-diverse-081-019-counterfactual
+capture 17/46: fast-43-diverse-081-022-base
+capture 18/46: fast-43-diverse-081-022-counterfactual
+capture 19/46: fast-43-diverse-169-012-base
+capture 20/46: fast-43-diverse-169-012-counterfactual
+capture 21/46: fast-43-diverse-169-020-base
+capture 22/46: fast-43-diverse-169-020-counterfactual
+capture 23/46: fast-43-diverse-169-023-base
+capture 24/46: fast-43-diverse-169-023-counterfactual
+capture 25/46: fast-43-diverse-169-024-base
+capture 26/46: fast-43-diverse-169-024-counterfactual
+capture 27/46: fast-43-diverse-169-053-base
+capture 28/46: fast-43-diverse-169-053-counterfactual
+capture 29/46: fast-43-diverse-169-064-base
+capture 30/46: fast-43-diverse-169-064-counterfactual
+capture 31/46: fast-43-diverse-169-065-base
+capture 32/46: fast-43-diverse-169-065-counterfactual
+capture 33/46: fast-43-diverse-169-066-base
+capture 34/46: fast-43-diverse-169-066-counterfactual
+capture 35/46: fast-43-diverse-169-068-base
+capture 36/46: fast-43-diverse-169-068-counterfactual
+capture 37/46: fast-43-diverse-169-070-base
+capture 38/46: fast-43-diverse-169-070-counterfactual
+capture 39/46: fast-43-diverse-169-071-base
+capture 40/46: fast-43-diverse-169-071-counterfactual
+capture 41/46: fast-43-diverse-169-085-base
+capture 42/46: fast-43-diverse-169-085-counterfactual
+capture 43/46: fast-43-diverse-169-087-base
+capture 44/46: fast-43-diverse-169-087-counterfactual
+capture 45/46: fast-43-diverse-169-097-base
+capture 46/46: fast-43-diverse-169-097-counterfactual
+completed: 46/46 selected rows; D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-006\actual\capture.json
+
+Completed PID 77572, status Succeeded, exit 0, elapsed 55.173s; result: D:\source\Sezika\.artifacts\s346-20260926\nimble-final\processes\20260926-032859-962-capture-5.result.json
+Started PID 68028, timeout 45s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCompare\release\Sezika.OracleCompare.dll D:\source\Sezika\.artifacts\s346-20260926\nimble-full\batch-006\reference\capture.json D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-006\actual\capture.json D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json D:\source\Sezika\.artifacts\s346-20260926\nimble-plan\cases-006.json D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-006\comparison.json 30
+
+Loading four bounded local JSON files; no model inference.
+compare 1/46: fast-43-diverse-079-056-base
+compare 2/46: fast-43-diverse-079-056-counterfactual
+compare 3/46: fast-43-diverse-079-057-base
+compare 4/46: fast-43-diverse-079-057-counterfactual
+compare 5/46: fast-43-diverse-079-058-base
+compare 6/46: fast-43-diverse-079-058-counterfactual
+compare 7/46: fast-43-diverse-079-059-base
+compare 8/46: fast-43-diverse-079-059-counterfactual
+compare 9/46: fast-43-diverse-079-060-base
+compare 10/46: fast-43-diverse-079-060-counterfactual
+compare 11/46: fast-43-diverse-081-014-base
+compare 12/46: fast-43-diverse-081-014-counterfactual
+compare 13/46: fast-43-diverse-081-016-base
+compare 14/46: fast-43-diverse-081-016-counterfactual
+compare 15/46: fast-43-diverse-081-019-base
+compare 16/46: fast-43-diverse-081-019-counterfactual
+compare 17/46: fast-43-diverse-081-022-base
+compare 18/46: fast-43-diverse-081-022-counterfactual
+compare 19/46: fast-43-diverse-169-012-base
+compare 20/46: fast-43-diverse-169-012-counterfactual
+compare 21/46: fast-43-diverse-169-020-base
+compare 22/46: fast-43-diverse-169-020-counterfactual
+compare 23/46: fast-43-diverse-169-023-base
+compare 24/46: fast-43-diverse-169-023-counterfactual
+compare 25/46: fast-43-diverse-169-024-base
+compare 26/46: fast-43-diverse-169-024-counterfactual
+compare 27/46: fast-43-diverse-169-053-base
+compare 28/46: fast-43-diverse-169-053-counterfactual
+compare 29/46: fast-43-diverse-169-064-base
+compare 30/46: fast-43-diverse-169-064-counterfactual
+compare 31/46: fast-43-diverse-169-065-base
+compare 32/46: fast-43-diverse-169-065-counterfactual
+compare 33/46: fast-43-diverse-169-066-base
+compare 34/46: fast-43-diverse-169-066-counterfactual
+compare 35/46: fast-43-diverse-169-068-base
+compare 36/46: fast-43-diverse-169-068-counterfactual
+compare 37/46: fast-43-diverse-169-070-base
+compare 38/46: fast-43-diverse-169-070-counterfactual
+compare 39/46: fast-43-diverse-169-071-base
+compare 40/46: fast-43-diverse-169-071-counterfactual
+compare 41/46: fast-43-diverse-169-085-base
+compare 42/46: fast-43-diverse-169-085-counterfactual
+compare 43/46: fast-43-diverse-169-087-base
+compare 44/46: fast-43-diverse-169-087-counterfactual
+compare 45/46: fast-43-diverse-169-097-base
+compare 46/46: fast-43-diverse-169-097-counterfactual
+Comparison passed: 46 answered pairs, 0 failure pairs, 0 issues; coverage=46/46; full_manifest_passed=True.
+
+Completed PID 68028, status Succeeded, exit 0, elapsed 2.666s; result: D:\source\Sezika\.artifacts\s346-20260926\nimble-final\processes\20260926-032955-151-compare-5.result.json
+Oracle batch 7/8, source offset 276, rows 46
+Reusing hash-bound independent reference for batch 7; no reference inference.
+Started PID 46368, timeout 545s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCapture\release\Sezika.OracleCapture.dll --reference D:\source\Sezika\.artifacts\s346-20260926\nimble-remaining\batch-007\reference\capture.json --model D:\source\Sezika\.artifacts\models\laya-mmbert --cases D:\source\Sezika\.artifacts\s346-20260926\nimble-plan\cases-007.json --contract D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json --output D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-007\actual --backend cuda --length-policy laya_compatible --max-cases 46 --timeout-seconds 600
+PID 46368 running: 39s
+
+Read bounded local reference inputs and frozen identities; reference numerical outputs are not deserialized.
+Loading verified local model for 46 case(s), backend=cuda, length_policy=LayaCompatible.
+capture 1/46: fast-43-diverse-169-099-base
+capture 2/46: fast-43-diverse-169-099-counterfactual
+capture 3/46: fast-43-diverse-171-001-base
+capture 4/46: fast-43-diverse-171-001-counterfactual
+capture 5/46: fast-43-diverse-171-002-base
+capture 6/46: fast-43-diverse-171-002-counterfactual
+capture 7/46: fast-43-diverse-171-003-base
+capture 8/46: fast-43-diverse-171-003-counterfactual
+capture 9/46: fast-43-diverse-171-004-base
+capture 10/46: fast-43-diverse-171-004-counterfactual
+capture 11/46: fast-43-diverse-171-006-base
+capture 12/46: fast-43-diverse-171-006-counterfactual
+capture 13/46: fast-43-diverse-171-008-base
+capture 14/46: fast-43-diverse-171-008-counterfactual
+capture 15/46: fast-43-diverse-171-010-base
+capture 16/46: fast-43-diverse-171-010-counterfactual
+capture 17/46: fast-43-diverse-171-012-base
+capture 18/46: fast-43-diverse-171-012-counterfactual
+capture 19/46: fast-43-diverse-171-013-base
+capture 20/46: fast-43-diverse-171-013-counterfactual
+capture 21/46: fast-43-diverse-171-015-base
+capture 22/46: fast-43-diverse-171-015-counterfactual
+capture 23/46: fast-43-diverse-171-016-base
+capture 24/46: fast-43-diverse-171-016-counterfactual
+capture 25/46: fast-43-diverse-174-001-base
+capture 26/46: fast-43-diverse-174-001-counterfactual
+capture 27/46: fast-43-diverse-174-005-base
+capture 28/46: fast-43-diverse-174-005-counterfactual
+capture 29/46: fast-43-diverse-174-006-base
+capture 30/46: fast-43-diverse-174-006-counterfactual
+capture 31/46: fast-43-diverse-174-007-base
+capture 32/46: fast-43-diverse-174-007-counterfactual
+capture 33/46: fast-43-diverse-174-008-base
+capture 34/46: fast-43-diverse-174-008-counterfactual
+capture 35/46: fast-43-diverse-174-009-base
+capture 36/46: fast-43-diverse-174-009-counterfactual
+capture 37/46: fast-43-diverse-174-010-base
+capture 38/46: fast-43-diverse-174-010-counterfactual
+capture 39/46: fast-43-diverse-174-011-base
+capture 40/46: fast-43-diverse-174-011-counterfactual
+capture 41/46: fast-43-diverse-215-039-base
+capture 42/46: fast-43-diverse-215-039-counterfactual
+capture 43/46: fast-43-diverse-272-004-base
+capture 44/46: fast-43-diverse-272-004-counterfactual
+capture 45/46: fast-43-diverse-272-009-base
+capture 46/46: fast-43-diverse-272-009-counterfactual
+completed: 46/46 selected rows; D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-007\actual\capture.json
+
+Completed PID 46368, status Succeeded, exit 0, elapsed 47.346s; result: D:\source\Sezika\.artifacts\s346-20260926\nimble-final\processes\20260926-032957-841-capture-6.result.json
+Started PID 43036, timeout 45s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCompare\release\Sezika.OracleCompare.dll D:\source\Sezika\.artifacts\s346-20260926\nimble-remaining\batch-007\reference\capture.json D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-007\actual\capture.json D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json D:\source\Sezika\.artifacts\s346-20260926\nimble-plan\cases-007.json D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-007\comparison.json 30
+
+Loading four bounded local JSON files; no model inference.
+compare 1/46: fast-43-diverse-169-099-base
+compare 2/46: fast-43-diverse-169-099-counterfactual
+compare 3/46: fast-43-diverse-171-001-base
+compare 4/46: fast-43-diverse-171-001-counterfactual
+compare 5/46: fast-43-diverse-171-002-base
+compare 6/46: fast-43-diverse-171-002-counterfactual
+compare 7/46: fast-43-diverse-171-003-base
+compare 8/46: fast-43-diverse-171-003-counterfactual
+compare 9/46: fast-43-diverse-171-004-base
+compare 10/46: fast-43-diverse-171-004-counterfactual
+compare 11/46: fast-43-diverse-171-006-base
+compare 12/46: fast-43-diverse-171-006-counterfactual
+compare 13/46: fast-43-diverse-171-008-base
+compare 14/46: fast-43-diverse-171-008-counterfactual
+compare 15/46: fast-43-diverse-171-010-base
+compare 16/46: fast-43-diverse-171-010-counterfactual
+compare 17/46: fast-43-diverse-171-012-base
+compare 18/46: fast-43-diverse-171-012-counterfactual
+compare 19/46: fast-43-diverse-171-013-base
+compare 20/46: fast-43-diverse-171-013-counterfactual
+compare 21/46: fast-43-diverse-171-015-base
+compare 22/46: fast-43-diverse-171-015-counterfactual
+compare 23/46: fast-43-diverse-171-016-base
+compare 24/46: fast-43-diverse-171-016-counterfactual
+compare 25/46: fast-43-diverse-174-001-base
+compare 26/46: fast-43-diverse-174-001-counterfactual
+compare 27/46: fast-43-diverse-174-005-base
+compare 28/46: fast-43-diverse-174-005-counterfactual
+compare 29/46: fast-43-diverse-174-006-base
+compare 30/46: fast-43-diverse-174-006-counterfactual
+compare 31/46: fast-43-diverse-174-007-base
+compare 32/46: fast-43-diverse-174-007-counterfactual
+compare 33/46: fast-43-diverse-174-008-base
+compare 34/46: fast-43-diverse-174-008-counterfactual
+compare 35/46: fast-43-diverse-174-009-base
+compare 36/46: fast-43-diverse-174-009-counterfactual
+compare 37/46: fast-43-diverse-174-010-base
+compare 38/46: fast-43-diverse-174-010-counterfactual
+compare 39/46: fast-43-diverse-174-011-base
+compare 40/46: fast-43-diverse-174-011-counterfactual
+compare 41/46: fast-43-diverse-215-039-base
+compare 42/46: fast-43-diverse-215-039-counterfactual
+compare 43/46: fast-43-diverse-272-004-base
+compare 44/46: fast-43-diverse-272-004-counterfactual
+compare 45/46: fast-43-diverse-272-009-base
+compare 46/46: fast-43-diverse-272-009-counterfactual
+Comparison passed: 46 answered pairs, 0 failure pairs, 0 issues; coverage=46/46; full_manifest_passed=True.
+
+Completed PID 43036, status Succeeded, exit 0, elapsed 3.138s; result: D:\source\Sezika\.artifacts\s346-20260926\nimble-final\processes\20260926-033045-206-compare-6.result.json
+Oracle batch 8/8, source offset 322, rows 2
+Reusing hash-bound independent reference for batch 8; no reference inference.
+Started PID 1732, timeout 494s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCapture\release\Sezika.OracleCapture.dll --reference D:\source\Sezika\.artifacts\s346-20260926\nimble-remaining\batch-008\reference\capture.json --model D:\source\Sezika\.artifacts\models\laya-mmbert --cases D:\source\Sezika\.artifacts\s346-20260926\nimble-plan\cases-008.json --contract D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json --output D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-008\actual --backend cuda --length-policy laya_compatible --max-cases 2 --timeout-seconds 600
+
+Read bounded local reference inputs and frozen identities; reference numerical outputs are not deserialized.
+Loading verified local model for 2 case(s), backend=cuda, length_policy=LayaCompatible.
+capture 1/2: fast-43-diverse-272-025-base
+capture 2/2: fast-43-diverse-272-025-counterfactual
+completed: 2/2 selected rows; D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-008\actual\capture.json
+
+Completed PID 1732, status Succeeded, exit 0, elapsed 7.629s; result: D:\source\Sezika\.artifacts\s346-20260926\nimble-final\processes\20260926-033048-357-capture-7.result.json
+Started PID 63312, timeout 45s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCompare\release\Sezika.OracleCompare.dll D:\source\Sezika\.artifacts\s346-20260926\nimble-remaining\batch-008\reference\capture.json D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-008\actual\capture.json D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json D:\source\Sezika\.artifacts\s346-20260926\nimble-plan\cases-008.json D:\source\Sezika\.artifacts\s346-20260926\nimble-final\batch-008\comparison.json 30
+
+Loading four bounded local JSON files; no model inference.
+compare 1/2: fast-43-diverse-272-025-base
+compare 2/2: fast-43-diverse-272-025-counterfactual
+Comparison passed: 2 answered pairs, 0 failure pairs, 0 issues; coverage=2/2; full_manifest_passed=True.
+
+Completed PID 63312, status Succeeded, exit 0, elapsed 2.125s; result: D:\source\Sezika\.artifacts\s346-20260926\nimble-final\processes\20260926-033055-994-compare-7.result.json

@@ -1,0 +1,28 @@
+{
+  "Pid": 76408,
+  "Started": "2026-09-26T02:14:36.3692532Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 3188,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 3188,
+    "Started": "2026-09-26T10:14:35.100232+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$baseline = Get-Content -LiteralPath '.artifacts/s346-20260926/aggregate-baseline.json' -Raw -Encoding utf8 | ConvertFrom-Json; if ($baseline.Processed -ne 1 -or $baseline.Unprocessed -ne 249 -or $baseline.DatasetAnswerCoverage -ne 0.004 -or $baseline.FullDatasetProcessed) { throw 'Baseline denominator failed.' }; $indexSource = Get-Content -LiteralPath '.artifacts/s346-20260926/aggregate-baseline-index.json' -Raw -Encoding utf8 | ConvertFrom-Json -AsHashtable; $cases = @(@{name='duplicate';expected='Duplicate case across capture batches.'},@{name='wrong-hash';expected='Indexed evidence SHA-256 mismatch.'}); $watch = [Diagnostics.Stopwatch]::StartNew(); $evidence = [Collections.Generic.List[object]]::new(); for ($i=0; $i -lt 2; $i++) { if ($watch.Elapsed.TotalSeconds -gt 100) { throw 'Aggregate negative batch timeout.' }; $case = $cases[$i]; $value = $indexSource | ConvertTo-Json -Depth 12 | ConvertFrom-Json -AsHashtable; if ($i -eq 0) { $value.batches = @($value.batches[0], $value.batches[0]) } else { $value.batches[0].capture_sha256 = '0' * 64 }; $base = [IO.Path]::GetFullPath(\\\".artifacts/s346-20260926/aggregate-$($case.name)\\\"); [IO.File]::WriteAllText(\\\"$base.index.json\\\",($value | ConvertTo-Json -Depth 12),[Text.UTF8Encoding]::new($false)); $logs = \\\"$base-logs\\\"; try { & './tools/Invoke-BoundedProcess.ps1' -FilePath (Get-Command dotnet).Source -ArgumentList @('.artifacts/build/s346-final-20260926/bin/Sezika.Evaluation/release/Sezika.Evaluation.dll','--score-captures','.artifacts/datasets/paws-public-benchmark/eval.jsonl','c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3','250',\\\"$base.index.json\\\",\\\"$base.report.json\\\",'30') -TimeoutSeconds 40 -LogName $case.name -LogDirectory $logs } catch { Write-Output \\\"Inspect expected rejection $($case.name): $($_.Exception.Message)\\\" }; $results = @(Get-ChildItem -LiteralPath $logs -Filter '*.result.json' -File | Select-Object -First 2); if ($results.Count -ne 1) { throw 'Expected one process result.' }; $result = Get-Content -LiteralPath $results[0].FullName -Raw -Encoding utf8 | ConvertFrom-Json; $errorText = (Get-Content -LiteralPath $result.StderrPath -Raw -Encoding utf8).Trim(); if ($result.ExitCode -ne 1 -or $result.CleanupErrors.Count -ne 0 -or $errorText -cne \\\"evaluation-oracle: InvalidDataException: $($case.expected)\\\" -or [IO.File]::Exists(\\\"$base.report.json\\\")) { throw \\\"Unexpected negative outcome: $errorText\\\" }; $evidence.Add([ordered]@{case=$case.name;exit_code=$result.ExitCode;expected=$case.expected;observed=$errorText;result=$results[0].FullName;passed=$true}); Write-Output \\\"PASS aggregate guard $($i + 1)/2\\\" }; [IO.File]::WriteAllText([IO.Path]::GetFullPath('.artifacts/s346-20260926/aggregate-negative-checks.json'),($evidence.ToArray() | ConvertTo-Json -Depth 8),[Text.UTF8Encoding]::new($false))\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 40,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/build/s346-final-20260926/bin/Sezika.Evaluation/release/Sezika.Evaluation.dll",
+    "--score-captures",
+    ".artifacts/datasets/paws-public-benchmark/eval.jsonl",
+    "c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3",
+    "250",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\aggregate-duplicate.index.json",
+    "D:\\source\\Sezika\\.artifacts\\s346-20260926\\aggregate-duplicate.report.json",
+    "30"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

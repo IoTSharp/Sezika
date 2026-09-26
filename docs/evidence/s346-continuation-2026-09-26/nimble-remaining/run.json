@@ -1,0 +1,26 @@
+{
+  "status": "selected_batches_complete",
+  "error": null,
+  "plan": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-plan\\batches.json",
+  "plan_sha256": "545797418712d6cd853127d16069bd2fad7d595b7b0c8619b34b2a12ba995bcc",
+  "dataset_total": 324,
+  "planned_batches": 2,
+  "batch_offset": 6,
+  "completed_batches": 2,
+  "comparisons": [
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-remaining\\batch-007\\comparison.json",
+      "sha256": "f451345f56a916415fb01c1c73a3a57766bd94264770f8eb2891f4c2e129a074",
+      "rows": 46,
+      "passed": true
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\s346-20260926\\nimble-remaining\\batch-008\\comparison.json",
+      "sha256": "bb6ea64b2b92c9a04c13c87a75b0c6f2c3c9cb6d23dbafe8b9f9d82641428cc2",
+      "rows": 2,
+      "passed": true
+    }
+  ],
+  "elapsed_seconds": 260.9960946,
+  "timeout_seconds": 600
+}

@@ -8,13 +8,15 @@ namespace Sezika.Benchmarks;
 
 internal sealed class PerformanceProfile
 {
-    public int SchemaVersion { get; init; } = 2;
+    public int SchemaVersion { get; init; } = 3;
     public string InputSetVersion { get; init; } = "sezika.performance-inputs.v1";
     public string RenderingVersion { get; init; } = "sezika.prompt.laya-4066d5d5.v2";
     public string DiagnosticLengthPolicy { get; init; } = "laya_compatible_proposal_then_actual_request_policy";
     public string[] SelectedLengths { get; init; } = [];
     public int[] SelectedQuestions { get; init; } = [];
     public string Status { get; set; } = "pending";
+    public string Detail { get; init; } = "full";
+    public int CasesWithStageTimings => Cases.Count(row => row.Status == "measured" && row.EncoderAndHeadMilliseconds is not null);
     public int PlannedCases => SelectedLengths.Length * SelectedQuestions.Length;
     public int SuccessfulCases => Cases.Count(row => row.Status == "measured");
     public int RejectedCases => Cases.Count(row => row.Status == "rejected");
@@ -52,6 +54,10 @@ internal sealed class ProfileCase
     public string RenderingVerification { get; set; } = "unavailable_no_pipeline_call";
     public double? DiscoveryWallMilliseconds { get; set; }
     public long? DiscoveryAllocatedBytes { get; set; }
+    public int DiscoveryCompletedForwards { get; set; }
+    public int InstrumentedEnteredForwards { get; set; }
+    public int InstrumentedCompletedForwards { get; set; }
+    public string ForwardCountScope { get; init; } = "Entered counts observe pipeline calls; completed counts require finite, correctly shaped logits returned by the backend. Neither partial count is a completed request or a formal E2E sample.";
     public double? TokenizerAndRenderingMilliseconds { get; set; }
     public long? TokenizerAndRenderingAllocatedBytes { get; set; }
     public List<double> EndToEndMilliseconds { get; } = [];
@@ -93,12 +99,14 @@ internal sealed class ProfiledPipeline(IMarkerDecisionPipeline inner) : IMarkerD
     public PreparedProfileSequence[]? Expected { get; set; }
     public List<ProfileSequence> Actual { get; } = [];
     public double Milliseconds { get; private set; }
+    public int CompletedForwards { get; private set; }
 
     public void Reset(PreparedProfileSequence[] expected)
     {
         Expected = expected;
         Actual.Clear();
         Milliseconds = 0;
+        CompletedForwards = 0;
     }
 
     public float[] Score(ReadOnlySpan<int> tokenIds, int typeId, ReadOnlySpan<int> markerPositions,
@@ -113,7 +121,14 @@ internal sealed class ProfiledPipeline(IMarkerDecisionPipeline inner) : IMarkerD
         if (typeId != expected.TypeId || !tokenIds.SequenceEqual(expected.Tokens) || !markerPositions.SequenceEqual(expected.Markers))
             throw new InvalidOperationException("profile_rendering_mismatch: runtime token IDs, marker positions or type differ from the shared prompt builder proposal.");
         var watch = Stopwatch.StartNew();
-        try { return Inner.Score(tokenIds, typeId, markerPositions, cancellationToken); }
+        try
+        {
+            var logits = Inner.Score(tokenIds, typeId, markerPositions, cancellationToken);
+            if (logits.Length != markerPositions.Length || logits.Any(value => !float.IsFinite(value)))
+                throw new InvalidOperationException("profile_output_invalid: nonfinite or incorrectly shaped marker logits.");
+            CompletedForwards++;
+            return logits;
+        }
         finally { Milliseconds += watch.Elapsed.TotalMilliseconds; }
     }
 
@@ -201,6 +216,7 @@ internal static class PerformanceProfiler
             {
                 row.DiscoveryWallMilliseconds = watch.Elapsed.TotalMilliseconds;
                 row.DiscoveryAllocatedBytes = GC.GetTotalAllocatedBytes(true) - before;
+                row.DiscoveryCompletedForwards = pipeline.CompletedForwards;
                 row.ActualSequences.AddRange(pipeline.Actual);
                 if (pipeline.Actual.Count > 0)
                     row.RenderingVerification = "observed_pipeline_calls_request_incomplete";
@@ -230,44 +246,59 @@ internal static class PerformanceProfiler
             row.Latency = Distribution.From(row.EndToEndMilliseconds.ToArray());
             row.RequestsPerSecond = options.Samples * 1000d / row.EndToEndMilliseconds.Sum();
             row.QuestionsPerSecond = row.RequestsPerSecond * row.Questions;
-            token.ThrowIfCancellationRequested();
-            row.Phase = "instrumented_forward";
-            Console.WriteLine($"profile_{row.Id}: independent instrumented request");
-            pipeline.Reset(sequences);
-            if (device is not null) { device.ResetTelemetry(); device.ProfilingEnabled = true; }
-            try
+            if (options.ProfileDetail == "end_to_end")
             {
-                watch.Restart();
-                row.Response = Benchmark.Evaluate(engine, row.InputJson, token);
-                row.InstrumentedEndToEndMilliseconds = watch.Elapsed.TotalMilliseconds;
-                RequireComplete(row, sequences, pipeline);
-                row.EncoderAndHeadMilliseconds = pipeline.Milliseconds;
-                row.EncoderAndHeadStatus = "measured_independent_instrumented_request";
-                row.CudaInstrumentedForward = device?.GetTelemetry();
-                if (device is not null) row.CudaTelemetryStatus = "measured_independent_instrumented_request";
+                row.EncoderAndHeadStatus = "not_requested_end_to_end_detail";
+                row.EncoderHeadSplitStatus = "not_requested_end_to_end_detail";
+                if (device is not null) row.CudaTelemetryStatus = "not_requested_end_to_end_detail";
             }
-            finally { pipeline.Expected = null; if (device is not null) device.ProfilingEnabled = false; }
-            if (pipeline.Inner is ModernBertDecisionPipeline cpu)
+            else
             {
-                row.Phase = "cpu_split";
-                double encoderMilliseconds = 0, headMilliseconds = 0;
-                for (var index = 0; index < sequences.Length; index++)
+                token.ThrowIfCancellationRequested();
+                row.Phase = "instrumented_forward";
+                Console.WriteLine($"profile_{row.Id}: independent instrumented request");
+                pipeline.Reset(sequences);
+                if (device is not null) { device.ResetTelemetry(); device.ProfilingEnabled = true; }
+                try
                 {
-                    token.ThrowIfCancellationRequested();
-                    Console.WriteLine($"profile_{row.Id}: independent CPU split {index + 1}/{sequences.Length}");
-                    var sequence = sequences[index];
                     watch.Restart();
-                    var hidden = model.Encoder.Encode(sequence.Tokens, token);
-                    encoderMilliseconds += watch.Elapsed.TotalMilliseconds;
-                    watch.Restart();
-                    _ = cpu.ScoreEncoded(hidden, sequence.TypeId, sequence.Markers, token);
-                    headMilliseconds += watch.Elapsed.TotalMilliseconds;
+                    row.Response = Benchmark.Evaluate(engine, row.InputJson, token);
+                    row.InstrumentedEndToEndMilliseconds = watch.Elapsed.TotalMilliseconds;
+                    RequireComplete(row, sequences, pipeline);
+                    row.EncoderAndHeadMilliseconds = pipeline.Milliseconds;
+                    row.EncoderAndHeadStatus = "measured_independent_instrumented_request";
+                    row.CudaInstrumentedForward = device?.GetTelemetry();
+                    if (device is not null) row.CudaTelemetryStatus = "measured_independent_instrumented_request";
                 }
-                row.EncoderMilliseconds = encoderMilliseconds;
-                row.HeadMilliseconds = headMilliseconds;
-                row.EncoderHeadSplitStatus = "measured_independent_pass_head_includes_hidden_copy";
+                finally
+                {
+                    row.InstrumentedEnteredForwards = pipeline.Actual.Count;
+                    row.InstrumentedCompletedForwards = pipeline.CompletedForwards;
+                    pipeline.Expected = null;
+                    if (device is not null) device.ProfilingEnabled = false;
+                }
+                if (pipeline.Inner is ModernBertDecisionPipeline cpu)
+                {
+                    row.Phase = "cpu_split";
+                    double encoderMilliseconds = 0, headMilliseconds = 0;
+                    for (var index = 0; index < sequences.Length; index++)
+                    {
+                        token.ThrowIfCancellationRequested();
+                        Console.WriteLine($"profile_{row.Id}: independent CPU split {index + 1}/{sequences.Length}");
+                        var sequence = sequences[index];
+                        watch.Restart();
+                        var hidden = model.Encoder.Encode(sequence.Tokens, token);
+                        encoderMilliseconds += watch.Elapsed.TotalMilliseconds;
+                        watch.Restart();
+                        _ = cpu.ScoreEncoded(hidden, sequence.TypeId, sequence.Markers, token);
+                        headMilliseconds += watch.Elapsed.TotalMilliseconds;
+                    }
+                    row.EncoderMilliseconds = encoderMilliseconds;
+                    row.HeadMilliseconds = headMilliseconds;
+                    row.EncoderHeadSplitStatus = "measured_independent_pass_head_includes_hidden_copy";
+                }
+                else row.EncoderHeadSplitStatus = "unavailable_cuda_resident_pipeline_has_no_independent_head_timing_boundary";
             }
-            else row.EncoderHeadSplitStatus = "unavailable_cuda_resident_pipeline_has_no_independent_head_timing_boundary";
             row.Status = "measured";
             row.Phase = "complete";
         }
@@ -340,7 +371,7 @@ internal static class PerformanceProfiler
     {
         var response = row.Response ?? throw new InvalidOperationException("Successful request has no response.");
         Benchmark.Validate(response, row.Questions);
-        if (pipeline.Actual.Count != sequences.Length || response.Usage!.TokenCount != row.RenderedTotalTokens)
+        if (pipeline.Actual.Count != sequences.Length || pipeline.CompletedForwards != sequences.Length || response.Usage!.TokenCount != row.RenderedTotalTokens)
             throw new InvalidOperationException("profile_rendering_mismatch: actual pipeline calls or reported token count differ from the shared prompt builder proposal.");
         if (row.LengthPolicy == PromptLengthPolicy.Strict && row.ProposedTruncation)
             throw new InvalidOperationException("profile_rendering_mismatch: strict runtime accepted a prompt requiring token truncation.");

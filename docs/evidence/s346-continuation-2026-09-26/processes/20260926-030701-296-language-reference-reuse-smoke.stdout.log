@@ -1,0 +1,17 @@
+Oracle batch 1/1, source offset 0, rows 1
+Reusing hash-bound independent reference for batch 1; no reference inference.
+Started PID 78388, timeout 154s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCapture\release\Sezika.OracleCapture.dll --reference D:\source\Sezika\.artifacts\s346-20260926\language-smoke\batch-001\reference\capture.json --model D:\source\Sezika\.artifacts\models\laya-mmbert --cases D:\source\Sezika\.artifacts\s346-20260926\language-one-plan\cases-001.json --contract D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json --output D:\source\Sezika\.artifacts\s346-20260926\language-final-smoke\batch-001\actual --backend cuda --length-policy laya_compatible --max-cases 1 --timeout-seconds 600
+
+Read bounded local reference inputs and frozen identities; reference numerical outputs are not deserialized.
+Loading verified local model for 1 case(s), backend=cuda, length_policy=LayaCompatible.
+capture 1/1: en-general-test-001
+completed: 1/1 selected rows; D:\source\Sezika\.artifacts\s346-20260926\language-final-smoke\batch-001\actual\capture.json
+
+Completed PID 78388, status Succeeded, exit 0, elapsed 6.019s; result: D:\source\Sezika\.artifacts\s346-20260926\language-final-smoke\processes\20260926-030702-306-capture-0.result.json
+Started PID 25516, timeout 45s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s346-tokenizer-final-20260926\bin\Sezika.OracleCompare\release\Sezika.OracleCompare.dll D:\source\Sezika\.artifacts\s346-20260926\language-smoke\batch-001\reference\capture.json D:\source\Sezika\.artifacts\s346-20260926\language-final-smoke\batch-001\actual\capture.json D:\source\Sezika\tests\fixtures\laya-oracle\contract.v1.json D:\source\Sezika\.artifacts\s346-20260926\language-one-plan\cases-001.json D:\source\Sezika\.artifacts\s346-20260926\language-final-smoke\batch-001\comparison.json 30
+
+Loading four bounded local JSON files; no model inference.
+compare 1/1: en-general-test-001
+Comparison passed: 1 answered pairs, 0 failure pairs, 0 issues; coverage=1/1; full_manifest_passed=True.
+
+Completed PID 25516, status Succeeded, exit 0, elapsed 2.063s; result: D:\source\Sezika\.artifacts\s346-20260926\language-final-smoke\processes\20260926-030708-359-compare-0.result.json

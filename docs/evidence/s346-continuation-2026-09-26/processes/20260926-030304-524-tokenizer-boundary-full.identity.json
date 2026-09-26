@@ -1,0 +1,28 @@
+{
+  "Pid": 76336,
+  "Started": "2026-09-26T03:03:05.0285077Z",
+  "CommandLine": "\".artifacts/laya-oracle-work/venv/Scripts/python.exe\" -B tools/Sezika.LayaOracle/export_tokenizer_boundaries.py --tokenizer .artifacts/models/laya-mmbert/tokenizer/tokenizer.json --output tests/fixtures/tokenizer-mmbert-boundaries.v1.json --max-cases 300",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 71356,
+  "ObservedParentPid": 71356,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 71356,
+    "Started": "2026-09-26T11:03:00.182742+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& './tools/Invoke-BoundedProcess.ps1' -FilePath '.artifacts/laya-oracle-work/venv/Scripts/python.exe' -ArgumentList @('-B','tools/Sezika.LayaOracle/export_tokenizer_boundaries.py','--tokenizer','.artifacts/models/laya-mmbert/tokenizer/tokenizer.json','--output','.artifacts/s346-20260926/tokenizer-boundary-smoke.json','--max-cases','1') -TimeoutSeconds 40 -LogName 'tokenizer-boundary-smoke' -LogDirectory '.artifacts/s346-20260926/processes'\nif ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }\n& './tools/Invoke-BoundedProcess.ps1' -FilePath '.artifacts/laya-oracle-work/venv/Scripts/python.exe' -ArgumentList @('-B','tools/Sezika.LayaOracle/export_tokenizer_boundaries.py','--tokenizer','.artifacts/models/laya-mmbert/tokenizer/tokenizer.json','--output','tests/fixtures/tokenizer-mmbert-boundaries.v1.json','--max-cases','300') -TimeoutSeconds 40 -LogName 'tokenizer-boundary-full' -LogDirectory '.artifacts/s346-20260926/processes'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 40,
+  "FilePath": ".artifacts/laya-oracle-work/venv/Scripts/python.exe",
+  "Arguments": [
+    "-B",
+    "tools/Sezika.LayaOracle/export_tokenizer_boundaries.py",
+    "--tokenizer",
+    ".artifacts/models/laya-mmbert/tokenizer/tokenizer.json",
+    "--output",
+    "tests/fixtures/tokenizer-mmbert-boundaries.v1.json",
+    "--max-cases",
+    "300"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

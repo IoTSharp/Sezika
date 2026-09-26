@@ -23,6 +23,27 @@ schema v2 报告绑定模型/revision、权重/tokenizer SHA-256、输入渲染�
 
 ## 独立参考与离线评分
 
+新增全量分批入口，原单捕获命令保持可用：
+
+```text
+Sezika.Evaluation --prepare-oracle-batches <eval.jsonl> <sha256> <dataset-total>
+  <records-per-batch:1..46> <new-directory> <seconds:1..300>
+Sezika.Evaluation --score-captures <eval.jsonl> <sha256> <dataset-total>
+  <capture-index.json> <new-report.json> <seconds:1..300>
+```
+
+准备操作保持来源顺序，生成完整、不重叠、含尾批的清单，每批最多 46 题、总计最多 256 批；`batches.json` 保存来源身份、偏移、每批 ID 和 manifest hash，全部准备完才写出索引。PAWS 250 题为 6 批，Nimble 324 题为 8 批。每个 manifest 继续受 1 MiB 上限约束，数据准备不执行模型。
+
+`Invoke-OracleBatches.ps1` 在显式本地 Python、上游源码、模型和构建路径下，按固定清单顺序执行独立参考 → C# CUDA capture → 冻结数值比较，不自动安装、下载或重试。先以单条输入验证，再扩大范围。参数 `MaxBatches` 默认 1，`BatchOffset` 可选择预定区间，整批期限最多 1740 秒，每个子进程通过仓库 runner 记录身份并回收；外层也应使用 runner 并预留清理时间。`CancelFile` 支持批次间和 Python 参考内的取消，Ctrl+C/外层 runner 负责整体取消。输出目录必须新建，`run.json` 保留未完成状态与完整计划分母。数值差异保留对应比较报告并继续固定计划，捕获仍进入评分索引，整轮标为 complete_with_differences；输入/身份无效、执行失败或清理失败则中止。未处理项保留在完整数据集分母，不通过排除数值差异挑选有利样本。
+
+评分索引 schema 为 `sezika.evaluation-captures.v1`，`batches` 各项包含 `capture`、`capture_sha256`、`manifest`、`manifest_sha256`，路径相对索引文件解析。读取总量最多 256 MiB。逐捕获沿用原始输入/预测/概率/失败校验，并要求完整覆盖对应 manifest 的有序 ID；跨批次重复 ID、不同 backend/长度策略/实现程序集/参考环境均拒绝。报告保存各批来源，不把汇总器自己的程序集当作历史推理程序集。缺批时 `Unprocessed` 和完整数据集分母保留，`DatasetAnswerCoverage=Answered/DatasetTotal`；`Coverage=Answered/Processed` 的既有含义不变。汇总评分本身不证明数值对齐，须同时审核每批比较报告。
+
+已有完整独立参考可通过 `ReferenceIndexPath` 复用：逐批核对 manifest 和 capture hash，参考数值仍只交给独立比较器；C# capture 继续重新执行模型。此模式可在 tokenizer/实现修复后重测，保留原失败报告，避免重新生成参考造成基线漂移。索引在执行后再次核对；所选批缺少参考时直接失败，不回退下载或生成。
+
+报告另含 `ByLanguageAndType`，语言及其他分组增加覆盖率、按全部处理题的准确率、Boolean 指标、Brier/NLL/ECE 和 Score MAE。没有显式语言仍为 `unspecified`，非法元数据直接拒绝。
+
+`Prepare-LanguageAudit.ps1` 仅适配既有 S4-02 的 12 条中英 test fixture，不读取 calibration：保留 state、说明、标签和顺序，仅将旧 Boolean 字段名转为当前合同，保留每个源文件 SHA-256。先 `MaxRecords=1` 验证，再 `MaxRecords=12`；输出及许可见 [语言审计数据](../../datasets/s4-04/language-audit-v1/README.md)。这是原始小型 fixture 的真实推理审计，不能充当新封存测试或统计充分的语言质量证明。
+
 先从固定来源准备最多 46 条原始审计输入，不进行模型运行：
 
 ```text
