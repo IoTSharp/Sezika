@@ -1,0 +1,26 @@
+{
+  "Pid": 4588,
+  "Started": "2026-09-25T16:55:03.377892Z",
+  "CommandLine": null,
+  "ParentPid": 22492,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 22492,
+    "Started": "2026-09-26T00:55:01.452574+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('.artifacts/s3-aot-20260926/build-compare/bin/Sezika.OracleCompare/release/Sezika.OracleCompare.dll','.artifacts/s4-quality-20260926/nimble-reference-45/capture.json','.artifacts/s4-quality-20260926/nimble-cuda-45/capture.json','tests/fixtures/laya-oracle/contract.v1.json','.artifacts/s4-quality-20260926/nimble-45-inputs.json','.artifacts/s4-quality-20260926/nimble-45-comparison.json','30') -TimeoutSeconds 45 -LogName 's4-nimble-45-comparison'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 45,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/s3-aot-20260926/build-compare/bin/Sezika.OracleCompare/release/Sezika.OracleCompare.dll",
+    ".artifacts/s4-quality-20260926/nimble-reference-45/capture.json",
+    ".artifacts/s4-quality-20260926/nimble-cuda-45/capture.json",
+    "tests/fixtures/laya-oracle/contract.v1.json",
+    ".artifacts/s4-quality-20260926/nimble-45-inputs.json",
+    ".artifacts/s4-quality-20260926/nimble-45-comparison.json",
+    "30"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

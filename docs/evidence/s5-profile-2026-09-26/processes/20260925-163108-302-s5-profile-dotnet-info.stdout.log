@@ -1,0 +1,89 @@
+.NET SDK:
+ Version:           10.0.400
+ Commit:            14fbf8d527
+ Workload version:  10.0.400-manifests.e0070f48
+ MSBuild version:   18.9.6+14fbf8d52
+
+运行时环境:
+ OS Name:     Windows
+ OS Version:  10.0.26200
+ OS Platform: Windows
+ RID:         win-x64
+ Base Path:   C:\Program Files\dotnet\sdk\10.0.400\
+
+已安装 .NET 工作负载:
+ [maccatalyst]
+   安装源文件: VS 18.5.11716.220
+   清单版本:    26.4.10259/10.0.100
+   清单路径:       C:\Program Files\dotnet\sdk-manifests\10.0.100\microsoft.net.sdk.maccatalyst\26.4.10259\WorkloadManifest.json
+   安装类型:              Msi
+
+ [maui-windows]
+   安装源文件: VS 18.5.11716.220
+   清单版本:    10.0.20/10.0.100
+   清单路径:       C:\Program Files\dotnet\sdk-manifests\10.0.100\microsoft.net.sdk.maui\10.0.20\WorkloadManifest.json
+   安装类型:              Msi
+
+ [ios]
+   安装源文件: VS 18.5.11716.220
+   清单版本:    26.4.10259/10.0.100
+   清单路径:       C:\Program Files\dotnet\sdk-manifests\10.0.100\microsoft.net.sdk.ios\26.4.10259\WorkloadManifest.json
+   安装类型:              Msi
+
+ [android]
+   安装源文件: VS 18.5.11716.220
+   清单版本:    36.1.53/10.0.100
+   清单路径:       C:\Program Files\dotnet\sdk-manifests\10.0.100\microsoft.net.sdk.android\36.1.53\WorkloadManifest.json
+   安装类型:              Msi
+
+已配置为在安装新清单时使用 workload sets。
+未安装任何 workload sets。运行 “dotnet workload restore” 以安装工作负载集。
+
+Host:
+  Version:      10.0.11
+  Architecture: x64
+  Commit:       e2f47b0110
+
+.NET SDKs installed:
+  8.0.414 [C:\Program Files\dotnet\sdk]
+  10.0.202 [C:\Program Files\dotnet\sdk]
+  10.0.400 [C:\Program Files\dotnet\sdk]
+
+.NET runtimes installed:
+  Microsoft.AspNetCore.App 8.0.20 [C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App]
+  Microsoft.AspNetCore.App 8.0.26 [C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App]
+  Microsoft.AspNetCore.App 9.0.15 [C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App]
+  Microsoft.AspNetCore.App 10.0.6 [C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App]
+  Microsoft.AspNetCore.App 10.0.11 [C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App]
+  Microsoft.NETCore.App 6.0.33 [C:\Program Files\dotnet\shared\Microsoft.NETCore.App]
+  Microsoft.NETCore.App 8.0.20 [C:\Program Files\dotnet\shared\Microsoft.NETCore.App]
+  Microsoft.NETCore.App 8.0.22 [C:\Program Files\dotnet\shared\Microsoft.NETCore.App]
+  Microsoft.NETCore.App 8.0.26 [C:\Program Files\dotnet\shared\Microsoft.NETCore.App]
+  Microsoft.NETCore.App 9.0.3 [C:\Program Files\dotnet\shared\Microsoft.NETCore.App]
+  Microsoft.NETCore.App 9.0.15 [C:\Program Files\dotnet\shared\Microsoft.NETCore.App]
+  Microsoft.NETCore.App 10.0.6 [C:\Program Files\dotnet\shared\Microsoft.NETCore.App]
+  Microsoft.NETCore.App 10.0.11 [C:\Program Files\dotnet\shared\Microsoft.NETCore.App]
+  Microsoft.WindowsDesktop.App 6.0.33 [C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App]
+  Microsoft.WindowsDesktop.App 8.0.20 [C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App]
+  Microsoft.WindowsDesktop.App 8.0.22 [C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App]
+  Microsoft.WindowsDesktop.App 8.0.26 [C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App]
+  Microsoft.WindowsDesktop.App 9.0.3 [C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App]
+  Microsoft.WindowsDesktop.App 9.0.15 [C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App]
+  Microsoft.WindowsDesktop.App 10.0.6 [C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App]
+  Microsoft.WindowsDesktop.App 10.0.11 [C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App]
+
+Other architectures found:
+  x86   [C:\Program Files (x86)\dotnet]
+    registered at [HKLM\SOFTWARE\dotnet\Setup\InstalledVersions\x86\InstallLocation]
+
+Environment variables:
+  DOTNET_CLI_DO_NOT_USE_MSBUILD_SERVER     [1]
+
+global.json file:
+  D:\source\Sezika\global.json
+
+Learn more:
+  https://aka.ms/dotnet/info
+
+Download .NET:
+  https://aka.ms/dotnet/download

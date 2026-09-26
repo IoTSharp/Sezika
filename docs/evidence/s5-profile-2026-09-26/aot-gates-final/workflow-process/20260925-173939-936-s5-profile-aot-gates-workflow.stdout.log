@@ -1,0 +1,18 @@
+AOT negative check 1/2: ordinary-managed
+Started PID 69696, timeout 30s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s5-profile-final2-20260926\bin\Sezika.Benchmarks\release\Sezika.Benchmarks.dll --require-aot --mode profile --backend simd --model D:\source\Sezika\.artifacts\s5-profile-20260926\aot-gates-final\model-does-not-exist --lengths short --questions 1 --samples 1 --warmup 0 --cycles 1 --timeout-seconds 10 --output D:\source\Sezika\.artifacts\s5-profile-20260926\aot-gates-final\ordinary-managed.json
+profile_plan: 1/1 short-1
+failed: D:\source\Sezika\.artifacts\s5-profile-20260926\aot-gates-final\ordinary-managed.json
+
+arguments: InvalidOperationException: --require-aot requires a Native AOT executable without a managed host and with dynamic code disabled.
+
+Completed PID 69696, status Failed, exit 2, elapsed 3.524s; result: D:\source\Sezika\.artifacts\s5-profile-20260926\aot-gates-final\ordinary-managed-process\20260925-173941-107-s5-profile-aot-ordinary-managed.result.json
+PASS ordinary-managed: managed host rejected before model loading, exit 2.
+AOT negative check 2/2: dynamic-disabled-managed
+Started PID 67004, timeout 30s: C:\Program Files\dotnet\dotnet.exe exec --runtimeconfig D:\source\Sezika\.artifacts\s5-profile-20260926\aot-gates-final\dynamic-disabled.runtimeconfig.json D:\source\Sezika\.artifacts\build\s5-profile-final2-20260926\bin\Sezika.Benchmarks\release\Sezika.Benchmarks.dll --require-aot --mode profile --backend simd --model D:\source\Sezika\.artifacts\s5-profile-20260926\aot-gates-final\model-does-not-exist --lengths short --questions 1 --samples 1 --warmup 0 --cycles 1 --timeout-seconds 10 --output D:\source\Sezika\.artifacts\s5-profile-20260926\aot-gates-final\dynamic-disabled-managed.json
+profile_plan: 1/1 short-1
+failed: D:\source\Sezika\.artifacts\s5-profile-20260926\aot-gates-final\dynamic-disabled-managed.json
+
+arguments: InvalidOperationException: --require-aot requires a Native AOT executable without a managed host and with dynamic code disabled.
+
+Completed PID 67004, status Failed, exit 2, elapsed 3.768s; result: D:\source\Sezika\.artifacts\s5-profile-20260926\aot-gates-final\dynamic-disabled-managed-process\20260925-173945-278-s5-profile-aot-dynamic-disabled-managed.result.json
+PASS dynamic-disabled-managed: managed host rejected before model loading, exit 2.

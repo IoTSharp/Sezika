@@ -1,0 +1,160 @@
+{
+  "DerivedEvidenceVersion": 1,
+  "SourcePath": ".artifacts/s4-quality-20260926/paws-cuda-smoke-quality.json",
+  "SourceSha256": "f608c87dd05f129aaffe82af8888b3a10b33954bc2a1ab7a67ff222986c90a75",
+  "Derivation": "Selected numeric metrics, runtime/source identities and numeric row evidence only. Original inputs, candidate labels, target/selected label text, raw ID/family fields and ByTarget are omitted. IdSha256 hashes the original UTF-8 record ID. The original report remains unchanged in the ignored artifact directory.",
+  "Metrics": {
+    "SchemaVersion": 2,
+    "RenderingVersion": "sezika.prompt.laya-4066d5d5.v2",
+    "LengthPolicy": "laya_compatible",
+    "WeightsSha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+    "TokenizerSha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+    "CodeArtifacts": {
+      "dotnet.exe": "ab1b71fd3dd71062e074c9fab8312081a81b7f2b3e0327c48c4d249c8d1a3135",
+      "Sezika.Evaluation.dll": "86ff2bce63cd40b29ded65b135c4d614e8bd4a00e403273e9ee39bcee1646896",
+      "Sezika.dll": "86e8705b7890dc9734a99435aecb8d4e2d5b7cd138596c8b553363b8d52d63a3",
+      "Sezika.Cuda.dll": "d66fb624ccf458c9269625612ebd77ff0b817f0ff79dba766f03e25ef24390cf"
+    },
+    "Runtime": ".NET 10.0.11",
+    "OperatingSystem": "Microsoft Windows 10.0.26200",
+    "CaptureSha256": "a7381cc6f8f2b0daa79179f6c1ebf8277198fb40440081036e8f9e04a2b67195",
+    "CaptureStatus": "completed",
+    "CaptureSelectedCases": 1,
+    "CaptureManifestCases": 1,
+    "CaptureProvenance": {
+      "model_id": "convaiinnovations/laya-multilingual",
+      "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+      "weights_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+      "tokenizer_sha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+      "upstream_source_revision": "4066d5d5fbf08b66c6757ddeedbd797bd7655bc0",
+      "cases_sha256": "34fbe34fa626850515ffb159e651a943d004205c97f0efa38b36a8e1e70ca2b8",
+      "contract_sha256": "771ca781c52f1d6f9cb22859bed007ef483a54a2543c644de33f88d6e0687eee",
+      "max_len": 1024,
+      "head_max_len": 256,
+      "temperature_policy": "checkpoint_fixed_1_no_overrides"
+    },
+    "CaptureCasesSha256": "34fbe34fa626850515ffb159e651a943d004205c97f0efa38b36a8e1e70ca2b8",
+    "CaptureContractSha256": "771ca781c52f1d6f9cb22859bed007ef483a54a2543c644de33f88d6e0687eee",
+    "MeasurementOrigin": "offline_scoring_of_existing_capture_not_new_inference_or_parity_proof",
+    "FullDatasetProcessed": false,
+    "EvaluationUse": "audit_only_not_training_or_calibration",
+    "StartedUtc": "2026-09-26T00:42:57.5789846+08:00",
+    "ElapsedMilliseconds": 139.678,
+    "Model": "convaiinnovations/laya-multilingual",
+    "ModelRevision": "052592a15d198d9ad47da779604259b10b47b7aa",
+    "TokenizerRevision": "052592a15d198d9ad47da779604259b10b47b7aa",
+    "Backend": "cuda_fp32",
+    "DatasetName": "capture",
+    "DatasetSha256": "c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3",
+    "DatasetTotal": 250,
+    "Processed": 1,
+    "Answered": 1,
+    "Abstained": 0,
+    "Correct": 1,
+    "Coverage": 1,
+    "AccuracyOnAnswered": 1,
+    "AccuracyOverProcessed": 1,
+    "Boolean": {
+      "Processed": 1,
+      "Answered": 1,
+      "Unanswered": 0,
+      "Abstained": 0,
+      "ReferencePositive": 0,
+      "ReferenceNegative": 1,
+      "ReferencePositiveAnswered": 0,
+      "ReferenceNegativeAnswered": 1,
+      "TruePositive": 0,
+      "FalsePositive": 0,
+      "TrueNegative": 1,
+      "FalseNegative": 0,
+      "Coverage": 1,
+      "AccuracyOnAnswered": 1,
+      "AccuracyOverProcessed": 1,
+      "PositiveRecallOnAnswered": null,
+      "NegativeRecallOnAnswered": 1,
+      "BalancedAccuracyOnAnswered": null,
+      "AurocOnAnswered": null,
+      "PredictedPositiveRateOnAnswered": 0
+    },
+    "MeanBrier": 0.33076206286876697,
+    "MeanNll": 0.5220056665966035,
+    "Ece10": 0.40667066704445687,
+    "ScoreMae": null,
+    "EligibleCounterfactualPairs": 0,
+    "AnsweredCounterfactualPairs": 0,
+    "PredictionFlips": 0,
+    "BothCorrectPairs": 0,
+    "ByType": [
+      {
+        "Name": "noul",
+        "Total": 1,
+        "Answered": 1,
+        "Correct": 1,
+        "AccuracyOnAnswered": 1
+      }
+    ],
+    "ByDomain": [
+      {
+        "Name": "paws",
+        "Total": 1,
+        "Answered": 1,
+        "Correct": 1,
+        "AccuracyOnAnswered": 1
+      }
+    ],
+    "BySourceFamily": [
+      {
+        "Name": "paws",
+        "Total": 1,
+        "Answered": 1,
+        "Correct": 1,
+        "AccuracyOnAnswered": 1
+      }
+    ],
+    "ByLanguage": [
+      {
+        "Name": "unspecified",
+        "Total": 1,
+        "Answered": 1,
+        "Correct": 1,
+        "AccuracyOnAnswered": 1
+      }
+    ],
+    "ByFailure": {
+      "answered": 1
+    }
+  },
+  "Rows": [
+    {
+      "RowOrdinal": 1,
+      "IdSha256": "0fefd4a57929d3f5eadbf7125ec82b92b9cb59547c9a58ff7ecf396a05c7ca4b",
+      "Type": "noul",
+      "Status": "answered",
+      "ErrorCode": null,
+      "Correct": true,
+      "Tokens": 115,
+      "Milliseconds": 0,
+      "ProbabilityOfReference": 0.5933293329555431,
+      "TopProbability": 0.5933293329555431,
+      "Brier": 0.33076206286876697,
+      "Nll": 0.5220056665966035,
+      "ExpectedScore": null,
+      "ProbabilityTrue": 0.4066706670444569,
+      "AbstentionReason": null,
+      "Language": "unspecified",
+      "InputSha256": "e607451f8555f844e76db317a2d821438c470d48f1bbbac94c5d32e93b53e560",
+      "TokenIdsSha256": "66f98bffdd4ce7e66da3299466c2171ebee875b7e7ae2a3248c982a78ea89497",
+      "MarkerPositions": [
+        21,
+        31
+      ],
+      "Logits": [
+        1.2584432,
+        0.8806973
+      ],
+      "ForwardCalls": null,
+      "InputDiagnostics": null,
+      "RejectedInput": null
+    }
+  ]
+}

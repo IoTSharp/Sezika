@@ -1,0 +1,27 @@
+{
+  "Status": "Succeeded",
+  "Pid": 54656,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 3.148,
+  "TimeoutSeconds": 60,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/build/s5-profile-20260926/bin/Sezika.Benchmarks/release/Sezika.Benchmarks.dll",
+    "--self-test"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:26:16.4465805Z",
+  "ParentPid": 21900,
+  "Launcher": {
+    "Pid": 21900,
+    "Started": "2026-09-26T00:26:14.583684+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('.artifacts/build/s5-profile-20260926/bin/Sezika.Benchmarks/release/Sezika.Benchmarks.dll','--self-test') -TimeoutSeconds 60 -LogName 's5-profile-self-test-20260926'; Get-Content -LiteralPath src/Sezika/DecisionResourceBudget.cs -TotalCount 100; $r=Get-Content -Raw -LiteralPath docs/evidence/laya-parity-2026-09-25/simd-capture.json | ConvertFrom-Json; $r.PSObject.Properties.Name; $r.cases | Select-Object -First 2 | ConvertTo-Json -Depth 3\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162615-274-s5-profile-self-test-20260926.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-162615-274-s5-profile-self-test-20260926.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

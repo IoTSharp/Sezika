@@ -1,0 +1,55 @@
+{
+  "Status": "Succeeded",
+  "Pid": 62076,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 9.006,
+  "TimeoutSeconds": 180,
+  "FilePath": "C:/Program Files/dotnet/dotnet.exe",
+  "Arguments": [
+    "build",
+    "tools/Sezika.NumericParity/Sezika.NumericParity.csproj",
+    "-c",
+    "Release",
+    "--artifacts-path",
+    ".artifacts/build/s3-diagnostics-20260926",
+    "--nologo",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:38:13.3658234Z",
+  "ParentPid": 71740,
+  "Launcher": {
+    "Pid": 71740,
+    "Started": "2026-09-26T00:38:11.509304+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:/Program Files/dotnet/dotnet.exe' -ArgumentList @('build','tools/Sezika.NumericParity/Sezika.NumericParity.csproj','-c','Release','--artifacts-path','.artifacts/build/s3-diagnostics-20260926','--nologo','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false') -TimeoutSeconds 180 -LogName 's3-diagnostics-final-build'\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:/Program Files/dotnet/dotnet.exe' -ArgumentList @('.artifacts/build/s3-diagnostics-20260926/bin/Sezika.NumericParity/release/Sezika.NumericParity.dll','--trace-self-test') -TimeoutSeconds 30 -LogName 's3-diagnostics-final-self-test'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-163812-108-s3-diagnostics-final-build.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-163812-108-s3-diagnostics-final-build.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 62076,
+      "CreationDate": "2026-09-26T00:38:13.365823+08:00",
+      "Started": "2026-09-25T16:38:13.365823Z",
+      "CommandLine": "\"C:/Program Files/dotnet/dotnet.exe\" build tools/Sezika.NumericParity/Sezika.NumericParity.csproj -c Release --artifacts-path .artifacts/build/s3-diagnostics-20260926 --nologo --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+      "ParentPid": 71740,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 45956,
+      "CreationDate": "2026-09-26T00:38:13.377926+08:00",
+      "Started": "2026-09-25T16:38:13.377926Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 62076,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

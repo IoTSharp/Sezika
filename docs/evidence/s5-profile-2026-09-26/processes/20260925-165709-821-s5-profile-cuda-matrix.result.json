@@ -1,0 +1,69 @@
+{
+  "Status": "Succeeded",
+  "Pid": 73216,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 383.608,
+  "TimeoutSeconds": 1750,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\.artifacts\\build\\s5-profile-20260926\\bin\\Sezika.Benchmarks\\release\\Sezika.Benchmarks.dll",
+    "--mode",
+    "profile",
+    "--backend",
+    "cuda",
+    "--model",
+    "D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert",
+    "--lengths",
+    "short,medium,long",
+    "--questions",
+    "1,8,32",
+    "--samples",
+    "3",
+    "--warmup",
+    "1",
+    "--cycles",
+    "1",
+    "--timeout-seconds",
+    "1700",
+    "--cpu",
+    "13th Gen Intel(R) Core(TM) i9-13900HX",
+    "--environment",
+    "windows-local",
+    "--output",
+    "D:\\source\\Sezika\\.artifacts\\s5-profile-20260926\\cuda-matrix.json"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:57:10.3612686Z",
+  "ParentPid": 6228,
+  "Launcher": {
+    "Pid": 6228,
+    "Started": "2026-09-26T00:57:06.399771+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$profileSmoke=Get-Content -Raw -LiteralPath .artifacts/s5-profile-20260926/cuda-smoke.json | ConvertFrom-Json; $profileSmoke | Select-Object status,native_aot,elapsed_milliseconds,model_objects_collected,gpu,alignment,cuda_after_unload | ConvertTo-Json -Depth 5; $profileSmoke.profile.cases | Select-Object id,rendered_total_tokens,end_to_end_milliseconds,encoder_and_head_milliseconds,cuda_instrumented_forward | ConvertTo-Json -Depth 5; & .artifacts/s5-profile-20260926/run-cuda-profile.ps1 -Phase matrix -WindowGranted -BlockingIdentityPaths @('D:\\source\\Sezika\\.artifacts\\processes\\20260925-162727-006-s3-aot-linux-simd-final.identity.json','D:\\source\\Sezika\\.artifacts\\processes\\20260925-164651-527-s4-nimble-reference-45.identity.json','D:\\source\\Sezika\\.artifacts\\processes\\20260925-164732-513-s4-nimble-live-compatible-324.identity.json','D:\\source\\Sezika\\.artifacts\\processes\\20260925-165347-189-s4-nimble-cuda-45.identity.json','D:\\source\\Sezika\\.artifacts\\processes\\20260925-165502-158-s4-paws-live-strict-250.identity.json')\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-165709-821-s5-profile-cuda-matrix.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-165709-821-s5-profile-cuda-matrix.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 73216,
+      "CreationDate": "2026-09-26T00:57:10.361268+08:00",
+      "Started": "2026-09-25T16:57:10.361268Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" D:\\source\\Sezika\\.artifacts\\build\\s5-profile-20260926\\bin\\Sezika.Benchmarks\\release\\Sezika.Benchmarks.dll --mode profile --backend cuda --model D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert --lengths short,medium,long --questions 1,8,32 --samples 3 --warmup 1 --cycles 1 --timeout-seconds 1700 --cpu \"13th Gen Intel(R) Core(TM) i9-13900HX\" --environment windows-local --output D:\\source\\Sezika\\.artifacts\\s5-profile-20260926\\cuda-matrix.json",
+      "ParentPid": 6228,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 73508,
+      "CreationDate": "2026-09-26T00:57:10.41328+08:00",
+      "Started": "2026-09-25T16:57:10.41328Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 73216,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

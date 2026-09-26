@@ -1,0 +1,27 @@
+{
+  "Status": "Succeeded",
+  "Pid": 45288,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 2.417,
+  "TimeoutSeconds": 30,
+  "FilePath": "C:/Program Files/dotnet/dotnet.exe",
+  "Arguments": [
+    ".artifacts/build/s3-diagnostics-20260926/bin/Sezika.NumericParity/release/Sezika.NumericParity.dll",
+    "--trace-self-test"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:38:22.120894Z",
+  "ParentPid": 71740,
+  "Launcher": {
+    "Pid": 71740,
+    "Started": "2026-09-26T00:38:11.509304+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:/Program Files/dotnet/dotnet.exe' -ArgumentList @('build','tools/Sezika.NumericParity/Sezika.NumericParity.csproj','-c','Release','--artifacts-path','.artifacts/build/s3-diagnostics-20260926','--nologo','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false') -TimeoutSeconds 180 -LogName 's3-diagnostics-final-build'\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:/Program Files/dotnet/dotnet.exe' -ArgumentList @('.artifacts/build/s3-diagnostics-20260926/bin/Sezika.NumericParity/release/Sezika.NumericParity.dll','--trace-self-test') -TimeoutSeconds 30 -LogName 's3-diagnostics-final-self-test'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-163821-175-s3-diagnostics-final-self-test.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-163821-175-s3-diagnostics-final-self-test.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

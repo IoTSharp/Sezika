@@ -1,0 +1,96 @@
+{
+  "SchemaVersion": 1,
+  "Scope": "Exact copies of four selected real short/medium/long scalar/SIMD/CUDA layer diagnostics and final build/self-test/process evidence. Selected output oracle comparisons passed; internal layer differences have no independent upstream layer tensors or frozen layer acceptance thresholds. No near-tie, full S3-06, quality, performance or Native AOT acceptance.",
+  "Files": [
+    {
+      "Path": "short-smoke.json",
+      "Sha256": "4b5b434fb4cd7816a2afecd23cc71a7196810f81f9f524e69dc96a1247bdaf78",
+      "Bytes": 37638
+    },
+    {
+      "Path": "processes/20260925-163812-108-s3-diagnostics-final-build.identity.json",
+      "Sha256": "1556dc37fb635faa9748a94ef55d3395ee11501c33a513016980367f38a45146",
+      "Bytes": 1851
+    },
+    {
+      "Path": "processes/20260925-163812-108-s3-diagnostics-final-build.result.json",
+      "Sha256": "1d2a9f7f7bc58f5a9d0022c8ca8dcd2f47aac651a1616f2eae666a0de3c7758e",
+      "Bytes": 2961
+    },
+    {
+      "Path": "processes/20260925-163812-108-s3-diagnostics-final-build.stdout.log",
+      "Sha256": "3400e53b9c1d773ba4dcf57a6e11db0844379c97b635ccc07bd188eeef9e1da4",
+      "Bytes": 530
+    },
+    {
+      "Path": "processes/20260925-163812-108-s3-diagnostics-final-build.stderr.log",
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Bytes": 0
+    },
+    {
+      "Path": "processes/20260925-163821-175-s3-diagnostics-final-self-test.identity.json",
+      "Sha256": "03149c87a4f6d9719761f44eaf56852c2735b70fabe3faa326db080f880bdc66",
+      "Bytes": 1441
+    },
+    {
+      "Path": "processes/20260925-163821-175-s3-diagnostics-final-self-test.result.json",
+      "Sha256": "2d28a435713b59d83dd698164c2d777de1d716f1ef83762b60b8d3d7b82d6ebf",
+      "Bytes": 2009
+    },
+    {
+      "Path": "processes/20260925-163821-175-s3-diagnostics-final-self-test.stdout.log",
+      "Sha256": "1ecdbc0a7cc3acf9ceaf8d2edaad6de84cfa4d917b62e8d1ce29322618a7c4e8",
+      "Bytes": 1126
+    },
+    {
+      "Path": "processes/20260925-163821-175-s3-diagnostics-final-self-test.stderr.log",
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Bytes": 0
+    },
+    {
+      "Path": "processes/20260925-164033-569-s3-diagnostics-real-short-smoke.identity.json",
+      "Sha256": "1998d7187a92e8d4e0c4f35383c46229eaebc69cf34a9e3defba545e48495df9",
+      "Bytes": 2341
+    },
+    {
+      "Path": "processes/20260925-164033-569-s3-diagnostics-real-short-smoke.result.json",
+      "Sha256": "be6525729c0e8a1217f706a73d467c49fd48eddacffc3db8fc834c58cf2dd9a0",
+      "Bytes": 3462
+    },
+    {
+      "Path": "processes/20260925-164033-569-s3-diagnostics-real-short-smoke.stdout.log",
+      "Sha256": "1f80a9f4fb1f2e670e6339f782f89fdbf997ebbcfacd89559e0a23d1bb683d8e",
+      "Bytes": 376
+    },
+    {
+      "Path": "processes/20260925-164033-569-s3-diagnostics-real-short-smoke.stderr.log",
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Bytes": 0
+    },
+    {
+      "Path": "medium-long.json",
+      "Sha256": "46f108edebe0af679c21ee2b03126e45c8c44bb6a7a9712062152edc6fd7f966",
+      "Bytes": 135960
+    },
+    {
+      "Path": "processes/20260925-173724-784-s3-diagnostics-real-medium-long.identity.json",
+      "Sha256": "bbdd7c520769cdf86c27fb2c7ce0214e3221f3bfc8fba7ba4a4d93da02546db2",
+      "Bytes": 2587
+    },
+    {
+      "Path": "processes/20260925-173724-784-s3-diagnostics-real-medium-long.result.json",
+      "Sha256": "f736db55e08a9d6aa0523c5ea666c59d5be24da2a64ebac10b81abacf2927b8b",
+      "Bytes": 3709
+    },
+    {
+      "Path": "processes/20260925-173724-784-s3-diagnostics-real-medium-long.stdout.log",
+      "Sha256": "c64203e397e184cb5fb54eee199deb2bfcef47e3c8ec0fe684b144f5ea9da3cb",
+      "Bytes": 792
+    },
+    {
+      "Path": "processes/20260925-173724-784-s3-diagnostics-real-medium-long.stderr.log",
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Bytes": 0
+    }
+  ]
+}

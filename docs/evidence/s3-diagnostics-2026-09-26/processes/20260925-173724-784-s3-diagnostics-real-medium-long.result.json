@@ -1,0 +1,55 @@
+{
+  "Status": "Succeeded",
+  "Pid": 78820,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 423.381,
+  "TimeoutSeconds": 1750,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/build/s3-diagnostics-20260926/bin/Sezika.NumericParity/release/Sezika.NumericParity.dll",
+    "--trace-oracle",
+    ".artifacts/models/laya-mmbert",
+    "tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json",
+    "tests/fixtures/laya-oracle/contract.v1.json",
+    ".artifacts/s3-diagnostics-20260926/medium-long.json",
+    "boolean-zh-medium,score-en-long,choice-zh-long",
+    "scalar,simd,cuda",
+    "1700",
+    "bf0d537305149672f07d34dc6b3e2d3614aeb2c26aa6d11aa7902578100c53fa",
+    "771ca781c52f1d6f9cb22859bed007ef483a54a2543c644de33f88d6e0687eee"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T17:37:25.2411955Z",
+  "ParentPid": 62328,
+  "Launcher": {
+    "Pid": 62328,
+    "Started": "2026-09-26T01:37:24.371497+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$Utf8NoBom=[Text.UTF8Encoding]::new($false)\n[Console]::InputEncoding=$Utf8NoBom\n[Console]::OutputEncoding=$Utf8NoBom\n$OutputEncoding=$Utf8NoBom\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('.artifacts/build/s3-diagnostics-20260926/bin/Sezika.NumericParity/release/Sezika.NumericParity.dll','--trace-oracle','.artifacts/models/laya-mmbert','tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json','tests/fixtures/laya-oracle/contract.v1.json','.artifacts/s3-diagnostics-20260926/medium-long.json','boolean-zh-medium,score-en-long,choice-zh-long','scalar,simd,cuda','1700','bf0d537305149672f07d34dc6b3e2d3614aeb2c26aa6d11aa7902578100c53fa','771ca781c52f1d6f9cb22859bed007ef483a54a2543c644de33f88d6e0687eee') -TimeoutSeconds 1750 -LogName 's3-diagnostics-real-medium-long'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-173724-784-s3-diagnostics-real-medium-long.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-173724-784-s3-diagnostics-real-medium-long.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 78820,
+      "CreationDate": "2026-09-26T01:37:25.241195+08:00",
+      "Started": "2026-09-25T17:37:25.241195Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" .artifacts/build/s3-diagnostics-20260926/bin/Sezika.NumericParity/release/Sezika.NumericParity.dll --trace-oracle .artifacts/models/laya-mmbert tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json tests/fixtures/laya-oracle/contract.v1.json .artifacts/s3-diagnostics-20260926/medium-long.json boolean-zh-medium,score-en-long,choice-zh-long scalar,simd,cuda 1700 bf0d537305149672f07d34dc6b3e2d3614aeb2c26aa6d11aa7902578100c53fa 771ca781c52f1d6f9cb22859bed007ef483a54a2543c644de33f88d6e0687eee",
+      "ParentPid": 62328,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 56660,
+      "CreationDate": "2026-09-26T01:37:25.302503+08:00",
+      "Started": "2026-09-25T17:37:25.302503Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 78820,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

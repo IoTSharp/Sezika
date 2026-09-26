@@ -1,0 +1,57 @@
+{
+  "Status": "Failed",
+  "Pid": 69696,
+  "ExitCode": 2,
+  "Error": "Process failed with exit code 2.",
+  "ElapsedSeconds": 3.515,
+  "TimeoutSeconds": 30,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\.artifacts\\build\\s5-profile-final2-20260926\\bin\\Sezika.Benchmarks\\release\\Sezika.Benchmarks.dll",
+    "--require-aot",
+    "--mode",
+    "profile",
+    "--backend",
+    "simd",
+    "--model",
+    "D:\\source\\Sezika\\.artifacts\\s5-profile-20260926\\aot-gates-final\\model-does-not-exist",
+    "--lengths",
+    "short",
+    "--questions",
+    "1",
+    "--samples",
+    "1",
+    "--warmup",
+    "0",
+    "--cycles",
+    "1",
+    "--timeout-seconds",
+    "10",
+    "--output",
+    "D:\\source\\Sezika\\.artifacts\\s5-profile-20260926\\aot-gates-final\\ordinary-managed.json"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T17:39:42.0223134Z",
+  "ParentPid": 1724,
+  "Launcher": {
+    "Pid": 1724,
+    "Started": "2026-09-26T01:39:40.566592+08:00",
+    "CommandLine": "\"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.6.0_x64__8wekyb3d8bbwe\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\s5-profile-20260926\\check-aot-gates.ps1 -Worker",
+    "ParentPid": 48768
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s5-profile-20260926\\aot-gates-final\\ordinary-managed-process\\20260925-173941-107-s5-profile-aot-ordinary-managed.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s5-profile-20260926\\aot-gates-final\\ordinary-managed-process\\20260925-173941-107-s5-profile-aot-ordinary-managed.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 69696,
+      "CreationDate": "2026-09-26T01:39:42.022313+08:00",
+      "Started": "2026-09-25T17:39:42.022313Z",
+      "CommandLine": null,
+      "ParentPid": 1724,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

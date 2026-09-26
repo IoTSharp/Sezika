@@ -1,0 +1,91 @@
+{
+  "Status": "Succeeded",
+  "Pid": 69792,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 15.046,
+  "TimeoutSeconds": 180,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "tools/Sezika.Benchmarks/Sezika.Benchmarks.csproj",
+    "-c",
+    "Release",
+    "--artifacts-path",
+    ".artifacts/build/s5-profile-final-20260926",
+    "--nologo",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T17:36:40.0165426Z",
+  "ParentPid": 52604,
+  "Launcher": {
+    "Pid": 52604,
+    "Started": "2026-09-26T01:36:39.090918+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& './tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -TimeoutSeconds 180 -LogName 's5-profile-integrity-final-build' -ArgumentList @('build','tools/Sezika.Benchmarks/Sezika.Benchmarks.csproj','-c','Release','--artifacts-path','.artifacts/build/s5-profile-final-20260926','--nologo','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false')\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-173639-556-s5-profile-integrity-final-build.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-173639-556-s5-profile-integrity-final-build.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 69792,
+      "CreationDate": "2026-09-26T01:36:40.016542+08:00",
+      "Started": "2026-09-25T17:36:40.016542Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.Benchmarks/Sezika.Benchmarks.csproj -c Release --artifacts-path .artifacts/build/s5-profile-final-20260926 --nologo --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+      "ParentPid": 52604,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 34508,
+      "CreationDate": "2026-09-26T01:36:40.052364+08:00",
+      "Started": "2026-09-25T17:36:40.052364Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 69792,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 55272,
+      "CreationDate": "2026-09-26T01:36:46.682459+08:00",
+      "Started": "2026-09-25T17:36:46.682459Z",
+      "CommandLine": null,
+      "ParentPid": 69792,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 61120,
+      "CreationDate": "2026-09-26T01:36:43.266506+08:00",
+      "Started": "2026-09-25T17:36:43.266506Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.400\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempko0frwon.1nu\\tmpe32b4edd93a2434c9a4b8316fc858b14.rsp\"",
+      "ParentPid": 69792,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 32696,
+      "CreationDate": "2026-09-26T01:36:46.717656+08:00",
+      "Started": "2026-09-25T17:36:46.717656Z",
+      "CommandLine": null,
+      "ParentPid": 55272,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 75648,
+      "CreationDate": "2026-09-26T01:36:43.306862+08:00",
+      "Started": "2026-09-25T17:36:43.306862Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 61120,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

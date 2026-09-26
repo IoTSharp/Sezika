@@ -1,0 +1,31 @@
+{
+  "Pid": 73476,
+  "Started": "2026-09-25T16:29:44.7135111Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.Benchmarks/Sezika.Benchmarks.csproj -c Release --artifacts-path .artifacts/build/s5-profile-20260926 --nologo -v minimal -p:UseSharedCompilation=false -nodeReuse:false -m:1",
+  "ParentPid": 23120,
+  "ObservedParentPid": 23120,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 23120,
+    "Started": "2026-09-26T00:29:42.916968+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build','tools/Sezika.Benchmarks/Sezika.Benchmarks.csproj','-c','Release','--artifacts-path','.artifacts/build/s5-profile-20260926','--nologo','-v','minimal','-p:UseSharedCompilation=false','-nodeReuse:false','-m:1') -TimeoutSeconds 180 -LogName 's5-profile-build-budget-20260926'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 180,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "tools/Sezika.Benchmarks/Sezika.Benchmarks.csproj",
+    "-c",
+    "Release",
+    "--artifacts-path",
+    ".artifacts/build/s5-profile-20260926",
+    "--nologo",
+    "-v",
+    "minimal",
+    "-p:UseSharedCompilation=false",
+    "-nodeReuse:false",
+    "-m:1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

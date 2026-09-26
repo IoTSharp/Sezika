@@ -1,0 +1,55 @@
+{
+  "Status": "Succeeded",
+  "Pid": 62320,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 8.195,
+  "TimeoutSeconds": 180,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/build/s4-evaluation-20260926/bin/Sezika.Evaluation/release/Sezika.Evaluation.dll",
+    ".artifacts/models/laya-mmbert",
+    ".artifacts/datasets/nimble-2026-09-24/eval.jsonl",
+    ".artifacts/s4-quality-20260926/nimble-live-smoke.json",
+    "cuda",
+    "1",
+    "150",
+    "nimble-audit",
+    "324",
+    "8e9e48b8de5206593912ae01ddc95bd77e40ad2ecf4c9292c1711290eca0d896",
+    "laya_compatible"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:46:52.6736189Z",
+  "ParentPid": 79304,
+  "Launcher": {
+    "Pid": 79304,
+    "Started": "2026-09-26T00:46:50.74901+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('.artifacts/build/s4-evaluation-20260926/bin/Sezika.Evaluation/release/Sezika.Evaluation.dll','.artifacts/models/laya-mmbert','.artifacts/datasets/nimble-2026-09-24/eval.jsonl','.artifacts/s4-quality-20260926/nimble-live-smoke.json','cuda','1','150','nimble-audit','324','8e9e48b8de5206593912ae01ddc95bd77e40ad2ecf4c9292c1711290eca0d896','laya_compatible') -TimeoutSeconds 180 -LogName 's4-nimble-live-evaluation-smoke'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164651-611-s4-nimble-live-evaluation-smoke.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164651-611-s4-nimble-live-evaluation-smoke.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 62320,
+      "CreationDate": "2026-09-26T00:46:52.673618+08:00",
+      "Started": "2026-09-25T16:46:52.673618Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" .artifacts/build/s4-evaluation-20260926/bin/Sezika.Evaluation/release/Sezika.Evaluation.dll .artifacts/models/laya-mmbert .artifacts/datasets/nimble-2026-09-24/eval.jsonl .artifacts/s4-quality-20260926/nimble-live-smoke.json cuda 1 150 nimble-audit 324 8e9e48b8de5206593912ae01ddc95bd77e40ad2ecf4c9292c1711290eca0d896 laya_compatible",
+      "ParentPid": 79304,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 79396,
+      "CreationDate": "2026-09-26T00:46:52.737501+08:00",
+      "Started": "2026-09-25T16:46:52.737501Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 62320,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

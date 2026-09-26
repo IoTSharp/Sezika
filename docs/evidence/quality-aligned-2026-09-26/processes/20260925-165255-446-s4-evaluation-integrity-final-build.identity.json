@@ -1,0 +1,31 @@
+{
+  "Pid": 34324,
+  "Started": "2026-09-25T16:52:56.2465364Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.Evaluation/Sezika.Evaluation.csproj -c Release --artifacts-path .artifacts/build/s4-evaluation-final-20260926 --nologo -v minimal -p:UseSharedCompilation=false -nodeReuse:false -m:2",
+  "ParentPid": 32152,
+  "ObservedParentPid": 32152,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 32152,
+    "Started": "2026-09-26T00:52:54.896279+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build','tools/Sezika.Evaluation/Sezika.Evaluation.csproj','-c','Release','--artifacts-path','.artifacts/build/s4-evaluation-final-20260926','--nologo','-v','minimal','-p:UseSharedCompilation=false','-nodeReuse:false','-m:2') -TimeoutSeconds 180 -LogName 's4-evaluation-integrity-final-build'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 180,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "tools/Sezika.Evaluation/Sezika.Evaluation.csproj",
+    "-c",
+    "Release",
+    "--artifacts-path",
+    ".artifacts/build/s4-evaluation-final-20260926",
+    "--nologo",
+    "-v",
+    "minimal",
+    "-p:UseSharedCompilation=false",
+    "-nodeReuse:false",
+    "-m:2"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

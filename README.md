@@ -7,7 +7,7 @@ Sezika 面向本地软件中的语义判断，目标是使用 **C#、.NET 10 与
 ```text
 文本 / JSON 状态 + 类型化问题 + 候选标准
                 ↓
-      多语言编码器 → 决策头 → 校准
+      多语言编码器 → 决策头 → 概率分布（当前未校准）
                 ↓
        Choice / Score / Boolean
                 ↓
@@ -25,6 +25,14 @@ Sezika 面向本地软件中的语义判断，目标是使用 **C#、.NET 10 与
 2026-09-25 solution 构建为 0 警告/0 错误，输入与运行时、资源、CUDA 诊断分别通过 137/35/43 项检查；数据隔离与性能画像工具已同步到该次构建。2026-09-26 又完成修正路径的[两 RID Native AOT 长输入回归](docs/evidence/input-aot-2026-09-26.md)：`win-x64` / Ubuntu WSL2 `linux-x64` 的输入契约各138项通过，SIMD/CUDA各38条真实回答+4条非法拒绝通过冻结合同，scalar各3条长输入通过；4条候选数量差异继续保留。修正后的质量和性能仍分别验收，旧报告继续限定于原有输入实现。执行依赖与剩余门槛见 [路线图](ROADMAP.md)。
 
 Scalar 另完成三题型×中英×短中长的 18 条核心数值对照。[token 覆盖率重测](docs/evidence/laya-coverage-2026-09-25.md)显示 PAWS 在 strict/compatible 下均为 250/250，Nimble 为 strict 306/324、compatible 324/324；这些是输入可构造率，不是推理成功率或答案正确率。
+
+2026-09-26 的[修正路径质量实测](docs/evidence/quality-aligned-2026-09-26.md)实际加载固定权重，通过 C# CUDA encoder/head 完成 PAWS strict 250 题与 Nimble compatible 324 题，分别答对 **170/250（68.00%）** 和 **137/324（42.28%）**。每条回答均记录真实 forward 次数、输入与实际 token 哈希、marker 和 logits。独立 Python 参考只覆盖 PAWS 1 题及 Nimble 45 题，这 46 题与 C# 通过冻结数值容差，不能外推为全部 574 题完成独立对照。Nimble Boolean 负类召回仅 1/57，质量仍需改进；两题集没有显式语言元数据，不能充当逐语言质量验收。
+
+Nimble strict 另完成全 324 题实测：306 题实际推理，133 题正确，已答准确率 43.46%，按全部处理题计为 41.05%；18 题在 forward 前因需要截断而拒绝。严格模式与兼容模式的覆盖率和分母分别报告，拒绝行不产生替代答案。
+
+[逐层诊断](docs/evidence/s3-diagnostics-2026-09-26.md)另完成英文 Choice 61-token、中文 Boolean 384-token、英文 Score 与中文 Choice 各 960-token 的真实三后端运行，四条请求的输出满足冻结参考容差；每条 SIMD/CUDA 各比较 27 个完整 checkpoint。内部层差异原样记录，真实近并列样本仍为 0，尚未覆盖全部题型×语言×长度组合。构建检查、tokenizer 检查、离线评分、真实推理、答案正确率与性能报告均单独标识。
+
+[当前性能实测](docs/evidence/s5-profile-2026-09-26.md)使用 i9-13900HX / RTX 4070 Laptop，在普通 .NET 10.0.11 下执行真实 encoder/head：CUDA 短/中/长 × 1/8/32 问共九格各采 3 次，long-32 p50 为 **40.464 秒**；CPU SIMD 八格各完成 1 次正式样本，long-8 为 **141.973 秒**，long-32 在 discovery 达到 **300 秒单请求期限**后失败。完整失败报告保留，未生成该格正式延迟样本；当前数据说明长输入和逐题执行仍需优化，不构成稳定尾延迟、新 AOT 性能或全面高性能达标声明。
 
 ## 独立使用
 
@@ -62,10 +70,10 @@ dotnet run --project src/Sezika.Cli -c Release --no-build -- predict --model .ar
 - [独立使用](docs/standalone-usage.md)：固定模型准备、CLI、C# 调用和决策输入输出。
 - [参考项目分析](docs/research.md)：Laya 的可审计模型实现，以及 TypeSafe Jev 的公开协议与边界。
 - [下一阶段研究](docs/next-stage-research-2026-09-25.md)：Sezika、Laya、Jev、Nimble 的路线比较，CPU/CUDA 优化、双模型训练与 IoTSharp 集成计划。
-- [固定题集质量证据](docs/evidence/quality-2026-09-25.md)：Nimble 324 题与 PAWS 250 题的真实模型覆盖率、正确率和失败切片。
+- [修正路径质量证据](docs/evidence/quality-aligned-2026-09-26.md)：完整题集的真实模型结果、有限独立参考和可核查的 forward 证据；[旧输入报告](docs/evidence/quality-2026-09-25.md)单独保留。
 - [Laya oracle 合同](docs/laya-oracle.md)、[C# 真实捕获](docs/oracle-capture.md)与[数值对照证据](docs/evidence/laya-parity-2026-09-25.md)：固定源码/资产/输入/容差，保留完整清单差异和支持范围的 token、marker、logits 验收结果。
 - [数据隔离审计](docs/data-isolation-s4-05.md)：来源、许可、用途、家族/实体/近重复与封存声明检查；示例不代表获准训练的数据集。
-- [长输入性能画像工具](docs/performance-profile-s5-06.md)：实际输入核对、阶段计时口径与超预算覆盖率；尚未测量新性能数据。
+- [长输入性能画像](docs/evidence/s5-profile-2026-09-26.md)：当前渲染路径的真实短/中/长与 1/8/32 问请求，实际输入、端到端耗时、分项与资源证据；[工具说明](docs/performance-profile-s5-06.md)列出复现方法和计时口径。
 - [架构设计](docs/architecture.md)：推理路径、模型资产、契约、校准与资源约束。
 - [纯 C# GPU 与 Native AOT](docs/gpu-aot.md)：ILGPU 编译期边界、CUDA Driver 路径及最小验证关口。
 - [S5 性能与 AOT 证据](docs/s5-performance-aot.md)：Windows 四后端基准、Ubuntu WSL2 真实模型 AOT smoke、计时与内存边界。
@@ -74,7 +82,7 @@ dotnet run --project src/Sezika.Cli -c Release --no-build -- predict --model .ar
 - `src/Sezika`：.NET 10 核心类库、模型加载、tokenizer、CPU encoder 与 typed decision engine。
 - [English](README.en.md)
 
-真实模型、CUDA 与 AOT 命令及实测结果见 [阶段证据](docs/stage-evidence.md) 和 [GPU/AOT 设计](docs/gpu-aot.md)；首轮英语 PAWS 质量不及多数类基线，多语言质量、裸机 Linux 性能和更充分的尾延迟采样仍需独立证据。
+真实模型、CUDA 与 AOT 命令及实测结果见 [阶段证据](docs/stage-evidence.md) 和 [GPU/AOT 设计](docs/gpu-aot.md)。旧输入实现的首轮 PAWS 结果低于多数类基线；修正后本固定集为 68%，但已查看题集不能用于选参或冒充新封存测试。多语言质量、裸机 Linux 性能和更充分的尾延迟采样仍需独立证据。
 
 ## 开源许可
 

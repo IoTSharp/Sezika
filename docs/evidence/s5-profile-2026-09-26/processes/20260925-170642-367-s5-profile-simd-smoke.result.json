@@ -1,0 +1,69 @@
+{
+  "Status": "Succeeded",
+  "Pid": 44520,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 15.59,
+  "TimeoutSeconds": 180,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/build/s5-profile-20260926/bin/Sezika.Benchmarks/release/Sezika.Benchmarks.dll",
+    "--mode",
+    "profile",
+    "--backend",
+    "simd",
+    "--model",
+    ".artifacts/models/laya-mmbert",
+    "--lengths",
+    "short",
+    "--questions",
+    "1",
+    "--samples",
+    "1",
+    "--warmup",
+    "0",
+    "--cycles",
+    "1",
+    "--timeout-seconds",
+    "150",
+    "--cpu",
+    "13th Gen Intel(R) Core(TM) i9-13900HX",
+    "--environment",
+    "windows-local",
+    "--output",
+    ".artifacts/s5-profile-20260926/simd-smoke.json"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T17:06:43.0284214Z",
+  "ParentPid": 33924,
+  "Launcher": {
+    "Pid": 33924,
+    "Started": "2026-09-26T01:06:41.750556+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& './tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -TimeoutSeconds 180 -LogName 's5-profile-simd-smoke' -ArgumentList @('.artifacts/build/s5-profile-20260926/bin/Sezika.Benchmarks/release/Sezika.Benchmarks.dll','--mode','profile','--backend','simd','--model','.artifacts/models/laya-mmbert','--lengths','short','--questions','1','--samples','1','--warmup','0','--cycles','1','--timeout-seconds','150','--cpu','13th Gen Intel(R) Core(TM) i9-13900HX','--environment','windows-local','--output','.artifacts/s5-profile-20260926/simd-smoke.json')\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-170642-367-s5-profile-simd-smoke.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-170642-367-s5-profile-simd-smoke.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 44520,
+      "CreationDate": "2026-09-26T01:06:43.028421+08:00",
+      "Started": "2026-09-25T17:06:43.028421Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" .artifacts/build/s5-profile-20260926/bin/Sezika.Benchmarks/release/Sezika.Benchmarks.dll --mode profile --backend simd --model .artifacts/models/laya-mmbert --lengths short --questions 1 --samples 1 --warmup 0 --cycles 1 --timeout-seconds 150 --cpu \"13th Gen Intel(R) Core(TM) i9-13900HX\" --environment windows-local --output .artifacts/s5-profile-20260926/simd-smoke.json",
+      "ParentPid": 33924,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 66988,
+      "CreationDate": "2026-09-26T01:06:43.067157+08:00",
+      "Started": "2026-09-25T17:06:43.067157Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 44520,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

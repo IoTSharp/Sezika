@@ -1,0 +1,61 @@
+{
+  "Status": "Succeeded",
+  "Pid": 48828,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 45.383,
+  "TimeoutSeconds": 330,
+  "FilePath": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native-final\\win-x64\\Sezika.OracleCapture.exe",
+  "Arguments": [
+    "--reference",
+    ".artifacts/s4-quality-20260926/nimble-reference-45/capture.json",
+    "--model",
+    ".artifacts/models/laya-mmbert",
+    "--cases",
+    ".artifacts/s4-quality-20260926/nimble-45-inputs.json",
+    "--contract",
+    "tests/fixtures/laya-oracle/contract.v1.json",
+    "--output",
+    ".artifacts/s4-quality-20260926/nimble-cuda-45",
+    "--backend",
+    "cuda",
+    "--max-cases",
+    "45",
+    "--timeout-seconds",
+    "300",
+    "--require-aot"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:53:47.9296478Z",
+  "ParentPid": 79644,
+  "Launcher": {
+    "Pid": 79644,
+    "Started": "2026-09-26T00:53:46.478232+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native-final\\win-x64\\Sezika.OracleCapture.exe' -ArgumentList @('--reference','.artifacts/s4-quality-20260926/nimble-reference-45/capture.json','--model','.artifacts/models/laya-mmbert','--cases','.artifacts/s4-quality-20260926/nimble-45-inputs.json','--contract','tests/fixtures/laya-oracle/contract.v1.json','--output','.artifacts/s4-quality-20260926/nimble-cuda-45','--backend','cuda','--max-cases','45','--timeout-seconds','300','--require-aot') -TimeoutSeconds 330 -LogName 's4-nimble-cuda-45'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-165347-189-s4-nimble-cuda-45.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-165347-189-s4-nimble-cuda-45.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 48828,
+      "CreationDate": "2026-09-26T00:53:47.929647+08:00",
+      "Started": "2026-09-25T16:53:47.929647Z",
+      "CommandLine": "\"D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native-final\\win-x64\\Sezika.OracleCapture.exe\" --reference .artifacts/s4-quality-20260926/nimble-reference-45/capture.json --model .artifacts/models/laya-mmbert --cases .artifacts/s4-quality-20260926/nimble-45-inputs.json --contract tests/fixtures/laya-oracle/contract.v1.json --output .artifacts/s4-quality-20260926/nimble-cuda-45 --backend cuda --max-cases 45 --timeout-seconds 300 --require-aot",
+      "ParentPid": 79644,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 74620,
+      "CreationDate": "2026-09-26T00:53:47.967448+08:00",
+      "Started": "2026-09-25T16:53:47.967448Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 48828,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

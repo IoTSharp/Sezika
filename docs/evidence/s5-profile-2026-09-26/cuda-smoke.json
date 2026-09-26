@@ -1,0 +1,400 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-09-25T16:56:34.5521387+00:00",
+  "status": "passed",
+  "phase": "complete",
+  "error_code": null,
+  "error": null,
+  "backend": "cuda",
+  "precision": "FP32",
+  "runtime": ".NET 10.0.11",
+  "rid": "win-x64",
+  "operating_system": "Microsoft Windows 10.0.26200",
+  "cpu": "13th Gen Intel(R) Core(TM) i9-13900HX",
+  "environment_label": "windows-local",
+  "native_aot": false,
+  "logical_processors": 32,
+  "inference_threads": 1,
+  "vector_float_width": 8,
+  "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+  "weights_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+  "tokenizer_sha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+  "manifest_sha256": "cf870335dee647a053a5416918d3cd79e61cca6416122cb8353014fc3ea119f6",
+  "executable_sha256": "ab1b71fd3dd71062e074c9fab8312081a81b7f2b3e0327c48c4d249c8d1a3135",
+  "code_artifacts": [
+    {
+      "role": "process_executable",
+      "path": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "sha256": "ab1b71fd3dd71062e074c9fab8312081a81b7f2b3e0327c48c4d249c8d1a3135"
+    },
+    {
+      "role": "managed_assembly",
+      "path": "D:\\source\\Sezika\\.artifacts\\build\\s5-profile-20260926\\bin\\Sezika.Benchmarks\\release\\Sezika.Benchmarks.dll",
+      "sha256": "af36704d5b49ae7d80a6f3d2b75349a7c5dfa072973c377fb5c68163e2496ad3"
+    },
+    {
+      "role": "managed_assembly",
+      "path": "D:\\source\\Sezika\\.artifacts\\build\\s5-profile-20260926\\bin\\Sezika.Benchmarks\\release\\Sezika.dll",
+      "sha256": "4a21f3f1358b1541dbfe67443b6ea281a79f2699f25a1a7b9387d05539d221eb"
+    },
+    {
+      "role": "managed_assembly",
+      "path": "D:\\source\\Sezika\\.artifacts\\build\\s5-profile-20260926\\bin\\Sezika.Benchmarks\\release\\Sezika.Cuda.dll",
+      "sha256": "1e3a177dafc575fccac7c48349124d51c0140ee17547f5b59dbce5b25f85b50d"
+    }
+  ],
+  "arguments": [
+    "--mode",
+    "profile",
+    "--backend",
+    "cuda",
+    "--model",
+    "D:\\source\\Sezika\\.artifacts\\models\\laya-mmbert",
+    "--lengths",
+    "short",
+    "--questions",
+    "1",
+    "--samples",
+    "1",
+    "--warmup",
+    "0",
+    "--cycles",
+    "1",
+    "--timeout-seconds",
+    "150",
+    "--cpu",
+    "13th Gen Intel(R) Core(TM) i9-13900HX",
+    "--environment",
+    "windows-local",
+    "--output",
+    "D:\\source\\Sezika\\.artifacts\\s5-profile-20260926\\cuda-smoke.json"
+  ],
+  "samples": 1,
+  "warmup": 0,
+  "timeout_seconds": 150,
+  "request_token_budget": 32768,
+  "request_deadline_seconds": 300,
+  "loads": [
+    {
+      "cycle": 0,
+      "model_load_milliseconds": 2820.8673,
+      "backend_load_milliseconds": 479.6438,
+      "first_request_milliseconds": 198.6375,
+      "total_to_first_response_milliseconds": 3500.7585
+    }
+  ],
+  "requests": [],
+  "profile": {
+    "schema_version": 2,
+    "input_set_version": "sezika.performance-inputs.v1",
+    "rendering_version": "sezika.prompt.laya-4066d5d5.v2",
+    "diagnostic_length_policy": "laya_compatible_proposal_then_actual_request_policy",
+    "selected_lengths": [
+      "short"
+    ],
+    "selected_questions": [
+      1
+    ],
+    "status": "complete",
+    "planned_cases": 1,
+    "successful_cases": 1,
+    "rejected_cases": 0,
+    "request_coverage": 1,
+    "planned_questions": 1,
+    "question_coverage": 1,
+    "coverage_scope": "Complete measured cases / all selected planned cases, and their question counts. Rejected, failed, cancelled and pending rows remain in the denominator. This is execution coverage, not accuracy or abstention coverage.",
+    "length_scope": "short/medium/long are fixed state repetition presets, not guaranteed token counts. The shared PromptSequenceBuilder reports original lengths and a Laya-compatible retained proposal using independent 256-prefix/1024-total budgets. The real request keeps its explicit length policy (strict by default); actual tokens are reported only after a real pipeline call. Truncation, runtime rejection and inference success remain distinct.",
+    "stage_scope": "E2E samples disable instrumentation. Tokenizer/rendering is measured in an independent preparation pass. Encoder/head wall time and CUDA events come from one extra instrumented real request; CPU split measurements use an additional independent Encode \u002B ScoreEncoded pass, including ScoreEncoded\u0027s defensive hidden-state copy. These intervals must not be summed or subtracted to reconstruct E2E.",
+    "cases": [
+      {
+        "id": "short-1",
+        "length_preset": "short",
+        "state_repetitions": 4,
+        "questions": 1,
+        "candidates_per_question": 2,
+        "input_json": "{\u0022model\u0022:\u0022convaiinnovations/laya-multilingual\u0022,\u0022state\u0022:\u0022The device is ready. The device is ready. The device is ready. The device is ready.\u0022,\u0022questions\u0022:{\u0022q0\u0022:{\u0022type\u0022:\u0022choice\u0022,\u0022criteria\u0022:{\u0022a\u0022:\u0022yes\u0022,\u0022b\u0022:\u0022no\u0022},\u0022instructions\u0022:\u0022type\u0022}},\u0022length_policy\u0022:\u0022strict\u0022}",
+        "input_sha256": "e0094960cae67dee3e4b34b895786863b5dd92155b3da1a6782db9ade1b4d133",
+        "status": "measured",
+        "phase": "complete",
+        "error_code": null,
+        "error": null,
+        "runtime_sequence_limit": 1024,
+        "runtime_prefix_token_budget": 256,
+        "length_policy": "strict",
+        "original_total_tokens": 36,
+        "proposed_truncation": false,
+        "rendered_total_tokens": 36,
+        "rendered_sequences": [
+          {
+            "question_id": "q0",
+            "type_id": 0,
+            "token_count": 36,
+            "tokens_sha256": "4816dc07e80416c404cc10c5eaa740445c49de9028c818659ef0a64dd93406fa",
+            "markers": [
+              6,
+              10
+            ],
+            "candidate_labels": [
+              "a",
+              "b"
+            ],
+            "diagnostics": {
+              "length_policy": "laya_compatible",
+              "serialized_state": "The device is ready. The device is ready. The device is ready. The device is ready.",
+              "sanitized_state": "The device is ready. The device is ready. The device is ready. The device is ready.",
+              "rendered_instruction": "choice question: type",
+              "rendered_options": [
+                "a: yes",
+                "b: no"
+              ],
+              "original_instruction_tokens": 4,
+              "retained_instruction_tokens": 4,
+              "original_option_tokens": [
+                3,
+                3
+              ],
+              "retained_option_tokens": [
+                3,
+                3
+              ],
+              "prefix_tokens_including_specials": 15,
+              "untruncated_total_tokens": 36,
+              "original_total_tokens": 36,
+              "original_state_tokens": 20,
+              "retained_state_tokens": 20,
+              "dropped_state_tokens": 0,
+              "state_retained_start": 0,
+              "state_truncation_direction": "right",
+              "mask_text_removed": false,
+              "instruction_truncated": false,
+              "options_truncated": false,
+              "state_truncated": false,
+              "final_sequence_truncated": false,
+              "was_truncated": false
+            }
+          }
+        ],
+        "actual_sequences": [
+          {
+            "question_id": "q0",
+            "type_id": 0,
+            "token_count": 36,
+            "tokens_sha256": "4816dc07e80416c404cc10c5eaa740445c49de9028c818659ef0a64dd93406fa",
+            "markers": [
+              6,
+              10
+            ],
+            "candidate_labels": null,
+            "diagnostics": null
+          }
+        ],
+        "rendering_verification": "exact_token_marker_type_match",
+        "discovery_wall_milliseconds": 69.162,
+        "discovery_allocated_bytes": 52712,
+        "tokenizer_and_rendering_milliseconds": 0.4686,
+        "tokenizer_and_rendering_allocated_bytes": 26104,
+        "end_to_end_milliseconds": [
+          69.1393
+        ],
+        "allocated_bytes": [
+          52200
+        ],
+        "latency": {
+          "count": 1,
+          "minimum": 69.1393,
+          "p50": 69.1393,
+          "p95": 69.1393,
+          "p99": 69.1393,
+          "maximum": 69.1393
+        },
+        "requests_per_second": 14.463554013419284,
+        "questions_per_second": 14.463554013419284,
+        "instrumented_end_to_end_milliseconds": 74.5086,
+        "encoder_and_head_milliseconds": 74.2294,
+        "encoder_and_head_status": "measured_independent_instrumented_request",
+        "encoder_milliseconds": null,
+        "head_milliseconds": null,
+        "encoder_head_split_status": "unavailable_cuda_resident_pipeline_has_no_independent_head_timing_boundary",
+        "cuda_instrumented_forward": {
+          "profiling_enabled": true,
+          "host_to_device_milliseconds": 0.0292,
+          "host_to_device_bytes": 144,
+          "device_to_host_milliseconds": 0.0423,
+          "device_to_host_bytes": 144,
+          "module_load_milliseconds": 0,
+          "kernel_milliseconds": 64.0690876499284,
+          "kernel_launch_count": 351
+        },
+        "cuda_telemetry_status": "measured_independent_instrumented_request",
+        "working_set_before_bytes": 2146799616,
+        "working_set_after_bytes": 2147225600,
+        "process_lifetime_peak_working_set_bytes": 2147225600,
+        "cuda_before": {
+          "total_bytes": 8585216000,
+          "free_bytes": 5997854720,
+          "owned_bytes": 1286842372,
+          "peak_owned_bytes": 1288917004,
+          "owned_allocation_count": 165,
+          "loaded_module_count": 28,
+          "release_failure_count": 0
+        },
+        "cuda_after": {
+          "total_bytes": 8585216000,
+          "free_bytes": 5997854720,
+          "owned_bytes": 1286842372,
+          "peak_owned_bytes": 1290450724,
+          "owned_allocation_count": 165,
+          "loaded_module_count": 28,
+          "release_failure_count": 0
+        },
+        "resource_observation_errors": [],
+        "response": {
+          "model": "convaiinnovations/laya-multilingual",
+          "model_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+          "tokenizer_revision": "052592a15d198d9ad47da779604259b10b47b7aa",
+          "backend": "cuda-modernbert-marker-head",
+          "answers": {
+            "q0": {
+              "type": "choice",
+              "choice": "a",
+              "probabilities": {
+                "a": 0.9423840581980666,
+                "b": 0.05761594180193335
+              },
+              "logits": {
+                "a": 0.2880045771598816,
+                "b": -2.5066089630126953
+              },
+              "concentration": 0.6820925149734165,
+              "status": "answered",
+              "abstention_reason": null,
+              "calibration": {
+                "status": "uncalibrated",
+                "profile_id": null,
+                "scope": null
+              },
+              "input_diagnostics": {
+                "length_policy": "strict",
+                "was_truncated": false,
+                "instruction_truncated": false,
+                "options_truncated": false,
+                "state_truncated": false,
+                "final_sequence_truncated": false,
+                "original_total_tokens": 36,
+                "retained_total_tokens": 36,
+                "original_state_tokens": 20,
+                "retained_state_tokens": 20,
+                "dropped_state_tokens": 0,
+                "state_retained_start": 0,
+                "state_truncation_direction": "right",
+                "mask_text_removed": false
+              }
+            }
+          },
+          "usage": {
+            "question_count": 1,
+            "token_count": 36,
+            "micro_batch_count": 1,
+            "workspace_bytes": 1376256
+          }
+        }
+      }
+    ]
+  },
+  "diagnostics": [
+    "decision_cancelled",
+    "cancel_after_first_encoder_trace_ms=0.075",
+    "decision_head_input_invalid",
+    "cuda_cancelled_constructor",
+    "recovery_after_cancel_and_invalid_input",
+    "cycle_0_unload_fail_closed",
+    "model_encoder_head_pipeline_embedding_sentinels_collected_after_unload"
+  ],
+  "gpu": {
+    "name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+    "driver_version": 13020,
+    "compute_capability_major": 8,
+    "compute_capability_minor": 9,
+    "total_memory_bytes": 8585216000
+  },
+  "cuda_load": {
+    "profiling_enabled": true,
+    "host_to_device_milliseconds": 160.9215000000001,
+    "host_to_device_bytes": 1286842372,
+    "device_to_host_milliseconds": 0,
+    "device_to_host_bytes": 0,
+    "module_load_milliseconds": 9.116900000000001,
+    "kernel_milliseconds": 0,
+    "kernel_launch_count": 0
+  },
+  "cuda_profiled_forward": {
+    "profiling_enabled": true,
+    "host_to_device_milliseconds": 0.05650000000000001,
+    "host_to_device_bytes": 224,
+    "device_to_host_milliseconds": 0.1323,
+    "device_to_host_bytes": 224,
+    "module_load_milliseconds": 0,
+    "kernel_milliseconds": 122.18956817826256,
+    "kernel_launch_count": 1053
+  },
+  "profiled_forward_wall_milliseconds": 157.8185,
+  "cuda_before_unload": {
+    "total_bytes": 8585216000,
+    "free_bytes": 5997854720,
+    "owned_bytes": 1286842372,
+    "peak_owned_bytes": 1290450724,
+    "owned_allocation_count": 165,
+    "loaded_module_count": 28,
+    "release_failure_count": 0
+  },
+  "cuda_after_unload": {
+    "total_bytes": 8585216000,
+    "free_bytes": 7411335168,
+    "owned_bytes": 0,
+    "peak_owned_bytes": 1288917004,
+    "owned_allocation_count": 0,
+    "loaded_module_count": 0,
+    "release_failure_count": 0
+  },
+  "alignment": {
+    "tokens": [
+      2,
+      4,
+      4,
+      1
+    ],
+    "reference_logits": [
+      -0.057375,
+      0.24228567,
+      -0.33555993,
+      -0.039743207,
+      -0.13712718,
+      0.12859309
+    ],
+    "actual_logits": [
+      -0.05737535,
+      0.24228553,
+      -0.33556002,
+      -0.039743133,
+      -0.1371277,
+      0.12859324
+    ],
+    "encoder_max_absolute_error": 1.2397766E-05,
+    "logits_max_absolute_error": 5.2154064E-07,
+    "probability_max_absolute_error": 1.6837372E-07,
+    "head_only_max_absolute_error": null,
+    "encoder_tolerance": 0.05,
+    "logits_tolerance": 0.005,
+    "probability_tolerance": 0.002
+  },
+  "quantized_encoder_bytes": 0,
+  "quantized_head_bytes": 0,
+  "managed_bytes_before": 239960,
+  "managed_bytes_after_collection": 67684592,
+  "model_objects_collected": true,
+  "peak_working_set_bytes": 2155806720,
+  "elapsed_milliseconds": 5755.9953,
+  "timing_scope": "E2E: parse request JSON \u002B tokenize \u002B sequential per-question encoder/head \u002B typed response JSON; model load excluded. Cold = first request in this process, OS/driver disk caches not flushed. CUDA events measured in a separate instrumented forward.",
+  "resource_scope": "PeakWorkingSetBytes is OS process lifetime high-water RSS. CUDA owned peak counts successful driver allocations (not driver/context overhead); free/total memory is device-wide. FP32 source tensors retained in W8A32 mode. Managed bytes after full collection do not imply immediate OS RSS return.",
+  "quality_scope": "Numerical smoke on fixed inputs only; no language accuracy or calibrated quality claim. Percentiles use nearest rank; small sample counts are exploratory and p95/p99 may coincide."
+}

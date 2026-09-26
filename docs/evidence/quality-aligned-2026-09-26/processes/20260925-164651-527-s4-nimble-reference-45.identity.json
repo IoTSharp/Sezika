@@ -1,0 +1,35 @@
+{
+  "Pid": 29704,
+  "Started": "2026-09-25T16:46:52.6254006Z",
+  "CommandLine": "\"D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\venv\\Scripts\\python.exe\" -B tools/Sezika.LayaOracle/export_oracle.py --upstream .artifacts/laya-oracle-work/upstream --model .artifacts/models/laya-mmbert --output .artifacts/s4-quality-20260926/nimble-reference-45 --cases .artifacts/s4-quality-20260926/nimble-45-inputs.json --contract tests/fixtures/laya-oracle/contract.v1.json --max-cases 45 --timeout-seconds 1700",
+  "ParentPid": 63124,
+  "ObservedParentPid": 63124,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 63124,
+    "Started": "2026-09-26T00:46:50.707936+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\venv\\Scripts\\python.exe' -ArgumentList @('-B','tools/Sezika.LayaOracle/export_oracle.py','--upstream','.artifacts/laya-oracle-work/upstream','--model','.artifacts/models/laya-mmbert','--output','.artifacts/s4-quality-20260926/nimble-reference-45','--cases','.artifacts/s4-quality-20260926/nimble-45-inputs.json','--contract','tests/fixtures/laya-oracle/contract.v1.json','--max-cases','45','--timeout-seconds','1700') -TimeoutSeconds 1750 -LogName 's4-nimble-reference-45' -Environment @{PYTHONUTF8='1';PYTHONDONTWRITEBYTECODE='1';HF_HUB_OFFLINE='1';TRANSFORMERS_OFFLINE='1';HF_HUB_DISABLE_TELEMETRY='1';TOKENIZERS_PARALLELISM='false';LAYA_CPU_AMP=''}\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 1750,
+  "FilePath": "D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\venv\\Scripts\\python.exe",
+  "Arguments": [
+    "-B",
+    "tools/Sezika.LayaOracle/export_oracle.py",
+    "--upstream",
+    ".artifacts/laya-oracle-work/upstream",
+    "--model",
+    ".artifacts/models/laya-mmbert",
+    "--output",
+    ".artifacts/s4-quality-20260926/nimble-reference-45",
+    "--cases",
+    ".artifacts/s4-quality-20260926/nimble-45-inputs.json",
+    "--contract",
+    "tests/fixtures/laya-oracle/contract.v1.json",
+    "--max-cases",
+    "45",
+    "--timeout-seconds",
+    "1700"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

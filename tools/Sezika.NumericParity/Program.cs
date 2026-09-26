@@ -6,7 +6,8 @@ using System.Text.Json.Serialization;
 using Sezika;
 using Sezika.Cuda;
 
-return NumericParity.Run(args);
+return args.Length > 0 && args[0].StartsWith("--trace-", StringComparison.Ordinal)
+    ? TraceDiagnostics.Run(args) : NumericParity.Run(args);
 
 internal static class NumericParity
 {

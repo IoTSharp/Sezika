@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "status": "valid_incomplete_measurement",
+  "source_sha256": "335a4af85d39c1abfeff97554a15bf438bac0b5f1da4ac620e9ddec45b4311ff",
+  "measured_rows": 8,
+  "planned_rows": 9,
+  "measured_question_positions": 91,
+  "planned_question_positions": 123,
+  "observed_pipeline_entries_across_rows": 109,
+  "failed_row_pipeline_entries": 18,
+  "failed_row_completed_forwards": "not_established_by_entry_records",
+  "failure": "decision_deadline_exceeded",
+  "single_request_deadline_seconds": 300,
+  "tool_deadline_seconds": 1700,
+  "failure_discovery_milliseconds": 300012.3633,
+  "formal_samples": 8,
+  "matrix_alignment_check": "not_reached",
+  "matrix_collection_check": "not_reached",
+  "runner_exit_code": 2,
+  "runner_elapsed_seconds": 1552.501,
+  "raw_rendering_label": "unavailable_no_pipeline_call",
+  "raw_label_limitation": "The old default label was not updated after partial pipeline entries; inspect the 18 actual_sequences and discovery failure. A later source fix labels observed incomplete requests explicitly."
+}

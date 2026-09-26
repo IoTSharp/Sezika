@@ -1,0 +1,42 @@
+{
+  "SchemaVersion": 1,
+  "Scope": "C# strict/compatible internal consistency for the same frozen Nimble dataset; not an independent Python reference or full-dataset external parity.",
+  "StrictSourcePath": ".artifacts/s4-quality-20260926/nimble-strict-324.json",
+  "StrictSourceSha256": "f5c9b5cd79ad7d829cde6cb9fffab5fb39504fa9863469a0cce67c39a6ee48f0",
+  "CompatibleSourcePath": ".artifacts/s4-quality-20260926/nimble-compatible-324.json",
+  "CompatibleSourceSha256": "d27ebc587fef42226aa4dbeb37b81674c72b1842082ac26dee8dd8dcf0d15dd7",
+  "DatasetTotal": 324,
+  "StrictProcessed": 324,
+  "StrictAnswered": 306,
+  "StrictRejected": 18,
+  "StrictCorrect": 133,
+  "AnsweredForwardCalls": 306,
+  "RejectedForwardCalls": 0,
+  "RejectedRowsCarryNoNumericalOutput": true,
+  "CheckedFields": [
+    "InputSha256",
+    "TokenIdsSha256",
+    "MarkerPositions",
+    "CandidateLabels",
+    "Tokens",
+    "Type",
+    "Selected",
+    "Target",
+    "Correct"
+  ],
+  "CheckedProbabilityMetrics": [
+    "ProbabilityOfReference",
+    "TopProbability",
+    "Brier",
+    "Nll",
+    "ExpectedScore",
+    "ProbabilityTrue"
+  ],
+  "AnsweredRowsCompared": 306,
+  "AnsweredInputsUntruncated": true,
+  "MaxLogitAbsoluteDifference": 0.0,
+  "MaxProbabilityMetricAbsoluteDifference": 0.0,
+  "RejectedRowsCorrespondToCompatibleClipping": 18,
+  "IndependentReferenceCases": 0,
+  "FullDatasetExternalParity": false
+}

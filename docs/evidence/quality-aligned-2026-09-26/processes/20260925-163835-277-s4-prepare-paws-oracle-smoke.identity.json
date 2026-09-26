@@ -1,0 +1,27 @@
+{
+  "Pid": 16788,
+  "Started": "2026-09-25T16:38:36.0685359Z",
+  "CommandLine": null,
+  "ParentPid": 45620,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 45620,
+    "Started": "2026-09-26T00:38:34.638467+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('.artifacts/build/s4-evaluation-20260926/bin/Sezika.Evaluation/release/Sezika.Evaluation.dll','--prepare-oracle','.artifacts/datasets/paws-public-benchmark/eval.jsonl','c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3','250','1','.artifacts/s4-quality-20260926/paws-smoke-inputs.json','30') -TimeoutSeconds 45 -LogName 's4-prepare-paws-oracle-smoke'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 45,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/build/s4-evaluation-20260926/bin/Sezika.Evaluation/release/Sezika.Evaluation.dll",
+    "--prepare-oracle",
+    ".artifacts/datasets/paws-public-benchmark/eval.jsonl",
+    "c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3",
+    "250",
+    "1",
+    ".artifacts/s4-quality-20260926/paws-smoke-inputs.json",
+    "30"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

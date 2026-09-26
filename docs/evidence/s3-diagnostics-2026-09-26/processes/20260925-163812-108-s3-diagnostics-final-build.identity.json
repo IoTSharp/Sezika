@@ -1,0 +1,30 @@
+{
+  "Pid": 62076,
+  "Started": "2026-09-25T16:38:13.3658234Z",
+  "CommandLine": "\"C:/Program Files/dotnet/dotnet.exe\" build tools/Sezika.NumericParity/Sezika.NumericParity.csproj -c Release --artifacts-path .artifacts/build/s3-diagnostics-20260926 --nologo --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+  "ParentPid": 71740,
+  "ObservedParentPid": 71740,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 71740,
+    "Started": "2026-09-26T00:38:11.509304+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:/Program Files/dotnet/dotnet.exe' -ArgumentList @('build','tools/Sezika.NumericParity/Sezika.NumericParity.csproj','-c','Release','--artifacts-path','.artifacts/build/s3-diagnostics-20260926','--nologo','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false') -TimeoutSeconds 180 -LogName 's3-diagnostics-final-build'\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:/Program Files/dotnet/dotnet.exe' -ArgumentList @('.artifacts/build/s3-diagnostics-20260926/bin/Sezika.NumericParity/release/Sezika.NumericParity.dll','--trace-self-test') -TimeoutSeconds 30 -LogName 's3-diagnostics-final-self-test'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 180,
+  "FilePath": "C:/Program Files/dotnet/dotnet.exe",
+  "Arguments": [
+    "build",
+    "tools/Sezika.NumericParity/Sezika.NumericParity.csproj",
+    "-c",
+    "Release",
+    "--artifacts-path",
+    ".artifacts/build/s3-diagnostics-20260926",
+    "--nologo",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

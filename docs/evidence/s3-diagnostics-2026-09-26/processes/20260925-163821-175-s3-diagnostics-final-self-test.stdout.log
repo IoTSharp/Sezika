@@ -1,0 +1,20 @@
+PASS: absolute plus relative threshold distinguishes the boundary
+PASS: non-finite values never satisfy a tolerance
+PASS: near-tie reference is reported and can pass unchanged
+PASS: near-tie prediction reversal fails even when every numeric tolerance passes
+PASS: logit threshold failures affect acceptance
+PASS: invalid probability normalization rejects
+PASS: candidate count mismatch rejects
+PASS: non-finite comparison rejects
+PASS: full tensor comparison records the worst coordinate and independent hashes
+PASS: tensor shape mismatch rejects
+PASS: non-finite tensor rejects
+PASS: every expected encoder/head/scorer checkpoint is required
+PASS: partial trace remains explicitly incomplete
+PASS: duplicate checkpoint rejects
+PASS: memory budget rejects before trace retention
+PASS: tensor comparison observes cancellation
+PASS: source-generated contract JSON preserves thresholds
+PASS: expanded Boolean type maps to the production discriminator and preserves default criteria
+PASS: reference primitive disagreement rejects
+Trace diagnostic checks passed: 19; synthetic values validate diagnostics only.

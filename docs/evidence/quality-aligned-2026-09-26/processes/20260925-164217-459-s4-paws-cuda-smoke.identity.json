@@ -1,0 +1,36 @@
+{
+  "Pid": 3276,
+  "Started": "2026-09-25T16:42:19.3453825Z",
+  "CommandLine": "\"D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native-final\\win-x64\\Sezika.OracleCapture.exe\" --reference .artifacts/s4-quality-20260926/paws-reference-smoke/capture.json --model .artifacts/models/laya-mmbert --cases .artifacts/s4-quality-20260926/paws-smoke-inputs.json --contract tests/fixtures/laya-oracle/contract.v1.json --output .artifacts/s4-quality-20260926/paws-cuda-smoke --backend cuda --max-cases 1 --timeout-seconds 150 --require-aot",
+  "ParentPid": 59688,
+  "ObservedParentPid": 59688,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 59688,
+    "Started": "2026-09-26T00:42:16.721073+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native-final\\win-x64\\Sezika.OracleCapture.exe' -ArgumentList @('--reference','.artifacts/s4-quality-20260926/paws-reference-smoke/capture.json','--model','.artifacts/models/laya-mmbert','--cases','.artifacts/s4-quality-20260926/paws-smoke-inputs.json','--contract','tests/fixtures/laya-oracle/contract.v1.json','--output','.artifacts/s4-quality-20260926/paws-cuda-smoke','--backend','cuda','--max-cases','1','--timeout-seconds','150','--require-aot') -TimeoutSeconds 180 -LogName 's4-paws-cuda-smoke'\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 180,
+  "FilePath": "D:\\source\\Sezika\\.artifacts\\s3-aot-20260926\\native-final\\win-x64\\Sezika.OracleCapture.exe",
+  "Arguments": [
+    "--reference",
+    ".artifacts/s4-quality-20260926/paws-reference-smoke/capture.json",
+    "--model",
+    ".artifacts/models/laya-mmbert",
+    "--cases",
+    ".artifacts/s4-quality-20260926/paws-smoke-inputs.json",
+    "--contract",
+    "tests/fixtures/laya-oracle/contract.v1.json",
+    "--output",
+    ".artifacts/s4-quality-20260926/paws-cuda-smoke",
+    "--backend",
+    "cuda",
+    "--max-cases",
+    "1",
+    "--timeout-seconds",
+    "150",
+    "--require-aot"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

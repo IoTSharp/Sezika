@@ -14,41 +14,52 @@ internal static class Evaluation
 
     public static int Run(string[] args)
     {
-        var namedDataset = args.Length == 9;
+        if (args is ["--self-test"]) return EvaluationChecks.Run();
+        if (args.Length > 0 && args[0] == "--prepare-oracle") return EvaluationOracle.Prepare(args);
+        if (args.Length > 0 && args[0] == "--score-capture") return EvaluationOracle.Score(args);
+        var namedDataset = args.Length is 9 or 10;
         var datasetName = namedDataset ? args[6] : "nimble-holdout";
         var validDatasetTotal = !namedDataset || int.TryParse(args[7], out _);
         var datasetRecords = namedDataset && validDatasetTotal ? int.Parse(args[7], CultureInfo.InvariantCulture) : 324;
         var expectedSha256 = namedDataset ? args[8] : NimbleSha256;
-        if (args.Length is not (6 or 9) || args[3] is not ("cuda" or "simd") ||
+        var policyName = args.Length == 10 ? args[9] : "strict";
+        if (args.Length is not (6 or 9 or 10) || args[3] is not ("cuda" or "simd" or "scalar") ||
             !int.TryParse(args[4], out var maxRecords) || maxRecords < 1 || maxRecords > datasetRecords ||
             !int.TryParse(args[5], out var timeoutSeconds) || timeoutSeconds is < 1 or > 1800 ||
             !validDatasetTotal || datasetRecords is < 1 or > 10000 ||
             string.IsNullOrWhiteSpace(datasetName) || datasetName.Length > 80 ||
-            expectedSha256.Length != 64 || !expectedSha256.All(Uri.IsHexDigit))
+            expectedSha256.Length != 64 || !expectedSha256.All(Uri.IsHexDigit) ||
+            policyName is not ("strict" or "laya_compatible"))
         {
-            Console.Error.WriteLine("Usage: Sezika.Evaluation <model-dir> <eval.jsonl> <output.json> <cuda|simd> <records> <1..1800 timeout-seconds> [dataset-name dataset-total dataset-sha256]");
+            Console.Error.WriteLine("Usage: Sezika.Evaluation <model-dir> <eval.jsonl> <new-output.json> <cuda|simd|scalar> <records> <1..1800 timeout-seconds> [dataset-name dataset-total dataset-sha256 [strict|laya_compatible]]; --self-test");
             return 2;
         }
 
         using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(timeoutSeconds));
+        ConsoleCancelEventHandler cancel = (_, e) => { e.Cancel = true; deadline.Cancel(); };
+        Console.CancelKeyPress += cancel;
         var started = DateTimeOffset.UtcNow;
         var watch = Stopwatch.StartNew();
         try
         {
             var datasetPath = Path.GetFullPath(args[1]);
-            using var datasetStream = File.OpenRead(datasetPath);
-            var datasetSha256 = Convert.ToHexString(SHA256.HashData(datasetStream)).ToLowerInvariant();
+            var datasetSha256 = EvaluationInputs.FileHash(datasetPath, deadline.Token);
             if (!datasetSha256.Equals(expectedSha256, StringComparison.OrdinalIgnoreCase))
                 throw new InvalidDataException("The frozen evaluation dataset SHA-256 does not match.");
+            var outputPath = Path.GetFullPath(args[2]);
+            Directory.CreateDirectory(Path.GetDirectoryName(outputPath)!);
+            using var output = new FileStream(outputPath, FileMode.CreateNew, FileAccess.Write, FileShare.None);
+            var policy = policyName == "strict" ? PromptLengthPolicy.Strict : PromptLengthPolicy.LayaCompatible;
 
             var mode = args[3] == "simd" ? EncoderKernelMode.Simd : EncoderKernelMode.Scalar;
             using var model = ModernBertModelLoader.Load(args[0], new EncoderExecutionOptions { Kernel = mode }, deadline.Token);
             using CudaDevice? device = args[3] == "cuda" ? CudaDevice.Open() : null;
             using CudaModernBertEncoder? gpuEncoder = device is null ? null :
                 new CudaModernBertEncoder(device, model.Encoder.Config, model.Encoder.Weights, deadline.Token);
-            using IMarkerDecisionPipeline pipeline = device is null ?
+            IMarkerDecisionPipeline innerPipeline = device is null ?
                 new ModernBertDecisionPipeline(model.Encoder, model.Head, deadline.Token) :
                 new CudaDecisionPipeline(device, gpuEncoder!, model.Head, deadline.Token);
+            using var pipeline = new EvaluationPipeline(innerPipeline);
             using var engine = new ModernBertDecisionEngine(model, pipeline, args[3] + "-modernbert-marker-head",
                 budget: new DecisionResourceBudget
                 {
@@ -58,44 +69,78 @@ internal static class Evaluation
                 });
 
             var rows = new List<EvaluationRow>(maxRecords);
-            foreach (var line in File.ReadLines(datasetPath))
+            var identifiers = new HashSet<string>(StringComparer.Ordinal);
+            using var lines = File.ReadLines(datasetPath).GetEnumerator();
+            for (var index = 0; index < maxRecords; index++)
             {
-                if (rows.Count == maxRecords) break;
                 deadline.Token.ThrowIfCancellationRequested();
-                if (string.IsNullOrWhiteSpace(line)) throw new InvalidDataException("Unexpected blank holdout row.");
-                using var document = JsonDocument.Parse(line);
+                if (!lines.MoveNext()) throw new InvalidDataException("The frozen dataset has fewer rows than requested.");
+                using var document = EvaluationInputs.ParseRow(lines.Current, deadline.Token);
                 var root = document.RootElement;
                 var id = root.GetProperty("id").GetString() ?? throw new InvalidDataException("Missing record ID.");
+                if (id.Length is < 1 or > 256 || !identifiers.Add(id)) throw new InvalidDataException("Invalid or duplicate evaluation ID.");
                 var family = root.GetProperty("family").GetString() ?? throw new InvalidDataException("Missing family.");
                 var sourceFamily = root.GetProperty("source_family").GetString() ?? throw new InvalidDataException("Missing source family.");
                 var domain = root.GetProperty("domain").GetString() ?? throw new InvalidDataException("Missing domain.");
-                var question = root.GetProperty("input").GetProperty("questions").GetProperty("decision");
+                var input = root.GetProperty("input");
+                var question = input.GetProperty("questions").GetProperty("decision");
                 var kind = question.GetProperty("type").GetString() ?? throw new InvalidDataException("Missing question type.");
+                if (kind == "boolean") kind = "noul";
                 var target = ReferenceLabel(root.GetProperty("reference").GetProperty("target"), kind);
+                var language = root.TryGetProperty("language", out var languageValue) && languageValue.ValueKind == JsonValueKind.String
+                    ? languageValue.GetString()! : "unspecified";
+                if (language.Length is < 1 or > 80) throw new InvalidDataException("Invalid explicit language metadata.");
+                var inputHash = EvaluationInputs.TextHash(input.GetRawText());
                 var questionWatch = Stopwatch.StartNew();
+                pipeline.Begin();
+                EvaluationRow row;
                 try
                 {
-                    var request = CreateRequest(root.GetProperty("input"), question, kind, model.ModelId);
+                    var request = EvaluationInputs.Request(input, model.ModelId, policy);
                     var response = engine.Evaluate(request, deadline.Token);
                     var answer = response.Answers["decision"];
-                    rows.Add(ScoreAnswer(id, family, sourceFamily, domain, kind, target, answer,
-                        response.Usage?.TokenCount ?? 0, questionWatch.Elapsed.TotalMilliseconds));
+                    if (pipeline.Calls != 1 || pipeline.RawLogits is null || answer.InputDiagnostics is null)
+                        throw new InvalidDataException("Answered row is missing actual forward evidence.");
+                    row = ScoreAnswer(id, family, sourceFamily, domain, kind, target, answer,
+                        response.Usage?.TokenCount ?? 0, questionWatch.Elapsed.TotalMilliseconds) with
+                    {
+                        InputDiagnostics = answer.InputDiagnostics,
+                        CandidateLabels = request.Questions["decision"] switch
+                        {
+                            ChoiceQuestion choice => choice.Criteria.Keys.ToArray(),
+                            ScoreQuestion score => Enumerable.Range(0, score.Criteria.Length).Select(value => value.ToString(CultureInfo.InvariantCulture)).ToArray(),
+                            BooleanQuestion => ["false", "true"],
+                            _ => throw new InvalidDataException("Unknown primitive."),
+                        },
+                        Logits = pipeline.RawLogits,
+                    };
                 }
-                catch (DecisionException exception)
+                catch (DecisionException exception) when (exception.Code is not ("decision_cancelled" or "decision_deadline_exceeded"))
                 {
-                    rows.Add(new EvaluationRow(id, family, sourceFamily, domain, kind, target, null, null,
-                        exception.Code, null, 0, questionWatch.Elapsed.TotalMilliseconds, null, null, null, null, null));
+                    row = new EvaluationRow(id, family, sourceFamily, domain, kind, target, null, null,
+                        exception.Code, null, 0, questionWatch.Elapsed.TotalMilliseconds, null, null, null, null, null)
+                    {
+                        RejectedInput = exception is PromptTruncationException truncation
+                            ? new RejectedInput(truncation.Diagnostics.OriginalTotalTokens,
+                                truncation.Diagnostics.InstructionTruncated, truncation.Diagnostics.OptionsTruncated,
+                                truncation.Diagnostics.StateTruncated, truncation.Diagnostics.DroppedStateTokens,
+                                truncation.Diagnostics.StateTruncationDirection) : null,
+                    };
                 }
+                rows.Add(row with { Language = language, InputSha256 = inputHash,
+                    TokenIdsSha256 = pipeline.TokenIdsSha256, MarkerPositions = pipeline.MarkerPositions,
+                    ForwardCalls = pipeline.Calls });
                 if (rows.Count % 10 == 0 || rows.Count == maxRecords)
                     Console.WriteLine($"Evaluated {rows.Count}/{maxRecords} rows; correct {rows.Count(row => row.Correct == true)}, failed {rows.Count(row => row.ErrorCode is not null)}; elapsed {watch.Elapsed.TotalSeconds:F1}s");
             }
             if (rows.Count != maxRecords) throw new InvalidDataException("The frozen holdout has fewer rows than requested.");
+            if (maxRecords == datasetRecords && lines.MoveNext()) throw new InvalidDataException("Dataset has more rows than its declared total.");
+            if (EvaluationInputs.FileHash(datasetPath, deadline.Token) != datasetSha256)
+                throw new InvalidDataException("Dataset changed during evaluation.");
 
-            var report = Summarize(rows, model, args[3], datasetName, datasetRecords, datasetSha256, started,
-                watch.Elapsed.TotalMilliseconds, deadline.Token);
-            var outputPath = Path.GetFullPath(args[2]);
-            Directory.CreateDirectory(Path.GetDirectoryName(outputPath)!);
-            File.WriteAllText(outputPath, JsonSerializer.Serialize(report, EvaluationJsonContext.Default.EvaluationReport));
+            var report = Summarize(rows, args[3], datasetName, datasetRecords, datasetSha256, started,
+                watch.Elapsed.TotalMilliseconds, policyName, deadline.Token);
+            JsonSerializer.Serialize(output, report, EvaluationJsonContext.Default.EvaluationReport);
             Console.WriteLine($"Wrote {outputPath}: {report.Correct}/{report.Answered} answered correctly; coverage {report.Answered}/{report.Processed}");
             return 0;
         }
@@ -104,41 +149,7 @@ internal static class Evaluation
             Console.Error.WriteLine($"evaluation: {exception.GetType().Name}: {exception.Message}");
             return 1;
         }
-    }
-
-    private static DecisionRequest CreateRequest(JsonElement input, JsonElement question, string kind, string modelId)
-    {
-        var instructions = question.GetProperty("instructions").Clone();
-        var criteria = question.GetProperty("criteria");
-        Question mapped = kind switch
-        {
-            "choice" => new ChoiceQuestion
-            {
-                Instructions = instructions,
-                Criteria = criteria.EnumerateObject().ToDictionary(item => item.Name, item => item.Value.Clone(), StringComparer.Ordinal),
-            },
-            "score" => new ScoreQuestion
-            {
-                Instructions = instructions,
-                Criteria = criteria.EnumerateArray().Select(item => item.Clone()).ToArray(),
-            },
-            "noul" => new BooleanQuestion
-            {
-                Instructions = instructions,
-                Criteria = new BooleanCriteria
-                {
-                    WhenTrue = criteria.GetProperty("true").Clone(),
-                    WhenFalse = criteria.GetProperty("false").Clone(),
-                },
-            },
-            _ => throw new InvalidDataException($"Unsupported holdout question type: {kind}"),
-        };
-        return new DecisionRequest
-        {
-            Model = modelId,
-            State = input.GetProperty("state").Clone(),
-            Questions = new Dictionary<string, Question>(StringComparer.Ordinal) { ["decision"] = mapped },
-        };
+        finally { Console.CancelKeyPress -= cancel; }
     }
 
     private static string ReferenceLabel(JsonElement value, string kind) => kind switch
@@ -149,7 +160,7 @@ internal static class Evaluation
         _ => throw new InvalidDataException($"Unsupported holdout question type: {kind}"),
     };
 
-    private static EvaluationRow ScoreAnswer(string id, string family, string sourceFamily, string domain, string kind,
+    internal static EvaluationRow ScoreAnswer(string id, string family, string sourceFamily, string domain, string kind,
         string target, Answer answer, int tokens, double milliseconds)
     {
         var accepted = answer.Status switch
@@ -195,9 +206,9 @@ internal static class Evaluation
             -Math.Log(Math.Max(targetProbability, 1e-15)), expectedScore, probabilityTrue, answer.AbstentionReason);
     }
 
-    private static EvaluationReport Summarize(List<EvaluationRow> rows, ModernBertModelPackage model, string backend,
+    internal static EvaluationReport Summarize(List<EvaluationRow> rows, string backend,
         string datasetName, int datasetRecords, string datasetSha256, DateTimeOffset started, double elapsedMilliseconds,
-        CancellationToken cancellationToken)
+        string lengthPolicy, CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
         var answered = rows.Where(row => row.Correct is not null).ToArray();
@@ -208,10 +219,16 @@ internal static class Evaluation
         {
             StartedUtc = started,
             ElapsedMilliseconds = elapsedMilliseconds,
-            Model = model.ModelId,
-            ModelRevision = model.Revision,
-            TokenizerRevision = model.TokenizerRevision,
+            Model = ModernBertModelLoader.PinnedModelId,
+            ModelRevision = ModernBertModelLoader.PinnedRevision,
+            TokenizerRevision = ModernBertModelLoader.PinnedRevision,
             Backend = backend,
+            LengthPolicy = lengthPolicy,
+            WeightsSha256 = ModernBertModelLoader.PinnedWeightsSha256,
+            TokenizerSha256 = ModernBertModelLoader.PinnedTokenizerSha256,
+            CodeArtifacts = EvaluationInputs.CodeHashes(cancellationToken),
+            Runtime = System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription,
+            OperatingSystem = System.Runtime.InteropServices.RuntimeInformation.OSDescription,
             DatasetName = datasetName,
             DatasetSha256 = datasetSha256,
             DatasetTotal = datasetRecords,
@@ -236,6 +253,9 @@ internal static class Evaluation
             ByTarget = Groups(rows, row => row.Target),
             ByDomain = Groups(rows, row => row.Domain),
             BySourceFamily = Groups(rows, row => row.SourceFamily),
+            ByLanguage = Groups(rows, row => row.Language),
+            ByFailure = rows.GroupBy(row => row.ErrorCode ?? row.Status ?? "unknown").OrderBy(group => group.Key, StringComparer.Ordinal)
+                .ToDictionary(group => group.Key, group => group.Count(), StringComparer.Ordinal),
             Rows = rows,
         };
     }
@@ -266,7 +286,21 @@ internal static class Evaluation
 internal sealed record EvaluationRow(string Id, string Family, string SourceFamily, string Domain, string Type,
     string Target, string? Selected, string? Status, string? ErrorCode, bool? Correct, int Tokens,
     double Milliseconds, double? ProbabilityOfReference, double? TopProbability, double? Brier, double? Nll,
-    double? ExpectedScore, double? ProbabilityTrue = null, string? AbstentionReason = null);
+    double? ExpectedScore, double? ProbabilityTrue = null, string? AbstentionReason = null)
+{
+    public string Language { get; init; } = "unspecified";
+    public string? InputSha256 { get; init; }
+    public string? TokenIdsSha256 { get; init; }
+    public int[]? MarkerPositions { get; init; }
+    public string[]? CandidateLabels { get; init; }
+    public float[]? Logits { get; init; }
+    public int? ForwardCalls { get; init; }
+    public PromptInputDiagnostics? InputDiagnostics { get; init; }
+    public RejectedInput? RejectedInput { get; init; }
+}
+
+internal sealed record RejectedInput(int OriginalTotalTokens, bool InstructionTruncated, bool OptionsTruncated,
+    bool StateTruncated, int DroppedStateTokens, string StateTruncationDirection);
 
 internal sealed record EvaluationGroup(string Name, int Total, int Answered, int Correct, double? AccuracyOnAnswered);
 
@@ -400,6 +434,25 @@ internal sealed class BooleanMetrics
 
 internal sealed class EvaluationReport
 {
+    public int SchemaVersion { get; init; } = 2;
+    public string RenderingVersion { get; init; } = EvaluationInputs.RenderingVersion;
+    public required string LengthPolicy { get; init; }
+    public required string WeightsSha256 { get; init; }
+    public required string TokenizerSha256 { get; init; }
+    public required Dictionary<string, string> CodeArtifacts { get; init; }
+    public required string Runtime { get; init; }
+    public required string OperatingSystem { get; init; }
+    public string? CaptureSha256 { get; set; }
+    public string? CaptureStatus { get; set; }
+    public int? CaptureSelectedCases { get; set; }
+    public int? CaptureManifestCases { get; set; }
+    public JsonElement? CaptureProvenance { get; set; }
+    public JsonElement? CaptureImplementation { get; set; }
+    public string? CaptureCasesSha256 { get; set; }
+    public string? CaptureContractSha256 { get; set; }
+    public string MeasurementOrigin { get; set; } = "csharp_runtime";
+    public bool FullDatasetProcessed => Processed == DatasetTotal;
+    public string EvaluationUse { get; init; } = "audit_only_not_training_or_calibration";
     public required DateTimeOffset StartedUtc { get; init; }
     public required double ElapsedMilliseconds { get; init; }
     public required string Model { get; init; }
@@ -429,6 +482,8 @@ internal sealed class EvaluationReport
     public required List<EvaluationGroup> ByTarget { get; init; }
     public required List<EvaluationGroup> ByDomain { get; init; }
     public required List<EvaluationGroup> BySourceFamily { get; init; }
+    public required List<EvaluationGroup> ByLanguage { get; init; }
+    public required Dictionary<string, int> ByFailure { get; init; }
     public required List<EvaluationRow> Rows { get; init; }
 }
 

@@ -1,0 +1,97 @@
+{
+  "Status": "Succeeded",
+  "Pid": 58548,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 31.296,
+  "TimeoutSeconds": 390,
+  "FilePath": "C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.6.0_x64__8wekyb3d8bbwe\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "tools/Sezika.Evaluation/Invoke-CaptureChecks.ps1",
+    "-DotnetPath",
+    "C:\\Program Files\\dotnet\\dotnet.exe",
+    "-EvaluationDll",
+    ".artifacts/build/s4-evaluation-final-20260926/bin/Sezika.Evaluation/release/Sezika.Evaluation.dll",
+    "-Dataset",
+    ".artifacts/datasets/paws-public-benchmark/eval.jsonl",
+    "-DatasetSha256",
+    "c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3",
+    "-DatasetTotal",
+    "250",
+    "-ReferenceCapture",
+    ".artifacts/s4-quality-20260926/paws-reference-smoke/capture.json",
+    "-OutputDirectory",
+    ".artifacts/s4-quality-20260926/rejection-checks-guarded"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T17:38:01.9851098Z",
+  "ParentPid": 35736,
+  "Launcher": {
+    "Pid": 35736,
+    "Started": "2026-09-26T01:38:00.569812+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n[Environment]::ProcessPath\n& './tools/Invoke-BoundedProcess.ps1' -FilePath ([Environment]::ProcessPath) -TimeoutSeconds 390 -LogName 's4-capture-integrity-guarded-workflow-valid-host' -ArgumentList @('-NoProfile','-File','tools/Sezika.Evaluation/Invoke-CaptureChecks.ps1','-DotnetPath','C:\\Program Files\\dotnet\\dotnet.exe','-EvaluationDll','.artifacts/build/s4-evaluation-final-20260926/bin/Sezika.Evaluation/release/Sezika.Evaluation.dll','-Dataset','.artifacts/datasets/paws-public-benchmark/eval.jsonl','-DatasetSha256','c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3','-DatasetTotal','250','-ReferenceCapture','.artifacts/s4-quality-20260926/paws-reference-smoke/capture.json','-OutputDirectory','.artifacts/s4-quality-20260926/rejection-checks-guarded')\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-173801-135-s4-capture-integrity-guarded-workflow-valid-host.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-173801-135-s4-capture-integrity-guarded-workflow-valid-host.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 58548,
+      "CreationDate": "2026-09-26T01:38:01.985109+08:00",
+      "Started": "2026-09-25T17:38:01.985109Z",
+      "CommandLine": "\"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.6.0_x64__8wekyb3d8bbwe\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Invoke-CaptureChecks.ps1 -DotnetPath \"C:\\Program Files\\dotnet\\dotnet.exe\" -EvaluationDll .artifacts/build/s4-evaluation-final-20260926/bin/Sezika.Evaluation/release/Sezika.Evaluation.dll -Dataset .artifacts/datasets/paws-public-benchmark/eval.jsonl -DatasetSha256 c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3 -DatasetTotal 250 -ReferenceCapture .artifacts/s4-quality-20260926/paws-reference-smoke/capture.json -OutputDirectory .artifacts/s4-quality-20260926/rejection-checks-guarded",
+      "ParentPid": 35736,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 25272,
+      "CreationDate": "2026-09-26T01:38:06.680623+08:00",
+      "Started": "2026-09-25T17:38:06.680623Z",
+      "CommandLine": null,
+      "ParentPid": 58548,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 40928,
+      "CreationDate": "2026-09-26T01:38:01.994785+08:00",
+      "Started": "2026-09-25T17:38:01.994785Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 58548,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 76356,
+      "CreationDate": "2026-09-26T01:38:15.56337+08:00",
+      "Started": "2026-09-25T17:38:15.56337Z",
+      "CommandLine": null,
+      "ParentPid": 58548,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 42408,
+      "CreationDate": "2026-09-26T01:38:15.576787+08:00",
+      "Started": "2026-09-25T17:38:15.576787Z",
+      "CommandLine": null,
+      "ParentPid": 76356,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 65408,
+      "CreationDate": "2026-09-26T01:38:06.74233+08:00",
+      "Started": "2026-09-25T17:38:06.74233Z",
+      "CommandLine": null,
+      "ParentPid": 25272,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

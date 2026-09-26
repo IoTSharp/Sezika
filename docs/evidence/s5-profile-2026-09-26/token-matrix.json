@@ -1,0 +1,497 @@
+{
+  "ModelId": "convaiinnovations/laya-multilingual",
+  "ModelRevision": "052592a15d198d9ad47da779604259b10b47b7aa",
+  "TokenizerSha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+  "DatasetSha256": "8674fb43a55dd5b558ff8357b1b1994ae4bd67ef85941b73841b1d518e2e0c89",
+  "Processed": 9,
+  "PrefixTokenBudget": 256,
+  "TotalTokenBudget": 1024,
+  "DiagnosticTokenCap": 32768,
+  "LengthPolicy": "strict",
+  "TokenEligible": 9,
+  "StrictEligible": 9,
+  "CompatibleEligible": 9,
+  "PrefixUnclipped": 9,
+  "TotalFitsAfterPrefixClipping": 9,
+  "Unmeasured": 0,
+  "ByType": [
+    {
+      "Type": "boolean",
+      "Total": 3,
+      "TokenEligible": 3,
+      "StrictEligible": 3,
+      "CompatibleEligible": 3
+    },
+    {
+      "Type": "choice",
+      "Total": 3,
+      "TokenEligible": 3,
+      "StrictEligible": 3,
+      "CompatibleEligible": 3
+    },
+    {
+      "Type": "score",
+      "Total": 3,
+      "TokenEligible": 3,
+      "StrictEligible": 3,
+      "CompatibleEligible": 3
+    }
+  ],
+  "ByFailureCode": {
+    "eligible": 9
+  },
+  "Rows": [
+    {
+      "Id": "short-choice",
+      "Type": "choice",
+      "CandidateLabels": [
+        "a",
+        "b"
+      ],
+      "RequiredTokens": 36,
+      "RetainedTokens": 36,
+      "MeasurementFailure": null,
+      "PrefixUnclipped": true,
+      "TotalFitsAfterPrefixClipping": true,
+      "StrictFailureCode": null,
+      "CompatibleFailureCode": null,
+      "FailureCode": null,
+      "Diagnostics": {
+        "LengthPolicy": "laya_compatible",
+        "SerializedState": "The device is ready. The device is ready. The device is ready. The device is ready.",
+        "SanitizedState": "The device is ready. The device is ready. The device is ready. The device is ready.",
+        "RenderedInstruction": "choice question: type",
+        "RenderedOptions": [
+          "a: yes",
+          "b: no"
+        ],
+        "OriginalInstructionTokens": 4,
+        "RetainedInstructionTokens": 4,
+        "OriginalOptionTokens": [
+          3,
+          3
+        ],
+        "RetainedOptionTokens": [
+          3,
+          3
+        ],
+        "PrefixTokensIncludingSpecials": 15,
+        "UntruncatedTotalTokens": 36,
+        "OriginalTotalTokens": 36,
+        "OriginalStateTokens": 20,
+        "RetainedStateTokens": 20,
+        "DroppedStateTokens": 0,
+        "StateRetainedStart": 0,
+        "StateTruncationDirection": "right",
+        "MaskTextRemoved": false,
+        "InstructionTruncated": false,
+        "OptionsTruncated": false,
+        "StateTruncated": false,
+        "FinalSequenceTruncated": false,
+        "WasTruncated": false
+      }
+    },
+    {
+      "Id": "short-score",
+      "Type": "score",
+      "CandidateLabels": [
+        "0",
+        "1"
+      ],
+      "RequiredTokens": 40,
+      "RetainedTokens": 40,
+      "MeasurementFailure": null,
+      "PrefixUnclipped": true,
+      "TotalFitsAfterPrefixClipping": true,
+      "StrictFailureCode": null,
+      "CompatibleFailureCode": null,
+      "FailureCode": null,
+      "Diagnostics": {
+        "LengthPolicy": "laya_compatible",
+        "SerializedState": "The device is ready. The device is ready. The device is ready. The device is ready.",
+        "SanitizedState": "The device is ready. The device is ready. The device is ready. The device is ready.",
+        "RenderedInstruction": "score question: type",
+        "RenderedOptions": [
+          "level 0: yes",
+          "level 1: no"
+        ],
+        "OriginalInstructionTokens": 4,
+        "RetainedInstructionTokens": 4,
+        "OriginalOptionTokens": [
+          5,
+          5
+        ],
+        "RetainedOptionTokens": [
+          5,
+          5
+        ],
+        "PrefixTokensIncludingSpecials": 19,
+        "UntruncatedTotalTokens": 40,
+        "OriginalTotalTokens": 40,
+        "OriginalStateTokens": 20,
+        "RetainedStateTokens": 20,
+        "DroppedStateTokens": 0,
+        "StateRetainedStart": 0,
+        "StateTruncationDirection": "right",
+        "MaskTextRemoved": false,
+        "InstructionTruncated": false,
+        "OptionsTruncated": false,
+        "StateTruncated": false,
+        "FinalSequenceTruncated": false,
+        "WasTruncated": false
+      }
+    },
+    {
+      "Id": "short-boolean",
+      "Type": "boolean",
+      "CandidateLabels": [
+        "false",
+        "true"
+      ],
+      "RequiredTokens": 37,
+      "RetainedTokens": 37,
+      "MeasurementFailure": null,
+      "PrefixUnclipped": true,
+      "TotalFitsAfterPrefixClipping": true,
+      "StrictFailureCode": null,
+      "CompatibleFailureCode": null,
+      "FailureCode": null,
+      "Diagnostics": {
+        "LengthPolicy": "laya_compatible",
+        "SerializedState": "The device is ready. The device is ready. The device is ready. The device is ready.",
+        "SanitizedState": "The device is ready. The device is ready. The device is ready. The device is ready.",
+        "RenderedInstruction": "noul question: type",
+        "RenderedOptions": [
+          "false: no",
+          "true: yes"
+        ],
+        "OriginalInstructionTokens": 5,
+        "RetainedInstructionTokens": 5,
+        "OriginalOptionTokens": [
+          3,
+          3
+        ],
+        "RetainedOptionTokens": [
+          3,
+          3
+        ],
+        "PrefixTokensIncludingSpecials": 16,
+        "UntruncatedTotalTokens": 37,
+        "OriginalTotalTokens": 37,
+        "OriginalStateTokens": 20,
+        "RetainedStateTokens": 20,
+        "DroppedStateTokens": 0,
+        "StateRetainedStart": 0,
+        "StateTruncationDirection": "right",
+        "MaskTextRemoved": false,
+        "InstructionTruncated": false,
+        "OptionsTruncated": false,
+        "StateTruncated": false,
+        "FinalSequenceTruncated": false,
+        "WasTruncated": false
+      }
+    },
+    {
+      "Id": "medium-choice",
+      "Type": "choice",
+      "CandidateLabels": [
+        "a",
+        "b"
+      ],
+      "RequiredTokens": 116,
+      "RetainedTokens": 116,
+      "MeasurementFailure": null,
+      "PrefixUnclipped": true,
+      "TotalFitsAfterPrefixClipping": true,
+      "StrictFailureCode": null,
+      "CompatibleFailureCode": null,
+      "FailureCode": null,
+      "Diagnostics": {
+        "LengthPolicy": "laya_compatible",
+        "SerializedState": "The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready.",
+        "SanitizedState": "The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready.",
+        "RenderedInstruction": "choice question: type",
+        "RenderedOptions": [
+          "a: yes",
+          "b: no"
+        ],
+        "OriginalInstructionTokens": 4,
+        "RetainedInstructionTokens": 4,
+        "OriginalOptionTokens": [
+          3,
+          3
+        ],
+        "RetainedOptionTokens": [
+          3,
+          3
+        ],
+        "PrefixTokensIncludingSpecials": 15,
+        "UntruncatedTotalTokens": 116,
+        "OriginalTotalTokens": 116,
+        "OriginalStateTokens": 100,
+        "RetainedStateTokens": 100,
+        "DroppedStateTokens": 0,
+        "StateRetainedStart": 0,
+        "StateTruncationDirection": "right",
+        "MaskTextRemoved": false,
+        "InstructionTruncated": false,
+        "OptionsTruncated": false,
+        "StateTruncated": false,
+        "FinalSequenceTruncated": false,
+        "WasTruncated": false
+      }
+    },
+    {
+      "Id": "medium-score",
+      "Type": "score",
+      "CandidateLabels": [
+        "0",
+        "1"
+      ],
+      "RequiredTokens": 120,
+      "RetainedTokens": 120,
+      "MeasurementFailure": null,
+      "PrefixUnclipped": true,
+      "TotalFitsAfterPrefixClipping": true,
+      "StrictFailureCode": null,
+      "CompatibleFailureCode": null,
+      "FailureCode": null,
+      "Diagnostics": {
+        "LengthPolicy": "laya_compatible",
+        "SerializedState": "The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready.",
+        "SanitizedState": "The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready.",
+        "RenderedInstruction": "score question: type",
+        "RenderedOptions": [
+          "level 0: yes",
+          "level 1: no"
+        ],
+        "OriginalInstructionTokens": 4,
+        "RetainedInstructionTokens": 4,
+        "OriginalOptionTokens": [
+          5,
+          5
+        ],
+        "RetainedOptionTokens": [
+          5,
+          5
+        ],
+        "PrefixTokensIncludingSpecials": 19,
+        "UntruncatedTotalTokens": 120,
+        "OriginalTotalTokens": 120,
+        "OriginalStateTokens": 100,
+        "RetainedStateTokens": 100,
+        "DroppedStateTokens": 0,
+        "StateRetainedStart": 0,
+        "StateTruncationDirection": "right",
+        "MaskTextRemoved": false,
+        "InstructionTruncated": false,
+        "OptionsTruncated": false,
+        "StateTruncated": false,
+        "FinalSequenceTruncated": false,
+        "WasTruncated": false
+      }
+    },
+    {
+      "Id": "medium-boolean",
+      "Type": "boolean",
+      "CandidateLabels": [
+        "false",
+        "true"
+      ],
+      "RequiredTokens": 117,
+      "RetainedTokens": 117,
+      "MeasurementFailure": null,
+      "PrefixUnclipped": true,
+      "TotalFitsAfterPrefixClipping": true,
+      "StrictFailureCode": null,
+      "CompatibleFailureCode": null,
+      "FailureCode": null,
+      "Diagnostics": {
+        "LengthPolicy": "laya_compatible",
+        "SerializedState": "The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready.",
+        "SanitizedState": "The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready.",
+        "RenderedInstruction": "noul question: type",
+        "RenderedOptions": [
+          "false: no",
+          "true: yes"
+        ],
+        "OriginalInstructionTokens": 5,
+        "RetainedInstructionTokens": 5,
+        "OriginalOptionTokens": [
+          3,
+          3
+        ],
+        "RetainedOptionTokens": [
+          3,
+          3
+        ],
+        "PrefixTokensIncludingSpecials": 16,
+        "UntruncatedTotalTokens": 117,
+        "OriginalTotalTokens": 117,
+        "OriginalStateTokens": 100,
+        "RetainedStateTokens": 100,
+        "DroppedStateTokens": 0,
+        "StateRetainedStart": 0,
+        "StateTruncationDirection": "right",
+        "MaskTextRemoved": false,
+        "InstructionTruncated": false,
+        "OptionsTruncated": false,
+        "StateTruncated": false,
+        "FinalSequenceTruncated": false,
+        "WasTruncated": false
+      }
+    },
+    {
+      "Id": "long-choice",
+      "Type": "choice",
+      "CandidateLabels": [
+        "a",
+        "b"
+      ],
+      "RequiredTokens": 516,
+      "RetainedTokens": 516,
+      "MeasurementFailure": null,
+      "PrefixUnclipped": true,
+      "TotalFitsAfterPrefixClipping": true,
+      "StrictFailureCode": null,
+      "CompatibleFailureCode": null,
+      "FailureCode": null,
+      "Diagnostics": {
+        "LengthPolicy": "laya_compatible",
+        "SerializedState": "The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready.",
+        "SanitizedState": "The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready.",
+        "RenderedInstruction": "choice question: type",
+        "RenderedOptions": [
+          "a: yes",
+          "b: no"
+        ],
+        "OriginalInstructionTokens": 4,
+        "RetainedInstructionTokens": 4,
+        "OriginalOptionTokens": [
+          3,
+          3
+        ],
+        "RetainedOptionTokens": [
+          3,
+          3
+        ],
+        "PrefixTokensIncludingSpecials": 15,
+        "UntruncatedTotalTokens": 516,
+        "OriginalTotalTokens": 516,
+        "OriginalStateTokens": 500,
+        "RetainedStateTokens": 500,
+        "DroppedStateTokens": 0,
+        "StateRetainedStart": 0,
+        "StateTruncationDirection": "right",
+        "MaskTextRemoved": false,
+        "InstructionTruncated": false,
+        "OptionsTruncated": false,
+        "StateTruncated": false,
+        "FinalSequenceTruncated": false,
+        "WasTruncated": false
+      }
+    },
+    {
+      "Id": "long-score",
+      "Type": "score",
+      "CandidateLabels": [
+        "0",
+        "1"
+      ],
+      "RequiredTokens": 520,
+      "RetainedTokens": 520,
+      "MeasurementFailure": null,
+      "PrefixUnclipped": true,
+      "TotalFitsAfterPrefixClipping": true,
+      "StrictFailureCode": null,
+      "CompatibleFailureCode": null,
+      "FailureCode": null,
+      "Diagnostics": {
+        "LengthPolicy": "laya_compatible",
+        "SerializedState": "The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready.",
+        "SanitizedState": "The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready.",
+        "RenderedInstruction": "score question: type",
+        "RenderedOptions": [
+          "level 0: yes",
+          "level 1: no"
+        ],
+        "OriginalInstructionTokens": 4,
+        "RetainedInstructionTokens": 4,
+        "OriginalOptionTokens": [
+          5,
+          5
+        ],
+        "RetainedOptionTokens": [
+          5,
+          5
+        ],
+        "PrefixTokensIncludingSpecials": 19,
+        "UntruncatedTotalTokens": 520,
+        "OriginalTotalTokens": 520,
+        "OriginalStateTokens": 500,
+        "RetainedStateTokens": 500,
+        "DroppedStateTokens": 0,
+        "StateRetainedStart": 0,
+        "StateTruncationDirection": "right",
+        "MaskTextRemoved": false,
+        "InstructionTruncated": false,
+        "OptionsTruncated": false,
+        "StateTruncated": false,
+        "FinalSequenceTruncated": false,
+        "WasTruncated": false
+      }
+    },
+    {
+      "Id": "long-boolean",
+      "Type": "boolean",
+      "CandidateLabels": [
+        "false",
+        "true"
+      ],
+      "RequiredTokens": 517,
+      "RetainedTokens": 517,
+      "MeasurementFailure": null,
+      "PrefixUnclipped": true,
+      "TotalFitsAfterPrefixClipping": true,
+      "StrictFailureCode": null,
+      "CompatibleFailureCode": null,
+      "FailureCode": null,
+      "Diagnostics": {
+        "LengthPolicy": "laya_compatible",
+        "SerializedState": "The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready.",
+        "SanitizedState": "The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready. The device is ready.",
+        "RenderedInstruction": "noul question: type",
+        "RenderedOptions": [
+          "false: no",
+          "true: yes"
+        ],
+        "OriginalInstructionTokens": 5,
+        "RetainedInstructionTokens": 5,
+        "OriginalOptionTokens": [
+          3,
+          3
+        ],
+        "RetainedOptionTokens": [
+          3,
+          3
+        ],
+        "PrefixTokensIncludingSpecials": 16,
+        "UntruncatedTotalTokens": 517,
+        "OriginalTotalTokens": 517,
+        "OriginalStateTokens": 500,
+        "RetainedStateTokens": 500,
+        "DroppedStateTokens": 0,
+        "StateRetainedStart": 0,
+        "StateTruncationDirection": "right",
+        "MaskTextRemoved": false,
+        "InstructionTruncated": false,
+        "OptionsTruncated": false,
+        "StateTruncated": false,
+        "FinalSequenceTruncated": false,
+        "WasTruncated": false
+      }
+    }
+  ],
+  "SchemaVersion": 2,
+  "RenderingVersion": "sezika.prompt.laya-4066d5d5.v2"
+}

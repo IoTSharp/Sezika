@@ -1,0 +1,69 @@
+{
+  "Status": "Succeeded",
+  "Pid": 77568,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 23.531,
+  "TimeoutSeconds": 210,
+  "FilePath": "D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\venv\\Scripts\\python.exe",
+  "Arguments": [
+    "-B",
+    "tools/Sezika.LayaOracle/export_oracle.py",
+    "--upstream",
+    ".artifacts/laya-oracle-work/upstream",
+    "--model",
+    ".artifacts/models/laya-mmbert",
+    "--output",
+    ".artifacts/s4-quality-20260926/paws-reference-smoke",
+    "--cases",
+    ".artifacts/s4-quality-20260926/paws-smoke-inputs.json",
+    "--contract",
+    "tests/fixtures/laya-oracle/contract.v1.json",
+    "--max-cases",
+    "1",
+    "--timeout-seconds",
+    "180"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:41:05.0763404Z",
+  "ParentPid": 64320,
+  "Launcher": {
+    "Pid": 64320,
+    "Started": "2026-09-26T00:41:03.763312+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\venv\\Scripts\\python.exe' -ArgumentList @('-B','tools/Sezika.LayaOracle/export_oracle.py','--upstream','.artifacts/laya-oracle-work/upstream','--model','.artifacts/models/laya-mmbert','--output','.artifacts/s4-quality-20260926/paws-reference-smoke','--cases','.artifacts/s4-quality-20260926/paws-smoke-inputs.json','--contract','tests/fixtures/laya-oracle/contract.v1.json','--max-cases','1','--timeout-seconds','180') -TimeoutSeconds 210 -LogName 's4-paws-reference-smoke' -Environment @{PYTHONUTF8='1';PYTHONDONTWRITEBYTECODE='1';HF_HUB_OFFLINE='1';TRANSFORMERS_OFFLINE='1';HF_HUB_DISABLE_TELEMETRY='1';TOKENIZERS_PARALLELISM='false';LAYA_CPU_AMP=''}\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164104-345-s4-paws-reference-smoke.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-164104-345-s4-paws-reference-smoke.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 77568,
+      "CreationDate": "2026-09-26T00:41:05.07634+08:00",
+      "Started": "2026-09-25T16:41:05.07634Z",
+      "CommandLine": "\"D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\venv\\Scripts\\python.exe\" -B tools/Sezika.LayaOracle/export_oracle.py --upstream .artifacts/laya-oracle-work/upstream --model .artifacts/models/laya-mmbert --output .artifacts/s4-quality-20260926/paws-reference-smoke --cases .artifacts/s4-quality-20260926/paws-smoke-inputs.json --contract tests/fixtures/laya-oracle/contract.v1.json --max-cases 1 --timeout-seconds 180",
+      "ParentPid": 64320,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 54940,
+      "CreationDate": "2026-09-26T00:41:05.186619+08:00",
+      "Started": "2026-09-25T16:41:05.186619Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 77568,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 74100,
+      "CreationDate": "2026-09-26T00:41:05.215486+08:00",
+      "Started": "2026-09-25T16:41:05.215486Z",
+      "CommandLine": "\"D:\\source\\Sezika\\.artifacts\\laya-oracle-work\\python\\cpython-3.12.10-windows-x86_64-none\\python.exe\" -B tools/Sezika.LayaOracle/export_oracle.py --upstream .artifacts/laya-oracle-work/upstream --model .artifacts/models/laya-mmbert --output .artifacts/s4-quality-20260926/paws-reference-smoke --cases .artifacts/s4-quality-20260926/paws-smoke-inputs.json --contract tests/fixtures/laya-oracle/contract.v1.json --max-cases 1 --timeout-seconds 180",
+      "ParentPid": 77568,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

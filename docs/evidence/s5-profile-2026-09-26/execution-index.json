@@ -1,0 +1,638 @@
+{
+  "schema_version": 1,
+  "scope": "Build/self-test and tokenizer preparation; real managed CUDA nine-case matrix passed with three E2E samples per row; real managed SIMD matrix measured eight rows with one E2E sample each and retained the long-32 request-deadline failure. Independent CPU/CUDA smoke results are separate.",
+  "created_utc": "2026-09-25T16:32:53.001983Z",
+  "git_head": "3feca5ca79ee7f48afd0a38b5a40b78cdc96b973",
+  "working_tree_changes": "Benchmark report adds code artifact identities and records existing session budgets.",
+  "powershell": "7.6.6",
+  "sdk": "10.0.400",
+  "runtime": "10.0.11",
+  "cpu": "13th Gen Intel(R) Core(TM) i9-13900HX",
+  "runs": [
+    {
+      "name": "20260925-162534-290-s5-profile-build-20260926",
+      "status": "Succeeded",
+      "exit_code": 0,
+      "elapsed_seconds": 19.619,
+      "timeout_seconds": 180,
+      "files": {
+        "stdout.log": {
+          "path": "processes/20260925-162534-290-s5-profile-build-20260926.stdout.log",
+          "sha256": "986615d184aa3ad1efbfd6aaccaa1a990266279a56739b7a8f50d4ffdcb8b7cf"
+        },
+        "stderr.log": {
+          "path": "processes/20260925-162534-290-s5-profile-build-20260926.stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "identity.json": {
+          "path": "processes/20260925-162534-290-s5-profile-build-20260926.identity.json",
+          "sha256": "a1c48ebde9e1377eb91899e5c5d6514120a795a3dcac66ececb7bb899f5b0456"
+        },
+        "result.json": {
+          "path": "processes/20260925-162534-290-s5-profile-build-20260926.result.json",
+          "sha256": "7bf664ded5b890dfa86ab67182c7c0ea499fd91a1fb60867f2db5c9ca9d2aa73"
+        }
+      }
+    },
+    {
+      "name": "20260925-162615-274-s5-profile-self-test-20260926",
+      "status": "Succeeded",
+      "exit_code": 0,
+      "elapsed_seconds": 3.148,
+      "timeout_seconds": 60,
+      "files": {
+        "stdout.log": {
+          "path": "processes/20260925-162615-274-s5-profile-self-test-20260926.stdout.log",
+          "sha256": "f78e12d32274186872001be627c2468849e0cd73eef127e1de53cf257066871e"
+        },
+        "stderr.log": {
+          "path": "processes/20260925-162615-274-s5-profile-self-test-20260926.stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "identity.json": {
+          "path": "processes/20260925-162615-274-s5-profile-self-test-20260926.identity.json",
+          "sha256": "2f892248d09e99ec136f7455640df1fda0e05f4b8d0e160936a347d511f3bb4f"
+        },
+        "result.json": {
+          "path": "processes/20260925-162615-274-s5-profile-self-test-20260926.result.json",
+          "sha256": "7911464e1a541436c5df05fe6294a033de6e511c12ee960daf36acd0d7a09d05"
+        }
+      }
+    },
+    {
+      "name": "20260925-162701-116-s5-profile-token-smoke",
+      "status": "Succeeded",
+      "exit_code": 0,
+      "elapsed_seconds": 5.458,
+      "timeout_seconds": 60,
+      "files": {
+        "stdout.log": {
+          "path": "processes/20260925-162701-116-s5-profile-token-smoke.stdout.log",
+          "sha256": "eefde90dff0a66e315cc1bd754492511244ddf06c442c0d7d16a4c5b276bd102"
+        },
+        "stderr.log": {
+          "path": "processes/20260925-162701-116-s5-profile-token-smoke.stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "identity.json": {
+          "path": "processes/20260925-162701-116-s5-profile-token-smoke.identity.json",
+          "sha256": "08604dfbcb652eb7da1b3daca65c738d6af17d133233091c7ab5682c121c4868"
+        },
+        "result.json": {
+          "path": "processes/20260925-162701-116-s5-profile-token-smoke.result.json",
+          "sha256": "c46c578639afceb5bfebd14592cc9cee955b6147bb0a38f6db5ae7ce0d8f9ddc"
+        }
+      }
+    },
+    {
+      "name": "20260925-162731-411-s5-profile-token-matrix",
+      "status": "Succeeded",
+      "exit_code": 0,
+      "elapsed_seconds": 5.988,
+      "timeout_seconds": 60,
+      "files": {
+        "stdout.log": {
+          "path": "processes/20260925-162731-411-s5-profile-token-matrix.stdout.log",
+          "sha256": "e7e322eaad046281c331797a053d66973c4c96715f76c8f585790e542a29fd75"
+        },
+        "stderr.log": {
+          "path": "processes/20260925-162731-411-s5-profile-token-matrix.stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "identity.json": {
+          "path": "processes/20260925-162731-411-s5-profile-token-matrix.identity.json",
+          "sha256": "eeb4a2af76ae2c18258d8840df206c693e3fdaf83dca56a5d33e937b858c6539"
+        },
+        "result.json": {
+          "path": "processes/20260925-162731-411-s5-profile-token-matrix.result.json",
+          "sha256": "f7fdd0e9132215230228fd97c242bed3d2d5fa48f1ffcf7a47b7d76f8f059d34"
+        }
+      }
+    },
+    {
+      "name": "20260925-162943-720-s5-profile-build-budget-20260926",
+      "status": "Succeeded",
+      "exit_code": 0,
+      "elapsed_seconds": 11.149,
+      "timeout_seconds": 180,
+      "files": {
+        "stdout.log": {
+          "path": "processes/20260925-162943-720-s5-profile-build-budget-20260926.stdout.log",
+          "sha256": "03c856539a88b3ee3a51153b406ddf4cb1d7dc52091f65fac77bd825e86d850f"
+        },
+        "stderr.log": {
+          "path": "processes/20260925-162943-720-s5-profile-build-budget-20260926.stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "identity.json": {
+          "path": "processes/20260925-162943-720-s5-profile-build-budget-20260926.identity.json",
+          "sha256": "3ffb791a7f640326a077d5f89b7ab62a50a10e3c7cd09be21b396e9d2985bcf2"
+        },
+        "result.json": {
+          "path": "processes/20260925-162943-720-s5-profile-build-budget-20260926.result.json",
+          "sha256": "112ae1e10db42c5709c287a1e4e46e5329ed92311a5a8a415732538078c85b76"
+        }
+      }
+    },
+    {
+      "name": "20260925-163103-451-s5-profile-self-test-budget-20260926",
+      "status": "Succeeded",
+      "exit_code": 0,
+      "elapsed_seconds": 4.766,
+      "timeout_seconds": 60,
+      "files": {
+        "stdout.log": {
+          "path": "processes/20260925-163103-451-s5-profile-self-test-budget-20260926.stdout.log",
+          "sha256": "f78e12d32274186872001be627c2468849e0cd73eef127e1de53cf257066871e"
+        },
+        "stderr.log": {
+          "path": "processes/20260925-163103-451-s5-profile-self-test-budget-20260926.stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "identity.json": {
+          "path": "processes/20260925-163103-451-s5-profile-self-test-budget-20260926.identity.json",
+          "sha256": "7c1703c991f7720d4b1e2e36973162d785827400940e3c934c68ff0150f7fd2f"
+        },
+        "result.json": {
+          "path": "processes/20260925-163103-451-s5-profile-self-test-budget-20260926.result.json",
+          "sha256": "849bb913fc383e7872bad186de24af9b1799f5d519f8cdadf48f1154c7b5f336"
+        }
+      }
+    },
+    {
+      "name": "20260925-163108-302-s5-profile-dotnet-info",
+      "status": "Succeeded",
+      "exit_code": 0,
+      "elapsed_seconds": 5.237,
+      "timeout_seconds": 30,
+      "files": {
+        "stdout.log": {
+          "path": "processes/20260925-163108-302-s5-profile-dotnet-info.stdout.log",
+          "sha256": "4c227ddc4eb7c7be8ca8ec6f017359c53b9d3c00165b994e905ac9132313012f"
+        },
+        "stderr.log": {
+          "path": "processes/20260925-163108-302-s5-profile-dotnet-info.stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "identity.json": {
+          "path": "processes/20260925-163108-302-s5-profile-dotnet-info.identity.json",
+          "sha256": "114f34cc21da14a47df31ed04cd696769e86a07fb625b3d35a175067f53fa2df"
+        },
+        "result.json": {
+          "path": "processes/20260925-163108-302-s5-profile-dotnet-info.result.json",
+          "sha256": "b09600e4bc617ec0c50ed80818679757da90d6f2e57690bccc110213a5698441"
+        }
+      }
+    },
+    {
+      "name": "20260925-165633-794-s5-profile-cuda-smoke",
+      "status": "Succeeded",
+      "exit_code": 0,
+      "elapsed_seconds": 7.688,
+      "timeout_seconds": 180,
+      "files": {
+        "stdout.log": {
+          "path": "processes/20260925-165633-794-s5-profile-cuda-smoke.stdout.log",
+          "sha256": "ca96fc39c7740898274ce0cb4e55eeed6df89ee40c62ac77bb352efc68a2efec"
+        },
+        "stderr.log": {
+          "path": "processes/20260925-165633-794-s5-profile-cuda-smoke.stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "identity.json": {
+          "path": "processes/20260925-165633-794-s5-profile-cuda-smoke.identity.json",
+          "sha256": "ebe563ae1d725d7e4b02c9ca2bf79f5c9182fb5549fd2758d750994b2957877c"
+        },
+        "result.json": {
+          "path": "processes/20260925-165633-794-s5-profile-cuda-smoke.result.json",
+          "sha256": "4ebf5ae8a2912cc5945c130bae9c3acb33125e2bd5f8bfeb5f296ef44d237f12"
+        }
+      }
+    },
+    {
+      "name": "20260925-165709-821-s5-profile-cuda-matrix",
+      "status": "Succeeded",
+      "exit_code": 0,
+      "elapsed_seconds": 383.608,
+      "timeout_seconds": 1750,
+      "files": {
+        "stdout.log": {
+          "path": "processes/20260925-165709-821-s5-profile-cuda-matrix.stdout.log",
+          "sha256": "3fd59732a4437d31682d192febd4cee94bd7340bfb1153ee756f919c93a76f01"
+        },
+        "stderr.log": {
+          "path": "processes/20260925-165709-821-s5-profile-cuda-matrix.stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "identity.json": {
+          "path": "processes/20260925-165709-821-s5-profile-cuda-matrix.identity.json",
+          "sha256": "9c69e82ca3db9a0cd9a0c4c0cd9861e91edc1c510fbff2e6e09c33c8a2028608"
+        },
+        "result.json": {
+          "path": "processes/20260925-165709-821-s5-profile-cuda-matrix.result.json",
+          "sha256": "b87f650c5bd95f82ab74e0532270b410f44274ccca353620e1c9c9553a565f8a"
+        }
+      }
+    },
+    {
+      "name": "20260925-170642-367-s5-profile-simd-smoke",
+      "status": "Succeeded",
+      "exit_code": 0,
+      "elapsed_seconds": 15.59,
+      "timeout_seconds": 180,
+      "files": {
+        "stdout.log": {
+          "path": "processes/20260925-170642-367-s5-profile-simd-smoke.stdout.log",
+          "sha256": "36ad6e586c388960e99a1cdda2332d2c6a6fd4f5054cfafcd09f902796d8633f"
+        },
+        "stderr.log": {
+          "path": "processes/20260925-170642-367-s5-profile-simd-smoke.stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "identity.json": {
+          "path": "processes/20260925-170642-367-s5-profile-simd-smoke.identity.json",
+          "sha256": "63974b041067ccfb965da812c3d660dc6199b641cc8bdb959010b5952e21b148"
+        },
+        "result.json": {
+          "path": "processes/20260925-170642-367-s5-profile-simd-smoke.result.json",
+          "sha256": "a4da4ae35b9ea575ce3678c73b88bd857ea354aedfed52d31ea9f72be1716a5b"
+        }
+      }
+    },
+    {
+      "name": "20260925-170904-138-s5-profile-simd-matrix",
+      "status": "Failed",
+      "exit_code": 2,
+      "elapsed_seconds": 1552.501,
+      "timeout_seconds": 1750,
+      "files": {
+        "stdout.log": {
+          "path": "processes/20260925-170904-138-s5-profile-simd-matrix.stdout.log",
+          "sha256": "cb2520ed02759cf2ceb87950e27379cd86274ec4dc45abc672542ade19b297fc"
+        },
+        "stderr.log": {
+          "path": "processes/20260925-170904-138-s5-profile-simd-matrix.stderr.log",
+          "sha256": "57bb961138ad7b920365402f0e90174f734623ce4e1c4140e6405c5f00e90586"
+        },
+        "identity.json": {
+          "path": "processes/20260925-170904-138-s5-profile-simd-matrix.identity.json",
+          "sha256": "049e9c22883a61e59898e54918a3bbfa20a0bbff4d7faea05452908fcc517409"
+        },
+        "result.json": {
+          "path": "processes/20260925-170904-138-s5-profile-simd-matrix.result.json",
+          "sha256": "93721abe64ac3af80cbee8eba647bd9d02b8f3d4d57adaf0e9fc33e972d06daf"
+        }
+      },
+      "interpretation": "Retained real request-deadline failure at long-32 discovery; eight earlier rows measured. Not an overall timeout or passing matrix."
+    },
+    {
+      "name": "20260925-173639-556-s5-profile-integrity-final-build",
+      "status": "Succeeded",
+      "exit_code": 0,
+      "elapsed_seconds": 15.046,
+      "timeout_seconds": 180,
+      "files": {
+        "stdout.log": {
+          "path": "processes/20260925-173639-556-s5-profile-integrity-final-build.stdout.log",
+          "sha256": "6b05f7b0cd2b955fc8a72d957f3b02eee0d2dafcc5d7893c2ddcb2ca272717b8"
+        },
+        "stderr.log": {
+          "path": "processes/20260925-173639-556-s5-profile-integrity-final-build.stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "identity.json": {
+          "path": "processes/20260925-173639-556-s5-profile-integrity-final-build.identity.json",
+          "sha256": "cd2456de064a0956ca8c2e6788b3cf3fafa52222f1b28698faf3cd2ead435c3b"
+        },
+        "result.json": {
+          "path": "processes/20260925-173639-556-s5-profile-integrity-final-build.result.json",
+          "sha256": "d2602b5c21a363d933d96f4e922e36fe98b6a41b8fbca60d2d31b00105f79caf"
+        }
+      },
+      "scope": "Later source-integrity validation, not a new performance measurement."
+    },
+    {
+      "name": "20260925-173857-130-s5-profile-observation-final-build",
+      "status": "Succeeded",
+      "exit_code": 0,
+      "elapsed_seconds": 13.045,
+      "timeout_seconds": 180,
+      "files": {
+        "stdout.log": {
+          "path": "processes/20260925-173857-130-s5-profile-observation-final-build.stdout.log",
+          "sha256": "1eba375ab8997ac0ebb6193b67841010c471bfcf8fda9f02e4d4dfbeb830da02"
+        },
+        "stderr.log": {
+          "path": "processes/20260925-173857-130-s5-profile-observation-final-build.stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "identity.json": {
+          "path": "processes/20260925-173857-130-s5-profile-observation-final-build.identity.json",
+          "sha256": "9536ae766e24412cb1f19e49ce8c96b9cea539a654fb4f30d9e79093dab98a17"
+        },
+        "result.json": {
+          "path": "processes/20260925-173857-130-s5-profile-observation-final-build.result.json",
+          "sha256": "27be188386dc6b2eb0b8a19d23743a4dafeb4d05fc0ae31988d4c2aac7d74c31"
+        }
+      },
+      "scope": "Later source-integrity validation, not a new performance measurement."
+    },
+    {
+      "name": "20260925-174013-292-s5-profile-final-self-test",
+      "status": "Succeeded",
+      "exit_code": 0,
+      "elapsed_seconds": 1.85,
+      "timeout_seconds": 30,
+      "files": {
+        "stdout.log": {
+          "path": "processes/20260925-174013-292-s5-profile-final-self-test.stdout.log",
+          "sha256": "f78e12d32274186872001be627c2468849e0cd73eef127e1de53cf257066871e"
+        },
+        "stderr.log": {
+          "path": "processes/20260925-174013-292-s5-profile-final-self-test.stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "identity.json": {
+          "path": "processes/20260925-174013-292-s5-profile-final-self-test.identity.json",
+          "sha256": "05f3b09b1545a6b185712cfd14fec4ad6b86db5432c242a841811f94244e52ef"
+        },
+        "result.json": {
+          "path": "processes/20260925-174013-292-s5-profile-final-self-test.result.json",
+          "sha256": "dd29ce5920acbb75ca21a318253ebecc0162eaeee787cf55dd179e66bc81c5c5"
+        }
+      },
+      "scope": "Later source-integrity validation, not a new performance measurement."
+    },
+    {
+      "name": "20260925-174234-868-s5-profile-partial-observation-check",
+      "status": "Failed",
+      "exit_code": 2,
+      "elapsed_seconds": 21.676,
+      "timeout_seconds": 40,
+      "files": {
+        "stdout.log": {
+          "path": "processes/20260925-174234-868-s5-profile-partial-observation-check.stdout.log",
+          "sha256": "dfa1e8b84a3ab8ccf775135346950a59583e096686d91cdaebe39dd4e306f367"
+        },
+        "stderr.log": {
+          "path": "processes/20260925-174234-868-s5-profile-partial-observation-check.stderr.log",
+          "sha256": "2f30afff4881e2602c755cb85e2101724ab46fe4c5970a5ecbef3f53c46d039a"
+        },
+        "identity.json": {
+          "path": "processes/20260925-174234-868-s5-profile-partial-observation-check.identity.json",
+          "sha256": "89173cd1bb10b731584bbdfbbe05a1f80c7cb56c9b9a56c3134b47a480fe549a"
+        },
+        "result.json": {
+          "path": "processes/20260925-174234-868-s5-profile-partial-observation-check.result.json",
+          "sha256": "21e8a72bd2f96db32c0a525e608a00828971b088279c89d6e223b15b0c06aa98"
+        }
+      },
+      "scope": "Final2 real-model cancellation observation check under concurrent load, not a performance sample. 19 entered calls do not establish 19 completed forwards."
+    }
+  ],
+  "inputs": [
+    {
+      "path": "token-smoke.jsonl",
+      "sha256": "bcf791ebde2e21de52543d0283165eb2a2baa47f0939574b9e6db5b790eea95b"
+    },
+    {
+      "path": "token-smoke.json",
+      "sha256": "d25bc2db849361b149a9c680003129fbde89811696dc94a4290348c1211c89a0"
+    },
+    {
+      "path": "token-matrix.jsonl",
+      "sha256": "8674fb43a55dd5b558ff8357b1b1994ae4bd67ef85941b73841b1d518e2e0c89"
+    },
+    {
+      "path": "token-matrix.json",
+      "sha256": "c08d6e2031daa19881b6bba20dfdce977801583722afa1e4f22273777058c216"
+    },
+    {
+      "path": "cuda-smoke.json",
+      "sha256": "dfc44ccb4e52ded9083ab568a4f8e4840dc2ab08a7d685018894f912ce527b4e"
+    },
+    {
+      "path": "cuda-matrix.json",
+      "sha256": "3b7351dd8676e807b5c43fa52b9065f2a3653e5e0e68a71c05336e6cfc6eeed3"
+    },
+    {
+      "path": "cuda-smoke-window.json",
+      "sha256": "111cebc500f76b21a7bcc2df068dc39c7af5792a62dfbfb59864dd2f347f77e8"
+    },
+    {
+      "path": "cuda-matrix-window.json",
+      "sha256": "b4df94d2a29f369549bb8a4c0526dbb33895a96e9b1bf77f7e7bef261cc5d4f8"
+    },
+    {
+      "path": "run-cuda-profile.ps1",
+      "sha256": "bf3ad5fc7685e1d5a28421a9dc9fe911e3159ec11e2672d229eb9839f43db264"
+    },
+    {
+      "path": "simd-smoke.json",
+      "sha256": "c181a4c460e48160dfe88535754ed0e6d89b103a6051effd4b67e2572ba76e83"
+    },
+    {
+      "path": "simd-matrix.json",
+      "sha256": "335a4af85d39c1abfeff97554a15bf438bac0b5f1da4ac620e9ddec45b4311ff"
+    },
+    {
+      "path": "simd-matrix-audit.json",
+      "sha256": "0b52858bbaae10748258bf1e6c6b65b37f95417444de6609d5897fed2e54bf24"
+    },
+    {
+      "path": "partial-observation-check.json",
+      "sha256": "04333f03aaa9dc14563811893d1224716d748fab14b8222be58276dfc61c67e8"
+    }
+  ],
+  "code_artifacts": [
+    {
+      "path": ".artifacts/build/s5-profile-20260926/bin/Sezika.Benchmarks/release/Sezika.Benchmarks.dll",
+      "sha256": "af36704d5b49ae7d80a6f3d2b75349a7c5dfa072973c377fb5c68163e2496ad3"
+    },
+    {
+      "path": ".artifacts/build/s5-profile-20260926/bin/Sezika.Benchmarks/release/Sezika.dll",
+      "sha256": "4a21f3f1358b1541dbfe67443b6ea281a79f2699f25a1a7b9387d05539d221eb"
+    },
+    {
+      "path": ".artifacts/build/s5-profile-20260926/bin/Sezika.Benchmarks/release/Sezika.Cuda.dll",
+      "sha256": "1e3a177dafc575fccac7c48349124d51c0140ee17547f5b59dbce5b25f85b50d"
+    },
+    {
+      "path": ".artifacts/build/s3-contract-final/bin/Sezika.Coverage/release/Sezika.Coverage.dll",
+      "sha256": "ad3c998687c2db06bb39783875cf46449ea1d58b9862c7fe4776f947ede034c1"
+    },
+    {
+      "path": ".artifacts/build/s3-contract-final/bin/Sezika.Coverage/release/Sezika.dll",
+      "sha256": "4fa30c510dfb8f3512cc4bb8cb5a56ca442b2438a3e1194109d54a6deeacddd0"
+    },
+    {
+      "path": "tools/Sezika.Benchmarks/Program.cs",
+      "sha256": "bc993ca866985f4cd8bd4747aec70dca5a5bd73dfb63dda7798e3a283bb2f914"
+    },
+    {
+      "path": "tools/Sezika.Benchmarks/Report.cs",
+      "sha256": "fc3a0bfdaceb0fce921c0850a9a2fb8b9c968364365a369fc50d0dd06d334df2"
+    },
+    {
+      "path": "tools/Sezika.Benchmarks/PerformanceProfile.cs",
+      "sha256": "17dc47ed0e6aa6c6754e3c53f17de9476a835ffc00b1a52b0a6c9bc411d482fa"
+    },
+    {
+      "path": "tools/Sezika.Coverage/Program.cs",
+      "sha256": "1952f53e876a475be4b2b25e8350264a2254653ae7d48e5d0b31896e756374d2"
+    },
+    {
+      "path": "src/Sezika/PromptSequenceBuilder.cs",
+      "sha256": "05af28be34e8284fee48c3f0221b8844ffbb8f993db7e5ee8d64ddcb928b0309"
+    }
+  ],
+  "updated_utc": "2026-09-25T17:44:42.8225230Z",
+  "measured_source_archives": [
+    {
+      "path": "measured-source/Program.cs",
+      "original_path": "tools/Sezika.Benchmarks/Program.cs",
+      "sha256": "bc993ca866985f4cd8bd4747aec70dca5a5bd73dfb63dda7798e3a283bb2f914"
+    },
+    {
+      "path": "measured-source/Report.cs",
+      "original_path": "tools/Sezika.Benchmarks/Report.cs",
+      "sha256": "fc3a0bfdaceb0fce921c0850a9a2fb8b9c968364365a369fc50d0dd06d334df2"
+    },
+    {
+      "path": "measured-source/PerformanceProfile.cs",
+      "original_path": "tools/Sezika.Benchmarks/PerformanceProfile.cs",
+      "sha256": "17dc47ed0e6aa6c6754e3c53f17de9476a835ffc00b1a52b0a6c9bc411d482fa"
+    }
+  ],
+  "source_changes_after_measurement": "Later source changes harden Native AOT detection, describe CUDA reset-window peaks and label incomplete observed pipeline calls. The first final build preceded the incomplete-label fix; final2 includes it. Both builds succeeded; final2 self-test and two real managed-host AOT rejection checks passed with no model loading. Measured binaries/reports and measured-source archive retain original hashes; these later checks are not new performance or native-AOT execution evidence. Final2 also passed an expected real-model cancellation observation check: 19 entered calls, zero completed request/official samples, correct incomplete label. This concurrent-load check is excluded from performance statistics.",
+  "final_source_archives": [
+    {
+      "path": "final-source/Program.cs",
+      "sha256": "025055a42c6a9e613158023977bf4908b943531d07afe47305ec03cb2fd4ab57"
+    },
+    {
+      "path": "final-source/Report.cs",
+      "sha256": "81697385476bf947328933edfba0617b50049b1063076aea0e252093294f79c8"
+    },
+    {
+      "path": "final-source/PerformanceProfile.cs",
+      "sha256": "6a6f98bd3fdc741bd6106719c7cefd87270fd23930cb1a099a308a786bfac28d"
+    }
+  ],
+  "final_build_artifacts": [
+    {
+      "build": "s5-profile-final-20260926",
+      "path": ".artifacts/build/s5-profile-final-20260926/bin/Sezika.Benchmarks/release/Sezika.Benchmarks.dll",
+      "sha256": "3e072c28e0dd266edac922a3b52f53189bea7844d7020a5bb06b4bf0ff0bff5e"
+    },
+    {
+      "build": "s5-profile-final-20260926",
+      "path": ".artifacts/build/s5-profile-final-20260926/bin/Sezika.Benchmarks/release/Sezika.dll",
+      "sha256": "61e172fb2494583ff655088ff8ba1a55ef906ae89c115d39c7c46e599d001a8e"
+    },
+    {
+      "build": "s5-profile-final-20260926",
+      "path": ".artifacts/build/s5-profile-final-20260926/bin/Sezika.Benchmarks/release/Sezika.Cuda.dll",
+      "sha256": "3b32323ca124c8fcdccfd580b7e30ac64fbf7333fbb6527dc38b60e403243d97"
+    },
+    {
+      "build": "s5-profile-final-20260926",
+      "path": ".artifacts/build/s5-profile-final-20260926/bin/Sezika.Benchmarks/release/Sezika.Benchmarks.runtimeconfig.json",
+      "sha256": "fc8762cf9424c33fd5cd4d58f4110509075c26daab2798fa9fded26faf18c7b1"
+    },
+    {
+      "build": "s5-profile-final2-20260926",
+      "path": ".artifacts/build/s5-profile-final2-20260926/bin/Sezika.Benchmarks/release/Sezika.Benchmarks.dll",
+      "sha256": "a692eeb326df6f2d5d4a31fd28106d4bb0128a461b9abea4090b74ce3987fa3d"
+    },
+    {
+      "build": "s5-profile-final2-20260926",
+      "path": ".artifacts/build/s5-profile-final2-20260926/bin/Sezika.Benchmarks/release/Sezika.dll",
+      "sha256": "17dff02f86294908580abfe6dfeeb1c4713f9d6648ff4bdee0db41d6c25bc98d"
+    },
+    {
+      "build": "s5-profile-final2-20260926",
+      "path": ".artifacts/build/s5-profile-final2-20260926/bin/Sezika.Benchmarks/release/Sezika.Cuda.dll",
+      "sha256": "27d6cbcaa861123e9026ed4d026d43ff30be279fc7588485127f600bffbef3b8"
+    },
+    {
+      "build": "s5-profile-final2-20260926",
+      "path": ".artifacts/build/s5-profile-final2-20260926/bin/Sezika.Benchmarks/release/Sezika.Benchmarks.runtimeconfig.json",
+      "sha256": "fc8762cf9424c33fd5cd4d58f4110509075c26daab2798fa9fded26faf18c7b1"
+    }
+  ],
+  "aot_gate_evidence": [
+    {
+      "path": "aot-gates-final/checks.json",
+      "sha256": "720206e3904add3dfd50427a88b1b221958bf7af2d29f070b93715fce437f7dc"
+    },
+    {
+      "path": "aot-gates-final/dynamic-disabled-managed.json",
+      "sha256": "c098a2668d31b761c22660d5c3266966e3a7833e64b800f801e388d92f1c35d2"
+    },
+    {
+      "path": "aot-gates-final/dynamic-disabled.runtimeconfig.json",
+      "sha256": "9715971706bea174d4d8c15caaf35b86c4ae3ebc657b529427863ca7ce11302a"
+    },
+    {
+      "path": "aot-gates-final/ordinary-managed.json",
+      "sha256": "f95be51d827fb1b9187975f07e73c60c1036b3c5fc3dcbe2cfb4bb792c84239b"
+    },
+    {
+      "path": "aot-gates-final/dynamic-disabled-managed-process/20260925-173945-278-s5-profile-aot-dynamic-disabled-managed.identity.json",
+      "sha256": "7d1baa9a4c14565165f3ad0cb82a0cea353054303cbde067c809d63c67fc02e4"
+    },
+    {
+      "path": "aot-gates-final/dynamic-disabled-managed-process/20260925-173945-278-s5-profile-aot-dynamic-disabled-managed.result.json",
+      "sha256": "d90381954a2cc20f98c70cc6f55c07b969dbc823aa7975797abf0725fac5c7b8"
+    },
+    {
+      "path": "aot-gates-final/dynamic-disabled-managed-process/20260925-173945-278-s5-profile-aot-dynamic-disabled-managed.stderr.log",
+      "sha256": "76b05f7f014de591b5d806439a981f9276a5c406dc9afcb96bdb7ce12fc26208"
+    },
+    {
+      "path": "aot-gates-final/dynamic-disabled-managed-process/20260925-173945-278-s5-profile-aot-dynamic-disabled-managed.stdout.log",
+      "sha256": "befba4db56f2b22431ba439d8f2781fe02a5182b2f97d7e34243362fac26dc96"
+    },
+    {
+      "path": "aot-gates-final/ordinary-managed-process/20260925-173941-107-s5-profile-aot-ordinary-managed.identity.json",
+      "sha256": "4699793241425eb04b1e29408a4fd511f5844245f400cd08c609d90b329c3ba5"
+    },
+    {
+      "path": "aot-gates-final/ordinary-managed-process/20260925-173941-107-s5-profile-aot-ordinary-managed.result.json",
+      "sha256": "de517fbe82517e7787dd7aebb3234b560b0bc0924da6c3169143b8f26bc2b2e1"
+    },
+    {
+      "path": "aot-gates-final/ordinary-managed-process/20260925-173941-107-s5-profile-aot-ordinary-managed.stderr.log",
+      "sha256": "76b05f7f014de591b5d806439a981f9276a5c406dc9afcb96bdb7ce12fc26208"
+    },
+    {
+      "path": "aot-gates-final/ordinary-managed-process/20260925-173941-107-s5-profile-aot-ordinary-managed.stdout.log",
+      "sha256": "b5ecf3d8d44434348e8743c5fc0bbbf4b0b0e88b8d1bbd93456bf9571e412fa7"
+    },
+    {
+      "path": "aot-gates-final/workflow-process/20260925-173939-936-s5-profile-aot-gates-workflow.identity.json",
+      "sha256": "0143b47d8ffb03388e4af381720ed8d5c97aa58acb1e4d0c2646cd795664ebc5"
+    },
+    {
+      "path": "aot-gates-final/workflow-process/20260925-173939-936-s5-profile-aot-gates-workflow.result.json",
+      "sha256": "de779d2c20306d1dd73f3b011801a8f11db8eb970b65beb6fc93e2701780aed0"
+    },
+    {
+      "path": "aot-gates-final/workflow-process/20260925-173939-936-s5-profile-aot-gates-workflow.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "aot-gates-final/workflow-process/20260925-173939-936-s5-profile-aot-gates-workflow.stdout.log",
+      "sha256": "50ff6be48772f534263a75a6aca9853e4f762418f286ab59b8cabb24e2cd1e38"
+    },
+    {
+      "path": "aot-gates-final/check-aot-gates.ps1",
+      "sha256": "80a1089af1aa7579976acc70772d48787cefc12645153fef92fde13db672f271"
+    },
+    {
+      "path": "aot-gates-final/normal.runtimeconfig.json",
+      "sha256": "fc8762cf9424c33fd5cd4d58f4110509075c26daab2798fa9fded26faf18c7b1"
+    }
+  ]
+}

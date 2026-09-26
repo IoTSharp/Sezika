@@ -1,6 +1,6 @@
 # Sezika 基准与生命周期检查工具
 
-本工具使用已安装的固定版本 Laya/mmBERT 模型包，执行真实 encoder/marker-head 推理，输出 JSON 证据。默认模式输入为固定短请求；新增 `--mode profile` 选择短/中/长与 1/8/32 问的性能画像。问题按 choice、score、boolean 循环排列，每题两个候选；它不接受任意业务数据集，也不测语言准确率。画像模式已随本轮 solution 构建通过，尚未执行真实性能矩阵，不能替代 S5-06 实测验收。
+本工具使用已安装的固定版本 Laya/mmBERT 模型包，执行真实 encoder/marker-head 推理，输出 JSON 证据。默认模式输入为固定短请求；新增 `--mode profile` 选择短/中/长与 1/8/32 问的性能画像。问题按 choice、score、boolean 循环排列，每题两个候选；它不接受任意业务数据集，也不测语言准确率。[2026-09-26 实测](../../docs/evidence/s5-profile-2026-09-26.md)中 CUDA 九行全部通过；SIMD 八行 measured，long-32 触发 300 秒请求期限，保留完整失败报告和原始覆盖分母。整体 S5-06 状态分别验收。
 
 模型必须已在本地准备好；工具不会下载模型，不执行校准，也不会把权重写进可执行文件或发布物。模型、tokenizer、许可与校准资料仍独立管理。构建、发布及运行应分别在获得相应授权后进行，下面的运行示例假定对应产物已经存在。
 
@@ -27,16 +27,16 @@
 | `--timeout-seconds` | `1200` | 工具内共享取消期限，`1..1800` 秒；还应配合外部进程超时。 |
 | `--cpu` | `unspecified` | 人工填写实际 CPU 型号，工具不自动检测型号。 |
 | `--environment` | `unspecified` | 人工填写执行环境，例如 `windows-local`、`wsl-ubuntu`。 |
-| `--require-aot` | 未启用 | 检查当前进程不支持动态代码；在普通 .NET 进程下失败。此参数不执行 AOT 编译。 |
+| `--require-aot` | 未启用 | 要求没有托管宿主，且动态代码 support/compiled 两个能力均为 false；普通 .NET 进程失败，包括关闭动态代码开关后由 dotnet 启动的中间 DLL。此参数不执行 AOT 编译。 |
 | `--self-test` | 未启用 | 仅检查最近秩分位数、固定请求序列化及参数边界；不加载模型、不生成基准报告，不替代真实推理验证。 |
 
-最多接受 40 个命令行参数元素。工具按顺序运行，报告中的单推理线程不代表 .NET GC、驱动或宿主进程没有其他线程。每次请求还受 session 的问题数、总 token、工作区、驻留内存及请求期限约束；工具的总期限不会解除这些限制。
+最多接受 40 个命令行参数元素。工具按顺序运行，报告中的单推理线程不代表 .NET GC、驱动或宿主进程没有其他线程。每次请求还受 session 的问题数、总 token、工作区、驻留内存及请求期限约束；工具的总期限不会解除这些限制。报告的 `request_token_budget` 和 `request_deadline_seconds` 直接记录实际 session 配置，当前分别为 32768 tokens 与 300 秒。
 
 ## S5-06 画像模式
 
 完整设计及报告字段口径见 [S5-06 工具准备记录](../../docs/performance-profile-s5-06.md)。画像输入集为 `sezika.performance-inputs.v1`，当前渲染版本为 `sezika.prompt.laya-4066d5d5.v2`，与修正后的生产引擎共用 `PromptSequenceBuilder`。`short`、`medium`、`long` 分别把 `The device is ready.` 以空格连接重复 4、20、100 次；完整 JSON、SHA-256、每题渲染长度/marker/token hash 保存在报告中，不能拿重复次数充当 token 长度。
 
-在获得运行授权并产生对应构建物后，可在以下 Windows runner 示例的参数中增加 `--mode profile --lengths short,medium,long`，并为 `--output` 选择独立的新文件；首次极小试运行使用 `--lengths short --questions 1 --samples 1 --warmup 0 --cycles 1`，核对后再扩大矩阵。本次仅准备代码，没有执行这些命令。
+在获得运行授权并产生对应构建物后，可在以下 Windows runner 示例的参数中增加 `--mode profile --lengths short,medium,long`，并为 `--output` 选择独立的新文件；首次极小试运行使用 `--lengths short --questions 1 --samples 1 --warmup 0 --cycles 1`，核对后再扩大矩阵。[2026-09-26 预检](../../docs/evidence/s5-profile-2026-09-26.md)已完成构建/自检和不加载权重的 token 矩阵核对，真实画像运行及其结果单独记录。
 
 当前 runtime 区分 256-token 前缀内容预算与 1024-token 完整序列预算。工具先按兼容策略离线计算拟保留序列及截断诊断，真实请求仍使用默认 strict；需要裁剪的请求记录 `rejected`、原始错误码、失败阶段和计时，仍进入覆盖率分母。没有进入真实 pipeline 的长度不能写成实际推理 token：`rendered_sequences` 与 `actual_sequences` 分开保留；成功请求必须逐 token、marker、type 与共享构造器结果一致，差异直接失败。旧渲染报告继续单独保留，不能作为当前路径的性能证据。
 
@@ -112,7 +112,7 @@ dotnet publish tools/Sezika.Benchmarks/Sezika.Benchmarks.csproj -c Release -r wi
 # Ubuntu 中执行同样的参数，改为 -r linux-x64，并使用 Linux 绝对输出路径。
 ```
 
-`--require-aot` 的实测结果与程序 hash 写入报告。最终原生目录不包含模型权重；ILGPU 只存在于独立构建工具，不进入此程序的项目引用路径。
+`--require-aot` 的实测结果与程序 hash 写入报告。`native_aot` 同时检查 `managed_host_detected`、`is_dynamic_code_supported`、`is_dynamic_code_compiled`：只要存在托管宿主或任一动态代码能力，结果就是 false；`--require-aot` 在加载模型前拒绝该进程，与 `--self-test` 同时传入时也不会绕过检查。PublishAot 的中间 runtimeconfig 可关闭动态代码开关，但通过 dotnet 执行对应 DLL 仍不算原生程序。最终原生目录不包含模型权重；ILGPU 只存在于独立构建工具，不进入此程序的项目引用路径。
 
 全部运行结束后，汇总原始 JSON：
 
@@ -137,9 +137,9 @@ CUDA 正式样本关闭 event profiling。`cuda_profiled_forward` 来自额外�
 
 `peak_working_set_bytes` 是操作系统记录的整个进程生命周期 RSS/working-set 高水位，包含加载、数值参考路径和诊断阶段，不是稳态推理专属内存。`allocated_bytes` 是每个样本前后进程范围的托管累计分配差值，不是存活对象大小。完整 GC 后的托管内存与弱引用哨兵回收用于生命周期检查，不意味着 RSS 会立即归还操作系统，也不是逐个数组的全量泄漏证明。
 
-CUDA owned bytes/count 只计工具成功持有的 Driver 分配；不含驱动/context 的全部开销。free/total memory 是整张设备的读数，可能受其他进程影响。卸载检查要求 owned bytes/count、loaded modules 及 release failures 归零；快照读取发生在 device 最终 Dispose 之前。W8A32 仍保留 FP32 原权重，比较总内存时同时查看量化字节数与进程高水位。
+CUDA owned bytes/count 只计工具成功持有的 Driver 分配；不含驱动/context 的全部开销。owned peak 在 `ResetTelemetry` 时重置为当前 owned bytes，表示最近重置窗口的峰值，不是整个 context 生命周期高水位。free/total memory 是整张设备的读数，可能受其他进程影响。卸载检查要求 owned bytes/count、loaded modules 及 release failures 归零；快照读取发生在 device 最终 Dispose 之前。W8A32 仍保留 FP32 原权重，比较总内存时同时查看量化字节数与进程高水位。
 
-报告保留运行时、RID、环境标签、固定模型/tokenizer 身份、manifest 和当前进程可执行文件哈希、完整输入及输出。普通 .NET 模式的进程可执行文件可能是 dotnet host 或 apphost，该哈希不能单独标识所有托管程序集；保存构建版本和产物哈希时应补齐这一信息。
+报告保留运行时、RID、环境标签、固定模型/tokenizer 身份、manifest 和当前进程可执行文件哈希、完整输入及输出。`code_artifacts` 在普通 .NET 模式额外记录输出目录内 `Sezika.Benchmarks.dll`、`Sezika.dll`、`Sezika.Cuda.dll` 的路径和 SHA-256，因此 dotnet host/apphost 哈希不会被误当作应用实现身份；缺失任何已知程序集会在模型加载前失败。Native AOT 模式记录实际原生可执行文件身份，不要求独立托管程序集。
 
 ## 失败与能力边界
 

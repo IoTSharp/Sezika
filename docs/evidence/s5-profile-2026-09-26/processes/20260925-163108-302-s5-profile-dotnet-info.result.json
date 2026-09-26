@@ -1,0 +1,36 @@
+{
+  "Status": "Succeeded",
+  "Pid": 25848,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 5.237,
+  "TimeoutSeconds": 30,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "--info"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:31:09.7921962Z",
+  "ParentPid": 74372,
+  "Launcher": {
+    "Pid": 74372,
+    "Started": "2026-09-26T00:31:02.523628+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('.artifacts/build/s5-profile-20260926/bin/Sezika.Benchmarks/release/Sezika.Benchmarks.dll','--self-test') -TimeoutSeconds 60 -LogName 's5-profile-self-test-budget-20260926'; & tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('--info') -TimeoutSeconds 30 -LogName 's5-profile-dotnet-info'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-163108-302-s5-profile-dotnet-info.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-163108-302-s5-profile-dotnet-info.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 25848,
+      "CreationDate": "2026-09-26T00:31:09.792196+08:00",
+      "Started": "2026-09-25T16:31:09.792196Z",
+      "CommandLine": null,
+      "ParentPid": 74372,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

@@ -1,0 +1,33 @@
+{
+  "Status": "Failed",
+  "Pid": 78744,
+  "ExitCode": 1,
+  "Error": "Process failed with exit code 1.",
+  "ElapsedSeconds": 2.751,
+  "TimeoutSeconds": 40,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\.artifacts\\build\\s4-evaluation-final-20260926\\bin\\Sezika.Evaluation\\release\\Sezika.Evaluation.dll",
+    "--score-capture",
+    "D:\\source\\Sezika\\.artifacts\\datasets\\paws-public-benchmark\\eval.jsonl",
+    "c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3",
+    "250",
+    "D:\\source\\Sezika\\.artifacts\\s4-quality-20260926\\rejection-checks-final\\incomplete.capture.json",
+    "D:\\source\\Sezika\\.artifacts\\s4-quality-20260926\\rejection-checks-final\\incomplete.report.json",
+    "30"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T16:53:53.8434312Z",
+  "ParentPid": 21648,
+  "Launcher": {
+    "Pid": 21648,
+    "Started": "2026-09-26T00:53:46.522693+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Sezika.Evaluation/Invoke-CaptureChecks.ps1 -DotnetPath 'C:\\Program Files\\dotnet\\dotnet.exe' -EvaluationDll '.artifacts/build/s4-evaluation-final-20260926/bin/Sezika.Evaluation/release/Sezika.Evaluation.dll' -Dataset '.artifacts/datasets/paws-public-benchmark/eval.jsonl' -DatasetSha256 'c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3' -DatasetTotal 250 -ReferenceCapture '.artifacts/s4-quality-20260926/paws-reference-smoke/capture.json' -OutputDirectory '.artifacts/s4-quality-20260926/rejection-checks-final'\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-165353-199-evaluation-reject-incomplete.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-165353-199-evaluation-reject-incomplete.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

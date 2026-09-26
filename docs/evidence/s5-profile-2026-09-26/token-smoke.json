@@ -1,0 +1,83 @@
+{
+  "ModelId": "convaiinnovations/laya-multilingual",
+  "ModelRevision": "052592a15d198d9ad47da779604259b10b47b7aa",
+  "TokenizerSha256": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+  "DatasetSha256": "bcf791ebde2e21de52543d0283165eb2a2baa47f0939574b9e6db5b790eea95b",
+  "Processed": 1,
+  "PrefixTokenBudget": 256,
+  "TotalTokenBudget": 1024,
+  "DiagnosticTokenCap": 32768,
+  "LengthPolicy": "strict",
+  "TokenEligible": 1,
+  "StrictEligible": 1,
+  "CompatibleEligible": 1,
+  "PrefixUnclipped": 1,
+  "TotalFitsAfterPrefixClipping": 1,
+  "Unmeasured": 0,
+  "ByType": [
+    {
+      "Type": "choice",
+      "Total": 1,
+      "TokenEligible": 1,
+      "StrictEligible": 1,
+      "CompatibleEligible": 1
+    }
+  ],
+  "ByFailureCode": {
+    "eligible": 1
+  },
+  "Rows": [
+    {
+      "Id": "short-choice",
+      "Type": "choice",
+      "CandidateLabels": [
+        "a",
+        "b"
+      ],
+      "RequiredTokens": 36,
+      "RetainedTokens": 36,
+      "MeasurementFailure": null,
+      "PrefixUnclipped": true,
+      "TotalFitsAfterPrefixClipping": true,
+      "StrictFailureCode": null,
+      "CompatibleFailureCode": null,
+      "FailureCode": null,
+      "Diagnostics": {
+        "LengthPolicy": "laya_compatible",
+        "SerializedState": "The device is ready. The device is ready. The device is ready. The device is ready.",
+        "SanitizedState": "The device is ready. The device is ready. The device is ready. The device is ready.",
+        "RenderedInstruction": "choice question: type",
+        "RenderedOptions": [
+          "a: yes",
+          "b: no"
+        ],
+        "OriginalInstructionTokens": 4,
+        "RetainedInstructionTokens": 4,
+        "OriginalOptionTokens": [
+          3,
+          3
+        ],
+        "RetainedOptionTokens": [
+          3,
+          3
+        ],
+        "PrefixTokensIncludingSpecials": 15,
+        "UntruncatedTotalTokens": 36,
+        "OriginalTotalTokens": 36,
+        "OriginalStateTokens": 20,
+        "RetainedStateTokens": 20,
+        "DroppedStateTokens": 0,
+        "StateRetainedStart": 0,
+        "StateTruncationDirection": "right",
+        "MaskTextRemoved": false,
+        "InstructionTruncated": false,
+        "OptionsTruncated": false,
+        "StateTruncated": false,
+        "FinalSequenceTruncated": false,
+        "WasTruncated": false
+      }
+    }
+  ],
+  "SchemaVersion": 2,
+  "RenderingVersion": "sezika.prompt.laya-4066d5d5.v2"
+}

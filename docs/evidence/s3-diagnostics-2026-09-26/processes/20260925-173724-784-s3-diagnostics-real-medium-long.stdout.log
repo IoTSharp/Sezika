@@ -1,0 +1,13 @@
+trace case 1/3: boolean-zh-medium
+trace backend scalar: boolean-zh-medium, elapsed 0.1/1700s
+trace backend simd: boolean-zh-medium, elapsed 41.8/1700s
+trace backend cuda: boolean-zh-medium, elapsed 66.3/1700s
+trace case 2/3: score-en-long
+trace backend scalar: score-en-long, elapsed 72.3/1700s
+trace backend simd: score-en-long, elapsed 195.2/1700s
+trace backend cuda: score-en-long, elapsed 252.5/1700s
+trace case 3/3: choice-zh-long
+trace backend scalar: choice-zh-long, elapsed 257.8/1700s
+trace backend simd: choice-zh-long, elapsed 370.5/1700s
+trace backend cuda: choice-zh-long, elapsed 416.8/1700s
+Wrote D:\source\Sezika\.artifacts\s3-diagnostics-20260926\medium-long.json; selected diagnostics passed=True; near-tie cases=0; full S3-06 gate remains separately assessed.

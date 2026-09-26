@@ -1,0 +1,82 @@
+Capture check 1/9: unmodified baseline must score successfully
+Started PID 47004, timeout 40s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s4-evaluation-final-20260926\bin\Sezika.Evaluation\release\Sezika.Evaluation.dll --score-capture D:\source\Sezika\.artifacts\datasets\paws-public-benchmark\eval.jsonl c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3 250 D:\source\Sezika\.artifacts\s4-quality-20260926\paws-reference-smoke\capture.json D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\baseline.report.json 30
+Read 100/250 audit rows.
+Read 200/250 audit rows.
+Read 250/250 audit rows.
+Wrote D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\baseline.report.json; no model was executed by this command.
+
+
+Completed PID 47004, status Succeeded, exit 0, elapsed 3.55s; result: D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\processes\baseline\20260925-173802-494-evaluation-capture-baseline.result.json
+Capture check 2/9: reject probabilities with its expected reason
+Started PID 25272, timeout 40s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s4-evaluation-final-20260926\bin\Sezika.Evaluation\release\Sezika.Evaluation.dll --score-capture D:\source\Sezika\.artifacts\datasets\paws-public-benchmark\eval.jsonl c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3 250 D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\probabilities.capture.json D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\probabilities.report.json 30
+Read 100/250 audit rows.
+Read 200/250 audit rows.
+Read 250/250 audit rows.
+
+evaluation-oracle: InvalidDataException: Captured probabilities differ from unit-temperature logits.
+
+Completed PID 25272, status Failed, exit 1, elapsed 2.447s; result: D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\processes\probabilities\20260925-173806-113-evaluation-reject-probabilities.result.json
+Capture check 3/9: reject prediction with its expected reason
+Started PID 53004, timeout 40s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s4-evaluation-final-20260926\bin\Sezika.Evaluation\release\Sezika.Evaluation.dll --score-capture D:\source\Sezika\.artifacts\datasets\paws-public-benchmark\eval.jsonl c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3 250 D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\prediction.capture.json D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\prediction.report.json 30
+Read 100/250 audit rows.
+Read 200/250 audit rows.
+Read 250/250 audit rows.
+
+evaluation-oracle: InvalidDataException: Captured prediction differs from the recorded distribution.
+
+Completed PID 53004, status Failed, exit 1, elapsed 2.489s; result: D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\processes\prediction\20260925-173808-591-evaluation-reject-prediction.result.json
+Capture check 4/9: reject incomplete with its expected reason
+Started PID 56236, timeout 40s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s4-evaluation-final-20260926\bin\Sezika.Evaluation\release\Sezika.Evaluation.dll --score-capture D:\source\Sezika\.artifacts\datasets\paws-public-benchmark\eval.jsonl c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3 250 D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\incomplete.capture.json D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\incomplete.report.json 30
+Read 100/250 audit rows.
+Read 200/250 audit rows.
+Read 250/250 audit rows.
+
+evaluation-oracle: InvalidDataException: Incomplete or failed capture cannot be scored as a completed selection.
+
+Completed PID 56236, status Failed, exit 1, elapsed 3.789s; result: D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\processes\incomplete\20260925-173811-096-evaluation-reject-incomplete.result.json
+Capture check 5/9: reject selection with its expected reason
+Started PID 76356, timeout 40s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s4-evaluation-final-20260926\bin\Sezika.Evaluation\release\Sezika.Evaluation.dll --score-capture D:\source\Sezika\.artifacts\datasets\paws-public-benchmark\eval.jsonl c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3 250 D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\selection.capture.json D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\selection.report.json 30
+Read 100/250 audit rows.
+Read 200/250 audit rows.
+Read 250/250 audit rows.
+
+evaluation-oracle: InvalidDataException: Capture selection and manifest counts are inconsistent.
+
+Completed PID 76356, status Failed, exit 1, elapsed 2.893s; result: D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\processes\selection\20260925-173814-905-evaluation-reject-selection.result.json
+Capture check 6/9: reject selected-ids with its expected reason
+Started PID 61236, timeout 40s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s4-evaluation-final-20260926\bin\Sezika.Evaluation\release\Sezika.Evaluation.dll --score-capture D:\source\Sezika\.artifacts\datasets\paws-public-benchmark\eval.jsonl c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3 250 D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\selected-ids.capture.json D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\selected-ids.report.json 30
+Read 100/250 audit rows.
+Read 200/250 audit rows.
+Read 250/250 audit rows.
+
+evaluation-oracle: InvalidDataException: Selected case IDs differ from captured cases.
+
+Completed PID 61236, status Failed, exit 1, elapsed 3.147s; result: D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\processes\selected-ids\20260925-173817-814-evaluation-reject-selected-ids.result.json
+Capture check 7/9: reject failed-with-numbers with its expected reason
+Started PID 19548, timeout 40s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s4-evaluation-final-20260926\bin\Sezika.Evaluation\release\Sezika.Evaluation.dll --score-capture D:\source\Sezika\.artifacts\datasets\paws-public-benchmark\eval.jsonl c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3 250 D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\failed-with-numbers.capture.json D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\failed-with-numbers.report.json 30
+Read 100/250 audit rows.
+Read 200/250 audit rows.
+Read 250/250 audit rows.
+
+evaluation-oracle: InvalidDataException: Failed capture carries numerical output or lacks failure semantics.
+
+Completed PID 19548, status Failed, exit 1, elapsed 3.771s; result: D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\processes\failed-with-numbers\20260925-173820-973-evaluation-reject-failed-with-numbers.result.json
+Capture check 8/9: reject answered-with-failure with its expected reason
+Started PID 56484, timeout 40s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s4-evaluation-final-20260926\bin\Sezika.Evaluation\release\Sezika.Evaluation.dll --score-capture D:\source\Sezika\.artifacts\datasets\paws-public-benchmark\eval.jsonl c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3 250 D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\answered-with-failure.capture.json D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\answered-with-failure.report.json 30
+Read 100/250 audit rows.
+Read 200/250 audit rows.
+Read 250/250 audit rows.
+
+evaluation-oracle: InvalidDataException: Answered capture must not carry failure semantics.
+
+Completed PID 56484, status Failed, exit 1, elapsed 3.333s; result: D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\processes\answered-with-failure\20260925-173824-765-evaluation-reject-answered-with-failure.result.json
+Capture check 9/9: reject duplicate-json with its expected reason
+Started PID 15856, timeout 40s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\.artifacts\build\s4-evaluation-final-20260926\bin\Sezika.Evaluation\release\Sezika.Evaluation.dll --score-capture D:\source\Sezika\.artifacts\datasets\paws-public-benchmark\eval.jsonl c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3 250 D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\duplicate-json.capture.json D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\duplicate-json.report.json 30
+Read 100/250 audit rows.
+Read 200/250 audit rows.
+Read 250/250 audit rows.
+
+evaluation-oracle: InvalidDataException: Duplicate evaluation JSON property.
+
+Completed PID 15856, status Failed, exit 1, elapsed 3.455s; result: D:\source\Sezika\.artifacts\s4-quality-20260926\rejection-checks-guarded\processes\duplicate-json\20260925-173828-148-evaluation-reject-duplicate-json.result.json
+Passed 9 capture checks (one baseline, eight specific rejections); mutated inputs are testing artifacts, not inference evidence.

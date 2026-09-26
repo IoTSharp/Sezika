@@ -1,0 +1,27 @@
+{
+  "Pid": 47288,
+  "Started": "2026-09-25T16:27:32.9187519Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" .artifacts/build/s3-contract-final/bin/Sezika.Coverage/release/Sezika.Coverage.dll .artifacts/models/laya-mmbert D:\\source\\Sezika\\.artifacts\\s5-profile-20260926\\token-matrix.jsonl D:\\source\\Sezika\\.artifacts\\s5-profile-20260926\\token-matrix.json 8674fb43a55dd5b558ff8357b1b1994ae4bd67ef85941b73841b1d518e2e0c89 9 30 strict",
+  "ParentPid": 22028,
+  "ObservedParentPid": 22028,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 22028,
+    "Started": "2026-09-26T00:27:30.641484+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$profileDirectory='D:\\source\\Sezika\\.artifacts\\s5-profile-20260926'; $profileInput=Join-Path $profileDirectory 'token-matrix.jsonl'; if(Test-Path -LiteralPath $profileInput){throw 'Token matrix already exists.'}; $profileWatch=[Diagnostics.Stopwatch]::StartNew(); $profileLengths=@('short','medium','long'); $profileRepetitions=@(4,20,100); $profileKinds=@('choice','score','boolean'); $profileRows=[Collections.Generic.List[string]]::new(); for($lengthIndex=0;$lengthIndex -lt 3;$lengthIndex++){if($profileWatch.Elapsed.TotalSeconds -gt 10){throw 'Preparation timeout.'}; $profileState=(@('The device is ready.') * $profileRepetitions[$lengthIndex]) -join ' '; for($kindIndex=0;$kindIndex -lt 3;$kindIndex++){if($profileWatch.Elapsed.TotalSeconds -gt 10){throw 'Preparation timeout.'}; $profileCriteria=switch($profileKinds[$kindIndex]){'choice'{[ordered]@{a='yes';b='no'}} 'score'{@('yes','no')} 'boolean'{[ordered]@{true='yes';false='no'}}}; $profileRow=[ordered]@{id=($profileLengths[$lengthIndex]+'-'+$profileKinds[$kindIndex]); input=[ordered]@{state=$profileState;questions=[ordered]@{decision=[ordered]@{type=$profileKinds[$kindIndex];instructions='type';criteria=$profileCriteria}}}}; $profileRows.Add(($profileRow | ConvertTo-Json -Depth 8 -Compress))}}; [IO.File]::WriteAllLines($profileInput,$profileRows,[Text.UTF8Encoding]::new($false)); $profileSha=(Get-FileHash -LiteralPath $profileInput -Algorithm SHA256).Hash.ToLowerInvariant(); & tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -TimeoutSeconds 60 -LogName 's5-profile-token-matrix' -ArgumentList @('.artifacts/build/s3-contract-final/bin/Sezika.Coverage/release/Sezika.Coverage.dll','.artifacts/models/laya-mmbert',$profileInput,(Join-Path $profileDirectory 'token-matrix.json'),$profileSha,'9','30','strict')\"",
+    "ParentPid": 53660
+  },
+  "TimeoutSeconds": 60,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/build/s3-contract-final/bin/Sezika.Coverage/release/Sezika.Coverage.dll",
+    ".artifacts/models/laya-mmbert",
+    "D:\\source\\Sezika\\.artifacts\\s5-profile-20260926\\token-matrix.jsonl",
+    "D:\\source\\Sezika\\.artifacts\\s5-profile-20260926\\token-matrix.json",
+    "8674fb43a55dd5b558ff8357b1b1994ae4bd67ef85941b73841b1d518e2e0c89",
+    "9",
+    "30",
+    "strict"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

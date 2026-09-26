@@ -1,0 +1,69 @@
+{
+  "Status": "Failed",
+  "Pid": 58168,
+  "ExitCode": 2,
+  "Error": "Process failed with exit code 2.",
+  "ElapsedSeconds": 21.676,
+  "TimeoutSeconds": 40,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    ".artifacts/build/s5-profile-final2-20260926/bin/Sezika.Benchmarks/release/Sezika.Benchmarks.dll",
+    "--mode",
+    "profile",
+    "--backend",
+    "simd",
+    "--model",
+    ".artifacts/models/laya-mmbert",
+    "--lengths",
+    "short",
+    "--questions",
+    "32",
+    "--samples",
+    "1",
+    "--warmup",
+    "0",
+    "--cycles",
+    "1",
+    "--timeout-seconds",
+    "20",
+    "--cpu",
+    "13th Gen Intel(R) Core(TM) i9-13900HX",
+    "--environment",
+    "windows-validation-concurrent-not-benchmark",
+    "--output",
+    ".artifacts/s5-profile-20260926/partial-observation-check.json"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-09-25T17:42:35.3512723Z",
+  "ParentPid": 4108,
+  "Launcher": {
+    "Pid": 4108,
+    "Started": "2026-09-26T01:42:34.372545+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& './tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -TimeoutSeconds 40 -LogName 's5-profile-partial-observation-check' -ArgumentList @('.artifacts/build/s5-profile-final2-20260926/bin/Sezika.Benchmarks/release/Sezika.Benchmarks.dll','--mode','profile','--backend','simd','--model','.artifacts/models/laya-mmbert','--lengths','short','--questions','32','--samples','1','--warmup','0','--cycles','1','--timeout-seconds','20','--cpu','13th Gen Intel(R) Core(TM) i9-13900HX','--environment','windows-validation-concurrent-not-benchmark','--output','.artifacts/s5-profile-20260926/partial-observation-check.json')\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-174234-868-s5-profile-partial-observation-check.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-174234-868-s5-profile-partial-observation-check.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 58168,
+      "CreationDate": "2026-09-26T01:42:35.351272+08:00",
+      "Started": "2026-09-25T17:42:35.351272Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" .artifacts/build/s5-profile-final2-20260926/bin/Sezika.Benchmarks/release/Sezika.Benchmarks.dll --mode profile --backend simd --model .artifacts/models/laya-mmbert --lengths short --questions 32 --samples 1 --warmup 0 --cycles 1 --timeout-seconds 20 --cpu \"13th Gen Intel(R) Core(TM) i9-13900HX\" --environment windows-validation-concurrent-not-benchmark --output .artifacts/s5-profile-20260926/partial-observation-check.json",
+      "ParentPid": 4108,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 47812,
+      "CreationDate": "2026-09-26T01:42:35.390783+08:00",
+      "Started": "2026-09-25T17:42:35.390783Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 58168,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

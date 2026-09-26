@@ -1,0 +1,42 @@
+{
+  "Status": "Failed",
+  "Pid": null,
+  "ExitCode": null,
+  "Error": "调用“Start”并传入“0”个参数时发生异常：“An error occurred trying to start process 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' with working directory 'D:\\source\\Sezika'. 系统找不到指定的文件。”",
+  "ElapsedSeconds": 0.496,
+  "TimeoutSeconds": 390,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "tools/Sezika.Evaluation/Invoke-CaptureChecks.ps1",
+    "-DotnetPath",
+    "C:\\Program Files\\dotnet\\dotnet.exe",
+    "-EvaluationDll",
+    ".artifacts/build/s4-evaluation-final-20260926/bin/Sezika.Evaluation/release/Sezika.Evaluation.dll",
+    "-Dataset",
+    ".artifacts/datasets/paws-public-benchmark/eval.jsonl",
+    "-DatasetSha256",
+    "c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3",
+    "-DatasetTotal",
+    "250",
+    "-ReferenceCapture",
+    ".artifacts/s4-quality-20260926/paws-reference-smoke/capture.json",
+    "-OutputDirectory",
+    ".artifacts/s4-quality-20260926/rejection-checks-guarded"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": null,
+  "ParentPid": 69684,
+  "Launcher": {
+    "Pid": 69684,
+    "Started": "2026-09-26T01:37:32.822488+08:00",
+    "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& './tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -TimeoutSeconds 390 -LogName 's4-capture-integrity-guarded-workflow' -ArgumentList @('-NoProfile','-File','tools/Sezika.Evaluation/Invoke-CaptureChecks.ps1','-DotnetPath','C:\\Program Files\\dotnet\\dotnet.exe','-EvaluationDll','.artifacts/build/s4-evaluation-final-20260926/bin/Sezika.Evaluation/release/Sezika.Evaluation.dll','-Dataset','.artifacts/datasets/paws-public-benchmark/eval.jsonl','-DatasetSha256','c295258fdd73452f196b2673bdbee58cf01fa3f24400c2f1c0f26fd1126bc6f3','-DatasetTotal','250','-ReferenceCapture','.artifacts/s4-quality-20260926/paws-reference-smoke/capture.json','-OutputDirectory','.artifacts/s4-quality-20260926/rejection-checks-guarded')\"",
+    "ParentPid": 53660
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-173733-300-s4-capture-integrity-guarded-workflow.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20260925-173733-300-s4-capture-integrity-guarded-workflow.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}
