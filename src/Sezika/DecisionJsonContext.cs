@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Sezika;
@@ -41,6 +42,14 @@ namespace Sezika;
 [JsonSerializable(typeof(PrimitiveReferenceCase))]
 [JsonSerializable(typeof(PrimitiveReferenceInput))]
 [JsonSerializable(typeof(PrimitiveAlignmentReport))]
+[JsonSerializable(typeof(IndependentDecisionRequest))]
+[JsonSerializable(typeof(IndependentChoiceCandidate))]
+[JsonSerializable(typeof(IndependentChoiceQuestion))]
+[JsonSerializable(typeof(IndependentScoreQuestion))]
+[JsonSerializable(typeof(IndependentBooleanQuestion))]
+[JsonSerializable(typeof(IndependentDecisionSequenceOptions))]
+[JsonSerializable(typeof(IndependentDecisionSequence))]
+[JsonSerializable(typeof(JsonElement))]
 public partial class DecisionJsonContext : JsonSerializerContext
 {
 }

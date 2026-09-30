@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "model_id": "sezika/mmbert-base-independent-s4",
+  "source_model_id": "jhu-clsp/mmBERT-base",
+  "source_revision": "c5955035435e2bf121cde7f3c8863ef52ff35d82",
+  "license": "MIT",
+  "source_weights_sha256": "8ea64ec1ea4eb8fca0fc14b69a2ae571de6bfbc25fd214bb932dd4aba6a3a04e",
+  "weights_file": "encoder.safetensors",
+  "weights_sha256": "6168c84d2498cdacdcafee16b71a69b5c1636ad569bfabaf2855f5ce7dabd528",
+  "tokenizer_file": "tokenizer/tokenizer.json",
+  "tokenizer_sha256": "197d4cc5406ee12cc50c8b5511f2393cc32d9db321545979ce041c1199178356",
+  "tensor_format": "safetensors-f32",
+  "tensor_count": 134,
+  "tensor_prefix": "model.",
+  "encoder": {
+    "vocab_size": 256000,
+    "hidden_size": 768,
+    "intermediate_size": 1152,
+    "layer_count": 22,
+    "head_count": 12,
+    "source_max_position_embeddings": 8192,
+    "runtime_max_tokens": 1024,
+    "global_attention_every": 3,
+    "local_attention": 128,
+    "global_rope_theta": 160000,
+    "local_rope_theta": 160000,
+    "norm_epsilon": 1e-5
+  },
+  "head": {
+    "kind": "independent-marker-linear-v1",
+    "hidden_size": 768,
+    "rows": 3,
+    "status": "separate-asset-required"
+  },
+  "calibration": {
+    "status": "uncalibrated"
+  }
+}

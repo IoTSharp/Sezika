@@ -89,6 +89,7 @@ try
         new HeadTrainingExample([-1f, 0f], false),
     ], epochs: 20);
     Check(trained.Weights[0] > 0 && double.IsFinite(trained.FinalLogLoss), "frozen encoder head training");
+    global::Sezika.Tests.IndependentMarkerHeadChecks.Run(Check, ExpectDecisionCode);
 
     var closureChecks = global::Sezika.Tests.ModelPackageLifecycleChecks.Run();
     Check(closureChecks == 4, "model package install/lease/uninstall lifecycle");

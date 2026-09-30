@@ -1,5 +1,7 @@
 # 固定模型来源
 
+本页记录已验证的固定 Laya 开发资产。独立原始 encoder/tokenizer 的只读来源审核、未通过的准入项与自有模型合同见 [S4-14](independent-model-contract-s4-14.md)；两套资产身份和验证结果不得互换。
+
 Sezika 的首个真实多语言资产固定为 Hugging Face 仓库
 [`convaiinnovations/laya-multilingual`](https://huggingface.co/convaiinnovations/laya-multilingual)，
 revision `052592a15d198d9ad47da779604259b10b47b7aa`。该 revision 的模型卡声明 Apache-2.0，模型文件和

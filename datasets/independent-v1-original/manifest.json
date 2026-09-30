@@ -1,0 +1,14 @@
+{
+  "dataset_id": "sezika-independent-v1-original-20260930",
+  "records_file": "records.jsonl",
+  "license_expression": "Apache-2.0",
+  "source": "Sezika project authored examples",
+  "label_provenance": "manual project-authored hard labels",
+  "allowed_uses": ["Research", "Development"],
+  "allowed_splits": ["Train", "Development"],
+  "split_counts": { "Train": 6, "Development": 6, "Calibration": 0, "SealedTest": 0, "Audit": 0 },
+  "human_acceptance": "project-owner-review-required",
+  "status": "development_smoke_only",
+  "represents_model_quality": false,
+  "records_sha256": "323abd7d139a1d687f2af0b24c9afec34a5a630c7706ba62c7e721fde935521e"
+}

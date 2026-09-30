@@ -1,0 +1,41 @@
+{
+  "model": {
+    "id": "jhu-clsp/mmBERT-base",
+    "revision": "c5955035435e2bf121cde7f3c8863ef52ff35d82",
+    "license": "MIT",
+    "weights_file": "pytorch_model.bin",
+    "weights_sha256": "8ea64ec1ea4eb8fca0fc14b69a2ae571de6bfbc25fd214bb932dd4aba6a3a04e",
+    "weights_bytes": 1231188142,
+    "config_sha256": "47b40fd2e1df8299426dd5f4bb18c28f028cfafcb51b73645f83e596d187eb37",
+    "model_card_sha256": "35724415037ee3159aa733c16050620cc19a76219112a6ceeb3949572e0b37e9",
+    "converted_encoder_file": "encoder.safetensors",
+    "converted_encoder_sha256": "6168c84d2498cdacdcafee16b71a69b5c1636ad569bfabaf2855f5ce7dabd528",
+    "converted_encoder_bytes": 1227772549
+  },
+  "tokenizer": {
+    "file": "tokenizer.json",
+    "sha256": "197d4cc5406ee12cc50c8b5511f2393cc32d9db321545979ce041c1199178356",
+    "bytes": 17525329,
+    "special_tokens": { "pad": 0, "eos": 1, "bos": 2, "unk": 3, "mask": 4 }
+  },
+  "conversion": {
+    "tool": "Sezika.IndependentModelTool",
+    "format": "pytorch-zip-pickle-subset-to-safetensors-f32",
+    "encoder_tensor_count": 134,
+    "decoder_and_mlm_head": "excluded",
+    "unknown_pickle_opcodes": "reject",
+    "non_contiguous_views": "reject"
+  },
+  "license_review": {
+    "model_card_declared_license": "MIT",
+    "full_mit_text_in_source_card": true,
+    "pretraining_data_reuse": "not_inferred_from_model_license",
+    "tokenizer_attribution": "Gemma 2 declared; separate attribution review required",
+    "status": "source_identity_verified_license_scope_requires_manual_review"
+  },
+  "training": {
+    "protocol": "decision-v1",
+    "head": "independent-marker-linear-v1",
+    "calibration": "uncalibrated"
+  }
+}

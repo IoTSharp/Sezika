@@ -18,6 +18,8 @@ Sezika 面向本地软件中的语义判断，目标是使用 **C#、.NET 10 与
 
 当前仓库包含可运行的纯 C# scalar/SIMD FP32 与 W8A32 encoder/head、固定真实 Laya/mmBERT 开发资产的安全加载、Choice/Score/Boolean typed decision、tokenizer oracle、校准评估器，以及 ILGPU 构建期 PTX/ABI 和 CUDA Driver 完整推理路径。S5-04/S5-05 已完成：Windows `win-x64` Native AOT 四后端各覆盖 1/8/32 问、每项 5 次正式采样；Ubuntu WSL2 `linux-x64` 四后端通过真实模型 Native AOT smoke，各为 3 问、1 次采样。**WSL smoke 不代表裸机 Linux 性能；逐语言质量仍未验收，模型权重不随仓库发布。** 具体范围见 [S5 性能与 AOT 证据](docs/s5-performance-aot.md)及[原始报告](docs/evidence/s5-2026-09-24/)。
 
+2026-09-30 已完成独立 `jhu-clsp/mmBERT-base` 原始权重/tokenizer 的固定 hash 核验、纯 C# 受限转换、`decision-v1` 输入和独立 encoder CPU smoke；项目自有中英三题型 head 仅完成 12 条 train/development 开发 smoke。该独立资产尚未替换默认 Laya 路径，也没有通过上游逐层数值、许可发布、校准、封存质量或 CUDA/AOT 门槛；证据见 [S4 独立模型报告](docs/evidence/s4-marker-head-prototype-2026-09-30.md)。
+
 当前 W8A32 路径慢于 SIMD，且在保留 FP32 原权重之外增加量化缓存，没有降低总驻留内存。数值对齐、真实推理、AOT 与语言质量分别验收，不将量化实现视为已经取得性能或内存收益。
 
 2026-09-25 已完成固定 Laya 的 46 条真实 oracle 捕获，并修正题型前缀、候选渲染/顺序、JSON 文本和 256 前缀 / 1024 总长度语义。SIMD 与 CUDA 各在 38 条支持范围内的回答上通过冻结数值容差，4 条非法输入的失败语义一致；另 4 条候选数量合同差异明确保留，不能声称全上游合同通过。请求默认严格拒绝截断，显式 `length_policy: "laya_compatible"` 才采用兼容截断并返回诊断。详见[输入合同](docs/input-contract-s3-09.md)与[真实数值证据](docs/evidence/laya-parity-2026-09-25.md)。
