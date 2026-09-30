@@ -20,7 +20,7 @@
 
 ## 当前执行顺序与门槛
 
-2026-09-30 按最新讨论校核路线：目标调整为 **Sezika 的默认模型、输入协议及运行路径不再依赖 Laya**。已有 Laya 资产用于过渡对照和历史数值证据；主线转为独立审核的原始 encoder、自有决策头和独立数据，可选离线教师方向改为 IoTSharp/Tomur 本地服务。不把完成 Laya 微调作为独立路线的前提。S4-14 文档审核/合同已完成；本轮已完成原始资产下载/hash、C# 受限转换、独立 loader/decision-v1 smoke 和 12 条原创开发 smoke。许可发布、上游数值 oracle、校准、封存质量、CUDA/AOT 仍未完成。
+2026-09-30 按最新讨论校核路线：目标调整为 **Sezika 的默认模型、输入协议及运行路径不再依赖 Laya**。已有 Laya 资产用于过渡对照和历史数值证据；主线转为独立审核的原始 encoder、自有决策头和独立数据，可选离线教师方向改为 IoTSharp/Tomur 本地服务。不把完成 Laya 微调作为独立路线的前提。S4-14 文档审核/合同已完成；本轮已完成原始资产下载/hash、C# 受限转换、独立 loader/decision-v1 smoke、12 条原创开发 smoke，以及 16 条候选数据的 train/development/calibration/sealed_test split 合同审计。许可发布、上游数值 oracle、人工准入、独立封存、校准、封存质量、CUDA/AOT 仍未完成；候选审计当前明确为 blocked。
 
 ### 已选定方向
 

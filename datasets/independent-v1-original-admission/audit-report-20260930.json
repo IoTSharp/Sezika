@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "dataset_id": "sezika-independent-v1-original-admission-20260930",
+  "status": "blocked",
+  "admission_checks_passed": false,
+  "requires_human_acceptance": true,
+  "represents_model_quality": false,
+  "tool_policy_version": "s4-05-admission-v1",
+  "manifest_sha256": "3066b45f1e61a028e23e393ee20c15194d7266005ef2c4512a8f6e307fa46908",
+  "records_sha256": "d56bc2f478b3c665650eaeef33dac856d3e5b92d97f3b7d935dcbaad00349f1e",
+  "fingerprint_algorithm": "nfkc-invariant-upper-letter-digit-v1\u002Bsha256; unicode-scalar-trigram-jaccard-v1",
+  "near_duplicate_threshold": 0.82,
+  "record_count": 16,
+  "compared_pairs": 120,
+  "splits": [
+    {
+      "split": "Training",
+      "count": 6
+    },
+    {
+      "split": "Development",
+      "count": 6
+    },
+    {
+      "split": "Calibration",
+      "count": 2
+    },
+    {
+      "split": "SealedTest",
+      "count": 2
+    },
+    {
+      "split": "Audit",
+      "count": 0
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "sezika-authored-v1",
+      "license_review": "Pending",
+      "declared_allowed_uses": [
+        "Research"
+      ],
+      "declared_allowed_splits": [
+        "Training",
+        "Development",
+        "Calibration",
+        "SealedTest"
+      ],
+      "declared_exposure": "Unseen",
+      "admission_checks_passed": false
+    }
+  ],
+  "issues": [
+    {
+      "code": "license_not_approved",
+      "subject": "sezika-authored-v1",
+      "related_id": null,
+      "detail": "License review is pending or rejected."
+    },
+    {
+      "code": "human_review_required",
+      "subject": "orig-train-zh-choice-001",
+      "related_id": null,
+      "detail": "Human label/provenance/derivation review requires reviewer, past UTC date and note."
+    },
+    {
+      "code": "human_review_required",
+      "subject": "orig-train-en-choice-001",
+      "related_id": null,
+      "detail": "Human label/provenance/derivation review requires reviewer, past UTC date and note."
+    },
+    {
+      "code": "human_review_required",
+      "subject": "orig-train-zh-score-001",
+      "related_id": null,
+      "detail": "Human label/provenance/derivation review requires reviewer, past UTC date and note."
+    },
+    {
+      "code": "human_review_required",
+      "subject": "orig-train-en-score-001",
+      "related_id": null,
+      "detail": "Human label/provenance/derivation review requires reviewer, past UTC date and note."
+    },
+    {
+      "code": "human_review_required",
+      "subject": "orig-train-zh-boolean-001",
+      "related_id": null,
+      "detail": "Human label/provenance/derivation review requires reviewer, past UTC date and note."
+    },
+    {
+      "code": "human_review_required",
+      "subject": "orig-train-en-boolean-001",
+      "related_id": null,
+      "detail": "Human label/provenance/derivation review requires reviewer, past UTC date and note."
+    },
+    {
+      "code": "human_review_required",
+      "subject": "orig-dev-zh-choice-001",
+      "related_id": null,
+      "detail": "Human label/provenance/derivation review requires reviewer, past UTC date and note."
+    },
+    {
+      "code": "human_review_required",
+      "subject": "orig-dev-en-choice-001",
+      "related_id": null,
+      "detail": "Human label/provenance/derivation review requires reviewer, past UTC date and note."
+    },
+    {
+      "code": "human_review_required",
+      "subject": "orig-dev-zh-score-001",
+      "related_id": null,
+      "detail": "Human label/provenance/derivation review requires reviewer, past UTC date and note."
+    },
+    {
+      "code": "human_review_required",
+      "subject": "orig-dev-en-score-001",
+      "related_id": null,
+      "detail": "Human label/provenance/derivation review requires reviewer, past UTC date and note."
+    },
+    {
+      "code": "human_review_required",
+      "subject": "orig-dev-zh-boolean-001",
+      "related_id": null,
+      "detail": "Human label/provenance/derivation review requires reviewer, past UTC date and note."
+    },
+    {
+      "code": "human_review_required",
+      "subject": "orig-dev-en-boolean-001",
+      "related_id": null,
+      "detail": "Human label/provenance/derivation review requires reviewer, past UTC date and note."
+    },
+    {
+      "code": "human_review_required",
+      "subject": "orig-cal-zh-choice-001",
+      "related_id": null,
+      "detail": "Human label/provenance/derivation review requires reviewer, past UTC date and note."
+    },
+    {
+      "code": "human_review_required",
+      "subject": "orig-cal-en-score-001",
+      "related_id": null,
+      "detail": "Human label/provenance/derivation review requires reviewer, past UTC date and note."
+    },
+    {
+      "code": "human_review_required",
+      "subject": "orig-sealed-zh-boolean-001",
+      "related_id": null,
+      "detail": "Human label/provenance/derivation review requires reviewer, past UTC date and note."
+    },
+    {
+      "code": "human_review_required",
+      "subject": "orig-sealed-en-choice-001",
+      "related_id": null,
+      "detail": "Human label/provenance/derivation review requires reviewer, past UTC date and note."
+    },
+    {
+      "code": "test_not_sealed",
+      "subject": "sezika-independent-v1-original-admission-20260930",
+      "related_id": null,
+      "detail": "Seal requires custodian, past UTC date and hash-bound access/freeze evidence."
+    }
+  ],
+  "started_utc": "2026-09-30T08:29:41.1416203+00:00",
+  "elapsed_seconds": 0.0910548
+}

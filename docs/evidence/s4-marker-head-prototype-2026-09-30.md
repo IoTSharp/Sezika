@@ -54,10 +54,16 @@ dotnet tools/Sezika.IndependentModelTool/bin/Release/net10.0/Sezika.IndependentM
 
 结果：真实独立 encoder 导出 12 条完整序列特征，固定种子 `20260930`、24 步、学习率 `0.05`；feature hash `00068803BE2D6291E52C1D7963C0F6F02A581AC959078A730A14D27C983FBC5F`，head asset hash `461BB72228CF4095DD446E67B402FA0EE89CA6AD22087600AD70E5273BAA8E82`，最后一步 loss `3.5083892269737023`。development 6 条结果为 4/6（66.7%）：英文 choice 1/1、英文 score 0/1、英文 boolean 0/1；中文 choice 1/1、中文 score 1/1、中文 boolean 1/1。每个分组分母为 1，不能外推语言质量，也不能替代封存测试或校准。
 
+## S4-05 候选准入与 split 合同
+
+`datasets/independent-v1-original-admission/` 将同一批项目自有候选记录转换为 S4-05 `audit-splits` 合同：16 条记录分为 Training 6、Development 6、Calibration 2、SealedTest 2，并为每条记录固定 source、family、entity、language、domain、derivation、exposure 和审核状态。records SHA-256 为 `d56bc2f478b3c665650eaeef33dac856d3e5b92d97f3b7d935dcbaad00349f1e`；审计报告的 manifest SHA-256 为 `3066b45f1e61a028e23e393ee20c15194d7266005ef2c4512a8f6e307fa46908`。
+
+通过 `tools/Invoke-BoundedProcess.ps1` 运行 Release DatasetTool 的一次审计（60 秒内部期限、90 秒外层期限），实际比较 120 对，耗时约 0.1 秒，结果为退出码 3、`blocked`。报告见 [`audit-report-20260930.json`](../../datasets/independent-v1-original-admission/audit-report-20260930.json)，阻断项为：来源许可 `license_not_approved` 1 项、16 条 `human_review_required`、`test_not_sealed` 1 项。报告明确 `requires_human_acceptance=true`、`represents_model_quality=false`；这不是校准、语言质量或 sealed test 结果。只有授权审核人补齐许可证据、逐条人工审核和独立保管 seal 后，才可重新生成准入报告。
+
 ## 未关闭门槛
 
 1. 原始模型卡中的预训练数据和 Gemma 2 tokenizer 归属仍需逐项许可/通知审签；MIT 模型标签不自动授予数据再分发或训练后权重发布权。
 2. 尚无独立上游逐层/端到端数值参考，当前 hash/min-max 仅锁定本地转换和运行结果；ModernBERT 算子差异仍需参考实现对照。
-3. 原创数据只有 train/development，尚无 calibration、sealed test、污染检查和独立保管人封存；smoke 指标不构成 S4-06/S4-08 质量验收。
+3. 候选数据已具备 train/development/calibration/sealed_test 的合同形状和污染检查入口，但审计仍因许可、逐条人工审核和独立保管人封存缺失而 blocked；smoke 指标不构成 S4-06/S4-08 质量验收。
 4. CUDA 反向训练 kernel、独立 head 的 CUDA/AOT 回归、校准 profile、正式质量报告和发布包仍未完成。
 5. `qwen35-9b-q4km`/IoTSharp/Tomur 未安装或调用；本轮未把教师作为前置，也未把教师输出混入人工数据。

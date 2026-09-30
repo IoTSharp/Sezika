@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "dataset_id": "sezika-independent-v1-original-admission-20260930",
+  "stage": "Candidate",
+  "intended_use": "Research",
+  "records": {
+    "path": "records.jsonl",
+    "sha256": "d56bc2f478b3c665650eaeef33dac856d3e5b92d97f3b7d935dcbaad00349f1e"
+  },
+  "sources": [
+    {
+      "id": "sezika-authored-v1",
+      "upstream_id": "sezika-project-authored",
+      "upstream_split": "authored-v1",
+      "revision": "2026-09-30",
+      "origin": "Original",
+      "raw": {
+        "path": "records.jsonl",
+        "sha256": "d56bc2f478b3c665650eaeef33dac856d3e5b92d97f3b7d935dcbaad00349f1e"
+      },
+      "license_expression": "Apache-2.0",
+      "license_review": "Pending",
+      "allowed_uses": ["Research"],
+      "allowed_splits": ["Training", "Development", "Calibration", "SealedTest"],
+      "exposure": "Unseen"
+    }
+  ],
+  "test_seal": {
+    "status": "Unsealed"
+  }
+}
