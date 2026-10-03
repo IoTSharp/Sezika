@@ -76,12 +76,25 @@ foreach (var name in scalarTrace.Keys)
 }
 Check(maxDifference <= 2e-5f, $"scalar/SIMD per-layer alignment max_abs={maxDifference:G9}");
 Check(scalarOutput.Length == simdOutput.Length, "scalar/SIMD output shape");
+var ropeQuery = Enumerable.Range(0, 32 * config.HiddenSize).Select(value => MathF.Sin(value * 0.013f)).ToArray();
+var ropeKey = Enumerable.Range(0, 32 * config.HiddenSize).Select(value => MathF.Cos(value * 0.017f)).ToArray();
+var expectedRopeQuery = ropeQuery.ToArray();
+var expectedRopeKey = ropeKey.ToArray();
+var cachedRopeQuery = ropeQuery.ToArray();
+var cachedRopeKey = ropeKey.ToArray();
+ScalarOps.Rope(expectedRopeQuery, expectedRopeKey, 32, config.HiddenSize, config.HeadCount, config.GlobalRopeTheta, CancellationToken.None);
+var ropeTables = RopeTables.Create(config, CancellationToken.None);
+ropeTables.Apply(cachedRopeQuery, cachedRopeKey, 32, config.HiddenSize, config.HeadCount, true, CancellationToken.None);
+var ropeDifference = expectedRopeQuery.Zip(cachedRopeQuery, (left, right) => MathF.Abs(left - right))
+    .Concat(expectedRopeKey.Zip(cachedRopeKey, (left, right) => MathF.Abs(left - right))).Max();
+Check(ropeDifference == 0f, $"cached RoPE factors preserve reference output max_abs={ropeDifference:G9}");
 var directInput = Enumerable.Range(0, 13).Select(value => value * 0.031f).ToArray();
 var directWeights = Enumerable.Range(0, 26).Select(value => MathF.Sin(value * 0.11f)).ToArray();
 var directScalar = ScalarOps.Linear(directInput, directWeights, null, 1, 13, 2, CancellationToken.None);
 var directSimd = SimdOps.Linear(directInput, directWeights, null, 1, 13, 2, CancellationToken.None);
 Check(directScalar.Zip(directSimd, (left, right) => MathF.Abs(left - right)).Max() <= 2e-6f, $"SIMD tail linear alignment vector_width={Vector<float>.Count}");
 Check(scalar.WorkspacePool.ActiveCount == 0 && simd.WorkspacePool.ActiveCount == 0, "workspace released after encode");
+Check(scalar.RopeTableBytes > 0 && scalar.RopeTableBytes == simd.RopeTableBytes, "RoPE table storage is bounded and accounted per encoder");
 
 using var pool = new EncoderWorkspacePool(new EncoderExecutionOptions { MaxConcurrentRequests = 2, MaxWorkspaceBytes = 64 * 1024 * 1024 });
 using var first = pool.Acquire(tokens.Length, config);

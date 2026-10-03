@@ -22,7 +22,9 @@
 
 2026-09-30 按最新讨论校核路线：目标调整为 **Sezika 的默认模型、输入协议及运行路径不再依赖 Laya**。已有 Laya 资产用于过渡对照和历史数值证据；主线转为独立审核的原始 encoder、自有决策头和独立数据，可选离线教师方向改为 IoTSharp/Tomur 本地服务。不把完成 Laya 微调作为独立路线的前提。S4-14 文档审核/合同已完成；本轮已完成原始资产下载/hash、C# 受限转换、独立 loader/decision-v1 smoke、12 条原创开发 smoke，以及 16 条候选数据的 train/development/calibration/sealed_test split 合同审计。许可发布、上游数值 oracle、人工准入、独立封存、校准、封存质量、CUDA/AOT 仍未完成；候选审计当前明确为 blocked。
 
-2026-10-03 从已推送的 `81a0277` 继续并行工程续审，范围和验收见 [本轮统一证据](docs/evidence/continuation-2026-10-03.md)。S4-08 补全校准指标分母、基线/封存 split/有限值门槛；S4-10/S4-11 加固离线审核合同；S4-15 固定 encoder 数值配置与 tensor 布局；S5-06 加固画像真实性检查。当前工作区没有原始独立模型权重，真实教师身份/许可、数据人工准入/独立封存、上游数值 oracle、独立模型 CPU/CUDA 与两 RID AOT 仍 blocked/pending。本轮 Windows AOT 合同 fixture 与历史画像校验均不能关闭这些门槛，S5-07 尚无优化收益结论。
+2026-10-03 从已推送的 `a53eb0d` 继续并行工程续审，范围和验收见 [本轮统一证据](docs/evidence/continuation-2026-10-03.md)。S4-08 补全校准指标分母、基线/封存 split/有限值门槛；S4-10/S4-11 加固离线审核合同；S4-15 固定 encoder 数值配置与 tensor 布局；S5-06 加固画像真实性检查。当前工作区没有原始独立模型权重，真实教师身份/许可、数据人工准入/独立封存、上游数值 oracle、独立模型 CPU/CUDA 与两 RID AOT 仍 blocked/pending。本轮 Windows AOT 合同 fixture 与历史画像校验均不能关闭这些门槛，S5-07 尚无优化收益结论。
+
+2026-10-04 在上述合同基础上加入可运行的独立 `decision-v1` runtime facade、hash-bound calibration/sealed-test 评估工具和 CPU RoPE 因子复用候选。runtime 已用 tiny C# encoder/head fixture 验证身份、三题型输入路径、有限分布和卸载失败语义；校准工具只消费已有预测 JSONL，温度仅在 calibration split 拟合，fixture-only 明确返回 `not_eligible`；RoPE 表保持参考数值一致并计入 resident bytes。没有下载缺失独立权重、真实训练/教师调用或新模型质量/性能采样，因此 S4-08、S4-10/11、S4-15 上游 oracle、S5-06 完整画像和 S5-07 收益仍 pending/blocked。
 ### 已选定方向
 
 1. **独立模型来源。** 直接从经审核的原始 encoder 取得底座参数，优先评估 `jhu-clsp/mmBERT-base` 或同类可支持的编码器，独立记录 revision、配置、tensor/tokenizer hash 与许可；不能从 Laya 检查点抽取 encoder 后改称原始底座。本轮已完成固定 mmBERT 原始文件下载、hash、C# 受限 pickle 转换、134 tensor 形状检查和独立 loader smoke；上游逐层数值 oracle与许可发布审签仍未完成。自有决策头重新初始化和训练，不继承 Laya 训练后的 head/type/scorer 权重。

@@ -96,6 +96,63 @@ internal static class CalibrationContinuationChecks
         check(true, "rejected profile retains finite failed measurements for audit");
         expectCode(() => (manifest with { Status = "verified" }).Validate(binding),
             "decision_calibration_not_ready", "verified manifest cannot contain pending profiles");
+
+        var qualityRows = new QualityCalibrationExample[]
+        {
+            new("cal-1", "calibration", 0, [0.9, 0.1], "en", "general"),
+            new("cal-2", "calibration", 1, [0.1, 0.9], "en", "general"),
+            new("seal-1", "sealed_test", 0, [0.8, 0.2], "en", "general"),
+            new("seal-2", "sealed_test", 1, [0.2, 0.8], "en", "general"),
+        };
+        var qualityManifest = new QualityCalibrationManifest
+        {
+            SchemaVersion = 1, DatasetId = "quality-contract", Status = "fixture_only", RepresentsModelQuality = false,
+            RecordCount = 4, CalibrationCount = 2, SealedTestCount = 2,
+            AbstainBelow = 0,
+            RecordsSha256 = new string('a', 64), CalibrationSplitSha256 = new string('b', 64), SealedTestSplitSha256 = new string('c', 64),
+        };
+        var qualityIdentity = new QualityCalibrationIdentity
+        {
+            ModelId = "contract-model", ModelRevision = "r1", ModelWeightsSha256 = new string('d', 64),
+            TokenizerRevision = "r1", TokenizerSha256 = new string('e', 64), PromptSchemaId = "prompt.v1", PromptSchemaSha256 = new string('f', 64),
+        };
+        var qualityGates = new CalibrationGates
+        {
+            MinimumTestExamples = 2, MinimumAccuracyDeltaOverRandom = 0, MaximumNllIncreaseOverUncalibrated = 1,
+            MaximumBrierIncreaseOverUncalibrated = 1, MaximumExpectedCalibrationError = 1, MinimumCoverage = 0,
+            MaximumSelectiveRisk = 1, MaximumScoreMae = 1, ConfidenceLevel = 0.95,
+        };
+        var quality = QualityCalibrationPipeline.Run(qualityManifest, qualityRows, qualityIdentity,
+            new string('1', 64), qualityManifest.RecordsSha256, qualityManifest.CalibrationSplitSha256,
+            qualityManifest.SealedTestSplitSha256, "boolean", qualityGates, temperatureSteps: 2,
+            maxDuration: TimeSpan.FromSeconds(10), cancellationToken: deadline.Token);
+        check(quality.Gate.Status == "not_eligible" && quality.Calibrated.Count == 2 &&
+            double.IsFinite(quality.Temperature) && quality.Temperature > 0 && quality.Intervals.Accuracy.Count == 2,
+            "quality pipeline keeps fixture gate explicitly ineligible and emits finite sealed metrics");
+        var acceptedQuality = QualityCalibrationPipeline.Run(qualityManifest with
+            { Status = "accepted_for_quality", RepresentsModelQuality = true }, qualityRows, qualityIdentity,
+            new string('1', 64), qualityManifest.RecordsSha256, qualityManifest.CalibrationSplitSha256,
+            qualityManifest.SealedTestSplitSha256, "boolean", qualityGates, temperatureSteps: 2,
+            maxDuration: TimeSpan.FromSeconds(10), cancellationToken: deadline.Token);
+        check(acceptedQuality.Gate.Status == "passed" && acceptedQuality.Gate.Failures.Length == 0,
+            "accepted quality manifest evaluates frozen gates separately from fixture status");
+        expectCode(() => QualityCalibrationPipeline.Run(qualityManifest, qualityRows, qualityIdentity,
+            new string('1', 64), new string('2', 64), qualityManifest.CalibrationSplitSha256,
+            qualityManifest.SealedTestSplitSha256, "boolean", qualityGates, temperatureSteps: 2,
+            maxDuration: TimeSpan.FromSeconds(10), cancellationToken: deadline.Token),
+            "quality_hash_mismatch", "quality pipeline rejects manifest hash mismatch");
+        expectCode(() => QualityCalibrationPipeline.Run(qualityManifest with { ManifestSha256 = new string('0', 64) }, qualityRows, qualityIdentity,
+            new string('1', 64), qualityManifest.RecordsSha256, qualityManifest.CalibrationSplitSha256,
+            qualityManifest.SealedTestSplitSha256, "boolean", qualityGates, temperatureSteps: 2,
+            maxDuration: TimeSpan.FromSeconds(10), cancellationToken: deadline.Token),
+            "quality_hash_mismatch", "quality pipeline rejects embedded manifest hash mismatch");
+        var badSplitRows = qualityRows.ToArray();
+        badSplitRows[0] = badSplitRows[0] with { Split = "sealed_test" };
+        expectCode(() => QualityCalibrationPipeline.Run(qualityManifest, badSplitRows, qualityIdentity,
+            new string('1', 64), qualityManifest.RecordsSha256, qualityManifest.CalibrationSplitSha256,
+            qualityManifest.SealedTestSplitSha256, "boolean", qualityGates, temperatureSteps: 2,
+            maxDuration: TimeSpan.FromSeconds(10), cancellationToken: deadline.Token),
+            "quality_split_count_mismatch", "quality pipeline rejects fixed split count mismatch");
     }
 
     private static void Expect<T>(Action action, Action<bool, string> check, string name) where T : Exception

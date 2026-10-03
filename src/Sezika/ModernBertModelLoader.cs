@@ -145,7 +145,7 @@ public static class ModernBertModelLoader
             if (temperature.Length != 3 || temperature.Any(value => !float.IsFinite(value) || value <= 0)) throw new DecisionException("model_calibration_invalid", "The pinned temperature tensor is invalid.");
             // W8A32 currently retains original FP32 tensors for oracle/CUDA use.
             // A runtime head's additional cache is accounted by its owning session.
-            var residentBytes = checked(tensors.Values.Sum(tensor => checked((long)tensor.Values.Length * sizeof(float))) + encoder.QuantizedWeightBytes);
+            var residentBytes = checked(tensors.Values.Sum(tensor => checked((long)tensor.Values.Length * sizeof(float))) + encoder.QuantizedWeightBytes + encoder.RopeTableBytes);
             return new ModernBertModelPackage { ModelId = PinnedModelId, Revision = PinnedRevision, TokenizerRevision = PinnedRevision, License = "Apache-2.0", Tokenizer = new TokenizerJson(tokenizerPath, cancellationToken), Encoder = encoder, Head = head, HeadMaxTokens = headMaxTokens, Temperature = temperature, EstimatedResidentBytes = residentBytes };
         }
         catch

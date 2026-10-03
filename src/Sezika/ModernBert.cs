@@ -76,8 +76,11 @@ public sealed class ModernBertEncoder : IEncoder, IDisposable
     public Action<string, float[]>? Trace { get; set; }
     public EncoderExecutionOptions ExecutionOptions { get; }
     public EncoderWorkspacePool WorkspacePool { get; }
+    private readonly RopeTables _ropeTables;
     /// <summary>Additional int8/scales tensor payload; the original float32 model is retained.</summary>
     public long QuantizedWeightBytes => Volatile.Read(ref _quantizedWeights)?.StorageBytes ?? 0;
+    /// <summary>Resident bytes held by the reusable RoPE factor tables.</summary>
+    public long RopeTableBytes => _ropeTables.StorageBytes;
 
     public ModernBertEncoder(ModernBertConfig config, ModernBertWeights weights, EncoderExecutionOptions? executionOptions = null)
         : this(config, weights, executionOptions, CancellationToken.None)
@@ -92,20 +95,22 @@ public sealed class ModernBertEncoder : IEncoder, IDisposable
         ExecutionOptions = executionOptions ?? EncoderExecutionOptions.Default;
         ExecutionOptions.Validate();
         Config = config; Weights = weights;
+        using var constructionDeadline = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        constructionDeadline.CancelAfter(ExecutionOptions.Deadline);
+        var constructionToken = constructionDeadline.Token;
         if (ExecutionOptions.Kernel == EncoderKernelMode.QuantizedInt8)
         {
             var cache = new Int8WeightCache();
-            using var deadline = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
-            deadline.CancelAfter(ExecutionOptions.Deadline);
             foreach (var layer in weights.Layers)
             {
-                cache.Add(layer.Qkv, config.HiddenSize, 3 * config.HiddenSize, deadline.Token);
-                cache.Add(layer.AttentionOutput, config.HiddenSize, config.HiddenSize, deadline.Token);
-                cache.Add(layer.MlpUp, config.HiddenSize, 2 * config.IntermediateSize, deadline.Token);
-                cache.Add(layer.MlpDown, config.IntermediateSize, config.HiddenSize, deadline.Token);
+                cache.Add(layer.Qkv, config.HiddenSize, 3 * config.HiddenSize, constructionToken);
+                cache.Add(layer.AttentionOutput, config.HiddenSize, config.HiddenSize, constructionToken);
+                cache.Add(layer.MlpUp, config.HiddenSize, 2 * config.IntermediateSize, constructionToken);
+                cache.Add(layer.MlpDown, config.IntermediateSize, config.HiddenSize, constructionToken);
             }
             _quantizedWeights = cache;
         }
+        _ropeTables = RopeTables.Create(config, constructionToken);
         WorkspacePool = new EncoderWorkspacePool(ExecutionOptions);
     }
 
@@ -151,7 +156,7 @@ public sealed class ModernBertEncoder : IEncoder, IDisposable
             Emit(prefix + "qkv", qkv);
             ScalarOps.SplitQkv(qkv, n, h, out var q, out var k, out var v);
             var global = index % Config.GlobalAttentionEvery == 0;
-            ScalarOps.Rope(q, k, n, h, Config.HeadCount, global ? Config.GlobalRopeTheta : Config.LocalRopeTheta, ct);
+            _ropeTables.Apply(q, k, n, h, Config.HeadCount, global, ct);
             Emit(prefix + "rope_q", q); Emit(prefix + "rope_k", k);
             var attention = ScalarOps.Attention(q, k, v, n, h, Config.HeadCount, global ? -1 : Config.LocalAttention / 2, ct);
             Emit(prefix + "attention", attention);
@@ -211,6 +216,7 @@ public sealed class ModernBertEncoder : IEncoder, IDisposable
     {
         WorkspacePool.Dispose();
         Interlocked.Exchange(ref _quantizedWeights, null);
+        _ropeTables.Dispose();
     }
 }
 

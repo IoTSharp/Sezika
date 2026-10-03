@@ -69,26 +69,34 @@ public static class IndependentDecisionV1Parser
         catch (JsonException exception) { throw new DecisionException("decision_v1_invalid_json", exception.Message, exception); }
         using (document)
         {
-            var root = document.RootElement; RequireObject(root, "request"); RejectUnknown(root, RequestProperties);
-            var questionsElement = root.GetProperty("questions");
-            if (questionsElement.ValueKind != JsonValueKind.Array || questionsElement.GetArrayLength() is < 1 or > 32)
-                throw new DecisionException("decision_v1_question_invalid", "decision-v1 questions must contain 1 to 32 items.");
-            var questions = new List<IndependentDecisionQuestion>(questionsElement.GetArrayLength()); var ids = new HashSet<string>(StringComparer.Ordinal);
-            foreach (var item in questionsElement.EnumerateArray())
+            try
             {
-                RequireObject(item, "question"); RejectUnknown(item, QuestionProperties);
-                var id = Text(item, "id"); if (!ids.Add(id)) throw new DecisionException("decision_v1_question_invalid", "Question IDs must be unique.");
-                var instruction = Text(item, "instruction"); var type = Text(item, "type");
-                questions.Add(type switch
+                var root = document.RootElement; RequireObject(root, "request"); RejectUnknown(root, RequestProperties);
+                var questionsElement = root.GetProperty("questions");
+                if (questionsElement.ValueKind != JsonValueKind.Array || questionsElement.GetArrayLength() is < 1 or > 32)
+                    throw new DecisionException("decision_v1_question_invalid", "decision-v1 questions must contain 1 to 32 items.");
+                var questions = new List<IndependentDecisionQuestion>(questionsElement.GetArrayLength()); var ids = new HashSet<string>(StringComparer.Ordinal);
+                foreach (var item in questionsElement.EnumerateArray())
                 {
-                    "choice" => ParseChoice(id, instruction, item),
-                    "score" => ParseScore(id, instruction, item),
-                    "boolean" => new IndependentBooleanQuestion(id, instruction, Text(item, "statement"), Text(item, "when_false"), Text(item, "when_true")),
-                    _ => throw new DecisionException("decision_v1_question_invalid", $"Unsupported decision-v1 type '{type}'."),
-                });
+                    RequireObject(item, "question"); RejectUnknown(item, QuestionProperties);
+                    var id = Text(item, "id"); if (!ids.Add(id)) throw new DecisionException("decision_v1_question_invalid", "Question IDs must be unique.");
+                    var instruction = Text(item, "instruction"); var type = Text(item, "type");
+                    questions.Add(type switch
+                    {
+                        "choice" => ParseChoice(id, instruction, item),
+                        "score" => ParseScore(id, instruction, item),
+                        "boolean" => new IndependentBooleanQuestion(id, instruction, Text(item, "statement"), Text(item, "when_false"), Text(item, "when_true")),
+                        _ => throw new DecisionException("decision_v1_question_invalid", $"Unsupported decision-v1 type '{type}'."),
+                    });
+                }
+                return new IndependentDecisionRequest(root.GetProperty("schema_version").GetInt32(), Text(item: root, property: "model_id"),
+                    root.GetProperty("state").Clone(), questions);
             }
-            return new IndependentDecisionRequest(root.GetProperty("schema_version").GetInt32(), Text(item: root, property: "model_id"),
-                root.GetProperty("state").Clone(), questions);
+            catch (DecisionException) { throw; }
+            catch (Exception exception) when (exception is KeyNotFoundException or InvalidOperationException or FormatException or OverflowException)
+            {
+                throw new DecisionException("decision_v1_invalid_json", "decision-v1 required fields are missing or have the wrong JSON type.", exception);
+            }
         }
     }
 

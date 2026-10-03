@@ -164,6 +164,35 @@ public static class CalibrationEvaluator
         return bestTemperature;
     }
 
+    /// <summary>Applies a fitted positive temperature to one normalized distribution.</summary>
+    public static double[] ApplyTemperature(IReadOnlyList<double> probabilities, double temperature)
+    {
+        if (probabilities is null || probabilities.Count is < 2 or > 32 || !double.IsFinite(temperature) || temperature <= 0)
+            throw new ArgumentOutOfRangeException(nameof(probabilities));
+        var sum = 0d;
+        foreach (var probability in probabilities)
+        {
+            if (!double.IsFinite(probability) || probability < 0d || probability > 1d)
+                throw new DecisionException("calibration_input_invalid", "Calibration probabilities must be finite and normalized.");
+            sum += probability;
+        }
+        if (!double.IsFinite(sum) || Math.Abs(sum - 1d) > 1e-6)
+            throw new DecisionException("calibration_input_invalid", "Calibration probabilities must be finite and normalized.");
+        var maximumLog = probabilities.Max(value => value == 0d ? double.NegativeInfinity : Math.Log(value));
+        var output = new double[probabilities.Count];
+        var normalizer = 0d;
+        for (var index = 0; index < probabilities.Count; index++)
+        {
+            var value = probabilities[index];
+            output[index] = value == 0d ? 0d : Math.Exp((Math.Log(value) - maximumLog) / temperature);
+            normalizer += output[index];
+        }
+        if (!double.IsFinite(normalizer) || normalizer <= 0d)
+            throw new DecisionException("calibration_input_invalid", "Temperature normalization is non-finite.");
+        for (var index = 0; index < output.Length; index++) output[index] /= normalizer;
+        return output;
+    }
+
     private static int ClassCount(CalibrationExample? example)
     {
         if (example?.Probabilities is null || example.Probabilities.Length is < 2 or > 32)

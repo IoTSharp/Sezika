@@ -63,6 +63,10 @@ internal static class IndependentMarkerHeadChecks
                 "decision_duplicate_property", "decision-v1 duplicate property rejected");
             expectCode(() => IndependentDecisionV1Parser.Parse(Encoding.UTF8.GetBytes("{\"schema_version\":1,\"model_id\":\"sezika/x\",\"state\":\"x\",\"questions\":[],\"extra\":1}")),
                 "decision_v1_unknown_property", "decision-v1 unknown property rejected");
+            expectCode(() => IndependentDecisionV1Parser.Parse(Encoding.UTF8.GetBytes("{\"schema_version\":\"1\",\"model_id\":\"sezika/x\",\"state\":\"x\",\"questions\":[{\"id\":\"q\",\"type\":\"choice\",\"instruction\":\"i\",\"candidates\":[{\"id\":\"a\",\"text\":\"a\"},{\"id\":\"b\",\"text\":\"b\"}]}]}")),
+                "decision_v1_invalid_json", "decision-v1 wrong schema_version type is structured");
+            expectCode(() => IndependentDecisionV1Parser.Parse(Encoding.UTF8.GetBytes("{\"schema_version\":1,\"state\":\"x\",\"questions\":[{\"id\":\"q\",\"type\":\"choice\",\"instruction\":\"i\",\"candidates\":[{\"id\":\"a\",\"text\":\"a\"},{\"id\":\"b\",\"text\":\"b\"}]}]}")),
+                "decision_v1_text_invalid", "decision-v1 missing required identity is structured");
             using var stateDocument = JsonDocument.Parse("{\"text\":\"x\"}");
             var choice = new IndependentChoiceQuestion("intent", "choose", [
                 new IndependentChoiceCandidate("a", "first"), new IndependentChoiceCandidate("b", "second")]);
@@ -82,6 +86,52 @@ internal static class IndependentMarkerHeadChecks
             check(exported.TokenIds.SequenceEqual(sequence.TokenIds) && exported.MarkerPositions.SequenceEqual(sequence.MarkerPositions) &&
                 exported.Features.Length == 2 && exported.Features[0].Length == 2 && exported.Features[1][0] > 0,
                 "complete-sequence marker feature export");
+
+            // The runtime smoke uses a tiny real ModernBERT encoder so this
+            // verifies package/head ownership and marker scoring, rather than
+            // only testing the feature exporter with a fixture encoder.
+            var runtimeModelId = request.ModelId;
+            var runtimeEncoderHash = new string('A', 64);
+            var runtimeTokenizerHash = new string('B', 64);
+            var runtimeDataHash = new string('D', 64);
+            var runtimeIdentity = new MarkerFeatureIdentity(runtimeModelId, runtimeEncoderHash,
+                runtimeTokenizerHash, runtimeDataHash, 2);
+            var runtimePackage = new IndependentEncoderModelPackage
+            {
+                ModelId = runtimeModelId,
+                SourceModelId = "synthetic/runtime-smoke",
+                Revision = "runtime-smoke-v1",
+                License = "MIT",
+                EncoderSha256 = runtimeEncoderHash,
+                TokenizerSha256 = runtimeTokenizerHash,
+                Tokenizer = tokenizer,
+                Encoder = TinyModernBertEncoder(deadline.Token),
+                EstimatedResidentBytes = 0,
+            };
+            var runtimeHead = new IndependentMarkerHeadAsset(runtimeIdentity, new string('F', 64), 7, 0.1f, 1, 0.5d,
+                new LinearMarkerHead(2, [0.1f, 0f, -0.1f, 0f, 0f, 0f]), new string('C', 64));
+            using (var runtime = new IndependentDecisionV1Runtime(runtimePackage, runtimeHead,
+                       new IndependentDecisionRuntimeOptions { MaxTokens = 512, Deadline = TimeSpan.FromSeconds(5) }))
+            {
+                var runtimeResponse = runtime.Evaluate(request, deadline.Token);
+                var runtimeAnswer = runtimeResponse.Answers.Single();
+                check(runtimeResponse.ModelId == runtimeModelId && runtimeResponse.EncoderSha256 == runtimeEncoderHash &&
+                    runtimeResponse.TokenizerSha256 == runtimeTokenizerHash && runtimeAnswer.CandidateIds.SequenceEqual(["a", "b"]) &&
+                    runtimeAnswer.Probabilities.Count == 2 && runtimeAnswer.Probabilities.All(double.IsFinite) &&
+                    Math.Abs(runtimeAnswer.Probabilities.Sum() - 1d) < 1e-12 && runtimeResponse.Status == "uncalibrated",
+                    "independent decision-v1 runtime evaluates finite typed response");
+                runtime.Dispose();
+                try
+                {
+                    runtime.Evaluate(request, deadline.Token);
+                    throw new InvalidOperationException("Disposed independent runtime accepted an evaluation.");
+                }
+                catch (ObjectDisposedException)
+                {
+                    check(true, "disposed independent decision-v1 runtime fails closed");
+                }
+            }
+
             expectCode(() => IndependentDecisionV1SequenceBuilder.Build(tokenizer,
                 request with { ModelId = "convaiinnovations/laya-multilingual" }, choice,
                 cancellationToken: deadline.Token), "decision_v1_identity_invalid", "decision-v1 rejects legacy model identity");
@@ -175,6 +225,42 @@ internal static class IndependentMarkerHeadChecks
             }
             return values;
         }
+    }
+
+    private static ModernBertEncoder TinyModernBertEncoder(CancellationToken cancellationToken)
+    {
+        var config = new ModernBertConfig
+        {
+            VocabularySize = 2_000,
+            HiddenSize = 2,
+            IntermediateSize = 2,
+            LayerCount = 1,
+            HeadCount = 1,
+            MaxTokens = 1_024,
+            GlobalAttentionEvery = 1,
+            LocalAttention = 2,
+            GlobalRopeTheta = 16_000,
+            LocalRopeTheta = 16_000,
+            NormEpsilon = 1e-5f,
+        };
+        return new ModernBertEncoder(config, new ModernBertWeights
+        {
+            TokenEmbeddings = new float[config.VocabularySize * config.HiddenSize],
+            EmbeddingNorm = [1f, 1f],
+            FinalNorm = [1f, 1f],
+            Layers =
+            [
+                new ModernBertLayerWeights
+                {
+                    AttentionNorm = null,
+                    Qkv = new float[3 * config.HiddenSize * config.HiddenSize],
+                    AttentionOutput = new float[config.HiddenSize * config.HiddenSize],
+                    MlpNorm = [1f, 1f],
+                    MlpUp = new float[2 * config.IntermediateSize * config.HiddenSize],
+                    MlpDown = new float[config.HiddenSize * config.IntermediateSize],
+                },
+            ],
+        }, new EncoderExecutionOptions { Kernel = EncoderKernelMode.Scalar, Deadline = TimeSpan.FromSeconds(5) }, cancellationToken);
     }
 
     private static string TinyTokenizerJson()

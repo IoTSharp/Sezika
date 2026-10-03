@@ -86,7 +86,7 @@ public static class IndependentModelLoader
             var tokenizer = new TokenizerJson(tokenizerPath, cancellationToken);
             if (tokenizer.BosId != 2 || tokenizer.EosId != 1 || tokenizer.MaskId != 4)
                 throw new DecisionException("independent_tokenizer_invalid", "Independent tokenizer special token IDs differ from the audited config.");
-            var residentBytes = checked(tensors.Values.Sum(tensor => checked((long)tensor.Values.Length * sizeof(float))) + encoder.QuantizedWeightBytes);
+            var residentBytes = checked(tensors.Values.Sum(tensor => checked((long)tensor.Values.Length * sizeof(float))) + encoder.QuantizedWeightBytes + encoder.RopeTableBytes);
             return new IndependentEncoderModelPackage
             {
                 ModelId = ModelId, SourceModelId = SourceModelId, Revision = SourceRevision, License = "MIT",
