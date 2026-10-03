@@ -17,9 +17,11 @@ public sealed record CalibrationMetrics
 /// <summary>Reproducible metrics for a frozen evaluation split.</summary>
 public static class CalibrationEvaluator
 {
+    private const int MaxExamples = 1_000_000;
+
     public static CalibrationMetrics Evaluate(IReadOnlyList<CalibrationExample> examples, double abstainBelow = 0d, int bins = 10)
     {
-        if (examples is null || examples.Count == 0 || bins is < 2 or > 100 || !double.IsFinite(abstainBelow) || abstainBelow < 0 || abstainBelow > 1)
+        if (examples is null || examples.Count is < 1 or > MaxExamples || bins is < 2 or > 100 || !double.IsFinite(abstainBelow) || abstainBelow < 0 || abstainBelow > 1)
             throw new ArgumentOutOfRangeException(nameof(examples));
         var classCount = examples[0].Probabilities.Length;
         if (classCount < 2) throw new DecisionException("calibration_input_invalid", "Calibration examples require at least two classes.");
@@ -85,17 +87,33 @@ public static class CalibrationEvaluator
         };
     }
 
-    public static double FitTemperature(IReadOnlyList<CalibrationExample> examples, double minimum = 0.05, double maximum = 5d, int steps = 200)
+    public static double FitTemperature(IReadOnlyList<CalibrationExample> examples, double minimum = 0.05, double maximum = 5d, int steps = 200,
+        CancellationToken cancellationToken = default)
     {
-        if (minimum <= 0 || maximum < minimum || steps < 2) throw new ArgumentOutOfRangeException(nameof(steps));
+        if (examples is null || examples.Count is < 1 or > MaxExamples) throw new ArgumentException("Calibration examples are outside the bounded range.", nameof(examples));
+        if (!double.IsFinite(minimum) || !double.IsFinite(maximum) || minimum <= 0 || maximum < minimum || steps is < 2 or > 10_000)
+            throw new ArgumentOutOfRangeException(nameof(steps));
+        var classCount = examples[0].Probabilities.Length;
+        if (classCount < 2) throw new DecisionException("calibration_input_invalid", "Calibration examples require at least two classes.");
+        foreach (var example in examples)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            if (example.Label < 0 || example.Label >= classCount || example.Probabilities.Length != classCount)
+                throw new DecisionException("calibration_input_invalid", "Calibration label or probability dimensions are invalid.");
+            var sum = example.Probabilities.Sum();
+            if (!double.IsFinite(sum) || Math.Abs(sum - 1d) > 1e-6 || example.Probabilities.Any(value => !double.IsFinite(value) || value < 0d))
+                throw new DecisionException("calibration_input_invalid", "Calibration probabilities must be finite and normalized.");
+        }
         var bestTemperature = 1d;
         var bestLoss = double.PositiveInfinity;
         for (var step = 0; step < steps; step++)
         {
+            cancellationToken.ThrowIfCancellationRequested();
             var temperature = minimum + (maximum - minimum) * step / (steps - 1d);
             var loss = 0d;
             foreach (var example in examples)
             {
+                cancellationToken.ThrowIfCancellationRequested();
                 var logits = example.Probabilities.Select(value => (float)Math.Log(Math.Max(value, 1e-12))).ToArray();
                 var probabilities = DecisionMath.Softmax(logits, temperature);
                 loss -= Math.Log(Math.Max(probabilities[example.Label], 1e-15));

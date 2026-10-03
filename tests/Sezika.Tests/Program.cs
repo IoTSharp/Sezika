@@ -84,6 +84,12 @@ try
         new CalibrationExample(1, [0.2, 0.8]),
     ]);
     Check(metrics.Accuracy == 1 && metrics.Coverage == 1, "calibration metrics");
+    var accuracyInterval = CalibrationConfidenceIntervals.Wilson(50, 100);
+    Check(accuracyInterval.Count == 100 && accuracyInterval.Lower < 0.5 && accuracyInterval.Upper > 0.5 &&
+        accuracyInterval.Lower >= 0 && accuracyInterval.Upper <= 1, "Wilson accuracy confidence interval");
+    var scoreInterval = CalibrationConfidenceIntervals.Mean([1d, 2d, 3d]);
+    Check(scoreInterval.Count == 3 && scoreInterval.Lower < 2d && scoreInterval.Upper > 2d &&
+        double.IsFinite(scoreInterval.Lower) && double.IsFinite(scoreInterval.Upper), "finite metric confidence interval");
     var trained = DecisionHeadTrainer.Train([
         new HeadTrainingExample([1f, 0f], true),
         new HeadTrainingExample([-1f, 0f], false),

@@ -83,3 +83,11 @@ $profileDll = '.artifacts/build/s5-profile-20260926/bin/Sezika.Benchmarks/releas
 SIMD 可将第一条命令改为 `--backend simd` 和独立的 `simd-smoke.json`。其完整矩阵宜用第二条命令按单一长度、单一问题数拆为最多九次独立调用，每次仍为 3 正式样本、1 预热、1 生命周期，内部 1700 秒、外部 1750 秒；先按 smoke 实际耗时决定下一行，整个批次应另设不超过九项、最多 4.5 小时的墙钟预算。每请求 300 秒依然有效，若某行超时保留失败及进度，不提高预算来改写覆盖结论。上述最大预算用于执行控制，不是预计延迟，也不是性能测量结果。
 
 静态审阅核对 source-generated JSON、输入哈希编码、真实 pipeline 转发、循环上限、取消与进度、原始异常保留、分项 unavailable、显存/工作区清理与改动范围；`git diff --check` 仅用于空白检查，不表示构建或推理通过。S3-09/10 已使渲染版本改变，后续必须按 v2 在同条件重采集并保留旧报告；不能从本工具迁移推导优化收益、质量或长输入 AOT 通过。
+
+新增的 `tools/Validate-S5Profile.ps1` 是只读的 schema/计时一致性检查器。它逐个校验最多 32 份、每份不超过 4 MiB 的 schema-1 `passed/complete` 报告、schema-3 画像计划、拒绝分母、原始 E2E 样本以及最近秩 p50/p95/p99，并输出源文件 SHA-256 汇总。它不会运行模型，也不产生性能、质量、校准或 AOT 结论；校验自身受 1–60 秒墙钟上限约束。示例（PowerShell 7）：
+
+```powershell
+pwsh -NoProfile -File .\tools\Validate-S5Profile.ps1 `
+  -ReportPaths @('.\docs\evidence\s346-continuation-2026-09-26\profile-simd-short1.json', '.\docs\evidence\s346-continuation-2026-09-26\profile-cuda-long32.json') `
+  -OutputPath .\.artifacts\s5-profile-validation.json -TimeoutSeconds 30
+```

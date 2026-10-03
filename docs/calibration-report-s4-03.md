@@ -28,3 +28,5 @@
 当前仓库没有真实模型质量数字。S4-02 的 24 条原创 JSONL 只是协议与 provenance fixture，每个 test split 仅三条记录，不能满足上述门槛；因此本轮不生成伪造 logits、概率、准确率或语言质量结论。
 
 核心测试还验证了 fail-closed 行为：`pending_measurement` profile 改为 `verified` 但没有拟合结果时被拒绝；即使填入拟合标记，测试样本数不足的 `ObservedMetrics` 仍被质量门槛拒绝。只有后续真实模型运行产出的完整指标快照才能创建 `verified` profile。
+
+`CalibrationConfidenceIntervals` 提供确定性的 Wilson 二项区间与有限样本均值区间，供后续报告填入 95% 置信区间；它只计算抽样区间，不改变 profile 状态，也不能把当前 fixture 或 pending profile 解释为质量通过。`CalibrationEvaluator.FitTemperature` 同样限制样本/步数并响应取消，拟合结果仍须绑定独立 calibration split 后经过上述门槛。
