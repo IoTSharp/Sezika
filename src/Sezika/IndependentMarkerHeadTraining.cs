@@ -141,7 +141,11 @@ public static class IndependentMarkerHeadTrainer
             if (clock.Elapsed > options.MaxDuration) throw new DecisionException("training_deadline_exceeded", "Training wall-clock budget expired.");
         }
         var prepared = Prepare(set, CheckBudget);
-        if (resume is not null && (resume.Identity != prepared.Identity || resume.FeatureSha256 != prepared.Sha256 ||
+        // Hashes are serialized as hexadecimal identities.  Their spelling is
+        // case-insensitive, so a checkpoint loaded from a manifest that uses
+        // lower-case hex must still resume against the same feature bytes.
+        if (resume is not null && (!IdentityMatches(resume.Identity, prepared.Identity) ||
+            !resume.FeatureSha256.Equals(prepared.Sha256, StringComparison.OrdinalIgnoreCase) ||
             resume.Seed != options.Seed || resume.LearningRate != options.LearningRate ||
             resume.CompletedSteps < 0 || resume.CompletedSteps > options.MaxSteps ||
             resume.Weights.Length != checked(3 * prepared.Identity.HiddenSize) ||
@@ -182,11 +186,7 @@ public static class IndependentMarkerHeadTrainer
         ArgumentNullException.ThrowIfNull(set);
         ArgumentNullException.ThrowIfNull(check);
         var identity = set.Identity;
-        if (identity is null || identity.HiddenSize is < 1 or > 2048 ||
-            string.IsNullOrWhiteSpace(identity.ModelId) || !identity.ModelId.StartsWith("sezika/", StringComparison.Ordinal) ||
-            identity.ModelId.Length > 128 || identity.Protocol != "decision-v1" || identity.LengthPolicy != "strict" ||
-            !IsHash(identity.EncoderSha256) || !IsHash(identity.TokenizerSha256) || !IsHash(identity.DataManifestSha256))
-            throw new DecisionException("training_identity_invalid", "Independent model, protocol or source identity is invalid.");
+        ValidateIdentity(identity, "training_identity_invalid");
         if (set.Examples is null || set.Examples.Count is < 1 or > MaxExamples)
             throw new DecisionException("training_input_invalid", "Training requires 1-32 complete questions.");
         var seen = new HashSet<string>(StringComparer.Ordinal);
@@ -276,6 +276,27 @@ public static class IndependentMarkerHeadTrainer
 
     internal static bool IsHash(string? value) => value is { Length: 64 } && value.All(c => c is >= '0' and <= '9' or >= 'a' and <= 'f' or >= 'A' and <= 'F');
 
+    internal static bool IdentityMatches(MarkerFeatureIdentity? left, MarkerFeatureIdentity? right) =>
+        left is not null && right is not null && left.HiddenSize == right.HiddenSize &&
+        string.Equals(left.ModelId, right.ModelId, StringComparison.Ordinal) &&
+        string.Equals(left.Protocol, right.Protocol, StringComparison.Ordinal) &&
+        string.Equals(left.LengthPolicy, right.LengthPolicy, StringComparison.Ordinal) &&
+        string.Equals(left.EncoderSha256, right.EncoderSha256, StringComparison.OrdinalIgnoreCase) &&
+        string.Equals(left.TokenizerSha256, right.TokenizerSha256, StringComparison.OrdinalIgnoreCase) &&
+        string.Equals(left.DataManifestSha256, right.DataManifestSha256, StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>Validate the independent model contract before serializing an asset.</summary>
+    internal static void ValidateIdentity(MarkerFeatureIdentity? identity, string errorCode)
+    {
+        if (identity is null || identity.HiddenSize is < 1 or > 2048 ||
+            string.IsNullOrWhiteSpace(identity.ModelId) || identity.ModelId.Length > 128 ||
+            !identity.ModelId.StartsWith("sezika/", StringComparison.Ordinal) ||
+            identity.Protocol != "decision-v1" || identity.LengthPolicy != "strict" ||
+            !IsHash(identity.EncoderSha256) || !IsHash(identity.TokenizerSha256) ||
+            !IsHash(identity.DataManifestSha256))
+            throw new DecisionException(errorCode, "Independent model, protocol or source identity is invalid.");
+    }
+
     internal static void WriteText(BinaryWriter writer, string value)
     {
         var bytes = Encoding.UTF8.GetBytes(value);
@@ -325,8 +346,10 @@ public static class MarkerTrainingCheckpoint
             cancellationToken.ThrowIfCancellationRequested();
             if (clock.Elapsed > MaxIoDuration) throw new DecisionException("training_checkpoint_deadline_exceeded", "Checkpoint save wall-clock budget expired.");
         }
+        IndependentMarkerHeadTrainer.ValidateIdentity(state.Identity, "training_checkpoint_invalid");
         if (!IndependentMarkerHeadTrainer.IsHash(state.FeatureSha256) || state.CompletedSteps is < 0 or > 10_000 ||
-            !float.IsFinite(state.LearningRate) || state.LearningRate <= 0 || !double.IsFinite(state.LastLoss))
+            !float.IsFinite(state.LearningRate) || state.LearningRate <= 0 || state.LearningRate > 1 ||
+            !double.IsFinite(state.LastLoss) || state.LastLoss < 0)
             throw new DecisionException("training_checkpoint_invalid", "Training state is invalid.");
         _ = new LinearMarkerHead(state.Identity.HiddenSize, state.Weights);
         using var stream = new MemoryStream();
@@ -354,10 +377,26 @@ public static class MarkerTrainingCheckpoint
         payload.CopyTo(bytes, 0);
         checksum.CopyTo(bytes, payload.Length);
         var fileHash = Convert.ToHexString(SHA256.HashData(bytes));
-        using var file = new FileStream(path, FileMode.CreateNew, FileAccess.Write, FileShare.None);
-        file.Write(bytes);
-        file.Flush(flushToDisk: true);
-        CheckIoBudget();
+        // Write beside the destination and publish with a single rename.  A
+        // cancelled or interrupted write therefore cannot leave a partial
+        // checkpoint at the requested path (and retries remain possible).
+        var destination = Path.GetFullPath(path);
+        var directory = Path.GetDirectoryName(destination)!;
+        var temporary = Path.Combine(directory, $".{Path.GetFileName(destination)}.{Guid.NewGuid():N}.tmp");
+        try
+        {
+            using (var file = new FileStream(temporary, FileMode.CreateNew, FileAccess.Write, FileShare.None))
+            {
+                file.Write(bytes);
+                file.Flush(flushToDisk: true);
+            }
+            CheckIoBudget();
+            File.Move(temporary, destination);
+        }
+        finally
+        {
+            if (File.Exists(temporary)) File.Delete(temporary);
+        }
         return fileHash;
     }
 
@@ -394,7 +433,8 @@ public static class MarkerTrainingCheckpoint
                 IndependentMarkerHeadTrainer.ReadText(reader), IndependentMarkerHeadTrainer.ReadText(reader),
                 reader.ReadInt32(), IndependentMarkerHeadTrainer.ReadText(reader), IndependentMarkerHeadTrainer.ReadText(reader));
             var featureHash = IndependentMarkerHeadTrainer.ReadText(reader);
-            if (identity != prepared.Identity || featureHash != prepared.Sha256)
+            if (!IndependentMarkerHeadTrainer.IdentityMatches(identity, prepared.Identity) ||
+                !featureHash.Equals(prepared.Sha256, StringComparison.OrdinalIgnoreCase))
                 throw new DecisionException("training_resume_mismatch", "Checkpoint model, protocol or data identity differs.");
             var seed = reader.ReadInt32();
             var rate = reader.ReadSingle();
@@ -402,7 +442,7 @@ public static class MarkerTrainingCheckpoint
             var loss = reader.ReadDouble();
             var count = reader.ReadInt32();
             if (!float.IsFinite(rate) || rate <= 0 || rate > 1 || steps is < 0 or > 10_000 ||
-                !double.IsFinite(loss) || count != checked(3 * identity.HiddenSize))
+                !double.IsFinite(loss) || loss < 0 || count != checked(3 * identity.HiddenSize))
                 throw new DecisionException("training_checkpoint_invalid", "Checkpoint optimizer state or shape is invalid.");
             var weights = new float[count];
             for (var index = 0; index < count; index++)

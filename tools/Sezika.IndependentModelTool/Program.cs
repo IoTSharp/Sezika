@@ -48,9 +48,21 @@ try
         TrainOriginal(package, recordsPath, headPath, reportPath, cancellation.Token);
         return 0;
     }
+    if (command == "evaluate-original")
+    {
+        var package = Path.GetFullPath(RequiredOption("--package"));
+        var recordsPath = Path.GetFullPath(RequiredOption("--records"));
+        var headPath = Path.GetFullPath(RequiredOption("--head"));
+        var trainingReportPath = Path.GetFullPath(RequiredOption("--training-report"));
+        var reportPath = Path.GetFullPath(RequiredOption("--report"));
+        using var cancellation = new CancellationTokenSource(TimeSpan.FromMinutes(10));
+        EvaluateOriginal(package, recordsPath, headPath, trainingReportPath, reportPath, cancellation.Token);
+        return 0;
+    }
     Console.WriteLine("Sezika.IndependentModelTool convert-pytorch --input <pytorch_model.bin> --output <model.safetensors> [--timeout-seconds 1..1800]");
     Console.WriteLine("Sezika.IndependentModelTool smoke --package <independent-model-package>");
     Console.WriteLine("Sezika.IndependentModelTool train-original --package <package> --records <records.jsonl> --head <head.asset> --report <report.json>");
+    Console.WriteLine("Sezika.IndependentModelTool evaluate-original --package <package> --records <records.jsonl> --head <head.asset> --training-report <training-report.json> --report <evaluation-report.json>");
     return 2;
 }
 catch (OperationCanceledException)
@@ -242,6 +254,224 @@ static int ArgMax(double[] values)
     var index = 0; for (var candidate = 1; candidate < values.Length; candidate++) if (values[candidate] > values[index]) index = candidate; return index;
 }
 
+static void EvaluateOriginal(string packagePath, string recordsPath, string headPath, string trainingReportPath,
+    string reportPath, CancellationToken cancellationToken)
+{
+    var records = ReadOriginalRecords(recordsPath, cancellationToken);
+    var development = records.Where(item => item.Split == "development").ToArray();
+    if (development.Length is < 1 or > 32) throw new InvalidDataException("Development evaluation requires 1-32 records.");
+    var recordsHash = HashFile(recordsPath, cancellationToken);
+    var manifestPath = Path.Combine(Path.GetDirectoryName(recordsPath)!, "manifest.json");
+    if (!File.Exists(manifestPath)) throw new FileNotFoundException("Original dataset manifest is missing.", manifestPath);
+    var dataHash = HashFile(manifestPath, cancellationToken);
+    var training = ReadTrainingReport(trainingReportPath, cancellationToken);
+    if (!training.RecordsSha256.Equals(recordsHash, StringComparison.OrdinalIgnoreCase) ||
+        !training.DataManifestSha256.Equals(dataHash, StringComparison.OrdinalIgnoreCase))
+        throw new InvalidDataException("Evaluation records or manifest do not match the training report.");
+
+    using var model = IndependentModelLoader.Load(packagePath,
+        new EncoderExecutionOptions { Kernel = EncoderKernelMode.Scalar, Deadline = TimeSpan.FromMinutes(10) }, cancellationToken);
+    if (model.ModelId != training.ModelId || !model.EncoderSha256.Equals(training.EncoderSha256, StringComparison.OrdinalIgnoreCase) ||
+        !model.TokenizerSha256.Equals(training.TokenizerSha256, StringComparison.OrdinalIgnoreCase))
+        throw new InvalidDataException("Evaluation model identity does not match the training report.");
+    var identity = new MarkerFeatureIdentity(model.ModelId, model.EncoderSha256, model.TokenizerSha256,
+        dataHash, model.Encoder.Config.HiddenSize);
+    var head = IndependentMarkerHeadAssetStore.Load(headPath, identity, training.FeatureSha256, training.HeadSha256, cancellationToken);
+    var rows = new List<OriginalEvaluationRow>(development.Length);
+    for (var index = 0; index < development.Length; index++)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+        var record = development[index];
+        Console.WriteLine($"evaluate-original: {index + 1}/{development.Length} {record.RecordId}");
+        var candidateIds = CandidateIds(record.Question);
+        try
+        {
+            var feature = IndependentMarkerFeatureExporter.Export(model.Tokenizer, model.Encoder, identity, record.Request,
+                record.Question, record.RecordId, record.Language, record.TargetIndex, cancellationToken: cancellationToken);
+            var logits = head.Head.Score(feature.Type, feature.Features, cancellationToken.ThrowIfCancellationRequested);
+            var probabilities = Softmax(logits);
+            var predicted = ArgMax(probabilities);
+            var top = probabilities[predicted];
+            var second = probabilities.Where((_, candidate) => candidate != predicted).DefaultIfEmpty(0).Max();
+            rows.Add(new OriginalEvaluationRow(record.RecordId, record.Language, QuestionTypeName(feature.Type), candidateIds, feature.TargetIndex,
+                probabilities.Length, "answered", predicted, predicted == feature.TargetIndex, probabilities[feature.TargetIndex], top,
+                top - second, -Math.Log(Math.Max(probabilities[feature.TargetIndex], double.Epsilon)),
+                probabilities.Select((probability, candidate) => Math.Pow(probability - (candidate == feature.TargetIndex ? 1d : 0d), 2)).Sum(),
+                probabilities, null));
+        }
+        catch (DecisionException exception)
+        {
+            rows.Add(new OriginalEvaluationRow(record.RecordId, record.Language, IndependentQuestionTypeName(record.Question), candidateIds, record.TargetIndex,
+                0, "rejected", null, null, null, null, null, null, null, [], exception.Code));
+        }
+    }
+    Directory.CreateDirectory(Path.GetDirectoryName(reportPath)!);
+    using var stream = new FileStream(reportPath, FileMode.CreateNew, FileAccess.Write, FileShare.None);
+    using var writer = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
+    writer.WriteStartObject();
+    writer.WriteNumber("schema_version", 1);
+    writer.WriteString("status", "development_diagnostic_only");
+    writer.WriteString("evaluation_use", "independent_development_diagnostics_not_training_calibration_or_sealed_test");
+    writer.WriteString("model_id", model.ModelId); writer.WriteString("encoder_sha256", model.EncoderSha256);
+    writer.WriteString("tokenizer_sha256", model.TokenizerSha256); writer.WriteString("data_manifest_sha256", dataHash);
+    writer.WriteString("records_sha256", recordsHash); writer.WriteString("training_report_sha256", HashFile(trainingReportPath, cancellationToken));
+    writer.WriteString("feature_sha256", training.FeatureSha256); writer.WriteString("head_sha256", training.HeadSha256);
+    writer.WriteString("split", "development"); writer.WriteNumber("total", rows.Count);
+    writer.WriteNumber("answered", rows.Count(row => row.Status == "answered"));
+    writer.WriteNumber("rejected", rows.Count(row => row.Status == "rejected"));
+    writer.WriteNumber("coverage", Coverage(rows));
+    // Only dimensions represented by the input contract are exposed here.  The
+    // remaining S4-06 slices require reviewed labels; inferring them from text
+    // or candidate wording would turn a diagnostic into an undocumented labeler.
+    writer.WritePropertyName("diagnostic_dimensions"); writer.WriteStartObject();
+    writer.WritePropertyName("available"); writer.WriteStartArray();
+    writer.WriteStringValue("language"); writer.WriteStringValue("question_type"); writer.WriteStringValue("candidate_order");
+    writer.WriteEndArray();
+    writer.WritePropertyName("grouped"); writer.WriteStartArray();
+    writer.WriteStringValue("language"); writer.WriteStringValue("question_type");
+    writer.WriteEndArray();
+    writer.WritePropertyName("unavailable"); writer.WriteStartArray();
+    writer.WriteStringValue("role"); writer.WriteStringValue("negation"); writer.WriteStringValue("lexical_similarity");
+    writer.WriteEndArray();
+    writer.WriteString("policy", "unavailable_dimensions_are_null_until_versioned_reviewed_labels_are_present");
+    writer.WriteEndObject();
+    writer.WritePropertyName("metrics"); WriteMetrics(writer, rows);
+    writer.WritePropertyName("by_language_and_type"); writer.WriteStartArray();
+    foreach (var group in rows.GroupBy(row => (row.Language, row.QuestionType)).OrderBy(group => group.Key.Language).ThenBy(group => group.Key.QuestionType))
+    {
+        writer.WriteStartObject(); writer.WriteString("language", group.Key.Language); writer.WriteString("question_type", group.Key.QuestionType);
+        writer.WritePropertyName("metrics"); WriteMetrics(writer, group.ToArray()); writer.WriteEndObject();
+    }
+    writer.WriteEndArray();
+    writer.WritePropertyName("rows"); writer.WriteStartArray();
+    foreach (var row in rows)
+    {
+        writer.WriteStartObject(); writer.WriteString("record_id", row.RecordId); writer.WriteString("language", row.Language);
+        writer.WriteString("question_type", row.QuestionType); writer.WriteNumber("target_index", row.TargetIndex);
+        writer.WriteNumber("candidate_count", row.CandidateCount); writer.WriteString("status", row.Status);
+        writer.WritePropertyName("candidate_ids"); writer.WriteStartArray();
+        foreach (var candidateId in row.CandidateIds) writer.WriteStringValue(candidateId);
+        writer.WriteEndArray();
+        if (row.PredictedIndex is int predicted) writer.WriteNumber("predicted_index", predicted);
+        if (row.Correct is bool correct) writer.WriteBoolean("correct", correct);
+        WriteNullable(writer, "target_probability", row.TargetProbability); WriteNullable(writer, "top_probability", row.TopProbability);
+        WriteNullable(writer, "margin", row.Margin); WriteNullable(writer, "nll", row.Nll); WriteNullable(writer, "brier", row.Brier);
+        if (row.Status == "answered")
+        {
+            writer.WritePropertyName("probabilities"); writer.WriteStartArray();
+            foreach (var probability in row.Probabilities) writer.WriteNumberValue(probability);
+            writer.WriteEndArray();
+        }
+        if (row.ErrorCode is not null) writer.WriteString("error_code", row.ErrorCode);
+        writer.WriteEndObject();
+    }
+    writer.WriteEndArray(); writer.WriteEndObject(); writer.Flush();
+    Console.WriteLine($"evaluated development records={rows.Count} answered={rows.Count(row => row.Status == "answered")} coverage={Coverage(rows):P2} report={reportPath}");
+}
+
+static double[] Softmax(double[] logits)
+{
+    if (logits.Length is < 2 or > 32 || logits.Any(value => !double.IsFinite(value)))
+        throw new InvalidDataException("Head logits are non-finite or outside the candidate bound.");
+    var max = logits.Max(); var probabilities = new double[logits.Length]; double sum = 0;
+    for (var index = 0; index < logits.Length; index++) sum += probabilities[index] = Math.Exp(logits[index] - max);
+    if (!double.IsFinite(sum) || sum <= 0) throw new InvalidDataException("Head logits produced an invalid probability normalizer.");
+    for (var index = 0; index < probabilities.Length; index++) probabilities[index] /= sum;
+    return probabilities;
+}
+
+static double Coverage(IReadOnlyList<OriginalEvaluationRow> rows) => rows.Count == 0 ? 0 : rows.Count(row => row.Status == "answered") / (double)rows.Count;
+
+static void WriteMetrics(Utf8JsonWriter writer, IReadOnlyList<OriginalEvaluationRow> rows)
+{
+    var answered = rows.Where(row => row.Status == "answered").ToArray();
+    writer.WriteStartObject(); writer.WriteNumber("total", rows.Count); writer.WriteNumber("answered", answered.Length);
+    writer.WriteNumber("rejected", rows.Count - answered.Length); writer.WriteNumber("coverage", Coverage(rows));
+    writer.WriteNumber("correct", answered.Count(row => row.Correct == true));
+    WriteNullable(writer, "accuracy_on_answered", answered.Length == 0 ? null : answered.Count(row => row.Correct == true) / (double)answered.Length);
+    writer.WritePropertyName("accuracy_ci95"); WriteConfidenceInterval(writer, answered);
+    WriteNullable(writer, "mean_nll", answered.Length == 0 ? null : answered.Average(row => row.Nll!.Value));
+    WriteNullable(writer, "mean_brier", answered.Length == 0 ? null : answered.Average(row => row.Brier!.Value));
+    WriteNullable(writer, "mean_margin", answered.Length == 0 ? null : answered.Average(row => row.Margin!.Value));
+    WriteNullable(writer, "ece_10_bins", ExpectedCalibrationError(answered));
+    WriteNullable(writer, "auroc_macro_ovr", MacroAuroc(answered));
+    writer.WriteEndObject();
+}
+
+static void WriteConfidenceInterval(Utf8JsonWriter writer, IReadOnlyList<OriginalEvaluationRow> rows)
+{
+    if (rows.Count == 0) { writer.WriteNullValue(); return; }
+    const double z = 1.959963984540054;
+    var successes = rows.Count(row => row.Correct == true); var n = rows.Count; var proportion = successes / (double)n;
+    var denominator = 1 + z * z / n; var centre = (proportion + z * z / (2 * n)) / denominator;
+    var margin = z * Math.Sqrt(proportion * (1 - proportion) / n + z * z / (4 * n * n)) / denominator;
+    writer.WriteStartObject(); writer.WriteNumber("lower", Math.Max(0, centre - margin)); writer.WriteNumber("upper", Math.Min(1, centre + margin)); writer.WriteEndObject();
+}
+
+static double? ExpectedCalibrationError(IReadOnlyList<OriginalEvaluationRow> rows)
+{
+    if (rows.Count == 0) return null; double total = 0;
+    for (var bin = 0; bin < 10; bin++)
+    {
+        var lower = bin / 10d; var upper = (bin + 1) / 10d;
+        var selected = rows.Where(row => row.TopProbability!.Value >= lower && (bin == 9 ? row.TopProbability.Value <= upper : row.TopProbability.Value < upper)).ToArray();
+        if (selected.Length == 0) continue;
+        total += selected.Length / (double)rows.Count * Math.Abs(selected.Average(row => row.TopProbability!.Value) - selected.Count(row => row.Correct == true) / (double)selected.Length);
+    }
+    return total;
+}
+
+static double? MacroAuroc(IReadOnlyList<OriginalEvaluationRow> rows)
+{
+    if (rows.Count == 0 || rows.Any(row => row.CandidateCount != rows[0].CandidateCount)) return null;
+    var values = new List<double>();
+    for (var candidate = 0; candidate < rows[0].CandidateCount; candidate++)
+    {
+        var positives = rows.Where(row => row.TargetIndex == candidate).ToArray(); var negatives = rows.Where(row => row.TargetIndex != candidate).ToArray();
+        if (positives.Length == 0 || negatives.Length == 0) return null;
+        var wins = 0d;
+        foreach (var positive in positives) foreach (var negative in negatives)
+            wins += positive.Probabilities[candidate] > negative.Probabilities[candidate] ? 1 : positive.Probabilities[candidate] == negative.Probabilities[candidate] ? 0.5 : 0;
+        values.Add(wins / (positives.Length * (double)negatives.Length));
+    }
+    return values.Count == 0 ? null : values.Average();
+}
+
+static string IndependentQuestionTypeName(IndependentDecisionQuestion question) => question switch
+{
+    IndependentChoiceQuestion => "choice",
+    IndependentScoreQuestion => "score",
+    IndependentBooleanQuestion => "boolean",
+    _ => throw new InvalidDataException("Unknown independent question type."),
+};
+
+static string[] CandidateIds(IndependentDecisionQuestion question) => question switch
+{
+    IndependentChoiceQuestion choice => choice.Candidates.Select(candidate => candidate.Id).ToArray(),
+    IndependentScoreQuestion score => Enumerable.Range(0, score.Levels.Count).Select(index => index.ToString()).ToArray(),
+    IndependentBooleanQuestion => ["false", "true"],
+    _ => [],
+};
+
+static void WriteNullable(Utf8JsonWriter writer, string name, double? value)
+{
+    writer.WritePropertyName(name); if (value is double number && double.IsFinite(number)) writer.WriteNumberValue(number); else writer.WriteNullValue();
+}
+
+static TrainingReport ReadTrainingReport(string path, CancellationToken cancellationToken)
+{
+    if (!File.Exists(path)) throw new FileNotFoundException("Training report is missing.", path);
+    var info = new FileInfo(path);
+    if (info.Length is <= 0 or > 1_048_576) throw new InvalidDataException("Training report exceeds the 1 MiB bound.");
+    using var document = JsonDocument.Parse(File.ReadAllBytes(path)); cancellationToken.ThrowIfCancellationRequested();
+    var root = document.RootElement;
+    var status = root.GetProperty("status").GetString();
+    if (status != "development_smoke_only") throw new InvalidDataException("Training report is not a development smoke report.");
+    return new TrainingReport(root.GetProperty("model_id").GetString()!, root.GetProperty("encoder_sha256").GetString()!,
+        root.GetProperty("tokenizer_sha256").GetString()!, root.GetProperty("data_manifest_sha256").GetString()!,
+        root.GetProperty("records_sha256").GetString()!, root.GetProperty("feature_sha256").GetString()!, root.GetProperty("head_sha256").GetString()!);
+}
+
 static IReadOnlyList<OriginalRecord> ReadOriginalRecords(string path, CancellationToken cancellationToken)
 {
     if (!File.Exists(path)) throw new FileNotFoundException("Original records file is missing.", path);
@@ -251,20 +481,64 @@ static IReadOnlyList<OriginalRecord> ReadOriginalRecords(string path, Cancellati
     {
         cancellationToken.ThrowIfCancellationRequested(); if (lineNumber > 32) throw new InvalidDataException("Original record count exceeds 32.");
         var line = reader.ReadLine() ?? string.Empty; if (line.Length is 0 or > 65_536) throw new InvalidDataException($"Original record line {lineNumber} is empty or oversized.");
-        using var document = JsonDocument.Parse(line); var json = document.RootElement;
-        var recordId = json.GetProperty("record_id").GetString() ?? string.Empty; var split = json.GetProperty("split").GetString() ?? string.Empty; var language = json.GetProperty("language").GetString() ?? string.Empty; var type = json.GetProperty("type").GetString() ?? string.Empty;
+        using var document = ParseRecordJson(line); var json = document.RootElement;
+        var recordId = RequiredRecordText(json, "record_id", 128); var split = RequiredRecordText(json, "split", 16); var language = RequiredRecordText(json, "language", 2); var type = RequiredRecordText(json, "type", 16);
         if (!seen.Add(recordId) || split is not ("train" or "development") || language is not ("zh" or "en")) throw new InvalidDataException($"Original record {recordId} identity or split is invalid.");
-        var instruction = json.GetProperty("instruction").GetString() ?? string.Empty; var state = json.GetProperty("state").Clone(); var target = json.GetProperty("target_index").GetInt32(); IndependentDecisionQuestion question;
+        var instruction = RequiredRecordText(json, "instruction", 65_536); var state = json.GetProperty("state").Clone();
+        if (state.ValueKind is JsonValueKind.Null or JsonValueKind.Undefined) throw new InvalidDataException($"Original record {recordId} state is null.");
+        var target = json.GetProperty("target_index").GetInt32(); IndependentDecisionQuestion question;
         switch (type)
         {
-            case "choice": question = new IndependentChoiceQuestion(recordId, instruction, json.GetProperty("candidates").EnumerateArray().Select(value => new IndependentChoiceCandidate(value.GetProperty("id").GetString() ?? string.Empty, value.GetProperty("text").GetString() ?? string.Empty)).ToArray()); break;
-            case "score": question = new IndependentScoreQuestion(recordId, instruction, json.GetProperty("levels").EnumerateArray().Select(value => value.GetString() ?? string.Empty).ToArray()); break;
-            case "boolean": question = new IndependentBooleanQuestion(recordId, instruction, json.GetProperty("statement").GetString() ?? string.Empty, json.GetProperty("when_false").GetString() ?? string.Empty, json.GetProperty("when_true").GetString() ?? string.Empty); break;
+            case "choice":
+                var candidates = json.GetProperty("candidates");
+                if (candidates.ValueKind != JsonValueKind.Array || candidates.GetArrayLength() is < 2 or > 32) throw new InvalidDataException($"Original record {recordId} candidate count is outside 2-32.");
+                question = new IndependentChoiceQuestion(recordId, instruction, candidates.EnumerateArray().Select(value => new IndependentChoiceCandidate(RequiredRecordText(value, "id", 65_536), RequiredRecordText(value, "text", 65_536))).ToArray()); break;
+            case "score":
+                var levels = json.GetProperty("levels");
+                if (levels.ValueKind != JsonValueKind.Array || levels.GetArrayLength() is < 2 or > 10) throw new InvalidDataException($"Original record {recordId} score level count is outside 2-10.");
+                question = new IndependentScoreQuestion(recordId, instruction, levels.EnumerateArray().Select(value => value.ValueKind == JsonValueKind.String && !string.IsNullOrWhiteSpace(value.GetString()) ? value.GetString()! : throw new InvalidDataException($"Original record {recordId} has an invalid score level.")).ToArray()); break;
+            case "boolean": question = new IndependentBooleanQuestion(recordId, instruction, RequiredRecordText(json, "statement", 65_536), RequiredRecordText(json, "when_false", 65_536), RequiredRecordText(json, "when_true", 65_536)); break;
             default: throw new InvalidDataException($"Original record {recordId} question type is unsupported.");
         }
         output.Add(new OriginalRecord(recordId, split, language, target, new IndependentDecisionRequest(1, IndependentModelLoader.ModelId, state, [question]), question));
     }
     return output;
+}
+
+static string RequiredRecordText(JsonElement value, string property, int maxLength)
+{
+    if (value.ValueKind != JsonValueKind.Object || !value.TryGetProperty(property, out var element) || element.ValueKind != JsonValueKind.String ||
+        string.IsNullOrWhiteSpace(element.GetString()) || element.GetString()!.Length > maxLength)
+        throw new InvalidDataException($"Original record property '{property}' must be a bounded non-empty string.");
+    return element.GetString()!;
+}
+
+static JsonDocument ParseRecordJson(string line)
+{
+    var bytes = Encoding.UTF8.GetBytes(line);
+    var reader = new Utf8JsonReader(bytes, new JsonReaderOptions { MaxDepth = 32, CommentHandling = JsonCommentHandling.Disallow, AllowTrailingCommas = false });
+    var scopes = new Stack<HashSet<string>>();
+    try
+    {
+        while (reader.Read())
+        {
+            if (reader.TokenType == JsonTokenType.StartObject) scopes.Push(new HashSet<string>(StringComparer.Ordinal));
+            else if (reader.TokenType == JsonTokenType.EndObject)
+            {
+                if (scopes.Count == 0) throw new InvalidDataException("Record JSON object scope is unbalanced.");
+                scopes.Pop();
+            }
+            else if (reader.TokenType == JsonTokenType.PropertyName && (scopes.Count == 0 || !scopes.Peek().Add(reader.GetString()!)))
+                throw new InvalidDataException("Record JSON contains a duplicate property.");
+            if (reader.CurrentDepth > 32) throw new InvalidDataException("Record JSON nesting exceeds the 32-level bound.");
+        }
+        if (scopes.Count != 0) throw new InvalidDataException("Record JSON is incomplete.");
+        return JsonDocument.Parse(bytes, new JsonDocumentOptions { MaxDepth = 32, CommentHandling = JsonCommentHandling.Disallow, AllowTrailingCommas = false });
+    }
+    catch (JsonException exception)
+    {
+        throw new InvalidDataException("Record JSON is invalid.", exception);
+    }
 }
 
 readonly record struct OriginalRecord(string RecordId, string Split, string Language, int TargetIndex, IndependentDecisionRequest Request, IndependentDecisionQuestion Question);
@@ -379,3 +653,10 @@ sealed class PickleReader
     private static long ToInt(object value) => value is PyInt integer && integer.Value > 0 && integer.Value <= int.MaxValue ? integer.Value : throw new InvalidDataException("pickle shape value is invalid");
     private static InvalidDataException Invalid(string message) => new(message);
 }
+
+sealed record TrainingReport(string ModelId, string EncoderSha256, string TokenizerSha256, string DataManifestSha256,
+    string RecordsSha256, string FeatureSha256, string HeadSha256);
+
+sealed record OriginalEvaluationRow(string RecordId, string Language, string QuestionType, string[] CandidateIds, int TargetIndex, int CandidateCount,
+    string Status, int? PredictedIndex, bool? Correct, double? TargetProbability, double? TopProbability, double? Margin,
+    double? Nll, double? Brier, double[] Probabilities, string? ErrorCode);

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Sezika;
 
-/// <summary>Independent inference head asset; unlike a training checkpoint it contains no optimizer state.</summary>
+/// <summary>Independent inference head asset with training provenance metadata; optimizer slots are not exported.</summary>
 public sealed record IndependentMarkerHeadAsset(
     MarkerFeatureIdentity Identity,
     string FeatureSha256,
@@ -27,6 +27,12 @@ public static class IndependentMarkerHeadAssetStore
         var clock = Stopwatch.StartNew();
         void Check() { cancellationToken.ThrowIfCancellationRequested(); if (clock.Elapsed > MaxIoDuration) throw new DecisionException("head_asset_deadline_exceeded", "Head asset I/O deadline expired."); }
         Check();
+        IndependentMarkerHeadTrainer.ValidateIdentity(state.Identity, "head_asset_invalid");
+        if (!IndependentMarkerHeadTrainer.IsHash(state.FeatureSha256) || state.CompletedSteps is < 0 or > 10_000 ||
+            !float.IsFinite(state.LearningRate) || state.LearningRate <= 0 || state.LearningRate > 1 ||
+            !double.IsFinite(state.LastLoss) || state.LastLoss < 0)
+            throw new DecisionException("head_asset_invalid", "Head asset training metadata is invalid.");
+        _ = new LinearMarkerHead(state.Identity.HiddenSize, state.Weights);
         using var stream = new MemoryStream();
         using (var writer = new BinaryWriter(stream, Encoding.UTF8, leaveOpen: true))
         {
@@ -41,8 +47,25 @@ public static class IndependentMarkerHeadAssetStore
         var payload = stream.ToArray(); var checksum = SHA256.HashData(payload); var bytes = new byte[payload.Length + checksum.Length];
         payload.CopyTo(bytes, 0); checksum.CopyTo(bytes, payload.Length);
         var hash = Convert.ToHexString(SHA256.HashData(bytes));
-        using var file = new FileStream(path, FileMode.CreateNew, FileAccess.Write, FileShare.None);
-        file.Write(bytes); file.Flush(flushToDisk: true); Check(); return hash;
+        // Publish atomically so cancellation or process interruption cannot
+        // create a truncated asset at the requested destination.
+        var destination = Path.GetFullPath(path);
+        var directory = Path.GetDirectoryName(destination)!;
+        var temporary = Path.Combine(directory, $".{Path.GetFileName(destination)}.{Guid.NewGuid():N}.tmp");
+        try
+        {
+            using (var file = new FileStream(temporary, FileMode.CreateNew, FileAccess.Write, FileShare.None))
+            {
+                file.Write(bytes); file.Flush(flushToDisk: true);
+            }
+            Check();
+            File.Move(temporary, destination);
+        }
+        finally
+        {
+            if (File.Exists(temporary)) File.Delete(temporary);
+        }
+        return hash;
     }
 
     public static IndependentMarkerHeadAsset Load(string path, MarkerFeatureIdentity expectedIdentity,
@@ -69,10 +92,12 @@ public static class IndependentMarkerHeadAssetStore
                 IndependentMarkerHeadTrainer.ReadText(reader), IndependentMarkerHeadTrainer.ReadText(reader), reader.ReadInt32(),
                 IndependentMarkerHeadTrainer.ReadText(reader), IndependentMarkerHeadTrainer.ReadText(reader));
             var featureHash = IndependentMarkerHeadTrainer.ReadText(reader);
-            if (identity != expectedIdentity || !featureHash.Equals(expectedFeatureSha256, StringComparison.OrdinalIgnoreCase))
+            if (!IndependentMarkerHeadTrainer.IdentityMatches(identity, expectedIdentity) ||
+                !featureHash.Equals(expectedFeatureSha256, StringComparison.OrdinalIgnoreCase))
                 throw new DecisionException("head_asset_identity_mismatch", "Head asset identity differs from the requested model or features.");
             var seed = reader.ReadInt32(); var rate = reader.ReadSingle(); var steps = reader.ReadInt32(); var loss = reader.ReadDouble(); var count = reader.ReadInt32();
-            if (!float.IsFinite(rate) || rate <= 0 || rate > 1 || steps is < 0 or > 10_000 || !double.IsFinite(loss) || count != checked(3 * identity.HiddenSize))
+            if (!float.IsFinite(rate) || rate <= 0 || rate > 1 || steps is < 0 or > 10_000 ||
+                !double.IsFinite(loss) || loss < 0 || count != checked(3 * identity.HiddenSize))
                 throw new DecisionException("head_asset_invalid", "Head asset optimizer metadata or shape is invalid.");
             var weights = new float[count];
             for (var index = 0; index < count; index++) { if ((index & 255) == 0) Check(); weights[index] = reader.ReadSingle(); }
