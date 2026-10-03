@@ -5,7 +5,8 @@ param(
     [string]$LogName = 'process',
     [string]$WorkingDirectory,
     [string]$LogDirectory,
-    [hashtable]$Environment = @{}
+    [hashtable]$Environment = @{},
+    [ValidateRange(2,5)][int]$ProcessQueryTimeoutSeconds = 2
 )
 $ErrorActionPreference = 'Stop'
 if ($PSVersionTable.PSVersion.Major -lt 7) { throw 'PowerShell 7 or newer is required.' }
@@ -61,12 +62,12 @@ function Add-Identity($NativeProcess, [int]$Depth) {
 }
 function Update-Descendants {
     $scanWatch = [Diagnostics.Stopwatch]::StartNew()
-    $snapshot = @(Get-CimInstance Win32_Process -Property ProcessId,ParentProcessId,CreationDate,CommandLine -OperationTimeoutSec 2 | Select-Object -First 16385)
+    $snapshot = @(Get-CimInstance Win32_Process -Property ProcessId,ParentProcessId,CreationDate,CommandLine -OperationTimeoutSec $ProcessQueryTimeoutSeconds | Select-Object -First 16385)
     if ($snapshot.Count -gt 16384) { throw 'Process snapshot item limit exceeded.' }
     $byPid = @{}
     $byParent = @{}
     foreach ($item in $snapshot) {
-        if ($scanWatch.Elapsed.TotalSeconds -ge 5) { throw 'Process snapshot timeout.' }
+        if ($scanWatch.Elapsed.TotalSeconds -ge ($ProcessQueryTimeoutSeconds + 3)) { throw 'Process snapshot timeout.' }
         $byPid[[int]$item.ProcessId] = $item
         $parentKey = [int]$item.ParentProcessId
         if (-not $byParent.ContainsKey($parentKey)) { $byParent[$parentKey] = [Collections.Generic.List[object]]::new() }
@@ -74,17 +75,17 @@ function Update-Descendants {
     }
     $queue = [Collections.Generic.Queue[object]]::new()
     foreach ($known in @($tracked.Values)) {
-        if ($scanWatch.Elapsed.TotalSeconds -ge 5) { throw 'Descendant discovery timeout.' }
+        if ($scanWatch.Elapsed.TotalSeconds -ge ($ProcessQueryTimeoutSeconds + 3)) { throw 'Descendant discovery timeout.' }
         $queue.Enqueue($known)
     }
     # Both iteration and elapsed-time limits are independent of the queue contents.
     for ($index = 0; $index -lt 2048 -and $queue.Count -gt 0; $index++) {
-        if ($scanWatch.Elapsed.TotalSeconds -ge 5) { throw 'Descendant discovery timeout.' }
+        if ($scanWatch.Elapsed.TotalSeconds -ge ($ProcessQueryTimeoutSeconds + 3)) { throw 'Descendant discovery timeout.' }
         $parent = $queue.Dequeue()
         $currentParent = $byPid[$parent.Pid]
         if ($null -ne $currentParent -and -not (Test-SameIdentity $parent $currentParent)) { continue }
         foreach ($child in $byParent[$parent.Pid]) {
-            if ($scanWatch.Elapsed.TotalSeconds -ge 5) { throw 'Descendant discovery timeout.' }
+            if ($scanWatch.Elapsed.TotalSeconds -ge ($ProcessQueryTimeoutSeconds + 3)) { throw 'Descendant discovery timeout.' }
             if ($null -eq $child -or $child.CreationDate -lt $parent.CreationDate -or $tracked.ContainsKey([int]$child.ProcessId)) { continue }
             if ($tracked.Count -ge 2048) { throw 'Tracked descendant item limit exceeded.' }
             Add-Identity $child ($parent.Depth + 1)
@@ -111,7 +112,7 @@ $errStream = $null
 $stdout = $null
 $stderr = $null
 $copyCancellation = [Threading.CancellationTokenSource]::new()
-$launcherIdentity = Get-CimInstance Win32_Process -Filter "ProcessId=$PID" -OperationTimeoutSec 2
+$launcherIdentity = Get-CimInstance Win32_Process -Filter "ProcessId=$PID" -OperationTimeoutSec $ProcessQueryTimeoutSeconds
 $launcher = [pscustomobject]@{
     Pid=$PID; Started=$launcherIdentity.CreationDate; CommandLine=$launcherIdentity.CommandLine
     ParentPid=$launcherIdentity.ParentProcessId
@@ -129,7 +130,7 @@ try {
     # A short-lived child can exit while CIM is resolving its PID. Preserve the
     # retained Process handle's start/exit facts; never treat a live unobserved root as safe.
     $identity = $null
-    try { $identity = Get-CimInstance Win32_Process -Filter "ProcessId=$taskPid" -OperationTimeoutSec 2 }
+    try { $identity = Get-CimInstance Win32_Process -Filter "ProcessId=$taskPid" -OperationTimeoutSec $ProcessQueryTimeoutSeconds }
     catch { if (-not $process.HasExited) { throw } }
     if ($null -ne $identity) { Add-Identity $identity 0 }
     elseif (-not $process.HasExited) { throw 'Could not record the running root process identity.' }
@@ -138,7 +139,7 @@ try {
         IdentityObservation=if ($null -ne $identity) { 'cim_snapshot' } else { 'exited_before_cim_snapshot_see_recorded_argv' }
         ParentPid=$PID; ObservedParentPid=$identity.ParentProcessId
         ParentIdentitySource='Process.Start caller'; Launcher=$launcher
-        TimeoutSeconds=$TimeoutSeconds; FilePath=$FilePath
+        TimeoutSeconds=$TimeoutSeconds; ProcessQueryTimeoutSeconds=$ProcessQueryTimeoutSeconds; FilePath=$FilePath
         Arguments=$ArgumentList; WorkingDirectory=$start.WorkingDirectory
     } | ConvertTo-Json -Depth 4))
     Write-Output "Started PID $($process.Id), timeout ${TimeoutSeconds}s: $FilePath $($ArgumentList -join ' ')"
@@ -169,9 +170,10 @@ try {
     if ($status -ne 'TimedOut') { $status = 'Failed' }
 } finally {
     $cleanupWatch = [Diagnostics.Stopwatch]::StartNew()
-    # Six passes / eight seconds maximum. Check PID, creation time, command line,
+    # Six passes / (query timeout + six) seconds maximum. Check PID, creation time, command line,
     # and recorded parent chain before every individual termination.
-    for ($pass = 0; $pass -lt 6 -and $cleanupWatch.Elapsed.TotalSeconds -lt 8; $pass++) {
+    $cleanupSeconds = $ProcessQueryTimeoutSeconds + 6
+    for ($pass = 0; $pass -lt 6 -and $cleanupWatch.Elapsed.TotalSeconds -lt $cleanupSeconds; $pass++) {
         $currentProcesses = @{}
         try { if ($tracked.Count -gt 0) { $currentProcesses = Update-Descendants } }
         catch { $cleanupErrors.Add($_.Exception.Message) }
@@ -179,11 +181,11 @@ try {
         foreach ($known in @($tracked.Values | Sort-Object Depth -Descending)) {
             # Skip exited or reused PIDs using this pass's single snapshot.
             if (-not (Test-SameIdentity $known $currentProcesses[$known.Pid])) { continue }
-            if ($cleanupWatch.Elapsed.TotalSeconds -ge 8) { $cleanupErrors.Add('Cleanup time limit reached.'); break }
+            if ($cleanupWatch.Elapsed.TotalSeconds -ge $cleanupSeconds) { $cleanupErrors.Add('Cleanup time limit reached.'); break }
             try {
                 # Only a still-live, matching task process incurs this final
                 # identity refresh immediately before opening its handle.
-                $current = Get-CimInstance Win32_Process -Filter "ProcessId=$($known.Pid)" -OperationTimeoutSec 2
+                $current = Get-CimInstance Win32_Process -Filter "ProcessId=$($known.Pid)" -OperationTimeoutSec $ProcessQueryTimeoutSeconds
                 if (-not (Test-SameIdentity $known $current)) { continue }
                 $remaining++
                 $childProcess = [Diagnostics.Process]::GetProcessById($known.Pid)
@@ -201,7 +203,7 @@ try {
         if ($remaining -eq 0) { break }
         Start-Sleep -Milliseconds 200
     }
-    if ($remaining -gt 0 -and ($pass -ge 6 -or $cleanupWatch.Elapsed.TotalSeconds -ge 8)) {
+    if ($remaining -gt 0 -and ($pass -ge 6 -or $cleanupWatch.Elapsed.TotalSeconds -ge $cleanupSeconds)) {
         $cleanupErrors.Add('Cleanup ended before all recorded processes were confirmed exited.')
     }
     # The handle belongs to the process started above, even if CIM failed before
@@ -223,7 +225,7 @@ try {
     if ($cleanupErrors.Count -gt 0 -and $status -eq 'Succeeded') { $status = 'CleanupFailed'; $failure = 'Process cleanup or output capture failed.' }
     $result = [pscustomobject]@{
         Status=$status; Pid=$taskPid; ExitCode=$exitCode; Error=$failure
-        ElapsedSeconds=[Math]::Round($watch.Elapsed.TotalSeconds,3); TimeoutSeconds=$TimeoutSeconds
+        ElapsedSeconds=[Math]::Round($watch.Elapsed.TotalSeconds,3); TimeoutSeconds=$TimeoutSeconds; ProcessQueryTimeoutSeconds=$ProcessQueryTimeoutSeconds
         FilePath=$FilePath; Arguments=$ArgumentList; WorkingDirectory=$start.WorkingDirectory
         Started=$rootStarted; ParentPid=$PID; Launcher=$launcher
         StdoutPath=$stdoutPath; StderrPath=$stderrPath; CleanupErrors=@($cleanupErrors.ToArray())

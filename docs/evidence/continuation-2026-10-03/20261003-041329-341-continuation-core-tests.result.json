@@ -1,0 +1,27 @@
+{
+  "Status": "Succeeded",
+  "Pid": 66340,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 5.231,
+  "TimeoutSeconds": 90,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "tests/Sezika.Tests/bin/Release/net10.0/Sezika.Tests.dll"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-03T04:13:30.8201913Z",
+  "ParentPid": 56572,
+  "Launcher": {
+    "Pid": 56572,
+    "Started": "2026-10-03T12:13:28.626884+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('tests/Sezika.Tests/bin/Release/net10.0/Sezika.Tests.dll') -TimeoutSeconds 90 -ProcessQueryTimeoutSeconds 5 -LogName 'continuation-core-tests'\"",
+    "ParentPid": 47744
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20261003-041329-341-continuation-core-tests.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20261003-041329-341-continuation-core-tests.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

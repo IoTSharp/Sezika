@@ -1,0 +1,30 @@
+{
+  "Pid": 66704,
+  "Started": "2026-10-03T04:11:06.4875758Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build Sezika.slnx -c Release -v minimal --nologo --disable-build-servers -m:1",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 35384,
+  "ObservedParentPid": 35384,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 35384,
+    "Started": "2026-10-03T12:11:03.197957+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build','Sezika.slnx','-c','Release','-v','minimal','--nologo','--disable-build-servers','-m:1') -TimeoutSeconds 240 -ProcessQueryTimeoutSeconds 5 -LogName 'continuation-solution-build-v2'\"",
+    "ParentPid": 47744
+  },
+  "TimeoutSeconds": 240,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "Sezika.slnx",
+    "-c",
+    "Release",
+    "-v",
+    "minimal",
+    "--nologo",
+    "--disable-build-servers",
+    "-m:1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

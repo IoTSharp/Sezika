@@ -1,0 +1,22 @@
+{
+  "Pid": 66404,
+  "Started": "2026-10-03T04:17:22.7947271Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 50024,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 50024,
+    "Started": "2026-10-03T12:17:21.254053+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath (Join-Path $PWD '.artifacts/continuation-20261003/win-contract-aot/Sezika.Tests.exe') -ArgumentList @('--continuation-contract-aot') -TimeoutSeconds 60 -ProcessQueryTimeoutSeconds 5 -LogName 'continuation-win-contract-aot-run'\"",
+    "ParentPid": 47744
+  },
+  "TimeoutSeconds": 60,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "D:\\source\\Sezika\\.artifacts\\continuation-20261003\\win-contract-aot\\Sezika.Tests.exe",
+  "Arguments": [
+    "--continuation-contract-aot"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

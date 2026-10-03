@@ -1,0 +1,36 @@
+PASS: scalar/SIMD trace topology
+PASS: scalar/SIMD per-layer alignment max_abs=0
+PASS: scalar/SIMD output shape
+PASS: SIMD tail linear alignment vector_width=8
+PASS: workspace released after encode
+PASS: bounded concurrency rejects third lease
+PASS: workspace leases return all resources
+PASS: unload defers semaphore disposal until lease release
+PASS: pre-cancel observed before workspace allocation
+PASS: cancel leaves no active workspace
+PASS: deadline observed at encoder boundary
+PASS: deadline leaves no active workspace
+PASS: W8A32 dense dot-product obeys rounding error bound
+PASS: W8A32 zero rows preserve exact bias
+PASS: W8A32 storage includes int8 values and per-row scales
+PASS: W8A32 executes immutable int8 snapshot after FP32 source mutation
+PASS: W8A32 preparation observes cancellation
+PASS: W8A32 matmul observes cancellation
+PASS: W8A32 rejects non-finite source weights
+PASS: W8A32 subnormal scale cannot underflow to zero
+PASS: W8A32 encoder dense trace alignment max_abs=0.00126206875
+PASS: W8A32 encoder accounts preparation bytes and releases request workspace
+PASS: W8A32 head-only dense trace alignment max_abs=0.00133243203
+PASS: head-only comparison leaves shared encoder output unchanged
+PASS: SIMD head-only alignment uses same encoded input
+PASS: W8A32 encoder and head end-to-end marker logits align
+PASS: W8A32 head cache accounted separately from encoder
+PASS: W8A32 head-only pre-cancel observed
+PASS: W8A32 cancellation during encoder request observed
+PASS: W8A32 cancelled request returns workspace
+PASS: W8A32 session reusable after cancellation
+PASS: W8A32 head unload drops prepared buffer ownership
+PASS: unloaded W8A32 head rejects new requests
+PASS: W8A32 encoder unload drops prepared buffer ownership
+PASS: unloaded W8A32 encoder rejects new requests
+Sezika resource tests passed: 35; max_trace_abs_error=0

@@ -1,0 +1,27 @@
+{
+  "Status": "Succeeded",
+  "Pid": 66404,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 3.625,
+  "TimeoutSeconds": 60,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "D:\\source\\Sezika\\.artifacts\\continuation-20261003\\win-contract-aot\\Sezika.Tests.exe",
+  "Arguments": [
+    "--continuation-contract-aot"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-03T04:17:22.7947271Z",
+  "ParentPid": 50024,
+  "Launcher": {
+    "Pid": 50024,
+    "Started": "2026-10-03T12:17:21.254053+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath (Join-Path $PWD '.artifacts/continuation-20261003/win-contract-aot/Sezika.Tests.exe') -ArgumentList @('--continuation-contract-aot') -TimeoutSeconds 60 -ProcessQueryTimeoutSeconds 5 -LogName 'continuation-win-contract-aot-run'\"",
+    "ParentPid": 47744
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20261003-041721-810-continuation-win-contract-aot-run.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20261003-041721-810-continuation-win-contract-aot-run.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

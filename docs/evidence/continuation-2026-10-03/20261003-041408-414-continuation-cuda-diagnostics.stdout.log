@@ -1,0 +1,44 @@
+PASS: CUDA driver/device identity
+PASS: device-wide memory bounds
+PASS: fresh context owns no allocations/modules
+PASS: module load is tracked
+PASS: single-element vector trial
+PASS: reset clears telemetry and idle allocation peak
+PASS: non-aligned 65-element vector result
+PASS: vector H2D/D2H bytes and kernel count
+PASS: profiled timings are finite non-negative durations
+PASS: vector working allocations released with exact peak
+PASS: invalid vector rejected
+PASS: invalid vector allocates and launches nothing
+PASS: unprofiled execution recovers and creates no telemetry
+PASS: unprofiled execution still tracks cleanup
+PASS: vector unload releases its module
+PASS: GEMM reference result
+PASS: GEMM transfer bytes and kernel count
+PASS: GEMM allocation cleanup and peak
+PASS: GEMM unload releases all modules
+PASS: pre-cancelled encoder constructor
+PASS: pre-cancelled constructor leaves no CUDA resources
+PASS: pre-cancelled constructor performs no CUDA work
+PASS: encoder owns resident weights
+PASS: reset preserves the resident allocation baseline
+PASS: out-of-vocabulary token rejected
+PASS: invalid encoder input launches nothing
+PASS: pre-cancelled decision head constructor
+PASS: partially uploaded malformed head constructor
+PASS: failed head constructor releases partial weights/modules
+PASS: cross-context head rejected with cuda_context_mismatch
+PASS: cross-context rejection creates no resources on the second context
+PASS: cross-context rejection preserves the encoder context
+PASS: second context remains usable after rejected head
+PASS: encoder context remains usable while the second context is alive
+PASS: second context rebinds after encoder context execution
+PASS: second context probe releases its resources
+PASS: device-first disposal fixture retains child allocations
+PASS: device-first disposal cleans tracked allocations/modules and permits child disposal
+PASS: cancel after first CUDA operator
+PASS: cancelled inference releases working allocations
+PASS: encoder recovers after invalid input and cancellation
+PASS: encoder unload returns all owned CUDA resources
+PASS: context and profiling events unload without release failures
+CUDA diagnostics: 43 checks passed.

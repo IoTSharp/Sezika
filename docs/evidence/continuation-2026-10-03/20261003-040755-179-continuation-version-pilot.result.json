@@ -1,0 +1,26 @@
+{
+  "Status": "Succeeded",
+  "Pid": 56132,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 5.362,
+  "TimeoutSeconds": 15,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "--version"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-03T04:07:56.8693757Z",
+  "ParentPid": 54860,
+  "Launcher": {
+    "Pid": 54860,
+    "Started": "2026-10-03T12:07:54.236908+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString()\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('--version') -TimeoutSeconds 15 -LogName 'continuation-version-pilot'\ngit diff --stat\ngit diff --check\"",
+    "ParentPid": 47744
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20261003-040755-179-continuation-version-pilot.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20261003-040755-179-continuation-version-pilot.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

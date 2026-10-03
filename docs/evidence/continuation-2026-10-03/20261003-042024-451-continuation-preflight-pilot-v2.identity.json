@@ -1,0 +1,26 @@
+{
+  "Pid": 67716,
+  "Started": "2026-10-03T04:20:25.6228679Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.IndependentModelTool/Verify-Preflight.ps1 -MaximumCases 1",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 46408,
+  "ObservedParentPid": 46408,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 46408,
+    "Started": "2026-10-03T12:20:23.980747+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$parseErrors = $null\n$null = [System.Management.Automation.Language.Parser]::ParseFile((Join-Path $PWD 'tools/Sezika.IndependentModelTool/Verify-Preflight.ps1'), [ref]$null, [ref]$parseErrors)\nif ($parseErrors.Count -gt 0) { throw ($parseErrors | Out-String) }\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','tools/Sezika.IndependentModelTool/Verify-Preflight.ps1','-MaximumCases','1') -TimeoutSeconds 45 -ProcessQueryTimeoutSeconds 5 -LogName 'continuation-preflight-pilot-v2'\"",
+    "ParentPid": 47744
+  },
+  "TimeoutSeconds": 45,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "tools/Sezika.IndependentModelTool/Verify-Preflight.ps1",
+    "-MaximumCases",
+    "1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

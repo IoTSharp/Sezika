@@ -1,0 +1,22 @@
+{
+  "Pid": 80120,
+  "Started": "2026-10-03T04:10:39.9208081Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 57928,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 57928,
+    "Started": "2026-10-03T12:10:35.463952+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$parseErrors = $null\n$null = [System.Management.Automation.Language.Parser]::ParseFile((Join-Path $PWD 'tools/Invoke-BoundedProcess.ps1'), [ref]$null, [ref]$parseErrors)\nif ($parseErrors.Count -gt 0) { throw ($parseErrors | Out-String) }\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('--version') -TimeoutSeconds 15 -ProcessQueryTimeoutSeconds 5 -LogName 'continuation-monitor-pilot-v2'\"",
+    "ParentPid": 47744
+  },
+  "TimeoutSeconds": 15,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "--version"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

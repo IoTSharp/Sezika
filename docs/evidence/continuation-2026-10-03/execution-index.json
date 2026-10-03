@@ -1,0 +1,505 @@
+{
+  "schema_version": 1,
+  "base_commit": "81a027711356d1c15bbe3526567cfcfb22084034",
+  "timezone": "Asia/Shanghai",
+  "date": "2026-10-03",
+  "powershell_version": "7.6.6",
+  "dotnet_version": "10.0.401",
+  "scope": "engineering_contracts_and_archival_profile_validation_not_independent_model_quality",
+  "real_independent_weights_present": false,
+  "source_hashes": [
+    {
+      "path": "src/Sezika/IndependentModelLoader.cs",
+      "sha256": "CA59567FA80A4306DD5DC10645D8A1BFC13A5A9AB307AC5EF2B6168DC5296742"
+    },
+    {
+      "path": "src/Sezika/IndependentModelContract.cs",
+      "sha256": "170A650A5470642722288CF80C66454D1E174D6AB688E055304EDD959362845B"
+    },
+    {
+      "path": "src/Sezika/Calibration.cs",
+      "sha256": "9E8E154D1DED6F3E670AD210BF7A8277530CDFB3FF6674DE91712623E7A899DA"
+    },
+    {
+      "path": "src/Sezika/CalibrationProfiles.cs",
+      "sha256": "884405A0E401A2592E61B671DFE6D89E106F4D5982050F4AD0D3DDCD3AD728C2"
+    },
+    {
+      "path": "src/Sezika/CalibrationConfidenceIntervals.cs",
+      "sha256": "CE868EC792E01411992268470372C5173ADD992B8A58BA2D460B17F3CCE5C7BA"
+    },
+    {
+      "path": "tests/Sezika.Tests/Program.cs",
+      "sha256": "9FC4AE971C351713AC5F44C68BAF15727978D70A9F550CF9F51190AD639DB3DB"
+    },
+    {
+      "path": "tests/Sezika.Tests/CalibrationContinuationChecks.cs",
+      "sha256": "D0B92E1A1BE4388A2F4F0CF3E280D6B1752532E4983D539442A6572308F4D169"
+    },
+    {
+      "path": "tests/Sezika.Tests/IndependentLoaderContractChecks.cs",
+      "sha256": "65AFD380A3375FA31B7879F16141659A06230B701EA36358E663A93D8A7092DA"
+    },
+    {
+      "path": "tests/Sezika.Tests/Sezika.Tests.csproj",
+      "sha256": "DB8BC8E7D23DCD40063003B35905565CF1DDA5001D1D4AB27564E6578F01E9CA"
+    },
+    {
+      "path": "tools/Sezika.IndependentModelTool/Program.cs",
+      "sha256": "81044C67EF620E8A913C24C7307813BA8B6538A14125A4B04962EAEFD0070142"
+    },
+    {
+      "path": "tools/Sezika.IndependentModelTool/Verify-Preflight.ps1",
+      "sha256": "0E13D64329F81063D632D00D7B0D4EC23D00FF3A1C9E72D864A1CB13D744AD5A"
+    },
+    {
+      "path": "tools/Sezika.TeacherTool/Program.cs",
+      "sha256": "58849B6CAD8ECA6A2C4E6F477B990DBC88CAD10D661445F49489F198CF068FC8"
+    },
+    {
+      "path": "tools/Sezika.TeacherTool/Verify-Contract.ps1",
+      "sha256": "4E59DE71E4DA23F58733ADA71C449F87A416DEA2F554DA62D23E6FC0190774A6"
+    },
+    {
+      "path": "tools/Validate-S5Profile.ps1",
+      "sha256": "FE7B6BAF5565C130569BE97DEC9DB2490D792B82A45FC92146C3F258C6A8028C"
+    },
+    {
+      "path": "tools/Sezika.Benchmarks/ValidateProfileChecks.ps1",
+      "sha256": "E76970E0E6AFC2550EEFAC29210CC9894492E029B61CEC59B59491C46E0C1A4A"
+    },
+    {
+      "path": "tools/Invoke-BoundedProcess.ps1",
+      "sha256": "92E4D8F983BF0104513A63E0A131F5F2E2E5085940AE73ADE0108DE9AEF80BC5"
+    }
+  ],
+  "root_executions": [
+    {
+      "status": "Succeeded",
+      "pid": 56132,
+      "started": "2026-10-03T04:07:56.8693757Z",
+      "parent_pid": 54860,
+      "exit_code": 0,
+      "elapsed_seconds": 5.362,
+      "timeout_seconds": 15,
+      "cleanup_errors": [],
+      "files": [
+        {
+          "file": "20261003-040755-179-continuation-version-pilot.result.json",
+          "sha256": "A31E51D6CA2F905731FB7DB83FCA7097B811A566863F611C91EBB856FD35A4B2"
+        },
+        {
+          "file": "20261003-040755-179-continuation-version-pilot.stdout.log",
+          "sha256": "3DB6BCA4B50618B2E0D2D55D23B3D0541FE039AB6F731DF0E9C47317B400CE52"
+        },
+        {
+          "file": "20261003-040755-179-continuation-version-pilot.stderr.log",
+          "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        },
+        {
+          "file": "20261003-040755-179-continuation-version-pilot.identity.json",
+          "sha256": "4E46511217AFE60B3D159E550E26796B2DF5C4F412F2440678BB5BF98400006D"
+        }
+      ]
+    },
+    {
+      "status": "Failed",
+      "pid": 51872,
+      "started": "2026-10-03T04:08:11.6428466Z",
+      "parent_pid": 45368,
+      "exit_code": null,
+      "elapsed_seconds": 28.011,
+      "timeout_seconds": 240,
+      "cleanup_errors": [
+        "PID 62468: 调用“GetProcessById”并传入“1”个参数时发生异常：“Process with an Id of 62468 is not running.”",
+        "Cleanup ended before all recorded processes were confirmed exited."
+      ],
+      "files": [
+        {
+          "file": "20261003-040810-145-continuation-solution-build.result.json",
+          "sha256": "7738396EB0DAC0BB45028DE4412658B04B589D789586A2711DAB610F727F754E"
+        },
+        {
+          "file": "20261003-040810-145-continuation-solution-build.stdout.log",
+          "sha256": "9993707C532F1D4F4BB2E25A27E876A16E36504F65DF072DB1DE4FC7DB138A73"
+        },
+        {
+          "file": "20261003-040810-145-continuation-solution-build.stderr.log",
+          "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        },
+        {
+          "file": "20261003-040810-145-continuation-solution-build.identity.json",
+          "sha256": "07FBF8BED48AED83D086FAC8E43CF904B826A369A8C3893D3AE77A6FBAA8F0DC"
+        }
+      ]
+    },
+    {
+      "status": "Succeeded",
+      "pid": 80120,
+      "started": "2026-10-03T04:10:39.9208081Z",
+      "parent_pid": 57928,
+      "exit_code": 0,
+      "elapsed_seconds": 7.122,
+      "timeout_seconds": 15,
+      "cleanup_errors": [],
+      "files": [
+        {
+          "file": "20261003-041037-022-continuation-monitor-pilot-v2.result.json",
+          "sha256": "018895C54BEF51C7646721E7FFBDED40594109FE866EB7FB9CF2FF648BB4F565"
+        },
+        {
+          "file": "20261003-041037-022-continuation-monitor-pilot-v2.stdout.log",
+          "sha256": "3DB6BCA4B50618B2E0D2D55D23B3D0541FE039AB6F731DF0E9C47317B400CE52"
+        },
+        {
+          "file": "20261003-041037-022-continuation-monitor-pilot-v2.stderr.log",
+          "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        },
+        {
+          "file": "20261003-041037-022-continuation-monitor-pilot-v2.identity.json",
+          "sha256": "F3A661FFEFAC2FDEFC99860ED2EA933C4D95FE06BF74DF8F930C4A6319F653FA"
+        }
+      ]
+    },
+    {
+      "status": "Succeeded",
+      "pid": 66704,
+      "started": "2026-10-03T04:11:06.4875758Z",
+      "parent_pid": 35384,
+      "exit_code": 0,
+      "elapsed_seconds": 116.734,
+      "timeout_seconds": 240,
+      "cleanup_errors": [],
+      "files": [
+        {
+          "file": "20261003-041104-669-continuation-solution-build-v2.result.json",
+          "sha256": "FA205F1AB09FF0AB9D0E4D495D7E216385ABA051B4F6B262BFF18D059FEF4221"
+        },
+        {
+          "file": "20261003-041104-669-continuation-solution-build-v2.stdout.log",
+          "sha256": "566DB5FDE39513E2B332427CEB21096B064B202D37A4331DD6F3456E3A36BDB1"
+        },
+        {
+          "file": "20261003-041104-669-continuation-solution-build-v2.stderr.log",
+          "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        },
+        {
+          "file": "20261003-041104-669-continuation-solution-build-v2.identity.json",
+          "sha256": "5B9F4016182082CC0D598578AA47E226FBE11AE2678615AC603CC3AA188FF5A3"
+        }
+      ]
+    },
+    {
+      "status": "Succeeded",
+      "pid": 66340,
+      "started": "2026-10-03T04:13:30.8201913Z",
+      "parent_pid": 56572,
+      "exit_code": 0,
+      "elapsed_seconds": 5.231,
+      "timeout_seconds": 90,
+      "cleanup_errors": [],
+      "files": [
+        {
+          "file": "20261003-041329-341-continuation-core-tests.result.json",
+          "sha256": "60DB03648B31BADADB518E6BC8CB47FF43936647A818013C3E7075E554FCDA65"
+        },
+        {
+          "file": "20261003-041329-341-continuation-core-tests.stdout.log",
+          "sha256": "59E235A4D3206B88306B48282715DF8664ACD86AB7C6F11867C82975E6CEBCB8"
+        },
+        {
+          "file": "20261003-041329-341-continuation-core-tests.stderr.log",
+          "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        },
+        {
+          "file": "20261003-041329-341-continuation-core-tests.identity.json",
+          "sha256": "F09CB9B949C2E7FCE41DEFA5BF08998A35FC140D874D4A3B26E168EE6AE9966C"
+        }
+      ]
+    },
+    {
+      "status": "Succeeded",
+      "pid": 51268,
+      "started": "2026-10-03T04:13:30.9525412Z",
+      "parent_pid": 57644,
+      "exit_code": 0,
+      "elapsed_seconds": 5.414,
+      "timeout_seconds": 30,
+      "cleanup_errors": [],
+      "files": [
+        {
+          "file": "20261003-041329-413-continuation-development-metrics.result.json",
+          "sha256": "D5DCF96A048F6E2B9AE58CE786885675E1D47F941BF48FBD62DB862EA460FAA4"
+        },
+        {
+          "file": "20261003-041329-413-continuation-development-metrics.stdout.log",
+          "sha256": "B94B0D5E75E7968F862D769504E372EB355C01B7C205B9966BF971EB9CD5ED49"
+        },
+        {
+          "file": "20261003-041329-413-continuation-development-metrics.stderr.log",
+          "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        },
+        {
+          "file": "20261003-041329-413-continuation-development-metrics.identity.json",
+          "sha256": "0B79A8BFC83BDD884251E72880B6A4D885E70F89A7D3720B6095A648455F0EB3"
+        }
+      ]
+    },
+    {
+      "status": "Succeeded",
+      "pid": 86816,
+      "started": "2026-10-03T04:14:10.2224612Z",
+      "parent_pid": 89896,
+      "exit_code": 0,
+      "elapsed_seconds": 5.256,
+      "timeout_seconds": 90,
+      "cleanup_errors": [],
+      "files": [
+        {
+          "file": "20261003-041408-376-continuation-resource-tests.result.json",
+          "sha256": "15C9C07A1246990324F479C0C6C3C40060A494A4E05B5030A4DE8D5896034B42"
+        },
+        {
+          "file": "20261003-041408-376-continuation-resource-tests.stdout.log",
+          "sha256": "99E47D5DD96D8483FC1118689F62FF92E3C3FB0DED626C32D31EE2400646149C"
+        },
+        {
+          "file": "20261003-041408-376-continuation-resource-tests.stderr.log",
+          "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        },
+        {
+          "file": "20261003-041408-376-continuation-resource-tests.identity.json",
+          "sha256": "2D5A187DE7CC1546603388462EF8F42164923ACC03533F4D02B9197E80A8E9A1"
+        }
+      ]
+    },
+    {
+      "status": "Succeeded",
+      "pid": 73972,
+      "started": "2026-10-03T04:14:10.1772611Z",
+      "parent_pid": 32564,
+      "exit_code": 0,
+      "elapsed_seconds": 5.245,
+      "timeout_seconds": 60,
+      "cleanup_errors": [],
+      "files": [
+        {
+          "file": "20261003-041408-414-continuation-cuda-diagnostics.result.json",
+          "sha256": "88526E4757D8DE62968679462DDCCD9F619867C84861CB45E78BAB27D70E02C3"
+        },
+        {
+          "file": "20261003-041408-414-continuation-cuda-diagnostics.stdout.log",
+          "sha256": "64FB01E921F284FA8D452038846644267EE2616B826ABEDCB361A119854AE93E"
+        },
+        {
+          "file": "20261003-041408-414-continuation-cuda-diagnostics.stderr.log",
+          "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        },
+        {
+          "file": "20261003-041408-414-continuation-cuda-diagnostics.identity.json",
+          "sha256": "9029F60000510DF5C9FDDEBDDEA5F2BE172015D4B599D3990DEAD89331A166E7"
+        }
+      ]
+    },
+    {
+      "status": "Succeeded",
+      "pid": 77992,
+      "started": "2026-10-03T04:15:23.2139401Z",
+      "parent_pid": 80968,
+      "exit_code": 0,
+      "elapsed_seconds": 73.57,
+      "timeout_seconds": 300,
+      "cleanup_errors": [],
+      "files": [
+        {
+          "file": "20261003-041521-930-continuation-win-contract-aot-publish.result.json",
+          "sha256": "2317815238FDFC690C230104437C8290C39FA6B8E1C7C36B7319C4E917BCAB1F"
+        },
+        {
+          "file": "20261003-041521-930-continuation-win-contract-aot-publish.stdout.log",
+          "sha256": "424B7B7BD2FE1B6DC358100C324132DBB9D8F37A6F57AAD9E0C298D114C5008F"
+        },
+        {
+          "file": "20261003-041521-930-continuation-win-contract-aot-publish.stderr.log",
+          "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        },
+        {
+          "file": "20261003-041521-930-continuation-win-contract-aot-publish.identity.json",
+          "sha256": "B85CF76239D7B1901C3670C09D57FDE93223B6FEA9E00131E9540C1F99D7F7B4"
+        }
+      ]
+    },
+    {
+      "status": "Succeeded",
+      "pid": 66404,
+      "started": "2026-10-03T04:17:22.7947271Z",
+      "parent_pid": 50024,
+      "exit_code": 0,
+      "elapsed_seconds": 3.625,
+      "timeout_seconds": 60,
+      "cleanup_errors": [],
+      "files": [
+        {
+          "file": "20261003-041721-810-continuation-win-contract-aot-run.result.json",
+          "sha256": "1691FC7CA89928EFF08406D8BB4A8C710CD8627C3E1EC090FAFB5D4DECC3C1A0"
+        },
+        {
+          "file": "20261003-041721-810-continuation-win-contract-aot-run.stdout.log",
+          "sha256": "B373609F2236AD7BA8208CA12DD0D7044736FD2DF478CF488D70DBF925EA4F6E"
+        },
+        {
+          "file": "20261003-041721-810-continuation-win-contract-aot-run.stderr.log",
+          "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        },
+        {
+          "file": "20261003-041721-810-continuation-win-contract-aot-run.identity.json",
+          "sha256": "012413E3AAAD2FD239B6B6C9BCE15DC6C355C24D51852B9E961CF9BC609203A5"
+        }
+      ]
+    },
+    {
+      "status": "Succeeded",
+      "pid": 58688,
+      "started": "2026-10-03T04:17:53.3442339Z",
+      "parent_pid": 81968,
+      "exit_code": 0,
+      "elapsed_seconds": 13.493,
+      "timeout_seconds": 240,
+      "cleanup_errors": [],
+      "files": [
+        {
+          "file": "20261003-041752-398-continuation-final-solution-build.result.json",
+          "sha256": "F192DACFD5F273323EFCB65C85B959CF548FFF443A893DED714066441F5D67F6"
+        },
+        {
+          "file": "20261003-041752-398-continuation-final-solution-build.stdout.log",
+          "sha256": "05D537536C40DA6AA342CD3168D04AD4F678C1437BEC6476652D86DB061E34EC"
+        },
+        {
+          "file": "20261003-041752-398-continuation-final-solution-build.stderr.log",
+          "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        },
+        {
+          "file": "20261003-041752-398-continuation-final-solution-build.identity.json",
+          "sha256": "AE76D339820392891D5C28BABECC45CAAB24E5653E60185D06E5AB4B715525F9"
+        }
+      ]
+    },
+    {
+      "status": "Failed",
+      "pid": 10796,
+      "started": "2026-10-03T04:20:06.1829128Z",
+      "parent_pid": 87868,
+      "exit_code": 1,
+      "elapsed_seconds": 4.198,
+      "timeout_seconds": 45,
+      "cleanup_errors": [],
+      "files": [
+        {
+          "file": "20261003-042004-660-continuation-preflight-pilot.result.json",
+          "sha256": "FB794531CB9239A5F91A9062644F9480396634735CACCF97169E3B5050E914AF"
+        },
+        {
+          "file": "20261003-042004-660-continuation-preflight-pilot.stdout.log",
+          "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        },
+        {
+          "file": "20261003-042004-660-continuation-preflight-pilot.stderr.log",
+          "sha256": "84F1031A6B40DFAAD646F24A6E8215568C42339E797B337B9BA94E7A396F9CC4"
+        },
+        {
+          "file": "20261003-042004-660-continuation-preflight-pilot.identity.json",
+          "sha256": "3B71C2ECDE2D1CF640A9C54ADDD84F4162DB9F363DBF329508BC76DA10989898"
+        }
+      ]
+    },
+    {
+      "status": "Succeeded",
+      "pid": 89408,
+      "started": "2026-10-03T04:20:06.329751Z",
+      "parent_pid": 77908,
+      "exit_code": 0,
+      "elapsed_seconds": 4.302,
+      "timeout_seconds": 90,
+      "cleanup_errors": [],
+      "files": [
+        {
+          "file": "20261003-042004-697-continuation-final-core-tests.result.json",
+          "sha256": "2F1973B3BAC677D0A03B225D08A7F46CE1B4E35C23344A3AB95EC1FED2224E06"
+        },
+        {
+          "file": "20261003-042004-697-continuation-final-core-tests.stdout.log",
+          "sha256": "59E235A4D3206B88306B48282715DF8664ACD86AB7C6F11867C82975E6CEBCB8"
+        },
+        {
+          "file": "20261003-042004-697-continuation-final-core-tests.stderr.log",
+          "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        },
+        {
+          "file": "20261003-042004-697-continuation-final-core-tests.identity.json",
+          "sha256": "D8D6FE0C31934CBD85F556722CA19EBA1B53A61C2F126B63288A1FBDB721943D"
+        }
+      ]
+    },
+    {
+      "status": "Succeeded",
+      "pid": 67716,
+      "started": "2026-10-03T04:20:25.6228679Z",
+      "parent_pid": 46408,
+      "exit_code": 0,
+      "elapsed_seconds": 7.236,
+      "timeout_seconds": 45,
+      "cleanup_errors": [],
+      "files": [
+        {
+          "file": "20261003-042024-451-continuation-preflight-pilot-v2.result.json",
+          "sha256": "A9ECC076A599C230E964E75BEF5D4DA299A040F943F7FD520AF82F8A0CCAB917"
+        },
+        {
+          "file": "20261003-042024-451-continuation-preflight-pilot-v2.stdout.log",
+          "sha256": "E6E205CE523E2B9DD7599B67FC1215466DD0DFE2D16F3EA286C4605781465C9B"
+        },
+        {
+          "file": "20261003-042024-451-continuation-preflight-pilot-v2.stderr.log",
+          "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        },
+        {
+          "file": "20261003-042024-451-continuation-preflight-pilot-v2.identity.json",
+          "sha256": "A80DAA92D1F53A3F1F11F27C297C07DA7D62A43F14791833BF517199DB4D9254"
+        }
+      ]
+    },
+    {
+      "status": "Succeeded",
+      "pid": 76808,
+      "started": "2026-10-03T04:20:40.6305928Z",
+      "parent_pid": 54772,
+      "exit_code": 0,
+      "elapsed_seconds": 13.541,
+      "timeout_seconds": 120,
+      "cleanup_errors": [],
+      "files": [
+        {
+          "file": "20261003-042039-524-continuation-preflight-full.result.json",
+          "sha256": "C9C15BF96E36BFD8294656EBE4034234EB8FD47595392CF059BA7714AA6D1289"
+        },
+        {
+          "file": "20261003-042039-524-continuation-preflight-full.stdout.log",
+          "sha256": "4311FA0C554E9A2BE6B5E242FD9D293618BE16407FCF118D6FD53ACCFA166EAB"
+        },
+        {
+          "file": "20261003-042039-524-continuation-preflight-full.stderr.log",
+          "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        },
+        {
+          "file": "20261003-042039-524-continuation-preflight-full.identity.json",
+          "sha256": "66AE5EE71F6BBE361C49CF6C862D8B0F48F4B82208C319B5346E36D1F6D3AAFE"
+        }
+      ]
+    }
+  ],
+  "tracked_process_identity_count": 67,
+  "live_matching_processes": [],
+  "aot_executable_sha256": "3C918052B9654ED647EE5B1BECFAB12618ADC58BE0D074A28F29D4AFE663BD47",
+  "limitation": "Process snapshots can miss short-lived descendants; no blanket process termination or deletion of shared caches."
+}

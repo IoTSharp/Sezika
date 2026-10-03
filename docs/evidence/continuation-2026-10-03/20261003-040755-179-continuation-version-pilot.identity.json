@@ -1,0 +1,21 @@
+{
+  "Pid": 56132,
+  "Started": "2026-10-03T04:07:56.8693757Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 54860,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 54860,
+    "Started": "2026-10-03T12:07:54.236908+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString()\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('--version') -TimeoutSeconds 15 -LogName 'continuation-version-pilot'\ngit diff --stat\ngit diff --check\"",
+    "ParentPid": 47744
+  },
+  "TimeoutSeconds": 15,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "--version"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

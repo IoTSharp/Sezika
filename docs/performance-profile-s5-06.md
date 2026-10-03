@@ -1,5 +1,7 @@
 # S5-06：短、中、长输入性能画像工具准备
 
+2026-10-03 [续审计](evidence/performance-continuation-2026-10-03.md)加强 schema v3 证据校验：从原始样本重算吞吐、覆盖分母和分位数，严格检查矩阵、数值类型、输入/代码身份以及 discovery/instrumented 完成数，并拒绝所有嵌套及转义同名 JSON 字段。四份历史真实画像与 33 项篡改负例通过针对性验证。本轮没有执行新模型画像；CPU 完整矩阵、独立模型质量及两 RID AOT 门槛保持未完成，S5-07 优化收益仍为 blocked。
+
 本轮schema v3的[真实续验证](evidence/s346-continuation-2026-09-26.md)已完成四项正例及受控CUDA截止负例：long-32 end_to_end单样本38.319秒，独立分项未测；CPU long-1为42.183秒，long-32两遍估算超总预算而未启动。3进入/2完成/0正式样本及失败释放路径均有真实证据。下述旧矩阵结果继续按原构建身份保存。
 
 状态：2026-09-25 已实现工具代码并迁移到 S3-09/10 共用的 `PromptSequenceBuilder`，画像报告升级至 schema v2。2026-09-26 已完成真实 CUDA 九行 × 三正式样本；SIMD 九行尝试中八行各测得一个正式样本，long-32 在 discovery 触发既有单请求 300 秒期限，完整失败报告已保留。见 [CPU/CUDA 实测与输入预检证据](evidence/s5-profile-2026-09-26.md)。本页说明采集口径；整体阶段状态以执行证据及 [ROADMAP](../ROADMAP.md) 为准，不能将 SIMD 矩阵写成全部通过。token 预检和真实 encoder/head 测量分别记录。
@@ -91,3 +93,18 @@ pwsh -NoProfile -File .\tools\Validate-S5Profile.ps1 `
   -ReportPaths @('.\docs\evidence\s346-continuation-2026-09-26\profile-simd-short1.json', '.\docs\evidence\s346-continuation-2026-09-26\profile-cuda-long32.json') `
   -OutputPath .\.artifacts\s5-profile-validation.json -TimeoutSeconds 30
 ```
+
+当前校验器另外要求所选长度/题数唯一、每行恰好覆盖声明矩阵，拒绝字符串/Boolean 冒充数值；重算 min/max、request/question throughput、执行覆盖率和问题数分母。测量行必须具备匹配的真实 token/hash/marker 及全部 discovery 完成数；`full` 要有独立 stage forward 完成数，`end_to_end` 明确不包含分项。合法拒绝仅为 token 预算/长度错误，且不能携带正式样本或测量吞吐。校验后的汇总保留模型、tokenizer、manifest、应用程序集/可执行文件 hash、输入 hash、渲染版本、detail、预算、采样设置和硬件环境；它不读取已归档运行的旧本地程序集路径，也不把报告自述的 `native_aot` 当作新的 AOT 验收。
+
+JSON 原始 byte snapshot 使用严格 UTF-8 和 `JsonDocument` 检查重复成员；逐对象以 Ordinal 比较转义解码后的 property name，所有嵌套对象和数组均检查，最大深度 64、最多 131072 节点且受同一墙钟取消约束。后续 PowerShell 解析不能靠覆盖同名属性改变判定。
+
+`tools/Sezika.Benchmarks/ValidateProfileChecks.ps1` 用既有四份真实报告和明确标为篡改的非法 fixture 回归上述门槛。最多 32 项对象变异及 3 项原始重复字段负例、30 秒默认总期限、单次校验使用剩余时间；先一份 smoke 再批次，支持 PowerShell 取消及进度。临时 GUID 目录仅由本次创建并在 `finally` 核实绝对路径后删除，结果在删除成功后才写入。使用新的输出路径运行：
+
+```powershell
+& .\tools\Invoke-BoundedProcess.ps1 -FilePath 'C:\Program Files\PowerShell\7\pwsh.exe' -TimeoutSeconds 40 -LogName 's5-profile-validator-checks' -ArgumentList @(
+  '-NoProfile', '-File', 'tools/Sezika.Benchmarks/ValidateProfileChecks.ps1',
+  '-OutputPath', '.artifacts/s5-profile-validator-checks.json', '-TimeoutSeconds', '30'
+)
+```
+
+上述 `passed` 仅代表证据结构与算术一致。S5-07 仍须对应权重的数值/质量门槛、同输入与同资源预算的真实逐项消融、取消/卸载及两 RID AOT 回归。旧 Laya 画像不能替代独立 head 的证据，也不能把单样本分位数写成稳定尾延迟或性能改善。

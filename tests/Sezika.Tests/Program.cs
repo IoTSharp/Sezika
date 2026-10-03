@@ -36,6 +36,18 @@ byte[] SafeTensorFile(string headerJson, int payloadBytes)
 
 try
 {
+    if (args.Length == 1 && args[0] is "--continuation-contract" or "--continuation-contract-aot")
+    {
+        if (args[0] == "--continuation-contract-aot")
+            Check(!System.Runtime.CompilerServices.RuntimeFeature.IsDynamicCodeSupported &&
+                !System.Runtime.CompilerServices.RuntimeFeature.IsDynamicCodeCompiled &&
+                AppContext.GetData("TRUSTED_PLATFORM_ASSEMBLIES") is null,
+                "continuation contract executes in Native AOT");
+        global::Sezika.Tests.IndependentLoaderContractChecks.Run(Check, ExpectDecisionCode);
+        global::Sezika.Tests.CalibrationContinuationChecks.Run(Check, ExpectDecisionCode);
+        Console.WriteLine($"Sezika continuation contract checks passed: {passed}");
+        return 0;
+    }
     if (args.Length == 1 && args[0] is "--prompt-contract" or "--prompt-contract-aot")
     {
         if (args[0] == "--prompt-contract-aot")
@@ -96,6 +108,8 @@ try
     ], epochs: 20);
     Check(trained.Weights[0] > 0 && double.IsFinite(trained.FinalLogLoss), "frozen encoder head training");
     global::Sezika.Tests.IndependentMarkerHeadChecks.Run(Check, ExpectDecisionCode);
+    global::Sezika.Tests.IndependentLoaderContractChecks.Run(Check, ExpectDecisionCode);
+    global::Sezika.Tests.CalibrationContinuationChecks.Run(Check, ExpectDecisionCode);
 
     var closureChecks = global::Sezika.Tests.ModelPackageLifecycleChecks.Run();
     Check(closureChecks == 4, "model package install/lease/uninstall lifecycle");

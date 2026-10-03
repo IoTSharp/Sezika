@@ -1,0 +1,36 @@
+{
+  "Pid": 77992,
+  "Started": "2026-10-03T04:15:23.2139401Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish tests/Sezika.Tests/Sezika.Tests.csproj -c Release -r win-x64 -p:PublishAot=true -p:UseSharedCompilation=false --disable-build-servers -m:1 -o .artifacts/continuation-20261003/win-contract-aot --nologo -v minimal",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 80968,
+  "ObservedParentPid": 80968,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 80968,
+    "Started": "2026-10-03T12:15:21.383706+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('publish','tests/Sezika.Tests/Sezika.Tests.csproj','-c','Release','-r','win-x64','-p:PublishAot=true','-p:UseSharedCompilation=false','--disable-build-servers','-m:1','-o','.artifacts/continuation-20261003/win-contract-aot','--nologo','-v','minimal') -TimeoutSeconds 300 -ProcessQueryTimeoutSeconds 5 -LogName 'continuation-win-contract-aot-publish'\"",
+    "ParentPid": 47744
+  },
+  "TimeoutSeconds": 300,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "publish",
+    "tests/Sezika.Tests/Sezika.Tests.csproj",
+    "-c",
+    "Release",
+    "-r",
+    "win-x64",
+    "-p:PublishAot=true",
+    "-p:UseSharedCompilation=false",
+    "--disable-build-servers",
+    "-m:1",
+    "-o",
+    ".artifacts/continuation-20261003/win-contract-aot",
+    "--nologo",
+    "-v",
+    "minimal"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

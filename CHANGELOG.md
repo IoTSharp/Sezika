@@ -1,6 +1,8 @@
 # Changelog
 
 ## Unreleased
+- 从 `81a0277` 并行推进 S4-08/S4-10/S4-11/S4-15/S5-06：修复校准基线/有限值/封存 split 门槛及指标分母；加固教师离线审核、家族隔离、全状态计数和不覆盖输出；锁定独立 encoder 数值配置与134 tensor布局，限制资产字节并预检查路径；严格校验画像矩阵、JSON类型/重复字段、身份、覆盖率/吞吐和独立分项。补有界回归及Windows AOT合同 fixture证据，实际模型质量/校准/教师/两RID部署和S5-07优化收益继续 pending/blocked，见[本轮统一证据](docs/evidence/continuation-2026-10-03.md)。
+- 修复开发诊断将不同题型/Choice局部候选位置混合池化AUROC的语义，补全失败分母accuracy、Boolean负类召回及Score期望MAE；新增合成指标自检，不把fixture结果当作模型输出。进程监控增加2–5秒可选CIM查询上限，保留首次监控超时及清理核实记录。
 
 - 完成S5-06 schema v3有界实测：CPU/CUDA short-1及CPU long-1 full画像、CUDA long-32 end_to_end单样本通过数值与生命周期检查；当前long-1为42.183秒、CUDA long-32为38.319秒。3秒CUDA截止负例保留3次进入/2次完成/0正式样本，释放与对象回收通过。当前CPU long-32两遍估算约45分钟超30分钟工具预算，本轮未启动；独立分项/尾延迟/AOT/优化收益不作通过声明，见[续验证证据](docs/evidence/s346-continuation-2026-09-26.md)。
 - 将S4-04独立数值比较扩展至PAWS250+Nimble324共574/574条通过，修复后同一构建全量重捕获；双方正确率为170/250与137/324，均为compatible。另完成中英原创fixture12/12条对比，双方8/12正确；574条冻结近并列观察命中0，Boolean负类召回仍1/57，质量/校准门槛保持开放。原Nimble初轮276条中的8条token/数值失败、剩余参考时限和续跑均保留，见[续实现证据](docs/evidence/s346-continuation-2026-09-26.md)。

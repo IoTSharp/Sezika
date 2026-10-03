@@ -9,13 +9,22 @@ using Sezika;
 const string SourceSha256 = "8ea64ec1ea4eb8fca0fc14b69a2ae571de6bfbc25fd214bb932dd4aba6a3a04e";
 const long SourceBytes = 1_231_188_142;
 var command = args.Length == 0 ? "help" : args[0].ToLowerInvariant();
+using var lifetime = new CancellationTokenSource(TimeSpan.FromMinutes(30));
+ConsoleCancelEventHandler cancelHandler = (_, eventArgs) => { eventArgs.Cancel = true; lifetime.Cancel(); };
+Console.CancelKeyPress += cancelHandler;
 try
 {
+    if (command == "check-development-metrics")
+    {
+        CheckDevelopmentMetrics(lifetime.Token);
+        return 0;
+    }
     if (command == "convert-pytorch")
     {
         var input = RequiredOption("--input"); var output = RequiredOption("--output");
         var timeout = BoundedOption("--timeout-seconds", 1, 1800, 900);
-        using var cancellation = new CancellationTokenSource(TimeSpan.FromSeconds(timeout));
+        using var cancellation = CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);
+        cancellation.CancelAfter(TimeSpan.FromSeconds(timeout));
         var result = ConvertPyTorch(Path.GetFullPath(input), Path.GetFullPath(output), cancellation.Token);
         Console.WriteLine($"converted {result.TensorCount} tensors, bytes={result.Bytes:N0}, sha256={result.Sha256}");
         return 0;
@@ -23,7 +32,8 @@ try
     if (command == "smoke")
     {
         var package = Path.GetFullPath(RequiredOption("--package"));
-        using var cancellation = new CancellationTokenSource(TimeSpan.FromMinutes(10));
+        using var cancellation = CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);
+        cancellation.CancelAfter(TimeSpan.FromMinutes(10));
         using var model = IndependentModelLoader.Load(package, new EncoderExecutionOptions { Kernel = EncoderKernelMode.Scalar, Deadline = TimeSpan.FromMinutes(10) }, cancellation.Token);
         using var state = JsonDocument.Parse("{\"text\":\"independent encoder smoke\"}");
         var question = new IndependentChoiceQuestion("intent", "choose the intent", [
@@ -44,7 +54,8 @@ try
         var recordsPath = Path.GetFullPath(RequiredOption("--records"));
         var headPath = Path.GetFullPath(RequiredOption("--head"));
         var reportPath = Path.GetFullPath(RequiredOption("--report"));
-        using var cancellation = new CancellationTokenSource(TimeSpan.FromMinutes(10));
+        using var cancellation = CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);
+        cancellation.CancelAfter(TimeSpan.FromMinutes(10));
         TrainOriginal(package, recordsPath, headPath, reportPath, cancellation.Token);
         return 0;
     }
@@ -55,7 +66,8 @@ try
         var headPath = Path.GetFullPath(RequiredOption("--head"));
         var trainingReportPath = Path.GetFullPath(RequiredOption("--training-report"));
         var reportPath = Path.GetFullPath(RequiredOption("--report"));
-        using var cancellation = new CancellationTokenSource(TimeSpan.FromMinutes(10));
+        using var cancellation = CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);
+        cancellation.CancelAfter(TimeSpan.FromMinutes(10));
         EvaluateOriginal(package, recordsPath, headPath, trainingReportPath, reportPath, cancellation.Token);
         return 0;
     }
@@ -67,7 +79,7 @@ try
 }
 catch (OperationCanceledException)
 {
-    Console.Error.WriteLine("independent-model-tool: conversion cancelled or exceeded its bounded timeout");
+    Console.Error.WriteLine("independent-model-tool: operation cancelled or exceeded its bounded timeout");
     return 124;
 }
 catch (Exception exception)
@@ -75,6 +87,7 @@ catch (Exception exception)
     Console.Error.WriteLine($"independent-model-tool: {exception.Message}");
     return 1;
 }
+finally { Console.CancelKeyPress -= cancelHandler; }
 
 static string RequiredOption(string name)
 {
@@ -388,6 +401,7 @@ static void WriteMetrics(Utf8JsonWriter writer, IReadOnlyList<OriginalEvaluation
     writer.WriteStartObject(); writer.WriteNumber("total", rows.Count); writer.WriteNumber("answered", answered.Length);
     writer.WriteNumber("rejected", rows.Count - answered.Length); writer.WriteNumber("coverage", Coverage(rows));
     writer.WriteNumber("correct", answered.Count(row => row.Correct == true));
+    WriteNullable(writer, "accuracy_on_all", rows.Count == 0 ? null : answered.Count(row => row.Correct == true) / (double)rows.Count);
     WriteNullable(writer, "accuracy_on_answered", answered.Length == 0 ? null : answered.Count(row => row.Correct == true) / (double)answered.Length);
     writer.WritePropertyName("accuracy_ci95"); WriteConfidenceInterval(writer, answered);
     WriteNullable(writer, "mean_nll", answered.Length == 0 ? null : answered.Average(row => row.Nll!.Value));
@@ -395,6 +409,14 @@ static void WriteMetrics(Utf8JsonWriter writer, IReadOnlyList<OriginalEvaluation
     WriteNullable(writer, "mean_margin", answered.Length == 0 ? null : answered.Average(row => row.Margin!.Value));
     WriteNullable(writer, "ece_10_bins", ExpectedCalibrationError(answered));
     WriteNullable(writer, "auroc_macro_ovr", MacroAuroc(answered));
+    writer.WriteString("auroc_policy", "only_homogeneous_boolean_or_score_with_identical_candidate_mapping_choice_unavailable");
+    var score = answered.Where(row => row.QuestionType == "score").ToArray();
+    writer.WriteNumber("score_answered", score.Length);
+    WriteNullable(writer, "score_mae_on_answered", score.Length == 0 ? null : score.Average(ScoreError));
+    var negative = rows.Where(row => row.QuestionType == "boolean" && row.TargetIndex == 0).ToArray();
+    writer.WriteNumber("boolean_negative_total", negative.Length);
+    WriteNullable(writer, "boolean_negative_recall_on_all", negative.Length == 0 ? null :
+        negative.Count(row => row.Status == "answered" && row.PredictedIndex == 0) / (double)negative.Length);
     writer.WriteEndObject();
 }
 
@@ -423,7 +445,11 @@ static double? ExpectedCalibrationError(IReadOnlyList<OriginalEvaluationRow> row
 
 static double? MacroAuroc(IReadOnlyList<OriginalEvaluationRow> rows)
 {
-    if (rows.Count == 0 || rows.Any(row => row.CandidateCount != rows[0].CandidateCount)) return null;
+    // Per-question Choice IDs are not a reviewed common class vocabulary.
+    // Candidate positions across primitives likewise have different meanings.
+    if (rows.Count == 0 || rows[0].QuestionType is not ("boolean" or "score") ||
+        rows.Any(row => row.QuestionType != rows[0].QuestionType || row.CandidateCount != rows[0].CandidateCount ||
+            !row.CandidateIds.SequenceEqual(rows[0].CandidateIds, StringComparer.Ordinal))) return null;
     var values = new List<double>();
     for (var candidate = 0; candidate < rows[0].CandidateCount; candidate++)
     {
@@ -435,6 +461,35 @@ static double? MacroAuroc(IReadOnlyList<OriginalEvaluationRow> rows)
         values.Add(wins / (positives.Length * (double)negatives.Length));
     }
     return values.Count == 0 ? null : values.Average();
+}
+
+static double ScoreError(OriginalEvaluationRow row) => Math.Abs(row.Probabilities.Select((p, index) => p * index).Sum() - row.TargetIndex);
+
+static void CheckDevelopmentMetrics(CancellationToken cancellationToken)
+{
+    cancellationToken.ThrowIfCancellationRequested();
+    OriginalEvaluationRow Answer(string id, string type, int target, int predicted, double[] p) =>
+        new(id, "en", type, type == "boolean" ? ["false", "true"] : ["0", "1"], target, 2,
+            "answered", predicted, target == predicted, p[target], p.Max(), Math.Abs(p[0] - p[1]),
+            -Math.Log(p[target]), p.Select((value, index) => Math.Pow(value - (target == index ? 1d : 0d), 2)).Sum(), p, null);
+    var negative = Answer("negative", "boolean", 0, 0, [0.8, 0.2]);
+    var positive = Answer("positive", "boolean", 1, 1, [0.1, 0.9]);
+    var score = Answer("score", "score", 1, 0, [0.75, 0.25]);
+    var rejection = new OriginalEvaluationRow("rejected", "en", "boolean", ["false", "true"], 0, 2,
+        "rejected", null, null, null, null, null, null, null, [], "synthetic_rejection");
+    if (MacroAuroc([negative, positive]) != 1 || MacroAuroc([negative, score]) is not null ||
+        MacroAuroc([negative with { QuestionType = "choice" }, positive with { QuestionType = "choice" }]) is not null ||
+        MacroAuroc([negative, positive with { CandidateIds = ["true", "false"] }]) is not null || ScoreError(score) != 0.75)
+        throw new InvalidOperationException("Development metric mapping check failed.");
+    using var stream = new MemoryStream();
+    using (var writer = new Utf8JsonWriter(stream)) WriteMetrics(writer, [negative, positive, score, rejection]);
+    using var document = JsonDocument.Parse(stream.ToArray());
+    var json = document.RootElement;
+    if (json.GetProperty("coverage").GetDouble() != 0.75 || json.GetProperty("accuracy_on_all").GetDouble() != 0.5 ||
+        json.GetProperty("boolean_negative_total").GetInt32() != 2 || json.GetProperty("boolean_negative_recall_on_all").GetDouble() != 0.5 ||
+        json.GetProperty("score_mae_on_answered").GetDouble() != 0.75 || json.GetProperty("auroc_macro_ovr").ValueKind != JsonValueKind.Null)
+        throw new InvalidOperationException("Development metric denominator check failed.");
+    Console.WriteLine("PASS: synthetic development metric mapping and denominator checks; no model inference or quality claim");
 }
 
 static string IndependentQuestionTypeName(IndependentDecisionQuestion question) => question switch

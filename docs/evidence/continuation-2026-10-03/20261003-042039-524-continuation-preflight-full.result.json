@@ -1,0 +1,48 @@
+{
+  "Status": "Succeeded",
+  "Pid": 76808,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 13.541,
+  "TimeoutSeconds": 120,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "tools/Sezika.IndependentModelTool/Verify-Preflight.ps1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-03T04:20:40.6305928Z",
+  "ParentPid": 54772,
+  "Launcher": {
+    "Pid": 54772,
+    "Started": "2026-10-03T12:20:39.006663+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','tools/Sezika.IndependentModelTool/Verify-Preflight.ps1') -TimeoutSeconds 120 -ProcessQueryTimeoutSeconds 5 -LogName 'continuation-preflight-full'\"",
+    "ParentPid": 47744
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20261003-042039-524-continuation-preflight-full.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20261003-042039-524-continuation-preflight-full.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 76808,
+      "CreationDate": "2026-10-03T12:20:40.630592+08:00",
+      "Started": "2026-10-03T04:20:40.630592Z",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.IndependentModelTool/Verify-Preflight.ps1",
+      "ParentPid": 54772,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 36540,
+      "CreationDate": "2026-10-03T12:20:40.645097+08:00",
+      "Started": "2026-10-03T04:20:40.645097Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 76808,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

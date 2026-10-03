@@ -1,5 +1,4 @@
 using System.Security.Cryptography;
-using System.Text.Json;
 
 namespace Sezika;
 
@@ -50,32 +49,18 @@ public static class IndependentModelLoader
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(executionOptions); executionOptions.Validate();
+        using var lifetime = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        lifetime.CancelAfter(TimeSpan.FromMinutes(10));
+        cancellationToken = lifetime.Token;
+        cancellationToken.ThrowIfCancellationRequested();
         if (string.IsNullOrWhiteSpace(packageDirectory)) throw new ArgumentException("Package directory is required.", nameof(packageDirectory));
         var root = Path.GetFullPath(packageDirectory); var manifestPath = Within(root, "model.json");
         var weightsPath = Within(root, "encoder.safetensors"); var tokenizerPath = Within(root, "tokenizer/tokenizer.json");
         if (!File.Exists(manifestPath) || !File.Exists(weightsPath) || !File.Exists(tokenizerPath))
             throw new DecisionException("independent_model_not_installed", "Independent model package is incomplete.");
-        using var document = JsonDocument.Parse(ReadBounded(manifestPath, 1 * 1024 * 1024), new JsonDocumentOptions { MaxDepth = 32 });
-        var json = document.RootElement;
-        if (json.GetProperty("schema_version").GetInt32() != 1 || json.GetProperty("model_id").GetString() != ModelId ||
-            json.GetProperty("source_model_id").GetString() != SourceModelId || json.GetProperty("source_revision").GetString() != SourceRevision ||
-            json.GetProperty("license").GetString() != "MIT" || json.GetProperty("source_weights_sha256").GetString() != SourceWeightsSha256 ||
-            json.GetProperty("tokenizer_sha256").GetString() != TokenizerSha256 || json.GetProperty("weights_sha256").GetString() != ConvertedEncoderSha256)
-            throw new DecisionException("independent_manifest_invalid", "Independent model identity, license or source hash is not the audited revision.");
-        VerifyHash(weightsPath, ConvertedEncoderSha256, cancellationToken); VerifyHash(tokenizerPath, TokenizerSha256, cancellationToken);
-        var encoderJson = json.GetProperty("encoder");
-        var config = new ModernBertConfig
-        {
-            VocabularySize = encoderJson.GetProperty("vocab_size").GetInt32(), HiddenSize = encoderJson.GetProperty("hidden_size").GetInt32(),
-            IntermediateSize = encoderJson.GetProperty("intermediate_size").GetInt32(), LayerCount = encoderJson.GetProperty("layer_count").GetInt32(),
-            HeadCount = encoderJson.GetProperty("head_count").GetInt32(), MaxTokens = encoderJson.GetProperty("runtime_max_tokens").GetInt32(),
-            GlobalAttentionEvery = encoderJson.GetProperty("global_attention_every").GetInt32(), LocalAttention = encoderJson.GetProperty("local_attention").GetInt32(),
-            GlobalRopeTheta = encoderJson.GetProperty("global_rope_theta").GetSingle(), LocalRopeTheta = encoderJson.GetProperty("local_rope_theta").GetSingle(),
-            NormEpsilon = encoderJson.GetProperty("norm_epsilon").GetSingle(),
-        };
-        config.Validate();
-        if (json.GetProperty("tensor_format").GetString() != "safetensors-f32" || json.GetProperty("tensor_count").GetInt32() != 134)
-            throw new DecisionException("independent_manifest_invalid", "Independent tensor format or count is not audited.");
+        var config = IndependentModelContract.ReadManifest(ReadBounded(manifestPath, 1 * 1024 * 1024), cancellationToken);
+        VerifyHash(weightsPath, ConvertedEncoderSha256, 1_227_772_549, cancellationToken);
+        VerifyHash(tokenizerPath, TokenizerSha256, 17_525_329, cancellationToken);
         var tensors = SafeTensorReader.Read(weightsPath, maxElements: 400_000_000, cancellationToken: cancellationToken);
         VerifyTensorNames(tensors);
         var embedding = Tensor(tensors, "model.embeddings.tok_embeddings.weight");
@@ -116,6 +101,8 @@ public static class IndependentModelLoader
     {
         if (tensors.Count != 134 || tensors.Keys.Any(name => !name.StartsWith("model.", StringComparison.Ordinal)))
             throw new DecisionException("independent_manifest_tensor_mismatch", "Independent tensor file contains an unexpected encoder tensor set.");
+        foreach (var tensor in tensors.Values)
+            IndependentModelContract.ValidateTensorDescriptor(tensor.Name, tensor.Dtype, tensor.Shape);
     }
 
     private static float[] Tensor(IReadOnlyDictionary<string, SafeTensor> tensors, string name) =>
@@ -127,17 +114,49 @@ public static class IndependentModelLoader
         var bytes = new byte[(int)stream.Length]; stream.ReadExactly(bytes); return bytes;
     }
 
-    private static string Within(string root, string relative)
+    internal static string Within(string root, string relative)
     {
         if (!Directory.Exists(root)) throw new DecisionException("independent_model_not_installed", "Independent model directory does not exist.");
-        var fullRoot = Path.GetFullPath(root).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar; var path = Path.GetFullPath(Path.Combine(root, relative));
-        if (!path.StartsWith(fullRoot, StringComparison.OrdinalIgnoreCase)) throw new DecisionException("independent_manifest_path_invalid", "Independent asset path escapes its package."); return path;
+        if (string.IsNullOrWhiteSpace(relative) || Path.IsPathRooted(relative))
+            throw new DecisionException("independent_manifest_path_invalid", "Independent asset paths must be relative.");
+        var fullRoot = Path.GetFullPath(root).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
+        var path = Path.GetFullPath(Path.Combine(root, relative));
+        if (!path.StartsWith(fullRoot, OperatingSystem.IsWindows() ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal))
+            throw new DecisionException("independent_manifest_path_invalid", "Independent asset path escapes its package.");
+        // Reject links/junctions before reading any asset, including linked ancestors.
+        // This is a static package preflight, not protection against concurrent hostile mutation.
+        var clock = System.Diagnostics.Stopwatch.StartNew();
+        string? component = path;
+        for (var depth = 0; depth < 64 && component is not null; depth++)
+        {
+            if (clock.Elapsed > TimeSpan.FromSeconds(10))
+                throw new DecisionException("independent_manifest_path_invalid", "Independent path preflight deadline expired.");
+            if ((File.Exists(component) || Directory.Exists(component)) &&
+                (File.GetAttributes(component) & FileAttributes.ReparsePoint) != 0)
+                throw new DecisionException("independent_manifest_path_invalid", "Independent package links and junctions are not supported.");
+            component = Path.GetDirectoryName(component);
+        }
+        if (component is not null) throw new DecisionException("independent_manifest_path_invalid", "Independent asset path exceeds the depth bound.");
+        return path;
     }
 
-    private static void VerifyHash(string path, string expected, CancellationToken cancellationToken)
+    private static void VerifyHash(string path, string expected, long expectedBytes, CancellationToken cancellationToken)
     {
-        using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read, 1024 * 1024, FileOptions.SequentialScan); using var hash = IncrementalHash.CreateHash(HashAlgorithmName.SHA256); var buffer = new byte[1024 * 1024]; int read;
-        while ((read = stream.Read(buffer, 0, buffer.Length)) != 0) { cancellationToken.ThrowIfCancellationRequested(); hash.AppendData(buffer, 0, read); }
+        using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read, 1024 * 1024, FileOptions.SequentialScan);
+        if (stream.Length != expectedBytes)
+            throw new DecisionException("independent_asset_hash_mismatch", $"Independent asset '{Path.GetFileName(path)}' size differs from the fixed revision.");
+        using var hash = IncrementalHash.CreateHash(HashAlgorithmName.SHA256); var buffer = new byte[1024 * 1024];
+        var blocks = checked((int)((expectedBytes + buffer.Length - 1) / buffer.Length));
+        var remaining = expectedBytes;
+        for (var block = 0; block < blocks; block++)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            var count = (int)Math.Min(buffer.Length, remaining);
+            stream.ReadExactly(buffer.AsSpan(0, count)); hash.AppendData(buffer, 0, count); remaining -= count;
+        }
+        cancellationToken.ThrowIfCancellationRequested();
+        if (remaining != 0 || stream.ReadByte() != -1)
+            throw new DecisionException("independent_asset_hash_mismatch", "Independent asset size changed during hash verification.");
         if (!Convert.ToHexString(hash.GetHashAndReset()).Equals(expected, StringComparison.OrdinalIgnoreCase)) throw new DecisionException("independent_asset_hash_mismatch", $"Independent asset '{Path.GetFileName(path)}' failed hash verification.");
     }
 }

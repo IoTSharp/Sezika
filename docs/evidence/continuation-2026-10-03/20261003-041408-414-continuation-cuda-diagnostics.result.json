@@ -1,0 +1,27 @@
+{
+  "Status": "Succeeded",
+  "Pid": 73972,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 5.245,
+  "TimeoutSeconds": 60,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "tests/Sezika.Cuda.Diagnostics.Tests/bin/Release/net10.0/Sezika.Cuda.Diagnostics.Tests.dll"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-03T04:14:10.1772611Z",
+  "ParentPid": 32564,
+  "Launcher": {
+    "Pid": 32564,
+    "Started": "2026-10-03T12:14:06.917455+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('tests/Sezika.Cuda.Diagnostics.Tests/bin/Release/net10.0/Sezika.Cuda.Diagnostics.Tests.dll') -TimeoutSeconds 60 -ProcessQueryTimeoutSeconds 5 -LogName 'continuation-cuda-diagnostics'\"",
+    "ParentPid": 47744
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20261003-041408-414-continuation-cuda-diagnostics.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20261003-041408-414-continuation-cuda-diagnostics.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

@@ -1,0 +1,141 @@
+PASS: duplicate JSON property rejection
+PASS: CPU typed decision response
+PASS: score expected value bounds
+PASS: calibration metrics
+PASS: Wilson accuracy confidence interval
+PASS: finite metric confidence interval
+PASS: frozen encoder head training
+PASS: Choice analytic marker gradient 0
+PASS: Choice analytic marker gradient 1
+PASS: Choice analytic marker gradient 2
+PASS: Choice analytic marker gradient 3
+PASS: Choice analytic marker gradient 4
+PASS: Choice analytic marker gradient 5
+PASS: Choice softmax sum
+PASS: Score analytic marker gradient 0
+PASS: Score analytic marker gradient 1
+PASS: Score analytic marker gradient 2
+PASS: Score analytic marker gradient 3
+PASS: Score analytic marker gradient 4
+PASS: Score analytic marker gradient 5
+PASS: Score softmax sum
+PASS: Boolean analytic marker gradient 0
+PASS: Boolean analytic marker gradient 1
+PASS: Boolean analytic marker gradient 2
+PASS: Boolean analytic marker gradient 3
+PASS: Boolean analytic marker gradient 4
+PASS: Boolean analytic marker gradient 5
+PASS: Boolean softmax sum
+PASS: bounded deterministic training progress
+PASS: three-row head parameters update
+PASS: decision-v1 strict JSON parser materializes typed question
+PASS: decision-v1 duplicate property rejected
+PASS: decision-v1 unknown property rejected
+PASS: decision-v1 strict sequence preserves BOS/EOS and marker order
+PASS: decision-v1 marker IDs are explicit and text-independent
+PASS: complete-sequence marker feature export
+PASS: decision-v1 rejects legacy model identity
+PASS: decision-v1 strict token budget rejects truncation
+PASS: checkpoint restore reproduces uninterrupted SGD
+PASS: independent inference head asset round trip
+PASS: head asset encoder identity mismatch rejected
+PASS: wrong checkpoint hash rejected
+PASS: checkpoint data identity mismatch rejected
+PASS: tampered checkpoint rejected
+PASS: hash-valid wrong checkpoint shape rejected
+PASS: marker width mismatch rejected
+PASS: non-finite marker rejected
+PASS: independent manifest accepts fixed numerical contract without allocating weights
+PASS: independent manifest rejects mutation "head_count": 12
+PASS: independent manifest rejects mutation "global_attention_every": 3
+PASS: independent manifest rejects mutation "local_attention": 128
+PASS: independent manifest rejects mutation "global_rope_theta": 160000
+PASS: independent manifest rejects mutation "local_rope_theta": 160000
+PASS: independent manifest rejects mutation "norm_epsilon": 1e-5
+PASS: independent manifest rejects mutation "runtime_max_tokens": 1024
+PASS: independent manifest rejects mutation "hidden_size": 768
+PASS: independent manifest rejects mutation "vocab_size": 256000
+PASS: independent manifest rejects mutation "intermediate_size": 1152
+PASS: independent manifest rejects mutation "layer_count": 22
+PASS: independent manifest rejects mutation "source_max_position_embeddings": 8192
+PASS: independent manifest rejects mutation "weights_file": "encoder.safetensors"
+PASS: independent manifest rejects mutation "tokenizer_file": "tokenizer/tokenizer.json"
+PASS: independent manifest rejects mutation "tensor_prefix": "model."
+PASS: independent manifest rejects mutation "rows": 3
+PASS: independent manifest rejects mutation "status": "uncalibrated"
+PASS: independent manifest rejects mutation "head_count": 12
+PASS: independent manifest rejects mutation "schema_version": 1
+PASS: independent manifest rejects mutation "schema_version": 1
+PASS: independent manifest rejects mutation "schema_version": 1
+PASS: independent manifest rejects mutation "head_count": 12,
+PASS: missing independent identity rejected
+PASS: malformed independent manifest returns structured error
+PASS: transposed independent matrix rejected even with identical element count
+PASS: first independent attention norm is identity
+PASS: noncanonical independent layer name rejected
+PASS: independent dtype mismatch rejected
+PASS: complete independent 134 tensor layout accepted without payload allocation
+PASS: independent load honours pre-cancellation before file access
+PASS: independent path remains within package
+PASS: independent traversal rejected
+PASS: independent absolute asset path rejected
+PASS: calibration abstention preserves full-split accuracy and macro F1
+PASS: calibration ECE includes abstained examples in frozen denominator
+PASS: calibration covered count and selective metrics use answered denominator
+PASS: Boolean negative recall uses all false gold examples
+PASS: zero coverage exposes undefined selective accuracy
+PASS: Boolean no-negative slice exposes undefined negative recall
+PASS: Score MAE uses ordinal expected value rather than argmax
+PASS: null probability array is structured calibration error
+PASS: null example is structured calibration error
+PASS: Boolean rejects nonbinary class count
+PASS: nonfinite probability is structured calibration error
+PASS: calibration evaluation cancellation
+PASS: calibration evaluation wall-clock limit
+PASS: calibration evaluation rejects unbounded duration
+PASS: temperature search bounded tiny trial reports complete progress
+PASS: temperature search includes identity omitted by coarse grid
+PASS: temperature search preserves exact-zero support at finite extreme temperature
+PASS: temperature fitting cancellation
+PASS: temperature fitting wall-clock limit
+PASS: confidence interval rejects overflowing finite aggregate
+PASS: complete synthetic verified snapshot exercises gates without certifying real model
+PASS: verified profile requires random baseline delta
+PASS: verified profile requires majority baseline delta
+PASS: nonfinite delta cannot bypass profile quality gate
+PASS: fit split cannot replace sealed evaluation split
+PASS: verified Score requires MAE
+PASS: majority baseline delta must meet frozen gate
+PASS: rejected profile retains finite failed measurements for audit
+PASS: verified manifest cannot contain pending profiles
+PASS: model package install/lease/uninstall lifecycle
+PASS: SIMD/scalar cancellation, deadline, workspace and concurrency bounds
+PASS: standalone model runtime load/parse/evaluate/dispose facade
+PASS: injected backend preserves model provenance and backend identity
+PASS: shared typed engine dispatches choice/score/boolean type IDs
+PASS: injected fixture logits preserve input choice order and choice temperature
+PASS: injected fixture logits preserve score order and expected-value semantics
+PASS: injected fixture logits map false/true markers and true probability through temperature
+PASS: injected fixture predictions remain explicitly uncalibrated
+PASS: all injected backend calls receive shared BOS/prompt/markers/criteria/state/EOS tokens
+PASS: shared typed usage accounts injected backend calls
+PASS: typed session owns and releases injected pipeline and model tensors
+PASS: pipeline disposal failure still unloads owned model tensors
+PASS: disposal failure leaves typed session disposal idempotent
+PASS: typed session rejects requests after a backend disposal failure
+PASS: constructor budget rejection releases injected pipeline and model
+PASS: constructor cleanup unloads model even when injected pipeline disposal throws
+PASS: shared marker sequence measures exact 1024/1025/1026 token boundary independently of prefix budget
+PASS: production engine accepts exactly 1024 tokens with a 256-token prefix budget
+PASS: 1025-token strict input reports the production budget code
+PASS: over-budget strict input rejects before backend execution
+PASS: explicit compatibility mode reports the one discarded state token
+PASS: typed primitive reference alignment contract
+PASS: calibration profile binding and pending gate semantics
+SKIP: mmBERT tokenizer oracle (download the pinned model asset first)
+PASS: safe-tensors FP32 reader
+PASS: asset hash primitive
+PASS: safe-tensors overlap rejection
+PASS: safe-tensors bounds rejection
+PASS: safe-tensors dtype rejection
+Sezika tests passed: 139

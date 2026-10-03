@@ -61,9 +61,13 @@ public static class CalibrationConfidenceIntervals
             var delta = value - mean;
             mean += delta / (index + 1d);
             sumSquares += delta * (value - mean);
+            if (!double.IsFinite(mean) || !double.IsFinite(sumSquares))
+                throw new ArgumentException("Metric mean or variance exceeds the finite numerical range.", nameof(values));
         }
         var standardError = values.Count < 2 ? 0d : Math.Sqrt(sumSquares / (values.Count - 1d) / values.Count);
         var margin = z * standardError;
+        if (!double.IsFinite(margin) || !double.IsFinite(mean - margin) || !double.IsFinite(mean + margin))
+            throw new ArgumentException("Metric confidence interval exceeds the finite numerical range.", nameof(values));
         return new CalibrationConfidenceInterval
         {
             Count = values.Count,

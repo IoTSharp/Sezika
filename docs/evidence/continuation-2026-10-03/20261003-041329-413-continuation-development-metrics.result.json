@@ -1,0 +1,28 @@
+{
+  "Status": "Succeeded",
+  "Pid": 51268,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 5.414,
+  "TimeoutSeconds": 30,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "tools/Sezika.IndependentModelTool/bin/Release/net10.0/Sezika.IndependentModelTool.dll",
+    "check-development-metrics"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-03T04:13:30.9525412Z",
+  "ParentPid": 57644,
+  "Launcher": {
+    "Pid": 57644,
+    "Started": "2026-10-03T12:13:28.65301+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('tools/Sezika.IndependentModelTool/bin/Release/net10.0/Sezika.IndependentModelTool.dll','check-development-metrics') -TimeoutSeconds 30 -ProcessQueryTimeoutSeconds 5 -LogName 'continuation-development-metrics'\"",
+    "ParentPid": 47744
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20261003-041329-413-continuation-development-metrics.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20261003-041329-413-continuation-development-metrics.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

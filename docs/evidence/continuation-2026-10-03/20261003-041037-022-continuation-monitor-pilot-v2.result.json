@@ -1,0 +1,27 @@
+{
+  "Status": "Succeeded",
+  "Pid": 80120,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 7.122,
+  "TimeoutSeconds": 15,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "--version"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-03T04:10:39.9208081Z",
+  "ParentPid": 57928,
+  "Launcher": {
+    "Pid": 57928,
+    "Started": "2026-10-03T12:10:35.463952+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$parseErrors = $null\n$null = [System.Management.Automation.Language.Parser]::ParseFile((Join-Path $PWD 'tools/Invoke-BoundedProcess.ps1'), [ref]$null, [ref]$parseErrors)\nif ($parseErrors.Count -gt 0) { throw ($parseErrors | Out-String) }\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('--version') -TimeoutSeconds 15 -ProcessQueryTimeoutSeconds 5 -LogName 'continuation-monitor-pilot-v2'\"",
+    "ParentPid": 47744
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20261003-041037-022-continuation-monitor-pilot-v2.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20261003-041037-022-continuation-monitor-pilot-v2.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

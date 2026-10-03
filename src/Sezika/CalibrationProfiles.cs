@@ -52,6 +52,8 @@ public sealed record CalibrationMetricSnapshot
     public double? AccuracyDeltaOverRandom { get; init; }
     public double? NegativeLogLikelihoodDeltaOverUncalibrated { get; init; }
     public double? BrierDeltaOverUncalibrated { get; init; }
+    public double? AccuracyDeltaOverMajority { get; init; }
+    public string? EvaluationSplit { get; init; }
 }
 
 /// <summary>One immutable binding from a calibrated head to its exact inputs.</summary>
@@ -103,14 +105,14 @@ public sealed record CalibrationProfileEntry
         {
             throw new DecisionException("decision_calibration_out_of_scope", $"Calibration profile '{ProfileId}' is not bound to the expected assets.");
         }
-        if (ObservedMetrics is not null) ValidateMetrics(ObservedMetrics, gates);
+        if (ObservedMetrics is not null) ValidateMetrics(ObservedMetrics, gates, Status == "verified", Primitive);
         if (Status == "verified" && (FitStatus != "fitted" || ObservedMetrics is null))
         {
             throw new DecisionException("decision_calibration_not_ready", $"Verified profile '{ProfileId}' has no fitted metrics.");
         }
     }
 
-    private static void ValidateMetrics(CalibrationMetricSnapshot metrics, CalibrationGates gates)
+    private static void ValidateMetrics(CalibrationMetricSnapshot metrics, CalibrationGates gates, bool verified, string primitive)
     {
         if (metrics.Count < 0 || !double.IsFinite(metrics.Accuracy) || metrics.Accuracy is < 0 or > 1 ||
             !double.IsFinite(metrics.MacroF1) || metrics.MacroF1 is < 0 or > 1 ||
@@ -119,12 +121,28 @@ public sealed record CalibrationProfileEntry
             !double.IsFinite(metrics.ExpectedCalibrationError) || metrics.ExpectedCalibrationError is < 0 or > 1 ||
             !double.IsFinite(metrics.Coverage) || metrics.Coverage is < 0 or > 1 ||
             !double.IsFinite(metrics.SelectiveRisk) || metrics.SelectiveRisk is < 0 or > 1 ||
-            (metrics.ScoreMae is not null && (!double.IsFinite(metrics.ScoreMae.Value) || metrics.ScoreMae.Value < 0)))
+            (metrics.ScoreMae is not null && (!double.IsFinite(metrics.ScoreMae.Value) || metrics.ScoreMae.Value < 0)) ||
+            (metrics.AccuracyDeltaOverRandom is double randomDelta && !double.IsFinite(randomDelta)) ||
+            (metrics.AccuracyDeltaOverMajority is double majorityDelta && !double.IsFinite(majorityDelta)) ||
+            (metrics.NegativeLogLikelihoodDeltaOverUncalibrated is double nllDelta && !double.IsFinite(nllDelta)) ||
+            (metrics.BrierDeltaOverUncalibrated is double brierDelta && !double.IsFinite(brierDelta)))
         {
             throw new DecisionException("decision_calibration_metrics_invalid", "Calibration metrics are invalid.");
         }
+        if (verified && metrics.Count < gates.MinimumTestExamples)
+            throw new DecisionException("decision_calibration_quality_gate_failed", "Calibration test sample count is below the frozen gate.");
+        if (verified && (metrics.EvaluationSplit != "sealed_test" ||
+            metrics.AccuracyDeltaOverRandom is null || metrics.AccuracyDeltaOverMajority is null ||
+            metrics.NegativeLogLikelihoodDeltaOverUncalibrated is null || metrics.BrierDeltaOverUncalibrated is null ||
+            (primitive == "score" && metrics.ScoreMae is null)))
+        {
+            throw new DecisionException("decision_calibration_not_ready", "Verified metrics require sealed-test provenance, both baselines, paired calibration deltas and Score MAE.");
+        }
+        // Pending/rejected snapshots can retain failed measurements for audit.
+        if (!verified) return;
         if (metrics.Count < gates.MinimumTestExamples ||
             (metrics.AccuracyDeltaOverRandom is not null && metrics.AccuracyDeltaOverRandom.Value < gates.MinimumAccuracyDeltaOverRandom) ||
+            (metrics.AccuracyDeltaOverMajority is not null && metrics.AccuracyDeltaOverMajority.Value < gates.MinimumAccuracyDeltaOverRandom) ||
             (metrics.NegativeLogLikelihoodDeltaOverUncalibrated is not null && metrics.NegativeLogLikelihoodDeltaOverUncalibrated.Value > gates.MaximumNllIncreaseOverUncalibrated) ||
             (metrics.BrierDeltaOverUncalibrated is not null && metrics.BrierDeltaOverUncalibrated.Value > gates.MaximumBrierIncreaseOverUncalibrated) ||
             metrics.ExpectedCalibrationError > gates.MaximumExpectedCalibrationError ||
@@ -170,8 +188,11 @@ public sealed record CalibrationProfileManifest
         var ids = new HashSet<string>(StringComparer.Ordinal);
         foreach (var profile in Profiles)
         {
+            if (profile is null) throw new DecisionException("decision_calibration_manifest_invalid", "Calibration profiles cannot be null.");
             if (!ids.Add(profile.ProfileId)) throw new DecisionException("decision_calibration_manifest_invalid", "Calibration profile IDs must be unique.");
             profile.Validate(expected, FrozenGates);
+            if (Status == "verified" && profile.Status != "verified")
+                throw new DecisionException("decision_calibration_not_ready", "A verified manifest requires every profile to be verified.");
         }
     }
 

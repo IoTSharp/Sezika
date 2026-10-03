@@ -1,0 +1,31 @@
+{
+  "Status": "Failed",
+  "Pid": 10796,
+  "ExitCode": 1,
+  "Error": "Process failed with exit code 1.",
+  "ElapsedSeconds": 4.198,
+  "TimeoutSeconds": 45,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "tools/Sezika.IndependentModelTool/Verify-Preflight.ps1",
+    "-MaximumCases",
+    "1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-03T04:20:06.1829128Z",
+  "ParentPid": 87868,
+  "Launcher": {
+    "Pid": 87868,
+    "Started": "2026-10-03T12:20:03.68694+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','tools/Sezika.IndependentModelTool/Verify-Preflight.ps1','-MaximumCases','1') -TimeoutSeconds 45 -ProcessQueryTimeoutSeconds 5 -LogName 'continuation-preflight-pilot'\"",
+    "ParentPid": 47744
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20261003-042004-660-continuation-preflight-pilot.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20261003-042004-660-continuation-preflight-pilot.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

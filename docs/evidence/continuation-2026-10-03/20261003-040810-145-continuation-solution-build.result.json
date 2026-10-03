@@ -1,0 +1,74 @@
+{
+  "Status": "Failed",
+  "Pid": 51872,
+  "ExitCode": null,
+  "Error": "已超时 ",
+  "ElapsedSeconds": 28.011,
+  "TimeoutSeconds": 240,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "Sezika.slnx",
+    "-c",
+    "Release",
+    "-v",
+    "minimal",
+    "--nologo",
+    "--disable-build-servers",
+    "-m:1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-03T04:08:11.6428466Z",
+  "ParentPid": 45368,
+  "Launcher": {
+    "Pid": 45368,
+    "Started": "2026-10-03T12:08:09.453486+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build','Sezika.slnx','-c','Release','-v','minimal','--nologo','--disable-build-servers','-m:1') -TimeoutSeconds 240 -LogName 'continuation-solution-build'\"",
+    "ParentPid": 47744
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20261003-040810-145-continuation-solution-build.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20261003-040810-145-continuation-solution-build.stderr.log",
+  "CleanupErrors": [
+    "PID 62468: 调用“GetProcessById”并传入“1”个参数时发生异常：“Process with an Id of 62468 is not running.”",
+    "Cleanup ended before all recorded processes were confirmed exited."
+  ],
+  "Processes": [
+    {
+      "Pid": 51872,
+      "CreationDate": "2026-10-03T12:08:11.642846+08:00",
+      "Started": "2026-10-03T04:08:11.642846Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build Sezika.slnx -c Release -v minimal --nologo --disable-build-servers -m:1",
+      "ParentPid": 45368,
+      "Depth": 0,
+      "TerminatedByRunner": true
+    },
+    {
+      "Pid": 14128,
+      "CreationDate": "2026-10-03T12:08:19.486253+08:00",
+      "Started": "2026-10-03T04:08:19.486253Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempdhj1g1qr.see\\tmp2144b818423a469ba7c451189785af45.rsp\"",
+      "ParentPid": 51872,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 77880,
+      "CreationDate": "2026-10-03T12:08:11.658898+08:00",
+      "Started": "2026-10-03T04:08:11.658898Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 51872,
+      "Depth": 1,
+      "TerminatedByRunner": true
+    },
+    {
+      "Pid": 62468,
+      "CreationDate": "2026-10-03T12:08:19.510777+08:00",
+      "Started": "2026-10-03T04:08:19.510777Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 14128,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

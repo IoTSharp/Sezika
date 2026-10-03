@@ -1,0 +1,68 @@
+{
+  "Status": "Succeeded",
+  "Pid": 67716,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 7.236,
+  "TimeoutSeconds": 45,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "tools/Sezika.IndependentModelTool/Verify-Preflight.ps1",
+    "-MaximumCases",
+    "1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-03T04:20:25.6228679Z",
+  "ParentPid": 46408,
+  "Launcher": {
+    "Pid": 46408,
+    "Started": "2026-10-03T12:20:23.980747+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$parseErrors = $null\n$null = [System.Management.Automation.Language.Parser]::ParseFile((Join-Path $PWD 'tools/Sezika.IndependentModelTool/Verify-Preflight.ps1'), [ref]$null, [ref]$parseErrors)\nif ($parseErrors.Count -gt 0) { throw ($parseErrors | Out-String) }\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','tools/Sezika.IndependentModelTool/Verify-Preflight.ps1','-MaximumCases','1') -TimeoutSeconds 45 -ProcessQueryTimeoutSeconds 5 -LogName 'continuation-preflight-pilot-v2'\"",
+    "ParentPid": 47744
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\processes\\20261003-042024-451-continuation-preflight-pilot-v2.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\processes\\20261003-042024-451-continuation-preflight-pilot-v2.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 67716,
+      "CreationDate": "2026-10-03T12:20:25.622867+08:00",
+      "Started": "2026-10-03T04:20:25.622867Z",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.IndependentModelTool/Verify-Preflight.ps1 -MaximumCases 1",
+      "ParentPid": 46408,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 54572,
+      "CreationDate": "2026-10-03T12:20:25.635705+08:00",
+      "Started": "2026-10-03T04:20:25.635705Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 67716,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 64644,
+      "CreationDate": "2026-10-03T12:20:27.538641+08:00",
+      "Started": "2026-10-03T04:20:27.538641Z",
+      "CommandLine": null,
+      "ParentPid": 67716,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 75276,
+      "CreationDate": "2026-10-03T12:20:27.549104+08:00",
+      "Started": "2026-10-03T04:20:27.549104Z",
+      "CommandLine": null,
+      "ParentPid": 64644,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

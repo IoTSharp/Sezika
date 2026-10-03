@@ -1,0 +1,24 @@
+{
+  "Pid": 76808,
+  "Started": "2026-10-03T04:20:40.6305928Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.IndependentModelTool/Verify-Preflight.ps1",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 54772,
+  "ObservedParentPid": 54772,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 54772,
+    "Started": "2026-10-03T12:20:39.006663+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','tools/Sezika.IndependentModelTool/Verify-Preflight.ps1') -TimeoutSeconds 120 -ProcessQueryTimeoutSeconds 5 -LogName 'continuation-preflight-full'\"",
+    "ParentPid": 47744
+  },
+  "TimeoutSeconds": 120,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "tools/Sezika.IndependentModelTool/Verify-Preflight.ps1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}
