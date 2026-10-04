@@ -14,7 +14,7 @@ dotnet tools/Sezika.NumericParity/bin/Release/net10.0/Sezika.NumericParity.dll <
 
 ## 固定 oracle 的逐层诊断
 
-新增 `--trace-oracle` 模式按明确的 1–3 个 case ID，顺序运行 scalar、SIMD、CUDA，使用生产输入构造器及类型化引擎。参考与合同必须分别提供完整 SHA-256；真正进入 backend 的 token IDs、markers、候选标签和顺序必须与参考一致。logits、概率及预测使用原冻结容差，近并列也必须保持离散预测一致。
+新增 `--trace-oracle` 模式按明确的 1–18 个 case ID，顺序运行 scalar、SIMD、CUDA，使用生产输入构造器及类型化引擎。参考与合同必须分别提供完整 SHA-256；真正进入 backend 的 token IDs、markers、候选标签和顺序必须与参考一致。logits、概率及预测使用原冻结容差，近并列也必须保持离散预测一致。
 
 ```powershell
 dotnet <isolated-build>/Sezika.NumericParity.dll --trace-oracle `
@@ -26,10 +26,10 @@ dotnet <isolated-build>/Sezika.NumericParity.dll --trace-oracle `
   771ca781c52f1d6f9cb22859bed007ef483a54a2543c644de33f88d6e0687eee
 ```
 
-模型执行须有相应授权，并通过有界进程 runner。先验证单条短输入，再选择最多 3 条；不能把这个命令示例当成已执行证据。每 case 的三个后端串行，整体 1–1800 秒、单次请求最多 5 分钟，Ctrl+C 取消；已有输出文件拒绝覆盖。
+模型执行须有相应授权，并通过有界进程 runner。先验证单条短输入，再选择最多 18 条；不能把这个命令示例当成已执行证据。每 case 的三个后端串行，整体 1–1800 秒、单次请求最多 5 分钟，Ctrl+C 取消；已有输出文件拒绝覆盖。
 
 诊断保存 embedding norm、每个 encoder layer hidden、encoder final、两个 head layer hidden 及 scorer logits 的全张量误差摘要与哈希。只保留当前 case 的 scalar 快照，预检最多 128 MiB；后端回调产生的临时张量与模型工作区另计。每个预期 checkpoint 必须出现且只出现一次，形状、有限性或缺失检查失败会阻止本次诊断通过。逐层差异是 C# 后端内部定位信息，尚无独立上游逐层参考和冻结的逐层验收阈值，不能宣称逐层 oracle 对齐。
 
 报告 `selected_diagnostics_passed` 只表示所选三后端输入、输出数值与 trace 完整性通过。`full_s306_gate_passed` 保持 false；真实近并列为 0 时 `near_tie_acceptance=not_measured`。已有 46 条参考中近并列为 0，不通过合成 logits、同文本候选或自比较补造真实近并列证据。更多诊断边界见 [S3-06 数值诊断](../../docs/s3-06-numerical-diagnostics.md)。
 
-`--trace-self-test` 仅运行有界诊断逻辑自检，覆盖近并列预测翻转、阈值超限、非有限值、概率归一化、形状错误、trace 缺失/重复、内存上限及取消。合成值只验证比较器，不计入模型推理或近并列验收。
+`--trace-self-test` 仅运行有界诊断逻辑自检，当前覆盖 25 项：近并列预测翻转、阈值超限、非有限值、概率归一化、形状错误、未知/重复 checkpoint、已知辅助 trace、快照隔离、trace 缺失、内存上限、取消、固定覆盖和失败重试汇总。合成值只验证比较器，不计入模型推理或近并列验收。

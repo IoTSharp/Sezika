@@ -59,6 +59,8 @@ internal static class TraceSummary
                 if (report.SchemaVersion != 2 || !report.ReferenceSha256.Equals(args[1], StringComparison.OrdinalIgnoreCase) ||
                     !report.ContractSha256.Equals(args[2], StringComparison.OrdinalIgnoreCase) || report.Status is not ("complete" or "incomplete") ||
                     report.SelectedCaseIds.Length is < 1 or > 18 || report.SelectedCaseIds.Distinct(StringComparer.Ordinal).Count() != report.SelectedCaseIds.Length ||
+                    report.UnprocessedCaseIds.Any(id => !report.SelectedCaseIds.Contains(id, StringComparer.Ordinal)) ||
+                    report.UnprocessedCaseIds.Distinct(StringComparer.Ordinal).Count() != report.UnprocessedCaseIds.Length ||
                     report.Cases.Count > report.SelectedCaseIds.Length || report.Cases.Select(row => row.Id).Distinct(StringComparer.Ordinal).Count() != report.Cases.Count ||
                     report.BinarySha256.Count is < 1 or > 4 || report.BinarySha256.Values.Any(value => !IsSha(value)))
                     throw new InvalidDataException("Trace report identity or inventory differs.");

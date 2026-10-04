@@ -5,6 +5,7 @@ internal sealed class TraceCollector
 {
     public const long MaxBytes = 128L * 1024 * 1024;
     private readonly Dictionary<string, int> _expected;
+    private readonly HashSet<string> _knownAuxiliary;
     private readonly Dictionary<string, float[]> _scalar;
     private readonly bool _reference;
     private readonly CancellationToken _token;
@@ -22,15 +23,26 @@ internal sealed class TraceCollector
         var bytes = checked(((long)encoderLayers + headLayers + 2) * elements * sizeof(float) + tokens * sizeof(float));
         if (bytes > MaxBytes) throw new InvalidDataException("Selected layer snapshots exceed the 128 MiB retained trace limit.");
         _expected = new(StringComparer.Ordinal) { ["embedding/norm"] = elements, ["encoder/final"] = elements, ["scorer/logits"] = tokens };
+        _knownAuxiliary = new(StringComparer.Ordinal) { "embedding/raw", "head/type", "scorer/norm", "scorer/dense", "scorer/gelu" };
         for (var index = 0; index < encoderLayers; index++) _expected.Add($"layer/{index}/hidden", elements);
-        for (var index = 0; index < headLayers; index++) _expected.Add($"head/{index}/hidden", elements);
+        for (var index = 0; index < encoderLayers; index++)
+            foreach (var suffix in new[] { "norm1", "qkv", "rope_q", "rope_k", "attention", "projected", "residual", "norm2", "up", "gelu", "mlp" })
+                _knownAuxiliary.Add($"layer/{index}/{suffix}");
+        for (var index = 0; index < headLayers; index++)
+        {
+            _expected.Add($"head/{index}/hidden", elements);
+            foreach (var suffix in new[] { "norm1", "qkv", "attention", "projected", "residual", "norm2", "up", "relu", "mlp" })
+                _knownAuxiliary.Add($"head/{index}/{suffix}");
+        }
         _scalar = scalar; _reference = reference; _token = token;
     }
 
     public void Observe(string name, float[] values)
     {
         _token.ThrowIfCancellationRequested();
-        if (!_expected.TryGetValue(name, out var expectedLength)) return;
+        if (!_expected.TryGetValue(name, out var expectedLength) && !_knownAuxiliary.Contains(name))
+            throw new InvalidDataException($"Unexpected trace checkpoint: {name}.");
+        if (!_expected.ContainsKey(name)) return;
         if (!_seen.Add(name)) throw new InvalidDataException($"Duplicate trace: {name}.");
         if (values.Length != expectedLength) throw new InvalidDataException($"Trace shape mismatch: {name}.");
         if (_reference)
@@ -41,7 +53,10 @@ internal sealed class TraceCollector
                 if (!float.IsFinite(values[index])) throw new InvalidDataException($"Non-finite trace: {name}.");
             }
             RetainedBytes = checked(RetainedBytes + values.LongLength * sizeof(float));
-            if (RetainedBytes > MaxBytes || !_scalar.TryAdd(name, values)) throw new InvalidDataException("Trace retention limit or duplicate scalar key.");
+            // Trace callbacks own their input buffers. Keep an independent snapshot so
+            // a future backend cannot reuse or mutate an array after it was recorded.
+            var snapshot = values.ToArray();
+            if (RetainedBytes > MaxBytes || !_scalar.TryAdd(name, snapshot)) throw new InvalidDataException("Trace retention limit or duplicate scalar key.");
         }
         else
         {

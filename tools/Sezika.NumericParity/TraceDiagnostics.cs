@@ -98,7 +98,8 @@ internal static class TraceDiagnostics
             return passed ? 0 : 1;
         }
         catch (Exception exception) when (exception is IOException or JsonException or ArgumentException or InvalidOperationException or
-            DecisionException or CudaException or OperationCanceledException or DllNotFoundException or BadImageFormatException)
+            DecisionException or CudaException or OperationCanceledException or DllNotFoundException or BadImageFormatException or
+            KeyNotFoundException or FormatException or OverflowException or NotSupportedException)
         {
             Console.Error.WriteLine($"trace-diagnostics: {exception.GetType().Name}: {exception.Message}");
             return 1;
@@ -228,6 +229,8 @@ internal static class TraceDiagnostics
 
     private static void ValidateReference(TraceReference reference, string contractSha)
     {
+        if (reference is null || reference.Cases is null || reference.Provenance.ValueKind != JsonValueKind.Object)
+            throw new InvalidDataException("Reference schema is incomplete.");
         var provenance = reference.Provenance;
         if (reference.SchemaVersion != "sezika.laya-oracle.v1" || reference.Cases.Count is < 1 or > 64 ||
             reference.Cases.Any(row => string.IsNullOrWhiteSpace(row.Id)) || reference.Cases.Select(row => row.Id).Distinct(StringComparer.Ordinal).Count() != reference.Cases.Count ||
@@ -241,7 +244,7 @@ internal static class TraceDiagnostics
 
     private static void ValidateAnswered(TraceReferenceCase source)
     {
-        if (source.Status != "answered" || source.TokenIds is not { Length: >= 2 and <= 1024 } ||
+        if (source is null || source.Status != "answered" || source.TokenIds is not { Length: >= 2 and <= 1024 } ||
             source.MarkerPositions is not { Length: >= 2 and <= 32 } || source.CandidateLabels is null ||
             source.MarkerPositions.Length != source.CandidateLabels.Length || source.RawLogits is null || source.Probabilities is null)
             throw new InvalidDataException("Select only answered reference cases within the supported input contract.");

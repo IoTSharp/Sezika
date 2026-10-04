@@ -44,9 +44,18 @@ internal static class TraceChecks
             var snapshots = new Dictionary<string, float[]>(StringComparer.Ordinal);
             var collector = new TraceCollector(2, 1, 1, 2, snapshots, true, token);
             Check(collector.Missing.Count == 6, "every expected encoder/head/scorer checkpoint is required");
+            collector.Observe("head/type", [1, 2]);
+            Check(collector.Missing.Count == 6, "known auxiliary trace is ignored without changing checkpoint coverage");
             collector.Observe("embedding/norm", [1, 2]);
             Check(collector.Missing.Count == 5 && collector.RetainedBytes == 8, "partial trace remains explicitly incomplete");
             Reject(() => collector.Observe("embedding/norm", [1, 2]), "duplicate checkpoint rejects");
+            Reject(() => collector.Observe("unexpected/checkpoint", [1, 2]), "unknown checkpoint rejects");
+            var mutable = new float[] { 3, 4 };
+            var isolated = new Dictionary<string, float[]>(StringComparer.Ordinal);
+            var snapshotCollector = new TraceCollector(2, 1, 1, 2, isolated, true, token);
+            snapshotCollector.Observe("embedding/norm", mutable);
+            mutable[0] = 99;
+            Check(isolated["embedding/norm"][0] == 3, "scalar trace snapshots are isolated from callback buffer reuse");
             Reject(() => new TraceCollector(1024, 4096, 64, 2, snapshots, true, token), "memory budget rejects before trace retention");
             using var cancelled = new CancellationTokenSource();
             cancelled.Cancel();
