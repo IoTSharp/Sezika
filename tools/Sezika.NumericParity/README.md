@@ -32,4 +32,4 @@ dotnet <isolated-build>/Sezika.NumericParity.dll --trace-oracle `
 
 报告 `selected_diagnostics_passed` 只表示所选三后端输入、输出数值与 trace 完整性通过。`full_s306_gate_passed` 保持 false；真实近并列为 0 时 `near_tie_acceptance=not_measured`。已有 46 条参考中近并列为 0，不通过合成 logits、同文本候选或自比较补造真实近并列证据。更多诊断边界见 [S3-06 数值诊断](../../docs/s3-06-numerical-diagnostics.md)。
 
-`--trace-self-test` 仅运行有界诊断逻辑自检，当前覆盖 25 项：近并列预测翻转、阈值超限、非有限值、概率归一化、形状错误、未知/重复 checkpoint、已知辅助 trace、快照隔离、trace 缺失、内存上限、取消、固定覆盖和失败重试汇总。合成值只验证比较器，不计入模型推理或近并列验收。
+`--trace-self-test` 仅运行有界诊断逻辑自检，当前覆盖 29 项：近并列预测翻转、阈值超限、非有限值、概率归一化、形状错误、未知/重复 checkpoint、已知辅助 trace、快照隔离、trace 缺失、内存上限、取消、固定覆盖、失败重试汇总以及跨报告的 core ID、complete/incomplete 和 backend 清单合同。合成值只验证比较器，不计入模型推理或近并列验收。

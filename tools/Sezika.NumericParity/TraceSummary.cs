@@ -19,6 +19,10 @@ internal sealed record TraceSummaryReport(string SchemaVersion, string Reference
 
 internal static class TraceSummary
 {
+    private static readonly string[] BackendNames = ["scalar", "simd", "cuda"];
+    private static readonly IReadOnlyDictionary<string, TraceCoverageCell> CoreCells =
+        TraceCoverage.Build([]).ToDictionary(cell => cell.Id, StringComparer.Ordinal);
+
     internal static int Run(string[] args)
     {
         if (args.Length != 6 || !IsSha(args[1]) || !IsSha(args[2]) || !int.TryParse(args[5], out var seconds) || seconds is < 1 or > 60)
@@ -56,14 +60,10 @@ internal static class TraceSummary
                 if (totalBytes > 64 * 1024 * 1024) throw new InvalidDataException("Trace summary exceeds 64 MiB.");
                 var report = JsonSerializer.Deserialize(bytes, TraceJsonContext.Default.TraceReport)
                     ?? throw new InvalidDataException("Trace report missing.");
-                if (report.SchemaVersion != 2 || !report.ReferenceSha256.Equals(args[1], StringComparison.OrdinalIgnoreCase) ||
-                    !report.ContractSha256.Equals(args[2], StringComparison.OrdinalIgnoreCase) || report.Status is not ("complete" or "incomplete") ||
-                    report.SelectedCaseIds.Length is < 1 or > 18 || report.SelectedCaseIds.Distinct(StringComparer.Ordinal).Count() != report.SelectedCaseIds.Length ||
-                    report.UnprocessedCaseIds.Any(id => !report.SelectedCaseIds.Contains(id, StringComparer.Ordinal)) ||
-                    report.UnprocessedCaseIds.Distinct(StringComparer.Ordinal).Count() != report.UnprocessedCaseIds.Length ||
-                    report.Cases.Count > report.SelectedCaseIds.Length || report.Cases.Select(row => row.Id).Distinct(StringComparer.Ordinal).Count() != report.Cases.Count ||
-                    report.BinarySha256.Count is < 1 or > 4 || report.BinarySha256.Values.Any(value => !IsSha(value)))
+                if (report.SchemaVersion != 2 || !string.Equals(report.ReferenceSha256, args[1], StringComparison.OrdinalIgnoreCase) ||
+                    !string.Equals(report.ContractSha256, args[2], StringComparison.OrdinalIgnoreCase))
                     throw new InvalidDataException("Trace report identity or inventory differs.");
+                ValidateReport(report);
                 if (binaries is not null && !binaries.OrderBy(pair => pair.Key, StringComparer.Ordinal)
                     .SequenceEqual(report.BinarySha256.OrderBy(pair => pair.Key, StringComparer.Ordinal)))
                     throw new InvalidDataException("Trace reports use different binaries.");
@@ -103,9 +103,14 @@ internal static class TraceSummary
     internal static TraceSummaryCell[] Build(List<TraceCaseReport> observations, CancellationToken token)
     {
         if (observations.Count > 64 * 18) throw new InvalidDataException("Too many trace observations.");
+        foreach (var row in observations)
+        {
+            ValidateCoreCase(row);
+            ValidateBackendInventory(row, requireComplete: false);
+        }
         var result = new List<TraceSummaryCell>();
-        foreach (var core in TraceCoverage.Build([]))
-        foreach (var backend in new[] { "scalar", "simd", "cuda" })
+        foreach (var core in CoreCells.Values)
+        foreach (var backend in BackendNames)
         {
             token.ThrowIfCancellationRequested();
             var attempts = observations.Where(row => row.Id == core.Id).SelectMany(row => row.Backends).Where(row => row.Backend == backend).ToArray();
@@ -115,6 +120,94 @@ internal static class TraceSummary
                 attempts.Any(row => row.OracleComparison is not null) ? attempts.Where(row => row.OracleComparison is not null).Max(row => row.OracleComparison!.MaxLogitError) : null));
         }
         return result.ToArray();
+    }
+
+    /// <summary>Validates the persisted report contract before any observations enter the aggregate.</summary>
+    internal static void ValidateReport(TraceReport report)
+    {
+        if (report.Status is not ("complete" or "incomplete") || report.SelectedCaseIds is null ||
+            report.SelectedCaseIds.Length is < 1 or > 18 ||
+            report.SelectedCaseIds.Distinct(StringComparer.Ordinal).Count() != report.SelectedCaseIds.Length ||
+            report.SelectedCaseIds.Any(id => id is null || !CoreCells.ContainsKey(id)) || report.UnprocessedCaseIds is null ||
+            report.UnprocessedCaseIds.Distinct(StringComparer.Ordinal).Count() != report.UnprocessedCaseIds.Length ||
+            report.UnprocessedCaseIds.Any(id => !report.SelectedCaseIds.Contains(id, StringComparer.Ordinal)) ||
+            report.Cases is null || report.Cases.Any(row => row is null) || report.Cases.Count > report.SelectedCaseIds.Length ||
+            report.Cases.Select(row => row.Id).Distinct(StringComparer.Ordinal).Count() != report.Cases.Count ||
+            report.BinarySha256 is null || report.BinarySha256.Count is < 1 or > 4 ||
+            report.BinarySha256.Values.Any(value => !IsSha(value)))
+            throw new InvalidDataException("Trace report identity or inventory differs.");
+
+        foreach (var row in report.Cases)
+        {
+            if (!report.SelectedCaseIds.Contains(row.Id, StringComparer.Ordinal))
+                throw new InvalidDataException("Trace case is outside the selected core IDs.");
+            ValidateCoreCase(row);
+            ValidateBackendInventory(row, requireComplete: report.Status == "complete");
+        }
+
+        var observed = report.Cases.ToDictionary(row => row.Id, StringComparer.Ordinal);
+        foreach (var id in report.UnprocessedCaseIds)
+            if (observed.TryGetValue(id, out var row) && row.Backends.Count == BackendNames.Length)
+                throw new InvalidDataException("A fully observed case cannot be listed as unprocessed.");
+        foreach (var row in report.Cases)
+            if (row.Backends.Count != BackendNames.Length && !report.UnprocessedCaseIds.Contains(row.Id, StringComparer.Ordinal))
+                throw new InvalidDataException("An incomplete trace case must be listed as unprocessed.");
+        if (report.SelectedCaseIds.Any(id => !observed.ContainsKey(id) && !report.UnprocessedCaseIds.Contains(id, StringComparer.Ordinal)))
+            throw new InvalidDataException("A selected trace case is neither observed nor listed as unprocessed.");
+
+        // A complete source report is a closed result, never a claim based on partial rows.
+        if (report.Status == "complete" &&
+            (report.Error is not null || report.SelectedDiagnosticsPassed != true || report.UnprocessedCaseIds.Length != 0 ||
+             report.Cases.Count != report.SelectedCaseIds.Length ||
+             report.Cases.Any(row => row.Backends.Count != BackendNames.Length ||
+                 row.Backends.Any(backend => backend.Status != "compared" || backend.OracleComparison is not { Passed: true } ||
+                     backend.MissingTraces.Count != 0))))
+            throw new InvalidDataException("Complete trace report must contain three passing backends for every selected case.");
+
+        if (report.Status == "incomplete" && report.SelectedDiagnosticsPassed)
+            throw new InvalidDataException("Incomplete trace report cannot claim selected diagnostics passed.");
+    }
+
+    private static void ValidateCoreCase(TraceCaseReport row)
+    {
+        if (row is null || row.Id is null || !CoreCells.TryGetValue(row.Id, out var core) ||
+            row.Primitive != core.Primitive || row.TokenIds is not { Length: >= 2 and <= 1024 } ||
+            row.TokenCount != row.TokenIds.Length || row.MarkerPositions is not { Length: >= 2 and <= 32 } ||
+            row.CandidateLabels is not { Length: >= 2 and <= 32 } ||
+            row.MarkerPositions.Length != row.CandidateLabels.Length ||
+            row.MarkerPositions.Any(index => index < 0 || index >= row.TokenIds.Length) ||
+            row.MarkerPositions.Distinct().Count() != row.MarkerPositions.Length ||
+            row.CandidateLabels.Any(string.IsNullOrWhiteSpace) ||
+            row.CandidateLabels.Distinct(StringComparer.Ordinal).Count() != row.CandidateLabels.Length)
+            throw new InvalidDataException("Trace report contains a non-fixed core case or malformed case fields.");
+    }
+
+    private static void ValidateBackendInventory(TraceCaseReport row, bool requireComplete)
+    {
+        if (row.Backends is null || row.Backends.Count > BackendNames.Length ||
+            row.Backends.Any(backend => backend is null) ||
+            row.Backends.Select(backend => backend!.Backend).Distinct(StringComparer.Ordinal).Count() != row.Backends.Count ||
+            row.Backends.Any(backend => !BackendNames.Contains(backend!.Backend, StringComparer.Ordinal)))
+            throw new InvalidDataException("Trace case/backend inventory is invalid.");
+
+        foreach (var backend in row.Backends)
+        {
+            if (backend.Status is not ("compared" or "failed") || backend.LayerDifferences is null || backend.MissingTraces is null)
+                throw new InvalidDataException("Trace backend status or fields are invalid.");
+            if (backend.Status == "compared" && (backend.Error is not null || backend.Logits is null ||
+                backend.Probabilities is null || backend.Logits.Length is < 2 or > 32 ||
+                backend.Probabilities.Length != backend.Logits.Length ||
+                backend.Logits.Any(value => !double.IsFinite(value)) || backend.Probabilities.Any(value => !double.IsFinite(value)) ||
+                backend.OracleComparison is not { } comparison || comparison.Issues is null ||
+                !double.IsFinite(comparison.ReferenceMargin) || !double.IsFinite(comparison.MaxLogitError) ||
+                !double.IsFinite(comparison.MaxProbabilityError) || backend.MissingTraces.Count != 0))
+                throw new InvalidDataException("Compared backend must carry logits, probabilities and oracle comparison.");
+            if (backend.Status == "failed" && (string.IsNullOrWhiteSpace(backend.Error) || backend.Logits is not null ||
+                backend.Probabilities is not null || backend.OracleComparison is not null))
+                throw new InvalidDataException("Failed backend must carry an error and no compared outputs.");
+        }
+        if (requireComplete && row.Backends.Count != BackendNames.Length)
+            throw new InvalidDataException("Complete trace case must contain scalar, simd and cuda backends.");
     }
 
     private static bool IsSha(string? value) => value is { Length: 64 } && value.All(Uri.IsHexDigit);

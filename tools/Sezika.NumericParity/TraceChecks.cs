@@ -77,10 +77,31 @@ internal static class TraceChecks
                 fixture.CandidateLabels!, [backendReport, backendReport]);
             Check(TraceCoverage.Build([caseReport]).Single(cell => cell.Id == caseReport.Id).PassedBackends == 1,
                 "duplicate backend rows cannot inflate core coverage");
-            var failedAttempt = caseReport with { Backends = [backendReport with { Status = "failed" }] };
+            var failedAttempt = caseReport with { Backends = [backendReport with
+            {
+                Status = "failed", Error = "synthetic failure", Logits = null, Probabilities = null,
+                OracleComparison = null,
+            }] };
             var summaryCells = TraceSummary.Build([caseReport with { Backends = [backendReport] }, failedAttempt], token);
             Check(summaryCells.Length == 54 && summaryCells.Single(cell => cell.Id == caseReport.Id && cell.Backend == "scalar") is
                 { ObservedAttempts: 2, PassedAttempts: 1, Status: "failed" }, "trace aggregation cannot hide a failed attempt behind a passing retry");
+            Reject(() => TraceSummary.Build([caseReport with { Id = "unknown-core-case" }], token),
+                "trace aggregation rejects unknown core case IDs");
+            var hash = new string('a', 64);
+            var incomplete = new TraceReport
+            {
+                StartedUtc = DateTimeOffset.UtcNow, ElapsedMilliseconds = 1, ReferenceSha256 = hash,
+                ContractSha256 = hash, Provenance = JsonDocument.Parse("{}").RootElement.Clone(), Tolerances = tolerances,
+                Framework = "self-test", RuntimeIdentifier = "self-test", BinarySha256 = new Dictionary<string, string> { ["self"] = hash },
+                SelectedCaseIds = ["choice-en-short"], ReferenceCases = 1, NearTieCases = 0,
+                SelectedDiagnosticsPassed = false, Cases = [caseReport with { Backends = [backendReport] }],
+                Status = "incomplete",
+            };
+            Reject(() => TraceSummary.ValidateReport(incomplete), "incomplete trace must list partial cases as unprocessed");
+            Reject(() => TraceSummary.ValidateReport(incomplete with { Status = "complete", SelectedDiagnosticsPassed = true }),
+                "complete trace rejects missing backend inventory");
+            Reject(() => TraceSummary.ValidateReport(incomplete with { SelectedCaseIds = ["unknown-core-case"] }),
+                "trace report rejects non-core selected IDs");
             Console.WriteLine($"Trace diagnostic checks passed: {count}; synthetic values validate diagnostics only.");
             return 0;
         }

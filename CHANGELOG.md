@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- 加固 `NumericParity --trace-summary` 的 S3-06 汇总合同：仅接受固定18个 core case，校验每个 backend 的状态与输出字段，拒绝将部分 case 标成 complete 或遗漏 `unprocessed_case_ids`；新增4项跨报告负向自检，当前诊断自检共29项。该变更只加强证据完整性，不新增独立逐层 oracle、真实近并列或完整阶段门槛。
 - 新增独立 `decision-v1` C# runtime facade：绑定 encoder/head 的模型、tokenizer、feature/file hash 与协议身份，按共享 deadline/取消执行三题型 marker head，返回明确 `uncalibrated` 状态和 provenance；补充缺失/错误 JSON 字段的结构化错误与 tiny encoder/head smoke（148 项定向测试）。新增 `Sezika.CalibrationTool`，从 hash-bound JSONL 的 calibration/sealed_test split 拟合温度并输出全样本指标、基线差值、Wilson 区间和 fail-closed gate；fixture-only 只报告 `not_eligible`，不代表真实质量或校准。CPU encoder 增加有界 RoPE `sin/cos` 表复用并计入 resident byte 估算，参考输出保持逐元素一致；尚未完成真实独立模型质量、教师许可/采集、AOT 或 S5-07 性能收益，见新增证据文档。
 - 从 `81a0277` 并行推进 S4-08/S4-10/S4-11/S4-15/S5-06：修复校准基线/有限值/封存 split 门槛及指标分母；加固教师离线审核、家族隔离、全状态计数和不覆盖输出；锁定独立 encoder 数值配置与134 tensor布局，限制资产字节并预检查路径；严格校验画像矩阵、JSON类型/重复字段、身份、覆盖率/吞吐和独立分项。补有界回归及Windows AOT合同 fixture证据，实际模型质量/校准/教师/两RID部署和S5-07优化收益继续 pending/blocked，见[本轮统一证据](docs/evidence/continuation-2026-10-03.md)。
 - 修复开发诊断将不同题型/Choice局部候选位置混合池化AUROC的语义，补全失败分母accuracy、Boolean负类召回及Score期望MAE；新增合成指标自检，不把fixture结果当作模型输出。进程监控增加2–5秒可选CIM查询上限，保留首次监控超时及清理核实记录。
