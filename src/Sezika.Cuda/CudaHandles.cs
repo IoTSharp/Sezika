@@ -4,11 +4,14 @@ namespace Sezika.Cuda;
 
 internal sealed class CudaContextHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
-    internal CudaContextHandle(IntPtr handle)
+    internal CudaContextHandle()
         : base(ownsHandle: true)
     {
-        SetHandle(handle);
     }
+
+    // Called exactly once on a fresh, open placeholder under the caller's serial contract.
+    // Direct assignment is the no-allocation/no-throw native-success adoption boundary.
+    internal void Adopt(IntPtr value) => handle = value;
 
     // A native invocation that throws must not be reported as a successful release.
     internal int ReleaseResult { get; private set; } = -1;
@@ -24,12 +27,13 @@ internal sealed class CudaModuleHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     private readonly CudaDevice _owner;
 
-    internal CudaModuleHandle(IntPtr handle, CudaDevice owner)
+    internal CudaModuleHandle(CudaDevice owner)
         : base(ownsHandle: true)
     {
         _owner = owner;
-        SetHandle(handle);
     }
+
+    internal void Adopt(IntPtr value) => handle = value;
 
     protected override bool ReleaseHandle() => _owner.ReleaseModule(this, handle);
 }
@@ -38,14 +42,15 @@ internal sealed class CudaEventHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     private readonly CudaDevice _owner;
 
-    internal CudaEventHandle(IntPtr handle, CudaDevice owner)
+    internal CudaEventHandle(CudaDevice owner)
         : base(ownsHandle: true)
     {
         _owner = owner;
-        SetHandle(handle);
     }
 
-    protected override bool ReleaseHandle() => _owner.ReleaseEvent(handle);
+    internal void Adopt(IntPtr value) => handle = value;
+
+    protected override bool ReleaseHandle() => _owner.ReleaseEvent(this, handle);
 }
 
 internal sealed class CudaDeviceBuffer : IDisposable
@@ -53,14 +58,17 @@ internal sealed class CudaDeviceBuffer : IDisposable
     private ulong _devicePointer;
     private readonly CudaDevice _owner;
 
-    internal CudaDeviceBuffer(ulong devicePointer, nuint byteLength, CudaDevice owner)
+    internal CudaDeviceBuffer(nuint byteLength, CudaDevice owner)
     {
-        _devicePointer = devicePointer;
         _owner = owner;
         ByteLength = byteLength;
     }
 
     internal nuint ByteLength { get; }
+
+    internal bool HasNativePointer => _devicePointer != 0;
+
+    internal void Adopt(ulong value) => _devicePointer = value;
 
     internal ulong DevicePointer => _devicePointer != 0
         ? _devicePointer

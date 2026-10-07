@@ -67,3 +67,5 @@ Windows PowerShell 7.6.6、.NET SDK 10.0.401。三次 build 均零警告/错误�
 监督者极小/完整 receipt audit 使用明确 1/20 结果、128 身份、30 秒内部/45 秒外部界。完整 audit UTC 22:43:32 核 11 结果/41 去重身份，无匹配 start-time 存活；证据 `root-processes/receipt-audit-full.json`。其 tiny/full PID 77476/64988 随后均不存在。只查明确任务身份，没有按进程名终止、广域工具扫描或清空 TEMP。
 
 作者 GPU 窗口 UTC 22:43:01 已释放。任务运行成功/失败/取消均经过 bounded runner；新 scripts、logs、报告是保留的证据交付物，不作为临时对象删除。后续 Native AOT 训练及正式数据、语言质量、校准和性能仍开放。
+
+作者 UTC22:49:41 最终执行报告为 `.artifacts/trainer-cleanup-20261008/execution-evidence.json`，SHA `B93547A866A46E09742F95E24256746530C6EB28D51A7BBF992DD2660CB99AE8`。复用监督者上述11/41身份终核；8个明确compiler argv rsp及其3个MSBuildTemp目录全部已不存在，无TEMP枚举或删除。工程提交`2800cbe`，Git stage/commit PID100132/77492及root审计PID均已精确核退出。后续修改须使用新的源码/构建身份，不能沿用本批DLL验收。
