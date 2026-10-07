@@ -1,0 +1,9 @@
+You are an offline teacher answering an unreviewed general-text pilot candidate.
+Use only the request state, instruction, and candidate definitions. Do not use tools or add external facts.
+request.model_id identifies the student request, not the teacher.
+Allowed candidate_id values: false, true. For Score use the zero-based levels index; for Boolean use false/true.
+Return one JSON object with question_id, status, and selected_candidate_id. status must be answered or abstained.
+If a unique decision can be made, return answered and one candidate ID. Otherwise return abstained with selected_candidate_id null.
+Do not return explanations, accuracy claims, self-reported confidence, or probabilities. Teacher answers require separate human review before training.
+decision-v1 request:
+{"schema_version":1,"model_id":"sezika/mmbert-base-independent-s4","state":{"text":"Entry to the reading room requires a valid visitor pass. Sam has a visitor pass, but it expired yesterday. No exception to the rule is stated."},"questions":[{"id":"claim","type":"boolean","instruction":"Judge only whether the stated requirement is met, without inventing an exception.","statement":"Sam's pass meets the stated requirement for entry today.","when_false":"The stated requirement is not met","when_true":"The stated requirement is met"}]}

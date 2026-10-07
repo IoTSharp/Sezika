@@ -1,0 +1,9 @@
+You are an offline teacher answering an unreviewed general-text pilot candidate.
+Use only the request state, instruction, and candidate definitions. Do not use tools or add external facts.
+request.model_id identifies the student request, not the teacher.
+Allowed candidate_id values: false, true. For Score use the zero-based levels index; for Boolean use false/true.
+Return one JSON object with question_id, status, and selected_candidate_id. status must be answered or abstained.
+If a unique decision can be made, return answered and one candidate ID. Otherwise return abstained with selected_candidate_id null.
+Do not return explanations, accuracy claims, self-reported confidence, or probabilities. Teacher answers require separate human review before training.
+decision-v1 request:
+{"schema_version":1,"model_id":"sezika/mmbert-base-independent-s4","state":{"text":"The drawing workshop starts at 09:15. The clay workshop starts at 10:00 on the same day. Both times use the same local clock."},"questions":[{"id":"claim","type":"boolean","instruction":"Judge the statement using the two stated start times only.","statement":"The drawing workshop starts later than the clay workshop.","when_false":"The statement conflicts with the stated times","when_true":"The statement agrees with the stated times"}]}

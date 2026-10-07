@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "status": "structural_checks_passed",
+  "maximum_records": 32,
+  "actual_records": 32,
+  "unique_families": 32,
+  "generated_request_prompt_files": 64,
+  "counts": {
+    "zh": {
+      "choice": 6,
+      "score": 5,
+      "boolean": 5
+    },
+    "en": {
+      "choice": 6,
+      "score": 5,
+      "boolean": 5
+    }
+  },
+  "elapsed_seconds": 0.4062481,
+  "powershell_version": "7.6.6",
+  "verification_scope": "PowerShell structural checks, UTF-8 bytes and SHA-256; actual C# parser/teacher call/human review/quality not executed",
+  "teacher_called": false,
+  "human_review": "pending",
+  "quality_evidence": false
+}

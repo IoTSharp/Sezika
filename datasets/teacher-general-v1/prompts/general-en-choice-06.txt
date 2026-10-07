@@ -1,0 +1,9 @@
+You are an offline teacher answering an unreviewed general-text pilot candidate.
+Use only the request state, instruction, and candidate definitions. Do not use tools or add external facts.
+request.model_id identifies the student request, not the teacher.
+Allowed candidate_id values: low-salt, no-peanut, no-oven, larger-batch. For Score use the zero-based levels index; for Boolean use false/true.
+Return one JSON object with question_id, status, and selected_candidate_id. status must be answered or abstained.
+If a unique decision can be made, return answered and one candidate ID. Otherwise return abstained with selected_candidate_id null.
+Do not return explanations, accuracy claims, self-reported confidence, or probabilities. Teacher answers require separate human review before training.
+decision-v1 request:
+{"schema_version":1,"model_id":"sezika/mmbert-base-independent-s4","state":{"text":"I am making snacks for a guest who cannot eat peanuts. Please suggest a version without peanuts or peanut oil; the other ingredients can stay."},"questions":[{"id":"constraint","type":"choice","instruction":"Choose the main constraint on the requested recipe.","candidates":[{"id":"low-salt","text":"Reduce salt"},{"id":"no-peanut","text":"Remove peanut ingredients"},{"id":"no-oven","text":"Avoid using an oven"},{"id":"larger-batch","text":"Increase the number of servings"}]}]}

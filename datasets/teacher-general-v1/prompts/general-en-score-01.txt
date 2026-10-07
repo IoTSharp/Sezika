@@ -1,0 +1,9 @@
+You are an offline teacher answering an unreviewed general-text pilot candidate.
+Use only the request state, instruction, and candidate definitions. Do not use tools or add external facts.
+request.model_id identifies the student request, not the teacher.
+Allowed candidate_id values: 0, 1, 2, 3, 4. For Score use the zero-based levels index; for Boolean use false/true.
+Return one JSON object with question_id, status, and selected_candidate_id. status must be answered or abstained.
+If a unique decision can be made, return answered and one candidate ID. Otherwise return abstained with selected_candidate_id null.
+Do not return explanations, accuracy claims, self-reported confidence, or probabilities. Teacher answers require separate human review before training.
+decision-v1 request:
+{"schema_version":1,"model_id":"sezika/mmbert-base-independent-s4","state":{"text":"During the seven-day week described here, Maya practised the piano on Monday, Wednesday, and Saturday, and on no other days."},"questions":[{"id":"frequency","type":"score","instruction":"Rate the stated practice frequency for this week. Count distinct days in the text only.","levels":["0: zero days","1: one day","2: two or three days","3: four or five days","4: six or seven days"]}]}

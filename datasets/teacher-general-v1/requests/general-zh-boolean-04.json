@@ -1,0 +1,1 @@
+{"schema_version":1,"model_id":"sezika/mmbert-base-independent-s4","state":{"text":"摄影小组共有甲、乙、丙三位成员。本次活动甲和丙到场，乙请假，没有其他成员。"},"questions":[{"id":"claim","type":"boolean","instruction":"根据明确列出的成员和到场情况判断陈述。","statement":"摄影小组的所有成员都参加了本次活动。","when_false":"陈述与到场情况不符","when_true":"陈述与到场情况相符"}]}

@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "status": "file_hash_and_correspondence_checks_passed",
+  "manifest_sha256": "b2ab11e5cabf1967b87e5a06fa9d0e270a1aec0a6df8b8f55e3c670f767fa8fa",
+  "candidates_sha256": "0e9852639587417bfabf2ac04f43555cf82dbb03ba57e03b27febbafcd50b0d8",
+  "record_count": 32,
+  "unique_family_count": 32,
+  "verified_request_prompt_files": 64,
+  "counts": {
+    "zh": {
+      "choice": 6,
+      "score": 5,
+      "boolean": 5
+    },
+    "en": {
+      "choice": 6,
+      "score": 5,
+      "boolean": 5
+    }
+  },
+  "wall_seconds_limit": 10,
+  "elapsed_seconds": 0.3124315,
+  "teacher_called": false,
+  "human_review": "pending",
+  "quality_evidence": false,
+  "verification_scope": "UTF-8 SHA-256, counts, per-record pending provenance, request/prompt exact byte correspondence; no C# parser or teacher execution"
+}

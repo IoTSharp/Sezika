@@ -20,7 +20,7 @@
 
 - `/root/independent_cli`：固定 README/config/tokenizer 已核；首批权重代理300秒超时如实保留，partial 已清理。第二独立单权重任务在1200秒单请求/1500秒总预算内成功（outer PID3748），固定1231188142字节/hash匹配；已分配≤400秒串行C#转换/真实CPU smoke槽，须收取134 tensor/转换hash/真实输出及最终资源核验后单独提交。它独占忽略资产与恢复证据，以及 source_lock 的MIT全文事实纠正；不能用旧DLL hash代替当前重建身份。
 - `/root/head_checkpoint`：独占 `Sezika.TeacherTool` 新采集模块/DTO/sourcegen及专题文档，20分钟实施边界，不编辑Program.cs/csproj、不build或实际HTTP；主线程最后接线和验收。已只读核实Tomur HEAD `5cd90dd7565a4668016217a56cd2876383869560`，默认5137且默认位置未发现安装；JSON format未实施，固定stop原因不能证明没截断。
-- `/root/closure_audit`：32题候选包 ready（中英各6Choice/5Score/5Boolean，AI drafted/audit/pilot/pending，无答案/教师响应）；目前20分钟只读独立复核collector，候选包等实际兼容验收后单独提交，不写共享文档。
+- `/root/closure_audit`：32题候选包已完成监督者67项文件/hash、32个唯一family/六分组及样例验收，随候选任务独立提交；全部AI drafted/audit/pilot/pending，无答案/教师响应，C#采集器实际兼容另验。目前20分钟只读复核collector，不写共享文档；已指出deadline发布末尾缺少复查及清理/异常捕获问题，由实施者修复。
 
 用户已确认首批用途为通用中英分类、程度评分、真假判断，并希望用教师模型作答。32题是第一轮格式试运行；600训练+各120开发/校准/测试仅监督者建议的起点，未采集/训练或获得正式数据准入。用户对人工审核/独立保管问题表示不理解，已用具体含义解释，不能将该回复视为批准或封存证据。
 

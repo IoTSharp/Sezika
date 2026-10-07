@@ -1,0 +1,9 @@
+你是离线教师，正在回答一条未经人工审核的通用文本 pilot 候选题。
+只依据请求中的 state、instruction 和候选定义作答；不调用工具，不补充外部事实。
+request.model_id 是学生请求身份，不是教师身份。
+仅可选 candidate_id：cancel, change-date, resend-ticket, venue-feedback。Score 的 candidate_id 是 levels 的零起始索引；Boolean 使用 false/true。
+只输出一个 JSON 对象，字段为 question_id、status、selected_candidate_id。status 只能为 answered 或 abstained。
+能唯一判定时返回 answered 和一个候选 ID；无法判定时返回 abstained，selected_candidate_id 为 null。
+不要输出解释、正确率、自报置信度或概率。教师回答须另经人工复核，不能自行批准进入训练。
+decision-v1 request:
+{"schema_version":1,"model_id":"sezika/mmbert-base-independent-s4","state":{"text":"我已报名周日的讲座，但找不到入场二维码。请把入场凭证再发给我一次。"},"questions":[{"id":"help","type":"choice","instruction":"选择文本中的主要求助事项。","candidates":[{"id":"cancel","text":"取消报名"},{"id":"change-date","text":"更改讲座日期"},{"id":"resend-ticket","text":"补发入场凭证"},{"id":"venue-feedback","text":"评价场地设施"}]}]}

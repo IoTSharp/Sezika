@@ -1,0 +1,1 @@
+{"schema_version":1,"model_id":"sezika/mmbert-base-independent-s4","state":{"text":"咖啡店平时周一到周日营业。本周因为设备检修，周三全天暂停营业，其他日期照常营业。"},"questions":[{"id":"claim","type":"boolean","instruction":"判断陈述是否符合本周的营业安排；本周明确例外优先于平时安排。","statement":"这家咖啡店本周周三照常营业。","when_false":"陈述不符合本周安排","when_true":"陈述符合本周安排"}]}

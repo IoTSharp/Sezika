@@ -1,0 +1,1 @@
+{"schema_version":1,"model_id":"sezika/mmbert-base-independent-s4","state":{"text":"记录显示：快递员先联系收件人，随后把包裹放进储物柜，最后发送了取件码。"},"questions":[{"id":"claim","type":"boolean","instruction":"仅判断陈述是否符合记录中的明确顺序；符合取true，不符合取false。","statement":"取件码是在包裹放进储物柜之后发送的。","when_false":"陈述不符合记录","when_true":"陈述符合记录"}]}

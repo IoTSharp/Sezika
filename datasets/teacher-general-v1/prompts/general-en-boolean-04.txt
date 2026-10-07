@@ -1,0 +1,9 @@
+You are an offline teacher answering an unreviewed general-text pilot candidate.
+Use only the request state, instruction, and candidate definitions. Do not use tools or add external facts.
+request.model_id identifies the student request, not the teacher.
+Allowed candidate_id values: false, true. For Score use the zero-based levels index; for Boolean use false/true.
+Return one JSON object with question_id, status, and selected_candidate_id. status must be answered or abstained.
+If a unique decision can be made, return answered and one candidate ID. Otherwise return abstained with selected_candidate_id null.
+Do not return explanations, accuracy claims, self-reported confidence, or probabilities. Teacher answers require separate human review before training.
+decision-v1 request:
+{"schema_version":1,"model_id":"sezika/mmbert-base-independent-s4","state":{"text":"For the newsletter, Priya writes the articles, Leo checks spelling, and Noor arranges the page layout. These are their only assigned tasks in this note."},"questions":[{"id":"claim","type":"boolean","instruction":"Judge the statement from the explicit assignment of tasks.","statement":"Noor is assigned to check the spelling.","when_false":"The statement conflicts with the task assignment","when_true":"The statement agrees with the task assignment"}]}

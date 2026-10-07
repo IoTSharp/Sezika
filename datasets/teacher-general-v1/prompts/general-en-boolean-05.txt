@@ -1,0 +1,9 @@
+You are an offline teacher answering an unreviewed general-text pilot candidate.
+Use only the request state, instruction, and candidate definitions. Do not use tools or add external facts.
+request.model_id identifies the student request, not the teacher.
+Allowed candidate_id values: false, true. For Score use the zero-based levels index; for Boolean use false/true.
+Return one JSON object with question_id, status, and selected_candidate_id. status must be answered or abstained.
+If a unique decision can be made, return answered and one candidate ID. Otherwise return abstained with selected_candidate_id null.
+Do not return explanations, accuracy claims, self-reported confidence, or probabilities. Teacher answers require separate human review before training.
+decision-v1 request:
+{"schema_version":1,"model_id":"sezika/mmbert-base-independent-s4","state":{"text":"A key was in the blue drawer. Elena moved it to the green box, then closed the blue drawer. Nobody moved the key again."},"questions":[{"id":"claim","type":"boolean","instruction":"Use the final location explicitly described, without treating the closed drawer as evidence of the key's location.","statement":"The key is now in the green box.","when_false":"The statement conflicts with the final location","when_true":"The statement agrees with the final location"}]}

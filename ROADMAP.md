@@ -39,10 +39,12 @@
 
 2026-10-08 上述 S4-15 pipeline 工程子任务已验收：核心190项、CUDA完整59项、CLI41项和预测导出11项回归通过，Windows Native AOT 独立 CPU18项/实卡CUDA17项通过；关闭竞态与同线程重入释放已修复，首次失败保留。仅 tiny 合同/算子/Windows AOT 范围通过，真实原始模型上游 oracle、自有 head 数值、Linux AOT、质量和性能继续开放，见[独立管线证据](docs/evidence/independent-pipeline-2026-10-08.md)。原始权重恢复另行验证，不从该 fixture 结果推断。
 
+同日用户确认首批任务为通用中英文本分类、程度评分、真假判断，并希望用本地教师作答。先建立32题格式试运行候选：中英各6Choice/5Score/5Boolean，32个独立family，全部AI起草、audit/pilot、人工审核及训练准入pending，没有答案或教师响应。候选包67项文件/hash与统计已由监督者复验；教师采集仍需真实服务/模型/许可身份及严格响应验证，后续扩量按试运行结果确定。见[候选包与证据](docs/teacher-general-pilot-2026-10-08.md)。
+
 ### 已选定方向
 
 1. **独立模型来源。** 直接从经审核的原始 encoder 取得底座参数，优先评估 `jhu-clsp/mmBERT-base` 或同类可支持的编码器，独立记录 revision、配置、tensor/tokenizer hash 与许可；不能从 Laya 检查点抽取 encoder 后改称原始底座。本轮已完成固定 mmBERT 原始文件下载、hash、C# 受限 pickle 转换、134 tensor 形状检查和独立 loader smoke；上游逐层数值 oracle与许可发布审签仍未完成。自有决策头重新初始化和训练，不继承 Laya 训练后的 head/type/scorer 权重。
-2. **任务与数据。** 先明确首批业务任务，中英分别覆盖 Choice/Score/Boolean 并建立基线和错误切片；具体领域、任务与样本仍待确定。人工标注数据作为基线，教师辅助标注或生成作为独立实验。分别管理 train、development、calibration、sealed test 和 audit，同家族、实体及翻译/改写/反事实衍生物保持隔离。已查看 PAWS 250/Nimble 324 及其衍生物继续仅作 audit。
+2. **任务与数据。** 首批已选通用中英文本分类、程度评分、真假判断，分别覆盖 Choice/Score/Boolean 并建立基线和错误切片；正式样本与质量接受范围仍待冻结。人工标注数据作为基线，教师辅助标注或生成作为独立实验；当前32题AI起草候选仅作audit格式试运行，不是人工金标或获准训练集。分别管理 train、development、calibration、sealed test 和 audit，同家族、实体及翻译/改写/反事实衍生物保持隔离。已查看 PAWS 250/Nimble 324 及其衍生物继续仅作 audit。
 3. **教师入口。** 可选教师改为 IoTSharp/Tomur 本地服务，首选待验证 catalog 候选 `qwen35-9b-q4km`，4B 仅作资源/质量对照；本机安装、模型身份、实际调用、输出格式、训练与再分发条款均未验证。独立 C# 离线采集工具在 Sezika 核心之外调用服务，先最多 32 条新人工金标作有界探索，经人工复核后才可进入训练器。无法取得有效使用许可时继续使用获准人工数据；未知条件不阻断本地训练工具研发。
 4. **训练路线。** 首轮冻结独立 encoder，初始化并训练最小可用的自有决策头和 scorer；按所选架构训练需要学习的题型向量及中间层，不能冻结随机初始化的完整 head 后仅更新 scorer，作为默认训练方案。先建立人工监督硬标签基线，再比较可选教师硬标签的收益。只有取得按固定候选映射计算的真实教师分数，才另测软分布蒸馏；文字中的自报置信度不作为概率标签。根据独立开发集结果决定是否扩展 head、采用 encoder LoRA 或研究新架构；全量 encoder 训练、大规模预训练和学生模型压缩仍是后续研究。Laya scorer 微调仅可作另行选择的过渡实验，其产物仍属 Laya 衍生模型。
 5. **实现与部署。** 教师 HTTP 调用放在独立 C# 离线数据工具中，采集结果经审核后以文件交给 C# 训练器；Sezika 核心及最终模型推理保持本地运行，不依赖教师 API。训练工具可先运行普通 .NET；GPU 训练仍需 C# 反向 kernels 与构建期 PTX/Driver 路径，已有 CUDA 前向验证不代表训练已支持。新权重使用独立身份、manifest/hash 和受限加载入口，原 Laya 校验及数值参考保留。

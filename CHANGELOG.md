@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- 按用户选定的通用中英分类/评分/真假任务建立32题教师pilot候选包，固定单题decision-v1请求、教师prompt、family、文件hash和来源；监督者复验67项绑定及6/6Choice、5/5Score、5/5Boolean统计，跨平台保留精确字节。所有题目仍为AI drafted/audit/pending，没有教师调用、金标或训练准入；见[候选证据](docs/teacher-general-pilot-2026-10-08.md)。
 - 新增 S4-15 静态独立 CPU/CUDA pipeline、完整 head 身份注入与三行自有 marker head GPU 前向；复用既有 C# PTX/Driver，修复关闭竞态和 runtime 重入释放。核心190项、CUDA59项、CLI41项和预测11项回归通过；Windows Native AOT 独立 CPU18项、CUDA实卡17项通过。真实原始模型数值、Linux AOT、质量与性能继续分别验收，见[本批证据](docs/evidence/independent-pipeline-2026-10-08.md)。
 - 新增 S4-08/S4-15 `Sezika.IndependentPredict`：在人工准入/许可/封存/hash 元数据通过后才读取题文，使用独立本地 runtime 导出校准器兼容预测、split hash、组合 encoder/head 身份及全状态分母；同父 staging 核验后整体原子发布。极小1项、完整11项检查及真实 CalibrationTool 联调通过，4条tiny fixture按预期返回exit3/not_eligible，身份和预测hash一致。未读取真实封存题或验收实际模型质量。
 - 新增 S4-15/S6-02 显式独立 CLI：`--model-format independent-v1` 的 inspect/predict 使用独立 encoder、自有 head、完整 hash-bound v2 训练报告及 decision-v1；输入、命令、推理均有预算与取消，错误结构化输出。Managed 41 项、Windows Native AOT fixture 42 项通过，产品 CLI 原生发布及 help 通过；没有恢复真实权重，不提前宣布正式默认迁移、校准、两 RID 真实推理或发布。
