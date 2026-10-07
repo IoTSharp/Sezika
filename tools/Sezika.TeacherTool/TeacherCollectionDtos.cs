@@ -3,7 +3,7 @@ using System.Text.Json;
 namespace Sezika.TeacherTool;
 
 public sealed record TeacherChatMessage(string Role, string Content);
-public sealed record TeacherChatRequest(string Model, TeacherChatMessage[] Messages, bool Stream, double Temperature, int MaxTokens);
+public sealed record TeacherChatRequest(string Model, TeacherChatMessage[] Messages, bool Stream, double Temperature, int MaxTokens, int ContextSize);
 public sealed record TeacherUsage(int PromptTokens, int CompletionTokens, int TotalTokens);
 public sealed record TeacherAsset(string Path, string Sha256, int Bytes);
 public sealed record TeacherIdentity(string Id, string Service, string Model, string Revision, string ModelSha256,
@@ -20,7 +20,7 @@ public sealed record TeacherCollectedRecord(string RecordId, string Language, st
 public sealed record TeacherCollectionReport(int SchemaVersion, string Status, bool TrainingAdmission,
     string SourceManifestSha256, string CandidatesSha256, TeacherIdentity Teacher, int Total,
     int Pending, int Failed, int Abstained, int HttpAttempts, int MaximumRecords, int MaximumHttpAttempts,
-    int RequestTimeoutSeconds, int TotalTimeoutSeconds, int MaximumOutputTokens, int MaximumResponseBytes,
+    int RequestTimeoutSeconds, int TotalTimeoutSeconds, int MaximumOutputTokens, int MaximumResponseBytes, int MaximumContextTokens,
     double ElapsedSeconds, bool Cancelled, bool QualityEvidence, bool SyntheticTransport,
     TeacherAsset Records, TeacherAsset[] EvidenceAssets);
 public sealed record TeacherFailureAudit(int SchemaVersion, string Status, bool TrainingAdmission, bool QualityEvidence,

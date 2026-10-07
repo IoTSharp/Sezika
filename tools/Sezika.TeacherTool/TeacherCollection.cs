@@ -99,6 +99,11 @@ public static class TeacherCollection
                     var uri = message.RequestUri;
                     if (uri is null || uri.Host != "127.0.0.1" || uri.AbsolutePath != "/v1/chat/completions" || message.Method != HttpMethod.Post)
                         throw new InvalidOperationException("Synthetic fixture URI/request contract failed.");
+                    using var sent = JsonDocument.Parse(message.Content!.ReadAsByteArrayAsync(requestToken).GetAwaiter().GetResult());
+                    if (sent.RootElement.GetProperty("context_size").GetInt32() != 2048 ||
+                        sent.RootElement.GetProperty("max_tokens").GetInt32() is < 1 or > 256 ||
+                        sent.RootElement.GetProperty("stream").GetBoolean())
+                        throw new InvalidOperationException("Synthetic fixture request resource bounds failed.");
                     if (caseIndex == 4) throw new OperationCanceledException(requestToken);
                     if (caseIndex == 6) throw new HttpRequestException("Synthetic transport failure.");
                     var content = caseIndex switch
@@ -212,7 +217,7 @@ public static class TeacherCollection
                 var requestAsset = journal.Write(stem + ".decision.json", candidate.RequestBytes);
                 var promptAsset = journal.Write(stem + ".prompt.txt", candidate.PromptBytes);
                 var chat = new TeacherChatRequest(preflight.Identity.Model,
-                    [new TeacherChatMessage("user", StrictUtf8.GetString(candidate.PromptBytes))], false, 0, options.MaxOutputTokens);
+                    [new TeacherChatMessage("user", StrictUtf8.GetString(candidate.PromptBytes))], false, 0, options.MaxOutputTokens, 2048);
                 var requestBytes = JsonSerializer.SerializeToUtf8Bytes(chat, TeacherCollectionJsonContext.Default.TeacherChatRequest);
                 var httpAsset = journal.Write(stem + ".http-request.json", requestBytes);
                 var itemWatch = Stopwatch.StartNew();
@@ -278,7 +283,7 @@ public static class TeacherCollection
             var report = new TeacherCollectionReport(1, "complete_pending_human_review", false,
                 preflight.SourceManifestSha256, preflight.CandidatesSha256, preflight.Identity, records.Count,
                 pending, failed, abstained, attempts, options.MaxRecords, MaximumRecords,
-                options.RequestTimeoutSeconds, options.TotalTimeoutSeconds, options.MaxOutputTokens, MaximumResponseBytes,
+                options.RequestTimeoutSeconds, options.TotalTimeoutSeconds, options.MaxOutputTokens, MaximumResponseBytes, 2048,
                 watch.Elapsed.TotalSeconds, cancelled, false, syntheticTransport, recordsAsset, evidence);
             // A completed report includes every failed/abstained row and is never training eligible.
             journal.Write("manifest.json", JsonSerializer.SerializeToUtf8Bytes(report, TeacherCollectionJsonContext.Default.TeacherCollectionReport));
@@ -307,7 +312,7 @@ public static class TeacherCollection
                     var candidate = preflight.Candidates[index]; var stem = $"items/{index:D2}";
                     var request = journal.Find(stem + ".decision.json") ?? journal.Write(stem + ".decision.json", candidate.RequestBytes);
                     var prompt = journal.Find(stem + ".prompt.txt") ?? journal.Write(stem + ".prompt.txt", candidate.PromptBytes);
-                    var chat = new TeacherChatRequest(preflight.Identity.Model, [new("user", StrictUtf8.GetString(candidate.PromptBytes))], false, 0, options.MaxOutputTokens);
+                    var chat = new TeacherChatRequest(preflight.Identity.Model, [new("user", StrictUtf8.GetString(candidate.PromptBytes))], false, 0, options.MaxOutputTokens, 2048);
                     var httpRequest = journal.Find(stem + ".http-request.json") ?? journal.Write(stem + ".http-request.json", JsonSerializer.SerializeToUtf8Bytes(chat, TeacherCollectionJsonContext.Default.TeacherChatRequest));
                     var response = journal.Find(stem + ".http-response.bin") ?? journal.Find(stem + ".http-response-prefix.bin");
                     records.Add(new(candidate.RecordId, candidate.Language, candidate.Type, candidate.FamilyId, candidate.Source,

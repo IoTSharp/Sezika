@@ -47,6 +47,8 @@
 
 同日取得官方Qwen3.5-9B固定revision的Apache-2.0全文、量化资产身份与Tomur最小CPU构建/登记/启动合同，完成AI来源工程核查；量化base revision等价、人工训练/发布审签及实际模型使用另验。监督者已接续有界CPU native构建及单GGUF恢复，来源核查不等于实际教师推理。见[运行前证据](docs/evidence/teacher-runtime-readiness-2026-10-08.md)。
 
+真实教师试运行前的固定2048-token context_size请求上限已补齐，成功及取消归档请求使用同一上限，manifest记录maximum_context_tokens。重建零警告/错误、1→10合成合同验证实际序列化context_size/max_tokens/stream通过；真实服务执行及内存用量仍另验。
+
 下一接续工程任务已登记：S4-15独立数值capture工具先冻结原始46-token smoke请求，导出decision-v1请求/token IDs、CPU encoder逐层张量及完整来源/产物hash供离线上游oracle比较；复用现有Trace API，不复制或替换产品算子。工程fixture与真实资产捕获分别验收，尚无可信上游数值对齐或质量结论。
 
 ### 已选定方向

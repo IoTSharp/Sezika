@@ -54,7 +54,7 @@ model.json 还要求 `validation_status:"hash_verified"`、`model_bytes`、`veri
 
 每条 request 使用现有 `IndependentDecisionV1Parser`，必须只含一个题、有效学生模型身份、合法 state。按题型拒绝多余字段，prompt 必须包含确切 request JSON 快照。候选映射：Choice 用原候选 ID；Score 用 levels 零基索引字符串；Boolean 按 false、true 顺序。
 
-只发送实际 Tomur 支持的 `model/messages/stream:false/temperature:0/max_tokens`。temperature=0 不证明确定性、正确率或语言质量；prompt 的 JSON 指令不表示支持约束解码。响应 content 必须是一个完整 JSON 对象，字段严格为：
+只发送实际 Tomur 支持的 `model/messages/stream:false/temperature:0/max_tokens/context_size:2048`，固定上下文预算，不采用服务默认的大上下文。temperature=0 不证明确定性、正确率或语言质量；prompt 的 JSON 指令不表示支持约束解码。响应 content 必须是一个完整 JSON 对象，字段严格为：
 
 ```json
 {"question_id":"原题ID","status":"answered","selected_candidate_id":"原候选ID"}
@@ -106,3 +106,5 @@ collect --catalog <catalog.json> --manifest <manifest.json> --output <新目录>
 外层trial后曾错误用未由runner设置的PowerShell `$LASTEXITCODE` 判定失败，造成后续命令未启动；trial的正式runner记录始终exit0。随后分别运行完整检查并从确切result文件的Status/ExitCode/CleanupErrors核验，未将该调度错误归为模型失败。5份上述runner记录均Succeeded/exit0/cleanup为空；登记PID查询无存活对象，两处最终GUID fixture目录已由finally清理。日志与证据保留，无独占MCP服务或其他任务文件清理。
 
 工程合同已通过；真实教师模型与条款、实际本地服务、32题采集、人工训练准入及质量仍未验收。固定来源的小文件核查及默认loopback连接失败见[来源预检查](evidence/teacher-source-preflight-2026-10-08.md)。
+
+同日接续固定context_size=2048请求预算，正常请求和取消归档重建请求一致，完成manifest包含maximum_context_tokens=2048。Tomur支持该字段已由固定源码核实；避免使用服务默认的大上下文。最终重建PID87004/上限180秒/exit0/零警告错误，新DLL SHA-256为 `0C0FC3F80DFE60F0DB4472AD4B714556E4A37A6C6E4E990661FE6180E84CECEB`。1→10合成检查PID51236/97132（各40秒上限）均exit0，并直接检查送入handler的HTTP body中context_size=2048、max_tokens范围与stream=false。三个登记PID无存活对象，两处新fixture目录已清理；此前无context字段的DLL hash和历史检查原样保留。没有重跑旧合同或宣称真实服务资源已达标。
