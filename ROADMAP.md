@@ -57,6 +57,10 @@ S4-15独立数值capture工程任务已验收：固定46-token请求、267项CPU
 
 独立Python oracle导出工具工程亦已验收：标准库tiny1/full16通过，原权重/输入与源码lease、首次import前hash及bytecode缓存隔离、25hook/marker、Windows原子发布与实际Move后取消回滚已实现；修改后再次1→16通过，任务进程与owned fixture已关闭。没有安装NumPy或真实forward，不能关闭上游parity；准备探测越界和Python安装管理器意外更新事实保留，见[导出工具证据](docs/evidence/independent-oracle-tool-2026-10-08.md)。
 
+接续S4-15/S4-08独立模型Native AOT smoke工程：新增静态core/CUDA引用的独立样例。原始converted package与46-token实现输入仍在，历史head-v2.asset/开发报告已不在，因此明确调整为真实encoder+固定内存诊断head，不造训练report或schema3正式准入。诊断head记录内存F32身份/算法，runtime字段中的hash仅作明确的诊断绑定，不能称真实训练manifest/features/head文件。分别核真实backend、AOT标志、有限类型化输出、预取消/卸载资源；CUDA缺失失败，不把legacy/tiny当真实独立证据。Windows先验，Linux另开窗口；正式训练head、上游parity、质量/校准和完整独立模型两RID仍开放。
+
+该Windows诊断工程已验收：最终零警告/错误、managed/native各tiny1→8、一次win-x64发布、native probe与唯一真实46-token CUDAcase通过；311次kernel、552-byte D2H、预取消零新增launch、释放后资源归零。监督者核六文件冻结/实际exe与报告hash，12份runner及45身份无匹配存活，首次CS1061失败保留，见[Windows证据](docs/evidence/independent-aot-smoke-2026-10-08.md)。接续Linux诊断切片复用冻结样例，在Ubuntu用独占artifacts路径核Native AOT发布、tiny/full文件身份合同、driver probe及最多1个同输入CUDAcase；不用Windows/Linux共用obj，不安装缺失工具或改变head/输入以获得通过。它仍不是正式trained-head、质量、两RID正式交付或性能验收。
+
 用户追加资源约束：正式训练和批量教师采集/特征计算必须使用GPU；CPU只用于小规模兼容性、数值参考及故障诊断。32题教师pilot先完成CUDA后端/显存核验再执行；S4-07 GPU训练需实现并验证C#反向kernels与PTX/Driver，当前前向证据不能写成训练支持。
 
 S4-07 GPU训练最小工程已闭环：冻结encoder的三行marker head以纯C# kernel在GPU完成CE、梯度与SGD，构建期17项静态PTX/ABI导出、CPU参考27项/GPU21→61项及59项既有CUDA回归通过，见[证据](docs/evidence/gpu-training-design-2026-10-08.md)。下一切片接正式GPU encoder特征计算/训练CLI及backend/kernel/device恢复和报告身份，禁止CPU fallback；`train-original`现有CPU路径不作为正式训练使用。encoder反传、正式数据/质量、训练AOT另验。
@@ -155,7 +159,7 @@ GPU切片C工程已验收：train-original-gpu明确选择设备、五项恢复�
 | S4-12 | D 训练资产 | 🚧 进行中 | 实现自有head checkpoint、训练恢复状态、版本化manifest及受限导出/加载入口；显式区分独立与Laya衍生资产 | S4-14,S1-03,S3-05；与S4-07工具研发同步 | CPU v2与[GPU schema3 workflow](docs/evidence/gpu-training-workflow-2026-10-08.md)绑定完整模型/数据/特征、kernel/UUID及恢复元数据，GPU CLI校验五项恢复输入；fixture恢复一致与拒绝篡改通过。正式模型包、校准、训练AOT及发布仍未完成 |
 | S4-13 | D 条件适配 | ⏳ 计划中 | 首轮自有head报告后按开发证据扩展架构，必要时研究C# encoder LoRA | S4-06,S4-07,S4-12 | 按所选架构记录参数与新增反向算子梯度检查、资源/恢复证据及独立消融；GPU反向另行实现与验证；无收益也保留报告，正式交付走S4-08 |
 | S4-14 | A 独立合同 | ✅ 已完成文档审核/设计 | 审核原始encoder/tokenizer来源，定义自有head初始化、输入协议、资产身份与Laya迁移边界 | S0-01,S0-02 | 合同已固定原始 revision、许可边界、pickle 转换门槛、三题型 head、自有协议和迁移清单；实际资产/训练证据转入 S4-15/S4-07 |
-| S4-15 | B 独立入口 | 🚧 进行中 | 实现原始encoder受限导入、自有输入构造与显式legacy适配，将Laya固定校验限定在旧模型入口 | S4-14,S1-03,S3-05；checkpoint接入：S4-12 | 固定原始资产/hash、C#受限转换134 tensors、独立loader/decision-v1真实CPU smoke及267项数值capture已验证；[静态pipeline](docs/evidence/independent-pipeline-2026-10-08.md)完成Windows AOT tiny合同，[GPU CLI](docs/evidence/gpu-training-cli-2026-10-08.md)完成真实encoder特征smoke。可信上游oracle、真实独立head/两RID AOT、质量和默认切换仍由S4-08验收 |
+| S4-15 | B 独立入口 | 🚧 进行中 | 实现原始encoder受限导入、自有输入构造与显式legacy适配，将Laya固定校验限定在旧模型入口 | S4-14,S1-03,S3-05；checkpoint接入：S4-12 | 固定原始资产/hash、C#受限转换134 tensors、独立loader/decision-v1真实CPU smoke及267项数值capture已验证；[静态pipeline](docs/evidence/independent-pipeline-2026-10-08.md)完成Windows AOT tiny合同，[GPU CLI](docs/evidence/gpu-training-cli-2026-10-08.md)完成真实encoder特征smoke，[Windows诊断AOT](docs/evidence/independent-aot-smoke-2026-10-08.md)完成真实encoder+未训练内存head的46-token CUDAcase及资源归零。可信上游oracle、正式trained-head/两RID AOT、质量和默认切换仍由S4-08验收 |
 | S5-01 | E GPU/AOT | ✅ 已完成 | 生成带 hash/ABI 的 C# kernel PTX 与静态 Driver loader | S0-02 | 14 个 kernel manifest/PTX 和生成复现记录 |
 | S5-02 | E GPU/AOT | ✅ 已完成 | 完成 resident CUDA encoder/head 与 CPU logits 对齐 | S2-01,S5-01 | RTX 4070 实卡 head 误差报告 |
 | S5-03 | E GPU/AOT | ✅ 已完成 | 完成 tiny CPU/CUDA win-x64 与 CPU linux-x64 Native AOT smoke | S5-01 | 发布物、运行输出、依赖图 |

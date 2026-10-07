@@ -21,7 +21,8 @@
 | GPU CLI/特征导出 C | `d2ccb5f` | 显式train-original-gpu、五项恢复输入、完整GPU encoder特征及GPU SGD、schema3评价适配；CPU2→22/GPU8→12/旧CUDA59通过 |
 | 第二轮GPU教师实测 | `e26d9e7` | Score/Boolean tiny后full32，32条全部格式有效；34 HTTP、32不同题、无retry，151引用核验通过；标签全部pending |
 | 独立数值比较器 | `f469b27` | 25层级tensor+marker的冻结合同，零警告/错误构建，tiny1/full16共19变体；26项完整分母、fixture/自比/源码及路径门禁；没有真实参考数值 |
-| 独立上游oracle工具 | 本次提交 | 原权重/源码lease、首次import前hash及bytecode隔离、25hook+marker、Windows原子发布/实际Move后取消回滚，最终tiny1/full16通过；没有真实forward |
+| 独立上游oracle工具 | `01d23f3` | 原权重/源码lease、首次import前hash及bytecode隔离、25hook+marker、Windows原子发布/实际Move后取消回滚，最终tiny1/full16通过；没有真实forward |
+| Windows独立诊断AOT样例 | 随本文件单独提交 | 真实固定encoder+未训练内存head，managed/native各1→8、唯一publish/probe/46-token CUDAcase；311launch、552-byte D2H、预取消零launch、释放归零，12份结果/45身份终审通过 |
 
 固定真实 mmBERT 的 C 切片 encoder smoke 已通过：PID75592、48 tokens、markers27/37、hidden768、310 kernel launches；runner17.299秒，资源归零。marker SHA-256 `59194DCFF642F4790DBF55F58D38EFBAB200C0528BEE25894DE38D71296B1CCD`。该 smoke 没有训练 head；GPU head 的梯度/更新与恢复工程另有 fixture 实卡证据，没有正式数据训练结论。
 
@@ -51,6 +52,10 @@ UTC20:47 heartbeat接续S4-15单case原始权重上游oracle。先在ROADMAP登�
 
 具体方案 `.artifacts/independent-oracle-20261008/numpy-install-plan.md`；readiness/mapping及所有失败原样保留。缺失工具安装需要用户明确授权，不能把等待视为同意。当前没有真实oracle/训练/教师/GPU进程。新阶段CPU限单case诊断与合成自检，不执行正式训练、批量特征或GPU查询；Python工程验收和真实参考运行分别记录。
 
+Oracle提交`01d23f3`的Git PID14344/3.256秒/cleanup为空且root已核退出。接续Windows独立AOT诊断工程已通过，见[证据](docs/evidence/independent-aot-smoke-2026-10-08.md)。历史head-v2.asset/report缺失，scope为真实原始encoder+固定内存诊断head，全部head训练/文件/质量/parity声明false，不造正式metadata。`/root/head_checkpoint`的UTC21:30:49–21:50:49、6文件窗口已在截止前冻结停止；managed/native各1→8、唯一win-x64 publish、driver probe和唯一真实46-token CUDAcase通过。source freeze SHA `8F8D7683DD20408C75D69ADD697B0E20E979231C479D7989ED82A1B589F5BBD9`，exe SHA `ED19B03C00C3BAA9E75966019899FFEAFA1F57E51E0BE384A16050831759BA4C`，真实报告SHA `A529790C5003AF58E68ABFE714CD5C8727868F42A9C26B59E946596BC7E7C680`。311launch/552-byte D2H、预取消零新增launch、释放后资源全部归零；首次CS1061保留。root核6源码freeze及12份runner/45去重进程与launcher身份无匹配存活、cleanup空/专属顶层tmp空，tiny审计PID35604/full30112成功。没有真实CPUforward/训练/Linux；profiling时间不是benchmark。该样例入solution，root独占共享docs和Git，Sezika不push。
+
+`/root/teacher_prompt_v2`此前三段Windows只读审查已停止，最后截断的Budget和ValidateResponse由root补读；没有未解决的Windows实现发现。当前新开最多8明确文件/1轮/5分钟只读Linux准备审查，不build/GPU/install/编辑。WindowsGPU窗口已释放；Linux发布和probe/真实case另开数量/墙钟预算，复用冻结六文件，不与Windows共用obj。下一监督窗口不重跑Windows或32题教师采集。
+
 ## 下一次派发
 
 1. 先核AGENTS、ROADMAP、git status、heartbeat与子智能体状态；复用以上已通过证据，不重复下载、32题采集或完整回归。新GPU任务独占窗口，先tiny再有界完整范围。
@@ -62,6 +67,8 @@ UTC20:47 heartbeat接续S4-15单case原始权重上游oracle。先在ROADMAP登�
 ## 固定工具与执行边界
 
 PowerShell `C:\Program Files\PowerShell\7\pwsh.exe` 7.6.6；dotnet `C:\Program Files\dotnet\dotnet.exe` 10.0.401；git `C:\Program Files\Git\cmd\git.exe`。工具发现限PATH、明确配置和固定路径；禁止广域扫描、Graphify及按名称杀进程。本机无原生GCC，不重复扫描；GNU需求仅在已知Ubuntu WSL通过有界command-v核实，PCCT没有确认路径。
+
+UTC21:32–21:33 root用3次有限Ubuntu timeout核发现有AOT工具：`/usr/bin/dotnet`10.0.112、`/usr/bin/gcc`13.3.0、`/usr/bin/clang`18.1.3、`/usr/bin/ld`Binutils2.42。无安装/build/模型/GPU；Windows PID75496/26572/26736均成功/cleanup为空且已退出，Linux timeout/bash PID与start/argv由ps记录，前两组后核不存在。细节`.artifacts/independent-aot-20261008/root-processes/ubuntu-tool-readiness.json`；native CUDA Driver在Ubuntu尚未探测，不声称Linux AOT支持已通过。
 
 长命令经`tools/Invoke-BoundedProcess.ps1`记录PID/start/argv/父链、墙钟、退出码及清理；构建`--disable-build-servers -m:1`，关闭共享编译/节点复用，控制并发。每次委派重复数量/墙钟双边界、取消/进度、极小试跑、进程完整树回收和专属临时文件归属核验。精确PID/start先筛，只有身份匹配再查CIM；禁止反复对全部历史PID广域查询。
 

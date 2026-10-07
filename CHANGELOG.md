@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- 新增独立模型诊断样例并接入solution：固定真实mmBERT encoder与未训练内存head在Windows Native AOT完成唯一46-token CUDA类型化推理，311次kernel/552-byte D2H、预取消零launch、释放后资源归零。最终零警告/错误、managed/native各1→8自检、probe及六文件冻结通过；首次构建失败保留，12份runner/45身份终审无匹配存活。正式训练、质量、上游parity、Linux及性能另验，见[证据](docs/evidence/independent-aot-smoke-2026-10-08.md)。
 - 新增开发期离线原始mmBERT上游oracle导出工具，固定原权重与实现输入、25hook及marker，首次backend import前绑定源码lease/hash并隔离旧bytecode；Windows无覆盖发布和Move后取消回滚通过。标准库tiny1/full16及终审修复后1→16通过、资源已回收；未安装NumPy或执行真实上游forward，见[证据](docs/evidence/independent-oracle-tool-2026-10-08.md)。
 - 新增独立C# raw数值比较器和测量前冻结的单case上游合同，核25层级tensor+marker、源码/输入身份、有限F32及完整26项失败分母；拒绝fixture和共用路径自比，报告原子不覆盖。最终构建零警告/错误、tiny1→16合成case/19变体通过；没有真实参考数值，依赖安装与上游运行另验，见[证据](docs/evidence/independent-numeric-compare-2026-10-08.md)。
 - 完成v2本地GPU教师32题格式试运行：Score/Boolean各1题后，32题全部格式有效、零失败/拒答，共34次HTTP、无重试，完整32题耗时115.6265689秒；151项引用hash/bytes通过。实际33/33层offload、显存峰值5953MiB；卸载/主动停止后324MiB，58份runner清理为空、75身份及58个root后核无匹配存活。monitor Deadline、server主动exit-1及文档后续CPU窗口如实保留；全部仍pending，不代表正确率或正式训练准入，见[证据](docs/evidence/teacher-gpu-prompt-v2-run-2026-10-08.md)。
