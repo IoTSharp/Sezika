@@ -22,7 +22,8 @@
 | 第二轮GPU教师实测 | `e26d9e7` | Score/Boolean tiny后full32，32条全部格式有效；34 HTTP、32不同题、无retry，151引用核验通过；标签全部pending |
 | 独立数值比较器 | `f469b27` | 25层级tensor+marker的冻结合同，零警告/错误构建，tiny1/full16共19变体；26项完整分母、fixture/自比/源码及路径门禁；没有真实参考数值 |
 | 独立上游oracle工具 | `01d23f3` | 原权重/源码lease、首次import前hash及bytecode隔离、25hook+marker、Windows原子发布/实际Move后取消回滚，最终tiny1/full16通过；没有真实forward |
-| Windows独立诊断AOT样例 | 随本文件单独提交 | 真实固定encoder+未训练内存head，managed/native各1→8、唯一publish/probe/46-token CUDAcase；311launch、552-byte D2H、预取消零launch、释放归零，12份结果/45身份终审通过 |
+| Windows独立诊断AOT样例 | `b837be7` | 真实固定encoder+未训练内存head，managed/native各1→8、唯一publish/probe/46-token CUDAcase；311launch、552-byte D2H、预取消零launch、释放归零，12份结果/45身份终审通过 |
+| Linux独立诊断AOT | 随本文件单独提交 | Ubuntu10.0.112/cache唯一发布、native1→8/fstat、probe/唯一46-token CUDA；311launch/552-byte D2H、预取消零launch、资源归零；正式trained-head/训练AOT/质量另验 |
 
 固定真实 mmBERT 的 C 切片 encoder smoke 已通过：PID75592、48 tokens、markers27/37、hidden768、310 kernel launches；runner17.299秒，资源归零。marker SHA-256 `59194DCFF642F4790DBF55F58D38EFBAB200C0528BEE25894DE38D71296B1CCD`。该 smoke 没有训练 head；GPU head 的梯度/更新与恢复工程另有 fixture 实卡证据，没有正式数据训练结论。
 
@@ -54,7 +55,21 @@ UTC20:47 heartbeat接续S4-15单case原始权重上游oracle。先在ROADMAP登�
 
 Oracle提交`01d23f3`的Git PID14344/3.256秒/cleanup为空且root已核退出。接续Windows独立AOT诊断工程已通过，见[证据](docs/evidence/independent-aot-smoke-2026-10-08.md)。历史head-v2.asset/report缺失，scope为真实原始encoder+固定内存诊断head，全部head训练/文件/质量/parity声明false，不造正式metadata。`/root/head_checkpoint`的UTC21:30:49–21:50:49、6文件窗口已在截止前冻结停止；managed/native各1→8、唯一win-x64 publish、driver probe和唯一真实46-token CUDAcase通过。source freeze SHA `8F8D7683DD20408C75D69ADD697B0E20E979231C479D7989ED82A1B589F5BBD9`，exe SHA `ED19B03C00C3BAA9E75966019899FFEAFA1F57E51E0BE384A16050831759BA4C`，真实报告SHA `A529790C5003AF58E68ABFE714CD5C8727868F42A9C26B59E946596BC7E7C680`。311launch/552-byte D2H、预取消零新增launch、释放后资源全部归零；首次CS1061保留。root核6源码freeze及12份runner/45去重进程与launcher身份无匹配存活、cleanup空/专属顶层tmp空，tiny审计PID35604/full30112成功。没有真实CPUforward/训练/Linux；profiling时间不是benchmark。该样例入solution，root独占共享docs和Git，Sezika不push。
 
-`/root/teacher_prompt_v2`此前三段Windows只读审查已停止，最后截断的Budget和ValidateResponse由root补读；没有未解决的Windows实现发现。当前新开最多8明确文件/1轮/5分钟只读Linux准备审查，不build/GPU/install/编辑。WindowsGPU窗口已释放；Linux发布和probe/真实case另开数量/墙钟预算，复用冻结六文件，不与Windows共用obj。下一监督窗口不重跑Windows或32题教师采集。
+`/root/teacher_prompt_v2`此前三段Windows只读审查已停止，最后截断的Budget和ValidateResponse由root补读；没有未解决的Windows实现发现。最多8明确文件/1轮/5分钟Linux准备只读审查也已完成，没有先改源码的已确认障碍；明确Windows runner不覆盖Linux子树，GNU timeout不能单独证明成功后资源回收。当前另开最多6明确文件/1轮/4分钟的GPU训练AOT只读准备，不build/GPU/install/编辑。WindowsGPU窗口已释放；Linux发布和probe/真实case另开数量/墙钟预算，复用冻结六文件，不与Windows共用obj。下一监督窗口不重跑Windows或32题教师采集。
+
+Windows提交`b837be7`的Git PID75216、4.394秒、cleanup空；stage PID94956和commit PID已精确核不存在。root从45身份明确argv提取5个MSBuildTemp绝对目录，UTC22:00有限存在性核均已不在，未删除或扫描全TEMP；证据`root-processes/compiler-temp-observation.json`。两root终审PID35604/30112已退出，无需要回收的任务服务。
+
+Linux边界准备由`/root/head_checkpoint`在UTC21:59:21–22:07:21单独执行，专属`.artifacts/independent-aot-20261008/linux-smoke-v1/`、最多3artifact脚本/说明、8明确输入文件、最多3极小试跑/每次15秒；未授权该阶段build/GPU/install。已用一次有界command-v核`/usr/bin/timeout`及`/usr/bin/setsid`。先审Linux PID/starttick/UTC/argv/PPID/父链及归属token、有限轮询/超时/trap/成功后清理证据，再另派最多一次publish及唯一真实GPUcase，当前不以准备结果宣称Linux已支持。
+
+该准备先tiny正常/超时/取消通过，随后补supervisor身份/unknown depth。root新tiny发现合法退出期间env不可读被误标cleanup_incomplete：timeout/cancel的survivors虽0，状态仍不合格，旧失败保留。另开UTC22:09:35–22:15:35/两artifact修改/最多三tiny修复窗口，token或identity refresh失败后再核同PID/starttick的live/absent-reused-zombie/unknown；unknown不误当退出。fix-v2三tiny均cleanup_incomplete0/survivors0，root已读完整关键分支及回执。两脚本冻结SHA：bash `AC979A61F98FBA71F5D7181FA904B008642FF60A269E947E64844C9FBBD3F255`，PS `E030FBA561FF3C700EB33666E2EAAB89BB0F58B55895838CE3950FBEADFD1ED0`。协作型payload必须保留token、不daemonize；Bash/proc不是pidfd/cgroup隔离，已保留竞态和快照限制。Linux发布先用确为空的任务local restore source，不能把空RestoreSources属性说成已禁远端。
+
+root另以12明确结果/15秒精确核Windows原root PID/start全部无匹配存活，记录`root-processes/windows-root-pid-followup.json`。`/root/teacher_prompt_v2`的GPU训练AOT准备及清理方案只读任务已停止；计划`trainer-cleanup-plan.md`8217 bytes/SHA `C7A4C5DB345CAD3A4B038C1DD2D2B19A5CF0564D4A0FA555AC2B56E690B5C808`，真实release false/SafeHandle/context语义由root补核。S4-07/S4-12已登记修复及单独训练AOT范围；尚未修改core/CUDA，不与Linux冻结依赖并发编辑，不把计划称实现或训练支持。后续先审最小源码变更及实际故障验证，再单独commit。
+
+Linux执行窗口UTC22:16:08–22:32:08的唯一publish已成功：源基线b837be7，ELF5,084,552 bytes/SHA `F355C79A2B98402F670617E46BA00DE4BF8226BB69F090BE4658326C0FC828F4`；compiler无warning、local source/cache三个restore各334ms。native1/8、probe/真实46-token CUDA已PASS，实际Linux92698/Windows54268，311launch/552-byte D2H、预取消零launch、释放全部归零；报告SHA `6D36644B29FE67AFE20BCD8C677C20006C67B8B4880E49DE54AE910FF220A7A8`。root核真实报告/ELF hash、原publish/full8输出，固定输入/head匹配Windows；Linux第一轮26个登记身份后核全absent，后续终核证据由作者收口。冻结执行两源码已按相同bytes/hash封存到`docs/evidence/independent-aot-linux-2026-10-08/`，代码与[Linux证据](docs/evidence/independent-aot-linux-2026-10-08.md)随本任务提交。不是正式head/训练/质量/parity/benchmark证据，GPU已释放。
+
+Linux编译完成后只运行固定ELF，允许训练器源码独占修改，不自动继承旧ELF验收。`/root/teacher_prompt_v2`现获收到起30分钟/最多8tracked文件+1artifact清理加固窗口，owner为Cuda trainer/Kernels/Device、新内部cleanup/friend辅助和Cuda.Diagnostics.Tests的Program/新cleanup checks；shared docs/solution/Git仍root独占。最多3有界build、CPU合同tiny/full≤10、新GPU故障tiny/full≤10及1现有成功smoke；先tiny，GPU窗口已单独转交此任务，不重跑61/31/59整套，不publish/真实CPUforward/教师/正式数据。fault接缝内部、单次、生产默认关闭，原false release/caller context与历史错误必须如实区分；任务完成审源码、实际故障/资源证据后单独commit。当前实现中，不能把方案写成已修复或训练AOT支持。
+
+Linux作者已于约UTC22:28停止：21Windows记录/18PID及26LinuxPID/starttick全退出；第二核root26864/launcher50408也不存在。root UTC22:31另核六明确执行回执/22PID-start记录（20PID）无匹配存活，记录`root-processes/linux-execution-windows-closure.json`。作者最终证据SHA `D4265A494D105CCD1F52EA49BA811E2D1D66024513BBCAA59E0B67D4FCC28B56`，来源/binary绑定SHA `4DD5C2A0D3DDD7D9248086D90533A1AF5541E142C40137B2A6F801AE3B5A5A55`；两封存执行源码与artifact原始hash相同，root审查后单独提交Linux任务，不夹正在实现的Cuda源码/测试或用户微信文件。仅清理加固子智能体仍运行，GPU窗口归其独占。
 
 ## 下一次派发
 

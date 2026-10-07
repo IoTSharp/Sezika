@@ -61,9 +61,13 @@ S4-15独立数值capture工程任务已验收：固定46-token请求、267项CPU
 
 该Windows诊断工程已验收：最终零警告/错误、managed/native各tiny1→8、一次win-x64发布、native probe与唯一真实46-token CUDAcase通过；311次kernel、552-byte D2H、预取消零新增launch、释放后资源归零。监督者核六文件冻结/实际exe与报告hash，12份runner及45身份无匹配存活，首次CS1061失败保留，见[Windows证据](docs/evidence/independent-aot-smoke-2026-10-08.md)。接续Linux诊断切片复用冻结样例，在Ubuntu用独占artifacts路径核Native AOT发布、tiny/full文件身份合同、driver probe及最多1个同输入CUDAcase；不用Windows/Linux共用obj，不安装缺失工具或改变head/输入以获得通过。它仍不是正式trained-head、质量、两RID正式交付或性能验收。
 
+Linux诊断切片已通过：基线b837be7、冻结六源码，唯一明确local源/cache发布、native1→8文件身份合同、driver probe和唯一46-token CUDAcase成功，311launch/552-byte D2H、预取消零launch、释放归零，见[Ubuntu证据](docs/evidence/independent-aot-linux-2026-10-08.md)。Windows/Linux仅两个固定诊断head发布物通过；退出竞态修复及旧失败保留，源码冻结在Linux编译结束后才释放。正式trained-head与新代码/新权重部署仍须自身两RID验收，不把这份profile时间称性能结论。
+
 用户追加资源约束：正式训练和批量教师采集/特征计算必须使用GPU；CPU只用于小规模兼容性、数值参考及故障诊断。32题教师pilot先完成CUDA后端/显存核验再执行；S4-07 GPU训练需实现并验证C#反向kernels与PTX/Driver，当前前向证据不能写成训练支持。
 
 S4-07 GPU训练最小工程已闭环：冻结encoder的三行marker head以纯C# kernel在GPU完成CE、梯度与SGD，构建期17项静态PTX/ABI导出、CPU参考27项/GPU21→61项及59项既有CUDA回归通过，见[证据](docs/evidence/gpu-training-design-2026-10-08.md)。下一切片接正式GPU encoder特征计算/训练CLI及backend/kernel/device恢复和报告身份，禁止CPU fallback；`train-original`现有CPU路径不作为正式训练使用。encoder反传、正式数据/质量、训练AOT另验。
+
+接续S4-07/S4-12训练器异常清理加固及独立训练AOT验收。只读核查发现trainer清理虽限39个buffers却无独立墙钟，binding/managed异常可跳过后续owner和initial清零；packed的复制/Allocate也在清零finally之外。按真实Driver语义处理false release、SafeHandle关闭与caller context兜底，不把Dispose未抛异常当释放成功。计划在当前Linux依赖冻结窗口后独占修复：共享最多5秒/40顶层owner及17module、主训练异常保留、临时副本finally清零、纯managed残留摘要、不取得caller device所有权；以有界真实分配、sentinel/取消及明确注入故障验证。随后单独验证Native AOT中的GPU CE/梯度/SGD与schema3恢复，不能用encoder前向AOT代替。此项尚未实现或验收，正式数据/质量门槛不变。
 
 GPU CLI 接线按[复核设计](docs/evidence/gpu-training-cli-design-2026-10-08.md)分三项：A 为严格 schema3 报告与真实人工准入合同；B 为静态 kernel/设备 UUID 身份及三文件 GPU workflow 发布恢复；C 为显式 `train-original-gpu`、完整 GPU encoder 特征导出与评价报告适配。每项单独工程验收提交，CPU v2 合同保持兼容；fixture 不进入正式恢复或评价，不制造人审声明。实际正式数据训练、质量及训练 AOT 继续另验。
 
