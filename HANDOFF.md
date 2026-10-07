@@ -20,7 +20,8 @@
 | GPU workflow/恢复 B | `cbd6790` | 真实UUID、17静态PTX/manifest身份、三文件发布与恢复；CPU3、GPU5→31、stamp正负通过 |
 | GPU CLI/特征导出 C | `d2ccb5f` | 显式train-original-gpu、五项恢复输入、完整GPU encoder特征及GPU SGD、schema3评价适配；CPU2→22/GPU8→12/旧CUDA59通过 |
 | 第二轮GPU教师实测 | `e26d9e7` | Score/Boolean tiny后full32，32条全部格式有效；34 HTTP、32不同题、无retry，151引用核验通过；标签全部pending |
-| 独立数值比较器 | 本次提交 | 25层级tensor+marker的冻结合同，零警告/错误构建，tiny1/full16共19变体；26项完整分母、fixture/自比/源码及路径门禁；没有真实参考数值 |
+| 独立数值比较器 | `f469b27` | 25层级tensor+marker的冻结合同，零警告/错误构建，tiny1/full16共19变体；26项完整分母、fixture/自比/源码及路径门禁；没有真实参考数值 |
+| 独立上游oracle工具 | 本次提交 | 原权重/源码lease、首次import前hash及bytecode隔离、25hook+marker、Windows原子发布/实际Move后取消回滚，最终tiny1/full16通过；没有真实forward |
 
 固定真实 mmBERT 的 C 切片 encoder smoke 已通过：PID75592、48 tokens、markers27/37、hidden768、310 kernel launches；runner17.299秒，资源归零。marker SHA-256 `59194DCFF642F4790DBF55F58D38EFBAB200C0528BEE25894DE38D71296B1CCD`。该 smoke 没有训练 head；GPU head 的梯度/更新与恢复工程另有 fixture 实卡证据，没有正式数据训练结论。
 
@@ -44,8 +45,8 @@ Tomur在UTC20:17已fetch/ff-only，当前HEAD及origin/main均为 `b07ae41450a58
 
 UTC20:47 heartbeat接续S4-15单case原始权重上游oracle。先在ROADMAP登记25个层级张量+marker的26项合同，输入/容差在参考测量前冻结；现有267项C#捕获不重跑。root独占合同、solution/shared docs和Git。
 
-- `/root/teacher_prompt_v2` 的独立静态类型C#比较器在UTC21:11:13冻结，早于21:14截止；6工具文件、tiny1/full16共19变体通过，4份runner清理为空、8个登记PID及partial为空，root复验DLL/合同SHA及PID。工程证据见[比较器](docs/evidence/independent-numeric-compare-2026-10-08.md)。现复用为Python最终只读审查，最多6文件/2轮/4分钟，不修改/运行模型/Git。
-- `/root/head_checkpoint` 的开发期离线Python oracle工具在UTC21:14:10交付ready，早于21:17:14截止；3文件、最终标准库full16通过，未安装/下载/import真实backend/forward。准备阶段最后import略超20:56:03截止已保留；最终独立复核及单独提交尚未完成。只读映射子任务已完成。
+- `/root/teacher_prompt_v2` 的独立静态类型C#比较器在UTC21:11:13冻结，早于21:14截止；6工具文件、tiny1/full16共19变体通过，4份runner清理为空、8个登记PID及partial为空，root复验DLL/合同SHA及PID。工程证据见[比较器](docs/evidence/independent-numeric-compare-2026-10-08.md)，提交`f469b27`，Git PID77184/3.218秒/cleanup为空且已退出。Python终审发现源码import窗口并审修复方案；当前另有6文件/5分钟及追加3文件/3分钟AOT只读范围核查，不build/模型/GPU。
+- `/root/head_checkpoint` 的开发期离线Python oracle工具在UTC21:14:10原阶段交付，早于21:17:14截止；随后另开最多5分钟源码窗口修复，首次backend import前lease/hash及bytecode隔离已补。最终脚本SHA `118E4CA7BB626F36BEEB009047A7AA42DB9E8A72AD64130F274A818F4766D39E`；tiny PID18296/full16 PID47240成功/cleanup为空且已退出。root核最终源码/SHA/回执，owned fixture清理及pycache未创建；见[工具证据](docs/evidence/independent-oracle-tool-2026-10-08.md)。没有安装/下载/import真实backend/forward，传递环境未全面hash-lock；已冻结停止。旧准备import越界与py manager意外更新26.3保留。
 - 实存Python3.14.3、torch2.12.0+cpu、Transformers5.13.1因NumPy缺失不能导入；历史3.12.10/2.8.0/4.57.1环境已不在。合同测量前改用实存版本，初始环境快照保留，输入/26项/容差不变。NumPy2.3.3 cp314官方wheel约13MB已核source metadata，task-local deps安装授权已通过异步问题请求，未回复不能安装或运行依赖它的oracle。
 
 具体方案 `.artifacts/independent-oracle-20261008/numpy-install-plan.md`；readiness/mapping及所有失败原样保留。缺失工具安装需要用户明确授权，不能把等待视为同意。当前没有真实oracle/训练/教师/GPU进程。新阶段CPU限单case诊断与合成自检，不执行正式训练、批量特征或GPU查询；Python工程验收和真实参考运行分别记录。
