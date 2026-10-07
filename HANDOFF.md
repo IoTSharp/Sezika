@@ -19,10 +19,10 @@
 当前接续状态：
 
 - 原始资产恢复已验收并随本次单独提交：固定4源文件与134 tensor转换身份通过，真实CPU smoke为46 tokens/35,328个有限hidden，执行305.15秒≤400秒；实际peak未测。MIT全文事实纠正及失败日志保留，最终无登记存活PID/partial/cleanup错误。见 `docs/evidence/independent-assets-restore-2026-10-08.md`。
-- `/root/independent_cli`：≤15分钟教师运行准备已完成并随本次提交，官方固定Apache-2.0全文已取得；接续≤25分钟独立单GGUF恢复，目标 `.artifacts/teacher-tomur-data/models/text/qwen3.5-9b-q4-k-m/Qwen3.5-9B-Q4_K_M.gguf`，仅1直连20秒/失败唯一proxy1200秒，总1300秒/8GiB。须先tiny/AST核验再下载、实际bytes/hash后原子提交资产，并终审进程/partial；不启动服务或编辑共享文档。固定量化revision `3885219b6810b007914f3a7950a8d1b469d598a5`，实际metadata size5,680,522,464，hash `03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8`。
+- `/root/independent_cli`：单GGUF恢复已完成并随本次提交，实际5,680,522,464字节/hash `03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8`匹配后原子发布到 `.artifacts/teacher-tomur-data/models/text/qwen3.5-9b-q4-k-m/Qwen3.5-9B-Q4_K_M.gguf`；含准备668.64秒，最终5份runner无登记存活PID/partial/cleanup错误。直连Cancelled误标保留并纠正、小状态回归通过，不重下大文件；当前已释放该子任务资源。
 - 教师采集器已提交 `85ccf17`；接续context_size=2048成功/取消请求及manifest预算已验收并随本次提交，重建PID87004零警告/错误、1→10检查PID51236/97132通过，资源回收通过；新DLL SHA为 `0C0FC3F80DFE60F0DB4472AD4B714556E4A37A6C6E4E990661FE6180E84CECEB`。尚无实际教师HTTP或答案，见 `docs/teacher-collection-s4-10.md`。
-- `/root/closure_audit`：独立上游oracle只读准备已完成，固定Python3.12.14缺模型包，历史venv不在；接续≤20分钟独占新 `Sezika.IndependentNumericCapture` 工具及专题doc，不build/运行模型。固定46-token原始请求、267个CPU F32 checkpoints共51,720,192字节；不能用legacy OracleCapture充当独立对照。主线程最后接线/验收。
-- 主线程：Tomur CPU configure PID32372成功（3个devwarning保留），完整wrapper native build PID92788在269.9秒/exit1失败于可选mtmd视觉桥的hash_sha256_hex链接；4个文本库已生成，正在≤60秒/parallel2只验证llama/ggml/ggml-base/ggml-cpu目标（PID57664），不改Tomur源或隐去原失败。managed host build PID103908在240秒预算执行，输出为 `.artifacts/supervision-20261008/teacher-runtime/host`，禁webassets；随后任务CPU-only manifest/隔离data-dir、已有模型登记和1→32题真实pilot，仍未启动服务或实际作答。
+- `/root/closure_audit`：capture工具初次实现及root构建PID51732零警告/错误通过；head只读审查发现post-Move取消、恢复内存peak闸门及输入重新打开快照缺口，接续≤10分钟修复，未验收提交。1题teacher输入已在 `.artifacts/supervision-20261008/teacher-pilot-inputs` 生成并核11份snapshot，manifest16CE1C...、catalogFA8F0A...；全部AI工程核查/audit/pending，无教师调用。capture固定46tokens/267个CPU张量，不替代上游oracle。
+- 主线程：4文本库target PID57664通过，CPU-only任务bundle准备PID50408及已有模型登记PID51732通过/无下载。Tomur两处CS0177已最小修复、重建PID64428成功并单独提交Tomur `1aa3fa7`；其2项警告保留。首次serve PID104120因禁webasset导致缺embedded manifest失败，进程已回收；npm ci PID50048/v24.15.0与真实webbuild PID51500通过，正在180秒预算重建含资源host，输出 `.artifacts/supervision-20261008/teacher-runtime/host`。未有真实教师答案，下一步1→32题pilot，源/权重/产物与所有失败分别登记。
 
 用户已确认首批用途为通用中英分类、程度评分、真假判断，并希望用教师模型作答。32题是第一轮格式试运行；600训练+各120开发/校准/测试仅监督者建议的起点，未采集/训练或获得正式数据准入。用户对人工审核/独立保管问题表示不理解，已用具体含义解释，不能将该回复视为批准或封存证据。
 

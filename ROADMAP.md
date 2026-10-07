@@ -45,7 +45,7 @@
 
 2026-10-08 S4-10 C#采集器工程任务已验收：严格decision-v1单题/候选映射、固定模型与条款证据绑定、字面loopback、32次无重试/1200秒总预算及原子输出已实现；取消保留全分母和原响应hash/usage的独立失败审计。最终重建零警告/错误及1→10内存合成检查通过，旧离线合同1→24回归通过。实际GGUF未下载/hash，默认服务一次连接失败，真实教师答案和训练准入仍pending；见[采集合同与执行证据](docs/teacher-collection-s4-10.md)。
 
-同日取得官方Qwen3.5-9B固定revision的Apache-2.0全文、量化资产身份与Tomur最小CPU构建/登记/启动合同，完成AI来源工程核查；量化base revision等价、人工训练/发布审签及实际模型使用另验。监督者已接续有界CPU native构建及单GGUF恢复，来源核查不等于实际教师推理。见[运行前证据](docs/evidence/teacher-runtime-readiness-2026-10-08.md)。
+同日取得官方Qwen3.5-9B固定revision的Apache-2.0全文、量化资产身份与Tomur最小CPU构建/登记/启动合同，完成AI来源工程核查；量化base revision等价、人工训练/发布审签及实际模型使用另验。随后独立单GGUF恢复已闭环：5,680,522,464字节/固定SHA-256通过后原子发布，唯一代理149.70秒，含准备668.64秒≤25分钟，进程与partial回收通过；见[恢复证据](docs/evidence/teacher-weight-restore-2026-10-08.md)。来源/资产就绪不等于实际教师推理，运行前证据另见[运行准备](docs/evidence/teacher-runtime-readiness-2026-10-08.md)。
 
 真实教师试运行前的固定2048-token context_size请求上限已补齐，成功及取消归档请求使用同一上限，manifest记录maximum_context_tokens。重建零警告/错误、1→10合成合同验证实际序列化context_size/max_tokens/stream通过；真实服务执行及内存用量仍另验。
 

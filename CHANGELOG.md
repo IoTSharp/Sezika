@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- 恢复固定Qwen3.5-9B Q4_K_M教师GGUF，实际5,680,522,464字节/固定SHA-256匹配后原子发布；唯一代理149.70秒、整体含准备668.64秒，最终无登记存活进程或partial。任务runner副本曾将直连失败误标Cancelled，原始日志保留并单列纠正/小负例复验，未重复大下载。该任务不启动教师或授予训练准入，见[恢复证据](docs/evidence/teacher-weight-restore-2026-10-08.md)。
 - 将离线教师请求固定为2048-token上下文，并在manifest记录该预算，成功与取消归档请求一致；重建零警告/错误，1→10合成检查核验实际序列化context_size/max_tokens/stream字段，真实教师执行另验。
 - 固定官方Qwen3.5-9B来源revision并取得完整Apache-2.0许可正文；核对Tomur固定HEAD、llama子模块/MIT许可、CPU最小构建及隔离数据目录登记/启动合同。只读核查完成、进程/partial回收通过，AI工程核查用途限定内部audit collection，不构造人工训练或发布批准；真实大权重恢复与教师试运行另验，见[运行准备证据](docs/evidence/teacher-runtime-readiness-2026-10-08.md)。
 - 新增S4-10真实离线教师采集入口、静态DTO/sourcegen与有界HTTP/文件合同；只调用字面loopback Tomur，32次无重试、严格标签及固定来源/条款/输入hash，所有产物保持待人工审核。取消保留全分母、未调用项和原响应hash/usage的独立failure audit；最终构建零警告/错误、1→10内存合成检查及旧离线1→24回归通过。依据固定来源纠正GGUF大小为5,680,522,464 bytes；尚未安装/哈希真实教师权重或取得真实答案，见[采集证据](docs/teacher-collection-s4-10.md)。
