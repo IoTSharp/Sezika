@@ -33,6 +33,10 @@
 
 首批 S4-15/S6-02 的显式独立 CLI 工程子任务已验收：managed 41 项和 Windows Native AOT tiny fixture 42 项通过，产品 CLI 原生发布及 help 通过；完整训练报告可直接绑定 head。未恢复真实独立权重、不改变默认路径，不关闭 S4-08 的真实质量、CUDA、两 RID AOT 或正式发布门槛。
 
+2026-10-08 接续的 S4-08/S4-15 独立预测导出工程子任务已验收：极小1项、完整11项检查及实际 CalibrationTool 联调通过，4条tiny fixture以匹配的组合身份/预测hash返回exit3/not_eligible；原子目录发布故障回归通过。正式准入资料先于题文核验，未读取真实封存题。恢复固定原始资产、上游数值 oracle、独立 CUDA/画像/审核切片按依赖继续；人工审核/独立封存、实际质量和正式发布门槛仍开放。
+
+下一批已登记并派发 S4-15 的静态可注入独立 CPU/CUDA pipeline、三行自有 marker head GPU forward（复用既有C# PTX/Driver，不使用legacy head），以及固定原始资产恢复。两子任务先核对设计/来源/许可/资源预算，在监督者完成本批提交后开始实施；CUDA真实数值、原始资产oracle、质量/AOT/性能继续分别验收。
+
 ### 已选定方向
 
 1. **独立模型来源。** 直接从经审核的原始 encoder 取得底座参数，优先评估 `jhu-clsp/mmBERT-base` 或同类可支持的编码器，独立记录 revision、配置、tensor/tokenizer hash 与许可；不能从 Laya 检查点抽取 encoder 后改称原始底座。本轮已完成固定 mmBERT 原始文件下载、hash、C# 受限 pickle 转换、134 tensor 形状检查和独立 loader smoke；上游逐层数值 oracle与许可发布审签仍未完成。自有决策头重新初始化和训练，不继承 Laya 训练后的 head/type/scorer 权重。
