@@ -1,0 +1,306 @@
+{
+  "SchemaVersion": 1,
+  "CapturedAtUtc": "2026-10-07T16:45:21.8296097Z",
+  "RecordCount": 15,
+  "Scope": "Independent CPU/CUDA pipeline engineering checks; tiny fixtures only",
+  "Records": [
+    {
+      "Record": "20261007-163228-570-independent-cuda-build.result.json",
+      "Status": "Succeeded",
+      "Pid": 37516,
+      "Started": "2026-10-07T16:32:30.1883864Z",
+      "ParentPid": 84904,
+      "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "Arguments": [
+        "build",
+        "Sezika.slnx",
+        "-c",
+        "Release",
+        "-v",
+        "minimal",
+        "--nologo",
+        "--disable-build-servers",
+        "-m:1"
+      ],
+      "ExitCode": 0,
+      "ElapsedSeconds": 103.309,
+      "TimeoutSeconds": 240,
+      "CleanupErrors": [],
+      "TrackedProcessCount": 39
+    },
+    {
+      "Record": "20261007-163507-921-independent-pipeline-pilot.result.json",
+      "Status": "Succeeded",
+      "Pid": 5192,
+      "Started": "2026-10-07T16:35:08.8962229Z",
+      "ParentPid": 91752,
+      "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "Arguments": [
+        "tests/Sezika.Tests/bin/Release/net10.0/Sezika.Tests.dll",
+        "--independent-pipeline"
+      ],
+      "ExitCode": 0,
+      "ElapsedSeconds": 3.444,
+      "TimeoutSeconds": 45,
+      "CleanupErrors": [],
+      "TrackedProcessCount": 0
+    },
+    {
+      "Record": "20261007-163511-420-independent-cuda-pilot.result.json",
+      "Status": "Failed",
+      "Pid": 103616,
+      "Started": "2026-10-07T16:35:12.5593312Z",
+      "ParentPid": 91752,
+      "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "Arguments": [
+        "tests/Sezika.Cuda.Diagnostics.Tests/bin/Release/net10.0/Sezika.Cuda.Diagnostics.Tests.dll",
+        "--independent-pipeline"
+      ],
+      "ExitCode": 1,
+      "ElapsedSeconds": 3.333,
+      "TimeoutSeconds": 45,
+      "CleanupErrors": [],
+      "TrackedProcessCount": 0
+    },
+    {
+      "Record": "20261007-163834-565-independent-cuda-fixture-fix-build.result.json",
+      "Status": "Succeeded",
+      "Pid": 106168,
+      "Started": "2026-10-07T16:38:35.8243736Z",
+      "ParentPid": 54664,
+      "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "Arguments": [
+        "build",
+        "tests/Sezika.Cuda.Diagnostics.Tests/Sezika.Cuda.Diagnostics.Tests.csproj",
+        "-c",
+        "Release",
+        "-v",
+        "minimal",
+        "--nologo",
+        "--disable-build-servers",
+        "-m:1"
+      ],
+      "ExitCode": 0,
+      "ElapsedSeconds": 7.117,
+      "TimeoutSeconds": 120,
+      "CleanupErrors": [],
+      "TrackedProcessCount": 4
+    },
+    {
+      "Record": "20261007-163841-775-independent-cuda-fixed-pilot.result.json",
+      "Status": "Succeeded",
+      "Pid": 80836,
+      "Started": "2026-10-07T16:38:42.844266Z",
+      "ParentPid": 54664,
+      "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "Arguments": [
+        "tests/Sezika.Cuda.Diagnostics.Tests/bin/Release/net10.0/Sezika.Cuda.Diagnostics.Tests.dll",
+        "--independent-pipeline"
+      ],
+      "ExitCode": 0,
+      "ElapsedSeconds": 3.452,
+      "TimeoutSeconds": 45,
+      "CleanupErrors": [],
+      "TrackedProcessCount": 0
+    },
+    {
+      "Record": "20261007-163845-277-independent-core-full.result.json",
+      "Status": "Succeeded",
+      "Pid": 96840,
+      "Started": "2026-10-07T16:38:46.4615291Z",
+      "ParentPid": 54664,
+      "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "Arguments": [
+        "tests/Sezika.Tests/bin/Release/net10.0/Sezika.Tests.dll"
+      ],
+      "ExitCode": 0,
+      "ElapsedSeconds": 3.465,
+      "TimeoutSeconds": 90,
+      "CleanupErrors": [],
+      "TrackedProcessCount": 0
+    },
+    {
+      "Record": "20261007-163848-757-independent-cuda-full.result.json",
+      "Status": "Failed",
+      "Pid": 104788,
+      "Started": "2026-10-07T16:38:49.6522146Z",
+      "ParentPid": 54664,
+      "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "Arguments": [
+        "tests/Sezika.Cuda.Diagnostics.Tests/bin/Release/net10.0/Sezika.Cuda.Diagnostics.Tests.dll"
+      ],
+      "ExitCode": 1,
+      "ElapsedSeconds": 2.401,
+      "TimeoutSeconds": 90,
+      "CleanupErrors": [],
+      "TrackedProcessCount": 0
+    },
+    {
+      "Record": "20261007-164215-856-independent-cuda-wiring-fix-build.result.json",
+      "Status": "Succeeded",
+      "Pid": 90936,
+      "Started": "2026-10-07T16:42:17.0377282Z",
+      "ParentPid": 95304,
+      "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "Arguments": [
+        "build",
+        "tests/Sezika.Cuda.Diagnostics.Tests/Sezika.Cuda.Diagnostics.Tests.csproj",
+        "-c",
+        "Release",
+        "-v",
+        "minimal",
+        "--nologo",
+        "--disable-build-servers",
+        "-m:1"
+      ],
+      "ExitCode": 0,
+      "ElapsedSeconds": 7.694,
+      "TimeoutSeconds": 120,
+      "CleanupErrors": [],
+      "TrackedProcessCount": 2
+    },
+    {
+      "Record": "20261007-164223-610-independent-cuda-fixed-full.result.json",
+      "Status": "Succeeded",
+      "Pid": 61220,
+      "Started": "2026-10-07T16:42:24.6599206Z",
+      "ParentPid": 95304,
+      "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "Arguments": [
+        "tests/Sezika.Cuda.Diagnostics.Tests/bin/Release/net10.0/Sezika.Cuda.Diagnostics.Tests.dll"
+      ],
+      "ExitCode": 0,
+      "ElapsedSeconds": 3.687,
+      "TimeoutSeconds": 90,
+      "CleanupErrors": [],
+      "TrackedProcessCount": 0
+    },
+    {
+      "Record": "20261007-164227-317-independent-cli-regression.result.json",
+      "Status": "Succeeded",
+      "Pid": 75568,
+      "Started": "2026-10-07T16:42:28.4549349Z",
+      "ParentPid": 95304,
+      "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "Arguments": [
+        "tools/Sezika.CliChecks/bin/Release/net10.0/Sezika.CliChecks.dll"
+      ],
+      "ExitCode": 0,
+      "ElapsedSeconds": 5.156,
+      "TimeoutSeconds": 90,
+      "CleanupErrors": [],
+      "TrackedProcessCount": 2
+    },
+    {
+      "Record": "20261007-164232-485-independent-prediction-regression.result.json",
+      "Status": "Succeeded",
+      "Pid": 36732,
+      "Started": "2026-10-07T16:42:33.4743396Z",
+      "ParentPid": 95304,
+      "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "Arguments": [
+        "tools/Sezika.IndependentPredict/bin/Release/net10.0/Sezika.IndependentPredict.dll",
+        "self-test",
+        "--output",
+        "D:\\source\\Sezika\\.artifacts\\supervision-20261008\\prediction-regression",
+        "--maximum-cases",
+        "8"
+      ],
+      "ExitCode": 0,
+      "ElapsedSeconds": 3.31,
+      "TimeoutSeconds": 60,
+      "CleanupErrors": [],
+      "TrackedProcessCount": 0
+    },
+    {
+      "Record": "20261007-164235-805-independent-core-aot-publish.result.json",
+      "Status": "Succeeded",
+      "Pid": 57408,
+      "Started": "2026-10-07T16:42:36.8333061Z",
+      "ParentPid": 95304,
+      "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "Arguments": [
+        "publish",
+        "tests/Sezika.Tests/Sezika.Tests.csproj",
+        "-c",
+        "Release",
+        "-r",
+        "win-x64",
+        "-p:PublishAot=true",
+        "-v",
+        "minimal",
+        "--nologo",
+        "--disable-build-servers",
+        "-m:1",
+        "-o",
+        "D:\\source\\Sezika\\.artifacts\\supervision-20261008\\core-win-aot"
+      ],
+      "ExitCode": 0,
+      "ElapsedSeconds": 52.02,
+      "TimeoutSeconds": 300,
+      "CleanupErrors": [],
+      "TrackedProcessCount": 13
+    },
+    {
+      "Record": "20261007-164327-838-independent-core-aot-checks.result.json",
+      "Status": "Succeeded",
+      "Pid": 26736,
+      "Started": "2026-10-07T16:43:28.8497877Z",
+      "ParentPid": 95304,
+      "FilePath": "D:\\source\\Sezika\\.artifacts\\supervision-20261008\\core-win-aot\\Sezika.Tests.exe",
+      "Arguments": [
+        "--independent-pipeline-aot"
+      ],
+      "ExitCode": 0,
+      "ElapsedSeconds": 3.178,
+      "TimeoutSeconds": 60,
+      "CleanupErrors": [],
+      "TrackedProcessCount": 0
+    },
+    {
+      "Record": "20261007-164331-024-independent-cuda-aot-publish.result.json",
+      "Status": "Succeeded",
+      "Pid": 67440,
+      "Started": "2026-10-07T16:43:31.9995487Z",
+      "ParentPid": 95304,
+      "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "Arguments": [
+        "publish",
+        "tests/Sezika.Cuda.Diagnostics.Tests/Sezika.Cuda.Diagnostics.Tests.csproj",
+        "-c",
+        "Release",
+        "-r",
+        "win-x64",
+        "-p:PublishAot=true",
+        "-v",
+        "minimal",
+        "--nologo",
+        "--disable-build-servers",
+        "-m:1",
+        "-o",
+        "D:\\source\\Sezika\\.artifacts\\supervision-20261008\\cuda-win-aot"
+      ],
+      "ExitCode": 0,
+      "ElapsedSeconds": 22.202,
+      "TimeoutSeconds": 300,
+      "CleanupErrors": [],
+      "TrackedProcessCount": 9
+    },
+    {
+      "Record": "20261007-164353-242-independent-cuda-aot-checks.result.json",
+      "Status": "Succeeded",
+      "Pid": 43896,
+      "Started": "2026-10-07T16:43:54.3343626Z",
+      "ParentPid": 95304,
+      "FilePath": "D:\\source\\Sezika\\.artifacts\\supervision-20261008\\cuda-win-aot\\Sezika.Cuda.Diagnostics.Tests.exe",
+      "Arguments": [
+        "--independent-pipeline-aot"
+      ],
+      "ExitCode": 0,
+      "ElapsedSeconds": 3.38,
+      "TimeoutSeconds": 60,
+      "CleanupErrors": [],
+      "TrackedProcessCount": 0
+    }
+  ]
+}

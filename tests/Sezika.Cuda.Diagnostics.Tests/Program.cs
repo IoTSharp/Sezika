@@ -43,6 +43,18 @@ try
 {
     // Missing driver/device is a failure with its real diagnostic, never a skipped success.
     using var device = CudaDevice.Open(enableProfiling: true);
+    if (args.Length == 1 && args[0] is "--independent-pipeline" or "--independent-pipeline-aot")
+    {
+        if (args[0] == "--independent-pipeline-aot")
+            Check(!System.Runtime.CompilerServices.RuntimeFeature.IsDynamicCodeSupported &&
+                !System.Runtime.CompilerServices.RuntimeFeature.IsDynamicCodeCompiled &&
+                AppContext.GetData("TRUSTED_PLATFORM_ASSEMBLIES") is null,
+                "independent CUDA pipeline executes in Native AOT");
+        global::Sezika.Cuda.Diagnostics.Tests.IndependentCudaChecks.Run(device, Check, deadline.Token);
+        CheckNoResources(device, "independent pipeline leaves no caller-owned CUDA resources");
+        Console.WriteLine($"Independent CUDA pipeline checks passed: {passed}");
+        return 0;
+    }
     Check(!string.IsNullOrWhiteSpace(device.Info.Name) && device.Info.DriverVersion > 0 &&
         device.Info.ComputeCapabilityMajor > 0 && device.Info.TotalMemoryBytes > 0, "CUDA driver/device identity");
     var initial = device.GetMemorySnapshot();
@@ -193,6 +205,8 @@ try
         Check(encoded.Length == 16 && encoded.All(float.IsFinite), "encoder recovers after invalid input and cancellation");
     }
     CheckNoResources(device, "encoder unload returns all owned CUDA resources");
+    global::Sezika.Cuda.Diagnostics.Tests.IndependentCudaChecks.Run(device, Check, deadline.Token);
+    CheckNoResources(device, "all diagnostics including independent head release CUDA resources");
     // Explicit disposal is asserted inside the error reporting scope; a second Dispose is harmless.
     device.Dispose();
     Check(true, "context and profiling events unload without release failures");

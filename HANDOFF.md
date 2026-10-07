@@ -12,11 +12,17 @@
 - S4-15/S6-02 显式独立CLI工程任务已提交 `601a865`：managed41项、Windows Native AOT tiny fixture42项通过；正式默认切换仍依赖S4-08。
 - S4-08/S4-15 独立预测导出工程任务已验收并随本交接单独提交（见Git最新记录）：极小1项/完整11项、真实CalibrationTool联调通过，4条fixture保持exit3/not_eligible；原子发布漏洞与nullable编译错误已修复。
 
-三个子智能体 `/root/head_checkpoint`、`/root/independent_cli`、`/root/closure_audit` 的本批实现与复核均完成；没有仍持有文件写入的子任务。主智能体独占共享文档、测试接线和Git。下一次检查可复用可用子智能体或新建有界子智能体，先核对当前Git/ROADMAP和运行状态，禁止重复派单或覆盖其他聊天工作。
+上述首批三个子任务均完成。接续 S4-15 静态独立 CPU/CUDA pipeline 工程子任务也已验收并随本次提交：核心190项、CUDA59项、CLI41项、预测11项，Windows AOT 独立 CPU18项/CUDA实卡17项通过。真实模型数值、Linux AOT、质量、性能及产品 CUDA 命令接线另验；证据见 `docs/evidence/independent-pipeline-2026-10-08.md`。主智能体独占共享文档、测试接线与 Git。
 
 ## 下一次接续
 
-下一批已派发，首批第三提交完成后开始实施：`/root/head_checkpoint` 接续 S4-15 静态独立 CPU/CUDA pipeline 接线，独占新core接口、IndependentDecisionRuntime.cs、新Independent CUDA源文件及独占检查/专题文档；`/root/independent_cli` 接续固定原始资产恢复，仅写忽略模型目录、`.artifacts/supervision-20261008/asset-restore` 和独占恢复证据，不改源码/共享文档。两项各20分钟边界，先回来源/设计/资源计划，任何构建或真实forward先协调唯一运行槽。当前只读准备，无新长进程；下一次heartbeat核对它们真实状态并验收/提交或有界接续。
+当前接续状态：
+
+- `/root/independent_cli`：固定 README/config/tokenizer 已核；首批权重代理300秒超时如实保留，partial 已清理。第二独立单权重任务在1200秒单请求/1500秒总预算内成功（outer PID3748），固定1231188142字节/hash匹配；已分配≤400秒串行C#转换/真实CPU smoke槽，须收取134 tensor/转换hash/真实输出及最终资源核验后单独提交。它独占忽略资产与恢复证据，以及 source_lock 的MIT全文事实纠正；不能用旧DLL hash代替当前重建身份。
+- `/root/head_checkpoint`：独占 `Sezika.TeacherTool` 新采集模块/DTO/sourcegen及专题文档，20分钟实施边界，不编辑Program.cs/csproj、不build或实际HTTP；主线程最后接线和验收。已只读核实Tomur HEAD `5cd90dd7565a4668016217a56cd2876383869560`，默认5137且默认位置未发现安装；JSON format未实施，固定stop原因不能证明没截断。
+- `/root/closure_audit`：32题候选包 ready（中英各6Choice/5Score/5Boolean，AI drafted/audit/pilot/pending，无答案/教师响应）；目前20分钟只读独立复核collector，候选包等实际兼容验收后单独提交，不写共享文档。
+
+用户已确认首批用途为通用中英分类、程度评分、真假判断，并希望用教师模型作答。32题是第一轮格式试运行；600训练+各120开发/校准/测试仅监督者建议的起点，未采集/训练或获得正式数据准入。用户对人工审核/独立保管问题表示不理解，已用具体含义解释，不能将该回复视为批准或封存证据。
 
 1. 核对固定原始encoder/tokenizer资产路径与登记身份，按已审核revision/hash/许可使用范围恢复缺失资产，并准备独立可信上游数值oracle；必要下载在既有任务授权范围内，不因缺权重永久停工。
 2. 按互不冲突文件推进独立线性marker head CUDA前向及独立画像入口、版本化人工审核切片标签工具；先tiny/工具证据，真实模型与性能另验。已查看PAWS/Nimble继续仅audit。
@@ -33,4 +39,4 @@ PowerShell固定 `C:\Program Files\PowerShell\7\pwsh.exe` 7.6.6；dotnet固定 `
 
 ## 保留与未验收
 
-既有未跟踪 `docs/wechat-introduction.html`、`docs/wechat-introduction.md` 属于其他工作，未修改/暂存。当前没有恢复真实独立权重、读取真实封存题、运行教师采集、性能实测或Linux AOT。工具/fixture闭环不关闭整项路线门槛；总路线尚未完成，heartbeat继续接续可执行任务并只在有实质变化/失败/需要用户操作时通知。
+既有未跟踪 `docs/wechat-introduction.html`、`docs/wechat-introduction.md` 属于其他工作，未修改/暂存。目前原始独立权重第二次有界恢复已通过bytes/hash，转换与真实smoke等本批回执；尚未运行教师采集、读取真实封存题、采样新性能或Linux AOT。pipeline验证15份runner/69次身份观测无匹配存活进程和cleanup错误；资产执行独立跟踪。工具/fixture闭环不关闭整项路线门槛；总路线尚未完成，heartbeat继续接续可执行任务并只在有实质变化/失败/需要用户操作时通知。

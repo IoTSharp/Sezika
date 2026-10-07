@@ -37,6 +37,8 @@
 
 下一批已登记并派发 S4-15 的静态可注入独立 CPU/CUDA pipeline、三行自有 marker head GPU forward（复用既有C# PTX/Driver，不使用legacy head），以及固定原始资产恢复。两子任务先核对设计/来源/许可/资源预算，在监督者完成本批提交后开始实施；CUDA真实数值、原始资产oracle、质量/AOT/性能继续分别验收。
 
+2026-10-08 上述 S4-15 pipeline 工程子任务已验收：核心190项、CUDA完整59项、CLI41项和预测导出11项回归通过，Windows Native AOT 独立 CPU18项/实卡CUDA17项通过；关闭竞态与同线程重入释放已修复，首次失败保留。仅 tiny 合同/算子/Windows AOT 范围通过，真实原始模型上游 oracle、自有 head 数值、Linux AOT、质量和性能继续开放，见[独立管线证据](docs/evidence/independent-pipeline-2026-10-08.md)。原始权重恢复另行验证，不从该 fixture 结果推断。
+
 ### 已选定方向
 
 1. **独立模型来源。** 直接从经审核的原始 encoder 取得底座参数，优先评估 `jhu-clsp/mmBERT-base` 或同类可支持的编码器，独立记录 revision、配置、tensor/tokenizer hash 与许可；不能从 Laya 检查点抽取 encoder 后改称原始底座。本轮已完成固定 mmBERT 原始文件下载、hash、C# 受限 pickle 转换、134 tensor 形状检查和独立 loader smoke；上游逐层数值 oracle与许可发布审签仍未完成。自有决策头重新初始化和训练，不继承 Laya 训练后的 head/type/scorer 权重。

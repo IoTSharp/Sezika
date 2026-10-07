@@ -36,6 +36,17 @@ byte[] SafeTensorFile(string headerJson, int payloadBytes)
 
 try
 {
+    if (args.Length == 1 && args[0] is "--independent-pipeline" or "--independent-pipeline-aot")
+    {
+        if (args[0] == "--independent-pipeline-aot")
+            Check(!System.Runtime.CompilerServices.RuntimeFeature.IsDynamicCodeSupported &&
+                !System.Runtime.CompilerServices.RuntimeFeature.IsDynamicCodeCompiled &&
+                AppContext.GetData("TRUSTED_PLATFORM_ASSEMBLIES") is null,
+                "independent pipeline checks execute in Native AOT");
+        global::Sezika.Tests.IndependentPipelineChecks.Run(Check, ExpectDecisionCode);
+        Console.WriteLine($"Independent pipeline checks passed: {passed}");
+        return 0;
+    }
     if (args.Length == 1 && args[0] is "--continuation-contract" or "--continuation-contract-aot")
     {
         if (args[0] == "--continuation-contract-aot")
@@ -109,6 +120,7 @@ try
     Check(trained.Weights[0] > 0 && double.IsFinite(trained.FinalLogLoss), "frozen encoder head training");
     global::Sezika.Tests.IndependentMarkerHeadChecks.Run(Check, ExpectDecisionCode);
     global::Sezika.Tests.IndependentTrainingWorkflowChecks.Run(Check, ExpectDecisionCode);
+    global::Sezika.Tests.IndependentPipelineChecks.Run(Check, ExpectDecisionCode);
     global::Sezika.Tests.IndependentLoaderContractChecks.Run(Check, ExpectDecisionCode);
     global::Sezika.Tests.CalibrationContinuationChecks.Run(Check, ExpectDecisionCode);
 

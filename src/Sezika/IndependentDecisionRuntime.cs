@@ -34,6 +34,7 @@ public sealed record IndependentDecisionResponse(
 {
     public string EncoderSha256 { get; init; } = string.Empty;
     public string TokenizerSha256 { get; init; } = string.Empty;
+    public string Backend { get; init; } = "cpu-independent-linear-marker-head";
 }
 
 /// <summary>
@@ -43,7 +44,7 @@ public sealed record IndependentDecisionResponse(
 public sealed class IndependentDecisionV1Runtime : IDisposable
 {
     private readonly IndependentEncoderModelPackage _model;
-    private readonly IndependentMarkerHeadAsset _head;
+    private readonly IIndependentDecisionPipeline _pipeline;
     private readonly IndependentDecisionRuntimeOptions _options;
     private readonly object _lifecycleGate = new();
     private int _disposed;
@@ -86,6 +87,14 @@ public sealed class IndependentDecisionV1Runtime : IDisposable
         IndependentEncoderModelPackage model,
         IndependentMarkerHeadAsset head,
         IndependentDecisionRuntimeOptions? options = null)
+        : this(model, head, options, null) { }
+
+    /// <summary>Transfers ownership of model and pipeline; a null pipeline selects the explicit CPU implementation.</summary>
+    public IndependentDecisionV1Runtime(
+        IndependentEncoderModelPackage model,
+        IndependentMarkerHeadAsset head,
+        IndependentDecisionRuntimeOptions? options,
+        IIndependentDecisionPipeline? pipeline)
     {
         ArgumentNullException.ThrowIfNull(model);
         try
@@ -107,13 +116,22 @@ public sealed class IndependentDecisionV1Runtime : IDisposable
                 head.Identity.Protocol != "decision-v1" || head.Identity.LengthPolicy != "strict")
                 throw new DecisionException("independent_runtime_identity_mismatch", "The independent head is not bound to the loaded encoder and decision-v1 contract.");
 
+            pipeline ??= new IndependentCpuDecisionPipeline(model.Encoder, head);
+            if (!IndependentMarkerHeadTrainer.IdentityMatches(pipeline.Identity, head.Identity) ||
+                !string.Equals(pipeline.FeatureSha256, head.FeatureSha256, StringComparison.OrdinalIgnoreCase) ||
+                !string.Equals(pipeline.HeadSha256, head.FileSha256, StringComparison.OrdinalIgnoreCase) ||
+                string.IsNullOrWhiteSpace(pipeline.Backend) || pipeline.Backend.Length > 128 ||
+                pipeline.MaxTokens is < 2 or > 1024 || effective.MaxTokens > pipeline.MaxTokens)
+                throw new DecisionException("independent_runtime_identity_mismatch", "The independent execution pipeline differs from the loaded assets or token budget.");
+
             _model = model;
-            _head = head;
+            _pipeline = pipeline;
             _options = effective;
         }
         catch
         {
-            model.Dispose();
+            try { pipeline?.Dispose(); }
+            finally { model.Dispose(); }
             throw;
         }
     }
@@ -121,6 +139,7 @@ public sealed class IndependentDecisionV1Runtime : IDisposable
     public string ModelId => _model.ModelId;
     public string EncoderSha256 => _model.EncoderSha256;
     public string TokenizerSha256 => _model.TokenizerSha256;
+    public string Backend => _pipeline.Backend;
     public bool IsDisposed => Volatile.Read(ref _disposed) != 0;
 
     /// <summary>Evaluates every question in a bounded request with one shared deadline.</summary>
@@ -131,6 +150,8 @@ public sealed class IndependentDecisionV1Runtime : IDisposable
         lock (_lifecycleGate)
         {
             ObjectDisposedException.ThrowIf(IsDisposed, this);
+            if (_evaluationActive)
+                throw new DecisionException("decision_session_busy", "The independent runtime cannot reenter an active evaluation.");
             ArgumentNullException.ThrowIfNull(request);
             if (request.SchemaVersion != 1 || !string.Equals(request.ModelId, _model.ModelId, StringComparison.Ordinal))
                 throw new DecisionException("independent_runtime_model_mismatch", "decision-v1 request model_id does not match the loaded independent model.");
@@ -160,6 +181,7 @@ public sealed class IndependentDecisionV1Runtime : IDisposable
                     {
                         EncoderSha256 = _model.EncoderSha256,
                         TokenizerSha256 = _model.TokenizerSha256,
+                        Backend = _pipeline.Backend,
                     };
                 }
                 catch (OperationCanceledException exception) when (!cancellationToken.IsCancellationRequested)
@@ -170,7 +192,7 @@ public sealed class IndependentDecisionV1Runtime : IDisposable
             finally
             {
                 _evaluationActive = false;
-                if (_disposeRequested) _model.Dispose();
+                if (_disposeRequested) DisposeResources();
             }
         }
     }
@@ -191,19 +213,10 @@ public sealed class IndependentDecisionV1Runtime : IDisposable
                 Deadline = _options.Deadline,
             },
             cancellationToken);
-        var hidden = _model.Encoder.Encode(sequence.TokenIds, cancellationToken);
-        var width = _model.Encoder.Config.HiddenSize;
-        if (hidden.Length != checked(sequence.TokenIds.Length * width))
-            throw new DecisionException("independent_runtime_shape_invalid", "Independent encoder output does not contain a complete sequence.");
-
-        var features = new float[sequence.MarkerPositions.Length][];
-        for (var candidate = 0; candidate < features.Length; candidate++)
-        {
-            cancellationToken.ThrowIfCancellationRequested();
-            var offset = checked(sequence.MarkerPositions[candidate] * width);
-            features[candidate] = hidden.AsSpan(offset, width).ToArray();
-        }
-        var logits = _head.Head.Score(sequence.Type, features, () => cancellationToken.ThrowIfCancellationRequested());
+        var logits = _pipeline.Score(sequence.TokenIds, sequence.Type, sequence.MarkerPositions, cancellationToken);
+        cancellationToken.ThrowIfCancellationRequested();
+        if (logits is null || logits.Length != sequence.MarkerPositions.Length || Array.Exists(logits, value => !double.IsFinite(value)))
+            throw new DecisionException("independent_runtime_shape_invalid", "Independent pipeline must return exactly one finite logit per candidate.");
         var probabilities = Softmax(logits);
         var selected = 0;
         for (var candidate = 1; candidate < probabilities.Length; candidate++)
@@ -241,7 +254,13 @@ public sealed class IndependentDecisionV1Runtime : IDisposable
                 _disposeRequested = true;
                 return;
             }
-            _model.Dispose();
+            DisposeResources();
         }
+    }
+
+    private void DisposeResources()
+    {
+        try { _pipeline.Dispose(); }
+        finally { _model.Dispose(); }
     }
 }
