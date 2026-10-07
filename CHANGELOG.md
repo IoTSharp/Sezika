@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- 新增 GPU schema3 报告与正式原始训练数据准入合同，保留CPU v2格式；严格核验完整执行身份、records/manifest字节及hash、人工/许可/家族/split/分母，在GPU前向前拒绝pending或不匹配输入。1→64项合同与190项核心回归通过、构建零警告/错误；只完成合同工程，GPU CLI/workflow和真实训练另验，见[证据](docs/evidence/gpu-training-contract-2026-10-08.md)。
 - 复核 GPU 训练 CLI 的三文件 schema3 报告、执行身份、正式输入准入与恢复设计，按合同、GPU workflow、CLI接线三个工程任务分别验收；CPU v2保持兼容，pending教师/AI题不自动进入正式训练。设计不代表CLI实现或正式训练通过，见[设计](docs/evidence/gpu-training-cli-design-2026-10-08.md)。
 - 新增纯C# GPU marker head训练器、CE/梯度/SGD三个构建期PTX kernel和静态Driver绑定。RTX4070实卡tiny21项/完整61项与CPU中央差分27项通过，恢复、取消、溢出拒绝及资源回收已核；旧14 PTX/ABI未漂移，59项CUDA/16项独立pipeline回归通过。正式CLI GPU接线、数据训练、质量和训练AOT继续开放，见[训练工程证据](docs/evidence/gpu-training-design-2026-10-08.md)。
 - 完成教师CPU backend注册与GPU工具链只读核查：固定GGML_BACKEND_DL=OFF仍注册CPU，缺插件入口日志不能推导CPU缺失；RTX4070/8GiB、CUDA13.2.51、VS18 host支持及3个Toolkit依赖已核。未把配置、静态PE检查或显存快照写成真实GPU推理，见[CPU核查](docs/evidence/teacher-native-backend-audit-2026-10-08.md)及[GPU准备](docs/evidence/teacher-gpu-runtime-preflight-2026-10-08.md)。

@@ -36,6 +36,13 @@ byte[] SafeTensorFile(string headerJson, int payloadBytes)
 
 try
 {
+    if (args.Length == 1 && args[0] is "--gpu-training-contract-tiny" or "--gpu-training-contract")
+    {
+        global::Sezika.Tests.GpuTrainingReportChecks.Run(Check, ExpectDecisionCode,
+            tiny: args[0] == "--gpu-training-contract-tiny");
+        Console.WriteLine($"GPU training contract checks passed: {passed}");
+        return 0;
+    }
     if (args.Length == 1 && args[0] is "--independent-pipeline" or "--independent-pipeline-aot")
     {
         if (args[0] == "--independent-pipeline-aot")

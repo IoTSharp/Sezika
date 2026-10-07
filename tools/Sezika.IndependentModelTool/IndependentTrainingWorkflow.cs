@@ -289,7 +289,7 @@ public sealed record WorkflowTrainingReport
         }
     }
 
-    private void Validate(CancellationToken cancellationToken)
+    internal void Validate(CancellationToken cancellationToken)
     {
         var identity = Identity;
         if (SchemaVersion != 2 || Status is not ("development_smoke_only" or "fixture_contract_only") ||

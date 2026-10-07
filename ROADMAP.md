@@ -57,6 +57,8 @@ S4-07 GPU训练最小工程已闭环：冻结encoder的三行marker head以纯C#
 
 GPU CLI 接线按[复核设计](docs/evidence/gpu-training-cli-design-2026-10-08.md)分三项：A 为严格 schema3 报告与真实人工准入合同；B 为静态 kernel/设备 UUID 身份及三文件 GPU workflow 发布恢复；C 为显式 `train-original-gpu`、完整 GPU encoder 特征导出与评价报告适配。每项单独工程验收提交，CPU v2 合同保持兼容；fixture 不进入正式恢复或评价，不制造人审声明。实际正式数据训练、质量及训练 AOT 继续另验。
 
+切片A工程已验收：schema3内嵌完整v2训练报告并严格绑定执行声明，正式输入读取器核验真实字节/hash、人工及许可准入、source/family/split与全分母；1→64项纯CPU合同检查、190项既有核心回归通过，构建零警告/错误。没有GPU执行、真实数据训练或人工批准；见[合同证据](docs/evidence/gpu-training-contract-2026-10-08.md)。B/C继续实施。
+
 ### 已选定方向
 
 1. **独立模型来源。** 直接从经审核的原始 encoder 取得底座参数，优先评估 `jhu-clsp/mmBERT-base` 或同类可支持的编码器，独立记录 revision、配置、tensor/tokenizer hash 与许可；不能从 Laya 检查点抽取 encoder 后改称原始底座。本轮已完成固定 mmBERT 原始文件下载、hash、C# 受限 pickle 转换、134 tensor 形状检查和独立 loader smoke；上游逐层数值 oracle与许可发布审签仍未完成。自有决策头重新初始化和训练，不继承 Laya 训练后的 head/type/scorer 权重。

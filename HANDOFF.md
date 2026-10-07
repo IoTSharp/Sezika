@@ -18,13 +18,13 @@
 
 当前接续状态：
 
-- 当前 HEAD 为 `6d36c70`。GPU CLI 的三文件 schema3/准入/恢复设计已只读复核，接续子智能体 `/root/head_checkpoint` 的切片A：静态报告与正式准入合同，不接真实训练数据，不把 pending 教师/AI题改成人工批准。后续按身份/workflow、CLI接线分别验收提交。
+- 设计已提交 `af3d96a`；切片A静态schema3报告与正式准入合同已验收并随本次单独提交：1→64合同/190核心回归、零警告/错误构建；22任务身份均退出、fixture临时回收，无GPU或真实数据。`/root/head_checkpoint` 接续B身份/workflow后再接C命令入口；pending教师/AI题不改成人工批准。
 
 - S4-07 GPU marker head工程已验收并单独提交：纯C# CE/gradient/SGD与17项静态PTX/ABI；CPU中央差分27、GPU21→61和root旧CUDA59/独立pipeline16项通过。旧14 PTX hash/ABI不变，作者18项任务PID全退出/cleanup0。下一步正式CLI使用GPU encoder+trainer，report/resume绑定backend、精度、kernel/device；当前train-original仍CPU，不用于用户要求的正式训练。真实数据/质量/训练AOT未验。
 
 - TeacherTool API model key修复已验收并单独提交：candidate Id/API Model分别记录，旧alias前置拒绝；build13988零警告/错误、synthetic1→10与CLI正反通过。新DLL SHA `CCF65714E4D3E3EE853FBE806ECE3D2E44F12E4C18EC6BC442428D285B7D3557`。32题之前需使用新GPU input快照，不覆盖旧首题失败。
 - Tomur `32675f8` ABI修复已提交并推送，远端/本地main一致；`1aa3fa7`整数辅助修复一并推送。Windows x64 6结构80行oracle通过，完整host构建PID104664成功（1既有warning）。ABI独占临时删除被自动审核拒绝，准确保留路径见 `.artifacts/llama-abi-20261008-head-checkpoint/cleanup-result.json`，无存活任务进程。
-- RTX4070 Laptop/8GiB、CUDA13.2.51、VS18匹配；新CUDA配置PID101656通过。首个文本target build PID66196/session98415已在1800秒超时，902个记录身份后核均退出；原cleanup三项错误保留于result，后核见 `teacher-runtime/cuda-timeout-followup-cleanup.json`，不能抹去原失败。当前只接续一次同cache build PID86640/session5564，900秒、parallel2；两次总计算预算2700秒。没有验收GPU DLL或教师推理。只用同build配套DLL，GPU layers用999（-1会归零），2048ctx。资源monitor真实1样本自检尚未通过，先修复短进程/父链兼容；未启动教师服务。
+- RTX4070 Laptop/8GiB、CUDA13.2.51、VS18匹配；配置PID101656通过。首个build PID66196已1800秒超时，902个记录身份后核均退出，原cleanup三项错误保留。唯一同cache接续PID86640在509.594秒成功/cleanup0；8 DLL hash/copy与native prepare通过。资源monitor修复后实际1样本/9层父链通过，历史失败保留。GPU服务PID96756/session83949，上限1500秒；live monitor PID102080/session10980，上限1300秒。collector首题PID100448/90.85秒成功HTTP200/严格JSON，日志33/33层offload、CUDA0模型4861.28MiB，显存观测5949/free2000MiB。immutable首题证据为 `teacher-runtime/gpu-first-success-evidence.json`；准备32题串行无重试/总600秒。服务和monitor完成后必须卸载并精确回收，仅本任务树；模型标签仍pending/训练false。
 
 - 独立数值capture工程任务已验收并单独提交：OS resident采样过频触发tiny3秒deadline后修复，1→8项自检通过；真实46tokens/267张量、51,720,192字节payload全部hash复核通过。原失败与partial保留，Move后取消/持续合成peak恢复已验。上游oracle继续开放。正式训练/批量任务必须GPU，CPU仅小核验。
 - 教师首题真实调用失败：collector PID24100 exit3/http_transport_error，Tomur PID8488 native崩溃0xC0000409，全分母及原始日志保留，未有答案。固定llama.h与C#结构ABI漂移已修复，6结构/80大小偏移oracle通过；Tomur固定ABI完整主程序重建PID104664成功（1个既有CS8600）。CUDA后端正在准备，32题未运行。
