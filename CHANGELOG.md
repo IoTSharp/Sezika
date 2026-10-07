@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- 恢复固定原始mmBERT资产并核对4个来源文件身份；纯C#受限转换得到134个encoder tensors及固定SafeTensors hash，真实CPU encoder的46-token/35,328-hidden有限值smoke通过。下载首次超时及修正时间解析的失败保留，最终305.15秒内完成转换/smoke并回收任务进程与partial；纠正固定模型卡不含MIT授权全文的source lock事实。上游数值、许可发布审签、自有head质量及CUDA/AOT仍分别待验，见[恢复证据](docs/evidence/independent-assets-restore-2026-10-08.md)。
 - 按用户选定的通用中英分类/评分/真假任务建立32题教师pilot候选包，固定单题decision-v1请求、教师prompt、family、文件hash和来源；监督者复验67项绑定及6/6Choice、5/5Score、5/5Boolean统计，跨平台保留精确字节。所有题目仍为AI drafted/audit/pending，没有教师调用、金标或训练准入；见[候选证据](docs/teacher-general-pilot-2026-10-08.md)。
 - 新增 S4-15 静态独立 CPU/CUDA pipeline、完整 head 身份注入与三行自有 marker head GPU 前向；复用既有 C# PTX/Driver，修复关闭竞态和 runtime 重入释放。核心190项、CUDA59项、CLI41项和预测11项回归通过；Windows Native AOT 独立 CPU18项、CUDA实卡17项通过。真实原始模型数值、Linux AOT、质量与性能继续分别验收，见[本批证据](docs/evidence/independent-pipeline-2026-10-08.md)。
 - 新增 S4-08/S4-15 `Sezika.IndependentPredict`：在人工准入/许可/封存/hash 元数据通过后才读取题文，使用独立本地 runtime 导出校准器兼容预测、split hash、组合 encoder/head 身份及全状态分母；同父 staging 核验后整体原子发布。极小1项、完整11项检查及真实 CalibrationTool 联调通过，4条tiny fixture按预期返回exit3/not_eligible，身份和预测hash一致。未读取真实封存题或验收实际模型质量。

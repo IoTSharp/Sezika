@@ -18,9 +18,10 @@
 
 当前接续状态：
 
-- `/root/independent_cli`：固定 README/config/tokenizer 已核；首批权重代理300秒超时如实保留，partial 已清理。第二独立单权重任务在1200秒单请求/1500秒总预算内成功（outer PID3748），固定1231188142字节/hash匹配；已分配≤400秒串行C#转换/真实CPU smoke槽，须收取134 tensor/转换hash/真实输出及最终资源核验后单独提交。它独占忽略资产与恢复证据，以及 source_lock 的MIT全文事实纠正；不能用旧DLL hash代替当前重建身份。
-- `/root/head_checkpoint`：独占 `Sezika.TeacherTool` 新采集模块/DTO/sourcegen及专题文档，20分钟实施边界，不编辑Program.cs/csproj、不build或实际HTTP；主线程最后接线和验收。已只读核实Tomur HEAD `5cd90dd7565a4668016217a56cd2876383869560`，默认5137且默认位置未发现安装；JSON format未实施，固定stop原因不能证明没截断。
-- `/root/closure_audit`：32题候选包已完成监督者67项文件/hash、32个唯一family/六分组及样例验收，随候选任务独立提交；全部AI drafted/audit/pilot/pending，无答案/教师响应，C#采集器实际兼容另验。目前20分钟只读复核collector，不写共享文档；已指出deadline发布末尾缺少复查及清理/异常捕获问题，由实施者修复。
+- 原始资产恢复已验收并随本次单独提交：固定4源文件与134 tensor转换身份通过，真实CPU smoke为46 tokens/35,328个有限hidden，执行305.15秒≤400秒；实际peak未测。MIT全文事实纠正及失败日志保留，最终无登记存活PID/partial/cleanup错误。见 `docs/evidence/independent-assets-restore-2026-10-08.md`。
+- `/root/independent_cli`：接续≤15分钟教师运行准备，核实固定上游许可正文及Tomur明确启动/数据目录/依赖资源；最多6小文件，不下载GGUF、构建或启动服务，独占新readiness证据。已核实GGUF固定revision `3885219b6810b007914f3a7950a8d1b469d598a5`，真实metadata size5,680,522,464，与Tomur catalog原大小不符；默认loopback一次连接失败，不推断其他安装不存在。
+- `/root/head_checkpoint`：教师采集模块及大小常量修复ready；主线程已接入口并最终重建PID96720零警告/错误，1→10内存合成检查PID63016/46988通过，旧合同1→24通过。独立审查发现均修复；下一步归档/提交，再准备真实32题。尚无实际教师HTTP或答案。
+- `/root/closure_audit`：collector只读终审完成无阻断，当前接续≤12分钟独立上游oracle准备，只读模型/数值要求并核实固定Python已安装包，不安装或运行torch。
 
 用户已确认首批用途为通用中英分类、程度评分、真假判断，并希望用教师模型作答。32题是第一轮格式试运行；600训练+各120开发/校准/测试仅监督者建议的起点，未采集/训练或获得正式数据准入。用户对人工审核/独立保管问题表示不理解，已用具体含义解释，不能将该回复视为批准或封存证据。
 
@@ -39,4 +40,4 @@ PowerShell固定 `C:\Program Files\PowerShell\7\pwsh.exe` 7.6.6；dotnet固定 `
 
 ## 保留与未验收
 
-既有未跟踪 `docs/wechat-introduction.html`、`docs/wechat-introduction.md` 属于其他工作，未修改/暂存。目前原始独立权重第二次有界恢复已通过bytes/hash，转换与真实smoke等本批回执；尚未运行教师采集、读取真实封存题、采样新性能或Linux AOT。pipeline验证15份runner/69次身份观测无匹配存活进程和cleanup错误；资产执行独立跟踪。工具/fixture闭环不关闭整项路线门槛；总路线尚未完成，heartbeat继续接续可执行任务并只在有实质变化/失败/需要用户操作时通知。
+既有未跟踪 `docs/wechat-introduction.html`、`docs/wechat-introduction.md` 属于其他工作，未修改/暂存。固定原始资产、转换与真实CPU encoder smoke已恢复；尚未实际教师采集、读取真实封存题、采样新性能或Linux AOT。pipeline验证15份runner/69次身份观测无匹配存活进程和cleanup错误；资产与教师执行独立跟踪。工具/fixture闭环不关闭整项路线门槛；总路线尚未完成，heartbeat继续接续可执行任务并只在有实质变化/失败/需要用户操作时通知。

@@ -41,6 +41,8 @@
 
 同日用户确认首批任务为通用中英文本分类、程度评分、真假判断，并希望用本地教师作答。先建立32题格式试运行候选：中英各6Choice/5Score/5Boolean，32个独立family，全部AI起草、audit/pilot、人工审核及训练准入pending，没有答案或教师响应。候选包67项文件/hash与统计已由监督者复验；教师采集仍需真实服务/模型/许可身份及严格响应验证，后续扩量按试运行结果确定。见[候选包与证据](docs/teacher-general-pilot-2026-10-08.md)。
 
+2026-10-08 固定原始资产恢复任务已闭环：4个原始文件字节/hash通过，纯C#转换134个encoder tensors并匹配固定SafeTensors身份，真实scalar CPU smoke得到46 tokens/35,328个有限hidden元素；305.15秒执行预算及进程/partial回收通过。纠正source lock中的“固定模型卡含MIT全文”错误，完整通知与tokenizer发布审签仍pending；该smoke不关闭上游数值oracle、trained head、CUDA/AOT或质量门槛。见[资产恢复证据](docs/evidence/independent-assets-restore-2026-10-08.md)。
+
 ### 已选定方向
 
 1. **独立模型来源。** 直接从经审核的原始 encoder 取得底座参数，优先评估 `jhu-clsp/mmBERT-base` 或同类可支持的编码器，独立记录 revision、配置、tensor/tokenizer hash 与许可；不能从 Laya 检查点抽取 encoder 后改称原始底座。本轮已完成固定 mmBERT 原始文件下载、hash、C# 受限 pickle 转换、134 tensor 形状检查和独立 loader smoke；上游逐层数值 oracle与许可发布审签仍未完成。自有决策头重新初始化和训练，不继承 Laya 训练后的 head/type/scorer 权重。
