@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- 提供32题通用中英文本人工审核包：完整原文/候选/实际教师建议与空人工字段，固定源/hash、64引用和pending/曝光/不可封存语义。tiny1/full32生成、独立映射检查及监督者五文件身份复核通过，目标不覆盖；未自动批准、调用教师或训练，见[证据](docs/evidence/teacher-review-entry-2026-10-08.md)。
 - 加固CUDA buffer/module/context/profiling event的native成功后归属登记，预备wrapper/容量及pending、无分配adopt，release诊断OOM保留primitive身份并拒绝旧缓存异常。最终零警告/错误、CPU1→7/GPU1→11、既有training21/cleanup9case及资源/源码/DLL独立复核通过；不是实际heap OOM、AOT或正式训练验收，见[证据](docs/evidence/cuda-native-adoption-2026-10-08.md)。
 - 加固GPU head训练器异常清理：initial/packed自建副本始终清零，buffer和kernel/module共用独立5秒预算并保留主异常原始栈、caller基线及真实false-release残留语义。最终零警告/错误、CPU1→3/GPUtiny1/full8及既有21项训练smoke通过，真实context回收已核；正式数据/质量、训练AOT及post-native包装登记OOM仍另验，见[证据](docs/evidence/trainer-cleanup-2026-10-08.md)。
 - 完成独立诊断样例的Ubuntu WSL2 linux-x64 Native AOT：唯一离线cache发布、native1→8合同、probe与真实46-token CUDAcase通过，311launch/552-byte D2H、预取消零launch、释放归零；执行边界补实际Linux身份及退出竞态修复，旧失败保留。与Windows共同覆盖固定真实encoder+未训练内存head的两发布物，正式trained-head、训练AOT、质量/parity/性能仍开放，见[Linux证据](docs/evidence/independent-aot-linux-2026-10-08.md)。

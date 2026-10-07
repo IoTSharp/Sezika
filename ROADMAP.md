@@ -73,7 +73,7 @@ S4-07/S4-12训练器异常清理工程已验收：共用独立5秒/39 buffers+1 
 
 下一独立切片验证Native AOT中的GPU CE/梯度/SGD：H4合成Choice/Score/Boolean三题，schema3三文件从3步磁盘恢复到6，与从零连续6对照；原生flags须早于任何Open核验。managed、Windows及Linux分别先tiny1再full11、每环境最多16实际GPU更新，新增代码/二进制各自冻结，不用encoder前向AOT代替训练支持。每RID最多两次有理由publish/600秒，每阶段最多25分钟；正式数据、encoder反传、质量及性能门槛保持开放。
 
-S4-05/S4-11接续32题人工审核入口工程：从已验收v2实测包的固定records/request/response身份，离线生成可填写的逐题题文、候选与教师答案审核表及source/hash绑定。审核人、独立判断、纠正标签及批准状态初始留空/pending，不替人审核、不修改原32题或教师采集包、不自动变更train/正式准入/封存资格；无需重跑教师。生成与文件复验先1题再32题、单独验收提交，为用户提供具体审核材料。
+S4-05/S4-11的32题人工审核入口工程已验收：[逐题审核表](datasets/teacher-general-v2-review/review.md)与JSONL模板包含完整题文/候选/实际教师建议，绑定固定v2源及64原字节引用。生成tiny1/full32、独立字段/映射验收及监督者五文件hash复核通过，见[证据](docs/evidence/teacher-review-entry-2026-10-08.md)。八个人工字段均null/pending，教师答案曝光=true、封存资格=false；未替人审核或批准，没有自动训练准入，也未重跑教师。实际人工审核、许可审签与独立封存继续开放。
 
 GPU CLI 接线按[复核设计](docs/evidence/gpu-training-cli-design-2026-10-08.md)分三项：A 为严格 schema3 报告与真实人工准入合同；B 为静态 kernel/设备 UUID 身份及三文件 GPU workflow 发布恢复；C 为显式 `train-original-gpu`、完整 GPU encoder 特征导出与评价报告适配。每项单独工程验收提交，CPU v2 合同保持兼容；fixture 不进入正式恢复或评价，不制造人审声明。实际正式数据训练、质量及训练 AOT 继续另验。
 

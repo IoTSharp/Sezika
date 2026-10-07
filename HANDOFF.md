@@ -25,6 +25,7 @@
 | Windows独立诊断AOT样例 | `b837be7` | 真实固定encoder+未训练内存head，managed/native各1→8、唯一publish/probe/46-token CUDAcase；311launch、552-byte D2H、预取消零launch、释放归零，12份结果/45身份终审通过 |
 | Linux独立诊断AOT | `86099ee` | Ubuntu10.0.112/cache唯一发布、native1→8/fstat、probe/唯一46-token CUDA；311launch/552-byte D2H、预取消零launch、资源归零；正式trained-head/训练AOT/质量另验 |
 | GPU训练器异常清理 | `2800cbe` | 最终build零警告/错误、CPU1→3/GPUtiny1/full8与既有21项训练smoke通过；独立5秒/40owner/17module、主异常原帧、副本清零/caller基线/false release与context回收分别核验 |
+| CUDA原生取得与登记 | `ef1288d` | 五源码、四实际DLL冻结匹配；CPU1→7/GPU1→11、training21/cleanup9case、十一runner/37身份终核，实际context回收；AOT/正式训练另验 |
 
 固定真实 mmBERT 的 C 切片 encoder smoke 已通过：PID75592、48 tokens、markers27/37、hidden768、310 kernel launches；runner17.299秒，资源归零。marker SHA-256 `59194DCFF642F4790DBF55F58D38EFBAB200C0528BEE25894DE38D71296B1CCD`。该 smoke 没有训练 head；GPU head 的梯度/更新与恢复工程另有 fixture 实卡证据，没有正式数据训练结论。
 
@@ -45,6 +46,10 @@ v2 固定教师为 `unsloth/Qwen3.5-9B-GGUF@3885219b6810b007914f3a7950a8d1b469d5
 Tomur在UTC20:17已fetch/ff-only，当前HEAD及origin/main均为 `b07ae41450a5832e790eaac1bcdad61531a6a0e0`，ahead/behind=0/0；整数helper、固定llama ABI和9B字节大小修复已提交推送。本轮教师复用host仍为`32675f8`构建，不能称最新源码构建。只剩用户`docs/articles/`未跟踪，无必要修改待推送。
 
 ## 当前接续任务
+
+最新状态UTC23:19：adoption已单独提交`ef1288d`，Git stage52896/commit95916成功、cleanup为空；审核包已独立验收，监督者tiny1/full5原字节核验匹配，正单独提交。独立审查23:16:02保存早于截止，SHA `38E00DA969C5AFE377CEB4F3C40F8EDB129E3A9842F85CFF5579A417D992B226`。详见[审核入口证据](docs/evidence/teacher-review-entry-2026-10-08.md)。下列旧窗口记录已结束，以本段新状态为准。
+
+`/root/teacher_prompt_v2`已开始Windows GPU训练Native AOT工程：UTC23:18:04–23:43:04，23:42:04停止新增验证收口；最多五测试源码/项目编辑，18明确文件只读，artifact为`.artifacts/independent-training-aot-20261008/windows-v1/`，core/PTX/workflow/report保持冻结，GPU仅归此任务。H4四合成记录，零CPU trainer/encoder，managed/native各tiny1/full11≤16实际GPU更新；最多2有理由managed build/180秒、每RID2有理由publish/600秒，先tiny并检查剩余窗口。新代码/实际PE/三文件恢复/资源须独立验收后单独提交，Linux随后新窗口使用WSL边界，不自动继承旧ELF或前向AOT。
 
 UTC23:15接续已独立验收 native adoption 五源码，待本项单独提交：三build最终零警告/错误，CPUtiny1/full7、GPUtiny1/full11、training21与cleanup9case通过，最终context资源归零。作者于23:06:18结束，正式证据SHA `8C16358EE6DF01A7D1712947DAF125402CD16992F6408F984F91012FFC24CA35`；root十一回执/37身份终核无匹配存活，四DLL及五源freeze匹配。详见[登记证据](docs/evidence/cuda-native-adoption-2026-10-08.md)。原adoption窗口已释放，不再重跑GPU/全套。
 
