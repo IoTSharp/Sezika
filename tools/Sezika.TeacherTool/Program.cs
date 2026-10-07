@@ -11,6 +11,8 @@ const int DefaultTimeoutMs = 30_000;
 const int MaxTimeoutMs = 120_000;
 
 var command = args.Length == 0 ? "help" : args[0].ToLowerInvariant();
+if (command == "collect") return await Sezika.TeacherTool.TeacherCollection.RunAsync(args);
+if (command == "self-test-collection") return await Sezika.TeacherTool.TeacherCollection.SelfTestAsync(args);
 using var cancellation = new CancellationTokenSource();
 Console.CancelKeyPress += (_, eventArgs) =>
 {
@@ -46,6 +48,8 @@ try
 
     Console.WriteLine("Sezika.TeacherTool validate-catalog --catalog <catalog.json> --report <report.json> [--timeout-ms <100..120000>]");
     Console.WriteLine("Sezika.TeacherTool validate-records --records <teacher-records.jsonl> --report <report.json> [--timeout-ms <100..120000>]");
+    Console.WriteLine("Sezika.TeacherTool collect --catalog <catalog.json> --manifest <pilot-manifest.json> --output <new-directory> [--max-records <1..32>] [--request-timeout-seconds <1..120>] [--total-timeout-seconds <1..1200>] [--max-output-tokens <1..256>]");
+    Console.WriteLine("Sezika.TeacherTool self-test-collection [--max-cases <1..10>]");
     return 2;
 }
 catch (OperationCanceledException)

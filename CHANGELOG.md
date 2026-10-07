@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- 新增S4-10真实离线教师采集入口、静态DTO/sourcegen与有界HTTP/文件合同；只调用字面loopback Tomur，32次无重试、严格标签及固定来源/条款/输入hash，所有产物保持待人工审核。取消保留全分母、未调用项和原响应hash/usage的独立failure audit；最终构建零警告/错误、1→10内存合成检查及旧离线1→24回归通过。依据固定来源纠正GGUF大小为5,680,522,464 bytes；尚未安装/哈希真实教师权重或取得真实答案，见[采集证据](docs/teacher-collection-s4-10.md)。
 - 恢复固定原始mmBERT资产并核对4个来源文件身份；纯C#受限转换得到134个encoder tensors及固定SafeTensors hash，真实CPU encoder的46-token/35,328-hidden有限值smoke通过。下载首次超时及修正时间解析的失败保留，最终305.15秒内完成转换/smoke并回收任务进程与partial；纠正固定模型卡不含MIT授权全文的source lock事实。上游数值、许可发布审签、自有head质量及CUDA/AOT仍分别待验，见[恢复证据](docs/evidence/independent-assets-restore-2026-10-08.md)。
 - 按用户选定的通用中英分类/评分/真假任务建立32题教师pilot候选包，固定单题decision-v1请求、教师prompt、family、文件hash和来源；监督者复验67项绑定及6/6Choice、5/5Score、5/5Boolean统计，跨平台保留精确字节。所有题目仍为AI drafted/audit/pending，没有教师调用、金标或训练准入；见[候选证据](docs/teacher-general-pilot-2026-10-08.md)。
 - 新增 S4-15 静态独立 CPU/CUDA pipeline、完整 head 身份注入与三行自有 marker head GPU 前向；复用既有 C# PTX/Driver，修复关闭竞态和 runtime 重入释放。核心190项、CUDA59项、CLI41项和预测11项回归通过；Windows Native AOT 独立 CPU18项、CUDA实卡17项通过。真实原始模型数值、Linux AOT、质量与性能继续分别验收，见[本批证据](docs/evidence/independent-pipeline-2026-10-08.md)。
