@@ -25,6 +25,12 @@
 2026-10-03 从已推送的 `a53eb0d` 继续并行工程续审，范围和验收见 [本轮统一证据](docs/evidence/continuation-2026-10-03.md)。S4-08 补全校准指标分母、基线/封存 split/有限值门槛；S4-10/S4-11 加固离线审核合同；S4-15 固定 encoder 数值配置与 tensor 布局；S5-06 加固画像真实性检查。当前工作区没有原始独立模型权重，真实教师身份/许可、数据人工准入/独立封存、上游数值 oracle、独立模型 CPU/CUDA 与两 RID AOT 仍 blocked/pending。本轮 Windows AOT 合同 fixture 与历史画像校验均不能关闭这些门槛，S5-07 尚无优化收益结论。
 
 2026-10-04 在上述合同基础上加入可运行的独立 `decision-v1` runtime facade、hash-bound calibration/sealed-test 评估工具和 CPU RoPE 因子复用候选。runtime 已用 tiny C# encoder/head fixture 验证身份、三题型输入路径、有限分布和卸载失败语义；校准工具只消费已有预测 JSONL，温度仅在 calibration split 拟合，fixture-only 明确返回 `not_eligible`；RoPE 表保持参考数值一致并计入 resident bytes。没有下载缺失独立权重、真实训练/教师调用或新模型质量/性能采样，因此 S4-08、S4-10/11、S4-15 上游 oracle、S5-06 完整画像和 S5-07 收益仍 pending/blocked。
+2026-10-07 用户授权监督者按本任务板持续派发子智能体，每个独立任务验收后单独提交，已设置本聊天 30 分钟检查跟进。首批工程子任务为 S4-15/S6-02 的显式独立 CLI（保留现有入口，正式默认切换依赖 S4-08）与 S4-07/S4-12 的 checkpoint 保存/恢复/导出流程；另行核查全部剩余门槛及依赖。实现前先登记范围；工具闭环不关闭真实数据人工准入、独立封存、数值、质量、AOT、性能或正式发布门槛。执行交接见根 HANDOFF.md。
+
+全量核查后接续 S4-08/S4-15 的独立预测导出工具：以获准 split、完整模型/head/协议/数据身份和有界真实 runtime 输出接到现有 CalibrationTool，保留失败分母、文件 hash 和实际调用范围。工具 fixture 不具备正式准入资格；不自动读取或批准真实封存集。CUDA、独立画像和审核切片按依赖接续，详见 [全量监督核查](docs/supervision-audit-2026-10-07.md)。
+
+首批 S4-07/S4-12 checkpoint/恢复/导出工程子任务已验收：保存三项产物并绑定完整 v2 身份，2→4 与连续 4 步 fixture 的权重及文件字节一致；开发评估拒绝 v2 身份宽度丢失。最终核心 173 项检查、CLI 41 项互操作检查及零警告/错误构建通过。整项仍需真实获准数据与实验；验证范围见 [监督证据](docs/evidence/supervision-2026-10-07.md)。
+
 ### 已选定方向
 
 1. **独立模型来源。** 直接从经审核的原始 encoder 取得底座参数，优先评估 `jhu-clsp/mmBERT-base` 或同类可支持的编码器，独立记录 revision、配置、tensor/tokenizer hash 与许可；不能从 Laya 检查点抽取 encoder 后改称原始底座。本轮已完成固定 mmBERT 原始文件下载、hash、C# 受限 pickle 转换、134 tensor 形状检查和独立 loader smoke；上游逐层数值 oracle与许可发布审签仍未完成。自有决策头重新初始化和训练，不继承 Laya 训练后的 head/type/scorer 权重。

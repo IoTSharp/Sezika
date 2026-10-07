@@ -7,6 +7,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../../src/Sezika/Sezika.csproj" />
+    <ProjectReference Include="../../tools/Sezika.IndependentModelTool/Sezika.IndependentModelTool.csproj" />
     <None Include="../../model-manifests/mmbert-independent/model.json" Link="fixtures/independent-model.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>

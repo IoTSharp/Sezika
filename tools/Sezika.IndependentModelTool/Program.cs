@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Json;
 using Sezika;
+using Sezika.IndependentModelTool;
 
 const string SourceSha256 = "8ea64ec1ea4eb8fca0fc14b69a2ae571de6bfbc25fd214bb932dd4aba6a3a04e";
 const long SourceBytes = 1_231_188_142;
@@ -50,13 +51,10 @@ try
     }
     if (command == "train-original")
     {
-        var package = Path.GetFullPath(RequiredOption("--package"));
-        var recordsPath = Path.GetFullPath(RequiredOption("--records"));
-        var headPath = Path.GetFullPath(RequiredOption("--head"));
-        var reportPath = Path.GetFullPath(RequiredOption("--report"));
+        var trainingCommand = OriginalTrainingCommand.Parse(args, lifetime.Token);
         using var cancellation = CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);
-        cancellation.CancelAfter(TimeSpan.FromMinutes(10));
-        TrainOriginal(package, recordsPath, headPath, reportPath, cancellation.Token);
+        cancellation.CancelAfter(TimeSpan.FromSeconds(trainingCommand.TimeoutSeconds));
+        TrainOriginal(trainingCommand, cancellation.Token);
         return 0;
     }
     if (command == "evaluate-original")
@@ -73,7 +71,8 @@ try
     }
     Console.WriteLine("Sezika.IndependentModelTool convert-pytorch --input <pytorch_model.bin> --output <model.safetensors> [--timeout-seconds 1..1800]");
     Console.WriteLine("Sezika.IndependentModelTool smoke --package <independent-model-package>");
-    Console.WriteLine("Sezika.IndependentModelTool train-original --package <package> --records <records.jsonl> --head <head.asset> --report <report.json>");
+    Console.WriteLine("Sezika.IndependentModelTool train-original --package <package> --records <records.jsonl> --checkpoint <training.checkpoint> --head <head.asset> --report <report.json> [--max-steps 1..10000] [--seed <int>] [--learning-rate 0..1] [--training-timeout-seconds 1..600] [--timeout-seconds 1..1800]");
+    Console.WriteLine("  Resume requires --resume-checkpoint <checkpoint> --resume-sha256 <hash> --resume-report <v2-report.json> --resume-report-sha256 <hash>; --max-steps is the total completed-step target.");
     Console.WriteLine("Sezika.IndependentModelTool evaluate-original --package <package> --records <records.jsonl> --head <head.asset> --training-report <training-report.json> --report <evaluation-report.json>");
     return 2;
 }
@@ -81,6 +80,11 @@ catch (OperationCanceledException)
 {
     Console.Error.WriteLine("independent-model-tool: operation cancelled or exceeded its bounded timeout");
     return 124;
+}
+catch (DecisionException exception)
+{
+    Console.Error.WriteLine($"independent-model-tool: {exception.Code}: {exception.Message}");
+    return exception.Code.EndsWith("deadline_exceeded", StringComparison.Ordinal) ? 124 : 1;
 }
 catch (Exception exception)
 {
@@ -209,49 +213,49 @@ static string HashFile(string path, CancellationToken cancellationToken)
     return Convert.ToHexString(hash.GetHashAndReset());
 }
 
-static void TrainOriginal(string packagePath, string recordsPath, string headPath, string reportPath, CancellationToken cancellationToken)
+static void TrainOriginal(OriginalTrainingCommand command, CancellationToken cancellationToken)
 {
+    var packagePath = command.Package;
+    var recordsPath = command.Records;
+    var manifestPath = Path.Combine(Path.GetDirectoryName(recordsPath)!, "manifest.json");
+    IndependentTrainingWorkflow.ValidateOutputPaths(command.Outputs, command.Resume is null ?
+        [recordsPath, manifestPath] : [recordsPath, manifestPath, command.Resume.Checkpoint, command.Resume.Report]);
+    // Keep both sources read-only across parsing, hashing, export and publication.
+    // Their report identities must describe the bytes actually consumed.
+    using var recordsLease = new FileStream(recordsPath, FileMode.Open, FileAccess.Read, FileShare.Read);
+    using var manifestLease = new FileStream(manifestPath, FileMode.Open, FileAccess.Read, FileShare.Read);
     var records = ReadOriginalRecords(recordsPath, cancellationToken);
     if (records.Count is < 2 or > 32 || records.Count(r => r.Split == "train") is < 1 || records.Count(r => r.Split == "development") is < 1)
         throw new InvalidDataException("Original dataset requires bounded train and development records.");
     var recordsHash = HashFile(recordsPath, cancellationToken);
-    var manifestPath = Path.Combine(Path.GetDirectoryName(recordsPath)!, "manifest.json");
     if (!File.Exists(manifestPath)) throw new FileNotFoundException("Original dataset manifest is missing.", manifestPath);
     var dataHash = HashFile(manifestPath, cancellationToken);
     using var model = IndependentModelLoader.Load(packagePath, new EncoderExecutionOptions { Kernel = EncoderKernelMode.Scalar, Deadline = TimeSpan.FromMinutes(10) }, cancellationToken);
     var identity = new MarkerFeatureIdentity(model.ModelId, model.EncoderSha256, model.TokenizerSha256, dataHash, model.Encoder.Config.HiddenSize);
     var features = new List<(OriginalRecord Record, MarkerFeatureExample Feature)>();
-    foreach (var record in records)
+    for (var index = 0; index < records.Count; index++)
     {
         cancellationToken.ThrowIfCancellationRequested();
+        var record = records[index];
+        Console.WriteLine($"train-original: export {index + 1}/{records.Count} {record.RecordId}");
         var feature = IndependentMarkerFeatureExporter.Export(model.Tokenizer, model.Encoder, identity, record.Request, record.Question,
             record.RecordId, record.Language, record.TargetIndex, cancellationToken: cancellationToken);
         features.Add((record, feature));
     }
     var train = features.Where(item => item.Record.Split == "train").Select(item => item.Feature).ToArray();
-    var development = features.Where(item => item.Record.Split == "development").ToArray();
-    var training = IndependentMarkerHeadTrainer.Train(new MarkerFeatureSet(identity, train),
-        new MarkerTrainingOptions(20260930, 24, 0.05f, TimeSpan.FromMinutes(2)), cancellationToken: cancellationToken);
-    Directory.CreateDirectory(Path.GetDirectoryName(headPath)!); Directory.CreateDirectory(Path.GetDirectoryName(reportPath)!);
-    var headHash = IndependentMarkerHeadAssetStore.SaveNew(headPath, training, cancellationToken);
-    using (var stream = new FileStream(reportPath, FileMode.CreateNew, FileAccess.Write, FileShare.None))
-    using (var writer = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true }))
-    {
-        writer.WriteStartObject(); writer.WriteNumber("schema_version", 1); writer.WriteString("status", "development_smoke_only");
-        writer.WriteString("model_id", model.ModelId); writer.WriteString("encoder_sha256", model.EncoderSha256); writer.WriteString("tokenizer_sha256", model.TokenizerSha256);
-        writer.WriteString("data_manifest_sha256", dataHash); writer.WriteString("records_sha256", recordsHash); writer.WriteString("feature_sha256", training.FeatureSha256); writer.WriteString("head_sha256", headHash);
-        writer.WriteNumber("train_count", train.Length); writer.WriteNumber("development_count", development.Length); writer.WriteNumber("completed_steps", training.CompletedSteps); writer.WriteNumber("last_loss", training.LastLoss);
-        writer.WriteBoolean("uses_real_independent_encoder", true); writer.WriteBoolean("represents_quality_acceptance", false);
-        writer.WritePropertyName("development_groups"); writer.WriteStartArray();
-        foreach (var group in development.GroupBy(item => (item.Record.Language, item.Record.Question.GetType().Name)).OrderBy(group => group.Key.Language).ThenBy(group => group.Key.Name))
+    var development = features.Where(item => item.Record.Split == "development").Select(item => item.Feature).ToArray();
+    var progressClock = System.Diagnostics.Stopwatch.StartNew();
+    var result = IndependentTrainingWorkflow.Run(new MarkerFeatureSet(identity, train), development, recordsHash,
+        command.Options, command.Outputs, TrainingFeatureSource.OriginalEncoder, command.Resume,
+        progress: item =>
         {
-            var correct = 0;
-            foreach (var item in group) if (ArgMax(training.Head.Score(item.Feature.Type, item.Feature.Features, () => cancellationToken.ThrowIfCancellationRequested())) == item.Feature.TargetIndex) correct++;
-            writer.WriteStartObject(); writer.WriteString("language", group.Key.Language); writer.WriteString("question_type", QuestionTypeName(group.First().Feature.Type)); writer.WriteNumber("count", group.Count()); writer.WriteNumber("correct", correct); writer.WriteNumber("accuracy", (double)correct / group.Count()); writer.WriteEndObject();
-        }
-        writer.WriteEndArray(); writer.WriteEndObject(); writer.Flush();
-    }
-    Console.WriteLine($"trained original data records={records.Count} train={train.Length} development={development.Length} steps={training.CompletedSteps} feature_sha256={training.FeatureSha256} head_sha256={headHash} report={reportPath}");
+            if (item.CompletedSteps == 0 || item.CompletedSteps == item.MaxSteps || progressClock.Elapsed >= TimeSpan.FromSeconds(5))
+            {
+                Console.WriteLine($"train-original: steps {item.CompletedSteps}/{item.MaxSteps} loss={item.LastLoss:R}");
+                progressClock.Restart();
+            }
+        }, cancellationToken: cancellationToken);
+    Console.WriteLine($"trained original data records={records.Count} train={train.Length} development={development.Length} initial_steps={result.Report.InitialSteps} steps={result.State.CompletedSteps} feature_sha256={result.State.FeatureSha256} checkpoint_sha256={result.Report.CheckpointSha256} head_sha256={result.Report.HeadSha256} report_sha256={result.ReportSha256} report={command.Outputs.Report}");
 }
 
 static string QuestionTypeName(MarkerQuestionType type) => type switch
@@ -289,6 +293,8 @@ static void EvaluateOriginal(string packagePath, string recordsPath, string head
         throw new InvalidDataException("Evaluation model identity does not match the training report.");
     var identity = new MarkerFeatureIdentity(model.ModelId, model.EncoderSha256, model.TokenizerSha256,
         dataHash, model.Encoder.Config.HiddenSize);
+    if (training.VersionedReport is not null)
+        identity = training.VersionedReport.BindIdentity(identity, cancellationToken);
     var head = IndependentMarkerHeadAssetStore.Load(headPath, identity, training.FeatureSha256, training.HeadSha256, cancellationToken);
     var rows = new List<OriginalEvaluationRow>(development.Length);
     for (var index = 0; index < development.Length; index++)
@@ -516,10 +522,21 @@ static void WriteNullable(Utf8JsonWriter writer, string name, double? value)
 static TrainingReport ReadTrainingReport(string path, CancellationToken cancellationToken)
 {
     if (!File.Exists(path)) throw new FileNotFoundException("Training report is missing.", path);
-    var info = new FileInfo(path);
-    if (info.Length is <= 0 or > 1_048_576) throw new InvalidDataException("Training report exceeds the 1 MiB bound.");
-    using var document = JsonDocument.Parse(File.ReadAllBytes(path)); cancellationToken.ThrowIfCancellationRequested();
+    using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
+    if (stream.Length is <= 0 or > 1_048_576) throw new InvalidDataException("Training report exceeds the 1 MiB bound.");
+    var bytes = new byte[(int)stream.Length];
+    stream.ReadExactly(bytes);
+    cancellationToken.ThrowIfCancellationRequested();
+    using var document = JsonDocument.Parse(bytes);
     var root = document.RootElement;
+    if (root.GetProperty("schema_version").GetInt32() == 2)
+    {
+        var versioned = WorkflowTrainingReport.ParseBounded(bytes, cancellationToken);
+        if (!versioned.UsesRealIndependentEncoder) throw new InvalidDataException("Fixture training reports cannot evaluate an original encoder.");
+        return new TrainingReport(versioned.Identity.ModelId, versioned.Identity.EncoderSha256, versioned.Identity.TokenizerSha256,
+            versioned.Identity.DataManifestSha256, versioned.RecordsSha256, versioned.FeatureSha256, versioned.HeadSha256, versioned);
+    }
+    if (root.GetProperty("schema_version").GetInt32() != 1) throw new InvalidDataException("Unsupported training report schema version.");
     var status = root.GetProperty("status").GetString();
     if (status != "development_smoke_only") throw new InvalidDataException("Training report is not a development smoke report.");
     return new TrainingReport(root.GetProperty("model_id").GetString()!, root.GetProperty("encoder_sha256").GetString()!,
@@ -710,7 +727,7 @@ sealed class PickleReader
 }
 
 sealed record TrainingReport(string ModelId, string EncoderSha256, string TokenizerSha256, string DataManifestSha256,
-    string RecordsSha256, string FeatureSha256, string HeadSha256);
+    string RecordsSha256, string FeatureSha256, string HeadSha256, WorkflowTrainingReport? VersionedReport = null);
 
 sealed record OriginalEvaluationRow(string RecordId, string Language, string QuestionType, string[] CandidateIds, int TargetIndex, int CandidateCount,
     string Status, int? PredictedIndex, bool? Correct, double? TargetProbability, double? TopProbability, double? Margin,

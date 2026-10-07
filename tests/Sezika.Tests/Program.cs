@@ -108,6 +108,7 @@ try
     ], epochs: 20);
     Check(trained.Weights[0] > 0 && double.IsFinite(trained.FinalLogLoss), "frozen encoder head training");
     global::Sezika.Tests.IndependentMarkerHeadChecks.Run(Check, ExpectDecisionCode);
+    global::Sezika.Tests.IndependentTrainingWorkflowChecks.Run(Check, ExpectDecisionCode);
     global::Sezika.Tests.IndependentLoaderContractChecks.Run(Check, ExpectDecisionCode);
     global::Sezika.Tests.CalibrationContinuationChecks.Run(Check, ExpectDecisionCode);
 
