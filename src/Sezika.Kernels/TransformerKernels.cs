@@ -13,6 +13,62 @@ public static class TransformerKernels
         if (i < count) output[i] = a[i] + b[i];
     }
 
+    // One question, <=32 candidates. The host validates the complete shape.
+    public static void MarkerCrossEntropy(ArrayView<float> logits, ArrayView<float> delta,
+        ArrayView<float> loss, int candidates, int type, int target)
+    {
+        if (Grid.GlobalIndex.X != 0) return;
+        float maximum = -float.MaxValue;
+        loss[0] = float.NaN;
+        for (int candidate = 0; candidate < candidates; candidate++) delta[candidate] = 0;
+        for (int candidate = 0; candidate < candidates; candidate++)
+        {
+            float value = logits[candidate * 3 + type];
+            if (!Finite(value)) return;
+            maximum = XMath.Max(maximum, value);
+        }
+        float sum = 0;
+        for (int candidate = 0; candidate < candidates; candidate++)
+        {
+            float value = XMath.Exp(logits[candidate * 3 + type] - maximum);
+            delta[candidate] = value;
+            sum += value;
+        }
+        if (!Finite(sum) || sum <= 0) return;
+        for (int candidate = 0; candidate < candidates; candidate++)
+            delta[candidate] = delta[candidate] / sum - (candidate == target ? 1f : 0f);
+        loss[0] = XMath.Log(sum) + (maximum - logits[target * 3 + type]);
+    }
+
+    public static void MarkerGradientSgd(ArrayView<float> features, ArrayView<float> weights,
+        ArrayView<float> delta, ArrayView<float> gradient, ArrayView<float> next,
+        int candidates, int hidden, int type, float learningRate)
+    {
+        int index = Grid.GlobalIndex.X;
+        if (index >= hidden * 3) return;
+        if (index / hidden != type) { gradient[index] = 0; next[index] = weights[index]; return; }
+        float sum = 0;
+        for (int candidate = 0; candidate < candidates; candidate++)
+            sum += delta[candidate] * features[candidate * hidden + index % hidden];
+        gradient[index] = sum;
+        next[index] = weights[index] - learningRate * sum;
+    }
+
+    // Independent validation has no racing status writes or floating atomics.
+    public static void MarkerUpdateStatus(ArrayView<float> gradient, ArrayView<float> next,
+        ArrayView<float> loss, ArrayView<float> status, int count)
+    {
+        if (Grid.GlobalIndex.X != 0) return;
+        status[0] = loss[0];
+        status[1] = 0;
+        if (!Finite(loss[0]) || loss[0] < 0) return;
+        for (int index = 0; index < count; index++)
+            if (!Finite(gradient[index]) || !Finite(next[index])) return;
+        status[1] = 1;
+    }
+
+    private static bool Finite(float value) => value >= -float.MaxValue && value <= float.MaxValue;
+
     public static void Linear(ArrayView<float> a, ArrayView<float> b, ArrayView<float> output, int rows, int shared, int columns, int transposed)
     {
         int i = Grid.GlobalIndex.X;

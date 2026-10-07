@@ -18,6 +18,8 @@
 
 当前接续状态：
 
+- S4-07 GPU marker head工程已验收并单独提交：纯C# CE/gradient/SGD与17项静态PTX/ABI；CPU中央差分27、GPU21→61和root旧CUDA59/独立pipeline16项通过。旧14 PTX hash/ABI不变，作者18项任务PID全退出/cleanup0。下一步正式CLI使用GPU encoder+trainer，report/resume绑定backend、精度、kernel/device；当前train-original仍CPU，不用于用户要求的正式训练。真实数据/质量/训练AOT未验。
+
 - TeacherTool API model key修复已验收并单独提交：candidate Id/API Model分别记录，旧alias前置拒绝；build13988零警告/错误、synthetic1→10与CLI正反通过。新DLL SHA `CCF65714E4D3E3EE853FBE806ECE3D2E44F12E4C18EC6BC442428D285B7D3557`。32题之前需使用新GPU input快照，不覆盖旧首题失败。
 - Tomur `32675f8` ABI修复已提交并推送，远端/本地main一致；`1aa3fa7`整数辅助修复一并推送。Windows x64 6结构80行oracle通过，完整host构建PID104664成功（1既有warning）。ABI独占临时删除被自动审核拒绝，准确保留路径见 `.artifacts/llama-abi-20261008-head-checkpoint/cleanup-result.json`，无存活任务进程。
 - RTX4070 Laptop/8GiB、CUDA13.2.51、VS18匹配；新CUDA配置PID101656通过，文本target build PID66196/session98415正在最多1800秒、parallel2预算内。只用新build配套DLL；GPU layers用999（-1会归零），2048ctx；fit与真实推理尚未验收。监督heartbeat已保存用户GPU要求与仅Tomur的push授权。

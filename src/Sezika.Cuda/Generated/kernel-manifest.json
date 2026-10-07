@@ -4,7 +4,7 @@
   "compilerVersion": "1.5.3",
   "target": "sm_70",
   "ptxVersion": "7.0",
-  "sourceSha256": "35A25F3B52B2C359FC929524A55A6D9CF489BB930441DF03016630DBA00FD00D",
+  "sourceSha256": "3743158624364474AE920D4863C48D322168954B8FB992B5868D7DB0660E2FBD",
   "kernels": [
     {
       "name": "VectorAdd",
@@ -558,6 +558,153 @@
         },
         {
           "name": "typeId",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        }
+      ]
+    },
+    {
+      "name": "MarkerCrossEntropy",
+      "entry": "Kernel_MarkerCrossEntropy",
+      "ptx": "MarkerCrossEntropy.ptx",
+      "sha256": "311091D74C816E06401373B005FD2A7CD1CB40D9A083B0495452EAF434BF653B",
+      "blockSize": 256,
+      "parameters": [
+        {
+          "name": "logits",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "delta",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "loss",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "candidates",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "type",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "target",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        }
+      ]
+    },
+    {
+      "name": "MarkerGradientSgd",
+      "entry": "Kernel_MarkerGradientSgd",
+      "ptx": "MarkerGradientSgd.ptx",
+      "sha256": "20D6588D9E3E20C24703CC250483CDD51FC2E13CAE29BEE93989CC92BE160285",
+      "blockSize": 256,
+      "parameters": [
+        {
+          "name": "features",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "weights",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "delta",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "gradient",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "next",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "candidates",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "hidden",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "type",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        },
+        {
+          "name": "learningRate",
+          "kind": "scalar32",
+          "width": 4,
+          "alignment": 4
+        }
+      ]
+    },
+    {
+      "name": "MarkerUpdateStatus",
+      "entry": "Kernel_MarkerUpdateStatus",
+      "ptx": "MarkerUpdateStatus.ptx",
+      "sha256": "623D6EBE5C1435DC59C2CC229DD5A4685C39E1733521F248416B6ABB5543D9A4",
+      "blockSize": 256,
+      "parameters": [
+        {
+          "name": "gradient",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "next",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "loss",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "status",
+          "kind": "device_view",
+          "width": 16,
+          "alignment": 8
+        },
+        {
+          "name": "count",
           "kind": "scalar32",
           "width": 4,
           "alignment": 4

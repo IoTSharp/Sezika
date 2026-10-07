@@ -7,6 +7,7 @@ internal sealed class CudaKernels : IDisposable
     private readonly CudaModuleHandle[] _modules;
     private readonly IntPtr _vectorAdd, _linear, _embedding, _norm, _splitQkv, _rope;
     private readonly IntPtr _attentionScores, _softmax, _attentionContext, _add, _activate, _gatedGelu, _rowBias, _typeEmbeddingAdd;
+    private readonly IntPtr _markerCrossEntropy, _markerGradientSgd, _markerUpdateStatus;
     private bool _disposed;
 
     internal CudaKernels(CudaDevice device, CancellationToken cancellationToken = default)
@@ -22,6 +23,9 @@ internal sealed class CudaKernels : IDisposable
             (CudaPtx.AttentionScores.ToArray(), GeneratedKernelArtifacts.AttentionScoresDescriptor.Entry), (CudaPtx.Softmax.ToArray(), GeneratedKernelArtifacts.SoftmaxDescriptor.Entry), (CudaPtx.AttentionContext.ToArray(), GeneratedKernelArtifacts.AttentionContextDescriptor.Entry),
             (CudaPtx.Add.ToArray(), GeneratedKernelArtifacts.AddDescriptor.Entry), (CudaPtx.Activate.ToArray(), GeneratedKernelArtifacts.ActivateDescriptor.Entry), (CudaPtx.GatedGelu.ToArray(), GeneratedKernelArtifacts.GatedGeluDescriptor.Entry),
             (CudaPtx.RowBias.ToArray(), GeneratedKernelArtifacts.RowBiasDescriptor.Entry), (CudaPtx.TypeEmbeddingAdd.ToArray(), GeneratedKernelArtifacts.TypeEmbeddingAddDescriptor.Entry),
+            (CudaPtx.MarkerCrossEntropy.ToArray(), GeneratedKernelArtifacts.MarkerCrossEntropyDescriptor.Entry),
+            (CudaPtx.MarkerGradientSgd.ToArray(), GeneratedKernelArtifacts.MarkerGradientSgdDescriptor.Entry),
+            (CudaPtx.MarkerUpdateStatus.ToArray(), GeneratedKernelArtifacts.MarkerUpdateStatusDescriptor.Entry),
         };
         _modules = new CudaModuleHandle[images.Length];
         var functions = new IntPtr[images.Length];
@@ -43,6 +47,7 @@ internal sealed class CudaKernels : IDisposable
         }
         (_vectorAdd, _linear, _embedding, _norm, _splitQkv, _rope, _attentionScores, _softmax, _attentionContext, _add, _activate, _gatedGelu, _rowBias, _typeEmbeddingAdd) =
             (functions[0], functions[1], functions[2], functions[3], functions[4], functions[5], functions[6], functions[7], functions[8], functions[9], functions[10], functions[11], functions[12], functions[13]);
+        (_markerCrossEntropy, _markerGradientSgd, _markerUpdateStatus) = (functions[14], functions[15], functions[16]);
     }
 
     internal void VectorAdd(CudaDeviceBuffer a, CudaDeviceBuffer b, CudaDeviceBuffer output, int count) => Launch(_vectorAdd, count, [KernelArg.View(a), KernelArg.View(b), KernelArg.View(output), KernelArg.Int(count)]);
@@ -79,6 +84,17 @@ internal sealed class CudaKernels : IDisposable
     internal void RowBias(CudaDeviceBuffer input, CudaDeviceBuffer bias, int rows, int hidden) => Launch(_rowBias, checked(rows * hidden), [KernelArg.View(input), KernelArg.View(bias), KernelArg.Int(rows), KernelArg.Int(hidden)]);
 
     internal void TypeEmbeddingAdd(CudaDeviceBuffer input, CudaDeviceBuffer weights, int rows, int hidden, int typeId) => Launch(_typeEmbeddingAdd, checked(rows * hidden), [KernelArg.View(input), KernelArg.View(weights), KernelArg.Int(rows), KernelArg.Int(hidden), KernelArg.Int(typeId)]);
+
+    internal void MarkerCrossEntropy(CudaDeviceBuffer logits, CudaDeviceBuffer delta, CudaDeviceBuffer loss, int candidates, int type, int target) =>
+        Launch(_markerCrossEntropy, 1, [KernelArg.View(logits), KernelArg.View(delta), KernelArg.View(loss), KernelArg.Int(candidates), KernelArg.Int(type), KernelArg.Int(target)]);
+
+    internal void MarkerGradientSgd(CudaDeviceBuffer features, CudaDeviceBuffer weights, CudaDeviceBuffer delta,
+        CudaDeviceBuffer gradient, CudaDeviceBuffer next, int candidates, int hidden, int type, float learningRate) =>
+        Launch(_markerGradientSgd, checked(3 * hidden), [KernelArg.View(features), KernelArg.View(weights), KernelArg.View(delta),
+            KernelArg.View(gradient), KernelArg.View(next), KernelArg.Int(candidates), KernelArg.Int(hidden), KernelArg.Int(type), KernelArg.Float(learningRate)]);
+
+    internal void MarkerUpdateStatus(CudaDeviceBuffer gradient, CudaDeviceBuffer next, CudaDeviceBuffer loss, CudaDeviceBuffer status, int count) =>
+        Launch(_markerUpdateStatus, 1, [KernelArg.View(gradient), KernelArg.View(next), KernelArg.View(loss), KernelArg.View(status), KernelArg.Int(count)]);
 
     private unsafe void Launch(IntPtr function, int work, ReadOnlySpan<KernelArg> arguments)
     {

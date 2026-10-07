@@ -17,4 +17,7 @@ internal static class CudaPtx
     internal static ReadOnlySpan<byte> GatedGelu => GeneratedKernelArtifacts.GatedGelu;
     internal static ReadOnlySpan<byte> RowBias => GeneratedKernelArtifacts.RowBias;
     internal static ReadOnlySpan<byte> TypeEmbeddingAdd => GeneratedKernelArtifacts.TypeEmbeddingAdd;
+    internal static ReadOnlySpan<byte> MarkerCrossEntropy => GeneratedKernelArtifacts.MarkerCrossEntropy;
+    internal static ReadOnlySpan<byte> MarkerGradientSgd => GeneratedKernelArtifacts.MarkerGradientSgd;
+    internal static ReadOnlySpan<byte> MarkerUpdateStatus => GeneratedKernelArtifacts.MarkerUpdateStatus;
 }

@@ -41,8 +41,22 @@ static bool ValidTime(double milliseconds) => double.IsFinite(milliseconds) && m
 
 try
 {
+    if (args.Length == 1 && args[0] == "--independent-training-cpu-prepare")
+    {
+        global::Sezika.Cuda.Diagnostics.Tests.IndependentCudaTrainingChecks.Prepare(Check, deadline.Token);
+        Console.WriteLine($"GPU training scalar-reference preparation checks passed: {passed}; actual_gpu_training=false");
+        return 0;
+    }
     // Missing driver/device is a failure with its real diagnostic, never a skipped success.
     using var device = CudaDevice.Open(enableProfiling: true);
+    if (args.Length == 1 && args[0] is "--independent-training-tiny" or "--independent-training")
+    {
+        global::Sezika.Cuda.Diagnostics.Tests.IndependentCudaTrainingChecks.Run(device, Check, deadline.Token,
+            args[0] == "--independent-training-tiny" ? 1 : 3);
+        CheckNoResources(device, "independent GPU training leaves no caller-owned CUDA resources");
+        Console.WriteLine($"Independent GPU training checks passed: {passed}; actual_gpu_training=true");
+        return 0;
+    }
     if (args.Length == 1 && args[0] is "--independent-pipeline" or "--independent-pipeline-aot")
     {
         if (args[0] == "--independent-pipeline-aot")

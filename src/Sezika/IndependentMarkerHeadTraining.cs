@@ -258,7 +258,7 @@ public static class IndependentMarkerHeadTrainer
         return new PreparedFeatures(identity, examples, Convert.ToHexString(SHA256.HashData(stream.GetBuffer().AsSpan(0, (int)stream.Length))));
     }
 
-    private static int[] MakeOrder(int count, int seed)
+    internal static int[] MakeOrder(int count, int seed)
     {
         var order = Enumerable.Range(0, count).ToArray();
         uint state = unchecked((uint)seed) ^ 0x9E3779B9u;
