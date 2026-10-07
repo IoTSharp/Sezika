@@ -18,6 +18,10 @@
 
 当前接续状态：
 
+- 独立数值capture工程任务已验收并单独提交：OS resident采样过频触发tiny3秒deadline后修复，1→8项自检通过；真实46tokens/267张量、51,720,192字节payload全部hash复核通过。原失败与partial保留，Move后取消/持续合成peak恢复已验。上游oracle继续开放。正式训练/批量任务必须GPU，CPU仅小核验。
+- 教师首题真实调用失败：collector PID24100 exit3/http_transport_error，Tomur PID8488 native崩溃0xC0000409，全分母及原始日志保留，未有答案。固定llama.h与C#结构ABI漂移已修复，6结构/80大小偏移oracle通过；Tomur固定ABI完整主程序重建PID104664成功（1个既有CS8600）。CUDA后端正在准备，32题未运行。
+- 用户授权Tomur核最新/拉取/提交推送；2026-10-08已fetch origin，远端main仍5cd90dd，本地1aa3fa7包含最新远端。ABI修复验证后单独提交并推送Tomur；Sezika仍未获push/发布授权。
+
 - 原始资产恢复已验收并随本次单独提交：固定4源文件与134 tensor转换身份通过，真实CPU smoke为46 tokens/35,328个有限hidden，执行305.15秒≤400秒；实际peak未测。MIT全文事实纠正及失败日志保留，最终无登记存活PID/partial/cleanup错误。见 `docs/evidence/independent-assets-restore-2026-10-08.md`。
 - `/root/independent_cli`：单GGUF恢复已完成并随本次提交，实际5,680,522,464字节/hash `03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8`匹配后原子发布到 `.artifacts/teacher-tomur-data/models/text/qwen3.5-9b-q4-k-m/Qwen3.5-9B-Q4_K_M.gguf`；含准备668.64秒，最终5份runner无登记存活PID/partial/cleanup错误。直连Cancelled误标保留并纠正、小状态回归通过，不重下大文件；当前已释放该子任务资源。
 - 教师采集器已提交 `85ccf17`；接续context_size=2048成功/取消请求及manifest预算已验收并随本次提交，重建PID87004零警告/错误、1→10检查PID51236/97132通过，资源回收通过；新DLL SHA为 `0C0FC3F80DFE60F0DB4472AD4B714556E4A37A6C6E4E990661FE6180E84CECEB`。尚无实际教师HTTP或答案，见 `docs/teacher-collection-s4-10.md`。

@@ -49,7 +49,9 @@
 
 真实教师试运行前的固定2048-token context_size请求上限已补齐，成功及取消归档请求使用同一上限，manifest记录maximum_context_tokens。重建零警告/错误、1→10合成合同验证实际序列化context_size/max_tokens/stream通过；真实服务执行及内存用量仍另验。
 
-下一接续工程任务已登记：S4-15独立数值capture工具先冻结原始46-token smoke请求，导出decision-v1请求/token IDs、CPU encoder逐层张量及完整来源/产物hash供离线上游oracle比较；复用现有Trace API，不复制或替换产品算子。工程fixture与真实资产捕获分别验收，尚无可信上游数值对齐或质量结论。
+S4-15独立数值capture工程任务已验收：固定46-token请求、267项CPU张量/51,720,192字节与完整来源/产物hash已实际捕获，1→8项自检及监督者逐文件复核通过，见[捕获证据](docs/evidence/independent-numeric-capture-2026-10-08.md)。仍须可信独立上游oracle及冻结容差，不关闭数值parity或质量门槛。
+
+用户追加资源约束：正式训练和批量教师采集/特征计算必须使用GPU；CPU只用于小规模兼容性、数值参考及故障诊断。32题教师pilot先完成CUDA后端/显存核验再执行；S4-07 GPU训练需实现并验证C#反向kernels与PTX/Driver，当前前向证据不能写成训练支持。
 
 ### 已选定方向
 
