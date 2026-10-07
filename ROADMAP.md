@@ -51,6 +51,10 @@
 
 S4-15独立数值capture工程任务已验收：固定46-token请求、267项CPU张量/51,720,192字节与完整来源/产物hash已实际捕获，1→8项自检及监督者逐文件复核通过，见[捕获证据](docs/evidence/independent-numeric-capture-2026-10-08.md)。仍须可信独立上游oracle及冻结容差，不关闭数值parity或质量门槛。
 
+接续S4-15单输入独立上游oracle：复用固定46-token/markers25,35及原始mmBERT权重，使用已安装固定PyTorch/Transformers离线eager FP32 CPU参考，仅作单case数值核验。先冻结25个张量checkpoint（raw/norm embedding、22层hidden、encoder final）与marker向量的26项合同，再实现有界离线导出和静态类型C#比较；独立记录源权重/代码/环境、输入/输出hash、逐元素固定容差及失败。参考不进入核心，也不代替267项全部算子、正式训练、代表性质量、AOT或性能验收；扩展至CUDA和更多输入另按GPU及资源预算执行。
+
+其中C#比较器工程已验收：最终零警告/错误构建，1→16合成case/19行为变体通过；26项/884,736元素完整失败分母、合同源码绑定、fixture/共用路径自比拒绝、JSON/finite/hash/不覆盖保护已核。合同测量前改用实存Python3.14.3/Torch2.12.0/Transformers5.13.1，NumPy缺失、安装授权pending；没有真实上游输出。详见[比较器工程证据](docs/evidence/independent-numeric-compare-2026-10-08.md)，S4-15上游数值门槛保持进行中。
+
 用户追加资源约束：正式训练和批量教师采集/特征计算必须使用GPU；CPU只用于小规模兼容性、数值参考及故障诊断。32题教师pilot先完成CUDA后端/显存核验再执行；S4-07 GPU训练需实现并验证C#反向kernels与PTX/Driver，当前前向证据不能写成训练支持。
 
 S4-07 GPU训练最小工程已闭环：冻结encoder的三行marker head以纯C# kernel在GPU完成CE、梯度与SGD，构建期17项静态PTX/ABI导出、CPU参考27项/GPU21→61项及59项既有CUDA回归通过，见[证据](docs/evidence/gpu-training-design-2026-10-08.md)。下一切片接正式GPU encoder特征计算/训练CLI及backend/kernel/device恢复和报告身份，禁止CPU fallback；`train-original`现有CPU路径不作为正式训练使用。encoder反传、正式数据/质量、训练AOT另验。

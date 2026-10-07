@@ -19,7 +19,8 @@
 | GPU schema3准入合同 A | `6504d84` | 1→64合同、190核心回归，pending/许可/身份不符输入在前向前拒绝；没有正式训练 |
 | GPU workflow/恢复 B | `cbd6790` | 真实UUID、17静态PTX/manifest身份、三文件发布与恢复；CPU3、GPU5→31、stamp正负通过 |
 | GPU CLI/特征导出 C | `d2ccb5f` | 显式train-original-gpu、五项恢复输入、完整GPU encoder特征及GPU SGD、schema3评价适配；CPU2→22/GPU8→12/旧CUDA59通过 |
-| 第二轮GPU教师实测 | 本文件本次提交 | Score/Boolean tiny后full32，32条全部格式有效；34 HTTP、32不同题、无retry，151引用核验通过；标签全部pending |
+| 第二轮GPU教师实测 | `e26d9e7` | Score/Boolean tiny后full32，32条全部格式有效；34 HTTP、32不同题、无retry，151引用核验通过；标签全部pending |
+| 独立数值比较器 | 本次提交 | 25层级tensor+marker的冻结合同，零警告/错误构建，tiny1/full16共19变体；26项完整分母、fixture/自比/源码及路径门禁；没有真实参考数值 |
 
 固定真实 mmBERT 的 C 切片 encoder smoke 已通过：PID75592、48 tokens、markers27/37、hidden768、310 kernel launches；runner17.299秒，资源归零。marker SHA-256 `59194DCFF642F4790DBF55F58D38EFBAB200C0528BEE25894DE38D71296B1CCD`。该 smoke 没有训练 head；GPU head 的梯度/更新与恢复工程另有 fixture 实卡证据，没有正式数据训练结论。
 
@@ -35,9 +36,19 @@ v2 固定教师为 `unsloth/Qwen3.5-9B-GGUF@3885219b6810b007914f3a7950a8d1b469d5
 - `process-and-resource-closure.json`：58份runner清理为空，75身份无匹配存活；monitor49个样本全部WithinLimits，最终Deadline/538.410秒、StopRequested=false。峰值GPU5953/free最小1996MiB；卸载确认loaded=false/busy=false，server主动停止的Failed/exit-1保留；后核used324/free7625MiB。
 - `cpu-closure-followup.json`：全部58个原始root PID/start无匹配存活，UTC20:36:47完成。原GPU阶段closure20:34:04在20:34:24截止内；文档写至20:35:15超原界，另批20:35:15–20:40:15纯CPU窗口补核，没有新增GPU/HTTP/build。
 
-**当前没有教师服务、采集、训练或本任务GPU进程运行，GPU窗口已释放。** 所有实现子智能体均已完成当前切片；v2独立只读验收UTC20:43:47通过，最多12文件/5分钟、没有重跑GPU/HTTP/build/hash或进程查询，记录在 `.artifacts/teacher-gpu-prompt-v2-20261008/independent-review-20261008.md`。root负责共享文档及Git。复杂harness因三项生命周期缺口未验收，Run已禁用；Prepare tiny不代表完整生命周期支持，后续不复用Run。
+**当前没有教师服务、采集、训练或本任务GPU进程运行，GPU窗口已释放。** 上批实现子智能体均已完成切片；v2独立只读验收UTC20:43:47通过，最多12文件/5分钟、没有重跑GPU/HTTP/build/hash或进程查询，记录在 `.artifacts/teacher-gpu-prompt-v2-20261008/independent-review-20261008.md`。root负责共享文档及Git。复杂harness因三项生命周期缺口未验收，Run已禁用；Prepare tiny不代表完整生命周期支持，后续不复用Run。
 
 Tomur在UTC20:17已fetch/ff-only，当前HEAD及origin/main均为 `b07ae41450a5832e790eaac1bcdad61531a6a0e0`，ahead/behind=0/0；整数helper、固定llama ABI和9B字节大小修复已提交推送。本轮教师复用host仍为`32675f8`构建，不能称最新源码构建。只剩用户`docs/articles/`未跟踪，无必要修改待推送。
+
+## 当前接续任务
+
+UTC20:47 heartbeat接续S4-15单case原始权重上游oracle。先在ROADMAP登记25个层级张量+marker的26项合同，输入/容差在参考测量前冻结；现有267项C#捕获不重跑。root独占合同、solution/shared docs和Git。
+
+- `/root/teacher_prompt_v2` 的独立静态类型C#比较器在UTC21:11:13冻结，早于21:14截止；6工具文件、tiny1/full16共19变体通过，4份runner清理为空、8个登记PID及partial为空，root复验DLL/合同SHA及PID。工程证据见[比较器](docs/evidence/independent-numeric-compare-2026-10-08.md)。现复用为Python最终只读审查，最多6文件/2轮/4分钟，不修改/运行模型/Git。
+- `/root/head_checkpoint` 的开发期离线Python oracle工具在UTC21:14:10交付ready，早于21:17:14截止；3文件、最终标准库full16通过，未安装/下载/import真实backend/forward。准备阶段最后import略超20:56:03截止已保留；最终独立复核及单独提交尚未完成。只读映射子任务已完成。
+- 实存Python3.14.3、torch2.12.0+cpu、Transformers5.13.1因NumPy缺失不能导入；历史3.12.10/2.8.0/4.57.1环境已不在。合同测量前改用实存版本，初始环境快照保留，输入/26项/容差不变。NumPy2.3.3 cp314官方wheel约13MB已核source metadata，task-local deps安装授权已通过异步问题请求，未回复不能安装或运行依赖它的oracle。
+
+具体方案 `.artifacts/independent-oracle-20261008/numpy-install-plan.md`；readiness/mapping及所有失败原样保留。缺失工具安装需要用户明确授权，不能把等待视为同意。当前没有真实oracle/训练/教师/GPU进程。新阶段CPU限单case诊断与合成自检，不执行正式训练、批量特征或GPU查询；Python工程验收和真实参考运行分别记录。
 
 ## 下一次派发
 
