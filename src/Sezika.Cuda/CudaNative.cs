@@ -89,6 +89,9 @@ internal static partial class CudaNative
     [LibraryImport(LibraryName, EntryPoint = "cuDeviceGetName")]
     internal static unsafe partial int DeviceGetName(byte* name, int length, int device);
 
+    [LibraryImport(LibraryName, EntryPoint = "cuDeviceGetUuid")]
+    internal static unsafe partial int DeviceGetUuid(byte* uuid, int device);
+
     [LibraryImport(LibraryName, EntryPoint = "cuDeviceGetAttribute")]
     internal static partial int DeviceGetAttribute(out int value, int attribute, int device);
 

@@ -63,6 +63,8 @@ GPU CLI 接线按[复核设计](docs/evidence/gpu-training-cli-design-2026-10-08
 
 S4-10本地GPU首轮实际调用已完成：固定9B教师33/33层offload，首题严格JSON通过；32题HTTP200，13格式通过/19候选ID类型失败，133项引用逐hash/bytes复核通过。监控CIM查询超时与server主动exit-1保留，已卸载/停止服务，147份结果/1337次身份观测无匹配存活。下一轮先v2 Score/Boolean各1题再32题，仍audit/pending；正式输出训练许可、人审、质量与S4-11正式教师实验未闭合，见[GPU实测证据](docs/evidence/teacher-gpu-pilot-2026-10-08.md)。
 
+GPU切片B工程已验收：真实UUID、17项静态kernel/manifest身份、schema3三文件发布及完整恢复元数据实现；CPU准备3/GPU tiny5/full31、stamp身份正负检查通过，21份结果/70身份无匹配存活。重新export的字节漂移未接受，原PTX/manifest保持；无正式训练数据、质量或训练AOT结论。C继续接显式CLI/真实GPU encoder导出，见[workflow证据](docs/evidence/gpu-training-workflow-2026-10-08.md)。
+
 ### 已选定方向
 
 1. **独立模型来源。** 直接从经审核的原始 encoder 取得底座参数，优先评估 `jhu-clsp/mmBERT-base` 或同类可支持的编码器，独立记录 revision、配置、tensor/tokenizer hash 与许可；不能从 Laya 检查点抽取 encoder 后改称原始底座。本轮已完成固定 mmBERT 原始文件下载、hash、C# 受限 pickle 转换、134 tensor 形状检查和独立 loader smoke；上游逐层数值 oracle与许可发布审签仍未完成。自有决策头重新初始化和训练，不继承 Laya 训练后的 head/type/scorer 权重。

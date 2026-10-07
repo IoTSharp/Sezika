@@ -3,7 +3,8 @@ using Sezika.Cuda;
 
 // Fixed-size fixtures only (at most 65 vector elements and one tiny encoder layer).
 // CUDA Driver calls cannot be interrupted in-flight; the caller should also enforce a process timeout.
-using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(
+    args.Length == 1 && args[0] is "--independent-workflow-tiny" or "--independent-workflow" ? 90 : 30));
 ConsoleCancelEventHandler cancelHandler = (_, args) => { args.Cancel = true; deadline.Cancel(); };
 Console.CancelKeyPress += cancelHandler;
 var passed = 0;
@@ -41,6 +42,12 @@ static bool ValidTime(double milliseconds) => double.IsFinite(milliseconds) && m
 
 try
 {
+    if (args.Length == 1 && args[0] == "--independent-workflow-cpu-prepare")
+    {
+        global::Sezika.Cuda.Diagnostics.Tests.IndependentCudaWorkflowChecks.Prepare(Check, deadline.Token);
+        Console.WriteLine($"GPU workflow contract preparation checks passed: {passed}; actual_gpu_training=false");
+        return 0;
+    }
     if (args.Length == 1 && args[0] == "--independent-training-cpu-prepare")
     {
         global::Sezika.Cuda.Diagnostics.Tests.IndependentCudaTrainingChecks.Prepare(Check, deadline.Token);
@@ -49,6 +56,14 @@ try
     }
     // Missing driver/device is a failure with its real diagnostic, never a skipped success.
     using var device = CudaDevice.Open(enableProfiling: true);
+    if (args.Length == 1 && args[0] is "--independent-workflow-tiny" or "--independent-workflow")
+    {
+        global::Sezika.Cuda.Diagnostics.Tests.IndependentCudaWorkflowChecks.Run(device, Check, deadline.Token,
+            tiny: args[0] == "--independent-workflow-tiny");
+        CheckNoResources(device, "GPU workflow leaves no caller-owned CUDA resources");
+        Console.WriteLine($"Independent GPU workflow checks passed: {passed}; actual_gpu_training=true");
+        return 0;
+    }
     if (args.Length == 1 && args[0] is "--independent-training-tiny" or "--independent-training")
     {
         global::Sezika.Cuda.Diagnostics.Tests.IndependentCudaTrainingChecks.Run(device, Check, deadline.Token,

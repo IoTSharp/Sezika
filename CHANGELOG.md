@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- 新增静态17项PTX/manifest身份、真实CUDA UUID及schema3三文件GPU训练发布/恢复流程，完整校验恢复head权重和训练元数据，失败逐项回滚。CPU准备3、GPU tiny5/full31及stamp正负验证通过；21份结果/70身份无匹配存活。PTX/manifest不变，重新export漂移保留；正式CLI、真实数据和训练AOT另验，见[证据](docs/evidence/gpu-training-workflow-2026-10-08.md)。
 - 完成本地GPU教师首轮实测：固定9B Q4_K_M实际33/33层offload，首题严格响应通过；32题均HTTP200，其中13格式通过/19候选ID类型错误，完整失败与133项引用核验保留。监控查询超时及主动服务关闭如实记录，卸载后显存324MiB、147份结果/1337身份观测无匹配存活；不代表训练准入或质量，见[证据](docs/evidence/teacher-gpu-pilot-2026-10-08.md)。
 - 准备独立版本的32题教师提示包，明确Choice/Score/Boolean的候选ID均为JSON字符串；保留v1和原请求字节、题序、候选顺序与pending身份。1题生成、32题生成及独立67/69项文件复验通过；尚无v2教师调用或质量结论，见[证据](docs/evidence/teacher-prompt-v2-2026-10-08.md)。
 - 新增 GPU schema3 报告与正式原始训练数据准入合同，保留CPU v2格式；严格核验完整执行身份、records/manifest字节及hash、人工/许可/家族/split/分母，在GPU前向前拒绝pending或不匹配输入。1→64项合同与190项核心回归通过、构建零警告/错误；只完成合同工程，GPU CLI/workflow和真实训练另验，见[证据](docs/evidence/gpu-training-contract-2026-10-08.md)。

@@ -18,6 +18,8 @@
 
 当前接续状态：
 
+- GPU切片B已验收：最终build50292/101336零warning/error、CPU3/GPU tiny5/full31，head四项训练元数据正确hash负例零launch；stamp schema/compiler/entry正负通过，原17PTX/manifest不变（重新export漂移保留）。root V3 full85880核21结果/70身份无匹配存活/待核；作者67身份有1PID复用未动，cleanup0。CIM审计超时及一次Temp组合命令被自动审批拒绝均保留，安全fallback已闭环。B无GPU占用；v2教师获得15分钟独立窗口，C接线实现与其GPU阶段串行。
+
 - GPU教师v1首题与32题已完成并验收：32HTTP200、13pending/19failed（10数字Score/9布尔Boolean ID）；133项引用无hash/byte错，原失败保持。monitor95轮CIM超时非超限；unload成功后精确主动停止server，原exit-1保留，显存324/free7625。修正closure数组拼接错误后tiny39972/full9916成功，147reports/1337身份无匹配存活；没有教师服务运行。完整事实见docs/evidence/teacher-gpu-pilot-2026-10-08.md；此前本文件的“准备32题/服务运行中/尚无响应”条目为历史状态，以本条为当前状态。提示准备任务已提交3ac5ead，v2采集等待B实卡窗口释放。
 
 - 教师提示v2准备已验收：datasets/teacher-general-v2共73文件，原32 requests字节/family/映射不变；源67项/新69项绑定复验通过，3 runner exit0/cleanup空且6执行/launcher PID不存在。manifest=c028901b…daa9；只改提示字符串ID合同，仍AI/audit/pending，无v2响应。子智能体正在12分钟独立准备Score/Boolean各1题及32题GPU输入快照，不启动GPU，与B实卡验证串行。

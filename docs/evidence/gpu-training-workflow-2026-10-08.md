@@ -1,0 +1,23 @@
+# S4-07 GPU workflow 切片 B
+
+状态：真实静态kernel身份、CUDA UUID及三文件GPU workflow已实现，CPU准备3项、最终GPU tiny5项和full31项通过。初始阶段UTC19:34:39开始，上限20分钟；review修复阶段的绝对截止为UTC20:09:30。不接正式CLI、不使用真实数据、不声称语言质量或训练AOT。
+
+Driver通过静态LibraryImport绑定cuDeviceGetUuid，输出16个原始byte，直接转换32位hex，未用Guid重排或device_index冒充身份。CudaTrainingExecutionIdentity读取实际CudaPtx spans和生成descriptor，包含末NUL的PTX SHA与既有manifest协议一致；固定17项/5秒/取消。新增ManifestSha常量绑定原manifest字节。
+
+正常重新export出现字节漂移（VectorAdd旧08458319...、新68E12005...），预检阻止替换所有原PTX/manifest；此处不能声称重新export可复现。依赖构建PID62316因常量未生成失败并退出，证据保留。随后新增KernelCompiler --stamp-identity，验证固定源码SHA、17个既有PTX SHA、entry/block及每个参数name/kind/width/alignment，才从原bytes生成C#并增加身份常量。Generated文件只有1行新增，原17PTX和manifest未改。
+
+IndependentCudaTrainingWorkflow公开RunFixture，报告synthetic_fixture。RunApproved为internal，避免外部CPU features宣称GPU provenance；后续CLI必须通过实际GPU exporter接线。实际GPU SGD复用既有trainer，不复制训练算法；CPU仅用于development FP64 Score统计。caller保留device。Resume新增显式Head路径，报告SHA→完整schema3与当前真实execution→checkpoint/head生产loader/hash→权重bytes比较，全程持只读leases，旧CPU/v2及错误execution不启动训练kernel。
+
+checkpoint/head生产回读后才发布schema3 report。新文件不覆盖旧文件，临时报告CreateNew/Flush，report最后Move；回滚同时要求本次确实发布及完整SHA，保留竞争路径。取消/finite失败不发布新state或修改传入恢复产物。
+
+最终managed构建PID86284零warning/error。CPU准备PID93812/30秒上限，GPU tiny PID79416/90秒，full PID75492/20秒（阶段剩余时间更严格限制）全部exit0。23项覆盖实卡UUID、静态身份、2+2=连续4步权重/loss/checkpoint/head、错误report/head/hash/records/seed/driver/旧v2拒绝且零launch、输出排他、正式fixture拒绝、预取消/提交后取消、第二步FP32 overflow、report发布碰撞精确回滚、caller资源归零。每调用最多2题、累计4steps；所有数据为tiny合成features，不生成真实人工批准。
+
+日志及失败/漂移产物保留于.artifacts/gpu-workflow-20261008-head-checkpoint，所有外部执行由Invoke-BoundedProcess记录身份/父链和finally清理。本次checker成功意味着GUID独占临时目录被finally回收；GPU buffers/modules/releaseFailures回基线，checker device退出释放。共享bin/obj及证据保留。Git、csproj和测试入口由root维护；当前CLI及CPU v2协议未改。进一步AOT、正式encoder/exporter/CLI、真实训练/质量和其他设备不属本次验收。
+
+review修复补齐head的Seed、LearningRate、CompletedSteps、LastLoss与checkpoint/report的精确一致性，同时显式比较report与checkpoint的Seed/LearningRate。四个负面fixture保持权重bytes完全相同，分别修改一项head元数据，重新计算payload checksum、head文件SHA及报告SHA，先通过生产head loader再要求恢复以training_resume_mismatch拒绝；每项均核实零kernel launch。最终managed构建PID50292、KernelCompiler构建PID101336均零warning/error；GPU tiny PID78976通过5项，full PID83076通过31项，各90秒上限，实际分别2.555/2.455秒。GPU验证结束即释放设备，未与教师并发。
+
+stamp进一步检查schemaVersion=1、compiler=ILGPU及实际唯一PTX entry与manifest一致。CPU负面schema PID91028、compiler PID85448、entry PID55252均在生成输出前按预期拒绝；entry fixture重算正确PTX SHA后仍拒绝，覆盖内容而非仅外部hash。positive PID67436核实17项且生成C# bytes等于仓库版本，各10秒上限。正负fixture及日志作为证据保留于stamp-guard-fixtures和logs。首次含Temp清理的组合验证命令被自动审批以blocked by policy拒绝，未启动；后改用明确证据目录并保留fixture的验证完成，原记录不抹除。
+
+publication回滚独立尝试report、head、checkpoint及本任务临时报告，任一清理失败不会阻止其他项；AggregateException保留原始发布异常及各清理失败明细。既有report-last竞争路径回滚测试继续通过，本阶段未注入真实文件系统清理I/O故障。process-audit-repair.json以PID/StartTime先筛，再仅对创建时间匹配项查询command/parent，核67个记录身份、0存活本任务进程、1复用PID未终止、0 runner CleanupErrors；closure-result-repair.json记录Closed=true。原23项结果、失败build及PTX漂移产物继续保留。
+
+独立审查V1 full与V2 tiny分别发生CIM系统查询超时，原失败日志保留。V3先通过Get-Process精确PID/创建时间排除已退出或复用，仅同开始时间项才查CIM命令/父链；tiny96556通过后由监督者另有限阶段full85880完成：21份结果/70次身份、0匹配存活/0待核，17静态PTX/descriptor/hash通过，未终止任何进程。full结果在.artifacts/gpu-workflow-review-20261008/closure-v3-full-root.json，review.md确认当前修复无剩余阻断。原PTX/manifest字节不变，生成源仅manifest常量一行新增；重新export漂移仍未关闭。

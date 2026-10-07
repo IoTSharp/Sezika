@@ -2,7 +2,11 @@ namespace Sezika.Cuda;
 
 /// <summary>Identity reported by the installed CUDA Driver, independent of model metadata.</summary>
 public sealed record CudaDeviceInfo(string Name, int DriverVersion, int ComputeCapabilityMajor,
-    int ComputeCapabilityMinor, ulong TotalMemoryBytes);
+    int ComputeCapabilityMinor, ulong TotalMemoryBytes)
+{
+    /// <summary>Raw 16-byte physical device UUID, reported by cuDeviceGetUuid as 32 hexadecimal characters.</summary>
+    public string Uuid { get; init; } = string.Empty;
+}
 
 /// <summary>Device-wide free memory and allocations owned by this context. Driver caches and other processes affect free memory.</summary>
 public sealed record CudaMemorySnapshot(ulong TotalBytes, ulong FreeBytes, ulong OwnedBytes,

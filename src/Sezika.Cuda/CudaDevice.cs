@@ -136,7 +136,13 @@ public sealed class CudaDevice : IDisposable
         CudaNative.Check(CudaNative.DeviceGetAttribute(out int major, CudaNative.AttributeComputeCapabilityMajor, device), "cuDeviceGetAttribute(major)");
         CudaNative.Check(CudaNative.DeviceGetAttribute(out int minor, CudaNative.AttributeComputeCapabilityMinor, device), "cuDeviceGetAttribute(minor)");
         CudaNative.Check(CudaNative.DeviceTotalMemory(out nuint total, device), "cuDeviceTotalMem");
-        return new(deviceName, driver, major, minor, (ulong)total);
+        byte* uuid = stackalloc byte[16];
+        new Span<byte>(uuid, 16).Clear();
+        CudaNative.Check(CudaNative.DeviceGetUuid(uuid, device), "cuDeviceGetUuid");
+        return new(deviceName, driver, major, minor, (ulong)total)
+        {
+            Uuid = Convert.ToHexString(new ReadOnlySpan<byte>(uuid, 16)),
+        };
     }
 
     public CudaVectorAdd CreateVectorAdd() => new(this);
