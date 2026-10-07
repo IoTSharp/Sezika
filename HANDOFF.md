@@ -1,64 +1,67 @@
 # Sezika 监督交接
 
-更新：2026-10-08，Asia/Shanghai。工作区：`D:\source\Sezika`；分支：`main`；监督起点：`716130e`。
+更新：2026-10-08，Asia/Shanghai。规范工作区 `D:\source\Sezika`，分支 `main`，监督起点 `716130e`。ROADMAP.md 是唯一阶段计划；本文件只记录当前交接。此前交接的过程状态保留在 Git 历史及下列证据中。
 
-## 授权与接续
+## 授权与定时接续
 
-用户授权监督者创建子智能体推进 ROADMAP 所有待完成任务，每个独立任务验收后单独提交，每30分钟检查并接续已完成子任务。同一聊天 heartbeat `sezika` 已启用，周期30分钟，未完成总路线前保持启用。ROADMAP是唯一计划；本文件记录交接。仅 Tomur 已获拉取、提交和推送授权；Sezika 不推送，不对外发布或部署。正式训练、批量教师采集和批量特征计算必须 GPU；CPU 限小规模参考与诊断。
+用户授权监督者创建并接续子智能体推进全部 ROADMAP，每项独立工程任务审查、验收后单独 commit。同一聊天 heartbeat `sezika` 已核 ACTIVE，每30分钟检查；无变化安静，实质完成、失败或需用户处理时通知。总路线尚未完成，不能关闭监督。
 
-## 本批任务闭环
+正式训练、批量教师采集和批量特征计算使用 GPU；CPU 仅小规模兼容性、数值参考与诊断。GPU 前向、head 反向、正式数据训练、质量、AOT 和性能分别验收。教师答案不能自动成为人工审核或封存真值。
 
-- S4-07/S4-12 checkpoint/恢复/导出工程任务已提交 `acce79f`：2→4与连续4步fixture权重及文件字节一致；v2完整identity适配缺陷已修复，真实训练/质量仍待验。
-- S4-15/S6-02 显式独立CLI工程任务已提交 `601a865`：managed41项、Windows Native AOT tiny fixture42项通过；正式默认切换仍依赖S4-08。
-- S4-08/S4-15 独立预测导出工程任务已验收并随本交接单独提交（见Git最新记录）：极小1项/完整11项、真实CalibrationTool联调通过，4条fixture保持exit3/not_eligible；原子发布漏洞与nullable编译错误已修复。
+仅 `D:\source\Tomur` 已获核最新、拉取、必要修改提交及推送授权。Sezika 只 commit；发布、部署及正式默认切换仍按各自门槛处理。用户未跟踪的 Sezika `docs/wechat-introduction.md`、`.html` 及 Tomur `docs/articles/` 不修改或暂存。
 
-上述首批三个子任务均完成。接续 S4-15 静态独立 CPU/CUDA pipeline 工程子任务也已验收并随本次提交：核心190项、CUDA59项、CLI41项、预测11项，Windows AOT 独立 CPU18项/CUDA实卡17项通过。真实模型数值、Linux AOT、质量、性能及产品 CUDA 命令接线另验；证据见 `docs/evidence/independent-pipeline-2026-10-08.md`。主智能体独占共享文档、测试接线与 Git。
+## 当前结果
 
-## 下一次接续
+| 独立任务 | 提交 | 已验收范围 |
+| --- | --- | --- |
+| 教师提示 v2 | `3ac5ead` | 保持32条请求字节、题序、family、候选顺序，只明确所有候选ID为JSON字符串；源67/新69项绑定复验通过 |
+| 首轮GPU教师实测 | `087bfab` | 32 HTTP200、13格式通过/19类型失败；133引用核验，失败和全部分母保留；服务/资源已关闭 |
+| GPU schema3准入合同 A | `6504d84` | 1→64合同、190核心回归，pending/许可/身份不符输入在前向前拒绝；没有正式训练 |
+| GPU workflow/恢复 B | `cbd6790` | 真实UUID、17静态PTX/manifest身份、三文件发布与恢复；CPU3、GPU5→31、stamp正负通过 |
+| GPU CLI/特征导出 C | `d2ccb5f` | 显式train-original-gpu、五项恢复输入、完整GPU encoder特征及GPU SGD、schema3评价适配；CPU2→22/GPU8→12/旧CUDA59通过 |
+| 第二轮GPU教师实测 | 本文件本次提交 | Score/Boolean tiny后full32，32条全部格式有效；34 HTTP、32不同题、无retry，151引用核验通过；标签全部pending |
 
-当前接续状态：
+固定真实 mmBERT 的 C 切片 encoder smoke 已通过：PID75592、48 tokens、markers27/37、hidden768、310 kernel launches；runner17.299秒，资源归零。marker SHA-256 `59194DCFF642F4790DBF55F58D38EFBAB200C0528BEE25894DE38D71296B1CCD`。该 smoke 没有训练 head；GPU head 的梯度/更新与恢复工程另有 fixture 实卡证据，没有正式数据训练结论。
 
-- GPU切片C已验收：显式train-original-gpu/五项resume/正式准入/typed CUDA完整特征/schema3评价接线，CPU2→22/GPU8→12/旧CUDA59通过。真实固定encoder smoke75592成功，48tokens、310kernel、marker SHA59194DCF…1CCD、资源归零，head/formal训练false；31身份零存活/cleanup0。原build68784失败保留，实际model身份在export前核验。GPU已释放，正式数据/质量/训练AOT仍未完成；两个实现子智能体当前工程阶段均完成，不再有运行中的C命令。
+B 重新 export 存在 PTX 字节漂移，未替换既有17 PTX/manifest；stamp只核既有来源/ABI/hash并补manifest身份。原失败构建、CIM超时和清理限制保留在各证据中，不能声称重新导出已复现。
 
-- GPU切片B已验收：最终build50292/101336零warning/error、CPU3/GPU tiny5/full31，head四项训练元数据正确hash负例零launch；stamp schema/compiler/entry正负通过，原17PTX/manifest不变（重新export漂移保留）。root V3 full85880核21结果/70身份无匹配存活/待核；作者67身份有1PID复用未动，cleanup0。CIM审计超时及一次Temp组合命令被自动审批拒绝均保留，安全fallback已闭环。B无GPU占用；v2教师获得15分钟独立窗口，C接线实现与其GPU阶段串行。
+## 教师当前状态与资源
 
-- GPU教师v1首题与32题已完成并验收：32HTTP200、13pending/19failed（10数字Score/9布尔Boolean ID）；133项引用无hash/byte错，原失败保持。monitor95轮CIM超时非超限；unload成功后精确主动停止server，原exit-1保留，显存324/free7625。修正closure数组拼接错误后tiny39972/full9916成功，147reports/1337身份无匹配存活；没有教师服务运行。完整事实见docs/evidence/teacher-gpu-pilot-2026-10-08.md；此前本文件的“准备32题/服务运行中/尚无响应”条目为历史状态，以本条为当前状态。提示准备任务已提交3ac5ead，v2采集等待B实卡窗口释放。
+v2 固定教师为 `unsloth/Qwen3.5-9B-GGUF@3885219b6810b007914f3a7950a8d1b469d598a5`；catalog `qwen35-9b-q4km`、API model `qwen3.5-9b-q4-k-m`，Q4_K_M 5,680,522,464 bytes，SHA-256 `03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8`。完整32题115.6265689秒、16213 prompt/562 completion tokens；不是正确率或正式训练吞吐。
 
-- 教师提示v2准备已验收：datasets/teacher-general-v2共73文件，原32 requests字节/family/映射不变；源67项/新69项绑定复验通过，3 runner exit0/cleanup空且6执行/launcher PID不存在。manifest=c028901b…daa9；只改提示字符串ID合同，仍AI/audit/pending，无v2响应。子智能体正在12分钟独立准备Score/Boolean各1题及32题GPU输入快照，不启动GPU，与B实卡验证串行。
+原始结果根 `.artifacts/teacher-gpu-prompt-v2-20261008/simple-run-20261007-2019/`：
 
-- 设计已提交 `af3d96a`；切片A静态schema3报告与正式准入合同已验收并随本次单独提交：1→64合同/190核心回归、零警告/错误构建；22任务身份均退出、fixture临时回收，无GPU或真实数据。`/root/head_checkpoint` 接续B身份/workflow后再接C命令入口；pending教师/AI题不改成人工批准。
+- `full-audit.json`：34次HTTP、32不同题、34严格字符串标签、151引用通过；training_admission/quality_evidence均false、human_review=pending。full32 manifest SHA `5151fa98f0496e76c4a9b6cd64f6230792f078e695aae7311e41300b556093c2`；records54,198 bytes/SHA `deb5d8ec8e2c8f1d3f772c42cde1bde9f6141e975d4b20e942b52e1ab09a08e4`。
+- `process-and-resource-closure.json`：58份runner清理为空，75身份无匹配存活；monitor49个样本全部WithinLimits，最终Deadline/538.410秒、StopRequested=false。峰值GPU5953/free最小1996MiB；卸载确认loaded=false/busy=false，server主动停止的Failed/exit-1保留；后核used324/free7625MiB。
+- `cpu-closure-followup.json`：全部58个原始root PID/start无匹配存活，UTC20:36:47完成。原GPU阶段closure20:34:04在20:34:24截止内；文档写至20:35:15超原界，另批20:35:15–20:40:15纯CPU窗口补核，没有新增GPU/HTTP/build。
 
-- S4-07 GPU marker head工程已验收并单独提交：纯C# CE/gradient/SGD与17项静态PTX/ABI；CPU中央差分27、GPU21→61和root旧CUDA59/独立pipeline16项通过。旧14 PTX hash/ABI不变，作者18项任务PID全退出/cleanup0。下一步正式CLI使用GPU encoder+trainer，report/resume绑定backend、精度、kernel/device；当前train-original仍CPU，不用于用户要求的正式训练。真实数据/质量/训练AOT未验。
+**当前没有教师服务、采集、训练或本任务GPU进程运行，GPU窗口已释放。** 所有实现子智能体均已完成当前切片；v2独立只读验收UTC20:43:47通过，最多12文件/5分钟、没有重跑GPU/HTTP/build/hash或进程查询，记录在 `.artifacts/teacher-gpu-prompt-v2-20261008/independent-review-20261008.md`。root负责共享文档及Git。复杂harness因三项生命周期缺口未验收，Run已禁用；Prepare tiny不代表完整生命周期支持，后续不复用Run。
 
-- TeacherTool API model key修复已验收并单独提交：candidate Id/API Model分别记录，旧alias前置拒绝；build13988零警告/错误、synthetic1→10与CLI正反通过。新DLL SHA `CCF65714E4D3E3EE853FBE806ECE3D2E44F12E4C18EC6BC442428D285B7D3557`。32题之前需使用新GPU input快照，不覆盖旧首题失败。
-- Tomur `32675f8` ABI修复已提交并推送，远端/本地main一致；`1aa3fa7`整数辅助修复一并推送。Windows x64 6结构80行oracle通过，完整host构建PID104664成功（1既有warning）。ABI独占临时删除被自动审核拒绝，准确保留路径见 `.artifacts/llama-abi-20261008-head-checkpoint/cleanup-result.json`，无存活任务进程。
-- RTX4070 Laptop/8GiB、CUDA13.2.51、VS18匹配；配置PID101656通过。首个build PID66196已1800秒超时，902个记录身份后核均退出，原cleanup三项错误保留。唯一同cache接续PID86640在509.594秒成功/cleanup0；8 DLL hash/copy与native prepare通过。资源monitor修复后实际1样本/9层父链通过，历史失败保留。GPU服务PID96756/session83949，上限1500秒；live monitor PID102080/session10980，上限1300秒。collector首题PID100448/90.85秒成功HTTP200/严格JSON，日志33/33层offload、CUDA0模型4861.28MiB，显存观测5949/free2000MiB。immutable首题证据为 `teacher-runtime/gpu-first-success-evidence.json`；准备32题串行无重试/总600秒。服务和monitor完成后必须卸载并精确回收，仅本任务树；模型标签仍pending/训练false。
+Tomur在UTC20:17已fetch/ff-only，当前HEAD及origin/main均为 `b07ae41450a5832e790eaac1bcdad61531a6a0e0`，ahead/behind=0/0；整数helper、固定llama ABI和9B字节大小修复已提交推送。本轮教师复用host仍为`32675f8`构建，不能称最新源码构建。只剩用户`docs/articles/`未跟踪，无必要修改待推送。
 
-- 独立数值capture工程任务已验收并单独提交：OS resident采样过频触发tiny3秒deadline后修复，1→8项自检通过；真实46tokens/267张量、51,720,192字节payload全部hash复核通过。原失败与partial保留，Move后取消/持续合成peak恢复已验。上游oracle继续开放。正式训练/批量任务必须GPU，CPU仅小核验。
-- 教师首题真实调用失败：collector PID24100 exit3/http_transport_error，Tomur PID8488 native崩溃0xC0000409，全分母及原始日志保留，未有答案。固定llama.h与C#结构ABI漂移已修复，6结构/80大小偏移oracle通过；Tomur固定ABI完整主程序重建PID104664成功（1个既有CS8600）。CUDA后端正在准备，32题未运行。
-- 用户授权Tomur核最新/拉取/提交推送；2026-10-08已fetch/ff-only核查，最新本地和origin/main均为 `b07ae41450a5832e790eaac1bcdad61531a6a0e0`。整数helper、固定llama ABI和9B字节大小修复分别提交并推送。最新完整host PID54056成功，2项既有nullable warnings保留；用户未跟踪 `docs/articles/` 保留。Sezika不push。
+## 下一次派发
 
-- 原始资产恢复已验收并随本次单独提交：固定4源文件与134 tensor转换身份通过，真实CPU smoke为46 tokens/35,328个有限hidden，执行305.15秒≤400秒；实际peak未测。MIT全文事实纠正及失败日志保留，最终无登记存活PID/partial/cleanup错误。见 `docs/evidence/independent-assets-restore-2026-10-08.md`。
-- `/root/independent_cli`：单GGUF恢复已完成并随本次提交，实际5,680,522,464字节/hash `03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8`匹配后原子发布到 `.artifacts/teacher-tomur-data/models/text/qwen3.5-9b-q4-k-m/Qwen3.5-9B-Q4_K_M.gguf`；含准备668.64秒，最终5份runner无登记存活PID/partial/cleanup错误。直连Cancelled误标保留并纠正、小状态回归通过，不重下大文件；当前已释放该子任务资源。
-- 教师采集器已提交 `85ccf17`；接续context_size=2048成功/取消请求及manifest预算已验收并随本次提交，重建PID87004零警告/错误、1→10检查PID51236/97132通过，资源回收通过；新DLL SHA为 `0C0FC3F80DFE60F0DB4472AD4B714556E4A37A6C6E4E990661FE6180E84CECEB`。尚无实际教师HTTP或答案，见 `docs/teacher-collection-s4-10.md`。
-- `/root/closure_audit`：capture工具初次实现及root构建PID51732零警告/错误通过；head只读审查发现post-Move取消、恢复内存peak闸门及输入重新打开快照缺口，接续≤10分钟修复，未验收提交。1题teacher输入已在 `.artifacts/supervision-20261008/teacher-pilot-inputs` 生成并核11份snapshot，manifest16CE1C...、catalogFA8F0A...；全部AI工程核查/audit/pending，无教师调用。capture固定46tokens/267个CPU张量，不替代上游oracle。
-- 主线程：4文本库target PID57664通过，CPU-only任务bundle准备PID50408及已有模型登记PID51732通过/无下载。Tomur两处CS0177已最小修复、重建PID64428成功并单独提交Tomur `1aa3fa7`；其2项警告保留。首次serve PID104120因禁webasset导致缺embedded manifest失败，进程已回收；npm ci PID50048/v24.15.0与真实webbuild PID51500通过，正在180秒预算重建含资源host，输出 `.artifacts/supervision-20261008/teacher-runtime/host`。未有真实教师答案，下一步1→32题pilot，源/权重/产物与所有失败分别登记。
+1. 先核AGENTS、ROADMAP、git status、heartbeat与子智能体状态；复用以上已通过证据，不重复下载、32题采集或完整回归。新GPU任务独占窗口，先tiny再有界完整范围。
+2. 优先推进S4-15可信固定上游数值oracle：对已有真实46-token/267项capture冻结独立参考及容差，再接原始模型CPU/CUDA比较。参考Python仅限离线oracle，不进入核心；正式批量特征继续GPU。
+3. 按依赖推进真实独立模型/自有head的两RID AOT及独立GPU性能画像，明确fixture、真实推理、数值、质量与性能范围。既有Laya证据不能替代独立模型验收，禁止用已查看PAWS/Nimble选参。
+4. 正式数据训练需实际许可用途审签及逐条人工复核；校准/封存还需独立未见数据与真实保管声明。用户已选通用中英分类、程度评分、真假判断；32题仍AI/audit/pilot/pending，不能自动转train或金标。600训练+各120开发/校准/测试仅历史建议，未获正式准入。继续不依赖这些外部事实的工程任务；不重复询问含糊的“指定审核人”问题。
+5. S4-09/S4-13依据实际开发收益启用，S5-07按数值/质量及瓶颈证据优化；正式发布/部署等具体产物满足门槛后按授权执行。每项实现验收后单独commit并更新交接。
 
-用户已确认首批用途为通用中英分类、程度评分、真假判断，并希望用教师模型作答。32题是第一轮格式试运行；600训练+各120开发/校准/测试仅监督者建议的起点，未采集/训练或获得正式数据准入。用户对人工审核/独立保管问题表示不理解，已用具体含义解释，不能将该回复视为批准或封存证据。
+## 固定工具与执行边界
 
-1. 核对固定原始encoder/tokenizer资产路径与登记身份，按已审核revision/hash/许可使用范围恢复缺失资产，并准备独立可信上游数值oracle；必要下载在既有任务授权范围内，不因缺权重永久停工。
-2. 按互不冲突文件推进独立线性marker head CUDA前向及独立画像入口、版本化人工审核切片标签工具；先tiny/工具证据，真实模型与性能另验。已查看PAWS/Nimble继续仅audit。
-3. 等待用户指定实际人工审核人、独立封存保管人和首批业务任务范围；不得伪造人工准入或公开候选的未见封存资格。可选S4-09/S4-13只有必要性证据才启用。
-4. 逐工程任务审查、有界验证、同步证据与共享文档后单独commit；真实数据/质量/校准/CPU-CUDA/两RID AOT/性能与发布分别验收。正式对外动作等待具体产物的明确授权。
+PowerShell `C:\Program Files\PowerShell\7\pwsh.exe` 7.6.6；dotnet `C:\Program Files\dotnet\dotnet.exe` 10.0.401；git `C:\Program Files\Git\cmd\git.exe`。工具发现限PATH、明确配置和固定路径；禁止广域扫描、Graphify及按名称杀进程。本机无原生GCC，不重复扫描；GNU需求仅在已知Ubuntu WSL通过有界command-v核实，PCCT没有确认路径。
 
-## 验证与资源
+长命令经`tools/Invoke-BoundedProcess.ps1`记录PID/start/argv/父链、墙钟、退出码及清理；构建`--disable-build-servers -m:1`，关闭共享编译/节点复用，控制并发。每次委派重复数量/墙钟双边界、取消/进度、极小试跑、进程完整树回收和专属临时文件归属核验。精确PID/start先筛，只有身份匹配再查CIM；禁止反复对全部历史PID广域查询。
 
-PowerShell固定 `C:\Program Files\PowerShell\7\pwsh.exe` 7.6.6；dotnet固定 `C:\Program Files\dotnet\dotnet.exe` 10.0.401。长命令经 `tools/Invoke-BoundedProcess.ps1`，保存PID、创建时间、argv/完整命令行、父链、墙钟、退出码及清理；构建 `--disable-build-servers -m:1`，关闭共享编译/节点复用，串行运行。
+保留日志、成功交付物与原始失败；只删除核实绝对路径及本任务归属的临时对象，不清用户文件或共享缓存。B21结果/70身份及C31身份已核零存活；v2另按上节75身份和58root补核。没有创建独占MCP服务。Windows采样可能漏过极短中间进程，保持此限制，不伪造清理或观测范围。
 
-最终首批核心173项、CLI managed41项和Windows AOT42项；新增预测最终solution PID100308零警告/错误，pilot PID65840、full PID43276及消费者PID36308通过。初次预测编译失败和主线程外层gate字段读取错误均已修正并保留证据。见 `docs/evidence/supervision-2026-10-07.md` 与其执行索引。
+## 关键历史证据索引
 
-提交前19份runner记录/118次进程身份观测，无匹配存活身份或清理错误。最后commit仍用runner独立记录；未创建独占MCP服务。测试自建GUID临时模型通过finally回收；日志、Windows原生产物和fixture输出保留于本任务 `.artifacts/supervision-20261007`。没有广域工具发现、Graphify、按名字杀进程或清空共享缓存。Windows采样可能漏过极短中间进程，此限制保留。
+- [首批checkpoint/CLI/预测](docs/evidence/supervision-2026-10-07.md)：`acce79f`、`601a865`、`3a7435e`；managed/Windows AOT及CalibrationTool fixture互操作通过。
+- [独立pipeline](docs/evidence/independent-pipeline-2026-10-08.md)：`239ef59`；CPU190/CUDA59、Windows AOT CPU18/CUDA17 tiny通过。
+- [原始资产恢复](docs/evidence/independent-assets-restore-2026-10-08.md)：`95fe133`；4源文件、134 tensors及真实CPU smoke305.15秒；[267项capture](docs/evidence/independent-numeric-capture-2026-10-08.md)：`252d087`；51,720,192 bytes/hash核验通过，上游oracle仍开放。
+- [教师来源/运行准备](docs/evidence/teacher-runtime-readiness-2026-10-08.md)、[GGUF恢复](docs/evidence/teacher-weight-restore-2026-10-08.md)、[采集合同](docs/teacher-collection-s4-10.md)：`7fcb49a`、`da41af6`、`85ccf17`、`3229232`、`9f94be0`；许可工程用途与正式人审区分。
+- [GPU head训练工程](docs/evidence/gpu-training-design-2026-10-08.md)：`6d36c70`；CPU中央差分27/GPU21→61，旧14PTX保持；[CLI设计](docs/evidence/gpu-training-cli-design-2026-10-08.md)、[A合同](docs/evidence/gpu-training-contract-2026-10-08.md)、[B workflow](docs/evidence/gpu-training-workflow-2026-10-08.md)、[C CLI](docs/evidence/gpu-training-cli-2026-10-08.md)分别验收。
+- [首轮GPU教师](docs/evidence/teacher-gpu-pilot-2026-10-08.md)、[v2提示](docs/evidence/teacher-prompt-v2-2026-10-08.md)、[第二轮GPU教师](docs/evidence/teacher-gpu-prompt-v2-run-2026-10-08.md)：失败、格式通过与训练准入分开记录。
 
-## 保留与未验收
-
-既有未跟踪 `docs/wechat-introduction.html`、`docs/wechat-introduction.md` 属于其他工作，未修改/暂存。固定原始资产、转换与真实CPU encoder smoke已恢复；尚未实际教师采集、读取真实封存题、采样新性能或Linux AOT。pipeline验证15份runner/69次身份观测无匹配存活进程和cleanup错误；资产与教师执行独立跟踪。工具/fixture闭环不关闭整项路线门槛；总路线尚未完成，heartbeat继续接续可执行任务并只在有实质变化/失败/需要用户操作时通知。
+总路线仍缺真实人工数据准入/封存、独立上游数值、正式训练收益、质量/校准、独立真实两RID AOT及新增性能/发布验收。仅当前切片闭环；heartbeat继续。

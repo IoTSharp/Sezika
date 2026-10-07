@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- 完成v2本地GPU教师32题格式试运行：Score/Boolean各1题后，32题全部格式有效、零失败/拒答，共34次HTTP、无重试，完整32题耗时115.6265689秒；151项引用hash/bytes通过。实际33/33层offload、显存峰值5953MiB；卸载/主动停止后324MiB，58份runner清理为空、75身份及58个root后核无匹配存活。monitor Deadline、server主动exit-1及文档后续CPU窗口如实保留；全部仍pending，不代表正确率或正式训练准入，见[证据](docs/evidence/teacher-gpu-prompt-v2-run-2026-10-08.md)。
 - 接通显式train-original-gpu、完整CUDA encoder特征导出和schema3评价适配，正式数据/恢复身份在前向前检查，禁止CPU fallback。CPU合同2→22、GPU导出8→12及旧CUDA59回归通过；固定真实mmBERT的48-token GPU特征smoke、310次kernel与资源归零通过。尚无正式数据训练或训练AOT验收，见[证据](docs/evidence/gpu-training-cli-2026-10-08.md)。
 - 新增静态17项PTX/manifest身份、真实CUDA UUID及schema3三文件GPU训练发布/恢复流程，完整校验恢复head权重和训练元数据，失败逐项回滚。CPU准备3、GPU tiny5/full31及stamp正负验证通过；21份结果/70身份无匹配存活。PTX/manifest不变，重新export漂移保留；正式CLI、真实数据和训练AOT另验，见[证据](docs/evidence/gpu-training-workflow-2026-10-08.md)。
 - 完成本地GPU教师首轮实测：固定9B Q4_K_M实际33/33层offload，首题严格响应通过；32题均HTTP200，其中13格式通过/19候选ID类型错误，完整失败与133项引用核验保留。监控查询超时及主动服务关闭如实记录，卸载后显存324MiB、147份结果/1337身份观测无匹配存活；不代表训练准入或质量，见[证据](docs/evidence/teacher-gpu-pilot-2026-10-08.md)。

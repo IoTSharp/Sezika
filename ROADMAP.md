@@ -61,7 +61,9 @@ GPU CLI 接线按[复核设计](docs/evidence/gpu-training-cli-design-2026-10-08
 
 教师提示v2准备任务已验收：32条原请求逐字节、题序/family/候选映射保持，提示明确所有answered候选ID为JSON字符串；1→32生成与独立源67项/新69项绑定复验通过。仅准备新的audit/pilot包，真实v2 GPU调用另验；旧响应与失败保留，严格parser不放宽，见[提示证据](docs/evidence/teacher-prompt-v2-2026-10-08.md)。
 
-S4-10本地GPU首轮实际调用已完成：固定9B教师33/33层offload，首题严格JSON通过；32题HTTP200，13格式通过/19候选ID类型失败，133项引用逐hash/bytes复核通过。监控CIM查询超时与server主动exit-1保留，已卸载/停止服务，147份结果/1337次身份观测无匹配存活。下一轮先v2 Score/Boolean各1题再32题，仍audit/pending；正式输出训练许可、人审、质量与S4-11正式教师实验未闭合，见[GPU实测证据](docs/evidence/teacher-gpu-pilot-2026-10-08.md)。
+S4-10本地GPU首轮实际调用已完成：固定9B教师33/33层offload，首题严格JSON通过；32题HTTP200，13格式通过/19候选ID类型失败，133项引用逐hash/bytes复核通过。监控CIM查询超时与server主动exit-1保留，已卸载/停止服务，147份结果/1337次身份观测无匹配存活；见[首轮GPU证据](docs/evidence/teacher-gpu-pilot-2026-10-08.md)，旧失败不覆盖。
+
+v2 GPU教师试运行已验收：Score/Boolean各1题严格字符串ID通过后，32题全部格式有效、零失败/拒答；共34次HTTP、32个不同题目、无重试，完整32题耗时115.6265689秒。151项引用逐hash/bytes通过；实际33/33层GPU offload，峰值5953MiB，卸载/主动停止后324MiB。monitor最终Deadline、server主动exit-1及文档超过原执行窗口事实均保留；58份runner清理为空，75身份及58个root PID/start后核无匹配存活。全部仍AI/audit/pilot/pending，正式输出训练许可、人审、质量及S4-11正式教师实验继续开放；见[第二轮GPU证据](docs/evidence/teacher-gpu-prompt-v2-run-2026-10-08.md)。Tomur本地和origin/main已同步b07ae414，复用教师host仍为32675f8构建。
 
 GPU切片B工程已验收：真实UUID、17项静态kernel/manifest身份、schema3三文件发布及完整恢复元数据实现；CPU准备3/GPU tiny5/full31、stamp身份正负检查通过，21份结果/70身份无匹配存活。重新export的字节漂移未接受，原PTX/manifest保持；无正式训练数据、质量或训练AOT结论。C继续接显式CLI/真实GPU encoder导出，见[workflow证据](docs/evidence/gpu-training-workflow-2026-10-08.md)。
 
@@ -71,9 +73,9 @@ GPU切片C工程已验收：train-original-gpu明确选择设备、五项恢复�
 
 1. **独立模型来源。** 直接从经审核的原始 encoder 取得底座参数，优先评估 `jhu-clsp/mmBERT-base` 或同类可支持的编码器，独立记录 revision、配置、tensor/tokenizer hash 与许可；不能从 Laya 检查点抽取 encoder 后改称原始底座。本轮已完成固定 mmBERT 原始文件下载、hash、C# 受限 pickle 转换、134 tensor 形状检查和独立 loader smoke；上游逐层数值 oracle与许可发布审签仍未完成。自有决策头重新初始化和训练，不继承 Laya 训练后的 head/type/scorer 权重。
 2. **任务与数据。** 首批已选通用中英文本分类、程度评分、真假判断，分别覆盖 Choice/Score/Boolean 并建立基线和错误切片；正式样本与质量接受范围仍待冻结。人工标注数据作为基线，教师辅助标注或生成作为独立实验；当前32题AI起草候选仅作audit格式试运行，不是人工金标或获准训练集。分别管理 train、development、calibration、sealed test 和 audit，同家族、实体及翻译/改写/反事实衍生物保持隔离。已查看 PAWS 250/Nimble 324 及其衍生物继续仅作 audit。
-3. **教师入口。** 可选教师为 IoTSharp/Tomur 本地服务，首选待验证 catalog 候选 `qwen35-9b-q4km`，4B 仅作资源/质量对照。独立 C# 离线采集工具的1→10合成合同已通过，实际模型与条款、本地安装及真实输出另验；先对当前32题AI起草audit候选做格式试运行，全部保留待审核身份，再对获准人工金标进行质量探索。经人工复核后才进入训练器，教师标签不能充当封存真值。无法取得有效使用许可时继续使用获准人工数据；未知条件不阻断本地训练工具研发。
+3. **教师入口。** 可选教师为IoTSharp/Tomur本地服务，固定catalog `qwen35-9b-q4km`、API model `qwen3.5-9b-q4-k-m`；4B仅作后续资源/质量对照。独立C#离线采集器及固定9B GPU输出已实际验证，v2的32题AI起草audit格式试运行全部格式有效，保持待审核身份；来源/许可工程核查已记录，正式训练/再分发审签仍待完成。随后对获准人工金标进行质量探索，经人工复核才进入训练器，教师标签不能充当封存真值。无法取得有效使用许可时继续使用获准人工数据；未知条件不阻断本地训练工具研发。
 4. **训练路线。** 首轮冻结独立 encoder，初始化并训练最小可用的自有决策头和 scorer；按所选架构训练需要学习的题型向量及中间层，不能冻结随机初始化的完整 head 后仅更新 scorer，作为默认训练方案。先建立人工监督硬标签基线，再比较可选教师硬标签的收益。只有取得按固定候选映射计算的真实教师分数，才另测软分布蒸馏；文字中的自报置信度不作为概率标签。根据独立开发集结果决定是否扩展 head、采用 encoder LoRA 或研究新架构；全量 encoder 训练、大规模预训练和学生模型压缩仍是后续研究。Laya scorer 微调仅可作另行选择的过渡实验，其产物仍属 Laya 衍生模型。
-5. **实现与部署。** 教师 HTTP 调用放在独立 C# 离线数据工具中，采集结果经审核后以文件交给 C# 训练器；Sezika 核心及最终模型推理保持本地运行，不依赖教师 API。训练工具可先运行普通 .NET；GPU 训练仍需 C# 反向 kernels 与构建期 PTX/Driver 路径，已有 CUDA 前向验证不代表训练已支持。新权重使用独立身份、manifest/hash 和受限加载入口，原 Laya 校验及数值参考保留。
+5. **实现与部署。** 教师HTTP调用放在独立C#离线数据工具中，采集结果经审核后以文件交给C#训练器；Sezika核心及最终推理保持本地运行。正式训练、批量教师采集和批量特征计算使用GPU。冻结encoder的自有marker head已有C# CE/gradient/SGD静态PTX、GPU特征导出与train-original-gpu接线证据；encoder反传、正式数据训练、训练AOT与质量仍须独立验收。新权重使用独立身份、manifest/hash和受限加载入口，原Laya校验及数值参考保留。
 6. **协议与迁移。** 复用已审核的 C# 工程能力，定义 Sezika 自有 request/result、序列化、候选映射、special token、长度及拒答合同；内部格式依据新模型训练设计确定，不强制匹配 Laya prompt/schema。Laya 支持仅作为显式选择的 legacy 适配，旧资产身份和历史报告保持真实。新模型通过独立质量与部署验收后再切换默认路径，届时 README、默认 CLI 和新模型卡使用 Sezika 术语及实际底座名称。完成标准是默认路径无需 Laya 包、资产、模型 ID 或兼容模式即可装载独立 encoder 与自有训练 head、完成本地类型化决策，并具备自身数值、质量、校准及 AOT 证据。
 
 ### 下一步优先级
@@ -85,7 +87,7 @@ GPU切片C工程已验收：train-original-gpu明确选择设备、五项恢复�
 | 1 数据与诊断 | S4-05,S4-06 | 确定首批中英三题型任务，建立获准人工训练/开发数据及独立校准/封存测试，冻结分任务指标和错误切片 | 来源、标签、用途、家族隔离及人工审核可追溯；原模型基线与训练样本分离 |
 | 1 并行工具研发 | S4-07,S4-12 | 已写三题型线性 marker head 的纯 C# 前反传、有界预计算特征 SGD、hash 绑定 checkpoint、独立 decision-v1 序列/特征导出和推理 head asset | [独立证据](docs/evidence/s4-marker-head-prototype-2026-09-30.md)：350 项测试通过；真实 encoder 12 条原创开发 smoke 已完成，指标仅作小样本开发记录 |
 | 2 独立资产与输入 | S4-15 | 导入审核后的原始 encoder，实现自有输入路径和显式 legacy 选择 | `IndependentModelLoader` 已验证独立身份、hash、134 tensors、special IDs、严格 decision-v1 和真实 CPU forward；缺独立上游数值 oracle，默认切换仍须 S4-08 |
-| 并行可选教师入口 | S4-10 | 核对 IoTSharp/Tomur 本地服务、`qwen35-9b-q4km` 候选身份/接口与输出训练许可，形成 C# 离线采集合同；4B 仅作对照 | 本机尚未安装或调用候选；许可、模型身份、输出与错误语义明确后才能采集；服务只在外部工具边界，不进入核心推理 |
+| 并行可选教师入口 | S4-10 | 固定IoTSharp/Tomur本地9B教师身份与C#采集器，完成正式输出训练许可审签；4B仅作对照 | 固定GPU格式试运行已通过；许可工程记录与正式训练审签区分，服务仅在外部工具边界 |
 | 后续可选教师数据 | S4-11 | 先对最多32条新人工金标做有界教师格式/质量探索，经人工复核后才交训练器；扩量另定预算 | 记录全部成功、失败、拒答、资源用量和人工复核；只将获准记录纳入目标 split，不以教师答案替代独立测试真值 |
 | 3 自有 head 真实实验 | S4-07,S4-12 | 冻结独立 encoder，比较仅人工训练和可选教师硬标签训练；Laya 仅作另列对照 | 同任务/评测合同/开发集比较，模型内部输入格式分别记录；保存全部实验身份、成本及正负结果；数据和工具准备完成后执行 |
 | 4 质量、校准与部署验收 | S4-08 | 在独立 calibration split 拟合策略，按冻结合同评价新权重并验证部署 | 分语言/题型报告准确率、负类召回、NLL/Brier、Score MAE、覆盖率/风险与置信区间；新 profile 和两 RID AOT 证据独立记录，无 Laya 资产环境可运行 |
@@ -139,15 +141,15 @@ GPU切片C工程已验收：train-original-gpu明确选择设备、五项恢复�
 | S4-04 | D 审计基线 | ✅ 已完成 | 对修正后的相同权重/输入分别运行 Laya 与 Sezika，建立可比较质量和覆盖率审计基线 | S3-08,S3-09,S3-10 | [2026-10-07闭环证据](docs/evidence/s4-04-baseline-closure-2026-10-07.md)：冻结索引、六份质量报告与16份完整比较的身份/分母/指标关联通过，586条历史审计基线可自动复核；17项评估器自检、16项正负回归通过，构建零警告/错误。原始捕获/模型已清理，本轮无新推理。双方PAWS170/250、Nimble137/324、中英fixture8/12正确；近并列命中0、Boolean负类召回1/57、外部语言未标注。代表性质量与校准继续由S4-05/S4-08验收，旧strict报告单列 |
 | S4-05 | D 数据 | 🚧 进行中 | 审核来源许可，构建独立训练/开发/校准/封存测试及多语言反事实流水线 | S0-01 | `tools/Validate-S4Data.ps1` 已提供有界 manifest、许可/用途、split、实体/家族/近重复、衍生父链、污染和封存绑定审计；项目自有 12 条 train/development smoke 已入库并绑定 records/manifest hash；正式许可复核、calibration/sealed test、污染检查和人工封存仍未完成；PAWS/Nimble 只作 audit |
 | S4-06 | D 诊断 | 🚧 进行中 | 在新独立开发集建立目标任务基线，按角色、否定、词面相似性、语言、题型与候选顺序诊断 | S4-05；独立模型基线：S4-15；Laya对照可选 | `IndependentModelTool evaluate-original` 已实现有界 development 评估，输出逐题候选顺序、覆盖率、准确率、NLL/Brier/ECE、margin、宏 AUROC 和 Wilson 置信区间，并按语言/题型分组；角色/否定/词面相似性在记录未提供审核标签前明确不推断；仍只有 6 条开发 smoke，未形成 calibration、代表性质量或封存测试证据，详见 [S4-06 评估合同](docs/independent-development-evaluation-s4-06.md) |
-| S4-07 | D 自有head训练 | 🚧 进行中 | 用C#实现独立encoder上的自有head/scorer前反传与初始化；支持完整逐题特征缓存及人工/可选教师硬标签实验 | 工具：S4-14；真实实验：S4-05,S4-06,S4-12,S4-15 | 350 项测试、真实独立 encoder 12 条原创开发 smoke、24 步人工硬标签训练和 head asset 已有证据；结果明确为 development smoke，不是质量验收 |
+| S4-07 | D 自有head训练 | 🚧 进行中 | 用C#实现独立encoder上的自有head/scorer前反传与初始化；支持完整逐题特征缓存及人工/可选教师硬标签实验 | 工具：S4-14；真实实验：S4-05,S4-06,S4-12,S4-15 | 原12条开发smoke/24步人工硬标签及head asset保留；[GPU CLI](docs/evidence/gpu-training-cli-2026-10-08.md)已接GPU encoder特征与CE/gradient/SGD，CPU合同2→22/GPU导出8→12/旧CUDA59通过，真实48-token encoder smoke资源归零。正式获准数据训练、收益、质量及训练AOT仍未验收 |
 | S4-08 | D 质量门槛 | 🚧 进行中 | 验收独立模型数值、质量、校准/拒答profile与部署；既有Laya证据单列 | S4-06,S4-07,S4-12,S4-15 | S4-04仅闭合同权重审计基线，既有Laya与独立模型的代表性中英质量及正式校准均未验收，数据准入/封存由S4-05承接。[校准续审](docs/evidence/calibration-continuation-2026-10-03.md)补基线/封存 split/有限值门槛及全样本/拒答分母；真实验收 pending。自有模型封存测试按覆盖率、balanced accuracy/负类召回、AUROC、NLL/Brier/ECE、Choice/Score、逐语言及反事实对报告，含置信区间和回退；自身同权重参考、CPU/CUDA与两RID AOT回归，不提供Laya资产的环境仍能运行 |
 | S4-09 | D 可选对标 | ⏳ 计划中 | 按产品需要审计其他检查点的C#支持；Laya Agent/Router仅作可选对照 | S3-07,S4-04仅限Laya对照；新增资产独立审核 | 各资产许可/revision/hash、显式模型选择与同路由同题集报告；不阻断独立模型主线，新增资产另验数值/AOT/性能/校准 |
-| S4-10 | D 教师入口 | 🚧 进行中 | 核对IoTSharp/Tomur本地服务、catalog `qwen35-9b-q4km` 的实际模型身份/接口/错误合同、资源预算及输出训练/再分发许可；4B仅作资源/质量对照，设计独立C#离线采集工具 | S0-02,S4-05数据合同 | [教师续审](docs/evidence/teacher-continuation-2026-10-03.md)补重复属性/UTF-8字节上限、同快照hash、家族隔离、全状态分母和不覆盖输出；`Sezika.TeacherTool` 已实现候选 catalog 与最多32条采集记录的离线合同检查，保留响应 hash、失败/拒答分母并阻止未经人工审核进入训练；候选本机尚未安装或实际验证，服务 native runtime 仅限外部工具边界，Sezika 核心及最终推理仍纯本地C#；先核对条款、上限与取消，无许可记录不进入对应训练用途 |
+| S4-10 | D 教师入口 | 🚧 进行中 | 核对IoTSharp/Tomur本地服务、catalog `qwen35-9b-q4km` 的实际模型身份/接口/错误合同、资源预算及输出训练/再分发许可；4B仅作资源/质量对照，设计独立C#离线采集工具 | S0-02,S4-05数据合同 | C#采集器、固定9B资产和GPU runtime已验证；[v2实测](docs/evidence/teacher-gpu-prompt-v2-run-2026-10-08.md)为32题全格式有效、34次HTTP/无retry、151引用通过，服务/资源已关闭。旧13通过/19失败保留；正式训练/再分发许可审签、人工正确性及质量待验，native runtime仅限外部教师工具 |
 | S4-11 | D 教师数据 | ⏳ 计划中 | 对最多32条新人工金标有界采集教师硬标签，人工复核后才交训练器；与仅人工训练做对照，软分布后续另验 | S4-05,S4-10 | 扩量前冻结样本/请求/重试/墙钟/资源上限；保存来源、完整输入合同、模型/提示/响应hash、家族及审核链；失败/拒答保留分母，教师标签不作封存测试真值，自报置信度不作软标签 |
-| S4-12 | D 训练资产 | 🚧 进行中 | 实现自有head checkpoint、训练恢复状态、版本化manifest及受限导出/加载入口；显式区分独立与Laya衍生资产 | S4-14,S1-03,S3-05；与S4-07工具研发同步 | 训练 checkpoint 与独立 head asset v1 均已实际保存/加载，绑定模型/encoder/tokenizer/manifest/feature hash 并拒绝篡改/错形状/身份不符；正式模型包、校准与发布仍未完成 |
+| S4-12 | D 训练资产 | 🚧 进行中 | 实现自有head checkpoint、训练恢复状态、版本化manifest及受限导出/加载入口；显式区分独立与Laya衍生资产 | S4-14,S1-03,S3-05；与S4-07工具研发同步 | CPU v2与[GPU schema3 workflow](docs/evidence/gpu-training-workflow-2026-10-08.md)绑定完整模型/数据/特征、kernel/UUID及恢复元数据，GPU CLI校验五项恢复输入；fixture恢复一致与拒绝篡改通过。正式模型包、校准、训练AOT及发布仍未完成 |
 | S4-13 | D 条件适配 | ⏳ 计划中 | 首轮自有head报告后按开发证据扩展架构，必要时研究C# encoder LoRA | S4-06,S4-07,S4-12 | 按所选架构记录参数与新增反向算子梯度检查、资源/恢复证据及独立消融；GPU反向另行实现与验证；无收益也保留报告，正式交付走S4-08 |
 | S4-14 | A 独立合同 | ✅ 已完成文档审核/设计 | 审核原始encoder/tokenizer来源，定义自有head初始化、输入协议、资产身份与Laya迁移边界 | S0-01,S0-02 | 合同已固定原始 revision、许可边界、pickle 转换门槛、三题型 head、自有协议和迁移清单；实际资产/训练证据转入 S4-15/S4-07 |
-| S4-15 | B 独立入口 | 🚧 进行中 | 实现原始encoder受限导入、自有输入构造与显式legacy适配，将Laya固定校验限定在旧模型入口 | S4-14,S1-03,S3-05；checkpoint接入：S4-12 | [本轮加载合同](docs/evidence/continuation-2026-10-03.md)固定配置、134 tensor精确维度/dtype、资产字节上限及路径预检查；已有原始权重/tokenizer hash、C# SafeTensors 转换、134 tensor 形状、独立 manifest/loader、decision-v1 真实 CPU smoke；上游数值 oracle、CUDA/AOT、默认切换须 S4-08 |
+| S4-15 | B 独立入口 | 🚧 进行中 | 实现原始encoder受限导入、自有输入构造与显式legacy适配，将Laya固定校验限定在旧模型入口 | S4-14,S1-03,S3-05；checkpoint接入：S4-12 | 固定原始资产/hash、C#受限转换134 tensors、独立loader/decision-v1真实CPU smoke及267项数值capture已验证；[静态pipeline](docs/evidence/independent-pipeline-2026-10-08.md)完成Windows AOT tiny合同，[GPU CLI](docs/evidence/gpu-training-cli-2026-10-08.md)完成真实encoder特征smoke。可信上游oracle、真实独立head/两RID AOT、质量和默认切换仍由S4-08验收 |
 | S5-01 | E GPU/AOT | ✅ 已完成 | 生成带 hash/ABI 的 C# kernel PTX 与静态 Driver loader | S0-02 | 14 个 kernel manifest/PTX 和生成复现记录 |
 | S5-02 | E GPU/AOT | ✅ 已完成 | 完成 resident CUDA encoder/head 与 CPU logits 对齐 | S2-01,S5-01 | RTX 4070 实卡 head 误差报告 |
 | S5-03 | E GPU/AOT | ✅ 已完成 | 完成 tiny CPU/CUDA win-x64 与 CPU linux-x64 Native AOT smoke | S5-01 | 发布物、运行输出、依赖图 |
