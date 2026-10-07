@@ -24,7 +24,7 @@
 {
   "schema_version": 1,
   "candidate": {
-    "id": "qwen35-9b-q4km", "service": "IoTSharp/Tomur", "model": "qwen35-9b-q4km",
+    "id": "qwen35-9b-q4km", "service": "IoTSharp/Tomur", "model": "qwen3.5-9b-q4-k-m",
     "revision": "具体已核实的上游 revision",
     "model_sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8",
     "source_url": "https://huggingface.co/unsloth/Qwen3.5-9B-GGUF/resolve/具体已核实的上游%20revision/Qwen3.5-9B-Q4_K_M.gguf",
@@ -38,13 +38,15 @@
 
 示例中的占位值不是可执行准入记录。revision 必须是40位 ASCII hex 的 HuggingFace commit；source_url 必须逐字绑定 `Uri.EscapeDataString(revision)` 后的指定 9B 文件路径，不接受可移动 branch/ref。真实入口核指定模型hash、Apache-2.0声明以及上游LFS的5,680,522,464 bytes；新权重版本需要另行审查合同后才能更改。内部synthetic检查继续使用1-byte虚构模型证据，该值仅在synthetic transport分支接受，不能作为真实资产证据。
 
+`candidate.id` 固定为合同编号 `qwen35-9b-q4km`；`candidate.model` 固定为 Tomur `/v1/models` 返回的 API 模型键 `qwen3.5-9b-q4-k-m`。catalog 校验与采集前置校验分别核这两个字段，HTTP 请求、响应 model、terms/model evidence 和归档 teacher.model 均使用 API 模型键。不得把 candidate.id 当作可调用模型名；TeacherIdentity 原有 Id/Model 分别保留两种身份。
+
 terms.json 与 model.json 都必须包含 schema_version=1、model、revision、model_sha256、source_url、license，与 catalog 相符。terms.json 还要求：
 
 - `collection_permitted:true`、`use_scope:"offline_teacher_collection"`。
 - `output_training_permitted` 与 `output_redistribution_permitted` 的显式布尔声明。
 - `evidence_text`（上游条款及用途依据）、`reviewed_by`、有效 `reviewed_at_utc`。
 
-model.json 还要求 `validation_status:"hash_verified"`、`model_bytes`、`verification_method` 与有效 `verified_at_utc`。这两项是外部提供的验证/审查声明，不能由工具自行填成人工认可。工具核验身份、证据 bytes/hash 和同一快照，不独立加载或重新哈希 9GB 权重，因此输出 `teacher.independently_verified=false`。即使条款声明允许训练，收集输出仍为 `training_admission=false`。
+model.json 还要求 `validation_status:"hash_verified"`、`model_bytes`、`verification_method` 与有效 `verified_at_utc`。这两项是外部提供的验证/审查声明，不能由工具自行填成人工认可。工具核验身份、证据 bytes/hash 和同一快照，不独立加载或重新哈希多 GB 权重，因此输出 `teacher.independently_verified=false`。即使条款声明允许训练，收集输出仍为 `training_admission=false`。
 
 证据 paths 相对 catalog 所在目录；数据 assets 相对 manifest 所在目录。拒绝路径逃逸、绝对路径、驱动器/ADS、资产路径中的 reparse point。catalog/manifest/candidates 单文件最大 1MiB；每个证据、request、prompt 最大 64KiB。严格 UTF-8、JSON 深度 32、重复属性拒绝，哈希均从实际读取快照计算。
 
@@ -84,6 +86,8 @@ collect --catalog <catalog.json> --manifest <manifest.json> --output <新目录>
 
 `self-test-collection --max-cases 1` 先执行极小 trial，再 `self-test-collection` 最多 10 case、15 秒工作预算及共享10秒清理预算：成功、重复属性畸形标签、拒答、503、请求取消模拟、总取消、传输失败、响应超限、已存在目标保留、前置 hash mismatch。总取消 case 使用2题，在第1题完整合成响应/usage记录后取消，明确检查成功目录不存在、failure audit全分母=2、attempted=1/not_called=1、原响应hash/usage保留；其他 case 只有1题。归档另有最多10秒异常处理预算，外层40秒runner覆盖微型合成检查与清理。
 
+首个 case 另核 candidate.id 被误填到 model 时前置拒绝、零 HTTP 与无输出目录；正常 handler 逐次核 model=`qwen3.5-9b-q4-k-m`，完整 manifest 核 teacher.id 与 teacher.model 分别保留合同编号与 API 模型键。该回归不新增 case 数量或 HTTP 上限。
+
 检查使用内存 HttpMessageHandler 与 loopback 地址，仅测试 transport/文件合同；不启动 loopback server、不调用真实 Tomur、不下载/哈希真实模型。合成准入文档包含明确 synthetic-test-only 标记，只在内部 synthetic transport 路径允许，真实入口拒绝其 license/hash/bytes。合成报告明确 synthetic_transport=true、quality_evidence=false、independently_verified=false。临时目录是唯一 GUID 任务对象，finally 按自建 journal/hash 逐项回收。
 
 实际源码构建/测试结果由监督者记录。本轮模块作者未启动构建、测试、服务或实际 HTTP。
@@ -108,3 +112,19 @@ collect --catalog <catalog.json> --manifest <manifest.json> --output <新目录>
 工程合同已通过；真实教师模型与条款、实际本地服务、32题采集、人工训练准入及质量仍未验收。固定来源的小文件核查及默认loopback连接失败见[来源预检查](evidence/teacher-source-preflight-2026-10-08.md)。
 
 同日接续固定context_size=2048请求预算，正常请求和取消归档重建请求一致，完成manifest包含maximum_context_tokens=2048。Tomur支持该字段已由固定源码核实；避免使用服务默认的大上下文。最终重建PID87004/上限180秒/exit0/零警告错误，新DLL SHA-256为 `0C0FC3F80DFE60F0DB4472AD4B714556E4A37A6C6E4E990661FE6180E84CECEB`。1→10合成检查PID51236/97132（各40秒上限）均exit0，并直接检查送入handler的HTTP body中context_size=2048、max_tokens范围与stream=false。三个登记PID无存活对象，两处新fixture目录已清理；此前无context字段的DLL hash和历史检查原样保留。没有重跑旧合同或宣称真实服务资源已达标。
+
+## 同日接续：API 模型键修复验收
+
+监督子智能体按主线程授权修复 candidate.id 与 API model key 的误等同，未修改 pilot 数据资产。真实模型固定 SHA-256、40-hex revision/source 绑定、Apache-2.0 与5,680,522,464-byte门禁原样保留。catalog、terms/model evidence、HTTP请求/响应及 teacher.model 使用 `qwen3.5-9b-q4-k-m`，teacher.id 保留 `qwen35-9b-q4km`。
+
+| 验证 | PID | 外层上限 | 实际结果 |
+| --- | ---: | ---: | --- |
+| Release build | 13988 | 180秒 | exit0，零警告/错误 |
+| 1-case synthetic trial | 71432 | 60秒 | exit0，1/1通过 |
+| 完整 synthetic checks | 49192 | 60秒 | exit0，10/10通过 |
+| validate-catalog 正确API模型键 | 43552 | 20秒 | exit0，independently_verified=false |
+| validate-catalog 候选编号误作模型键 | 35312 | 20秒 | 预期exit1，拒绝身份且未写报告 |
+
+两个synthetic运行均包含首个case的误用模型键前置拒绝检查；正常handler核确切model key，manifest核Id/Model分别保存。完整取消case仍total=2、attempted=1/not_called=1。CLI正反输入明确标记synthetic-test-only，只核旧离线校验命令，不充当生产准入、许可审查或真实教师证据。
+
+固定PowerShell7.6.6/.NET SDK10.0.401，DLL SHA-256 `CCF65714E4D3E3EE853FBE806ECE3D2E44F12E4C18EC6BC442428D285B7D3557`。过程与 `model-key-verification.json` 保留于 `.artifacts/teacher-model-key-20261008-head-checkpoint`；5个runner结果无cleanup error，记录的8个PID均已退出，两个确切GUID fixture根目录已由finally移除。日志和明确的synthetic CLI输入/报告作为证据保留，不删除共享build cache。未启动服务、下载/哈希模型或调用真实HTTP，没有质量或训练准入宣称。旧model=id的准入文件将被新版校验拒绝；本次按范围保留既有pilot资产，实际采集需使用单独准备并审查的正确准入文档。

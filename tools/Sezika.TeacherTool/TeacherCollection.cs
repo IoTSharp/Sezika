@@ -64,14 +64,14 @@ public static class TeacherCollection
         var modelHash = new string('a', 64);
         var source = $"https://huggingface.co/unsloth/Qwen3.5-9B-GGUF/resolve/{revision}/Qwen3.5-9B-Q4_K_M.gguf";
         const string requestJson = """{"schema_version":1,"model_id":"sezika/teacher-fixture","state":{"text":"fixture"},"questions":[{"id":"q","type":"choice","instruction":"fixture only","candidates":[{"id":"a","text":"first"},{"id":"b","text":"second"}]}]}""";
-        const string successJson = """{"object":"chat.completion","model":"qwen35-9b-q4km","choices":[{"index":0,"message":{"role":"assistant","content":"{\"question_id\":\"q\",\"status\":\"answered\",\"selected_candidate_id\":\"a\"}"},"finish_reason":"stop"}],"usage":{"prompt_tokens":1,"completion_tokens":1,"total_tokens":2}}""";
+        const string successJson = """{"object":"chat.completion","model":"qwen3.5-9b-q4-k-m","choices":[{"index":0,"message":{"role":"assistant","content":"{\"question_id\":\"q\",\"status\":\"answered\",\"selected_candidate_id\":\"a\"}"},"finish_reason":"stop"}],"usage":{"prompt_tokens":1,"completion_tokens":1,"total_tokens":2}}""";
         try
         {
             var request = fixtures.Write("request.json", Encoding.UTF8.GetBytes(requestJson));
             var prompt = fixtures.Write("prompt.txt", Encoding.UTF8.GetBytes("Synthetic contract fixture, never license or quality evidence.\n" + requestJson));
-            var terms = fixtures.Write("terms.json", Encoding.UTF8.GetBytes($$$"""{"schema_version":1,"model":"qwen35-9b-q4km","revision":"{{{revision}}}","model_sha256":"{{{modelHash}}}","source_url":"{{{source}}}","license":"synthetic-test-only","collection_permitted":true,"use_scope":"offline_teacher_collection","output_training_permitted":false,"output_redistribution_permitted":false,"evidence_text":"SYNTHETIC: no license approval or actual model","reviewed_by":"synthetic-fixture","reviewed_at_utc":"2026-10-08T00:00:00Z"}"""));
-            var modelEvidence = fixtures.Write("model.json", Encoding.UTF8.GetBytes($$$"""{"schema_version":1,"model":"qwen35-9b-q4km","revision":"{{{revision}}}","model_sha256":"{{{modelHash}}}","source_url":"{{{source}}}","license":"synthetic-test-only","validation_status":"hash_verified","model_bytes":1,"verification_method":"SYNTHETIC: no model downloaded/hashed","verified_at_utc":"2026-10-08T00:00:00Z"}"""));
-            fixtures.Write("catalog.json", Encoding.UTF8.GetBytes($$$"""{"schema_version":1,"candidate":{"id":"qwen35-9b-q4km","service":"IoTSharp/Tomur","model":"qwen35-9b-q4km","revision":"{{{revision}}}","model_sha256":"{{{modelHash}}}","source_url":"{{{source}}}","license":"synthetic-test-only","status":"verified","endpoint":"http://127.0.0.1:5137/v1/chat/completions","terms_evidence":"terms.json","terms_evidence_sha256":"{{{terms.Sha256}}}","model_evidence":"model.json","model_evidence_sha256":"{{{modelEvidence.Sha256}}}"}}"""));
+            var terms = fixtures.Write("terms.json", Encoding.UTF8.GetBytes($$$"""{"schema_version":1,"model":"qwen3.5-9b-q4-k-m","revision":"{{{revision}}}","model_sha256":"{{{modelHash}}}","source_url":"{{{source}}}","license":"synthetic-test-only","collection_permitted":true,"use_scope":"offline_teacher_collection","output_training_permitted":false,"output_redistribution_permitted":false,"evidence_text":"SYNTHETIC: no license approval or actual model","reviewed_by":"synthetic-fixture","reviewed_at_utc":"2026-10-08T00:00:00Z"}"""));
+            var modelEvidence = fixtures.Write("model.json", Encoding.UTF8.GetBytes($$$"""{"schema_version":1,"model":"qwen3.5-9b-q4-k-m","revision":"{{{revision}}}","model_sha256":"{{{modelHash}}}","source_url":"{{{source}}}","license":"synthetic-test-only","validation_status":"hash_verified","model_bytes":1,"verification_method":"SYNTHETIC: no model downloaded/hashed","verified_at_utc":"2026-10-08T00:00:00Z"}"""));
+            fixtures.Write("catalog.json", Encoding.UTF8.GetBytes($$$"""{"schema_version":1,"candidate":{"id":"qwen35-9b-q4km","service":"IoTSharp/Tomur","model":"qwen3.5-9b-q4-k-m","revision":"{{{revision}}}","model_sha256":"{{{modelHash}}}","source_url":"{{{source}}}","license":"synthetic-test-only","status":"verified","endpoint":"http://127.0.0.1:5137/v1/chat/completions","terms_evidence":"terms.json","terms_evidence_sha256":"{{{terms.Sha256}}}","model_evidence":"model.json","model_evidence_sha256":"{{{modelEvidence.Sha256}}}"}}"""));
             var candidates = fixtures.Write("candidates.jsonl", Encoding.UTF8.GetBytes($$$"""{"record_id":"fixture-1","language":"en","type":"choice","family_id":"fixture-family","source":"synthetic","origin":"AI drafted","purpose":"pilot","split":"audit","review_status":"pending","training_admission":"pending","teacher_status":"not_called","request_path":"request.json","request_sha256":"{{{request.Sha256}}}","prompt_path":"prompt.txt","prompt_sha256":"{{{prompt.Sha256}}}"}""" + "\n"));
             var manifestText = $$$"""{"schema_version":1,"protocol":"decision-v1","student_model_id":"sezika/teacher-fixture","origin":"AI drafted","purpose":"pilot","split":"audit","human_review":"pending","training_admission":"pending","quality_evidence":false,"teacher_called":false,"total_records":1,"candidates":{"path":"candidates.jsonl","sha256":"{{{candidates.Sha256}}}","bytes":{{{candidates.Bytes}}}},"assets":[{"path":"request.json","sha256":"{{{request.Sha256}}}","bytes":{{{request.Bytes}}}},{"path":"prompt.txt","sha256":"{{{prompt.Sha256}}}","bytes":{{{prompt.Bytes}}}}]}""";
             fixtures.Write("manifest.json", Encoding.UTF8.GetBytes(manifestText));
@@ -100,7 +100,8 @@ public static class TeacherCollection
                     if (uri is null || uri.Host != "127.0.0.1" || uri.AbsolutePath != "/v1/chat/completions" || message.Method != HttpMethod.Post)
                         throw new InvalidOperationException("Synthetic fixture URI/request contract failed.");
                     using var sent = JsonDocument.Parse(message.Content!.ReadAsByteArrayAsync(requestToken).GetAwaiter().GetResult());
-                    if (sent.RootElement.GetProperty("context_size").GetInt32() != 2048 ||
+                    if (Text(sent.RootElement, "model", 256) != "qwen3.5-9b-q4-k-m" ||
+                        sent.RootElement.GetProperty("context_size").GetInt32() != 2048 ||
                         sent.RootElement.GetProperty("max_tokens").GetInt32() is < 1 or > 256 ||
                         sent.RootElement.GetProperty("stream").GetBoolean())
                         throw new InvalidOperationException("Synthetic fixture request resource bounds failed.");
@@ -117,6 +118,20 @@ public static class TeacherCollection
                 });
                 using var client = new HttpClient(handler) { Timeout = Timeout.InfiniteTimeSpan };
                 var options = new Options(Path.Combine(root, "catalog.json"), Path.Combine(root, index == 9 ? "invalid-manifest.json" : index == 5 ? "cancel-manifest.json" : "manifest.json"), output, index == 5 ? 2 : 1, 1, 10, 16);
+                if (index == 0)
+                {
+                    var invalidCatalog = Path.Combine(root, "candidate-as-model-catalog.json");
+                    fixtures.Write("candidate-as-model-catalog.json", Encoding.UTF8.GetBytes(
+                        StrictUtf8.GetString(ReadSnapshot(options.Catalog, 65_536, token)).Replace(
+                            "\"model\":\"qwen3.5-9b-q4-k-m\"", "\"model\":\"qwen35-9b-q4km\"", StringComparison.Ordinal)));
+                    try
+                    {
+                        _ = Preflight(options with { Catalog = invalidCatalog }, token, true);
+                        throw new InvalidOperationException("Candidate ID was incorrectly admitted as an API model key.");
+                    }
+                    catch (InvalidDataException) { }
+                    if (calls != 0 || Directory.Exists(output)) throw new InvalidOperationException("Invalid model key caused transport or publication.");
+                }
                 string? failureAudit = null;
                 try
                 {
@@ -126,6 +141,9 @@ public static class TeacherCollection
                     if (index is 8 or 9) throw new InvalidOperationException("Overwrite/hash mismatch fixture unexpectedly published.");
                     using var report = StrictJson(ReadSnapshot(Path.Combine(output, "manifest.json"), 65_536, token), token);
                     var result = report.RootElement;
+                    var teacher = result.GetProperty("teacher");
+                    if (Text(teacher, "id", 128) != "qwen35-9b-q4km" || Text(teacher, "model", 256) != "qwen3.5-9b-q4-k-m")
+                        throw new InvalidOperationException("Candidate ID and API model key were not preserved separately.");
                     var expectedPending = index == 0 ? 1 : 0; var expectedAbstained = index == 2 ? 1 : 0;
                     var expectedFailed = expectedPending + expectedAbstained == 0 ? 1 : 0;
                     if (calls != 1 || result.GetProperty("total").GetInt32() != 1 || result.GetProperty("pending").GetInt32() != expectedPending ||
@@ -368,7 +386,7 @@ public static class TeacherCollection
         var id = Text(item, "id", 128); var service = Text(item, "service", 128); var model = Text(item, "model", 256);
         var revision = Text(item, "revision", 256); var license = Text(item, "license", 256);
         var modelHash = HashText(item, "model_sha256"); var sourceUrl = Text(item, "source_url", 2048);
-        if (id != "qwen35-9b-q4km" || model != id || service != "IoTSharp/Tomur" || Text(item, "status", 32) != "verified")
+        if (id != "qwen35-9b-q4km" || model != "qwen3.5-9b-q4-k-m" || service != "IoTSharp/Tomur" || Text(item, "status", 32) != "verified")
             throw new InvalidDataException("Collection requires the explicitly verified planned Tomur 9B candidate.");
         if (!syntheticTransport && (license != "Apache-2.0" || !SameHash(modelHash, "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8")))
             throw new InvalidDataException("The real collector requires the planned catalog 9B GGUF license/hash identity; synthetic claims are test-only.");

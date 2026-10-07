@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- 修复教师候选ID与真实API模型键混用：candidate保持`qwen35-9b-q4km`，请求/响应/条款/模型证据固定`qwen3.5-9b-q4-k-m`，保留9B hash与许可门禁；构建零警告/错误，1→10合成检查及catalog正反CLI通过，旧alias前置拒绝且零HTTP。真实GPU采集另验。
 - 新增独立encoder数值捕获工具并接入solution，1→8项自检及真实46-token/267项F32捕获通过；监督者逐文件复核51,720,192字节payload和全部hash。修复Move后取消回退、peak超限审计与过频OS采样，失败证据保留；不关闭独立上游parity、质量或校准，正式训练与批量工作使用GPU。见[捕获证据](docs/evidence/independent-numeric-capture-2026-10-08.md)。
 - 恢复固定Qwen3.5-9B Q4_K_M教师GGUF，实际5,680,522,464字节/固定SHA-256匹配后原子发布；唯一代理149.70秒、整体含准备668.64秒，最终无登记存活进程或partial。任务runner副本曾将直连失败误标Cancelled，原始日志保留并单列纠正/小负例复验，未重复大下载。该任务不启动教师或授予训练准入，见[恢复证据](docs/evidence/teacher-weight-restore-2026-10-08.md)。
 - 将离线教师请求固定为2048-token上下文，并在manifest记录该预算，成功与取消归档请求一致；重建零警告/错误，1→10合成检查核验实际序列化context_size/max_tokens/stream字段，真实教师执行另验。

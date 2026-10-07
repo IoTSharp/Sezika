@@ -18,6 +18,10 @@
 
 当前接续状态：
 
+- TeacherTool API model key修复已验收并单独提交：candidate Id/API Model分别记录，旧alias前置拒绝；build13988零警告/错误、synthetic1→10与CLI正反通过。新DLL SHA `CCF65714E4D3E3EE853FBE806ECE3D2E44F12E4C18EC6BC442428D285B7D3557`。32题之前需使用新GPU input快照，不覆盖旧首题失败。
+- Tomur `32675f8` ABI修复已提交并推送，远端/本地main一致；`1aa3fa7`整数辅助修复一并推送。Windows x64 6结构80行oracle通过，完整host构建PID104664成功（1既有warning）。ABI独占临时删除被自动审核拒绝，准确保留路径见 `.artifacts/llama-abi-20261008-head-checkpoint/cleanup-result.json`，无存活任务进程。
+- RTX4070 Laptop/8GiB、CUDA13.2.51、VS18匹配；新CUDA配置PID101656通过，文本target build PID66196/session98415正在最多1800秒、parallel2预算内。只用新build配套DLL；GPU layers用999（-1会归零），2048ctx；fit与真实推理尚未验收。监督heartbeat已保存用户GPU要求与仅Tomur的push授权。
+
 - 独立数值capture工程任务已验收并单独提交：OS resident采样过频触发tiny3秒deadline后修复，1→8项自检通过；真实46tokens/267张量、51,720,192字节payload全部hash复核通过。原失败与partial保留，Move后取消/持续合成peak恢复已验。上游oracle继续开放。正式训练/批量任务必须GPU，CPU仅小核验。
 - 教师首题真实调用失败：collector PID24100 exit3/http_transport_error，Tomur PID8488 native崩溃0xC0000409，全分母及原始日志保留，未有答案。固定llama.h与C#结构ABI漂移已修复，6结构/80大小偏移oracle通过；Tomur固定ABI完整主程序重建PID104664成功（1个既有CS8600）。CUDA后端正在准备，32题未运行。
 - 用户授权Tomur核最新/拉取/提交推送；2026-10-08已fetch origin，远端main仍5cd90dd，本地1aa3fa7包含最新远端。ABI修复验证后单独提交并推送Tomur；Sezika仍未获push/发布授权。

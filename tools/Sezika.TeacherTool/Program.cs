@@ -113,7 +113,7 @@ static string ValidateCatalog(string path, out CatalogCandidate candidate, Valid
     if (!candidate.Id.Equals("qwen35-9b-q4km", StringComparison.OrdinalIgnoreCase))
         throw new InvalidDataException("Only the planned qwen35-9b-q4km candidate is permitted by this contract; its identity remains externally unverified.");
     if (!candidate.Service.Equals("IoTSharp/Tomur", StringComparison.OrdinalIgnoreCase) ||
-        !candidate.Model.Equals(candidate.Id, StringComparison.OrdinalIgnoreCase))
+        !candidate.Model.Equals("qwen3.5-9b-q4-k-m", StringComparison.Ordinal))
         throw new InvalidDataException("The candidate service/model does not match the S4-10 contract.");
     budget.Progress("catalog", 1, 1);
     return hash;
