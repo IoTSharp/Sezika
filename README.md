@@ -40,6 +40,8 @@ S4-04 的[归档基线验收](docs/evidence/s4-04-baseline-closure-2026-10-07.md
 
 ## 独立使用
 
+独立原始 encoder 与自有 head 可通过显式 `--model-format independent-v1` 使用 inspect/predict，直接绑定 `train-original` 的 v2 报告并消费 `decision-v1`。见 [独立 CLI](docs/independent-cli-s4-15.md)；managed 41 项及 Windows Native AOT tiny fixture 42 项通过，真实新模型质量、两 RID 部署与默认切换仍按 ROADMAP 验收。以下既有示例使用 legacy 资产。
+
 Sezika 可以独立加载固定模型包并执行决策。先按[独立使用说明](docs/standalone-usage.md)准备并验证模型资产；在仓库根目录执行：
 
 ```powershell

@@ -21,8 +21,10 @@
 | 最终 managed CLI checks | 90秒 | PID75972，3.844秒，41项通过，实际workflow报告/head→CLI及tiny C#三题型推理 |
 | 产品 CLI Windows Native AOT publish | 300秒 | PID39848，35.126秒，退出0，无编译/trim/AOT警告 |
 | 产品原生 CLI help | 30秒 | PID100032，3.226秒，退出0，显示显式独立入口与预算 |
+| CLI checks Windows Native AOT publish | 300秒 | PID87160，30.541秒，退出0，无编译/trim/AOT警告 |
+| 原生 CLI checks `--require-aot` | 90秒 | PID56588，3.58秒，42项通过；动态代码支持/编译均false，TPA为null |
 
-CLI checks 的原生发布和 `--require-aot` fixture 运行另行记录；本版尚不宣布其结果。此前最终树检查169项之后的v2 identity修复已重建并得到上述173项结果，较早结果和日志保留，不用旧树PASS替代最终检查。
+原生 checks 实际执行同一workflow报告/head→CLI和三题型tiny C# runtime路径，并核对原生身份；该结果不能转移到真实原始模型、CUDA或Linux。此前最终树检查169项之后的v2 identity修复已重建并得到上述173项结果，较早结果和日志保留，不用旧树PASS替代最终检查。训练工程子任务已独立提交 `acce79f`。
 
 ## 真实边界、归属与接续
 

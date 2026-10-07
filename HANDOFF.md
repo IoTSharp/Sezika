@@ -8,8 +8,8 @@
 
 ## 当前批次
 
-- S4-15 / S6-02 工程子任务：为 CLI 接入显式独立 `decision-v1` 路径、hash 绑定 head 和结构化错误；正式默认切换仍依赖 S4-08。
-- S4-07 / S4-12 工程子任务已通过验收：checkpoint、推理 head、v2 报告保存/恢复；2→4 与连续 4 步 fixture 字节一致，v2 完整身份适配缺陷已修复。准备单任务提交；真实实验与质量仍未验收。
+- S4-15 / S6-02 工程子任务已验收：显式独立 CLI、hash 绑定 head 和结构化错误，managed41项/Windows AOT tiny fixture42项通过；准备单任务提交。正式默认切换仍依赖 S4-08。
+- S4-07 / S4-12 工程子任务已提交 `acce79f`：checkpoint、推理 head、v2 报告保存/恢复；2→4 与连续 4 步 fixture 字节一致，v2 完整身份适配缺陷已修复；真实实验与质量仍未验收。
 - 全量待办核查：独立审查 ROADMAP 剩余门槛、依赖、当前可执行项及必须外部事实/人工审核的阻塞。
 
 主智能体独占 ROADMAP、README、CHANGELOG、HANDOFF、共享测试入口和 Git 操作；子智能体按独占文件实施。验证串行运行以控制构建资源。
@@ -18,7 +18,7 @@
 
 ## 验证与资源
 
-已核对 PowerShell 7.6.6，固定 `C:\Program Files\PowerShell\7\pwsh.exe`；dotnet 10.0.401，路径 `C:\Program Files\dotnet\dotnet.exe`。长命令使用 `tools/Invoke-BoundedProcess.ps1`，记录 PID、开始时间、argv、父链、墙钟上限、退出码与清理结果。循环和批次同时限制项目数和墙钟，支持取消/进度，先试极小输入；禁止 Graphify、广域工具发现和按名称杀进程。日志保留在任务专属 `.artifacts/supervision-20261007`。最终首批构建 PID 36364 零警告/错误，核心 PID 67120 共173项、CLI PID 75972 共41项通过。Windows 产品 CLI AOT 发布及 help 已通过；CLI checks 原生 fixture 发布/执行正在验证。详细范围见监督证据；所有已完成 runner 均返回成功且清理错误为空，最终还须审计记录进程身份。
+已核对 PowerShell 7.6.6，固定 `C:\Program Files\PowerShell\7\pwsh.exe`；dotnet 10.0.401，路径 `C:\Program Files\dotnet\dotnet.exe`。长命令使用 `tools/Invoke-BoundedProcess.ps1`，记录 PID、开始时间、argv、父链、墙钟上限、退出码与清理结果。循环和批次同时限制项目数和墙钟，支持取消/进度，先试极小输入；禁止 Graphify、广域工具发现和按名称杀进程。日志保留在任务专属 `.artifacts/supervision-20261007`。最终首批构建 PID 36364 零警告/错误，核心 PID 67120 共173项、CLI PID 75972 共41项通过。Windows 产品 CLI AOT 发布及 help 已通过；CLI checks 原生发布与42项fixture执行已通过（PID87160/PID56588），原生身份明确核对。详细范围见监督证据；所有已完成 runner 均返回成功且清理错误为空，最终还须审计记录进程身份。
 
 ## 保留与未验收
 

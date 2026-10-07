@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>Sezika.CliChecks</AssemblyName>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/Sezika.Cli/Sezika.Cli.csproj" />
+    <ProjectReference Include="../Sezika.IndependentModelTool/Sezika.IndependentModelTool.csproj" />
+  </ItemGroup>
+</Project>

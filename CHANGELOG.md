@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- 新增 S4-15/S6-02 显式独立 CLI：`--model-format independent-v1` 的 inspect/predict 使用独立 encoder、自有 head、完整 hash-bound v2 训练报告及 decision-v1；输入、命令、推理均有预算与取消，错误结构化输出。Managed 41 项、Windows Native AOT fixture 42 项通过，产品 CLI 原生发布及 help 通过；没有恢复真实权重，不提前宣布正式默认迁移、校准、两 RID 真实推理或发布。
 - 闭环 S4-07/S4-12 独立 head 的本地训练工作流：`train-original` 保存 checkpoint、推理 head 和 source-generated v2 报告，以完整模型/数据/特征、checkpoint/report hash、seed、学习率及累计步目标恢复。产物不覆盖，报告最后发布，失败仅回收本次 hash 匹配文件；v2 开发评估保留完整 identity 并拒绝错误 hidden size，历史 v1 明确限定。实际 2→4 步恢复与连续 4 步 fixture 的权重、checkpoint/head 字节一致；最终核心 173 项检查与零警告/错误构建通过。真实训练数据准入和质量仍未验收，见[监督证据](docs/evidence/supervision-2026-10-07.md)。
 - 完成 S4-04 既有同权重审计基线闭环：新增 `Evaluation --verify-baseline`、冻结归档验收计划和有界正负回归，关联双方模型/环境/数据/capture身份、16份完整逐批比较及计数/Boolean/语言题型切片，核对加权NLL/Brier/Score MAE并报告双方指标差值与Wilson区间。历史PAWS250、Nimble324和中英fixture12共586条归档验收通过，17项评估器自检及16项正负回归通过，Release构建零警告/错误。原始捕获与模型已清理，本轮只复核历史证据；代表性语言质量、校准和新独立模型门槛继续由S4-05/S4-08验收，见[闭环证据](docs/evidence/s4-04-baseline-closure-2026-10-07.md)。
 - 加固 `NumericParity --trace-summary` 的 S3-06 汇总合同：仅接受固定18个 core case，校验每个 backend 的状态与输出字段，拒绝将部分 case 标成 complete 或遗漏 `unprocessed_case_ids`；新增4项跨报告负向自检，当前诊断自检共29项。该变更只加强证据完整性，不新增独立逐层 oracle、真实近并列或完整阶段门槛。

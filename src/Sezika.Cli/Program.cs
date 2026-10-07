@@ -14,7 +14,7 @@ internal static class Program
 
     public static async Task<int> Main(string[] args)
     {
-        using var lifetime = new CancellationTokenSource(TimeSpan.FromMinutes(30));
+        using var lifetime = new CancellationTokenSource();
         ConsoleCancelEventHandler? cancelHandler = null;
         cancelHandler = (_, eventArgs) =>
         {
@@ -24,70 +24,105 @@ internal static class Program
         Console.CancelKeyPress += cancelHandler;
         try
         {
+            return await RunAsync(args, cancellationToken: lifetime.Token).ConfigureAwait(false);
+        }
+        finally
+        {
+            Console.CancelKeyPress -= cancelHandler;
+        }
+    }
+
+    internal static async Task<int> RunAsync(string[] args, Stream? standardInput = null,
+        TextWriter? output = null, TextWriter? error = null, CancellationToken cancellationToken = default,
+        IndependentRuntimeLoader? independentLoader = null)
+    {
+        output ??= Console.Out;
+        error ??= Console.Error;
+        using var lifetime = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        lifetime.CancelAfter(TimeSpan.FromMinutes(30));
+        try
+        {
+            lifetime.Token.ThrowIfCancellationRequested();
             if (args.Length == 0 || IsHelp(args[0]))
             {
-                PrintUsage();
+                PrintUsage(output);
                 return 0;
             }
 
             if (args.Length > 32)
             {
-                return Fail("cli_option_limit_exceeded", "At most 32 command arguments are accepted.");
+                return Fail("cli_option_limit_exceeded", "At most 32 command arguments are accepted.", error);
             }
             if (args.AsSpan().Contains("--help") || args.AsSpan().Contains("-h"))
             {
-                PrintUsage();
+                PrintUsage(output);
                 return 0;
             }
 
             var command = args[0].ToLowerInvariant();
             var options = CliOptions.Parse(args.AsSpan(1));
+            options.ValidateCommand(command);
+            lifetime.CancelAfter(TimeSpan.FromSeconds(options.CommandTimeoutSeconds));
             return command switch
             {
-                "inspect" => await InspectAsync(options, lifetime.Token).ConfigureAwait(false),
-                "predict" => await PredictAsync(options, lifetime.Token).ConfigureAwait(false),
-                _ => Fail("cli_command_unknown", $"Unknown command '{args[0]}'. Use 'inspect' or 'predict'."),
+                "inspect" => await InspectAsync(options, output, independentLoader, lifetime.Token).ConfigureAwait(false),
+                "predict" => await PredictAsync(options, standardInput, output, independentLoader, lifetime.Token).ConfigureAwait(false),
+                _ => Fail("cli_command_unknown", $"Unknown command '{args[0]}'. Use 'inspect' or 'predict'.", error),
             };
         }
         catch (OperationCanceledException)
         {
-            WriteError("decision_cancelled", "The operation was cancelled or exceeded the command timeout.");
+            WriteError("decision_cancelled", "The operation was cancelled or exceeded the command timeout.", error);
             return 2;
         }
         catch (DecisionException exception)
         {
-            WriteError(exception.Code, exception.Message);
+            WriteError(exception.Code, exception.Message, error);
             return 2;
         }
         catch (JsonException exception)
         {
-            WriteError("cli_invalid_json", exception.Message);
+            WriteError("cli_invalid_json", exception.Message, error);
             return 2;
         }
         catch (Exception exception) when (exception is KeyNotFoundException or InvalidOperationException or FormatException)
         {
-            WriteError("decision_manifest_invalid", exception.Message);
+            WriteError("decision_manifest_invalid", exception.Message, error);
             return 2;
         }
         catch (Exception exception) when (exception is ArgumentException or IOException or UnauthorizedAccessException)
         {
-            WriteError("cli_io_error", exception.Message);
+            WriteError("cli_io_error", exception.Message, error);
             return 2;
-        }
-        finally
-        {
-            if (cancelHandler is not null)
-            {
-                Console.CancelKeyPress -= cancelHandler;
-            }
         }
     }
 
-    private static async Task<int> PredictAsync(CliOptions options, CancellationToken cancellationToken)
+    private static async Task<int> PredictAsync(CliOptions options, Stream? standardInput, TextWriter output,
+        IndependentRuntimeLoader? independentLoader, CancellationToken cancellationToken)
     {
         var modelDirectory = options.RequireModelDirectory();
-        var input = await ReadInputAsync(options.InputPath, cancellationToken).ConfigureAwait(false);
+        var binding = options.ModelFormat == CliModelFormat.IndependentV1
+            ? await IndependentHeadBinding.ReadAsync(options.HeadBindingPath!, cancellationToken).ConfigureAwait(false) : null;
+        using var inputLifetime = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        inputLifetime.CancelAfter(TimeSpan.FromSeconds(options.InputTimeoutSeconds));
+        byte[] input;
+        try
+        {
+            input = await ReadInputAsync(options.InputPath, standardInput, inputLifetime.Token).ConfigureAwait(false);
+        }
+        catch (OperationCanceledException exception) when (!cancellationToken.IsCancellationRequested)
+        {
+            throw new DecisionException("cli_input_timeout", "Reading the request exceeded --input-timeout-seconds.", exception);
+        }
         var hasBom = input.Length >= 3 && input[0] == 0xEF && input[1] == 0xBB && input[2] == 0xBF;
+        if (binding is not null)
+        {
+            var independentRequest = IndependentDecisionV1Parser.Parse(hasBom ? input.AsSpan(3) : input);
+            using var independentRuntime = IndependentCli.Load(options, binding, independentLoader, cancellationToken);
+            var independentResponse = independentRuntime.Evaluate(independentRequest, cancellationToken);
+            output.WriteLine(JsonSerializer.Serialize(independentResponse, CliJsonContext.Default.IndependentDecisionResponse));
+            return 0;
+        }
         var request = DecisionRequestParser.Parse(hasBom ? input.AsSpan(3) : input);
         using var runtime = DecisionModelRuntime.Load(
             modelDirectory,
@@ -99,20 +134,31 @@ internal static class Program
             minimumConcentration: options.MinimumConcentration,
             cancellationToken: cancellationToken);
         var response = runtime.Evaluate(request, cancellationToken);
-        Console.WriteLine(JsonSerializer.Serialize(response, DecisionJsonContext.Default.DecisionResponse));
+        output.WriteLine(JsonSerializer.Serialize(response, DecisionJsonContext.Default.DecisionResponse));
 
         return 0;
     }
 
-    private static async Task<int> InspectAsync(CliOptions options, CancellationToken cancellationToken)
+    private static async Task<int> InspectAsync(CliOptions options, TextWriter output,
+        IndependentRuntimeLoader? independentLoader, CancellationToken cancellationToken)
     {
         var modelDirectory = options.RequireModelDirectory();
+        if (options.ModelFormat == CliModelFormat.IndependentV1)
+        {
+            var binding = await IndependentHeadBinding.ReadAsync(options.HeadBindingPath!, cancellationToken).ConfigureAwait(false);
+            using var runtime = IndependentCli.Load(options, binding, independentLoader, cancellationToken);
+            var independentReport = new IndependentInspectReport(modelDirectory, Path.GetFullPath(options.HeadPath!),
+                runtime.ModelId, runtime.EncoderSha256, runtime.TokenizerSha256, binding.HeadSha256,
+                binding.FeatureSha256, binding.Identity.DataManifestSha256);
+            output.WriteLine(JsonSerializer.Serialize(independentReport, CliJsonContext.Default.IndependentInspectReport));
+            return 0;
+        }
         var report = await ModelInspector.ReadAsync(modelDirectory, cancellationToken).ConfigureAwait(false);
-        Console.WriteLine(JsonSerializer.Serialize(report, CliJsonContext.Default.ModelInspectReport));
+        output.WriteLine(JsonSerializer.Serialize(report, CliJsonContext.Default.ModelInspectReport));
         return report.AssetsVerified ? 0 : 2;
     }
 
-    private static async Task<byte[]> ReadInputAsync(string? inputPath, CancellationToken cancellationToken)
+    private static async Task<byte[]> ReadInputAsync(string? inputPath, Stream? standardInput, CancellationToken cancellationToken)
     {
         if (!string.IsNullOrWhiteSpace(inputPath) && inputPath != "-")
         {
@@ -132,8 +178,9 @@ internal static class Program
             return await ReadBoundedAsync(fileInput, cancellationToken).ConfigureAwait(false);
         }
 
-        await using var standardInput = Console.OpenStandardInput();
-        return await ReadBoundedAsync(standardInput, cancellationToken).ConfigureAwait(false);
+        if (standardInput is not null) return await ReadBoundedAsync(standardInput, cancellationToken).ConfigureAwait(false);
+        await using var consoleInput = Console.OpenStandardInput();
+        return await ReadBoundedAsync(consoleInput, cancellationToken).ConfigureAwait(false);
     }
 
     private static async Task<byte[]> ReadBoundedAsync(Stream input, CancellationToken cancellationToken)
@@ -161,25 +208,27 @@ internal static class Program
 
     private static bool IsHelp(string value) => value is "-h" or "--help" or "help";
 
-    private static int Fail(string code, string message)
+    private static int Fail(string code, string message, TextWriter error)
     {
-        WriteError(code, message);
+        WriteError(code, message, error);
         return 2;
     }
 
-    private static void WriteError(string code, string message)
+    private static void WriteError(string code, string message, TextWriter writer)
     {
         var error = new CliError { Code = code, Message = message };
-        Console.Error.WriteLine(JsonSerializer.Serialize(error, CliJsonContext.Default.CliError));
+        writer.WriteLine(JsonSerializer.Serialize(error, CliJsonContext.Default.CliError));
     }
 
-    private static void PrintUsage()
+    private static void PrintUsage(TextWriter output)
     {
-        Console.WriteLine("Sezika typed decision CLI");
-        Console.WriteLine("  sezika inspect --model <directory>");
-        Console.WriteLine("  sezika predict --model <directory> [--input <file|->] [--minimum-concentration <0..1>] [--deadline-seconds <1..300>] [--max-tokens <n>]");
-        Console.WriteLine();
-        Console.WriteLine("predict reads a DecisionRequest JSON document from --input or stdin and writes DecisionResponse JSON to stdout.");
+        output.WriteLine("Sezika typed decision CLI");
+        output.WriteLine("  sezika inspect --model <directory> [--model-format legacy-laya]");
+        output.WriteLine("  sezika predict --model <directory> [--model-format legacy-laya] [--input <file|->] [--minimum-concentration <0..1>]");
+        output.WriteLine("  sezika <inspect|predict> --model-format independent-v1 --model <directory> --head <asset> --head-binding <json> [--input <file|->]");
+        output.WriteLine("  Common budgets: --deadline-seconds <1..300> --max-tokens <n> --command-timeout-seconds <1..1800> --input-timeout-seconds <1..300>");
+        output.WriteLine("  Model format defaults to legacy-laya. Independent predict consumes decision-v1 JSON and returns uncalibrated distributions.");
+        output.WriteLine("  Independent inspect loads and verifies the encoder and separately hash-bound head; it does not evaluate model quality.");
     }
 }
 
@@ -187,9 +236,30 @@ internal sealed record CliOptions
 {
     public string? ModelDirectory { get; init; }
     public string? InputPath { get; init; }
+    public CliModelFormat ModelFormat { get; init; }
+    public string? HeadPath { get; init; }
+    public string? HeadBindingPath { get; init; }
     public double MinimumConcentration { get; init; }
+    public bool MinimumConcentrationSpecified { get; init; }
     public int DeadlineSeconds { get; init; } = 30;
     public int MaxTokens { get; init; } = 4096;
+    public int CommandTimeoutSeconds { get; init; } = 1800;
+    public int InputTimeoutSeconds { get; init; } = 30;
+
+    public void ValidateCommand(string command)
+    {
+        if (command == "inspect" && InputPath is not null)
+            throw new DecisionException("cli_option_invalid", "--input is only valid for predict.");
+        if (ModelFormat == CliModelFormat.IndependentV1)
+        {
+            if (string.IsNullOrWhiteSpace(HeadPath) || string.IsNullOrWhiteSpace(HeadBindingPath))
+                throw new DecisionException("cli_head_required", "independent-v1 requires --head <asset> and --head-binding <json>.");
+            if (MinimumConcentrationSpecified)
+                throw new DecisionException("cli_option_invalid", "independent-v1 has no calibrated abstention policy; --minimum-concentration is unsupported.");
+        }
+        else if (HeadPath is not null || HeadBindingPath is not null)
+            throw new DecisionException("cli_option_invalid", "--head and --head-binding require --model-format independent-v1.");
+    }
 
     public string RequireModelDirectory()
     {
@@ -205,12 +275,20 @@ internal sealed record CliOptions
     {
         string? model = null;
         string? input = null;
+        string? head = null;
+        string? binding = null;
+        var modelFormat = CliModelFormat.LegacyLaya;
         var concentration = 0d;
+        var concentrationSpecified = false;
         var deadlineSeconds = 30;
-        var maxTokens = 4096;
+        int? maxTokens = null;
+        var commandTimeoutSeconds = 1800;
+        var inputTimeoutSeconds = 30;
+        var seen = new HashSet<string>(StringComparer.Ordinal);
         for (var index = 0; index < args.Length; index++)
         {
             var option = args[index];
+            if (!seen.Add(option)) throw new DecisionException("cli_option_duplicate", $"Option '{option}' appears more than once.");
             switch (option)
             {
                 case "--model":
@@ -219,7 +297,22 @@ internal sealed record CliOptions
                 case "--input":
                     input = Next(args, ref index, option);
                     break;
+                case "--model-format":
+                    modelFormat = Next(args, ref index, option) switch
+                    {
+                        "legacy-laya" => CliModelFormat.LegacyLaya,
+                        "independent-v1" => CliModelFormat.IndependentV1,
+                        _ => throw new DecisionException("cli_model_format_invalid", "--model-format must be legacy-laya or independent-v1."),
+                    };
+                    break;
+                case "--head":
+                    head = Next(args, ref index, option);
+                    break;
+                case "--head-binding":
+                    binding = Next(args, ref index, option);
+                    break;
                 case "--minimum-concentration":
+                    concentrationSpecified = true;
                     concentration = ParseDouble(Next(args, ref index, option), option);
                     if (!double.IsFinite(concentration) || concentration is < 0d or > 1d)
                     {
@@ -235,10 +328,16 @@ internal sealed record CliOptions
                     break;
                 case "--max-tokens":
                     maxTokens = ParseInt(Next(args, ref index, option), option);
-                    if (maxTokens is < 1 or > 4096)
-                    {
-                        throw new DecisionException("cli_option_invalid", "--max-tokens must be between 1 and 4096.");
-                    }
+                    break;
+                case "--command-timeout-seconds":
+                    commandTimeoutSeconds = ParseInt(Next(args, ref index, option), option);
+                    if (commandTimeoutSeconds is < 1 or > 1800)
+                        throw new DecisionException("cli_option_invalid", "--command-timeout-seconds must be between 1 and 1800.");
+                    break;
+                case "--input-timeout-seconds":
+                    inputTimeoutSeconds = ParseInt(Next(args, ref index, option), option);
+                    if (inputTimeoutSeconds is < 1 or > 300)
+                        throw new DecisionException("cli_option_invalid", "--input-timeout-seconds must be between 1 and 300.");
                     break;
                 case "-h":
                 case "--help":
@@ -248,19 +347,31 @@ internal sealed record CliOptions
             }
         }
 
+        var effectiveMaxTokens = maxTokens ?? (modelFormat == CliModelFormat.IndependentV1 ? 1024 : 4096);
+        if (modelFormat == CliModelFormat.IndependentV1 ? effectiveMaxTokens is < 2 or > 1024 : effectiveMaxTokens is < 1 or > 4096)
+            throw new DecisionException("cli_option_invalid", modelFormat == CliModelFormat.IndependentV1
+                ? "independent-v1 --max-tokens must be between 2 and 1024."
+                : "legacy-laya --max-tokens must be between 1 and 4096.");
+
         return new CliOptions
         {
             ModelDirectory = model,
             InputPath = input,
+            ModelFormat = modelFormat,
+            HeadPath = head,
+            HeadBindingPath = binding,
             MinimumConcentration = concentration,
+            MinimumConcentrationSpecified = concentrationSpecified,
             DeadlineSeconds = deadlineSeconds,
-            MaxTokens = maxTokens,
+            MaxTokens = effectiveMaxTokens,
+            CommandTimeoutSeconds = commandTimeoutSeconds,
+            InputTimeoutSeconds = inputTimeoutSeconds,
         };
     }
 
     private static string Next(ReadOnlySpan<string> args, ref int index, string option)
     {
-        if (++index >= args.Length || string.IsNullOrWhiteSpace(args[index]))
+        if (++index >= args.Length || string.IsNullOrWhiteSpace(args[index]) || args[index].StartsWith("--", StringComparison.Ordinal))
         {
             throw new DecisionException("cli_option_value_missing", $"Option '{option}' requires a value.");
         }
@@ -434,6 +545,11 @@ internal static class ModelInspector
     GenerationMode = JsonSourceGenerationMode.Metadata)]
 [JsonSerializable(typeof(CliError))]
 [JsonSerializable(typeof(ModelInspectReport))]
+[JsonSerializable(typeof(IndependentInspectReport))]
+[JsonSerializable(typeof(IndependentHeadBinding))]
+[JsonSerializable(typeof(TrainingHeadBindingReport))]
+[JsonSerializable(typeof(MarkerFeatureIdentity))]
+[JsonSerializable(typeof(IndependentDecisionResponse))]
 internal partial class CliJsonContext : JsonSerializerContext
 {
 }

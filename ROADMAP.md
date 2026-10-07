@@ -31,6 +31,8 @@
 
 首批 S4-07/S4-12 checkpoint/恢复/导出工程子任务已验收：保存三项产物并绑定完整 v2 身份，2→4 与连续 4 步 fixture 的权重及文件字节一致；开发评估拒绝 v2 身份宽度丢失。最终核心 173 项检查、CLI 41 项互操作检查及零警告/错误构建通过。整项仍需真实获准数据与实验；验证范围见 [监督证据](docs/evidence/supervision-2026-10-07.md)。
 
+首批 S4-15/S6-02 的显式独立 CLI 工程子任务已验收：managed 41 项和 Windows Native AOT tiny fixture 42 项通过，产品 CLI 原生发布及 help 通过；完整训练报告可直接绑定 head。未恢复真实独立权重、不改变默认路径，不关闭 S4-08 的真实质量、CUDA、两 RID AOT 或正式发布门槛。
+
 ### 已选定方向
 
 1. **独立模型来源。** 直接从经审核的原始 encoder 取得底座参数，优先评估 `jhu-clsp/mmBERT-base` 或同类可支持的编码器，独立记录 revision、配置、tensor/tokenizer hash 与许可；不能从 Laya 检查点抽取 encoder 后改称原始底座。本轮已完成固定 mmBERT 原始文件下载、hash、C# 受限 pickle 转换、134 tensor 形状检查和独立 loader smoke；上游逐层数值 oracle与许可发布审签仍未完成。自有决策头重新初始化和训练，不继承 Laya 训练后的 head/type/scorer 权重。
