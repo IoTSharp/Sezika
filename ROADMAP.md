@@ -45,6 +45,10 @@
 
 2026-10-08 S4-10 C#采集器工程任务已验收：严格decision-v1单题/候选映射、固定模型与条款证据绑定、字面loopback、32次无重试/1200秒总预算及原子输出已实现；取消保留全分母和原响应hash/usage的独立失败审计。最终重建零警告/错误及1→10内存合成检查通过，旧离线合同1→24回归通过。实际GGUF未下载/hash，默认服务一次连接失败，真实教师答案和训练准入仍pending；见[采集合同与执行证据](docs/teacher-collection-s4-10.md)。
 
+同日取得官方Qwen3.5-9B固定revision的Apache-2.0全文、量化资产身份与Tomur最小CPU构建/登记/启动合同，完成AI来源工程核查；量化base revision等价、人工训练/发布审签及实际模型使用另验。监督者已接续有界CPU native构建及单GGUF恢复，来源核查不等于实际教师推理。见[运行前证据](docs/evidence/teacher-runtime-readiness-2026-10-08.md)。
+
+下一接续工程任务已登记：S4-15独立数值capture工具先冻结原始46-token smoke请求，导出decision-v1请求/token IDs、CPU encoder逐层张量及完整来源/产物hash供离线上游oracle比较；复用现有Trace API，不复制或替换产品算子。工程fixture与真实资产捕获分别验收，尚无可信上游数值对齐或质量结论。
+
 ### 已选定方向
 
 1. **独立模型来源。** 直接从经审核的原始 encoder 取得底座参数，优先评估 `jhu-clsp/mmBERT-base` 或同类可支持的编码器，独立记录 revision、配置、tensor/tokenizer hash 与许可；不能从 Laya 检查点抽取 encoder 后改称原始底座。本轮已完成固定 mmBERT 原始文件下载、hash、C# 受限 pickle 转换、134 tensor 形状检查和独立 loader smoke；上游逐层数值 oracle与许可发布审签仍未完成。自有决策头重新初始化和训练，不继承 Laya 训练后的 head/type/scorer 权重。
