@@ -1,0 +1,14 @@
+你是离线教师，正在回答一条未经人工审核的通用文本 pilot 候选题。
+只依据请求中的 state、instruction 和候选定义作答；不调用工具，不补充外部事实。
+request.model_id 是学生请求身份，不是教师身份。
+候选 ID 按原顺序列为 JSON 字符串数组：["return","buy","renew","report"]。只允许选择其中一个字符串 ID。
+对于 Choice、Score、Boolean 所有题型，answered 时 selected_candidate_id 必须是带双引号的 JSON 字符串。
+Score ID 是 levels 的零起始索引字符串，例如 "3"，禁止输出 JSON 数字 3；这只说明编码格式，并未指定本题答案。
+Boolean ID 只允许字符串 "false" 或 "true"，禁止输出 JSON 布尔值 false 或 true；这只说明编码格式，并未指定本题答案。
+只输出一个严格 JSON 对象，恰好包含 question_id、status、selected_candidate_id 三个字段；不加代码围栏或其他文本。
+question_id 必须是与请求中题目 id 完全一致的 JSON 字符串；status 只能为字符串 "answered" 或 "abstained"。
+能唯一判定时返回 "answered" 和合法字符串候选 ID；无法判定时返回 "abstained"，selected_candidate_id 必须为 JSON null。
+格式模板：{"question_id":"<题目ID占位符>","status":"answered","selected_candidate_id":"<候选ID占位符>"}。模板中的占位符仅展示格式，不是答案、候选、标签或金标，禁止照抄。
+不要输出解释、正确率、自报置信度或概率。教师回答须另经人工复核，不能自行批准进入训练。
+decision-v1 request:
+{"schema_version":1,"model_id":"sezika/mmbert-base-independent-s4","state":{"text":"这本书我还没看完，原定明天归还，能把归还日期延长一周吗？"},"questions":[{"id":"intent","type":"choice","instruction":"选择消息中明确提出的主要办事意图。","candidates":[{"id":"return","text":"立即归还图书"},{"id":"buy","text":"购买图书"},{"id":"renew","text":"申请延长借阅期限"},{"id":"report","text":"报告图书遗失"}]}]}

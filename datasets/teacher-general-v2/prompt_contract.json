@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "contract_id": "teacher-decision-json-string-id-v2",
+  "version": 2,
+  "source_v1": {
+    "dataset_id": "teacher-general-v1-20261008",
+    "repository_path": "datasets/teacher-general-v1/manifest.json",
+    "sha256": "b2ab11e5cabf1967b87e5a06fa9d0e270a1aec0a6df8b8f55e3c670f767fa8fa",
+    "bytes": 12910,
+    "candidates_sha256": "0e9852639587417bfabf2ac04f43555cf82dbb03ba57e03b27febbafcd50b0d8"
+  },
+  "scope": "Prompt-only revision; request bytes, record_id, family_id, candidate ordering and audit split unchanged.",
+  "fields": [
+    "question_id",
+    "status",
+    "selected_candidate_id"
+  ],
+  "status_values": [
+    "answered",
+    "abstained"
+  ],
+  "answered_selected_candidate_id_json_type": "string",
+  "abstained_selected_candidate_id_json_type": "null",
+  "choice_candidate_id": "Original candidate ID, encoded as JSON string.",
+  "score_candidate_id": "Zero-based levels index, encoded as JSON string (e.g. \"3\", never JSON number 3).",
+  "boolean_candidate_ids": [
+    "false",
+    "true"
+  ],
+  "boolean_candidate_id_json_type": "string (\"false\" or \"true\", never JSON boolean false or true)",
+  "example_policy": "Placeholders describe format only; they are not an answer, candidate, label or gold.",
+  "origin": "AI drafted",
+  "purpose": "pilot",
+  "split": "audit",
+  "human_review": "pending",
+  "training_admission": "pending",
+  "teacher_called": false,
+  "teacher_responses_present": false,
+  "gold_labels_present": false,
+  "quality_evidence": false,
+  "validation_status": "prompt_preparation_only_real_teacher_not_called"
+}

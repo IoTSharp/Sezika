@@ -59,6 +59,8 @@ GPU CLI 接线按[复核设计](docs/evidence/gpu-training-cli-design-2026-10-08
 
 切片A工程已验收：schema3内嵌完整v2训练报告并严格绑定执行声明，正式输入读取器核验真实字节/hash、人工及许可准入、source/family/split与全分母；1→64项纯CPU合同检查、190项既有核心回归通过，构建零警告/错误。没有GPU执行、真实数据训练或人工批准；见[合同证据](docs/evidence/gpu-training-contract-2026-10-08.md)。B/C继续实施。
 
+教师提示v2准备任务已验收：32条原请求逐字节、题序/family/候选映射保持，提示明确所有answered候选ID为JSON字符串；1→32生成与独立源67项/新69项绑定复验通过。仅准备新的audit/pilot包，真实v2 GPU调用另验；旧响应与失败保留，严格parser不放宽，见[提示证据](docs/evidence/teacher-prompt-v2-2026-10-08.md)。
+
 ### 已选定方向
 
 1. **独立模型来源。** 直接从经审核的原始 encoder 取得底座参数，优先评估 `jhu-clsp/mmBERT-base` 或同类可支持的编码器，独立记录 revision、配置、tensor/tokenizer hash 与许可；不能从 Laya 检查点抽取 encoder 后改称原始底座。本轮已完成固定 mmBERT 原始文件下载、hash、C# 受限 pickle 转换、134 tensor 形状检查和独立 loader smoke；上游逐层数值 oracle与许可发布审签仍未完成。自有决策头重新初始化和训练，不继承 Laya 训练后的 head/type/scorer 权重。

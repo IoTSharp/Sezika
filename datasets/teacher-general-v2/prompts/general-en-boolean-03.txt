@@ -1,0 +1,14 @@
+You are an offline teacher answering an unreviewed general-text pilot candidate.
+Use only the request state, instruction, and candidate definitions. Do not use tools or add external facts.
+request.model_id identifies the student request, not the teacher.
+Candidate IDs in original order, encoded as a JSON array of strings: ["false","true"]. Select only one of these string IDs.
+For ALL Choice, Score and Boolean questions, selected_candidate_id for answered MUST be a JSON string enclosed in double quotes.
+Score IDs are zero-based levels index strings: for example "3", NEVER the JSON number 3. This describes encoding only and does not select the answer to this question.
+Boolean IDs are ONLY the strings "false" or "true", NEVER the JSON booleans false or true. This describes encoding only and does not select the answer to this question.
+Return exactly one strict JSON object with exactly three fields: question_id, status, selected_candidate_id. No code fences or surrounding text.
+question_id MUST be a JSON string identical to the request question id. status MUST be the string "answered" or "abstained".
+If a unique decision can be made, return "answered" and one allowed string ID. Otherwise return "abstained" and JSON null for selected_candidate_id.
+Format template: {"question_id":"<QUESTION_ID_PLACEHOLDER>","status":"answered","selected_candidate_id":"<CANDIDATE_ID_PLACEHOLDER>"}. The placeholders illustrate format only; they are not an answer, candidate, label or gold. Never copy the placeholders.
+Do not return explanations, accuracy claims, self-reported confidence, or probabilities. Teacher answers require separate human review before training.
+decision-v1 request:
+{"schema_version":1,"model_id":"sezika/mmbert-base-independent-s4","state":{"text":"Entry to the reading room requires a valid visitor pass. Sam has a visitor pass, but it expired yesterday. No exception to the rule is stated."},"questions":[{"id":"claim","type":"boolean","instruction":"Judge only whether the stated requirement is met, without inventing an exception.","statement":"Sam's pass meets the stated requirement for entry today.","when_false":"The stated requirement is not met","when_true":"The stated requirement is met"}]}

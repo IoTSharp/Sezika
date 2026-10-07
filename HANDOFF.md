@@ -18,6 +18,8 @@
 
 当前接续状态：
 
+- 教师提示v2准备已验收：datasets/teacher-general-v2共73文件，原32 requests字节/family/映射不变；源67项/新69项绑定复验通过，3 runner exit0/cleanup空且6执行/launcher PID不存在。manifest=c028901b…daa9；只改提示字符串ID合同，仍AI/audit/pending，无v2响应。子智能体正在12分钟独立准备Score/Boolean各1题及32题GPU输入快照，不启动GPU，与B实卡验证串行。
+
 - 设计已提交 `af3d96a`；切片A静态schema3报告与正式准入合同已验收并随本次单独提交：1→64合同/190核心回归、零警告/错误构建；22任务身份均退出、fixture临时回收，无GPU或真实数据。`/root/head_checkpoint` 接续B身份/workflow后再接C命令入口；pending教师/AI题不改成人工批准。
 
 - S4-07 GPU marker head工程已验收并单独提交：纯C# CE/gradient/SGD与17项静态PTX/ABI；CPU中央差分27、GPU21→61和root旧CUDA59/独立pipeline16项通过。旧14 PTX hash/ABI不变，作者18项任务PID全退出/cleanup0。下一步正式CLI使用GPU encoder+trainer，report/resume绑定backend、精度、kernel/device；当前train-original仍CPU，不用于用户要求的正式训练。真实数据/质量/训练AOT未验。

@@ -1,0 +1,1 @@
+{"schema_version":1,"model_id":"sezika/mmbert-base-independent-s4","state":{"text":"桌上原有12个纸盒，工作人员拿走5个，之后没有再放上或拿走纸盒。"},"questions":[{"id":"claim","type":"boolean","instruction":"依据文本中的数量变化判断陈述，不假设未提及的变化。","statement":"桌上现在还剩8个纸盒。","when_false":"陈述与数量变化不符","when_true":"陈述与数量变化相符"}]}

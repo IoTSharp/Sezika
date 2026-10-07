@@ -1,0 +1,1 @@
+{"schema_version":1,"model_id":"sezika/mmbert-base-independent-s4","state":{"text":"公告写明：系统升级已经完成，今晚不会安排第二次停机；用户现在可以正常登录。"},"questions":[{"id":"claim","type":"boolean","instruction":"只判断陈述是否受到公告明确支持，不把历史停机当作未来安排。","statement":"公告说今晚不会再安排停机。","when_false":"公告不支持该陈述","when_true":"公告支持该陈述"}]}
