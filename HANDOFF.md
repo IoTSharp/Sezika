@@ -4,7 +4,7 @@
 
 ## 授权与接续
 
-用户授权监督者创建子智能体推进 ROADMAP 所有待完成任务，每个独立任务验收后单独提交，每30分钟检查并接续已完成子任务。同一聊天 heartbeat `sezika` 已启用，周期30分钟，未完成总路线前保持启用。ROADMAP是唯一计划；本文件记录交接。没有push、对外发布或部署授权。
+用户授权监督者创建子智能体推进 ROADMAP 所有待完成任务，每个独立任务验收后单独提交，每30分钟检查并接续已完成子任务。同一聊天 heartbeat `sezika` 已启用，周期30分钟，未完成总路线前保持启用。ROADMAP是唯一计划；本文件记录交接。仅 Tomur 已获拉取、提交和推送授权；Sezika 不推送，不对外发布或部署。正式训练、批量教师采集和批量特征计算必须 GPU；CPU 限小规模参考与诊断。
 
 ## 本批任务闭环
 
@@ -18,15 +18,17 @@
 
 当前接续状态：
 
+- 当前 HEAD 为 `6d36c70`。GPU CLI 的三文件 schema3/准入/恢复设计已只读复核，接续子智能体 `/root/head_checkpoint` 的切片A：静态报告与正式准入合同，不接真实训练数据，不把 pending 教师/AI题改成人工批准。后续按身份/workflow、CLI接线分别验收提交。
+
 - S4-07 GPU marker head工程已验收并单独提交：纯C# CE/gradient/SGD与17项静态PTX/ABI；CPU中央差分27、GPU21→61和root旧CUDA59/独立pipeline16项通过。旧14 PTX hash/ABI不变，作者18项任务PID全退出/cleanup0。下一步正式CLI使用GPU encoder+trainer，report/resume绑定backend、精度、kernel/device；当前train-original仍CPU，不用于用户要求的正式训练。真实数据/质量/训练AOT未验。
 
 - TeacherTool API model key修复已验收并单独提交：candidate Id/API Model分别记录，旧alias前置拒绝；build13988零警告/错误、synthetic1→10与CLI正反通过。新DLL SHA `CCF65714E4D3E3EE853FBE806ECE3D2E44F12E4C18EC6BC442428D285B7D3557`。32题之前需使用新GPU input快照，不覆盖旧首题失败。
 - Tomur `32675f8` ABI修复已提交并推送，远端/本地main一致；`1aa3fa7`整数辅助修复一并推送。Windows x64 6结构80行oracle通过，完整host构建PID104664成功（1既有warning）。ABI独占临时删除被自动审核拒绝，准确保留路径见 `.artifacts/llama-abi-20261008-head-checkpoint/cleanup-result.json`，无存活任务进程。
-- RTX4070 Laptop/8GiB、CUDA13.2.51、VS18匹配；新CUDA配置PID101656通过，文本target build PID66196/session98415正在最多1800秒、parallel2预算内。只用新build配套DLL；GPU layers用999（-1会归零），2048ctx；fit与真实推理尚未验收。监督heartbeat已保存用户GPU要求与仅Tomur的push授权。
+- RTX4070 Laptop/8GiB、CUDA13.2.51、VS18匹配；新CUDA配置PID101656通过。首个文本target build PID66196/session98415已在1800秒超时，902个记录身份后核均退出；原cleanup三项错误保留于result，后核见 `teacher-runtime/cuda-timeout-followup-cleanup.json`，不能抹去原失败。当前只接续一次同cache build PID86640/session5564，900秒、parallel2；两次总计算预算2700秒。没有验收GPU DLL或教师推理。只用同build配套DLL，GPU layers用999（-1会归零），2048ctx。资源monitor真实1样本自检尚未通过，先修复短进程/父链兼容；未启动教师服务。
 
 - 独立数值capture工程任务已验收并单独提交：OS resident采样过频触发tiny3秒deadline后修复，1→8项自检通过；真实46tokens/267张量、51,720,192字节payload全部hash复核通过。原失败与partial保留，Move后取消/持续合成peak恢复已验。上游oracle继续开放。正式训练/批量任务必须GPU，CPU仅小核验。
 - 教师首题真实调用失败：collector PID24100 exit3/http_transport_error，Tomur PID8488 native崩溃0xC0000409，全分母及原始日志保留，未有答案。固定llama.h与C#结构ABI漂移已修复，6结构/80大小偏移oracle通过；Tomur固定ABI完整主程序重建PID104664成功（1个既有CS8600）。CUDA后端正在准备，32题未运行。
-- 用户授权Tomur核最新/拉取/提交推送；2026-10-08已fetch origin，远端main仍5cd90dd，本地1aa3fa7包含最新远端。ABI修复验证后单独提交并推送Tomur；Sezika仍未获push/发布授权。
+- 用户授权Tomur核最新/拉取/提交推送；2026-10-08已fetch/ff-only核查，最新本地和origin/main均为 `b07ae41450a5832e790eaac1bcdad61531a6a0e0`。整数helper、固定llama ABI和9B字节大小修复分别提交并推送。最新完整host PID54056成功，2项既有nullable warnings保留；用户未跟踪 `docs/articles/` 保留。Sezika不push。
 
 - 原始资产恢复已验收并随本次单独提交：固定4源文件与134 tensor转换身份通过，真实CPU smoke为46 tokens/35,328个有限hidden，执行305.15秒≤400秒；实际peak未测。MIT全文事实纠正及失败日志保留，最终无登记存活PID/partial/cleanup错误。见 `docs/evidence/independent-assets-restore-2026-10-08.md`。
 - `/root/independent_cli`：单GGUF恢复已完成并随本次提交，实际5,680,522,464字节/hash `03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8`匹配后原子发布到 `.artifacts/teacher-tomur-data/models/text/qwen3.5-9b-q4-k-m/Qwen3.5-9B-Q4_K_M.gguf`；含准备668.64秒，最终5份runner无登记存活PID/partial/cleanup错误。直连Cancelled误标保留并纠正、小状态回归通过，不重下大文件；当前已释放该子任务资源。
