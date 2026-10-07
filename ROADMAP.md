@@ -67,7 +67,9 @@ Linux诊断切片已通过：基线b837be7、冻结六源码，唯一明确local
 
 S4-07 GPU训练最小工程已闭环：冻结encoder的三行marker head以纯C# kernel在GPU完成CE、梯度与SGD，构建期17项静态PTX/ABI导出、CPU参考27项/GPU21→61项及59项既有CUDA回归通过，见[证据](docs/evidence/gpu-training-design-2026-10-08.md)。下一切片接正式GPU encoder特征计算/训练CLI及backend/kernel/device恢复和报告身份，禁止CPU fallback；`train-original`现有CPU路径不作为正式训练使用。encoder反传、正式数据/质量、训练AOT另验。
 
-接续S4-07/S4-12训练器异常清理加固及独立训练AOT验收。只读核查发现trainer清理虽限39个buffers却无独立墙钟，binding/managed异常可跳过后续owner和initial清零；packed的复制/Allocate也在清零finally之外。按真实Driver语义处理false release、SafeHandle关闭与caller context兜底，不把Dispose未抛异常当释放成功。计划在当前Linux依赖冻结窗口后独占修复：共享最多5秒/40顶层owner及17module、主训练异常保留、临时副本finally清零、纯managed残留摘要、不取得caller device所有权；以有界真实分配、sentinel/取消及明确注入故障验证。随后单独验证Native AOT中的GPU CE/梯度/SGD与schema3恢复，不能用encoder前向AOT代替。此项尚未实现或验收，正式数据/质量门槛不变。
+S4-07/S4-12训练器异常清理工程已验收：共用独立5秒/39 buffers+1 kernels owner/17 modules预算，主训练对象与原始抛出帧保留，initial/packed副本finally清零，以纯managed摘要核caller基线/残留。最后一次native返回也检查超期；false release及SafeHandle关闭与context销毁分开记录。最终第三build零警告/错误、CPU1→3/GPU1→8清理case及唯一既有21项训练smoke通过，9个最终case的caller context实际回收，见[清理证据](docs/evidence/trainer-cleanup-2026-10-08.md)。本批无正式数据训练或AOTpublish，正式数据/质量门槛不变。
+
+独立审查同时发现CudaDevice.Allocate/LoadModule成功native后包装/集合登记OOM可能造成managed摘要不可见的native残留。先登记独立分配归属加固工程：native前准备wrapper/容量/计数，成功后无分配adopt，失败保留原异常及真实release语义；有界实卡验证。Open/context与profiling event同类路径另核，不能只修两处就称全设备生命周期完成。随后单独验证Native AOT中的GPU CE/梯度/SGD、三题型schema3恢复及异常清理，不能用encoder前向AOT代替；新代码两RID另验。
 
 GPU CLI 接线按[复核设计](docs/evidence/gpu-training-cli-design-2026-10-08.md)分三项：A 为严格 schema3 报告与真实人工准入合同；B 为静态 kernel/设备 UUID 身份及三文件 GPU workflow 发布恢复；C 为显式 `train-original-gpu`、完整 GPU encoder 特征导出与评价报告适配。每项单独工程验收提交，CPU v2 合同保持兼容；fixture 不进入正式恢复或评价，不制造人审声明。实际正式数据训练、质量及训练 AOT 继续另验。
 

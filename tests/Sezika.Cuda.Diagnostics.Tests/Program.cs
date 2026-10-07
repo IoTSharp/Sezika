@@ -4,7 +4,7 @@ using Sezika.Cuda;
 // Fixed-size fixtures only (at most 65 vector elements and one tiny encoder layer).
 // CUDA Driver calls cannot be interrupted in-flight; the caller should also enforce a process timeout.
 using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(
-    args.Length == 1 && args[0] is "--independent-workflow-tiny" or "--independent-workflow" or "--independent-export-tiny" or "--independent-export" ? 90 : 30));
+    args.Length == 1 && args[0] is "--independent-workflow-tiny" or "--independent-workflow" or "--independent-export-tiny" or "--independent-export" or "--independent-cleanup" ? 90 : 30));
 ConsoleCancelEventHandler cancelHandler = (_, args) => { args.Cancel = true; deadline.Cancel(); };
 Console.CancelKeyPress += cancelHandler;
 var passed = 0;
@@ -42,6 +42,18 @@ static bool ValidTime(double milliseconds) => double.IsFinite(milliseconds) && m
 
 try
 {
+    if (args.Length == 1 && args[0] is "--independent-cleanup-cpu-tiny" or "--independent-cleanup-cpu")
+    {
+        global::Sezika.Cuda.Diagnostics.Tests.IndependentCudaCleanupChecks.RunCpu(Check, deadline.Token,
+            tiny: args[0].EndsWith("-tiny", StringComparison.Ordinal));
+        return 0;
+    }
+    if (args.Length == 1 && args[0] is "--independent-cleanup-tiny" or "--independent-cleanup")
+    {
+        global::Sezika.Cuda.Diagnostics.Tests.IndependentCudaCleanupChecks.RunGpu(Check, deadline.Token,
+            tiny: args[0].EndsWith("-tiny", StringComparison.Ordinal));
+        return 0;
+    }
     if (args.Length == 1 && args[0] is "--original-gpu-cli-contract-tiny" or "--original-gpu-cli-contract")
     {
         global::Sezika.Cuda.Diagnostics.Tests.OriginalCudaCommandChecks.Run(Check, deadline.Token, tiny: args[0].EndsWith("-tiny", StringComparison.Ordinal));

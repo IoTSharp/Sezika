@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- 加固GPU head训练器异常清理：initial/packed自建副本始终清零，buffer和kernel/module共用独立5秒预算并保留主异常原始栈、caller基线及真实false-release残留语义。最终零警告/错误、CPU1→3/GPUtiny1/full8及既有21项训练smoke通过，真实context回收已核；正式数据/质量、训练AOT及post-native包装登记OOM仍另验，见[证据](docs/evidence/trainer-cleanup-2026-10-08.md)。
 - 完成独立诊断样例的Ubuntu WSL2 linux-x64 Native AOT：唯一离线cache发布、native1→8合同、probe与真实46-token CUDAcase通过，311launch/552-byte D2H、预取消零launch、释放归零；执行边界补实际Linux身份及退出竞态修复，旧失败保留。与Windows共同覆盖固定真实encoder+未训练内存head的两发布物，正式trained-head、训练AOT、质量/parity/性能仍开放，见[Linux证据](docs/evidence/independent-aot-linux-2026-10-08.md)。
 - 新增独立模型诊断样例并接入solution：固定真实mmBERT encoder与未训练内存head在Windows Native AOT完成唯一46-token CUDA类型化推理，311次kernel/552-byte D2H、预取消零launch、释放后资源归零。最终零警告/错误、managed/native各1→8自检、probe及六文件冻结通过；首次构建失败保留，12份runner/45身份终审无匹配存活。正式训练、质量、上游parity、Linux及性能另验，见[证据](docs/evidence/independent-aot-smoke-2026-10-08.md)。
 - 新增开发期离线原始mmBERT上游oracle导出工具，固定原权重与实现输入、25hook及marker，首次backend import前绑定源码lease/hash并隔离旧bytecode；Windows无覆盖发布和Move后取消回滚通过。标准库tiny1/full16及终审修复后1→16通过、资源已回收；未安装NumPy或执行真实上游forward，见[证据](docs/evidence/independent-oracle-tool-2026-10-08.md)。

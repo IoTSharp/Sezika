@@ -10,7 +10,7 @@ internal sealed class CudaKernels : IDisposable
     private readonly IntPtr _markerCrossEntropy, _markerGradientSgd, _markerUpdateStatus;
     private bool _disposed;
 
-    internal CudaKernels(CudaDevice device, CancellationToken cancellationToken = default)
+    internal CudaKernels(CudaDevice device, CancellationToken cancellationToken = default, TrainingCleanup? recovery = null)
     {
         using var deadline = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
         deadline.CancelAfter(TimeSpan.FromMinutes(10));
@@ -29,20 +29,29 @@ internal sealed class CudaKernels : IDisposable
         };
         _modules = new CudaModuleHandle[images.Length];
         var functions = new IntPtr[images.Length];
+        var ownsRecovery = recovery is null;
+        recovery ??= new TrainingCleanup(device);
         try
         {
             for (var i = 0; i < images.Length; i++)
             {
                 deadline.Token.ThrowIfCancellationRequested();
                 _modules[i] = device.LoadModule(images[i].Image);
+                device.TrainingFaults?.Reach(TrainingFaultPoint.ModuleLoaded);
                 functions[i] = device.GetFunction(_modules[i], images[i].Entry);
             }
             deadline.Token.ThrowIfCancellationRequested();
         }
         catch
         {
-            foreach (var module in _modules)
-                module?.Dispose();
+            // The trainer supplies the same recovery clock used by its outer finally.
+            // Never replace the constructor's original exception with a cleanup failure.
+            try
+            {
+                recovery.PartialKernels(_modules);
+                if (ownsRecovery) recovery.Publish();
+            }
+            catch (Exception cleanupError) { recovery.Record(cleanupError); }
             throw;
         }
         (_vectorAdd, _linear, _embedding, _norm, _splitQkv, _rope, _attentionScores, _softmax, _attentionContext, _add, _activate, _gatedGelu, _rowBias, _typeEmbeddingAdd) =
@@ -120,8 +129,21 @@ internal sealed class CudaKernels : IDisposable
     public void Dispose()
     {
         if (_disposed) return;
+        // The generic owner releases its own resident modules; it does not restore its pre-dispose module count.
+        var recovery = new TrainingCleanup(_device, restoreCallerBaseline: false);
+        recovery.Kernels(this);
+        recovery.Publish();
+        if (recovery.Result.FirstException is { } error)
+            System.Runtime.ExceptionServices.ExceptionDispatchInfo.Capture(error).Throw();
+        if (recovery.Result.Incomplete)
+            throw new Sezika.DecisionException("cuda_kernel_cleanup_incomplete", "Kernel cleanup exceeded its recovery budget or recorded a release failure; the caller still owns the device.");
+    }
+
+    internal void Dispose(TrainingCleanup recovery)
+    {
+        if (_disposed) return;
         _disposed = true;
-        foreach (var module in _modules) module.Dispose();
+        recovery.Modules(_modules);
     }
 
     private readonly struct KernelArg

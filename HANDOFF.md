@@ -23,7 +23,8 @@
 | 独立数值比较器 | `f469b27` | 25层级tensor+marker的冻结合同，零警告/错误构建，tiny1/full16共19变体；26项完整分母、fixture/自比/源码及路径门禁；没有真实参考数值 |
 | 独立上游oracle工具 | `01d23f3` | 原权重/源码lease、首次import前hash及bytecode隔离、25hook+marker、Windows原子发布/实际Move后取消回滚，最终tiny1/full16通过；没有真实forward |
 | Windows独立诊断AOT样例 | `b837be7` | 真实固定encoder+未训练内存head，managed/native各1→8、唯一publish/probe/46-token CUDAcase；311launch、552-byte D2H、预取消零launch、释放归零，12份结果/45身份终审通过 |
-| Linux独立诊断AOT | 随本文件单独提交 | Ubuntu10.0.112/cache唯一发布、native1→8/fstat、probe/唯一46-token CUDA；311launch/552-byte D2H、预取消零launch、资源归零；正式trained-head/训练AOT/质量另验 |
+| Linux独立诊断AOT | `86099ee` | Ubuntu10.0.112/cache唯一发布、native1→8/fstat、probe/唯一46-token CUDA；311launch/552-byte D2H、预取消零launch、资源归零；正式trained-head/训练AOT/质量另验 |
+| GPU训练器异常清理 | 随本任务单独提交 | 最终build零警告/错误、CPU1→3/GPUtiny1/full8与既有21项训练smoke通过；独立5秒/40owner/17module、主异常原帧、副本清零/caller基线/false release与context回收分别核验 |
 
 固定真实 mmBERT 的 C 切片 encoder smoke 已通过：PID75592、48 tokens、markers27/37、hidden768、310 kernel launches；runner17.299秒，资源归零。marker SHA-256 `59194DCFF642F4790DBF55F58D38EFBAB200C0528BEE25894DE38D71296B1CCD`。该 smoke 没有训练 head；GPU head 的梯度/更新与恢复工程另有 fixture 实卡证据，没有正式数据训练结论。
 
@@ -44,6 +45,10 @@ v2 固定教师为 `unsloth/Qwen3.5-9B-GGUF@3885219b6810b007914f3a7950a8d1b469d5
 Tomur在UTC20:17已fetch/ff-only，当前HEAD及origin/main均为 `b07ae41450a5832e790eaac1bcdad61531a6a0e0`，ahead/behind=0/0；整数helper、固定llama ABI和9B字节大小修复已提交推送。本轮教师复用host仍为`32675f8`构建，不能称最新源码构建。只剩用户`docs/articles/`未跟踪，无必要修改待推送。
 
 ## 当前接续任务
+
+UTC22:36本轮接续：Linux独立诊断AOT已单独提交`86099ee`，原Git PID83504/3.832秒/Succeeded/cleanup空，stage PID82112与commit PID已核退出。训练器清理七源码已UTC22:40:07冻结，最终第三build PID93232/12.137秒/零警告错误，CPUtiny1/full3、GPUtiny1/full8及唯一既有21项smoke全部通过。原数量为最多3build、CPU≤10/GPU清理≤10；累计CPU8/GPU10，未重跑整套/教师/正式训练/AOT。GPU已UTC22:43:01释放；root UTC22:43:32精确核11结果/41身份全部无匹配存活，7源码freeze与实际DLL hash一致，见[清理工程证据](docs/evidence/trainer-cleanup-2026-10-08.md)。root自己的tiny/full审计PID77476/64988亦已退出。
+
+`/root/head_checkpoint`完成清理静态审查并发现原始栈断言缺口，作者已修入最终build/实卡；该审查保存返回晚原期限25秒，原事实保留，不能称按期完成。现另开UTC22:43:00–22:48:00/4明确文件/1artifact只读设计窗口，针对native成功后wrapper/登记OOM缺口，不build/GPU/改源。`/root/teacher_prompt_v2`清理实现已停止新增负载与改源，只在原22:52:50截止前做最终资源/证据收口。下一独立任务先分配归属加固，再冻结新代码做GPU训练Native AOT（H4/三题型、3→6恢复与连续6、CE/gradient/SGD、runtime flags/binary/UUID/PTX/hash及真实资源）；Open/context/event同类路径另核，不能把managed counters完备性当既已保证。Git、shared docs仍root独占，Sezika不push，heartbeat继续。
 
 UTC20:47 heartbeat接续S4-15单case原始权重上游oracle。先在ROADMAP登记25个层级张量+marker的26项合同，输入/容差在参考测量前冻结；现有267项C#捕获不重跑。root独占合同、solution/shared docs和Git。
 

@@ -14,42 +14,48 @@ public static class IndependentCudaMarkerHeadTrainer
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(device);
-        ArgumentNullException.ThrowIfNull(options);
-        if (options.MaxSteps is < 1 or > 10_000 || !float.IsFinite(options.LearningRate) ||
-            options.LearningRate <= 0 || options.LearningRate > 1 ||
-            options.MaxDuration <= TimeSpan.Zero || options.MaxDuration > TimeSpan.FromMinutes(10))
-            throw new DecisionException("training_budget_invalid", "Step, learning rate or wall-clock budget is invalid.");
-        using var deadline = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
-        deadline.CancelAfter(options.MaxDuration);
-        var clock = Stopwatch.StartNew();
-        void Check()
-        {
-            deadline.Token.ThrowIfCancellationRequested();
-            if (clock.Elapsed >= options.MaxDuration)
-                throw new DecisionException("training_deadline_exceeded", "GPU training wall-clock budget expired.");
-        }
-        Check();
-        var prepared = IndependentMarkerHeadTrainer.Prepare(set, Check);
-        if (resume is not null && (!IndependentMarkerHeadTrainer.IdentityMatches(resume.Identity, prepared.Identity) ||
-            !resume.FeatureSha256.Equals(prepared.Sha256, StringComparison.OrdinalIgnoreCase) ||
-            resume.Seed != options.Seed || resume.LearningRate != options.LearningRate ||
-            resume.CompletedSteps < 0 || resume.CompletedSteps > options.MaxSteps ||
-            !double.IsFinite(resume.LastLoss) || resume.LastLoss < 0 ||
-            resume.Weights.Length != checked(3 * prepared.Identity.HiddenSize) ||
-            Array.Exists(resume.Weights, value => !float.IsFinite(value))))
-            throw new DecisionException("training_resume_mismatch", "Checkpoint differs from features or GPU training configuration.");
-        var initial = resume?.Head.CopyWeights() ?? new float[checked(3 * prepared.Identity.HiddenSize)];
-        var completed = resume?.CompletedSteps ?? 0;
-        var lastLoss = resume?.LastLoss ?? 0d;
-        var order = IndependentMarkerHeadTrainer.MakeOrder(prepared.Examples.Length, options.Seed);
-        // <=32 feature buffers plus seven fixed working buffers; all are task-owned.
-        var owned = new List<CudaDeviceBuffer>(39);
+        TrainingCleanup? recovery = null;
+        List<CudaDeviceBuffer>? owned = null;
         CudaKernels? kernels = null;
+        float[]? initial = null;
+        Exception? primary = null;
         try
         {
+            recovery = new TrainingCleanup(device);
+            ArgumentNullException.ThrowIfNull(options);
+            if (options.MaxSteps is < 1 or > 10_000 || !float.IsFinite(options.LearningRate) ||
+                options.LearningRate <= 0 || options.LearningRate > 1 ||
+                options.MaxDuration <= TimeSpan.Zero || options.MaxDuration > TimeSpan.FromMinutes(10))
+                throw new DecisionException("training_budget_invalid", "Step, learning rate or wall-clock budget is invalid.");
+            using var deadline = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+            deadline.CancelAfter(options.MaxDuration);
+            var clock = Stopwatch.StartNew();
+            void Check()
+            {
+                deadline.Token.ThrowIfCancellationRequested();
+                if (clock.Elapsed >= options.MaxDuration)
+                    throw new DecisionException("training_deadline_exceeded", "GPU training wall-clock budget expired.");
+            }
+            Check();
+            var prepared = IndependentMarkerHeadTrainer.Prepare(set, Check);
+            if (resume is not null && (!IndependentMarkerHeadTrainer.IdentityMatches(resume.Identity, prepared.Identity) ||
+                !resume.FeatureSha256.Equals(prepared.Sha256, StringComparison.OrdinalIgnoreCase) ||
+                resume.Seed != options.Seed || resume.LearningRate != options.LearningRate ||
+                resume.CompletedSteps < 0 || resume.CompletedSteps > options.MaxSteps ||
+                !double.IsFinite(resume.LastLoss) || resume.LastLoss < 0 ||
+                resume.Weights.Length != checked(3 * prepared.Identity.HiddenSize) ||
+                Array.Exists(resume.Weights, value => !float.IsFinite(value))))
+                throw new DecisionException("training_resume_mismatch", "Checkpoint differs from features or GPU training configuration.");
+            initial = resume?.Head.CopyWeights() ?? new float[checked(3 * prepared.Identity.HiddenSize)];
+            device.TrainingFaults?.Reach(TrainingFaultPoint.InitialCreated, initial);
+            var completed = resume?.CompletedSteps ?? 0;
+            var lastLoss = resume?.LastLoss ?? 0d;
+            var order = IndependentMarkerHeadTrainer.MakeOrder(prepared.Examples.Length, options.Seed);
+            // <=32 feature buffers plus seven fixed working buffers; all are task-owned.
+            owned = new List<CudaDeviceBuffer>(39);
             device.ThrowIfDisposed();
             Check();
-            kernels = new CudaKernels(device, deadline.Token);
+            kernels = new CudaKernels(device, deadline.Token, recovery);
             CudaDeviceBuffer Allocate(int floats)
             {
                 Check();
@@ -64,13 +70,17 @@ public static class IndependentCudaMarkerHeadTrainer
                 Check();
                 var example = prepared.Examples[item];
                 var packed = new float[checked(example.Features.Length * prepared.Identity.HiddenSize)];
-                for (var candidate = 0; candidate < example.Features.Length && candidate < 32; candidate++)
+                try
                 {
-                    Check();
-                    example.Features[candidate].CopyTo(packed, checked(candidate * prepared.Identity.HiddenSize));
+                    for (var candidate = 0; candidate < example.Features.Length && candidate < 32; candidate++)
+                    {
+                        Check();
+                        example.Features[candidate].CopyTo(packed, checked(candidate * prepared.Identity.HiddenSize));
+                    }
+                    device.TrainingFaults?.Reach(TrainingFaultPoint.PackedBeforeAllocate, packed);
+                    features[item] = Allocate(packed.Length);
+                    device.CopyToDevice(features[item], packed);
                 }
-                features[item] = Allocate(packed.Length);
-                try { device.CopyToDevice(features[item], packed); }
                 finally { Array.Clear(packed); }
             }
             var current = Allocate(initial.Length);
@@ -117,12 +127,28 @@ public static class IndependentCudaMarkerHeadTrainer
             return new MarkerTrainingState(prepared.Identity, prepared.Sha256, options.Seed,
                 options.LearningRate, completed, lastLoss, weights);
         }
+        catch (Exception error) { primary = error; throw; }
         finally
         {
             // Driver calls cannot be interrupted in-flight: an outer bounded runner remains mandatory.
-            for (var item = owned.Count - 1; item >= 0 && item < 39; item--) owned[item].Dispose();
-            kernels?.Dispose();
-            Array.Clear(initial);
+            try
+            {
+                if (recovery is not null)
+                {
+                    try { recovery.Buffers(owned); }
+                    catch (Exception error) { recovery.Record(error); }
+                    try { recovery.Kernels(kernels); }
+                    catch (Exception error) { recovery.Record(error); }
+                    recovery.Publish();
+                }
+            }
+            finally
+            {
+                if (initial is not null) Array.Clear(initial);
+                device.ResetTrainingFaults();
+            }
+            if (primary is null && recovery?.Result.Incomplete == true)
+                throw new DecisionException("training_cleanup_incomplete", "Training cleanup retained resources, exceeded its recovery budget or recorded a release failure; the caller still owns the device.");
         }
     }
 }

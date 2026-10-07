@@ -32,6 +32,20 @@ public sealed class CudaDevice : IDisposable
 
     public CudaDeviceInfo Info { get; }
 
+    // Pure managed ownership evidence remains readable after native context destruction.
+    internal CudaOwnedResources OwnedResources => new(_ownedBytes, _buffers.Count, _modules.Count, _releaseFailureCount);
+    internal bool ContextDestroySucceeded => _context.IsClosed && _context.ReleaseResult == CudaNative.Success;
+    internal TrainingCleanupResult? LastTrainingCleanup { get; set; }
+    internal TrainingCleanupFaults? TrainingFaults { get; private set; }
+    internal void InstallTrainingFaults(TrainingCleanupFaults faults)
+    {
+        ThrowIfDisposed();
+        ArgumentNullException.ThrowIfNull(faults);
+        if (TrainingFaults is not null) throw new InvalidOperationException("A diagnostic fault is already installed.");
+        TrainingFaults = faults;
+    }
+    internal void ResetTrainingFaults() => TrainingFaults = null;
+
     /// <summary>Enables host copy/module timers and CUDA-event kernel timers. Disabled by default.</summary>
     /// <remarks>Each profiled kernel is synchronized; use a separate unprofiled pass for end-to-end measurements.</remarks>
     public bool ProfilingEnabled
@@ -326,7 +340,8 @@ public sealed class CudaDevice : IDisposable
     {
         if (_context.IsClosed || _context.IsInvalid) return true;
         int result = CudaNative.ContextSetCurrent(_context.DangerousGetHandle());
-        if (result == CudaNative.Success) result = CudaNative.MemFree(pointer);
+        if (result == CudaNative.Success)
+            result = TrainingFaults is { } faults && faults.TakeBufferFailure(out int injected) ? injected : CudaNative.MemFree(pointer);
         RecordReleaseResult(result, "cuMemFree");
         if (result != CudaNative.Success) return false;
         bool tracked = _disposingResources ? _buffers.Contains(buffer) : _buffers.Remove(buffer);
@@ -338,7 +353,8 @@ public sealed class CudaDevice : IDisposable
     {
         if (_context.IsClosed || _context.IsInvalid) return true;
         int result = CudaNative.ContextSetCurrent(_context.DangerousGetHandle());
-        if (result == CudaNative.Success) result = CudaNative.ModuleUnload(pointer);
+        if (result == CudaNative.Success)
+            result = TrainingFaults is { } faults && faults.TakeModuleFailure(out int injected) ? injected : CudaNative.ModuleUnload(pointer);
         RecordReleaseResult(result, "cuModuleUnload");
         if (result == CudaNative.Success && !_disposingResources) _modules.Remove(module);
         return result == CudaNative.Success;
