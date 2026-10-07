@@ -71,7 +71,7 @@ S4-07/S4-12训练器异常清理工程已验收：共用独立5秒/39 buffers+1 
 
 原生资源取得与登记加固工程已验收：buffer/module/context/profiling event在native前准备wrapper/容量/计数与pending归属，成功后无分配adopt；release诊断OOM仍保留真实operation/code及owner，缓存旧异常回归通过。最终零警告/错误、CPUtiny1/full7、GPUtiny1/full11及既有training21/cleanup9case通过；实际context回收、十一runner/37身份终审和五源码/四DLL身份已核，见[登记证据](docs/evidence/cuda-native-adoption-2026-10-08.md)。注入不是实际heap OOM，设备调用含snapshot/Dispose须caller串行；本批没有AOT/正式数据训练。
 
-下一独立切片验证Native AOT中的GPU CE/梯度/SGD：H4合成Choice/Score/Boolean三题，schema3三文件从3步磁盘恢复到6，与从零连续6对照；原生flags须早于任何Open核验。managed、Windows及Linux分别先tiny1再full11、每环境最多16实际GPU更新，新增代码/二进制各自冻结，不用encoder前向AOT代替训练支持。每RID最多两次有理由publish/600秒，每阶段最多25分钟；正式数据、encoder反传、质量及性能门槛保持开放。
+Windows GPU head训练Native AOT已验收：H4合成三题、schema3三文件3→6磁盘恢复与连续6的12参数bytes/loss/checkpoint/head一致；主对照48launch、480H2D/240D2H、原生flags与PE身份通过，native tiny1/full11共16更新及真实context回收。末尾预算检查已修，旧managed16/新native16分别绑定初始/最终freeze，两build/一次publish零警告，见[证据](docs/evidence/gpu-training-aot-windows-2026-10-08.md)。Linux随后复用最终五源freeze，在新独立obj/cache发布ELF并tiny1/full11≤16更新；每RID最多两次有理由publish/600秒、每阶段25分钟。合成head工程不关闭正式数据、encoder反传、上游数值、质量、校准及性能门槛。
 
 S4-05/S4-11的32题人工审核入口工程已验收：[逐题审核表](datasets/teacher-general-v2-review/review.md)与JSONL模板包含完整题文/候选/实际教师建议，绑定固定v2源及64原字节引用。生成tiny1/full32、独立字段/映射验收及监督者五文件hash复核通过，见[证据](docs/evidence/teacher-review-entry-2026-10-08.md)。八个人工字段均null/pending，教师答案曝光=true、封存资格=false；未替人审核或批准，没有自动训练准入，也未重跑教师。实际人工审核、许可审签与独立封存继续开放。
 

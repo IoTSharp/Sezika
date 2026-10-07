@@ -4,6 +4,8 @@
     <AssemblyName>Sezika.Cuda.Diagnostics.Tests</AssemblyName>
     <RootNamespace>Sezika.Cuda.Diagnostics.Tests</RootNamespace>
     <IsPackable>false</IsPackable>
+    <IsAotCompatible>true</IsAotCompatible>
+    <InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../../src/Sezika.Cuda/Sezika.Cuda.csproj" />

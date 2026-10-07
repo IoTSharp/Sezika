@@ -8,6 +8,22 @@ namespace Sezika.Cuda.Diagnostics.Tests;
 
 internal static class IndependentCudaAdoptionChecks
 {
+    internal static void RunAotSlice(Action<bool, string> check, CancellationToken token)
+    {
+        // Each point is reached only after actual native success; ContextPending is deliberately excluded.
+        int[] cases = [1, 4, 6];
+        var clock = Stopwatch.StartNew();
+        for (var index = 0; index < cases.Length && index < 3; index++)
+        {
+            CheckBudget(clock, TimeSpan.FromSeconds(30), token);
+            RunCase(cases[index], check, token);
+            CheckBudget(clock, TimeSpan.FromSeconds(30), token);
+            Console.WriteLine($"GPU AOT adoption slice progress: cases={index + 1}/3; aot_verified={AotRuntimeIdentity.Read().AotVerified}");
+            CheckBudget(clock, TimeSpan.FromSeconds(30), token);
+        }
+        CheckBudget(clock, TimeSpan.FromSeconds(30), token);
+    }
+
     internal static void RunCpu(Action<bool, string> check, CancellationToken token, bool tiny)
     {
         var clock = Stopwatch.StartNew();
@@ -86,6 +102,7 @@ internal static class IndependentCudaAdoptionChecks
 
     private static void RunCase(int index, Action<bool, string> check, CancellationToken token)
     {
+        var runtime = AotRuntimeIdentity.Read();
         string[] names = ["buffer_pending", "buffer_adopted", "buffer_adopted_primary_cancellation", "module_pending",
             "module_adopted", "context_pending", "context_adopted", "timing_events_pending", "start_event_adopted",
             "end_event_adopted", "buffer_false_release_diagnostic_oom", "module_and_event_false_release"];
@@ -301,7 +318,7 @@ internal static class IndependentCudaAdoptionChecks
             device.ContextDestroySucceeded, shutdown is CudaException cuda ? cuda.DriverCode : null,
             after.Bytes, after.Buffers, after.Modules, device.AdoptionSnapshot.OwnedEvents, after.ReleaseFailures,
             telemetry!.KernelLaunchCount, telemetry.HostToDeviceBytes, telemetry.DeviceToHostBytes, nativeFailure?.DriverCode,
-            false, false, false, "prebuilt_exception_injection"), AdoptionJson.Default.AdoptionCaseEvidence));
+            false, false, runtime.AotVerified, "prebuilt_exception_injection", runtime), AdoptionJson.Default.AdoptionCaseEvidence));
         CheckBudget(clock, TimeSpan.FromSeconds(10), deadline.Token);
     }
 
@@ -336,7 +353,7 @@ internal sealed record AdoptionCaseEvidence(string Case, string? DeviceUuid, str
     string LastReleaseOperation, bool ReleaseDiagnosticUnavailable, bool ContextDestroySucceeded,
     int? ContextDisposeDriverCode, ulong AfterContextBytes, int AfterContextBuffers, int AfterContextModules,
     int AfterContextEvents, long AfterContextReleaseFailures, long KernelLaunchCount, ulong HostToDeviceBytes,
-    ulong DeviceToHostBytes, int? NativeFailureDriverCode, bool ActualGpuTraining, bool EncoderForward, bool AotVerified, string FaultMode);
+    ulong DeviceToHostBytes, int? NativeFailureDriverCode, bool ActualGpuTraining, bool EncoderForward, bool AotVerified, string FaultMode, AotRuntimeIdentity Runtime);
 
 [JsonSourceGenerationOptions(PropertyNamingPolicy = JsonKnownNamingPolicy.SnakeCaseLower, RespectNullableAnnotations = true)]
 [JsonSerializable(typeof(AdoptionCaseEvidence))]

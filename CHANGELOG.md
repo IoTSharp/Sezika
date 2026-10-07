@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- 验收Windows GPU head训练Native AOT：H4三题纯GPU CE/梯度/SGD，schema3三文件3→6磁盘恢复与连续6的全部参数bytes/loss/checkpoint/head一致；原生flags、PE、tiny1/full11及真实context回收通过。修复故障切片末尾预算检查，旧managed16/新native16绑定各自freeze，两build/一次publish零警告；合成诊断范围，Linux/正式数据/encoder反传/质量另验，见[证据](docs/evidence/gpu-training-aot-windows-2026-10-08.md)。
 - 提供32题通用中英文本人工审核包：完整原文/候选/实际教师建议与空人工字段，固定源/hash、64引用和pending/曝光/不可封存语义。tiny1/full32生成、独立映射检查及监督者五文件身份复核通过，目标不覆盖；未自动批准、调用教师或训练，见[证据](docs/evidence/teacher-review-entry-2026-10-08.md)。
 - 加固CUDA buffer/module/context/profiling event的native成功后归属登记，预备wrapper/容量及pending、无分配adopt，release诊断OOM保留primitive身份并拒绝旧缓存异常。最终零警告/错误、CPU1→7/GPU1→11、既有training21/cleanup9case及资源/源码/DLL独立复核通过；不是实际heap OOM、AOT或正式训练验收，见[证据](docs/evidence/cuda-native-adoption-2026-10-08.md)。
 - 加固GPU head训练器异常清理：initial/packed自建副本始终清零，buffer和kernel/module共用独立5秒预算并保留主异常原始栈、caller基线及真实false-release残留语义。最终零警告/错误、CPU1→3/GPUtiny1/full8及既有21项训练smoke通过，真实context回收已核；正式数据/质量、训练AOT及post-native包装登记OOM仍另验，见[证据](docs/evidence/trainer-cleanup-2026-10-08.md)。

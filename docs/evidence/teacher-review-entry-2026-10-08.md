@@ -28,4 +28,4 @@
 
 作者证据 `.artifacts/teacher-review-20261008/verification.json` SHA-256 `6BAC9FF5966CE0D5FAB2E134900B1E4423FFF809C5D13BC98CFDD188E554A212`；独立审查 `independent-review.md` SHA-256 `38E00DA969C5AFE377CEB4F3C40F8EDB129E3A9842F85CFF5579A417D992B226`。监督者复核见 `root-package-identity-5.json`。该目录在 .gitattributes 使用精确 -text，保持 UTF-8 无 BOM / LF 的 hash 身份；review.md 的生成段落有意保留末尾空行，单文件 whitespace 规则允许该空行，未改已核原字节。暂存的五个 Git blob 与工作树原字节 hash-object 一致。
 
-作者 UTC 23:09:03 精确核七 PID 全退出，stage 残留零；独立审查没有创建临时文件、服务或下载，短读取均 exit 0。监督者两复核 runner PID 54000/96148 成功、cleanup 为空。所有原失败/首版/probe/最终包保留，不清理用户文件、共享缓存或整个 TEMP。工程入口关闭不代表真实逐条审核、独立封存、许可审签、训练、质量或校准验收。
+作者 UTC 23:09:03 精确核七 PID 全退出，stage 残留零；独立审查没有创建临时文件、服务或下载，短读取均 exit 0。监督者两复核 runner PID 54000/96148 成功、cleanup 为空。已单独提交`c386d29`；UTC23:22:02 root后核本项与adoption的七Git/复验回执、14身份，无匹配存活（`root-receipt-closure-7.json`）；最后两审计PID25000/9820亦后核不存在。所有原失败/首版/probe/最终包保留，不清理用户文件、共享缓存或整个 TEMP。工程入口关闭不代表真实逐条审核、独立封存、许可审签、训练、质量或校准验收。

@@ -4,6 +4,7 @@ using Sezika.Cuda;
 // Fixed-size fixtures only (at most 65 vector elements and one tiny encoder layer).
 // CUDA Driver calls cannot be interrupted in-flight; the caller should also enforce a process timeout.
 using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(
+    args.Length == 2 && args[0] is "--independent-training-aot" or "--independent-training-diagnostic" ? 100 :
     args.Length == 1 && args[0] is "--independent-workflow-tiny" or "--independent-workflow" or "--independent-export-tiny" or "--independent-export" or "--independent-cleanup" or "--independent-adoption" ? 90 : 30));
 ConsoleCancelEventHandler cancelHandler = (_, args) => { args.Cancel = true; deadline.Cancel(); };
 Console.CancelKeyPress += cancelHandler;
@@ -42,6 +43,20 @@ static bool ValidTime(double milliseconds) => double.IsFinite(milliseconds) && m
 
 try
 {
+    if (args.Length == 1 && args[0] is "--independent-training-aot-cpu-tiny" or "--independent-training-aot-cpu")
+    {
+        global::Sezika.Cuda.Diagnostics.Tests.IndependentCudaAotTrainingChecks.Prepare(Check, deadline.Token,
+            tiny: args[0].EndsWith("-tiny", StringComparison.Ordinal));
+        return 0;
+    }
+    if (args.Length == 2 && args[0] is "--independent-training-aot-tiny" or "--independent-training-aot" or
+        "--independent-training-diagnostic-tiny" or "--independent-training-diagnostic")
+    {
+        global::Sezika.Cuda.Diagnostics.Tests.IndependentCudaAotTrainingChecks.Run(args[1],
+            tiny: args[0].EndsWith("-tiny", StringComparison.Ordinal),
+            requireNative: args[0].StartsWith("--independent-training-aot", StringComparison.Ordinal), Check, deadline.Token);
+        return 0;
+    }
     if (args.Length == 1 && args[0] is "--independent-adoption-cpu-tiny" or "--independent-adoption-cpu")
     {
         global::Sezika.Cuda.Diagnostics.Tests.IndependentCudaAdoptionChecks.RunCpu(Check, deadline.Token,

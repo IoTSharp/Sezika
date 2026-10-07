@@ -7,6 +7,25 @@ namespace Sezika.Cuda.Diagnostics.Tests;
 
 internal static class IndependentCudaCleanupChecks
 {
+    internal static void RunAotSlice(Action<bool, string> check, CancellationToken token)
+    {
+        int[] cases = [0, 2, 5, 6, 7, 8];
+        var clock = Stopwatch.StartNew();
+        for (var index = 0; index < cases.Length && index < 6; index++)
+        {
+            token.ThrowIfCancellationRequested();
+            if (clock.Elapsed >= TimeSpan.FromSeconds(60)) throw new TimeoutException("AOT cleanup slice deadline.");
+            RunCase(cases[index], check, token);
+            token.ThrowIfCancellationRequested();
+            if (clock.Elapsed >= TimeSpan.FromSeconds(60)) throw new TimeoutException("AOT cleanup slice deadline after case.");
+            Console.WriteLine($"GPU AOT cleanup slice progress: cases={index + 1}/6; aot_verified={AotRuntimeIdentity.Read().AotVerified}");
+            token.ThrowIfCancellationRequested();
+            if (clock.Elapsed >= TimeSpan.FromSeconds(60)) throw new TimeoutException("AOT cleanup slice deadline after progress.");
+        }
+        token.ThrowIfCancellationRequested();
+        if (clock.Elapsed >= TimeSpan.FromSeconds(60)) throw new TimeoutException("AOT cleanup slice final deadline.");
+    }
+
     private static MarkerFeatureSet Fixture() => new(new("sezika/cleanup-fixture", new string('A', 64),
         new string('B', 64), new string('C', 64), 3),
         [new("cleanup", MarkerQuestionType.Choice, "en", [1, 2], [0, 1],
@@ -51,12 +70,19 @@ internal static class IndependentCudaCleanupChecks
 
     private static void RunCase(int index, Action<bool, string> check, CancellationToken token)
     {
+        var runtime = AotRuntimeIdentity.Read();
         var names = new[] { "initial_progress_sentinel_caller_baseline", "first_step_sentinel", "first_step_cancellation",
             "packed_before_allocate", "initial_before_order", "injected_mem_free", "injected_module_unload_no_primary",
             "injected_recovery_deadline", "partial_kernel_constructor" };
         var name = names[index];
         using var deadline = CancellationTokenSource.CreateLinkedTokenSource(token);
         deadline.CancelAfter(TimeSpan.FromSeconds(10));
+        var caseClock = Stopwatch.StartNew();
+        void CheckCaseBudget()
+        {
+            deadline.Token.ThrowIfCancellationRequested();
+            if (caseClock.Elapsed >= TimeSpan.FromSeconds(10)) throw new TimeoutException("Cleanup case deadline after native return.");
+        }
         using var cancelled = CancellationTokenSource.CreateLinkedTokenSource(deadline.Token);
         var device = CudaDevice.Open(enableProfiling: true); // Driver/device absence is a failure.
         CudaDeviceBuffer? callerBuffer = null;
@@ -161,6 +187,7 @@ internal static class IndependentCudaCleanupChecks
                 callerModule!.Execute([2f], [3f], retained);
                 check(retained[0] == 5, name + ": caller device/module remain usable");
             }
+            telemetry = device.GetTelemetry(); // Include the caller vector probe in this case's actual measurements.
         }
         finally
         {
@@ -176,6 +203,7 @@ internal static class IndependentCudaCleanupChecks
                 }
             }
         }
+        CheckCaseBudget();
         check(device.ContextDestroySucceeded && device.OwnedResources.Bytes == 0 &&
             device.OwnedResources.Buffers == 0 && device.OwnedResources.Modules == 0,
             name + ": caller actually destroyed context and cleared ownership");
@@ -184,6 +212,7 @@ internal static class IndependentCudaCleanupChecks
                 device.OwnedResources.ReleaseFailures == 1,
                 name + ": historical injected release error remains visible after successful context destruction");
         else check(shutdown is null, name + ": caller context shutdown has no release error");
+        CheckCaseBudget();
         Console.WriteLine($"Observed training failure ({name}): {primary}");
         if (shutdown is not null) Console.WriteLine($"Observed historical release failure ({name}): {shutdown}");
         Console.WriteLine(JsonSerializer.Serialize(new CleanupCaseEvidence(name, index is 3 or 4 or 5 or 6 or 7 or 8,
@@ -195,7 +224,8 @@ internal static class IndependentCudaCleanupChecks
             device.ContextDestroySucceeded, shutdown is CudaException cuda ? cuda.DriverCode : null,
             shutdown is CudaException release ? release.Operation : null, device.OwnedResources.ReleaseFailures,
             device.OwnedResources.Bytes, device.OwnedResources.Buffers, device.OwnedResources.Modules,
-            false, "synthetic_fixture"), CleanupJson.Default.CleanupCaseEvidence));
+            runtime.AotVerified, "synthetic_fixture", runtime), CleanupJson.Default.CleanupCaseEvidence));
+        CheckCaseBudget();
     }
 }
 
@@ -205,7 +235,7 @@ internal sealed record CleanupCaseEvidence(string Case, bool FaultInjected, stri
     int AttemptedOwners, int AttemptedModules, bool OwnerLimitReached, bool DeadlineReached, bool DeadlineInjected, string PrimaryType,
     string? PrimaryCode, bool PrimarySentinelPreserved, bool ContextDestroySucceeded, int? ContextDisposeDriverCode,
     string? ContextDisposeOperation, long ReleaseFailuresAfterContext,
-    ulong AfterContextBytes, int AfterContextBuffers, int AfterContextModules, bool AotVerified, string DataMode);
+    ulong AfterContextBytes, int AfterContextBuffers, int AfterContextModules, bool AotVerified, string DataMode, AotRuntimeIdentity Runtime);
 
 [JsonSourceGenerationOptions(PropertyNamingPolicy = JsonKnownNamingPolicy.SnakeCaseLower, RespectNullableAnnotations = true)]
 [JsonSerializable(typeof(CleanupCaseEvidence))]
