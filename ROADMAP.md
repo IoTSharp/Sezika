@@ -65,6 +65,8 @@ S4-10本地GPU首轮实际调用已完成：固定9B教师33/33层offload，首�
 
 GPU切片B工程已验收：真实UUID、17项静态kernel/manifest身份、schema3三文件发布及完整恢复元数据实现；CPU准备3/GPU tiny5/full31、stamp身份正负检查通过，21份结果/70身份无匹配存活。重新export的字节漂移未接受，原PTX/manifest保持；无正式训练数据、质量或训练AOT结论。C继续接显式CLI/真实GPU encoder导出，见[workflow证据](docs/evidence/gpu-training-workflow-2026-10-08.md)。
 
+GPU切片C工程已验收：train-original-gpu明确选择设备、五项恢复输入和正式准入门禁；完整序列特征前向及head更新均用GPU，没有CPU fallback，评价另外声明scalar后端。CPU合同2→22/GPU导出8→12/旧CUDA59通过，固定真实mmBERT的48-token特征smoke及310次kernel/资源归零通过；31个身份无存活/清理错误。实际正式数据head训练、质量、数值上游oracle及训练AOT仍待验，见[CLI证据](docs/evidence/gpu-training-cli-2026-10-08.md)。
+
 ### 已选定方向
 
 1. **独立模型来源。** 直接从经审核的原始 encoder 取得底座参数，优先评估 `jhu-clsp/mmBERT-base` 或同类可支持的编码器，独立记录 revision、配置、tensor/tokenizer hash 与许可；不能从 Laya 检查点抽取 encoder 后改称原始底座。本轮已完成固定 mmBERT 原始文件下载、hash、C# 受限 pickle 转换、134 tensor 形状检查和独立 loader smoke；上游逐层数值 oracle与许可发布审签仍未完成。自有决策头重新初始化和训练，不继承 Laya 训练后的 head/type/scorer 权重。

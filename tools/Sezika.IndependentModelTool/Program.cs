@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Json;
 using Sezika;
+using Sezika.Cuda;
 using Sezika.IndependentModelTool;
 
 const string SourceSha256 = "8ea64ec1ea4eb8fca0fc14b69a2ae571de6bfbc25fd214bb932dd4aba6a3a04e";
@@ -57,6 +58,18 @@ try
         TrainOriginal(trainingCommand, cancellation.Token);
         return 0;
     }
+    if (command == "train-original-gpu")
+    {
+        var trainingCommand = OriginalCudaTrainingCommand.Parse(args, lifetime.Token);
+        var result = trainingCommand.Run(message => Console.WriteLine("train-original-gpu: " + message), lifetime.Token);
+        Console.WriteLine($"trained original GPU data steps={result.State.CompletedSteps} feature_sha256={result.State.FeatureSha256} checkpoint_sha256={result.Report.Training.CheckpointSha256} head_sha256={result.Report.Training.HeadSha256} report_sha256={result.ReportSha256} report={trainingCommand.Training.Outputs.Report}");
+        return 0;
+    }
+    if (command == "smoke-original-gpu")
+    {
+        SmokeOriginalGpu(args, lifetime.Token);
+        return 0;
+    }
     if (command == "evaluate-original")
     {
         var package = Path.GetFullPath(RequiredOption("--package"));
@@ -72,8 +85,14 @@ try
     Console.WriteLine("Sezika.IndependentModelTool convert-pytorch --input <pytorch_model.bin> --output <model.safetensors> [--timeout-seconds 1..1800]");
     Console.WriteLine("Sezika.IndependentModelTool smoke --package <independent-model-package>");
     Console.WriteLine("Sezika.IndependentModelTool train-original --package <package> --records <records.jsonl> --checkpoint <training.checkpoint> --head <head.asset> --report <report.json> [--max-steps 1..10000] [--seed <int>] [--learning-rate 0..1] [--training-timeout-seconds 1..600] [--timeout-seconds 1..1800]");
+    Console.WriteLine("  train-original is the CPU small-scale reference/diagnostic entry. Use train-original-gpu for formal GPU training batches.");
     Console.WriteLine("  Resume requires --resume-checkpoint <checkpoint> --resume-sha256 <hash> --resume-report <v2-report.json> --resume-report-sha256 <hash>; --max-steps is the total completed-step target.");
+    Console.WriteLine("Sezika.IndependentModelTool train-original-gpu --package <package> --records <reviewed-records.jsonl> --checkpoint <training.checkpoint> --head <head.asset> --report <report.json> [--device 0..15] [--max-steps 1..10000] [--seed <int>] [--learning-rate (0,1]] [--training-timeout-seconds 1..600] [--timeout-seconds 1..1800]");
+    Console.WriteLine("  GPU requires reviewed-original-records-v1 manifest.json; pending/legacy data is rejected before CUDA. Resume requires all five: --resume-checkpoint, --resume-sha256, --resume-head, --resume-report <schema3>, --resume-report-sha256. No CPU fallback.");
+    Console.WriteLine("Sezika.IndependentModelTool smoke-original-gpu --package <fixed-original-package> [--device 0..15] [--timeout-seconds 1..180]");
+    Console.WriteLine("  This explicit CUDA encoder fixture diagnostic exports features only; it does not train a head or publish a formal training report.");
     Console.WriteLine("Sezika.IndependentModelTool evaluate-original --package <package> --records <records.jsonl> --head <head.asset> --training-report <training-report.json> --report <evaluation-report.json>");
+    Console.WriteLine("  evaluate-original uses scalar CPU encoder/head evaluation and accepts formal CPU schema2 or GPU schema3 training reports.");
     return 2;
 }
 catch (OperationCanceledException)
@@ -258,6 +277,45 @@ static void TrainOriginal(OriginalTrainingCommand command, CancellationToken can
     Console.WriteLine($"trained original data records={records.Count} train={train.Length} development={development.Length} initial_steps={result.Report.InitialSteps} steps={result.State.CompletedSteps} feature_sha256={result.State.FeatureSha256} checkpoint_sha256={result.Report.CheckpointSha256} head_sha256={result.Report.HeadSha256} report_sha256={result.ReportSha256} report={command.Outputs.Report}");
 }
 
+static void SmokeOriginalGpu(IReadOnlyList<string> arguments, CancellationToken cancellationToken)
+{
+    if (arguments.Count is < 3 or > 7) throw new DecisionException("training_arguments_invalid", "GPU smoke accepts package, device and timeout only.");
+    var values = new Dictionary<string, string>(StringComparer.Ordinal); var clock = System.Diagnostics.Stopwatch.StartNew();
+    for (var index = 1; index < arguments.Count && index < 7; index += 2)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+        if (clock.Elapsed > TimeSpan.FromSeconds(5) || index + 1 >= arguments.Count ||
+            arguments[index] is not ("--package" or "--device" or "--timeout-seconds") ||
+            string.IsNullOrWhiteSpace(arguments[index + 1]) || !values.TryAdd(arguments[index], arguments[index + 1]))
+            throw new DecisionException("training_arguments_invalid", "Unknown, duplicate or missing GPU smoke option.");
+    }
+    if (!values.TryGetValue("--package", out var package)) throw new DecisionException("training_arguments_invalid", "GPU smoke requires --package.");
+    int Integer(string name, int maximum, int fallback)
+    {
+        if (!values.TryGetValue(name, out var text)) return fallback;
+        if (!int.TryParse(text, System.Globalization.NumberStyles.None, System.Globalization.CultureInfo.InvariantCulture, out var value) || value < (name == "--device" ? 0 : 1) || value > maximum)
+            throw new DecisionException("training_arguments_invalid", "Invalid GPU smoke option: " + name);
+        return value;
+    }
+    using var deadline = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken); deadline.CancelAfter(TimeSpan.FromSeconds(Integer("--timeout-seconds", 180, 120)));
+    var token = deadline.Token;
+    using var device = CudaDevice.Open(Integer("--device", 15, 0), enableProfiling: true);
+    using var model = IndependentModelLoader.Load(Path.GetFullPath(package), token);
+    using var state = JsonDocument.Parse("\"x\"");
+    var question = new IndependentBooleanQuestion("gpu-encoder-fixture", "judge", "x", "no", "yes");
+    var request = new IndependentDecisionRequest(1, model.ModelId, state.RootElement.Clone(), [question]);
+    var identity = new MarkerFeatureIdentity(model.ModelId, model.EncoderSha256, model.TokenizerSha256, new string('0', 64), model.Encoder.Config.HiddenSize);
+    MarkerFeatureExample feature;
+    using (var encoder = new CudaModernBertEncoder(device, model.Encoder.Config, model.Encoder.Weights, token))
+        feature = IndependentCudaFeatureExporter.Export(model.Tokenizer, encoder, identity, request, question, "synthetic-real-encoder-smoke", "en", 0, token);
+    var rows = feature.Features.SelectMany(row => row).ToArray();
+    var markerHash = Convert.ToHexString(SHA256.HashData(MemoryMarshal.AsBytes(rows.AsSpan())));
+    var memory = device.GetMemorySnapshot();
+    if (memory.OwnedBytes != 0 || memory.OwnedAllocationCount != 0 || memory.LoadedModuleCount != 0 || memory.ReleaseFailureCount != 0)
+        throw new InvalidOperationException("GPU encoder smoke retained owned resources.");
+    Console.WriteLine($"gpu_encoder_fixture model={model.ModelId} source={model.SourceModelId}@{model.Revision} license={model.License} encoder_sha256={model.EncoderSha256} tokenizer_sha256={model.TokenizerSha256} device_uuid={device.Info.Uuid} tokens={feature.TokenIds.Length} markers={string.Join(',', feature.MarkerPositions)} hidden_size={identity.HiddenSize} marker_features_sha256={markerHash} kernel_launches={device.GetTelemetry().KernelLaunchCount} owned_bytes=0 head_training=false formal_training=false");
+}
+
 static string QuestionTypeName(MarkerQuestionType type) => type switch
 {
     MarkerQuestionType.Choice => "choice",
@@ -296,6 +354,9 @@ static void EvaluateOriginal(string packagePath, string recordsPath, string head
     if (training.VersionedReport is not null)
         identity = training.VersionedReport.BindIdentity(identity, cancellationToken);
     var head = IndependentMarkerHeadAssetStore.Load(headPath, identity, training.FeatureSha256, training.HeadSha256, cancellationToken);
+    if (training.VersionedReport is { } versioned && (head.Seed != versioned.Seed || head.LearningRate != versioned.LearningRate ||
+        head.CompletedSteps != versioned.CompletedSteps || head.LastLoss != versioned.LastLoss))
+        throw new DecisionException("training_resume_mismatch", "Evaluation head optimizer metadata differs from its training report.");
     var rows = new List<OriginalEvaluationRow>(development.Length);
     for (var index = 0; index < development.Length; index++)
     {
@@ -330,6 +391,8 @@ static void EvaluateOriginal(string packagePath, string recordsPath, string head
     writer.WriteStartObject();
     writer.WriteNumber("schema_version", 1);
     writer.WriteString("status", "development_diagnostic_only");
+    writer.WriteString("evaluation_backend", EvaluationTrainingReportAdapter.EvaluationBackend);
+    if (training.TrainingBackend is not null) writer.WriteString("training_backend", training.TrainingBackend);
     writer.WriteString("evaluation_use", "independent_development_diagnostics_not_training_calibration_or_sealed_test");
     writer.WriteString("model_id", model.ModelId); writer.WriteString("encoder_sha256", model.EncoderSha256);
     writer.WriteString("tokenizer_sha256", model.TokenizerSha256); writer.WriteString("data_manifest_sha256", dataHash);
@@ -529,12 +592,12 @@ static TrainingReport ReadTrainingReport(string path, CancellationToken cancella
     cancellationToken.ThrowIfCancellationRequested();
     using var document = JsonDocument.Parse(bytes);
     var root = document.RootElement;
-    if (root.GetProperty("schema_version").GetInt32() == 2)
+    if (root.GetProperty("schema_version").GetInt32() is 2 or 3)
     {
-        var versioned = WorkflowTrainingReport.ParseBounded(bytes, cancellationToken);
-        if (!versioned.UsesRealIndependentEncoder) throw new InvalidDataException("Fixture training reports cannot evaluate an original encoder.");
+        var adapted = EvaluationTrainingReportAdapter.ParseBounded(bytes, cancellationToken);
+        var versioned = adapted.Training;
         return new TrainingReport(versioned.Identity.ModelId, versioned.Identity.EncoderSha256, versioned.Identity.TokenizerSha256,
-            versioned.Identity.DataManifestSha256, versioned.RecordsSha256, versioned.FeatureSha256, versioned.HeadSha256, versioned);
+            versioned.Identity.DataManifestSha256, versioned.RecordsSha256, versioned.FeatureSha256, versioned.HeadSha256, versioned, adapted.TrainingBackend);
     }
     if (root.GetProperty("schema_version").GetInt32() != 1) throw new InvalidDataException("Unsupported training report schema version.");
     var status = root.GetProperty("status").GetString();
@@ -727,7 +790,7 @@ sealed class PickleReader
 }
 
 sealed record TrainingReport(string ModelId, string EncoderSha256, string TokenizerSha256, string DataManifestSha256,
-    string RecordsSha256, string FeatureSha256, string HeadSha256, WorkflowTrainingReport? VersionedReport = null);
+    string RecordsSha256, string FeatureSha256, string HeadSha256, WorkflowTrainingReport? VersionedReport = null, string? TrainingBackend = null);
 
 sealed record OriginalEvaluationRow(string RecordId, string Language, string QuestionType, string[] CandidateIds, int TargetIndex, int CandidateCount,
     string Status, int? PredictedIndex, bool? Correct, double? TargetProbability, double? TopProbability, double? Margin,
