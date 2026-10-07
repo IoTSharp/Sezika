@@ -1,0 +1,516 @@
+{
+  "schema_version": "sezika.audit-baseline-process-audit.v1",
+  "runner_records": 23,
+  "recorded_process_identities": 40,
+  "owned_live": 0,
+  "cleanup_errors": 0,
+  "observations": [
+    {
+      "pid": 55620,
+      "started": "2026-10-07T11:14:03.711634Z",
+      "command_line": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmp62317b17972f49eda05bfbeb06d9a538.rsp\"",
+      "parent_pid": 70004,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 79200,
+      "started": "2026-10-07T11:13:26.84387Z",
+      "command_line": null,
+      "parent_pid": 70004,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 30496,
+      "started": "2026-10-07T11:15:34.650215Z",
+      "command_line": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "parent_pid": 60676,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 69796,
+      "started": "2026-10-07T11:13:35.707899Z",
+      "command_line": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmpa41d519287e14f58837bec507ab1ab0b.rsp\"",
+      "parent_pid": 70004,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 53872,
+      "started": "2026-10-07T11:14:06.411997Z",
+      "command_line": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "parent_pid": 69040,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 102036,
+      "started": "2026-10-07T11:13:37.486348Z",
+      "command_line": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmp8e45f40e7178485f964cb839a75c66d9.rsp\"",
+      "parent_pid": 70004,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 104152,
+      "started": "2026-10-07T11:13:26.853454Z",
+      "command_line": null,
+      "parent_pid": 79200,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 30668,
+      "started": "2026-10-07T11:13:58.852835Z",
+      "command_line": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmpcfcf2c3958004bba95c73ae716a69931.rsp\"",
+      "parent_pid": 70004,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 86888,
+      "started": "2026-10-07T11:13:55.052213Z",
+      "command_line": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmp0db0f7b7dbcf44bf98de5b0d56fa9aab.rsp\"",
+      "parent_pid": 70004,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 27716,
+      "started": "2026-10-07T11:17:57.87083Z",
+      "command_line": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+      "parent_pid": 50824,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 13516,
+      "started": "2026-10-07T11:17:35.531695Z",
+      "command_line": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "parent_pid": 72792,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 99116,
+      "started": "2026-10-07T11:18:10.634674Z",
+      "command_line": null,
+      "parent_pid": 14808,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 69040,
+      "started": "2026-10-07T11:14:06.403622Z",
+      "command_line": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmp53b016e8aa6c41919df50c723732e9a7.rsp\"",
+      "parent_pid": 70004,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 7176,
+      "started": "2026-10-07T11:13:15.429063Z",
+      "command_line": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmp1b7e47183c264becb74138bcaf74752d.rsp\"",
+      "parent_pid": 70004,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 10216,
+      "started": "2026-10-07T11:13:55.064579Z",
+      "command_line": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "parent_pid": 86888,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 49280,
+      "started": "2026-10-07T11:13:47.232013Z",
+      "command_line": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "parent_pid": 35400,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 82616,
+      "started": "2026-10-07T11:13:35.717252Z",
+      "command_line": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "parent_pid": 69796,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 12368,
+      "started": "2026-10-07T11:13:44.075809Z",
+      "command_line": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "parent_pid": 96076,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 14808,
+      "started": "2026-10-07T11:18:10.623265Z",
+      "command_line": null,
+      "parent_pid": 27716,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 97712,
+      "started": "2026-10-07T11:15:33.422428Z",
+      "command_line": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.Evaluation/Sezika.Evaluation.csproj -c Release --no-restore --nologo -m:1 -nodeReuse:false -p:UseSharedCompilation=false",
+      "parent_pid": 21480,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 78212,
+      "started": "2026-10-07T11:13:11.051569Z",
+      "command_line": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "parent_pid": 70004,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 35400,
+      "started": "2026-10-07T11:13:47.213339Z",
+      "command_line": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmp1f4f8ff329c64c34aee85d2f6b27e534.rsp\"",
+      "parent_pid": 70004,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 86168,
+      "started": "2026-10-07T11:14:03.72195Z",
+      "command_line": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "parent_pid": 55620,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 72792,
+      "started": "2026-10-07T11:17:35.519131Z",
+      "command_line": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\trial -MaxCases 1",
+      "parent_pid": 62564,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 47296,
+      "started": "2026-10-07T11:13:22.547006Z",
+      "command_line": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmpc13c6178cc1e46dab94be9f4b10980be.rsp\"",
+      "parent_pid": 70004,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 18580,
+      "started": "2026-10-07T11:13:22.555879Z",
+      "command_line": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "parent_pid": 47296,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 96076,
+      "started": "2026-10-07T11:13:44.065733Z",
+      "command_line": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmp13301e7483c5469297f5e37b24516fad.rsp\"",
+      "parent_pid": 70004,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 50416,
+      "started": "2026-10-07T11:17:36.993325Z",
+      "command_line": null,
+      "parent_pid": 72792,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 95288,
+      "started": "2026-10-07T11:13:32.258276Z",
+      "command_line": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmp7f6bf81a9c534348a18e2805f6966839.rsp\"",
+      "parent_pid": 70004,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 64748,
+      "started": "2026-10-07T11:15:33.432097Z",
+      "command_line": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "parent_pid": 97712,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 81180,
+      "started": "2026-10-07T11:13:15.447989Z",
+      "command_line": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "parent_pid": 7176,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 61260,
+      "started": "2026-10-07T11:13:58.864609Z",
+      "command_line": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "parent_pid": 30668,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 9552,
+      "started": "2026-10-07T11:17:37.013393Z",
+      "command_line": null,
+      "parent_pid": 50416,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 60676,
+      "started": "2026-10-07T11:15:34.641385Z",
+      "command_line": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempdcpdxpud.kwk\\tmp6a433df84e7445e0932b23e92a2ec871.rsp\"",
+      "parent_pid": 97712,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 99800,
+      "started": "2026-10-07T11:13:49.487354Z",
+      "command_line": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "parent_pid": 50332,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 67576,
+      "started": "2026-10-07T11:17:57.882728Z",
+      "command_line": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "parent_pid": 27716,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 71004,
+      "started": "2026-10-07T11:13:32.267188Z",
+      "command_line": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "parent_pid": 95288,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 50332,
+      "started": "2026-10-07T11:13:49.475089Z",
+      "command_line": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmpf8391eb7ebd84c96babec03a6a9850d4.rsp\"",
+      "parent_pid": 70004,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 70004,
+      "started": "2026-10-07T11:13:11.042529Z",
+      "command_line": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build Sezika.slnx -c Release --nologo -m:1 -nodeReuse:false -p:UseSharedCompilation=false",
+      "parent_pid": 89844,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    },
+    {
+      "pid": 65460,
+      "started": "2026-10-07T11:13:37.496766Z",
+      "command_line": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "parent_pid": 102036,
+      "matching_task_identity_live": false,
+      "pid_present": false
+    }
+  ],
+  "executions": [
+    {
+      "path": "processes\\build\\20261007-111310-407-s404-solution-build.result.json",
+      "status": "Succeeded",
+      "exit_code": 0,
+      "pid": 70004,
+      "started": "2026-10-07T11:13:11.0425299Z",
+      "cleanup_errors": 0
+    },
+    {
+      "path": "processes\\final-build\\20261007-111532-828-s404-final-evaluation-build.result.json",
+      "status": "Succeeded",
+      "exit_code": 0,
+      "pid": 97712,
+      "started": "2026-10-07T11:15:33.4224283Z",
+      "cleanup_errors": 0
+    },
+    {
+      "path": "processes\\trial\\20261007-111734-663-s404-minimal-trial.result.json",
+      "status": "Succeeded",
+      "exit_code": 0,
+      "pid": 72792,
+      "started": "2026-10-07T11:17:35.5191311Z",
+      "cleanup_errors": 0
+    },
+    {
+      "path": "processes\\self-test\\20261007-111734-663-s404-evaluation-self-test.result.json",
+      "status": "Succeeded",
+      "exit_code": 0,
+      "pid": 97512,
+      "started": "2026-10-07T11:17:35.4668635Z",
+      "cleanup_errors": 0
+    },
+    {
+      "path": "processes\\checks\\20261007-111757-245-s404-baseline-checks.result.json",
+      "status": "Succeeded",
+      "exit_code": 0,
+      "pid": 27716,
+      "started": "2026-10-07T11:17:57.8708304Z",
+      "cleanup_errors": 0
+    },
+    {
+      "path": "processes\\acceptance\\20261007-111757-252-s404-baseline-acceptance.result.json",
+      "status": "Succeeded",
+      "exit_code": 0,
+      "pid": 45352,
+      "started": "2026-10-07T11:17:57.8508796Z",
+      "cleanup_errors": 0
+    },
+    {
+      "path": "trial\\fixture-positive\\processes\\20261007-111736-177-baseline-check-fixture-positive.result.json",
+      "status": "Succeeded",
+      "exit_code": 0,
+      "pid": 50416,
+      "started": "2026-10-07T11:17:36.9933256Z",
+      "cleanup_errors": 0
+    },
+    {
+      "path": "checks\\fixture-positive\\processes\\20261007-111758-618-baseline-check-fixture-positive.result.json",
+      "status": "Succeeded",
+      "exit_code": 0,
+      "pid": 50980,
+      "started": "2026-10-07T11:17:59.5837451Z",
+      "cleanup_errors": 0
+    },
+    {
+      "path": "checks\\full-positive\\processes\\20261007-111801-606-baseline-check-full-positive.result.json",
+      "status": "Succeeded",
+      "exit_code": 0,
+      "pid": 97320,
+      "started": "2026-10-07T11:18:02.3775343Z",
+      "cleanup_errors": 0
+    },
+    {
+      "path": "checks\\file-hash\\processes\\20261007-111803-720-baseline-check-file-hash.result.json",
+      "status": "Failed",
+      "exit_code": 1,
+      "pid": 10716,
+      "started": "2026-10-07T11:18:04.332429Z",
+      "cleanup_errors": 0
+    },
+    {
+      "path": "checks\\duplicate-json\\processes\\20261007-111805-947-baseline-check-duplicate-json.result.json",
+      "status": "Failed",
+      "exit_code": 1,
+      "pid": 73392,
+      "started": "2026-10-07T11:18:06.4826564Z",
+      "cleanup_errors": 0
+    },
+    {
+      "path": "checks\\missing-comparison\\processes\\20261007-111807-658-baseline-check-missing-comparison.result.json",
+      "status": "Failed",
+      "exit_code": 1,
+      "pid": 105960,
+      "started": "2026-10-07T11:18:08.2502462Z",
+      "cleanup_errors": 0
+    },
+    {
+      "path": "checks\\mixed-policy\\processes\\20261007-111809-865-baseline-check-mixed-policy.result.json",
+      "status": "Failed",
+      "exit_code": 1,
+      "pid": 14808,
+      "started": "2026-10-07T11:18:10.6232653Z",
+      "cleanup_errors": 0
+    },
+    {
+      "path": "checks\\slice-nll\\processes\\20261007-111812-190-baseline-check-slice-nll.result.json",
+      "status": "Failed",
+      "exit_code": 1,
+      "pid": 62384,
+      "started": "2026-10-07T11:18:12.9067736Z",
+      "cleanup_errors": 0
+    },
+    {
+      "path": "checks\\wrong-provenance\\processes\\20261007-111814-407-baseline-check-wrong-provenance.result.json",
+      "status": "Failed",
+      "exit_code": 1,
+      "pid": 61652,
+      "started": "2026-10-07T11:18:15.0626263Z",
+      "cleanup_errors": 0
+    },
+    {
+      "path": "checks\\capture-link-hash\\processes\\20261007-111816-711-baseline-check-capture-link-hash.result.json",
+      "status": "Failed",
+      "exit_code": 1,
+      "pid": 67144,
+      "started": "2026-10-07T11:18:17.4805966Z",
+      "cleanup_errors": 0
+    },
+    {
+      "path": "checks\\crossbatch-id\\processes\\20261007-111819-183-baseline-check-crossbatch-id.result.json",
+      "status": "Failed",
+      "exit_code": 1,
+      "pid": 59192,
+      "started": "2026-10-07T11:18:19.8684632Z",
+      "cleanup_errors": 0
+    },
+    {
+      "path": "checks\\all-failed-full\\processes\\20261007-111821-036-baseline-check-all-failed-full.result.json",
+      "status": "Failed",
+      "exit_code": 1,
+      "pid": 98280,
+      "started": "2026-10-07T11:18:21.8328063Z",
+      "cleanup_errors": 0
+    },
+    {
+      "path": "checks\\boolean-denominators\\processes\\20261007-111823-366-baseline-check-boolean-denominators.result.json",
+      "status": "Failed",
+      "exit_code": 1,
+      "pid": 53720,
+      "started": "2026-10-07T11:18:24.0351822Z",
+      "cleanup_errors": 0
+    },
+    {
+      "path": "checks\\illegal-numeric\\processes\\20261007-111825-757-baseline-check-illegal-numeric.result.json",
+      "status": "Failed",
+      "exit_code": 1,
+      "pid": 66052,
+      "started": "2026-10-07T11:18:26.6229475Z",
+      "cleanup_errors": 0
+    },
+    {
+      "path": "checks\\slice-drift\\processes\\20261007-111828-176-baseline-check-slice-drift.result.json",
+      "status": "Failed",
+      "exit_code": 1,
+      "pid": 43312,
+      "started": "2026-10-07T11:18:28.888596Z",
+      "cleanup_errors": 0
+    },
+    {
+      "path": "checks\\archive-entry-hash\\processes\\20261007-111830-290-baseline-check-archive-entry-hash.result.json",
+      "status": "Failed",
+      "exit_code": 1,
+      "pid": 82200,
+      "started": "2026-10-07T11:18:30.8958399Z",
+      "cleanup_errors": 0
+    },
+    {
+      "path": "checks\\partial-comparison\\processes\\20261007-111832-114-baseline-check-partial-comparison.result.json",
+      "status": "Failed",
+      "exit_code": 1,
+      "pid": 74220,
+      "started": "2026-10-07T11:18:32.7493055Z",
+      "cleanup_errors": 0
+    }
+  ],
+  "limitation": "Only task identities recorded by the bounded runner were queried. No process-name termination or system-wide process manipulation."
+}

@@ -1,0 +1,123 @@
+Baseline check 1/16: fixture-positive
+Started PID 50980, timeout 20s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\tools\Sezika.Evaluation\bin\Release\net10.0\Sezika.Evaluation.dll --verify-baseline D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\fixture-positive\plan.json D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\fixture-positive\report.json 18
+Verifying archived baseline 1/1: language-fixture-12 (12 cases).
+Verified language-fixture-12: 12/12; actual accuracy 8/12.
+Wrote verified archived audit baseline: D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\fixture-positive\report.json
+
+
+Completed PID 50980, status Succeeded, exit 0, elapsed 2.803s; result: D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\fixture-positive\processes\20261007-111758-618-baseline-check-fixture-positive.result.json
+Baseline check 2/16: full-positive
+Started PID 97320, timeout 20s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\tools\Sezika.Evaluation\bin\Release\net10.0\Sezika.Evaluation.dll --verify-baseline D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\full-positive\plan.json D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\full-positive\report.json 18
+Verifying archived baseline 1/3: paws-250 (250 cases).
+Verified paws-250: 250/250; actual accuracy 170/250.
+Verifying archived baseline 2/3: nimble-324 (324 cases).
+Verified nimble-324: 324/324; actual accuracy 137/324.
+Verifying archived baseline 3/3: language-fixture-12 (12 cases).
+Verified language-fixture-12: 12/12; actual accuracy 8/12.
+Wrote verified archived audit baseline: D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\full-positive\report.json
+
+
+Completed PID 97320, status Succeeded, exit 0, elapsed 2.008s; result: D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\full-positive\processes\20261007-111801-606-baseline-check-full-positive.result.json
+Baseline check 3/16: file-hash
+Started PID 10716, timeout 20s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\tools\Sezika.Evaluation\bin\Release\net10.0\Sezika.Evaluation.dll --verify-baseline D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\file-hash\plan.json D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\file-hash\report.json 18
+Verifying archived baseline 1/3: paws-250 (250 cases).
+
+baseline verification: InvalidDataException: Baseline input hash mismatch: D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\file-hash\archive\paws-final-actuals-quality.json
+
+Completed PID 10716, status Failed, exit 1, elapsed 2.142s; result: D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\file-hash\processes\20261007-111803-720-baseline-check-file-hash.result.json
+Baseline check 4/16: duplicate-json
+Started PID 73392, timeout 20s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\tools\Sezika.Evaluation\bin\Release\net10.0\Sezika.Evaluation.dll --verify-baseline D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\duplicate-json\plan.json D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\duplicate-json\report.json 18
+Verifying archived baseline 1/3: paws-250 (250 cases).
+
+baseline verification: InvalidDataException: Duplicate JSON property: SchemaVersion
+
+Completed PID 73392, status Failed, exit 1, elapsed 1.651s; result: D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\duplicate-json\processes\20261007-111805-947-baseline-check-duplicate-json.result.json
+Baseline check 5/16: missing-comparison
+Started PID 105960, timeout 20s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\tools\Sezika.Evaluation\bin\Release\net10.0\Sezika.Evaluation.dll --verify-baseline D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\missing-comparison\plan.json D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\missing-comparison\report.json 18
+Verifying archived baseline 1/3: paws-250 (250 cases).
+
+baseline verification: InvalidDataException: Quality batch counts do not equal the comparison count.
+
+Completed PID 105960, status Failed, exit 1, elapsed 2.14s; result: D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\missing-comparison\processes\20261007-111807-658-baseline-check-missing-comparison.result.json
+Baseline check 6/16: mixed-policy
+Started PID 14808, timeout 20s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\tools\Sezika.Evaluation\bin\Release\net10.0\Sezika.Evaluation.dll --verify-baseline D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\mixed-policy\plan.json D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\mixed-policy\report.json 18
+Verifying archived baseline 1/3: paws-250 (250 cases).
+
+baseline verification: InvalidDataException: Unexpected quality schema/rendering/length policy.
+
+Completed PID 14808, status Failed, exit 1, elapsed 2.266s; result: D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\mixed-policy\processes\20261007-111809-865-baseline-check-mixed-policy.result.json
+Baseline check 7/16: slice-nll
+Started PID 62384, timeout 20s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\tools\Sezika.Evaluation\bin\Release\net10.0\Sezika.Evaluation.dll --verify-baseline D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\slice-nll\plan.json D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\slice-nll\report.json 18
+Verifying archived baseline 1/3: paws-250 (250 cases).
+
+baseline verification: InvalidDataException: Invalid weighted arithmetic: type MeanNll
+
+Completed PID 62384, status Failed, exit 1, elapsed 2.155s; result: D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\slice-nll\processes\20261007-111812-190-baseline-check-slice-nll.result.json
+Baseline check 8/16: wrong-provenance
+Started PID 61652, timeout 20s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\tools\Sezika.Evaluation\bin\Release\net10.0\Sezika.Evaluation.dll --verify-baseline D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\wrong-provenance\plan.json D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\wrong-provenance\report.json 18
+Verifying archived baseline 1/3: paws-250 (250 cases).
+
+baseline verification: InvalidDataException: Capture/comparison does not use the fixed baseline identity/policy.
+
+Completed PID 61652, status Failed, exit 1, elapsed 2.234s; result: D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\wrong-provenance\processes\20261007-111814-407-baseline-check-wrong-provenance.result.json
+Baseline check 9/16: capture-link-hash
+Started PID 67144, timeout 20s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\tools\Sezika.Evaluation\bin\Release\net10.0\Sezika.Evaluation.dll --verify-baseline D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\capture-link-hash\plan.json D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\capture-link-hash\report.json 18
+Verifying archived baseline 1/3: paws-250 (250 cases).
+
+baseline verification: InvalidDataException: Comparison capture hashes differ from quality batches.
+
+Completed PID 67144, status Failed, exit 1, elapsed 2.392s; result: D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\capture-link-hash\processes\20261007-111816-711-baseline-check-capture-link-hash.result.json
+Baseline check 10/16: crossbatch-id
+Started PID 59192, timeout 20s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\tools\Sezika.Evaluation\bin\Release\net10.0\Sezika.Evaluation.dll --verify-baseline D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\crossbatch-id\plan.json D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\crossbatch-id\report.json 18
+Verifying archived baseline 1/3: paws-250 (250 cases).
+
+baseline verification: InvalidDataException: Case ID is repeated across batches or datasets.
+
+Completed PID 59192, status Failed, exit 1, elapsed 1.747s; result: D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\crossbatch-id\processes\20261007-111819-183-baseline-check-crossbatch-id.result.json
+Baseline check 11/16: all-failed-full
+Started PID 98280, timeout 20s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\tools\Sezika.Evaluation\bin\Release\net10.0\Sezika.Evaluation.dll --verify-baseline D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\all-failed-full\plan.json D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\all-failed-full\report.json 18
+Verifying archived baseline 1/3: paws-250 (250 cases).
+
+baseline verification: InvalidDataException: Quality answer counts differ from the fully answered comparison baseline.
+
+Completed PID 98280, status Failed, exit 1, elapsed 2.267s; result: D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\all-failed-full\processes\20261007-111821-036-baseline-check-all-failed-full.result.json
+Baseline check 12/16: boolean-denominators
+Started PID 53720, timeout 20s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\tools\Sezika.Evaluation\bin\Release\net10.0\Sezika.Evaluation.dll --verify-baseline D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\boolean-denominators\plan.json D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\boolean-denominators\report.json 18
+Verifying archived baseline 1/3: paws-250 (250 cases).
+
+baseline verification: InvalidDataException: Invalid Boolean confusion matrix/denominators.
+
+Completed PID 53720, status Failed, exit 1, elapsed 2.31s; result: D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\boolean-denominators\processes\20261007-111823-366-baseline-check-boolean-denominators.result.json
+Baseline check 13/16: illegal-numeric
+Started PID 66052, timeout 20s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\tools\Sezika.Evaluation\bin\Release\net10.0\Sezika.Evaluation.dll --verify-baseline D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\illegal-numeric\plan.json D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\illegal-numeric\report.json 18
+Verifying archived baseline 1/3: paws-250 (250 cases).
+
+baseline verification: InvalidDataException: Invalid numeric metric: Ece10.
+
+Completed PID 66052, status Failed, exit 1, elapsed 2.344s; result: D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\illegal-numeric\processes\20261007-111825-757-baseline-check-illegal-numeric.result.json
+Baseline check 14/16: slice-drift
+Started PID 43312, timeout 20s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\tools\Sezika.Evaluation\bin\Release\net10.0\Sezika.Evaluation.dll --verify-baseline D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\slice-drift\plan.json D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\slice-drift\report.json 18
+Verifying archived baseline 1/3: paws-250 (250 cases).
+Verified paws-250: 250/250; actual accuracy 170/250.
+Verifying archived baseline 2/3: nimble-324 (324 cases).
+Verified nimble-324: 324/324; actual accuracy 137/324.
+Verifying archived baseline 3/3: language-fixture-12 (12 cases).
+
+baseline verification: InvalidDataException: language denominators differ from their marginal.
+
+Completed PID 43312, status Failed, exit 1, elapsed 2.055s; result: D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\slice-drift\processes\20261007-111828-176-baseline-check-slice-drift.result.json
+Baseline check 15/16: archive-entry-hash
+Started PID 82200, timeout 20s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\tools\Sezika.Evaluation\bin\Release\net10.0\Sezika.Evaluation.dll --verify-baseline D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\archive-entry-hash\plan.json D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\archive-entry-hash\report.json 18
+Verifying archived baseline 1/3: paws-250 (250 cases).
+
+baseline verification: InvalidDataException: Plan hash differs from archived artifact hash.
+
+Completed PID 82200, status Failed, exit 1, elapsed 1.762s; result: D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\archive-entry-hash\processes\20261007-111830-290-baseline-check-archive-entry-hash.result.json
+Baseline check 16/16: partial-comparison
+Started PID 74220, timeout 20s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\tools\Sezika.Evaluation\bin\Release\net10.0\Sezika.Evaluation.dll --verify-baseline D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\partial-comparison\plan.json D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\partial-comparison\report.json 18
+Verifying archived baseline 1/3: paws-250 (250 cases).
+
+baseline verification: InvalidDataException: Comparison is incomplete or selects a subset.
+
+Completed PID 74220, status Failed, exit 1, elapsed 2.125s; result: D:\source\Sezika\.artifacts\s4-04-baseline-20261007\checks\partial-comparison\processes\20261007-111832-114-baseline-check-partial-comparison.result.json
+Passed 16 archived baseline checks; synthetic mutations are software tests only.

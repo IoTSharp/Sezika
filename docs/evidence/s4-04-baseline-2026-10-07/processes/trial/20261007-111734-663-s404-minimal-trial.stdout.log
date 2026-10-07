@@ -1,0 +1,9 @@
+Baseline check 1/1: fixture-positive
+Started PID 50416, timeout 20s: C:\Program Files\dotnet\dotnet.exe D:\source\Sezika\tools\Sezika.Evaluation\bin\Release\net10.0\Sezika.Evaluation.dll --verify-baseline D:\source\Sezika\.artifacts\s4-04-baseline-20261007\trial\fixture-positive\plan.json D:\source\Sezika\.artifacts\s4-04-baseline-20261007\trial\fixture-positive\report.json 18
+Verifying archived baseline 1/1: language-fixture-12 (12 cases).
+Verified language-fixture-12: 12/12; actual accuracy 8/12.
+Wrote verified archived audit baseline: D:\source\Sezika\.artifacts\s4-04-baseline-20261007\trial\fixture-positive\report.json
+
+
+Completed PID 50416, status Succeeded, exit 0, elapsed 2.557s; result: D:\source\Sezika\.artifacts\s4-04-baseline-20261007\trial\fixture-positive\processes\20261007-111736-177-baseline-check-fixture-positive.result.json
+Passed 1 archived baseline checks; synthetic mutations are software tests only.

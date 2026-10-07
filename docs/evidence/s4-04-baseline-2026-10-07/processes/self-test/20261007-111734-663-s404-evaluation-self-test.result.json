@@ -1,0 +1,28 @@
+{
+  "Status": "Succeeded",
+  "Pid": 97512,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 2.614,
+  "TimeoutSeconds": 30,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+    "--self-test"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-07T11:17:35.4668635Z",
+  "ParentPid": 83920,
+  "Launcher": {
+    "Pid": 83920,
+    "Started": "2026-10-07T19:17:34.254392+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll','--self-test') -TimeoutSeconds 30 -LogName 's404-evaluation-self-test' -LogDirectory '.artifacts/s4-04-baseline-20261007/processes/self-test'\"",
+    "ParentPid": 89648
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\processes\\self-test\\20261007-111734-663-s404-evaluation-self-test.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\processes\\self-test\\20261007-111734-663-s404-evaluation-self-test.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

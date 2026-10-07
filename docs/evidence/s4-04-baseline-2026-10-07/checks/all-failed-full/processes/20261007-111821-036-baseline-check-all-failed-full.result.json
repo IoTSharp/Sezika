@@ -1,0 +1,31 @@
+{
+  "Status": "Failed",
+  "Pid": 98280,
+  "ExitCode": 1,
+  "Error": "Process failed with exit code 1.",
+  "ElapsedSeconds": 2.266,
+  "TimeoutSeconds": 20,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+    "--verify-baseline",
+    "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\all-failed-full\\plan.json",
+    "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\all-failed-full\\report.json",
+    "18"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-07T11:18:21.8328063Z",
+  "ParentPid": 27716,
+  "Launcher": {
+    "Pid": 27716,
+    "Started": "2026-10-07T19:17:57.87083+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+    "ParentPid": 50824
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\all-failed-full\\processes\\20261007-111821-036-baseline-check-all-failed-full.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\all-failed-full\\processes\\20261007-111821-036-baseline-check-all-failed-full.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

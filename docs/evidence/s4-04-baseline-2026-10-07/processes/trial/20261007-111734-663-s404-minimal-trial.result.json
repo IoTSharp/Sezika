@@ -1,0 +1,74 @@
+{
+  "Status": "Succeeded",
+  "Pid": 72792,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 4.982,
+  "TimeoutSeconds": 60,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "tools/Sezika.Evaluation/Verify-BaselineChecks.ps1",
+    "-ApplicationPath",
+    "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+    "-PlanPath",
+    "D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json",
+    "-OutputDirectory",
+    "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\trial",
+    "-MaxCases",
+    "1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-07T11:17:35.5191311Z",
+  "ParentPid": 62564,
+  "Launcher": {
+    "Pid": 62564,
+    "Started": "2026-10-07T19:17:34.238046+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','tools/Sezika.Evaluation/Verify-BaselineChecks.ps1','-ApplicationPath','D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll','-PlanPath','D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json','-OutputDirectory','D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\trial','-MaxCases','1') -TimeoutSeconds 60 -LogName 's404-minimal-trial' -LogDirectory '.artifacts/s4-04-baseline-20261007/processes/trial'\"",
+    "ParentPid": 89648
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\processes\\trial\\20261007-111734-663-s404-minimal-trial.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\processes\\trial\\20261007-111734-663-s404-minimal-trial.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 72792,
+      "CreationDate": "2026-10-07T19:17:35.519131+08:00",
+      "Started": "2026-10-07T11:17:35.519131Z",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\trial -MaxCases 1",
+      "ParentPid": 62564,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 13516,
+      "CreationDate": "2026-10-07T19:17:35.531695+08:00",
+      "Started": "2026-10-07T11:17:35.531695Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 72792,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 50416,
+      "CreationDate": "2026-10-07T19:17:36.993325+08:00",
+      "Started": "2026-10-07T11:17:36.993325Z",
+      "CommandLine": null,
+      "ParentPid": 72792,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 9552,
+      "CreationDate": "2026-10-07T19:17:37.013393+08:00",
+      "Started": "2026-10-07T11:17:37.013393Z",
+      "CommandLine": null,
+      "ParentPid": 50416,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

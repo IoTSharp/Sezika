@@ -15,6 +15,7 @@ internal static class Evaluation
     public static int Run(string[] args)
     {
         if (args is ["--self-test"]) return EvaluationChecks.Run();
+        if (args.Length > 0 && args[0] == "--verify-baseline") return BaselineVerification.Run(args);
         if (args.Length > 0 && args[0] is "--prepare-oracle" or "--prepare-oracle-batches") return EvaluationOracle.Prepare(args);
         if (args.Length > 0 && args[0] is "--score-capture" or "--score-captures") return EvaluationOracle.Score(args);
         var namedDataset = args.Length is 9 or 10;

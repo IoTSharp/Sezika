@@ -1,0 +1,30 @@
+{
+  "Pid": 97712,
+  "Started": "2026-10-07T11:15:33.4224283Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.Evaluation/Sezika.Evaluation.csproj -c Release --no-restore --nologo -m:1 -nodeReuse:false -p:UseSharedCompilation=false",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 21480,
+  "ObservedParentPid": 21480,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 21480,
+    "Started": "2026-10-07T19:15:32.41069+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build','tools/Sezika.Evaluation/Sezika.Evaluation.csproj','-c','Release','--no-restore','--nologo','-m:1','-nodeReuse:false','-p:UseSharedCompilation=false') -TimeoutSeconds 90 -LogName 's404-final-evaluation-build' -LogDirectory '.artifacts/s4-04-baseline-20261007/processes/final-build'\"",
+    "ParentPid": 89648
+  },
+  "TimeoutSeconds": 90,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "tools/Sezika.Evaluation/Sezika.Evaluation.csproj",
+    "-c",
+    "Release",
+    "--no-restore",
+    "--nologo",
+    "-m:1",
+    "-nodeReuse:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

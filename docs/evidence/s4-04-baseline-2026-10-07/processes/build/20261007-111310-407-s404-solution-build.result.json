@@ -1,0 +1,287 @@
+{
+  "Status": "Succeeded",
+  "Pid": 70004,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 61.515,
+  "TimeoutSeconds": 240,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "Sezika.slnx",
+    "-c",
+    "Release",
+    "--nologo",
+    "-m:1",
+    "-nodeReuse:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-07T11:13:11.0425299Z",
+  "ParentPid": 89844,
+  "Launcher": {
+    "Pid": 89844,
+    "Started": "2026-10-07T19:13:09.959435+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); & ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build','Sezika.slnx','-c','Release','--nologo','-m:1','-nodeReuse:false','-p:UseSharedCompilation=false') -TimeoutSeconds 240 -LogName 's404-solution-build' -LogDirectory '.artifacts/s4-04-baseline-20261007/processes/build'\"",
+    "ParentPid": 89648
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\processes\\build\\20261007-111310-407-s404-solution-build.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\processes\\build\\20261007-111310-407-s404-solution-build.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 70004,
+      "CreationDate": "2026-10-07T19:13:11.042529+08:00",
+      "Started": "2026-10-07T11:13:11.042529Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build Sezika.slnx -c Release --nologo -m:1 -nodeReuse:false -p:UseSharedCompilation=false",
+      "ParentPid": 89844,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 7176,
+      "CreationDate": "2026-10-07T19:13:15.429063+08:00",
+      "Started": "2026-10-07T11:13:15.429063Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmp1b7e47183c264becb74138bcaf74752d.rsp\"",
+      "ParentPid": 70004,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 30668,
+      "CreationDate": "2026-10-07T19:13:58.852835+08:00",
+      "Started": "2026-10-07T11:13:58.852835Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmpcfcf2c3958004bba95c73ae716a69931.rsp\"",
+      "ParentPid": 70004,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 35400,
+      "CreationDate": "2026-10-07T19:13:47.213339+08:00",
+      "Started": "2026-10-07T11:13:47.213339Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmp1f4f8ff329c64c34aee85d2f6b27e534.rsp\"",
+      "ParentPid": 70004,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 47296,
+      "CreationDate": "2026-10-07T19:13:22.547006+08:00",
+      "Started": "2026-10-07T11:13:22.547006Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmpc13c6178cc1e46dab94be9f4b10980be.rsp\"",
+      "ParentPid": 70004,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 50332,
+      "CreationDate": "2026-10-07T19:13:49.475089+08:00",
+      "Started": "2026-10-07T11:13:49.475089Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmpf8391eb7ebd84c96babec03a6a9850d4.rsp\"",
+      "ParentPid": 70004,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 55620,
+      "CreationDate": "2026-10-07T19:14:03.711634+08:00",
+      "Started": "2026-10-07T11:14:03.711634Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmp62317b17972f49eda05bfbeb06d9a538.rsp\"",
+      "ParentPid": 70004,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 69040,
+      "CreationDate": "2026-10-07T19:14:06.403622+08:00",
+      "Started": "2026-10-07T11:14:06.403622Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmp53b016e8aa6c41919df50c723732e9a7.rsp\"",
+      "ParentPid": 70004,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 69796,
+      "CreationDate": "2026-10-07T19:13:35.707899+08:00",
+      "Started": "2026-10-07T11:13:35.707899Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmpa41d519287e14f58837bec507ab1ab0b.rsp\"",
+      "ParentPid": 70004,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 78212,
+      "CreationDate": "2026-10-07T19:13:11.051569+08:00",
+      "Started": "2026-10-07T11:13:11.051569Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 70004,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 79200,
+      "CreationDate": "2026-10-07T19:13:26.84387+08:00",
+      "Started": "2026-10-07T11:13:26.84387Z",
+      "CommandLine": null,
+      "ParentPid": 70004,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 86888,
+      "CreationDate": "2026-10-07T19:13:55.052213+08:00",
+      "Started": "2026-10-07T11:13:55.052213Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmp0db0f7b7dbcf44bf98de5b0d56fa9aab.rsp\"",
+      "ParentPid": 70004,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 95288,
+      "CreationDate": "2026-10-07T19:13:32.258276+08:00",
+      "Started": "2026-10-07T11:13:32.258276Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmp7f6bf81a9c534348a18e2805f6966839.rsp\"",
+      "ParentPid": 70004,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 96076,
+      "CreationDate": "2026-10-07T19:13:44.065733+08:00",
+      "Started": "2026-10-07T11:13:44.065733Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmp13301e7483c5469297f5e37b24516fad.rsp\"",
+      "ParentPid": 70004,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 102036,
+      "CreationDate": "2026-10-07T19:13:37.486348+08:00",
+      "Started": "2026-10-07T11:13:37.486348Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempcv1c00gg.piz\\tmp8e45f40e7178485f964cb839a75c66d9.rsp\"",
+      "ParentPid": 70004,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 10216,
+      "CreationDate": "2026-10-07T19:13:55.064579+08:00",
+      "Started": "2026-10-07T11:13:55.064579Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 86888,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 12368,
+      "CreationDate": "2026-10-07T19:13:44.075809+08:00",
+      "Started": "2026-10-07T11:13:44.075809Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 96076,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 18580,
+      "CreationDate": "2026-10-07T19:13:22.555879+08:00",
+      "Started": "2026-10-07T11:13:22.555879Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 47296,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 49280,
+      "CreationDate": "2026-10-07T19:13:47.232013+08:00",
+      "Started": "2026-10-07T11:13:47.232013Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 35400,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 53872,
+      "CreationDate": "2026-10-07T19:14:06.411997+08:00",
+      "Started": "2026-10-07T11:14:06.411997Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 69040,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 61260,
+      "CreationDate": "2026-10-07T19:13:58.864609+08:00",
+      "Started": "2026-10-07T11:13:58.864609Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 30668,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 65460,
+      "CreationDate": "2026-10-07T19:13:37.496766+08:00",
+      "Started": "2026-10-07T11:13:37.496766Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 102036,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 71004,
+      "CreationDate": "2026-10-07T19:13:32.267188+08:00",
+      "Started": "2026-10-07T11:13:32.267188Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 95288,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 81180,
+      "CreationDate": "2026-10-07T19:13:15.447989+08:00",
+      "Started": "2026-10-07T11:13:15.447989Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 7176,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 82616,
+      "CreationDate": "2026-10-07T19:13:35.717252+08:00",
+      "Started": "2026-10-07T11:13:35.717252Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 69796,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 86168,
+      "CreationDate": "2026-10-07T19:14:03.72195+08:00",
+      "Started": "2026-10-07T11:14:03.72195Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 55620,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 99800,
+      "CreationDate": "2026-10-07T19:13:49.487354+08:00",
+      "Started": "2026-10-07T11:13:49.487354Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 50332,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 104152,
+      "CreationDate": "2026-10-07T19:13:26.853454+08:00",
+      "Started": "2026-10-07T11:13:26.853454Z",
+      "CommandLine": null,
+      "ParentPid": 79200,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

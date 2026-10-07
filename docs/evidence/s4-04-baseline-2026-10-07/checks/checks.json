@@ -1,0 +1,1153 @@
+{
+  "SchemaVersion": "sezika.audit-baseline-checks.v1",
+  "Status": "passed",
+  "ApplicationPath": "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+  "SourcePlanPath": "D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json",
+  "RequestedCases": 16,
+  "CompletedCases": 16,
+  "MaxCases": 16,
+  "TotalTimeoutSeconds": 300,
+  "ChildTimeoutSeconds": 20,
+  "ElapsedSeconds": 36.017,
+  "Failure": null,
+  "Cases": [
+    {
+      "Case": "fixture-positive",
+      "Passed": true,
+      "Rejected": false,
+      "SyntheticMutation": false,
+      "ExpectedExitCode": 0,
+      "ExpectedError": null,
+      "ObservedError": "",
+      "PlanPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\fixture-positive\\plan.json",
+      "ReportPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\fixture-positive\\report.json",
+      "ProcessResultPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\fixture-positive\\processes\\20261007-111758-618-baseline-check-fixture-positive.result.json",
+      "ProcessIdentityPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\fixture-positive\\processes\\20261007-111758-618-baseline-check-fixture-positive.identity.json",
+      "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\fixture-positive\\processes\\20261007-111758-618-baseline-check-fixture-positive.stderr.log",
+      "ProcessResult": {
+        "Status": "Succeeded",
+        "Pid": 50980,
+        "ExitCode": 0,
+        "Error": null,
+        "ElapsedSeconds": 2.793,
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\fixture-positive\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\fixture-positive\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika",
+        "Started": "2026-10-07T11:17:59.5837451Z",
+        "ParentPid": 27716,
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\fixture-positive\\processes\\20261007-111758-618-baseline-check-fixture-positive.stdout.log",
+        "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\fixture-positive\\processes\\20261007-111758-618-baseline-check-fixture-positive.stderr.log",
+        "CleanupErrors": [],
+        "Processes": [],
+        "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+      },
+      "ProcessIdentity": {
+        "Pid": 50980,
+        "Started": "2026-10-07T11:17:59.5837451Z",
+        "CommandLine": null,
+        "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+        "ParentPid": 27716,
+        "ObservedParentPid": null,
+        "ParentIdentitySource": "Process.Start caller",
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\fixture-positive\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\fixture-positive\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      }
+    },
+    {
+      "Case": "full-positive",
+      "Passed": true,
+      "Rejected": false,
+      "SyntheticMutation": false,
+      "ExpectedExitCode": 0,
+      "ExpectedError": null,
+      "ObservedError": "",
+      "PlanPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\full-positive\\plan.json",
+      "ReportPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\full-positive\\report.json",
+      "ProcessResultPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\full-positive\\processes\\20261007-111801-606-baseline-check-full-positive.result.json",
+      "ProcessIdentityPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\full-positive\\processes\\20261007-111801-606-baseline-check-full-positive.identity.json",
+      "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\full-positive\\processes\\20261007-111801-606-baseline-check-full-positive.stderr.log",
+      "ProcessResult": {
+        "Status": "Succeeded",
+        "Pid": 97320,
+        "ExitCode": 0,
+        "Error": null,
+        "ElapsedSeconds": 2.006,
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\full-positive\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\full-positive\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika",
+        "Started": "2026-10-07T11:18:02.3775343Z",
+        "ParentPid": 27716,
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\full-positive\\processes\\20261007-111801-606-baseline-check-full-positive.stdout.log",
+        "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\full-positive\\processes\\20261007-111801-606-baseline-check-full-positive.stderr.log",
+        "CleanupErrors": [],
+        "Processes": [],
+        "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+      },
+      "ProcessIdentity": {
+        "Pid": 97320,
+        "Started": "2026-10-07T11:18:02.3775343Z",
+        "CommandLine": null,
+        "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+        "ParentPid": 27716,
+        "ObservedParentPid": null,
+        "ParentIdentitySource": "Process.Start caller",
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\full-positive\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\full-positive\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      }
+    },
+    {
+      "Case": "file-hash",
+      "Passed": true,
+      "Rejected": true,
+      "SyntheticMutation": true,
+      "ExpectedExitCode": 1,
+      "ExpectedError": "baseline verification: InvalidDataException: Baseline input hash mismatch: D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\file-hash\\archive\\paws-final-actuals-quality.json",
+      "ObservedError": "baseline verification: InvalidDataException: Baseline input hash mismatch: D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\file-hash\\archive\\paws-final-actuals-quality.json",
+      "PlanPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\file-hash\\plan.json",
+      "ReportPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\file-hash\\report.json",
+      "ProcessResultPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\file-hash\\processes\\20261007-111803-720-baseline-check-file-hash.result.json",
+      "ProcessIdentityPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\file-hash\\processes\\20261007-111803-720-baseline-check-file-hash.identity.json",
+      "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\file-hash\\processes\\20261007-111803-720-baseline-check-file-hash.stderr.log",
+      "ProcessResult": {
+        "Status": "Failed",
+        "Pid": 10716,
+        "ExitCode": 1,
+        "Error": "Process failed with exit code 1.",
+        "ElapsedSeconds": 2.14,
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\file-hash\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\file-hash\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika",
+        "Started": "2026-10-07T11:18:04.332429Z",
+        "ParentPid": 27716,
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\file-hash\\processes\\20261007-111803-720-baseline-check-file-hash.stdout.log",
+        "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\file-hash\\processes\\20261007-111803-720-baseline-check-file-hash.stderr.log",
+        "CleanupErrors": [],
+        "Processes": [],
+        "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+      },
+      "ProcessIdentity": {
+        "Pid": 10716,
+        "Started": "2026-10-07T11:18:04.332429Z",
+        "CommandLine": null,
+        "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+        "ParentPid": 27716,
+        "ObservedParentPid": null,
+        "ParentIdentitySource": "Process.Start caller",
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\file-hash\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\file-hash\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      }
+    },
+    {
+      "Case": "duplicate-json",
+      "Passed": true,
+      "Rejected": true,
+      "SyntheticMutation": true,
+      "ExpectedExitCode": 1,
+      "ExpectedError": "baseline verification: InvalidDataException: Duplicate JSON property: SchemaVersion",
+      "ObservedError": "baseline verification: InvalidDataException: Duplicate JSON property: SchemaVersion",
+      "PlanPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\duplicate-json\\plan.json",
+      "ReportPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\duplicate-json\\report.json",
+      "ProcessResultPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\duplicate-json\\processes\\20261007-111805-947-baseline-check-duplicate-json.result.json",
+      "ProcessIdentityPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\duplicate-json\\processes\\20261007-111805-947-baseline-check-duplicate-json.identity.json",
+      "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\duplicate-json\\processes\\20261007-111805-947-baseline-check-duplicate-json.stderr.log",
+      "ProcessResult": {
+        "Status": "Failed",
+        "Pid": 73392,
+        "ExitCode": 1,
+        "Error": "Process failed with exit code 1.",
+        "ElapsedSeconds": 1.65,
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\duplicate-json\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\duplicate-json\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika",
+        "Started": "2026-10-07T11:18:06.4826564Z",
+        "ParentPid": 27716,
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\duplicate-json\\processes\\20261007-111805-947-baseline-check-duplicate-json.stdout.log",
+        "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\duplicate-json\\processes\\20261007-111805-947-baseline-check-duplicate-json.stderr.log",
+        "CleanupErrors": [],
+        "Processes": [],
+        "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+      },
+      "ProcessIdentity": {
+        "Pid": 73392,
+        "Started": "2026-10-07T11:18:06.4826564Z",
+        "CommandLine": null,
+        "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+        "ParentPid": 27716,
+        "ObservedParentPid": null,
+        "ParentIdentitySource": "Process.Start caller",
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\duplicate-json\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\duplicate-json\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      }
+    },
+    {
+      "Case": "missing-comparison",
+      "Passed": true,
+      "Rejected": true,
+      "SyntheticMutation": true,
+      "ExpectedExitCode": 1,
+      "ExpectedError": "baseline verification: InvalidDataException: Quality batch counts do not equal the comparison count.",
+      "ObservedError": "baseline verification: InvalidDataException: Quality batch counts do not equal the comparison count.",
+      "PlanPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\missing-comparison\\plan.json",
+      "ReportPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\missing-comparison\\report.json",
+      "ProcessResultPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\missing-comparison\\processes\\20261007-111807-658-baseline-check-missing-comparison.result.json",
+      "ProcessIdentityPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\missing-comparison\\processes\\20261007-111807-658-baseline-check-missing-comparison.identity.json",
+      "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\missing-comparison\\processes\\20261007-111807-658-baseline-check-missing-comparison.stderr.log",
+      "ProcessResult": {
+        "Status": "Failed",
+        "Pid": 105960,
+        "ExitCode": 1,
+        "Error": "Process failed with exit code 1.",
+        "ElapsedSeconds": 2.139,
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\missing-comparison\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\missing-comparison\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika",
+        "Started": "2026-10-07T11:18:08.2502462Z",
+        "ParentPid": 27716,
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\missing-comparison\\processes\\20261007-111807-658-baseline-check-missing-comparison.stdout.log",
+        "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\missing-comparison\\processes\\20261007-111807-658-baseline-check-missing-comparison.stderr.log",
+        "CleanupErrors": [],
+        "Processes": [],
+        "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+      },
+      "ProcessIdentity": {
+        "Pid": 105960,
+        "Started": "2026-10-07T11:18:08.2502462Z",
+        "CommandLine": null,
+        "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+        "ParentPid": 27716,
+        "ObservedParentPid": null,
+        "ParentIdentitySource": "Process.Start caller",
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\missing-comparison\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\missing-comparison\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      }
+    },
+    {
+      "Case": "mixed-policy",
+      "Passed": true,
+      "Rejected": true,
+      "SyntheticMutation": true,
+      "ExpectedExitCode": 1,
+      "ExpectedError": "baseline verification: InvalidDataException: Unexpected quality schema/rendering/length policy.",
+      "ObservedError": "baseline verification: InvalidDataException: Unexpected quality schema/rendering/length policy.",
+      "PlanPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\mixed-policy\\plan.json",
+      "ReportPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\mixed-policy\\report.json",
+      "ProcessResultPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\mixed-policy\\processes\\20261007-111809-865-baseline-check-mixed-policy.result.json",
+      "ProcessIdentityPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\mixed-policy\\processes\\20261007-111809-865-baseline-check-mixed-policy.identity.json",
+      "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\mixed-policy\\processes\\20261007-111809-865-baseline-check-mixed-policy.stderr.log",
+      "ProcessResult": {
+        "Status": "Failed",
+        "Pid": 14808,
+        "ExitCode": 1,
+        "Error": "Process failed with exit code 1.",
+        "ElapsedSeconds": 2.265,
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\mixed-policy\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\mixed-policy\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika",
+        "Started": "2026-10-07T11:18:10.6232653Z",
+        "ParentPid": 27716,
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\mixed-policy\\processes\\20261007-111809-865-baseline-check-mixed-policy.stdout.log",
+        "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\mixed-policy\\processes\\20261007-111809-865-baseline-check-mixed-policy.stderr.log",
+        "CleanupErrors": [],
+        "Processes": [],
+        "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+      },
+      "ProcessIdentity": {
+        "Pid": 14808,
+        "Started": "2026-10-07T11:18:10.6232653Z",
+        "CommandLine": null,
+        "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+        "ParentPid": 27716,
+        "ObservedParentPid": null,
+        "ParentIdentitySource": "Process.Start caller",
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\mixed-policy\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\mixed-policy\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      }
+    },
+    {
+      "Case": "slice-nll",
+      "Passed": true,
+      "Rejected": true,
+      "SyntheticMutation": true,
+      "ExpectedExitCode": 1,
+      "ExpectedError": "baseline verification: InvalidDataException: Invalid weighted arithmetic: type MeanNll",
+      "ObservedError": "baseline verification: InvalidDataException: Invalid weighted arithmetic: type MeanNll",
+      "PlanPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\slice-nll\\plan.json",
+      "ReportPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\slice-nll\\report.json",
+      "ProcessResultPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\slice-nll\\processes\\20261007-111812-190-baseline-check-slice-nll.result.json",
+      "ProcessIdentityPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\slice-nll\\processes\\20261007-111812-190-baseline-check-slice-nll.identity.json",
+      "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\slice-nll\\processes\\20261007-111812-190-baseline-check-slice-nll.stderr.log",
+      "ProcessResult": {
+        "Status": "Failed",
+        "Pid": 62384,
+        "ExitCode": 1,
+        "Error": "Process failed with exit code 1.",
+        "ElapsedSeconds": 2.153,
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\slice-nll\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\slice-nll\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika",
+        "Started": "2026-10-07T11:18:12.9067736Z",
+        "ParentPid": 27716,
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\slice-nll\\processes\\20261007-111812-190-baseline-check-slice-nll.stdout.log",
+        "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\slice-nll\\processes\\20261007-111812-190-baseline-check-slice-nll.stderr.log",
+        "CleanupErrors": [],
+        "Processes": [],
+        "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+      },
+      "ProcessIdentity": {
+        "Pid": 62384,
+        "Started": "2026-10-07T11:18:12.9067736Z",
+        "CommandLine": null,
+        "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+        "ParentPid": 27716,
+        "ObservedParentPid": null,
+        "ParentIdentitySource": "Process.Start caller",
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\slice-nll\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\slice-nll\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      }
+    },
+    {
+      "Case": "wrong-provenance",
+      "Passed": true,
+      "Rejected": true,
+      "SyntheticMutation": true,
+      "ExpectedExitCode": 1,
+      "ExpectedError": "baseline verification: InvalidDataException: Capture/comparison does not use the fixed baseline identity/policy.",
+      "ObservedError": "baseline verification: InvalidDataException: Capture/comparison does not use the fixed baseline identity/policy.",
+      "PlanPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\wrong-provenance\\plan.json",
+      "ReportPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\wrong-provenance\\report.json",
+      "ProcessResultPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\wrong-provenance\\processes\\20261007-111814-407-baseline-check-wrong-provenance.result.json",
+      "ProcessIdentityPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\wrong-provenance\\processes\\20261007-111814-407-baseline-check-wrong-provenance.identity.json",
+      "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\wrong-provenance\\processes\\20261007-111814-407-baseline-check-wrong-provenance.stderr.log",
+      "ProcessResult": {
+        "Status": "Failed",
+        "Pid": 61652,
+        "ExitCode": 1,
+        "Error": "Process failed with exit code 1.",
+        "ElapsedSeconds": 2.233,
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\wrong-provenance\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\wrong-provenance\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika",
+        "Started": "2026-10-07T11:18:15.0626263Z",
+        "ParentPid": 27716,
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\wrong-provenance\\processes\\20261007-111814-407-baseline-check-wrong-provenance.stdout.log",
+        "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\wrong-provenance\\processes\\20261007-111814-407-baseline-check-wrong-provenance.stderr.log",
+        "CleanupErrors": [],
+        "Processes": [],
+        "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+      },
+      "ProcessIdentity": {
+        "Pid": 61652,
+        "Started": "2026-10-07T11:18:15.0626263Z",
+        "CommandLine": null,
+        "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+        "ParentPid": 27716,
+        "ObservedParentPid": null,
+        "ParentIdentitySource": "Process.Start caller",
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\wrong-provenance\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\wrong-provenance\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      }
+    },
+    {
+      "Case": "capture-link-hash",
+      "Passed": true,
+      "Rejected": true,
+      "SyntheticMutation": true,
+      "ExpectedExitCode": 1,
+      "ExpectedError": "baseline verification: InvalidDataException: Comparison capture hashes differ from quality batches.",
+      "ObservedError": "baseline verification: InvalidDataException: Comparison capture hashes differ from quality batches.",
+      "PlanPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\capture-link-hash\\plan.json",
+      "ReportPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\capture-link-hash\\report.json",
+      "ProcessResultPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\capture-link-hash\\processes\\20261007-111816-711-baseline-check-capture-link-hash.result.json",
+      "ProcessIdentityPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\capture-link-hash\\processes\\20261007-111816-711-baseline-check-capture-link-hash.identity.json",
+      "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\capture-link-hash\\processes\\20261007-111816-711-baseline-check-capture-link-hash.stderr.log",
+      "ProcessResult": {
+        "Status": "Failed",
+        "Pid": 67144,
+        "ExitCode": 1,
+        "Error": "Process failed with exit code 1.",
+        "ElapsedSeconds": 2.391,
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\capture-link-hash\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\capture-link-hash\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika",
+        "Started": "2026-10-07T11:18:17.4805966Z",
+        "ParentPid": 27716,
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\capture-link-hash\\processes\\20261007-111816-711-baseline-check-capture-link-hash.stdout.log",
+        "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\capture-link-hash\\processes\\20261007-111816-711-baseline-check-capture-link-hash.stderr.log",
+        "CleanupErrors": [],
+        "Processes": [],
+        "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+      },
+      "ProcessIdentity": {
+        "Pid": 67144,
+        "Started": "2026-10-07T11:18:17.4805966Z",
+        "CommandLine": null,
+        "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+        "ParentPid": 27716,
+        "ObservedParentPid": null,
+        "ParentIdentitySource": "Process.Start caller",
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\capture-link-hash\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\capture-link-hash\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      }
+    },
+    {
+      "Case": "crossbatch-id",
+      "Passed": true,
+      "Rejected": true,
+      "SyntheticMutation": true,
+      "ExpectedExitCode": 1,
+      "ExpectedError": "baseline verification: InvalidDataException: Case ID is repeated across batches or datasets.",
+      "ObservedError": "baseline verification: InvalidDataException: Case ID is repeated across batches or datasets.",
+      "PlanPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\crossbatch-id\\plan.json",
+      "ReportPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\crossbatch-id\\report.json",
+      "ProcessResultPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\crossbatch-id\\processes\\20261007-111819-183-baseline-check-crossbatch-id.result.json",
+      "ProcessIdentityPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\crossbatch-id\\processes\\20261007-111819-183-baseline-check-crossbatch-id.identity.json",
+      "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\crossbatch-id\\processes\\20261007-111819-183-baseline-check-crossbatch-id.stderr.log",
+      "ProcessResult": {
+        "Status": "Failed",
+        "Pid": 59192,
+        "ExitCode": 1,
+        "Error": "Process failed with exit code 1.",
+        "ElapsedSeconds": 1.746,
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\crossbatch-id\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\crossbatch-id\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika",
+        "Started": "2026-10-07T11:18:19.8684632Z",
+        "ParentPid": 27716,
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\crossbatch-id\\processes\\20261007-111819-183-baseline-check-crossbatch-id.stdout.log",
+        "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\crossbatch-id\\processes\\20261007-111819-183-baseline-check-crossbatch-id.stderr.log",
+        "CleanupErrors": [],
+        "Processes": [],
+        "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+      },
+      "ProcessIdentity": {
+        "Pid": 59192,
+        "Started": "2026-10-07T11:18:19.8684632Z",
+        "CommandLine": null,
+        "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+        "ParentPid": 27716,
+        "ObservedParentPid": null,
+        "ParentIdentitySource": "Process.Start caller",
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\crossbatch-id\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\crossbatch-id\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      }
+    },
+    {
+      "Case": "all-failed-full",
+      "Passed": true,
+      "Rejected": true,
+      "SyntheticMutation": true,
+      "ExpectedExitCode": 1,
+      "ExpectedError": "baseline verification: InvalidDataException: Quality answer counts differ from the fully answered comparison baseline.",
+      "ObservedError": "baseline verification: InvalidDataException: Quality answer counts differ from the fully answered comparison baseline.",
+      "PlanPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\all-failed-full\\plan.json",
+      "ReportPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\all-failed-full\\report.json",
+      "ProcessResultPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\all-failed-full\\processes\\20261007-111821-036-baseline-check-all-failed-full.result.json",
+      "ProcessIdentityPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\all-failed-full\\processes\\20261007-111821-036-baseline-check-all-failed-full.identity.json",
+      "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\all-failed-full\\processes\\20261007-111821-036-baseline-check-all-failed-full.stderr.log",
+      "ProcessResult": {
+        "Status": "Failed",
+        "Pid": 98280,
+        "ExitCode": 1,
+        "Error": "Process failed with exit code 1.",
+        "ElapsedSeconds": 2.266,
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\all-failed-full\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\all-failed-full\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika",
+        "Started": "2026-10-07T11:18:21.8328063Z",
+        "ParentPid": 27716,
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\all-failed-full\\processes\\20261007-111821-036-baseline-check-all-failed-full.stdout.log",
+        "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\all-failed-full\\processes\\20261007-111821-036-baseline-check-all-failed-full.stderr.log",
+        "CleanupErrors": [],
+        "Processes": [],
+        "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+      },
+      "ProcessIdentity": {
+        "Pid": 98280,
+        "Started": "2026-10-07T11:18:21.8328063Z",
+        "CommandLine": null,
+        "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+        "ParentPid": 27716,
+        "ObservedParentPid": null,
+        "ParentIdentitySource": "Process.Start caller",
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\all-failed-full\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\all-failed-full\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      }
+    },
+    {
+      "Case": "boolean-denominators",
+      "Passed": true,
+      "Rejected": true,
+      "SyntheticMutation": true,
+      "ExpectedExitCode": 1,
+      "ExpectedError": "baseline verification: InvalidDataException: Invalid Boolean confusion matrix/denominators.",
+      "ObservedError": "baseline verification: InvalidDataException: Invalid Boolean confusion matrix/denominators.",
+      "PlanPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\boolean-denominators\\plan.json",
+      "ReportPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\boolean-denominators\\report.json",
+      "ProcessResultPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\boolean-denominators\\processes\\20261007-111823-366-baseline-check-boolean-denominators.result.json",
+      "ProcessIdentityPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\boolean-denominators\\processes\\20261007-111823-366-baseline-check-boolean-denominators.identity.json",
+      "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\boolean-denominators\\processes\\20261007-111823-366-baseline-check-boolean-denominators.stderr.log",
+      "ProcessResult": {
+        "Status": "Failed",
+        "Pid": 53720,
+        "ExitCode": 1,
+        "Error": "Process failed with exit code 1.",
+        "ElapsedSeconds": 2.309,
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\boolean-denominators\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\boolean-denominators\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika",
+        "Started": "2026-10-07T11:18:24.0351822Z",
+        "ParentPid": 27716,
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\boolean-denominators\\processes\\20261007-111823-366-baseline-check-boolean-denominators.stdout.log",
+        "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\boolean-denominators\\processes\\20261007-111823-366-baseline-check-boolean-denominators.stderr.log",
+        "CleanupErrors": [],
+        "Processes": [],
+        "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+      },
+      "ProcessIdentity": {
+        "Pid": 53720,
+        "Started": "2026-10-07T11:18:24.0351822Z",
+        "CommandLine": null,
+        "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+        "ParentPid": 27716,
+        "ObservedParentPid": null,
+        "ParentIdentitySource": "Process.Start caller",
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\boolean-denominators\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\boolean-denominators\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      }
+    },
+    {
+      "Case": "illegal-numeric",
+      "Passed": true,
+      "Rejected": true,
+      "SyntheticMutation": true,
+      "ExpectedExitCode": 1,
+      "ExpectedError": "baseline verification: InvalidDataException: Invalid numeric metric: Ece10.",
+      "ObservedError": "baseline verification: InvalidDataException: Invalid numeric metric: Ece10.",
+      "PlanPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\illegal-numeric\\plan.json",
+      "ReportPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\illegal-numeric\\report.json",
+      "ProcessResultPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\illegal-numeric\\processes\\20261007-111825-757-baseline-check-illegal-numeric.result.json",
+      "ProcessIdentityPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\illegal-numeric\\processes\\20261007-111825-757-baseline-check-illegal-numeric.identity.json",
+      "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\illegal-numeric\\processes\\20261007-111825-757-baseline-check-illegal-numeric.stderr.log",
+      "ProcessResult": {
+        "Status": "Failed",
+        "Pid": 66052,
+        "ExitCode": 1,
+        "Error": "Process failed with exit code 1.",
+        "ElapsedSeconds": 2.342,
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\illegal-numeric\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\illegal-numeric\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika",
+        "Started": "2026-10-07T11:18:26.6229475Z",
+        "ParentPid": 27716,
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\illegal-numeric\\processes\\20261007-111825-757-baseline-check-illegal-numeric.stdout.log",
+        "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\illegal-numeric\\processes\\20261007-111825-757-baseline-check-illegal-numeric.stderr.log",
+        "CleanupErrors": [],
+        "Processes": [],
+        "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+      },
+      "ProcessIdentity": {
+        "Pid": 66052,
+        "Started": "2026-10-07T11:18:26.6229475Z",
+        "CommandLine": null,
+        "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+        "ParentPid": 27716,
+        "ObservedParentPid": null,
+        "ParentIdentitySource": "Process.Start caller",
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\illegal-numeric\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\illegal-numeric\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      }
+    },
+    {
+      "Case": "slice-drift",
+      "Passed": true,
+      "Rejected": true,
+      "SyntheticMutation": true,
+      "ExpectedExitCode": 1,
+      "ExpectedError": "baseline verification: InvalidDataException: language denominators differ from their marginal.",
+      "ObservedError": "baseline verification: InvalidDataException: language denominators differ from their marginal.",
+      "PlanPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\slice-drift\\plan.json",
+      "ReportPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\slice-drift\\report.json",
+      "ProcessResultPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\slice-drift\\processes\\20261007-111828-176-baseline-check-slice-drift.result.json",
+      "ProcessIdentityPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\slice-drift\\processes\\20261007-111828-176-baseline-check-slice-drift.identity.json",
+      "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\slice-drift\\processes\\20261007-111828-176-baseline-check-slice-drift.stderr.log",
+      "ProcessResult": {
+        "Status": "Failed",
+        "Pid": 43312,
+        "ExitCode": 1,
+        "Error": "Process failed with exit code 1.",
+        "ElapsedSeconds": 2.054,
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\slice-drift\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\slice-drift\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika",
+        "Started": "2026-10-07T11:18:28.888596Z",
+        "ParentPid": 27716,
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\slice-drift\\processes\\20261007-111828-176-baseline-check-slice-drift.stdout.log",
+        "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\slice-drift\\processes\\20261007-111828-176-baseline-check-slice-drift.stderr.log",
+        "CleanupErrors": [],
+        "Processes": [],
+        "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+      },
+      "ProcessIdentity": {
+        "Pid": 43312,
+        "Started": "2026-10-07T11:18:28.888596Z",
+        "CommandLine": null,
+        "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+        "ParentPid": 27716,
+        "ObservedParentPid": null,
+        "ParentIdentitySource": "Process.Start caller",
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\slice-drift\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\slice-drift\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      }
+    },
+    {
+      "Case": "archive-entry-hash",
+      "Passed": true,
+      "Rejected": true,
+      "SyntheticMutation": true,
+      "ExpectedExitCode": 1,
+      "ExpectedError": "baseline verification: InvalidDataException: Plan hash differs from archived artifact hash.",
+      "ObservedError": "baseline verification: InvalidDataException: Plan hash differs from archived artifact hash.",
+      "PlanPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\archive-entry-hash\\plan.json",
+      "ReportPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\archive-entry-hash\\report.json",
+      "ProcessResultPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\archive-entry-hash\\processes\\20261007-111830-290-baseline-check-archive-entry-hash.result.json",
+      "ProcessIdentityPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\archive-entry-hash\\processes\\20261007-111830-290-baseline-check-archive-entry-hash.identity.json",
+      "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\archive-entry-hash\\processes\\20261007-111830-290-baseline-check-archive-entry-hash.stderr.log",
+      "ProcessResult": {
+        "Status": "Failed",
+        "Pid": 82200,
+        "ExitCode": 1,
+        "Error": "Process failed with exit code 1.",
+        "ElapsedSeconds": 1.761,
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\archive-entry-hash\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\archive-entry-hash\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika",
+        "Started": "2026-10-07T11:18:30.8958399Z",
+        "ParentPid": 27716,
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\archive-entry-hash\\processes\\20261007-111830-290-baseline-check-archive-entry-hash.stdout.log",
+        "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\archive-entry-hash\\processes\\20261007-111830-290-baseline-check-archive-entry-hash.stderr.log",
+        "CleanupErrors": [],
+        "Processes": [],
+        "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+      },
+      "ProcessIdentity": {
+        "Pid": 82200,
+        "Started": "2026-10-07T11:18:30.8958399Z",
+        "CommandLine": null,
+        "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+        "ParentPid": 27716,
+        "ObservedParentPid": null,
+        "ParentIdentitySource": "Process.Start caller",
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\archive-entry-hash\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\archive-entry-hash\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      }
+    },
+    {
+      "Case": "partial-comparison",
+      "Passed": true,
+      "Rejected": true,
+      "SyntheticMutation": true,
+      "ExpectedExitCode": 1,
+      "ExpectedError": "baseline verification: InvalidDataException: Comparison is incomplete or selects a subset.",
+      "ObservedError": "baseline verification: InvalidDataException: Comparison is incomplete or selects a subset.",
+      "PlanPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\partial-comparison\\plan.json",
+      "ReportPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\partial-comparison\\report.json",
+      "ProcessResultPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\partial-comparison\\processes\\20261007-111832-114-baseline-check-partial-comparison.result.json",
+      "ProcessIdentityPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\partial-comparison\\processes\\20261007-111832-114-baseline-check-partial-comparison.identity.json",
+      "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\partial-comparison\\processes\\20261007-111832-114-baseline-check-partial-comparison.stderr.log",
+      "ProcessResult": {
+        "Status": "Failed",
+        "Pid": 74220,
+        "ExitCode": 1,
+        "Error": "Process failed with exit code 1.",
+        "ElapsedSeconds": 2.123,
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\partial-comparison\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\partial-comparison\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika",
+        "Started": "2026-10-07T11:18:32.7493055Z",
+        "ParentPid": 27716,
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\partial-comparison\\processes\\20261007-111832-114-baseline-check-partial-comparison.stdout.log",
+        "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\partial-comparison\\processes\\20261007-111832-114-baseline-check-partial-comparison.stderr.log",
+        "CleanupErrors": [],
+        "Processes": [],
+        "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+      },
+      "ProcessIdentity": {
+        "Pid": 74220,
+        "Started": "2026-10-07T11:18:32.7493055Z",
+        "CommandLine": null,
+        "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+        "ParentPid": 27716,
+        "ObservedParentPid": null,
+        "ParentIdentitySource": "Process.Start caller",
+        "Launcher": {
+          "Pid": 27716,
+          "Started": "2026-10-07T19:17:57.87083+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+          "ParentPid": 50824
+        },
+        "TimeoutSeconds": 20,
+        "ProcessQueryTimeoutSeconds": 2,
+        "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+        "Arguments": [
+          "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+          "--verify-baseline",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\partial-comparison\\plan.json",
+          "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\partial-comparison\\report.json",
+          "18"
+        ],
+        "WorkingDirectory": "D:\\source\\Sezika"
+      }
+    }
+  ],
+  "Meaning": "Software validation only. Mutated copies and rebound test hashes are synthetic rejection inputs, not new inference or model-quality measurements.",
+  "Cleanup": "Case process identity/result logs must report no cleanup errors. No source archive, user files, logs or retained test copies are deleted."
+}

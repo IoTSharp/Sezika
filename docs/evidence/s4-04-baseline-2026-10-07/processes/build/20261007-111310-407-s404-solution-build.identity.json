@@ -1,0 +1,29 @@
+{
+  "Pid": 70004,
+  "Started": "2026-10-07T11:13:11.0425299Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build Sezika.slnx -c Release --nologo -m:1 -nodeReuse:false -p:UseSharedCompilation=false",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 89844,
+  "ObservedParentPid": 89844,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 89844,
+    "Started": "2026-10-07T19:13:09.959435+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); & ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build','Sezika.slnx','-c','Release','--nologo','-m:1','-nodeReuse:false','-p:UseSharedCompilation=false') -TimeoutSeconds 240 -LogName 's404-solution-build' -LogDirectory '.artifacts/s4-04-baseline-20261007/processes/build'\"",
+    "ParentPid": 89648
+  },
+  "TimeoutSeconds": 240,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "Sezika.slnx",
+    "-c",
+    "Release",
+    "--nologo",
+    "-m:1",
+    "-nodeReuse:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

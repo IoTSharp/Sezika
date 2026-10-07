@@ -94,11 +94,11 @@
 | S4-01 | D 质量 | ✅ 已完成 | 提供二分类线性头示例 trainer、温度拟合与 accuracy/F1/NLL/Brier/ECE 评估器 | S3-01 | 可复现示例 trainer/metrics；该 trainer 不更新真实 marker head |
 | S4-02 | D 质量 | ✅ 已完成 | 建立中英测试/校准协议夹具、来源与隔离清单 | S4-01 | 24 条原创中英 fixture、数据卡、SHA-256 manifest、split/entity/fingerprint 隔离与有界验证脚本；无真实训练集，fixture 不代表代表性质量 |
 | S4-03 | D 质量 | ✅ 已完成 | 建立初始校准 profile 合同、安全加载器与冻结门槛 | S4-02 | 12 个初始 prompt-v1 的 hash 绑定 profile，保持 `pending_measurement`；当前 prompt 或新权重的 profile 须另建并实测，不沿用旧绑定 |
-| S4-04 | D 质量 | 🚧 进行中 | 对修正后的相同权重/输入分别运行 Laya 与 Sezika，建立可比较质量和覆盖率基线 | S3-08,S3-09,S3-10 | [全量独立参考与修复后复测](docs/evidence/s346-continuation-2026-09-26.md)：PAWS250+Nimble324共574条独立比较通过，双方均170/250及137/324正确，均为compatible；另12条原创中英fixture逐题通过、双方8/12正确。初轮Nimble8条token差异和超时保留，修复后同一构建全量重捕获。574条近并列观察命中0；Boolean负类召回仍1/57、外部题集语言未标注、代表性中英质量与校准未验收；旧strict报告单列 |
+| S4-04 | D 审计基线 | ✅ 已完成 | 对修正后的相同权重/输入分别运行 Laya 与 Sezika，建立可比较质量和覆盖率审计基线 | S3-08,S3-09,S3-10 | [2026-10-07闭环证据](docs/evidence/s4-04-baseline-closure-2026-10-07.md)：冻结索引、六份质量报告与16份完整比较的身份/分母/指标关联通过，586条历史审计基线可自动复核；17项评估器自检、16项正负回归通过，构建零警告/错误。原始捕获/模型已清理，本轮无新推理。双方PAWS170/250、Nimble137/324、中英fixture8/12正确；近并列命中0、Boolean负类召回1/57、外部语言未标注。代表性质量与校准继续由S4-05/S4-08验收，旧strict报告单列 |
 | S4-05 | D 数据 | 🚧 进行中 | 审核来源许可，构建独立训练/开发/校准/封存测试及多语言反事实流水线 | S0-01 | `tools/Validate-S4Data.ps1` 已提供有界 manifest、许可/用途、split、实体/家族/近重复、衍生父链、污染和封存绑定审计；项目自有 12 条 train/development smoke 已入库并绑定 records/manifest hash；正式许可复核、calibration/sealed test、污染检查和人工封存仍未完成；PAWS/Nimble 只作 audit |
 | S4-06 | D 诊断 | 🚧 进行中 | 在新独立开发集建立目标任务基线，按角色、否定、词面相似性、语言、题型与候选顺序诊断 | S4-05；独立模型基线：S4-15；Laya对照可选 | `IndependentModelTool evaluate-original` 已实现有界 development 评估，输出逐题候选顺序、覆盖率、准确率、NLL/Brier/ECE、margin、宏 AUROC 和 Wilson 置信区间，并按语言/题型分组；角色/否定/词面相似性在记录未提供审核标签前明确不推断；仍只有 6 条开发 smoke，未形成 calibration、代表性质量或封存测试证据，详见 [S4-06 评估合同](docs/independent-development-evaluation-s4-06.md) |
 | S4-07 | D 自有head训练 | 🚧 进行中 | 用C#实现独立encoder上的自有head/scorer前反传与初始化；支持完整逐题特征缓存及人工/可选教师硬标签实验 | 工具：S4-14；真实实验：S4-05,S4-06,S4-12,S4-15 | 350 项测试、真实独立 encoder 12 条原创开发 smoke、24 步人工硬标签训练和 head asset 已有证据；结果明确为 development smoke，不是质量验收 |
-| S4-08 | D 质量门槛 | 🚧 进行中 | 验收独立模型数值、质量、校准/拒答profile与部署；既有Laya证据单列 | S4-06,S4-07,S4-12,S4-15 | [校准续审](docs/evidence/calibration-continuation-2026-10-03.md)补基线/封存 split/有限值门槛及全样本/拒答分母；真实验收 pending。自有模型封存测试按覆盖率、balanced accuracy/负类召回、AUROC、NLL/Brier/ECE、Choice/Score、逐语言及反事实对报告，含置信区间和回退；自身同权重参考、CPU/CUDA与两RID AOT回归，不提供Laya资产的环境仍能运行 |
+| S4-08 | D 质量门槛 | 🚧 进行中 | 验收独立模型数值、质量、校准/拒答profile与部署；既有Laya证据单列 | S4-06,S4-07,S4-12,S4-15 | S4-04仅闭合同权重审计基线，既有Laya与独立模型的代表性中英质量及正式校准均未验收，数据准入/封存由S4-05承接。[校准续审](docs/evidence/calibration-continuation-2026-10-03.md)补基线/封存 split/有限值门槛及全样本/拒答分母；真实验收 pending。自有模型封存测试按覆盖率、balanced accuracy/负类召回、AUROC、NLL/Brier/ECE、Choice/Score、逐语言及反事实对报告，含置信区间和回退；自身同权重参考、CPU/CUDA与两RID AOT回归，不提供Laya资产的环境仍能运行 |
 | S4-09 | D 可选对标 | ⏳ 计划中 | 按产品需要审计其他检查点的C#支持；Laya Agent/Router仅作可选对照 | S3-07,S4-04仅限Laya对照；新增资产独立审核 | 各资产许可/revision/hash、显式模型选择与同路由同题集报告；不阻断独立模型主线，新增资产另验数值/AOT/性能/校准 |
 | S4-10 | D 教师入口 | 🚧 进行中 | 核对IoTSharp/Tomur本地服务、catalog `qwen35-9b-q4km` 的实际模型身份/接口/错误合同、资源预算及输出训练/再分发许可；4B仅作资源/质量对照，设计独立C#离线采集工具 | S0-02,S4-05数据合同 | [教师续审](docs/evidence/teacher-continuation-2026-10-03.md)补重复属性/UTF-8字节上限、同快照hash、家族隔离、全状态分母和不覆盖输出；`Sezika.TeacherTool` 已实现候选 catalog 与最多32条采集记录的离线合同检查，保留响应 hash、失败/拒答分母并阻止未经人工审核进入训练；候选本机尚未安装或实际验证，服务 native runtime 仅限外部工具边界，Sezika 核心及最终推理仍纯本地C#；先核对条款、上限与取消，无许可记录不进入对应训练用途 |
 | S4-11 | D 教师数据 | ⏳ 计划中 | 对最多32条新人工金标有界采集教师硬标签，人工复核后才交训练器；与仅人工训练做对照，软分布后续另验 | S4-05,S4-10 | 扩量前冻结样本/请求/重试/墙钟/资源上限；保存来源、完整输入合同、模型/提示/响应hash、家族及审核链；失败/拒答保留分母，教师标签不作封存测试真值，自报置信度不作软标签 |
@@ -119,7 +119,7 @@
 
 S5-04、S5-05 已在固定硬件与两个 RID 的记录范围内闭环；S5-06、S5-07 是新增性能工作。Linux 使用 Ubuntu WSL2 smoke，未测量裸机 Linux 性能。S6-02 正式发布仍未完成。S4-03 的 profile 仍保持 `pending_measurement`，不把 fixture、数值对齐或性能基准写成多语言质量已达标。
 
-质量、训练、性能和生态的背景研究见 [下一阶段研究](docs/next-stage-research-2026-09-25.md)，以上执行表是唯一当前阶段计划。该研究文档保留原日期的背景及旧结果，当前优先级采用2026-09-30校核后的独立模型/自有head与可选离线教师路线。S4-04仍未完成；S4-14已完成文档审核/设计，S4-15已有原始资产受限导入、decision-v1 CPU smoke 和独立 loader 证据，S4-07/S4-12已有自有 head 原型、checkpoint/asset 保存加载与开发 smoke；S4-10至S4-11、S4-13以及独立模型的质量、许可和 AOT 门槛仍未完成。任何竞品分数、论文加速比或云端算力规格均不能替代本项目实测。
+质量、训练、性能和生态的背景研究见 [下一阶段研究](docs/next-stage-research-2026-09-25.md)，以上执行表是唯一当前阶段计划。该研究文档保留原日期的背景及旧结果，当前优先级采用2026-09-30校核后的独立模型/自有head与可选离线教师路线。S4-04已于2026-10-07闭合既有同权重审计基线，代表性语言质量与校准仍归S4-05/S4-08；S4-14已完成文档审核/设计，S4-15已有原始资产受限导入、decision-v1 CPU smoke 和独立 loader 证据，S4-07/S4-12已有自有 head 原型、checkpoint/asset 保存加载与开发 smoke；S4-10至S4-11、S4-13以及独立模型的质量、许可和 AOT 门槛仍未完成。任何竞品分数、论文加速比或云端算力规格均不能替代本项目实测。
 
 ## 0. 研究与契约
 

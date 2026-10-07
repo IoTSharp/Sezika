@@ -1,5 +1,7 @@
 # 阶段 1–6 实现证据
 
+2026-10-07更新：S4-04的既有同权重审计基线已通过[归档闭环验收](evidence/s4-04-baseline-closure-2026-10-07.md)，586条历史结果的双方质量/完整比较/身份与指标分母可自动复核。本轮没有原始capture重评分或新推理；代表性语言质量与校准仍未验收。下文保留原日期的阶段证据。
+
 状态（2026-09-24）：固定真实模型资产、tokenizer oracle、CPU/CUDA encoder 与真实 marker-head typed decision 已落地。S5-04/S5-05 完成 Windows 四后端 Native AOT 性能矩阵及 Ubuntu WSL2 四后端真实模型 AOT smoke；多语言质量与裸机 Linux 性能仍需独立验收。完整口径见 [S5 性能与 AOT 证据](s5-performance-aot.md)及[原始报告](evidence/s5-2026-09-24/)。
 
 路线图任务编号见 [ROADMAP.md 的编号任务板](../ROADMAP.md#编号任务板)。本表只记录已经存在的证据，任务状态不会因为设计文档或构建成功自动升级。

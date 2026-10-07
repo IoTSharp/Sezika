@@ -1,0 +1,23 @@
+{
+  "Pid": 97512,
+  "Started": "2026-10-07T11:17:35.4668635Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 83920,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 83920,
+    "Started": "2026-10-07T19:17:34.254392+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll','--self-test') -TimeoutSeconds 30 -LogName 's404-evaluation-self-test' -LogDirectory '.artifacts/s4-04-baseline-20261007/processes/self-test'\"",
+    "ParentPid": 89648
+  },
+  "TimeoutSeconds": 30,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+    "--self-test"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

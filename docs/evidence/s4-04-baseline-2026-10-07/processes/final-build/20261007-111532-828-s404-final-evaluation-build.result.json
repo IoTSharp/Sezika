@@ -1,0 +1,72 @@
+{
+  "Status": "Succeeded",
+  "Pid": 97712,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 9.869,
+  "TimeoutSeconds": 90,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "tools/Sezika.Evaluation/Sezika.Evaluation.csproj",
+    "-c",
+    "Release",
+    "--no-restore",
+    "--nologo",
+    "-m:1",
+    "-nodeReuse:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-07T11:15:33.4224283Z",
+  "ParentPid": 21480,
+  "Launcher": {
+    "Pid": 21480,
+    "Started": "2026-10-07T19:15:32.41069+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build','tools/Sezika.Evaluation/Sezika.Evaluation.csproj','-c','Release','--no-restore','--nologo','-m:1','-nodeReuse:false','-p:UseSharedCompilation=false') -TimeoutSeconds 90 -LogName 's404-final-evaluation-build' -LogDirectory '.artifacts/s4-04-baseline-20261007/processes/final-build'\"",
+    "ParentPid": 89648
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\processes\\final-build\\20261007-111532-828-s404-final-evaluation-build.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\processes\\final-build\\20261007-111532-828-s404-final-evaluation-build.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 97712,
+      "CreationDate": "2026-10-07T19:15:33.422428+08:00",
+      "Started": "2026-10-07T11:15:33.422428Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.Evaluation/Sezika.Evaluation.csproj -c Release --no-restore --nologo -m:1 -nodeReuse:false -p:UseSharedCompilation=false",
+      "ParentPid": 21480,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 60676,
+      "CreationDate": "2026-10-07T19:15:34.641385+08:00",
+      "Started": "2026-10-07T11:15:34.641385Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempdcpdxpud.kwk\\tmp6a433df84e7445e0932b23e92a2ec871.rsp\"",
+      "ParentPid": 97712,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 64748,
+      "CreationDate": "2026-10-07T19:15:33.432097+08:00",
+      "Started": "2026-10-07T11:15:33.432097Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 97712,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 30496,
+      "CreationDate": "2026-10-07T19:15:34.650215+08:00",
+      "Started": "2026-10-07T11:15:34.650215Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 60676,
+      "Depth": 2,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

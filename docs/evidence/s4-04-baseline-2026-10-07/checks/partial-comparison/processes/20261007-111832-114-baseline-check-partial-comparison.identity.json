@@ -1,0 +1,26 @@
+{
+  "Pid": 74220,
+  "Started": "2026-10-07T11:18:32.7493055Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 27716,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 27716,
+    "Started": "2026-10-07T19:17:57.87083+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+    "ParentPid": 50824
+  },
+  "TimeoutSeconds": 20,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+    "--verify-baseline",
+    "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\partial-comparison\\plan.json",
+    "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks\\partial-comparison\\report.json",
+    "18"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

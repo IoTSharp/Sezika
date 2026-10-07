@@ -1,0 +1,30 @@
+{
+  "Pid": 27716,
+  "Started": "2026-10-07T11:17:57.8708304Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File tools/Sezika.Evaluation/Verify-BaselineChecks.ps1 -ApplicationPath D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll -PlanPath D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json -OutputDirectory D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 50824,
+  "ObservedParentPid": 50824,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 50824,
+    "Started": "2026-10-07T19:17:56.793268+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','tools/Sezika.Evaluation/Verify-BaselineChecks.ps1','-ApplicationPath','D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll','-PlanPath','D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json','-OutputDirectory','D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks') -TimeoutSeconds 330 -LogName 's404-baseline-checks' -LogDirectory '.artifacts/s4-04-baseline-20261007/processes/checks'\"",
+    "ParentPid": 89648
+  },
+  "TimeoutSeconds": 330,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "tools/Sezika.Evaluation/Verify-BaselineChecks.ps1",
+    "-ApplicationPath",
+    "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+    "-PlanPath",
+    "D:\\source\\Sezika\\datasets\\s4-04\\baseline-acceptance.v1.json",
+    "-OutputDirectory",
+    "D:\\source\\Sezika\\.artifacts\\s4-04-baseline-20261007\\checks"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

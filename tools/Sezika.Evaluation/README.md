@@ -23,6 +23,18 @@ schema v2 报告绑定模型/revision、权重/tokenizer SHA-256、输入渲染�
 
 ## 独立参考与离线评分
 
+### S4-04 归档基线验收
+
+```text
+Sezika.Evaluation --verify-baseline <baseline-plan.json> <new-report.json> <seconds:1..300>
+```
+
+冻结计划位于 [baseline-acceptance.v1.json](../../datasets/s4-04/baseline-acceptance.v1.json)，绑定历史归档索引、PAWS 250、Nimble 324 和中英原创 fixture 12 的数据身份、双方质量报告及16份最终数值比较。验证器核对文件 SHA-256、档案转换与源报告身份、模型/tokenizer/温度/长度策略、capture/manifest/比较关联、逐批 ID 唯一性、完整计数和语言/题型分母。输出双方指标、差值和准确率 Wilson 区间；指标偏低仍保留在报告中，数值比较通过不意味着质量达标。
+
+这是 `archived_evidence_verification_no_inference`：不加载模型，不重新计算原始逐题标签或概率，不改变历史报告。用户已确认原始捕获和模型被清理，因此报告明确保留 `raw_capture_revalidation=not_performed`。归档验收只能闭合既有同权重审计基线，代表性语言质量、独立封存测试和校准继续按 S4-05/S4-08 验收。旧 strict 结果不并入 compatible 配对基线。
+
+单次最多8套数据、每套256份比较、总输入256 MiB；重复属性、部分覆盖、断开的 hash 链、混合策略/构建和指标分母错误均失败。Ctrl+C和总期限取消，逐数据集报告进度，输出使用 `CreateNew`。负向回归由 `Verify-BaselineChecks.ps1` 创建明确标记的软件测试副本，检查精确错误消息和失败不产生验收报告；这些副本不属于模型测量。
+
 新增全量分批入口，原单捕获命令保持可用：
 
 ```text

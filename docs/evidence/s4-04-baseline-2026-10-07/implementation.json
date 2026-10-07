@@ -1,0 +1,57 @@
+{
+  "schema_version": "sezika.audit-baseline-implementation.v1",
+  "powershell": "7.6.6",
+  "dotnet_sdk": "10.0.401",
+  "sources": [
+    {
+      "path": "tools/Sezika.Evaluation/BaselineVerification.cs",
+      "sha256": "1ab6e374f745956cac7be0ec7b0e0efce9501f6d692e3703b8b6a45916c2487f"
+    },
+    {
+      "path": "tools/Sezika.Evaluation/Program.cs",
+      "sha256": "9103b6c5f9bbf5a68ddb4e968f57eab504609c70cbc6fe96b596fda9711f501a"
+    },
+    {
+      "path": "tools/Sezika.Evaluation/EvaluationInputs.cs",
+      "sha256": "c4bde0900e7e7825854f44325e997b5d160192907b08c503cd60843ad405e95a"
+    },
+    {
+      "path": "tools/Sezika.Evaluation/EvaluationChecks.cs",
+      "sha256": "8313c186299f69eef24ac54311570d8653200a88d394101b09895e9fe7a053fb"
+    },
+    {
+      "path": "tools/Sezika.Evaluation/EvaluationOracle.cs",
+      "sha256": "33e43650b934940188d98a3d2902b5cd64de09bba1cebebdc70159abcfa09f75"
+    },
+    {
+      "path": "tools/Sezika.Evaluation/EvaluationBatches.cs",
+      "sha256": "43ef358d84270d6d538ac6dceb36ab338983fe29bef44747f264426ff629f389"
+    },
+    {
+      "path": "tools/Sezika.Evaluation/Verify-BaselineChecks.ps1",
+      "sha256": "1468a3eab277ecdff50a364f5890ae55e8a1e70d6e8b4ad645513882a481fdaf"
+    },
+    {
+      "path": "tools/Sezika.Evaluation/Sezika.Evaluation.csproj",
+      "sha256": "b3e103ba923e9a311eb6d79381ef939545a1e15ce639e87f339c6e50b39fae5c"
+    },
+    {
+      "path": "datasets/s4-04/baseline-acceptance.v1.json",
+      "sha256": "7dc25655b791cd55fe38e11f80c6608a41f90dfe751655e7f94597a1929171cc"
+    }
+  ],
+  "binaries": [
+    {
+      "path": "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Evaluation.dll",
+      "sha256": "dcdaafd016665612ca17f12c87f82b62613b779034fde7cea537c5fc9ef6d62c"
+    },
+    {
+      "path": "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.dll",
+      "sha256": "69843be289b4024ca582a42003c4a61ce241eb1ec787b035e5954d5183462b23"
+    },
+    {
+      "path": "D:\\source\\Sezika\\tools\\Sezika.Evaluation\\bin\\Release\\net10.0\\Sezika.Cuda.dll",
+      "sha256": "84054fe2403b278e398b1814bc35233d41b942f070176d64829a1c2f76a7293d"
+    }
+  ]
+}
