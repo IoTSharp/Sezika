@@ -31,16 +31,17 @@
 | Linux GPU训练AOT | `14a3917` | 28固定输入、新ELF、native1→11共16更新、RID内三文件3→6恢复/连续6；首失败/runner预算限制保留，49Linux身份及root46身份零匹配，两TMPDIR已精确回收 |
 | 审核切片侧车工程 | `b2c54b3` | 最多32行既有development报告与hash绑定审核侧车；unknown完整分母及正式接受false。当前真实DLL冻结后零警告/错误构建、tiny1/full12通过；Git8调用及18身份随后无匹配存活，没有push |
 | Linux协作runner工程 | `32822f8` | v10 tiny→8case通过，原始回执/参数和独立审查通过，28Linux身份/67Windows记录无匹配；随后11份Git/reader/worker回执与44身份终核0，旧失败保留 |
+| 独立画像入口工程 | `06de2ed` | 最终三源/实际DLL冻结，第二构建零警告错误、tiny1/full8，四runner/24身份及八Git/16身份终核0；GPU/正式性能/AOT仍开放 |
 
-### 2026-10-08 UTC04:08 接续检查点
+### 2026-10-08 UTC04:40 接续检查点
 
-最新接续：Linux工程已单独提交32822f8；root-v10-git-reader-resource-closure.json核8Git、2外部reader、1worker共11成功回执，44身份无匹配，全部cleanup为空。本轮没有push。独立画像最终三源EE1423/A47AEC/27131已锁，首次构建同名失败保留，只做两处rename后第2build1464/21.516秒、零警告/错误，tiny69660/2.930秒、full8 25092/3.188秒全PASS。root三个实际DLL在build2/tiny/full不变，四runner cleanup为空、24身份无匹配、两个fixture根0项；独立复审SHA C08F65…9A38EA完整覆盖与rename逆变换通过，晚停止新增线29.964秒的写报告事实保留。永久证据见docs/evidence/independent-profile-entry-2026-10-08.md；root正在准备单独commit，不称GPU/正式性能/AOT已验。
+Linux工程已单独提交32822f8；root-v10-git-reader-resource-closure.json核8Git、2外部reader、1worker共11成功回执，44身份无匹配，全部cleanup为空。独立画像已单独提交06de2ed：第2build1464/21.516秒、零警告/错误，tiny69660/2.930秒、full8 25092/3.188秒全PASS；三个实际DLL在build2/tiny/full不变，四runner/24身份及八Git/16身份终核0，两个fixture根0项。独立复审SHA C08F65…9A38EA及rename逆变换通过，首次构建失败、晚停新增线29.964秒写报告均保留。不称GPU/正式性能/AOT已验，没有push。
 
-当前唯一活动子智能体linux_cancel_cause在04:18:09–04:26:09只读下一真实GPU诊断资产可执行性审计，04:24:09停新，最多6调用/6输入；只核明确证据指针中的小head/request/identity，禁GPU/build/网络/新资产/训练，不猜真实绑定。其他实现/复审子智能体已停止。正式数据/真人审核/封存/上游oracle与正式训练质量仍开放；30分钟heartbeat sezika view已成功，继续本线程监督。用户微信两文件保留。
+画像工程已单独提交06de2ed，八Git/16身份无匹配，证据与HEAD后续交接已补。linux_cancel_cause初次资产审计已停；next_executable_audit恢复审计04:26:04–04:28:58完整核两篇证据、当前model/dataset小manifest及两历史head/report明确路径。两个历史产物当前不存在，不能用旧FeatureSha/HeadSha当当前文件实测身份；范围不代表全仓库无head。恢复报告SHA14F2ED…8375E保留，无GPU/训练/模型加载或下载。
 
-Linux通用runner最终v10 tiny及2–8全部通过；冻结三源、gate、原始TSV/receipt/Windows bytes/hash/全部参数均已root复核。worker67128/Succeeded0/41.705秒；case2实际安全延后1次、未给缺proof父进程发信号，最终完整live/unknown/unchecked0。两个负fixture保持incomplete/127，不当资源成功。root两组28known全absent、各44proc/token live/unknown0，Windows前核67身份记录无匹配（含重复）；两个reader成功退出。永久证据见docs/evidence/bounded-linux-runner-2026-10-08.md；独立验收SHA EC81B0C1…32D8EA通过，root接续单独commit。没有模型/GPU/下载/新服务，旧失败全部保留。
+诊断资产设计审计已完成：diagnostic-asset-preparation-plan.md SHA523937…6148，04:30:46–04:34:13、5调用/4源码；未找到现成零步初始化CLI或开发训练准入绕过。先加固SaveNew，再实现显式未训练资产及强制provenance/domain边界，不把sentinel loss称实测。当前唯一代码作者next_executable_audit窗口04:36:58–04:54:58、04:51:58停新增，归属core IndependentMarkerHeadAsset.cs、new HeadAssetPublicationChecks.cs及tests Program最小分支；root统一审查及最多2build/120秒、先tiny再8case。linux_cancel_cause另做≤4源码/5调用的只读画像兼容审计，硬截止≤04:46；Git/shared docs/root独占。没有当前GPU/教师服务/下载。正式数据/真人审核/封存/上游oracle与正式训练质量仍开放；30分钟heartbeat sezika view已成功，继续本线程监督。用户微信两文件保留。
 
-独立画像作者新静态修复窗口03:56–04:12、04:10停新增；三P2已修改，正在冻结最终三源。原build权限等待被中断，未知历史启动/退出；本次root UTC03:58只读CIM1077项/1.94秒核已知历史命令模式零当前候选，没有虚构历史零执行。作者不再提交build请求；root接收到最终freeze后统一最多2build/120秒、tiny1/30秒、full8/60秒，冻结实际DLL与资源。源码仍未验收，用户微信两文件不暂存。30分钟监督、GPU正式工作限制与Sezika不push/发布边界保持。
+最终Linux八case/逐身份终核及画像三源/DLL/检查的完整证据分别见docs/evidence/bounded-linux-runner-2026-10-08.md与independent-profile-entry-2026-10-08.md。旧权限等待中断及v1–v9失败不倒填为成功；当前执行范围以本节为准，下方历史检查点不作为活跃派单。
 
 ### 2026-10-08 UTC03:50 历史检查点（被上方新结果接续）
 

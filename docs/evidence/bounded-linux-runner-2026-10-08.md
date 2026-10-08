@@ -39,6 +39,8 @@ root 独立复核八份原始 TSV、receipt、Windows bytes/hash/全部 argv，�
 
 全部原始证据位于 `.artifacts/linux-runner-hardening-20261008/`：`suite-execution-v10/`、`suite-execution-v10-workerlogs/20261008-040356-640-root-worker-v10.result.json`、`root-v10-independent-closure-windows/20261008-040512-600-root-v10-closure-0.*` 与 `20261008-040515-718-root-v10-closure-1.*`。Windows runner 回收记录为空；没有新增教师服务、GPU任务、下载、独占 MCP 或待删除临时对象。
 
+本工程已单独提交 `32822f8`；随后核八份Git、两份外部reader及worker共11成功回执/44条身份记录，无匹配存活、cleanup为空，见 `root-v10-git-reader-resource-closure.json`。较晚终核不改写早期失败的当时状态。
+
 ## 保留的失败与限制
 
 v1 静态 Parser/TSV 失败、v2 时间窗口拒绝及真实 tiny 归属失败、v7 control 原字段丢失、v8 timer refresh/live1、v9 case2 cleanup_incomplete1 均保留。v8/v9 内部失败的确切阶段仍 unknown；之后进程自然退出不能倒填为当时回收成功。v10 准备有一次早于窗口的拒绝和一次冻结 writer 失败，均未运行测试；首次失败 writer PID 未捕获，明确保留 unknown。

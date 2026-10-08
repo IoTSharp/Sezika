@@ -47,4 +47,6 @@ root 核最终三源及 build2/tiny/full 的三个实际 DLL 身份不变。`Sez
 
 原始证据根 `.artifacts/independent-profile-20261008/v2/`：`source-freeze-build2.json`、`root-build1-logs/20261008-041030-564-profile-build1.*`、`root-build2-logs/20261008-041654-232-profile-build2.*`、`root-tiny-logs/20261008-041812-925-profile-tiny.*`、`root-full-logs/20261008-041843-531-profile-full.*`、`root-final-validation.json`。没有持久fixture、模型下载、服务或独占MCP。
 
+本工程已单独提交 `06de2ed`；后续八份Git回执全部成功、cleanup为空，16条执行/launcher身份记录无匹配存活，见 `root-git-resource-closure.json`。新资产恢复审计确认文档指向的历史 `head-v2.asset` 与 `development-report-v2.json` 当前不存在；仅这两条已核路径，不能推论全仓库无head。历史hash不作为当前文件身份，原审计保留在 `asset-recovery-audit.md`（SHA `14F2EDB6A06DB37C2DB71C068E1F637AA21EC9C062477326079D66636FF8375E`）。
+
 下一真实 GPU 诊断需完整绑定实际 package/head/request/expected identity，另设数量/墙钟/资源预算；本轮不以既有GPU前向结果代替此入口验收。正式性能、上游数值、获准训练数据、真人审核、封存、质量/校准及正式trained-head交付仍开放。S5-06整项保持进行中，Sezika不push、发布或部署。
