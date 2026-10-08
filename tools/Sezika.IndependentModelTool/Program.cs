@@ -16,6 +16,20 @@ ConsoleCancelEventHandler cancelHandler = (_, eventArgs) => { eventArgs.Cancel =
 Console.CancelKeyPress += cancelHandler;
 try
 {
+    if (command == "group-development-report")
+    {
+        using var cancellation = CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);
+        cancellation.CancelAfter(TimeSpan.FromSeconds(30));
+        ReviewedSliceDiagnostics.Run(args, WriteMetrics, cancellation.Token);
+        return 0;
+    }
+    if (command == "check-reviewed-slices")
+    {
+        using var cancellation = CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);
+        cancellation.CancelAfter(TimeSpan.FromSeconds(30));
+        ReviewedSliceChecks.Run(args, WriteMetrics, cancellation.Token);
+        return 0;
+    }
     if (command == "check-development-metrics")
     {
         CheckDevelopmentMetrics(lifetime.Token);
@@ -93,6 +107,9 @@ try
     Console.WriteLine("  This explicit CUDA encoder fixture diagnostic exports features only; it does not train a head or publish a formal training report.");
     Console.WriteLine("Sezika.IndependentModelTool evaluate-original --package <package> --records <records.jsonl> --head <head.asset> --training-report <training-report.json> --report <evaluation-report.json>");
     Console.WriteLine("  evaluate-original uses scalar CPU encoder/head evaluation and accepts formal CPU schema2 or GPU schema3 training reports.");
+    Console.WriteLine("Sezika.IndependentModelTool group-development-report --evaluation <development-report.json> --evaluation-sha256 <hash> --labels <reviewed-labels.json> --labels-sha256 <hash> --output <new-report.json>");
+    Console.WriteLine("  Offline, 30 seconds, 1 MiB per input, 32 rows; external declared review only, all formal acceptance flags false. Output directory must exist.");
+    Console.WriteLine("Sezika.IndependentModelTool check-reviewed-slices --max-checks <1..12> --artifact-directory <existing-directory>");
     return 2;
 }
 catch (OperationCanceledException)

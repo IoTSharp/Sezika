@@ -28,7 +28,7 @@
 | CUDA原生取得与登记 | `ef1288d` | 五源码、四实际DLL冻结匹配；CPU1→7/GPU1→11、training21/cleanup9case、十一runner/37身份终核，实际context回收；AOT/正式训练另验 |
 | 32题人工审核入口 | `c386d29` | 完整题文/候选/实际教师建议、八null人工字段，tiny1/full32及64引用核验、独立映射与root五文件身份通过；全部pending，曝光题不可封存 |
 | Windows GPU训练AOT | `6c3b096` | 最终五源freeze、原生PE/flags、tiny1/full11、H4三题磁盘3→6恢复与连续6、主48launch/480H2D/240D2H；旧managed16/新native16分别绑定版本，63身份终核 |
-| Linux GPU训练AOT | 本批待提交 | 28固定输入、新ELF、native1→11共16更新、RID内三文件3→6恢复/连续6；首失败/runner预算限制保留，49Linux身份及root46身份零匹配，两TMPDIR已精确回收 |
+| Linux GPU训练AOT | `14a3917` | 28固定输入、新ELF、native1→11共16更新、RID内三文件3→6恢复/连续6；首失败/runner预算限制保留，49Linux身份及root46身份零匹配，两TMPDIR已精确回收 |
 
 固定真实 mmBERT 的 C 切片 encoder smoke 已通过：PID75592、48 tokens、markers27/37、hidden768、310 kernel launches；runner17.299秒，资源归零。marker SHA-256 `59194DCFF642F4790DBF55F58D38EFBAB200C0528BEE25894DE38D71296B1CCD`。该 smoke 没有训练 head；GPU head 的梯度/更新与恢复工程另有 fixture 实卡证据，没有正式数据训练结论。
 
@@ -68,11 +68,43 @@ Linux切片已于UTC00:01:14完成，作者execution-evidence SHA`5694BA0C921394
 
 下一唯一工程已在ROADMAP S5-06登记并接续`/root/teacher_prompt_v2`：UTC00:03–00:23、00:21停新增，最多8明确文件/10准备调用，只改tools/Invoke-BoundedLinux.sh、tools/Invoke-BoundedLinuxProcess.ps1、tools/tests/Test-BoundedLinuxProcess.ps1；artifact linux-runner-hardening-20261008。共享单调cleanup deadline/完整终核分母/逐身份安全信号与外层预算需先静态审查冻结，才tiny1→最多8生命周期case/180秒；无模型/GPU/build/网络/安装。审计SHA`3E220E609F56451C8D927CB56A3A2624F890CBEE157A7040EF24CF4708E2646E`，六文件/七读取，审计首次三短读取PID未捕获的局限保留。旧Linux两runner不改，shared docs/Git仍root独占。
 
+Linux证据与两runner已单独提交`14a3917`，stage99560/commit35644及两个launcher后核退出，两Git回执cleanup为空。root补查末两ILC读取与receipt全审计、共五结果/十身份零匹配，root-git-closure.json；首次只读Git收口脚本缺括号exit1，修复后PID79140成功/2.948秒，失败原回执保留，没有新增GPU或更改训练结果。末两个audit及其launcher由后续root终核确认，不把当前执行中的自身身份写成已退出。此窗口没有未清compiler TMPDIR。下一工程作者已派独立linux_runner_review，只读三冻结源；root不重复派审，先等待实际freeze和静态审查再允许最多8case/180秒。
+
+Linux通用runner准备窗口的v1被root与独立head复审阻断：测试字符串误插整段脚本/保留重复循环，Parser四错误；Bash控制字段双slash不是真TSV。独立回执SHA`24CBC677C20AEC96980E1C072C63C8846FF07C115343A5683028B543A7D7C074`，未运行WSL/test。root明确授权额外2调用修复微阶段，准备合计12（不冒充原10）；v2三个hash为Bash`4167290FD977A8429504486FE8901A0B2C09704C88258020520489857E9E932F`、wrapper`BCCBDAE0D5F676FB205C79AD39A0AD57100655146BAD3088E924C2FDDA055197`、tests`784D59A988E341D0571F9DF41DE323862F0ECE6AF1B24DFE9A77C9D1D4F883D3`。root实际复读两PS全源、三hash，并机械还原Bash得到v1 SHA；单QPC suite180秒/140秒停新、case2续原tiny绑定、外层Succeeded0/Failed124/125/127完整身份、峰≤4设计已核。v2两PS静态Parser零错误，不等于生命周期通过。
+
+tiny获静态放行后仍被绝对00:21 guard拒绝：exit1/0.3359秒、no case started；没有WSL/Bash/timer/payload或suite-v2目录。原准备窗口按00:23截止收口，不挤掉finally或私自延长；v2保持未验草案，不提交为已支持。root为未来checkout给唯一Bash文件登记LF。后续采用独立新执行窗口、复用v2冻结审查、先tiny再case2–8/一套180秒，无GPU/模型，执行授权待原窗口完成后由root具体派发。
+
 两个独立只读审查均已停止，按期保存：workflow审查SHA `D2A7F89B61DDE1936FDFB6F17A2605AFC8F290F5ABE5E97A54A761C5B4CFDEED`；三文件fault/project审查SHA `E06D2FD59B4406B74A8028C3980BC89A62DB4890BF0B8A3B390F30BC18D456B5`，后者明确绑定初版、P2当时未修，不冒充新源码审查。root随后补已知diff/真实native及资源证据；没有并发源码编辑。计划acceptance-plan原SHA `95ED067CD47899F0C15337D29AAEB844954C149D921AB68D9E64073ECDC8C509`仅作范围记录，Linux使用WSL而非其中SSH建议。Git/shared docs/root独占。
 
 上游数值oracle仍缺NumPy：实存Python3.14.3/Torch2.12.0+cpu/Transformers5.13.1，NumPy安装问题已异步提出且未回复；不重复问、不把等待当许可。已冻结26项输入/容差和离线导出/比较器工程，未import真实backend或forward。具体task-local安装方案在`.artifacts/independent-oracle-20261008/numpy-install-plan.md`；若收到明确授权再按原official wheel hash、单case180秒预算执行，不擅自安装。此前Python安装管理器意外更新26.3/import探测越界及清理审查晚25秒事实见各永久证据，不能改写为按期完成。
 
 正式逐条人工审核、许可用途审签、独立未见封存、可信上游数值、正式训练收益、语言质量/校准、正式trained-head两RID和新性能/发布仍开放。32题只是pilot/audit；不复用曝光family当封存，不凭教师格式通过准入。旧窗口全过程已保留在Git及证据，不再当作活跃任务；heartbeat `sezika`继续30分钟接续，Sezika不push、不发布/部署。
+
+UTC00:25–00:40新Linux runner执行窗口：00:38停止新增，最多8生命周期case/一套180秒，先tiny再root放行。v2真实normal-child tiny失败：Linux ownership_failed、cleanup_incomplete=1、final_check_complete=1但verified_live_count=2，unknown/unchecked=0；Windows Failed/126、cleanup为空、invocation匹配。原receipt SHA `F7360D10821899698B08E99B1DFD447557902FDDC64E4535C6CCB2196E90554B`，原Windows结果SHA `4B8A77F0A3DAC2819DF6E06CAAF872415A2054B5010AFADAEFA4C2931A61FB12`，位于`.artifacts/linux-runner-hardening-20261008/suite-execution-v2/normal-child/`。完整终核不能等同资源已回收；后续case2–8已停止，三新源码仍未验收/未提交。
+
+该失败root已原字节复核。Linux supervisor96057/starttick38272646、timer96058/38272655、STOP worker96059/38272656，token `sezika-96057-4439-145`。根因为record_owned父链遍历改写child全局stat字段、第二次refresh把祖先tick当child。作者获准独立最多两PID/两pass/10秒恢复，不复用坏signal_owned、不按名称或盲kill组；须完整PID/tick/token/argv/稳定当前父链双读后逐身份发信号。UTC00:32恢复pass1核timer已消失，worker proof成功但helper错误的字符串比较拒绝信号；原失败保留，作者仅修helper比较并执行最后pass，尚待真实零live/unknown回执。恢复证明通过后最多一次最小源码修复与新freeze，未经root diff/hash审查不得执行v3；00:40窗口不能私自延长。下一接续先核回收结果。
+
+UTC00:38原runner窗口已停止新增并提前收口，无v3执行。恢复pass2真实双signature核worker后精确KILL，Windows结果Succeeded/0，SHA `E77BA078EBF618AC435A6A24C67049D5895DAD3F8674F5EAE9CEAB03A322210D`；root实际读取源码、stdout与result。root默认Ubuntu用户只读后核5PID均absent，但42个environ不可读而返回126，此失败不改写。随后root以显式Ubuntu root复用完全相同只读脚本、无signal/系统修改，UTC00:37:45结果Succeeded/0，SHA `E775101F1CDB06158587A62CEDE51C5634272672804DCD523EC30C1EB5BBAD11`：5known live/unknown=0，43proc项token live/unreadable=0。原96059 worker已独立确认退出，恢复/后核日志位于recovery-windows-pass2、root-recovery-windows与root-recovery-privileged-read-windows。
+
+v3仅保存/恢复tick/ppid/pgid/sid/state，SHA `910871988E522F0138AD2637E89FAEBFBC74FC677DDA0BC8D610AB6E80A5E1CF`，两PS保持v2身份/Parser0；root机械逆变换准确得到v2SHA，未有其他修改。入口first仍来自caller全局tick，原要求的入口独立stat尚缺，故不执行v3。head复审00:33–00:38已读两PS、确认失败/timeout/missing receipt拒绝与共同QPC180秒/140秒停新；v3 Bash未读、最后报告写入被deadline guard拒绝，消息交接代替尚不存在的head-v3-review.md，不能伪称报告已保存。
+
+已派全新窗口UTC00:39–00:54（00:52停止新增）给`/root/teacher_prompt_v2`：仅补Bash record_owned入口stat child及first赋值，最多1最小修复/6准备调用，freeze-v4经root审查后才CreateNew tiny；tiny及资源回执通过后再同suite的case2–8，最多8case/180秒。另派`/root/head_checkpoint`00:39–00:44只读完整v4Bash，最多2读取+1补写、3固定文件，不运行WSL/test。无GPU/模型/build/网络/安装，旧失败、用户文件及全部证据保留。新窗口不是原窗口延期；shared docs/Git仍root独占。root新只读进程身份保存在root-*-identity.json；其中root-resume记录的Parser修正后仍因GetProcessById异常包装退出1，原失败保留；后用Get-Process定PID已核85728/81360/41472均absent。
+
+UTC00:45:58 root原字节复核v4 tiny成功，receipt SHA `BBBDE2E957BFD17A090BB5BEF127218C9102247FF84CDE3973BB6B41E69D5B9C`；Linuxcompleted/0且完整终核live/unknown/unchecked/budget均0，WindowsSucceeded/0/cleanup0及实际调用绑定通过，identity/audit显示worker exec与timer逐PID回收。其共同QPC套00:44:08停新在等待root复审期间已过，case2–8零执行，不重置时间、不称8case通过。root随后独立Ubuntu root只读核4个tiny身份及此前observer均absent，42proc项token live/unreadable=0，日志root-v4-closure-windows/20261008-004651-268-root-v4-tiny-closure.result.json。
+
+head-v4完整Bash静态复审已实际保存，SHA `2ABEBC40ACAF7F3C93FB45A3909076EA3CA45753CF319B44287E0CF64212FF77`；发现control-owner refresh后缺originaltick/child身份再核P2。原00:39–00:54窗口内另准最后一个最小修复：v5仅补3行保存原parent/group/session、refresh后原tick与保存三字段比对，SHA `7DCDAC15155C773CEAA1467D5760BD5D8D797E3971FED6818877A99D9B5ECF46`。root实际读并机械逆变换准确得v4hash，两PS保持冻结。UTC00:48:28后已明确放行新v5完整范围，先CreateNewtiny，其真实字段/原字节与冻结全部通过后自动同suite续2–8，仍单QPC180/140停新、最多8case、00:52停新/00:54截止；任一失败/unknown/源变化立即停、不重试。新源P2修复是重验理由，旧套及失败不覆盖。最终仍待真实full/独立资源/最终root验收，尚未提交runner。
+
+下一S4-06只读范围核查已真实完成，报告SHA `1847A1603706F1CBB270165F30260954CEAAA2D5908C74E8310236ED27FC433F`；原指定next-action-audit路径不存在的事实保留，没有扩搜。root已在ROADMAP登记并派`/root/closure_audit`UTC00:41–01:01、00:58停新增，仅IndependentModelTool的Program.cs、新ReviewedSliceDiagnostics.cs和ReviewedSliceChecks.cs（必要csproj）实施最多32行已有development报告+人工审核标签侧车的离线分组，静态DTO/sourcegen/hash身份/unknown分母及所有正式准入false。无题文/模型/GPU/网络/安装，最多2build/120秒，tiny1/30秒后≤12checks/60秒。首次build进程47144已由既有Windowsrunner记录。`/root/head_checkpoint`另在00:49–00:56只读复审冻结三源，最多4文件/4调用，及时P1/P2反馈；Git/docs仍root独占，两实现各验收后单独commit。
+
+用户本轮追加正式训练模型托管目标：Hugging Face（抱抱脸）及模力方舟，已登记ROADMAP S6-02。权重/配置与二进制分开，绑定模型卡、许可、版本和hash；当前没有把合成head测试当正式模型上传，也没有对外发布。正式模型、人审/用途许可、质量和实际托管账户/产物仍须自己的验收与发布范围。
+
+用户在权限切换后要求继续，UTC02:30恢复监督。当前环境仅工作区可写、`.git`只读且网络受限；普通WMI查询被拒绝，root有界只读Git diff、本地非增量构建和合成检查已分别经具体权限请求成功执行，不从其他工具绕过。
+
+S4-06最终复验报告SHA `5ED5CC57764721312017D5DDD23E7D298E6B0B9918DB53492582D5A68D72164F`：三源匹配、历史四回执/原stdout/tiny1→full12通过、18历史身份全absent；历史DLL未冻结SHA，不能拿当前字节倒填。root另做唯一当前非增量构建（14.861秒零警告错误）、冻结真实六文件后tiny1（1.463秒）/full12（1.409秒）全PASS，三源/csproj与六文件before/after未变。主DLL478208bytes/SHA `52880757076B191C2208FD19A6BAEAAF58F4D15F0F180EC56F2B6A0575087840`。root四当前runner/16身份零同身份存活，synthetic-checks目录0；closure SHA `C07BB38C91E441DA2C4DE8D853A39B29C702F1ACCEAD756236B105C9F09D270D`。永久证据[审核切片工程](docs/evidence/reviewed-slices-2026-10-08.md)，此工程可单独提交，S4-06真实审核/质量不关闭。仅source三文件、四共享文档和该新证据为本次代码提交范围；runner未验草案和user微信文件排除。
+
+Linux通用runner v5真实套只通过1–3（normal/timeout/filecancel），case4 signal取消实际timed_out/124而预期cancelled_signal/125，余5–8零执行；原完整证据SHA `5BDEFE06DDF0FDE17E9ACE6912874D5B3B91E4B5E31E3A9EDC062C405F9DBBC4`。后续原00:56–01:01只读closure/cause未交付两个指定文件，不伪称已完成独立Linux终核。新只读agent `/root/linux_cancel_cause` UTC02:31–02:37实际核3源/原case4与archive，报告SHA `B25AAA9115D46347863C6B3296473BBA61B14C358420C5E03A812A145B56F10A`，根因仍unknown；可确证现代码把pause_owned所有失败归timed_out、缺取消分支/trap/backoff记录。未改源/试验/WSL重查资源，CIM被拒的父链unknown如实保留。该runner不得提交为生命周期已通过；下一步先有界独立资源终核，再最小判别埋点与新freeze/单次试验，不凭audit没selfTERM事件推断没发TERM。
+
+本轮两个新只读agent已结束，source/GPU/模型无活动子任务；root在做S4-06 Git收口及后续runner接续。30分钟heartbeat继续，正式人审/许可/封存、上游oracle依赖、正式训练收益/质量/AOT/性能/发布仍开放；Sezika不push、不对外上传或部署，Hugging Face/模力方舟仅登记目标。
 
 ## 下一次派发
 

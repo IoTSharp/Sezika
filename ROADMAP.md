@@ -132,6 +132,8 @@ GPU切片C工程已验收：train-original-gpu明确选择设备、五项恢复�
 
 原权重的**同检查点、同输入、同策略对齐**保留为既有模型的独立证据；自有模型使用自身同权重数值参考、简单基线和独立数据验收。Laya 对照与 Router 多检查点研究均为可选，不是独立 head 原型或正式训练的前提。训练、提示、阈值和教师采集均不能用已查看的 PAWS/Nimble 逐题结果选参。所有模型推理与训练交付仍使用 C#，参考 Python 代码仅用于离线数值 oracle。
 
+2026-10-08 接续 S4-06 审核切片工程：现有 development 指标与语言/题型分组已有实现，角色、否定、词面相似性及审核定义的候选顺序侧车尚缺。新增离线 `group-development-report`，仅消费最多32行既有诊断报告与独立hash绑定的人工审核标签侧车，使用静态DTO/source-generated JSON，保留未标注/未获审分母；不读取题文、不推断标签、不执行模型。先完成合成合同与取消/原子发布验证，真实审核标签与代表性诊断仍依赖S4-05，不能凭工具关闭质量/校准/封存或训练准入。
+
 ## 编号任务板
 
 任务使用 `S0`–`S6` 阶段编号和两位序号。状态只表示当前证据：`✅ 已完成`、`🚧 进行中`、`⏳ 计划中`、`⛔ 阻塞`。同一泳道内的任务可以并行；跨泳道按依赖推进。实现、真实推理、质量、AOT 和性能分别验收，不能用构建成功替代真实模型证据。
@@ -162,7 +164,7 @@ GPU切片C工程已验收：train-original-gpu明确选择设备、五项恢复�
 | S4-03 | D 质量 | ✅ 已完成 | 建立初始校准 profile 合同、安全加载器与冻结门槛 | S4-02 | 12 个初始 prompt-v1 的 hash 绑定 profile，保持 `pending_measurement`；当前 prompt 或新权重的 profile 须另建并实测，不沿用旧绑定 |
 | S4-04 | D 审计基线 | ✅ 已完成 | 对修正后的相同权重/输入分别运行 Laya 与 Sezika，建立可比较质量和覆盖率审计基线 | S3-08,S3-09,S3-10 | [2026-10-07闭环证据](docs/evidence/s4-04-baseline-closure-2026-10-07.md)：冻结索引、六份质量报告与16份完整比较的身份/分母/指标关联通过，586条历史审计基线可自动复核；17项评估器自检、16项正负回归通过，构建零警告/错误。原始捕获/模型已清理，本轮无新推理。双方PAWS170/250、Nimble137/324、中英fixture8/12正确；近并列命中0、Boolean负类召回1/57、外部语言未标注。代表性质量与校准继续由S4-05/S4-08验收，旧strict报告单列 |
 | S4-05 | D 数据 | 🚧 进行中 | 审核来源许可，构建独立训练/开发/校准/封存测试及多语言反事实流水线 | S0-01 | `tools/Validate-S4Data.ps1` 已提供有界 manifest、许可/用途、split、实体/家族/近重复、衍生父链、污染和封存绑定审计；项目自有 12 条 train/development smoke 已入库并绑定 records/manifest hash；正式许可复核、calibration/sealed test、污染检查和人工封存仍未完成；PAWS/Nimble 只作 audit |
-| S4-06 | D 诊断 | 🚧 进行中 | 在新独立开发集建立目标任务基线，按角色、否定、词面相似性、语言、题型与候选顺序诊断 | S4-05；独立模型基线：S4-15；Laya对照可选 | `IndependentModelTool evaluate-original` 已实现有界 development 评估，输出逐题候选顺序、覆盖率、准确率、NLL/Brier/ECE、margin、宏 AUROC 和 Wilson 置信区间，并按语言/题型分组；角色/否定/词面相似性在记录未提供审核标签前明确不推断；仍只有 6 条开发 smoke，未形成 calibration、代表性质量或封存测试证据，详见 [S4-06 评估合同](docs/independent-development-evaluation-s4-06.md) |
+| S4-06 | D 诊断 | 🚧 进行中 | 在新独立开发集建立目标任务基线，按角色、否定、词面相似性、语言、题型与候选顺序诊断 | S4-05；独立模型基线：S4-15；Laya对照可选 | 有界 development 评估与语言/题型分组已有实现；`group-development-report` 增加独立hash绑定人工审核侧车、角色/否定/词面相似性/候选顺序的获审分组及unknown完整分母，最终零警告/错误与tiny1/full12合成检查通过，见[工程证据](docs/evidence/reviewed-slices-2026-10-08.md)。工具不推断标签，外部声明不证明真人审核；仍只有6条开发smoke，真实审核切片、代表性质量、校准及封存未验收 |
 | S4-07 | D 自有head训练 | 🚧 进行中 | 用C#实现独立encoder上的自有head/scorer前反传与初始化；支持完整逐题特征缓存及人工/可选教师硬标签实验 | 工具：S4-14；真实实验：S4-05,S4-06,S4-12,S4-15 | 原12条开发smoke/24步人工硬标签及head asset保留；[GPU CLI](docs/evidence/gpu-training-cli-2026-10-08.md)已接GPU encoder特征与CE/gradient/SGD，CPU合同2→22/GPU导出8→12/旧CUDA59通过，真实48-token encoder smoke资源归零。合成H4训练/磁盘恢复的Windows与[Linux Native AOT](docs/evidence/gpu-training-aot-linux-2026-10-08.md)已分别验收；正式获准数据训练、收益、质量、encoder反传与正式trained-head交付仍未验收 |
 | S4-08 | D 质量门槛 | 🚧 进行中 | 验收独立模型数值、质量、校准/拒答profile与部署；既有Laya证据单列 | S4-06,S4-07,S4-12,S4-15 | S4-04仅闭合同权重审计基线，既有Laya与独立模型的代表性中英质量及正式校准均未验收，数据准入/封存由S4-05承接。[校准续审](docs/evidence/calibration-continuation-2026-10-03.md)补基线/封存 split/有限值门槛及全样本/拒答分母；真实验收 pending。自有模型封存测试按覆盖率、balanced accuracy/负类召回、AUROC、NLL/Brier/ECE、Choice/Score、逐语言及反事实对报告，含置信区间和回退；自身同权重参考、CPU/CUDA与两RID AOT回归，不提供Laya资产的环境仍能运行 |
 | S4-09 | D 可选对标 | ⏳ 计划中 | 按产品需要审计其他检查点的C#支持；Laya Agent/Router仅作可选对照 | S3-07,S4-04仅限Laya对照；新增资产独立审核 | 各资产许可/revision/hash、显式模型选择与同路由同题集报告；不阻断独立模型主线，新增资产另验数值/AOT/性能/校准 |
@@ -180,7 +182,7 @@ GPU切片C工程已验收：train-original-gpu明确选择设备、五项恢复�
 | S5-06 | E 性能画像 | 🚧 进行中 | 对现有及对齐后序列建立短/中/长、1/8/32 问 CPU/CUDA 成本画像 | S5-05 | [画像校验续审](docs/evidence/performance-continuation-2026-10-03.md)加固矩阵、原始JSON类型/重复字段、覆盖率/吞吐分母、身份及分项范围，仅重验历史报告，无新增性能测量；[schema v3续验证](docs/evidence/s346-continuation-2026-09-26.md)：区分进入/完成forward，3秒CUDA负例为3进入/2完成/0正式样本且回收通过；本轮SIMD long-1单样本42.183秒，估算long-32两遍超1800秒上限而未启动，CPU完整矩阵仍未验收。CUDA long-32 end_to_end单样本38.319秒，分项明确未测。此前[九格画像及CPU300秒失败](docs/evidence/s5-profile-2026-09-26.md)保留；普通.NET小样本不能证明稳定尾延迟、AOT性能或优化收益 |
 | S5-07 | E 性能实现 | ⏳ 计划中 | 在对应模型数值质量门槛下逐项优化 C# CPU/CUDA 算子、工作区和有界逐题批处理 | S5-06；既有模型：S3-06,S4-04；独立模型：S4-08 | blocked/tiled GEMM、归约/融合/launch、受限批处理逐项消融；固定质量不降、成本改善，取消/卸载与两 RID AOT 回归；共享 state 改变语义须另立模型 |
 | S6-01 | F 发布 | ✅ 已完成 | 生成带 README、许可证、NOTICE 和第三方声明的开发 NuGet 包 | S0-02 | `.artifacts/packages/Sezika.0.1.0-dev.nupkg` |
-| S6-02 | F 发布 | ⏳ 计划中 | 完成独立模型默认入口、正式版本、CLI、模型卡/数据卡、签名、NuGet 发布和示例 | S4-08,S4-15,S5-07 | 发布清单、签名校验、跨平台包与文档；默认教程/CLI采用Sezika术语及独立模型，Laya限于历史、来源与可选legacy说明；声明实际支持的检查点与质量范围 |
+| S6-02 | F 发布 | ⏳ 计划中 | 完成独立模型默认入口、正式版本、CLI、模型卡/数据卡、签名、NuGet 发布和示例 | S4-08,S4-15,S5-07 | 发布清单、签名校验、跨平台包与文档；正式模型托管目标为用户指定的 Hugging Face（抱抱脸）与模力方舟，权重/配置独立于二进制并绑定版本、许可、模型卡和文件hash；默认教程/CLI采用Sezika术语及独立模型，Laya限于历史、来源与可选legacy说明；声明实际支持的检查点与质量范围 |
 | S6-03 | F 集成 | ⏳ 计划中 | 为 IoTSharp 组织项目提供进程内适配和独立服务试点 | S4-08,S4-15,S5-07 | 保持核心无业务执行器；Tomur/IoTSharp/SonnetDB 等试点合同、版本化 HTTP API、鉴权/限流/租户预算、负载与失败回退证据 |
 
 S5-04、S5-05 已在固定硬件与两个 RID 的记录范围内闭环；S5-06、S5-07 是新增性能工作。Linux 使用 Ubuntu WSL2 smoke，未测量裸机 Linux 性能。S6-02 正式发布仍未完成。S4-03 的 profile 仍保持 `pending_measurement`，不把 fixture、数值对齐或性能基准写成多语言质量已达标。

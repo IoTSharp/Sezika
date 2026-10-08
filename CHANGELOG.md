@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- 增加 S4-06 审核标签侧车离线分组：固定已有 development 报告与侧车 hash，静态 DTO/source-generated JSON、候选映射及逐题概率重算，角色/否定/词面相似性/候选顺序的获审分组与 unknown 完整分母；所有正式准入标志保持 false。最终构建零警告/错误、tiny1/full12合成检查及真实 move 后取消回滚通过；无真实审核标签、模型调用、质量、AOT 或 RSS 验收，见[证据](docs/evidence/reviewed-slices-2026-10-08.md)。
 - 验收Ubuntu WSL2 GPU head训练Native AOT：最终冻结28输入、第2新ELF、native tiny1/full11共16更新，schema3磁盘3→6恢复与连续6参数bytes/loss/checkpoint/head一致；root12保存物/实际ELF/回执及进程复核通过。首次inventory失败、额外tiny只覆盖gate、清理非共享8秒限制和ILC并发2未证明生效均保留；两个TMPDIR由root精确非递归清理。仅合成head两RID工程，正式训练/质量另验；Windows并发描述同步纠正为CLI请求，见[Ubuntu证据](docs/evidence/gpu-training-aot-linux-2026-10-08.md)。
 - 验收Windows GPU head训练Native AOT：H4三题纯GPU CE/梯度/SGD，schema3三文件3→6磁盘恢复与连续6的全部参数bytes/loss/checkpoint/head一致；原生flags、PE、tiny1/full11及真实context回收通过。修复故障切片末尾预算检查，旧managed16/新native16绑定各自freeze，两build/一次publish零警告；合成诊断范围，Linux/正式数据/encoder反传/质量另验，见[证据](docs/evidence/gpu-training-aot-windows-2026-10-08.md)。
 - 提供32题通用中英文本人工审核包：完整原文/候选/实际教师建议与空人工字段，固定源/hash、64引用和pending/曝光/不可封存语义。tiny1/full32生成、独立映射检查及监督者五文件身份复核通过，目标不覆盖；未自动批准、调用教师或训练，见[证据](docs/evidence/teacher-review-entry-2026-10-08.md)。
