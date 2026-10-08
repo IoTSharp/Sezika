@@ -20,6 +20,12 @@
 
 ## 当前执行顺序与门槛
 
+2026-10-08 福海真实 GPU 实验闭环已完成：冻结真实mmBERT encoder，32实际教师标签/24train8dev、72次GPU参数更新，保存真实SZMH1 head/checkpoint，独立新进程重新GPU特征、CE与8题推理，权重/输出身份一致。train CE下降，dev CE略升、教师一致2/8，实验不关闭质量、正式人工准入/许可发布/校准/封存/AOT/性能。见[真实训练证据](docs/evidence/real-gpu-head-experiment-2026-10-08.md)。其他任务继续暂停，不自动扩量或调参。
+
+2026-10-08 用户最新优先级：先完成福海服务器真实 GPU 实验训练的“训练→保存新权重→加载使用→实际验证”闭环，只补必要前置，其他任务暂缓。先核实 48GB 显卡与可用资源/软件；允许使用明确实验用途的实际文本与教师标签开展训练，pending 人审不得写成 approved，正式质量、校准、封存与发布另验。初始范围复用现有纯 C# CUDA encoder 特征与 head CE/梯度/SGD，encoder 冻结，真实更新数、权重变化、磁盘保存/加载和真实推理独立留证；若扩到 encoder 反传，必须先实现和验证。现有诊断 profile/资产 CLI 已通过工程检查但暂停提交/真实画像，未训练 SZDH1 不作为训练产物。
+
+训练必需前置切片已派发：独立 `Sezika.ExperimentTrainer` 使用实际32条GPU教师硬标签、固定24train/8development与独立实验报告，保持正式训练准入不变；新增只读GPU Linear/CE evaluator，在同一完整分母测初始化、训练后和磁盘加载后的损失，禁止把step0默认值或末次更新前loss当终态评价。福海已通过用户指定聊天核固定FRP目标入口，实际driver报告RTX4090/49,140MiB、当时空闲15,294MiB，计划owned GPU≤3GiB、进程内存≤4GiB；不停止既有GPU服务。具体资源、连接身份和每次运行的真实权重/步骤/恢复/验证由独立证据验收。
+
 2026-09-30 按最新讨论校核路线：目标调整为 **Sezika 的默认模型、输入协议及运行路径不再依赖 Laya**。已有 Laya 资产用于过渡对照和历史数值证据；主线转为独立审核的原始 encoder、自有决策头和独立数据，可选离线教师方向改为 IoTSharp/Tomur 本地服务。不把完成 Laya 微调作为独立路线的前提。S4-14 文档审核/合同已完成；本轮已完成原始资产下载/hash、C# 受限转换、独立 loader/decision-v1 smoke、12 条原创开发 smoke，以及 16 条候选数据的 train/development/calibration/sealed_test split 合同审计。许可发布、上游数值 oracle、人工准入、独立封存、校准、封存质量、CUDA/AOT 仍未完成；候选审计当前明确为 blocked。
 
 2026-10-03 从已推送的 `a53eb0d` 继续并行工程续审，范围和验收见 [本轮统一证据](docs/evidence/continuation-2026-10-03.md)。S4-08 补全校准指标分母、基线/封存 split/有限值门槛；S4-10/S4-11 加固离线审核合同；S4-15 固定 encoder 数值配置与 tensor 布局；S5-06 加固画像真实性检查。当前工作区没有原始独立模型权重，真实教师身份/许可、数据人工准入/独立封存、上游数值 oracle、独立模型 CPU/CUDA 与两 RID AOT 仍 blocked/pending。本轮 Windows AOT 合同 fixture 与历史画像校验均不能关闭这些门槛，S5-07 尚无优化收益结论。

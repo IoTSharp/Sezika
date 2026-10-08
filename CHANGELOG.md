@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- 福海真实 GPU 实验完成：冻结真实 mmBERT encoder，24 条实际教师标签训练三行 head 72 次更新，保存新权重/checkpoint并在独立进程重载、重算完整32特征/24与8 CE/8题推理；结果与磁盘参数一致。训练 CE下降，开发 CE略升、教师一致2/8；正式质量仍未通过，见[闭环证据](docs/evidence/real-gpu-head-experiment-2026-10-08.md)。
 - 增加只读 GPU 决策头完整 CE evaluator：全分母、GPU 参数读回身份、独立清理及三个实卡数值/取消检查通过，最大误差 8.324e-8；没有在 evaluator 中执行 SGD，见[证据](docs/evidence/gpu-head-evaluator-2026-10-08.md)。
 - 增加独立typed诊断runtime和CUDA pipeline：显式SZDH1身份与非null pipeline，共用无训练身份的执行session及真正GPU三行forward，正式入口保留契约。两项目零警告/错误、CPUtiny5/full41、核心247（tokenizer oracle明确skip）、实卡诊断19及正式CUDA16项通过；11源/5DLL/37条记录身份、7专属fixture根核验完成，见[证据](docs/evidence/diagnostic-runtime-2026-10-08.md)。编译后临时资源检查失败及后续精确清理保留，真实H768画像、深层driver fault、AOT和质量另验。
 - 增加独立SZDH1未训练诊断head格式、固定域初始化与专用typed loader：零更新、loss未测、canonical descriptor及逐F32位模式再生验证，默认训练head/checkpoint解析实际拒绝。一次构建零警告/错误、tiny1/full8共27变体和旧publisher8项回归通过；三DLL/21条记录身份终核通过，见[证据](docs/evidence/diagnostic-head-asset-2026-10-08.md)。尚未接入runtime/CLI/GPU，也不是训练、质量或AOT验收。

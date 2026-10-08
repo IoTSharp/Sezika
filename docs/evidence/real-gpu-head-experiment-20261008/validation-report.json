@@ -1,0 +1,284 @@
+{
+  "contract": "sezika/teacher-labelled-gpu-experiment-validation/v1",
+  "status": "completed_experiment_not_formal_acceptance",
+  "source_report_sha256": "c6b065cd0c66aa4544c0af277c539d82a4e7932c66cd41aaad37cfc1a0d30ee7",
+  "head_sha256": "2C93C6A9FD28C491AE5718F00C81C5FFB08859FC7F85C6A8F4DF6B209A5D5AAD",
+  "checkpoint_sha256": "5C604C9510658373EB2933C2D82FAE0FF0E798D8837C59D3B66E5BE7A63C3528",
+  "feature_sha256": "44DF5374A9A39C1B064A7AC8E34F1B4C13488F274A45DCCB4B837DB1A2EA145F",
+  "parameter_sha256": "3C15FFF5DADBBF423DF21BD4DFEB0DAD141A1469CE77C39A85C69187BDFF9B6A",
+  "actual_data_root": "/root/sezika-experiments/20261008-real-head-v1/data",
+  "loaded_train": {
+    "scope": "fresh_process_disk_loaded_train24",
+    "backend": "cuda-frozen-marker-head-cross-entropy-fp32-v1",
+    "example_count": 24,
+    "completed_examples": 24,
+    "mean_loss": 1.1749068026741345,
+    "feature_sha256": "44DF5374A9A39C1B064A7AC8E34F1B4C13488F274A45DCCB4B837DB1A2EA145F",
+    "parameter_sha256": "3C15FFF5DADBBF423DF21BD4DFEB0DAD141A1469CE77C39A85C69187BDFF9B6A",
+    "device_parameter_sha256": "3C15FFF5DADBBF423DF21BD4DFEB0DAD141A1469CE77C39A85C69187BDFF9B6A"
+  },
+  "loaded_development": {
+    "scope": "fresh_process_disk_loaded_development8",
+    "backend": "cuda-frozen-marker-head-cross-entropy-fp32-v1",
+    "example_count": 8,
+    "completed_examples": 8,
+    "mean_loss": 1.2772859781980515,
+    "feature_sha256": "8D5B807BE55F1ABB3C5C4A5960487E6FE7245E321B66052E93D70D58E7ECA2D7",
+    "parameter_sha256": "3C15FFF5DADBBF423DF21BD4DFEB0DAD141A1469CE77C39A85C69187BDFF9B6A",
+    "device_parameter_sha256": "3C15FFF5DADBBF423DF21BD4DFEB0DAD141A1469CE77C39A85C69187BDFF9B6A"
+  },
+  "loaded_inference": {
+    "backend": "cuda-independent-linear-marker-head",
+    "use": "teacher_agreement_on_exposed_unreviewed_development_not_gold_accuracy",
+    "total": 8,
+    "completed": 8,
+    "teacher_agreement_count": 2,
+    "teacher_agreement_rate": 0.25,
+    "mean_teacher_nll": 1.2772859711641456,
+    "rows": [
+      {
+        "record_id": "general-zh-choice-01",
+        "language": "zh",
+        "type": "choice",
+        "candidate_ids": [
+          "billing",
+          "delivery",
+          "account",
+          "event"
+        ],
+        "teacher_target_index": 1,
+        "predicted_index": 0,
+        "selected_candidate_id": "billing",
+        "logits": [
+          -0.004048440605401993,
+          -0.15786492824554443,
+          -0.1441989243030548,
+          -0.15035144984722137
+        ],
+        "probabilities": [
+          0.278508656320871,
+          0.23880149767896758,
+          0.24208736105994438,
+          0.24060248494021713
+        ],
+        "teacher_nll": 1.4321226257958881,
+        "agrees_with_teacher": false
+      },
+      {
+        "record_id": "general-zh-choice-02",
+        "language": "zh",
+        "type": "choice",
+        "candidate_ids": [
+          "return",
+          "buy",
+          "renew",
+          "report"
+        ],
+        "teacher_target_index": 2,
+        "predicted_index": 0,
+        "selected_candidate_id": "return",
+        "logits": [
+          -0.040317602455616,
+          -0.174436554312706,
+          -0.1596337854862213,
+          -0.15687590837478638
+        ],
+        "probabilities": [
+          0.2738232095589449,
+          0.23945457327771608,
+          0.24302552877878258,
+          0.2436966883845565
+        ],
+        "teacher_nll": 1.4145887844568485,
+        "agrees_with_teacher": false
+      },
+      {
+        "record_id": "general-en-choice-01",
+        "language": "en",
+        "type": "choice",
+        "candidate_ids": [
+          "reschedule",
+          "cancel-project",
+          "share-notes",
+          "book-venue"
+        ],
+        "teacher_target_index": 0,
+        "predicted_index": 0,
+        "selected_candidate_id": "reschedule",
+        "logits": [
+          -0.11574142426252365,
+          -0.16424690186977386,
+          -0.17085950076580048,
+          -0.16603396832942963
+        ],
+        "probabilities": [
+          0.25974183123849637,
+          0.24744360645148625,
+          0.2458127591447808,
+          0.24700180316523665
+        ],
+        "teacher_nll": 1.3480670980497846,
+        "agrees_with_teacher": true
+      },
+      {
+        "record_id": "general-en-choice-02",
+        "language": "en",
+        "type": "choice",
+        "candidate_ids": [
+          "cloakroom",
+          "audio-guide",
+          "cafe",
+          "parking"
+        ],
+        "teacher_target_index": 1,
+        "predicted_index": 0,
+        "selected_candidate_id": "cloakroom",
+        "logits": [
+          -0.05087391287088394,
+          -0.1466466188430786,
+          -0.14881359040737152,
+          -0.15081657469272614
+        ],
+        "probabilities": [
+          0.26879816978254484,
+          0.24424897485706368,
+          0.243720267327922,
+          0.24323258803246955
+        ],
+        "teacher_nll": 1.4095671851732168,
+        "agrees_with_teacher": false
+      },
+      {
+        "record_id": "general-zh-score-01",
+        "language": "zh",
+        "type": "score",
+        "candidate_ids": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "teacher_target_index": 3,
+        "predicted_index": 3,
+        "selected_candidate_id": "3",
+        "logits": [
+          -0.3177814483642578,
+          0.3472312390804291,
+          0.3907031714916229,
+          0.4228851795196533,
+          0.39964431524276733
+        ],
+        "probabilities": [
+          0.1096261503647599,
+          0.21316971483673067,
+          0.22264099006240956,
+          0.22992256358221566,
+          0.2246405811538842
+        ],
+        "teacher_nll": 1.4700127068257265,
+        "agrees_with_teacher": true
+      },
+      {
+        "record_id": "general-en-score-01",
+        "language": "en",
+        "type": "score",
+        "candidate_ids": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "teacher_target_index": 2,
+        "predicted_index": 4,
+        "selected_candidate_id": "4",
+        "logits": [
+          -0.5696084499359131,
+          0.3325430750846863,
+          0.3313247263431549,
+          0.34747833013534546,
+          0.3521925210952759
+        ],
+        "probabilities": [
+          0.09138592049909804,
+          0.22525721992939696,
+          0.22498294519404163,
+          0.228646742648334,
+          0.22972717172912951
+        ],
+        "teacher_nll": 1.4917306787882094,
+        "agrees_with_teacher": false
+      },
+      {
+        "record_id": "general-zh-boolean-01",
+        "language": "zh",
+        "type": "boolean",
+        "candidate_ids": [
+          "false",
+          "true"
+        ],
+        "teacher_target_index": 1,
+        "predicted_index": 0,
+        "selected_candidate_id": "false",
+        "logits": [
+          0.11612109839916229,
+          -0.11653627455234528
+        ],
+        "probabilities": [
+          0.5579033886718261,
+          0.44209661132817385
+        ],
+        "teacher_nll": 0.8162268431235049,
+        "agrees_with_teacher": false
+      },
+      {
+        "record_id": "general-en-boolean-01",
+        "language": "en",
+        "type": "boolean",
+        "candidate_ids": [
+          "false",
+          "true"
+        ],
+        "teacher_target_index": 1,
+        "predicted_index": 0,
+        "selected_candidate_id": "false",
+        "logits": [
+          0.18257559835910797,
+          -0.0852009654045105
+        ],
+        "probabilities": [
+          0.5665469733955493,
+          0.4334530266044508
+        ],
+        "teacher_nll": 0.835971847099985,
+        "agrees_with_teacher": false
+      }
+    ]
+  },
+  "acceptance": {
+    "formal_training_admission": false,
+    "human_quality": false,
+    "license_release": false,
+    "calibration": false,
+    "sealed_test": false,
+    "native_aot": false,
+    "performance": false,
+    "publication": false
+  },
+  "resources": {
+    "snapshot_before_context_dispose": {
+      "total_bytes": 50864390144,
+      "free_bytes": 15625748480,
+      "owned_bytes": 0,
+      "peak_owned_bytes": 1309369952,
+      "owned_allocation_count": 0,
+      "loaded_module_count": 0,
+      "release_failure_count": 0
+    },
+    "process_peak_working_set_bytes": 2724184064,
+    "process_working_set_bytes": 2618781696,
+    "device_dispose_returned": true,
+    "model_dispose_returned": true
+  }
+}
