@@ -12,6 +12,10 @@
 
 ## 当前结果
 
+### 2026-10-08 可学性阶段A已真实完成
+
+评价工程独审通过并提交 `2111ed9`，冻结linux-x64/runtime10.0.12工具实际发布及远端196文件校验通过。阶段A单次32真实GPU forwards，用旧72步磁盘head评价train24/固定左循环Choice8；train教师一致10/24、CE1.1749068026741345，换序2/8、CE1.3898979127407074。原/换序Choice各8题都选首候选、预测ID全部改变，旧head未充分拟合且位置敏感，质量未通过。原字节报告SHA B3868C86946B8E283B12C6B0DFA7D77A5BA895E5B524940A326BE0FF09B51082，见[本轮证据](docs/evidence/gpu-learnability-2026-10-08.md)。Linuxcompleted/exit0及清理完整，GPU/host峰值1,309,369,952B/2,723,254,272B，Dispose返回/资源全零；独立远端后核8身份记录全absent、显存仍15294MiB。B/C尚未启动，继续预先固定768步配置，不根据A/dev改参数。准确阶段目录存在即先读回执，禁止重复运行A；本轮监督者仍独占GPU与Git。
+
 ### 2026-10-08 新会话已接管本轮可学性诊断
 
 本会话 `01a11ab6-7ceb-7ac0-9235-58a8eec95729` 已从准备提交 `e5c0888` 接管源码、Git及GPU调度；旧会话不再并发实施。先核本地encoder/tokenizer、派生三文件数据及旧head/checkpoint/report身份，与交接相同；新本地任务根 `.artifacts/gpu-learnability-20261008/` 原先不存在，已登记身份和暂停文件hash。heartbeat `sezika` 已指向本会话，ACTIVE每30分钟。当前前置评价工程、只读合同审查和新scope runner准备并行进行，GPU尚未启动。唯一本轮配置及A/B/C预算仍按 [训练交接](docs/training-next-handoff-2026-10-08.md)；不重训72步、不扩量、不按dev选参数、不恢复其他ROADMAP。

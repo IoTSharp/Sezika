@@ -1,0 +1,18 @@
+run_absent stage-b
+run_absent stage-c
+source	pid	expected_start_tick	state
+runner-tiny/identity.tsv	718521	483620092	absent
+runner-tiny/identity.tsv	718522	483620093	absent
+runner-tiny/supervisor.tsv	718520	483620088	absent
+stage-a/identity.tsv	743848	483714658	absent
+stage-a/identity.tsv	743849	483714659	absent
+stage-a/identity.tsv	743849	483714659	absent
+stage-a/supervisor.tsv	743847	483714654	absent
+stage-a/stage-shell.tsv	743830	483714628	absent
+summary	known=8	live=0	unknown=0	files=5	scope=registered_task_identities_only_no_signal
+NVIDIA GeForce RTX 4090, GPU-e786e313-bc92-a63d-a833-f4e48cbafb66, 33215, 15294
+3055, /app/llama-server, 31140
+3068, /usr/bin/python, 1670
+2376890, /opt/tomur/releases/0.5.0-r7-cuda129-sampler-uiuuid-5c853dd8/tomur/Tomur, 386
+/root/sezika-experiments/20261008-real-head-v1/output/run-03/experiment-training-report.json: OK
+independent_known_identity_closure_complete
