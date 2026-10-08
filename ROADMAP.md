@@ -142,7 +142,9 @@ S4-12 head资产发布工程已验收：`IndependentMarkerHeadAssetStore.SaveNew
 
 S4-12未训练诊断资产工程已验收：独立SZDH1/schema1、静态typed身份、专用loader和固定域seeded初始化，强制UntrainedDiagnostic/零更新/未测loss；descriptor与权重位模式再生核验，不创建训练state、features、checkpoint或训练报告。一次构建零警告/错误、tiny1/full8共27变体及旧publisher8项回归通过；默认head/checkpoint实际拒绝新magic，三DLL冻结及21条记录身份终核通过，见[诊断资产证据](docs/evidence/diagnostic-head-asset-2026-10-08.md)。
 
-接续S4-15诊断runtime/CUDA工程切片：平行IDiagnosticDecisionPipeline与DiagnosticDecisionV1Runtime，显式非null pipeline和真实DiagnosticHeadIdentity/文件/descriptor绑定；复用无训练身份的执行与GPU三行forward逻辑，保持正式SZMH1入口契约。先tiny CPU兼容和实卡CUDA前向/资源回归，CLI资产准备与独立诊断画像另开切片；画像报告正式head/feature身份为空、正式接受全部false。最多1request/1sample/0warmup真实CUDA诊断在接线验收后另行执行，不用sidecar、零步骤或历史hash冒充训练provenance，不关闭训练收益/质量/AOT/性能门槛。
+S4-15诊断runtime/CUDA工程切片已验收：平行IDiagnosticDecisionPipeline与DiagnosticDecisionV1Runtime，显式非null pipeline和真实DiagnosticHeadIdentity/文件/descriptor绑定；复用无训练身份的执行session与GPU三行forward，正式SZMH1入口保留契约。两项目构建零警告/错误、CPUtiny5/full41、核心247（一个固定tokenizer oracle明确skip）、实卡tiny诊断19/正式CUDA16检查通过；11源/5DLL/37条记录身份和7专属fixture根终核完成，见[证据](docs/evidence/diagnostic-runtime-2026-10-08.md)。只有合成tiny前向/合同范围，深层driver fault、真实模型及AOT另验。
+
+下一S4-15/S5-06工程切片是显式independent-diagnostic-profile入口与独立source-generated报告：正式head/feature身份为空、正式接受全部false，保留所有请求分母和实际entered/returned/validated/unknown；仅CUDA、原子不覆盖输出及独立清理。CLI诊断资产准备另外实现，之后最多1request/1sample/0warmup真实CUDA画像独立执行。不得以sidecar、零步骤或历史hash冒充训练provenance，不关闭训练收益/质量/AOT/性能门槛。
 
 ## 编号任务板
 

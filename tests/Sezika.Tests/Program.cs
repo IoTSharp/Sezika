@@ -36,6 +36,13 @@ byte[] SafeTensorFile(string headerJson, int payloadBytes)
 
 try
 {
+    if (args.Length == 1 && args[0] is "--diagnostic-runtime-tiny" or "--diagnostic-runtime")
+    {
+        global::Sezika.Tests.DiagnosticRuntimeChecks.Run(Check, ExpectDecisionCode,
+            tiny: args[0] == "--diagnostic-runtime-tiny");
+        Console.WriteLine($"Diagnostic runtime checks passed: {passed}; actual_gpu=false; trained_head=false");
+        return 0;
+    }
     if (args.Length == 1 && args[0] is "--diagnostic-head-asset-tiny" or "--diagnostic-head-asset")
     {
         global::Sezika.Tests.DiagnosticHeadAssetChecks.Run(Check,
@@ -145,6 +152,7 @@ try
     global::Sezika.Tests.IndependentTrainingWorkflowChecks.Run(Check, ExpectDecisionCode);
     global::Sezika.Tests.IndependentPipelineChecks.Run(Check, ExpectDecisionCode);
     global::Sezika.Tests.IndependentLoaderContractChecks.Run(Check, ExpectDecisionCode);
+    global::Sezika.Tests.DiagnosticRuntimeChecks.Run(Check, ExpectDecisionCode);
     global::Sezika.Tests.CalibrationContinuationChecks.Run(Check, ExpectDecisionCode);
 
     var closureChecks = global::Sezika.Tests.ModelPackageLifecycleChecks.Run();

@@ -40,3 +40,5 @@
 原始证据根 `.artifacts/diagnostic-head-asset-20261008/`；四runner均Succeeded0/cleanup为空。UTC05:22:23 root核21条记录身份无匹配start存活，三个专属fixture根均0项后删除；`root-final-validation.json` SHA `BBE3055CF7858F17C1BA9190002FAF3A7ABC0CA75F7F2BB61E54378382EA5158`。记录包含保留handle的root identities与三额外短reader；未覆盖所有历史短reader/未观测子进程，不宣称全机零残留。作者旧PID81592曾被不同创建时间进程复用，保留未操作。无GPU/服务/下载/独占MCP；交付日志和用户微信文件保留。
 
 本批未建立真实H768诊断资产、CLI、runtime或推理接线。没有正式训练、实测loss、语言质量、校准、GPU前向、AOT或性能验收。下一步采用独立typed诊断pipeline；不得把descriptor放入训练feature/data hash或生成虚假正式head。
+
+本批已单独提交 `c72ab5acee27edecd39c5ec56f8d9a7af684f973`，没有push。八Git回执全部Succeeded0/cleanup为空，Git roots/launchers与五额外已知reader共21条记录身份无匹配、unknown0；`root-git-resource-closure.json`。首次默认沙箱读取StartTime为null、exit1，没有写成功回收结论；后续有权限的只读精确核验通过，原失败文件保留。后续runtime/CUDA另批验收见[独立证据](diagnostic-runtime-2026-10-08.md)，不扩写本资产批的运行范围。

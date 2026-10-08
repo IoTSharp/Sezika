@@ -43,13 +43,7 @@ public sealed record IndependentDecisionResponse(
 /// </summary>
 public sealed class IndependentDecisionV1Runtime : IDisposable
 {
-    private readonly IndependentEncoderModelPackage _model;
-    private readonly IIndependentDecisionPipeline _pipeline;
-    private readonly IndependentDecisionRuntimeOptions _options;
-    private readonly object _lifecycleGate = new();
-    private int _disposed;
-    private bool _evaluationActive;
-    private bool _disposeRequested;
+    private readonly DecisionV1ExecutionSession _session;
 
     /// <summary>
     /// Loads the hash-bound encoder and a separately hash-bound inference head.
@@ -124,9 +118,8 @@ public sealed class IndependentDecisionV1Runtime : IDisposable
                 pipeline.MaxTokens is < 2 or > 1024 || effective.MaxTokens > pipeline.MaxTokens)
                 throw new DecisionException("independent_runtime_identity_mismatch", "The independent execution pipeline differs from the loaded assets or token budget.");
 
-            _model = model;
-            _pipeline = pipeline;
-            _options = effective;
+            _session = new DecisionV1ExecutionSession(model, pipeline.Score, pipeline,
+                () => pipeline.Backend, effective, this);
         }
         catch
         {
@@ -136,131 +129,24 @@ public sealed class IndependentDecisionV1Runtime : IDisposable
         }
     }
 
-    public string ModelId => _model.ModelId;
-    public string EncoderSha256 => _model.EncoderSha256;
-    public string TokenizerSha256 => _model.TokenizerSha256;
-    public string Backend => _pipeline.Backend;
-    public bool IsDisposed => Volatile.Read(ref _disposed) != 0;
+    public string ModelId => _session.ModelId;
+    public string EncoderSha256 => _session.EncoderSha256;
+    public string TokenizerSha256 => _session.TokenizerSha256;
+    public string Backend => _session.Backend;
+    public bool IsDisposed => _session.IsDisposed;
 
     /// <summary>Evaluates every question in a bounded request with one shared deadline.</summary>
     public IndependentDecisionResponse Evaluate(
         IndependentDecisionRequest request,
         CancellationToken cancellationToken = default)
-    {
-        lock (_lifecycleGate)
-        {
-            ObjectDisposedException.ThrowIf(IsDisposed, this);
-            if (_evaluationActive)
-                throw new DecisionException("decision_session_busy", "The independent runtime cannot reenter an active evaluation.");
-            ArgumentNullException.ThrowIfNull(request);
-            if (request.SchemaVersion != 1 || !string.Equals(request.ModelId, _model.ModelId, StringComparison.Ordinal))
-                throw new DecisionException("independent_runtime_model_mismatch", "decision-v1 request model_id does not match the loaded independent model.");
-            if (request.Questions is null || request.Questions.Count is < 1 or > 32)
-                throw new DecisionException("decision_v1_question_invalid", "decision-v1 questions must contain 1 to 32 items.");
-
-            _evaluationActive = true;
-            try
-            {
-                using var lifetime = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
-                lifetime.CancelAfter(_options.Deadline);
-                try
+        => _session.Evaluate<object?, IndependentDecisionResponse>(request, null,
+            static (_, modelId, encoderSha256, tokenizerSha256, backend, answers) =>
+                new IndependentDecisionResponse(modelId, "decision-v1", answers)
                 {
-                    var answers = new IndependentDecisionAnswer[request.Questions.Count];
-                    var ids = new HashSet<string>(StringComparer.Ordinal);
-                    for (var index = 0; index < answers.Length; index++)
-                    {
-                        lifetime.Token.ThrowIfCancellationRequested();
-                        var question = request.Questions[index] ?? throw new DecisionException("decision_v1_question_invalid", "decision-v1 question is null.");
-                        if (string.IsNullOrWhiteSpace(question.Id) || question.Id.Length > 65_536)
-                            throw new DecisionException("decision_v1_text_invalid", "decision-v1 question id must be non-empty and bounded.");
-                        if (!ids.Add(question.Id))
-                            throw new DecisionException("decision_v1_question_invalid", "Question IDs must be unique.");
-                        answers[index] = EvaluateQuestion(request, question, lifetime.Token);
-                    }
-                    return new IndependentDecisionResponse(_model.ModelId, "decision-v1", answers)
-                    {
-                        EncoderSha256 = _model.EncoderSha256,
-                        TokenizerSha256 = _model.TokenizerSha256,
-                        Backend = _pipeline.Backend,
-                    };
-                }
-                catch (OperationCanceledException exception) when (!cancellationToken.IsCancellationRequested)
-                {
-                    throw new DecisionException("independent_runtime_deadline_exceeded", "Independent decision-v1 evaluation exceeded its deadline.", exception);
-                }
-            }
-            finally
-            {
-                _evaluationActive = false;
-                if (_disposeRequested) DisposeResources();
-            }
-        }
-    }
+                    EncoderSha256 = encoderSha256,
+                    TokenizerSha256 = tokenizerSha256,
+                    Backend = backend,
+                }, cancellationToken);
 
-    private IndependentDecisionAnswer EvaluateQuestion(
-        IndependentDecisionRequest request,
-        IndependentDecisionQuestion question,
-        CancellationToken cancellationToken)
-    {
-        var sequence = IndependentDecisionV1SequenceBuilder.Build(
-            _model.Tokenizer,
-            request,
-            question,
-            new IndependentDecisionSequenceOptions
-            {
-                MaxTokens = _options.MaxTokens,
-                MaxCharacters = _options.MaxCharacters,
-                Deadline = _options.Deadline,
-            },
-            cancellationToken);
-        var logits = _pipeline.Score(sequence.TokenIds, sequence.Type, sequence.MarkerPositions, cancellationToken);
-        cancellationToken.ThrowIfCancellationRequested();
-        if (logits is null || logits.Length != sequence.MarkerPositions.Length || Array.Exists(logits, value => !double.IsFinite(value)))
-            throw new DecisionException("independent_runtime_shape_invalid", "Independent pipeline must return exactly one finite logit per candidate.");
-        var probabilities = Softmax(logits);
-        var selected = 0;
-        for (var candidate = 1; candidate < probabilities.Length; candidate++)
-            if (probabilities[candidate] > probabilities[selected]) selected = candidate;
-        var concentration = probabilities.Max();
-        var candidateIds = sequence.CandidateIds ?? throw new DecisionException("independent_runtime_shape_invalid", "Independent sequence has no candidate identity.");
-        return new IndependentDecisionAnswer(question.Id, sequence.Type, candidateIds, probabilities, selected, concentration);
-    }
-
-    private static double[] Softmax(ReadOnlySpan<double> logits)
-    {
-        if (logits.Length is < 2 or > 32) throw new DecisionException("independent_runtime_shape_invalid", "Independent logits have an invalid candidate count.");
-        var maximum = logits[0];
-        for (var index = 1; index < logits.Length; index++) maximum = Math.Max(maximum, logits[index]);
-        var probabilities = new double[logits.Length];
-        var sum = 0d;
-        for (var index = 0; index < logits.Length; index++) sum += probabilities[index] = Math.Exp(logits[index] - maximum);
-        if (!double.IsFinite(sum) || sum <= 0d) throw new DecisionException("independent_runtime_value_invalid", "Independent logits produced a non-finite probability sum.");
-        for (var index = 0; index < probabilities.Length; index++)
-        {
-            probabilities[index] /= sum;
-            if (!double.IsFinite(probabilities[index])) throw new DecisionException("independent_runtime_value_invalid", "Independent probability is non-finite.");
-        }
-        return probabilities;
-    }
-
-    public void Dispose()
-    {
-        lock (_lifecycleGate)
-        {
-            if (Volatile.Read(ref _disposed) != 0) return;
-            Interlocked.Exchange(ref _disposed, 1);
-            if (_evaluationActive)
-            {
-                _disposeRequested = true;
-                return;
-            }
-            DisposeResources();
-        }
-    }
-
-    private void DisposeResources()
-    {
-        try { _pipeline.Dispose(); }
-        finally { _model.Dispose(); }
-    }
+    public void Dispose() => _session.Dispose();
 }

@@ -33,11 +33,15 @@
 | Linux协作runner工程 | `32822f8` | v10 tiny→8case通过，原始回执/参数和独立审查通过，28Linux身份/67Windows记录无匹配；随后11份Git/reader/worker回执与44身份终核0，旧失败保留 |
 | 独立画像入口工程 | `06de2ed` | 最终三源/实际DLL冻结，第二构建零警告错误、tiny1/full8，四runner/24身份及八Git/16身份终核0；GPU/正式性能/AOT仍开放 |
 
-### 2026-10-08 UTC05:28 接续检查点
+### 2026-10-08 诊断资产与runtime接续检查点
 
-SZDH1诊断资产已完成独立审查和root真实验证，待本批单独commit：作者05:01:04–05:13:26、9调用/7源码；五源冻结05:12:29，freeze SHA1FA904…C82CA。一次build76260/37.993秒零警告错误，tiny42044/4.031秒1PASS、full83180/4.170秒8PASS（27变体）、旧publisher84256/4.452秒8PASS。三DLL恒定，四成功runner/21条记录身份无匹配，三个专属fixture根0项且已删除；root-final-validation.json SHA BBE3055CF7858F17C1BA9190002FAF3A7ABC0CA75F7F2BB61E54378382EA5158。不重复已通过的运行，范围与局限见[永久证据](docs/evidence/diagnostic-head-asset-2026-10-08.md)。没有真实训练或新GPU/AOT结论。
+SZDH1诊断资产已单独提交c72ab5acee27edecd39c5ec56f8d9a7af684f973：作者05:01:04–05:13:26、9调用/7源码；五源冻结05:12:29，freeze SHA1FA904…C82CA。一次build76260/37.993秒零警告错误，tiny42044/4.031秒1PASS、full83180/4.170秒8PASS（27变体）、旧publisher84256/4.452秒8PASS。三DLL恒定，四成功runner/21条记录身份无匹配，三个专属fixture根0项且已删除；root-final-validation.json SHA BBE3055CF7858F17C1BA9190002FAF3A7ABC0CA75F7F2BB61E54378382EA5158。八Git回执/21记录身份零匹配，root-git-resource-closure.json；首次sandbox StartTime null失败保留，后续实际读取成功。不重复旧验证，见[永久证据](docs/evidence/diagnostic-head-asset-2026-10-08.md)。
 
-下一独立runtime/CUDA切片已登记ROADMAP：next_executable_audit负责core interface/facade/session与core checks；linux_cancel_cause负责CUDA新pipeline/共同GPU forward和CUDA checks。root独占tests Program接线、共享docs和Git；作者当前仅准备，root完成诊断资产commit才明确允许写入。各首次clock起22分钟、19分钟停新/3分钟finally，最多14短调用，core10明确文件/CUDA8；root统一build/tests、GPU窗口独占。CLI/profile不是本批归属。30分钟heartbeat继续。
+runtime/CUDA切片已实现并完成root验收，待单独commit：core作者05:25:46起、05:40:13锁源，CUDA作者05:25:37起、05:37:17锁源/05:42:25复核；14/12短调用，无自行build/GPU。root两项目build86820/30.346秒、84344/13.747秒均0warning/error；CPUtiny39432/5check、full59368/41check、核心46680/247check（tokenizer oracle skip）、实卡诊断2184/19check、正式CUDA86956/16check全部通过。五DLL保持，11源冻结，7成功runner/37记录身份零匹配/unknown0、7专属fixture根已移除；root-final-closure-v2.json SHA295CB62C20AF0CF37D7500511A04DD6C0D92814B9452A82CA2644AACFE9A73F0。v1作者start误写后纠正，v1原字节保留。两个build原外层exit1是3项compiler TEMP残留检查失败，后续空目录非递归删除、workload日志按hash保留；第一次清理因JSON日期时区转换guard失败，改DateKind String后实际关闭，未重跑构建。
+
+core早审profile_review完成读源并消息无P1/P2但未保存报告、agent已不在；新diagnostic_core_review_v2独立机械迁移审查按新6分钟窗口交付，SHA089FB5C64F8B44D63C451359B41DA88B5746D452662B21E12C636CCDBC1BC246。CUDA独立审查SHAD8054AEE1ED205BE541302F2FC371D94283FA90FD914387E41AE1840CED6495B。深层encoder fault、正式训练、真实H768诊断画像/AOT/质量未验，见[运行时证据](docs/evidence/diagnostic-runtime-2026-10-08.md)。
+
+下一diagnostic_profile已只读准备：06:32:31起、06:53:31停新/06:56:31硬截止，≤9明确文件/16短调用，归属Benchmarks新诊断profile/report与最小dispatch及checks；root当前runtime提交后再授权源码写入。ModelTool CLI资产准备另列任务，不重复正式画像或使用旧head/report身份；真实CUDA单请求另开GPU窗口。root继续独占Git/shared docs，30分钟heartbeat继续。
 
 Linux工程已单独提交32822f8；root-v10-git-reader-resource-closure.json核8Git、2外部reader、1worker共11成功回执，44身份无匹配，全部cleanup为空。独立画像已单独提交06de2ed：第2build1464/21.516秒、零警告/错误，tiny69660/2.930秒、full8 25092/3.188秒全PASS；三个实际DLL在build2/tiny/full不变，四runner/24身份及八Git/16身份终核0，两个fixture根0项。独立复审SHA C08F65…9A38EA及rename逆变换通过，首次构建失败、晚停新增线29.964秒写报告均保留。不称GPU/正式性能/AOT已验，没有push。
 

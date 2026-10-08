@@ -101,6 +101,13 @@ try
     }
     // Missing driver/device is a failure with its real diagnostic, never a skipped success.
     using var device = CudaDevice.Open(enableProfiling: true);
+    if (args.Length == 1 && args[0] == "--diagnostic-pipeline")
+    {
+        global::Sezika.Cuda.Diagnostics.Tests.DiagnosticCudaChecks.Run(device, Check, deadline.Token);
+        CheckNoResources(device, "diagnostic pipeline leaves no caller-owned CUDA resources");
+        Console.WriteLine($"Diagnostic CUDA checks passed: {passed}; actual_gpu=true; trained_head=false; data_mode=synthetic_fixture");
+        return 0;
+    }
     if (args.Length == 1 && args[0] is "--independent-export-tiny" or "--independent-export")
     {
         global::Sezika.Cuda.Diagnostics.Tests.IndependentCudaExportChecks.Run(device, Check, deadline.Token, tiny: args[0].EndsWith("-tiny", StringComparison.Ordinal));

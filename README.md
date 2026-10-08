@@ -16,7 +16,7 @@ Sezika 面向本地软件中的语义判断，目标是使用 **C#、.NET 10 与
 
 ## 项目状态
 
-独立模型现有专用 `SZDH1` 诊断head资产格式，明确记录未训练、零更新和未测损失；专用loader校验初始化身份并逐位重生权重，正式训练head/checkpoint入口拒绝该格式。资产工程与文件回归已通过，runtime/GPU/CLI接线另验；见[诊断资产证据](docs/evidence/diagnostic-head-asset-2026-10-08.md)。
+独立模型现有专用 `SZDH1` 诊断head资产格式，明确记录未训练、零更新和未测损失；专用loader校验初始化身份并逐位重生权重，正式训练head/checkpoint入口拒绝该格式。独立typed诊断runtime与CUDA接线已通过CPU tiny合同、实卡tiny数值和资源回归，CLI/真实模型画像另验；见[资产证据](docs/evidence/diagnostic-head-asset-2026-10-08.md)与[运行时证据](docs/evidence/diagnostic-runtime-2026-10-08.md)。
 
 当前仓库包含可运行的纯 C# scalar/SIMD FP32 与 W8A32 encoder/head、固定真实 Laya/mmBERT 开发资产的安全加载、Choice/Score/Boolean typed decision、tokenizer oracle、校准评估器，以及 ILGPU 构建期 PTX/ABI 和 CUDA Driver 完整推理路径。S5-04/S5-05 已完成：Windows `win-x64` Native AOT 四后端各覆盖 1/8/32 问、每项 5 次正式采样；Ubuntu WSL2 `linux-x64` 四后端通过真实模型 Native AOT smoke，各为 3 问、1 次采样。**WSL smoke 不代表裸机 Linux 性能；逐语言质量仍未验收，模型权重不随仓库发布。** 具体范围见 [S5 性能与 AOT 证据](docs/s5-performance-aot.md)及[原始报告](docs/evidence/s5-2026-09-24/)。
 
