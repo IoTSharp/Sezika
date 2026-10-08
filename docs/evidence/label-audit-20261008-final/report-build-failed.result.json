@@ -1,0 +1,39 @@
+{
+  "Status": "Failed",
+  "Pid": 92744,
+  "ExitCode": 1,
+  "Error": "Process failed with exit code 1.",
+  "ElapsedSeconds": 4.859,
+  "TimeoutSeconds": 90,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Build-LabelAuditReport.ps1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-08T10:48:52.4795403Z",
+  "ParentPid": 12520,
+  "Launcher": {
+    "Pid": 12520,
+    "Started": "2026-10-08T18:48:49.466844+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); $tokens=$null;$errors=$null; [Management.Automation.Language.Parser]::ParseFile((Join-Path $auditRoot 'Build-LabelAuditReport.ps1'),[ref]$tokens,[ref]$errors)|Out-Null; if($errors.Count -gt 0){throw ($errors.Message -join [Environment]::NewLine)}; & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $auditRoot 'Build-LabelAuditReport.ps1')) -TimeoutSeconds 90 -ProcessQueryTimeoutSeconds 5 -LogName 'report-build' -LogDirectory (Join-Path $auditRoot 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+    "ParentPid": 52200
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-104851-393-report-build.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-104851-393-report-build.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 92744,
+      "CreationDate": "2026-10-08T18:48:52.47954+08:00",
+      "Started": "2026-10-08T10:48:52.47954Z",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Build-LabelAuditReport.ps1",
+      "ParentPid": 12520,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

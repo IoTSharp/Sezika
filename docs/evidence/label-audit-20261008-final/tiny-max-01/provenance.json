@@ -1,0 +1,27 @@
+{
+  "provider": "sonnet_vip",
+  "configured_base_url": "http://127.0.0.1:15721/v1",
+  "endpoint": "http://127.0.0.1:15721/v1/responses",
+  "credential_source": "current Codex auth.json OPENAI_API_KEY; value never persisted",
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning_effort": "max",
+  "initially_requested_effort": "ultra",
+  "user_selection_sha256": "978B73603C381888AAF0D88E7E7DCE9FB4E6319887715D1160228B8CB22EC65B",
+  "source": "D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data\\experiment-records.jsonl",
+  "source_sha256": "A015A8FA182EE62223CAFC307C618C515A19E90F843290DB9DFB53A56B9A041C",
+  "source_record_ids": [
+    "general-zh-choice-01"
+  ],
+  "source_labels_hidden": true,
+  "request_sha256": "84F849E341CC196D34934290E44510F8B2D0DFAD62CCFCA75B90781DAF864B4A",
+  "script_sha256": "DBDD26A19E2804D98D0CE73E2E952F58BED14BD02D812D13D16E6BA989CC74A0",
+  "maximum_records": 8,
+  "maximum_http_requests": 1,
+  "request_timeout_seconds": 240,
+  "maximum_output_tokens": 20000,
+  "reviewer_kind": "ai",
+  "human_review": "pending",
+  "formal": false,
+  "eligible_as_sealed_test": false,
+  "api_documentation": "https://developers.openai.com/api/reference/resources/responses/methods/create"
+}

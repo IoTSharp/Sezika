@@ -1,0 +1,27 @@
+{
+  "checks": [
+    {
+      "Pid": 46296,
+      "State": "absent",
+      "ObservedUtc": "2026-10-08T10:57:14.5091942+00:00"
+    },
+    {
+      "Pid": 78628,
+      "State": "absent",
+      "ObservedUtc": "2026-10-08T10:57:15.6899008+00:00"
+    },
+    {
+      "Pid": 77720,
+      "State": "absent",
+      "ObservedUtc": "2026-10-08T10:57:16.8588340+00:00"
+    }
+  ],
+  "status": "absent",
+  "reader": {
+    "ProcessId": 91052,
+    "CreationDate": "2026-10-08T18:57:11.26688+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); $closure=Get-Content -LiteralPath (Join-Path $auditRoot 'process-closure.json') -Raw | ConvertFrom-Json -Depth 40; $proof=[Collections.Generic.List[object]]::new(); foreach($id in @([int]$closure.checker_identity.ProcessId,[int]$closure.checker_identity.ParentProcessId,77720)) { $actual=@(Get-CimInstance Win32_Process -Filter \\\"ProcessId=$id\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5); if($actual.Count -ne 0){throw \\\"Registered final reader/checker PID $id still present; identity recheck needed\\\"}; $proof.Add([ordered]@{Pid=$id;State='absent';ObservedUtc=[DateTimeOffset]::UtcNow.ToString('o')}) }; [IO.File]::WriteAllText((Join-Path $auditRoot 'closure-independent.json'),([ordered]@{checks=@($proof);status='absent';reader=($self|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId);advisor_identity_limitation='PID77720/start/parent known; full argv in agent tool output, not included in closure manifest.'}|ConvertTo-Json -Depth 10)); Copy-Item -LiteralPath (Join-Path $auditRoot 'process-closure.json') -Destination docs/evidence/label-audit-20261008-final/process-closure.json; Copy-Item -LiteralPath (Join-Path $auditRoot 'closure-independent.json') -Destination docs/evidence/label-audit-20261008-final/closure-independent.json; Get-Content -LiteralPath docs/evidence/label-audit-20261008-final/report-review.md -TotalCount 75\"",
+    "ParentProcessId": 52200
+  },
+  "advisor_identity_limitation": "PID77720/start/parent known; full argv in agent tool output, not included in closure manifest."
+}

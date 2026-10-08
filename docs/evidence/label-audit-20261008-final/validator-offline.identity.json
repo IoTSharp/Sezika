@@ -1,0 +1,22 @@
+{
+  "Pid": 75012,
+  "Started": "2026-10-08T18:44:53.9110650+08:00",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Test-LabelAuditPayloadOffline.ps1",
+  "ParentPid": 35768,
+  "ParentChain": [
+    {
+      "ProcessId": 35768,
+      "CreationDate": "2026-10-08T18:44:49.835065+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString()\n$validatorRunSelf=Get-CimInstance Win32_Process -Filter \\\"ProcessId = $PID\\\"\n$validatorRunParent=Get-CimInstance Win32_Process -Filter \\\"ProcessId = $($validatorRunSelf.ParentProcessId)\\\"\n$validatorRunGrandparent=if($null -ne $validatorRunParent){Get-CimInstance Win32_Process -Filter \\\"ProcessId = $($validatorRunParent.ParentProcessId)\\\"}else{$null}\n[ordered]@{Pid=$PID;Started=$validatorRunSelf.CreationDate.ToString('o');CommandLine=$validatorRunSelf.CommandLine;ParentPid=$validatorRunSelf.ParentProcessId;ParentChain=@(($validatorRunParent|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId),($validatorRunGrandparent|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId));Role='validator-offline-bounded-launcher';ExitCode=$null}|ConvertTo-Json -Depth 10|Set-Content -LiteralPath 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\validator-launcher.identity.json' -Encoding utf8\n& 'D:\\source\\Sezika\\tools\\Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoLogo','-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Test-LabelAuditPayloadOffline.ps1') -TimeoutSeconds 110 -LogName 'validator-offline' -WorkingDirectory 'D:\\source\\Sezika' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\validator-logs'\"",
+      "ParentProcessId": 52200
+    },
+    {
+      "ProcessId": 52200,
+      "CreationDate": "2026-10-08T14:24:50.432395+08:00",
+      "CommandLine": "C:\\Users\\mysti\\AppData\\Local\\OpenAI\\Codex\\bin\\9691020b546a15b2\\codex.exe -c features.code_mode_host=true app-server --analytics-default-enabled -c plugins.codex-app-tools@openai-bundled.mcp_servers.codex_app.enabled=true -c plugins.code-review@openai-bundled.mcp_servers.code-review.enabled=true",
+      "ParentProcessId": 63160
+    }
+  ],
+  "Role": "validator-offline-test",
+  "ExitCode": null
+}

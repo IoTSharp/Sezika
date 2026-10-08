@@ -20,6 +20,8 @@
 
 ## 当前执行顺序与门槛
 
+2026-10-08 用户指定现有32题用当前Codex sonnet.vip凭据审题：ultra被接口HTTP400拒绝后，用户明确批准gpt-6.1-sol/max。实际5次成功盲审覆盖32/32，29保留/3建议改标/0不确定/0改题，严格本地JSON与逐字引文校验及独审完成；见[审题证据](docs/evidence/label-audit-2026-10-08.md)。原数据及24train/8已曝光dev保持，既有768步权重事后AI标签一致率18/24和2/8；未新增GPU训练，正式质量仍未通过。后续只把建议修正列为独立新版本合同与拟合/换序验收方向，不自动扩量、调参或加LoRA。AI审核保持pending/formal=false/非sealed，不替代正式金标与泛化验收。
+
 2026-10-08 同24题GPU可学性与候选位置诊断已实际闭环：旧72步head只读train24/真实换序Choice8评价，再唯一零初始化768步/LR0.001/seed17/strict1024新head训练，保存并独立新进程GPU重编码、完整CE和逐题验证。新head train17/24、dev1/8、换序4/8且6预测ID改变；train CE0.9920696603755156，未充分拟合/位置敏感/质量未通过。A/B/C分别32/48/48 forwards，真实退出/Dispose与登记身份终核通过，见[本轮证据](docs/evidence/gpu-learnability-2026-10-08.md)。本轮已停止新增训练、其他任务继续暂停；正式人审、许可发布、校准、封存、AOT和性能另验，30分钟关注只监督交接与证据，不重复派单。
 
 2026-10-08 福海真实 GPU 实验闭环已完成：冻结真实mmBERT encoder，32实际教师标签/24train8dev、72次GPU参数更新，保存真实SZMH1 head/checkpoint，独立新进程重新GPU特征、CE与8题推理，权重/输出身份一致。train CE下降，dev CE略升、教师一致2/8，实验不关闭质量、正式人工准入/许可发布/校准/封存/AOT/性能。见[真实训练证据](docs/evidence/real-gpu-head-experiment-2026-10-08.md)。其他任务继续暂停，不自动扩量或调参。

@@ -12,6 +12,16 @@
 
 ## 当前结果
 
+### 2026-10-08 当前32题独立AI审题已完成
+
+用户指定当前Codex sonnet.vip凭据/gpt-6.1-sol/ultra；真实接口HTTP400拒绝ultra，用户明确回复批准max，未改全局配置。5次成功请求（1+8+8+8+7）在原900秒API预算内完成32/32盲审，29保留、3建议改标、0不确定、0需改题。改标：general-en-score-03 2→3；general-zh-boolean-02 true→false（12−5=7）；general-en-boolean-01 true→false（09:15早于10:00）。后者属于development。原标签不进请求；32条保存响应重新通过严格类型/字段/映射/分母/单字段逐字引文验证，17旧响应与6反例先验，独立脚本及最终报告审查留证。网关声明gpt-6.1-sol/max，不独立保证上游身份；key仅内存，未输出或提交。
+
+原JSONL SHA A015A8FA182EE62223CAFC307C618C515A19E90F843290DB9DFB53A56B9A041C保持，旧Qwen来源/manifest/provenance及训练结果不改。新AI审核为sidecar、pending/formal=false/非sealed；未来按修正标签训练必须建立新数据版本及来源合同。复用C的32条原序GPU预测作事后比较：原教师17/24与1/8，新AI标签18/24与2/8，权重未变、未新增前向/训练/重新教师采集，仍未充分拟合且质量未通过。后续拟合与候选ID换序验收方向见[完整证据](docs/evidence/label-audit-2026-10-08.md)，无自动加训/扩量/LoRA，其他ROADMAP继续暂停；heartbeat只接续证据与交接，不能重发32题或重复GPU实验。
+
+任务目录 `.artifacts/label-audit-20261008/`；最终永久原请求/响应/报告在 `docs/evidence/label-audit-20261008-final/`。ultra失败、CLI在用户rules解析失败且未发HTTP、首次脚本parser失败与报告Md别名冲突失败均保留。首次报告创建了工作区两个空目录general-zh-choice-01与delivery；自动审批拒绝归档/清理命令，仅返回blocked by policy，未绕过，旧部分归档 `docs/evidence/label-audit-20261008/` 及两空目录保留不参与成功证据。API任务进程以本轮登记身份终核；既有GPU服务本轮没有启动/停止。只本地commit、不push或发布。
+
+最后逐题独审通过；独审总墙钟约257秒，超出所派4分钟约17秒，已停止、未追加API/GPU。进程终核114记录/53唯一PID无matching/unknown live，checker/launcher及质量建议reader另核absent；审查最后writer由真实工具exit0及后核收口。原失败closure误把当前launcher计为live，保留后修为明确排除当前祖先且另核，不篡改失败。进程已关闭不等于全部目录清理通过，保留对象及审批拒绝是未闭合清理项。
+
 ### 2026-10-08 固定768步实验及独立加载验证已完成
 
 A独审后提交 `06a6ded`。B单次实际768次GPU SGD、零初始化三行head、LR0.001/seed17/strict1024、encoder冻结；C独立新进程从磁盘加载并重新GPU编码，B/C各48/48 forwards。train教师一致17/24、CE1.229626456896464→0.9920696603755156；dev1/8、CE1.2687934339046478→1.2740284875035286；换序4/8、CE1.3999227583408356、6/8预测ID改变。C fresh_disk_outputs_matched=true，监督者另核40逐题及全部观察解析值相同。训练集仍未充分拟合、位置敏感、质量未通过，未按dev选参数或自动加训，全部正式验收仍false。

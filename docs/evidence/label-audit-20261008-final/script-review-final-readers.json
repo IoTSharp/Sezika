@@ -1,0 +1,46 @@
+{
+  "Readers": [
+    {
+      "Pid": 50828,
+      "Started": "2026-10-08T18:46:24.7833980+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference = 'Stop'\nif ($PSVersionTable.PSVersion.Major -lt 7) { throw 'PowerShell 7 required' }\n$reviewClock = [Diagnostics.Stopwatch]::StartNew()\n$reviewRoot = 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008'\n$readerPath = Join-Path $reviewRoot 'script-review-final-readers.json'\n$cancelPath = Join-Path $reviewRoot 'script-review-final.cancel.request'\nif (Test-Path -LiteralPath $readerPath) { throw 'Final reader manifest exists; preserving it' }\n$taskProcess = Get-CimInstance -ClassName Win32_Process -Filter \\\"ProcessId = $PID\\\" -OperationTimeoutSec 10\n$identity = [ordered]@{ Pid = $PID; Started = $taskProcess.CreationDate.ToString('o'); CommandLine = $taskProcess.CommandLine; ParentPid = [int]$taskProcess.ParentProcessId; Role = 'reader'; MaximumFiles = 3; MaximumSeconds = 240; Completed = $null; ElapsedSeconds = $null }\n$evidence = [ordered]@{ Readers = @($identity); Files = @(); Writers = @() }\nfunction Read-ReviewFile([string]$Name) {\n    if ($reviewClock.Elapsed.TotalSeconds -ge 240) { throw 'Review wall time exceeded' }\n    if (Test-Path -LiteralPath $cancelPath) { throw 'Review canceled' }\n    $filePath = Join-Path $reviewRoot $Name\n    $info = Get-Item -LiteralPath $filePath\n    if ($info.Length -gt 131072) { throw 'File exceeds 128 KiB review cap' }\n    $fileLines = [IO.File]::ReadAllLines($filePath)\n    if ($fileLines.Length -gt 800) { throw 'File exceeds 800-line review cap' }\n    $hash = (Get-FileHash -LiteralPath $filePath -Algorithm SHA256).Hash\n    $evidence.Files += [ordered]@{ Path = $filePath; Sha256 = $hash; Lines = $fileLines.Length; Bytes = $info.Length }\n    Write-Output ('FILE=' + $filePath + '; SHA256=' + $hash + '; Lines=' + $fileLines.Length)\n    $fileLines | ForEach-Object -Begin { $reviewLineNumber = 0 } -Process { if ($reviewClock.Elapsed.TotalSeconds -ge 240 -or (Test-Path -LiteralPath $cancelPath)) { throw 'Review time/cancellation bound' }; $reviewLineNumber += 1; '{0}: {1}' -f $reviewLineNumber, $_ }\n}\ntry {\n    $evidence | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath $readerPath -Encoding utf8NoBOM\n    Write-Output ('PSVersion=' + $PSVersionTable.PSVersion.ToString() + '; Progress=reading 3 fixed files')\n    Read-ReviewFile 'Invoke-LabelAuditBatch.ps1'\n    Read-ReviewFile 'Test-LabelAuditPayload.ps1'\n    Read-ReviewFile 'validator-offline.result.json'\n} finally {\n    $identity.Completed = [DateTimeOffset]::Now.ToString('o')\n    $identity.ElapsedSeconds = $reviewClock.Elapsed.TotalSeconds\n    $evidence | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath $readerPath -Encoding utf8NoBOM\n    Write-Output ('ReaderIdentity=' + $readerPath + '; PID=' + $identity.Pid + '; Started=' + $identity.Started + '; ParentPid=' + $identity.ParentPid + '; ElapsedSeconds=' + $identity.ElapsedSeconds)\n    # No child workload or temporary files were created.\n}\n\"",
+      "ParentPid": 52200,
+      "Role": "reader",
+      "MaximumFiles": 3,
+      "MaximumSeconds": 240,
+      "Completed": "2026-10-08T18:46:26.2872088+08:00",
+      "ElapsedSeconds": 1.1585074
+    }
+  ],
+  "Files": [
+    {
+      "Path": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1",
+      "Sha256": "076AE5E6D6292B3A674F2051046F4151811522D7F2C829D4E18B058B33158A1E",
+      "Lines": 168,
+      "Bytes": 14478
+    },
+    {
+      "Path": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Test-LabelAuditPayload.ps1",
+      "Sha256": "A71A86A4446AE4255512018636E5B824F9CD68CB27C3295F4E9B283575E7853E",
+      "Lines": 194,
+      "Bytes": 15362
+    },
+    {
+      "Path": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\validator-offline.result.json",
+      "Sha256": "44CE48C6B167B3D8E4C5077EF0CABEC7911C9DEA5900EDA2139F08A102911452",
+      "Lines": 59,
+      "Bytes": 1189
+    }
+  ],
+  "Writers": [
+    {
+      "Pid": 66748,
+      "Started": "2026-10-08T18:48:34.6321010+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference = 'Stop'\nif ($PSVersionTable.PSVersion.Major -lt 7) { throw 'PowerShell 7 required' }\n$reviewRoot = 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008'\n$readerPath = Join-Path $reviewRoot 'script-review-final-readers.json'\n$reportPath = Join-Path $reviewRoot 'script-review-final.md'\n$cancelPath = Join-Path $reviewRoot 'script-review-final.cancel.request'\nif (Test-Path -LiteralPath $reportPath) { throw 'Final report exists; preserving it' }\n$evidence = Get-Content -LiteralPath $readerPath -Raw | ConvertFrom-Json -AsHashtable -Depth 10 -DateKind String\n$reviewStarted = [DateTimeOffset]::Parse($evidence.Readers[0].Started,[Globalization.CultureInfo]::InvariantCulture)\nif (([DateTimeOffset]::Now-$reviewStarted).TotalSeconds -ge 240) { throw 'Four-minute total review budget exceeded' }\nif (Test-Path -LiteralPath $cancelPath) { throw 'Review canceled' }\n$taskProcess = Get-CimInstance -ClassName Win32_Process -Filter \\\"ProcessId = $PID\\\" -OperationTimeoutSec 10\n$writer = [ordered]@{ Pid = $PID; Started = $taskProcess.CreationDate.ToString('o'); CommandLine = $taskProcess.CommandLine; ParentPid = [int]$taskProcess.ParentProcessId; Role = 'report_writer'; Completed = $null; TotalReviewSeconds = $null }\n$evidence.Writers = @($writer)\n$reportText = @'\n# Label audit final script review\n\n结论：**本次限定范围的静态复核通过；没有发现新的阻断项。** 原两项 P2 与后续主失败保护问题已修复。这里只审核固定的三个文件，未执行主脚本、调用 API 或重新运行离线验证。\n\n## 文件身份\n\n| 文件 | SHA256 |\n| --- | --- |\n| Invoke-LabelAuditBatch.ps1 | 076AE5E6D6292B3A674F2051046F4151811522D7F2C829D4E18B058B33158A1E |\n| Test-LabelAuditPayload.ps1 | A71A86A4446AE4255512018636E5B824F9CD68CB27C3295F4E9B283575E7853E |\n| validator-offline.result.json | 44CE48C6B167B3D8E4C5077EF0CABEC7911C9DEA5900EDA2139F08A102911452 |\n\n三个文件均来自 `D:\\source\\Sezika\\.artifacts\\label-audit-20261008`。主脚本 168 行；验证器 194 行；离线回执 59 行。\n\n## 修复确认\n\n- 主脚本第 14–16、36–38、94–95 行：共享阶段 deadline 纳入 Check-Budget；HTTP CTS/client timeout 取 240 秒、批次 260 秒剩余量及 API 阶段 900 秒剩余量的最小值，并为后续处理预留 5 秒。请求前余时不足则终止。\n- 主脚本第 101 行：禁用自动重定向；应用只创建一次 SendAsync，请求目录仍禁止重复使用。\n- 主脚本第 151–167 行：Cancellation 与五个资源 Dispose 分别捕获异常；result.json 写入也有独立 catch，在先前状态为 failed 时保留主失败，在先前成功时传播持久化失败。清理计时与错误写入回执。\n- 验证器第 38–58、69–104 行：使用 JsonDocument，而非依赖网关 schema 执行情况；拒绝注释/尾随逗号、非对象顶层、未知/重复字段、缺失字段、错误类型、非法枚举与 revision flag/reason/text 不一致。\n- 验证器第 136–159 行：精确 JSON Int32 索引与 ID 一致性；非 determinate 要求 JSON null；alternative_ids 逐项检查字符串、候选成员及唯一性。\n- 验证器第 160–173 行：引文数量不超过四条，每条必须以 Ordinal 比较出现于一个原始字段；没有用人工换行拼接字段。\n- 验证器第 59–68、86–91、174–188 行：源记录与题目身份、唯一记录、原标签范围及完整分母有检查。源标签仅用于本地结果对比，审核请求只发送题文与候选映射。\n\n## 离线回执一致性\n\n回执状态为 passed，记录三份既有响应与 17 条通过记录：tiny-max-01 为 1/1、batch-max-02 为 8/8、batch-max-03 为 8/8。六个负例全部记录为拒绝且 passed：fractional-index、unknown-enum、duplicate-property、cross-field-quote、string-boolean、revision-inconsistent。总数与逐项结果一致；回执 ValidatorSHA256 与本次读到的验证器 SHA256 一致；回执记载耗时 674 ms、NoApiCalls=true。\n\n这确认了回执内部一致性及代码覆盖的对应拒绝路径。此复核未重放测试，未读取负例 fixtures 或旧响应文件，也未审查后来两批的响应结果。\n\n## 范围和语义\n\n验证器限制 1 MiB JSON、深度 32、最多 32 条记录、12 个字段、20 个候选/alternative、4 条引文、32 个原文片段及 30 秒，并在循环中检查取消/时间。主脚本检查批次/阶段时间与 cancel.request，HTTP 轮询有 245 次上限和进度输出。\n\n这些是代码与回执审查结果，HTTP 故障路径、取消、清理超时和进程硬终止路径仍属于动态验证范围。清理的 5 秒计时记录超时而非抢占式中断。\n\n模型与 effort 是网关响应声明，不能据此独立验证上游身份。AI 标签审核保留 human_review=pending、formal=false、eligible_as_sealed_test=false，不能转述为人工标签复核、模型质量验收或已校准。\n\n## 执行与清理\n\n使用 PowerShell 7.6.6。三个固定文件各读取一次，reader PID 50828，启动时间 2026-10-08T18:46:24.7833980+08:00，父 PID 52200；读取调用 exit 0，耗时 1.159 秒。读取与报告写入进程的完整 argv/父链、文件 SHA、完成时间与总复核耗时记录在 script-review-final-readers.json。仅新增本报告与该 readers 交付物，无子负载或临时文件。root 应核对记录中的精确进程身份在调用结束后均不存在。\n'@\ntry {\n    $evidence | ConvertTo-Json -Depth 10 | Set-Content -LiteralPath $readerPath -Encoding utf8NoBOM\n    if (([DateTimeOffset]::Now-$reviewStarted).TotalSeconds -ge 240 -or (Test-Path -LiteralPath $cancelPath)) { throw 'Final write time/cancellation bound' }\n    Set-Content -LiteralPath $reportPath -Value $reportText -Encoding utf8NoBOM\n} finally {\n    $writer.Completed = [DateTimeOffset]::Now.ToString('o')\n    $writer.TotalReviewSeconds = ([DateTimeOffset]::Now-$reviewStarted).TotalSeconds\n    $evidence.Writers = @($writer)\n    $evidence | ConvertTo-Json -Depth 10 | Set-Content -LiteralPath $readerPath -Encoding utf8NoBOM\n    # No child workload or temporary files were created.\n}\n[ordered]@{ PSVersion = $PSVersionTable.PSVersion.ToString(); ReportPath = $reportPath; ReportSHA256 = (Get-FileHash -LiteralPath $reportPath -Algorithm SHA256).Hash; ReadersPath = $readerPath; ReadersSHA256 = (Get-FileHash -LiteralPath $readerPath -Algorithm SHA256).Hash; WriterPid = $PID; WriterStarted = $writer.Started; WriterParentPid = $writer.ParentPid; TotalReviewSeconds = $writer.TotalReviewSeconds } | ConvertTo-Json -Depth 4\n\"",
+      "ParentPid": 52200,
+      "Role": "report_writer",
+      "Completed": "2026-10-08T18:48:36.3850179+08:00",
+      "TotalReviewSeconds": 131.603746
+    }
+  ]
+}

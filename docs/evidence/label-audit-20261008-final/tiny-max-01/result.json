@@ -1,0 +1,105 @@
+{
+  "batch": "tiny-max-01",
+  "status": "completed_and_validated",
+  "start_index": 0,
+  "record_count": 1,
+  "http_status": 200,
+  "response_id": "resp_004e6f377432410a016ac77213f320819b961293c8e0f3f062",
+  "response_model": "gpt-6.1-sol",
+  "response_reasoning_effort": "max",
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning_effort": "max",
+  "initially_requested_effort": "ultra",
+  "usage": {
+    "input_tokens": 4924,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 306,
+    "output_tokens_details": {
+      "reasoning_tokens": 171
+    },
+    "total_tokens": 5230,
+    "attribution": {
+      "items": {
+        "msg_004e6f377432410a016ac77213f418819b81c5358e418c7683": {
+          "input_tokens": 347,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 0,
+          "content": [
+            {
+              "input_tokens": 347,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            }
+          ]
+        },
+        "msg_004e6f377432410a016ac77213f418819ba87a9fc250d51248": {
+          "input_tokens": 171,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 0,
+          "content": [
+            {
+              "input_tokens": 171,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            }
+          ]
+        },
+        "msg_004e6f377432410a016ac7721b49f0819ba955c3068470cbb1": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 135,
+          "content": [
+            {
+              "input_tokens": 0,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 135
+            }
+          ]
+        },
+        "rs_004e6f377432410a016ac7721aba4c819ba0b6960dff662b35": {
+          "input_tokens": 2,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 171
+        }
+      },
+      "request_fields": {
+        "instructions": {
+          "input_tokens": 4216,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 0
+        },
+        "text.format": {
+          "input_tokens": 188,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    }
+  },
+  "failure_type": null,
+  "elapsed_seconds": 13.1073317,
+  "maximum_seconds": 260,
+  "maximum_http_requests": 1,
+  "identity": {
+    "Pid": 85584,
+    "Started": "2026-10-08T10:35:58.1674260Z",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1 -Batch tiny-max-01 -Start 0 -Count 1",
+    "ParentPid": 55428
+  },
+  "children_started": false,
+  "credential_persisted": false,
+  "human_review": "pending",
+  "formal": false
+}

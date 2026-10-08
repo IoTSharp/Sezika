@@ -1,0 +1,59 @@
+{
+  "Status": "passed",
+  "ExistingResponses": 3,
+  "ValidatedRows": 17,
+  "NegativeCases": 6,
+  "Results": [
+    {
+      "Case": "tiny-max-01",
+      "Selected": 1,
+      "Validated": 1,
+      "Passed": true
+    },
+    {
+      "Case": "batch-max-02",
+      "Selected": 8,
+      "Validated": 8,
+      "Passed": true
+    },
+    {
+      "Case": "batch-max-03",
+      "Selected": 8,
+      "Validated": 8,
+      "Passed": true
+    },
+    {
+      "Case": "fractional-index",
+      "Rejected": true,
+      "Passed": true
+    },
+    {
+      "Case": "unknown-enum",
+      "Rejected": true,
+      "Passed": true
+    },
+    {
+      "Case": "duplicate-property",
+      "Rejected": true,
+      "Passed": true
+    },
+    {
+      "Case": "cross-field-quote",
+      "Rejected": true,
+      "Passed": true
+    },
+    {
+      "Case": "string-boolean",
+      "Rejected": true,
+      "Passed": true
+    },
+    {
+      "Case": "revision-inconsistent",
+      "Rejected": true,
+      "Passed": true
+    }
+  ],
+  "ElapsedMilliseconds": 674,
+  "ValidatorSHA256": "A71A86A4446AE4255512018636E5B824F9CD68CB27C3295F4E9B283575E7853E",
+  "NoApiCalls": true
+}

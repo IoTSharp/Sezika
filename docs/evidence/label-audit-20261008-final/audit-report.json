@@ -1,0 +1,2169 @@
+{
+  "contract": "sezika/independent-ai-label-audit/v1",
+  "status": "completed_and_strictly_validated",
+  "source_sha256": "A015A8FA182EE62223CAFC307C618C515A19E90F843290DB9DFB53A56B9A041C",
+  "provider": "sonnet_vip",
+  "requested_model": "gpt-6.1-sol",
+  "requested_effort": "max",
+  "initially_requested_effort": "ultra",
+  "upstream_identity_verification": "gateway_response_declaration_only",
+  "reviewer_kind": "ai",
+  "human_review": "pending",
+  "formal": false,
+  "eligible_as_sealed_test": false,
+  "original_data_modified": false,
+  "summary": {
+    "records": 32,
+    "determinate": 32,
+    "labels_retained": 29,
+    "label_changes_suggested": 3,
+    "indeterminate": 0,
+    "question_revisions_suggested": 0,
+    "successful_requests": 5,
+    "input_tokens": 28990,
+    "output_tokens": 8121,
+    "total_tokens": 37111,
+    "cached_input_tokens": 16896,
+    "reasoning_output_tokens": 2494
+  },
+  "requests": [
+    {
+      "batch": "tiny-max-01",
+      "count": 1,
+      "response_id": "resp_004e6f377432410a016ac77213f320819b961293c8e0f3f062",
+      "requested_model": "gpt-6.1-sol",
+      "requested_effort": "max",
+      "response_model": "gpt-6.1-sol",
+      "response_effort": "max",
+      "request_sha256": "84F849E341CC196D34934290E44510F8B2D0DFAD62CCFCA75B90781DAF864B4A",
+      "response_sha256": "E37D90BBB8D6BD85F14189DDAE2D8019964C561D1BFC5A3715949E3F8F3BD843",
+      "provenance_sha256": "10502332AEEB832E470F6D993112DB008EC10CB12B349AE92036709DE3F35E94",
+      "result_sha256": "BF5063465E594AB156D19030E40BCE2416C0F72B6E25B827D39615432D1795A7",
+      "usage": {
+        "input_tokens": 4924,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens": 306,
+        "output_tokens_details": {
+          "reasoning_tokens": 171
+        },
+        "total_tokens": 5230,
+        "attribution": {
+          "items": {
+            "msg_004e6f377432410a016ac77213f418819b81c5358e418c7683": {
+              "input_tokens": 347,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 0,
+              "content": [
+                {
+                  "input_tokens": 347,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0,
+                  "output_tokens": 0
+                }
+              ]
+            },
+            "msg_004e6f377432410a016ac77213f418819ba87a9fc250d51248": {
+              "input_tokens": 171,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 0,
+              "content": [
+                {
+                  "input_tokens": 171,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0,
+                  "output_tokens": 0
+                }
+              ]
+            },
+            "msg_004e6f377432410a016ac7721b49f0819ba955c3068470cbb1": {
+              "input_tokens": 0,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 135,
+              "content": [
+                {
+                  "input_tokens": 0,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0,
+                  "output_tokens": 135
+                }
+              ]
+            },
+            "rs_004e6f377432410a016ac7721aba4c819ba0b6960dff662b35": {
+              "input_tokens": 2,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 171
+            }
+          },
+          "request_fields": {
+            "instructions": {
+              "input_tokens": 4216,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            },
+            "text.format": {
+              "input_tokens": 188,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            }
+          }
+        }
+      },
+      "source_labels_hidden": true
+    },
+    {
+      "batch": "batch-max-02",
+      "count": 8,
+      "response_id": "resp_0367d1cecc1b8950016ac772703dac819881dd9efc517d2f78",
+      "requested_model": "gpt-6.1-sol",
+      "requested_effort": "max",
+      "response_model": "gpt-6.1-sol",
+      "response_effort": "max",
+      "request_sha256": "E5D921D26CAD10CAF8C0BAE035E7B6759A6AEE7228DB949C7FCDDF030FA48893",
+      "response_sha256": "4F862D533CCCB5DD2BFB48BB76663E508A806181B9C47CD6638F08EA30D2A1A7",
+      "provenance_sha256": "3389176B2C9A6EE747C0C84A8D75D8393990F63C9BB6E1ABF77F401A909BC267",
+      "result_sha256": "7BD7C6B9B5AA70778DA89FE4224514CD4194329CD235D5E1C17D5C28EDF75AD4",
+      "usage": {
+        "input_tokens": 6027,
+        "input_tokens_details": {
+          "cached_tokens": 4224,
+          "cache_write_tokens": 0
+        },
+        "output_tokens": 1637,
+        "output_tokens_details": {
+          "reasoning_tokens": 380
+        },
+        "total_tokens": 7664,
+        "attribution": {
+          "items": {
+            "msg_0367d1cecc1b8950016ac772703e78819889b07fb4d51e966b": {
+              "input_tokens": 1274,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 0,
+              "content": [
+                {
+                  "input_tokens": 1274,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0,
+                  "output_tokens": 0
+                }
+              ]
+            },
+            "msg_0367d1cecc1b8950016ac772703e788198a0cf4cd25acf9926": {
+              "input_tokens": 347,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 0,
+              "content": [
+                {
+                  "input_tokens": 347,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0,
+                  "output_tokens": 0
+                }
+              ]
+            },
+            "msg_0367d1cecc1b8950016ac7727d368c8198a39b6673e4c0b9c8": {
+              "input_tokens": 0,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 1257,
+              "content": [
+                {
+                  "input_tokens": 0,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0,
+                  "output_tokens": 1257
+                }
+              ]
+            },
+            "rs_0367d1cecc1b8950016ac7727cccb481989cb2f588b6f6fd54": {
+              "input_tokens": 2,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 380
+            }
+          },
+          "request_fields": {
+            "instructions": {
+              "input_tokens": 4216,
+              "cached_tokens": 4036,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            },
+            "text.format": {
+              "input_tokens": 188,
+              "cached_tokens": 188,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            }
+          }
+        }
+      },
+      "source_labels_hidden": true
+    },
+    {
+      "batch": "batch-max-03",
+      "count": 8,
+      "response_id": "resp_0fea504837fbc7fa016ac7726f5de48198b186dfb6ccdee042",
+      "requested_model": "gpt-6.1-sol",
+      "requested_effort": "max",
+      "response_model": "gpt-6.1-sol",
+      "response_effort": "max",
+      "request_sha256": "FEB85C4E143D039D56D4748099584DFA97A99C046314C5523769F928694CC511",
+      "response_sha256": "C21EF16200C29288A36E289D2D7E09B021C8FA30EE642BD9164CEF88EE42E7C8",
+      "provenance_sha256": "53963A9B1FE053206C7B3C85D69351E6A109E0353DF5FB456CA2CF728FA3551A",
+      "result_sha256": "75DA1193FA13F630D06701BF8120670EB9CD3CE85C6121A44C22A7D0458CA5C9",
+      "usage": {
+        "input_tokens": 6167,
+        "input_tokens_details": {
+          "cached_tokens": 4224,
+          "cache_write_tokens": 0
+        },
+        "output_tokens": 2108,
+        "output_tokens_details": {
+          "reasoning_tokens": 629
+        },
+        "total_tokens": 8275,
+        "attribution": {
+          "items": {
+            "msg_0fea504837fbc7fa016ac7726f5ee4819882117268273f8bfd": {
+              "input_tokens": 1414,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 0,
+              "content": [
+                {
+                  "input_tokens": 1414,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0,
+                  "output_tokens": 0
+                }
+              ]
+            },
+            "msg_0fea504837fbc7fa016ac7726f5ee4819885a34e8958d0ee5e": {
+              "input_tokens": 347,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 0,
+              "content": [
+                {
+                  "input_tokens": 347,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0,
+                  "output_tokens": 0
+                }
+              ]
+            },
+            "msg_0fea504837fbc7fa016ac77288089081989d3a4b66e68986b0": {
+              "input_tokens": 0,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 1479,
+              "content": [
+                {
+                  "input_tokens": 0,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0,
+                  "output_tokens": 1479
+                }
+              ]
+            },
+            "rs_0fea504837fbc7fa016ac77283d56c8198b48327c713434047": {
+              "input_tokens": 2,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 516
+            },
+            "rs_0fea504837fbc7fa016ac7728799848198aa8421689ccc263e": {
+              "input_tokens": 0,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 113
+            }
+          },
+          "request_fields": {
+            "instructions": {
+              "input_tokens": 4216,
+              "cached_tokens": 4036,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            },
+            "text.format": {
+              "input_tokens": 188,
+              "cached_tokens": 188,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            }
+          }
+        }
+      },
+      "source_labels_hidden": true
+    },
+    {
+      "batch": "batch-max-04",
+      "count": 8,
+      "response_id": "resp_09435271084e48fe016ac7744d33ac81999be640e8d843cf61",
+      "requested_model": "gpt-6.1-sol",
+      "requested_effort": "max",
+      "response_model": "gpt-6.1-sol",
+      "response_effort": "max",
+      "request_sha256": "973701FCD5427C8508890CC2AE02604731CA6C334F379954F51546B8A854BA3C",
+      "response_sha256": "ED97EAEFAB0FDC97E2A4972A23EE0EABD5F59353504772BBD247BD0903757627",
+      "provenance_sha256": "ACCB8CCDD6F67BCD74326988A3529CB937DE1876FABB937B07425EFB9B3A0750",
+      "result_sha256": "06E9CE2B8DF76749AAE8C47EC064DA6E6B0C0882612F1EC82D7A9B0A463C244B",
+      "usage": {
+        "input_tokens": 6092,
+        "input_tokens_details": {
+          "cached_tokens": 4224,
+          "cache_write_tokens": 0
+        },
+        "output_tokens": 2585,
+        "output_tokens_details": {
+          "reasoning_tokens": 1034
+        },
+        "total_tokens": 8677,
+        "attribution": {
+          "items": {
+            "msg_09435271084e48fe016ac7744d34848199a3a64366247201a5": {
+              "input_tokens": 355,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 0,
+              "content": [
+                {
+                  "input_tokens": 355,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0,
+                  "output_tokens": 0
+                }
+              ]
+            },
+            "msg_09435271084e48fe016ac7744d34848199adca7188d5cea51f": {
+              "input_tokens": 1331,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 0,
+              "content": [
+                {
+                  "input_tokens": 1331,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0,
+                  "output_tokens": 0
+                }
+              ]
+            },
+            "msg_09435271084e48fe016ac7747195988199843f264f16fcce61": {
+              "input_tokens": 0,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 1551,
+              "content": [
+                {
+                  "input_tokens": 0,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0,
+                  "output_tokens": 1551
+                }
+              ]
+            },
+            "rs_09435271084e48fe016ac7745ea4c081999c6d6ceb60e2e5b9": {
+              "input_tokens": 2,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 516
+            },
+            "rs_09435271084e48fe016ac77470fd908199b938bc6ace9b4e43": {
+              "input_tokens": 0,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 518
+            }
+          },
+          "request_fields": {
+            "instructions": {
+              "input_tokens": 4216,
+              "cached_tokens": 4036,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            },
+            "text.format": {
+              "input_tokens": 188,
+              "cached_tokens": 188,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            }
+          }
+        }
+      },
+      "source_labels_hidden": true
+    },
+    {
+      "batch": "batch-max-05",
+      "count": 7,
+      "response_id": "resp_0e9f6c49d6472d91016ac7744cb844819abdd48e953dd425c1",
+      "requested_model": "gpt-6.1-sol",
+      "requested_effort": "max",
+      "response_model": "gpt-6.1-sol",
+      "response_effort": "max",
+      "request_sha256": "23A4B9AB4C1D9D474FCA7DE9D07B6EA659D1CDDBBE2BBBEEDD723412C9AA7AA0",
+      "response_sha256": "7D533DE985F47B67CEA8DEB181AA415B8F3CBCC023742A9EA774F1356E71A46E",
+      "provenance_sha256": "7BA65B7BA4ABBF09EBE6AA78816B32C01291AFD76208797083D2C6A45F692146",
+      "result_sha256": "63E69AABA5DC3EE11D726B74E8315D222285781D456B8522FB8FA70321B13472",
+      "usage": {
+        "input_tokens": 5780,
+        "input_tokens_details": {
+          "cached_tokens": 4224,
+          "cache_write_tokens": 0
+        },
+        "output_tokens": 1485,
+        "output_tokens_details": {
+          "reasoning_tokens": 280
+        },
+        "total_tokens": 7265,
+        "attribution": {
+          "items": {
+            "msg_0e9f6c49d6472d91016ac7744cb948819a87c1f966bb13a920": {
+              "input_tokens": 1019,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 0,
+              "content": [
+                {
+                  "input_tokens": 1019,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0,
+                  "output_tokens": 0
+                }
+              ]
+            },
+            "msg_0e9f6c49d6472d91016ac7744cb948819aa370e511604a57e7": {
+              "input_tokens": 355,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 0,
+              "content": [
+                {
+                  "input_tokens": 355,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0,
+                  "output_tokens": 0
+                }
+              ]
+            },
+            "msg_0e9f6c49d6472d91016ac77456a12c819aa79c2e88bc487caf": {
+              "input_tokens": 0,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 1205,
+              "content": [
+                {
+                  "input_tokens": 0,
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0,
+                  "output_tokens": 1205
+                }
+              ]
+            },
+            "rs_0e9f6c49d6472d91016ac774560c64819a96205b4a5e5139a8": {
+              "input_tokens": 2,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 280
+            }
+          },
+          "request_fields": {
+            "instructions": {
+              "input_tokens": 4216,
+              "cached_tokens": 4036,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            },
+            "text.format": {
+              "input_tokens": 188,
+              "cached_tokens": 188,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            }
+          }
+        }
+      },
+      "source_labels_hidden": true
+    }
+  ],
+  "existing_gpu_baseline_sha256": "11C7CEC6399D33E1C9A85A97DF37E80C7D9A7168073B3EFA9A7CA3484E4A0EEA",
+  "existing_gpu_prediction_comparison": [
+    {
+      "split": "train",
+      "denominator": 24,
+      "agreement_with_original_teacher": 17,
+      "agreement_with_ai_review": 18,
+      "weights_retrained": false,
+      "use": "posthoc_ai_label_comparison_not_gold_accuracy"
+    },
+    {
+      "split": "development",
+      "denominator": 8,
+      "agreement_with_original_teacher": 1,
+      "agreement_with_ai_review": 2,
+      "weights_retrained": false,
+      "use": "posthoc_ai_label_comparison_not_gold_accuracy"
+    }
+  ],
+  "reviews": [
+    {
+      "record_id": "general-zh-choice-01",
+      "question_id": "topic",
+      "family_id": "general-zh-parcel-routing-01",
+      "language": "zh",
+      "split": "development",
+      "type": "choice",
+      "original_target_index": 1,
+      "original_target_id": "delivery",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "delivery",
+      "suggested_correct_index": 1,
+      "alternative_ids": [],
+      "reason": "消息说明包裹已到服务点，并询问领取地点和营业时间，主要主题明确为“配送与领取”。",
+      "evidence_quotes": [
+        "我的包裹已到附近的服务点，请告诉我领取地点和营业时间。"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "我的包裹已到附近的服务点，请告诉我领取地点和营业时间。"
+        },
+        "questions": [
+          {
+            "id": "topic",
+            "type": "choice",
+            "instruction": "选择这段消息的主要主题，只依据文本。",
+            "candidates": [
+              {
+                "id": "billing",
+                "text": "账单与付款"
+              },
+              {
+                "id": "delivery",
+                "text": "配送与领取"
+              },
+              {
+                "id": "account",
+                "text": "账号与登录"
+              },
+              {
+                "id": "event",
+                "text": "活动与报名"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-zh-choice-02",
+      "question_id": "intent",
+      "family_id": "general-zh-library-renewal-02",
+      "language": "zh",
+      "split": "development",
+      "type": "choice",
+      "original_target_index": 2,
+      "original_target_id": "renew",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "renew",
+      "suggested_correct_index": 2,
+      "alternative_ids": [],
+      "reason": "发信人明确请求将归还日期延长一周，主要办事意图是申请延长借阅期限，对应索引2。",
+      "evidence_quotes": [
+        "这本书我还没看完，原定明天归还，能把归还日期延长一周吗？"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "这本书我还没看完，原定明天归还，能把归还日期延长一周吗？"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "选择消息中明确提出的主要办事意图。",
+            "candidates": [
+              {
+                "id": "return",
+                "text": "立即归还图书"
+              },
+              {
+                "id": "buy",
+                "text": "购买图书"
+              },
+              {
+                "id": "renew",
+                "text": "申请延长借阅期限"
+              },
+              {
+                "id": "report",
+                "text": "报告图书遗失"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-zh-choice-03",
+      "question_id": "category",
+      "family_id": "general-zh-cafeteria-menu-03",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "original_target_index": 1,
+      "original_target_id": "food",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "food",
+      "suggested_correct_index": 1,
+      "alternative_ids": [],
+      "reason": "通知涉及食堂素食窗口和午餐供应，属于餐饮服务，对应索引1。",
+      "evidence_quotes": [
+        "食堂从下周起增设素食窗口，午餐供应时间保持不变。"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "食堂从下周起增设素食窗口，午餐供应时间保持不变。"
+        },
+        "questions": [
+          {
+            "id": "category",
+            "type": "choice",
+            "instruction": "选择这则通知最合适的类别。",
+            "candidates": [
+              {
+                "id": "transport",
+                "text": "交通服务"
+              },
+              {
+                "id": "food",
+                "text": "餐饮服务"
+              },
+              {
+                "id": "network",
+                "text": "网络维护"
+              },
+              {
+                "id": "sport",
+                "text": "体育赛事"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-zh-choice-04",
+      "question_id": "topic",
+      "family_id": "general-zh-garden-watering-04",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "original_target_index": 3,
+      "original_target_id": "gardening",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "gardening",
+      "suggested_correct_index": 3,
+      "alternative_ids": [],
+      "reason": "浇水和给幼苗遮阳都是植物养护活动，对应索引3。",
+      "evidence_quotes": [
+        "园丁决定傍晚浇水，并给新栽的幼苗加上遮阳网。"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "连续晴天使花坛土壤变干。园丁决定傍晚浇水，并给新栽的幼苗加上遮阳网。"
+        },
+        "questions": [
+          {
+            "id": "topic",
+            "type": "choice",
+            "instruction": "选择该段落主要描述的活动。",
+            "candidates": [
+              {
+                "id": "repair",
+                "text": "家电维修"
+              },
+              {
+                "id": "cooking",
+                "text": "餐点制作"
+              },
+              {
+                "id": "finance",
+                "text": "财务结算"
+              },
+              {
+                "id": "gardening",
+                "text": "植物养护"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-zh-choice-05",
+      "question_id": "information",
+      "family_id": "general-zh-bus-timetable-05",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "original_target_index": 0,
+      "original_target_id": "timetable",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "timetable",
+      "suggested_correct_index": 0,
+      "alternative_ids": [],
+      "reason": "发信人查询周六7路车的首班发车时间，所需信息是公交发车时刻，对应索引0。",
+      "evidence_quotes": [
+        "我周六需要搭乘7路车，想确认当天第一班车几点发出。"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "我周六需要搭乘7路车，想确认当天第一班车几点发出。"
+        },
+        "questions": [
+          {
+            "id": "information",
+            "type": "choice",
+            "instruction": "选择发信人需要查询的信息类型。",
+            "candidates": [
+              {
+                "id": "timetable",
+                "text": "公交发车时刻"
+              },
+              {
+                "id": "weather",
+                "text": "天气预报"
+              },
+              {
+                "id": "fare-refund",
+                "text": "车费退款"
+              },
+              {
+                "id": "seat",
+                "text": "座位预订"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-zh-choice-06",
+      "question_id": "help",
+      "family_id": "general-zh-event-ticket-06",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "original_target_index": 2,
+      "original_target_id": "resend-ticket",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "resend-ticket",
+      "suggested_correct_index": 2,
+      "alternative_ids": [],
+      "reason": "文本明确请求再次发送入场凭证，主要求助事项是补发入场凭证，对应索引2。",
+      "evidence_quotes": [
+        "请把入场凭证再发给我一次。"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "我已报名周日的讲座，但找不到入场二维码。请把入场凭证再发给我一次。"
+        },
+        "questions": [
+          {
+            "id": "help",
+            "type": "choice",
+            "instruction": "选择文本中的主要求助事项。",
+            "candidates": [
+              {
+                "id": "cancel",
+                "text": "取消报名"
+              },
+              {
+                "id": "change-date",
+                "text": "更改讲座日期"
+              },
+              {
+                "id": "resend-ticket",
+                "text": "补发入场凭证"
+              },
+              {
+                "id": "venue-feedback",
+                "text": "评价场地设施"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-en-choice-01",
+      "question_id": "intent",
+      "family_id": "general-en-meeting-move-01",
+      "language": "en",
+      "split": "development",
+      "type": "choice",
+      "original_target_index": 0,
+      "original_target_id": "reschedule",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "reschedule",
+      "suggested_correct_index": 0,
+      "alternative_ids": [],
+      "reason": "发信人请求将客户通话从周二上午改到周三下午，主要行动是重新安排会议时间，对应索引0。",
+      "evidence_quotes": [
+        "Could we move the call from Tuesday morning to Wednesday afternoon?"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "The client call overlaps with my dentist appointment. Could we move the call from Tuesday morning to Wednesday afternoon?"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "Choose the main action requested in the message. Use only the text.",
+            "candidates": [
+              {
+                "id": "reschedule",
+                "text": "Reschedule a meeting"
+              },
+              {
+                "id": "cancel-project",
+                "text": "Cancel the project"
+              },
+              {
+                "id": "share-notes",
+                "text": "Share meeting notes"
+              },
+              {
+                "id": "book-venue",
+                "text": "Book a venue"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-en-choice-02",
+      "question_id": "service",
+      "family_id": "general-en-museum-guide-02",
+      "language": "en",
+      "split": "development",
+      "type": "choice",
+      "original_target_index": 1,
+      "original_target_id": "audio-guide",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "audio-guide",
+      "suggested_correct_index": 1,
+      "alternative_ids": [],
+      "reason": "访客明确询问在哪里借用语音导览设备，所问服务对应语音导览租借，索引为1。",
+      "evidence_quotes": [
+        "Where can I borrow an audio guide?"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "I would like to listen to explanations of the paintings while I walk through the museum. Where can I borrow an audio guide?"
+        },
+        "questions": [
+          {
+            "id": "service",
+            "type": "choice",
+            "instruction": "Choose the museum service the visitor is asking about.",
+            "candidates": [
+              {
+                "id": "cloakroom",
+                "text": "Coat storage"
+              },
+              {
+                "id": "audio-guide",
+                "text": "Audio guide rental"
+              },
+              {
+                "id": "cafe",
+                "text": "Cafe service"
+              },
+              {
+                "id": "parking",
+                "text": "Car parking"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-en-choice-03",
+      "question_id": "issue",
+      "family_id": "general-en-headphones-damage-03",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "original_target_index": 2,
+      "original_target_id": "replacement",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "replacement",
+      "suggested_correct_index": 2,
+      "alternative_ids": [],
+      "reason": "题目要求选择请求的解决方式；发信人明确要求换货而非退款，对应更换损坏商品，索引为2。",
+      "evidence_quotes": [
+        "I have not used them and would like a replacement rather than a refund."
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "The headphones arrived with a cracked headband. I have not used them and would like a replacement rather than a refund."
+        },
+        "questions": [
+          {
+            "id": "issue",
+            "type": "choice",
+            "instruction": "Choose the requested resolution, rather than the cause of the issue.",
+            "candidates": [
+              {
+                "id": "refund",
+                "text": "Return the payment"
+              },
+              {
+                "id": "instructions",
+                "text": "Explain how to operate the device"
+              },
+              {
+                "id": "replacement",
+                "text": "Replace the damaged item"
+              },
+              {
+                "id": "upgrade",
+                "text": "Purchase a more expensive model"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-en-choice-04",
+      "question_id": "purpose",
+      "family_id": "general-en-interview-thanks-04",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "original_target_index": 3,
+      "original_target_id": "thanks",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "thanks",
+      "suggested_correct_index": 3,
+      "alternative_ids": [],
+      "reason": "正文感谢对方就分析师职位进行交流并付出时间，主要目的是表达面试后的感谢，对应选项thanks。",
+      "evidence_quotes": [
+        "Thank you for speaking with me about the analyst role today. I enjoyed learning about the team and appreciate the time you gave me."
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "Thank you for speaking with me about the analyst role today. I enjoyed learning about the team and appreciate the time you gave me."
+        },
+        "questions": [
+          {
+            "id": "purpose",
+            "type": "choice",
+            "instruction": "Choose the primary purpose of this email.",
+            "candidates": [
+              {
+                "id": "complaint",
+                "text": "Complain about working conditions"
+              },
+              {
+                "id": "withdrawal",
+                "text": "Withdraw a job application"
+              },
+              {
+                "id": "salary-request",
+                "text": "Request a salary payment"
+              },
+              {
+                "id": "thanks",
+                "text": "Express appreciation after an interview"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-en-choice-05",
+      "question_id": "preference",
+      "family_id": "general-en-bike-route-05",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "original_target_index": 0,
+      "original_target_id": "flat",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "flat",
+      "suggested_correct_index": 0,
+      "alternative_ids": [],
+      "reason": "骑行者明确优先选择爬升少的路线，可以接受更长距离，也不追求快速到达，因此对应flat。",
+      "evidence_quotes": [
+        "For my weekend ride, I want a route with little climbing, even if it is longer. I do not need to reach a destination quickly."
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "For my weekend ride, I want a route with little climbing, even if it is longer. I do not need to reach a destination quickly."
+        },
+        "questions": [
+          {
+            "id": "preference",
+            "type": "choice",
+            "instruction": "Choose the rider's stated priority.",
+            "candidates": [
+              {
+                "id": "flat",
+                "text": "Avoid steep climbs"
+              },
+              {
+                "id": "short",
+                "text": "Minimize total distance"
+              },
+              {
+                "id": "fast",
+                "text": "Arrive as quickly as possible"
+              },
+              {
+                "id": "traffic",
+                "text": "Ride on busy roads"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-en-choice-06",
+      "question_id": "constraint",
+      "family_id": "general-en-recipe-allergen-06",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "original_target_index": 1,
+      "original_target_id": "no-peanut",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "no-peanut",
+      "suggested_correct_index": 1,
+      "alternative_ids": [],
+      "reason": "请求明确要求去掉花生和花生油，并允许保留其他配料，主要约束是去除花生成分。",
+      "evidence_quotes": [
+        "I am making snacks for a guest who cannot eat peanuts. Please suggest a version without peanuts or peanut oil; the other ingredients can stay."
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "I am making snacks for a guest who cannot eat peanuts. Please suggest a version without peanuts or peanut oil; the other ingredients can stay."
+        },
+        "questions": [
+          {
+            "id": "constraint",
+            "type": "choice",
+            "instruction": "Choose the main constraint on the requested recipe.",
+            "candidates": [
+              {
+                "id": "low-salt",
+                "text": "Reduce salt"
+              },
+              {
+                "id": "no-peanut",
+                "text": "Remove peanut ingredients"
+              },
+              {
+                "id": "no-oven",
+                "text": "Avoid using an oven"
+              },
+              {
+                "id": "larger-batch",
+                "text": "Increase the number of servings"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-zh-score-01",
+      "question_id": "urgency",
+      "family_id": "general-zh-deadline-urgency-01",
+      "language": "zh",
+      "split": "development",
+      "type": "score",
+      "original_target_index": 3,
+      "original_target_id": "3",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "3",
+      "suggested_correct_index": 3,
+      "alternative_ids": [],
+      "reason": "现在为当天16点，要求18点开场前修好，距截止时间约2小时，符合等级3，无需推测维修耗时。",
+      "evidence_quotes": [
+        "展台的照明坏了，今天18点开始接待观众。现在是今天16点，负责人要求开场前修好。",
+        "3：距离截止时间超过0小时且不超过4小时"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "展台的照明坏了，今天18点开始接待观众。现在是今天16点，负责人要求开场前修好。"
+        },
+        "questions": [
+          {
+            "id": "urgency",
+            "type": "score",
+            "instruction": "按距离明确截止时间的时长评定紧迫程度，取与文本匹配的一个等级；不推测修理所需时间。",
+            "levels": [
+              "0：没有明确截止时间",
+              "1：距离截止时间超过24小时",
+              "2：距离截止时间超过4小时且不超过24小时",
+              "3：距离截止时间超过0小时且不超过4小时",
+              "4：截止时间已到或已经超过"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-zh-score-02",
+      "question_id": "satisfaction",
+      "family_id": "general-zh-satisfaction-text-02",
+      "language": "zh",
+      "split": "train",
+      "type": "score",
+      "original_target_index": 3,
+      "original_target_id": "3",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "3",
+      "suggested_correct_index": 3,
+      "alternative_ids": [],
+      "reason": "发信人明确表达整体满意，同时提出包装更易打开的小建议，符合等级3；存在改进建议，不符合等级4。",
+      "evidence_quotes": [
+        "这次送来的餐食准时，口味也合适。我整体很满意，只希望下次包装更容易打开。",
+        "3：明确表达整体满意，但仍有小建议",
+        "4：明确表达非常满意，且没有提出改进建议"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "这次送来的餐食准时，口味也合适。我整体很满意，只希望下次包装更容易打开。"
+        },
+        "questions": [
+          {
+            "id": "satisfaction",
+            "type": "score",
+            "instruction": "根据发信人明确表达的整体评价选择满意程度，小建议不自动等于整体不满意。",
+            "levels": [
+              "0：明确表达整体非常不满意",
+              "1：明确表达整体不满意",
+              "2：明确表达整体一般或中立",
+              "3：明确表达整体满意，但仍有小建议",
+              "4：明确表达非常满意，且没有提出改进建议"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-zh-score-03",
+      "question_id": "certainty",
+      "family_id": "general-zh-attendance-certainty-03",
+      "language": "zh",
+      "split": "train",
+      "type": "score",
+      "original_target_index": 4,
+      "original_target_id": "4",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "4",
+      "suggested_correct_index": 4,
+      "alternative_ids": [],
+      "reason": "说话者明确确认会参加，符合等级4。该判断针对文本表达的意向确定程度，不预测实际出席情况。",
+      "evidence_quotes": [
+        "我已经确认周五有空，也订好了车票；我确定会参加这次交流会。",
+        "4：明确确认会参加"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "我已经确认周五有空，也订好了车票；我确定会参加这次交流会。"
+        },
+        "questions": [
+          {
+            "id": "certainty",
+            "type": "score",
+            "instruction": "仅评定说话者在文本中表达的参加意向确定程度，不预测实际是否出席。",
+            "levels": [
+              "0：明确表示不会参加",
+              "1：表示大概不会参加",
+              "2：表示尚未决定是否参加",
+              "3：表示大概会参加，但仍未确认",
+              "4：明确确认会参加"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-zh-score-04",
+      "question_id": "completeness",
+      "family_id": "general-zh-notice-completeness-04",
+      "language": "zh",
+      "split": "train",
+      "type": "score",
+      "original_target_index": 4,
+      "original_target_id": "4",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "4",
+      "suggested_correct_index": 4,
+      "alternative_ids": [],
+      "reason": "对象为志愿者，日期为10月12日，具体时刻为14:00，地点为社区二楼活动室。四项均明确给出，对应等级4。",
+      "evidence_quotes": [
+        "请各位志愿者于10月12日14:00到社区二楼活动室集合。",
+        "检查通知是否明确给出四项信息：对象、日期、具体时刻、地点。等级表示明确给出的项目数量；不补充外部信息。",
+        "4：明确给出四项"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "请各位志愿者于10月12日14:00到社区二楼活动室集合。"
+        },
+        "questions": [
+          {
+            "id": "completeness",
+            "type": "score",
+            "instruction": "检查通知是否明确给出四项信息：对象、日期、具体时刻、地点。等级表示明确给出的项目数量；不补充外部信息。",
+            "levels": [
+              "0：没有任何一项",
+              "1：明确给出一项",
+              "2：明确给出两项",
+              "3：明确给出三项",
+              "4：明确给出四项"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-zh-score-05",
+      "question_id": "noise",
+      "family_id": "general-zh-room-noise-05",
+      "language": "zh",
+      "split": "train",
+      "type": "score",
+      "original_target_index": 1,
+      "original_target_id": "1",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "1",
+      "suggested_correct_index": 1,
+      "alternative_ids": [],
+      "reason": "文本说明声音可以听见，但阅读无需额外集中注意力，正常对话也能听清，符合等级1。",
+      "evidence_quotes": [
+        "房间里有人轻声交谈，可以听见说话声，但坐在桌边阅读时不需要提高注意力，也不会听不清对面的正常说话。",
+        "1：能听见声音，但不妨碍阅读或正常对话"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "房间里有人轻声交谈，可以听见说话声，但坐在桌边阅读时不需要提高注意力，也不会听不清对面的正常说话。"
+        },
+        "questions": [
+          {
+            "id": "noise",
+            "type": "score",
+            "instruction": "按文本描述选择噪声程度，不把没有测量的数据当作分贝数。",
+            "levels": [
+              "0：文本明确描述完全听不见声音",
+              "1：能听见声音，但不妨碍阅读或正常对话",
+              "2：已妨碍阅读，但正常对话仍能听清",
+              "3：正常对话需要提高音量才能听清",
+              "4：提高音量后仍无法进行对话"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-en-score-01",
+      "question_id": "frequency",
+      "family_id": "general-en-weekly-practice-01",
+      "language": "en",
+      "split": "development",
+      "type": "score",
+      "original_target_index": 2,
+      "original_target_id": "2",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "2",
+      "suggested_correct_index": 2,
+      "alternative_ids": [],
+      "reason": "练习日为周一、周三、周六，共3个不同日期，且明确没有其他练习日，唯一对应2级。",
+      "evidence_quotes": [
+        "During the seven-day week described here, Maya practised the piano on Monday, Wednesday, and Saturday, and on no other days.",
+        "2: two or three days"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "During the seven-day week described here, Maya practised the piano on Monday, Wednesday, and Saturday, and on no other days."
+        },
+        "questions": [
+          {
+            "id": "frequency",
+            "type": "score",
+            "instruction": "Rate the stated practice frequency for this week. Count distinct days in the text only.",
+            "levels": [
+              "0: zero days",
+              "1: one day",
+              "2: two or three days",
+              "3: four or five days",
+              "4: six or seven days"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-en-score-02",
+      "question_id": "disruption",
+      "family_id": "general-en-maintenance-disruption-02",
+      "language": "en",
+      "split": "train",
+      "type": "score",
+      "original_target_index": 1,
+      "original_target_id": "1",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "1",
+      "suggested_correct_index": 1,
+      "alternative_ids": [],
+      "reason": "只有打印服务不可用，员工仍可继续日常工作；这一有限中断符合1级描述。",
+      "evidence_quotes": [
+        "During maintenance, all desks and meeting rooms remain available. Only the printer is unavailable; staff can continue their normal work except for printing.",
+        "1: one optional service is unavailable, while ordinary work continues"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "During maintenance, all desks and meeting rooms remain available. Only the printer is unavailable; staff can continue their normal work except for printing."
+        },
+        "questions": [
+          {
+            "id": "disruption",
+            "type": "score",
+            "instruction": "Choose the level of disruption explicitly described. Do not infer failures of other services.",
+            "levels": [
+              "0: no service is unavailable",
+              "1: one optional service is unavailable, while ordinary work continues",
+              "2: several services are unavailable, but ordinary work continues",
+              "3: ordinary work must pause for part of the day",
+              "4: the whole workplace is closed for the day"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-en-score-03",
+      "question_id": "detail",
+      "family_id": "general-en-bug-report-detail-03",
+      "language": "en",
+      "split": "train",
+      "type": "score",
+      "original_target_index": 2,
+      "original_target_id": "2",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "3",
+      "suggested_correct_index": 3,
+      "alternative_ids": [],
+      "reason": "文本明确提供应用版本、复现步骤和观察到的结果，未提供具体错误文本，共具备四项中的三项，对应3级。截图不计入这四项。",
+      "evidence_quotes": [
+        "On app version 2.4, opening Settings and selecting Export shows an error message instead of saving a file. The report does not include the exact error text or a screenshot.",
+        "Count which of these four details are explicitly present: app version, steps to reproduce, observed outcome, exact error text. A screenshot is not one of the four details.",
+        "3: three of the four details"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": true,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "On app version 2.4, opening Settings and selecting Export shows an error message instead of saving a file. The report does not include the exact error text or a screenshot."
+        },
+        "questions": [
+          {
+            "id": "detail",
+            "type": "score",
+            "instruction": "Count which of these four details are explicitly present: app version, steps to reproduce, observed outcome, exact error text. A screenshot is not one of the four details.",
+            "levels": [
+              "0: none of the four details",
+              "1: one of the four details",
+              "2: two of the four details",
+              "3: three of the four details",
+              "4: all four details"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-en-score-04",
+      "question_id": "expectation",
+      "family_id": "general-en-rain-expectation-04",
+      "language": "en",
+      "split": "train",
+      "type": "score",
+      "original_target_index": 2,
+      "original_target_id": "2",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "2",
+      "suggested_correct_index": 2,
+      "alternative_ids": [],
+      "reason": "说话者承认下雨的可能性，并明确表示不偏向下雨或不下雨，唯一对应2级。这是对表达的序数分类，无须推算实际降雨概率。",
+      "evidence_quotes": [
+        "The speaker says: 'Rain is possible this afternoon, but I am not leaning either way.' No forecast numbers are provided.",
+        "2: expresses possibility without leaning toward rain or no rain"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "The speaker says: 'Rain is possible this afternoon, but I am not leaning either way.' No forecast numbers are provided."
+        },
+        "questions": [
+          {
+            "id": "expectation",
+            "type": "score",
+            "instruction": "Rate the speaker's expressed expectation of rain. This is an ordinal reading of the words, not a calibrated probability or a weather forecast.",
+            "levels": [
+              "0: explicitly certain that it will not rain",
+              "1: expects no rain, while allowing uncertainty",
+              "2: expresses possibility without leaning toward rain or no rain",
+              "3: expects rain, while allowing uncertainty",
+              "4: explicitly certain that it will rain"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-en-score-05",
+      "question_id": "courtesy",
+      "family_id": "general-en-request-politeness-05",
+      "language": "en",
+      "split": "train",
+      "type": "score",
+      "original_target_index": 4,
+      "original_target_id": "4",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "4",
+      "suggested_correct_index": 4,
+      "alternative_ids": [],
+      "reason": "请求包含请托用语和感谢，并通过“when you have a moment”明确给予收件人时间上的灵活性，符合4级标准。",
+      "evidence_quotes": [
+        "Could you please send the updated schedule when you have a moment? Thank you for your help.",
+        "4: a request containing both please and thanks and explicitly allowing the recipient flexibility"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "Could you please send the updated schedule when you have a moment? Thank you for your help."
+        },
+        "questions": [
+          {
+            "id": "courtesy",
+            "type": "score",
+            "instruction": "Use the following explicit courtesy rubric. Rate wording only, without inferring the speaker's personal attitude.",
+            "levels": [
+              "0: insults or threats directed at the recipient",
+              "1: a bare command, with neither please nor thanks",
+              "2: a request containing please but no thanks",
+              "3: a request containing both please and thanks, without allowing the recipient flexibility",
+              "4: a request containing both please and thanks and explicitly allowing the recipient flexibility"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-zh-boolean-01",
+      "question_id": "claim",
+      "family_id": "general-zh-parcel-sequence-01",
+      "language": "zh",
+      "split": "development",
+      "type": "boolean",
+      "original_target_index": 1,
+      "original_target_id": "true",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "true",
+      "suggested_correct_index": 1,
+      "alternative_ids": [],
+      "reason": "记录明确先将包裹放进储物柜，最后发送取件码，陈述符合该顺序，应取true。",
+      "evidence_quotes": [
+        "记录显示：快递员先联系收件人，随后把包裹放进储物柜，最后发送了取件码。",
+        "取件码是在包裹放进储物柜之后发送的。"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "记录显示：快递员先联系收件人，随后把包裹放进储物柜，最后发送了取件码。"
+        },
+        "questions": [
+          {
+            "id": "claim",
+            "type": "boolean",
+            "instruction": "仅判断陈述是否符合记录中的明确顺序；符合取true，不符合取false。",
+            "statement": "取件码是在包裹放进储物柜之后发送的。",
+            "when_false": "陈述不符合记录",
+            "when_true": "陈述符合记录"
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-zh-boolean-02",
+      "question_id": "claim",
+      "family_id": "general-zh-box-count-02",
+      "language": "zh",
+      "split": "train",
+      "type": "boolean",
+      "original_target_index": 1,
+      "original_target_id": "true",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "false",
+      "suggested_correct_index": 0,
+      "alternative_ids": [],
+      "reason": "剩余数量为12－5＝7个，且之后没有变化。陈述中的8个与明确数量不符，应取false。",
+      "evidence_quotes": [
+        "桌上原有12个纸盒，工作人员拿走5个，之后没有再放上或拿走纸盒。",
+        "桌上现在还剩8个纸盒。"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": true,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "桌上原有12个纸盒，工作人员拿走5个，之后没有再放上或拿走纸盒。"
+        },
+        "questions": [
+          {
+            "id": "claim",
+            "type": "boolean",
+            "instruction": "依据文本中的数量变化判断陈述，不假设未提及的变化。",
+            "statement": "桌上现在还剩8个纸盒。",
+            "when_false": "陈述与数量变化不符",
+            "when_true": "陈述与数量变化相符"
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-zh-boolean-03",
+      "question_id": "claim",
+      "family_id": "general-zh-cafe-exception-03",
+      "language": "zh",
+      "split": "train",
+      "type": "boolean",
+      "original_target_index": 0,
+      "original_target_id": "false",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "false",
+      "suggested_correct_index": 0,
+      "alternative_ids": [],
+      "reason": "本周周三明确全天暂停营业，按题目标准该例外优先于平时安排，因此照常营业的陈述不成立，应取false。",
+      "evidence_quotes": [
+        "咖啡店平时周一到周日营业。本周因为设备检修，周三全天暂停营业，其他日期照常营业。",
+        "判断陈述是否符合本周的营业安排；本周明确例外优先于平时安排。",
+        "这家咖啡店本周周三照常营业。"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "咖啡店平时周一到周日营业。本周因为设备检修，周三全天暂停营业，其他日期照常营业。"
+        },
+        "questions": [
+          {
+            "id": "claim",
+            "type": "boolean",
+            "instruction": "判断陈述是否符合本周的营业安排；本周明确例外优先于平时安排。",
+            "statement": "这家咖啡店本周周三照常营业。",
+            "when_false": "陈述不符合本周安排",
+            "when_true": "陈述符合本周安排"
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-zh-boolean-04",
+      "question_id": "claim",
+      "family_id": "general-zh-club-attendance-04",
+      "language": "zh",
+      "split": "train",
+      "type": "boolean",
+      "original_target_index": 0,
+      "original_target_id": "false",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "false",
+      "suggested_correct_index": 0,
+      "alternative_ids": [],
+      "reason": "小组成员为甲、乙、丙，乙请假未到场，因此“所有成员都参加了”与明确到场情况不符，应选false。",
+      "evidence_quotes": [
+        "摄影小组共有甲、乙、丙三位成员。本次活动甲和丙到场，乙请假，没有其他成员。"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "摄影小组共有甲、乙、丙三位成员。本次活动甲和丙到场，乙请假，没有其他成员。"
+        },
+        "questions": [
+          {
+            "id": "claim",
+            "type": "boolean",
+            "instruction": "根据明确列出的成员和到场情况判断陈述。",
+            "statement": "摄影小组的所有成员都参加了本次活动。",
+            "when_false": "陈述与到场情况不符",
+            "when_true": "陈述与到场情况相符"
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-zh-boolean-05",
+      "question_id": "claim",
+      "family_id": "general-zh-notice-negation-05",
+      "language": "zh",
+      "split": "train",
+      "type": "boolean",
+      "original_target_index": 1,
+      "original_target_id": "true",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "true",
+      "suggested_correct_index": 1,
+      "alternative_ids": [],
+      "reason": "公告明确表示今晚不会安排第二次停机，支持“今晚不会再安排停机”的陈述，应选true。",
+      "evidence_quotes": [
+        "公告写明：系统升级已经完成，今晚不会安排第二次停机；用户现在可以正常登录。"
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "公告写明：系统升级已经完成，今晚不会安排第二次停机；用户现在可以正常登录。"
+        },
+        "questions": [
+          {
+            "id": "claim",
+            "type": "boolean",
+            "instruction": "只判断陈述是否受到公告明确支持，不把历史停机当作未来安排。",
+            "statement": "公告说今晚不会再安排停机。",
+            "when_false": "公告不支持该陈述",
+            "when_true": "公告支持该陈述"
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-en-boolean-01",
+      "question_id": "claim",
+      "family_id": "general-en-workshop-time-01",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "original_target_index": 1,
+      "original_target_id": "true",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "false",
+      "suggested_correct_index": 0,
+      "alternative_ids": [],
+      "reason": "同一天、同一时钟下，09:15早于10:00，因此绘画工作坊开始得更晚的陈述为假，应选false。",
+      "evidence_quotes": [
+        "The drawing workshop starts at 09:15. The clay workshop starts at 10:00 on the same day. Both times use the same local clock."
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": true,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "The drawing workshop starts at 09:15. The clay workshop starts at 10:00 on the same day. Both times use the same local clock."
+        },
+        "questions": [
+          {
+            "id": "claim",
+            "type": "boolean",
+            "instruction": "Judge the statement using the two stated start times only.",
+            "statement": "The drawing workshop starts later than the clay workshop.",
+            "when_false": "The statement conflicts with the stated times",
+            "when_true": "The statement agrees with the stated times"
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-en-boolean-02",
+      "question_id": "claim",
+      "family_id": "general-en-stock-change-02",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "original_target_index": 1,
+      "original_target_id": "true",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "true",
+      "suggested_correct_index": 1,
+      "alternative_ids": [],
+      "reason": "库存变化完整且无其他变动，最终数量为18−4＋6＝20，陈述与计算结果一致，应选true。",
+      "evidence_quotes": [
+        "A store had 18 notebooks at opening. It sold 4 and then received 6 more. There were no other inventory changes."
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "A store had 18 notebooks at opening. It sold 4 and then received 6 more. There were no other inventory changes."
+        },
+        "questions": [
+          {
+            "id": "claim",
+            "type": "boolean",
+            "instruction": "Judge the statement from the complete inventory changes given in the text.",
+            "statement": "The store has 20 notebooks after these changes.",
+            "when_false": "The statement conflicts with the inventory changes",
+            "when_true": "The statement agrees with the inventory changes"
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-en-boolean-03",
+      "question_id": "claim",
+      "family_id": "general-en-reading-room-rule-03",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "original_target_index": 0,
+      "original_target_id": "false",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "false",
+      "suggested_correct_index": 0,
+      "alternative_ids": [],
+      "reason": "入场要求通行证有效，而Sam的通行证昨天已过期，因此今天不满足所述要求，应选false。",
+      "evidence_quotes": [
+        "Entry to the reading room requires a valid visitor pass. Sam has a visitor pass, but it expired yesterday. No exception to the rule is stated."
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "Entry to the reading room requires a valid visitor pass. Sam has a visitor pass, but it expired yesterday. No exception to the rule is stated."
+        },
+        "questions": [
+          {
+            "id": "claim",
+            "type": "boolean",
+            "instruction": "Judge only whether the stated requirement is met, without inventing an exception.",
+            "statement": "Sam's pass meets the stated requirement for entry today.",
+            "when_false": "The stated requirement is not met",
+            "when_true": "The stated requirement is met"
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-en-boolean-04",
+      "question_id": "claim",
+      "family_id": "general-en-team-role-04",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "original_target_index": 0,
+      "original_target_id": "false",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "false",
+      "suggested_correct_index": 0,
+      "alternative_ids": [],
+      "reason": "检查拼写的任务分配给Leo，Noor唯一被分配的任务是页面排版，因此陈述与任务分配不符，应选false。",
+      "evidence_quotes": [
+        "For the newsletter, Priya writes the articles, Leo checks spelling, and Noor arranges the page layout. These are their only assigned tasks in this note."
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "For the newsletter, Priya writes the articles, Leo checks spelling, and Noor arranges the page layout. These are their only assigned tasks in this note."
+        },
+        "questions": [
+          {
+            "id": "claim",
+            "type": "boolean",
+            "instruction": "Judge the statement from the explicit assignment of tasks.",
+            "statement": "Noor is assigned to check the spelling.",
+            "when_false": "The statement conflicts with the task assignment",
+            "when_true": "The statement agrees with the task assignment"
+          }
+        ]
+      }
+    },
+    {
+      "record_id": "general-en-boolean-05",
+      "question_id": "claim",
+      "family_id": "general-en-key-location-05",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "original_target_index": 1,
+      "original_target_id": "true",
+      "clarity_status": "clear",
+      "answer_status": "determinate",
+      "suggested_correct_id": "true",
+      "suggested_correct_index": 1,
+      "alternative_ids": [],
+      "reason": "钥匙被移到绿色盒子后无人再次移动，最终位置为绿色盒子，陈述与原文一致，应选true。",
+      "evidence_quotes": [
+        "A key was in the blue drawer. Elena moved it to the green box, then closed the blue drawer. Nobody moved the key again."
+      ],
+      "question_revision_needed": false,
+      "revision_reason": "",
+      "suggested_text_revision": null,
+      "change_original_label": false,
+      "reviewer_kind": "ai",
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "original_request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "A key was in the blue drawer. Elena moved it to the green box, then closed the blue drawer. Nobody moved the key again."
+        },
+        "questions": [
+          {
+            "id": "claim",
+            "type": "boolean",
+            "instruction": "Use the final location explicitly described, without treating the closed drawer as evidence of the key's location.",
+            "statement": "The key is now in the green box.",
+            "when_false": "The statement conflicts with the final location",
+            "when_true": "The statement agrees with the final location"
+          }
+        ]
+      }
+    }
+  ]
+}

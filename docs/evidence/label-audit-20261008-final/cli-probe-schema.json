@@ -1,0 +1,94 @@
+{
+  "properties": {
+    "reviews": {
+      "items": {
+        "properties": {
+          "record_id": {
+            "type": "string"
+          },
+          "question_id": {
+            "type": "string"
+          },
+          "clarity_status": {
+            "type": "string",
+            "enum": [
+              "clear",
+              "ambiguous",
+              "contradictory"
+            ]
+          },
+          "answer_status": {
+            "type": "string",
+            "enum": [
+              "determinate",
+              "ambiguous",
+              "insufficient_info",
+              "invalid_question"
+            ]
+          },
+          "suggested_correct_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "suggested_correct_index": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "alternative_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "evidence_quotes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "question_revision_needed": {
+            "type": "boolean"
+          },
+          "revision_reason": {
+            "type": "string"
+          },
+          "suggested_text_revision": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "record_id",
+          "question_id",
+          "clarity_status",
+          "answer_status",
+          "suggested_correct_id",
+          "suggested_correct_index",
+          "alternative_ids",
+          "reason",
+          "evidence_quotes",
+          "question_revision_needed",
+          "revision_reason",
+          "suggested_text_revision"
+        ]
+      },
+      "type": "array"
+    }
+  },
+  "additionalProperties": false,
+  "type": "object",
+  "required": [
+    "reviews"
+  ]
+}

@@ -1,0 +1,996 @@
+{
+  "status": "attention_required",
+  "checked_records": 97,
+  "unique_pids": 46,
+  "matching_live": 1,
+  "unknown_live": 0,
+  "absent": 96,
+  "pid_reused": 0,
+  "identity_files": 41,
+  "root_readers": 21,
+  "elapsed_seconds": 4.3287114,
+  "checker_identity": {
+    "ProcessId": 52244,
+    "CreationDate": "2026-10-08T18:53:01.17452+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Test-AuditProcessClosure.ps1",
+    "ParentProcessId": 82176
+  },
+  "checks": [
+    {
+      "identity": {
+        "Pid": 42596,
+        "Started": "2026-10-08T10:43:19.0271850+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference = 'Stop'\nif ($PSVersionTable.PSVersion.Major -lt 7) { throw 'PowerShell 7 required' }\n$reviewClock = [System.Diagnostics.Stopwatch]::StartNew()\n$sourcePath = 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1'\n$identityPath = 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\revised-main-review-reader.json'\n$cancelPath = 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\revised-main-review.cancel.request'\nif (Test-Path -LiteralPath $identityPath) { throw 'Reader manifest exists; preserving it' }\n$taskProcess = Get-CimInstance -ClassName Win32_Process -Filter \\\"ProcessId = $PID\\\" -OperationTimeoutSec 10\n$identity = [ordered]@{ Pid = $PID; Started = $taskProcess.CreationDate.ToString('o'); CommandLine = $taskProcess.CommandLine; ParentPid = [int]$taskProcess.ParentProcessId; MaximumFiles = 1; MaximumSeconds = 120; Completed = $null; ElapsedSeconds = $null; SourceSha256 = $null }\ntry {\n    $identity | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath $identityPath -Encoding utf8NoBOM\n    if (Test-Path -LiteralPath $cancelPath) { throw 'Review canceled' }\n    $sourceInfo = Get-Item -LiteralPath $sourcePath\n    if ($sourceInfo.Length -gt 65536) { throw 'Source exceeds 64 KiB review cap' }\n    $sourceLines = [System.IO.File]::ReadAllLines($sourcePath)\n    if ($sourceLines.Length -gt 360) { throw 'Source exceeds 360-line review cap' }\n    if ($reviewClock.Elapsed.TotalSeconds -ge 120) { throw 'Review reader time limit exceeded' }\n    if (Test-Path -LiteralPath $cancelPath) { throw 'Review canceled' }\n    Write-Output ('PSVersion=' + $PSVersionTable.PSVersion.ToString() + '; Lines=' + $sourceLines.Length + '; Progress=read complete')\n    $sourceLines | ForEach-Object -Begin { $reviewLineNumber = 0 } -Process { $reviewLineNumber += 1; '{0}: {1}' -f $reviewLineNumber, $_ }\n    $identity.SourceSha256 = (Get-FileHash -LiteralPath $sourcePath -Algorithm SHA256).Hash\n} finally {\n    $identity.Completed = [DateTimeOffset]::Now.ToString('o')\n    $identity.ElapsedSeconds = $reviewClock.Elapsed.TotalSeconds\n    $identity | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath $identityPath -Encoding utf8NoBOM\n    Write-Output ('ReaderIdentity=' + $identityPath + '; PID=' + $identity.Pid + '; Started=' + $identity.Started + '; ParentPid=' + $identity.ParentPid + '; ElapsedSeconds=' + $identity.ElapsedSeconds)\n    # No child workload or temporary files were created.\n}\n\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\revised-main-review-reader.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 72840,
+        "Started": "2026-10-08T10:41:37.5816010+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference = 'Stop'\nif ($PSVersionTable.PSVersion.Major -lt 7) { throw 'PowerShell 7 required' }\n$reviewPath = 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\script-review.md'\n$identityPath = 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\script-review-writer.json'\nif (Test-Path -LiteralPath $reviewPath) { throw 'Review destination already exists; preserving it' }\nif (Test-Path -LiteralPath $identityPath) { throw 'Writer identity destination already exists; preserving it' }\n$reviewText = @'\n# Label audit batch script static review\n\nReviewed source: `D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1` (180 lines, original review).\n\nVerdict: **not passed pending two P2 fixes**. This review is static evidence only; it did not execute the batch script, call an API, or access credentials, configuration, or the CC Switch database.\n\n## Required fixes\n\n1. **P2 — locally validate the response contract before accepting records** (lines 133–160). The request asks the gateway for strict JSON Schema, but local `ConvertFrom-Json` processing does not reject unknown/missing properties, invalid enums, or incorrect JSON value types. A fractional `answer_index` (for example 1.2) can pass the bounds check and be cast to an integer for ID comparison. An unknown `answer_status` with a null answer can enter the null-answer branch. `clarity_status`, revision boolean/type, and flag/reason/text consistency are also unchecked. Add strict local validation of the saved response; HTTP must not be repeated merely to repair validation.\n\n2. **P2 — enforce the shared 900-second phase deadline throughout the batch** (lines 35–36 and `Check-Budget`). The deadline is checked once at entry; later checks cover batch time and cancellation only. A request started near phase second 899 can consume another 240 seconds. Include the phase deadline in every budget check and limit the request cancellation timeout to the minimum remaining phase, batch, and request time.\n\n## Additional findings\n\n- Lines 157–159 search quotes in fields joined by an artificial newline. A quote spanning two source fields may pass although it does not appear in any original segment. Validate against each original segment independently.\n- Alternative IDs have membership/count checks, but local uniqueness and JSON type validation are incomplete.\n- Sequential cleanup at lines 173–179 may skip later disposals/result writing and replace the primary failure when an earlier cleanup throws. Make cleanup steps individually protected while preserving the primary exception.\n- `HttpClientHandler` enables redirects by default. The claimed `maximum_http_requests=1` bounds the application `SendAsync` call, not all wire requests; disable redirects if retaining that claim.\n\n## Confirmed safeguards and evidence limits\n\nThe request sends record, language, request and candidate IDs without original target labels. The script uses the API key in the Authorization header, rather than the body or provenance, and redacts its exact value before persisting response/failure text. It bounds Start to 0–31 and Count to 1–8, uses one application `SendAsync` without retry, and blocks reusing an existing batch directory. It includes a 240-second HTTP timeout, a 245-iteration polling cap, a 260-second batch cap, cancellation and progress reporting. It checks record/question IDs, full count, duplicate records, answer index/ID mapping, alternative membership, quote count and substring evidence.\n\nReturned model/effort identify gateway declarations only, not independently verified upstream identity. AI review retains `human_review=pending` and `formal=false`.\n\n## Review process\n\nThe bounded original reader started at 2026-10-08 18:37:22 +08:00; the original identity writer started at 18:39:33 +08:00. Both original calls exited 0, with no API/network/Git/GPU or auth/config access. Their identities remain in `implementation-review-readers.json` (SHA256 `3CA3B1AFF8453387CD816E12760425A55BC0334BA37613A66F74BDCDAFD65CAD`). This report writer has a separate process manifest. Parent/root should verify these exact process identities are absent after completion.\n'@\n$taskProcess = Get-CimInstance -ClassName Win32_Process -Filter \\\"ProcessId = $PID\\\" -OperationTimeoutSec 10\n$identity = [ordered]@{ Pid = $PID; Started = $taskProcess.CreationDate.ToString('o'); CommandLine = $taskProcess.CommandLine; ParentPid = [int]$taskProcess.ParentProcessId }\ntry {\n    $identity | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath $identityPath -Encoding utf8NoBOM\n    Set-Content -LiteralPath $reviewPath -Value $reviewText -Encoding utf8NoBOM\n    [ordered]@{ PSVersion = $PSVersionTable.PSVersion.ToString(); Report = $reviewPath; ReportSha256 = (Get-FileHash -LiteralPath $reviewPath -Algorithm SHA256).Hash; Identity = $identityPath; IdentitySha256 = (Get-FileHash -LiteralPath $identityPath -Algorithm SHA256).Hash; Pid = $PID; Started = $identity.Started; ParentPid = $identity.ParentPid } | ConvertTo-Json -Depth 4\n} finally {\n    # This bounded writer creates no child workload and no temporary files.\n}\n\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\script-review-writer.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 35768,
+        "Started": "2026-10-08T10:44:49.8350650+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString()\n$validatorRunSelf=Get-CimInstance Win32_Process -Filter \\\"ProcessId = $PID\\\"\n$validatorRunParent=Get-CimInstance Win32_Process -Filter \\\"ProcessId = $($validatorRunSelf.ParentProcessId)\\\"\n$validatorRunGrandparent=if($null -ne $validatorRunParent){Get-CimInstance Win32_Process -Filter \\\"ProcessId = $($validatorRunParent.ParentProcessId)\\\"}else{$null}\n[ordered]@{Pid=$PID;Started=$validatorRunSelf.CreationDate.ToString('o');CommandLine=$validatorRunSelf.CommandLine;ParentPid=$validatorRunSelf.ParentProcessId;ParentChain=@(($validatorRunParent|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId),($validatorRunGrandparent|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId));Role='validator-offline-bounded-launcher';ExitCode=$null}|ConvertTo-Json -Depth 10|Set-Content -LiteralPath 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\validator-launcher.identity.json' -Encoding utf8\n& 'D:\\source\\Sezika\\tools\\Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoLogo','-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Test-LabelAuditPayloadOffline.ps1') -TimeoutSeconds 110 -LogName 'validator-offline' -WorkingDirectory 'D:\\source\\Sezika' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\validator-logs'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\validator-launcher.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 75012,
+        "Started": "2026-10-08T10:44:53.9110650+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Test-LabelAuditPayloadOffline.ps1",
+        "ParentPid": 35768,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\validator-offline.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 35768,
+        "Started": "2026-10-08T10:44:49.8350650+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString()\n$validatorRunSelf=Get-CimInstance Win32_Process -Filter \\\"ProcessId = $PID\\\"\n$validatorRunParent=Get-CimInstance Win32_Process -Filter \\\"ProcessId = $($validatorRunSelf.ParentProcessId)\\\"\n$validatorRunGrandparent=if($null -ne $validatorRunParent){Get-CimInstance Win32_Process -Filter \\\"ProcessId = $($validatorRunParent.ParentProcessId)\\\"}else{$null}\n[ordered]@{Pid=$PID;Started=$validatorRunSelf.CreationDate.ToString('o');CommandLine=$validatorRunSelf.CommandLine;ParentPid=$validatorRunSelf.ParentProcessId;ParentChain=@(($validatorRunParent|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId),($validatorRunGrandparent|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId));Role='validator-offline-bounded-launcher';ExitCode=$null}|ConvertTo-Json -Depth 10|Set-Content -LiteralPath 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\validator-launcher.identity.json' -Encoding utf8\n& 'D:\\source\\Sezika\\tools\\Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoLogo','-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Test-LabelAuditPayloadOffline.ps1') -TimeoutSeconds 110 -LogName 'validator-offline' -WorkingDirectory 'D:\\source\\Sezika' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\validator-logs'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\validator-offline.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 12520,
+        "Started": "2026-10-08T10:43:25.4291090+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString()\n$validatorLauncherSelf=Get-CimInstance Win32_Process -Filter \\\"ProcessId = $PID\\\"\n$validatorLauncherParent=Get-CimInstance Win32_Process -Filter \\\"ProcessId = $($validatorLauncherSelf.ParentProcessId)\\\"\n$validatorLauncherGrandparent=if($null -ne $validatorLauncherParent){Get-CimInstance Win32_Process -Filter \\\"ProcessId = $($validatorLauncherParent.ParentProcessId)\\\"}else{$null}\n[ordered]@{Pid=$PID;Started=$validatorLauncherSelf.CreationDate.ToString('o');CommandLine=$validatorLauncherSelf.CommandLine;ParentPid=$validatorLauncherSelf.ParentProcessId;ParentChain=@(($validatorLauncherParent|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId),($validatorLauncherGrandparent|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId));Role='validator-wrapper-parameter-reader';ExitCode=$null}|ConvertTo-Json -Depth 10|Set-Content -LiteralPath 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\validator-parameter-reader.identity.json' -Encoding utf8\nGet-Content -LiteralPath 'D:\\source\\Sezika\\tools\\Invoke-BoundedProcess.ps1' -TotalCount 90\nGet-FileHash -LiteralPath 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Test-LabelAuditPayload.ps1' -Algorithm SHA256\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\validator-parameter-reader.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 36536,
+        "Started": "2026-10-08T10:37:29.9910650+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1 -Batch batch-max-02 -Start 1 -Count 8",
+        "ParentPid": 91420,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\batch-max-02\\reader.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 85308,
+        "Started": "2026-10-08T10:37:29.9516650+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1 -Batch batch-max-03 -Start 9 -Count 8",
+        "ParentPid": 17604,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\batch-max-03\\reader.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 69792,
+        "Started": "2026-10-08T10:45:27.8566490+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1 -Batch batch-max-04 -Start 17 -Count 8",
+        "ParentPid": 92192,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\batch-max-04\\reader.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 44248,
+        "Started": "2026-10-08T10:45:27.7919340+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1 -Batch batch-max-05 -Start 25 -Count 7",
+        "ParentPid": 83880,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\batch-max-05\\reader.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 67712,
+        "Started": "2026-10-08T10:27:39.4773595+00:00",
+        "CommandLine": null,
+        "ParentPid": 48196,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-102738-210-audit-tiny-01.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 48196,
+        "Started": "2026-10-08T10:27:36.2859950+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n$auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'\n$self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5\n[IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(([ordered]@{Pid=$PID;Started=$self.CreationDate.ToUniversalTime().ToString('o');CommandLine=$self.CommandLine;ParentPid=$self.ParentProcessId}|ConvertTo-Json -Compress)+[Environment]::NewLine),[Text.UTF8Encoding]::new($false))\n& 'tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1','-Batch','tiny-01','-Start','0','-Count','1') -TimeoutSeconds 275 -ProcessQueryTimeoutSeconds 5 -LogName audit-tiny-01 -LogDirectory 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-102738-210-audit-tiny-01.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 67712,
+        "Started": "2026-10-08T10:27:39.4773595+00:00",
+        "CommandLine": null,
+        "ParentPid": 48196,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-102738-210-audit-tiny-01.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 48196,
+        "Started": "2026-10-08T10:27:36.2859950+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n$auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'\n$self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5\n[IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(([ordered]@{Pid=$PID;Started=$self.CreationDate.ToUniversalTime().ToString('o');CommandLine=$self.CommandLine;ParentPid=$self.ParentProcessId}|ConvertTo-Json -Compress)+[Environment]::NewLine),[Text.UTF8Encoding]::new($false))\n& 'tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1','-Batch','tiny-01','-Start','0','-Count','1') -TimeoutSeconds 275 -ProcessQueryTimeoutSeconds 5 -LogName audit-tiny-01 -LogDirectory 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-102738-210-audit-tiny-01.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 92904,
+        "Started": "2026-10-08T10:28:21.5769211+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1 -Batch tiny-01 -Start 0 -Count 1",
+        "ParentPid": 76236,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-102820-336-audit-tiny-01-v2.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 76236,
+        "Started": "2026-10-08T10:28:19.7563150+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n$parseTokens=$null; $parseErrors=$null\n$null=[Management.Automation.Language.Parser]::ParseFile('D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1',[ref]$parseTokens,[ref]$parseErrors)\nif (@($parseErrors).Count -ne 0) { throw 'Audit script syntax validation failed.' }\n& 'tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1','-Batch','tiny-01','-Start','0','-Count','1') -TimeoutSeconds 275 -ProcessQueryTimeoutSeconds 5 -LogName audit-tiny-01-v2 -LogDirectory 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-102820-336-audit-tiny-01-v2.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 92904,
+        "Started": "2026-10-08T10:28:21.5769211+00:00",
+        "CommandLine": null,
+        "ParentPid": 76236,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-102820-336-audit-tiny-01-v2.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 76236,
+        "Started": "2026-10-08T10:28:19.7563150+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n$parseTokens=$null; $parseErrors=$null\n$null=[Management.Automation.Language.Parser]::ParseFile('D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1',[ref]$parseTokens,[ref]$parseErrors)\nif (@($parseErrors).Count -ne 0) { throw 'Audit script syntax validation failed.' }\n& 'tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1','-Batch','tiny-01','-Start','0','-Count','1') -TimeoutSeconds 275 -ProcessQueryTimeoutSeconds 5 -LogName audit-tiny-01-v2 -LogDirectory 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-102820-336-audit-tiny-01-v2.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 92904,
+        "Started": "2026-10-08T10:28:21.5769210+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1 -Batch tiny-01 -Start 0 -Count 1",
+        "ParentPid": 76236,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-102820-336-audit-tiny-01-v2.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 81272,
+        "Started": "2026-10-08T10:30:06.6508118+00:00",
+        "CommandLine": null,
+        "ParentPid": 9968,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103005-281-provider-db-schema.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 9968,
+        "Started": "2026-10-08T10:30:04.5793900+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n& 'tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe' -ArgumentList @('D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\inspect-provider-db.py') -TimeoutSeconds 25 -ProcessQueryTimeoutSeconds 5 -LogName provider-db-schema -LogDirectory 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103005-281-provider-db-schema.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 81272,
+        "Started": "2026-10-08T10:30:06.6508118+00:00",
+        "CommandLine": null,
+        "ParentPid": 9968,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103005-281-provider-db-schema.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 9968,
+        "Started": "2026-10-08T10:30:04.5793900+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n& 'tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe' -ArgumentList @('D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\inspect-provider-db.py') -TimeoutSeconds 25 -ProcessQueryTimeoutSeconds 5 -LogName provider-db-schema -LogDirectory 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103005-281-provider-db-schema.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 70900,
+        "Started": "2026-10-08T10:30:48.6430218+00:00",
+        "CommandLine": null,
+        "ParentPid": 73552,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103047-397-provider-db-metadata.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 73552,
+        "Started": "2026-10-08T10:30:46.8105540+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n& 'tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe' -ArgumentList @('D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\inspect-provider-metadata.py') -TimeoutSeconds 25 -ProcessQueryTimeoutSeconds 5 -LogName provider-db-metadata -LogDirectory 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103047-397-provider-db-metadata.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 70900,
+        "Started": "2026-10-08T10:30:48.6430218+00:00",
+        "CommandLine": null,
+        "ParentPid": 73552,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103047-397-provider-db-metadata.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 73552,
+        "Started": "2026-10-08T10:30:46.8105540+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n& 'tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe' -ArgumentList @('D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\inspect-provider-metadata.py') -TimeoutSeconds 25 -ProcessQueryTimeoutSeconds 5 -LogName provider-db-metadata -LogDirectory 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103047-397-provider-db-metadata.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 1824,
+        "Started": "2026-10-08T10:31:50.1829740+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n& 'tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','C:\\Users\\mysti\\AppData\\Roaming\\npm\\codex.ps1','exec','--help') -TimeoutSeconds 25 -ProcessQueryTimeoutSeconds 5 -LogName codex-exec-help -LogDirectory 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103150-718-codex-exec-help.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 1436,
+        "Started": "2026-10-08T10:31:52.0806767+00:00",
+        "CommandLine": null,
+        "ParentPid": 1824,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103150-718-codex-exec-help.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 1824,
+        "Started": "2026-10-08T10:31:50.1829740+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n& 'tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','C:\\Users\\mysti\\AppData\\Roaming\\npm\\codex.ps1','exec','--help') -TimeoutSeconds 25 -ProcessQueryTimeoutSeconds 5 -LogName codex-exec-help -LogDirectory 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103150-718-codex-exec-help.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 41140,
+        "Started": "2026-10-08T10:32:47.3869213+00:00",
+        "CommandLine": null,
+        "ParentPid": 73612,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103246-066-cli-ultra-probe.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 73612,
+        "Started": "2026-10-08T10:32:45.3543450+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n$probe=Get-Content -LiteralPath '.artifacts/label-audit-20261008/tiny-01/request.json' -Raw|ConvertFrom-Json -Depth 60\n$schema='D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\cli-probe-schema.json'\nif (Test-Path -LiteralPath $schema) { throw 'CLI probe schema already exists.' }\n[IO.File]::WriteAllText($schema,($probe.text.format.schema|ConvertTo-Json -Depth 50),[Text.UTF8Encoding]::new($false))\n$prompt=$probe.input[0].content[0].text+\\\"`n禁止使用任何工具或访问文件；全部题目已经在下方。仅输出指定JSON。`n\\\"+$probe.input[1].content[0].text\n$argsList=@('-NoProfile','-File','C:\\Users\\mysti\\AppData\\Roaming\\npm\\codex.ps1','exec','--ignore-user-config','--ephemeral','--skip-git-repo-check','--sandbox','read-only','--model','gpt-6.1-sol','-c','model_provider=\\\"sonnet_vip\\\"','-c','model_reasoning_effort=\\\"ultra\\\"','-c','approval_policy=\\\"never\\\"','-c','model_providers.sonnet_vip.name=\\\"sonnet.vip current Codex adapter\\\"','-c','model_providers.sonnet_vip.base_url=\\\"http://127.0.0.1:15721/v1\\\"','-c','model_providers.sonnet_vip.wire_api=\\\"responses\\\"','-c','model_providers.sonnet_vip.requires_openai_auth=true','--output-schema',$schema,'--output-last-message','D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\cli-probe-output.json','--json','-C','D:\\source\\Sezika\\.artifacts\\label-audit-20261008',$prompt)\n& 'tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList $argsList -TimeoutSeconds 180 -ProcessQueryTimeoutSeconds 5 -LogName cli-ultra-probe -LogDirectory 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103246-066-cli-ultra-probe.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 41140,
+        "Started": "2026-10-08T10:32:47.3869213+00:00",
+        "CommandLine": null,
+        "ParentPid": 73612,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103246-066-cli-ultra-probe.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 73612,
+        "Started": "2026-10-08T10:32:45.3543450+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n$probe=Get-Content -LiteralPath '.artifacts/label-audit-20261008/tiny-01/request.json' -Raw|ConvertFrom-Json -Depth 60\n$schema='D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\cli-probe-schema.json'\nif (Test-Path -LiteralPath $schema) { throw 'CLI probe schema already exists.' }\n[IO.File]::WriteAllText($schema,($probe.text.format.schema|ConvertTo-Json -Depth 50),[Text.UTF8Encoding]::new($false))\n$prompt=$probe.input[0].content[0].text+\\\"`n禁止使用任何工具或访问文件；全部题目已经在下方。仅输出指定JSON。`n\\\"+$probe.input[1].content[0].text\n$argsList=@('-NoProfile','-File','C:\\Users\\mysti\\AppData\\Roaming\\npm\\codex.ps1','exec','--ignore-user-config','--ephemeral','--skip-git-repo-check','--sandbox','read-only','--model','gpt-6.1-sol','-c','model_provider=\\\"sonnet_vip\\\"','-c','model_reasoning_effort=\\\"ultra\\\"','-c','approval_policy=\\\"never\\\"','-c','model_providers.sonnet_vip.name=\\\"sonnet.vip current Codex adapter\\\"','-c','model_providers.sonnet_vip.base_url=\\\"http://127.0.0.1:15721/v1\\\"','-c','model_providers.sonnet_vip.wire_api=\\\"responses\\\"','-c','model_providers.sonnet_vip.requires_openai_auth=true','--output-schema',$schema,'--output-last-message','D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\cli-probe-output.json','--json','-C','D:\\source\\Sezika\\.artifacts\\label-audit-20261008',$prompt)\n& 'tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList $argsList -TimeoutSeconds 180 -ProcessQueryTimeoutSeconds 5 -LogName cli-ultra-probe -LogDirectory 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103246-066-cli-ultra-probe.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 85584,
+        "Started": "2026-10-08T10:35:58.1674268+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1 -Batch tiny-max-01 -Start 0 -Count 1",
+        "ParentPid": 55428,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103556-529-audit-tiny-max-01.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 55428,
+        "Started": "2026-10-08T10:35:55.5363150+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n$auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'\n$selection=Join-Path $auditRoot 'model-selection.json'\nif ([IO.File]::Exists($selection)) { throw 'Model selection already recorded; inspect before repeating.' }\n[IO.File]::WriteAllText($selection,([ordered]@{user_approved=$true;provider='sonnet_vip';model='gpt-6.1-sol';effort='max';initially_requested_effort='ultra';user_reply='使用 gpt-6.1-sol / max 完成 32 题审核（推荐）';api_phase_started_utc=[DateTime]::UtcNow.ToString('o');maximum_api_phase_seconds=900;maximum_successful_requests=5;maximum_concurrency=2}|ConvertTo-Json),[Text.UTF8Encoding]::new($false))\n$parseTokens=$null; $parseErrors=$null\n$null=[Management.Automation.Language.Parser]::ParseFile((Join-Path $auditRoot 'Invoke-LabelAuditBatch.ps1'),[ref]$parseTokens,[ref]$parseErrors)\nif (@($parseErrors).Count -ne 0) { throw 'Audit script syntax errors.' }\n& 'tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $auditRoot 'Invoke-LabelAuditBatch.ps1'),'-Batch','tiny-max-01','-Start','0','-Count','1') -TimeoutSeconds 275 -ProcessQueryTimeoutSeconds 5 -LogName audit-tiny-max-01 -LogDirectory (Join-Path $auditRoot 'process-logs')\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103556-529-audit-tiny-max-01.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 85584,
+        "Started": "2026-10-08T10:35:58.1674268+00:00",
+        "CommandLine": null,
+        "ParentPid": 55428,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103556-529-audit-tiny-max-01.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 55428,
+        "Started": "2026-10-08T10:35:55.5363150+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n$auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'\n$selection=Join-Path $auditRoot 'model-selection.json'\nif ([IO.File]::Exists($selection)) { throw 'Model selection already recorded; inspect before repeating.' }\n[IO.File]::WriteAllText($selection,([ordered]@{user_approved=$true;provider='sonnet_vip';model='gpt-6.1-sol';effort='max';initially_requested_effort='ultra';user_reply='使用 gpt-6.1-sol / max 完成 32 题审核（推荐）';api_phase_started_utc=[DateTime]::UtcNow.ToString('o');maximum_api_phase_seconds=900;maximum_successful_requests=5;maximum_concurrency=2}|ConvertTo-Json),[Text.UTF8Encoding]::new($false))\n$parseTokens=$null; $parseErrors=$null\n$null=[Management.Automation.Language.Parser]::ParseFile((Join-Path $auditRoot 'Invoke-LabelAuditBatch.ps1'),[ref]$parseTokens,[ref]$parseErrors)\nif (@($parseErrors).Count -ne 0) { throw 'Audit script syntax errors.' }\n& 'tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $auditRoot 'Invoke-LabelAuditBatch.ps1'),'-Batch','tiny-max-01','-Start','0','-Count','1') -TimeoutSeconds 275 -ProcessQueryTimeoutSeconds 5 -LogName audit-tiny-max-01 -LogDirectory (Join-Path $auditRoot 'process-logs')\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103556-529-audit-tiny-max-01.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 85584,
+        "Started": "2026-10-08T10:35:58.1674260+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1 -Batch tiny-max-01 -Start 0 -Count 1",
+        "ParentPid": 55428,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103556-529-audit-tiny-max-01.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 36536,
+        "Started": "2026-10-08T10:37:29.9910650+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1 -Batch batch-max-02 -Start 1 -Count 8",
+        "ParentPid": 91420,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103728-665-batch-max-02.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 91420,
+        "Started": "2026-10-08T10:37:28.0974690+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n& 'tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1','-Batch','batch-max-02','-Start','1','-Count','8') -TimeoutSeconds 275 -ProcessQueryTimeoutSeconds 5 -LogName 'batch-max-02' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103728-665-batch-max-02.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 36536,
+        "Started": "2026-10-08T10:37:29.9910650+00:00",
+        "CommandLine": null,
+        "ParentPid": 91420,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103728-665-batch-max-02.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 91420,
+        "Started": "2026-10-08T10:37:28.0974690+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n& 'tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1','-Batch','batch-max-02','-Start','1','-Count','8') -TimeoutSeconds 275 -ProcessQueryTimeoutSeconds 5 -LogName 'batch-max-02' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103728-665-batch-max-02.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 36536,
+        "Started": "2026-10-08T10:37:29.9910650+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1 -Batch batch-max-02 -Start 1 -Count 8",
+        "ParentPid": 91420,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103728-665-batch-max-02.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 85308,
+        "Started": "2026-10-08T10:37:29.9516656+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1 -Batch batch-max-03 -Start 9 -Count 8",
+        "ParentPid": 17604,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103728-679-batch-max-03.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 17604,
+        "Started": "2026-10-08T10:37:28.1262400+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n& 'tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1','-Batch','batch-max-03','-Start','9','-Count','8') -TimeoutSeconds 275 -ProcessQueryTimeoutSeconds 5 -LogName 'batch-max-03' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103728-679-batch-max-03.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 85308,
+        "Started": "2026-10-08T10:37:29.9516656+00:00",
+        "CommandLine": null,
+        "ParentPid": 17604,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103728-679-batch-max-03.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 17604,
+        "Started": "2026-10-08T10:37:28.1262400+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n& 'tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1','-Batch','batch-max-03','-Start','9','-Count','8') -TimeoutSeconds 275 -ProcessQueryTimeoutSeconds 5 -LogName 'batch-max-03' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103728-679-batch-max-03.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 85308,
+        "Started": "2026-10-08T10:37:29.9516650+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1 -Batch batch-max-03 -Start 9 -Count 8",
+        "ParentPid": 17604,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-103728-679-batch-max-03.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 44248,
+        "Started": "2026-10-08T10:45:27.7919345+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1 -Batch batch-max-05 -Start 25 -Count 7",
+        "ParentPid": 83880,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-104526-974-batch-max-05.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 83880,
+        "Started": "2026-10-08T10:45:25.4720290+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $auditRoot 'Invoke-LabelAuditBatch.ps1'),'-Batch','batch-max-05','-Start','25','-Count','7') -TimeoutSeconds 275 -ProcessQueryTimeoutSeconds 5 -LogName 'batch-max-05' -LogDirectory (Join-Path $auditRoot 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-104526-974-batch-max-05.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 44248,
+        "Started": "2026-10-08T10:45:27.7919345+00:00",
+        "CommandLine": null,
+        "ParentPid": 83880,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-104526-974-batch-max-05.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 83880,
+        "Started": "2026-10-08T10:45:25.4720290+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $auditRoot 'Invoke-LabelAuditBatch.ps1'),'-Batch','batch-max-05','-Start','25','-Count','7') -TimeoutSeconds 275 -ProcessQueryTimeoutSeconds 5 -LogName 'batch-max-05' -LogDirectory (Join-Path $auditRoot 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-104526-974-batch-max-05.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 44248,
+        "Started": "2026-10-08T10:45:27.7919340+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1 -Batch batch-max-05 -Start 25 -Count 7",
+        "ParentPid": 83880,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-104526-974-batch-max-05.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 69792,
+        "Started": "2026-10-08T10:45:27.8566498+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1 -Batch batch-max-04 -Start 17 -Count 8",
+        "ParentPid": 92192,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-104527-002-batch-max-04.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 92192,
+        "Started": "2026-10-08T10:45:25.4430410+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $auditRoot 'Invoke-LabelAuditBatch.ps1'),'-Batch','batch-max-04','-Start','17','-Count','8') -TimeoutSeconds 275 -ProcessQueryTimeoutSeconds 5 -LogName 'batch-max-04' -LogDirectory (Join-Path $auditRoot 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-104527-002-batch-max-04.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 69792,
+        "Started": "2026-10-08T10:45:27.8566498+00:00",
+        "CommandLine": null,
+        "ParentPid": 92192,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-104527-002-batch-max-04.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 92192,
+        "Started": "2026-10-08T10:45:25.4430410+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $auditRoot 'Invoke-LabelAuditBatch.ps1'),'-Batch','batch-max-04','-Start','17','-Count','8') -TimeoutSeconds 275 -ProcessQueryTimeoutSeconds 5 -LogName 'batch-max-04' -LogDirectory (Join-Path $auditRoot 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-104527-002-batch-max-04.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 69792,
+        "Started": "2026-10-08T10:45:27.8566490+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1 -Batch batch-max-04 -Start 17 -Count 8",
+        "ParentPid": 92192,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-104527-002-batch-max-04.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 92744,
+        "Started": "2026-10-08T10:48:52.4795403+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Build-LabelAuditReport.ps1",
+        "ParentPid": 12520,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-104851-393-report-build.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 12520,
+        "Started": "2026-10-08T10:48:49.4668440+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); $tokens=$null;$errors=$null; [Management.Automation.Language.Parser]::ParseFile((Join-Path $auditRoot 'Build-LabelAuditReport.ps1'),[ref]$tokens,[ref]$errors)|Out-Null; if($errors.Count -gt 0){throw ($errors.Message -join [Environment]::NewLine)}; & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $auditRoot 'Build-LabelAuditReport.ps1')) -TimeoutSeconds 90 -ProcessQueryTimeoutSeconds 5 -LogName 'report-build' -LogDirectory (Join-Path $auditRoot 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-104851-393-report-build.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 92744,
+        "Started": "2026-10-08T10:48:52.4795403+00:00",
+        "CommandLine": null,
+        "ParentPid": 12520,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-104851-393-report-build.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 12520,
+        "Started": "2026-10-08T10:48:49.4668440+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); $tokens=$null;$errors=$null; [Management.Automation.Language.Parser]::ParseFile((Join-Path $auditRoot 'Build-LabelAuditReport.ps1'),[ref]$tokens,[ref]$errors)|Out-Null; if($errors.Count -gt 0){throw ($errors.Message -join [Environment]::NewLine)}; & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $auditRoot 'Build-LabelAuditReport.ps1')) -TimeoutSeconds 90 -ProcessQueryTimeoutSeconds 5 -LogName 'report-build' -LogDirectory (Join-Path $auditRoot 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-104851-393-report-build.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 92744,
+        "Started": "2026-10-08T10:48:52.4795400+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Build-LabelAuditReport.ps1",
+        "ParentPid": 12520,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-104851-393-report-build.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 72808,
+        "Started": "2026-10-08T10:50:51.2886384+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Build-LabelAuditReport.ps1",
+        "ParentPid": 25516,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-105050-171-report-build-final.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 25516,
+        "Started": "2026-10-08T10:50:48.3861940+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $auditRoot 'Build-LabelAuditReport.ps1')) -TimeoutSeconds 90 -ProcessQueryTimeoutSeconds 5 -LogName 'report-build-final' -LogDirectory (Join-Path $auditRoot 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-105050-171-report-build-final.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 72808,
+        "Started": "2026-10-08T10:50:51.2886384+00:00",
+        "CommandLine": null,
+        "ParentPid": 25516,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-105050-171-report-build-final.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 25516,
+        "Started": "2026-10-08T10:50:48.3861940+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $auditRoot 'Build-LabelAuditReport.ps1')) -TimeoutSeconds 90 -ProcessQueryTimeoutSeconds 5 -LogName 'report-build-final' -LogDirectory (Join-Path $auditRoot 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-105050-171-report-build-final.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 72808,
+        "Started": "2026-10-08T10:50:51.2886380+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Build-LabelAuditReport.ps1",
+        "ParentPid": 25516,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs\\20261008-105050-171-report-build-final.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 92904,
+        "Started": "2026-10-08T10:28:21.5769210+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1 -Batch tiny-01 -Start 0 -Count 1",
+        "ParentPid": 76236,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\tiny-01\\reader.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 85584,
+        "Started": "2026-10-08T10:35:58.1674260+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1 -Batch tiny-max-01 -Start 0 -Count 1",
+        "ParentPid": 55428,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\tiny-max-01\\reader.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 75012,
+        "Started": "2026-10-08T10:44:53.9110658+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Test-LabelAuditPayloadOffline.ps1",
+        "ParentPid": 35768,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\validator-logs\\20261008-104452-920-validator-offline.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 35768,
+        "Started": "2026-10-08T10:44:49.8350650+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString()\n$validatorRunSelf=Get-CimInstance Win32_Process -Filter \\\"ProcessId = $PID\\\"\n$validatorRunParent=Get-CimInstance Win32_Process -Filter \\\"ProcessId = $($validatorRunSelf.ParentProcessId)\\\"\n$validatorRunGrandparent=if($null -ne $validatorRunParent){Get-CimInstance Win32_Process -Filter \\\"ProcessId = $($validatorRunParent.ParentProcessId)\\\"}else{$null}\n[ordered]@{Pid=$PID;Started=$validatorRunSelf.CreationDate.ToString('o');CommandLine=$validatorRunSelf.CommandLine;ParentPid=$validatorRunSelf.ParentProcessId;ParentChain=@(($validatorRunParent|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId),($validatorRunGrandparent|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId));Role='validator-offline-bounded-launcher';ExitCode=$null}|ConvertTo-Json -Depth 10|Set-Content -LiteralPath 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\validator-launcher.identity.json' -Encoding utf8\n& 'D:\\source\\Sezika\\tools\\Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoLogo','-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Test-LabelAuditPayloadOffline.ps1') -TimeoutSeconds 110 -LogName 'validator-offline' -WorkingDirectory 'D:\\source\\Sezika' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\validator-logs'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\validator-logs\\20261008-104452-920-validator-offline.identity.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 75012,
+        "Started": "2026-10-08T10:44:53.9110658+00:00",
+        "CommandLine": null,
+        "ParentPid": 35768,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\validator-logs\\20261008-104452-920-validator-offline.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 35768,
+        "Started": "2026-10-08T10:44:49.8350650+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString()\n$validatorRunSelf=Get-CimInstance Win32_Process -Filter \\\"ProcessId = $PID\\\"\n$validatorRunParent=Get-CimInstance Win32_Process -Filter \\\"ProcessId = $($validatorRunSelf.ParentProcessId)\\\"\n$validatorRunGrandparent=if($null -ne $validatorRunParent){Get-CimInstance Win32_Process -Filter \\\"ProcessId = $($validatorRunParent.ParentProcessId)\\\"}else{$null}\n[ordered]@{Pid=$PID;Started=$validatorRunSelf.CreationDate.ToString('o');CommandLine=$validatorRunSelf.CommandLine;ParentPid=$validatorRunSelf.ParentProcessId;ParentChain=@(($validatorRunParent|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId),($validatorRunGrandparent|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId));Role='validator-offline-bounded-launcher';ExitCode=$null}|ConvertTo-Json -Depth 10|Set-Content -LiteralPath 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\validator-launcher.identity.json' -Encoding utf8\n& 'D:\\source\\Sezika\\tools\\Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoLogo','-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Test-LabelAuditPayloadOffline.ps1') -TimeoutSeconds 110 -LogName 'validator-offline' -WorkingDirectory 'D:\\source\\Sezika' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\validator-logs'\"",
+        "ParentPid": 52200,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\validator-logs\\20261008-104452-920-validator-offline.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 75012,
+        "Started": "2026-10-08T10:44:53.9110650+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Test-LabelAuditPayloadOffline.ps1",
+        "ParentPid": 35768,
+        "From": "D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\validator-logs\\20261008-104452-920-validator-offline.result.json"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 42104,
+        "Started": "2026-10-08T10:21:42.4710880+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n$auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'\nif ([IO.Directory]::Exists($auditRoot)) { throw 'Label audit scope exists; inspect before repeating requests.' }\n[IO.Directory]::CreateDirectory($auditRoot)|Out-Null\n$self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5\n[IO.File]::WriteAllText((Join-Path $auditRoot 'root-readers.jsonl'),(([ordered]@{Pid=$PID;Started=$self.CreationDate.ToUniversalTime().ToString('o');CommandLine=$self.CommandLine;ParentPid=$self.ParentProcessId}|ConvertTo-Json -Compress)+[Environment]::NewLine),[Text.UTF8Encoding]::new($false))\n$config=[IO.File]::ReadAllText('C:\\Users\\mysti\\.codex\\config.toml')\n$config -split '\\r?\\n' | Where-Object { $_ -match '^\\s*(model\\s*=|model_provider\\s*=|model_reasoning_effort\\s*=|wire_api\\s*=|requires_openai_auth\\s*=|env_key\\s*=|\\[model_providers\\.|\\[profiles\\.)' } | Select-Object -First 30\n$auth=Get-Content -LiteralPath 'C:\\Users\\mysti\\.codex\\auth.json' -Raw|ConvertFrom-Json\n[pscustomobject]@{AuthFields=($auth.PSObject.Properties.Name -join ',');Codex=(Get-Command codex -ErrorAction SilentlyContinue).Source;Dotnet=(Get-Command dotnet -ErrorAction Stop).Source}|ConvertTo-Json\n$source='D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data\\experiment-records.jsonl'\n[pscustomobject]@{Source=$source;Sha256=(Get-FileHash -LiteralPath $source).Hash;Lines=@(Get-Content -LiteralPath $source -TotalCount 33).Count}|ConvertTo-Json\"",
+        "ParentPid": 52200,
+        "From": "root-readers.jsonl"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 53996,
+        "Started": "2026-10-08T10:22:17.5415170+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$watch=[Diagnostics.Stopwatch]::StartNew()\n$auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'\n$self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5\n[IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(([ordered]@{Pid=$PID;Started=$self.CreationDate.ToUniversalTime().ToString('o');CommandLine=$self.CommandLine;ParentPid=$self.ParentProcessId}|ConvertTo-Json -Compress)+[Environment]::NewLine),[Text.UTF8Encoding]::new($false))\n$config=[IO.File]::ReadAllText('C:\\Users\\mysti\\.codex\\config.toml')\n$provider=[regex]::Match($config,'(?m)^model_provider\\s*=\\s*\\\"([^\\\"\\r\\n]+)\\\"').Groups[1].Value\n$section=[regex]::Match($config,'(?ms)^\\[model_providers\\.'+[regex]::Escape($provider)+'\\]\\s*\\r?\\n(?<body>.*?)(?=^\\[|\\z)').Groups['body'].Value\n$baseText=[regex]::Match($section,'(?m)^base_url\\s*=\\s*\\\"([^\\\"\\r\\n]+)\\\"').Groups[1].Value\n$uri=[Uri]$baseText\nif ($uri.Scheme -cne 'https' -or $uri.Host -notmatch '(^|\\.)sonnet\\.vip$' -or $uri.UserInfo -or $uri.Query) { throw 'Configured provider URL is not the expected sonnet.vip HTTPS path.' }\n[pscustomobject]@{Provider=$provider;BaseUrl=$uri.AbsoluteUri;WireApi='responses';CredentialSource='current Codex auth.json OPENAI_API_KEY (value not printed)';Model='gpt-6.1-sol';ReasoningEffort='ultra'}|ConvertTo-Json\nGet-Content -LiteralPath 'tools/Sezika.ExperimentTrainer/ExperimentData.cs' -TotalCount 180\nGet-Content -LiteralPath 'data/s4-02/dataset-manifest.json' -TotalCount 45\nif ($watch.Elapsed.TotalSeconds -ge 30) { throw 'Provider metadata read timeout.' }\"",
+        "ParentPid": 52200,
+        "From": "root-readers.jsonl"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 63128,
+        "Started": "2026-10-08T10:23:03.7010910+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$watch=[Diagnostics.Stopwatch]::StartNew()\n$auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'\n$self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5\n[IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(([ordered]@{Pid=$PID;Started=$self.CreationDate.ToUniversalTime().ToString('o');CommandLine=$self.CommandLine;ParentPid=$self.ParentProcessId}|ConvertTo-Json -Compress)+[Environment]::NewLine),[Text.UTF8Encoding]::new($false))\n$config=[IO.File]::ReadAllText('C:\\Users\\mysti\\.codex\\config.toml')\n$lines=@($config -split '\\r?\\n' | Where-Object { $_ -match '^\\s*base_url\\s*=' } | Select-Object -First 5)\n$quoteChars=[char[]]@([char]34,[char]39)\nfor ($i=0; $i -lt $lines.Count; $i++) {\n if ($watch.Elapsed.TotalSeconds -ge 15) { throw 'Provider URL metadata deadline.' }\n $value=($lines[$i] -split '=',2)[1].Trim().Trim($quoteChars)\n $uri=[Uri]$value\n [pscustomobject]@{Index=$i;Scheme=$uri.Scheme;Host=$uri.Host;Path=$uri.AbsolutePath;Port=$uri.Port;HasQuery=[bool]$uri.Query;HasUserInfo=[bool]$uri.UserInfo}|ConvertTo-Json -Compress\n}\nGet-Content -LiteralPath 'tools/Sezika.ExperimentTrainer/ExperimentData.cs' -TotalCount 140\"",
+        "ParentPid": 52200,
+        "From": "root-readers.jsonl"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 48196,
+        "Started": "2026-10-08T10:27:36.2859950+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n$auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'\n$self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5\n[IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(([ordered]@{Pid=$PID;Started=$self.CreationDate.ToUniversalTime().ToString('o');CommandLine=$self.CommandLine;ParentPid=$self.ParentProcessId}|ConvertTo-Json -Compress)+[Environment]::NewLine),[Text.UTF8Encoding]::new($false))\n& 'tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\Invoke-LabelAuditBatch.ps1','-Batch','tiny-01','-Start','0','-Count','1') -TimeoutSeconds 275 -ProcessQueryTimeoutSeconds 5 -LogName audit-tiny-01 -LogDirectory 'D:\\source\\Sezika\\.artifacts\\label-audit-20261008\\process-logs'\"",
+        "ParentPid": 52200,
+        "From": "root-readers.jsonl"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 87096,
+        "Started": "2026-10-08T10:29:23.0494250+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n$auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'\n$self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5\n[IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(([ordered]@{Pid=$PID;Started=$self.CreationDate.ToUniversalTime().ToString('o');CommandLine=$self.CommandLine;ParentPid=$self.ParentProcessId}|ConvertTo-Json -Compress)+[Environment]::NewLine),[Text.UTF8Encoding]::new($false))\n$paths=@('C:\\Users\\mysti\\.cc-switch','C:\\Users\\mysti\\AppData\\Roaming\\com.ccswitch.desktop')\n$watch=[Diagnostics.Stopwatch]::StartNew()\nfor ($i=0; $i -lt 2; $i++) {\n if ($watch.Elapsed.TotalSeconds -ge 15) { throw 'Exact config directory metadata deadline.' }\n if (Test-Path -LiteralPath $paths[$i] -PathType Container) {\n  [pscustomobject]@{Directory=$paths[$i];Files=@(Get-ChildItem -LiteralPath $paths[$i] -File|Select-Object -First 20 Name,Length)}|ConvertTo-Json -Depth 4\n }\n}\nGet-Command python,python3,sqlite3 -ErrorAction SilentlyContinue | Select-Object Name,Source\"",
+        "ParentPid": 52200,
+        "From": "root-readers.jsonl"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 40104,
+        "Started": "2026-10-08T10:34:53.8122270+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n$watch=[Diagnostics.Stopwatch]::StartNew()\n$auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'\n$self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5\n[IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(([ordered]@{Pid=$PID;Started=$self.CreationDate.ToUniversalTime().ToString('o');CommandLine=$self.CommandLine;ParentPid=$self.ParentProcessId}|ConvertTo-Json -Compress)+[Environment]::NewLine),[Text.UTF8Encoding]::new($false))\n$source='D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data\\experiment-records.jsonl'\n$expectedHash='A015A8FA182EE62223CAFC307C618C515A19E90F843290DB9DFB53A56B9A041C'\nif ((Get-FileHash -LiteralPath $source).Hash -cne $expectedHash) { throw 'Source changed; stop preparation.' }\n$lines=@(Get-Content -LiteralPath $source -TotalCount 33)\nif ($lines.Count -ne 32) { throw 'Exactly32 records required.' }\n$blind=[Collections.Generic.List[object]]::new()\nfor ($i=0; $i -lt 32; $i++) {\n if ($watch.Elapsed.TotalSeconds -ge 25 -or [IO.File]::Exists((Join-Path $auditRoot 'cancel.request'))) { throw 'Full input preparation time/cancel limit.' }\n $row=$lines[$i]|ConvertFrom-Json -DateKind String\n $q=$row.request.questions[0]\n $ids=switch($q.type){'choice'{@($q.candidates.id)} 'score'{@(0..($q.levels.Count-1)|ForEach-Object {$_.ToString()})} 'boolean'{@('false','true')}}\n $blind.Add([ordered]@{record_id=$row.record_id;language=$row.language;request=$row.request;candidate_index_to_id=$ids})\n}\n$inputPath=Join-Path $auditRoot 'blind-inputs-32.json'\nif ([IO.File]::Exists($inputPath)) { throw 'Blind input already prepared; do not overwrite.' }\n[IO.File]::WriteAllText($inputPath,([ordered]@{audit_contract='sezika/independent-ai-label-audit/v1';source_sha256=$expectedHash;source_labels_hidden=$true;row_count=32;rows=@($blind)}|ConvertTo-Json -Depth 35),[Text.UTF8Encoding]::new($false))\nCopy-Item -LiteralPath (Join-Path $auditRoot 'Invoke-LabelAuditBatch.ps1') -Destination (Join-Path $auditRoot 'Invoke-LabelAuditBatch.ultra-v1.ps1')\n[IO.File]::WriteAllText((Join-Path $auditRoot 'prepared-plan.json'),([ordered]@{utc=[DateTime]::UtcNow.ToString('o');status='awaiting_user_effort_selection';record_count=32;blind_inputs_sha256=(Get-FileHash -LiteralPath $inputPath).Hash;provider='sonnet.vip via current Codex CC Switch adapter';requested_model='gpt-6.1-sol';originally_requested_effort='ultra';ultra_http_status=400;provider_maximum_supported_effort='max';effective_effort=$null;successful_audits=0;maximum_requests_after_selection=5;maximum_concurrency=2;per_request_seconds=240;maximum_api_phase_seconds=900;formal=$false;human_review='pending';source_unchanged=$true;batch_plan=@(@{start=0;count=1},@{start=1;count=8},@{start=9;count=8},@{start=17;count=8},@{start=25;count=7})}|ConvertTo-Json -Depth 8),[Text.UTF8Encoding]::new($false))\n[pscustomobject]@{PreparedRecords=32;BlindToOriginalLabels=$true;SourceUnchanged=$true;SuccessfulAudits=0;Pending='explicit ultra/max selection'}|ConvertTo-Json\"",
+        "ParentPid": 52200,
+        "From": "root-readers.jsonl"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 33188,
+        "Started": "2026-10-08T10:41:06.3826330+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); Copy-Item -LiteralPath (Join-Path $auditRoot 'Invoke-LabelAuditBatch.ps1') -Destination (Join-Path $auditRoot 'Invoke-LabelAuditBatch.max-v1.ps1'); Get-Content -LiteralPath .artifacts/real-gpu-experiment-20261008/data/experiment-records.jsonl -TotalCount 33\"",
+        "ParentPid": 52200,
+        "From": "root-readers.jsonl"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 84896,
+        "Started": "2026-10-08T10:42:36.5510610+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); Get-ChildItem -LiteralPath $auditRoot -File | Select-Object -First 40 Name,Length; rg --files docs/evidence/gpu-learnability-20261008 .artifacts/gpu-learnability-20261008/retrieved/output/run-768; rg -n '32题|768|审题|审核|暂停' ROADMAP.md | Select-Object -First 30; Get-Content -LiteralPath .artifacts/label-audit-20261008/batch-max-02/result.json; Get-Content -LiteralPath .artifacts/label-audit-20261008/batch-max-03/result.json\"",
+        "ParentPid": 52200,
+        "From": "root-readers.jsonl"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 53012,
+        "Started": "2026-10-08T10:43:05.1787780+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); Get-Content -LiteralPath (Join-Path $auditRoot 'Test-LabelAuditPayload.ps1')\"",
+        "ParentPid": 52200,
+        "From": "root-readers.jsonl"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 53024,
+        "Started": "2026-10-08T10:43:48.0595760+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); $e=Get-Content -LiteralPath docs/evidence/gpu-learnability-20261008/stage-c-evaluation.json -Raw | ConvertFrom-Json -Depth 80; $e.PSObject.Properties.Name; $e.observations | Select-Object -First 1 | ConvertTo-Json -Depth 8; $e.examples | Select-Object -First 1 | ConvertTo-Json -Depth 8\"",
+        "ParentPid": 52200,
+        "From": "root-readers.jsonl"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 81552,
+        "Started": "2026-10-08T10:45:04.3015540+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); Get-ChildItem -LiteralPath $auditRoot -File -Filter '*test*' | Select-Object -First 10 Name,Length; Get-ChildItem -LiteralPath $auditRoot -File -Filter '*offline*' | Select-Object -First 10 Name,Length; $tokens=$null;$errors=$null; [Management.Automation.Language.Parser]::ParseFile((Join-Path $auditRoot 'Invoke-LabelAuditBatch.ps1'),[ref]$tokens,[ref]$errors) | Out-Null; if ($errors.Count -gt 0) { throw ($errors.Message -join [Environment]::NewLine) }; 'Main parser: passed.'\"",
+        "ParentPid": 52200,
+        "From": "root-readers.jsonl"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 75140,
+        "Started": "2026-10-08T10:45:13.4741350+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); Get-Content -LiteralPath (Join-Path $auditRoot 'validator-offline.result.json'); Get-Content -LiteralPath (Join-Path $auditRoot 'Test-LabelAuditPayload.ps1') -Tail 8\"",
+        "ParentPid": 52200,
+        "From": "root-readers.jsonl"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 83880,
+        "Started": "2026-10-08T10:45:25.4720290+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $auditRoot 'Invoke-LabelAuditBatch.ps1'),'-Batch','batch-max-05','-Start','25','-Count','7') -TimeoutSeconds 275 -ProcessQueryTimeoutSeconds 5 -LogName 'batch-max-05' -LogDirectory (Join-Path $auditRoot 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+        "ParentPid": 52200,
+        "From": "root-readers.jsonl"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 92192,
+        "Started": "2026-10-08T10:45:25.4430410+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $auditRoot 'Invoke-LabelAuditBatch.ps1'),'-Batch','batch-max-04','-Start','17','-Count','8') -TimeoutSeconds 275 -ProcessQueryTimeoutSeconds 5 -LogName 'batch-max-04' -LogDirectory (Join-Path $auditRoot 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+        "ParentPid": 52200,
+        "From": "root-readers.jsonl"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 66300,
+        "Started": "2026-10-08T10:46:22.9727310+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); $e=Get-Content -LiteralPath docs/evidence/gpu-learnability-20261008/stage-c-evaluation.json -Raw | ConvertFrom-Json -Depth 80; $e.observations.PSObject.Properties.Name; $e.observations.original_rows | Select-Object -First 1 -Property record_id,split,selected_candidate_id,predicted_index\"",
+        "ParentPid": 52200,
+        "From": "root-readers.jsonl"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 68216,
+        "Started": "2026-10-08T10:46:41.5252450+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); $e=Get-Content -LiteralPath docs/evidence/gpu-learnability-20261008/stage-c-evaluation.json -Raw | ConvertFrom-Json -Depth 80; $e.observations.rows[0] | Select-Object -Property record_id,split,type,variant,scope,predicted_index,selected_candidate_id,teacher_target_index | ConvertTo-Json -Depth 3; $e.observations.rows[0].PSObject.Properties.Name; $v=Get-Content -LiteralPath .artifacts/label-audit-20261008/batch-max-05/validated-reviews.json -Raw | ConvertFrom-Json; $v | Where-Object { $_.change_original_label -eq $true -or $_.question_revision_needed -eq $true } | Select-Object record_id,original_target_id,suggested_correct_id,answer_status,reason,revision_reason\"",
+        "ParentPid": 52200,
+        "From": "root-readers.jsonl"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 12520,
+        "Started": "2026-10-08T10:48:49.4668440+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); $tokens=$null;$errors=$null; [Management.Automation.Language.Parser]::ParseFile((Join-Path $auditRoot 'Build-LabelAuditReport.ps1'),[ref]$tokens,[ref]$errors)|Out-Null; if($errors.Count -gt 0){throw ($errors.Message -join [Environment]::NewLine)}; & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $auditRoot 'Build-LabelAuditReport.ps1')) -TimeoutSeconds 90 -ProcessQueryTimeoutSeconds 5 -LogName 'report-build' -LogDirectory (Join-Path $auditRoot 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+        "ParentPid": 52200,
+        "From": "root-readers.jsonl"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 81944,
+        "Started": "2026-10-08T10:49:35.5954460+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); $targets=@('D:\\source\\Sezika\\general-zh-choice-01','D:\\source\\Sezika\\delivery'); $items=@($targets | ForEach-Object { Get-Item -LiteralPath $_ | Select-Object FullName,CreationTimeUtc,LastWriteTimeUtc }); $items | ConvertTo-Json; $report=Get-Content -LiteralPath docs/evidence/label-audit-20261008/audit-report.json -Raw | ConvertFrom-Json -Depth 70; $report.summary | ConvertTo-Json -Compress; $report.existing_gpu_prediction_comparison | ConvertTo-Json -Compress; $report.reviews | Where-Object change_original_label -EQ $true | Select-Object record_id,original_target_id,suggested_correct_id,reason | ConvertTo-Json -Depth 4; [IO.File]::WriteAllText((Join-Path $auditRoot 'report-build-unintended-directories.json'),($items|ConvertTo-Json -Depth 5))\"",
+        "ParentPid": 52200,
+        "From": "root-readers.jsonl"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 25516,
+        "Started": "2026-10-08T10:50:48.3861940+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $auditRoot 'Build-LabelAuditReport.ps1')) -TimeoutSeconds 90 -ProcessQueryTimeoutSeconds 5 -LogName 'report-build-final' -LogDirectory (Join-Path $auditRoot 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+        "ParentPid": 52200,
+        "From": "root-readers.jsonl"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 53812,
+        "Started": "2026-10-08T10:51:51.6648880+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); Get-Content -LiteralPath ROADMAP.md -TotalCount 28; Get-Content -LiteralPath HANDOFF.md -TotalCount 25; $identity=Get-ChildItem -LiteralPath (Join-Path $auditRoot 'process-logs') -File -Filter '*.identity.json' | Select-Object -First 1; Get-Content -LiteralPath $identity.FullName -TotalCount 65; $contract=Get-Content -LiteralPath (Join-Path $auditRoot 'contract-readers.json') -Raw | ConvertFrom-Json -Depth 20; $contract.PSObject.Properties.Name; Get-Content -LiteralPath (Join-Path $auditRoot 'root-readers.jsonl') -Tail 1\"",
+        "ParentPid": 52200,
+        "From": "root-readers.jsonl"
+      },
+      "state": "absent"
+    },
+    {
+      "identity": {
+        "Pid": 82176,
+        "Started": "2026-10-08T10:52:57.9072510+00:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $auditRoot='D:\\source\\Sezika\\.artifacts\\label-audit-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $auditRoot 'root-readers.jsonl'),(($self | Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId | ConvertTo-Json -Compress)+[Environment]::NewLine)); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $auditRoot 'Test-AuditProcessClosure.ps1')) -TimeoutSeconds 60 -ProcessQueryTimeoutSeconds 5 -LogName 'audit-process-closure' -LogDirectory (Join-Path $auditRoot 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+        "ParentPid": 52200,
+        "From": "root-readers.jsonl"
+      },
+      "state": "matching_live"
+    }
+  ],
+  "cleanup_commands_executed": false,
+  "retained_owned_empty_directories": [
+    "D:\\source\\Sezika\\general-zh-choice-01",
+    "D:\\source\\Sezika\\delivery"
+  ],
+  "cleanup_limitation": "Automatic approval rejected archive/remove command: blocked by policy; no bypass attempted."
+}
