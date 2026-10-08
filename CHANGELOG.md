@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- 增加独立SZDH1未训练诊断head格式、固定域初始化与专用typed loader：零更新、loss未测、canonical descriptor及逐F32位模式再生验证，默认训练head/checkpoint解析实际拒绝。一次构建零警告/错误、tiny1/full8共27变体和旧publisher8项回归通过；三DLL/21条记录身份终核通过，见[证据](docs/evidence/diagnostic-head-asset-2026-10-08.md)。尚未接入runtime/CLI/GPU，也不是训练、质量或AOT验收。
 - 加固独立head资产原子保存：owner在CreateNew前准备、实际prefix/hash归属核验、独立5秒清理、未知替换保留及双错误聚合；SZMH1编码/hash与Load兼容。一次构建零警告/错误、tiny1/full8文件I/O检查、三DLL及18条已知进程身份终核通过，见[证据](docs/evidence/head-asset-publication-2026-10-08.md)。本批没有训练、GPU或AOT验收。
 - 增加独立模型CUDA画像入口与CPU tiny兼容检查：记录实际Evaluate E2E、Score调用/typed返回/验证的独立分母、前置失败unknown与已核资产身份，发布partial独立回收。最终零警告/错误、tiny1/full8及实际DLL/24条资源身份复核通过；本入口GPU/正式性能/AOT未验收，见[证据](docs/evidence/independent-profile-entry-2026-10-08.md)。
 - 增加 Ubuntu 有界任务 runner：共享单调工作/清理预算、逐 PID/start/token/argv/父链证明、完整最终分母及清理阶段不发信号的安全延后。tiny→八项生命周期合同全部通过，28个Linux身份及67个Windows身份独立终核无匹配存活；原失败和协作/短寿命进程限制保留，见[工程证据](docs/evidence/bounded-linux-runner-2026-10-08.md)。

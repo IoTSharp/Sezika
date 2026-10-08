@@ -41,3 +41,5 @@ v1冻结保留；v2冻结SHA D57D4D6CBD778EBE98A3E62A27CB95328761320DA53CD2A0D0E
 证据根 `.artifacts/head-asset-publication-20261008/`：source-freeze[-v2].json、source-snapshots[-v2].json、independent-review.md、root-{build1,tiny,full}-execution.json、各原始runner日志/receipt及root-final-validation.json。下一独立诊断格式/专用loader、资产CLI和CUDA画像分别验收；正式许可、人审/封存、可信上游数值、真实训练收益/质量/校准、trained-head两RID及发布门槛仍开放。Sezika仅commit，不push/发布/部署；用户微信两文件保留。
 
 首Git收口尝试在stage PID75372遇到Process snapshot timeout，receipt Failed/ExitCode=null/cleanup为空；原stage退出码unknown，不改写为命令成功。随后只读核HEAD仍819ada0、八份批准文件已经完整暂存，79864/70796/75372三PID当前absent，未执行commit。恢复使用新日志根、仅接纳这八项完整暂存集合、相同源hash和已支持的有界5秒CIM查询上限；不跳过进程核验，不重跑构建/检查。原失败保留。
+
+恢复后工程已单独提交c8f1211。八份新Git回执Succeeded0/cleanup为空，16条已知身份无匹配存活，commit script已退出；原三Git/launcher及四reviewer共8PID后来absent。证据为root-recovery-git-resource-closure.json与root-prior-git-reviewer-closure.json。较晚终核不改变首stage退出码unknown。

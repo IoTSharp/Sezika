@@ -33,17 +33,25 @@
 | Linux协作runner工程 | `32822f8` | v10 tiny→8case通过，原始回执/参数和独立审查通过，28Linux身份/67Windows记录无匹配；随后11份Git/reader/worker回执与44身份终核0，旧失败保留 |
 | 独立画像入口工程 | `06de2ed` | 最终三源/实际DLL冻结，第二构建零警告错误、tiny1/full8，四runner/24身份及八Git/16身份终核0；GPU/正式性能/AOT仍开放 |
 
-### 2026-10-08 UTC04:54 接续检查点
+### 2026-10-08 UTC05:28 接续检查点
+
+SZDH1诊断资产已完成独立审查和root真实验证，待本批单独commit：作者05:01:04–05:13:26、9调用/7源码；五源冻结05:12:29，freeze SHA1FA904…C82CA。一次build76260/37.993秒零警告错误，tiny42044/4.031秒1PASS、full83180/4.170秒8PASS（27变体）、旧publisher84256/4.452秒8PASS。三DLL恒定，四成功runner/21条记录身份无匹配，三个专属fixture根0项且已删除；root-final-validation.json SHA BBE3055CF7858F17C1BA9190002FAF3A7ABC0CA75F7F2BB61E54378382EA5158。不重复已通过的运行，范围与局限见[永久证据](docs/evidence/diagnostic-head-asset-2026-10-08.md)。没有真实训练或新GPU/AOT结论。
+
+下一独立runtime/CUDA切片已登记ROADMAP：next_executable_audit负责core interface/facade/session与core checks；linux_cancel_cause负责CUDA新pipeline/共同GPU forward和CUDA checks。root独占tests Program接线、共享docs和Git；作者当前仅准备，root完成诊断资产commit才明确允许写入。各首次clock起22分钟、19分钟停新/3分钟finally，最多14短调用，core10明确文件/CUDA8；root统一build/tests、GPU窗口独占。CLI/profile不是本批归属。30分钟heartbeat继续。
 
 Linux工程已单独提交32822f8；root-v10-git-reader-resource-closure.json核8Git、2外部reader、1worker共11成功回执，44身份无匹配，全部cleanup为空。独立画像已单独提交06de2ed：第2build1464/21.516秒、零警告/错误，tiny69660/2.930秒、full8 25092/3.188秒全PASS；三个实际DLL在build2/tiny/full不变，四runner/24身份及八Git/16身份终核0，两个fixture根0项。独立复审SHA C08F65…9A38EA及rename逆变换通过，首次构建失败、晚停新增线29.964秒写报告均保留。不称GPU/正式性能/AOT已验，没有push。
 
 画像工程已单独提交06de2ed，八Git/16身份无匹配，证据与HEAD后续交接已补。linux_cancel_cause初次资产审计已停；next_executable_audit恢复审计04:26:04–04:28:58完整核两篇证据、当前model/dataset小manifest及两历史head/report明确路径。两个历史产物当前不存在，不能用旧FeatureSha/HeadSha当当前文件实测身份；范围不代表全仓库无head。恢复报告SHA14F2ED…8375E保留，无GPU/训练/模型加载或下载。
 
-head SaveNew v2已验收待独立commit：Core584E72/ProgramCF2231/Checks3479D2冻结，一次build18140/17.105秒零警告错误，tiny75300/2.905秒1PASS、full64400/3.088秒8PASS；三DLL保持，三runner/18条已知身份无匹配、两个fixture根0项已删。root-final-validation.json与永久head-asset-publication-2026-10-08.md记录范围；两P2静态修复、review原SHA859F4A…52CA1和准确delta纠正均保留，报告晚停新线14.119秒不倒填。所有作者/复审均已停止，没有当前GPU/教师服务/下载。
+head SaveNew v2已验收并单独提交c8f12112984d8e6d4abf43bf73ec8b54532135bb：Core584E72/ProgramCF2231/Checks3479D2冻结，一次build18140/17.105秒零警告错误，tiny75300/2.905秒1PASS、full64400/3.088秒8PASS；三DLL保持，三runner/18条已知身份无匹配、两个fixture根0项已删。root-final-validation.json与永久head-asset-publication-2026-10-08.md记录范围；两P2静态修复、review原SHA859F4A…52CA1和准确delta纠正均保留，报告晚停新线14.119秒不倒填。没有当前GPU/教师服务/下载。
 
 首Git stage75372受Process snapshot timeout影响，Failed/ExitCode=null，HEAD819ada0未变；八批准文件实际已完整暂存，三个Git PID后来absent。root以新日志根/相同八path和三源hash恢复收口，CIM查询从2秒改为runner已有支持的5秒上限，原失败保留；不得把未知stage退出码称成功。Git由root独占，不重跑已通过构建/检查。
 
+恢复Git八回执全部Succeeded0/cleanup为空，16身份无匹配、commit script已退出，root-recovery-git-resource-closure.json；另核原三Git+launcher和四reviewer共8PID当前absent，root-prior-git-reviewer-closure.json，不倒填旧stage退出码。root已接续next_executable_audit实现独立SZDH1/typed asset/专用loader/seeded零更新，最多7文件/12准备调用，实际首clock05:01:04、05:18:04停新、05:21:04硬截止；只归属core诊断资产及必要publisher提取、新tiny检查与tests Program。CLI/profile/runtime/CUDA不改，正式训练state/feature/data字段不借用，root统一真实build/检查/独立commit。下一次先核作者freeze，不重复派单；profile_review另以4明确源/4调用、6分钟窗口只读设计GPU/runtime接线，硬截止≤05:12，不修改源码。30分钟heartbeat继续。
+
 本轮共享交接已另提交819ada0，八Git回执/16身份无匹配、script已退出，root-handoff-git-resource-closure-v2.json；v1闭包漏root字段仅核8launcher，原文件保留，不假称原v1完整。画像兼容审计原计划文件写入guard拒绝，root以diagnostic-profile-audit-message-20261008.md保存最终消息、已知两reader79096/76320后来absent。另新正式入口审计04:49:55–04:52:30、4调用/4源码按期交付diagnostic-formal-entry-audit.md SHA70193E…338671；SZMK1/default head magic与准入/新算features边界已静态确认，GPU/CPU报告decoder与workflow实际head路径尚未完整审/测。不得以sidecar或0steps宣称强隔离；下一实现用独立诊断magic/typed loader，再接CLI/GPU画像。正式数据/真人审核/封存/上游oracle与正式训练质量仍开放，30分钟heartbeat继续；用户微信文件保留。
+
+补充workflow审计05:00:59–05:03:20按期交付，3源码/4调用，diagnostic-workflow-entry-audit.md SHA2E9AC5…7A7EC7。GPU恢复真实调用默认head/checkpoint Load并核报告/optimizer/权重bytes；CPU默认checkpoint恢复无head输入；GPU schema3与CPU schema2/steps>=1/unknown成员拒绝均静态实读。上一审计的实际调用路径unknown据此收敛，仍未运行诊断负fixture；新格式不需要放宽正式decoder或人工准入。
 
 最终Linux八case/逐身份终核及画像三源/DLL/检查的完整证据分别见docs/evidence/bounded-linux-runner-2026-10-08.md与independent-profile-entry-2026-10-08.md。旧权限等待中断及v1–v9失败不倒填为成功；当前执行范围以本节为准，下方历史检查点不作为活跃派单。
 

@@ -36,6 +36,13 @@ byte[] SafeTensorFile(string headerJson, int payloadBytes)
 
 try
 {
+    if (args.Length == 1 && args[0] is "--diagnostic-head-asset-tiny" or "--diagnostic-head-asset")
+    {
+        global::Sezika.Tests.DiagnosticHeadAssetChecks.Run(Check,
+            tiny: args[0] == "--diagnostic-head-asset-tiny");
+        Console.WriteLine($"Diagnostic head asset checks passed: {passed}");
+        return 0;
+    }
     if (args.Length == 1 && args[0] is "--head-asset-publication-tiny" or "--head-asset-publication")
     {
         global::Sezika.Tests.HeadAssetPublicationChecks.Run(Check,
@@ -134,6 +141,7 @@ try
     Check(trained.Weights[0] > 0 && double.IsFinite(trained.FinalLogLoss), "frozen encoder head training");
     global::Sezika.Tests.IndependentMarkerHeadChecks.Run(Check, ExpectDecisionCode);
     global::Sezika.Tests.HeadAssetPublicationChecks.Run(Check);
+    global::Sezika.Tests.DiagnosticHeadAssetChecks.Run(Check);
     global::Sezika.Tests.IndependentTrainingWorkflowChecks.Run(Check, ExpectDecisionCode);
     global::Sezika.Tests.IndependentPipelineChecks.Run(Check, ExpectDecisionCode);
     global::Sezika.Tests.IndependentLoaderContractChecks.Run(Check, ExpectDecisionCode);

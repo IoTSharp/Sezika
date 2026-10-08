@@ -140,7 +140,9 @@ S5-06独立画像入口工程已完成：`independent-profile`显式接独立dec
 
 S4-12 head资产发布工程已验收：`IndependentMarkerHeadAssetStore.SaveNew`保持SZMH1序列化/hash与Load兼容，在CreateNew前准备owner、取得后无分配登记，捕获实际prefix并在独立5秒预算核归属回收；未知替换保留路径、单异常原帧与多错误聚合。最终一次构建零警告/错误、tiny1/full8文件I/O检查及三DLL/18条已知身份终核通过，见[证据](docs/evidence/head-asset-publication-2026-10-08.md)。这是保存工程，不关闭正式训练资产/质量/AOT。
 
-接续S4-12未训练诊断资产：先实现与SZMH1/SZMK1不同magic的静态typed诊断格式/专用loader及seeded零更新初始化，descriptor hash明确属于初始化域，loss未测/nullable，不创建训练state、features、checkpoint或训练报告；核默认head/checkpoint解析拒绝该文件。再接显式CLI资产准备和独立CUDA单请求画像，分别验收，不能用sidecar、零步骤或旧历史hash代替provenance与真实文件身份。
+S4-12未训练诊断资产工程已验收：独立SZDH1/schema1、静态typed身份、专用loader和固定域seeded初始化，强制UntrainedDiagnostic/零更新/未测loss；descriptor与权重位模式再生核验，不创建训练state、features、checkpoint或训练报告。一次构建零警告/错误、tiny1/full8共27变体及旧publisher8项回归通过；默认head/checkpoint实际拒绝新magic，三DLL冻结及21条记录身份终核通过，见[诊断资产证据](docs/evidence/diagnostic-head-asset-2026-10-08.md)。
+
+接续S4-15诊断runtime/CUDA工程切片：平行IDiagnosticDecisionPipeline与DiagnosticDecisionV1Runtime，显式非null pipeline和真实DiagnosticHeadIdentity/文件/descriptor绑定；复用无训练身份的执行与GPU三行forward逻辑，保持正式SZMH1入口契约。先tiny CPU兼容和实卡CUDA前向/资源回归，CLI资产准备与独立诊断画像另开切片；画像报告正式head/feature身份为空、正式接受全部false。最多1request/1sample/0warmup真实CUDA诊断在接线验收后另行执行，不用sidecar、零步骤或历史hash冒充训练provenance，不关闭训练收益/质量/AOT/性能门槛。
 
 ## 编号任务板
 
