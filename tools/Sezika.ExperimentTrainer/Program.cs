@@ -18,17 +18,23 @@ try
         Console.WriteLine("Sezika.ExperimentTrainer check --data <derived-package> --manifest-sha256 <hash> --max-checks <1..8> --artifact-directory <existing-directory>");
         Console.WriteLine("Sezika.ExperimentTrainer check-gpu --device <0..15> --max-checks <1|3> --timeout-seconds <1..60>; synthetic numerical checks only");
         Console.WriteLine("Sezika.ExperimentTrainer lengths --data <derived-package> --manifest-sha256 <hash> --tokenizer <fixed-tokenizer.json> --max-records <1|32>; rendered token lengths only,30seconds");
+        Console.WriteLine("Sezika.ExperimentTrainer evaluate --data <same-package> --manifest-sha256 <hash> --package <fixed-package> --output <source-training-directory> --report-sha256 <hash> --evaluation-output <fresh-json-outside-source> [--device 0..15] [--timeout-seconds 1..460]; train24 plus8 fresh fixed-left1 Choice encoder forwards only");
+        Console.WriteLine("train --diagnostics fixed-left1 requires --steps768 --seed17 --learning-rate0.001 --max-tokens1024; training<=300seconds/overall<=460seconds; saves separate experiment-learnability-evaluation.json without changing the v1 training report contract");
+        Console.WriteLine("validate --diagnostics fixed-left1 additionally requires --evaluation-sha256 <same-process-evaluation-hash> --evaluation-output <fresh-json-outside-source>; fresh disk/encoder/CE/row-output comparison, max72 forwards");
+        Console.WriteLine("Sezika.ExperimentTrainer check-evaluation --data <same-package> --manifest-sha256 <hash> --source <old-training-directory> --report-sha256 <hash> --max-checks <1|6>; bounded CPU contracts and synthetic fixtures only,no GPU");
         Console.WriteLine("Explicit teacher-labelled experiment only: human review/license-release/quality/calibration/sealed/AOT/performance/publication remain false. Frozen encoder forward and head CE/SGD use GPU. No resume or CPU encoder fallback.");
         return 2;
     }
     if (args[0] == "check") { ExperimentChecks.Run(args, cancellation.Token); return 0; }
     if (args[0] == "check-gpu") { ExperimentChecks.RunGpu(args, cancellation.Token); return 0; }
     if (args[0] == "lengths") { ExperimentChecks.RunLengths(args, cancellation.Token); return 0; }
+    if (args[0] == "check-evaluation") { ExperimentEvaluationChecks.Run(args, cancellation.Token); return 0; }
     var options = ExperimentOptions.Parse(args, cancellation.Token);
     using var budget = new ExperimentBudget(options.TimeoutSeconds, cancellation.Token);
     using var data = ExperimentData.Open(options.Data, options.ManifestSha256, budget.Check, budget.Token);
     if (options.Command == "train") ExperimentOperations.Train(options, data, budget);
-    else ExperimentOperations.Validate(options, data, budget);
+    else if (options.Command == "validate") ExperimentOperations.Validate(options, data, budget);
+    else ExperimentOperations.Evaluate(options, data, budget);
     return 0;
 }
 catch (OperationCanceledException) { Console.Error.WriteLine("experiment: cancelled or bounded deadline exceeded"); return 124; }
@@ -38,18 +44,21 @@ finally { Console.CancelKeyPress -= cancel; }
 namespace Sezika.ExperimentTrainer
 {
     internal sealed record ExperimentOptions(string Command, string Data, string ManifestSha256, string Package,
-        string Output, string? ReportSha256, int Device, int Steps, float LearningRate, int Seed, int TrainingSeconds, int TimeoutSeconds, int MaxTokens)
+        string Output, string? ReportSha256, int Device, int Steps, float LearningRate, int Seed, int TrainingSeconds, int TimeoutSeconds, int MaxTokens,
+        bool Diagnostics = false, string? EvaluationOutput = null, string? EvaluationSha256 = null)
     {
         internal static ExperimentOptions Parse(IReadOnlyList<string> arguments, CancellationToken token)
         {
             token.ThrowIfCancellationRequested();
-            if (arguments.Count is < 9 or > 25 || arguments[0] is not ("train" or "validate") || (arguments.Count & 1) == 0)
-                throw ExperimentData.Invalid("Expected a bounded train or validate command with named pairs.");
+            if (arguments.Count is < 9 or > 31 || arguments[0] is not ("train" or "validate" or "evaluate") || (arguments.Count & 1) == 0)
+                throw ExperimentData.Invalid("Expected a bounded train, validate or evaluate command with named pairs.");
             var values = new Dictionary<string, string>(StringComparer.Ordinal); var watch = Stopwatch.StartNew();
             string[] allowed = arguments[0] == "train"
-                ? new[] { "--data", "--manifest-sha256", "--package", "--output", "--device", "--steps", "--learning-rate", "--seed", "--training-seconds", "--timeout-seconds", "--max-tokens" }
-                : ["--data", "--manifest-sha256", "--package", "--output", "--report-sha256", "--device", "--timeout-seconds"];
-            for (var index = 1; index < arguments.Count && index < 25; index += 2)
+                ? new[] { "--data", "--manifest-sha256", "--package", "--output", "--device", "--steps", "--learning-rate", "--seed", "--training-seconds", "--timeout-seconds", "--max-tokens", "--diagnostics" }
+                : arguments[0] == "evaluate"
+                ? ["--data", "--manifest-sha256", "--package", "--output", "--report-sha256", "--device", "--timeout-seconds", "--evaluation-output"]
+                : ["--data", "--manifest-sha256", "--package", "--output", "--report-sha256", "--device", "--timeout-seconds", "--diagnostics", "--evaluation-sha256", "--evaluation-output"];
+            for (var index = 1; index < arguments.Count && index < 31; index += 2)
             {
                 token.ThrowIfCancellationRequested();
                 if (watch.Elapsed > TimeSpan.FromSeconds(5) || !allowed.Contains(arguments[index], StringComparer.Ordinal) ||
@@ -67,11 +76,23 @@ namespace Sezika.ExperimentTrainer
             if (values.TryGetValue("--learning-rate", out var rateText) && (!float.TryParse(rateText, NumberStyles.Float, CultureInfo.InvariantCulture, out rate) || !float.IsFinite(rate) || rate <= 0 || rate > 0.1f))
                 throw ExperimentData.Invalid("Invalid learning rate.");
             var manifestHash = Need("--manifest-sha256"); ExperimentData.RequireHash(manifestHash);
-            var reportHash = arguments[0] == "validate" ? Need("--report-sha256") : null;
+            var reportHash = arguments[0] != "train" ? Need("--report-sha256") : null;
             if (reportHash is not null) ExperimentData.RequireHash(reportHash);
-            return new(arguments[0], Path.GetFullPath(Need("--data")), manifestHash, Path.GetFullPath(Need("--package")),
+            var diagnostics = values.TryGetValue("--diagnostics", out var diagnosticMode);
+            if (diagnostics && diagnosticMode != "fixed-left1") throw ExperimentData.Invalid("Only fixed-left1 diagnostics are supported.");
+            var evaluationHash = diagnostics && arguments[0] == "validate" ? Need("--evaluation-sha256") : null;
+            if (evaluationHash is not null) ExperimentData.RequireHash(evaluationHash);
+            var evaluationOutput = arguments[0] == "evaluate" || (diagnostics && arguments[0] == "validate") ? Path.GetFullPath(Need("--evaluation-output")) : null;
+            if (!diagnostics && arguments[0] == "validate" && (values.ContainsKey("--evaluation-sha256") || values.ContainsKey("--evaluation-output")))
+                throw ExperimentData.Invalid("Validation evaluation options require explicit fixed-left1 diagnostics.");
+            var parsed = new ExperimentOptions(arguments[0], Path.GetFullPath(Need("--data")), manifestHash, Path.GetFullPath(Need("--package")),
                 Path.GetFullPath(Need("--output")), reportHash, Number("--device", 0, 15, 0), Number("--steps", 1, 768, 72), rate,
-                Number("--seed", int.MinValue, int.MaxValue, 17), Number("--training-seconds", 1, 600, 600), Number("--timeout-seconds", 1, 1200, 1200), Number("--max-tokens", 64, 1024, 256));
+                Number("--seed", int.MinValue, int.MaxValue, 17), Number("--training-seconds", 1, 600, diagnostics ? 300 : 600), Number("--timeout-seconds", 1, 1200, diagnostics || arguments[0] == "evaluate" ? 460 : 1200), Number("--max-tokens", 64, 1024, 256),
+                diagnostics, evaluationOutput, evaluationHash);
+            if ((diagnostics || arguments[0] == "evaluate") && parsed.TimeoutSeconds > 460) throw ExperimentData.Invalid("Learnability CLI has a460second maximum.");
+            if (diagnostics && arguments[0] == "train" && (parsed.Steps != 768 || parsed.Seed != 17 || parsed.LearningRate != 0.001f || parsed.MaxTokens != 1024 || parsed.TrainingSeconds > 300))
+                throw ExperimentData.Invalid("Learnability training is fixed at768steps/seed17/LR0.001/strict1024/SGD<=300seconds.");
+            return parsed;
         }
     }
 
@@ -82,6 +103,16 @@ namespace Sezika.ExperimentTrainer
         private readonly int _seconds;
         internal CancellationToken Token => _deadline.Token;
         internal double ElapsedSeconds => _clock.Elapsed.TotalSeconds;
+        internal int EncoderForwardLimit { get; set; } = 72;
+        internal int EncoderForwardsStarted { get; private set; }
+        internal int EncoderForwardsCompleted { get; private set; }
+        internal void BeginEncoderForward()
+        {
+            Check();
+            if (EncoderForwardsStarted >= EncoderForwardLimit) throw ExperimentData.Invalid("Explicit encoder forward count budget exhausted.");
+            EncoderForwardsStarted++;
+        }
+        internal void CompleteEncoderForward() { Check(); EncoderForwardsCompleted++; }
         internal ExperimentBudget(int seconds, CancellationToken token)
         {
             _seconds = seconds; _deadline = CancellationTokenSource.CreateLinkedTokenSource(token); _deadline.CancelAfter(TimeSpan.FromSeconds(seconds));
@@ -96,7 +127,7 @@ namespace Sezika.ExperimentTrainer
         public void Dispose() => _deadline.Dispose();
     }
 
-    internal static class ExperimentOperations
+    internal static partial class ExperimentOperations
     {
         internal const ulong GpuLimit = 3UL * 1024 * 1024 * 1024;
         internal const string HeadName = "experiment-head.asset";
@@ -121,7 +152,7 @@ namespace Sezika.ExperimentTrainer
             return IndependentModelLoader.Load(package, new EncoderExecutionOptions { Kernel = EncoderKernelMode.Scalar, Deadline = TimeSpan.FromSeconds(600) }, budget.Token);
         }
         private static (MarkerFeatureSet Train, MarkerFeatureSet Development) Export(CudaDevice device, IndependentEncoderModelPackage model,
-            ExperimentData data, int maxTokens, ExperimentBudget budget)
+            ExperimentData data, int maxTokens, ExperimentBudget budget, bool includeDevelopment = true)
         {
             var identity = new MarkerFeatureIdentity(model.ModelId, model.EncoderSha256, model.TokenizerSha256, data.ManifestSha256, model.Encoder.Config.HiddenSize);
             var train = new List<MarkerFeatureExample>(24); var development = new List<MarkerFeatureExample>(8);
@@ -131,11 +162,12 @@ namespace Sezika.ExperimentTrainer
                 for (var index = 0; index < 32; index++)
                 {
                     CheckGpu(device, budget); var row = data.Records[index];
+                    if (!includeDevelopment && row.Split != "train") continue;
                     Progress($"GPU feature export {index + 1}/32 {row.RecordId}");
                     if (row.Request.ModelId != model.ModelId) throw ExperimentData.Invalid("Request student model differs from the actually loaded model.");
                     var sequence = IndependentDecisionV1SequenceBuilder.Build(model.Tokenizer, row.Request, row.Question,
                         new IndependentDecisionSequenceOptions { MaxTokens = maxTokens }, budget.Token);
-                    var hidden = encoder.Encode(sequence.TokenIds, budget.Token);
+                    budget.BeginEncoderForward(); var hidden = encoder.Encode(sequence.TokenIds, budget.Token); budget.CompleteEncoderForward();
                     try
                     {
                         if (hidden.Length != checked(sequence.TokenIds.Length * identity.HiddenSize) || hidden.Length > checked(1024 * 2048))
@@ -179,7 +211,7 @@ namespace Sezika.ExperimentTrainer
                     CheckGpu(device, budget); Progress($"loaded GPU inference {rows.Count + 1}/8 {row.RecordId}");
                     var sequence = IndependentDecisionV1SequenceBuilder.Build(model.Tokenizer, row.Request, row.Question,
                         new IndependentDecisionSequenceOptions { MaxTokens = maxTokens }, budget.Token);
-                    var logits = pipeline.Score(sequence.TokenIds, sequence.Type, sequence.MarkerPositions, budget.Token);
+                    budget.BeginEncoderForward(); var logits = pipeline.Score(sequence.TokenIds, sequence.Type, sequence.MarkerPositions, budget.Token); budget.CompleteEncoderForward();
                     if (logits.Length != row.CandidateIds.Length || logits.Any(value => !double.IsFinite(value))) throw ExperimentData.Invalid("Loaded GPU logits are invalid.");
                     var max = logits.Max(); var sum = 0d; var probabilities = new double[logits.Length]; var predicted = 0;
                     for (var candidate = 0; candidate < logits.Length && candidate < 32; candidate++)
@@ -245,6 +277,7 @@ namespace Sezika.ExperimentTrainer
             var loadedTrain = Measure("disk_loaded_parameters_train24", device, features.Train, loadedHead.Head, budget);
             var loadedDevelopment = Measure("disk_loaded_parameters_development8", device, features.Development, loadedHead.Head, budget);
             var inference = Infer(device, model, loadedHead, data, options.MaxTokens, budget);
+            var diagnostics = options.Diagnostics ? Observe(device, model, data, features.Train, features.Development, loadedHead, budget, inference) : null;
             var info = device.Info;
             var resources = CloseResources(device, model, budget);
             var report = new ExperimentTrainingReport
@@ -269,11 +302,16 @@ namespace Sezika.ExperimentTrainer
             var bytes = JsonSerializer.SerializeToUtf8Bytes(report, ExperimentJsonContext.Default.ExperimentTrainingReport);
             if (bytes.Length > 1_048_576) throw ExperimentData.Invalid("Training report exceeds1MiB.");
             var reportHash = ExperimentData.Hash(bytes); output.Report.WriteNew(bytes, reportHash); budget.Check();
+            string? evaluationHash = null;
+            if (diagnostics is not null)
+                evaluationHash = WriteEvaluation(output.Evaluation, MakeEvaluation("new_head_disk_loaded_same_process", reportHash, report, diagnostics, resources, budget), budget);
             Console.WriteLine($"{{\"status\":\"completed_experiment_not_formal_acceptance\",\"report_sha256\":\"{reportHash}\",\"head_sha256\":\"{headHash}\",\"checkpoint_sha256\":\"{checkpointHash}\",\"completed_steps\":{state.CompletedSteps}}}");
+            if (evaluationHash is not null) Progress("evaluation_sha256=" + evaluationHash);
             budget.Check(); output.Commit();
         }
         internal static void Validate(ExperimentOptions options, ExperimentData data, ExperimentBudget budget)
         {
+            if (options.Diagnostics) { ValidateLearnability(options, data, budget); return; }
             ExperimentData.CheckPath(options.Output, budget.Check);
             var reportPath = Path.Combine(options.Output, ReportName); var headPath = Path.Combine(options.Output, HeadName); var checkpointPath = Path.Combine(options.Output, CheckpointName);
             using var reportLease = new FileStream(reportPath, FileMode.Open, FileAccess.Read, FileShare.Read);
@@ -340,12 +378,14 @@ namespace Sezika.ExperimentTrainer
         internal ExperimentOwnedFile Checkpoint { get; }
         internal ExperimentOwnedFile Head { get; }
         internal ExperimentOwnedFile Report { get; }
+        internal ExperimentOwnedFile Evaluation { get; }
         internal ExperimentOutput(string directory, Action check)
         {
             directory = Path.GetFullPath(directory); check(); ExperimentData.CheckPath(directory, check);
             if (Directory.Exists(directory) || File.Exists(directory) || !Directory.Exists(Path.GetDirectoryName(directory)))
                 throw ExperimentData.Invalid("Output requires a fresh exclusive directory under an existing parent.");
             Checkpoint = new(Path.Combine(directory, ExperimentOperations.CheckpointName)); Head = new(Path.Combine(directory, ExperimentOperations.HeadName)); Report = new(Path.Combine(directory, ExperimentOperations.ReportName));
+            Evaluation = new(Path.Combine(directory, ExperimentOperations.EvaluationName));
             _directory = new DirectoryInfo(directory); _directory.Create(); _directory.Refresh(); _creationUtc = _directory.CreationTimeUtc;
         }
         internal void Commit() => _committed = true;
@@ -354,7 +394,7 @@ namespace Sezika.ExperimentTrainer
             if (_committed) return;
             var watch = Stopwatch.StartNew(); var errors = new List<Exception>(4);
             void Check() { if (watch.Elapsed > TimeSpan.FromSeconds(10)) throw new IOException("Experiment output rollback deadline expired."); }
-            foreach (var file in new[] { Report, Head, Checkpoint })
+            foreach (var file in new[] { Evaluation, Report, Head, Checkpoint })
             { try { file.Cleanup(Check); } catch (Exception error) { errors.Add(error); } }
             try
             {

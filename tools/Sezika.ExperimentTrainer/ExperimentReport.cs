@@ -158,4 +158,5 @@ internal sealed record ExperimentLengthReport(string Contract, string Status, st
 [JsonSerializable(typeof(ExperimentValidationReport))]
 [JsonSerializable(typeof(ExperimentGpuCheckReport))]
 [JsonSerializable(typeof(ExperimentLengthReport))]
+[JsonSerializable(typeof(ExperimentEvaluationReport))]
 internal partial class ExperimentJsonContext : JsonSerializerContext;
