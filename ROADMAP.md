@@ -134,6 +134,10 @@ GPU切片C工程已验收：train-original-gpu明确选择设备、五项恢复�
 
 2026-10-08 接续 S4-06 审核切片工程：现有 development 指标与语言/题型分组已有实现，角色、否定、词面相似性及审核定义的候选顺序侧车尚缺。新增离线 `group-development-report`，仅消费最多32行既有诊断报告与独立hash绑定的人工审核标签侧车，使用静态DTO/source-generated JSON，保留未标注/未获审分母；不读取题文、不推断标签、不执行模型。先完成合成合同与取消/原子发布验证，真实审核标签与代表性诊断仍依赖S4-05，不能凭工具关闭质量/校准/封存或训练准入。
 
+S5-06执行边界工程已完成：Ubuntu runner 的八项生命周期合同、原始回执与独立进程终核通过，见[证据](docs/evidence/bounded-linux-runner-2026-10-08.md)；仅保证记录中保留任务token的协作身份范围，不以Windows退出或受控fixture代替完整Linux资源证明。
+
+接续S5-06独立画像入口工程：已限定四源码核实现有Benchmarks只接legacy loader/pipeline。新增显式`independent-profile`入口，复用独立decision-v1 runtime与静态CPU/CUDA pipeline，仅记录实际Evaluate E2E范围、完整模型/head/输入/backend身份及进入/完成/失败分母；encoder/head分项保持未测。先极小CPU兼容fixture及最多8项工程合同，不以诊断时间宣称正式性能；真实批量采样使用GPU，正式矩阵/质量/数值仍另验。仅归属Benchmarks入口与新增独立模块/检查文件，核心和CUDA不在本次修改范围，构建/检查须另在有界窗口中执行。
+
 ## 编号任务板
 
 任务使用 `S0`–`S6` 阶段编号和两位序号。状态只表示当前证据：`✅ 已完成`、`🚧 进行中`、`⏳ 计划中`、`⛔ 阻塞`。同一泳道内的任务可以并行；跨泳道按依赖推进。实现、真实推理、质量、AOT 和性能分别验收，不能用构建成功替代真实模型证据。

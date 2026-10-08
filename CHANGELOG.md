@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- 增加 Ubuntu 有界任务 runner：共享单调工作/清理预算、逐 PID/start/token/argv/父链证明、完整最终分母及清理阶段不发信号的安全延后。tiny→八项生命周期合同全部通过，28个Linux身份及67个Windows身份独立终核无匹配存活；原失败和协作/短寿命进程限制保留，见[工程证据](docs/evidence/bounded-linux-runner-2026-10-08.md)。
 - 增加 S4-06 审核标签侧车离线分组：固定已有 development 报告与侧车 hash，静态 DTO/source-generated JSON、候选映射及逐题概率重算，角色/否定/词面相似性/候选顺序的获审分组与 unknown 完整分母；所有正式准入标志保持 false。最终构建零警告/错误、tiny1/full12合成检查及真实 move 后取消回滚通过；无真实审核标签、模型调用、质量、AOT 或 RSS 验收，见[证据](docs/evidence/reviewed-slices-2026-10-08.md)。
 - 验收Ubuntu WSL2 GPU head训练Native AOT：最终冻结28输入、第2新ELF、native tiny1/full11共16更新，schema3磁盘3→6恢复与连续6参数bytes/loss/checkpoint/head一致；root12保存物/实际ELF/回执及进程复核通过。首次inventory失败、额外tiny只覆盖gate、清理非共享8秒限制和ILC并发2未证明生效均保留；两个TMPDIR由root精确非递归清理。仅合成head两RID工程，正式训练/质量另验；Windows并发描述同步纠正为CLI请求，见[Ubuntu证据](docs/evidence/gpu-training-aot-linux-2026-10-08.md)。
 - 验收Windows GPU head训练Native AOT：H4三题纯GPU CE/梯度/SGD，schema3三文件3→6磁盘恢复与连续6的全部参数bytes/loss/checkpoint/head一致；原生flags、PE、tiny1/full11及真实context回收通过。修复故障切片末尾预算检查，旧managed16/新native16绑定各自freeze，两build/一次publish零警告；合成诊断范围，Linux/正式数据/encoder反传/质量另验，见[证据](docs/evidence/gpu-training-aot-windows-2026-10-08.md)。

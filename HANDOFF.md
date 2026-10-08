@@ -29,6 +29,23 @@
 | 32题人工审核入口 | `c386d29` | 完整题文/候选/实际教师建议、八null人工字段，tiny1/full32及64引用核验、独立映射与root五文件身份通过；全部pending，曝光题不可封存 |
 | Windows GPU训练AOT | `6c3b096` | 最终五源freeze、原生PE/flags、tiny1/full11、H4三题磁盘3→6恢复与连续6、主48launch/480H2D/240D2H；旧managed16/新native16分别绑定版本，63身份终核 |
 | Linux GPU训练AOT | `14a3917` | 28固定输入、新ELF、native1→11共16更新、RID内三文件3→6恢复/连续6；首失败/runner预算限制保留，49Linux身份及root46身份零匹配，两TMPDIR已精确回收 |
+| 审核切片侧车工程 | `b2c54b3` | 最多32行既有development报告与hash绑定审核侧车；unknown完整分母及正式接受false。当前真实DLL冻结后零警告/错误构建、tiny1/full12通过；Git8调用及18身份随后无匹配存活，没有push |
+
+### 2026-10-08 UTC04:08 接续检查点
+
+Linux通用runner最终v10 tiny及2–8全部通过；冻结三源、gate、原始TSV/receipt/Windows bytes/hash/全部参数均已root复核。worker67128/Succeeded0/41.705秒；case2实际安全延后1次、未给缺proof父进程发信号，最终完整live/unknown/unchecked0。两个负fixture保持incomplete/127，不当资源成功。root两组28known全absent、各44proc/token live/unknown0，Windows前核67身份记录无匹配（含重复）；两个reader成功退出。永久证据见docs/evidence/bounded-linux-runner-2026-10-08.md；独立验收SHA EC81B0C1…32D8EA通过，root接续单独commit。没有模型/GPU/下载/新服务，旧失败全部保留。
+
+独立画像作者新静态修复窗口03:56–04:12、04:10停新增；三P2已修改，正在冻结最终三源。原build权限等待被中断，未知历史启动/退出；本次root UTC03:58只读CIM1077项/1.94秒核已知历史命令模式零当前候选，没有虚构历史零执行。作者不再提交build请求；root接收到最终freeze后统一最多2build/120秒、tiny1/30秒、full8/60秒，冻结实际DLL与资源。源码仍未验收，用户微信两文件不暂存。30分钟监督、GPU正式工作限制与Sezika不push/发布边界保持。
+
+### 2026-10-08 UTC03:50 历史检查点（被上方新结果接续）
+
+Linux通用runner仍是未验草案，未提交为已支持。v7同套tiny及2–7通过，第8控制进程原字段被forget后丢失而失败；v8仅两行保存原ppid/pgid/sid，tiny正常payload0但timer归属refresh失败、终核live1，余7项零执行；v9只将has_token/record_owned的原名义1s/2s局部检查改为共享单调子deadline，tiny通过、case2超时完成但中间ownership_unreadable导致cleanup_incomplete1，终核complete1/live0/unknown0/unchecked0，余3–8零执行。v8实际失败阶段仍unknown，不能把静态SECONDS缺陷或之后退出倒填为真实根因/当时回收成功。
+
+root已独立终核当前资源：v7共28known及两组43proc/token均零live/unknown，Windows70身份无匹配；v8四本批+两前observer身份absent、43proc/token零live/unknown，Windows11身份无匹配；v9八本批+前observer共9身份absent、44proc/token零live/unknown，Windows19身份无匹配。最新原始回执在`.artifacts/linux-runner-hardening-20261008/root-v9-independent-closure-windows/20261008-034952-617-root-v9-independent-closure.result.json`。全部原始失败、冻结与诊断保留；无GPU、教师服务、下载或独占MCP。
+
+最新Bash v9 SHA `D051624706D3E79E4880212293CF2C625C190738E91AABD55252B2AC527BC7C7`，freeze-v9 SHA `A7B9E073316B7CD755D4993D2EF9AA21ED90153BBB873FB9A645A2B7B570C912`，两PS保持v2。下一步先审cleanup阶段的安全延后方案：不发未经proof的信号，保持后续有界重核及完整最终分母；setup/work及实际signal syscall错误仍失败。没有授权跳过token/tick/argv/父链或把临时歧义直接改成成功。
+
+S5-06独立画像入口已由限定四源码确认缺口并在ROADMAP登记；`/root/next_executable_audit`归属Benchmarks的Program顶层接线及新IndependentProfile.cs/Checks.cs。方案仅CUDA真实入口/CPU tiny兼容、实际Evaluate E2E、Score调用与typed返回分开、分项未测、正式样本0。当前三个源码已存在但没有收到构建/检查通过证据；独立review指出前置失败not_started分母/已核身份、typed失败行状态及发布partial处理三个P2，已发作者修复。作者原窗口03:28:44–03:50:44、03:47:44停新增，不能擅自越界执行。Git/shared docs由root独占；未验代码与用户微信两文件不暂存。下一接续先核作者收口/权限与资源状态，再明确新窗口完成真实验证，不重复已通过S4-06/GPU/AOT/教师调用。
 
 固定真实 mmBERT 的 C 切片 encoder smoke 已通过：PID75592、48 tokens、markers27/37、hidden768、310 kernel launches；runner17.299秒，资源归零。marker SHA-256 `59194DCFF642F4790DBF55F58D38EFBAB200C0528BEE25894DE38D71296B1CCD`。该 smoke 没有训练 head；GPU head 的梯度/更新与恢复工程另有 fixture 实卡证据，没有正式数据训练结论。
 

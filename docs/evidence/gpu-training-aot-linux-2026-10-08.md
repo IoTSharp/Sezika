@@ -39,4 +39,6 @@ root先tiny再full：28输入/实际ELF、tiny三保存物/full九保存物原�
 
 临时清理原批命令被自动审批拒绝，未提供理由，作者关闭时`temporary_cleanup_completed=false`保持不变。root改为更窄的静态精确路径：先验证并删除一个0-byte/非link lock，再另17个同身份lock；随后对17个精确空目录（含两TMPDIR根）使用`Directory.Delete(path,false)`，逐项确认空、17次/15秒上限，无递归删除。成功记录`root-compiler-cleanup.json`及有界回执；两个TMPDIR均不存在，用户文件/共享cache/交付物未删。原拒绝及关闭时库存33项不改写。
 
+此项已单独提交`14a3917`；Git stage99560/commit35644及launcher、末两ILC读取和receipt全审计共五结果/十身份随后零匹配，见`root-git-closure.json`。额外只读收口脚本首次因PowerShell括号缺失exit1，修复后成功/2.948秒；失败回执保留，没有重新运行GPU或修改训练结果。
+
 GPU/原源码窗口已释放，无教师服务、下载或独占MCP。此合成head的Linux训练AOT切片与Windows各自闭环；正式trained-head两RID、数据准入/封存、上游数值、真实训练收益、质量/校准/性能/发布仍开放。Sezika仅commit，不push/发布/部署，30分钟监督继续。
