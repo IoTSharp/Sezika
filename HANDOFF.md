@@ -22,8 +22,9 @@
 
 train CE1.229626456896464→1.1749068026741345；dev1.2687934339046478→1.2772859781980515，教师一致仅2/8，质量未通过/未建立，不自动按dev调参扩量。32题长度103–920，使用strict1024保留完整输入。初始括号编译错误、Windows调用Linux runtime错误、train01 token256失败/0更新、旧SSH包装漏退出码造成Windows0、train02 runner早期setup没有payload的失败均保留；具体setup guard原因unknown。包装v2真实exit7核传播后，唯一成功train03及fresh validate03分别Linux24.400/24.090秒（含清理）、Windows28.939/28.114秒，actual completed0/全回收。时长不是正式性能。
 
-必要evaluator已单独commit8d93877，tiny1/full3实际GPU数值/取消通过最大误差8.324e-8；ExperimentTrainer五源v3独审冻结、实际publish/check1与8/lengths1与32通过。独立Linux后核6runner的22条身份记录（含重复）全absent；Windows37回执/126记录/135PID零matching/unknown，历史短reader native-child登记局限保留。专属空fixtures、compiler空子目录、setup-only probe已精确清理，workload日志/失败/交付物保留。见[永久闭环证据](docs/evidence/real-gpu-head-experiment-2026-10-08.md)。训练工具/报告/证据待独审收口后单独commit，准确提交以下方收口接续。
+必要evaluator已单独commit8d93877，tiny1/full3实际GPU数值/取消通过最大误差8.324e-8；ExperimentTrainer五源v3独审冻结、实际publish/check1与8/lengths1与32通过。独立Linux后核6runner的22条身份记录（含重复）全absent；Windows37回执/126记录/135PID零matching/unknown，历史短reader native-child登记局限保留。专属空fixtures、compiler空子目录、setup-only probe已精确清理，workload日志/失败/交付物保留。见[永久闭环证据](docs/evidence/real-gpu-head-experiment-2026-10-08.md)。训练工具/报告/证据已完成独审并单独commit875ccda；evaluator独立提交8d93877。
 
+提交收口：8d93877（只读GPU完整CE evaluator及数值/取消证据）、875ccda（真实实验训练工具、原报告/新进程验证/独审证据）。源五文件freeze v3保持，独审最终SHA1854877632A75DAE6A56B86EF2F614D9085307E75C7E8B34F77554BA0259A6C0；v3独审两个可选脚本/最终资源追加脚本错误如实保留，root已另核其5reader全部absent。提交前141个PID/130条记录/41回执无matching/unknown，root-local-resource-closure-precommit.json SHA80C36A09C36B332316B9A9073B5EA45789A61046263BED5129DC9A950AE42DA0。875ccda前两行混合换行whitespace检查失败后root误提交，本次交接将LF规范化并重新核查，原失败回执保留；未绕过训练或源码验真。暂停诊断源码、ROADMAP诊断登记hunk及用户文件继续原样未提交。
 root独占Git/shared docs；不push、对外上传、发布、部署或再训练。30分钟heartbeat保持ACTIVE并已更新：只补本实验剩余交接，闭环后安静，不重训、不扩量/调参、不恢复其他ROADMAP；等待用户新指令。当前子智能体只独审交付，无运行的训练、教师、上传、下载或本任务GPU进程。
 
 
