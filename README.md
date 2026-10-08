@@ -75,6 +75,7 @@ dotnet run --project src/Sezika.Cli -c Release --no-build -- predict --model .ar
 
 - [独立使用](docs/standalone-usage.md)：固定模型准备、CLI、C# 调用和决策输入输出。
 - [独立 head 训练 checkpoint 与恢复](docs/independent-training-checkpoint-s4-12.md)：有界累计步训练、hash 绑定恢复、v2 报告和推理 head 导出；工程 fixture 已验收，真实数据准入与质量另验。
+- [独立 head 保存加固](docs/evidence/head-asset-publication-2026-10-08.md)：实际写入prefix、失败/取消清理、替换保留与旧格式兼容的文件I/O验收。
 - [独立预测导出](docs/independent-prediction-export-s4-08.md)：获准 split 的本地模型输出接入校准工具，完整身份/失败分母和原子发布；fixture 联调保持 `not_eligible`。
 - [参考项目分析](docs/research.md)：Laya 的可审计模型实现，以及 TypeSafe Jev 的公开协议与边界。
 - [下一阶段研究](docs/next-stage-research-2026-09-25.md)：Sezika、Laya、Jev、Nimble 的路线比较，CPU/CUDA 优化、双模型训练与 IoTSharp 集成计划。

@@ -33,13 +33,17 @@
 | Linux协作runner工程 | `32822f8` | v10 tiny→8case通过，原始回执/参数和独立审查通过，28Linux身份/67Windows记录无匹配；随后11份Git/reader/worker回执与44身份终核0，旧失败保留 |
 | 独立画像入口工程 | `06de2ed` | 最终三源/实际DLL冻结，第二构建零警告错误、tiny1/full8，四runner/24身份及八Git/16身份终核0；GPU/正式性能/AOT仍开放 |
 
-### 2026-10-08 UTC04:40 接续检查点
+### 2026-10-08 UTC04:54 接续检查点
 
 Linux工程已单独提交32822f8；root-v10-git-reader-resource-closure.json核8Git、2外部reader、1worker共11成功回执，44身份无匹配，全部cleanup为空。独立画像已单独提交06de2ed：第2build1464/21.516秒、零警告/错误，tiny69660/2.930秒、full8 25092/3.188秒全PASS；三个实际DLL在build2/tiny/full不变，四runner/24身份及八Git/16身份终核0，两个fixture根0项。独立复审SHA C08F65…9A38EA及rename逆变换通过，首次构建失败、晚停新增线29.964秒写报告均保留。不称GPU/正式性能/AOT已验，没有push。
 
 画像工程已单独提交06de2ed，八Git/16身份无匹配，证据与HEAD后续交接已补。linux_cancel_cause初次资产审计已停；next_executable_audit恢复审计04:26:04–04:28:58完整核两篇证据、当前model/dataset小manifest及两历史head/report明确路径。两个历史产物当前不存在，不能用旧FeatureSha/HeadSha当当前文件实测身份；范围不代表全仓库无head。恢复报告SHA14F2ED…8375E保留，无GPU/训练/模型加载或下载。
 
-诊断资产设计审计已完成：diagnostic-asset-preparation-plan.md SHA523937…6148，04:30:46–04:34:13、5调用/4源码；未找到现成零步初始化CLI或开发训练准入绕过。先加固SaveNew，再实现显式未训练资产及强制provenance/domain边界，不把sentinel loss称实测。当前唯一代码作者next_executable_audit窗口04:36:58–04:54:58、04:51:58停新增，归属core IndependentMarkerHeadAsset.cs、new HeadAssetPublicationChecks.cs及tests Program最小分支；root统一审查及最多2build/120秒、先tiny再8case。linux_cancel_cause另做≤4源码/5调用的只读画像兼容审计，硬截止≤04:46；Git/shared docs/root独占。没有当前GPU/教师服务/下载。正式数据/真人审核/封存/上游oracle与正式训练质量仍开放；30分钟heartbeat sezika view已成功，继续本线程监督。用户微信两文件保留。
+head SaveNew v2已验收待独立commit：Core584E72/ProgramCF2231/Checks3479D2冻结，一次build18140/17.105秒零警告错误，tiny75300/2.905秒1PASS、full64400/3.088秒8PASS；三DLL保持，三runner/18条已知身份无匹配、两个fixture根0项已删。root-final-validation.json与永久head-asset-publication-2026-10-08.md记录范围；两P2静态修复、review原SHA859F4A…52CA1和准确delta纠正均保留，报告晚停新线14.119秒不倒填。所有作者/复审均已停止，没有当前GPU/教师服务/下载。
+
+首Git stage75372受Process snapshot timeout影响，Failed/ExitCode=null，HEAD819ada0未变；八批准文件实际已完整暂存，三个Git PID后来absent。root以新日志根/相同八path和三源hash恢复收口，CIM查询从2秒改为runner已有支持的5秒上限，原失败保留；不得把未知stage退出码称成功。Git由root独占，不重跑已通过构建/检查。
+
+本轮共享交接已另提交819ada0，八Git回执/16身份无匹配、script已退出，root-handoff-git-resource-closure-v2.json；v1闭包漏root字段仅核8launcher，原文件保留，不假称原v1完整。画像兼容审计原计划文件写入guard拒绝，root以diagnostic-profile-audit-message-20261008.md保存最终消息、已知两reader79096/76320后来absent。另新正式入口审计04:49:55–04:52:30、4调用/4源码按期交付diagnostic-formal-entry-audit.md SHA70193E…338671；SZMK1/default head magic与准入/新算features边界已静态确认，GPU/CPU报告decoder与workflow实际head路径尚未完整审/测。不得以sidecar或0steps宣称强隔离；下一实现用独立诊断magic/typed loader，再接CLI/GPU画像。正式数据/真人审核/封存/上游oracle与正式训练质量仍开放，30分钟heartbeat继续；用户微信文件保留。
 
 最终Linux八case/逐身份终核及画像三源/DLL/检查的完整证据分别见docs/evidence/bounded-linux-runner-2026-10-08.md与independent-profile-entry-2026-10-08.md。旧权限等待中断及v1–v9失败不倒填为成功；当前执行范围以本节为准，下方历史检查点不作为活跃派单。
 

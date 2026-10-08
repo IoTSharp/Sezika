@@ -138,7 +138,9 @@ S5-06执行边界工程已完成：Ubuntu runner 的八项生命周期合同、�
 
 S5-06独立画像入口工程已完成：`independent-profile`显式接独立decision-v1/CUDA，`check-independent-profile`仅H2 CPU tiny兼容；实际Evaluate E2E、Score进入/返回、typed返回/验证、unknown与失败全分母独立记录，分项保持未测、正式样本0。最终零警告/错误、tiny1/full8及实际DLL/资源终核通过，见[工程证据](docs/evidence/independent-profile-entry-2026-10-08.md)。本入口真实GPU/正式矩阵/性能/AOT仍待独立验收，批量运行使用GPU；核心和CUDA未修改。
 
-接续S4-12 head资产发布工程：`IndependentMarkerHeadAssetStore.SaveNew`已有格式与大小检查，但失败finally缺临时文件身份复核和独立回收预算。先保持二进制格式/既有hash语义，补CreateNew即时归属、实际prefix核验、取消/失败后的短回收预算、未知替换保留及原始/清理双异常，完成微型文件I/O合同后才接续诊断head准备；不改正式数据准入，也不以零更新初始化宣称训练或实测loss。
+S4-12 head资产发布工程已验收：`IndependentMarkerHeadAssetStore.SaveNew`保持SZMH1序列化/hash与Load兼容，在CreateNew前准备owner、取得后无分配登记，捕获实际prefix并在独立5秒预算核归属回收；未知替换保留路径、单异常原帧与多错误聚合。最终一次构建零警告/错误、tiny1/full8文件I/O检查及三DLL/18条已知身份终核通过，见[证据](docs/evidence/head-asset-publication-2026-10-08.md)。这是保存工程，不关闭正式训练资产/质量/AOT。
+
+接续S4-12未训练诊断资产：先实现与SZMH1/SZMK1不同magic的静态typed诊断格式/专用loader及seeded零更新初始化，descriptor hash明确属于初始化域，loss未测/nullable，不创建训练state、features、checkpoint或训练报告；核默认head/checkpoint解析拒绝该文件。再接显式CLI资产准备和独立CUDA单请求画像，分别验收，不能用sidecar、零步骤或旧历史hash代替provenance与真实文件身份。
 
 ## 编号任务板
 
