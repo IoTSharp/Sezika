@@ -1,0 +1,59 @@
+{
+  "Status": "Succeeded",
+  "Pid": 57308,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 31.108,
+  "TimeoutSeconds": 530,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\Invoke-LearnabilityScript.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-stage-b.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-08T09:25:00.2226327Z",
+  "ParentPid": 92348,
+  "Launcher": {
+    "Pid": 92348,
+    "Started": "2026-10-08T17:24:58.462722+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/gpu-learnability-20261008/scripts/Invoke-LearnabilityRemote.ps1 -Stage B | Out-File -LiteralPath 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\stage-b-windows-transcript.log'; Get-Content -LiteralPath 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\stage-b-windows-transcript.log' -Tail 5\"",
+    "ParentPid": 52200
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-b-logs\\20261008-092459-118-learnability-B.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-b-logs\\20261008-092459-118-learnability-B.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 57308,
+      "CreationDate": "2026-10-08T17:25:00.222632+08:00",
+      "Started": "2026-10-08T09:25:00.222632Z",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\Invoke-LearnabilityScript.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-stage-b.sh",
+      "ParentPid": 92348,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 18520,
+      "CreationDate": "2026-10-08T17:25:00.861609+08:00",
+      "Started": "2026-10-08T09:25:00.861609Z",
+      "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "ParentPid": 57308,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 70000,
+      "CreationDate": "2026-10-08T17:25:00.239976+08:00",
+      "Started": "2026-10-08T09:25:00.239976Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 57308,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

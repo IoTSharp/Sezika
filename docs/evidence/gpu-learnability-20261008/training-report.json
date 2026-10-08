@@ -1,0 +1,558 @@
+{
+  "schema_version": 1,
+  "training_contract": "sezika/teacher-labelled-gpu-experiment-training/v1",
+  "status": "completed_experiment_not_formal_acceptance",
+  "data_mode": "teacher_labelled_experiment",
+  "feature_backend": "cuda-modernbert-fp32-v1",
+  "training_backend": "cuda-independent-linear-marker-head-sgd-fp32",
+  "encoder_frozen": true,
+  "initial_parameter_source": "all_zero_three_linear_rows",
+  "identity": {
+    "model_id": "sezika/mmbert-base-independent-s4",
+    "encoder_sha256": "6168c84d2498cdacdcafee16b71a69b5c1636ad569bfabaf2855f5ce7dabd528",
+    "tokenizer_sha256": "197d4cc5406ee12cc50c8b5511f2393cc32d9db321545979ce041c1199178356",
+    "data_manifest_sha256": "B8C8D5E018C2BC0029BA100F8F46272AC4CB3B1EFEA27280FF449F685778B954",
+    "hidden_size": 768,
+    "protocol": "decision-v1",
+    "length_policy": "strict"
+  },
+  "manifest_sha256": "B8C8D5E018C2BC0029BA100F8F46272AC4CB3B1EFEA27280FF449F685778B954",
+  "records_sha256": "A015A8FA182EE62223CAFC307C618C515A19E90F843290DB9DFB53A56B9A041C",
+  "input_provenance_sha256": "4504B0FBFA666BE2F5FE62D5F568C5E7739E8D0C0713BDD97B1473BC2C0CB356",
+  "actual_data_root": "/root/sezika-experiments/20261008-real-head-v1/data",
+  "original_source_verification": "historical_source_license_hashes_verified_at_windows_data_preparation; this_execution_verifies_derived_three_file_package_only",
+  "data_declaration": {
+    "schema_version": 1,
+    "contract": "sezika/teacher-labelled-experiment-data/v1",
+    "dataset_id": "general-zh-en-teacher-experiment-32-v1",
+    "purpose": "teacher_labelled_experiment",
+    "protocol": "decision-v1",
+    "student_model_id": "sezika/mmbert-base-independent-s4",
+    "formal": false,
+    "human_review": "pending",
+    "teacher_output_training_permitted": false,
+    "user_authorized_experiment": true,
+    "teacher_answer_exposed": true,
+    "eligible_as_sealed_test": false,
+    "total": 32,
+    "train": 24,
+    "development": 8,
+    "records": {
+      "path": "D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data\\experiment-records.jsonl",
+      "sha256": "a015a8fa182ee62223cafc307c618c515a19e90f843290db9dfb53a56b9a041c",
+      "bytes": 21733
+    },
+    "sources": [
+      {
+        "kind": "teacher_manifest",
+        "path": "D:\\source\\Sezika\\.artifacts\\teacher-gpu-prompt-v2-20261008\\simple-run-20261007-2019\\result-all-32\\manifest.json",
+        "sha256": "5151fa98f0496e76c4a9b6cd64f6230792f078e695aae7311e41300b556093c2",
+        "bytes": 2019
+      },
+      {
+        "kind": "teacher_records",
+        "path": "D:\\source\\Sezika\\.artifacts\\teacher-gpu-prompt-v2-20261008\\simple-run-20261007-2019\\result-all-32\\records.jsonl",
+        "sha256": "deb5d8ec8e2c8f1d3f772c42cde1bde9f6141e975d4b20e942b52e1ab09a08e4",
+        "bytes": 54198
+      },
+      {
+        "kind": "review_template",
+        "path": "D:\\source\\Sezika\\datasets\\teacher-general-v2-review\\review-template.jsonl",
+        "sha256": "f5967fa557d60136c29a9b65489607801e1fccf4d1e10da9cff7bcda7a9fd4c0",
+        "bytes": 68166
+      }
+    ],
+    "teacher": {
+      "model_id": "qwen3.5-9b-q4-k-m",
+      "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+      "model_sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8",
+      "source_url": "https://huggingface.co/unsloth/Qwen3.5-9B-GGUF/resolve/3885219b6810b007914f3a7950a8d1b469d598a5/Qwen3.5-9B-Q4_K_M.gguf",
+      "license": "Apache-2.0",
+      "official_license_revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+      "official_license_snapshot": {
+        "path": "D:\\source\\Sezika\\.artifacts\\supervision-20261008\\teacher-runtime-preflight\\official-license\\LICENSE",
+        "sha256": "bbedc3fda3305820b977265f01b8619d87570a6739de3a5582c3464840f1e57a",
+        "bytes": 11544
+      },
+      "human_license_review": "pending",
+      "quantized_base_revision_equivalence": "not established"
+    },
+    "split_rule": "zh_en_first2_choice_first1_score_first1_boolean_development_v1",
+    "split_rule_frozen_utc": "2026-10-08T07:10:43Z",
+    "provenance": {
+      "path": "D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data\\input-provenance.json",
+      "sha256": "4504b0fbfa666be2f5fe62d5f568c5e7739e8d0c0713bdd97b1473bc2c0cb356",
+      "bytes": 55476
+    }
+  },
+  "cuda_artifacts": {
+    "source_sha256": "3743158624364474AE920D4863C48D322168954B8FB992B5868D7DB0660E2FBD",
+    "manifest_sha256": "8CF83A3B5145345D92D50D4695B4DD0200AE690C9E1FD70E910B399241B18D79",
+    "compiler": "ILGPU",
+    "compiler_version": "1.5.3",
+    "target": "sm_70",
+    "ptx_version": "7.0",
+    "kernels": [
+      {
+        "name": "VectorAdd",
+        "entry": "Kernel_VectorAdd",
+        "block_size": 256,
+        "parameter_count": 4,
+        "sha256": "08458319F80B0A61105077E12DC4D616249F49A26A2E5BD871288A6DA5EE6659"
+      },
+      {
+        "name": "Linear",
+        "entry": "Kernel_Linear",
+        "block_size": 256,
+        "parameter_count": 7,
+        "sha256": "A0F62382B0EB1D90046F3821C4A32BB59625D8CC82A533B1E95697E551BE40B8"
+      },
+      {
+        "name": "Embedding",
+        "entry": "Kernel_Embedding",
+        "block_size": 256,
+        "parameter_count": 5,
+        "sha256": "2AAEE7FA710BFB26E47CD8614747D85FD4F39161EEC91B52E8F7461A013644B6"
+      },
+      {
+        "name": "Norm",
+        "entry": "Kernel_Norm",
+        "block_size": 256,
+        "parameter_count": 8,
+        "sha256": "2244DA7CFB89DE25628C1824C4C0F7B5D40F53139FFA5355B444CBF83DACCBB0"
+      },
+      {
+        "name": "SplitQkv",
+        "entry": "Kernel_SplitQkv",
+        "block_size": 256,
+        "parameter_count": 6,
+        "sha256": "09A72C32CC0B17539791923ABB70BA47C9DB8EA14AA4F2D4BF0E80DBB9997D5C"
+      },
+      {
+        "name": "Rope",
+        "entry": "Kernel_Rope",
+        "block_size": 256,
+        "parameter_count": 6,
+        "sha256": "935FB2ACA76D6ECE01ABF38D323993ADC59A1F4FD96AAD7DAC65B96514334DDC"
+      },
+      {
+        "name": "AttentionScores",
+        "entry": "Kernel_AttentionScores",
+        "block_size": 256,
+        "parameter_count": 7,
+        "sha256": "DF284BDE766D1A6FB44801CC5BFEEE3605D9C1041BD57B9A69D2F731EF797E4C"
+      },
+      {
+        "name": "Softmax",
+        "entry": "Kernel_Softmax",
+        "block_size": 256,
+        "parameter_count": 3,
+        "sha256": "8867084A6C9F17C211565E7ABE7BA261C32C9CBFC22E41E787A154D2D949DFF9"
+      },
+      {
+        "name": "AttentionContext",
+        "entry": "Kernel_AttentionContext",
+        "block_size": 256,
+        "parameter_count": 6,
+        "sha256": "0BB4538790872F9AFBD487A0ADD2CF9ED99A553901CC1B95C72C9484889A4B15"
+      },
+      {
+        "name": "Add",
+        "entry": "Kernel_Add",
+        "block_size": 256,
+        "parameter_count": 3,
+        "sha256": "22AD13DFE2FEE0A449C2E58B6C8EDA524CFBD87C29116C81DD7FEA36EAD3A8A2"
+      },
+      {
+        "name": "Activate",
+        "entry": "Kernel_Activate",
+        "block_size": 256,
+        "parameter_count": 4,
+        "sha256": "BCDE6A84E77D7EBF8F88B93E7A9FBB3880D5270D1BD2C1975FEDB59AD13AA4F8"
+      },
+      {
+        "name": "GatedGelu",
+        "entry": "Kernel_GatedGelu",
+        "block_size": 256,
+        "parameter_count": 4,
+        "sha256": "FBE1F44AEAB289C15252016E1C1C235DADD92597AA6C0F568A5F99003077B828"
+      },
+      {
+        "name": "RowBias",
+        "entry": "Kernel_RowBias",
+        "block_size": 256,
+        "parameter_count": 4,
+        "sha256": "9FE276E194BAC9075708D3610D68847942627000BF5CDA2578C9965A549070BC"
+      },
+      {
+        "name": "TypeEmbeddingAdd",
+        "entry": "Kernel_TypeEmbeddingAdd",
+        "block_size": 256,
+        "parameter_count": 5,
+        "sha256": "5E651DFC2F4BA7127A942A21E5FAE775379723F5977F074C46A1F8CF018E6E3F"
+      },
+      {
+        "name": "MarkerCrossEntropy",
+        "entry": "Kernel_MarkerCrossEntropy",
+        "block_size": 256,
+        "parameter_count": 6,
+        "sha256": "311091D74C816E06401373B005FD2A7CD1CB40D9A083B0495452EAF434BF653B"
+      },
+      {
+        "name": "MarkerGradientSgd",
+        "entry": "Kernel_MarkerGradientSgd",
+        "block_size": 256,
+        "parameter_count": 9,
+        "sha256": "20D6588D9E3E20C24703CC250483CDD51FC2E13CAE29BEE93989CC92BE160285"
+      },
+      {
+        "name": "MarkerUpdateStatus",
+        "entry": "Kernel_MarkerUpdateStatus",
+        "block_size": 256,
+        "parameter_count": 5,
+        "sha256": "623D6EBE5C1435DC59C2CC229DD5A4685C39E1733521F248416B6ABB5543D9A4"
+      }
+    ]
+  },
+  "device": {
+    "uuid": "E786E313BC92A63DA833F4E48CBAFB66",
+    "name": "NVIDIA GeForce RTX 4090",
+    "driver_version": 13000,
+    "compute_capability_major": 8,
+    "compute_capability_minor": 9,
+    "total_memory_bytes": 50864390144,
+    "device_index": 0
+  },
+  "resources": {
+    "snapshot_before_context_dispose": {
+      "total_bytes": 50864390144,
+      "free_bytes": 15625748480,
+      "owned_bytes": 0,
+      "peak_owned_bytes": 1309369952,
+      "owned_allocation_count": 0,
+      "loaded_module_count": 0,
+      "release_failure_count": 0
+    },
+    "process_peak_working_set_bytes": 2724798464,
+    "process_working_set_bytes": 2618908672,
+    "device_dispose_returned": true,
+    "model_dispose_returned": true
+  },
+  "seed": 17,
+  "learning_rate": 0.001,
+  "completed_steps": 768,
+  "step_semantics": "total_committed_steps_no_resume",
+  "last_step_pre_update_selected_example_loss": 0.8507111668586731,
+  "parameters_changed_from_zero": true,
+  "train_count": 24,
+  "development_count": 8,
+  "max_tokens": 1024,
+  "training_timeout_seconds": 300,
+  "overall_timeout_seconds": 460,
+  "owned_gpu_limit_bytes": 3221225472,
+  "elapsed_seconds": 21.4537532,
+  "feature_sha256": "44DF5374A9A39C1B064A7AC8E34F1B4C13488F274A45DCCB4B837DB1A2EA145F",
+  "checkpoint_sha256": "972D6CADDF5743CDA7EAD4CA0F3D657D572DF15B8710A36ADC659B892547EB92",
+  "head_sha256": "7B4CE09F22AD80E175030F2A73FC878974347D53259DC16D3727B92E7F3184A4",
+  "parameter_sha256": "C09F73C98139BFF1D7F429343F08CD5EFC0FDAF28492B07802940B6C3A0C9D8D",
+  "checkpoint_and_head_roundtrip_matched": true,
+  "baseline_train": {
+    "scope": "baseline_zero_parameters_train24",
+    "backend": "cuda-frozen-marker-head-cross-entropy-fp32-v1",
+    "example_count": 24,
+    "completed_examples": 24,
+    "mean_loss": 1.229626456896464,
+    "feature_sha256": "44DF5374A9A39C1B064A7AC8E34F1B4C13488F274A45DCCB4B837DB1A2EA145F",
+    "parameter_sha256": "2D07A41AE992770085117E9815300BFD0730745883E60B24AAAD5E69DFC087AE",
+    "device_parameter_sha256": "2D07A41AE992770085117E9815300BFD0730745883E60B24AAAD5E69DFC087AE"
+  },
+  "baseline_development": {
+    "scope": "baseline_zero_parameters_development8",
+    "backend": "cuda-frozen-marker-head-cross-entropy-fp32-v1",
+    "example_count": 8,
+    "completed_examples": 8,
+    "mean_loss": 1.2687934339046478,
+    "feature_sha256": "8D5B807BE55F1ABB3C5C4A5960487E6FE7245E321B66052E93D70D58E7ECA2D7",
+    "parameter_sha256": "2D07A41AE992770085117E9815300BFD0730745883E60B24AAAD5E69DFC087AE",
+    "device_parameter_sha256": "2D07A41AE992770085117E9815300BFD0730745883E60B24AAAD5E69DFC087AE"
+  },
+  "trained_train": {
+    "scope": "trained_parameters_train24",
+    "backend": "cuda-frozen-marker-head-cross-entropy-fp32-v1",
+    "example_count": 24,
+    "completed_examples": 24,
+    "mean_loss": 0.9920696603755156,
+    "feature_sha256": "44DF5374A9A39C1B064A7AC8E34F1B4C13488F274A45DCCB4B837DB1A2EA145F",
+    "parameter_sha256": "C09F73C98139BFF1D7F429343F08CD5EFC0FDAF28492B07802940B6C3A0C9D8D",
+    "device_parameter_sha256": "C09F73C98139BFF1D7F429343F08CD5EFC0FDAF28492B07802940B6C3A0C9D8D"
+  },
+  "trained_development": {
+    "scope": "trained_parameters_development8",
+    "backend": "cuda-frozen-marker-head-cross-entropy-fp32-v1",
+    "example_count": 8,
+    "completed_examples": 8,
+    "mean_loss": 1.2740284875035286,
+    "feature_sha256": "8D5B807BE55F1ABB3C5C4A5960487E6FE7245E321B66052E93D70D58E7ECA2D7",
+    "parameter_sha256": "C09F73C98139BFF1D7F429343F08CD5EFC0FDAF28492B07802940B6C3A0C9D8D",
+    "device_parameter_sha256": "C09F73C98139BFF1D7F429343F08CD5EFC0FDAF28492B07802940B6C3A0C9D8D"
+  },
+  "loaded_train": {
+    "scope": "disk_loaded_parameters_train24",
+    "backend": "cuda-frozen-marker-head-cross-entropy-fp32-v1",
+    "example_count": 24,
+    "completed_examples": 24,
+    "mean_loss": 0.9920696603755156,
+    "feature_sha256": "44DF5374A9A39C1B064A7AC8E34F1B4C13488F274A45DCCB4B837DB1A2EA145F",
+    "parameter_sha256": "C09F73C98139BFF1D7F429343F08CD5EFC0FDAF28492B07802940B6C3A0C9D8D",
+    "device_parameter_sha256": "C09F73C98139BFF1D7F429343F08CD5EFC0FDAF28492B07802940B6C3A0C9D8D"
+  },
+  "loaded_development": {
+    "scope": "disk_loaded_parameters_development8",
+    "backend": "cuda-frozen-marker-head-cross-entropy-fp32-v1",
+    "example_count": 8,
+    "completed_examples": 8,
+    "mean_loss": 1.2740284875035286,
+    "feature_sha256": "8D5B807BE55F1ABB3C5C4A5960487E6FE7245E321B66052E93D70D58E7ECA2D7",
+    "parameter_sha256": "C09F73C98139BFF1D7F429343F08CD5EFC0FDAF28492B07802940B6C3A0C9D8D",
+    "device_parameter_sha256": "C09F73C98139BFF1D7F429343F08CD5EFC0FDAF28492B07802940B6C3A0C9D8D"
+  },
+  "loaded_inference": {
+    "backend": "cuda-independent-linear-marker-head",
+    "use": "teacher_agreement_on_exposed_unreviewed_development_not_gold_accuracy",
+    "total": 8,
+    "completed": 8,
+    "teacher_agreement_count": 1,
+    "teacher_agreement_rate": 0.125,
+    "mean_teacher_nll": 1.2740284645541278,
+    "rows": [
+      {
+        "record_id": "general-zh-choice-01",
+        "language": "zh",
+        "type": "choice",
+        "candidate_ids": [
+          "billing",
+          "delivery",
+          "account",
+          "event"
+        ],
+        "teacher_target_index": 1,
+        "predicted_index": 0,
+        "selected_candidate_id": "billing",
+        "logits": [
+          -0.6839504837989807,
+          -0.9809711575508118,
+          -0.8808026909828186,
+          -0.9849303364753723
+        ],
+        "probabilities": [
+          0.30262374702228995,
+          0.2248581145145373,
+          0.24854851744367606,
+          0.2239696210194966
+        ],
+        "teacher_nll": 1.4922856778484972,
+        "agrees_with_teacher": false
+      },
+      {
+        "record_id": "general-zh-choice-02",
+        "language": "zh",
+        "type": "choice",
+        "candidate_ids": [
+          "return",
+          "buy",
+          "renew",
+          "report"
+        ],
+        "teacher_target_index": 2,
+        "predicted_index": 0,
+        "selected_candidate_id": "return",
+        "logits": [
+          -0.923920750617981,
+          -1.2156593799591064,
+          -1.1224483251571655,
+          -1.1145305633544922
+        ],
+        "probabilities": [
+          0.2946935212447227,
+          0.22012537621713604,
+          0.24163016918607383,
+          0.24355093335206754
+        ],
+        "teacher_nll": 1.4203469482584787,
+        "agrees_with_teacher": false
+      },
+      {
+        "record_id": "general-en-choice-01",
+        "language": "en",
+        "type": "choice",
+        "candidate_ids": [
+          "reschedule",
+          "cancel-project",
+          "share-notes",
+          "book-venue"
+        ],
+        "teacher_target_index": 0,
+        "predicted_index": 3,
+        "selected_candidate_id": "book-venue",
+        "logits": [
+          -1.4276944398880005,
+          -1.2192139625549316,
+          -1.2746084928512573,
+          -1.218390703201294
+        ],
+        "probabilities": [
+          0.21598041625399655,
+          0.2660457310953808,
+          0.25170900673683577,
+          0.26626484591378685
+        ],
+        "teacher_nll": 1.5325675408990929,
+        "agrees_with_teacher": false
+      },
+      {
+        "record_id": "general-en-choice-02",
+        "language": "en",
+        "type": "choice",
+        "candidate_ids": [
+          "cloakroom",
+          "audio-guide",
+          "cafe",
+          "parking"
+        ],
+        "teacher_target_index": 1,
+        "predicted_index": 0,
+        "selected_candidate_id": "cloakroom",
+        "logits": [
+          -0.8966903686523438,
+          -0.9999196529388428,
+          -1.038414478302002,
+          -1.020388126373291
+        ],
+        "probabilities": [
+          0.27371555852350227,
+          0.2468695786008008,
+          0.23754696468154343,
+          0.24186789819415344
+        ],
+        "teacher_nll": 1.3988951036658992,
+        "agrees_with_teacher": false
+      },
+      {
+        "record_id": "general-zh-score-01",
+        "language": "zh",
+        "type": "score",
+        "candidate_ids": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "teacher_target_index": 3,
+        "predicted_index": 3,
+        "selected_candidate_id": "3",
+        "logits": [
+          -0.9438250064849854,
+          1.2667489051818848,
+          1.5299862623214722,
+          1.7774040699005127,
+          1.733958125114441
+        ],
+        "probabilities": [
+          0.019327283654200722,
+          0.17628317838623853,
+          0.22936830429055877,
+          0.29375521980751085,
+          0.2812660138614911
+        ],
+        "teacher_nll": 1.2250084441241613,
+        "agrees_with_teacher": true
+      },
+      {
+        "record_id": "general-en-score-01",
+        "language": "en",
+        "type": "score",
+        "candidate_ids": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "teacher_target_index": 2,
+        "predicted_index": 3,
+        "selected_candidate_id": "3",
+        "logits": [
+          -1.9980615377426147,
+          1.0101085901260376,
+          1.0044596195220947,
+          1.0132665634155273,
+          1.00818932056427
+        ],
+        "probabilities": [
+          0.012208164787345177,
+          0.24721912785092773,
+          0.24582653133659685,
+          0.24800107328488066,
+          0.24674510274024966
+        ],
+        "teacher_nll": 1.4031291489583366,
+        "agrees_with_teacher": false
+      },
+      {
+        "record_id": "general-zh-boolean-01",
+        "language": "zh",
+        "type": "boolean",
+        "candidate_ids": [
+          "false",
+          "true"
+        ],
+        "teacher_target_index": 1,
+        "predicted_index": 0,
+        "selected_candidate_id": "false",
+        "logits": [
+          0.32813844084739685,
+          0.004890745971351862
+        ],
+        "probabilities": [
+          0.5801155357304475,
+          0.41988446426955256
+        ],
+        "teacher_nll": 0.8677756906200557,
+        "agrees_with_teacher": false
+      },
+      {
+        "record_id": "general-en-boolean-01",
+        "language": "en",
+        "type": "boolean",
+        "candidate_ids": [
+          "false",
+          "true"
+        ],
+        "teacher_target_index": 1,
+        "predicted_index": 0,
+        "selected_candidate_id": "false",
+        "logits": [
+          0.4798472821712494,
+          0.18356876075267792
+        ],
+        "probabilities": [
+          0.5735325193886358,
+          0.4264674806113642
+        ],
+        "teacher_nll": 0.8522191620585002,
+        "agrees_with_teacher": false
+      }
+    ]
+  },
+  "acceptance": {
+    "formal_training_admission": false,
+    "human_quality": false,
+    "license_release": false,
+    "calibration": false,
+    "sealed_test": false,
+    "native_aot": false,
+    "performance": false,
+    "publication": false
+  }
+}

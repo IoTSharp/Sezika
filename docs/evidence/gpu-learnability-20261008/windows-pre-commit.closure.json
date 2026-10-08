@@ -1,0 +1,2477 @@
+{
+  "Label": "pre-commit-final-v2",
+  "Mode": "Full",
+  "Utc": "2026-10-08T09:44:37.7060883Z",
+  "ElapsedSeconds": 5.654,
+  "MaximumSeconds": 60,
+  "WorkBudgetSeconds": 55,
+  "QueryTimeoutSeconds": 5,
+  "MaximumReceipts": 100,
+  "MaximumRecords": 500,
+  "ReceiptCount": 34,
+  "RecordCount": 151,
+  "UniquePidCount": 144,
+  "CimQueries": 2,
+  "EnumeratedDirectories": 32,
+  "ProcessClosurePassed": true,
+  "MatchingLive": 0,
+  "Unknown": 0,
+  "CurrentCheckerRecords": 0,
+  "Cancelled": false,
+  "Self": {
+    "Pid": 7672,
+    "Started": "2026-10-08T09:44:31.3202110Z",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n& '.artifacts/gpu-learnability-20261008/local-closure.ps1' -Label pre-commit-final-v2 -PriorClosureFiles @('D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\tiny1.closure.json','D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\tiny2.closure.json','D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\preparation-report.json','D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\pre-b.closure.json','D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\pre-final-commit.closure.json','D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\tiny-final-argv-gap.closure.json') -AdditionalIdentityFiles @('D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\document-review-readers.json','D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\closure-diagnostic-readers.json')\"",
+    "ParentPid": 52200,
+    "State": "checker_current_requires_independent_recheck",
+    "RequiresIndependentRecheck": true
+  },
+  "SelfRequiresIndependentRecheck": true,
+  "SignalsSent": false,
+  "Errors": [],
+  "Receipts": [
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\closure-a-logs\\20261008-091810-707-independent-stage-a-identities.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\closure-b-logs\\20261008-092631-033-independent-stage-b-identities.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\git-logs\\20261008-091524-172-commit-evaluation-engineering.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\git-logs\\20261008-092435-194-commit-stage-a.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090334-172-evaluation-implementation-r1-build1.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090416-283-evaluation-implementation-r1-tiny1.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090431-604-evaluation-implementation-r1-full6.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090653-718-evaluation-implementation-r2-build1.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090754-099-evaluation-implementation-r2-build2.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090847-069-evaluation-implementation-r2-tiny1.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090928-898-evaluation-implementation-r2-full6.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\install-logs\\20261008-091543-465-install-frozen-bundle.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\publish-logs\\20261008-091116-008-publish-frozen-linux.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\published-check-logs\\20261008-091245-361-published-dll-contract-tiny.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-a-logs\\20261008-091559-699-learnability-A.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-b-logs\\20261008-092459-118-learnability-B.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-c-logs\\20261008-092726-259-learnability-C.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-closure-logs\\20261008-092904-129-learnability-closure.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-create-logs\\20261008-085804-502-learnability-create.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-exit7-logs\\20261008-090139-274-learnability-exit7.result.json",
+      "status": "Failed",
+      "exitCode": 7,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-pack-logs\\20261008-092910-409-learnability-pack.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-preflight-logs\\20261008-085744-119-learnability-preflight.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-tiny-logs\\20261008-090013-651-learnability-tiny.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-091704-887-retrieve-stage-a.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-092603-278-retrieve-stage-b.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-093011-791-retrieve-final-evidence.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-093022-224-inspect-final-evidence.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-093025-906-extract-final-evidence.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\shell-contract-logs\\20261008-090839-883-final-shell-syntax-pack-contract.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\transfer-logs\\20261008-091333-749-pack-frozen-bundle.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\transfer-logs\\20261008-091339-206-upload-frozen-bundle.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\transfer-logs\\20261008-091417-338-upload-frozen-shell-scripts.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-runner-prep-20261008\\tiny-logs\\20261008-090120-236-runner-contract-tiny.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-runner-prep-20261008\\tiny-logs\\20261008-090220-824-bash-syntax-tiny.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    }
+  ],
+  "Sources": [
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\task-identity.json",
+      "sha256": "2ECE10AC2F69D21A81FE170FC1358C21CB02007F892D16F4684D297FBDD42C0E",
+      "bytes": 383
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\closure-a-logs\\20261008-091810-707-independent-stage-a-identities.result.json",
+      "sha256": "3DDE180B32C6CCD770922C8FF7888AEA38B918856D6DF3C799878C8F121C9613",
+      "bytes": 3616
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\closure-b-logs\\20261008-092631-033-independent-stage-b-identities.result.json",
+      "sha256": "20BAEAE1A751DD12CE6718C90BE904004350431F13E636139E2015003A2E70E2",
+      "bytes": 3614
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\git-logs\\20261008-091524-172-commit-evaluation-engineering.result.json",
+      "sha256": "BB60E1880F2EFBB9BFD05225F8A3CA9D45DE6E506C0BEB454C04CFA4F6F76C03",
+      "bytes": 2438
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\git-logs\\20261008-091524-172-commit-evaluation-engineering.identity.json",
+      "sha256": "4F4EA49AF196959CE65453E26C5B02075A5D256F2A6BF7A70F545D565A7159C8",
+      "bytes": 1894
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\git-logs\\20261008-092435-194-commit-stage-a.result.json",
+      "sha256": "170A2DC0651E8EE5AF5F969799769AA0DF396BFC74FDC4DADDCB3EBD2EA95C97",
+      "bytes": 2675
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\git-logs\\20261008-092435-194-commit-stage-a.identity.json",
+      "sha256": "9562E4B5F4D0D18501483416B247CB92EA8EF9780AE155EA63FDCAC4972A3E8B",
+      "bytes": 2161
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090334-172-evaluation-implementation-r1-build1.result.json",
+      "sha256": "249969E84EBF8BC571FCD833C6A2CE60D7FF4F429A4B7020D6908177FC1F28DC",
+      "bytes": 5702
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090416-283-evaluation-implementation-r1-tiny1.result.json",
+      "sha256": "18283B37C4C1E3CC620C68BE54F484AF69BCA540601A5135FDB457DDB237AAEC",
+      "bytes": 3434
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090431-604-evaluation-implementation-r1-full6.result.json",
+      "sha256": "B1FAF4CAE1CB2733C3E72EC14D45A8AADDF3B85C24F41086C7B7A61BD4459DEA",
+      "bytes": 3730
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090653-718-evaluation-implementation-r2-build1.result.json",
+      "sha256": "06AE30562D601B376FF2432B4A63DC3AA10663AC02F24AEF7DF8E11D52B25480",
+      "bytes": 4229
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090754-099-evaluation-implementation-r2-build2.result.json",
+      "sha256": "66EA799807F9ED2E663C38A0633D9D49F16C388D36D2AB3BD2ACE222236EFFAC",
+      "bytes": 4230
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090847-069-evaluation-implementation-r2-tiny1.result.json",
+      "sha256": "74265DEA104AB7AA23617B0F7CFC1B4EA4E5B5468F61AF843C1CBE8783DAB4D9",
+      "bytes": 3727
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090928-898-evaluation-implementation-r2-full6.result.json",
+      "sha256": "7813C28D20A0293FF6ABBE2290DC0E17E2F785766A7EA550AE414E04323B3222",
+      "bytes": 3728
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\install-logs\\20261008-091543-465-install-frozen-bundle.result.json",
+      "sha256": "7FEE2355C0816D5B728732863E7F2415D5E112CF0FCBAA423CE05F03F61856E7",
+      "bytes": 3383
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\publish-logs\\20261008-091116-008-publish-frozen-linux.result.json",
+      "sha256": "D4A9EF2DDDD2AA6E8114EF816A8FD0273713B96AFCB6C5BDA3EABA4016705F83",
+      "bytes": 3436
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\published-check-logs\\20261008-091245-361-published-dll-contract-tiny.result.json",
+      "sha256": "F79A820766489EDE81159B5EB0BFC93516E8B1E9358D06C0B43D36CB3490FDA8",
+      "bytes": 4504
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-a-logs\\20261008-091559-699-learnability-A.result.json",
+      "sha256": "A3449766DB6188EEA5ADAABCD22B962BAFC7FF241BC4B088FE010FDD4AFA6D18",
+      "bytes": 2854
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-b-logs\\20261008-092459-118-learnability-B.result.json",
+      "sha256": "4DAE68D5A9E9995B9F2A3E1DC1083A18D2A85DC9E79036071748108DED3923CD",
+      "bytes": 3098
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-c-logs\\20261008-092726-259-learnability-C.result.json",
+      "sha256": "4A51D49EB480B7972E10A9BF319614D6166F571760E240FE3A686711EA7D6BEC",
+      "bytes": 3096
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-closure-logs\\20261008-092904-129-learnability-closure.result.json",
+      "sha256": "AE539D4608B8C2D7147F351EE8632B50DD2FB5C32FF73B905366D9CC7CDCCD63",
+      "bytes": 2896
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-create-logs\\20261008-085804-502-learnability-create.result.json",
+      "sha256": "CAB094564312489425FB396763A13D5BC309E017CBBE95A525A2D50CEBCABAEF",
+      "bytes": 2687
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-exit7-logs\\20261008-090139-274-learnability-exit7.result.json",
+      "sha256": "CB500FE2B6B315F0F7FEF6332154F2B037135E6F8DB76673512188DB4BEED278",
+      "bytes": 2969
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-pack-logs\\20261008-092910-409-learnability-pack.result.json",
+      "sha256": "1A6C273BB9ADE767E060AE1F34D827136A13C63E7B315BE9737E85876B3A307E",
+      "bytes": 2879
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-preflight-logs\\20261008-085744-119-learnability-preflight.result.json",
+      "sha256": "DCEF2CDCE8CEB93FA90A6FCEE9E8438AB14FD533E4159F8C97DD28113369C677",
+      "bytes": 2897
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-tiny-logs\\20261008-090013-651-learnability-tiny.result.json",
+      "sha256": "8BCB665DFE45ECB125133ACC99B9C9A845DC45BB470C4923E2F8C9A962EF80B2",
+      "bytes": 2877
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-091704-887-retrieve-stage-a.result.json",
+      "sha256": "68F858E93633BC7CF1DDD9393A9F0101A1B5BBB61BC13581A1BA18BEF254D7E6",
+      "bytes": 7376
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-092603-278-retrieve-stage-b.result.json",
+      "sha256": "E290C383B82602C2EBEC7316D0CD615B8534F95C923E759BBAD9285AD743A9EC",
+      "bytes": 6468
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-093011-791-retrieve-final-evidence.result.json",
+      "sha256": "DE64D03E8A5F1DF5FE421FFAF28BEBBAE1FD83D3E3751015AD021474F3EB6472",
+      "bytes": 3599
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-093022-224-inspect-final-evidence.result.json",
+      "sha256": "59583F04048EFB0AB7BEF65023AF207756A36B90515A039184EF44C8D1964E17",
+      "bytes": 1657
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-093022-224-inspect-final-evidence.identity.json",
+      "sha256": "4DFC5E9705E280B3C2C0A2079B2BD4ABA24FFE137E4B6E17C31C4151DFED760E",
+      "bytes": 1115
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-093025-906-extract-final-evidence.result.json",
+      "sha256": "F1D318FB9452D67251134AF7FC07FB14C0D10EA933A5D522B7C97246407E1969",
+      "bytes": 1746
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-093025-906-extract-final-evidence.identity.json",
+      "sha256": "F40C4826CCCB6D29B9BDBAFB53E1AA67188D28437627E1BDF684B781B5B72BD6",
+      "bytes": 1204
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\shell-contract-logs\\20261008-090839-883-final-shell-syntax-pack-contract.result.json",
+      "sha256": "F0A8677EEF8A7D3F2221EDA2A1CA4062268237D66D17DF971D300582079B5C17",
+      "bytes": 2494
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\transfer-logs\\20261008-091333-749-pack-frozen-bundle.result.json",
+      "sha256": "6ECCF33C5B15181B688988A5A6D53A3B69C710B89FE304D6B5B223DB76DB8F48",
+      "bytes": 1501
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\transfer-logs\\20261008-091333-749-pack-frozen-bundle.identity.json",
+      "sha256": "27D53D120AFB29DD3F5F7C2FAFAE1DD4ED6113206D56AD3552B8CB75F8390A5D",
+      "bytes": 969
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\transfer-logs\\20261008-091339-206-upload-frozen-bundle.result.json",
+      "sha256": "B3A389C867A711C4AAB46EB98EBB5E971758D061155D77EA9FFC2A508ADBFBFA",
+      "bytes": 3148
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\transfer-logs\\20261008-091417-338-upload-frozen-shell-scripts.result.json",
+      "sha256": "66B9E8D83E81D9893C4B257E54AE6919E9B323DE7E9FDE283DA90B1732AAF919",
+      "bytes": 5215
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-runner-prep-20261008\\tiny-logs\\20261008-090120-236-runner-contract-tiny.result.json",
+      "sha256": "599C3DBE4FA9D94C10E57722B7A4468CF63B764EA32ABE085417C7A19164C780",
+      "bytes": 1911
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-runner-prep-20261008\\tiny-logs\\20261008-090120-236-runner-contract-tiny.identity.json",
+      "sha256": "6E576561A8EBBC061177593E591EF77BDA20F2DC3BA080651872297AE2B8BBA2",
+      "bytes": 1359
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-runner-prep-20261008\\tiny-logs\\20261008-090220-824-bash-syntax-tiny.result.json",
+      "sha256": "B9E62B3CEEBFFDA580FE375853E7996C81F2763C75522686DCF4D5EAD8A32284",
+      "bytes": 2071
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-runner-prep-20261008\\tiny-logs\\20261008-090220-824-bash-syntax-tiny.identity.json",
+      "sha256": "39E34515B9A424BBB2F707D70CDB4A780F0F803F6FBDFC9D83059B09446C04D1",
+      "bytes": 1527
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\root-shell-identity.json",
+      "sha256": "6E99B95788B8D93638008EC65CC15738FC273AA92D9F8748F80F4456090AF920",
+      "bytes": 1008
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\root-readers.jsonl",
+      "sha256": "EDF5F69DFEA7016945E8C9262F41C35452041A291873930F5E8F2187C2C16CE4",
+      "bytes": 7024
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\tiny1.closure.json",
+      "sha256": "4397AE36BF05095094C18C21484834B763D9254667E82B3ACDD1CB05A9B0A844",
+      "bytes": 5728
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\tiny2.closure.json",
+      "sha256": "746A9BE82B5FCBCA9E42533F36D6B56F5203A70619BA3B50E9DB17BE09B23A37",
+      "bytes": 5787
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\preparation-report.json",
+      "sha256": "04ED836380B4412D5DED4E795CBD0DFF7E10674F4BD6437FA62C80B2C397EADD",
+      "bytes": 9206
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\pre-b.closure.json",
+      "sha256": "1ADD83F6CEB591394E1E4C96419728C796BCFE73A2FD774146D929AFBED9F5AA",
+      "bytes": 111214
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\pre-final-commit.closure.json",
+      "sha256": "7BD6EAE34C20815548028D77270CFB97DEC8E1E53B6D512B153652BFEE44E172",
+      "bytes": 19069
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\tiny-final-argv-gap.closure.json",
+      "sha256": "9560354E0C4A3EBA8DA2852E35DD14B38787085F3437467A9078D5955E97A548",
+      "bytes": 5852
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\document-review-readers.json",
+      "sha256": "BF31C36DD07A916645707693AC1E91FF119DE7D8CBFF475A675C89E7AE0BD79F",
+      "bytes": 11246
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\closure-diagnostic-readers.json",
+      "sha256": "D74762D985698B88DB070EA7D7FA3260F0B43A89D7D9EDF61E02354B9E3CED40",
+      "bytes": 3701
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\paused-files-baseline.json",
+      "sha256": "0F44BA208D54CFA73522A77F100B9693C0C093FC32CF8F78812522BC9165B62E",
+      "bytes": 1697
+    }
+  ],
+  "KnownIdentityComparisons": [
+    {
+      "pid": 77308,
+      "started": "2026-10-08T17:18:12.170754+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008/scripts/Invoke-LearnabilityScript.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008/scripts/remote-stage-a-closure.sh",
+      "nativeArgvObserved": true,
+      "parentPid": 86768,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\closure-a-logs\\20261008-091810-707-independent-stage-a-identities.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 4456,
+      "started": "2026-10-08T17:18:13.295346+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "nativeArgvObserved": true,
+      "parentPid": 77308,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\closure-a-logs\\20261008-091810-707-independent-stage-a-identities.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 53092,
+      "started": "2026-10-08T17:18:12.197339+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 77308,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\closure-a-logs\\20261008-091810-707-independent-stage-a-identities.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 86768,
+      "started": "2026-10-08T17:18:09.714888+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'; $task='D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008'; $original=[IO.File]::ReadAllText(\\\"$task/scripts/remote-final-closure.sh\\\"); [IO.File]::WriteAllText(\\\"$task/scripts/remote-stage-a-closure.sh\\\",$original.Replace('logs/independent-final-closure.tsv','logs/independent-stage-a-closure.tsv')); & tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',\\\"$task/scripts/Invoke-LearnabilityScript.ps1\\\",'-ScriptFile',\\\"$task/scripts/remote-stage-a-closure.sh\\\") -TimeoutSeconds 90 -ProcessQueryTimeoutSeconds 5 -LogName 'independent-stage-a-identities' -LogDirectory \\\"$task/closure-a-logs\\\" -Environment @{SEZIKA_REMOTE_BOUNDED_THREAD='01a11ab6-7ceb-7ac0-9235-58a8eec95729'}\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\closure-a-logs\\20261008-091810-707-independent-stage-a-identities.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 85120,
+      "started": "2026-10-08T17:26:31.71761+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008/scripts/Invoke-LearnabilityScript.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008/scripts/remote-stage-b-closure.sh",
+      "nativeArgvObserved": true,
+      "parentPid": 58400,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\closure-b-logs\\20261008-092631-033-independent-stage-b-identities.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 27796,
+      "started": "2026-10-08T17:26:32.306642+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "nativeArgvObserved": true,
+      "parentPid": 85120,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\closure-b-logs\\20261008-092631-033-independent-stage-b-identities.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 60872,
+      "started": "2026-10-08T17:26:31.730102+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 85120,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\closure-b-logs\\20261008-092631-033-independent-stage-b-identities.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 58400,
+      "started": "2026-10-08T17:26:30.492572+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'; $task='D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008'; $original=[IO.File]::ReadAllText(\\\"$task/scripts/remote-final-closure.sh\\\"); [IO.File]::WriteAllText(\\\"$task/scripts/remote-stage-b-closure.sh\\\",$original.Replace('logs/independent-final-closure.tsv','logs/independent-stage-b-closure.tsv')); & tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',\\\"$task/scripts/Invoke-LearnabilityScript.ps1\\\",'-ScriptFile',\\\"$task/scripts/remote-stage-b-closure.sh\\\") -TimeoutSeconds 90 -ProcessQueryTimeoutSeconds 5 -LogName 'independent-stage-b-identities' -LogDirectory \\\"$task/closure-b-logs\\\" -Environment @{SEZIKA_REMOTE_BOUNDED_THREAD='01a11ab6-7ceb-7ac0-9235-58a8eec95729'}\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\closure-b-logs\\20261008-092631-033-independent-stage-b-identities.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 87284,
+      "started": "2026-10-08T17:15:23.373188+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'; git config --get core.hooksPath; if($LASTEXITCODE -notin @(0,1)){throw 'Git hook config read failed'}; git add -- tools/Sezika.ExperimentTrainer/Program.cs tools/Sezika.ExperimentTrainer/ExperimentReport.cs tools/Sezika.ExperimentTrainer/ExperimentEvaluation.cs tools/Sezika.ExperimentTrainer/ExperimentEvaluationChecks.cs docs/evidence/gpu-learnability-evaluator-2026-10-08.md docs/evidence/gpu-learnability-20261008/evaluator-review.md docs/evidence/gpu-learnability-20261008/evaluator-source-freeze.json HANDOFF.md; if($LASTEXITCODE -ne 0){throw 'Git stage failed'}; git diff --cached --check; if($LASTEXITCODE -ne 0){throw 'Staged whitespace failure'}; git diff --cached --stat; & tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\Git\\cmd\\git.exe' -ArgumentList @('commit','-m','Add read-only GPU learnability and candidate position evaluation') -TimeoutSeconds 45 -ProcessQueryTimeoutSeconds 5 -LogName 'commit-evaluation-engineering' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\git-logs'\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\git-logs\\20261008-091524-172-commit-evaluation-engineering.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 21716,
+      "started": "2026-10-08T09:15:25.2947096Z",
+      "commandLine": null,
+      "nativeArgvObserved": false,
+      "parentPid": 87284,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\git-logs\\20261008-091524-172-commit-evaluation-engineering.result.json",
+      "kind": "retained_root_handle",
+      "structuredArguments": [
+        "commit",
+        "-m",
+        "Add read-only GPU learnability and candidate position evaluation"
+      ],
+      "startedToleranceTicks": 10,
+      "state": "absent"
+    },
+    {
+      "pid": 29684,
+      "started": "2026-10-08T17:24:34.540217+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'; $task='D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008'; $dest='D:\\source\\Sezika\\docs\\evidence\\gpu-learnability-20261008'; Copy-Item -LiteralPath '.artifacts/gpu-learnability-review-20261008/stage-a-review.md' -Destination \\\"$dest/stage-a-review.md\\\"; $closure=Get-ChildItem -LiteralPath \\\"$task/closure-a-logs\\\" -Filter '*.stdout.log' -File|Select-Object -First 2; if(@($closure).Count -ne 1){throw 'Exact A closure stdout required'}; Copy-Item -LiteralPath $closure.FullName -Destination \\\"$dest/stage-a-independent-closure.log\\\"; git add -- HANDOFF.md docs/evidence/gpu-learnability-2026-10-08.md docs/evidence/gpu-learnability-20261008/stage-a-evaluation.json docs/evidence/gpu-learnability-20261008/stage-a-result.tsv docs/evidence/gpu-learnability-20261008/stage-a-review.md docs/evidence/gpu-learnability-20261008/stage-a-independent-closure.log; if($LASTEXITCODE -ne 0){throw 'A stage failure'}; git diff --cached --check; if($LASTEXITCODE -ne 0){throw 'A staged whitespace failure'}; & tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\Git\\cmd\\git.exe' -ArgumentList @('commit','-m','Record existing GPU head learnability and position diagnosis') -TimeoutSeconds 45 -ProcessQueryTimeoutSeconds 5 -LogName 'commit-stage-a' -LogDirectory \\\"$task/git-logs\\\"\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\git-logs\\20261008-092435-194-commit-stage-a.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 78320,
+      "started": "2026-10-08T09:24:36.0314797Z",
+      "commandLine": null,
+      "nativeArgvObserved": false,
+      "parentPid": 29684,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\git-logs\\20261008-092435-194-commit-stage-a.result.json",
+      "kind": "retained_root_handle",
+      "structuredArguments": [
+        "commit",
+        "-m",
+        "Record existing GPU head learnability and position diagnosis"
+      ],
+      "startedToleranceTicks": 10,
+      "state": "absent"
+    },
+    {
+      "pid": 50744,
+      "started": "2026-10-08T17:03:35.214582+08:00",
+      "commandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj --no-restore -c Release --disable-build-servers -p:UseSharedCompilation=false",
+      "nativeArgvObserved": true,
+      "parentPid": 13816,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090334-172-evaluation-implementation-r1-build1.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 48260,
+      "started": "2026-10-08T17:03:36.258465+08:00",
+      "commandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:false /low:false",
+      "nativeArgvObserved": true,
+      "parentPid": 50744,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090334-172-evaluation-implementation-r1-build1.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 57728,
+      "started": "2026-10-08T17:03:52.31026+08:00",
+      "commandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTemp2sict2bs.3zs\\tmp3202ab932ef84cd6bd7750284171ad77.rsp\"",
+      "nativeArgvObserved": true,
+      "parentPid": 50744,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090334-172-evaluation-implementation-r1-build1.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 64936,
+      "started": "2026-10-08T17:03:35.237732+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 50744,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090334-172-evaluation-implementation-r1-build1.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 77888,
+      "started": "2026-10-08T17:03:37.514935+08:00",
+      "commandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTemp2sict2bs.3zs\\tmp7a725b1e516542b8a52922ba1978615e.rsp\"",
+      "nativeArgvObserved": true,
+      "parentPid": 50744,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090334-172-evaluation-implementation-r1-build1.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 12272,
+      "started": "2026-10-08T17:03:37.542793+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 77888,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090334-172-evaluation-implementation-r1-build1.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 31068,
+      "started": "2026-10-08T17:03:52.323457+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 57728,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090334-172-evaluation-implementation-r1-build1.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 59824,
+      "started": "2026-10-08T17:03:36.273923+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 48260,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090334-172-evaluation-implementation-r1-build1.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 92212,
+      "started": "2026-10-08T17:03:47.158479+08:00",
+      "commandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempqycjfqny.yo5\\tmp60a853fc3eba48edbf696a2c224b7421.rsp\"",
+      "nativeArgvObserved": true,
+      "parentPid": 48260,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090334-172-evaluation-implementation-r1-build1.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 5716,
+      "started": "2026-10-08T17:03:47.173198+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 92212,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090334-172-evaluation-implementation-r1-build1.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 13816,
+      "started": "2026-10-08T17:03:33.580699+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion; & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build','tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj','--no-restore','-c','Release','--disable-build-servers','-p:UseSharedCompilation=false') -TimeoutSeconds 240 -LogName 'evaluation-implementation-r1-build1' -WorkingDirectory 'D:\\source\\Sezika' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1' -ProcessQueryTimeoutSeconds 5; exit $LASTEXITCODE\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090334-172-evaluation-implementation-r1-build1.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 58388,
+      "started": "2026-10-08T17:04:17.321639+08:00",
+      "commandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" tools/Sezika.ExperimentTrainer/bin/Release/net10.0/Sezika.ExperimentTrainer.dll check-evaluation --data D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data --manifest-sha256 b8c8d5e018c2bc0029ba100f8f46272ac4cb3b1efea27280ff449f685778b954 --source D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\retrieved\\output\\run-03 --report-sha256 C6B065CD0C66AA4544C0AF277C539D82A4E7932C66CD41AAAD37CFC1A0D30EE7 --max-checks 1",
+      "nativeArgvObserved": true,
+      "parentPid": 70212,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090416-283-evaluation-implementation-r1-tiny1.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 70212,
+      "started": "2026-10-08T17:04:15.786374+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion; & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('tools/Sezika.ExperimentTrainer/bin/Release/net10.0/Sezika.ExperimentTrainer.dll','check-evaluation','--data','D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data','--manifest-sha256','b8c8d5e018c2bc0029ba100f8f46272ac4cb3b1efea27280ff449f685778b954','--source','D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\retrieved\\output\\run-03','--report-sha256','C6B065CD0C66AA4544C0AF277C539D82A4E7932C66CD41AAAD37CFC1A0D30EE7','--max-checks','1') -TimeoutSeconds 60 -LogName 'evaluation-implementation-r1-tiny1' -WorkingDirectory 'D:\\source\\Sezika' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1' -ProcessQueryTimeoutSeconds 5; exit $LASTEXITCODE\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090416-283-evaluation-implementation-r1-tiny1.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 10628,
+      "started": "2026-10-08T17:04:32.671452+08:00",
+      "commandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" tools/Sezika.ExperimentTrainer/bin/Release/net10.0/Sezika.ExperimentTrainer.dll check-evaluation --data D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data --manifest-sha256 b8c8d5e018c2bc0029ba100f8f46272ac4cb3b1efea27280ff449f685778b954 --source D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\retrieved\\output\\run-03 --report-sha256 C6B065CD0C66AA4544C0AF277C539D82A4E7932C66CD41AAAD37CFC1A0D30EE7 --max-checks 6",
+      "nativeArgvObserved": true,
+      "parentPid": 42152,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090431-604-evaluation-implementation-r1-full6.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 37280,
+      "started": "2026-10-08T17:04:32.684397+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 10628,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090431-604-evaluation-implementation-r1-full6.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 42152,
+      "started": "2026-10-08T17:04:31.096462+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion; & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('tools/Sezika.ExperimentTrainer/bin/Release/net10.0/Sezika.ExperimentTrainer.dll','check-evaluation','--data','D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data','--manifest-sha256','b8c8d5e018c2bc0029ba100f8f46272ac4cb3b1efea27280ff449f685778b954','--source','D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\retrieved\\output\\run-03','--report-sha256','C6B065CD0C66AA4544C0AF277C539D82A4E7932C66CD41AAAD37CFC1A0D30EE7','--max-checks','6') -TimeoutSeconds 60 -LogName 'evaluation-implementation-r1-full6' -WorkingDirectory 'D:\\source\\Sezika' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1' -ProcessQueryTimeoutSeconds 5; exit $LASTEXITCODE\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090431-604-evaluation-implementation-r1-full6.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 49296,
+      "started": "2026-10-08T17:06:55.095207+08:00",
+      "commandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj --no-restore -c Release --disable-build-servers -p:UseSharedCompilation=false",
+      "nativeArgvObserved": true,
+      "parentPid": 67144,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090653-718-evaluation-implementation-r2-build1.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 68152,
+      "started": "2026-10-08T17:06:56.639189+08:00",
+      "commandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:false /low:false",
+      "nativeArgvObserved": true,
+      "parentPid": 49296,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090653-718-evaluation-implementation-r2-build1.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 72740,
+      "started": "2026-10-08T17:06:58.86836+08:00",
+      "commandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempms3zz03d.2re\\tmpa8acd6a3366f4f5bb3961c385ade9f82.rsp\"",
+      "nativeArgvObserved": true,
+      "parentPid": 49296,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090653-718-evaluation-implementation-r2-build1.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 88988,
+      "started": "2026-10-08T17:06:55.129955+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 49296,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090653-718-evaluation-implementation-r2-build1.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 44164,
+      "started": "2026-10-08T17:06:58.894019+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 72740,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090653-718-evaluation-implementation-r2-build1.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 84720,
+      "started": "2026-10-08T17:06:56.657198+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 68152,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090653-718-evaluation-implementation-r2-build1.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 67144,
+      "started": "2026-10-08T17:06:52.673643+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion; & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build','tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj','--no-restore','-c','Release','--disable-build-servers','-p:UseSharedCompilation=false') -TimeoutSeconds 240 -LogName 'evaluation-implementation-r2-build1' -WorkingDirectory 'D:\\source\\Sezika' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2' -ProcessQueryTimeoutSeconds 5; exit $LASTEXITCODE\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090653-718-evaluation-implementation-r2-build1.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 45936,
+      "started": "2026-10-08T17:07:55.855438+08:00",
+      "commandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj --no-restore -c Release --disable-build-servers -p:UseSharedCompilation=false",
+      "nativeArgvObserved": true,
+      "parentPid": 53540,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090754-099-evaluation-implementation-r2-build2.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 49016,
+      "started": "2026-10-08T17:08:02.502322+08:00",
+      "commandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempzoxaqfvr.5l1\\tmp0c6ed86b44454bbf81ad903cafba0cc5.rsp\"",
+      "nativeArgvObserved": true,
+      "parentPid": 45936,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090754-099-evaluation-implementation-r2-build2.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 50112,
+      "started": "2026-10-08T17:07:55.882675+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 45936,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090754-099-evaluation-implementation-r2-build2.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 63200,
+      "started": "2026-10-08T17:07:58.701212+08:00",
+      "commandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:false /low:false",
+      "nativeArgvObserved": true,
+      "parentPid": 45936,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090754-099-evaluation-implementation-r2-build2.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "reused_pid"
+    },
+    {
+      "pid": 49944,
+      "started": "2026-10-08T17:07:58.726704+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 63200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090754-099-evaluation-implementation-r2-build2.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 74020,
+      "started": "2026-10-08T17:08:02.535221+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 49016,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090754-099-evaluation-implementation-r2-build2.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 53540,
+      "started": "2026-10-08T17:07:52.24525+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion; & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build','tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj','--no-restore','-c','Release','--disable-build-servers','-p:UseSharedCompilation=false') -TimeoutSeconds 240 -LogName 'evaluation-implementation-r2-build2' -WorkingDirectory 'D:\\source\\Sezika' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2' -ProcessQueryTimeoutSeconds 5; exit $LASTEXITCODE\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090754-099-evaluation-implementation-r2-build2.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 73488,
+      "started": "2026-10-08T17:08:49.034351+08:00",
+      "commandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" tools/Sezika.ExperimentTrainer/bin/Release/net10.0/Sezika.ExperimentTrainer.dll check-evaluation --data D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data --manifest-sha256 b8c8d5e018c2bc0029ba100f8f46272ac4cb3b1efea27280ff449f685778b954 --source D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\retrieved\\output\\run-03 --report-sha256 C6B065CD0C66AA4544C0AF277C539D82A4E7932C66CD41AAAD37CFC1A0D30EE7 --max-checks 1",
+      "nativeArgvObserved": true,
+      "parentPid": 66152,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090847-069-evaluation-implementation-r2-tiny1.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 90956,
+      "started": "2026-10-08T17:08:49.124534+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 73488,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090847-069-evaluation-implementation-r2-tiny1.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 66152,
+      "started": "2026-10-08T17:08:42.06639+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion; & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('tools/Sezika.ExperimentTrainer/bin/Release/net10.0/Sezika.ExperimentTrainer.dll','check-evaluation','--data','D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data','--manifest-sha256','b8c8d5e018c2bc0029ba100f8f46272ac4cb3b1efea27280ff449f685778b954','--source','D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\retrieved\\output\\run-03','--report-sha256','C6B065CD0C66AA4544C0AF277C539D82A4E7932C66CD41AAAD37CFC1A0D30EE7','--max-checks','1') -TimeoutSeconds 60 -LogName 'evaluation-implementation-r2-tiny1' -WorkingDirectory 'D:\\source\\Sezika' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2' -ProcessQueryTimeoutSeconds 5; exit $LASTEXITCODE\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090847-069-evaluation-implementation-r2-tiny1.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 83836,
+      "started": "2026-10-08T17:09:30.104949+08:00",
+      "commandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" tools/Sezika.ExperimentTrainer/bin/Release/net10.0/Sezika.ExperimentTrainer.dll check-evaluation --data D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data --manifest-sha256 b8c8d5e018c2bc0029ba100f8f46272ac4cb3b1efea27280ff449f685778b954 --source D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\retrieved\\output\\run-03 --report-sha256 C6B065CD0C66AA4544C0AF277C539D82A4E7932C66CD41AAAD37CFC1A0D30EE7 --max-checks 6",
+      "nativeArgvObserved": true,
+      "parentPid": 48996,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090928-898-evaluation-implementation-r2-full6.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 73648,
+      "started": "2026-10-08T17:09:30.12862+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 83836,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090928-898-evaluation-implementation-r2-full6.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 48996,
+      "started": "2026-10-08T17:09:28.327097+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion; & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('tools/Sezika.ExperimentTrainer/bin/Release/net10.0/Sezika.ExperimentTrainer.dll','check-evaluation','--data','D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data','--manifest-sha256','b8c8d5e018c2bc0029ba100f8f46272ac4cb3b1efea27280ff449f685778b954','--source','D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\retrieved\\output\\run-03','--report-sha256','C6B065CD0C66AA4544C0AF277C539D82A4E7932C66CD41AAAD37CFC1A0D30EE7','--max-checks','6') -TimeoutSeconds 60 -LogName 'evaluation-implementation-r2-full6' -WorkingDirectory 'D:\\source\\Sezika' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2' -ProcessQueryTimeoutSeconds 5; exit $LASTEXITCODE\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090928-898-evaluation-implementation-r2-full6.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 53420,
+      "started": "2026-10-08T17:15:44.550915+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\Invoke-LearnabilityScript.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-install-bundle.sh",
+      "nativeArgvObserved": true,
+      "parentPid": 64900,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\install-logs\\20261008-091543-465-install-frozen-bundle.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 6640,
+      "started": "2026-10-08T17:15:45.137249+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "nativeArgvObserved": true,
+      "parentPid": 53420,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\install-logs\\20261008-091543-465-install-frozen-bundle.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 87456,
+      "started": "2026-10-08T17:15:44.566599+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 53420,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\install-logs\\20261008-091543-465-install-frozen-bundle.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 64900,
+      "started": "2026-10-08T17:15:42.969446+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\Invoke-LearnabilityScript.ps1','-ScriptFile','D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-install-bundle.sh') -TimeoutSeconds 90 -ProcessQueryTimeoutSeconds 5 -LogName 'install-frozen-bundle' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\install-logs' -Environment @{SEZIKA_REMOTE_BOUNDED_THREAD='01a11ab6-7ceb-7ac0-9235-58a8eec95729'}\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\install-logs\\20261008-091543-465-install-frozen-bundle.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 89404,
+      "started": "2026-10-08T17:11:17.348224+08:00",
+      "commandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj -c Release -r linux-x64 --self-contained true --no-restore --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\publish-linux",
+      "nativeArgvObserved": true,
+      "parentPid": 11412,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\publish-logs\\20261008-091116-008-publish-frozen-linux.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 72288,
+      "started": "2026-10-08T17:11:19.640034+08:00",
+      "commandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\compiler-temp-publish\\MSBuildTempqqfrwleg.tvz\\tmp73ebab3e0f314b7c99eda3bf0f45866d.rsp\"",
+      "nativeArgvObserved": true,
+      "parentPid": 89404,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\publish-logs\\20261008-091116-008-publish-frozen-linux.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 80660,
+      "started": "2026-10-08T17:11:17.39321+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 89404,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\publish-logs\\20261008-091116-008-publish-frozen-linux.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 72316,
+      "started": "2026-10-08T17:11:19.672035+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 72288,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\publish-logs\\20261008-091116-008-publish-frozen-linux.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 11412,
+      "started": "2026-10-08T17:11:15.209942+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/gpu-learnability-20261008/publish-frozen.ps1\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\publish-logs\\20261008-091116-008-publish-frozen-linux.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 51484,
+      "started": "2026-10-08T17:12:47.330737+08:00",
+      "commandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" exec --runtimeconfig D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\check-runtimeconfig.json D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008/publish-linux/Sezika.ExperimentTrainer.dll check-evaluation --data D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data --manifest-sha256 b8c8d5e018c2bc0029ba100f8f46272ac4cb3b1efea27280ff449f685778b954 --source D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\retrieved\\output\\run-03 --report-sha256 c6b065cd0c66aa4544c0af277c539d82a4e7932c66cd41aaad37cfc1a0d30ee7 --max-checks 1",
+      "nativeArgvObserved": true,
+      "parentPid": 92284,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\published-check-logs\\20261008-091245-361-published-dll-contract-tiny.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 74136,
+      "started": "2026-10-08T17:12:47.396867+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 51484,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\published-check-logs\\20261008-091245-361-published-dll-contract-tiny.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 92284,
+      "started": "2026-10-08T17:12:43.15512+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'; $task='D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008'; $f=Get-Content -Raw \\\"$task/bundle-freeze.json\\\"|ConvertFrom-Json; [ordered]@{files=@($f.files).Count;totalBytes=($f.files|Measure-Object -Property bytes -Sum).Sum;runtime=$f.runtime}|ConvertTo-Json -Compress; Get-FileHash \\\"$task/publish-linux/Sezika.dll\\\",\\\"$task/publish-linux/Sezika.Cuda.dll\\\",'.artifacts/real-gpu-experiment-20261008/publish-linux-v3/Sezika.dll','.artifacts/real-gpu-experiment-20261008/publish-linux-v3/Sezika.Cuda.dll'; & tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('exec','--runtimeconfig','D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\check-runtimeconfig.json',\\\"$task/publish-linux/Sezika.ExperimentTrainer.dll\\\",'check-evaluation','--data','D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data','--manifest-sha256','b8c8d5e018c2bc0029ba100f8f46272ac4cb3b1efea27280ff449f685778b954','--source','D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\retrieved\\output\\run-03','--report-sha256','c6b065cd0c66aa4544c0af277c539d82a4e7932c66cd41aaad37cfc1a0d30ee7','--max-checks','1') -TimeoutSeconds 60 -LogName 'published-dll-contract-tiny' -LogDirectory \\\"$task/published-check-logs\\\" -ProcessQueryTimeoutSeconds 5\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\published-check-logs\\20261008-091245-361-published-dll-contract-tiny.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 72736,
+      "started": "2026-10-08T17:16:00.854262+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\Invoke-LearnabilityScript.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-stage-a.sh",
+      "nativeArgvObserved": true,
+      "parentPid": 55704,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-a-logs\\20261008-091559-699-learnability-A.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 56628,
+      "started": "2026-10-08T17:16:01.518829+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "nativeArgvObserved": true,
+      "parentPid": 72736,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-a-logs\\20261008-091559-699-learnability-A.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 78960,
+      "started": "2026-10-08T17:16:00.87192+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 72736,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-a-logs\\20261008-091559-699-learnability-A.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 55704,
+      "started": "2026-10-08T17:15:59.141356+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/gpu-learnability-20261008/scripts/Invoke-LearnabilityRemote.ps1 -Stage A\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-a-logs\\20261008-091559-699-learnability-A.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 57308,
+      "started": "2026-10-08T17:25:00.222632+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\Invoke-LearnabilityScript.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-stage-b.sh",
+      "nativeArgvObserved": true,
+      "parentPid": 92348,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-b-logs\\20261008-092459-118-learnability-B.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 18520,
+      "started": "2026-10-08T17:25:00.861609+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "nativeArgvObserved": true,
+      "parentPid": 57308,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-b-logs\\20261008-092459-118-learnability-B.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 70000,
+      "started": "2026-10-08T17:25:00.239976+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 57308,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-b-logs\\20261008-092459-118-learnability-B.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 92348,
+      "started": "2026-10-08T17:24:58.462722+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/gpu-learnability-20261008/scripts/Invoke-LearnabilityRemote.ps1 -Stage B | Out-File -LiteralPath 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\stage-b-windows-transcript.log'; Get-Content -LiteralPath 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\stage-b-windows-transcript.log' -Tail 5\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-b-logs\\20261008-092459-118-learnability-B.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 53104,
+      "started": "2026-10-08T17:27:27.328693+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\Invoke-LearnabilityScript.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-stage-c.sh",
+      "nativeArgvObserved": true,
+      "parentPid": 88336,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-c-logs\\20261008-092726-259-learnability-C.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 49816,
+      "started": "2026-10-08T17:27:28.027485+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "nativeArgvObserved": true,
+      "parentPid": 53104,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-c-logs\\20261008-092726-259-learnability-C.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 64408,
+      "started": "2026-10-08T17:27:27.344292+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 53104,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-c-logs\\20261008-092726-259-learnability-C.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 88336,
+      "started": "2026-10-08T17:27:25.74317+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/gpu-learnability-20261008/scripts/Invoke-LearnabilityRemote.ps1 -Stage C | Out-File -LiteralPath 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\stage-c-windows-transcript.log'; Get-Content -LiteralPath 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\stage-c-windows-transcript.log' -Tail 5\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-c-logs\\20261008-092726-259-learnability-C.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 92740,
+      "started": "2026-10-08T17:29:05.194495+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\Invoke-LearnabilityScript.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-final-closure.sh",
+      "nativeArgvObserved": true,
+      "parentPid": 78000,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-closure-logs\\20261008-092904-129-learnability-closure.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 27224,
+      "started": "2026-10-08T17:29:05.209952+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 92740,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-closure-logs\\20261008-092904-129-learnability-closure.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 91544,
+      "started": "2026-10-08T17:29:05.847545+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "nativeArgvObserved": true,
+      "parentPid": 92740,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-closure-logs\\20261008-092904-129-learnability-closure.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 78000,
+      "started": "2026-10-08T17:29:03.618041+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/gpu-learnability-20261008/scripts/Invoke-LearnabilityRemote.ps1 -Stage closure\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-closure-logs\\20261008-092904-129-learnability-closure.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 51188,
+      "started": "2026-10-08T16:58:05.637069+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\Invoke-LearnabilityScript.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-create-task.sh",
+      "nativeArgvObserved": true,
+      "parentPid": 83200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-create-logs\\20261008-085804-502-learnability-create.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 60296,
+      "started": "2026-10-08T16:58:05.65719+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 51188,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-create-logs\\20261008-085804-502-learnability-create.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 80712,
+      "started": "2026-10-08T16:58:06.284977+08:00",
+      "commandLine": null,
+      "nativeArgvObserved": false,
+      "parentPid": 51188,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-create-logs\\20261008-085804-502-learnability-create.result.json",
+      "kind": "recorded_process_missing_native_argv",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 83200,
+      "started": "2026-10-08T16:58:03.810555+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/gpu-learnability-20261008/scripts/Invoke-LearnabilityRemote.ps1 -Stage create\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-create-logs\\20261008-085804-502-learnability-create.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 81668,
+      "started": "2026-10-08T17:01:40.28785+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\Invoke-LearnabilityScript.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-exit-7.sh",
+      "nativeArgvObserved": true,
+      "parentPid": 89248,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-exit7-logs\\20261008-090139-274-learnability-exit7.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 41312,
+      "started": "2026-10-08T17:01:40.885591+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "nativeArgvObserved": true,
+      "parentPid": 81668,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-exit7-logs\\20261008-090139-274-learnability-exit7.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 48260,
+      "started": "2026-10-08T17:01:40.305676+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 81668,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-exit7-logs\\20261008-090139-274-learnability-exit7.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 89248,
+      "started": "2026-10-08T17:01:38.624069+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\nGet-Content .artifacts/gpu-learnability-20261008/scripts/remote-exit7.sh; & .artifacts/gpu-learnability-20261008/scripts/Invoke-LearnabilityRemote.ps1 -Stage exit7\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-exit7-logs\\20261008-090139-274-learnability-exit7.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 48012,
+      "started": "2026-10-08T17:29:11.495852+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\Invoke-LearnabilityScript.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-pack-evidence.sh",
+      "nativeArgvObserved": true,
+      "parentPid": 52464,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-pack-logs\\20261008-092910-409-learnability-pack.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 71332,
+      "started": "2026-10-08T17:29:11.512913+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 48012,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-pack-logs\\20261008-092910-409-learnability-pack.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 79668,
+      "started": "2026-10-08T17:29:12.116602+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "nativeArgvObserved": true,
+      "parentPid": 48012,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-pack-logs\\20261008-092910-409-learnability-pack.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 52464,
+      "started": "2026-10-08T17:29:09.75026+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/gpu-learnability-20261008/scripts/Invoke-LearnabilityRemote.ps1 -Stage pack\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-pack-logs\\20261008-092910-409-learnability-pack.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 72156,
+      "started": "2026-10-08T16:57:45.167724+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\Invoke-LearnabilityScript.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-preflight.sh",
+      "nativeArgvObserved": true,
+      "parentPid": 60612,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-preflight-logs\\20261008-085744-119-learnability-preflight.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 8800,
+      "started": "2026-10-08T16:57:45.912666+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "nativeArgvObserved": true,
+      "parentPid": 72156,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-preflight-logs\\20261008-085744-119-learnability-preflight.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 51300,
+      "started": "2026-10-08T16:57:45.186659+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 72156,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-preflight-logs\\20261008-085744-119-learnability-preflight.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 60612,
+      "started": "2026-10-08T16:57:43.612699+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/gpu-learnability-20261008/scripts/Invoke-LearnabilityRemote.ps1 -Stage preflight\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-preflight-logs\\20261008-085744-119-learnability-preflight.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 93044,
+      "started": "2026-10-08T17:00:14.831279+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\Invoke-LearnabilityScript.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-runner-tiny.sh",
+      "nativeArgvObserved": true,
+      "parentPid": 47184,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-tiny-logs\\20261008-090013-651-learnability-tiny.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 61232,
+      "started": "2026-10-08T17:00:14.850389+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 93044,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-tiny-logs\\20261008-090013-651-learnability-tiny.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 64672,
+      "started": "2026-10-08T17:00:15.594667+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "nativeArgvObserved": true,
+      "parentPid": 93044,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-tiny-logs\\20261008-090013-651-learnability-tiny.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 47184,
+      "started": "2026-10-08T17:00:13.040637+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/gpu-learnability-20261008/scripts/Invoke-LearnabilityRemote.ps1 -Stage tiny\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-tiny-logs\\20261008-090013-651-learnability-tiny.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 75100,
+      "started": "2026-10-08T17:17:06.055314+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\scp.exe\" -P 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42:/root/sezika-experiments/20261008-head-learnability-v2/output/stage-a-evaluation.json root@211.149.170.42:/root/sezika-experiments/20261008-head-learnability-v2/.artifacts/stage-a/result.tsv root@211.149.170.42:/root/sezika-experiments/20261008-head-learnability-v2/.artifacts/stage-a/identity.tsv root@211.149.170.42:/root/sezika-experiments/20261008-head-learnability-v2/.artifacts/stage-a/supervisor.tsv root@211.149.170.42:/root/sezika-experiments/20261008-head-learnability-v2/.artifacts/stage-a/stage-shell.tsv root@211.149.170.42:/root/sezika-experiments/20261008-head-learnability-v2/.artifacts/stage-a/payload.stdout.log root@211.149.170.42:/root/sezika-experiments/20261008-head-learnability-v2/.artifacts/stage-a/payload.stderr.log D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008/stage-a",
+      "nativeArgvObserved": true,
+      "parentPid": 8028,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-091704-887-retrieve-stage-a.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 5772,
+      "started": "2026-10-08T17:17:06.102626+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -x -oPermitLocalCommand=no -oClearAllForwardings=yes -oRemoteCommand=none -oRequestTTY=no -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 -oForwardAgent=no -p 2222 -l root -s -- 211.149.170.42 sftp",
+      "nativeArgvObserved": true,
+      "parentPid": 75100,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-091704-887-retrieve-stage-a.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 55156,
+      "started": "2026-10-08T17:17:06.066265+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 75100,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-091704-887-retrieve-stage-a.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 59616,
+      "started": "2026-10-08T17:17:11.50237+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -x -oPermitLocalCommand=no -oClearAllForwardings=yes -oRemoteCommand=none -oRequestTTY=no -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 -oForwardAgent=no -p 2222 -l root -s -- 211.149.170.42 sftp",
+      "nativeArgvObserved": true,
+      "parentPid": 75100,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-091704-887-retrieve-stage-a.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 75264,
+      "started": "2026-10-08T17:17:18.014152+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -x -oPermitLocalCommand=no -oClearAllForwardings=yes -oRemoteCommand=none -oRequestTTY=no -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 -oForwardAgent=no -p 2222 -l root -s -- 211.149.170.42 sftp",
+      "nativeArgvObserved": true,
+      "parentPid": 75100,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-091704-887-retrieve-stage-a.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 89652,
+      "started": "2026-10-08T17:17:15.887819+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -x -oPermitLocalCommand=no -oClearAllForwardings=yes -oRemoteCommand=none -oRequestTTY=no -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 -oForwardAgent=no -p 2222 -l root -s -- 211.149.170.42 sftp",
+      "nativeArgvObserved": true,
+      "parentPid": 75100,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-091704-887-retrieve-stage-a.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 8028,
+      "started": "2026-10-08T17:17:04.234084+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'; $task='D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008'; $local=\\\"$task/stage-a\\\"; if(Test-Path -LiteralPath $local){throw 'A retrieval fresh scope required'}; [IO.Directory]::CreateDirectory($local)|Out-Null; $sshOptions=@('-P','2222','-o','BatchMode=yes','-o','ConnectTimeout=8','-o','StrictHostKeyChecking=yes','-o','ServerAliveInterval=5','-o','ServerAliveCountMax=2'); $remote='root@211.149.170.42:/root/sezika-experiments/20261008-head-learnability-v2'; & tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Windows\\System32\\OpenSSH\\scp.exe' -ArgumentList ($sshOptions+@(\\\"$remote/output/stage-a-evaluation.json\\\",\\\"$remote/.artifacts/stage-a/result.tsv\\\",\\\"$remote/.artifacts/stage-a/identity.tsv\\\",\\\"$remote/.artifacts/stage-a/supervisor.tsv\\\",\\\"$remote/.artifacts/stage-a/stage-shell.tsv\\\",\\\"$remote/.artifacts/stage-a/payload.stdout.log\\\",\\\"$remote/.artifacts/stage-a/payload.stderr.log\\\",$local)) -TimeoutSeconds 60 -ProcessQueryTimeoutSeconds 5 -LogName 'retrieve-stage-a' -LogDirectory \\\"$task/retrieval-logs\\\" | Out-File -LiteralPath \\\"$task/retrieve-a-transcript.log\\\"; Get-Content \\\"$task/retrieve-a-transcript.log\\\" -Tail 3\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-091704-887-retrieve-stage-a.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 54860,
+      "started": "2026-10-08T17:26:04.339836+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\scp.exe\" -P 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42:/root/sezika-experiments/20261008-head-learnability-v2/output/run-768/experiment-head.asset root@211.149.170.42:/root/sezika-experiments/20261008-head-learnability-v2/output/run-768/experiment-training.checkpoint root@211.149.170.42:/root/sezika-experiments/20261008-head-learnability-v2/output/run-768/experiment-training-report.json root@211.149.170.42:/root/sezika-experiments/20261008-head-learnability-v2/output/run-768/experiment-learnability-evaluation.json root@211.149.170.42:/root/sezika-experiments/20261008-head-learnability-v2/.artifacts/stage-b/result.tsv D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008/stage-b",
+      "nativeArgvObserved": true,
+      "parentPid": 88564,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-092603-278-retrieve-stage-b.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 35452,
+      "started": "2026-10-08T17:26:04.430638+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -x -oPermitLocalCommand=no -oClearAllForwardings=yes -oRemoteCommand=none -oRequestTTY=no -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 -oForwardAgent=no -p 2222 -l root -s -- 211.149.170.42 sftp",
+      "nativeArgvObserved": true,
+      "parentPid": 54860,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-092603-278-retrieve-stage-b.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 57268,
+      "started": "2026-10-08T17:26:09.688004+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -x -oPermitLocalCommand=no -oClearAllForwardings=yes -oRemoteCommand=none -oRequestTTY=no -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 -oForwardAgent=no -p 2222 -l root -s -- 211.149.170.42 sftp",
+      "nativeArgvObserved": true,
+      "parentPid": 54860,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-092603-278-retrieve-stage-b.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 77844,
+      "started": "2026-10-08T17:26:04.362311+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 54860,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-092603-278-retrieve-stage-b.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 84500,
+      "started": "2026-10-08T17:26:11.911261+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -x -oPermitLocalCommand=no -oClearAllForwardings=yes -oRemoteCommand=none -oRequestTTY=no -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 -oForwardAgent=no -p 2222 -l root -s -- 211.149.170.42 sftp",
+      "nativeArgvObserved": true,
+      "parentPid": 54860,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-092603-278-retrieve-stage-b.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 88564,
+      "started": "2026-10-08T17:26:02.749352+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'; $task='D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008'; Get-Content \\\"$task/remote-b-logs/*.stdout.log\\\" -TotalCount 40; $local=\\\"$task/stage-b\\\"; if(Test-Path -LiteralPath $local){throw 'Fresh B retrieval scope required'}; [IO.Directory]::CreateDirectory($local)|Out-Null; $options=@('-P','2222','-o','BatchMode=yes','-o','ConnectTimeout=8','-o','StrictHostKeyChecking=yes','-o','ServerAliveInterval=5','-o','ServerAliveCountMax=2'); $remote='root@211.149.170.42:/root/sezika-experiments/20261008-head-learnability-v2'; & tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Windows\\System32\\OpenSSH\\scp.exe' -ArgumentList ($options+@(\\\"$remote/output/run-768/experiment-head.asset\\\",\\\"$remote/output/run-768/experiment-training.checkpoint\\\",\\\"$remote/output/run-768/experiment-training-report.json\\\",\\\"$remote/output/run-768/experiment-learnability-evaluation.json\\\",\\\"$remote/.artifacts/stage-b/result.tsv\\\",$local)) -TimeoutSeconds 60 -ProcessQueryTimeoutSeconds 5 -LogName 'retrieve-stage-b' -LogDirectory \\\"$task/retrieval-logs\\\" | Out-File -LiteralPath \\\"$task/retrieve-b-transcript.log\\\"; Get-Content \\\"$task/retrieve-b-transcript.log\\\" -Tail 3\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-092603-278-retrieve-stage-b.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 43508,
+      "started": "2026-10-08T17:30:13.08313+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\scp.exe\" -P 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42:/root/sezika-experiments/20261008-head-learnability-v2/evidence-bundle.tar root@211.149.170.42:/root/sezika-experiments/20261008-head-learnability-v2/logs/evidence-bundle.sha256 D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008",
+      "nativeArgvObserved": true,
+      "parentPid": 6160,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-093011-791-retrieve-final-evidence.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 55580,
+      "started": "2026-10-08T17:30:13.186882+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -x -oPermitLocalCommand=no -oClearAllForwardings=yes -oRemoteCommand=none -oRequestTTY=no -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 -oForwardAgent=no -p 2222 -l root -s -- 211.149.170.42 sftp",
+      "nativeArgvObserved": true,
+      "parentPid": 43508,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-093011-791-retrieve-final-evidence.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 59020,
+      "started": "2026-10-08T17:30:13.107237+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 43508,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-093011-791-retrieve-final-evidence.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 6160,
+      "started": "2026-10-08T17:30:10.775292+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/gpu-learnability-20261008/retrieve-final.ps1 | Out-File -LiteralPath 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-final-transcript.log'; Get-Content -LiteralPath 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-final-transcript.log' -Tail 5\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-093011-791-retrieve-final-evidence.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 6160,
+      "started": "2026-10-08T17:30:10.775292+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/gpu-learnability-20261008/retrieve-final.ps1 | Out-File -LiteralPath 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-final-transcript.log'; Get-Content -LiteralPath 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-final-transcript.log' -Tail 5\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-093022-224-inspect-final-evidence.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 84252,
+      "started": "2026-10-08T09:30:23.307253Z",
+      "commandLine": null,
+      "nativeArgvObserved": false,
+      "parentPid": 6160,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-093022-224-inspect-final-evidence.result.json",
+      "kind": "retained_root_handle",
+      "structuredArguments": [
+        "-tf",
+        "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008/evidence-bundle.tar"
+      ],
+      "startedToleranceTicks": 10,
+      "state": "absent"
+    },
+    {
+      "pid": 6160,
+      "started": "2026-10-08T17:30:10.775292+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/gpu-learnability-20261008/retrieve-final.ps1 | Out-File -LiteralPath 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-final-transcript.log'; Get-Content -LiteralPath 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-final-transcript.log' -Tail 5\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-093025-906-extract-final-evidence.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 55844,
+      "started": "2026-10-08T09:30:26.9950757Z",
+      "commandLine": null,
+      "nativeArgvObserved": false,
+      "parentPid": 6160,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieval-logs\\20261008-093025-906-extract-final-evidence.result.json",
+      "kind": "retained_root_handle",
+      "structuredArguments": [
+        "-xf",
+        "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008/evidence-bundle.tar",
+        "-C",
+        "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieved"
+      ],
+      "startedToleranceTicks": 10,
+      "state": "absent"
+    },
+    {
+      "pid": 78176,
+      "started": "2026-10-08T17:08:43.244005+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\wsl.exe\" --distribution Ubuntu --exec /usr/bin/timeout --signal=TERM --kill-after=1s 55s /bin/bash /mnt/d/source/Sezika/.artifacts/gpu-learnability-20261008/test-shell-final.sh",
+      "nativeArgvObserved": true,
+      "parentPid": 46300,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\shell-contract-logs\\20261008-090839-883-final-shell-syntax-pack-contract.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 46300,
+      "started": "2026-10-08T17:08:36.83316+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Windows\\System32\\wsl.exe' -ArgumentList @('--distribution','Ubuntu','--exec','/usr/bin/timeout','--signal=TERM','--kill-after=1s','55s','/bin/bash','/mnt/d/source/Sezika/.artifacts/gpu-learnability-20261008/test-shell-final.sh') -TimeoutSeconds 70 -ProcessQueryTimeoutSeconds 5 -LogName 'final-shell-syntax-pack-contract' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\shell-contract-logs' -WorkingDirectory 'D:\\source\\Sezika'\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\shell-contract-logs\\20261008-090839-883-final-shell-syntax-pack-contract.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 48996,
+      "started": "2026-10-08T17:13:32.136867+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/gpu-learnability-20261008/transfer-bundle.ps1\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\transfer-logs\\20261008-091333-749-pack-frozen-bundle.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 48336,
+      "started": "2026-10-08T09:13:35.4449339Z",
+      "commandLine": null,
+      "nativeArgvObserved": false,
+      "parentPid": 48996,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\transfer-logs\\20261008-091333-749-pack-frozen-bundle.result.json",
+      "kind": "retained_root_handle",
+      "structuredArguments": [
+        "-cf",
+        "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008/bundle.tar",
+        "-C",
+        "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008/publish-linux",
+        "."
+      ],
+      "startedToleranceTicks": 10,
+      "state": "absent"
+    },
+    {
+      "pid": 22124,
+      "started": "2026-10-08T17:13:40.637541+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\scp.exe\" -P 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008/bundle.tar root@211.149.170.42:/root/sezika-experiments/20261008-head-learnability-v2/bundle.tar",
+      "nativeArgvObserved": true,
+      "parentPid": 48996,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\transfer-logs\\20261008-091339-206-upload-frozen-bundle.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 63516,
+      "started": "2026-10-08T17:13:40.764453+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -x -oPermitLocalCommand=no -oClearAllForwardings=yes -oRemoteCommand=none -oRequestTTY=no -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 -oForwardAgent=no -p 2222 -l root -s -- 211.149.170.42 sftp",
+      "nativeArgvObserved": true,
+      "parentPid": 22124,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\transfer-logs\\20261008-091339-206-upload-frozen-bundle.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 86560,
+      "started": "2026-10-08T17:13:40.667083+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 22124,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\transfer-logs\\20261008-091339-206-upload-frozen-bundle.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 48996,
+      "started": "2026-10-08T17:13:32.136867+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/gpu-learnability-20261008/transfer-bundle.ps1\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\transfer-logs\\20261008-091339-206-upload-frozen-bundle.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 62412,
+      "started": "2026-10-08T17:14:18.427905+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\scp.exe\" -P 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\phase-common.sh D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-create-task.sh D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-exit-7.sh D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-final-closure.sh D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-install-bundle.sh D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-pack-evidence.sh D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-preflight.sh D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-runner-tiny.sh D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-stage-a.sh D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-stage-b.sh D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-stage-c.sh D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\scripts.sha256 root@211.149.170.42:/root/sezika-experiments/20261008-head-learnability-v2/scripts/",
+      "nativeArgvObserved": true,
+      "parentPid": 48996,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\transfer-logs\\20261008-091417-338-upload-frozen-shell-scripts.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 49816,
+      "started": "2026-10-08T17:14:18.49261+08:00",
+      "commandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -x -oPermitLocalCommand=no -oClearAllForwardings=yes -oRemoteCommand=none -oRequestTTY=no -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 -oForwardAgent=no -p 2222 -l root -s -- 211.149.170.42 sftp",
+      "nativeArgvObserved": true,
+      "parentPid": 62412,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\transfer-logs\\20261008-091417-338-upload-frozen-shell-scripts.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 73364,
+      "started": "2026-10-08T17:14:18.444829+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 62412,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\transfer-logs\\20261008-091417-338-upload-frozen-shell-scripts.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 48996,
+      "started": "2026-10-08T17:13:32.136867+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/gpu-learnability-20261008/transfer-bundle.ps1\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\transfer-logs\\20261008-091417-338-upload-frozen-shell-scripts.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 57216,
+      "started": "2026-10-08T17:01:19.708221+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion; & 'D:\\source\\Sezika\\tools\\Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\gpu-learnability-runner-prep-20261008\\Test-RunnerContract.ps1') -TimeoutSeconds 30 -ProcessQueryTimeoutSeconds 5 -LogName 'runner-contract-tiny' -WorkingDirectory 'D:\\source\\Sezika' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-runner-prep-20261008\\tiny-logs'\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-runner-prep-20261008\\tiny-logs\\20261008-090120-236-runner-contract-tiny.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 56512,
+      "started": "2026-10-08T09:01:21.2949251Z",
+      "commandLine": null,
+      "nativeArgvObserved": false,
+      "parentPid": 57216,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-runner-prep-20261008\\tiny-logs\\20261008-090120-236-runner-contract-tiny.result.json",
+      "kind": "retained_root_handle",
+      "structuredArguments": [
+        "-NoProfile",
+        "-File",
+        "D:\\source\\Sezika\\.artifacts\\gpu-learnability-runner-prep-20261008\\Test-RunnerContract.ps1"
+      ],
+      "startedToleranceTicks": 10,
+      "state": "absent"
+    },
+    {
+      "pid": 58372,
+      "started": "2026-10-08T17:02:20.304858+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion; & 'D:\\source\\Sezika\\tools\\Invoke-BoundedProcess.ps1' -FilePath 'C:\\Windows\\System32\\wsl.exe' -ArgumentList @('--distribution','Ubuntu','--exec','/usr/bin/timeout','--signal=TERM','--kill-after=1s','20s','/bin/bash','/mnt/d/source/Sezika/.artifacts/gpu-learnability-runner-prep-20261008/test-bash-syntax.sh') -TimeoutSeconds 45 -ProcessQueryTimeoutSeconds 5 -LogName 'bash-syntax-tiny' -WorkingDirectory 'D:\\source\\Sezika' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-runner-prep-20261008\\tiny-logs'\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-runner-prep-20261008\\tiny-logs\\20261008-090220-824-bash-syntax-tiny.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 34772,
+      "started": "2026-10-08T09:02:21.8836911Z",
+      "commandLine": null,
+      "nativeArgvObserved": false,
+      "parentPid": 58372,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-runner-prep-20261008\\tiny-logs\\20261008-090220-824-bash-syntax-tiny.result.json",
+      "kind": "retained_root_handle",
+      "structuredArguments": [
+        "--distribution",
+        "Ubuntu",
+        "--exec",
+        "/usr/bin/timeout",
+        "--signal=TERM",
+        "--kill-after=1s",
+        "20s",
+        "/bin/bash",
+        "/mnt/d/source/Sezika/.artifacts/gpu-learnability-runner-prep-20261008/test-bash-syntax.sh"
+      ],
+      "startedToleranceTicks": 10,
+      "state": "absent"
+    },
+    {
+      "pid": 38004,
+      "started": "2026-10-08T16:56:43.42099+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'; $rootTask='D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008'; $entry=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::WriteAllText((Join-Path $rootTask 'root-shell-identity.json'),($entry|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId|ConvertTo-Json)); Get-Content .artifacts/real-gpu-experiment-20261008/publish-linux-v3/Sezika.ExperimentTrainer.runtimeconfig.json -TotalCount 35; Get-Command 'C:\\Windows\\System32\\OpenSSH\\scp.exe','C:\\Windows\\System32\\OpenSSH\\ssh.exe','C:\\Windows\\System32\\tar.exe','C:\\Program Files\\dotnet\\dotnet.exe' | Select-Object Name,Source\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\root-shell-identity.json",
+      "kind": "root_shell_journal",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 55204,
+      "started": "2026-10-08T17:04:29.063025+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'; $journal='D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\root-readers.jsonl'; $entry=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText($journal,(($entry|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId|ConvertTo-Json -Compress)+[Environment]::NewLine)); Get-ChildItem .artifacts/gpu-learnability-20261008/implementation-r1 -File | Select-Object Name,Length; Get-Content .artifacts/gpu-learnability-20261008/implementation-r1/*.stdout.log -Tail 22; Get-Content tools/Sezika.ExperimentTrainer/ExperimentEvaluationChecks.cs -TotalCount 110\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\root-readers.jsonl",
+      "kind": "root_reader_journal",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 38324,
+      "started": "2026-10-08T17:05:35.630758+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'; $entry=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText('D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\root-readers.jsonl',(($entry|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId|ConvertTo-Json -Compress)+[Environment]::NewLine)); Get-ChildItem .artifacts/gpu-learnability-20261008/implementation-r1 -Filter '*.result.json' -File | ForEach-Object {$r=Get-Content -Raw $_.FullName|ConvertFrom-Json; [ordered]@{name=$_.Name;status=$r.Status;exitCode=$r.ExitCode;elapsed=$r.ElapsedSeconds;cleanupErrors=@($r.CleanupErrors)}|ConvertTo-Json -Compress}; Get-Content .artifacts/gpu-learnability-20261008/implementation-r1/*full6.stdout.log -Tail 18; Get-Content tools/Sezika.ExperimentTrainer/ExperimentEvaluation.cs | Select-Object -Skip 416 -First 95\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\root-readers.jsonl",
+      "kind": "root_reader_journal",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 62972,
+      "started": "2026-10-08T09:40:48.3546810Z",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n$native=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5\n[IO.File]::AppendAllText('D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\root-readers.jsonl',(([ordered]@{Pid=$PID;Started=$native.CreationDate.ToUniversalTime().ToString('o');CommandLine=$native.CommandLine;ParentPid=$native.ParentProcessId}|ConvertTo-Json -Compress)+[Environment]::NewLine),[Text.UTF8Encoding]::new($false))\n$pre=Get-Content -LiteralPath '.artifacts/gpu-learnability-20261008/pre-b.closure.json' -Raw | ConvertFrom-Json -DateKind String\n$pre.KnownIdentityComparisons | Where-Object pid -eq 80712 | ConvertTo-Json -Depth 5\n@(Get-Content -LiteralPath '.artifacts/gpu-learnability-20261008/root-readers.jsonl').Count\nGet-Content -LiteralPath '.artifacts/gpu-learnability-20261008/remote-c-logs/20261008-092726-259-learnability-C.result.json' -Raw | ConvertFrom-Json -DateKind String | Select-Object Pid,ElapsedSeconds,Status,ExitCode\nGet-Content -LiteralPath '.artifacts/gpu-learnability-review-20261008/stage-b-c-review.md' -TotalCount 90\nGet-ChildItem -LiteralPath '.artifacts/gpu-learnability-20261008' -File | Select-Object -First 45 Name\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\root-readers.jsonl",
+      "kind": "root_reader_journal",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 11188,
+      "started": "2026-10-08T09:41:25.1522880Z",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$native=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5\n[IO.File]::AppendAllText('D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\root-readers.jsonl',(([ordered]@{Pid=$PID;Started=$native.CreationDate.ToUniversalTime().ToString('o');CommandLine=$native.CommandLine;ParentPid=$native.ParentProcessId}|ConvertTo-Json -Compress)+[Environment]::NewLine),[Text.UTF8Encoding]::new($false))\nGet-Content -LiteralPath '.artifacts/gpu-learnability-document-review-20261008.json' -Raw\nGet-Content -LiteralPath '.artifacts/gpu-learnability-20261008/local-closure.ps1' | Select-Object -First 85\n$arec=Get-Content -LiteralPath '.artifacts/gpu-learnability-20261008/remote-a-logs/20261008-091559-699-learnability-A.result.json' -Raw | ConvertFrom-Json -DateKind String\n$brec=Get-Content -LiteralPath '.artifacts/gpu-learnability-20261008/remote-b-logs/20261008-092459-118-learnability-B.result.json' -Raw | ConvertFrom-Json -DateKind String\n@($arec,$brec) | Select-Object Pid,ElapsedSeconds,Status,ExitCode | ConvertTo-Json\n$pre=Get-Content -LiteralPath '.artifacts/gpu-learnability-20261008/pre-b.closure.json' -Raw | ConvertFrom-Json -DateKind String\n$pre.Sources | Where-Object path -like '*local-closure*' | ConvertTo-Json\nGet-ChildItem -LiteralPath '.artifacts/gpu-learnability-20261008' -File | Select-Object -First 45 -ExpandProperty Name\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\root-readers.jsonl",
+      "kind": "root_reader_journal",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 10580,
+      "started": "2026-10-08T09:43:52.6947990Z",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$native=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5\n[IO.File]::AppendAllText('D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\root-readers.jsonl',(([ordered]@{Pid=$PID;Started=$native.CreationDate.ToUniversalTime().ToString('o');CommandLine=$native.CommandLine;ParentPid=$native.ParentProcessId}|ConvertTo-Json -Compress)+[Environment]::NewLine),[Text.UTF8Encoding]::new($false))\n$path='D:\\source\\Sezika\\docs\\evidence\\gpu-learnability-2026-10-08.md'\n$text=[IO.File]::ReadAllText($path).Replace('27.409秒','27.397秒').Replace('31.120秒','31.108秒').Replace('32.705秒','32.69秒')\n[IO.File]::WriteAllText($path,$text,[Text.UTF8Encoding]::new($false))\n$path='D:\\source\\Sezika\\HANDOFF.md'\n$text=[IO.File]::ReadAllText($path).Replace('### 2026-10-08 可学性阶段A已真实完成','### 2026-10-08 历史检查点：阶段A已完成（由上方B/C结果接续）').Replace('### 2026-10-08 新会话已接管本轮可学性诊断','### 2026-10-08 历史检查点：新会话接管（由上方完成结果接续）')\n[IO.File]::WriteAllText($path,$text,[Text.UTF8Encoding]::new($false))\nGet-FileHash -LiteralPath '.artifacts/gpu-learnability-20261008/local-closure.ps1' -Algorithm SHA256\nTest-Path -LiteralPath '.artifacts/gpu-learnability-20261008/closure-diagnostic-readers.json'\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\root-readers.jsonl",
+      "kind": "root_reader_journal",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 25284,
+      "started": "2026-10-08T09:17:25.9465920Z",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion; $closure='D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\local-closure.ps1';$tokens=$null;$errors=$null;[Management.Automation.Language.Parser]::ParseFile($closure,[ref]$tokens,[ref]$errors)|Out-Null;if($errors.Count -gt 0){throw ($errors.Message -join ',')}; & $closure -Label 'tiny1' -Mode Tiny -ReceiptFiles @('D:\\source\\Sezika\\.artifacts\\gpu-learnability-runner-prep-20261008\\tiny-logs\\20261008-090120-236-runner-contract-tiny.result.json') -OutputDirectory 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008'; Get-Content -Raw -LiteralPath 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\tiny1.closure.json' | ConvertFrom-Json | Select-Object ReceiptCount,RecordCount,UniquePidCount,ProcessClosurePassed,MatchingLive,Unknown,SelfRequiresIndependentRecheck,ElapsedSeconds | ConvertTo-Json\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\tiny1.closure.json",
+      "kind": "prior_closure_checker",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 77876,
+      "started": "2026-10-08T09:18:09.3884310Z",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion; $closure='D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\local-closure.ps1';$tokens=$null;$errors=$null;[Management.Automation.Language.Parser]::ParseFile($closure,[ref]$tokens,[ref]$errors)|Out-Null;if($errors.Count -gt 0){throw ($errors.Message -join ',')}; & $closure -Label 'tiny2' -Mode Tiny -ReceiptFiles @('D:\\source\\Sezika\\.artifacts\\gpu-learnability-runner-prep-20261008\\tiny-logs\\20261008-090120-236-runner-contract-tiny.result.json') -OutputDirectory 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008'; Get-FileHash -LiteralPath $closure,'D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\tiny2.closure.json' -Algorithm SHA256\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\tiny2.closure.json",
+      "kind": "prior_closure_checker",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 88864,
+      "started": "2026-10-08T09:19:20.0159520Z",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion; $prep='D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008';$script='D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\local-closure.ps1';$reportPath=Join-Path $prep 'preparation-report.json';if(Test-Path -LiteralPath $reportPath){throw 'Preparation report exists'};$clock=[Diagnostics.Stopwatch]::StartNew();$checks=[Collections.Generic.List[object]]::new();$rows=[Collections.Generic.List[object]]::new();foreach($label in @('tiny1','tiny2')){if($clock.Elapsed.TotalSeconds -ge 15 -or(Test-Path -LiteralPath (Join-Path $prep 'cancel.request'))){throw 'Prep final identity budget/cancel'};$path=Join-Path $prep ($label+'.closure.json');$r=Get-Content -Raw -LiteralPath $path|ConvertFrom-Json -DateKind String;if(-not $r.ProcessClosurePassed -or $r.ReceiptCount -ne 1 -or $r.RecordCount -ne 2 -or $r.MatchingLive -ne 0 -or $r.Unknown -ne 0){throw 'Tiny assertion failed'};$native=Get-CimInstance Win32_Process -Filter ('ProcessId='+$r.Self.Pid) -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5;if($native){throw 'Prior tiny checker still present; no signal sent'};$rows.Add([ordered]@{pid=$r.Self.Pid;started=$r.Self.Started;commandLine=$r.Self.CommandLine;parentPid=$r.Self.ParentPid;state='absent'});$checks.Add([ordered]@{path=$path;sha256=(Get-FileHash -LiteralPath $path).Hash;receiptCount=$r.ReceiptCount;recordCount=$r.RecordCount;passed=$r.ProcessClosurePassed;elapsedSeconds=$r.ElapsedSeconds})};$nativeSelf=Get-CimInstance Win32_Process -Filter ('ProcessId='+$PID) -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5;$self=[ordered]@{Pid=$PID;Started=$nativeSelf.CreationDate.ToUniversalTime().ToString('o');CommandLine=$nativeSelf.CommandLine;ParentPid=$nativeSelf.ParentProcessId;State='checker_current_requires_independent_recheck';RequiresIndependentRecheck=$true};[ordered]@{owner='/root/runner_prep';utc=[DateTime]::UtcNow.ToString('o');fileCount=5;maximumFiles=5;maximumMinutes=15;maximumRevisions=2;script=$script;scriptSha256=(Get-FileHash -LiteralPath $script).Hash;parserPassed=$true;tinyChecks=@($checks);priorTinyCheckerComparisons=@($rows);Self=$self;SelfRequiresIndependentRecheck=$true;noNetwork=$true;noGpu=$true;noGit=$true;noSignals=$true;noDelete=$true;fullScope='Current task result receipts depth2<=100 total receipts including independent runner-prep tiny range, directories<=128, records<=500; root journals; optional prior closure checker identities; exact CIM batches <=5*100 queries <=5s, total55+5 seconds.';pausedFileScope='Default Full checks the paused baseline entries except ROADMAP; ROADMAP is explicitly excluded for authorized document edits. Tiny skips paused files.';resourceScope='Only registered historical Windows identities; Self is explicitly pending another new-process check, and newly written result receipts need another label.';limits=@('No Linux descendant or CUDA disposal conclusion from Windows closure.','Short-lived intermediate process observations can be incomplete. Root handle start and structured argv are preserved when native command line is unavailable.','A same-start identity with changed argv/parent or unavailable proof is unknown and fails. Reused PID is not signalled.','Result status/exit is retained and cannot substitute for actual identity comparison.','Bounded directory scan may fail rather than claim complete if item/time caps are reached.');tempCleanup='No downloads or temporary process launchers; five owned script/evidence files retained. No files deleted.'}|ConvertTo-Json -Depth 10|Set-Content -LiteralPath $reportPath;Get-FileHash -LiteralPath $reportPath -Algorithm SHA256;[ordered]@{tinyPriorCheckerCount=$rows.Count;tinyPriorCheckersAllAbsent=$true;prepChecker=$PID;requiresIndependentRecheck=$true}|ConvertTo-Json\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\preparation-report.json",
+      "kind": "prior_closure_checker",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 17060,
+      "started": "2026-10-08T09:20:47.0263870Z",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/gpu-learnability-20261008/local-closure.ps1 -Label pre-b -PriorClosureFiles @('D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\tiny1.closure.json','D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\tiny2.closure.json','D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\preparation-report.json')\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\pre-b.closure.json",
+      "kind": "prior_closure_checker",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 32436,
+      "started": "2026-10-08T09:38:01.3067570Z",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/gpu-learnability-20261008/local-closure.ps1 -Label pre-final-commit -PriorClosureFiles @('D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\tiny1.closure.json','D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\tiny2.closure.json','D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\preparation-report.json','D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\pre-b.closure.json')\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\pre-final-commit.closure.json",
+      "kind": "prior_closure_checker",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 55320,
+      "started": "2026-10-08T09:42:37.0546050Z",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n& '.artifacts/gpu-learnability-20261008/local-closure.ps1' -Label tiny-final-argv-gap -Mode Tiny -ReceiptFiles 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-create-logs\\20261008-085804-502-learnability-create.result.json'\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\tiny-final-argv-gap.closure.json",
+      "kind": "prior_closure_checker",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 90716,
+      "started": "2026-10-08T17:37:25.44335+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion; $p = Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -OperationTimeoutSec 3; [pscustomobject]@{Pid=$PID;Start=$p.CreationDate;Argv=$p.CommandLine;Parent=$p.ParentProcessId} | ConvertTo-Json -Compress; Get-Content -LiteralPath 'docs/evidence/gpu-learnability-2026-10-08.md'; Get-Content -LiteralPath 'HANDOFF.md' -Tail 180; Get-Content -LiteralPath 'ROADMAP.md' -Tail 170\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\document-review-readers.json",
+      "kind": "additional_registered_reader",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 86988,
+      "started": "2026-10-08T17:38:20.646695+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion; $p = Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -OperationTimeoutSec 3; [pscustomobject]@{Pid=$PID;Start=$p.CreationDate;Argv=$p.CommandLine;Parent=$p.ParentProcessId} | ConvertTo-Json -Compress; Get-Content -LiteralPath 'HANDOFF.md' -TotalCount 100; Get-Content -LiteralPath 'ROADMAP.md' -TotalCount 115; Get-ChildItem -LiteralPath '.artifacts/gpu-learnability-20261008/retrieved' -Directory | Select-Object Name; Get-ChildItem -LiteralPath '.artifacts/gpu-learnability-20261008/retrieved/output/run-768' -File | Select-Object Name,Length\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\document-review-readers.json",
+      "kind": "additional_registered_reader",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 33092,
+      "started": "2026-10-08T17:40:03.738808+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion; $watch = [Diagnostics.Stopwatch]::StartNew(); $reviewPath = [IO.Path]::GetFullPath('D:\\source\\Sezika\\.artifacts\\gpu-learnability-document-review-20261008.json'); if ([IO.File]::Exists($reviewPath) -or [IO.Directory]::Exists($reviewPath)) { throw 'Fresh review path required' }; $p = Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -OperationTimeoutSec 3; $identity = [ordered]@{Pid=$PID;Start=$p.CreationDate;Argv=$p.CommandLine;Parent=$p.ParentProcessId}; $identity | ConvertTo-Json -Compress; rg -n -m 8 '768|可学性|23\\.' ROADMAP.md; $base = 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieved\\output'; $trainPath = Join-Path $base 'run-768\\experiment-training-report.json'; $bPath = Join-Path $base 'run-768\\experiment-learnability-evaluation.json'; $cPath = Join-Path $base 'stage-c-evaluation.json'; $train = [IO.File]::ReadAllText($trainPath) | ConvertFrom-Json -Depth 100; $b = [IO.File]::ReadAllText($bPath) | ConvertFrom-Json -Depth 100; $c = [IO.File]::ReadAllText($cPath) | ConvertFrom-Json -Depth 100; if ($watch.Elapsed.TotalSeconds -ge 45) { throw 'Review read batch deadline' }; $tiny = @($b.observations.rows)[0]; [pscustomobject]@{TinyRecord=$tiny.record_id;TinyTargetRank=$tiny.teacher_target_rank;TinyCe=$tiny.gpu_teacher_ce} | ConvertTo-Json -Compress; $rows = @($b.observations.rows); if ($rows.Count -ne 40) { throw 'Expected full 40 rows' }; for ($i=0; $i -lt 40; $i++) { if ($watch.Elapsed.TotalSeconds -ge 45) { throw 'Review count deadline' }; if (($rows[$i].candidate_ids).Count -lt 2 -or $rows[$i].teacher_target_rank -lt 1) { throw 'Invalid recorded row shape' }; if (($i % 10) -eq 0) { Write-Output \\\"read-only recorded-row check $i/40\\\" } }; $trainRows = @($rows | Where-Object { $_.split -eq 'train' -and $_.variant -eq 'original' }); $devRows = @($rows | Where-Object { $_.split -eq 'development' -and $_.variant -eq 'original' }); $swapRows = @($rows | Where-Object { $_.variant -eq 'fixed-left1' }); $bCanonical = $b.observations | ConvertTo-Json -Depth 100 -Compress; $cCanonical = $c.observations | ConvertTo-Json -Depth 100 -Compress; $paths = @($trainPath,$bPath,$cPath,(Join-Path $base 'run-768\\experiment-head.asset'),(Join-Path $base 'run-768\\experiment-training.checkpoint')); $hashes = @(Get-FileHash -LiteralPath $paths -Algorithm SHA256 | Select-Object Path,Hash); $cBytes = [IO.File]::ReadAllBytes($cPath); $lfBytes = [byte[]]::new($cBytes.Length + 1); [Array]::Copy($cBytes,$lfBytes,$cBytes.Length); $lfBytes[$cBytes.Length] = 10; $lfHash = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($lfBytes)); $summary = [ordered]@{review_status='read_only_b_c_evidence_checked';started_utc='2026-10-08T09:37:25Z';completed_utc=[DateTime]::UtcNow;unique_source_files_limit=8;json_report_files=$paths[0..2];disk_hashes=$hashes;completed_steps=$train.completed_steps;seed=$train.seed;learning_rate=$train.learning_rate;max_tokens=$train.max_tokens;encoder_frozen=$train.encoder_frozen;initial_parameter_source=$train.initial_parameter_source;train_count=$trainRows.Count;train_agreement=@($trainRows | Where-Object agrees_with_teacher).Count;unfitted_ids=@($trainRows | Where-Object { -not $_.agrees_with_teacher } | Select-Object -ExpandProperty record_id);development_count=$devRows.Count;development_agreement=@($devRows | Where-Object agrees_with_teacher).Count;rotation_count=$swapRows.Count;rotation_agreement=@($swapRows | Where-Object agrees_with_teacher).Count;position_selected_id_changed=@($b.observations.position_comparisons | Where-Object selected_id_changed).Count;baseline_train=$train.baseline_train.mean_loss;baseline_development=$train.baseline_development.mean_loss;trained_train=$train.trained_train.mean_loss;trained_development=$train.trained_development.mean_loss;loaded_train=$train.loaded_train.mean_loss;loaded_development=$train.loaded_development.mean_loss;rotated_ce=$b.observations.rotated_training_choice.mean_loss;c_train_ce=$c.observations.train.mean_loss;c_dev_ce=$c.observations.development.mean_loss;c_rotated_ce=$c.observations.rotated_training_choice.mean_loss;b_c_all_observations_parsed_identical=($bCanonical -ceq $cCanonical);fresh_disk_outputs_matched=$c.fresh_disk_outputs_matched;b_forward_started=$b.encoder_forwards_started;b_forward_completed=$b.encoder_forwards_completed;c_forward_started=$c.encoder_forwards_started;c_forward_completed=$c.encoder_forwards_completed;b_resources=$b.resources;c_resources=$c.resources;b_groups=$b.observations.groups;parameter_sha=$train.parameter_sha256;feature_sha=$train.feature_sha256;c_compared_evaluation_sha=$c.compared_evaluation_sha256;c_source_report_sha=$c.source_report_sha256;acceptance=$c.acceptance;c_json_bytes=$cBytes.Length;c_json_plus_lf_reconstructed_sha=$lfHash;limitations=@('C stdout hash reconstruction checks JSON-plus-LF object distinction; actual stdout file was not opened in this 8-file scope.','Stage A report/runner receipts are outside this B/C numerical audit.','Historical HANDOFF stage A text says B/C not started; top completed section supersedes it.','No GPU/model inference/performance or historical process/resource resampling performed.');reader_identity=$identity;prior_reader_identities=@(@{pid=90716;start='2026-10-08T17:37:25.44335+08:00';parent=52200;argv_record='first tool output'},@{pid=86988;start='2026-10-08T17:38:20.646695+08:00';parent=52200;argv_record='second tool output'})}; $json = $summary | ConvertTo-Json -Depth 100; if ($watch.Elapsed.TotalSeconds -ge 45) { throw 'Review report deadline' }; $bytes = [Text.Encoding]::UTF8.GetBytes($json); $stream = [IO.FileStream]::new($reviewPath,[IO.FileMode]::CreateNew,[IO.FileAccess]::Write,[IO.FileShare]::Read); try { $stream.Write($bytes); $stream.Flush($true) } finally { $stream.Dispose() }; $json; [pscustomobject]@{review_path=$reviewPath;sha256=[Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($bytes));elapsed_seconds=$watch.Elapsed.TotalSeconds} | ConvertTo-Json -Compress\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\document-review-readers.json",
+      "kind": "additional_registered_reader",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 76096,
+      "started": "2026-10-08T09:42:18.3548120Z",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion; $watch = [Diagnostics.Stopwatch]::StartNew(); $output = [IO.Path]::GetFullPath('D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\document-review-readers.json'); if ([IO.File]::Exists($output) -or [IO.Directory]::Exists($output)) { throw 'Fresh identity output required' }; $firstArgv = @'\n\\\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\\\" -Command \\\"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion; $p = Get-CimInstance Win32_Process -Filter \\\\\\\"ProcessId=$PID\\\\\\\" -OperationTimeoutSec 3; [pscustomobject]@{Pid=$PID;Start=$p.CreationDate;Argv=$p.CommandLine;Parent=$p.ParentProcessId} | ConvertTo-Json -Compress; Get-Content -LiteralPath 'docs/evidence/gpu-learnability-2026-10-08.md'; Get-Content -LiteralPath 'HANDOFF.md' -Tail 180; Get-Content -LiteralPath 'ROADMAP.md' -Tail 170\\\"\n'@; $secondArgv = @'\n\\\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\\\" -Command \\\"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion; $p = Get-CimInstance Win32_Process -Filter \\\\\\\"ProcessId=$PID\\\\\\\" -OperationTimeoutSec 3; [pscustomobject]@{Pid=$PID;Start=$p.CreationDate;Argv=$p.CommandLine;Parent=$p.ParentProcessId} | ConvertTo-Json -Compress; Get-Content -LiteralPath 'HANDOFF.md' -TotalCount 100; Get-Content -LiteralPath 'ROADMAP.md' -TotalCount 115; Get-ChildItem -LiteralPath '.artifacts/gpu-learnability-20261008/retrieved' -Directory | Select-Object Name; Get-ChildItem -LiteralPath '.artifacts/gpu-learnability-20261008/retrieved/output/run-768' -File | Select-Object Name,Length\\\"\n'@; $review = [IO.File]::ReadAllText('D:\\source\\Sezika\\.artifacts\\gpu-learnability-document-review-20261008.json') | ConvertFrom-Json -Depth 100 -DateKind String; $p = Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -OperationTimeoutSec 3; $rows = @([ordered]@{Pid=90716;Started='2026-10-08T17:37:25.44335+08:00';CommandLine=$firstArgv;ParentPid=52200},[ordered]@{Pid=86988;Started='2026-10-08T17:38:20.646695+08:00';CommandLine=$secondArgv;ParentPid=52200},[ordered]@{Pid=[int]$review.reader_identity.Pid;Started=$review.reader_identity.Start;CommandLine=$review.reader_identity.Argv;ParentPid=[int]$review.reader_identity.Parent},[ordered]@{Pid=$PID;Started=$p.CreationDate.ToUniversalTime().ToString('o');CommandLine=$p.CommandLine;ParentPid=[int]$p.ParentProcessId}); if ($rows.Count -ne 4 -or $watch.Elapsed.TotalSeconds -ge 30) { throw 'Four-identity/30-second bound violated' }; Write-Output 'Recovered prior argv from saved tool outputs; identity array 4/4; no processes signalled'; $json = ConvertTo-Json -InputObject $rows -Depth 12; $bytes = [Text.Encoding]::UTF8.GetBytes($json); $stream = [IO.FileStream]::new($output,[IO.FileMode]::CreateNew,[IO.FileAccess]::Write,[IO.FileShare]::Read); try { $stream.Write($bytes); $stream.Flush($true) } finally { $stream.Dispose() }; [pscustomobject]@{Path=$output;Sha256=[Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($bytes));SelfPid=$PID;SelfStarted=$p.CreationDate;SelfParent=$p.ParentProcessId;Elapsed=$watch.Elapsed.TotalSeconds} | ConvertTo-Json -Compress\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\document-review-readers.json",
+      "kind": "additional_registered_reader",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 92708,
+      "started": "2026-10-08T17:40:39.130099+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion; $ErrorActionPreference='Stop'; $clock=[Diagnostics.Stopwatch]::StartNew(); $self=Get-CimInstance Win32_Process -Filter ('ProcessId='+$PID) -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; $self|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId|ConvertTo-Json -Compress; $task='D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008';$names=@('pre-final-commit.closure.json','remote-create-logs\\20261008-085804-502-learnability-create.result.json','remote-create-logs\\20261008-085804-502-learnability-create.identity.json','pre-b.closure.json');$rows=@{};$count=0;foreach($name in $names){if(++$count -gt 4 -or $clock.Elapsed.TotalSeconds -ge 15 -or [IO.File]::Exists('D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\cancel.request')){throw 'Diagnostic read item/deadline/cancel bound'};$path=Join-Path $task $name;$info=Get-Item -LiteralPath $path;if($info.Length -gt 2MB -or ($info.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0){throw 'Evidence file size/link bound'};$rows[$name]=Get-Content -Raw -LiteralPath $path|ConvertFrom-Json -DateKind String;[ordered]@{readPath=$path;bytes=$info.Length;sha256=(Get-FileHash -LiteralPath $path).Hash}|ConvertTo-Json -Compress};$fail=$rows[$names[0]];[ordered]@{report='pre-final-commit';passed=$fail.ProcessClosurePassed;errors=$fail.Errors;receiptCount=$fail.ReceiptCount;recordCount=$fail.RecordCount;unknown=$fail.Unknown;matchingLive=$fail.MatchingLive}|ConvertTo-Json -Depth 5;$rows[$names[1]]|Select-Object Status,Pid,Started,ParentPid,FilePath,Arguments,Processes,Launcher,CleanupErrors,Limitation|ConvertTo-Json -Depth 6;$rows[$names[2]]|ConvertTo-Json -Depth 6;$pre=$rows[$names[3]];[ordered]@{report='pre-b';passed=$pre.ProcessClosurePassed;errors=$pre.Errors;receiptCount=$pre.ReceiptCount;recordCount=$pre.RecordCount;relevantComparisons=@($pre.KnownIdentityComparisons|Where-Object {$_.Source -like '*learnability-create.result.json'})}|ConvertTo-Json -Depth 7\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\closure-diagnostic-readers.json",
+      "kind": "additional_registered_reader",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 79776,
+      "started": "2026-10-08T17:41:37.519908+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion;$ErrorActionPreference='Stop';$clock=[Diagnostics.Stopwatch]::StartNew();$self=Get-CimInstance Win32_Process -Filter ('ProcessId='+$PID) -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5;$self|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId|ConvertTo-Json -Compress;Get-Content -LiteralPath 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\local-closure.ps1' -TotalCount 111 | Select-Object -Skip 38; if($clock.Elapsed.TotalSeconds -ge 10 -or[IO.File]::Exists('D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\cancel.request')){throw 'Diagnostic deadline/cancel'};$native=@(Get-CimInstance Win32_Process -Filter 'ProcessId=80712 OR ProcessId=51188 OR ProcessId=83200 OR ProcessId=92708' -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5);[ordered]@{diagnostic='exact bounded CIM follow-up';queriedPids=@(80712,51188,83200,92708);present=@($native|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId);scope='No signal sent; includes prior diagnostic checker PID92708'}|ConvertTo-Json -Depth 4\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\closure-diagnostic-readers.json",
+      "kind": "additional_registered_reader",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    }
+  ],
+  "PausedFileChecks": [
+    {
+      "path": "ROADMAP.md",
+      "state": "excluded_authorized_document_updates",
+      "originalSha256": "A53EB7E14CAAFAF7C6180E65709F78B56EFF8A34C46CFDC55CD7C500AD7C690B"
+    },
+    {
+      "path": "D:\\source\\Sezika\\docs\\evidence\\diagnostic-runtime-2026-10-08.md",
+      "originalSha256": "6329E7F222484BBE5FA7395D507B121D3550CAA94BD1E7FB355F32E936F094AA",
+      "actualSha256": "6329E7F222484BBE5FA7395D507B121D3550CAA94BD1E7FB355F32E936F094AA",
+      "matches": true,
+      "state": "unchanged"
+    },
+    {
+      "path": "D:\\source\\Sezika\\tools\\Sezika.Benchmarks\\Program.cs",
+      "originalSha256": "2B7F0B12AF4CAFF116B0424B563E503EE8F459AEB215A18666C2DBF54FB9EA20",
+      "actualSha256": "2B7F0B12AF4CAFF116B0424B563E503EE8F459AEB215A18666C2DBF54FB9EA20",
+      "matches": true,
+      "state": "unchanged"
+    },
+    {
+      "path": "D:\\source\\Sezika\\tools\\Sezika.IndependentModelTool\\Program.cs",
+      "originalSha256": "4A827337F07004271D7A9765D41383EB25646193359C8925EE7019F7193ADD1D",
+      "actualSha256": "4A827337F07004271D7A9765D41383EB25646193359C8925EE7019F7193ADD1D",
+      "matches": true,
+      "state": "unchanged"
+    },
+    {
+      "path": "D:\\source\\Sezika\\docs\\wechat-introduction.html",
+      "originalSha256": "2918478097C879AD00C6A04FD949A93D865A34ED44FBDC17306EC04AB78F0FDD",
+      "actualSha256": "2918478097C879AD00C6A04FD949A93D865A34ED44FBDC17306EC04AB78F0FDD",
+      "matches": true,
+      "state": "unchanged"
+    },
+    {
+      "path": "D:\\source\\Sezika\\docs\\wechat-introduction.md",
+      "originalSha256": "0819E0BDA7CC7723234E18C28FE3C776B39FC9E088BB8ADCB32DA45284014772",
+      "actualSha256": "0819E0BDA7CC7723234E18C28FE3C776B39FC9E088BB8ADCB32DA45284014772",
+      "matches": true,
+      "state": "unchanged"
+    },
+    {
+      "path": "D:\\source\\Sezika\\tools\\Sezika.Benchmarks\\DiagnosticIndependentProfile.cs",
+      "originalSha256": "EE904798CCDB656D6E32F9445481CD1015962ADEE7F47A051546AE0783051EA6",
+      "actualSha256": "EE904798CCDB656D6E32F9445481CD1015962ADEE7F47A051546AE0783051EA6",
+      "matches": true,
+      "state": "unchanged"
+    },
+    {
+      "path": "D:\\source\\Sezika\\tools\\Sezika.Benchmarks\\DiagnosticProfileChecks.cs",
+      "originalSha256": "DDFD23ABFB026D04A85D622634290584C023F4D28DB6E7CDC59BD4772E1145B0",
+      "actualSha256": "DDFD23ABFB026D04A85D622634290584C023F4D28DB6E7CDC59BD4772E1145B0",
+      "matches": true,
+      "state": "unchanged"
+    },
+    {
+      "path": "D:\\source\\Sezika\\tools\\Sezika.Benchmarks\\DiagnosticProfileReport.cs",
+      "originalSha256": "4B4DE1E78D54BCDCC8CD600A703906C518118A83AA7E7CAD65C8EBA69E2D6C2C",
+      "actualSha256": "4B4DE1E78D54BCDCC8CD600A703906C518118A83AA7E7CAD65C8EBA69E2D6C2C",
+      "matches": true,
+      "state": "unchanged"
+    },
+    {
+      "path": "D:\\source\\Sezika\\tools\\Sezika.IndependentModelTool\\DiagnosticAssetPreparationChecks.cs",
+      "originalSha256": "BF9CB5F6B74863CFDC04A749DB197533990F0D331B4A98A2EB4C866A75BE6C1A",
+      "actualSha256": "BF9CB5F6B74863CFDC04A749DB197533990F0D331B4A98A2EB4C866A75BE6C1A",
+      "matches": true,
+      "state": "unchanged"
+    },
+    {
+      "path": "D:\\source\\Sezika\\tools\\Sezika.IndependentModelTool\\DiagnosticAssetPreparationCommand.cs",
+      "originalSha256": "EAE77A60A77B5A419CA9712C1E941DD1A306733AB30439783F56EE534D2E073A",
+      "actualSha256": "EAE77A60A77B5A419CA9712C1E941DD1A306733AB30439783F56EE534D2E073A",
+      "matches": true,
+      "state": "unchanged"
+    }
+  ],
+  "PausedCheckSkipped": false,
+  "Scope": "current task *.result.json through depth 2; independent runner-prep tiny receipts; root journals; requested prior checkers",
+  "Limitations": [
+    "Only registered historical identities are compared; the currently executing checker is explicitly pending an independent new-process check.",
+    "Windows PID/start/argv/parent comparison cannot verify Linux descendants or CUDA disposal.",
+    "Very short intermediate processes can exit between snapshots; retained root handle facts and structured argv are preserved without inventing a native command line.",
+    "An absent PID is established by an exact bounded CIM query; a reused PID is not signalled. Same-start identity changes or missing native argv/parent are unknown and fail.",
+    "Receipt status/exit codes are preserved and do not substitute for actual identity comparison.",
+    "New receipts created after enumeration require another new-label check; this is a bounded snapshot, not a continuous monitor.",
+    "ROADMAP baseline bytes are explicitly excluded because authorized experiment document updates are handled separately."
+  ]
+}

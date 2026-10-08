@@ -1,0 +1,115 @@
+{
+  "Label": "tiny-final-argv-gap",
+  "Mode": "Tiny",
+  "Utc": "2026-10-08T09:42:43.6973555Z",
+  "ElapsedSeconds": 4.037,
+  "MaximumSeconds": 60,
+  "WorkBudgetSeconds": 55,
+  "QueryTimeoutSeconds": 5,
+  "MaximumReceipts": 100,
+  "MaximumRecords": 500,
+  "ReceiptCount": 1,
+  "RecordCount": 4,
+  "UniquePidCount": 4,
+  "CimQueries": 1,
+  "EnumeratedDirectories": 0,
+  "ProcessClosurePassed": true,
+  "MatchingLive": 0,
+  "Unknown": 0,
+  "CurrentCheckerRecords": 0,
+  "Cancelled": false,
+  "Self": {
+    "Pid": 55320,
+    "Started": "2026-10-08T09:42:37.0546050Z",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n& '.artifacts/gpu-learnability-20261008/local-closure.ps1' -Label tiny-final-argv-gap -Mode Tiny -ReceiptFiles 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-create-logs\\20261008-085804-502-learnability-create.result.json'\"",
+    "ParentPid": 52200,
+    "State": "checker_current_requires_independent_recheck",
+    "RequiresIndependentRecheck": true
+  },
+  "SelfRequiresIndependentRecheck": true,
+  "SignalsSent": false,
+  "Errors": [],
+  "Receipts": [
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-create-logs\\20261008-085804-502-learnability-create.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    }
+  ],
+  "Sources": [
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\task-identity.json",
+      "sha256": "2ECE10AC2F69D21A81FE170FC1358C21CB02007F892D16F4684D297FBDD42C0E",
+      "bytes": 383
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-create-logs\\20261008-085804-502-learnability-create.result.json",
+      "sha256": "CAB094564312489425FB396763A13D5BC309E017CBBE95A525A2D50CEBCABAEF",
+      "bytes": 2687
+    }
+  ],
+  "KnownIdentityComparisons": [
+    {
+      "pid": 51188,
+      "started": "2026-10-08T16:58:05.637069+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\Invoke-LearnabilityScript.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-create-task.sh",
+      "nativeArgvObserved": true,
+      "parentPid": 83200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-create-logs\\20261008-085804-502-learnability-create.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 60296,
+      "started": "2026-10-08T16:58:05.65719+08:00",
+      "commandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "nativeArgvObserved": true,
+      "parentPid": 51188,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-create-logs\\20261008-085804-502-learnability-create.result.json",
+      "kind": "recorded_process",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 80712,
+      "started": "2026-10-08T16:58:06.284977+08:00",
+      "commandLine": null,
+      "nativeArgvObserved": false,
+      "parentPid": 51188,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-create-logs\\20261008-085804-502-learnability-create.result.json",
+      "kind": "recorded_process_missing_native_argv",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    },
+    {
+      "pid": 83200,
+      "started": "2026-10-08T16:58:03.810555+08:00",
+      "commandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/gpu-learnability-20261008/scripts/Invoke-LearnabilityRemote.ps1 -Stage create\"",
+      "nativeArgvObserved": true,
+      "parentPid": 52200,
+      "source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-create-logs\\20261008-085804-502-learnability-create.result.json",
+      "kind": "recorded_launcher",
+      "structuredArguments": [],
+      "startedToleranceTicks": 0,
+      "state": "absent"
+    }
+  ],
+  "PausedFileChecks": [],
+  "PausedCheckSkipped": true,
+  "Scope": "one explicit actual receipt only",
+  "Limitations": [
+    "Only registered historical identities are compared; the currently executing checker is explicitly pending an independent new-process check.",
+    "Windows PID/start/argv/parent comparison cannot verify Linux descendants or CUDA disposal.",
+    "Very short intermediate processes can exit between snapshots; retained root handle facts and structured argv are preserved without inventing a native command line.",
+    "An absent PID is established by an exact bounded CIM query; a reused PID is not signalled. Same-start identity changes or missing native argv/parent are unknown and fail.",
+    "Receipt status/exit codes are preserved and do not substitute for actual identity comparison.",
+    "New receipts created after enumeration require another new-label check; this is a bounded snapshot, not a continuous monitor.",
+    "ROADMAP baseline bytes are explicitly excluded because authorized experiment document updates are handled separately."
+  ]
+}

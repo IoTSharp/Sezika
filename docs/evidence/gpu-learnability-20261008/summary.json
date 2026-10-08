@@ -1,0 +1,87 @@
+{
+  "utc": "2026-10-08T09:31:58.0609963Z",
+  "configuration": {
+    "resume": false,
+    "maxTokens": 1024,
+    "frozenEncoder": true,
+    "steps": 768,
+    "seed": 17,
+    "learningRate": 0.001
+  },
+  "baselineTrain": 1.229626456896464,
+  "finalTrain": 0.9920696603755156,
+  "baselineDevelopment": 1.2687934339046478,
+  "finalDevelopment": 1.2740284875035286,
+  "groups": [
+    {
+      "split": "train",
+      "type": "choice",
+      "total": 8,
+      "agreement": 6,
+      "meanCe": 1.1979709044098854,
+      "meanRank": 1.375
+    },
+    {
+      "split": "train",
+      "type": "score",
+      "total": 8,
+      "agreement": 6,
+      "meanCe": 1.1830784380435944,
+      "meanRank": 1.25
+    },
+    {
+      "split": "train",
+      "type": "boolean",
+      "total": 8,
+      "agreement": 5,
+      "meanCe": 0.5951596386730671,
+      "meanRank": 1.375
+    },
+    {
+      "split": "development",
+      "type": "choice",
+      "total": 4,
+      "agreement": 0,
+      "meanCe": 1.4610238373279572,
+      "meanRank": 3.0
+    },
+    {
+      "split": "development",
+      "type": "score",
+      "total": 2,
+      "agreement": 1,
+      "meanCe": 1.3140687942504883,
+      "meanRank": 2.5
+    },
+    {
+      "split": "development",
+      "type": "boolean",
+      "total": 2,
+      "agreement": 0,
+      "meanCe": 0.8599974811077118,
+      "meanRank": 2.0
+    }
+  ],
+  "rotatedAgreement": 4,
+  "rotatedTotal": 8,
+  "rotatedCe": 1.3999227583408356,
+  "selectedIdChanged": 6,
+  "freshDiskOutputsMatched": true,
+  "parameterSha256": "C09F73C98139BFF1D7F429343F08CD5EFC0FDAF28492B07802940B6C3A0C9D8D",
+  "headSha256": "7B4CE09F22AD80E175030F2A73FC878974347D53259DC16D3727B92E7F3184A4",
+  "checkpointSha256": "972D6CADDF5743CDA7EAD4CA0F3D657D572DF15B8710A36ADC659B892547EB92",
+  "featureSha256": "44DF5374A9A39C1B064A7AC8E34F1B4C13488F274A45DCCB4B837DB1A2EA145F",
+  "ownedGpuPeak": 1309369952,
+  "hostPeakB": 2724798464,
+  "hostPeakC": 2726555648,
+  "rawReportHashes": {
+    "stageC": "11C7CEC6399D33E1C9A85A97DF37E80C7D9A7168073B3EFA9A7CA3484E4A0EEA",
+    "training": "74CE86F566DE7357A0643FFA476AF1D3F651B1FBE83B0BAA8A73A9919456BCAA",
+    "stageB": "8CFC1257FA44DFCA62CF119324F46C2083A70D24517EE3FFA4C0863F1CAAF43A"
+  },
+  "notFullyFitted": true,
+  "qualityPassed": false,
+  "calibrationPassed": false,
+  "aotPassed": false,
+  "performancePassed": false
+}

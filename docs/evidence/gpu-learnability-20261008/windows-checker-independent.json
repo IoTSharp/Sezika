@@ -1,0 +1,25 @@
+{
+  "Utc": "2026-10-08T09:46:24.9535841Z",
+  "Source": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\pre-commit-final-v2.closure.json",
+  "SourceSha256": "18BD8FFD1FDD228413FD5AFD9BD3B939F41A6916A600010FA6B74E55383B872B",
+  "Expected": {
+    "Pid": 7672,
+    "Started": "2026-10-08T09:44:31.3202110Z",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$PSVersionTable.PSVersion.ToString()\n& '.artifacts/gpu-learnability-20261008/local-closure.ps1' -Label pre-commit-final-v2 -PriorClosureFiles @('D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\tiny1.closure.json','D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\tiny2.closure.json','D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\preparation-report.json','D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\pre-b.closure.json','D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\pre-final-commit.closure.json','D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\tiny-final-argv-gap.closure.json') -AdditionalIdentityFiles @('D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\document-review-readers.json','D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\closure-diagnostic-readers.json')\"",
+    "ParentPid": 52200,
+    "State": "checker_current_requires_independent_recheck",
+    "RequiresIndependentRecheck": true
+  },
+  "State": "absent",
+  "QueryTimeoutSeconds": 5,
+  "MaximumQueries": 1,
+  "SignalsSent": false,
+  "Observer": {
+    "Pid": 79744,
+    "Started": "2026-10-08T09:46:19.0336920Z",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& '.artifacts/gpu-learnability-20261008/finalize-evidence.ps1'\"",
+    "ParentPid": 52200
+  },
+  "ObserverExitEvidence": "calling tool process exit receipt; this observer starts no child process",
+  "Scope": "exact prior checker only"
+}

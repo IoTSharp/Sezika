@@ -1,0 +1,59 @@
+{
+  "Status": "Succeeded",
+  "Pid": 72736,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 27.397,
+  "TimeoutSeconds": 530,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\Invoke-LearnabilityScript.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-stage-a.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-08T09:16:00.8542624Z",
+  "ParentPid": 55704,
+  "Launcher": {
+    "Pid": 55704,
+    "Started": "2026-10-08T17:15:59.141356+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/gpu-learnability-20261008/scripts/Invoke-LearnabilityRemote.ps1 -Stage A\"",
+    "ParentPid": 52200
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-a-logs\\20261008-091559-699-learnability-A.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-a-logs\\20261008-091559-699-learnability-A.stderr.log",
+  "CleanupErrors": [],
+  "Processes": [
+    {
+      "Pid": 72736,
+      "CreationDate": "2026-10-08T17:16:00.854262+08:00",
+      "Started": "2026-10-08T09:16:00.854262Z",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\Invoke-LearnabilityScript.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\scripts\\remote-stage-a.sh",
+      "ParentPid": 55704,
+      "Depth": 0,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 56628,
+      "CreationDate": "2026-10-08T17:16:01.518829+08:00",
+      "Started": "2026-10-08T09:16:01.518829Z",
+      "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "ParentPid": 72736,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 78960,
+      "CreationDate": "2026-10-08T17:16:00.87192+08:00",
+      "Started": "2026-10-08T09:16:00.87192Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 72736,
+      "Depth": 1,
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+}

@@ -1,0 +1,313 @@
+{
+  "review_status": "read_only_b_c_evidence_checked",
+  "started_utc": "2026-10-08T09:37:25Z",
+  "completed_utc": "2026-10-08T09:40:09.7636905Z",
+  "unique_source_files_limit": 8,
+  "json_report_files": [
+    "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieved\\output\\run-768\\experiment-training-report.json",
+    "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieved\\output\\run-768\\experiment-learnability-evaluation.json",
+    "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieved\\output\\stage-c-evaluation.json"
+  ],
+  "disk_hashes": [
+    {
+      "Path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieved\\output\\run-768\\experiment-training-report.json",
+      "Hash": "74CE86F566DE7357A0643FFA476AF1D3F651B1FBE83B0BAA8A73A9919456BCAA"
+    },
+    {
+      "Path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieved\\output\\run-768\\experiment-learnability-evaluation.json",
+      "Hash": "8CFC1257FA44DFCA62CF119324F46C2083A70D24517EE3FFA4C0863F1CAAF43A"
+    },
+    {
+      "Path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieved\\output\\stage-c-evaluation.json",
+      "Hash": "11C7CEC6399D33E1C9A85A97DF37E80C7D9A7168073B3EFA9A7CA3484E4A0EEA"
+    },
+    {
+      "Path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieved\\output\\run-768\\experiment-head.asset",
+      "Hash": "7B4CE09F22AD80E175030F2A73FC878974347D53259DC16D3727B92E7F3184A4"
+    },
+    {
+      "Path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieved\\output\\run-768\\experiment-training.checkpoint",
+      "Hash": "972D6CADDF5743CDA7EAD4CA0F3D657D572DF15B8710A36ADC659B892547EB92"
+    }
+  ],
+  "completed_steps": 768,
+  "seed": 17,
+  "learning_rate": 0.001,
+  "max_tokens": 1024,
+  "encoder_frozen": true,
+  "initial_parameter_source": "all_zero_three_linear_rows",
+  "train_count": 24,
+  "train_agreement": 17,
+  "unfitted_ids": [
+    "general-zh-choice-03",
+    "general-zh-choice-04",
+    "general-en-score-03",
+    "general-en-score-04",
+    "general-zh-boolean-02",
+    "general-zh-boolean-05",
+    "general-en-boolean-05"
+  ],
+  "development_count": 8,
+  "development_agreement": 1,
+  "rotation_count": 8,
+  "rotation_agreement": 4,
+  "position_selected_id_changed": 6,
+  "baseline_train": 1.229626456896464,
+  "baseline_development": 1.2687934339046478,
+  "trained_train": 0.9920696603755156,
+  "trained_development": 1.2740284875035286,
+  "loaded_train": 0.9920696603755156,
+  "loaded_development": 1.2740284875035286,
+  "rotated_ce": 1.3999227583408356,
+  "c_train_ce": 0.9920696603755156,
+  "c_dev_ce": 1.2740284875035286,
+  "c_rotated_ce": 1.3999227583408356,
+  "b_c_all_observations_parsed_identical": true,
+  "fresh_disk_outputs_matched": true,
+  "b_forward_started": 48,
+  "b_forward_completed": 48,
+  "c_forward_started": 48,
+  "c_forward_completed": 48,
+  "b_resources": {
+    "snapshot_before_context_dispose": {
+      "total_bytes": 50864390144,
+      "free_bytes": 15625748480,
+      "owned_bytes": 0,
+      "peak_owned_bytes": 1309369952,
+      "owned_allocation_count": 0,
+      "loaded_module_count": 0,
+      "release_failure_count": 0
+    },
+    "process_peak_working_set_bytes": 2724798464,
+    "process_working_set_bytes": 2618908672,
+    "device_dispose_returned": true,
+    "model_dispose_returned": true
+  },
+  "c_resources": {
+    "snapshot_before_context_dispose": {
+      "total_bytes": 50864390144,
+      "free_bytes": 15625748480,
+      "owned_bytes": 0,
+      "peak_owned_bytes": 1309369952,
+      "owned_allocation_count": 0,
+      "loaded_module_count": 0,
+      "release_failure_count": 0
+    },
+    "process_peak_working_set_bytes": 2726555648,
+    "process_working_set_bytes": 2620977152,
+    "device_dispose_returned": true,
+    "model_dispose_returned": true
+  },
+  "b_groups": [
+    {
+      "split": "development",
+      "variant": "original",
+      "language": "en",
+      "type": "boolean",
+      "total": 1,
+      "completed": 1,
+      "teacher_agreement_count": 0,
+      "teacher_agreement_rate": 0,
+      "mean_gpu_teacher_ce": 0.85221928358078,
+      "mean_teacher_target_rank": 2
+    },
+    {
+      "split": "development",
+      "variant": "original",
+      "language": "en",
+      "type": "choice",
+      "total": 2,
+      "completed": 2,
+      "teacher_agreement_count": 0,
+      "teacher_agreement_rate": 0,
+      "mean_gpu_teacher_ce": 1.4657313227653503,
+      "mean_teacher_target_rank": 3
+    },
+    {
+      "split": "development",
+      "variant": "original",
+      "language": "en",
+      "type": "score",
+      "total": 1,
+      "completed": 1,
+      "teacher_agreement_count": 0,
+      "teacher_agreement_rate": 0,
+      "mean_gpu_teacher_ce": 1.4031291007995605,
+      "mean_teacher_target_rank": 4
+    },
+    {
+      "split": "development",
+      "variant": "original",
+      "language": "zh",
+      "type": "boolean",
+      "total": 1,
+      "completed": 1,
+      "teacher_agreement_count": 0,
+      "teacher_agreement_rate": 0,
+      "mean_gpu_teacher_ce": 0.8677756786346436,
+      "mean_teacher_target_rank": 2
+    },
+    {
+      "split": "development",
+      "variant": "original",
+      "language": "zh",
+      "type": "choice",
+      "total": 2,
+      "completed": 2,
+      "teacher_agreement_count": 0,
+      "teacher_agreement_rate": 0,
+      "mean_gpu_teacher_ce": 1.456316351890564,
+      "mean_teacher_target_rank": 3
+    },
+    {
+      "split": "development",
+      "variant": "original",
+      "language": "zh",
+      "type": "score",
+      "total": 1,
+      "completed": 1,
+      "teacher_agreement_count": 1,
+      "teacher_agreement_rate": 1,
+      "mean_gpu_teacher_ce": 1.225008487701416,
+      "mean_teacher_target_rank": 1
+    },
+    {
+      "split": "train",
+      "variant": "fixed-left1",
+      "language": "en",
+      "type": "choice",
+      "total": 4,
+      "completed": 4,
+      "teacher_agreement_count": 2,
+      "teacher_agreement_rate": 0.5,
+      "mean_gpu_teacher_ce": 1.4431031346321106,
+      "mean_teacher_target_rank": 2
+    },
+    {
+      "split": "train",
+      "variant": "fixed-left1",
+      "language": "zh",
+      "type": "choice",
+      "total": 4,
+      "completed": 4,
+      "teacher_agreement_count": 2,
+      "teacher_agreement_rate": 0.5,
+      "mean_gpu_teacher_ce": 1.3567423820495605,
+      "mean_teacher_target_rank": 2
+    },
+    {
+      "split": "train",
+      "variant": "original",
+      "language": "en",
+      "type": "boolean",
+      "total": 4,
+      "completed": 4,
+      "teacher_agreement_count": 3,
+      "teacher_agreement_rate": 0.75,
+      "mean_gpu_teacher_ce": 0.579389750957489,
+      "mean_teacher_target_rank": 1.25
+    },
+    {
+      "split": "train",
+      "variant": "original",
+      "language": "en",
+      "type": "choice",
+      "total": 4,
+      "completed": 4,
+      "teacher_agreement_count": 4,
+      "teacher_agreement_rate": 1,
+      "mean_gpu_teacher_ce": 1.1541659384965897,
+      "mean_teacher_target_rank": 1
+    },
+    {
+      "split": "train",
+      "variant": "original",
+      "language": "en",
+      "type": "score",
+      "total": 4,
+      "completed": 4,
+      "teacher_agreement_count": 2,
+      "teacher_agreement_rate": 0.5,
+      "mean_gpu_teacher_ce": 1.2814279198646545,
+      "mean_teacher_target_rank": 1.5
+    },
+    {
+      "split": "train",
+      "variant": "original",
+      "language": "zh",
+      "type": "boolean",
+      "total": 4,
+      "completed": 4,
+      "teacher_agreement_count": 2,
+      "teacher_agreement_rate": 0.5,
+      "mean_gpu_teacher_ce": 0.6109295263886452,
+      "mean_teacher_target_rank": 1.5
+    },
+    {
+      "split": "train",
+      "variant": "original",
+      "language": "zh",
+      "type": "choice",
+      "total": 4,
+      "completed": 4,
+      "teacher_agreement_count": 2,
+      "teacher_agreement_rate": 0.5,
+      "mean_gpu_teacher_ce": 1.2417758703231812,
+      "mean_teacher_target_rank": 1.75
+    },
+    {
+      "split": "train",
+      "variant": "original",
+      "language": "zh",
+      "type": "score",
+      "total": 4,
+      "completed": 4,
+      "teacher_agreement_count": 4,
+      "teacher_agreement_rate": 1,
+      "mean_gpu_teacher_ce": 1.0847289562225342,
+      "mean_teacher_target_rank": 1
+    }
+  ],
+  "parameter_sha": "C09F73C98139BFF1D7F429343F08CD5EFC0FDAF28492B07802940B6C3A0C9D8D",
+  "feature_sha": "44DF5374A9A39C1B064A7AC8E34F1B4C13488F274A45DCCB4B837DB1A2EA145F",
+  "c_compared_evaluation_sha": "8cfc1257fa44dfca62cf119324f46c2083a70d24517ee3ffa4c0863f1caaf43a",
+  "c_source_report_sha": "74ce86f566de7357a0643ffa476af1d3f651b1fbe83b0baa8a73a9919456bcaa",
+  "acceptance": {
+    "formal_training_admission": false,
+    "human_quality": false,
+    "license_release": false,
+    "calibration": false,
+    "sealed_test": false,
+    "native_aot": false,
+    "performance": false,
+    "publication": false
+  },
+  "c_json_bytes": 344272,
+  "c_json_plus_lf_reconstructed_sha": "738BD68443D5854158AAE9545D4C68687CEE5064B6774B793A76CDF6F7DB36CB",
+  "limitations": [
+    "C stdout hash reconstruction checks JSON-plus-LF object distinction; actual stdout file was not opened in this 8-file scope.",
+    "Stage A report/runner receipts are outside this B/C numerical audit.",
+    "Historical HANDOFF stage A text says B/C not started; top completed section supersedes it.",
+    "No GPU/model inference/performance or historical process/resource resampling performed."
+  ],
+  "reader_identity": {
+    "Pid": 33092,
+    "Start": "2026-10-08T17:40:03.738808+08:00",
+    "Argv": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion; $watch = [Diagnostics.Stopwatch]::StartNew(); $reviewPath = [IO.Path]::GetFullPath('D:\\source\\Sezika\\.artifacts\\gpu-learnability-document-review-20261008.json'); if ([IO.File]::Exists($reviewPath) -or [IO.Directory]::Exists($reviewPath)) { throw 'Fresh review path required' }; $p = Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -OperationTimeoutSec 3; $identity = [ordered]@{Pid=$PID;Start=$p.CreationDate;Argv=$p.CommandLine;Parent=$p.ParentProcessId}; $identity | ConvertTo-Json -Compress; rg -n -m 8 '768|可学性|23\\.' ROADMAP.md; $base = 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\retrieved\\output'; $trainPath = Join-Path $base 'run-768\\experiment-training-report.json'; $bPath = Join-Path $base 'run-768\\experiment-learnability-evaluation.json'; $cPath = Join-Path $base 'stage-c-evaluation.json'; $train = [IO.File]::ReadAllText($trainPath) | ConvertFrom-Json -Depth 100; $b = [IO.File]::ReadAllText($bPath) | ConvertFrom-Json -Depth 100; $c = [IO.File]::ReadAllText($cPath) | ConvertFrom-Json -Depth 100; if ($watch.Elapsed.TotalSeconds -ge 45) { throw 'Review read batch deadline' }; $tiny = @($b.observations.rows)[0]; [pscustomobject]@{TinyRecord=$tiny.record_id;TinyTargetRank=$tiny.teacher_target_rank;TinyCe=$tiny.gpu_teacher_ce} | ConvertTo-Json -Compress; $rows = @($b.observations.rows); if ($rows.Count -ne 40) { throw 'Expected full 40 rows' }; for ($i=0; $i -lt 40; $i++) { if ($watch.Elapsed.TotalSeconds -ge 45) { throw 'Review count deadline' }; if (($rows[$i].candidate_ids).Count -lt 2 -or $rows[$i].teacher_target_rank -lt 1) { throw 'Invalid recorded row shape' }; if (($i % 10) -eq 0) { Write-Output \\\"read-only recorded-row check $i/40\\\" } }; $trainRows = @($rows | Where-Object { $_.split -eq 'train' -and $_.variant -eq 'original' }); $devRows = @($rows | Where-Object { $_.split -eq 'development' -and $_.variant -eq 'original' }); $swapRows = @($rows | Where-Object { $_.variant -eq 'fixed-left1' }); $bCanonical = $b.observations | ConvertTo-Json -Depth 100 -Compress; $cCanonical = $c.observations | ConvertTo-Json -Depth 100 -Compress; $paths = @($trainPath,$bPath,$cPath,(Join-Path $base 'run-768\\experiment-head.asset'),(Join-Path $base 'run-768\\experiment-training.checkpoint')); $hashes = @(Get-FileHash -LiteralPath $paths -Algorithm SHA256 | Select-Object Path,Hash); $cBytes = [IO.File]::ReadAllBytes($cPath); $lfBytes = [byte[]]::new($cBytes.Length + 1); [Array]::Copy($cBytes,$lfBytes,$cBytes.Length); $lfBytes[$cBytes.Length] = 10; $lfHash = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($lfBytes)); $summary = [ordered]@{review_status='read_only_b_c_evidence_checked';started_utc='2026-10-08T09:37:25Z';completed_utc=[DateTime]::UtcNow;unique_source_files_limit=8;json_report_files=$paths[0..2];disk_hashes=$hashes;completed_steps=$train.completed_steps;seed=$train.seed;learning_rate=$train.learning_rate;max_tokens=$train.max_tokens;encoder_frozen=$train.encoder_frozen;initial_parameter_source=$train.initial_parameter_source;train_count=$trainRows.Count;train_agreement=@($trainRows | Where-Object agrees_with_teacher).Count;unfitted_ids=@($trainRows | Where-Object { -not $_.agrees_with_teacher } | Select-Object -ExpandProperty record_id);development_count=$devRows.Count;development_agreement=@($devRows | Where-Object agrees_with_teacher).Count;rotation_count=$swapRows.Count;rotation_agreement=@($swapRows | Where-Object agrees_with_teacher).Count;position_selected_id_changed=@($b.observations.position_comparisons | Where-Object selected_id_changed).Count;baseline_train=$train.baseline_train.mean_loss;baseline_development=$train.baseline_development.mean_loss;trained_train=$train.trained_train.mean_loss;trained_development=$train.trained_development.mean_loss;loaded_train=$train.loaded_train.mean_loss;loaded_development=$train.loaded_development.mean_loss;rotated_ce=$b.observations.rotated_training_choice.mean_loss;c_train_ce=$c.observations.train.mean_loss;c_dev_ce=$c.observations.development.mean_loss;c_rotated_ce=$c.observations.rotated_training_choice.mean_loss;b_c_all_observations_parsed_identical=($bCanonical -ceq $cCanonical);fresh_disk_outputs_matched=$c.fresh_disk_outputs_matched;b_forward_started=$b.encoder_forwards_started;b_forward_completed=$b.encoder_forwards_completed;c_forward_started=$c.encoder_forwards_started;c_forward_completed=$c.encoder_forwards_completed;b_resources=$b.resources;c_resources=$c.resources;b_groups=$b.observations.groups;parameter_sha=$train.parameter_sha256;feature_sha=$train.feature_sha256;c_compared_evaluation_sha=$c.compared_evaluation_sha256;c_source_report_sha=$c.source_report_sha256;acceptance=$c.acceptance;c_json_bytes=$cBytes.Length;c_json_plus_lf_reconstructed_sha=$lfHash;limitations=@('C stdout hash reconstruction checks JSON-plus-LF object distinction; actual stdout file was not opened in this 8-file scope.','Stage A report/runner receipts are outside this B/C numerical audit.','Historical HANDOFF stage A text says B/C not started; top completed section supersedes it.','No GPU/model inference/performance or historical process/resource resampling performed.');reader_identity=$identity;prior_reader_identities=@(@{pid=90716;start='2026-10-08T17:37:25.44335+08:00';parent=52200;argv_record='first tool output'},@{pid=86988;start='2026-10-08T17:38:20.646695+08:00';parent=52200;argv_record='second tool output'})}; $json = $summary | ConvertTo-Json -Depth 100; if ($watch.Elapsed.TotalSeconds -ge 45) { throw 'Review report deadline' }; $bytes = [Text.Encoding]::UTF8.GetBytes($json); $stream = [IO.FileStream]::new($reviewPath,[IO.FileMode]::CreateNew,[IO.FileAccess]::Write,[IO.FileShare]::Read); try { $stream.Write($bytes); $stream.Flush($true) } finally { $stream.Dispose() }; $json; [pscustomobject]@{review_path=$reviewPath;sha256=[Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($bytes));elapsed_seconds=$watch.Elapsed.TotalSeconds} | ConvertTo-Json -Compress\"",
+    "Parent": 52200
+  },
+  "prior_reader_identities": [
+    {
+      "argv_record": "first tool output",
+      "start": "2026-10-08T17:37:25.44335+08:00",
+      "pid": 90716,
+      "parent": 52200
+    },
+    {
+      "argv_record": "second tool output",
+      "start": "2026-10-08T17:38:20.646695+08:00",
+      "pid": 86988,
+      "parent": 52200
+    }
+  ]
+}

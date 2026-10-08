@@ -1,0 +1,294 @@
+{
+  "Label": "pre-final-commit",
+  "Mode": "Full",
+  "Utc": "2026-10-08T09:38:05.6171587Z",
+  "ElapsedSeconds": 2.767,
+  "MaximumSeconds": 60,
+  "WorkBudgetSeconds": 55,
+  "QueryTimeoutSeconds": 5,
+  "MaximumReceipts": 100,
+  "MaximumRecords": 500,
+  "ReceiptCount": 19,
+  "RecordCount": 78,
+  "UniquePidCount": 0,
+  "CimQueries": 0,
+  "EnumeratedDirectories": 32,
+  "ProcessClosurePassed": false,
+  "MatchingLive": 0,
+  "Unknown": 0,
+  "CurrentCheckerRecords": 0,
+  "Cancelled": false,
+  "Self": {
+    "Pid": 32436,
+    "Started": "2026-10-08T09:38:01.3067570Z",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/gpu-learnability-20261008/local-closure.ps1 -Label pre-final-commit -PriorClosureFiles @('D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\tiny1.closure.json','D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\tiny2.closure.json','D:\\source\\Sezika\\.artifacts\\gpu-learnability-closure-prep-20261008\\preparation-report.json','D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\pre-b.closure.json')\"",
+    "ParentPid": 52200,
+    "State": "checker_current_requires_independent_recheck",
+    "RequiresIndependentRecheck": true
+  },
+  "SelfRequiresIndependentRecheck": true,
+  "SignalsSent": false,
+  "Errors": [
+    "Missing registered native argv in D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-create-logs\\20261008-085804-502-learnability-create.result.json"
+  ],
+  "Receipts": [
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\closure-a-logs\\20261008-091810-707-independent-stage-a-identities.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\closure-b-logs\\20261008-092631-033-independent-stage-b-identities.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\git-logs\\20261008-091524-172-commit-evaluation-engineering.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\git-logs\\20261008-092435-194-commit-stage-a.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090334-172-evaluation-implementation-r1-build1.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090416-283-evaluation-implementation-r1-tiny1.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090431-604-evaluation-implementation-r1-full6.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090653-718-evaluation-implementation-r2-build1.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090754-099-evaluation-implementation-r2-build2.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090847-069-evaluation-implementation-r2-tiny1.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090928-898-evaluation-implementation-r2-full6.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\install-logs\\20261008-091543-465-install-frozen-bundle.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\publish-logs\\20261008-091116-008-publish-frozen-linux.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\published-check-logs\\20261008-091245-361-published-dll-contract-tiny.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-a-logs\\20261008-091559-699-learnability-A.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-b-logs\\20261008-092459-118-learnability-B.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-c-logs\\20261008-092726-259-learnability-C.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-closure-logs\\20261008-092904-129-learnability-closure.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-create-logs\\20261008-085804-502-learnability-create.result.json",
+      "status": "Succeeded",
+      "exitCode": 0,
+      "cleanupErrors": [],
+      "limitation": "WSL/Linux processes require a Linux timeout wrapper; Windows process tracking cannot verify or terminate Linux descendants. Windows snapshots run at start/end and at most once per three seconds; short-lived intermediate processes between snapshots can escape tracking."
+    }
+  ],
+  "Sources": [
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\task-identity.json",
+      "sha256": "2ECE10AC2F69D21A81FE170FC1358C21CB02007F892D16F4684D297FBDD42C0E",
+      "bytes": 383
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\closure-a-logs\\20261008-091810-707-independent-stage-a-identities.result.json",
+      "sha256": "3DDE180B32C6CCD770922C8FF7888AEA38B918856D6DF3C799878C8F121C9613",
+      "bytes": 3616
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\closure-b-logs\\20261008-092631-033-independent-stage-b-identities.result.json",
+      "sha256": "20BAEAE1A751DD12CE6718C90BE904004350431F13E636139E2015003A2E70E2",
+      "bytes": 3614
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\git-logs\\20261008-091524-172-commit-evaluation-engineering.result.json",
+      "sha256": "BB60E1880F2EFBB9BFD05225F8A3CA9D45DE6E506C0BEB454C04CFA4F6F76C03",
+      "bytes": 2438
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\git-logs\\20261008-091524-172-commit-evaluation-engineering.identity.json",
+      "sha256": "4F4EA49AF196959CE65453E26C5B02075A5D256F2A6BF7A70F545D565A7159C8",
+      "bytes": 1894
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\git-logs\\20261008-092435-194-commit-stage-a.result.json",
+      "sha256": "170A2DC0651E8EE5AF5F969799769AA0DF396BFC74FDC4DADDCB3EBD2EA95C97",
+      "bytes": 2675
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\git-logs\\20261008-092435-194-commit-stage-a.identity.json",
+      "sha256": "9562E4B5F4D0D18501483416B247CB92EA8EF9780AE155EA63FDCAC4972A3E8B",
+      "bytes": 2161
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090334-172-evaluation-implementation-r1-build1.result.json",
+      "sha256": "249969E84EBF8BC571FCD833C6A2CE60D7FF4F429A4B7020D6908177FC1F28DC",
+      "bytes": 5702
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090416-283-evaluation-implementation-r1-tiny1.result.json",
+      "sha256": "18283B37C4C1E3CC620C68BE54F484AF69BCA540601A5135FDB457DDB237AAEC",
+      "bytes": 3434
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r1\\20261008-090431-604-evaluation-implementation-r1-full6.result.json",
+      "sha256": "B1FAF4CAE1CB2733C3E72EC14D45A8AADDF3B85C24F41086C7B7A61BD4459DEA",
+      "bytes": 3730
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090653-718-evaluation-implementation-r2-build1.result.json",
+      "sha256": "06AE30562D601B376FF2432B4A63DC3AA10663AC02F24AEF7DF8E11D52B25480",
+      "bytes": 4229
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090754-099-evaluation-implementation-r2-build2.result.json",
+      "sha256": "66EA799807F9ED2E663C38A0633D9D49F16C388D36D2AB3BD2ACE222236EFFAC",
+      "bytes": 4230
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090847-069-evaluation-implementation-r2-tiny1.result.json",
+      "sha256": "74265DEA104AB7AA23617B0F7CFC1B4EA4E5B5468F61AF843C1CBE8783DAB4D9",
+      "bytes": 3727
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\implementation-r2\\20261008-090928-898-evaluation-implementation-r2-full6.result.json",
+      "sha256": "7813C28D20A0293FF6ABBE2290DC0E17E2F785766A7EA550AE414E04323B3222",
+      "bytes": 3728
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\install-logs\\20261008-091543-465-install-frozen-bundle.result.json",
+      "sha256": "7FEE2355C0816D5B728732863E7F2415D5E112CF0FCBAA423CE05F03F61856E7",
+      "bytes": 3383
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\publish-logs\\20261008-091116-008-publish-frozen-linux.result.json",
+      "sha256": "D4A9EF2DDDD2AA6E8114EF816A8FD0273713B96AFCB6C5BDA3EABA4016705F83",
+      "bytes": 3436
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\published-check-logs\\20261008-091245-361-published-dll-contract-tiny.result.json",
+      "sha256": "F79A820766489EDE81159B5EB0BFC93516E8B1E9358D06C0B43D36CB3490FDA8",
+      "bytes": 4504
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-a-logs\\20261008-091559-699-learnability-A.result.json",
+      "sha256": "A3449766DB6188EEA5ADAABCD22B962BAFC7FF241BC4B088FE010FDD4AFA6D18",
+      "bytes": 2854
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-b-logs\\20261008-092459-118-learnability-B.result.json",
+      "sha256": "4DAE68D5A9E9995B9F2A3E1DC1083A18D2A85DC9E79036071748108DED3923CD",
+      "bytes": 3098
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-c-logs\\20261008-092726-259-learnability-C.result.json",
+      "sha256": "4A51D49EB480B7972E10A9BF319614D6166F571760E240FE3A686711EA7D6BEC",
+      "bytes": 3096
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-closure-logs\\20261008-092904-129-learnability-closure.result.json",
+      "sha256": "AE539D4608B8C2D7147F351EE8632B50DD2FB5C32FF73B905366D9CC7CDCCD63",
+      "bytes": 2896
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-create-logs\\20261008-085804-502-learnability-create.result.json",
+      "sha256": "CAB094564312489425FB396763A13D5BC309E017CBBE95A525A2D50CEBCABAEF",
+      "bytes": 2687
+    }
+  ],
+  "KnownIdentityComparisons": [],
+  "PausedFileChecks": [],
+  "PausedCheckSkipped": false,
+  "Scope": "current task *.result.json through depth 2; independent runner-prep tiny receipts; root journals; requested prior checkers",
+  "Limitations": [
+    "Only registered historical identities are compared; the currently executing checker is explicitly pending an independent new-process check.",
+    "Windows PID/start/argv/parent comparison cannot verify Linux descendants or CUDA disposal.",
+    "Very short intermediate processes can exit between snapshots; retained root handle facts and structured argv are preserved without inventing a native command line.",
+    "An absent PID is established by an exact bounded CIM query; a reused PID is not signalled. Same-start identity changes or missing native argv/parent are unknown and fail.",
+    "Receipt status/exit codes are preserved and do not substitute for actual identity comparison.",
+    "New receipts created after enumeration require another new-label check; this is a bounded snapshot, not a continuous monitor.",
+    "ROADMAP baseline bytes are explicitly excluded because authorized experiment document updates are handled separately."
+  ]
+}

@@ -12,11 +12,17 @@
 
 ## 当前结果
 
-### 2026-10-08 可学性阶段A已真实完成
+### 2026-10-08 固定768步实验及独立加载验证已完成
+
+A独审后提交 `06a6ded`。B单次实际768次GPU SGD、零初始化三行head、LR0.001/seed17/strict1024、encoder冻结；C独立新进程从磁盘加载并重新GPU编码，B/C各48/48 forwards。train教师一致17/24、CE1.229626456896464→0.9920696603755156；dev1/8、CE1.2687934339046478→1.2740284875035286；换序4/8、CE1.3999227583408356、6/8预测ID改变。C fresh_disk_outputs_matched=true，监督者另核40逐题及全部观察解析值相同。训练集仍未充分拟合、位置敏感、质量未通过，未按dev选参数或自动加训，全部正式验收仍false。
+
+新head SHA7B4CE09F22AD80E175030F2A73FC878974347D53259DC16D3727B92E7F3184A4，checkpoint972D6CADDF5743CDA7EAD4CA0F3D657D572DF15B8710A36ADC659B892547EB92；实际权重目录远端 `/root/sezika-experiments/20261008-head-learnability-v2/output/run-768/`，本地 `.artifacts/gpu-learnability-20261008/retrieved/output/run-768/`。原报告/日志/回执/hash和分组见[本轮证据](docs/evidence/gpu-learnability-2026-10-08.md)。A/B/C全部真实completed/exit0/清理完整，GPU/host峰值均在3GiB/4GiB内，实际device/model Dispose返回及所有owned/module/release归零。独立Linux终核18登记身份（含重复）全absent，空闲仍15294MiB、已有服务未停止；旧报告原SHA保持。B/C独审与文档实物核验通过；Windows全量34回执/151登记身份/144唯一PID终核matching_live0/unknown0，checker另由独立新进程核absent，10暂停文件hash保持。历史子PID80712缺argv的初次失败保留；限定父链后的新label终核通过，不伪造argv。审查部分短命reader缺OS身份的范围局限已明确保留。精确任务临时日志移存与空目录/fixture回收完成，本轮证据已收口；完成本地结果提交后等待用户新指令，无运行训练/教师/下载/上传/GPU。禁止重跑A/B/C或因heartbeat新增派单；完成本轮后安静等待用户新指令，其他ROADMAP仍暂停。
+
+### 2026-10-08 历史检查点：阶段A已完成（由上方B/C结果接续）
 
 评价工程独审通过并提交 `2111ed9`，冻结linux-x64/runtime10.0.12工具实际发布及远端196文件校验通过。阶段A单次32真实GPU forwards，用旧72步磁盘head评价train24/固定左循环Choice8；train教师一致10/24、CE1.1749068026741345，换序2/8、CE1.3898979127407074。原/换序Choice各8题都选首候选、预测ID全部改变，旧head未充分拟合且位置敏感，质量未通过。原字节报告SHA B3868C86946B8E283B12C6B0DFA7D77A5BA895E5B524940A326BE0FF09B51082，见[本轮证据](docs/evidence/gpu-learnability-2026-10-08.md)。Linuxcompleted/exit0及清理完整，GPU/host峰值1,309,369,952B/2,723,254,272B，Dispose返回/资源全零；独立远端后核8身份记录全absent、显存仍15294MiB。B/C尚未启动，继续预先固定768步配置，不根据A/dev改参数。准确阶段目录存在即先读回执，禁止重复运行A；本轮监督者仍独占GPU与Git。
 
-### 2026-10-08 新会话已接管本轮可学性诊断
+### 2026-10-08 历史检查点：新会话接管（由上方完成结果接续）
 
 本会话 `01a11ab6-7ceb-7ac0-9235-58a8eec95729` 已从准备提交 `e5c0888` 接管源码、Git及GPU调度；旧会话不再并发实施。先核本地encoder/tokenizer、派生三文件数据及旧head/checkpoint/report身份，与交接相同；新本地任务根 `.artifacts/gpu-learnability-20261008/` 原先不存在，已登记身份和暂停文件hash。heartbeat `sezika` 已指向本会话，ACTIVE每30分钟。当前前置评价工程、只读合同审查和新scope runner准备并行进行，GPU尚未启动。唯一本轮配置及A/B/C预算仍按 [训练交接](docs/training-next-handoff-2026-10-08.md)；不重训72步、不扩量、不按dev选参数、不恢复其他ROADMAP。
 

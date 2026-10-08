@@ -1,0 +1,76 @@
+{
+  "schema": "sezika.review.reader-identities.v1",
+  "review": "stage-b-c-independent-review-20261008",
+  "registration_status": "incomplete_missing_historical_os_identity",
+  "scope": "Supplement only from existing tool receipts and carried summary; no new evidence review or experiment run.",
+  "known_shell": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "observed_shell_version": "7.6.6",
+  "limitations": [
+    "The visible exec_command receipts contain chunk_id, wall_time_seconds and exit_code, but do not expose Windows OS PID, process creation time, complete actual argv or parent PID.",
+    "The carried summary of earlier B/C review batches does not contain historical OS identities or complete commands. No absent process identity is reconstructed or guessed.",
+    "The exact submitted shell commands remain in the tool transcript. Submitted shell/cmd inputs are not asserted to be the complete actual OS argv.",
+    "Actual exit_code=0 is confirmed for the two visible reader/writer calls below. This is a process-exit receipt, not an independent PID/start-time closure.",
+    "No shell process is started by this supplement. The one JSON deliverable is written directly through apply_patch. Internal tool-service process metadata is not exposed."
+  ],
+  "visible_receipts": [
+    {
+      "chunk_id": "71e6b2",
+      "role": "read_final_linux_closure_stdout",
+      "workdir": "D:\\source\\Sezika",
+      "submitted_shell": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+      "submitted_cmd": "$PSVersionTable.PSVersion.ToString()\nGet-Content -LiteralPath 'D:\\source\\Sezika\\.artifacts\\gpu-learnability-20261008\\remote-closure-logs\\20261008-092904-129-learnability-closure.stdout.log' -Raw",
+      "os_pid": null,
+      "os_start_time": null,
+      "os_complete_argv": null,
+      "os_parent_pid": null,
+      "os_parent_chain": null,
+      "identity_status": "not_exposed_by_existing_tool_receipt",
+      "actual_exit_record": {
+        "exit_code": 0,
+        "wall_time_seconds": 1.5645348000000001,
+        "session_id": null,
+        "source": "existing exec_command receipt"
+      }
+    },
+    {
+      "chunk_id": "6082d5",
+      "role": "write_stage_b_c_review_and_read_its_hash_metadata",
+      "workdir": "D:\\source\\Sezika",
+      "submitted_shell": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+      "submitted_cmd_record": "The full submitted cmd is retained verbatim in the tool transcript for chunk 6082d5. It confirms PSVersion; sets the literal reviewReport here-string; writes stage-b-c-review.md; reads its SHA-256 and file metadata.",
+      "output_file": "D:\\source\\Sezika\\.artifacts\\gpu-learnability-review-20261008\\stage-b-c-review.md",
+      "output_sha256": "5803721FB77085874877D2FC259FC12C55B12FCBB3625A08D132F6DC22F79EE8",
+      "os_pid": null,
+      "os_start_time": null,
+      "os_complete_argv": null,
+      "os_parent_pid": null,
+      "os_parent_chain": null,
+      "identity_status": "not_exposed_by_existing_tool_receipt",
+      "actual_exit_record": {
+        "exit_code": 0,
+        "wall_time_seconds": 6.0244183,
+        "session_id": null,
+        "source": "existing exec_command receipt"
+      }
+    }
+  ],
+  "earlier_batches": {
+    "summary_reported_tool_batches_before_visible_calls": 7,
+    "included_session_poll": true,
+    "os_identity_records_available_in_carried_summary": false,
+    "known_audit_event": "The first full B read-only audit aborted after using reserved variable Error; corrected task-specific variables were used in the successful read-only retry. No GPU rerun occurred.",
+    "raw_exit_code_for_that_event_available_in_carried_summary": false
+  },
+  "supplement_execution": {
+    "maximum_deliverables": 1,
+    "maximum_tool_calls": 2,
+    "wall_clock_limit_minutes": 5,
+    "loops_created": 0,
+    "shell_processes_started": 0,
+    "temporary_files_created": 0,
+    "files_deleted": 0,
+    "git_used": false,
+    "gpu_or_network_used": false,
+    "final_windows_closure_read": false
+  }
+}
