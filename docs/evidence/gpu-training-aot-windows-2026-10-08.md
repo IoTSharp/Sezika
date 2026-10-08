@@ -14,7 +14,7 @@ CPU 准备 tiny1/full3 及一次 managed 原生 gate 拒绝，共五 case；mana
 
 ## 实际 Windows 发布与运行
 
-PowerShell7.6.6、SDK10.0.401；MSVC为固定VS18路径，cl文件版本19.51.36260.0。两次 managed build 零警告/错误；唯一 win-x64 publish 使用独立 obj/output、PublishAot、单 MSBuild 节点、ILC并发2、AOT/trim警告视为错误，50.428秒通过，没有 suppression。硬时限452秒，预留原生执行与收口预算。
+PowerShell7.6.6、SDK10.0.401；MSVC为固定VS18路径，cl文件版本19.51.36260.0。两次 managed build 零警告/错误；唯一 win-x64 publish 使用独立 obj/output、PublishAot、单 MSBuild 节点、命令行请求`IlcMaxDegreeOfParallelism=2`、AOT/trim警告视为错误，50.428秒通过，没有 suppression。ILC并发2未由实际rsp/线程观测证明，不能写成已生效；Linux后续核查发现其10.0.12 targets仅显式支持`IlcSingleThreaded=true`生成`--parallelism:1`，不把该Linux结论自动转成Windows版本的配置证明。硬时限452秒，预留原生执行与收口预算。
 
 原生 PE 6,612,480 bytes、CLI header RVA=0，SHA-256 `4CC4A3AF01BBB4CF200A7DFFF632CDC9C3C0DA54876D473F8DC9DF747B2D4021`。真实运行 `IsDynamicCodeSupported=false`、`IsDynamicCodeCompiled=false`、TPA=null，运行时报告的 ProcessSHA 与 PE 一致。原生 gate 在任何 CUDA Open 前；managed 用原生参数实际 exit1 且没有创建输出目录，不作为未处理失败。静态 imports/publish inventory 已记录；imports 清单不是完整 runtime 模块清单。
 
