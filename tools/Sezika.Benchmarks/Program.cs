@@ -10,6 +10,8 @@ using Sezika;
 using Sezika.Cuda;
 using Sezika.Benchmarks;
 
+if (args.Length > 0 && args[0] == "independent-profile") return IndependentProfile.Run(args[1..]);
+if (args.Length > 0 && args[0] == "check-independent-profile") return IndependentProfileChecks.Run(args[1..]);
 return Benchmark.Run(args);
 
 internal static class Benchmark

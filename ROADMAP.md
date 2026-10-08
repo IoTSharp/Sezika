@@ -136,7 +136,7 @@ GPU切片C工程已验收：train-original-gpu明确选择设备、五项恢复�
 
 S5-06执行边界工程已完成：Ubuntu runner 的八项生命周期合同、原始回执与独立进程终核通过，见[证据](docs/evidence/bounded-linux-runner-2026-10-08.md)；仅保证记录中保留任务token的协作身份范围，不以Windows退出或受控fixture代替完整Linux资源证明。
 
-接续S5-06独立画像入口工程：已限定四源码核实现有Benchmarks只接legacy loader/pipeline。新增显式`independent-profile`入口，复用独立decision-v1 runtime与静态CPU/CUDA pipeline，仅记录实际Evaluate E2E范围、完整模型/head/输入/backend身份及进入/完成/失败分母；encoder/head分项保持未测。先极小CPU兼容fixture及最多8项工程合同，不以诊断时间宣称正式性能；真实批量采样使用GPU，正式矩阵/质量/数值仍另验。仅归属Benchmarks入口与新增独立模块/检查文件，核心和CUDA不在本次修改范围，构建/检查须另在有界窗口中执行。
+S5-06独立画像入口工程已完成：`independent-profile`显式接独立decision-v1/CUDA，`check-independent-profile`仅H2 CPU tiny兼容；实际Evaluate E2E、Score进入/返回、typed返回/验证、unknown与失败全分母独立记录，分项保持未测、正式样本0。最终零警告/错误、tiny1/full8及实际DLL/资源终核通过，见[工程证据](docs/evidence/independent-profile-entry-2026-10-08.md)。本入口真实GPU/正式矩阵/性能/AOT仍待独立验收，批量运行使用GPU；核心和CUDA未修改。
 
 ## 编号任务板
 

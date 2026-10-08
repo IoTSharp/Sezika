@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- 增加独立模型CUDA画像入口与CPU tiny兼容检查：记录实际Evaluate E2E、Score调用/typed返回/验证的独立分母、前置失败unknown与已核资产身份，发布partial独立回收。最终零警告/错误、tiny1/full8及实际DLL/24条资源身份复核通过；本入口GPU/正式性能/AOT未验收，见[证据](docs/evidence/independent-profile-entry-2026-10-08.md)。
 - 增加 Ubuntu 有界任务 runner：共享单调工作/清理预算、逐 PID/start/token/argv/父链证明、完整最终分母及清理阶段不发信号的安全延后。tiny→八项生命周期合同全部通过，28个Linux身份及67个Windows身份独立终核无匹配存活；原失败和协作/短寿命进程限制保留，见[工程证据](docs/evidence/bounded-linux-runner-2026-10-08.md)。
 - 增加 S4-06 审核标签侧车离线分组：固定已有 development 报告与侧车 hash，静态 DTO/source-generated JSON、候选映射及逐题概率重算，角色/否定/词面相似性/候选顺序的获审分组与 unknown 完整分母；所有正式准入标志保持 false。最终构建零警告/错误、tiny1/full12合成检查及真实 move 后取消回滚通过；无真实审核标签、模型调用、质量、AOT 或 RSS 验收，见[证据](docs/evidence/reviewed-slices-2026-10-08.md)。
 - 验收Ubuntu WSL2 GPU head训练Native AOT：最终冻结28输入、第2新ELF、native tiny1/full11共16更新，schema3磁盘3→6恢复与连续6参数bytes/loss/checkpoint/head一致；root12保存物/实际ELF/回执及进程复核通过。首次inventory失败、额外tiny只覆盖gate、清理非共享8秒限制和ILC并发2未证明生效均保留；两个TMPDIR由root精确非递归清理。仅合成head两RID工程，正式训练/质量另验；Windows并发描述同步纠正为CLI请求，见[Ubuntu证据](docs/evidence/gpu-training-aot-linux-2026-10-08.md)。

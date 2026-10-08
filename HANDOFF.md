@@ -30,8 +30,13 @@
 | Windows GPU训练AOT | `6c3b096` | 最终五源freeze、原生PE/flags、tiny1/full11、H4三题磁盘3→6恢复与连续6、主48launch/480H2D/240D2H；旧managed16/新native16分别绑定版本，63身份终核 |
 | Linux GPU训练AOT | `14a3917` | 28固定输入、新ELF、native1→11共16更新、RID内三文件3→6恢复/连续6；首失败/runner预算限制保留，49Linux身份及root46身份零匹配，两TMPDIR已精确回收 |
 | 审核切片侧车工程 | `b2c54b3` | 最多32行既有development报告与hash绑定审核侧车；unknown完整分母及正式接受false。当前真实DLL冻结后零警告/错误构建、tiny1/full12通过；Git8调用及18身份随后无匹配存活，没有push |
+| Linux协作runner工程 | `32822f8` | v10 tiny→8case通过，原始回执/参数和独立审查通过，28Linux身份/67Windows记录无匹配；随后11份Git/reader/worker回执与44身份终核0，旧失败保留 |
 
 ### 2026-10-08 UTC04:08 接续检查点
+
+最新接续：Linux工程已单独提交32822f8；root-v10-git-reader-resource-closure.json核8Git、2外部reader、1worker共11成功回执，44身份无匹配，全部cleanup为空。本轮没有push。独立画像最终三源EE1423/A47AEC/27131已锁，首次构建同名失败保留，只做两处rename后第2build1464/21.516秒、零警告/错误，tiny69660/2.930秒、full8 25092/3.188秒全PASS。root三个实际DLL在build2/tiny/full不变，四runner cleanup为空、24身份无匹配、两个fixture根0项；独立复审SHA C08F65…9A38EA完整覆盖与rename逆变换通过，晚停止新增线29.964秒的写报告事实保留。永久证据见docs/evidence/independent-profile-entry-2026-10-08.md；root正在准备单独commit，不称GPU/正式性能/AOT已验。
+
+当前唯一活动子智能体linux_cancel_cause在04:18:09–04:26:09只读下一真实GPU诊断资产可执行性审计，04:24:09停新，最多6调用/6输入；只核明确证据指针中的小head/request/identity，禁GPU/build/网络/新资产/训练，不猜真实绑定。其他实现/复审子智能体已停止。正式数据/真人审核/封存/上游oracle与正式训练质量仍开放；30分钟heartbeat sezika view已成功，继续本线程监督。用户微信两文件保留。
 
 Linux通用runner最终v10 tiny及2–8全部通过；冻结三源、gate、原始TSV/receipt/Windows bytes/hash/全部参数均已root复核。worker67128/Succeeded0/41.705秒；case2实际安全延后1次、未给缺proof父进程发信号，最终完整live/unknown/unchecked0。两个负fixture保持incomplete/127，不当资源成功。root两组28known全absent、各44proc/token live/unknown0，Windows前核67身份记录无匹配（含重复）；两个reader成功退出。永久证据见docs/evidence/bounded-linux-runner-2026-10-08.md；独立验收SHA EC81B0C1…32D8EA通过，root接续单独commit。没有模型/GPU/下载/新服务，旧失败全部保留。
 

@@ -82,6 +82,7 @@ dotnet run --project src/Sezika.Cli -c Release --no-build -- predict --model .ar
 - [Laya oracle 合同](docs/laya-oracle.md)、[C# 真实捕获](docs/oracle-capture.md)与[数值对照证据](docs/evidence/laya-parity-2026-09-25.md)：固定源码/资产/输入/容差，保留完整清单差异和支持范围的 token、marker、logits 验收结果。
 - [数据隔离审计](docs/data-isolation-s4-05.md)：来源、许可、用途、家族/实体/近重复与封存声明检查；示例不代表获准训练的数据集。
 - [GPU 训练入口](docs/evidence/gpu-training-cli-2026-10-08.md)：`train-original-gpu`使用GPU计算完整特征并训练head，先核正式数据准入；CPU入口限小规模参考/诊断。工程实卡已验，正式数据训练与质量另验。
+- [独立模型画像入口](docs/evidence/independent-profile-entry-2026-10-08.md)：`independent-profile`显式接CUDA并记录实际Evaluate、失败和资源分母；`check-independent-profile`仅CPU tiny兼容。工程已验，真实GPU画像及正式性能另验。
 - [长输入性能画像](docs/evidence/s5-profile-2026-09-26.md)：当前渲染路径的真实短/中/长与 1/8/32 问请求，实际输入、端到端耗时、分项与资源证据；[工具说明](docs/performance-profile-s5-06.md)列出复现方法和计时口径。
 - [架构设计](docs/architecture.md)：推理路径、模型资产、契约、校准与资源约束。
 - [纯 C# GPU 与 Native AOT](docs/gpu-aot.md)：ILGPU 编译期边界、CUDA Driver 路径及最小验证关口。
