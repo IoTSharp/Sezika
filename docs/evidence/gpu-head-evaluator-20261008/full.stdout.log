@@ -1,0 +1,25 @@
+GPU CE numerical checks: 1/3 zero head, all three question types
+GPU CE numerical checks: 2/3 nonzero head against tiny scalar numeric reference
+GPU CE numerical checks: 3/3 cancellation after actual first CE and resource recovery
+{
+  "status": "passed_synthetic_gpu_numeric_checks_only",
+  "passed_checks": 3,
+  "maximum_loss_absolute_error": 8.323756972572482E-08,
+  "synthetic_features_only": true,
+  "training_executed": false,
+  "resources": {
+    "snapshot_before_context_dispose": {
+      "total_bytes": 50864390144,
+      "free_bytes": 15625748480,
+      "owned_bytes": 0,
+      "peak_owned_bytes": 796,
+      "owned_allocation_count": 0,
+      "loaded_module_count": 0,
+      "release_failure_count": 0
+    },
+    "process_peak_working_set_bytes": 139628544,
+    "process_working_set_bytes": 139628544,
+    "device_dispose_returned": true,
+    "model_dispose_returned": null
+  }
+}

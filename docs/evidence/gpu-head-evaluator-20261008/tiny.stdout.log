@@ -1,0 +1,22 @@
+{
+  "status": "passed_synthetic_gpu_numeric_checks_only",
+  "passed_checks": 1,
+  "maximum_loss_absolute_error": 1.904654323148236E-09,
+  "synthetic_features_only": true,
+  "training_executed": false,
+  "resources": {
+    "snapshot_before_context_dispose": {
+      "total_bytes": 50864390144,
+      "free_bytes": 15625748480,
+      "owned_bytes": 0,
+      "peak_owned_bytes": 796,
+      "owned_allocation_count": 0,
+      "loaded_module_count": 0,
+      "release_failure_count": 0
+    },
+    "process_peak_working_set_bytes": 161488896,
+    "process_working_set_bytes": 161296384,
+    "device_dispose_returned": true,
+    "model_dispose_returned": null
+  }
+}
