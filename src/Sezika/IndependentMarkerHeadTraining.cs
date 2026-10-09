@@ -122,7 +122,9 @@ public sealed class MarkerTrainingState
 /// <summary>Bounded SGD over precomputed complete-sequence marker rows; the encoder remains outside this trainer.</summary>
 public static class IndependentMarkerHeadTrainer
 {
-    internal const int MaxExamples = 32;
+    public const int MaximumExamples = 256;
+    public const int MaximumSteps = 24_576;
+    internal const int MaxExamples = MaximumExamples;
     private const int MaxTokens = 1024;
 
     public static MarkerTrainingState Train(MarkerFeatureSet set, MarkerTrainingOptions options,
@@ -130,7 +132,7 @@ public static class IndependentMarkerHeadTrainer
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(options);
-        if (options.MaxSteps is < 1 or > 10_000 || !float.IsFinite(options.LearningRate) ||
+        if (options.MaxSteps is < 1 or > MaximumSteps || !float.IsFinite(options.LearningRate) ||
             options.LearningRate <= 0 || options.LearningRate > 1 ||
             options.MaxDuration <= TimeSpan.Zero || options.MaxDuration > TimeSpan.FromMinutes(10))
             throw new DecisionException("training_budget_invalid", "Step, learning rate or wall-clock budget is invalid.");
@@ -188,7 +190,7 @@ public static class IndependentMarkerHeadTrainer
         var identity = set.Identity;
         ValidateIdentity(identity, "training_identity_invalid");
         if (set.Examples is null || set.Examples.Count is < 1 or > MaxExamples)
-            throw new DecisionException("training_input_invalid", "Training requires 1-32 complete questions.");
+            throw new DecisionException("training_input_invalid", "Training requires 1-256 complete questions.");
         var seen = new HashSet<string>(StringComparer.Ordinal);
         var examples = new MarkerFeatureExample[set.Examples.Count];
         for (var item = 0; item < examples.Length; item++)
@@ -347,7 +349,7 @@ public static class MarkerTrainingCheckpoint
             if (clock.Elapsed > MaxIoDuration) throw new DecisionException("training_checkpoint_deadline_exceeded", "Checkpoint save wall-clock budget expired.");
         }
         IndependentMarkerHeadTrainer.ValidateIdentity(state.Identity, "training_checkpoint_invalid");
-        if (!IndependentMarkerHeadTrainer.IsHash(state.FeatureSha256) || state.CompletedSteps is < 0 or > 10_000 ||
+        if (!IndependentMarkerHeadTrainer.IsHash(state.FeatureSha256) || state.CompletedSteps is < 0 or > IndependentMarkerHeadTrainer.MaximumSteps ||
             !float.IsFinite(state.LearningRate) || state.LearningRate <= 0 || state.LearningRate > 1 ||
             !double.IsFinite(state.LastLoss) || state.LastLoss < 0)
             throw new DecisionException("training_checkpoint_invalid", "Training state is invalid.");
@@ -441,7 +443,7 @@ public static class MarkerTrainingCheckpoint
             var steps = reader.ReadInt32();
             var loss = reader.ReadDouble();
             var count = reader.ReadInt32();
-            if (!float.IsFinite(rate) || rate <= 0 || rate > 1 || steps is < 0 or > 10_000 ||
+            if (!float.IsFinite(rate) || rate <= 0 || rate > 1 || steps is < 0 or > IndependentMarkerHeadTrainer.MaximumSteps ||
                 !double.IsFinite(loss) || loss < 0 || count != checked(3 * identity.HiddenSize))
                 throw new DecisionException("training_checkpoint_invalid", "Checkpoint optimizer state or shape is invalid.");
             var weights = new float[count];

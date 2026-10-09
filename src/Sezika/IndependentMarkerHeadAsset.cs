@@ -41,7 +41,7 @@ public static class IndependentMarkerHeadAssetStore
         void Check() { cancellationToken.ThrowIfCancellationRequested(); if (clock.Elapsed > MaxIoDuration) throw new DecisionException("head_asset_deadline_exceeded", "Head asset I/O deadline expired."); }
         Check();
         IndependentMarkerHeadTrainer.ValidateIdentity(state.Identity, "head_asset_invalid");
-        if (!IndependentMarkerHeadTrainer.IsHash(state.FeatureSha256) || state.CompletedSteps is < 0 or > 10_000 ||
+        if (!IndependentMarkerHeadTrainer.IsHash(state.FeatureSha256) || state.CompletedSteps is < 0 or > IndependentMarkerHeadTrainer.MaximumSteps ||
             !float.IsFinite(state.LearningRate) || state.LearningRate <= 0 || state.LearningRate > 1 ||
             !double.IsFinite(state.LastLoss) || state.LastLoss < 0)
             throw new DecisionException("head_asset_invalid", "Head asset training metadata is invalid.");
@@ -92,7 +92,7 @@ public static class IndependentMarkerHeadAssetStore
                 !featureHash.Equals(expectedFeatureSha256, StringComparison.OrdinalIgnoreCase))
                 throw new DecisionException("head_asset_identity_mismatch", "Head asset identity differs from the requested model or features.");
             var seed = reader.ReadInt32(); var rate = reader.ReadSingle(); var steps = reader.ReadInt32(); var loss = reader.ReadDouble(); var count = reader.ReadInt32();
-            if (!float.IsFinite(rate) || rate <= 0 || rate > 1 || steps is < 0 or > 10_000 ||
+            if (!float.IsFinite(rate) || rate <= 0 || rate > 1 || steps is < 0 or > IndependentMarkerHeadTrainer.MaximumSteps ||
                 !double.IsFinite(loss) || loss < 0 || count != checked(3 * identity.HiddenSize))
                 throw new DecisionException("head_asset_invalid", "Head asset optimizer metadata or shape is invalid.");
             var weights = new float[count];

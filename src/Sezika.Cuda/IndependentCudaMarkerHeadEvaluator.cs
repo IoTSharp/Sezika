@@ -101,8 +101,8 @@ public static class IndependentCudaMarkerHeadEvaluator
             double totalLoss = 0;
             var completed = 0;
 
-            // Prepare enforces 1..32 records, 2..32 candidates, H<=2048 and finite values.
-            for (var item = 0; item < prepared.Examples.Length && item < 32; item++)
+            // Prepare enforces 1..256 records, 2..32 candidates, H<=2048 and finite values.
+            for (var item = 0; item < prepared.Examples.Length && item < IndependentMarkerHeadTrainer.MaximumExamples; item++)
             {
                 Check();
                 var example = prepared.Examples[item];

@@ -20,18 +20,22 @@ internal sealed class TrainingCleanup
     private readonly TrainingCleanupFaults? _faults;
     private readonly CudaOwnedResources _before;
     private readonly bool _restoreCallerBaseline;
+    private readonly int _maximumBuffers;
     private long _started;
     private bool _clockStarted;
     private int _owners, _modules;
     private bool _expired, _injected, _ownerLimitReached;
     private Exception? _firstException;
 
-    internal TrainingCleanup(CudaDevice device, bool restoreCallerBaseline = true)
+    internal TrainingCleanup(CudaDevice device, bool restoreCallerBaseline = true, int maximumBuffers = 39)
     {
+        if (maximumBuffers is < 1 or > IndependentMarkerHeadTrainer.MaximumExamples + 7)
+            throw new ArgumentOutOfRangeException(nameof(maximumBuffers));
         _device = device;
         _faults = device.TrainingFaults;
         _before = device.OwnedResources;
         _restoreCallerBaseline = restoreCallerBaseline;
+        _maximumBuffers = maximumBuffers;
     }
 
     internal TrainingCleanupResult Result
@@ -56,7 +60,7 @@ internal sealed class TrainingCleanup
     private bool NextOwner()
     {
         if (!WithinDeadline()) return false;
-        if (_owners >= 40) { _ownerLimitReached = true; return false; }
+        if (_owners >= _maximumBuffers + 1) { _ownerLimitReached = true; return false; }
         _owners++;
         return true;
     }
@@ -64,10 +68,9 @@ internal sealed class TrainingCleanup
     internal void Buffers(List<CudaDeviceBuffer>? buffers)
     {
         if (buffers is null) return;
-        // Allocate rejects a 40th buffer. If internal corruption violates that invariant,
-        // still attempt at most 39 known owners and report the excess to the device.
-        if (buffers.Count > 39) _ownerLimitReached = true;
-        for (var index = Math.Min(buffers.Count, 39) - 1; index >= 0; index--)
+        // Match the caller's allocation bound; the legacy default remains 39 buffers.
+        if (buffers.Count > _maximumBuffers) _ownerLimitReached = true;
+        for (var index = Math.Min(buffers.Count, _maximumBuffers) - 1; index >= 0; index--)
         {
             if (!NextOwner()) break;
             try { buffers[index].Dispose(); }

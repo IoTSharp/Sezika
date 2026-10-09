@@ -21,9 +21,12 @@ public static class IndependentCudaMarkerHeadTrainer
         Exception? primary = null;
         try
         {
-            recovery = new TrainingCleanup(device);
+            ArgumentNullException.ThrowIfNull(set);
+            var maximumBuffers = set.Examples?.Count is >= 1 and <= IndependentMarkerHeadTrainer.MaximumExamples
+                ? set.Examples.Count + 7 : 39;
+            recovery = new TrainingCleanup(device, maximumBuffers: maximumBuffers);
             ArgumentNullException.ThrowIfNull(options);
-            if (options.MaxSteps is < 1 or > 10_000 || !float.IsFinite(options.LearningRate) ||
+            if (options.MaxSteps is < 1 or > IndependentMarkerHeadTrainer.MaximumSteps || !float.IsFinite(options.LearningRate) ||
                 options.LearningRate <= 0 || options.LearningRate > 1 ||
                 options.MaxDuration <= TimeSpan.Zero || options.MaxDuration > TimeSpan.FromMinutes(10))
                 throw new DecisionException("training_budget_invalid", "Step, learning rate or wall-clock budget is invalid.");
@@ -51,21 +54,21 @@ public static class IndependentCudaMarkerHeadTrainer
             var completed = resume?.CompletedSteps ?? 0;
             var lastLoss = resume?.LastLoss ?? 0d;
             var order = IndependentMarkerHeadTrainer.MakeOrder(prepared.Examples.Length, options.Seed);
-            // <=32 feature buffers plus seven fixed working buffers; all are task-owned.
-            owned = new List<CudaDeviceBuffer>(39);
+            // <=256 feature buffers plus seven fixed working buffers; all are task-owned.
+            owned = new List<CudaDeviceBuffer>(maximumBuffers);
             device.ThrowIfDisposed();
             Check();
             kernels = new CudaKernels(device, deadline.Token, recovery);
             CudaDeviceBuffer Allocate(int floats)
             {
                 Check();
-                if (owned.Count >= 39) throw new DecisionException("training_budget_invalid", "GPU allocation count limit.");
+                if (owned.Count >= maximumBuffers) throw new DecisionException("training_budget_invalid", "GPU allocation count limit.");
                 var buffer = device.Allocate(checked((nuint)floats * sizeof(float)));
                 owned.Add(buffer);
                 return buffer;
             }
             var features = new CudaDeviceBuffer[prepared.Examples.Length];
-            for (var item = 0; item < features.Length && item < 32; item++)
+            for (var item = 0; item < features.Length && item < IndependentMarkerHeadTrainer.MaximumExamples; item++)
             {
                 Check();
                 var example = prepared.Examples[item];
@@ -93,8 +96,8 @@ public static class IndependentCudaMarkerHeadTrainer
             device.CopyToDevice(current, initial);
             var metrics = new float[2];
             progress?.Invoke(new MarkerTrainingProgress(completed, options.MaxSteps, lastLoss));
-            // Checked finite: <=10000 updates, <=32 candidates, H<=2048, caller deadline.
-            for (var step = completed; step < options.MaxSteps && step < 10_000; step++)
+            // Checked finite: <=24576 updates, <=32 candidates, H<=2048, caller deadline.
+            for (var step = completed; step < options.MaxSteps && step < IndependentMarkerHeadTrainer.MaximumSteps; step++)
             {
                 Check();
                 var selected = order[step % order.Length];
