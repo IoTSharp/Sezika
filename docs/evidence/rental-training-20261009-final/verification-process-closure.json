@@ -1,0 +1,77 @@
+{
+  "utc": "2026-10-09T13:27:15.2858248Z",
+  "status": "PASS_task_owned_verifier_processes_closed",
+  "maximum_receipts": 5,
+  "timeout_seconds": 30,
+  "elapsed_seconds": 4.2312319,
+  "processes": [
+    {
+      "receipt": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\process-logs\\20261009-130242-774-verifier-reader-01.result.json",
+      "pid": 45556,
+      "started_utc": "2026-10-09T13:02:43.5402017Z",
+      "actual_status": "Failed",
+      "actual_exit": 2,
+      "expected_exit": 2,
+      "final_check_complete": true,
+      "live": 0,
+      "unknown": 0,
+      "cleanup_errors": 0,
+      "current_identity_state": "task_pid_absent"
+    },
+    {
+      "receipt": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\process-logs\\20261009-130611-184-verifier-reader-02.result.json",
+      "pid": 73388,
+      "started_utc": "2026-10-09T13:06:12.1617286Z",
+      "actual_status": "Failed",
+      "actual_exit": 2,
+      "expected_exit": 2,
+      "final_check_complete": true,
+      "live": 0,
+      "unknown": 0,
+      "cleanup_errors": 0,
+      "current_identity_state": "task_pid_absent"
+    },
+    {
+      "receipt": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\process-logs\\20261009-132134-312-verifier-source-row-reader.result.json",
+      "pid": 82360,
+      "started_utc": "2026-10-09T13:21:35.007941Z",
+      "actual_status": "Succeeded",
+      "actual_exit": 0,
+      "expected_exit": 0,
+      "final_check_complete": true,
+      "live": 0,
+      "unknown": 0,
+      "cleanup_errors": 0,
+      "current_identity_state": "task_pid_absent"
+    },
+    {
+      "receipt": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\process-logs\\20261009-132219-564-verifier-formal-01.result.json",
+      "pid": 11912,
+      "started_utc": "2026-10-09T13:22:20.2563726Z",
+      "actual_status": "Succeeded",
+      "actual_exit": 0,
+      "expected_exit": 0,
+      "final_check_complete": true,
+      "live": 0,
+      "unknown": 0,
+      "cleanup_errors": 0,
+      "current_identity_state": "task_pid_absent"
+    },
+    {
+      "receipt": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\process-logs\\20261009-132606-578-verifier-early-admission.result.json",
+      "pid": 28284,
+      "started_utc": "2026-10-09T13:26:07.3601777Z",
+      "actual_status": "Succeeded",
+      "actual_exit": 0,
+      "expected_exit": 0,
+      "final_check_complete": true,
+      "live": 0,
+      "unknown": 0,
+      "cleanup_errors": 0,
+      "current_identity_state": "task_pid_absent"
+    }
+  ],
+  "foreign_processes_modified": 0,
+  "cleanup_actions_taken": 0,
+  "temporary_files_created": 0
+}

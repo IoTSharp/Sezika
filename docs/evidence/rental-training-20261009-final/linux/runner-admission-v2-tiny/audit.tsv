@@ -1,0 +1,5 @@
+event	utc	pid	start_tick	detail
+started	2026-10-09T13:14:23Z	5077	434783900	budget=5\ cancel_after=0\ ppid=5076\ pgid=5076\ sid=5052
+timer_pending	2026-10-09T13:14:23Z	5078	434783917	direct\ process-substitution\ child\;\ expected\ sleep\ argv\;\ token/argv/parent\ chain\ pending
+signal	2026-10-09T13:14:23Z	5079	434783918	CONT\ ppid=5077\ pgid=5079\ sid=5079
+signal	2026-10-09T13:14:24Z	5078	434783917	KILL\ ppid=5077\ pgid=5076\ sid=5052

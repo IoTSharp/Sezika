@@ -1,0 +1,21 @@
+{
+  "utc": "2026-10-09T13:09:40.3617066Z",
+  "stage_path": "remote/stage-admission-v2.sh",
+  "old_contract_status": "pre_payload_runner_exit64_no_gpu",
+  "diagnosis_status": "same_original_runner_true_payload0_cleanupcomplete",
+  "root_cause": "original failing line unknown; integer1second initialization short window removed",
+  "change": "btime1024rows and monotonic3000ms, same work/cleanup/identity bounds",
+  "original_archive_preserved": true,
+  "files": [
+    {
+      "name": "Invoke-BoundedLinux-v2.sh",
+      "sha256": "B6DD14CFC9EAB1D66D75293B2E5380340315902945A204A8AAA2450ED67BC1D8",
+      "bytes": 24971
+    },
+    {
+      "name": "stage-admission-v2.sh",
+      "sha256": "282D8B8F169B902354537ADC463D3185D487CFB8133BB48B9A850AEB5A9A4479",
+      "bytes": 3852
+    }
+  ]
+}

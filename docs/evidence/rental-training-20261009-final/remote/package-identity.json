@@ -1,0 +1,22 @@
+{
+  "task": "sezika-rental-20261009-01a12099",
+  "utc": "2026-10-09T12:31:31.3639205Z",
+  "file_count": 475,
+  "payload_bytes": 1436974867.0,
+  "native_aot": false,
+  "runtime": "linux-x64 self-contained .NET10.0.12",
+  "experiment": {
+    "total": 215,
+    "train": 162,
+    "development": 53,
+    "updates": 24576,
+    "learning_rate": 0.001,
+    "seed": 17,
+    "max_tokens": 8192,
+    "encoder_frozen": true,
+    "head_initialization": "zeros",
+    "teacher_calls": 0,
+    "quality_passed": false
+  },
+  "files_sha256": "13bdb23fb0c333d013779972ca34938134fe89dd48835adfbcd0c5f6176164e6"
+}

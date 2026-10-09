@@ -1,0 +1,7919 @@
++ set -u
++ umask 077
++ phase=setup
++ limit_ms=0
++ now_ms=0
++ cleanup_budget_exhausted=0
++ work_budget_exhausted=0
++ [[ /root/sezika-experiments/sezika-rental-20261009-01a12099/.artifacts/runner-admission-diagnosis == --worker ]]
++ [[ 8 -ge 8 ]]
++ [[ /root/sezika-experiments/sezika-rental-20261009-01a12099/.artifacts/runner-admission-diagnosis == /* ]]
++ [[ 5 =~ ^[0-9]+$ ]]
++ [[ 8 =~ ^[0-9]+$ ]]
++ [[ 0 =~ ^[0-9]+$ ]]
++ [[ -- == -- ]]
++ run=/root/sezika-experiments/sezika-rental-20261009-01a12099/.artifacts/runner-admission-diagnosis
++ budget=5
++ cleanup_seconds=8
++ cancel_after=0
++ cancel_mode=file
++ fixture=none
++ shift 7
++ (( budget >= 1 && budget <= 1520 && cleanup_seconds >= 1 && cleanup_seconds <= 8 && cancel_after <= budget ))
++ [[ file == file ]]
++ [[ none == none ]]
++ [[ none != none ]]
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=83
++ fraction=83
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 83 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289830
++ begin_ms=4347289830
++ work_deadline_ms=4347294830
++ limit_ms=4347294830
++ [[ -d /root/sezika-experiments/sezika-rental-20261009-01a12099/.artifacts/runner-admission-diagnosis ]]
++ [[ ! -L /root/sezika-experiments/sezika-rental-20261009-01a12099/.artifacts/runner-admission-diagnosis ]]
++ [[ ! -e /root/sezika-experiments/sezika-rental-20261009-01a12099/.artifacts/runner-admission-diagnosis/identity.tsv ]]
++ [[ ! -e /root/sezika-experiments/sezika-rental-20261009-01a12099/.artifacts/runner-admission-diagnosis/result.tsv ]]
++ [[ ! -e /root/sezika-experiments/sezika-rental-20261009-01a12099/.artifacts/runner-admission-diagnosis/ready ]]
++ [[ ! -e /root/sezika-experiments/sezika-rental-20261009-01a12099/.artifacts/runner-admission-diagnosis/go ]]
++ [[ ! -e /root/sezika-experiments/sezika-rental-20261009-01a12099/.artifacts/runner-admission-diagnosis/cancel.request ]]
++ token=sezika-4288-18048-32442
++ root_pid=4288
++ begin=0
++ status=failed
++ payload_exit=unknown
++ cleanup_done=0
++ cleanup_bad=0
++ ownership_bad=0
++ launcher=0
++ launcher_tick=
++ cleanup_deferred_proofs=0
++ timer_pid=0
++ timer_tick=
++ timerfd=0
++ control_pid=0
++ control_tick=
++ control_argv=
++ control_chain=
++ control_unaffected=0
++ control_owner_closed=0
++ btime=0
++ boot_begin=0
++ exec
++ (( boot_line=0 ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=83
++ fraction=83
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 83 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289830
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=83
++ fraction=83
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 83 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289830
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu0 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=83
++ fraction=83
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 83 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289830
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu1 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=83
++ fraction=83
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 83 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289830
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu2 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=83
++ fraction=83
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 83 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289830
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu3 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=83
++ fraction=83
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 83 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289830
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu4 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=83
++ fraction=83
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 83 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289830
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu5 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=83
++ fraction=83
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 83 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289830
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu6 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=83
++ fraction=83
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 83 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289830
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu7 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=83
++ fraction=83
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 83 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289830
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu8 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=83
++ fraction=83
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 83 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289830
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu9 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=83
++ fraction=83
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 83 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289830
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu10 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=83
++ fraction=83
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 83 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289830
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu11 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=83
++ fraction=83
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 83 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289830
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu12 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=83
++ fraction=83
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 83 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289830
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu13 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=83
++ fraction=83
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 83 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289830
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu14 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=83
++ fraction=83
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 83 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289830
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu15 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=83
++ fraction=83
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 83 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289830
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu16 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=83
++ fraction=83
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 83 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289830
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu17 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=83
++ fraction=83
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 83 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289830
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu18 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=84
++ fraction=84
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 84 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289840
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu19 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=84
++ fraction=84
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 84 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289840
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu20 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=84
++ fraction=84
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 84 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289840
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu21 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=84
++ fraction=84
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 84 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289840
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu22 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=84
++ fraction=84
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 84 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289840
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu23 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=84
++ fraction=84
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 84 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289840
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu24 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=84
++ fraction=84
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 84 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289840
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu25 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=84
++ fraction=84
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 84 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289840
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu26 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=84
++ fraction=84
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 84 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289840
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu27 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=84
++ fraction=84
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 84 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289840
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu28 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=84
++ fraction=84
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 84 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289840
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu29 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=84
++ fraction=84
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 84 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289840
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu30 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=84
++ fraction=84
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 84 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289840
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu31 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=84
++ fraction=84
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 84 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289840
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu32 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=84
++ fraction=84
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 84 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289840
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu33 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=84
++ fraction=84
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 84 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289840
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu34 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=84
++ fraction=84
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 84 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289840
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu35 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=84
++ fraction=84
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 84 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289840
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu36 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=84
++ fraction=84
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 84 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289840
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu37 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=84
++ fraction=84
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 84 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289840
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu38 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=84
++ fraction=84
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 84 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289840
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu39 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=85
++ fraction=85
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 85 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289850
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu40 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=85
++ fraction=85
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 85 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289850
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu41 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=85
++ fraction=85
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 85 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289850
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu42 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=85
++ fraction=85
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 85 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289850
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu43 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=85
++ fraction=85
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 85 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289850
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu44 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=85
++ fraction=85
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 85 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289850
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu45 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=85
++ fraction=85
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 85 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289850
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu46 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=85
++ fraction=85
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 85 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289850
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu47 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=85
++ fraction=85
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 85 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289850
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu48 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=85
++ fraction=85
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 85 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289850
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu49 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=85
++ fraction=85
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 85 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289850
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu50 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=85
++ fraction=85
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 85 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289850
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu51 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=85
++ fraction=85
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 85 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289850
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu52 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=85
++ fraction=85
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 85 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289850
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu53 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=85
++ fraction=85
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 85 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289850
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu54 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=85
++ fraction=85
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 85 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289850
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu55 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=85
++ fraction=85
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 85 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289850
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu56 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=85
++ fraction=85
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 85 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289850
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu57 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=85
++ fraction=85
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 85 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289850
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu58 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=85
++ fraction=85
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 85 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289850
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu59 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=85
++ fraction=85
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 85 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289850
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu60 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=86
++ fraction=86
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 86 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289860
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu61 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=86
++ fraction=86
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 86 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289860
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu62 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=86
++ fraction=86
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 86 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289860
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu63 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=86
++ fraction=86
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 86 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289860
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu64 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=86
++ fraction=86
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 86 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289860
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu65 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=86
++ fraction=86
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 86 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289860
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu66 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=86
++ fraction=86
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 86 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289860
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu67 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=86
++ fraction=86
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 86 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289860
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu68 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=86
++ fraction=86
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 86 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289860
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu69 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=86
++ fraction=86
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 86 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289860
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu70 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=86
++ fraction=86
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 86 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289860
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu71 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=86
++ fraction=86
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 86 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289860
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu72 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=86
++ fraction=86
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 86 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289860
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu73 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=86
++ fraction=86
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 86 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289860
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu74 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=86
++ fraction=86
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 86 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289860
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu75 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=86
++ fraction=86
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 86 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289860
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu76 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=86
++ fraction=86
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 86 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289860
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu77 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=86
++ fraction=86
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 86 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289860
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu78 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=86
++ fraction=86
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 86 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289860
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu79 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=86
++ fraction=86
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 86 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289860
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu80 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=86
++ fraction=86
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 86 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289860
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu81 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=87
++ fraction=87
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 87 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289870
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu82 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=87
++ fraction=87
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 87 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289870
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu83 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=87
++ fraction=87
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 87 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289870
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu84 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=87
++ fraction=87
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 87 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289870
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu85 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=87
++ fraction=87
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 87 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289870
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu86 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=87
++ fraction=87
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 87 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289870
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu87 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=87
++ fraction=87
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 87 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289870
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu88 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=87
++ fraction=87
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 87 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289870
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu89 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=87
++ fraction=87
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 87 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289870
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu90 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=87
++ fraction=87
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 87 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289870
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu91 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=87
++ fraction=87
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 87 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289870
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu92 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=87
++ fraction=87
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 87 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289870
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu93 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=87
++ fraction=87
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 87 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289870
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu94 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=87
++ fraction=87
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 87 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289870
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu95 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=87
++ fraction=87
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 87 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289870
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu96 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=87
++ fraction=87
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 87 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289870
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu97 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=87
++ fraction=87
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 87 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289870
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu98 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=87
++ fraction=87
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 87 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289870
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu99 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=87
++ fraction=87
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 87 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289870
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu100 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=87
++ fraction=87
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 87 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289870
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu101 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=87
++ fraction=87
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 87 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289870
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu102 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=88
++ fraction=88
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 88 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289880
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu103 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=88
++ fraction=88
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 88 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289880
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu104 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=88
++ fraction=88
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 88 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289880
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu105 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=88
++ fraction=88
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 88 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289880
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu106 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=88
++ fraction=88
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 88 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289880
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu107 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=88
++ fraction=88
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 88 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289880
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu108 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=88
++ fraction=88
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 88 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289880
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu109 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=88
++ fraction=88
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 88 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289880
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu110 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=88
++ fraction=88
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 88 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289880
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu111 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=88
++ fraction=88
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 88 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289880
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu112 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=88
++ fraction=88
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 88 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289880
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu113 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=88
++ fraction=88
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 88 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289880
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu114 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=88
++ fraction=88
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 88 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289880
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu115 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=88
++ fraction=88
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 88 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289880
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu116 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=88
++ fraction=88
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 88 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289880
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu117 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=88
++ fraction=88
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 88 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289880
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu118 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=88
++ fraction=88
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 88 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289880
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu119 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=88
++ fraction=88
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 88 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289880
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu120 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=88
++ fraction=88
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 88 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289880
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu121 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=88
++ fraction=88
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 88 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289880
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu122 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=88
++ fraction=88
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 88 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289880
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu123 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=89
++ fraction=89
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 89 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289890
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu124 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=89
++ fraction=89
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 89 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289890
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu125 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=89
++ fraction=89
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 89 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289890
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu126 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=89
++ fraction=89
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 89 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289890
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu127 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=89
++ fraction=89
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 89 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289890
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu128 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=89
++ fraction=89
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 89 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289890
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu129 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=89
++ fraction=89
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 89 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289890
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu130 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=89
++ fraction=89
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 89 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289890
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu131 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=89
++ fraction=89
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 89 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289890
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu132 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=89
++ fraction=89
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 89 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289890
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu133 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=89
++ fraction=89
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 89 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289890
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu134 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=89
++ fraction=89
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 89 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289890
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu135 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=89
++ fraction=89
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 89 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289890
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu136 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=89
++ fraction=89
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 89 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289890
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu137 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=89
++ fraction=89
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 89 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289890
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu138 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=89
++ fraction=89
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 89 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289890
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu139 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=89
++ fraction=89
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 89 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289890
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu140 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=89
++ fraction=89
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 89 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289890
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu141 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=89
++ fraction=89
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 89 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289890
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu142 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=89
++ fraction=89
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 89 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289890
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu143 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=89
++ fraction=89
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 89 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289890
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu144 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=90
++ fraction=90
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 90 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289900
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu145 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=90
++ fraction=90
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 90 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289900
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu146 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=90
++ fraction=90
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 90 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289900
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu147 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=90
++ fraction=90
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 90 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289900
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu148 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=90
++ fraction=90
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 90 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289900
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu149 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=90
++ fraction=90
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 90 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289900
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu150 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=90
++ fraction=90
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 90 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289900
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu151 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=90
++ fraction=90
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 90 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289900
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu152 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=90
++ fraction=90
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 90 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289900
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu153 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=90
++ fraction=90
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 90 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289900
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu154 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=90
++ fraction=90
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 90 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289900
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu155 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=90
++ fraction=90
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 90 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289900
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu156 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=90
++ fraction=90
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 90 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289900
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu157 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=90
++ fraction=90
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 90 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289900
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu158 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=90
++ fraction=90
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 90 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289900
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu159 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=90
++ fraction=90
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 90 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289900
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu160 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=90
++ fraction=90
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 90 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289900
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu161 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=90
++ fraction=90
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 90 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289900
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu162 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=90
++ fraction=90
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 90 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289900
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu163 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=90
++ fraction=90
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 90 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289900
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu164 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=90
++ fraction=90
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 90 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289900
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu165 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=91
++ fraction=91
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 91 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289910
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu166 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=91
++ fraction=91
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 91 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289910
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu167 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=91
++ fraction=91
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 91 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289910
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu168 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=91
++ fraction=91
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 91 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289910
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu169 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=91
++ fraction=91
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 91 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289910
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu170 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=91
++ fraction=91
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 91 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289910
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu171 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=91
++ fraction=91
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 91 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289910
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu172 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=91
++ fraction=91
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 91 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289910
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu173 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=91
++ fraction=91
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 91 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289910
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu174 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=91
++ fraction=91
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 91 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289910
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu175 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=91
++ fraction=91
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 91 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289910
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu176 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=91
++ fraction=91
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 91 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289910
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu177 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=91
++ fraction=91
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 91 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289910
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu178 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=91
++ fraction=91
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 91 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289910
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu179 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=91
++ fraction=91
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 91 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289910
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu180 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=91
++ fraction=91
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 91 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289910
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu181 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=91
++ fraction=91
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 91 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289910
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu182 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=91
++ fraction=91
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 91 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289910
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu183 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=91
++ fraction=91
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 91 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289910
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu184 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=91
++ fraction=91
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 91 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289910
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu185 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=91
++ fraction=91
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 91 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289910
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu186 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=92
++ fraction=92
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 92 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289920
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu187 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=92
++ fraction=92
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 92 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289920
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu188 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=92
++ fraction=92
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 92 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289920
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu189 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=92
++ fraction=92
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 92 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289920
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu190 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=92
++ fraction=92
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 92 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289920
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu191 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=92
++ fraction=92
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 92 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289920
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu192 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=92
++ fraction=92
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 92 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289920
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu193 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=92
++ fraction=92
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 92 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289920
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu194 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=92
++ fraction=92
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 92 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289920
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu195 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=92
++ fraction=92
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 92 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289920
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu196 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=92
++ fraction=92
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 92 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289920
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu197 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=92
++ fraction=92
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 92 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289920
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu198 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=92
++ fraction=92
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 92 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289920
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu199 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=92
++ fraction=92
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 92 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289920
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu200 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=92
++ fraction=92
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 92 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289920
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu201 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=92
++ fraction=92
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 92 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289920
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu202 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=92
++ fraction=92
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 92 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289920
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu203 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=92
++ fraction=92
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 92 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289920
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu204 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=92
++ fraction=92
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 92 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289920
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu205 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=92
++ fraction=92
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 92 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289920
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu206 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=92
++ fraction=92
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 92 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289920
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu207 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=93
++ fraction=93
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 93 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289930
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu208 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=93
++ fraction=93
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 93 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289930
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu209 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=93
++ fraction=93
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 93 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289930
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu210 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=93
++ fraction=93
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 93 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289930
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu211 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=93
++ fraction=93
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 93 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289930
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu212 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=93
++ fraction=93
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 93 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289930
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu213 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=93
++ fraction=93
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 93 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289930
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu214 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=93
++ fraction=93
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 93 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289930
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu215 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=93
++ fraction=93
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 93 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289930
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu216 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=93
++ fraction=93
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 93 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289930
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu217 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=93
++ fraction=93
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 93 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289930
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu218 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=93
++ fraction=93
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 93 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289930
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu219 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=93
++ fraction=93
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 93 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289930
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu220 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=93
++ fraction=93
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 93 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289930
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu221 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=93
++ fraction=93
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 93 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289930
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu222 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=93
++ fraction=93
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 93 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289930
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu223 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=93
++ fraction=93
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 93 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289930
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu224 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=93
++ fraction=93
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 93 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289930
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu225 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=93
++ fraction=93
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 93 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289930
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu226 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=93
++ fraction=93
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 93 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289930
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu227 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=93
++ fraction=93
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 93 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289930
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu228 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=94
++ fraction=94
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 94 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289940
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu229 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=94
++ fraction=94
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 94 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289940
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu230 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=94
++ fraction=94
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 94 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289940
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu231 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=94
++ fraction=94
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 94 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289940
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu232 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=94
++ fraction=94
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 94 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289940
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu233 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=94
++ fraction=94
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 94 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289940
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu234 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=94
++ fraction=94
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 94 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289940
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu235 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=94
++ fraction=94
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 94 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289940
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu236 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=94
++ fraction=94
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 94 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289940
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu237 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=94
++ fraction=94
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 94 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289940
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu238 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=94
++ fraction=94
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 94 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289940
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu239 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=94
++ fraction=94
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 94 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289940
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu240 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=94
++ fraction=94
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 94 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289940
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu241 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=94
++ fraction=94
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 94 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289940
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu242 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=94
++ fraction=94
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 94 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289940
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu243 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=94
++ fraction=94
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 94 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289940
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu244 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=94
++ fraction=94
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 94 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289940
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu245 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=94
++ fraction=94
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 94 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289940
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu246 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=94
++ fraction=94
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 94 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289940
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu247 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=94
++ fraction=94
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 94 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289940
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu248 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=94
++ fraction=94
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 94 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289940
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu249 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=95
++ fraction=95
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 95 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289950
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu250 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=95
++ fraction=95
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 95 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289950
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu251 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=95
++ fraction=95
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 95 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289950
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu252 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=95
++ fraction=95
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 95 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289950
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu253 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=95
++ fraction=95
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 95 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289950
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu254 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=95
++ fraction=95
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 95 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289950
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu255 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=95
++ fraction=95
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 95 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289950
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu256 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=95
++ fraction=95
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 95 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289950
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu257 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=95
++ fraction=95
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 95 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289950
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu258 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=95
++ fraction=95
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 95 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289950
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu259 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=95
++ fraction=95
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 95 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289950
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu260 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=95
++ fraction=95
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 95 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289950
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu261 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=95
++ fraction=95
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 95 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289950
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu262 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=95
++ fraction=95
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 95 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289950
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu263 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=95
++ fraction=95
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 95 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289950
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu264 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=95
++ fraction=95
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 95 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289950
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu265 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=95
++ fraction=95
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 95 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289950
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu266 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=95
++ fraction=95
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 95 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289950
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu267 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=95
++ fraction=95
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 95 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289950
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu268 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=95
++ fraction=95
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 95 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289950
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu269 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=95
++ fraction=95
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 95 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289950
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu270 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=96
++ fraction=96
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 96 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289960
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu271 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=96
++ fraction=96
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 96 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289960
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu272 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=96
++ fraction=96
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 96 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289960
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu273 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=96
++ fraction=96
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 96 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289960
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu274 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=96
++ fraction=96
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 96 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289960
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu275 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=96
++ fraction=96
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 96 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289960
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu276 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=96
++ fraction=96
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 96 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289960
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu277 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=96
++ fraction=96
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 96 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289960
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu278 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=96
++ fraction=96
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 96 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289960
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu279 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=96
++ fraction=96
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 96 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289960
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu280 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=96
++ fraction=96
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 96 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289960
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu281 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=96
++ fraction=96
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 96 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289960
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu282 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=96
++ fraction=96
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 96 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289960
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu283 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=96
++ fraction=96
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 96 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289960
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu284 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=96
++ fraction=96
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 96 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289960
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu285 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=96
++ fraction=96
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 96 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289960
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu286 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=96
++ fraction=96
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 96 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289960
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu287 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=96
++ fraction=96
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 96 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289960
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu288 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=96
++ fraction=96
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 96 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289960
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu289 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=96
++ fraction=96
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 96 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289960
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu290 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=96
++ fraction=96
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 96 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289960
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu291 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=97
++ fraction=97
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 97 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289970
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu292 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=97
++ fraction=97
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 97 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289970
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu293 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=97
++ fraction=97
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 97 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289970
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu294 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=97
++ fraction=97
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 97 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289970
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu295 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=97
++ fraction=97
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 97 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289970
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu296 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=97
++ fraction=97
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 97 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289970
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu297 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=97
++ fraction=97
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 97 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289970
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu298 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=97
++ fraction=97
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 97 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289970
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu299 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=97
++ fraction=97
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 97 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289970
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu300 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=97
++ fraction=97
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 97 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289970
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu301 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=97
++ fraction=97
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 97 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289970
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu302 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=97
++ fraction=97
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 97 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289970
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu303 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=97
++ fraction=97
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 97 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289970
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu304 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=97
++ fraction=97
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 97 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289970
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu305 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=97
++ fraction=97
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 97 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289970
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu306 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=97
++ fraction=97
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 97 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289970
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu307 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=97
++ fraction=97
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 97 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289970
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu308 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=97
++ fraction=97
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 97 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289970
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu309 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=97
++ fraction=97
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 97 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289970
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu310 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=97
++ fraction=97
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 97 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289970
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu311 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=97
++ fraction=97
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 97 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289970
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu312 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=98
++ fraction=98
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 98 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289980
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu313 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=98
++ fraction=98
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 98 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289980
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu314 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=98
++ fraction=98
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 98 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289980
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu315 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=98
++ fraction=98
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 98 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289980
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu316 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=98
++ fraction=98
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 98 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289980
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu317 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=98
++ fraction=98
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 98 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289980
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu318 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=98
++ fraction=98
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 98 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289980
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu319 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=98
++ fraction=98
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 98 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289980
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu320 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=98
++ fraction=98
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 98 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289980
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu321 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=98
++ fraction=98
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 98 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289980
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu322 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=98
++ fraction=98
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 98 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289980
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu323 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=98
++ fraction=98
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 98 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289980
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu324 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=98
++ fraction=98
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 98 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289980
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu325 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=98
++ fraction=98
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 98 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289980
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu326 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=98
++ fraction=98
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 98 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289980
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu327 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=98
++ fraction=98
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 98 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289980
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu328 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=98
++ fraction=98
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 98 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289980
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu329 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=98
++ fraction=98
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 98 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289980
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu330 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=98
++ fraction=98
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 98 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289980
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu331 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=98
++ fraction=98
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 98 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289980
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu332 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=98
++ fraction=98
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 98 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289980
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu333 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=99
++ fraction=99
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 99 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289990
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu334 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=99
++ fraction=99
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 99 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289990
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu335 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=99
++ fraction=99
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 99 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289990
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu336 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=99
++ fraction=99
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 99 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289990
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu337 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=99
++ fraction=99
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 99 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289990
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu338 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=99
++ fraction=99
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 99 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289990
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu339 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=99
++ fraction=99
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 99 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289990
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu340 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=99
++ fraction=99
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 99 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289990
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu341 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=99
++ fraction=99
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 99 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289990
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu342 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=99
++ fraction=99
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 99 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289990
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu343 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=99
++ fraction=99
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 99 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289990
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu344 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=99
++ fraction=99
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 99 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289990
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu345 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=99
++ fraction=99
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 99 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289990
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu346 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=99
++ fraction=99
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 99 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289990
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu347 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=99
++ fraction=99
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 99 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289990
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu348 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=99
++ fraction=99
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 99 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289990
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu349 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=99
++ fraction=99
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 99 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289990
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu350 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=99
++ fraction=99
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 99 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289990
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu351 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=99
++ fraction=99
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 99 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289990
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu352 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347289
++ fraction=99
++ fraction=99
++ [[ 4347289 =~ ^[0-9]+$ ]]
++ [[ 99 =~ ^[0-9]{2}$ ]]
++ now_ms=4347289990
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu353 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=00
++ fraction=00
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 00 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290000
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu354 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=00
++ fraction=00
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 00 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290000
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu355 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=00
++ fraction=00
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 00 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290000
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu356 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=00
++ fraction=00
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 00 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290000
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu357 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=00
++ fraction=00
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 00 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290000
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu358 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=00
++ fraction=00
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 00 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290000
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu359 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=00
++ fraction=00
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 00 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290000
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu360 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=00
++ fraction=00
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 00 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290000
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu361 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=00
++ fraction=00
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 00 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290000
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu362 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=00
++ fraction=00
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 00 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290000
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu363 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=00
++ fraction=00
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 00 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290000
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu364 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=00
++ fraction=00
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 00 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290000
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu365 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=00
++ fraction=00
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 00 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290000
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu366 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=00
++ fraction=00
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 00 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290000
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu367 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=00
++ fraction=00
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 00 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290000
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu368 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=00
++ fraction=00
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 00 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290000
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu369 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=00
++ fraction=00
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 00 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290000
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu370 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=00
++ fraction=00
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 00 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290000
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu371 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=00
++ fraction=00
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 00 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290000
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu372 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=00
++ fraction=00
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 00 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290000
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu373 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=00
++ fraction=00
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 00 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290000
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu374 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=00
++ fraction=00
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 00 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290000
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu375 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu376 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu377 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu378 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu379 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu380 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu381 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu382 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ cpu383 == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ intr == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ ctxt == btime ]]
++ (( boot_line++ ))
++ (( boot_line<1024 && SECONDS-boot_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=' '
++ read -r key value rest
++ [[ btime == btime ]]
++ [[ 1787203824 =~ ^[0-9]+$ ]]
++ btime=1787203824
++ break
++ exec
++ (( btime > 0 ))
++ ticks=()
++ parents=()
++ groups=()
++ sessions=()
++ commands=()
++ depths=()
++ observed=()
++ declare -A ticks parents groups sessions commands depths observed
++ printf 'pid\tstart_tick\tstart_utc_seconds_precision\tobserved_utc\tppid\tpgid\tsid\tdepth_unknown\targv_shell_escaped\tparent_chain\n'
++ printf 'event\tutc\tpid\tstart_tick\tdetail\n'
++ trap cleanup EXIT
++ trap 'on_signal TERM' TERM
++ trap 'on_signal INT' INT
++ trap 'on_signal HUP' HUP
++ stat_fields 4288
++ local raw tail
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=
++ read -r raw
++ tail='R 4287 4287 4265 0 -1 4194560 284 0 0 0 4 14 0 0 20 0 1 0 434728982 4968448 904 18446744073709551615 94477807411200 94477808386861 140724601574896 0 0 0 0 16777220 1115782907 0 0 0 17 271 0 0 0 0 0 94477808609712 94477808658352 94478854414336 140724601581032 140724601581255 140724601581255 140724601581546 0'
++ read -r -a sf
++ (( 50 >= 20 ))
++ ppid=4287
++ pgid=4287
++ sid=4265
++ tick=434728982
++ state=R
++ supervisor_tick=434728982
++ supervisor_ppid=4287
++ supervisor_sid=4265
++ supervisor_pgid=4287
++ supervisor_command=
++ supervisor_chain=
++ self_begin=0
++ exec
++ (( self_arg=0 ))
++ (( self_arg<256 && SECONDS-self_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ self_value=
++ IFS=
++ read -r -d '' self_value
++ printf -v self_value %q bash
++ supervisor_command+='bash '
++ (( 5 <= 262144 ))
++ (( self_arg++ ))
++ (( self_arg<256 && SECONDS-self_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ self_value=
++ IFS=
++ read -r -d '' self_value
++ printf -v self_value %q -x
++ supervisor_command+='-x '
++ (( 8 <= 262144 ))
++ (( self_arg++ ))
++ (( self_arg<256 && SECONDS-self_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ self_value=
++ IFS=
++ read -r -d '' self_value
++ printf -v self_value %q /root/sezika-experiments/sezika-rental-20261009-01a12099/remote/Invoke-BoundedLinux.sh
++ supervisor_command+='/root/sezika-experiments/sezika-rental-20261009-01a12099/remote/Invoke-BoundedLinux.sh '
++ (( 95 <= 262144 ))
++ (( self_arg++ ))
++ (( self_arg<256 && SECONDS-self_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ self_value=
++ IFS=
++ read -r -d '' self_value
++ printf -v self_value %q /root/sezika-experiments/sezika-rental-20261009-01a12099/.artifacts/runner-admission-diagnosis
++ supervisor_command+='/root/sezika-experiments/sezika-rental-20261009-01a12099/.artifacts/runner-admission-diagnosis '
++ (( 190 <= 262144 ))
++ (( self_arg++ ))
++ (( self_arg<256 && SECONDS-self_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ self_value=
++ IFS=
++ read -r -d '' self_value
++ printf -v self_value %q 5
++ supervisor_command+='5 '
++ (( 192 <= 262144 ))
++ (( self_arg++ ))
++ (( self_arg<256 && SECONDS-self_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ self_value=
++ IFS=
++ read -r -d '' self_value
++ printf -v self_value %q 8
++ supervisor_command+='8 '
++ (( 194 <= 262144 ))
++ (( self_arg++ ))
++ (( self_arg<256 && SECONDS-self_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ self_value=
++ IFS=
++ read -r -d '' self_value
++ printf -v self_value %q 0
++ supervisor_command+='0 '
++ (( 196 <= 262144 ))
++ (( self_arg++ ))
++ (( self_arg<256 && SECONDS-self_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ self_value=
++ IFS=
++ read -r -d '' self_value
++ printf -v self_value %q file
++ supervisor_command+='file '
++ (( 201 <= 262144 ))
++ (( self_arg++ ))
++ (( self_arg<256 && SECONDS-self_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ self_value=
++ IFS=
++ read -r -d '' self_value
++ printf -v self_value %q none
++ supervisor_command+='none '
++ (( 206 <= 262144 ))
++ (( self_arg++ ))
++ (( self_arg<256 && SECONDS-self_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ self_value=
++ IFS=
++ read -r -d '' self_value
++ printf -v self_value %q --
++ supervisor_command+='-- '
++ (( 209 <= 262144 ))
++ (( self_arg++ ))
++ (( self_arg<256 && SECONDS-self_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ self_value=
++ IFS=
++ read -r -d '' self_value
++ printf -v self_value %q /usr/bin/true
++ supervisor_command+='/usr/bin/true '
++ (( 223 <= 262144 ))
++ (( self_arg++ ))
++ (( self_arg<256 && SECONDS-self_begin<1 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ self_value=
++ IFS=
++ read -r -d '' self_value
++ break
++ exec
++ (( self_arg<256 && SECONDS-self_begin<1 ))
++ self_parent=4287
++ (( self_depth=0 ))
++ (( self_depth<32 && SECONDS-self_begin<2 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ [[ 4287 =~ ^[0-9]+$ ]]
++ [[ 4287 -gt 0 ]]
++ stat_fields 4287
++ local raw tail
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=01
++ fraction=01
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 01 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290010
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=
++ read -r raw
++ tail='S 4265 4287 4265 0 -1 4194560 110 0 0 0 0 0 0 0 20 0 1 0 434728982 2768896 278 18446744073709551615 94103064215552 94103064233617 140725176085200 0 0 0 0 19922944 90119 1 0 0 17 11 0 0 0 0 0 94103064246896 94103064248920 94103940743168 140725176085947 140725176086212 140725176086212 140725176086503 0'
++ read -r -a sf
++ (( 50 >= 20 ))
++ ppid=4265
++ pgid=4287
++ sid=4265
++ tick=434728982
++ state=S
++ supervisor_chain+='4287:434728982:4265:4287:4265;'
++ self_next=4265
++ [[ 4265 != \4\2\8\7 ]]
++ self_parent=4265
++ (( self_depth++ ))
++ (( self_depth<32 && SECONDS-self_begin<2 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ [[ 4265 =~ ^[0-9]+$ ]]
++ [[ 4265 -gt 0 ]]
++ stat_fields 4265
++ local raw tail
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=
++ read -r raw
++ tail='S 4263 4265 4265 0 -1 4194560 716 7584 0 0 0 0 1 3 20 0 1 0 434728972 4427776 795 18446744073709551615 94601740349440 94601741325101 140732331347456 0 0 0 65536 16777220 65538 1 0 0 17 259 0 0 0 0 0 94601741547952 94601741596592 94602331623424 140732331351745 140732331351754 140732331351754 140732331352042 0'
++ read -r -a sf
++ (( 50 >= 20 ))
++ ppid=4263
++ pgid=4265
++ sid=4265
++ tick=434728972
++ state=S
++ supervisor_chain+='4265:434728972:4263:4265:4265;'
++ self_next=4263
++ [[ 4263 != \4\2\6\5 ]]
++ self_parent=4263
++ (( self_depth++ ))
++ (( self_depth<32 && SECONDS-self_begin<2 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ [[ 4263 =~ ^[0-9]+$ ]]
++ [[ 4263 -gt 0 ]]
++ stat_fields 4263
++ local raw tail
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=
++ read -r raw
++ tail='S 375 4263 4263 0 -1 4194560 4769 268 0 0 1 1 0 0 20 0 1 0 434728951 12701696 2253 18446744073709551615 94060036403200 94060036995281 140734656058576 0 0 0 0 16781312 81926 1 0 0 17 52 0 0 0 0 0 94060037257520 94060037273040 94060682186752 140734656066642 140734656066663 140734656066663 140734656069609 0'
++ read -r -a sf
++ (( 50 >= 20 ))
++ ppid=375
++ pgid=4263
++ sid=4263
++ tick=434728951
++ state=S
++ supervisor_chain+='4263:434728951:375:4263:4263;'
++ self_next=375
++ [[ 375 != \4\2\6\3 ]]
++ self_parent=375
++ (( self_depth++ ))
++ (( self_depth<32 && SECONDS-self_begin<2 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ [[ 375 =~ ^[0-9]+$ ]]
++ [[ 375 -gt 0 ]]
++ stat_fields 375
++ local raw tail
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=
++ read -r raw
++ tail='S 365 375 1 0 -1 4194560 1436 451371 0 1 2 1 815 1430 20 0 1 0 434472336 12304384 2034 18446744073709551615 94429024186368 94429024778449 140721774355696 0 0 0 0 16781312 81925 1 0 0 17 316 0 0 0 0 0 94429025040688 94429025056208 94429356732416 140721774359637 140721774359655 140721774359655 140721774362601 0'
++ read -r -a sf
++ (( 50 >= 20 ))
++ ppid=365
++ pgid=375
++ sid=1
++ tick=434472336
++ state=S
++ supervisor_chain+='375:434472336:365:375:1;'
++ self_next=365
++ [[ 365 != \3\7\5 ]]
++ self_parent=365
++ (( self_depth++ ))
++ (( self_depth<32 && SECONDS-self_begin<2 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ [[ 365 =~ ^[0-9]+$ ]]
++ [[ 365 -gt 0 ]]
++ stat_fields 365
++ local raw tail
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=
++ read -r raw
++ tail='S 130 1 1 0 -1 4194560 6996 30022 0 0 31 12 8 13 20 0 1 0 434472222 37920768 7421 18446744073709551615 4325376 7350237 140733814496960 0 0 0 0 16781312 83975 1 0 0 17 51 0 0 0 0 0 10649032 12210560 563113984 140733814502587 140733814502628 140733814502628 140733814505443 0'
++ read -r -a sf
++ (( 50 >= 20 ))
++ ppid=130
++ pgid=1
++ sid=1
++ tick=434472222
++ state=S
++ supervisor_chain+='365:434472222:130:1:1;'
++ self_next=130
++ [[ 130 != \3\6\5 ]]
++ self_parent=130
++ (( self_depth++ ))
++ (( self_depth<32 && SECONDS-self_begin<2 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ [[ 130 =~ ^[0-9]+$ ]]
++ [[ 130 -gt 0 ]]
++ stat_fields 130
++ local raw tail
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=
++ read -r raw
++ tail='S 1 1 1 0 -1 4194560 78391 420442 0 0 26 102 491 354 20 0 1 0 434471918 4984832 903 18446744073709551615 94595784364032 94595785339693 140733529455376 0 0 0 65536 4 65538 1 0 0 17 253 0 0 0 0 0 94595785562544 94595785611184 94596419489792 140733529461963 140733529462002 140733529462002 140733529464810 0'
++ read -r -a sf
++ (( 50 >= 20 ))
++ ppid=1
++ pgid=1
++ sid=1
++ tick=434471918
++ state=S
++ supervisor_chain+='130:434471918:1:1:1;'
++ self_next=1
++ [[ 1 != \1\3\0 ]]
++ self_parent=1
++ (( self_depth++ ))
++ (( self_depth<32 && SECONDS-self_begin<2 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ [[ 1 =~ ^[0-9]+$ ]]
++ [[ 1 -gt 0 ]]
++ stat_fields 1
++ local raw tail
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=
++ read -r raw
++ tail='S 0 1 1 0 -1 4194560 3182 189991 0 0 1 3 389 321 20 0 1 0 434471803 4866048 861 18446744073709551615 94731879784448 94731880760109 140725421242112 0 0 0 65536 4 65538 1 0 0 17 213 0 0 0 0 0 94731880982960 94731881031600 94732097347584 140725421245644 140725421245683 140725421245683 140725421248475 0'
++ read -r -a sf
++ (( 50 >= 20 ))
++ ppid=0
++ pgid=1
++ sid=1
++ tick=434471803
++ state=S
++ supervisor_chain+='1:434471803:0:1:1;'
++ self_next=0
++ [[ 0 != \1 ]]
++ self_parent=0
++ (( self_depth++ ))
++ (( self_depth<32 && SECONDS-self_begin<2 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ [[ 0 =~ ^[0-9]+$ ]]
++ [[ 0 -gt 0 ]]
++ break
++ stamp_utc
++ TZ=UTC
++ printf -v utc_stamp '%(%FT%TZ)T' -1
++ printf 'pid\tstart_tick\tstart_utc_seconds_precision\tobserved_utc\tppid\tpgid\tsid\targv_shell_escaped\tparent_chain\n%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' 4288 434728982 'boot_epoch=1787203824;start_tick=434728982' 2026-10-09T13:05:14Z 4287 4287 4265 'bash -x /root/sezika-experiments/sezika-rental-20261009-01a12099/remote/Invoke-BoundedLinux.sh /root/sezika-experiments/sezika-rental-20261009-01a12099/.artifacts/runner-admission-diagnosis 5 8 0 file none -- /usr/bin/true ' '4287:434728982:4265:4287:4265;4265:434728972:4263:4265:4265;4263:434728951:375:4263:4263;375:434472336:365:375:1;365:434472222:130:1:1;130:434471918:1:1:1;1:434471803:0:1:1;'
++ (( self_depth<32 && SECONDS-self_begin<2 ))
++ (( ownership_bad==0 ))
++ audit started 4288 434728982 'budget=5 cancel_after=0 ppid=4287 pgid=4287 sid=4265'
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ stamp_utc
++ TZ=UTC
++ printf -v utc_stamp '%(%FT%TZ)T' -1
++ printf '%s\t%s\t%s\t%s\t%q\n' started 2026-10-09T13:05:14Z 4288 434728982 'budget=5 cancel_after=0 ppid=4287 pgid=4287 sid=4265'
++ exec
++ timer_pid=4289
++ timer_begin_ms=4347290020
++ stat_fields 4289
++ local raw tail
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=
++ read -r raw
++ tail='R 4288 4287 4265 0 -1 4194368 40 0 0 0 0 0 0 0 20 0 1 0 434729002 4968448 207 18446744073709551615 94477807411200 94477808386861 140724601574896 0 0 0 0 16777220 81923 0 0 0 17 85 0 0 0 0 0 94477808609712 94477808658352 94478854414336 140724601581032 140724601581255 140724601581255 140724601581546 0'
++ read -r -a sf
+++ export SEZIKA_LINUX_TASK_TOKEN=sezika-4288-18048-32442
++ (( 50 >= 20 ))
++ ppid=4288
++ pgid=4287
++ sid=4265
++ tick=434729002
+++ SEZIKA_LINUX_TASK_TOKEN=sezika-4288-18048-32442
++ state=R
++ timer_tick=434729002
++ audit timer_pending 4289 434729002 'direct process-substitution child; expected sleep argv; token/argv/parent chain pending'
++ budget_ok
++ clock_ms
++ local up fraction whole
+++ exec /bin/sleep 16
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ stamp_utc
++ TZ=UTC
++ printf -v utc_stamp '%(%FT%TZ)T' -1
++ printf '%s\t%s\t%s\t%s\t%q\n' timer_pending 2026-10-09T13:05:14Z 4289 434729002 'direct process-substitution child; expected sleep argv; token/argv/parent chain pending'
++ timer_registered=0
++ (( timer_try=0 ))
++ (( timer_try<10 && now_ms-timer_begin_ms<1000 ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ stat_fields 4289
++ local raw tail
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=
++ read -r raw
++ tail='R 4288 4287 4265 0 -1 4194304 102 0 0 0 0 0 0 0 20 0 1 0 434729002 4096 1 18446744073709551615 0 0 0 0 0 0 0 16777216 0 0 0 0 17 85 0 0 0 0 0 0 0 0 140731965775519 0 0 0 0'
++ read -r -a sf
++ (( 50 >= 20 ))
++ ppid=4288
++ pgid=4287
++ sid=4265
++ tick=434729002
++ state=R
++ record_owned 4289
++ local pid=4289 first ownership_mode=token token_state argvfd arg argv= count=0 chain= parent=4288 cpid next n record_begin_ms argv_deadline_ms chain_deadline_ms
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ record_begin_ms=4347290020
++ argv_deadline_ms=4347291020
++ chain_deadline_ms=4347292020
++ (( limit_ms==0 || argv_deadline_ms<=limit_ms ))
++ (( limit_ms==0 || chain_deadline_ms<=limit_ms ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ (( now_ms<argv_deadline_ms ))
++ stat_fields 4289
++ local raw tail
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ IFS=
++ read -r raw
++ tail='R 4288 4287 4265 0 -1 4194304 153 0 0 0 0 0 0 0 20 0 1 0 434729002 2625536 272 18446744073709551615 94459442708480 94459442722481 140731965774288 0 0 0 0 16777216 0 0 0 0 17 85 0 0 0 0 0 94459442731984 94459442733208 94460128870400 140731965775519 140731965775533 140731965775533 140731965775853 0'
++ read -r -a sf
++ (( 50 >= 20 ))
++ ppid=4288
++ pgid=4287
++ sid=4265
++ tick=434729002
++ state=R
++ first=434729002
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ (( now_ms<argv_deadline_ms ))
++ has_token 4289
++ local envfd entry i token_begin_ms token_deadline_ms
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ token_begin_ms=4347290020
++ token_deadline_ms=4347291020
++ (( limit_ms==0 || token_deadline_ms<=limit_ms ))
++ budget_ok
++ clock_ms
++ local up fraction whole
++ IFS=' '
++ read -r up _
++ whole=4347290
++ fraction=02
++ fraction=02
++ [[ 4347290 =~ ^[0-9]+$ ]]
++ [[ 02 =~ ^[0-9]{2}$ ]]
++ now_ms=4347290020
++ (( limit_ms == 0 || now_ms < limit_ms ))
++ return 0
++ (( now_ms<token_deadline_ms ))
++ exec

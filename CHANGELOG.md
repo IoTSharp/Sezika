@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- 完成租用RTX5090唯一固定24576updates/strict8192/冻结encoder实验、新进程231 forwards独立验证和原32回归；完整模型于2026-10-09北京时间21:17:08下载并核SHA，早于23:22目标，独立证据核验10/10 PASS。增加参数化迁移/训练/优先下载入口，保留首次准入失败并修复结果路径与reader行序；教师一致性不构成正式质量，Score无新监督，新head AOT/校准/性能仍另验。见[证据](docs/evidence/rental-training-2026-10-09.md)。
+
 - 增加显式8192输入profile、v4实验报告encoder绑定及Linux稳定statx文件归属修复；215/215长度、H4数值与真实完整8192 GPU前向通过。唯一固定24576updates训练完成，保存head/checkpoint/report；独立验证遇Xid119/154 GPU Reset Required失败，原32回归未运行，用户已批准软件恢复及必要主机重启；软件恢复失败后请求一次reboot，11:24:57 UTC已确认主机完成重启及SSH恢复，但显卡仍No devices/GSP初始化失败，保存物六项SHA保持。训练不会重跑，正式质量/AOT/性能仍另验，见[证据与恢复范围](docs/evidence/token-limit-8192-2026-10-09.md)。
 
 - 增加修题后215题显式v3合同、完整256派生账本及40审核/14修题原字节绑定、实际访问/分母报告与完整strict1024失败分母；v1/v2兼容、24项合同参考与Linux自包含构建通过。全215长度检查214通过/1题1037tokens超限，GPU训练尚未启动；见[工程及准入证据](docs/evidence/repaired-training-engineering-2026-10-09.md)。

@@ -1,5 +1,7 @@
 # 修题后8192固定训练与独立验证交接
 
+最新租用GPU实验已完成，见[租用接续](training-rental-handoff-2026-10-09.md)和[完整证据](evidence/rental-training-2026-10-09.md)。新RTX5090唯一固定24576updates训练、新进程独立验证及原32回归成功；完整本地模型于北京时间2026-10-09 21:17:08下载并核SHA，10项独立证据核验PASS。任务停止，不重复训练、扩量或教师调用；其他ROADMAP暂停。下文旧 `digisyn-gpu01` 状态只作历史，旧机不继续观察或恢复。正式人审、许可发布、质量、校准、封存、新head AOT/性能仍pending。
+
 更新：2026-10-09，Asia/Shanghai。规范工作区 `D:\source\Sezika`，本会话 `01a11f25-335a-7571-a735-7171ace8c3b9` 独占Git/API/GPU。**用户已选择直接8192、原215题保持；工程与唯一固定训练完成，独立验证因GPU驱动故障失败，原32回归未启动。不得再次训练。** 用户已明确批准GPU重置及必要主机重启，10:56:29 UTC已请求一次reboot；软件reset及同版本驱动重载均未恢复GPU。11:24:57 UTC已确认新boot_id和SSH恢复；11:27:35 UTC显卡仍No devices/GSP初始化失败，需服务器管理方处理GPU故障；两容器running、翻译health200/ASR503，保存物六项SHA保持，不重复reboot/reset或索要已获许可。
 
 本轮事实、原始证据与具体恢复范围见 [8192证据](evidence/token-limit-8192-2026-10-09.md)，最新状态见根HANDOFF.md；ROADMAP.md仍为唯一阶段计划。仅本地commit，不push、发布、部署或上传模型平台。此前“等待删题”“strict1024”“训练未启动”是历史状态，由用户8192选择和本轮回执取代。

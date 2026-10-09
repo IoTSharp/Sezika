@@ -1,0 +1,135 @@
+{
+  "utc": "2026-10-09T13:26:08.1020913Z",
+  "status": "PASS_two_early_stages_only",
+  "results_directory": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\results-07c97e181aa8-verified-layout",
+  "stages": [
+    {
+      "phase": "contract-admission-v2",
+      "status": "PASS",
+      "runner": {
+        "work_pause_reason": "na",
+        "final_check_complete": "1",
+        "elapsed_ms": "1090",
+        "cleanup_deferred_proofs": "0",
+        "control_owner_closed": "0",
+        "supervisor_pid": "5326",
+        "unknown_count": "0",
+        "seam_unreadable": "na",
+        "cleanup_incomplete": "0",
+        "payload_exit": "0",
+        "clock_resolution_ms": "10",
+        "limitation": "cooperative_checks_only_blocking_kernel_io_and_short_intermediates_not_guaranteed",
+        "token": "sezika-5326-18504-15766",
+        "cleanup_deadline_ms": "4347929080",
+        "work_pause_failed_ms": "na",
+        "cleanup_budget_exhausted": "0",
+        "verified_live_count": "0",
+        "seam_mismatch": "na",
+        "control_unaffected": "0",
+        "unchecked_count": "0",
+        "cleanup_elapsed_ms": "260",
+        "tracked_identities": "2",
+        "status": "completed",
+        "clock_tolerance_ms": "20",
+        "fixture": "none",
+        "work_pause_read_rc": "na"
+      },
+      "payload_identities": [
+        {
+          "pid": "5328",
+          "start_tick": "434792043",
+          "ppid": "5326",
+          "parent_chain": "5326:434792025:5325:5325:5298;5325:434792024:5313:5325:5298;5313:434791924:5298:5298:5298;5298:434791912:5295:5298:5298;5295:434791891:375:5295:5295;375:434472336:365:375:1;365:434472222:130:1:1;130:434471918:1:1:1;1:434471803:0:1:1;",
+          "argv_shell_escaped": "/root/sezika-experiments/sezika-rental-20261009-01a12099/bundle/Sezika.ExperimentTrainer check-expanded-input --data /root/sezika-experiments/sezika-rental-20261009-01a12099/data --manifest-sha256 e8e74ce0bbf1a72da5fcdf4dcad9d302513dc5dc42cb548bfd21d2569621aeb6 --fixture-only false --max-checks 1 "
+        }
+      ],
+      "payload_report": {
+        "status": "passed",
+        "checks": 1,
+        "fixture_only": false,
+        "training_executed": false,
+        "gpu_opened": false,
+        "api_called": false
+      },
+      "receipt_sha256": "00706640581eaa4a36588d663ef6bbbf8f746d6b158d60a60e5f24cb43a48f74"
+    },
+    {
+      "phase": "tiny",
+      "status": "PASS",
+      "runner": {
+        "work_pause_reason": "na",
+        "final_check_complete": "1",
+        "elapsed_ms": "1480",
+        "cleanup_deferred_proofs": "0",
+        "control_owner_closed": "0",
+        "supervisor_pid": "5418",
+        "unknown_count": "0",
+        "seam_unreadable": "na",
+        "cleanup_incomplete": "0",
+        "payload_exit": "0",
+        "clock_resolution_ms": "10",
+        "limitation": "cooperative_checks_only_blocking_kernel_io_and_short_intermediates_not_guaranteed",
+        "token": "sezika-5418-16525-25047",
+        "cleanup_deadline_ms": "4347935340",
+        "work_pause_failed_ms": "na",
+        "cleanup_budget_exhausted": "0",
+        "verified_live_count": "0",
+        "seam_mismatch": "na",
+        "control_unaffected": "0",
+        "unchecked_count": "0",
+        "cleanup_elapsed_ms": "260",
+        "tracked_identities": "2",
+        "status": "completed",
+        "clock_tolerance_ms": "20",
+        "fixture": "none",
+        "work_pause_read_rc": "na"
+      },
+      "payload_identities": [
+        {
+          "pid": "5420",
+          "start_tick": "434792630",
+          "ppid": "5418",
+          "parent_chain": "5418:434792612:5417:5417:5363;5417:434792611:5378:5417:5363;5378:434792502:5363:5363:5363;5363:434792494:5361:5363:5363;5361:434792474:375:5361:5361;375:434472336:365:375:1;365:434472222:130:1:1;130:434471918:1:1:1;1:434471803:0:1:1;",
+          "argv_shell_escaped": "/root/sezika-experiments/sezika-rental-20261009-01a12099/bundle/Sezika.ExperimentTrainer check-gpu --device 0 --max-checks 1 --timeout-seconds 60 "
+        }
+      ],
+      "payload_report": {
+        "status": "passed_synthetic_gpu_numeric_checks_only",
+        "passed_checks": 1,
+        "maximum_loss_absolute_error": 1.904654323148236E-09,
+        "synthetic_features_only": true,
+        "training_executed": false,
+        "resources": {
+          "snapshot_before_context_dispose": {
+            "total_bytes": 33711521792,
+            "free_bytes": 33179631616,
+            "owned_bytes": 0,
+            "peak_owned_bytes": 796,
+            "owned_allocation_count": 0,
+            "loaded_module_count": 0,
+            "release_failure_count": 0
+          },
+          "process_peak_working_set_bytes": 183345152,
+          "process_working_set_bytes": 183345152,
+          "device_dispose_returned": true,
+          "model_dispose_returned": null
+        }
+      },
+      "receipt_sha256": "e30dfb0ee26fc473825acb3a002de2313395c68aa9d918faabe0b3c9db3ff86f"
+    }
+  ],
+  "old_contract": {
+    "directory": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\results-07c97e181aa8-verified-layout\\.artifacts\\stage-contract",
+    "outer_exit": "64",
+    "cleanup_success_inferred": false,
+    "status": "prior_initialization_exit64_retained",
+    "result_receipt_present": false
+  },
+  "formal_acceptance": false,
+  "gpu_or_training_work_started_by_verifier": false,
+  "elapsed_seconds": 0.2556539,
+  "maximum_stages": 2,
+  "maximum_operations": 5000,
+  "operations": 227,
+  "timeout_seconds": 30
+}

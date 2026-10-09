@@ -1,0 +1,24 @@
+{
+  "audit_contract": "sezika/old-local-download-process-closure/v1",
+  "observed_utc": "2026-10-09T13:19:02.9619517Z",
+  "status": "registered_old_download_identities_closed_currently",
+  "historical_final_check_complete": false,
+  "historical_unknown_count": 1,
+  "expected_identity_count": 21,
+  "current_absent": 20,
+  "current_reused_or_changed": 1,
+  "current_matching_owned_live": 0,
+  "current_unknown_in_examined_tree": 0,
+  "actions": [],
+  "precisely_terminated_processes": 0,
+  "query_limits": {
+    "maximum_cim_calls": 32,
+    "actual_cim_calls_including_micro_trial": 4,
+    "each_cim_timeout_seconds": 2,
+    "maximum_wall_seconds": 600
+  },
+  "elapsed_seconds": 1.9887507,
+  "scope": "Only exact recorded old task IDs and their ParentProcessId children; no SSH/GPU, no process-name inventory, no new pipeline intervention",
+  "unproven": "Historical unknown remains unchanged. This current snapshot cannot retroactively prove detached unregistered short intermediates absent.",
+  "source_private_receipt_sha256": "131FE17E2EB023922AC215B5A87894CBB33D00DA237743E1E68ED75A717E3693"
+}

@@ -1,0 +1,9 @@
+event	utc	pid	start_tick	detail
+started	2026-10-09T13:16:03Z	5530	434793872	budget=1520\ cancel_after=0\ ppid=5529\ pgid=5529\ sid=5474
+timer_pending	2026-10-09T13:16:03Z	5531	434793889	direct\ process-substitution\ child\;\ expected\ sleep\ argv\;\ token/argv/parent\ chain\ pending
+signal	2026-10-09T13:16:03Z	5532	434793890	CONT\ ppid=5530\ pgid=5532\ sid=5532
+progress	2026-10-09T13:16:11Z	5532	434793890	8s
+progress	2026-10-09T13:16:18Z	5532	434793890	15s
+progress	2026-10-09T13:16:26Z	5532	434793890	23s
+progress	2026-10-09T13:16:34Z	5532	434793890	31s
+signal	2026-10-09T13:16:39Z	5531	434793889	KILL\ ppid=5530\ pgid=5529\ sid=5474

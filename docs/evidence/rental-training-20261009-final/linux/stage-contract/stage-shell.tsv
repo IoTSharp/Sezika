@@ -1,0 +1,8 @@
+observed_utc	pid	start_tick	ppid	pgid	sid	argv_shell_escaped
+2026-10-09T13:02:33Z	3962	434712817	3947	3947	3947	bash /root/sezika-experiments/sezika-rental-20261009-01a12099/remote/stage.sh /root/sezika-experiments/sezika-rental-20261009-01a12099 contract 
+2026-10-09T13:02:33Z	3947	434712809	3945	3947	3947	bash -se 
+2026-10-09T13:02:33Z	3945	434712790	375	3945	3945	sshd:\ root@notty '' '' '' '' 
+2026-10-09T13:02:33Z	375	434472336	365	375	1	sshd:\ /usr/sbin/sshd\ -D\ \[listener\]\ 0\ of\ 10-100\ startups 
+2026-10-09T13:02:33Z	365	434472222	130	1	1	/usr/bin/python3 /usr/bin/supervisord -n 
+2026-10-09T13:02:33Z	130	434471918	1	1	1	bash /tmp/container_init_nvidia4090.sh 
+2026-10-09T13:02:33Z	1	434471803	0	1	1	/bin/bash /usr/local/bin/entrypoint.sh 

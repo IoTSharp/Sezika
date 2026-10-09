@@ -1,0 +1,8 @@
+observed_utc	pid	start_tick	ppid	pgid	sid	argv_shell_escaped
+2026-10-09T13:15:50Z	5378	434792502	5363	5363	5363	bash /root/sezika-experiments/sezika-rental-20261009-01a12099/remote/stage-admission-v2.sh /root/sezika-experiments/sezika-rental-20261009-01a12099 tiny 
+2026-10-09T13:15:50Z	5363	434792494	5361	5363	5363	bash -se 
+2026-10-09T13:15:50Z	5361	434792474	375	5361	5361	sshd:\ root@notty '' '' '' '' 
+2026-10-09T13:15:50Z	375	434472336	365	375	1	sshd:\ /usr/sbin/sshd\ -D\ \[listener\]\ 0\ of\ 10-100\ startups 
+2026-10-09T13:15:50Z	365	434472222	130	1	1	/usr/bin/python3 /usr/bin/supervisord -n 
+2026-10-09T13:15:50Z	130	434471918	1	1	1	bash /tmp/container_init_nvidia4090.sh 
+2026-10-09T13:15:50Z	1	434471803	0	1	1	/bin/bash /usr/local/bin/entrypoint.sh 

@@ -1,0 +1,689 @@
+{
+  "utc": "2026-10-09T13:23:59.6848907Z",
+  "results_archive_sha256": "07c97e181aa87ac9d8d8693a4ba62652452385a820ca8f2dcbcd69d1560b910d",
+  "downloaded_source_files": 97,
+  "copied_files": 95,
+  "external_model_assets": 2,
+  "files": [
+    {
+      "source_relative": "archive-sha256",
+      "sha256": "5FB7E53EA45B8FF8D5ABF3621D52975D940836EA49812B4DACF405EC3BD3BDF3",
+      "bytes": 65,
+      "mirror_relative": "remote/archive-sha256",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": "files.sha256",
+      "sha256": "13BDB23FB0C333D013779972CA34938134FE89DD48835ADFBCD0C5F6176164E6",
+      "bytes": 49398,
+      "mirror_relative": "remote/files.sha256",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": "gpu-uuid",
+      "sha256": "3CC09043951D3C57C738F758D19C41835FBF4F9FB1D7575EB4722B59BFAFDD4C",
+      "bytes": 41,
+      "mirror_relative": "remote/gpu-uuid",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": "package-identity.json",
+      "sha256": "2541A5E2B158946A685E810407C47D2B74FF9810C71E38480FE50219AEE48D81",
+      "bytes": 613,
+      "mirror_relative": "remote/package-identity.json",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": "results-input-bindings.sha256",
+      "sha256": "8CD2B29CF1317D73CD93AE389A01410AF024560086FDBAC481F3F2726BAAC262",
+      "bytes": 403,
+      "mirror_relative": "remote/results-input-bindings.sha256",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": "task-identity",
+      "sha256": "CB64830382DF0E983858A97B4CEFC477AC4B976E285E6D19D9A710C433E615E7",
+      "bytes": 32,
+      "mirror_relative": "remote/task-identity",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/runner-admission-diagnosis/audit.tsv",
+      "sha256": "7DD3EA2FA744D60E9B2C5CE759B3DC4E9539A1DD292BA55B6AB5C681AFFAA505",
+      "bytes": 441,
+      "mirror_relative": "linux/runner-admission-diagnosis/audit.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/runner-admission-diagnosis/go",
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "bytes": 0,
+      "mirror_relative": "linux/runner-admission-diagnosis/go",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/runner-admission-diagnosis/identity.tsv",
+      "sha256": "E16E5FA2D5438C5D4FD09815718789612CDC730C9DA7C82CCE7DB9265520E818",
+      "bytes": 950,
+      "mirror_relative": "linux/runner-admission-diagnosis/identity.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/runner-admission-diagnosis/payload.stderr.log",
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "bytes": 0,
+      "mirror_relative": "linux/runner-admission-diagnosis/payload.stderr.log",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/runner-admission-diagnosis/payload.stdout.log",
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "bytes": 0,
+      "mirror_relative": "linux/runner-admission-diagnosis/payload.stdout.log",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/runner-admission-diagnosis/ready",
+      "sha256": "BAB00BFD31202BD450B54C2025A8F315C66FD61830947DA79749B91AB04E31C1",
+      "bytes": 25,
+      "mirror_relative": "linux/runner-admission-diagnosis/ready",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/runner-admission-diagnosis/result.tsv",
+      "sha256": "703841ED1436370B1742FED5011BD4059CBACB7069DB0BF9B2E67960C8035538",
+      "bytes": 623,
+      "mirror_relative": "linux/runner-admission-diagnosis/result.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/runner-admission-diagnosis/supervisor.tsv",
+      "sha256": "DF96F88BA2C94608B8D2627D3C9A6975234A2E61AEBD24BF3AD19773AA45C9E6",
+      "bytes": 594,
+      "mirror_relative": "linux/runner-admission-diagnosis/supervisor.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/runner-admission-diagnosis/trace.stderr.log",
+      "sha256": "FF474F9AB84E7B7385F52C9FB88CB03083364B87EF15C2B52B2E94B0EFFC7D5C",
+      "bytes": 167914,
+      "mirror_relative": "linux/runner-admission-diagnosis/trace.stderr.log",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/runner-admission-diagnosis/trace.stdout.log",
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "bytes": 0,
+      "mirror_relative": "linux/runner-admission-diagnosis/trace.stdout.log",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/runner-admission-v2-tiny/audit.tsv",
+      "sha256": "FAF0B15CD400194FE3351F817709B08C79D54F2BB18965401792BFE4E65E8614",
+      "bytes": 441,
+      "mirror_relative": "linux/runner-admission-v2-tiny/audit.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/runner-admission-v2-tiny/go",
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "bytes": 0,
+      "mirror_relative": "linux/runner-admission-v2-tiny/go",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/runner-admission-v2-tiny/identity.tsv",
+      "sha256": "0F281E4C70DDBD37E7A34E6B27416F3126FFEA70403E86EB3417181FAA78DB06",
+      "bytes": 951,
+      "mirror_relative": "linux/runner-admission-v2-tiny/identity.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/runner-admission-v2-tiny/payload.stderr.log",
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "bytes": 0,
+      "mirror_relative": "linux/runner-admission-v2-tiny/payload.stderr.log",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/runner-admission-v2-tiny/payload.stdout.log",
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "bytes": 0,
+      "mirror_relative": "linux/runner-admission-v2-tiny/payload.stdout.log",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/runner-admission-v2-tiny/ready",
+      "sha256": "559F46350D98862C709C2F160C5DF40516A238C7292DFCF869D3DE936DB951CE",
+      "bytes": 25,
+      "mirror_relative": "linux/runner-admission-v2-tiny/ready",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/runner-admission-v2-tiny/result.tsv",
+      "sha256": "B9CFCC7EE29149C73AB14315DCED2D7A5874655949718D50A20D90EA5DD9F103",
+      "bytes": 623,
+      "mirror_relative": "linux/runner-admission-v2-tiny/result.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/runner-admission-v2-tiny/supervisor.tsv",
+      "sha256": "EBC40A07FDF9288386EECB0EBD36248CA7C5C8CBBE97E3D7080C83B5C33AD497",
+      "bytes": 592,
+      "mirror_relative": "linux/runner-admission-v2-tiny/supervisor.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-contract/outer-exit.txt",
+      "sha256": "913F5D1DA2FEAF4DEECCC9E55CBB350A20F12B3F507E87BE85DBB77FDD3CB9BC",
+      "bytes": 3,
+      "mirror_relative": "linux/stage-contract/outer-exit.txt",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-contract/stage-shell.tsv",
+      "sha256": "4908C8A9A238211AD0B7B8D15614F6EEAFCD0039109CFF2547FFED32595F03A6",
+      "bytes": 755,
+      "mirror_relative": "linux/stage-contract/stage-shell.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-contract-admission-v2/audit.tsv",
+      "sha256": "DE3DAF5BBD63DC0A31A51B5B5F0B5CF09375B1F1F71EE5C69181ADCBA94ECE1F",
+      "bytes": 442,
+      "mirror_relative": "linux/stage-contract-admission-v2/audit.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-contract-admission-v2/go",
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "bytes": 0,
+      "mirror_relative": "linux/stage-contract-admission-v2/go",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-contract-admission-v2/identity.tsv",
+      "sha256": "873511607E1A60B262EC3F65A912ABB311D5FB7B8247F1D37A651C8E5286833F",
+      "bytes": 1915,
+      "mirror_relative": "linux/stage-contract-admission-v2/identity.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-contract-admission-v2/outer-exit.txt",
+      "sha256": "9A271F2A916B0B6EE6CECB2426F0B3206EF074578BE55D9BC94F6F3FE3AB86AA",
+      "bytes": 2,
+      "mirror_relative": "linux/stage-contract-admission-v2/outer-exit.txt",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-contract-admission-v2/payload.stderr.log",
+      "sha256": "AEBEE8DD54D07D5DAA347448487FCB879874492D679BA6AB25EB813246ED7149",
+      "bytes": 444,
+      "mirror_relative": "linux/stage-contract-admission-v2/payload.stderr.log",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-contract-admission-v2/payload.stdout.log",
+      "sha256": "17A9014F705940B16C826D6A06155121C04D799EE9671CDE09DECA692C016447",
+      "bytes": 116,
+      "mirror_relative": "linux/stage-contract-admission-v2/payload.stdout.log",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-contract-admission-v2/ready",
+      "sha256": "6D212CC54AD0F89CFE3FF2FDCF6707D6C328520170CC8B0E8ED5AFDDF158FCD5",
+      "bytes": 25,
+      "mirror_relative": "linux/stage-contract-admission-v2/ready",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-contract-admission-v2/result.tsv",
+      "sha256": "00706640581EAA4A36588D663EF6BBBF8F746D6B158D60A60E5F24CB43A48F74",
+      "bytes": 624,
+      "mirror_relative": "linux/stage-contract-admission-v2/result.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-contract-admission-v2/stage-shell.tsv",
+      "sha256": "E1AC3C785AEC1540FD756984A1606815F6ED4CEA8CC9281BACAA22C99E351D53",
+      "bytes": 768,
+      "mirror_relative": "linux/stage-contract-admission-v2/stage-shell.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-contract-admission-v2/supervisor.tsv",
+      "sha256": "531173EFB70D6765F70F8E4840180E81DA341B64705E61A8BC09D0E94E9A1E0E",
+      "bytes": 910,
+      "mirror_relative": "linux/stage-contract-admission-v2/supervisor.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-regress/audit.tsv",
+      "sha256": "1851F2D4A68C47F6E7D69ADA1D0EABE53F8AF2A547F93571FEAA3002F27B92A5",
+      "bytes": 491,
+      "mirror_relative": "linux/stage-regress/audit.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-regress/go",
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "bytes": 0,
+      "mirror_relative": "linux/stage-regress/go",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-regress/identity.tsv",
+      "sha256": "06A97435C1A4CE17E99327F82D8689E4B3028F081074D9BF8EBA3408C8D94F68",
+      "bytes": 3762,
+      "mirror_relative": "linux/stage-regress/identity.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-regress/outer-exit.txt",
+      "sha256": "9A271F2A916B0B6EE6CECB2426F0B3206EF074578BE55D9BC94F6F3FE3AB86AA",
+      "bytes": 2,
+      "mirror_relative": "linux/stage-regress/outer-exit.txt",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-regress/payload.stderr.log",
+      "sha256": "5F5F27D753D8E4F7D0229651967C8050144BDF6CD98500EF653E7EC5E707C314",
+      "bytes": 1335,
+      "mirror_relative": "linux/stage-regress/payload.stderr.log",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-regress/payload.stdout.log",
+      "sha256": "D6FD07D970F30A0DC63E13EE93B81535638D8BA1B1E1237AD4129D4DD2E4C738",
+      "bytes": 192,
+      "mirror_relative": "linux/stage-regress/payload.stdout.log",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-regress/ready",
+      "sha256": "1A831729D0E02374CBB8CC68AAF982DB30048E409F36243CB3ED947E90E8C292",
+      "bytes": 25,
+      "mirror_relative": "linux/stage-regress/ready",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-regress/resources-after.tsv",
+      "sha256": "D13F2BC2325BACB321F17191C6209ACD5186315C573C2FFD16E15FF77964E589",
+      "bytes": 192,
+      "mirror_relative": "linux/stage-regress/resources-after.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-regress/resources-before.tsv",
+      "sha256": "3C2C297729F5852D9BDE0397B920BEE41B7062312EA1A46A615AD9513AA58FC8",
+      "bytes": 192,
+      "mirror_relative": "linux/stage-regress/resources-before.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-regress/result.tsv",
+      "sha256": "205484D88408FF7BD22C0DD6CF0ED2B8B4C77C86FF426FDCE5694820872582BB",
+      "bytes": 624,
+      "mirror_relative": "linux/stage-regress/result.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-regress/stage-shell.tsv",
+      "sha256": "8E67CA35902DCE7EC927EA3380139348E53187ACD9430B3389BC8A579C0BBAF4",
+      "bytes": 767,
+      "mirror_relative": "linux/stage-regress/stage-shell.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-regress/supervisor.tsv",
+      "sha256": "2A48F43B9119548D488B2ACB38471D011EABB037FB9AF448392CA5F9DF5BB0A0",
+      "bytes": 1412,
+      "mirror_relative": "linux/stage-regress/supervisor.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-tiny/audit.tsv",
+      "sha256": "84E6E3E545A7C3E50502077F4C0F744DB6A08CEBF6D5C79269DD6E3B987C3A3E",
+      "bytes": 442,
+      "mirror_relative": "linux/stage-tiny/audit.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-tiny/go",
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "bytes": 0,
+      "mirror_relative": "linux/stage-tiny/go",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-tiny/identity.tsv",
+      "sha256": "B04350785D217FA7CE44C2D19FE580F46CA3694B55EF4E2FA81877EAEE306AE3",
+      "bytes": 1594,
+      "mirror_relative": "linux/stage-tiny/identity.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-tiny/outer-exit.txt",
+      "sha256": "9A271F2A916B0B6EE6CECB2426F0B3206EF074578BE55D9BC94F6F3FE3AB86AA",
+      "bytes": 2,
+      "mirror_relative": "linux/stage-tiny/outer-exit.txt",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-tiny/payload.stderr.log",
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "bytes": 0,
+      "mirror_relative": "linux/stage-tiny/payload.stderr.log",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-tiny/payload.stdout.log",
+      "sha256": "BD5C160B4CE6456C7AF9EF66389E9D724938C1040200A378AF06EAC7A73817F0",
+      "bytes": 659,
+      "mirror_relative": "linux/stage-tiny/payload.stdout.log",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-tiny/ready",
+      "sha256": "964E69C830752D0EE9044F330F1F0D1476D842DBC4F14B7848E3C80F15436343",
+      "bytes": 25,
+      "mirror_relative": "linux/stage-tiny/ready",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-tiny/resources-after.tsv",
+      "sha256": "38564BFEC440BB175E7FE4EE7479D4B3ADE55BA5C3367857D77D95D7554D8D58",
+      "bytes": 192,
+      "mirror_relative": "linux/stage-tiny/resources-after.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-tiny/resources-before.tsv",
+      "sha256": "D6C99045BC9D9E8401F0410FBB8CD6D46B344B0D8DC42AC8332CC771FB887361",
+      "bytes": 192,
+      "mirror_relative": "linux/stage-tiny/resources-before.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-tiny/result.tsv",
+      "sha256": "E30DFB0EE26FC473825ACB3A002DE2313395C68AA9D918FAABE0B3C9DB3FF86F",
+      "bytes": 624,
+      "mirror_relative": "linux/stage-tiny/result.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-tiny/stage-shell.tsv",
+      "sha256": "C31559922617E9FA2E485DD686E42F2AE363D87DBC28CE082761F8B2A3C0E488",
+      "bytes": 764,
+      "mirror_relative": "linux/stage-tiny/stage-shell.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-tiny/supervisor.tsv",
+      "sha256": "93463D0476EECF066BBC3D242C9D5DD2E590B9093D2F6551AC93C4E1FF4C7586",
+      "bytes": 741,
+      "mirror_relative": "linux/stage-tiny/supervisor.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-train/audit.tsv",
+      "sha256": "677AF1B696BDBED3A8EC28C71BDF7940534CEECDCCD5EE26B51E89697B74A64B",
+      "bytes": 639,
+      "mirror_relative": "linux/stage-train/audit.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-train/go",
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "bytes": 0,
+      "mirror_relative": "linux/stage-train/go",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-train/identity.tsv",
+      "sha256": "A7C25A79D4FFA9D3F5E92BD75361CF439567734FAE20C54DF13B631111347B6B",
+      "bytes": 2375,
+      "mirror_relative": "linux/stage-train/identity.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-train/outer-exit.txt",
+      "sha256": "9A271F2A916B0B6EE6CECB2426F0B3206EF074578BE55D9BC94F6F3FE3AB86AA",
+      "bytes": 2,
+      "mirror_relative": "linux/stage-train/outer-exit.txt",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-train/payload.stderr.log",
+      "sha256": "12AC3C98C3A4EBD2FFBF314140C365943AA9E22AAA73878B660A8781FE583561",
+      "bytes": 17851,
+      "mirror_relative": "linux/stage-train/payload.stderr.log",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-train/payload.stdout.log",
+      "sha256": "34309E88AA9B347CC80F3B41C6C6ECAE610FFCFA46C833477842C75A19E7E02F",
+      "bytes": 364,
+      "mirror_relative": "linux/stage-train/payload.stdout.log",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-train/ready",
+      "sha256": "87201F0623475C27F2153EAAB23F4539CA03D7C9150C3E603E31377BEB03AA66",
+      "bytes": 25,
+      "mirror_relative": "linux/stage-train/ready",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-train/resources-after.tsv",
+      "sha256": "7176BC2DEA9C173E074002B4968C348E7E7AC52B865068FB667F9C03F5772CE5",
+      "bytes": 192,
+      "mirror_relative": "linux/stage-train/resources-after.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-train/resources-before.tsv",
+      "sha256": "152920380837AB7A14700F63ECD6735226725766D5D54F3C00184AA066C181C3",
+      "bytes": 192,
+      "mirror_relative": "linux/stage-train/resources-before.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-train/result.tsv",
+      "sha256": "C613EF8D07502DA336E959C0E3C4720534696746B61878F440C8D0BDCA970D07",
+      "bytes": 625,
+      "mirror_relative": "linux/stage-train/result.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-train/stage-shell.tsv",
+      "sha256": "FC62A3EDDD0CCC6714C0DEE75C594E7BCCBCB9570DF807E224F8DCC87B9FAB23",
+      "bytes": 765,
+      "mirror_relative": "linux/stage-train/stage-shell.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-train/supervisor.tsv",
+      "sha256": "DE7850CA4277EB1B5349FA2652BCD1295811198EE8FD47C011A849D6520FAAD5",
+      "bytes": 1133,
+      "mirror_relative": "linux/stage-train/supervisor.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-validate/audit.tsv",
+      "sha256": "621AF2A8796102D2A0FC23DABB009E30D0F908F28DAD91D4FAB57C7AD55E8113",
+      "bytes": 590,
+      "mirror_relative": "linux/stage-validate/audit.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-validate/go",
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "bytes": 0,
+      "mirror_relative": "linux/stage-validate/go",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-validate/identity.tsv",
+      "sha256": "8F3B39F67ADE3873C58768AB25637211672FECF9BCC1EB146D999057DD9CAB1C",
+      "bytes": 2588,
+      "mirror_relative": "linux/stage-validate/identity.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-validate/outer-exit.txt",
+      "sha256": "9A271F2A916B0B6EE6CECB2426F0B3206EF074578BE55D9BC94F6F3FE3AB86AA",
+      "bytes": 2,
+      "mirror_relative": "linux/stage-validate/outer-exit.txt",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-validate/payload.stderr.log",
+      "sha256": "40355C0F8BFFA4A594B44E4C40D7AA7CB5ABF3FC76FD11DC73D2BA3A858E2DBC",
+      "bytes": 17474,
+      "mirror_relative": "linux/stage-validate/payload.stderr.log",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-validate/payload.stdout.log",
+      "sha256": "74D5FD848A8F3660B48283C93234A58E0DF56860551D3A47B9EACA663A965993",
+      "bytes": 210,
+      "mirror_relative": "linux/stage-validate/payload.stdout.log",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-validate/ready",
+      "sha256": "B567541BADAF13A91FBEC8CD468110A740E3741605DAC6CB3E6ECABCC7336A0E",
+      "bytes": 25,
+      "mirror_relative": "linux/stage-validate/ready",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-validate/resources-after.tsv",
+      "sha256": "6E833EA220703CE4DD32B1576BDA186206DF238AEDC5EB6BFE4277312177DCEF",
+      "bytes": 192,
+      "mirror_relative": "linux/stage-validate/resources-after.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-validate/resources-before.tsv",
+      "sha256": "628A34CB90784FC49BCB7B1D26F76519A535506DA8B068CF327650A44862D2F7",
+      "bytes": 192,
+      "mirror_relative": "linux/stage-validate/resources-before.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-validate/result.tsv",
+      "sha256": "A8A1CAF897AD6B88FBAAE85BC708A84F692F91F41FF633816581D775D3A89F24",
+      "bytes": 623,
+      "mirror_relative": "linux/stage-validate/result.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-validate/stage-shell.tsv",
+      "sha256": "C85A3C65E0E6BEEC1421B53BA0D029F62AF16B3978EDC74D7C7CCA4A0866CEBC",
+      "bytes": 768,
+      "mirror_relative": "linux/stage-validate/stage-shell.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": ".artifacts/stage-validate/supervisor.tsv",
+      "sha256": "D2DF688C15066158DD2E923EA0E230D1BABA87818C0C5FF59D76E15A6FF7C439",
+      "bytes": 1242,
+      "mirror_relative": "linux/stage-validate/supervisor.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": "logs/archive-members.txt",
+      "sha256": "16476C7A649F75A48D2B8C9C9FAE70493556EBB255348400E7A9B0AC4BB28C83",
+      "bytes": 42207,
+      "mirror_relative": "remote/logs/archive-members.txt",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": "logs/collect-shell.tsv",
+      "sha256": "60A7D124C0F6CA421DD4357EFEDD9F39F3C1CDF85261F4D76BA3DFE7B98CE642",
+      "bytes": 757,
+      "mirror_relative": "remote/logs/collect-shell.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": "logs/install-complete.tsv",
+      "sha256": "7AFA7680EE5C73648B2B23D11981EC5A01B94EADE2864C01742C9E58B7FC868B",
+      "bytes": 144,
+      "mirror_relative": "remote/logs/install-complete.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": "logs/install-shell.tsv",
+      "sha256": "5E4D7C16097735820B0A4162AEF32F4A16C4E4335007DD3AF2D38941353E17E6",
+      "bytes": 813,
+      "mirror_relative": "remote/logs/install-shell.tsv",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": "logs/libcoreclr.so.ldd.txt",
+      "sha256": "BF89D48ECD8263120F415CEF542F1EC9B41BA8F66F9C4488CFD1E3F8B138C2F4",
+      "bytes": 591,
+      "mirror_relative": "remote/logs/libcoreclr.so.ldd.txt",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": "logs/libSystem.Native.so.ldd.txt",
+      "sha256": "F9975885698CC527306BB50CA6292BE358714A4F3F589D0FA7B303CCF97D1BCB",
+      "bytes": 224,
+      "mirror_relative": "remote/logs/libSystem.Native.so.ldd.txt",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": "logs/RegressionCheck.ldd.txt",
+      "sha256": "59209F0AFD1206321E058142D68C547B15C20B938559E948AB3E235B89C7F733",
+      "bytes": 522,
+      "mirror_relative": "remote/logs/RegressionCheck.ldd.txt",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": "logs/Sezika.ExperimentTrainer.ldd.txt",
+      "sha256": "5B02AFE6CDF6149215A68ECBC89177BAA94C091BBB85410CF47D1A433EA1728F",
+      "bytes": 522,
+      "mirror_relative": "remote/logs/Sezika.ExperimentTrainer.ldd.txt",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": "output/expanded-validation.json",
+      "sha256": "1BFAC6BEFBF5BB52CBCDD5107A031AE24438E1E9DDDE0C9F0D37524E95C80784",
+      "bytes": 1659345,
+      "mirror_relative": "remote/output/expanded-validation.json",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": "output/original32-regression.json",
+      "sha256": "26EF9481E6BBB1C9A1C755EA44E2C92D003D1F0B16D1EF3BE2A4E1B1394052F4",
+      "bytes": 37272,
+      "mirror_relative": "remote/output/original32-regression.json",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": "output/run-24576/expanded-head.asset",
+      "sha256": "4205457556736AB07799B462D42C377710E765CB14EDB9AAE508C1558C5E9D64",
+      "bytes": 9619,
+      "mirror_relative": "",
+      "excluded_reason": "external_model_asset_kept_in_ignored_task_and_complete_local_model"
+    },
+    {
+      "source_relative": "output/run-24576/expanded-training-report.json",
+      "sha256": "EFAFE1E006E3DD7A3D8BEC3A2327651406749FA0BF348C987783EC658BA51E4D",
+      "bytes": 1698013,
+      "mirror_relative": "remote/output/run-24576/expanded-training-report.json",
+      "excluded_reason": ""
+    },
+    {
+      "source_relative": "output/run-24576/expanded-training.checkpoint",
+      "sha256": "4709E847A135265F71C092BB18C66CF291DE87D90970CD8932ADD6FBC7F4264F",
+      "bytes": 9619,
+      "mirror_relative": "",
+      "excluded_reason": "external_model_asset_kept_in_ignored_task_and_complete_local_model"
+    }
+  ],
+  "private_local_ssh_argv_not_mirrored": true
+}

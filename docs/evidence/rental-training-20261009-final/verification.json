@@ -1,0 +1,686 @@
+{
+  "contract": "sezika/rental-downloaded-experiment-independent-verification/v1",
+  "started_utc": "2026-10-09T13:22:20.6461725Z",
+  "task_directory": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099",
+  "results_directory": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\results-07c97e181aa8-verified-layout",
+  "model_directory": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\trained-model",
+  "status": "PASS_experiment_evidence_only_not_formal_acceptance",
+  "checks": [
+    {
+      "name": "task_and_package_input_bindings",
+      "status": "PASS",
+      "detail": "Verified from pinned downloaded inputs."
+    },
+    {
+      "name": "training_v4_fixed_contract_and_asset_binding",
+      "status": "PASS",
+      "detail": "Verified from pinned downloaded inputs."
+    },
+    {
+      "name": "training_complete_rows_CE_groups_and_position_comparisons",
+      "status": "PASS",
+      "detail": "Verified from pinned downloaded inputs."
+    },
+    {
+      "name": "sample_visits_exact_seeded_order_replay",
+      "status": "PASS",
+      "detail": "Verified from pinned downloaded inputs."
+    },
+    {
+      "name": "train_runner_and_resource_closure",
+      "status": "PASS",
+      "detail": "Verified from pinned downloaded inputs."
+    },
+    {
+      "name": "validate_runner_and_resource_closure",
+      "status": "PASS",
+      "detail": "Verified from pinned downloaded inputs."
+    },
+    {
+      "name": "regress_runner_and_resource_closure",
+      "status": "PASS",
+      "detail": "Verified from pinned downloaded inputs."
+    },
+    {
+      "name": "independent_validation_v4_and_new_process",
+      "status": "PASS",
+      "detail": "Verified from pinned downloaded inputs."
+    },
+    {
+      "name": "original32_corrected_audit_regression",
+      "status": "PASS",
+      "detail": "Verified from pinned downloaded inputs."
+    },
+    {
+      "name": "model_download_UTC_deadlines_and_receipt",
+      "status": "PASS",
+      "detail": "Verified from pinned downloaded inputs."
+    }
+  ],
+  "assets": [
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\results-07c97e181aa8-verified-layout\\task-identity",
+      "bytes": 32,
+      "sha256": "cb64830382df0e983858a97b4cefc477ac4b976e285e6d19d9a710c433e615e7"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\results-07c97e181aa8-verified-layout\\archive-sha256",
+      "bytes": 65,
+      "sha256": "5fb7e53ea45b8ff8d5abf3621d52975d940836ea49812b4dacf405ec3bd3bdf3"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\results-07c97e181aa8-verified-layout\\gpu-uuid",
+      "bytes": 41,
+      "sha256": "3cc09043951d3c57c738f758d19c41835fbf4f9fb1d7575eb4722b59bfafdd4c"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\results-07c97e181aa8-verified-layout\\package-identity.json",
+      "bytes": 613,
+      "sha256": "2541a5e2b158946a685e810407c47d2b74ff9810c71e38480fe50219aee48d81"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\results-07c97e181aa8-verified-layout\\files.sha256",
+      "bytes": 49398,
+      "sha256": "13bdb23fb0c333d013779972ca34938134fe89dd48835adfbcd0c5f6176164e6"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\prepared\\data\\experiment-manifest.json",
+      "bytes": 2496,
+      "sha256": "e8e74ce0bbf1a72da5fcdf4dcad9d302513dc5dc42cb548bfd21d2569621aeb6"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\prepared\\data\\derivation-ledger.json",
+      "bytes": 527890,
+      "sha256": "55f3226946831c4b9cbd7f6ee10d1194764860c8343a9386caa40c678ce24ec0"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\results-07c97e181aa8-verified-layout\\output\\run-24576\\expanded-training-report.json",
+      "bytes": 1698013,
+      "sha256": "efafe1e006e3dd7a3d8bec3a2327651406749fa0bf348c987783ec658ba51e4d"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\trained-model\\expanded-training-report.json",
+      "bytes": 1698013,
+      "sha256": "efafe1e006e3dd7a3d8bec3a2327651406749fa0bf348c987783ec658ba51e4d"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\trained-model\\expanded-head.asset",
+      "bytes": 9619,
+      "sha256": "4205457556736ab07799b462d42c377710e765cb14edb9aae508c1558c5e9d64"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\trained-model\\expanded-training.checkpoint",
+      "bytes": 9619,
+      "sha256": "4709e847a135265f71c092bb18c66cf291de87d90970cd8932add6fbc7f4264f"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\trained-model\\model.json",
+      "bytes": 1225,
+      "sha256": "b8fb9cecc0912f034e0fea184e8aa78871d11533093dccf4f5aad74646007551"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\trained-model\\encoder.safetensors",
+      "bytes": 1227772549,
+      "sha256": "6168c84d2498cdacdcafee16b71a69b5c1636ad569bfabaf2855f5ce7dabd528"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\trained-model\\tokenizer\\tokenizer.json",
+      "bytes": 17525329,
+      "sha256": "197d4cc5406ee12cc50c8b5511f2393cc32d9db321545979ce041c1199178356"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\results-07c97e181aa8-verified-layout\\output\\run-24576\\expanded-head.asset",
+      "bytes": 9619,
+      "sha256": "4205457556736ab07799b462d42c377710e765cb14edb9aae508c1558c5e9d64"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\results-07c97e181aa8-verified-layout\\output\\run-24576\\expanded-training.checkpoint",
+      "bytes": 9619,
+      "sha256": "4709e847a135265f71c092bb18c66cf291de87d90970cd8932add6fbc7f4264f"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\prepared\\data\\experiment-records.jsonl",
+      "bytes": 276609,
+      "sha256": "c87b4c8a7badd4795856c48c21fb35cf0f0b4d6c0469258c2b5b5f01b9f8f634"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\prepared\\data\\input-provenance.json",
+      "bytes": 171477,
+      "sha256": "44d8a650e0738aa745bf3054575d4e58e2c728c45a80437639bb4940a13c2bf0"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\results-07c97e181aa8-verified-layout\\.artifacts\\stage-train\\identity.tsv",
+      "bytes": 2375,
+      "sha256": "a7c25a79d4ffa9d3f5e92bd75361cf439567734fae20c54df13b631111347b6b"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\results-07c97e181aa8-verified-layout\\.artifacts\\stage-validate\\identity.tsv",
+      "bytes": 2588,
+      "sha256": "8f3b39f67ade3873c58768ab25637211672fecf9bcc1eb146d999057dd9cab1c"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\results-07c97e181aa8-verified-layout\\.artifacts\\stage-regress\\identity.tsv",
+      "bytes": 3762,
+      "sha256": "06a97435c1a4ce17e99327f82d8689e4b3028f081074d9bf8eba3408c8d94f68"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\results-07c97e181aa8-verified-layout\\output\\expanded-validation.json",
+      "bytes": 1659345,
+      "sha256": "1bfac6befbf5bb52cbcdd5107a031ae24438e1e9ddde0c9f0d37524e95c80784"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\prepared\\regression_input\\experiment-records.jsonl",
+      "bytes": 21733,
+      "sha256": "a015a8fa182ee62223cafc307c618c515a19e90f843290db9dfb53a56b9a041c"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\prepared\\regression_input\\audit-report.json",
+      "bytes": 81250,
+      "sha256": "b78a4f42338574aa346a2a6cde3041749bb8c142d0d91c5efc8f116f1eccf463"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\results-07c97e181aa8-verified-layout\\output\\original32-regression.json",
+      "bytes": 37272,
+      "sha256": "26ef9481e6bbb1c9a1c755ea44e2c92d003d1f0b16d1ef3be2a4e1b1394052f4"
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\trained-assets-32468e4a5308.tar",
+      "bytes": 1730560,
+      "sha256": "32468e4a5308527f12e7e6ca9c7163ae38de4dd319aa36743f46cc20f6ff944e"
+    }
+  ],
+  "stage_evidence": {
+    "validate": {
+      "receipt": {
+        "payload_exit": "0",
+        "token": "sezika-5786-5083-6264",
+        "cleanup_budget_exhausted": "0",
+        "work_pause_failed_ms": "na",
+        "elapsed_ms": "29780",
+        "cleanup_deferred_proofs": "0",
+        "control_unaffected": "0",
+        "supervisor_pid": "5786",
+        "clock_tolerance_ms": "20",
+        "work_pause_read_rc": "na",
+        "unchecked_count": "0",
+        "cleanup_deadline_ms": "4348047700",
+        "clock_resolution_ms": "10",
+        "final_check_complete": "1",
+        "fixture": "none",
+        "cleanup_elapsed_ms": "270",
+        "seam_unreadable": "na",
+        "control_owner_closed": "0",
+        "unknown_count": "0",
+        "status": "completed",
+        "work_pause_reason": "na",
+        "seam_mismatch": "na",
+        "verified_live_count": "0",
+        "tracked_identities": "2",
+        "cleanup_incomplete": "0",
+        "limitation": "cooperative_checks_only_blocking_kernel_io_and_short_intermediates_not_guaranteed"
+      },
+      "payload_identities": [
+        "5789:434801038"
+      ],
+      "resources_before": {
+        "gpu_uuid": "GPU-c582dc42-1fed-0727-5a1e-dc57f5e314a4",
+        "host_rss_limit_bytes": "4294967296",
+        "free_mib": "32149",
+        "owned_gpu_limit_bytes": "3221225472",
+        "host_available_kib": "45298483",
+        "observed_utc": "2026-10-09T13:17:14Z"
+      },
+      "resources_after": {
+        "gpu_uuid": "GPU-c582dc42-1fed-0727-5a1e-dc57f5e314a4",
+        "host_rss_limit_bytes": "4294967296",
+        "free_mib": "32149",
+        "owned_gpu_limit_bytes": "3221225472",
+        "host_available_kib": "45298483",
+        "observed_utc": "2026-10-09T13:17:44Z"
+      },
+      "identity_sha256": "8f3b39f67ade3873c58768ab25637211672fecf9bcc1eb146d999057dd9cab1c"
+    },
+    "train": {
+      "receipt": {
+        "payload_exit": "0",
+        "token": "sezika-5530-27613-16411",
+        "cleanup_budget_exhausted": "0",
+        "work_pause_failed_ms": "na",
+        "elapsed_ms": "36060",
+        "cleanup_deferred_proofs": "0",
+        "control_unaffected": "0",
+        "supervisor_pid": "5530",
+        "clock_tolerance_ms": "20",
+        "work_pause_read_rc": "na",
+        "unchecked_count": "0",
+        "cleanup_deadline_ms": "4347982510",
+        "clock_resolution_ms": "10",
+        "final_check_complete": "1",
+        "fixture": "none",
+        "cleanup_elapsed_ms": "270",
+        "seam_unreadable": "na",
+        "control_owner_closed": "0",
+        "unknown_count": "0",
+        "status": "completed",
+        "work_pause_reason": "na",
+        "seam_mismatch": "na",
+        "verified_live_count": "0",
+        "tracked_identities": "2",
+        "cleanup_incomplete": "0",
+        "limitation": "cooperative_checks_only_blocking_kernel_io_and_short_intermediates_not_guaranteed"
+      },
+      "payload_identities": [
+        "5532:434793890"
+      ],
+      "resources_before": {
+        "gpu_uuid": "GPU-c582dc42-1fed-0727-5a1e-dc57f5e314a4",
+        "host_rss_limit_bytes": "4294967296",
+        "free_mib": "32149",
+        "owned_gpu_limit_bytes": "3221225472",
+        "host_available_kib": "45298483",
+        "observed_utc": "2026-10-09T13:16:03Z"
+      },
+      "resources_after": {
+        "gpu_uuid": "GPU-c582dc42-1fed-0727-5a1e-dc57f5e314a4",
+        "host_rss_limit_bytes": "4294967296",
+        "free_mib": "32149",
+        "owned_gpu_limit_bytes": "3221225472",
+        "host_available_kib": "45298483",
+        "observed_utc": "2026-10-09T13:16:39Z"
+      },
+      "identity_sha256": "a7c25a79d4ffa9d3f5e92bd75361cf439567734fae20c54df13b631111347b6b"
+    },
+    "regress": {
+      "receipt": {
+        "payload_exit": "0",
+        "token": "sezika-5928-12615-24648",
+        "cleanup_budget_exhausted": "0",
+        "work_pause_failed_ms": "na",
+        "elapsed_ms": "9630",
+        "cleanup_deferred_proofs": "0",
+        "control_unaffected": "0",
+        "supervisor_pid": "5928",
+        "clock_tolerance_ms": "20",
+        "work_pause_read_rc": "na",
+        "unchecked_count": "0",
+        "cleanup_deadline_ms": "4348063510",
+        "clock_resolution_ms": "10",
+        "final_check_complete": "1",
+        "fixture": "none",
+        "cleanup_elapsed_ms": "270",
+        "seam_unreadable": "na",
+        "control_owner_closed": "0",
+        "unknown_count": "0",
+        "status": "completed",
+        "work_pause_reason": "na",
+        "seam_mismatch": "na",
+        "verified_live_count": "0",
+        "tracked_identities": "2",
+        "cleanup_incomplete": "0",
+        "limitation": "cooperative_checks_only_blocking_kernel_io_and_short_intermediates_not_guaranteed"
+      },
+      "payload_identities": [
+        "5930:434804633"
+      ],
+      "resources_before": {
+        "gpu_uuid": "GPU-c582dc42-1fed-0727-5a1e-dc57f5e314a4",
+        "host_rss_limit_bytes": "4294967296",
+        "free_mib": "32149",
+        "owned_gpu_limit_bytes": "3221225472",
+        "host_available_kib": "45298483",
+        "observed_utc": "2026-10-09T13:17:50Z"
+      },
+      "resources_after": {
+        "gpu_uuid": "GPU-c582dc42-1fed-0727-5a1e-dc57f5e314a4",
+        "host_rss_limit_bytes": "4294967296",
+        "free_mib": "32149",
+        "owned_gpu_limit_bytes": "3221225472",
+        "host_available_kib": "45298483",
+        "observed_utc": "2026-10-09T13:18:00Z"
+      },
+      "identity_sha256": "06a97435c1a4ce17e99327f82d8689e4b3028f081074d9bf8eba3408c8d94f68"
+    }
+  },
+  "metrics": {
+    "checkpoint_sha256": "4709E847A135265F71C092BB18C66CF291DE87D90970CD8932ADD6FBC7F4264F",
+    "validation_sha256": "1bfac6befbf5bb52cbcdd5107a031ae24438e1e9ddde0c9f0d37524e95c80784",
+    "regression_resources": {
+      "snapshot_before_context_dispose": {
+        "total_bytes": 33711521792,
+        "free_bytes": 33179631616,
+        "owned_bytes": 0,
+        "peak_owned_bytes": 1309390208,
+        "owned_allocation_count": 0,
+        "loaded_module_count": 0,
+        "release_failure_count": 0
+      },
+      "model_dispose_returned": true,
+      "device_dispose_returned": true,
+      "process_working_set_bytes": 2638770176,
+      "process_peak_working_set_bytes": 2733641728
+    },
+    "training_observations": {
+      "rows": 231,
+      "train": 162,
+      "development": 53,
+      "rotations": 16,
+      "selected_id_changes": 6,
+      "train_ce": 0.8185527480586812,
+      "development_ce": 1.0354540944099426,
+      "rotation_ce": 1.3445008620619774,
+      "groups": [
+        {
+          "split": "development",
+          "variant": "original",
+          "language": "en",
+          "type": "boolean",
+          "total": 23,
+          "completed": 23,
+          "teacher_agreement_count": 14,
+          "teacher_agreement_rate": 0.6086956521739131,
+          "mean_gpu_teacher_ce": 0.6494569428589033,
+          "mean_teacher_target_rank": 1.391304347826087
+        },
+        {
+          "split": "development",
+          "variant": "original",
+          "language": "en",
+          "type": "choice",
+          "total": 15,
+          "completed": 15,
+          "teacher_agreement_count": 7,
+          "teacher_agreement_rate": 0.4666666666666667,
+          "mean_gpu_teacher_ce": 1.1796095351378122,
+          "mean_teacher_target_rank": 1.7333333333333334
+        },
+        {
+          "split": "development",
+          "variant": "original",
+          "language": "zh",
+          "type": "choice",
+          "total": 15,
+          "completed": 15,
+          "teacher_agreement_count": 6,
+          "teacher_agreement_rate": 0.4,
+          "mean_gpu_teacher_ce": 1.483160952727,
+          "mean_teacher_target_rank": 2.466666666666667
+        },
+        {
+          "split": "train",
+          "variant": "fixed-left1",
+          "language": "en",
+          "type": "choice",
+          "total": 15,
+          "completed": 15,
+          "teacher_agreement_count": 7,
+          "teacher_agreement_rate": 0.4666666666666667,
+          "mean_gpu_teacher_ce": 1.3258533477783203,
+          "mean_teacher_target_rank": 2.2
+        },
+        {
+          "split": "train",
+          "variant": "fixed-left1",
+          "language": "zh",
+          "type": "choice",
+          "total": 1,
+          "completed": 1,
+          "teacher_agreement_count": 0,
+          "teacher_agreement_rate": 0,
+          "mean_gpu_teacher_ce": 1.6242135763168335,
+          "mean_teacher_target_rank": 3
+        },
+        {
+          "split": "train",
+          "variant": "original",
+          "language": "en",
+          "type": "boolean",
+          "total": 52,
+          "completed": 52,
+          "teacher_agreement_count": 43,
+          "teacher_agreement_rate": 0.8269230769230769,
+          "mean_gpu_teacher_ce": 0.4476359983762869,
+          "mean_teacher_target_rank": 1.1730769230769231
+        },
+        {
+          "split": "train",
+          "variant": "original",
+          "language": "en",
+          "type": "choice",
+          "total": 53,
+          "completed": 53,
+          "teacher_agreement_count": 36,
+          "teacher_agreement_rate": 0.6792452830188679,
+          "mean_gpu_teacher_ce": 0.9926281852542229,
+          "mean_teacher_target_rank": 1.4528301886792452
+        },
+        {
+          "split": "train",
+          "variant": "original",
+          "language": "zh",
+          "type": "choice",
+          "total": 57,
+          "completed": 57,
+          "teacher_agreement_count": 39,
+          "teacher_agreement_rate": 0.6842105263157895,
+          "mean_gpu_teacher_ce": 0.995073323709923,
+          "mean_teacher_target_rank": 1.4035087719298245
+        }
+      ]
+    },
+    "training_report_sha256": "efafe1e006e3dd7a3d8bec3a2327651406749fa0bf348c987783ec658ba51e4d",
+    "training_elapsed_seconds": 35.2160222,
+    "training_resources": {
+      "snapshot_before_context_dispose": {
+        "total_bytes": 33711521792,
+        "free_bytes": 33179631616,
+        "owned_bytes": 0,
+        "peak_owned_bytes": 1325572580,
+        "owned_allocation_count": 0,
+        "loaded_module_count": 0,
+        "release_failure_count": 0
+      },
+      "process_peak_working_set_bytes": 2781282304,
+      "process_working_set_bytes": 2625884160,
+      "device_dispose_returned": true,
+      "model_dispose_returned": true
+    },
+    "validation_resources": {
+      "snapshot_before_context_dispose": {
+        "total_bytes": 33711521792,
+        "free_bytes": 33179631616,
+        "owned_bytes": 0,
+        "peak_owned_bytes": 1325572580,
+        "owned_allocation_count": 0,
+        "loaded_module_count": 0,
+        "release_failure_count": 0
+      },
+      "process_peak_working_set_bytes": 2777063424,
+      "process_working_set_bytes": 2658770944,
+      "device_dispose_returned": true,
+      "model_dispose_returned": true
+    },
+    "head_sha256": "4205457556736AB07799B462D42C377710E765CB14EDB9AAE508C1558C5E9D64",
+    "regression": {
+      "rows": 32,
+      "corrections": 3,
+      "score_training_supervision": 0,
+      "groups": [
+        {
+          "type": "boolean",
+          "total": 10,
+          "agreement_count": 8,
+          "agreement_rate": 0.8,
+          "mean_corrected_audit_nll": 0.5216209888829655,
+          "expanded_training_supervision_count": 52
+        },
+        {
+          "type": "choice",
+          "total": 12,
+          "agreement_count": 4,
+          "agreement_rate": 0.3333333333333333,
+          "mean_corrected_audit_nll": 1.4825416023214828,
+          "expanded_training_supervision_count": 110
+        },
+        {
+          "type": "score",
+          "total": 10,
+          "agreement_count": 0,
+          "agreement_rate": 0,
+          "mean_corrected_audit_nll": 1.6094379124341,
+          "expanded_training_supervision_count": 0
+        }
+      ],
+      "elapsed_seconds": 8.6122972,
+      "sha256": "26ef9481e6bbb1c9a1c755ea44e2c92d003d1f0b16d1ef3be2a4e1b1394052f4"
+    },
+    "download": {
+      "completed_utc": "2026-10-09T13:17:08.6763193+00:00",
+      "target_utc": "2026-10-09T15:22:00.0000000+00:00",
+      "rental_end_utc": "2026-10-09T16:22:00.0000000+00:00",
+      "seconds_before_target": 7491.3236807,
+      "archive_sha256": "32468e4a5308527f12e7e6ca9c7163ae38de4dd319aa36743f46cc20f6ff944e"
+    },
+    "device": {
+      "uuid": "C582DC421FED07275A1EDC57F5E314A4",
+      "name": "NVIDIA GeForce RTX 5090",
+      "driver_version": 13030,
+      "compute_capability_major": 12,
+      "compute_capability_minor": 0,
+      "total_memory_bytes": 33711521792,
+      "device_index": 0
+    },
+    "visits": {
+      "records": 162,
+      "total": 24576,
+      "minimum": 151,
+      "maximum": 152,
+      "complete_cycles": 151,
+      "partial_prefix": 114
+    },
+    "validation_elapsed_seconds": 28.9658498,
+    "validation_observations": {
+      "rows": 231,
+      "train": 162,
+      "development": 53,
+      "rotations": 16,
+      "selected_id_changes": 6,
+      "train_ce": 0.8185527480586812,
+      "development_ce": 1.0354540944099426,
+      "rotation_ce": 1.3445008620619774,
+      "groups": [
+        {
+          "split": "development",
+          "variant": "original",
+          "language": "en",
+          "type": "boolean",
+          "total": 23,
+          "completed": 23,
+          "teacher_agreement_count": 14,
+          "teacher_agreement_rate": 0.6086956521739131,
+          "mean_gpu_teacher_ce": 0.6494569428589033,
+          "mean_teacher_target_rank": 1.391304347826087
+        },
+        {
+          "split": "development",
+          "variant": "original",
+          "language": "en",
+          "type": "choice",
+          "total": 15,
+          "completed": 15,
+          "teacher_agreement_count": 7,
+          "teacher_agreement_rate": 0.4666666666666667,
+          "mean_gpu_teacher_ce": 1.1796095351378122,
+          "mean_teacher_target_rank": 1.7333333333333334
+        },
+        {
+          "split": "development",
+          "variant": "original",
+          "language": "zh",
+          "type": "choice",
+          "total": 15,
+          "completed": 15,
+          "teacher_agreement_count": 6,
+          "teacher_agreement_rate": 0.4,
+          "mean_gpu_teacher_ce": 1.483160952727,
+          "mean_teacher_target_rank": 2.466666666666667
+        },
+        {
+          "split": "train",
+          "variant": "fixed-left1",
+          "language": "en",
+          "type": "choice",
+          "total": 15,
+          "completed": 15,
+          "teacher_agreement_count": 7,
+          "teacher_agreement_rate": 0.4666666666666667,
+          "mean_gpu_teacher_ce": 1.3258533477783203,
+          "mean_teacher_target_rank": 2.2
+        },
+        {
+          "split": "train",
+          "variant": "fixed-left1",
+          "language": "zh",
+          "type": "choice",
+          "total": 1,
+          "completed": 1,
+          "teacher_agreement_count": 0,
+          "teacher_agreement_rate": 0,
+          "mean_gpu_teacher_ce": 1.6242135763168335,
+          "mean_teacher_target_rank": 3
+        },
+        {
+          "split": "train",
+          "variant": "original",
+          "language": "en",
+          "type": "boolean",
+          "total": 52,
+          "completed": 52,
+          "teacher_agreement_count": 43,
+          "teacher_agreement_rate": 0.8269230769230769,
+          "mean_gpu_teacher_ce": 0.4476359983762869,
+          "mean_teacher_target_rank": 1.1730769230769231
+        },
+        {
+          "split": "train",
+          "variant": "original",
+          "language": "en",
+          "type": "choice",
+          "total": 53,
+          "completed": 53,
+          "teacher_agreement_count": 36,
+          "teacher_agreement_rate": 0.6792452830188679,
+          "mean_gpu_teacher_ce": 0.9926281852542229,
+          "mean_teacher_target_rank": 1.4528301886792452
+        },
+        {
+          "split": "train",
+          "variant": "original",
+          "language": "zh",
+          "type": "choice",
+          "total": 57,
+          "completed": 57,
+          "teacher_agreement_count": 39,
+          "teacher_agreement_rate": 0.6842105263157895,
+          "mean_gpu_teacher_ce": 0.995073323709923,
+          "mean_teacher_target_rank": 1.4035087719298245
+        }
+      ]
+    }
+  },
+  "formal_acceptance": false,
+  "human_quality": "pending",
+  "calibration": "pending",
+  "sealed_test": "pending",
+  "license_release": "pending",
+  "native_aot": "pending",
+  "performance": "pending",
+  "publication": "pending",
+  "limitation": "Read-only verification of downloaded evidence; teacher/audit agreement is not formal accuracy or quality acceptance.",
+  "finished_utc": "2026-10-09T13:22:31.4908076Z",
+  "elapsed_seconds": 10.8470884,
+  "operations": 52188,
+  "maximum_operations": 100000,
+  "timeout_seconds": 180,
+  "external_processes_started": 0,
+  "temporary_files_created": 0
+}

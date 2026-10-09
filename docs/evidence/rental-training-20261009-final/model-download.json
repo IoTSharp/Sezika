@@ -1,0 +1,44 @@
+{
+  "utc": "2026-10-09T13:17:08.6763193Z",
+  "status": "trained_model_downloaded_and_complete_local_assets_verified",
+  "model_directory": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\trained-model",
+  "remote": "/root/sezika-experiments/sezika-rental-20261009-01a12099",
+  "download_archive": "D:\\source\\Sezika\\.artifacts\\rental-training-20261009-01a12099\\trained-assets-32468e4a5308.tar",
+  "archive_sha256": "32468e4a5308527f12e7e6ca9c7163ae38de4dd319aa36743f46cc20f6ff944e",
+  "files": [
+    {
+      "name": "encoder.safetensors",
+      "bytes": 1227772549,
+      "sha256": "6168C84D2498CDACDCAFEE16B71A69B5C1636AD569BFABAF2855F5CE7DABD528"
+    },
+    {
+      "name": "expanded-head.asset",
+      "bytes": 9619,
+      "sha256": "4205457556736AB07799B462D42C377710E765CB14EDB9AAE508C1558C5E9D64"
+    },
+    {
+      "name": "expanded-training-report.json",
+      "bytes": 1698013,
+      "sha256": "EFAFE1E006E3DD7A3D8BEC3A2327651406749FA0BF348C987783EC658BA51E4D"
+    },
+    {
+      "name": "expanded-training.checkpoint",
+      "bytes": 9619,
+      "sha256": "4709E847A135265F71C092BB18C66CF291DE87D90970CD8932ADD6FBC7F4264F"
+    },
+    {
+      "name": "files.sha256",
+      "bytes": 354,
+      "sha256": "5F0E33CAF53452F782D862140DAABB7B4220CBC858850D84F234F92216C9308C"
+    },
+    {
+      "name": "model.json",
+      "bytes": 1225,
+      "sha256": "B8FB9CECC0912F034E0FEA184E8AA78871D11533093DCCF4F5AAD74646007551"
+    }
+  ],
+  "tokenizer_sha256": "197d4cc5406ee12cc50c8b5511f2393cc32d9db321545979ce041c1199178356",
+  "encoder_frozen": true,
+  "completed_steps": 24576,
+  "formal_acceptance": false
+}
