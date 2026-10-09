@@ -1,0 +1,21 @@
+{
+  "endpoint": "https://sonnet.vip/v1/responses",
+  "provider_id": "sonnetvip-1783529832911",
+  "credential_source": "current CC Switch selected sonnet_vip provider; memory only",
+  "success_http200": true,
+  "attempts": [
+    {
+      "attempt": 1,
+      "route": "direct",
+      "started_utc": "2026-10-09T05:25:52.340127+00:00",
+      "sent": true,
+      "http_status": 200,
+      "failure_type": null,
+      "finished_utc": "2026-10-09T05:26:04.043353+00:00"
+    }
+  ],
+  "maximum_http_requests": 2,
+  "maximum_transport_seconds": 240,
+  "automatic_redirects": false,
+  "failed_attempt_upstream_billing": "unknown"
+}

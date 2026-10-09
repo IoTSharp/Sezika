@@ -1,0 +1,318 @@
+[
+  {
+    "original_source_gold": 2,
+    "human_review": "pending",
+    "formal": false,
+    "revised_row": null,
+    "record_id": "massive-zh-cn-12126",
+    "evidence_quotes": [
+      "我想周三坐火车去曼彻斯特"
+    ],
+    "decision": "delete",
+    "reason": "原话仅表达出行意愿、日期和目的地，没有明确请求查询交通信息或购买、预订车票。区分这些意图需要补充语境，无法仅靠修改候选或分类规则忠实确定唯一答案。"
+  },
+  {
+    "original_source_gold": 1,
+    "human_review": "pending",
+    "formal": false,
+    "revised_row": {
+      "record_id": "massive-zh-cn-00006",
+      "family_id": "massive-1.1-utterance-6",
+      "language": "zh",
+      "split": "train",
+      "target_index": 4,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "欧丽暂停十秒"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；不推测未提及的请求。",
+            "candidates": [
+              {
+                "id": "audio_volume_down",
+                "text": "降低音量"
+              },
+              {
+                "id": "audio_volume_mute",
+                "text": "将声音静音"
+              },
+              {
+                "id": "audio_volume_other",
+                "text": "其他音量设置请求"
+              },
+              {
+                "id": "audio_volume_up",
+                "text": "提高音量"
+              },
+              {
+                "id": "audio_pause",
+                "text": "暂停或暂时停止"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "zh-CN",
+        "official_id": "6",
+        "original_split": "train",
+        "original_label": "audio_volume_mute",
+        "original_scenario": "audio",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+        "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+        "raw_record_sha256": "A2B45E41F45EEF33B2173D68B2E809D55D1904F5306750565FDF47B22F27167B",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/6"
+    },
+    "record_id": "massive-zh-cn-00006",
+    "evidence_quotes": [
+      "欧丽暂停十秒"
+    ],
+    "decision": "repair",
+    "reason": "原话明确要求暂停十秒，缺陷是候选中没有暂停操作。补充独立的暂停候选即可覆盖明确意图，并保留原有音量候选。"
+  },
+  {
+    "original_source_gold": 2,
+    "human_review": "pending",
+    "formal": false,
+    "revised_row": {
+      "record_id": "massive-zh-cn-01049",
+      "family_id": "massive-1.1-utterance-1049",
+      "language": "zh",
+      "split": "train",
+      "target_index": 4,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "改变音频设置"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；不推测未提及的请求或具体设置参数。",
+            "candidates": [
+              {
+                "id": "audio_volume_down",
+                "text": "降低音量"
+              },
+              {
+                "id": "audio_volume_mute",
+                "text": "将声音静音"
+              },
+              {
+                "id": "audio_volume_other",
+                "text": "其他明确针对音量的设置请求（不含降低、提高或静音）"
+              },
+              {
+                "id": "audio_volume_up",
+                "text": "提高音量"
+              },
+              {
+                "id": "audio_settings_general",
+                "text": "修改音频设置，未指定具体参数"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "zh-CN",
+        "official_id": "1049",
+        "original_split": "train",
+        "original_label": "audio_volume_other",
+        "original_scenario": "audio",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+        "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+        "raw_record_sha256": "D02E3BC2203A070D88BB5510ED3D55333DC094067003AF7A2892DF76ADCDABC0",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/1049"
+    },
+    "record_id": "massive-zh-cn-01049",
+    "evidence_quotes": [
+      "改变音频设置"
+    ],
+    "decision": "repair",
+    "reason": "原话明确请求改变音频设置，但没有指定参数。增加一般音频设置候选，并将其他音量设置限定为明确针对音量的请求，可形成唯一匹配，无须推测具体调整目标。"
+  },
+  {
+    "original_source_gold": 3,
+    "human_review": "pending",
+    "formal": false,
+    "revised_row": {
+      "record_id": "massive-en-us-00115",
+      "family_id": "massive-1.1-utterance-115",
+      "language": "en",
+      "split": "development",
+      "target_index": 1,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "set the volume to low"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "Choose the given candidate that best matches the volume operation explicitly requested in the utterance. For these candidates, increasing or decreasing volume requires an explicit relative change; specifying a target level alone is an absolute setting. Do not infer the current volume or unmentioned requests.",
+            "candidates": [
+              {
+                "id": "audio_volume_mute",
+                "text": "Mute audio"
+              },
+              {
+                "id": "audio_volume_other",
+                "text": "Other audio-volume settings without a request to mute or explicitly increase or decrease the volume"
+              },
+              {
+                "id": "audio_volume_up",
+                "text": "Explicitly increase audio volume relative to its current level"
+              },
+              {
+                "id": "audio_volume_down",
+                "text": "Explicitly decrease audio volume relative to its current level"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "en-US",
+        "official_id": "115",
+        "original_split": "dev",
+        "original_label": "audio_volume_down",
+        "original_scenario": "audio",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\en-US.jsonl",
+        "file_sha256": "C70F75C6A543A26E249EC383DF67733AD9B1066F6C0406C2E04A3F03356E407E",
+        "raw_record_sha256": "18F55AD91035785221E2DC4CE49612DDAF9B117056BA8DFEEE98F9749085698F",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/115"
+    },
+    "record_id": "massive-en-us-00115",
+    "evidence_quotes": [
+      "set the volume to low"
+    ],
+    "decision": "repair",
+    "reason": "原话指定目标音量为低，未明确要求相对当前音量降低。明确相对升降与绝对目标设置的分类边界后，该请求唯一归入其他音量设置，无须假定当前音量。"
+  },
+  {
+    "original_source_gold": 1,
+    "human_review": "pending",
+    "formal": false,
+    "revised_row": null,
+    "record_id": "massive-en-us-06613",
+    "evidence_quotes": [
+      "cooking"
+    ],
+    "decision": "delete",
+    "reason": "原文只有主题词，没有表达具体请求，无法区分索要食谱、咨询烹饪信息或查询词义。指定某种分类规则会替原文补入请求意图，无法忠实修复。"
+  },
+  {
+    "original_source_gold": 3,
+    "human_review": "pending",
+    "formal": false,
+    "revised_row": {
+      "record_id": "massive-en-us-00676",
+      "family_id": "massive-1.1-utterance-676",
+      "language": "en",
+      "split": "development",
+      "target_index": 4,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "set time zone"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "Choose the given candidate that best matches the user utterance's main intent. Use only the utterance; do not infer unmentioned requests.",
+            "candidates": [
+              {
+                "id": "datetime_query",
+                "text": "Ask for the current date or time"
+              },
+              {
+                "id": "alarm_query",
+                "text": "Query existing alarms"
+              },
+              {
+                "id": "alarm_remove",
+                "text": "Remove or cancel an alarm"
+              },
+              {
+                "id": "datetime_convert",
+                "text": "Convert a date or time between formats or zones"
+              },
+              {
+                "id": "datetime_set_timezone",
+                "text": "Set the time zone"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "en-US",
+        "official_id": "676",
+        "original_split": "dev",
+        "original_label": "datetime_convert",
+        "original_scenario": "datetime",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\en-US.jsonl",
+        "file_sha256": "C70F75C6A543A26E249EC383DF67733AD9B1066F6C0406C2E04A3F03356E407E",
+        "raw_record_sha256": "1EC289B7BEAC6EA2741B4BF862B4FEA8192C0BE0845179D9FFC234F112127259",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/676"
+    },
+    "record_id": "massive-en-us-00676",
+    "evidence_quotes": [
+      "set time zone"
+    ],
+    "decision": "repair",
+    "reason": "原话明确要求设置时区，原候选缺少这一操作。增加设置时区候选即可唯一匹配，且可与日期或时间转换区分。"
+  }
+]

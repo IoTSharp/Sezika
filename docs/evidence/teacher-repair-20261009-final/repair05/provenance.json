@@ -1,0 +1,25 @@
+{
+  "batch": "repair05",
+  "model": "gpt-6.1-sol",
+  "stage": "repair",
+  "credential_source": "CC Switch selected sonnet_vip, memory only",
+  "human_review": "pending",
+  "formal": false,
+  "source_ids": [
+    "massive-zh-cn-00913",
+    "massive-zh-cn-12939",
+    "massive-zh-cn-02996",
+    "massive-zh-cn-06480",
+    "massive-zh-cn-00052",
+    "massive-zh-cn-04445"
+  ],
+  "transport_sha256": "9F0FBB33132FEE188CAFEF4EDAF399AA6D26EDD8FAD768EA60545706D392F1F8",
+  "plan_sha256": "4BD6F02073362341A0DA8881D1D166A3950A4FB5799E4231F95EE5695556C704",
+  "request_sha256": "4989C50D764D748362675D96377CF3A69CB9F0198C6A7F2089508181C6841A15",
+  "endpoint": "https://sonnet.vip/v1/responses",
+  "labels_hidden_from_reaudit": false,
+  "effort": "max",
+  "input_sha256": "E648A5A2C14481438E2DB1D4CCF53227E34AC5D815B26355F3F645A2C324F27F",
+  "state_text_immutable": true,
+  "worker_sha256": "CB332CE36EBA5867230FB6AB43DC8606B96823206CB616805C2DD8EA4948B2C1"
+}

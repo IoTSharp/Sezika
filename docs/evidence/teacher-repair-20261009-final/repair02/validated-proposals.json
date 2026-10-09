@@ -1,0 +1,198 @@
+[
+  {
+    "human_review": "pending",
+    "reason": "原话明确表达到了睡觉时间，现有候选缺少这一具体意图。补入直接对应原话的候选即可保留意图识别任务，无需推断设备操作，也无需添加泛化的“无法判断”选项。",
+    "formal": false,
+    "original_source_gold": 1,
+    "decision": "repair",
+    "record_id": "massive-en-us-00012",
+    "revised_row": {
+      "record_id": "massive-en-us-00012",
+      "family_id": "massive-1.1-utterance-12",
+      "language": "en",
+      "split": "train",
+      "target_index": 2,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "time to sleep"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "Choose the given candidate that best matches the user utterance's main intent. Use only the utterance; do not infer unmentioned requests.",
+            "candidates": [
+              {
+                "id": "iot_cleaning",
+                "text": "Operate a cleaning device"
+              },
+              {
+                "id": "iot_hue_lightoff",
+                "text": "Turn a smart light off"
+              },
+              {
+                "id": "sleep_time",
+                "text": "State that it is time to sleep"
+              },
+              {
+                "id": "iot_coffee",
+                "text": "Operate a coffee device"
+              },
+              {
+                "id": "iot_hue_lightchange",
+                "text": "Change smart-light settings or mode"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "en-US",
+        "official_id": "12",
+        "original_split": "train",
+        "original_label": "iot_hue_lightoff",
+        "original_scenario": "iot",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\en-US.jsonl",
+        "file_sha256": "C70F75C6A543A26E249EC383DF67733AD9B1066F6C0406C2E04A3F03356E407E",
+        "raw_record_sha256": "7952DE56BEE15AFDFBB7E96BDFE964144702F59BFCC6F7F4A9B1EB334239CD3F",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/12"
+    },
+    "evidence_quotes": [
+      "time to sleep"
+    ]
+  },
+  {
+    "human_review": "pending",
+    "reason": "原话是不完整的陈述，没有说明灯开始做什么，也未提出设备操作请求。缺失的动作无法从原文恢复，不能通过补充候选或调整指令唯一确定原意图。",
+    "formal": false,
+    "original_source_gold": 2,
+    "decision": "delete",
+    "record_id": "massive-en-us-00212",
+    "revised_row": null,
+    "evidence_quotes": [
+      "and the light began"
+    ]
+  },
+  {
+    "human_review": "pending",
+    "reason": "finished既可能表示完成列表中的任务，也可能表示完成列表的编写；原话没有明确请求创建、删除或查询列表。原话本身存在多义，无法忠实确定具体列表操作意图。",
+    "formal": false,
+    "original_source_gold": 3,
+    "decision": "delete",
+    "record_id": "massive-en-us-06204",
+    "revised_row": null,
+    "evidence_quotes": [
+      "i finished my to do list"
+    ]
+  },
+  {
+    "human_review": "pending",
+    "reason": "原话表达了不喜欢，但it的指代缺失，无法确认对象是否为音乐。修复音乐意图题需要补充上下文；改为识别一般的否定态度会绕开原题所需的对象判断，因此删除。",
+    "formal": false,
+    "original_source_gold": 1,
+    "decision": "delete",
+    "record_id": "massive-en-us-00143",
+    "revised_row": null,
+    "evidence_quotes": [
+      "i don't like it"
+    ]
+  },
+  {
+    "human_review": "pending",
+    "reason": "原话明确要求重复书中的最后一句，识别该动作无需确定书的具体身份或媒介。补入句子复述候选，并将有声书候选明确为开始播放，可保留原意图识别任务并区分两种动作。",
+    "formal": false,
+    "original_source_gold": 2,
+    "decision": "repair",
+    "record_id": "massive-en-us-03692",
+    "revised_row": {
+      "record_id": "massive-en-us-03692",
+      "family_id": "massive-1.1-utterance-3692",
+      "language": "en",
+      "split": "train",
+      "target_index": 3,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "please repeat the last sentence from that book"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "Choose the given candidate that best matches the user utterance's explicitly requested main action. Use only the utterance; do not infer unmentioned requests or playback context.",
+            "candidates": [
+              {
+                "id": "play_game",
+                "text": "Start or play a game"
+              },
+              {
+                "id": "play_music",
+                "text": "Play music"
+              },
+              {
+                "id": "play_audiobook",
+                "text": "Start playing an audiobook"
+              },
+              {
+                "id": "repeat_book_sentence",
+                "text": "Repeat the last sentence from a book"
+              },
+              {
+                "id": "play_podcasts",
+                "text": "Play a podcast"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "en-US",
+        "official_id": "3692",
+        "original_split": "train",
+        "original_label": "play_audiobook",
+        "original_scenario": "play",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\en-US.jsonl",
+        "file_sha256": "C70F75C6A543A26E249EC383DF67733AD9B1066F6C0406C2E04A3F03356E407E",
+        "raw_record_sha256": "337AA72C310005A3AEFE17A281BD85EAB072FF5BDC425E6D94F25E80BF9A9EC3",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/3692"
+    },
+    "evidence_quotes": [
+      "please repeat the last sentence from that book"
+    ]
+  },
+  {
+    "human_review": "pending",
+    "reason": "原话只有主题词，没有说明要开始游戏、查询游戏还是列出游戏。所请求的动作依赖缺失的上下文，不能唯一确定；增加“提及游戏”候选会将行动意图识别改为简单主题识别，因此删除。",
+    "formal": false,
+    "original_source_gold": 3,
+    "decision": "delete",
+    "record_id": "massive-en-us-06419",
+    "revised_row": null,
+    "evidence_quotes": [
+      "games"
+    ]
+  }
+]

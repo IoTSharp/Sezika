@@ -1,0 +1,2065 @@
+[
+  {
+    "record_id": "massive-en-us-03201",
+    "family_id": "massive-1.1-utterance-3201",
+    "language": "en",
+    "split": "train",
+    "target_index": 1,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "remind me if anything else happens"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "Choose the given candidate that best matches the user utterance's main intent. Use only the utterance; do not infer unmentioned requests.",
+          "candidates": [
+            {
+              "id": "calendar_remove",
+              "text": "Remove a calendar event"
+            },
+            {
+              "id": "conditional_reminder",
+              "text": "Request a reminder or notification when something else happens"
+            },
+            {
+              "id": "alarm_query",
+              "text": "Query existing alarms"
+            },
+            {
+              "id": "calendar_set",
+              "text": "Create a calendar event"
+            },
+            {
+              "id": "calendar_query",
+              "text": "Query calendar events"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "en-US",
+      "official_id": "3201",
+      "original_split": "train",
+      "original_label": "calendar_set",
+      "original_scenario": "calendar",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\en-US.jsonl",
+      "file_sha256": "C70F75C6A543A26E249EC383DF67733AD9B1066F6C0406C2E04A3F03356E407E",
+      "raw_record_sha256": "8D2E2302923B1E215F01CF1072091C80F70825B553B2D575BF420821DC89A95B",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/3201"
+  },
+  {
+    "record_id": "massive-en-us-10137",
+    "family_id": "massive-1.1-utterance-10137",
+    "language": "en",
+    "split": "train",
+    "target_index": 0,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "call mom"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "Choose the candidate that best matches the user utterance's main intent. Use only the utterance; do not infer unmentioned requests.",
+          "candidates": [
+            {
+              "id": "phone_call",
+              "text": "Make a phone call"
+            },
+            {
+              "id": "email_sendemail",
+              "text": "Send an email"
+            },
+            {
+              "id": "email_addcontact",
+              "text": "Add an email contact"
+            },
+            {
+              "id": "email_query",
+              "text": "Read or query email messages"
+            },
+            {
+              "id": "email_querycontact",
+              "text": "Query email-contact details"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "en-US",
+      "official_id": "10137",
+      "original_split": "train",
+      "original_label": "email_querycontact",
+      "original_scenario": "email",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\en-US.jsonl",
+      "file_sha256": "C70F75C6A543A26E249EC383DF67733AD9B1066F6C0406C2E04A3F03356E407E",
+      "raw_record_sha256": "9EA41B85937A4AE54952381C5C2EDBE9EEFC5908DA30CE9D29B2584E0F0E0BC9",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/10137"
+  },
+  {
+    "record_id": "massive-en-us-04539",
+    "family_id": "massive-1.1-utterance-4539",
+    "language": "en",
+    "split": "train",
+    "target_index": 2,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "i did not want you to send that text yet wait until i say send"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "Choose the candidate that best matches the user utterance's main intent. Use only the utterance; do not infer unmentioned requests.",
+          "candidates": [
+            {
+              "id": "email_querycontact",
+              "text": "Query email-contact details"
+            },
+            {
+              "id": "email_addcontact",
+              "text": "Add an email contact"
+            },
+            {
+              "id": "message_wait_to_send",
+              "text": "Defer sending a message until the user explicitly says to send it"
+            },
+            {
+              "id": "email_query",
+              "text": "Read or query email messages"
+            },
+            {
+              "id": "email_sendemail",
+              "text": "Send an email"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "en-US",
+      "official_id": "4539",
+      "original_split": "train",
+      "original_label": "email_sendemail",
+      "original_scenario": "email",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\en-US.jsonl",
+      "file_sha256": "C70F75C6A543A26E249EC383DF67733AD9B1066F6C0406C2E04A3F03356E407E",
+      "raw_record_sha256": "9E1C39E376598FA7E808FB105FF80FEEE3096010509769154529083E3A0D5FAC",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/4539"
+  },
+  {
+    "record_id": "massive-en-us-00036",
+    "family_id": "massive-1.1-utterance-36",
+    "language": "en",
+    "split": "train",
+    "target_index": 2,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "check my car is ready"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "Choose the candidate that best matches the user utterance's main intent. Use only the utterance; do not infer unmentioned requests.",
+          "candidates": [
+            {
+              "id": "general_joke",
+              "text": "Request a joke"
+            },
+            {
+              "id": "play_audiobook",
+              "text": "Play an audiobook"
+            },
+            {
+              "id": "vehicle_check_ready",
+              "text": "Check whether a vehicle is ready"
+            },
+            {
+              "id": "general_greet",
+              "text": "Greet the assistant"
+            },
+            {
+              "id": "general_quirky",
+              "text": "Conversational small talk or miscellaneous chat, excluding greetings and specific task requests"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "en-US",
+      "official_id": "36",
+      "original_split": "train",
+      "original_label": "general_quirky",
+      "original_scenario": "general",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\en-US.jsonl",
+      "file_sha256": "C70F75C6A543A26E249EC383DF67733AD9B1066F6C0406C2E04A3F03356E407E",
+      "raw_record_sha256": "E70221BF72E132372A5BD008BABF5AA35FEAE0B7ADC03E7F3866149E17D50904",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/36"
+  },
+  {
+    "record_id": "massive-en-us-00012",
+    "family_id": "massive-1.1-utterance-12",
+    "language": "en",
+    "split": "train",
+    "target_index": 2,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "time to sleep"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "Choose the given candidate that best matches the user utterance's main intent. Use only the utterance; do not infer unmentioned requests.",
+          "candidates": [
+            {
+              "id": "iot_hue_lightoff",
+              "text": "Turn a smart light off"
+            },
+            {
+              "id": "iot_hue_lightchange",
+              "text": "Change smart-light settings or mode"
+            },
+            {
+              "id": "sleep_time",
+              "text": "State that it is time to sleep"
+            },
+            {
+              "id": "iot_coffee",
+              "text": "Operate a coffee device"
+            },
+            {
+              "id": "iot_cleaning",
+              "text": "Operate a cleaning device"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "en-US",
+      "official_id": "12",
+      "original_split": "train",
+      "original_label": "iot_hue_lightoff",
+      "original_scenario": "iot",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\en-US.jsonl",
+      "file_sha256": "C70F75C6A543A26E249EC383DF67733AD9B1066F6C0406C2E04A3F03356E407E",
+      "raw_record_sha256": "7952DE56BEE15AFDFBB7E96BDFE964144702F59BFCC6F7F4A9B1EB334239CD3F",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/12"
+  },
+  {
+    "record_id": "massive-en-us-03692",
+    "family_id": "massive-1.1-utterance-3692",
+    "language": "en",
+    "split": "train",
+    "target_index": 4,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "please repeat the last sentence from that book"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "Choose the given candidate that best matches the user utterance's explicitly requested main action. Use only the utterance; do not infer unmentioned requests or playback context.",
+          "candidates": [
+            {
+              "id": "play_audiobook",
+              "text": "Start playing an audiobook"
+            },
+            {
+              "id": "play_game",
+              "text": "Start or play a game"
+            },
+            {
+              "id": "play_music",
+              "text": "Play music"
+            },
+            {
+              "id": "play_podcasts",
+              "text": "Play a podcast"
+            },
+            {
+              "id": "repeat_book_sentence",
+              "text": "Repeat the last sentence from a book"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "en-US",
+      "official_id": "3692",
+      "original_split": "train",
+      "original_label": "play_audiobook",
+      "original_scenario": "play",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\en-US.jsonl",
+      "file_sha256": "C70F75C6A543A26E249EC383DF67733AD9B1066F6C0406C2E04A3F03356E407E",
+      "raw_record_sha256": "337AA72C310005A3AEFE17A281BD85EAB072FF5BDC425E6D94F25E80BF9A9EC3",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/3692"
+  },
+  {
+    "record_id": "massive-en-us-03891",
+    "family_id": "massive-1.1-utterance-3891",
+    "language": "en",
+    "split": "train",
+    "target_index": 4,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "go back"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "Choose the given candidate that best matches the user utterance's main intent. Use only the utterance; do not infer unmentioned requests.",
+          "candidates": [
+            {
+              "id": "play_audiobook",
+              "text": "Play an audiobook"
+            },
+            {
+              "id": "play_podcasts",
+              "text": "Play a podcast"
+            },
+            {
+              "id": "play_music",
+              "text": "Play music"
+            },
+            {
+              "id": "play_game",
+              "text": "Start or play a game"
+            },
+            {
+              "id": "go_back",
+              "text": "Go back or return to a previous state or step"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "en-US",
+      "official_id": "3891",
+      "original_split": "train",
+      "original_label": "play_podcasts",
+      "original_scenario": "play",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\en-US.jsonl",
+      "file_sha256": "C70F75C6A543A26E249EC383DF67733AD9B1066F6C0406C2E04A3F03356E407E",
+      "raw_record_sha256": "A5A7B30492A3F45879A0D54D578691E7B8DAE0452B3941CE4795625103A6D8B1",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/3891"
+  },
+  {
+    "record_id": "massive-en-us-12995",
+    "family_id": "massive-1.1-utterance-12995",
+    "language": "en",
+    "split": "train",
+    "target_index": 2,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "send a message on facebook to pending friend requests that my friend list is full and i will be creating a new profile soon"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "Choose the given candidate that best matches the user utterance's main intent. Use only the utterance; do not infer unmentioned requests.",
+          "candidates": [
+            {
+              "id": "social_query",
+              "text": "Read or query social-network posts"
+            },
+            {
+              "id": "email_addcontact",
+              "text": "Add an email contact"
+            },
+            {
+              "id": "social_message",
+              "text": "Send a social-network message"
+            },
+            {
+              "id": "social_post",
+              "text": "Publish a social-network post"
+            },
+            {
+              "id": "email_query",
+              "text": "Read or query email messages"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "en-US",
+      "official_id": "12995",
+      "original_split": "train",
+      "original_label": "social_post",
+      "original_scenario": "social",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\en-US.jsonl",
+      "file_sha256": "C70F75C6A543A26E249EC383DF67733AD9B1066F6C0406C2E04A3F03356E407E",
+      "raw_record_sha256": "9DE952C2EFF025233145E2A7D8CBC65D39F809796C9315A41255056A5AE49AD2",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/12995"
+  },
+  {
+    "record_id": "massive-zh-cn-03601",
+    "family_id": "massive-1.1-utterance-3601",
+    "language": "zh",
+    "split": "train",
+    "target_index": 0,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "在下午一点提醒我"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；不推测未提及的请求。按请求的操作分类：“设置定时提醒”指安排到时提醒，“创建日历事件”指在日历中建立事项；不要将提醒请求自动视为创建日历事项。",
+          "candidates": [
+            {
+              "id": "reminder_set",
+              "text": "设置定时提醒"
+            },
+            {
+              "id": "calendar_set",
+              "text": "创建日历事件"
+            },
+            {
+              "id": "alarm_query",
+              "text": "查询已有闹钟"
+            },
+            {
+              "id": "calendar_query",
+              "text": "查询日历事件"
+            },
+            {
+              "id": "calendar_remove",
+              "text": "删除日历事件"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "zh-CN",
+      "official_id": "3601",
+      "original_split": "train",
+      "original_label": "calendar_set",
+      "original_scenario": "calendar",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+      "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+      "raw_record_sha256": "4DA1A175128F3600310F6AA5858FFA50ECCEDC427C3EF149A2F860338BE930DC",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/3601"
+  },
+  {
+    "record_id": "massive-zh-cn-09913",
+    "family_id": "massive-1.1-utterance-9913",
+    "language": "zh",
+    "split": "train",
+    "target_index": 2,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "西红柿汤需要什么材料"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；不推测未提及的请求。分类标准：“获取食谱”包含查询具体菜品的用料或制作步骤；“询问烹饪知识”用于一般烹饪原理、技巧或器具问题，不包含具体菜品的用料或制作步骤查询。",
+          "candidates": [
+            {
+              "id": "cooking_query",
+              "text": "询问烹饪知识"
+            },
+            {
+              "id": "qa_definition",
+              "text": "查询词语或概念定义"
+            },
+            {
+              "id": "cooking_recipe",
+              "text": "获取食谱"
+            },
+            {
+              "id": "qa_currency",
+              "text": "查询货币或汇率"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "zh-CN",
+      "official_id": "9913",
+      "original_split": "train",
+      "original_label": "cooking_recipe",
+      "original_scenario": "cooking",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+      "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+      "raw_record_sha256": "1EAA8F1E3154B0BECE5ABED0FBA96C508B20EEB62F720AF85EBC5D74DFA60725",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/9913"
+  },
+  {
+    "record_id": "massive-zh-cn-00037",
+    "family_id": "massive-1.1-utterance-37",
+    "language": "zh",
+    "split": "train",
+    "target_index": 0,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "检查我的笔记本在工作吗"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；不推测未提及的请求。",
+          "candidates": [
+            {
+              "id": "device_status_check",
+              "text": "检查设备运行状态"
+            },
+            {
+              "id": "general_greet",
+              "text": "向助手打招呼"
+            },
+            {
+              "id": "general_joke",
+              "text": "让助手讲笑话"
+            },
+            {
+              "id": "general_quirky",
+              "text": "闲聊或非任务型对话"
+            },
+            {
+              "id": "play_audiobook",
+              "text": "播放有声书"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "zh-CN",
+      "official_id": "37",
+      "original_split": "train",
+      "original_label": "general_quirky",
+      "original_scenario": "general",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+      "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+      "raw_record_sha256": "3DED35E0BBB5C1777C393CA058909DEAFFF02325E9D84EE422D970FAD2127BC7",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/37"
+  },
+  {
+    "record_id": "massive-zh-cn-09665",
+    "family_id": "massive-1.1-utterance-9665",
+    "language": "zh",
+    "split": "train",
+    "target_index": 3,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "把有声书倒退三十秒"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；不推测未提及的请求。",
+          "candidates": [
+            {
+              "id": "play_music",
+              "text": "播放音乐"
+            },
+            {
+              "id": "play_game",
+              "text": "开始或玩游戏"
+            },
+            {
+              "id": "play_podcasts",
+              "text": "播放播客"
+            },
+            {
+              "id": "play_audiobook",
+              "text": "播放有声书或控制其播放进度"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "zh-CN",
+      "official_id": "9665",
+      "original_split": "train",
+      "original_label": "play_audiobook",
+      "original_scenario": "play",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+      "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+      "raw_record_sha256": "78FCD324C7F12D7DFAEAF74271BCD146C61CA388A864F391555FF60DE7F4C708",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/9665"
+  },
+  {
+    "record_id": "massive-zh-cn-00913",
+    "family_id": "massive-1.1-utterance-913",
+    "language": "zh",
+    "split": "train",
+    "target_index": 2,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "打开 pandora"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；按明确表达的操作分类，不推测对象类别或未提及的请求。",
+          "candidates": [
+            {
+              "id": "play_radio",
+              "text": "播放广播"
+            },
+            {
+              "id": "play_audiobook",
+              "text": "播放有声书"
+            },
+            {
+              "id": "open_object",
+              "text": "打开指定对象"
+            },
+            {
+              "id": "play_game",
+              "text": "开始或玩游戏"
+            },
+            {
+              "id": "play_music",
+              "text": "播放音乐"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "zh-CN",
+      "official_id": "913",
+      "original_split": "train",
+      "original_label": "play_radio",
+      "original_scenario": "play",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+      "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+      "raw_record_sha256": "DC55C2C3B83B51736E6C8618B2327B868C80E220A2FE34418B5763556D530EB8",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/913"
+  },
+  {
+    "record_id": "massive-zh-cn-02996",
+    "family_id": "massive-1.1-utterance-2996",
+    "language": "zh",
+    "split": "train",
+    "target_index": 2,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "股市有什么新鲜事"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；区分股票价格或行情走势查询与股市新闻查询，一般事实知识类别不包含其他候选已列出的查询类型，不推测未提及的请求。",
+          "candidates": [
+            {
+              "id": "qa_definition",
+              "text": "查询词语或概念定义"
+            },
+            {
+              "id": "qa_stock",
+              "text": "查询股票价格或行情走势（不含新闻查询）"
+            },
+            {
+              "id": "qa_stock_news",
+              "text": "查询股市新闻或最新消息"
+            },
+            {
+              "id": "qa_currency",
+              "text": "查询货币或汇率"
+            },
+            {
+              "id": "qa_factoid",
+              "text": "询问股票行情、货币或汇率、词语或概念定义及新闻以外的一般事实知识"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "zh-CN",
+      "official_id": "2996",
+      "original_split": "train",
+      "original_label": "qa_stock",
+      "original_scenario": "qa",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+      "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+      "raw_record_sha256": "58F3D490D86434CC93EF1E4AEC853D628EA9507F6E25BC9FACF2D335D61DBEC7",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/2996"
+  },
+  {
+    "record_id": "massive-zh-cn-00052",
+    "family_id": "massive-1.1-utterance-52",
+    "language": "zh",
+    "split": "train",
+    "target_index": 1,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "评分最高的中餐外送"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；区分按评分查找外卖、订购外卖、查询已有订单或配送情况，以及烹饪知识和食谱请求，不推测未提及的操作。",
+          "candidates": [
+            {
+              "id": "cooking_query",
+              "text": "询问食谱以外的烹饪知识"
+            },
+            {
+              "id": "takeaway_rating_query",
+              "text": "按评分查询或推荐外卖选项"
+            },
+            {
+              "id": "takeaway_query",
+              "text": "查询外卖订单或配送情况"
+            },
+            {
+              "id": "takeaway_order",
+              "text": "订购外卖"
+            },
+            {
+              "id": "cooking_recipe",
+              "text": "获取食谱"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "zh-CN",
+      "official_id": "52",
+      "original_split": "train",
+      "original_label": "takeaway_query",
+      "original_scenario": "takeaway",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+      "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+      "raw_record_sha256": "F4F10A7DDC6BDBA61980693A9FCCFCDC7796396D6389392AD0095AED8C7FF189",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/52"
+  },
+  {
+    "record_id": "massive-zh-cn-00006",
+    "family_id": "massive-1.1-utterance-6",
+    "language": "zh",
+    "split": "train",
+    "target_index": 0,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "欧丽暂停十秒"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；不推测未提及的请求。",
+          "candidates": [
+            {
+              "id": "audio_pause",
+              "text": "暂停或暂时停止"
+            },
+            {
+              "id": "audio_volume_up",
+              "text": "提高音量"
+            },
+            {
+              "id": "audio_volume_down",
+              "text": "降低音量"
+            },
+            {
+              "id": "audio_volume_mute",
+              "text": "将声音静音"
+            },
+            {
+              "id": "audio_volume_other",
+              "text": "其他音量设置请求"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "zh-CN",
+      "official_id": "6",
+      "original_split": "train",
+      "original_label": "audio_volume_mute",
+      "original_scenario": "audio",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+      "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+      "raw_record_sha256": "A2B45E41F45EEF33B2173D68B2E809D55D1904F5306750565FDF47B22F27167B",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/6"
+  },
+  {
+    "record_id": "massive-zh-cn-01049",
+    "family_id": "massive-1.1-utterance-1049",
+    "language": "zh",
+    "split": "train",
+    "target_index": 2,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "改变音频设置"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；不推测未提及的请求或具体设置参数。",
+          "candidates": [
+            {
+              "id": "audio_volume_up",
+              "text": "提高音量"
+            },
+            {
+              "id": "audio_volume_down",
+              "text": "降低音量"
+            },
+            {
+              "id": "audio_settings_general",
+              "text": "修改音频设置，未指定具体参数"
+            },
+            {
+              "id": "audio_volume_other",
+              "text": "其他明确针对音量的设置请求（不含降低、提高或静音）"
+            },
+            {
+              "id": "audio_volume_mute",
+              "text": "将声音静音"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "zh-CN",
+      "official_id": "1049",
+      "original_split": "train",
+      "original_label": "audio_volume_other",
+      "original_scenario": "audio",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+      "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+      "raw_record_sha256": "D02E3BC2203A070D88BB5510ED3D55333DC094067003AF7A2892DF76ADCDABC0",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/1049"
+  },
+  {
+    "record_id": "massive-en-us-00115",
+    "family_id": "massive-1.1-utterance-115",
+    "language": "en",
+    "split": "development",
+    "target_index": 1,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "set the volume to low"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "Choose the given candidate that best matches the volume operation explicitly requested in the utterance. For these candidates, increasing or decreasing volume requires an explicit relative change; specifying a target level alone is an absolute setting. Do not infer the current volume or unmentioned requests.",
+          "candidates": [
+            {
+              "id": "audio_volume_mute",
+              "text": "Mute audio"
+            },
+            {
+              "id": "audio_volume_other",
+              "text": "Other audio-volume settings without a request to mute or explicitly increase or decrease the volume"
+            },
+            {
+              "id": "audio_volume_down",
+              "text": "Explicitly decrease audio volume relative to its current level"
+            },
+            {
+              "id": "audio_volume_up",
+              "text": "Explicitly increase audio volume relative to its current level"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "en-US",
+      "official_id": "115",
+      "original_split": "dev",
+      "original_label": "audio_volume_down",
+      "original_scenario": "audio",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\en-US.jsonl",
+      "file_sha256": "C70F75C6A543A26E249EC383DF67733AD9B1066F6C0406C2E04A3F03356E407E",
+      "raw_record_sha256": "18F55AD91035785221E2DC4CE49612DDAF9B117056BA8DFEEE98F9749085698F",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/115"
+  },
+  {
+    "record_id": "massive-en-us-00676",
+    "family_id": "massive-1.1-utterance-676",
+    "language": "en",
+    "split": "development",
+    "target_index": 2,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "set time zone"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "Choose the given candidate that best matches the user utterance's main intent. Use only the utterance; do not infer unmentioned requests.",
+          "candidates": [
+            {
+              "id": "datetime_convert",
+              "text": "Convert a date or time between formats or zones"
+            },
+            {
+              "id": "alarm_query",
+              "text": "Query existing alarms"
+            },
+            {
+              "id": "datetime_set_timezone",
+              "text": "Set the time zone"
+            },
+            {
+              "id": "alarm_remove",
+              "text": "Remove or cancel an alarm"
+            },
+            {
+              "id": "datetime_query",
+              "text": "Ask for the current date or time"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "en-US",
+      "official_id": "676",
+      "original_split": "dev",
+      "original_label": "datetime_convert",
+      "original_scenario": "datetime",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\en-US.jsonl",
+      "file_sha256": "C70F75C6A543A26E249EC383DF67733AD9B1066F6C0406C2E04A3F03356E407E",
+      "raw_record_sha256": "1EC289B7BEAC6EA2741B4BF862B4FEA8192C0BE0845179D9FFC234F112127259",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/676"
+  },
+  {
+    "record_id": "massive-zh-cn-00042",
+    "family_id": "massive-1.1-utterance-42",
+    "language": "zh",
+    "split": "development",
+    "target_index": 4,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "告诉我现在的可用内存状况"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；不推测未提及的请求。",
+          "candidates": [
+            {
+              "id": "general_joke",
+              "text": "让助手讲笑话"
+            },
+            {
+              "id": "play_audiobook",
+              "text": "播放有声书"
+            },
+            {
+              "id": "general_quirky",
+              "text": "闲聊或非任务型对话（不含打招呼）"
+            },
+            {
+              "id": "general_greet",
+              "text": "向助手打招呼"
+            },
+            {
+              "id": "memory_query",
+              "text": "查询当前可用内存状况"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "zh-CN",
+      "official_id": "42",
+      "original_split": "dev",
+      "original_label": "general_quirky",
+      "original_scenario": "general",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+      "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+      "raw_record_sha256": "04981F59D66CD16E00DB6D468912285936CFB7CDB8D96225F2E64F1EB071AB4E",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/42"
+  },
+  {
+    "record_id": "massive-zh-cn-00697",
+    "family_id": "massive-1.1-utterance-697",
+    "language": "zh",
+    "split": "development",
+    "target_index": 4,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "你能点亮灯光吗"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；不推测未提及的请求。",
+          "candidates": [
+            {
+              "id": "iot_hue_lightup",
+              "text": "调亮智能灯"
+            },
+            {
+              "id": "iot_coffee",
+              "text": "操作咖啡设备"
+            },
+            {
+              "id": "iot_hue_lightchange",
+              "text": "更改智能灯的其他设置或模式（不含开关及亮度调节）"
+            },
+            {
+              "id": "iot_cleaning",
+              "text": "操作清洁设备"
+            },
+            {
+              "id": "iot_light_on",
+              "text": "开启灯光"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "zh-CN",
+      "official_id": "697",
+      "original_split": "dev",
+      "original_label": "iot_hue_lightup",
+      "original_scenario": "iot",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+      "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+      "raw_record_sha256": "BCF8AB6BA3981662676C0FB4D31A4336FE257DDCA953B68C06E7E641BFD35C57",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/697"
+  },
+  {
+    "record_id": "massive-zh-cn-10449",
+    "family_id": "massive-1.1-utterance-10449",
+    "language": "zh",
+    "split": "development",
+    "target_index": 2,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "取消下周去包头的旅行"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；不推测未提及的请求，也不假定旅行属于某个清单或日历记录。",
+          "candidates": [
+            {
+              "id": "lists_query",
+              "text": "查询清单"
+            },
+            {
+              "id": "lists_createoradd",
+              "text": "创建清单或添加条目"
+            },
+            {
+              "id": "travel_cancel",
+              "text": "取消旅行安排"
+            },
+            {
+              "id": "calendar_query",
+              "text": "查询日历事件"
+            },
+            {
+              "id": "lists_remove",
+              "text": "删除清单或清单条目"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "zh-CN",
+      "official_id": "10449",
+      "original_split": "dev",
+      "original_label": "lists_remove",
+      "original_scenario": "lists",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+      "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+      "raw_record_sha256": "89F5E131280E10F1F96ED8BB4B526C0BD9F2D125493D661658607CB2214D6D52",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/10449"
+  },
+  {
+    "record_id": "massive-zh-cn-01179",
+    "family_id": "massive-1.1-utterance-1179",
+    "language": "zh",
+    "split": "development",
+    "target_index": 0,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "别给我播放任何乡村音乐"
+      },
+      "questions": [
+        {
+          "id": "intent",
+          "type": "choice",
+          "instruction": "只依据用户原话明确表达的请求或评价，选择给定候选中最符合其主要意图的一项；不推测未提及的请求或隐含好恶。音乐偏好候选用于直接表达喜欢或不喜欢；播放设置候选用于要求改变播放方式或可播放的内容范围。",
+          "candidates": [
+            {
+              "id": "music_settings",
+              "text": "设置音乐播放方式或可播放的内容范围"
+            },
+            {
+              "id": "music_dislikeness",
+              "text": "表达不喜欢某音乐"
+            },
+            {
+              "id": "music_likeness",
+              "text": "表达喜欢某音乐"
+            },
+            {
+              "id": "music_query",
+              "text": "查询音乐信息"
+            }
+          ]
+        }
+      ]
+    },
+    "source": {
+      "dataset": "AmazonScience/MASSIVE",
+      "version": "1.1",
+      "locale": "zh-CN",
+      "official_id": "1179",
+      "original_split": "dev",
+      "original_label": "music_dislikeness",
+      "original_scenario": "music",
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+      "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+      "raw_record_sha256": "84DA8B0DC0EECCBCDC97BC0BE2BE708C16FD33E1CBE9C7D67FAD8A600EECFE4A",
+      "license": "CC-BY-4.0",
+      "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/1179"
+  },
+  {
+    "record_id": "boolq-train-row-003",
+    "family_id": "boolq-passage-F51033E88850895E888A772AB7FF0A4DB00CA2964011BA9292DDD0115CB6C232",
+    "language": "en",
+    "split": "train",
+    "target_index": 1,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "Powdered sugar, also called confectioners' sugar, icing sugar, and icing cake, is a finely ground sugar produced by milling granulated sugar into a powdered state. It usually contains a small amount of anti-caking agent to prevent clumping and improve flow. Although most often produced in a factory, powdered sugar can also be made by processing ordinary granulated sugar in a coffee grinder, or by crushing it by hand in a mortar and pestle."
+      },
+      "questions": [
+        {
+          "id": "evidence_answer",
+          "type": "boolean",
+          "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge.",
+          "statement": "Is confectioners' sugar the same as powdered sugar?",
+          "when_false": "The answer to the question is No based on the passage",
+          "when_true": "The answer to the question is Yes based on the passage"
+        }
+      ]
+    },
+    "source": {
+      "dataset": "google/boolq",
+      "original_dataset": "BoolQ",
+      "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+      "viewer_snapshot_revision_bound": false,
+      "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+      "official_id": "train/3",
+      "original_split": "train",
+      "original_label": true,
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-train.rows.json",
+      "file_sha256": "AFE3CFA22F2271796A0AC4E837623F01ED7A3AF2794382F0A183499FD561C674",
+      "raw_record_sha256": "7204F822F66213772F79A7E6F55775AE2FDC18FE118977DEF78AD6C7A30F4D86",
+      "license": "CC-BY-SA-3.0",
+      "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "google/boolq/train/3"
+  },
+  {
+    "record_id": "boolq-train-row-013",
+    "family_id": "boolq-passage-738BC5E6995B2E8856B64D91DBEE2385C67DAE12916AB558FBFD7A2DC937BB0F",
+    "language": "en",
+    "split": "train",
+    "target_index": 1,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "Calcium carbide is a chemical compound with the chemical formula of CaC. Its main use industrially is in the production of acetylene and calcium cyanamide."
+      },
+      "questions": [
+        {
+          "id": "evidence_answer",
+          "type": "boolean",
+          "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge. The statement field is a question, not an assertion.",
+          "statement": "Is calcium carbide used in the production of acetylene?",
+          "when_false": "The answer to the question is No based on the passage",
+          "when_true": "The answer to the question is Yes based on the passage"
+        }
+      ]
+    },
+    "source": {
+      "dataset": "google/boolq",
+      "original_dataset": "BoolQ",
+      "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+      "viewer_snapshot_revision_bound": false,
+      "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+      "official_id": "train/13",
+      "original_split": "train",
+      "original_label": true,
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-train.rows.json",
+      "file_sha256": "AFE3CFA22F2271796A0AC4E837623F01ED7A3AF2794382F0A183499FD561C674",
+      "raw_record_sha256": "14BDB3E70863BDF129AF611E11B6817B5F18FB5D860EB7B3BE220B7419CB5D5E",
+      "license": "CC-BY-SA-3.0",
+      "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "google/boolq/train/13"
+  },
+  {
+    "record_id": "boolq-train-row-027",
+    "family_id": "boolq-passage-BB1D0A05E4FD6D0D452D6BB8009B537360788BEA7A6A66CA7521F0292F63189E",
+    "language": "en",
+    "split": "train",
+    "target_index": 1,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "As of 2014 the contracting parties to the EEA are 3 of the 4 EFTA member states and 27 of the 28 EU member states. The 28th and newest EU member, Croatia, finished negotiating their accession to the EEA in November 2013, and since 12 April 2014 is provisionally applying the agreement pending its ratification by all EEA member states."
+      },
+      "questions": [
+        {
+          "id": "evidence_answer",
+          "type": "boolean",
+          "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge. The statement field is a question, not an assertion.",
+          "statement": "As of 12 April 2014, was Croatia participating in the European Economic Area through provisional application of the EEA agreement?",
+          "when_false": "The answer to the question is No based on the passage",
+          "when_true": "The answer to the question is Yes based on the passage"
+        }
+      ]
+    },
+    "source": {
+      "dataset": "google/boolq",
+      "original_dataset": "BoolQ",
+      "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+      "viewer_snapshot_revision_bound": false,
+      "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+      "official_id": "train/27",
+      "original_split": "train",
+      "original_label": true,
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-train.rows.json",
+      "file_sha256": "AFE3CFA22F2271796A0AC4E837623F01ED7A3AF2794382F0A183499FD561C674",
+      "raw_record_sha256": "80AB71495C491733B16ADC407107F6B386D7681948AADE7A377E794E434A8EC3",
+      "license": "CC-BY-SA-3.0",
+      "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "google/boolq/train/27"
+  },
+  {
+    "record_id": "boolq-train-row-032",
+    "family_id": "boolq-passage-E9D3DB3F7CEC2404AABE2022205B6A1B6AD007DAB71BCDB258A708EA8496EAD8",
+    "language": "en",
+    "split": "train",
+    "target_index": 1,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "The tower's tilt began during construction in the 12th century, caused by an inadequate foundation on ground too soft on one side to properly support the structure's weight. The tilt increased in the decades before the structure was completed in the 14th century. It gradually increased until the structure was stabilized (and the tilt partially corrected) by efforts in the late 20th and early 21st centuries."
+      },
+      "questions": [
+        {
+          "id": "evidence_answer",
+          "type": "boolean",
+          "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge. The statement field is a question, not an assertion.",
+          "statement": "Did the Leaning Tower of Pisa begin to tilt during construction?",
+          "when_false": "The answer to the question is No based on the passage",
+          "when_true": "The answer to the question is Yes based on the passage"
+        }
+      ]
+    },
+    "source": {
+      "dataset": "google/boolq",
+      "original_dataset": "BoolQ",
+      "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+      "viewer_snapshot_revision_bound": false,
+      "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+      "official_id": "train/32",
+      "original_split": "train",
+      "original_label": false,
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-train.rows.json",
+      "file_sha256": "AFE3CFA22F2271796A0AC4E837623F01ED7A3AF2794382F0A183499FD561C674",
+      "raw_record_sha256": "14B7099CD25A23A700A98971B0FB0CF5EED78EEBBA3361EF40447FA8DAD7A84D",
+      "license": "CC-BY-SA-3.0",
+      "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "google/boolq/train/32"
+  },
+  {
+    "record_id": "boolq-train-row-050",
+    "family_id": "boolq-passage-94EC609B14DCADFA37F16DD21388CFD48A9C0FD5D5CF8C1922D01A48FE198BC7",
+    "language": "en",
+    "split": "train",
+    "target_index": 1,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "The euro sign (€) is the currency sign used for the euro, the official currency of the Eurozone in the European Union (EU). The design was presented to the public by the European Commission on 12 December 1996. The international three-letter code (according to ISO standard ISO 4217) for the euro is EUR. In Unicode it is encoded at U+20AC € euro sign (HTML &#8364; &euro; ). In English, the sign precedes the value (for instance, €10, not 10 €, unlike most other European languages). In some style guides, but not others, the euro sign is unspaced."
+      },
+      "questions": [
+        {
+          "id": "evidence_answer",
+          "type": "boolean",
+          "instruction": "Answer the yes/no question in the statement using only the passage. true means Yes; false means No. Do not use outside knowledge. The statement field contains a question, not an assertion.",
+          "statement": "In English, does the euro sign go before the number?",
+          "when_false": "The answer to the question is No based on the passage",
+          "when_true": "The answer to the question is Yes based on the passage"
+        }
+      ]
+    },
+    "source": {
+      "dataset": "google/boolq",
+      "original_dataset": "BoolQ",
+      "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+      "viewer_snapshot_revision_bound": false,
+      "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+      "official_id": "train/50",
+      "original_split": "train",
+      "original_label": true,
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-train.rows.json",
+      "file_sha256": "AFE3CFA22F2271796A0AC4E837623F01ED7A3AF2794382F0A183499FD561C674",
+      "raw_record_sha256": "0AE0613E14C6DE7A80B685479E619FBA0E6ED3BAD77879E9B3BBC72A99B859C3",
+      "license": "CC-BY-SA-3.0",
+      "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "google/boolq/train/50"
+  },
+  {
+    "record_id": "boolq-train-row-056",
+    "family_id": "boolq-passage-CAC7D3123743E16A25BE51898A3B354153DC689D9825136109A1D5527F1537C9",
+    "language": "en",
+    "split": "train",
+    "target_index": 0,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "The Air Force usually does not have fighter aircraft escort the presidential aircraft over the United States but it has occurred, for example during the attack on the World Trade Center."
+      },
+      "questions": [
+        {
+          "id": "evidence_answer",
+          "type": "boolean",
+          "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge. Treat statement as a question, not an assertion.",
+          "statement": "Does the Air Force usually have fighter aircraft escort the presidential aircraft over the United States?",
+          "when_false": "The answer to the question is No based on the passage",
+          "when_true": "The answer to the question is Yes based on the passage"
+        }
+      ]
+    },
+    "source": {
+      "dataset": "google/boolq",
+      "original_dataset": "BoolQ",
+      "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+      "viewer_snapshot_revision_bound": false,
+      "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+      "official_id": "train/56",
+      "original_split": "train",
+      "original_label": false,
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-train.rows.json",
+      "file_sha256": "AFE3CFA22F2271796A0AC4E837623F01ED7A3AF2794382F0A183499FD561C674",
+      "raw_record_sha256": "FE9BE3CACD210A1A67AD3CF857B2E366511B2E604314C26B4575D332306EA998",
+      "license": "CC-BY-SA-3.0",
+      "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "google/boolq/train/56"
+  },
+  {
+    "record_id": "boolq-train-row-075",
+    "family_id": "boolq-passage-D2521EDF563F8ECC22DB1C43541722A0FD919F5F61DF9830FCA9B8950F364423",
+    "language": "en",
+    "split": "train",
+    "target_index": 0,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "Gov. Perry also signed H.B. 1815 after passage by the 2007 Legislature, a bill that allows any Texas resident to carry a handgun in the resident's motor vehicle without a CHL or other permit. The bill revised Chapter 46, Section 2 of the Penal Code to state that it is in fact not ``Unlawful Carry of a Weapon'', as defined by the statute, for a person to carry a handgun while in a motor vehicle they own or control, or to carry while heading directly from the person's home to that car. However, lawful carry while in a vehicle requires these four critical qualifiers: (1) the weapon must not be in plain sight (in Texas law, ``plain sight'' and ``concealed'' are mutually exclusive opposing terms); (2) the carrier cannot be involved in criminal activities, other than Class C traffic misdemeanors; (3) the carrier cannot be prohibited by state or federal law from possessing a firearm; and (4) the carrier cannot be a member of a criminal gang."
+      },
+      "questions": [
+        {
+          "id": "evidence_answer",
+          "type": "boolean",
+          "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge. Treat statement as a question, not an assertion.",
+          "statement": "Under H.B. 1815, is it illegal for a Texas resident who meets all four lawful-carry conditions listed in the passage to carry a handgun in a motor vehicle they own or control?",
+          "when_false": "The answer to the question is No based on the passage",
+          "when_true": "The answer to the question is Yes based on the passage"
+        }
+      ]
+    },
+    "source": {
+      "dataset": "google/boolq",
+      "original_dataset": "BoolQ",
+      "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+      "viewer_snapshot_revision_bound": false,
+      "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+      "official_id": "train/75",
+      "original_split": "train",
+      "original_label": false,
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-train.rows.json",
+      "file_sha256": "AFE3CFA22F2271796A0AC4E837623F01ED7A3AF2794382F0A183499FD561C674",
+      "raw_record_sha256": "9E3D1140D0508CA023A654BEBEF72D304C8DA41409AD677B72DFB2ED16CD9EA3",
+      "license": "CC-BY-SA-3.0",
+      "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "google/boolq/train/75"
+  },
+  {
+    "record_id": "boolq-train-row-077",
+    "family_id": "boolq-passage-CC2CC6B66CF9118FFADE00712F5D36235B967FB48B9D1AE83A75346D0700F74B",
+    "language": "en",
+    "split": "train",
+    "target_index": 1,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "The hypoglossal nerve is the twelfth cranial nerve, and innervates all the extrinsic and intrinsic muscles of the tongue, except for the palatoglossus which is innervated by the vagus nerve. It is a nerve with a solely motor function. The nerve arises from the hypoglossal nucleus in the brain stem as a number of small rootlets, passes through the hypoglossal canal and down through the neck, and eventually passes up again over the tongue muscles it supplies into the tongue. There are two hypoglossal nerves in the body: one on the left, and one on the right."
+      },
+      "questions": [
+        {
+          "id": "evidence_answer",
+          "type": "boolean",
+          "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge. Treat statement as a question, not an assertion.",
+          "statement": "Do both the hypoglossal nerve and the vagus nerve innervate muscles of the tongue?",
+          "when_false": "The answer to the question is No based on the passage",
+          "when_true": "The answer to the question is Yes based on the passage"
+        }
+      ]
+    },
+    "source": {
+      "dataset": "google/boolq",
+      "original_dataset": "BoolQ",
+      "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+      "viewer_snapshot_revision_bound": false,
+      "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+      "official_id": "train/77",
+      "original_split": "train",
+      "original_label": false,
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-train.rows.json",
+      "file_sha256": "AFE3CFA22F2271796A0AC4E837623F01ED7A3AF2794382F0A183499FD561C674",
+      "raw_record_sha256": "4385588902E124AA6B2E70596C2FFC104EBBE301D6A7D2E194BDD6F87B8AFA83",
+      "license": "CC-BY-SA-3.0",
+      "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "google/boolq/train/77"
+  },
+  {
+    "record_id": "boolq-validation-row-000",
+    "family_id": "boolq-passage-E4C26DD7E6545D7BC194CDE932BB1D87330733C71FF6122491564C4F2E7E6DA4",
+    "language": "en",
+    "split": "development",
+    "target_index": 0,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "All biomass goes through at least some of these steps: it needs to be grown, collected, dried, fermented, distilled, and burned. All of these steps require resources and an infrastructure. The total amount of energy input into the process compared to the energy released by burning the resulting ethanol fuel is known as the energy balance (or ``energy returned on energy invested''). Figures compiled in a 2007 report by National Geographic Magazine point to modest results for corn ethanol produced in the US: one unit of fossil-fuel energy is required to create 1.3 energy units from the resulting ethanol. The energy balance for sugarcane ethanol produced in Brazil is more favorable, with one unit of fossil-fuel energy required to create 8 from the ethanol. Energy balance estimates are not easily produced, thus numerous such reports have been generated that are contradictory. For instance, a separate survey reports that production of ethanol from sugarcane, which requires a tropical climate to grow productively, returns from 8 to 9 units of energy for each unit expended, as compared to corn, which only returns about 1.34 units of fuel energy for each unit of energy expended. A 2006 University of California Berkeley study, after analyzing six separate studies, concluded that producing ethanol from corn uses much less petroleum than producing gasoline."
+      },
+      "questions": [
+        {
+          "id": "evidence_answer",
+          "type": "boolean",
+          "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge.",
+          "statement": "According to the figures reported in the passage, does producing ethanol require more energy than the resulting fuel releases?",
+          "when_false": "The answer to the question is No based on the passage",
+          "when_true": "The answer to the question is Yes based on the passage"
+        }
+      ]
+    },
+    "source": {
+      "dataset": "google/boolq",
+      "original_dataset": "BoolQ",
+      "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+      "viewer_snapshot_revision_bound": false,
+      "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+      "official_id": "validation/0",
+      "original_split": "validation",
+      "original_label": false,
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-validation.rows.json",
+      "file_sha256": "3DECB23D0A08673127D5C8BA12843C83B12152B637FBA87D883B950B2B9FEF36",
+      "raw_record_sha256": "B642718B01EC68F3C52DCF6EBDCB9393DBA26D9168FE6C047B72CD4C69017A66",
+      "license": "CC-BY-SA-3.0",
+      "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "google/boolq/validation/0"
+  },
+  {
+    "record_id": "boolq-validation-row-001",
+    "family_id": "boolq-passage-65E1D32982EA11B74A64E2F05DDE6284081CEB62BEFCDF1C0A10821F139177AB",
+    "language": "en",
+    "split": "development",
+    "target_index": 1,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "Property tax or 'house tax' is a local tax on buildings, along with appurtenant land. It is and imposed on the Possessor (not the custodian of property as per 1978, 44th amendment of constitution). It resembles the US-type wealth tax and differs from the excise-type UK rate. The tax power is vested in the states and is delegated to local bodies, specifying the valuation method, rate band, and collection procedures. The tax base is the annual rental value (ARV) or area-based rating. Owner-occupied and other properties not producing rent are assessed on cost and then converted into ARV by applying a percentage of cost, usually four percent. Vacant land is generally exempt. Central government properties are exempt. Instead a 'service charge' is permissible under executive order. Properties of foreign missions also enjoy tax exemption without requiring reciprocity. The tax is usually accompanied by service taxes, e.g., water tax, drainage tax, conservancy (sanitation) tax, lighting tax, all using the same tax base. The rate structure is flat on rural (panchayat) properties, but in the urban (municipal) areas it is mildly progressive with about 80% of assessments falling in the first two brackets."
+      },
+      "questions": [
+        {
+          "id": "evidence_answer",
+          "type": "boolean",
+          "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge.",
+          "statement": "According to the passage, are house tax and property tax the same tax?",
+          "when_false": "The answer to the question is No based on the passage",
+          "when_true": "The answer to the question is Yes based on the passage"
+        }
+      ]
+    },
+    "source": {
+      "dataset": "google/boolq",
+      "original_dataset": "BoolQ",
+      "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+      "viewer_snapshot_revision_bound": false,
+      "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+      "official_id": "validation/1",
+      "original_split": "validation",
+      "original_label": true,
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-validation.rows.json",
+      "file_sha256": "3DECB23D0A08673127D5C8BA12843C83B12152B637FBA87D883B950B2B9FEF36",
+      "raw_record_sha256": "85075C1CFDE29C854C753D567EEF13B1DB52800336E29C23BF8BF84DB7579E7D",
+      "license": "CC-BY-SA-3.0",
+      "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "google/boolq/validation/1"
+  },
+  {
+    "record_id": "boolq-validation-row-006",
+    "family_id": "boolq-passage-F3E6D2815DEF799AE24E403416912365C2A207472FF7917BF1C8B1EAE9131D78",
+    "language": "en",
+    "split": "development",
+    "target_index": 1,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "In mathematics, parity is the property of an integer's inclusion in one of two categories: even or odd. An integer is even if it is evenly divisible by two and odd if it is not even. For example, 6 is even because there is no remainder when dividing it by 2. By contrast, 3, 5, 7, 21 leave a remainder of 1 when divided by 2. Examples of even numbers include −4, 0, 82 and 178. In particular, zero is an even number. Some examples of odd numbers are −5, 3, 29, and 73."
+      },
+      "questions": [
+        {
+          "id": "evidence_answer",
+          "type": "boolean",
+          "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge.",
+          "statement": "Can an odd number be divided by an even number if a remainder is allowed?",
+          "when_false": "The answer to the question is No based on the passage",
+          "when_true": "The answer to the question is Yes based on the passage"
+        }
+      ]
+    },
+    "source": {
+      "dataset": "google/boolq",
+      "original_dataset": "BoolQ",
+      "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+      "viewer_snapshot_revision_bound": false,
+      "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+      "official_id": "validation/6",
+      "original_split": "validation",
+      "original_label": true,
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-validation.rows.json",
+      "file_sha256": "3DECB23D0A08673127D5C8BA12843C83B12152B637FBA87D883B950B2B9FEF36",
+      "raw_record_sha256": "77F6737D3FB60B40B3F2EE1C3A5485D9697BEF530A53BF2D5B680885BA8344E6",
+      "license": "CC-BY-SA-3.0",
+      "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "google/boolq/validation/6"
+  },
+  {
+    "record_id": "boolq-validation-row-016",
+    "family_id": "boolq-passage-0385F1D87B1A439FB963553F0BE310152883F503E7E7B4FDA621DBE5729CC1FE",
+    "language": "en",
+    "split": "development",
+    "target_index": 1,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "The Strangers is a 2008 American slasher film written and directed by Bryan Bertino. Kristen (Liv Tyler) and James (Scott Speedman) are expecting a relaxing weekend at a family vacation home, but their stay turns out to be anything but peaceful as three masked torturers leave Kristen and James struggling for survival. Writer-director Bertino was inspired by real-life events: the Manson family Tate murders, a multiple homicide; the Keddie Cabin Murders, that occurred in California in 1981; and a series of break-ins that occurred in his own neighborhood as a child. Made on a budget of $9 million, the film was shot on location in rural South Carolina in the fall of 2006."
+      },
+      "questions": [
+        {
+          "id": "evidence_answer",
+          "type": "boolean",
+          "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge. The statement field contains a question, not an assertion.",
+          "statement": "Was the movie The Strangers inspired by real-life events?",
+          "when_false": "The answer to the question is No based on the passage",
+          "when_true": "The answer to the question is Yes based on the passage"
+        }
+      ]
+    },
+    "source": {
+      "dataset": "google/boolq",
+      "original_dataset": "BoolQ",
+      "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+      "viewer_snapshot_revision_bound": false,
+      "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+      "official_id": "validation/16",
+      "original_split": "validation",
+      "original_label": true,
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-validation.rows.json",
+      "file_sha256": "3DECB23D0A08673127D5C8BA12843C83B12152B637FBA87D883B950B2B9FEF36",
+      "raw_record_sha256": "558659535D293AECE3C72269B513EE7D43D4C6E22C45EDEA0BD94417E385E52E",
+      "license": "CC-BY-SA-3.0",
+      "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "google/boolq/validation/16"
+  },
+  {
+    "record_id": "boolq-validation-row-018",
+    "family_id": "boolq-passage-29158800A36E12F20801E98F7BAEB393B928AAF819EA4EE93759BF1872617094",
+    "language": "en",
+    "split": "development",
+    "target_index": 1,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "The Resident is an American medical drama television series aired by Fox Broadcasting Company that premiered on January 21, 2018, as a mid-season replacement entry in the 2017--18 television season. The fictional series focuses on the lives and duties of staff members at Chastain Park Memorial Hospital, while delving into the bureaucratic practices of the hospital industry. Formerly called The City, the show was purchased by Fox from Showtime in 2017. It was created by created by Amy Holden Jones, Hayley Schore, and Roshan Sethi. On May 10, 2017, Fox ordered a full 14-episode season and renewed the series for a second season on May 7, 2018. The first season officially concluded on May 14, 2018."
+      },
+      "questions": [
+        {
+          "id": "evidence_answer",
+          "type": "boolean",
+          "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge. The statement field contains a question, not an assertion.",
+          "statement": "As of May 14, 2018, had the first season of The Resident ended?",
+          "when_false": "The answer to the question is No based on the passage",
+          "when_true": "The answer to the question is Yes based on the passage"
+        }
+      ]
+    },
+    "source": {
+      "dataset": "google/boolq",
+      "original_dataset": "BoolQ",
+      "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+      "viewer_snapshot_revision_bound": false,
+      "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+      "official_id": "validation/18",
+      "original_split": "validation",
+      "original_label": true,
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-validation.rows.json",
+      "file_sha256": "3DECB23D0A08673127D5C8BA12843C83B12152B637FBA87D883B950B2B9FEF36",
+      "raw_record_sha256": "C7B55FECFBAC5117C0C8A870737A1352D9B6AB3BCAA5FAE310D4433042574C0B",
+      "license": "CC-BY-SA-3.0",
+      "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "google/boolq/validation/18"
+  },
+  {
+    "record_id": "boolq-validation-row-020",
+    "family_id": "boolq-passage-B9FE4E37FD2ACED3C07ADA7FA36FDD44F1B179B49E850014B69D10A90CD0C8F2",
+    "language": "en",
+    "split": "development",
+    "target_index": 0,
+    "request": {
+      "schema_version": 1,
+      "model_id": "sezika/mmbert-base-independent-s4",
+      "state": {
+        "text": "Street Addressing will have the same street address of the post office, plus a ``unit number'' that matches the P.O. Box number. As an example, in El Centro, California, the post office is located at 1598 Main Street. Therefore, for P.O. Box 9975 (fictitious), the Street Addressing would be: 1598 Main Street Unit 9975, El Centro, CA. Nationally, the first five digits of the zip code may or may not be the same as the P.O. Box address, and the last four digits (Zip + 4) are virtually always different. Except for a few of the largest post offices in the U.S., the 'Street Addressing' (not the P.O. Box address) nine digit Zip + 4 is the same for all boxes at a given location."
+      },
+      "questions": [
+        {
+          "id": "evidence_answer",
+          "type": "boolean",
+          "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge. The statement field contains a question, not an assertion.",
+          "statement": "In the Street Addressing example, does the unit number that matches the P.O. Box number appear before the street address?",
+          "when_false": "The answer to the question is No based on the passage",
+          "when_true": "The answer to the question is Yes based on the passage"
+        }
+      ]
+    },
+    "source": {
+      "dataset": "google/boolq",
+      "original_dataset": "BoolQ",
+      "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+      "viewer_snapshot_revision_bound": false,
+      "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+      "official_id": "validation/20",
+      "original_split": "validation",
+      "original_label": false,
+      "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-validation.rows.json",
+      "file_sha256": "3DECB23D0A08673127D5C8BA12843C83B12152B637FBA87D883B950B2B9FEF36",
+      "raw_record_sha256": "86E90B878F88245FF581CD24AE8356C83F53B1963B1CADE87281E519796788DF",
+      "license": "CC-BY-SA-3.0",
+      "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+      "target_role": "host_only_original_source_annotation_not_teacher_payload"
+    },
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false,
+    "ai_review_status": "repair_proposed_pending_blind_reaudit",
+    "source_canonical_id": "google/boolq/validation/20"
+  }
+]

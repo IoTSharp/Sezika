@@ -1,0 +1,95 @@
+[
+  {
+    "human_review": "pending",
+    "formal": false,
+    "record_id": "boolq-validation-row-052",
+    "reason": "原问题询问英格兰是否仍实际举行猎狐活动，原文只提供历史及法律禁令，没有禁令后的实际活动信息。禁令不能证明活动不再发生；改问是否合法会改变原问题的主要含义，因此删除。",
+    "revised_row": null,
+    "original_source_gold": 0,
+    "decision": "delete",
+    "evidence_quotes": [
+      "Fox hunting with hounds, as a formalised activity, originated in England in the sixteenth century, in a form very similar to that practised until February 2005, when a law banning the activity in England and Wales came into force."
+    ]
+  },
+  {
+    "human_review": "pending",
+    "formal": false,
+    "record_id": "boolq-validation-row-055",
+    "reason": "“get together”未明确指接吻、感情发展还是正式交往。原文记载了主动接吻及季终选择，但没有明确两人是否确立恋爱关系，无法唯一回答原问题。改问是否接吻会将关系状态问题替换成具体行为问题，因此删除。",
+    "revised_row": null,
+    "original_source_gold": 0,
+    "decision": "delete",
+    "evidence_quotes": [
+      "The rocky relationship between the two continues until the sexual tension hits the fan and in a moment of heated passion, Elena -- for the first time in the three seasons -- kisses Damon of her own accord.",
+      "In the season finale, a trip designed to get her to safety forces Elena to make her choice: to go to Damon and possibly see him one last time; or to go to Stefan and her friends and see them one last time. She chooses the latter when she calls Damon to tell him her decision."
+    ]
+  },
+  {
+    "human_review": "pending",
+    "formal": false,
+    "record_id": "boolq-validation-row-058",
+    "reason": "将组合的存在范围明确限定为文中电影里的虚构音乐组合，保留原问题询问同名组合是否存在的主要含义。原文明示演员饰演名为The Five Heartbeats的虚构组合，支持唯一答案Yes。",
+    "revised_row": {
+      "record_id": "boolq-validation-row-058",
+      "family_id": "boolq-passage-621B451622D882D3D26F9E923AE78407E9F3E27A0F220D58961E5342D7D2B731",
+      "language": "en",
+      "split": "development",
+      "target_index": 1,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "To promote the film prior to its release, Townsend, along with the other actors who portrayed the fictional musical quartet The Five Heartbeats (Leon Robinson, Michael Wright, Harry J. Lennix, and Tico Wells) performed in a concert with real-life Soul/R&B vocal group The Dells, one of many groups that inspired the film. The Dells sang and recorded the vocals as the actors lip synced."
+        },
+        "questions": [
+          {
+            "id": "evidence_answer",
+            "type": "boolean",
+            "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge. The statement field contains a question, not an assertion.",
+            "statement": "Is there a fictional musical group called The Five Heartbeats in the film described in the passage?",
+            "when_false": "The answer to the question is No based on the passage",
+            "when_true": "The answer to the question is Yes based on the passage"
+          }
+        ]
+      },
+      "source": {
+        "dataset": "google/boolq",
+        "original_dataset": "BoolQ",
+        "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+        "viewer_snapshot_revision_bound": false,
+        "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+        "official_id": "validation/58",
+        "original_split": "validation",
+        "original_label": false,
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-validation.rows.json",
+        "file_sha256": "3DECB23D0A08673127D5C8BA12843C83B12152B637FBA87D883B950B2B9FEF36",
+        "raw_record_sha256": "5069BCDA1D7117A39DB2B07B6CB8093C48971D157D8B1B69D97DD06EBF89E761",
+        "license": "CC-BY-SA-3.0",
+        "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "google/boolq/validation/58"
+    },
+    "original_source_gold": 0,
+    "decision": "repair",
+    "evidence_quotes": [
+      "To promote the film prior to its release, Townsend, along with the other actors who portrayed the fictional musical quartet The Five Heartbeats (Leon Robinson, Michael Wright, Harry J. Lennix, and Tico Wells) performed in a concert with real-life Soul/R&B vocal group The Dells, one of many groups that inspired the film."
+    ]
+  },
+  {
+    "human_review": "pending",
+    "formal": false,
+    "record_id": "boolq-validation-row-061",
+    "reason": "原问题询问一号球场实际是否已有屋顶，原文仅提供建造意向和预计投入使用时间，没有确认完工状态，也没有足以确定答案的参考时点。改问是否预计建成会将实际状态问题替换成预期问题，因此删除。",
+    "revised_row": null,
+    "original_source_gold": 0,
+    "decision": "delete",
+    "evidence_quotes": [
+      "In April 2013, the All England Club confirmed its intention to build a retractable roof over No.1 Court. The roof is expected to be in place for the 2019 Championships."
+    ]
+  }
+]

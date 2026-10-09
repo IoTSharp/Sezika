@@ -1,0 +1,122 @@
+[
+  {
+    "revised_row": null,
+    "record_id": "boolq-train-row-033",
+    "reason": "原文介绍影片类型和剧情，但未说明故事是否真实或根据真实事件改编，无法确定原问题的答案。改问离婚夫妇寻宝的剧情信息会改变原问题的主要含义，不能据此修复。",
+    "original_source_gold": 0,
+    "decision": "delete",
+    "human_review": "pending",
+    "formal": false,
+    "evidence_quotes": [
+      "Fool's Gold is a 2008 American adventure-romance film from Warner Bros. Pictures about a recently divorced couple who rekindle their romantic life while searching for a lost treasure."
+    ]
+  },
+  {
+    "revised_row": null,
+    "record_id": "boolq-train-row-040",
+    "reason": "原问题未明确所指的是乐队还是某部作品，原文也未提供任何故事是否取材于真实事件的证据。即使限定询问对象，仍无法判断故事来源；改问乐队成立或角色扮演会改变原问题的主要含义。",
+    "original_source_gold": 0,
+    "decision": "delete",
+    "human_review": "pending",
+    "formal": false,
+    "evidence_quotes": [
+      "The Blues Brothers are an American blues and soul revivalist band which was founded in 1978 by comedy actors Dan Aykroyd and John Belushi as part of a musical sketch on Saturday Night Live.",
+      "Belushi and Aykroyd fronted the band, respectively in character as lead vocalist ``Joliet'' Jake Blues and harmonica player/vocalist Elwood Blues."
+    ]
+  },
+  {
+    "revised_row": null,
+    "record_id": "boolq-train-row-046",
+    "reason": "原文只说明续作进入开发阶段且仍有拍摄的可能，不能确定最终是否会有续集，也不能据此回答否。改问是否宣布开发会将未来结果问题改成公告是否发生的问题，无法忠实保留原命题。",
+    "original_source_gold": 0,
+    "decision": "delete",
+    "human_review": "pending",
+    "formal": false,
+    "evidence_quotes": [
+      "In December 2014, it was announced that Torment, the second installment in the Fallen book series, was in development.",
+      "In 2017, producer Kevan Van Thompson asked the fans if they want an adaptation of ``Torment'', showing that the sequel still could be made."
+    ]
+  },
+  {
+    "revised_row": null,
+    "record_id": "boolq-train-row-047",
+    "reason": "原文给出的粉丝数量均为下界，没有最高粉丝数的精确值或低于十亿的上界，因此无法确认或排除有账号达到十亿粉丝。限定到2018年10月仍无法补足证据；改问是否超过2.6亿会改变原题的核心阈值。",
+    "original_source_gold": 0,
+    "decision": "delete",
+    "human_review": "pending",
+    "formal": false,
+    "evidence_quotes": [
+      "As of October 2018, the most followed user is Instagram's own account, with over 260 million followers.",
+      "Cristiano Ronaldo is the most followed individual, with over 144 million followers.",
+      "Twelve accounts have exceeded 100 million followers on the site."
+    ]
+  },
+  {
+    "revised_row": null,
+    "record_id": "boolq-train-row-048",
+    "reason": "原文描述角色应具有星球统治者的可信形象，但未明确帕德梅拥有女王称号，无法确定原问题的答案。把女王身份改成统治者角色要求会改变所问属性，不能作为忠实修复。",
+    "original_source_gold": 1,
+    "decision": "delete",
+    "human_review": "pending",
+    "formal": false,
+    "evidence_quotes": [
+      "According to The Phantom Menace production notes, ``The role required a young woman who could be believable as the ruler of that planet, but at the same time be vulnerable and open.''"
+    ]
+  },
+  {
+    "revised_row": {
+      "record_id": "boolq-train-row-050",
+      "family_id": "boolq-passage-94EC609B14DCADFA37F16DD21388CFD48A9C0FD5D5CF8C1922D01A48FE198BC7",
+      "language": "en",
+      "split": "train",
+      "target_index": 1,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "The euro sign (€) is the currency sign used for the euro, the official currency of the Eurozone in the European Union (EU). The design was presented to the public by the European Commission on 12 December 1996. The international three-letter code (according to ISO standard ISO 4217) for the euro is EUR. In Unicode it is encoded at U+20AC € euro sign (HTML &#8364; &euro; ). In English, the sign precedes the value (for instance, €10, not 10 €, unlike most other European languages). In some style guides, but not others, the euro sign is unspaced."
+        },
+        "questions": [
+          {
+            "id": "evidence_answer",
+            "type": "boolean",
+            "instruction": "Answer the yes/no question in the statement using only the passage. true means Yes; false means No. Do not use outside knowledge. The statement field contains a question, not an assertion.",
+            "statement": "In English, does the euro sign go before the number?",
+            "when_false": "The answer to the question is No based on the passage",
+            "when_true": "The answer to the question is Yes based on the passage"
+          }
+        ]
+      },
+      "source": {
+        "dataset": "google/boolq",
+        "original_dataset": "BoolQ",
+        "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+        "viewer_snapshot_revision_bound": false,
+        "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+        "official_id": "train/50",
+        "original_split": "train",
+        "original_label": true,
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-train.rows.json",
+        "file_sha256": "AFE3CFA22F2271796A0AC4E837623F01ED7A3AF2794382F0A183499FD561C674",
+        "raw_record_sha256": "0AE0613E14C6DE7A80B685479E619FBA0E6ED3BAD77879E9B3BBC72A99B859C3",
+        "license": "CC-BY-SA-3.0",
+        "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "google/boolq/train/50"
+    },
+    "record_id": "boolq-train-row-050",
+    "reason": "原文明确说明英语将欧元符号置于数值之前，并指出多数其他欧洲语言的规则不同。将问题限定为英语即可消除歧义，同时保留询问欧元符号位置的主要含义，答案为Yes。",
+    "original_source_gold": 1,
+    "decision": "repair",
+    "human_review": "pending",
+    "formal": false,
+    "evidence_quotes": [
+      "In English, the sign precedes the value (for instance, €10, not 10 €, unlike most other European languages)."
+    ]
+  }
+]

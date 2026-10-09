@@ -1,0 +1,314 @@
+[
+  {
+    "reason": "原话明确要求在指定时间提醒，原候选缺少对应操作。新增“设置定时提醒”并明确其与创建日历事项的边界后，可以唯一选择，且无需补充提醒内容。",
+    "formal": false,
+    "revised_row": {
+      "record_id": "massive-zh-cn-03601",
+      "family_id": "massive-1.1-utterance-3601",
+      "language": "zh",
+      "split": "train",
+      "target_index": 4,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "在下午一点提醒我"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；不推测未提及的请求。按请求的操作分类：“设置定时提醒”指安排到时提醒，“创建日历事件”指在日历中建立事项；不要将提醒请求自动视为创建日历事项。",
+            "candidates": [
+              {
+                "id": "calendar_query",
+                "text": "查询日历事件"
+              },
+              {
+                "id": "calendar_remove",
+                "text": "删除日历事件"
+              },
+              {
+                "id": "calendar_set",
+                "text": "创建日历事件"
+              },
+              {
+                "id": "alarm_query",
+                "text": "查询已有闹钟"
+              },
+              {
+                "id": "reminder_set",
+                "text": "设置定时提醒"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "zh-CN",
+        "official_id": "3601",
+        "original_split": "train",
+        "original_label": "calendar_set",
+        "original_scenario": "calendar",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+        "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+        "raw_record_sha256": "4DA1A175128F3600310F6AA5858FFA50ECCEDC427C3EF149A2F860338BE930DC",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/3601"
+    },
+    "evidence_quotes": [
+      "在下午一点提醒我"
+    ],
+    "human_review": "pending",
+    "record_id": "massive-zh-cn-03601",
+    "decision": "repair",
+    "original_source_gold": 2
+  },
+  {
+    "reason": "原话明确询问具体菜品的用料，歧义来自两类候选的范围重叠。补充通用分类边界即可保留原任务，并使“获取食谱”成为唯一匹配项。",
+    "formal": false,
+    "revised_row": {
+      "record_id": "massive-zh-cn-09913",
+      "family_id": "massive-1.1-utterance-9913",
+      "language": "zh",
+      "split": "train",
+      "target_index": 1,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "西红柿汤需要什么材料"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；不推测未提及的请求。分类标准：“获取食谱”包含查询具体菜品的用料或制作步骤；“询问烹饪知识”用于一般烹饪原理、技巧或器具问题，不包含具体菜品的用料或制作步骤查询。",
+            "candidates": [
+              {
+                "id": "cooking_query",
+                "text": "询问烹饪知识"
+              },
+              {
+                "id": "cooking_recipe",
+                "text": "获取食谱"
+              },
+              {
+                "id": "qa_currency",
+                "text": "查询货币或汇率"
+              },
+              {
+                "id": "qa_definition",
+                "text": "查询词语或概念定义"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "zh-CN",
+        "official_id": "9913",
+        "original_split": "train",
+        "original_label": "cooking_recipe",
+        "original_scenario": "cooking",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+        "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+        "raw_record_sha256": "1EAA8F1E3154B0BECE5ABED0FBA96C508B20EEB62F720AF85EBC5D74DFA60725",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/9913"
+    },
+    "evidence_quotes": [
+      "西红柿汤需要什么材料"
+    ],
+    "human_review": "pending",
+    "record_id": "massive-zh-cn-09913",
+    "decision": "repair",
+    "original_source_gold": 0
+  },
+  {
+    "reason": "原话提出检查笔记本是否工作的任务，现有候选均未覆盖这一请求。新增“检查设备运行状态”即可准确表达其主要意图，无需推测检查结果或具体故障。",
+    "formal": false,
+    "revised_row": {
+      "record_id": "massive-zh-cn-00037",
+      "family_id": "massive-1.1-utterance-37",
+      "language": "zh",
+      "split": "train",
+      "target_index": 4,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "检查我的笔记本在工作吗"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；不推测未提及的请求。",
+            "candidates": [
+              {
+                "id": "general_greet",
+                "text": "向助手打招呼"
+              },
+              {
+                "id": "general_quirky",
+                "text": "闲聊或非任务型对话"
+              },
+              {
+                "id": "general_joke",
+                "text": "让助手讲笑话"
+              },
+              {
+                "id": "play_audiobook",
+                "text": "播放有声书"
+              },
+              {
+                "id": "device_status_check",
+                "text": "检查设备运行状态"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "zh-CN",
+        "official_id": "37",
+        "original_split": "train",
+        "original_label": "general_quirky",
+        "original_scenario": "general",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+        "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+        "raw_record_sha256": "3DED35E0BBB5C1777C393CA058909DEAFFF02325E9D84EE422D970FAD2127BC7",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/37"
+    },
+    "evidence_quotes": [
+      "检查我的笔记本在工作吗"
+    ],
+    "human_review": "pending",
+    "record_id": "massive-zh-cn-00037",
+    "decision": "repair",
+    "original_source_gold": 1
+  },
+  {
+    "reason": "原话只表示该睡觉了，没有指定设备或操作。关闭灯光、调整灯光模式等解释均依赖缺失的上下文，无法在保留原任务的前提下恢复唯一答案。",
+    "formal": false,
+    "revised_row": null,
+    "evidence_quotes": [
+      "是时候睡觉了 olly"
+    ],
+    "human_review": "pending",
+    "record_id": "massive-zh-cn-00013",
+    "decision": "delete",
+    "original_source_gold": 2
+  },
+  {
+    "reason": "原话描述环境明暗，未说明灯的当前状态，也未明确要求哪种操作。打开灯与调整已有灯光均是合理解释；仅凭原文无法排除其中任何一项，不能通过补设操作意图修复。",
+    "formal": false,
+    "revised_row": null,
+    "evidence_quotes": [
+      "这里太黑了"
+    ],
+    "human_review": "pending",
+    "record_id": "massive-zh-cn-00267",
+    "decision": "delete",
+    "original_source_gold": 3
+  },
+  {
+    "reason": "原话明确要求回退有声书的播放进度。将有声书候选的范围补充为包含进度控制，即可准确覆盖该操作，保留原有媒体类别区分。",
+    "formal": false,
+    "revised_row": {
+      "record_id": "massive-zh-cn-09665",
+      "family_id": "massive-1.1-utterance-9665",
+      "language": "zh",
+      "split": "train",
+      "target_index": 3,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "把有声书倒退三十秒"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；不推测未提及的请求。",
+            "candidates": [
+              {
+                "id": "play_game",
+                "text": "开始或玩游戏"
+              },
+              {
+                "id": "play_music",
+                "text": "播放音乐"
+              },
+              {
+                "id": "play_podcasts",
+                "text": "播放播客"
+              },
+              {
+                "id": "play_audiobook",
+                "text": "播放有声书或控制其播放进度"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "zh-CN",
+        "official_id": "9665",
+        "original_split": "train",
+        "original_label": "play_audiobook",
+        "original_scenario": "play",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+        "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+        "raw_record_sha256": "78FCD324C7F12D7DFAEAF74271BCD146C61CA388A864F391555FF60DE7F4C708",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/9665"
+    },
+    "evidence_quotes": [
+      "把有声书倒退三十秒"
+    ],
+    "human_review": "pending",
+    "record_id": "massive-zh-cn-09665",
+    "decision": "repair",
+    "original_source_gold": 3
+  }
+]

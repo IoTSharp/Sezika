@@ -1,0 +1,88 @@
+[
+  {
+    "evidence_quotes": [
+      "olly quiet"
+    ],
+    "original_source_gold": 0,
+    "reason": "原文中的 quiet 既可表示要求完全静音，也可表示要求降低音量，没有足够信息区分这两个合理候选。补充区分条件会引入原文未提供的用户意图，因此无法忠实修复。",
+    "decision": "delete",
+    "formal": false,
+    "human_review": "pending",
+    "record_id": "massive-en-us-00004",
+    "revised_row": null
+  },
+  {
+    "evidence_quotes": [
+      "remind me if anything else happens"
+    ],
+    "original_source_gold": 1,
+    "reason": "原文明示请求在有其他事情发生时提醒自己，但原候选集缺少条件提醒或通知选项。保留原指令和全部原候选，仅增加对应候选即可表达该意图，无须推断用户要求创建日历事件。",
+    "decision": "repair",
+    "formal": false,
+    "human_review": "pending",
+    "record_id": "massive-en-us-03201",
+    "revised_row": {
+      "record_id": "massive-en-us-03201",
+      "family_id": "massive-1.1-utterance-3201",
+      "language": "en",
+      "split": "train",
+      "target_index": 4,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "remind me if anything else happens"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "Choose the given candidate that best matches the user utterance's main intent. Use only the utterance; do not infer unmentioned requests.",
+            "candidates": [
+              {
+                "id": "calendar_query",
+                "text": "Query calendar events"
+              },
+              {
+                "id": "calendar_set",
+                "text": "Create a calendar event"
+              },
+              {
+                "id": "calendar_remove",
+                "text": "Remove a calendar event"
+              },
+              {
+                "id": "alarm_query",
+                "text": "Query existing alarms"
+              },
+              {
+                "id": "conditional_reminder",
+                "text": "Request a reminder or notification when something else happens"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "en-US",
+        "official_id": "3201",
+        "original_split": "train",
+        "original_label": "calendar_set",
+        "original_scenario": "calendar",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\en-US.jsonl",
+        "file_sha256": "C70F75C6A543A26E249EC383DF67733AD9B1066F6C0406C2E04A3F03356E407E",
+        "raw_record_sha256": "8D2E2302923B1E215F01CF1072091C80F70825B553B2D575BF420821DC89A95B",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/3201"
+    }
+  }
+]

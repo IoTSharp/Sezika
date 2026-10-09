@@ -1,0 +1,20 @@
+{
+  "identity": {
+    "Pid": 64828,
+    "ParentPid": 39452,
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch repair08 -Start 44 -Count 6 -SelectionFile plan.json -Transport Direct",
+    "Started": "2026-10-09T05:13:51.0257210Z"
+  },
+  "batch": "repair08",
+  "stage": "repair",
+  "http_status": 200,
+  "status": "completed_and_validated",
+  "response_id": "resp_0d855f1aee43d441016ac8781420748198b01d575f34d2035c",
+  "children_started": true,
+  "elapsed_seconds": 60.5376402,
+  "formal": false,
+  "maximum_seconds": 260,
+  "human_review": "pending",
+  "failure": null,
+  "count": 6
+}

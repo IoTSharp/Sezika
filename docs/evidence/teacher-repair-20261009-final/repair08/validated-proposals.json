@@ -1,0 +1,208 @@
+[
+  {
+    "original_source_gold": 1,
+    "human_review": "pending",
+    "formal": false,
+    "decision": "delete",
+    "evidence_quotes": [
+      "In the 1998 war film Saving Private Ryan, General George Marshall (played by Harve Presnell) reads the Bixby letter to his officers before giving the order to find and send home Private James Francis Ryan after Ryan's three brothers died in battle."
+    ],
+    "record_id": "boolq-train-row-008",
+    "revised_row": null,
+    "reason": "原文仅说明George Marshall朗读了Bixby letter，没有说明信的作者，无法判断是否由Abraham Lincoln撰写。将问题改为询问朗读者会改变原问题的主要含义，因此删除。"
+  },
+  {
+    "original_source_gold": 0,
+    "human_review": "pending",
+    "formal": false,
+    "decision": "delete",
+    "evidence_quotes": [
+      "The United States should have the chance to observe and assess the functioning of the court, over time, before choosing to become subject to its jurisdiction.",
+      "Given these concerns, I will not, and do not recommend that my successor, submit the treaty to the Senate for advice and consent until our fundamental concerns are satisfied."
+    ],
+    "record_id": "boolq-train-row-012",
+    "revised_row": null,
+    "reason": "原文描述美国接受法院管辖及提交条约的立场，没有说明ICC在美国境内是否具有管辖权及其适用条件，不能据此确定Yes或No。改问是否向参议院提交条约会更换所问命题，因此删除。"
+  },
+  {
+    "original_source_gold": 1,
+    "human_review": "pending",
+    "formal": false,
+    "decision": "repair",
+    "evidence_quotes": [
+      "Calcium carbide is a chemical compound with the chemical formula of CaC.",
+      "Its main use industrially is in the production of acetylene and calcium cyanamide."
+    ],
+    "record_id": "boolq-train-row-013",
+    "revised_row": {
+      "record_id": "boolq-train-row-013",
+      "family_id": "boolq-passage-738BC5E6995B2E8856B64D91DBEE2385C67DAE12916AB558FBFD7A2DC937BB0F",
+      "language": "en",
+      "split": "train",
+      "target_index": 1,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "Calcium carbide is a chemical compound with the chemical formula of CaC. Its main use industrially is in the production of acetylene and calcium cyanamide."
+        },
+        "questions": [
+          {
+            "id": "evidence_answer",
+            "type": "boolean",
+            "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge. The statement field is a question, not an assertion.",
+            "statement": "Is calcium carbide used in the production of acetylene?",
+            "when_false": "The answer to the question is No based on the passage",
+            "when_true": "The answer to the question is Yes based on the passage"
+          }
+        ]
+      },
+      "source": {
+        "dataset": "google/boolq",
+        "original_dataset": "BoolQ",
+        "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+        "viewer_snapshot_revision_bound": false,
+        "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+        "official_id": "train/13",
+        "original_split": "train",
+        "original_label": true,
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-train.rows.json",
+        "file_sha256": "AFE3CFA22F2271796A0AC4E837623F01ED7A3AF2794382F0A183499FD561C674",
+        "raw_record_sha256": "14BDB3E70863BDF129AF611E11B6817B5F18FB5D860EB7B3BE220B7419CB5D5E",
+        "license": "CC-BY-SA-3.0",
+        "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "google/boolq/train/13"
+    },
+    "reason": "删除题目中与原文不一致的附加化学式，并将问题规范为明确的是非问句，保留询问碳化钙是否用于生产乙炔的主要含义。原文明示这一用途，支持Yes。"
+  },
+  {
+    "original_source_gold": 1,
+    "human_review": "pending",
+    "formal": false,
+    "decision": "delete",
+    "evidence_quotes": [
+      "These terms are used with respect to reasoning (epistemology) to distinguish ``necessary conclusions from first premises'' (i.e., what must come before sense observation) from ``conclusions based on sense observation'' (which must follow it)."
+    ],
+    "record_id": "boolq-train-row-020",
+    "revised_row": null,
+    "reason": "原文仅区分先于感官观察的推论与基于感官观察的推论，没有说明科学是否以首先通过观察获取知识为前提。缺少判定原问题所需的关键证据，不能将未提及当作No；改问两类推论的区别会改变主要含义，因此删除。"
+  },
+  {
+    "original_source_gold": 1,
+    "human_review": "pending",
+    "formal": false,
+    "decision": "repair",
+    "evidence_quotes": [
+      "The 28th and newest EU member, Croatia, finished negotiating their accession to the EEA in November 2013, and since 12 April 2014 is provisionally applying the agreement pending its ratification by all EEA member states."
+    ],
+    "record_id": "boolq-train-row-027",
+    "revised_row": {
+      "record_id": "boolq-train-row-027",
+      "family_id": "boolq-passage-BB1D0A05E4FD6D0D452D6BB8009B537360788BEA7A6A66CA7521F0292F63189E",
+      "language": "en",
+      "split": "train",
+      "target_index": 1,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "As of 2014 the contracting parties to the EEA are 3 of the 4 EFTA member states and 27 of the 28 EU member states. The 28th and newest EU member, Croatia, finished negotiating their accession to the EEA in November 2013, and since 12 April 2014 is provisionally applying the agreement pending its ratification by all EEA member states."
+        },
+        "questions": [
+          {
+            "id": "evidence_answer",
+            "type": "boolean",
+            "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge. The statement field is a question, not an assertion.",
+            "statement": "As of 12 April 2014, was Croatia participating in the European Economic Area through provisional application of the EEA agreement?",
+            "when_false": "The answer to the question is No based on the passage",
+            "when_true": "The answer to the question is Yes based on the passage"
+          }
+        ]
+      },
+      "source": {
+        "dataset": "google/boolq",
+        "original_dataset": "BoolQ",
+        "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+        "viewer_snapshot_revision_bound": false,
+        "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+        "official_id": "train/27",
+        "original_split": "train",
+        "original_label": true,
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-train.rows.json",
+        "file_sha256": "AFE3CFA22F2271796A0AC4E837623F01ED7A3AF2794382F0A183499FD561C674",
+        "raw_record_sha256": "80AB71495C491733B16ADC407107F6B386D7681948AADE7A377E794E434A8EC3",
+        "license": "CC-BY-SA-3.0",
+        "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "google/boolq/train/27"
+    },
+    "reason": "将“part of”的参与标准明确为临时适用EEA协定，并限定到原文所述日期，消除正式缔约方身份与临时参与之间的歧义。原文明示克罗地亚自2014年4月12日起临时适用协定，支持Yes。"
+  },
+  {
+    "original_source_gold": 0,
+    "human_review": "pending",
+    "formal": false,
+    "decision": "repair",
+    "evidence_quotes": [
+      "The tower's tilt began during construction in the 12th century, caused by an inadequate foundation on ground too soft on one side to properly support the structure's weight."
+    ],
+    "record_id": "boolq-train-row-032",
+    "revised_row": {
+      "record_id": "boolq-train-row-032",
+      "family_id": "boolq-passage-E9D3DB3F7CEC2404AABE2022205B6A1B6AD007DAB71BCDB258A708EA8496EAD8",
+      "language": "en",
+      "split": "train",
+      "target_index": 1,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "The tower's tilt began during construction in the 12th century, caused by an inadequate foundation on ground too soft on one side to properly support the structure's weight. The tilt increased in the decades before the structure was completed in the 14th century. It gradually increased until the structure was stabilized (and the tilt partially corrected) by efforts in the late 20th and early 21st centuries."
+        },
+        "questions": [
+          {
+            "id": "evidence_answer",
+            "type": "boolean",
+            "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge. The statement field is a question, not an assertion.",
+            "statement": "Did the Leaning Tower of Pisa begin to tilt during construction?",
+            "when_false": "The answer to the question is No based on the passage",
+            "when_true": "The answer to the question is Yes based on the passage"
+          }
+        ]
+      },
+      "source": {
+        "dataset": "google/boolq",
+        "original_dataset": "BoolQ",
+        "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+        "viewer_snapshot_revision_bound": false,
+        "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+        "official_id": "train/32",
+        "original_split": "train",
+        "original_label": false,
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-train.rows.json",
+        "file_sha256": "AFE3CFA22F2271796A0AC4E837623F01ED7A3AF2794382F0A183499FD561C674",
+        "raw_record_sha256": "14B7099CD25A23A700A98971B0FB0CF5EED78EEBBA3361EF40447FA8DAD7A84D",
+        "license": "CC-BY-SA-3.0",
+        "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "google/boolq/train/32"
+    },
+    "reason": "将“built leaning”明确为在施工过程中开始倾斜，消除是否刻意按倾斜状态建造的歧义，保留对建造期间倾斜情况的询问。原文明示倾斜始于施工期间，支持Yes。"
+  }
+]

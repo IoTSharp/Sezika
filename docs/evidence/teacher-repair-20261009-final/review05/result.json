@@ -1,0 +1,20 @@
+{
+  "human_review": "pending",
+  "children_started": true,
+  "identity": {
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch review05 -Start 30 -Count 6 -SelectionFile plan.json -Transport Direct",
+    "Pid": 32956,
+    "Started": "2026-10-09T05:25:16.2885360Z",
+    "ParentPid": 64960
+  },
+  "count": 6,
+  "response_id": "resp_006b7010550491c3016ac87ac1b3288199a76b4d3f5c2d8c9c",
+  "batch": "review05",
+  "http_status": 200,
+  "maximum_seconds": 260,
+  "status": "completed_and_validated",
+  "formal": false,
+  "failure": null,
+  "stage": "review",
+  "elapsed_seconds": 62.403811
+}

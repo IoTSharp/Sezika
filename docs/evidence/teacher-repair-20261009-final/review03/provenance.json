@@ -1,0 +1,25 @@
+{
+  "formal": false,
+  "batch": "review03",
+  "stage": "review",
+  "state_text_immutable": true,
+  "human_review": "pending",
+  "labels_hidden_from_reaudit": true,
+  "input_sha256": "EFE5E38A7A83622841F187652E4E70BE53142F0561F78BD0FA934E9EF113C04E",
+  "source_ids": [
+    "massive-en-us-00676",
+    "massive-zh-cn-00042",
+    "massive-zh-cn-00697",
+    "massive-zh-cn-10449",
+    "massive-zh-cn-01179",
+    "boolq-train-row-003"
+  ],
+  "effort": "max",
+  "plan_sha256": "4BD6F02073362341A0DA8881D1D166A3950A4FB5799E4231F95EE5695556C704",
+  "worker_sha256": "CB332CE36EBA5867230FB6AB43DC8606B96823206CB616805C2DD8EA4948B2C1",
+  "model": "gpt-6.1-sol",
+  "credential_source": "CC Switch selected sonnet_vip, memory only",
+  "request_sha256": "8006E5185679802F05D1FF67E703787E4353485DBE2791F69CF5467635656F8D",
+  "endpoint": "https://sonnet.vip/v1/responses",
+  "transport_sha256": "9F0FBB33132FEE188CAFEF4EDAF399AA6D26EDD8FAD768EA60545706D392F1F8"
+}

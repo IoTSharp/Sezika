@@ -1,0 +1,20 @@
+{
+  "elapsed_seconds": 52.9751985,
+  "human_review": "pending",
+  "status": "completed_and_validated",
+  "maximum_seconds": 260,
+  "count": 4,
+  "failure": null,
+  "children_started": true,
+  "http_status": 200,
+  "stage": "repair",
+  "response_id": "resp_03ecd24db1b732c2016ac878f69d28819a842d023888c4f307",
+  "identity": {
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch repair13 -Start 74 -Count 4 -SelectionFile plan.json -Transport Direct",
+    "Started": "2026-10-09T05:17:34.8197170Z",
+    "Pid": 55948,
+    "ParentPid": 59740
+  },
+  "batch": "repair13",
+  "formal": false
+}

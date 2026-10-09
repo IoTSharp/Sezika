@@ -1,0 +1,27 @@
+{
+  "record_id": "boolq-validation-row-020",
+  "question_id": "evidence_answer",
+  "family_id": "boolq-passage-B9FE4E37FD2ACED3C07ADA7FA36FDD44F1B179B49E850014B69D10A90CD0C8F2",
+  "language": "en",
+  "split": "development",
+  "type": "boolean",
+  "original_target_index": 0,
+  "original_target_id": "false",
+  "clarity_status": "clear",
+  "answer_status": "determinate",
+  "suggested_correct_id": "false",
+  "suggested_correct_index": 0,
+  "alternative_ids": [],
+  "reason": "示例中，与邮政信箱号码一致的单元号9975出现在街道地址1598 Main Street之后，因此“是否出现在街道地址之前”的答案为No（false）。",
+  "evidence_quotes": [
+    "Therefore, for P.O. Box 9975 (fictitious), the Street Addressing would be: 1598 Main Street Unit 9975, El Centro, CA."
+  ],
+  "question_revision_needed": false,
+  "revision_reason": "",
+  "suggested_text_revision": null,
+  "change_original_label": false,
+  "reviewer_kind": "ai",
+  "human_review": "pending",
+  "formal": false,
+  "eligible_as_sealed_test": false
+}

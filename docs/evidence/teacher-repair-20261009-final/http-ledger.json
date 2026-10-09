@@ -1,0 +1,330 @@
+{
+  "utc": "2026-10-09T05:27:20.3218914+00:00",
+  "http_requests_sent": 21,
+  "old_33_successful_batches_reused_not_resent": true,
+  "failed_upstream_billing": "unknown_if_any",
+  "attempts": [
+    {
+      "attempt": {
+        "attempt": 1,
+        "route": "direct",
+        "started_utc": "2026-10-09T13:06:50.19826+08:00",
+        "sent": true,
+        "http_status": 200,
+        "failure_type": null,
+        "finished_utc": "2026-10-09T13:07:12.528282+08:00"
+      },
+      "request_sha256": "102C681FEA12968474939B1C6163EC10B55DF593D6945ED530515399371F4E95",
+      "batch": "repair00",
+      "stage": "repair",
+      "result_status": "completed_and_validated"
+    },
+    {
+      "attempt": {
+        "attempt": 1,
+        "route": "direct",
+        "started_utc": "2026-10-09T13:08:32.270042+08:00",
+        "sent": true,
+        "http_status": 200,
+        "failure_type": null,
+        "finished_utc": "2026-10-09T13:09:39.841254+08:00"
+      },
+      "request_sha256": "659D40B236C1065A6AA045FA8FC58EE0CBDC0BE990C334C65416CE349B2C8D21",
+      "batch": "repair01",
+      "stage": "repair",
+      "result_status": "completed_and_validated"
+    },
+    {
+      "attempt": {
+        "attempt": 1,
+        "route": "direct",
+        "started_utc": "2026-10-09T13:08:32.314429+08:00",
+        "sent": true,
+        "http_status": 200,
+        "failure_type": null,
+        "finished_utc": "2026-10-09T13:09:35.105605+08:00"
+      },
+      "request_sha256": "1351A9928481522571366A485EF012D4EB20B721AC51F7EF056B4D3564C5375C",
+      "batch": "repair02",
+      "stage": "repair",
+      "result_status": "completed_and_validated"
+    },
+    {
+      "attempt": {
+        "attempt": 1,
+        "route": "direct",
+        "started_utc": "2026-10-09T13:09:47.519934+08:00",
+        "sent": true,
+        "http_status": 200,
+        "failure_type": null,
+        "finished_utc": "2026-10-09T13:10:52.973096+08:00"
+      },
+      "request_sha256": "C63170CE24F8E833D3B05C1B18DC9A71EE8BAA2040BFCEC8540D9A508370DDFE",
+      "batch": "repair03",
+      "stage": "repair",
+      "result_status": "completed_and_validated"
+    },
+    {
+      "attempt": {
+        "attempt": 1,
+        "route": "direct",
+        "started_utc": "2026-10-09T13:09:54.154051+08:00",
+        "sent": true,
+        "http_status": 200,
+        "failure_type": null,
+        "finished_utc": "2026-10-09T13:10:58.644489+08:00"
+      },
+      "request_sha256": "92B0F4C8328D7B993EB011DF1261D31C25A776E24C498C4212A51AA25053DDD9",
+      "batch": "repair04",
+      "stage": "repair",
+      "result_status": "completed_and_validated"
+    },
+    {
+      "attempt": {
+        "attempt": 1,
+        "route": "direct",
+        "started_utc": "2026-10-09T13:11:16.698616+08:00",
+        "sent": true,
+        "http_status": 200,
+        "failure_type": null,
+        "finished_utc": "2026-10-09T13:13:36.612379+08:00"
+      },
+      "request_sha256": "4989C50D764D748362675D96377CF3A69CB9F0198C6A7F2089508181C6841A15",
+      "batch": "repair05",
+      "stage": "repair",
+      "result_status": "completed_and_validated"
+    },
+    {
+      "attempt": {
+        "attempt": 1,
+        "route": "direct",
+        "started_utc": "2026-10-09T13:11:20.184831+08:00",
+        "sent": true,
+        "http_status": 200,
+        "failure_type": null,
+        "finished_utc": "2026-10-09T13:12:38.002885+08:00"
+      },
+      "request_sha256": "1A1614AA9A389A9FC9BB9EAC058004F43BE981C0497FB3A63E661095C82A0D08",
+      "batch": "repair06",
+      "stage": "repair",
+      "result_status": "completed_and_validated"
+    },
+    {
+      "attempt": {
+        "attempt": 1,
+        "route": "direct",
+        "started_utc": "2026-10-09T13:13:02.264199+08:00",
+        "sent": true,
+        "http_status": 200,
+        "failure_type": null,
+        "finished_utc": "2026-10-09T13:14:54.03665+08:00"
+      },
+      "request_sha256": "C1B9785DD18B2A18E0C640C35FB711B59D9B59BBD795DB2B95216E0131A13AA2",
+      "batch": "repair07",
+      "stage": "repair",
+      "result_status": "completed_and_validated"
+    },
+    {
+      "attempt": {
+        "attempt": 1,
+        "route": "direct",
+        "started_utc": "2026-10-09T13:13:52.546389+08:00",
+        "sent": true,
+        "http_status": 200,
+        "failure_type": null,
+        "finished_utc": "2026-10-09T13:14:51.640822+08:00"
+      },
+      "request_sha256": "B16E3132108B884CDBC10C20EC661F043C7A8FF8254FEB0EED5E519420349DCA",
+      "batch": "repair08",
+      "stage": "repair",
+      "result_status": "completed_and_validated"
+    },
+    {
+      "attempt": {
+        "attempt": 1,
+        "route": "direct",
+        "started_utc": "2026-10-09T13:15:09.335837+08:00",
+        "sent": true,
+        "http_status": 200,
+        "failure_type": null,
+        "finished_utc": "2026-10-09T13:15:48.960875+08:00"
+      },
+      "request_sha256": "46899D46BDE145F8B9C109E0AC1A2A3302CFD92918DD56126494EB14B79D94C4",
+      "batch": "repair09",
+      "stage": "repair",
+      "result_status": "completed_and_validated"
+    },
+    {
+      "attempt": {
+        "attempt": 1,
+        "route": "direct",
+        "started_utc": "2026-10-09T13:15:21.372636+08:00",
+        "sent": true,
+        "http_status": 200,
+        "failure_type": null,
+        "finished_utc": "2026-10-09T13:16:36.791134+08:00"
+      },
+      "request_sha256": "BD538EB5AA0BF68BF110A178FE9191CF339E06DF6F91C080F3FD937229CD0F9B",
+      "batch": "repair10",
+      "stage": "repair",
+      "result_status": "completed_and_validated"
+    },
+    {
+      "attempt": {
+        "attempt": 1,
+        "route": "direct",
+        "started_utc": "2026-10-09T13:16:03.304227+08:00",
+        "sent": true,
+        "http_status": 200,
+        "failure_type": null,
+        "finished_utc": "2026-10-09T13:17:14.356429+08:00"
+      },
+      "request_sha256": "B0EDD49555B03B11A1EF908D0A649DEBF79F12728FF0F6355EB6FEB4AE30DDC1",
+      "batch": "repair11",
+      "stage": "repair",
+      "result_status": "completed_and_validated"
+    },
+    {
+      "attempt": {
+        "attempt": 1,
+        "route": "direct",
+        "started_utc": "2026-10-09T13:16:57.21043+08:00",
+        "sent": true,
+        "http_status": 200,
+        "failure_type": null,
+        "finished_utc": "2026-10-09T13:18:19.978409+08:00"
+      },
+      "request_sha256": "1410E5A05A34C7D3583AE2FC9571432CF770BBA431B340796A199F734B7FABFE",
+      "batch": "repair12",
+      "stage": "repair",
+      "result_status": "completed_and_validated"
+    },
+    {
+      "attempt": {
+        "attempt": 1,
+        "route": "direct",
+        "started_utc": "2026-10-09T13:17:38.755455+08:00",
+        "sent": true,
+        "http_status": 200,
+        "failure_type": null,
+        "finished_utc": "2026-10-09T13:18:28.534495+08:00"
+      },
+      "request_sha256": "3AC8D0DF1A88229BCDE11631435E4CB82F017D62046CBF57FD903F9FF711AFD2",
+      "batch": "repair13",
+      "stage": "repair",
+      "result_status": "completed_and_validated"
+    },
+    {
+      "attempt": {
+        "attempt": 1,
+        "route": "direct",
+        "started_utc": "2026-10-09T13:23:14.944637+08:00",
+        "sent": true,
+        "http_status": 200,
+        "failure_type": null,
+        "finished_utc": "2026-10-09T13:23:43.043192+08:00"
+      },
+      "request_sha256": "1AADBDBAAC525AACE5B486E985FA7C60D68760E07B27A7416B6CC9B23FA87801",
+      "batch": "review00",
+      "stage": "review",
+      "result_status": "completed_and_validated"
+    },
+    {
+      "attempt": {
+        "attempt": 1,
+        "route": "direct",
+        "started_utc": "2026-10-09T13:23:15.018598+08:00",
+        "sent": true,
+        "http_status": 200,
+        "failure_type": null,
+        "finished_utc": "2026-10-09T13:24:01.392578+08:00"
+      },
+      "request_sha256": "D31CE8B6BD1D9AB35A5BC07251BAEE359FB6D73C1E851CD10B12DC8525614F80",
+      "batch": "review01",
+      "stage": "review",
+      "result_status": "completed_and_validated"
+    },
+    {
+      "attempt": {
+        "attempt": 1,
+        "route": "direct",
+        "started_utc": "2026-10-09T13:23:54.648932+08:00",
+        "sent": true,
+        "http_status": 200,
+        "failure_type": null,
+        "finished_utc": "2026-10-09T13:24:30.896962+08:00"
+      },
+      "request_sha256": "EAE5490C2929BA07B05633916DDFCC84426BEEB47BBFF183E0E461760661DCA0",
+      "batch": "review02",
+      "stage": "review",
+      "result_status": "completed_and_validated"
+    },
+    {
+      "attempt": {
+        "attempt": 1,
+        "route": "direct",
+        "started_utc": "2026-10-09T13:24:21.735332+08:00",
+        "sent": true,
+        "http_status": 200,
+        "failure_type": null,
+        "finished_utc": "2026-10-09T13:25:03.012566+08:00"
+      },
+      "request_sha256": "8006E5185679802F05D1FF67E703787E4353485DBE2791F69CF5467635656F8D",
+      "batch": "review03",
+      "stage": "review",
+      "result_status": "completed_and_validated"
+    },
+    {
+      "attempt": {
+        "attempt": 1,
+        "route": "direct",
+        "started_utc": "2026-10-09T13:24:43.485383+08:00",
+        "sent": true,
+        "http_status": 200,
+        "failure_type": null,
+        "finished_utc": "2026-10-09T13:25:32.73175+08:00"
+      },
+      "request_sha256": "7EDFC572E715D73BC9BF801DD0ECD0BF4A0630B747B0018E57ABF986FA02148D",
+      "batch": "review04",
+      "stage": "review",
+      "result_status": "completed_and_validated"
+    },
+    {
+      "attempt": {
+        "attempt": 1,
+        "route": "direct",
+        "started_utc": "2026-10-09T13:25:18.047941+08:00",
+        "sent": true,
+        "http_status": 200,
+        "failure_type": null,
+        "finished_utc": "2026-10-09T13:26:18.344805+08:00"
+      },
+      "request_sha256": "70D929C325B5F8790404E1942763BFD3FC503E616EBA6FAF0F6C4AADCE0E3BEF",
+      "batch": "review05",
+      "stage": "review",
+      "result_status": "completed_and_validated"
+    },
+    {
+      "attempt": {
+        "attempt": 1,
+        "route": "direct",
+        "started_utc": "2026-10-09T13:25:52.340127+08:00",
+        "sent": true,
+        "http_status": 200,
+        "failure_type": null,
+        "finished_utc": "2026-10-09T13:26:04.043353+08:00"
+      },
+      "request_sha256": "56325592F5E259F86F04609E05D074D72442DEA25282060B4B9EAC1C52F6BF02",
+      "batch": "review06",
+      "stage": "review",
+      "result_status": "completed_and_validated"
+    }
+  ],
+  "maximum_concurrency": 2,
+  "phase_started": "2026-10-09T13:04:25.0000000+08:00",
+  "http200": 21,
+  "validated_batches": 21,
+  "logical_batches": 21,
+  "frozen_deadline": "2026-10-09T14:34:25.0000000+08:00",
+  "transport_attempts": 21
+}

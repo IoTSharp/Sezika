@@ -1,0 +1,51 @@
+{
+  "repaired_choice_order_rule": "sha256(repair-order-seed17|record_id|candidate_id), independent of label/split/model prediction",
+  "maximum_stage_seconds": 5400,
+  "maximum_concurrency": 2,
+  "batches": [
+    {
+      "batch": "review00",
+      "input_sha256": "CA0ACB98928773896427F27DF201C775EFD4C274C9F03B5F88D2F50CAE9E0BA5",
+      "start": 0,
+      "count": 6
+    },
+    {
+      "batch": "review01",
+      "input_sha256": "6D15057F42BFCFFA44EDA93C476274A5334981DAF303A9FE76B1835430385DB3",
+      "start": 6,
+      "count": 6
+    },
+    {
+      "batch": "review02",
+      "input_sha256": "885D64D6957D0DA90C5E6BB86C47E425A678F0D3083B9443B743297FD1FC0E2C",
+      "start": 12,
+      "count": 6
+    },
+    {
+      "batch": "review03",
+      "input_sha256": "EFE5E38A7A83622841F187652E4E70BE53142F0561F78BD0FA934E9EF113C04E",
+      "start": 18,
+      "count": 6
+    },
+    {
+      "batch": "review04",
+      "input_sha256": "7172ED6E7D6096CC8EEABC003D79766B91BC2FD5AB667382FBDED695095576D8",
+      "start": 24,
+      "count": 6
+    },
+    {
+      "batch": "review05",
+      "input_sha256": "144E93FAB3E810E182E55BD5D2FE45EFF8EBBD25ADCBC30D8415574084AB163E",
+      "start": 30,
+      "count": 6
+    },
+    {
+      "batch": "review06",
+      "input_sha256": "8A5F6401EB16584ED3B83CDCD37F48331E8669FDFA170510F4DE28050FBE5B52",
+      "start": 36,
+      "count": 1
+    }
+  ],
+  "stage": "review",
+  "total": 37
+}

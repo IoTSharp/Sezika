@@ -1,0 +1,4388 @@
+{
+  "records": [
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/1",
+        "response_id": "resp_0e6cf9e8812af87f016ac782821a488198b9226568d7b65949",
+        "request_sha256": "D841D65315D0BFD6671A6F0E01764DBA4E4BCAA4D4521B9CE1B9D942AD24D8AA",
+        "response_sha256": "BC9E00D49D870E1B7C8122CA7958EFDFFA471DCFC1AB04012CB69FC382AABB6C",
+        "selected_candidate_id": "alarm_set",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-1",
+      "selected_candidate_id": "alarm_set",
+      "candidate_ids": [
+        "alarm_set",
+        "alarm_query",
+        "alarm_remove",
+        "calendar_query"
+      ],
+      "record_id": "massive-en-us-00001"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/2",
+        "response_id": "resp_0e6cf9e8812af87f016ac782821a488198b9226568d7b65949",
+        "request_sha256": "D841D65315D0BFD6671A6F0E01764DBA4E4BCAA4D4521B9CE1B9D942AD24D8AA",
+        "response_sha256": "BC9E00D49D870E1B7C8122CA7958EFDFFA471DCFC1AB04012CB69FC382AABB6C",
+        "selected_candidate_id": "alarm_set",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-2",
+      "selected_candidate_id": "alarm_set",
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_set",
+        "alarm_remove",
+        "calendar_query"
+      ],
+      "record_id": "massive-zh-cn-00002"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/62",
+        "response_id": "resp_0788a599d5c5be16016ac86c20006c8198bcf5e86022a5d9cc",
+        "request_sha256": "F712311CF0137547B76A7A944271F231214939FBDB97FC02BD0104D8E16F952B",
+        "response_sha256": "FDF6842B0AE0BAC43CF59EBD0BD7D9ECB478AAC6E0E00D591CE1F1666D0E0B3B",
+        "selected_candidate_id": "alarm_query",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-62",
+      "selected_candidate_id": "alarm_query",
+      "candidate_ids": [
+        "alarm_remove",
+        "alarm_query",
+        "alarm_set",
+        "calendar_query"
+      ],
+      "record_id": "massive-en-us-00062"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/60",
+        "response_id": "resp_0788a599d5c5be16016ac86c20006c8198bcf5e86022a5d9cc",
+        "request_sha256": "F712311CF0137547B76A7A944271F231214939FBDB97FC02BD0104D8E16F952B",
+        "response_sha256": "FDF6842B0AE0BAC43CF59EBD0BD7D9ECB478AAC6E0E00D591CE1F1666D0E0B3B",
+        "selected_candidate_id": "alarm_remove",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-60",
+      "selected_candidate_id": "alarm_remove",
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_set",
+        "alarm_remove",
+        "calendar_query"
+      ],
+      "record_id": "massive-en-us-00060"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/259",
+        "response_id": "resp_0788a599d5c5be16016ac86c20006c8198bcf5e86022a5d9cc",
+        "request_sha256": "F712311CF0137547B76A7A944271F231214939FBDB97FC02BD0104D8E16F952B",
+        "response_sha256": "FDF6842B0AE0BAC43CF59EBD0BD7D9ECB478AAC6E0E00D591CE1F1666D0E0B3B",
+        "selected_candidate_id": "audio_volume_down",
+        "target_index": 3
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-259",
+      "selected_candidate_id": "audio_volume_down",
+      "candidate_ids": [
+        "audio_volume_mute",
+        "audio_volume_other",
+        "audio_volume_up",
+        "audio_volume_down"
+      ],
+      "record_id": "massive-en-us-00259"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/152",
+        "response_id": "resp_0788a599d5c5be16016ac86c20006c8198bcf5e86022a5d9cc",
+        "request_sha256": "F712311CF0137547B76A7A944271F231214939FBDB97FC02BD0104D8E16F952B",
+        "response_sha256": "FDF6842B0AE0BAC43CF59EBD0BD7D9ECB478AAC6E0E00D591CE1F1666D0E0B3B",
+        "selected_candidate_id": "audio_volume_other",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-152",
+      "selected_candidate_id": "audio_volume_other",
+      "candidate_ids": [
+        "audio_volume_down",
+        "audio_volume_other",
+        "audio_volume_mute",
+        "audio_volume_up"
+      ],
+      "record_id": "massive-en-us-00152"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/187",
+        "response_id": "resp_0788a599d5c5be16016ac86c20006c8198bcf5e86022a5d9cc",
+        "request_sha256": "F712311CF0137547B76A7A944271F231214939FBDB97FC02BD0104D8E16F952B",
+        "response_sha256": "FDF6842B0AE0BAC43CF59EBD0BD7D9ECB478AAC6E0E00D591CE1F1666D0E0B3B",
+        "selected_candidate_id": "audio_volume_up",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-187",
+      "selected_candidate_id": "audio_volume_up",
+      "candidate_ids": [
+        "audio_volume_down",
+        "audio_volume_mute",
+        "audio_volume_up",
+        "audio_volume_other"
+      ],
+      "record_id": "massive-en-us-00187"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/33",
+        "response_id": "resp_0788a599d5c5be16016ac86c20006c8198bcf5e86022a5d9cc",
+        "request_sha256": "F712311CF0137547B76A7A944271F231214939FBDB97FC02BD0104D8E16F952B",
+        "response_sha256": "FDF6842B0AE0BAC43CF59EBD0BD7D9ECB478AAC6E0E00D591CE1F1666D0E0B3B",
+        "selected_candidate_id": "calendar_query",
+        "target_index": 3
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-33",
+      "selected_candidate_id": "calendar_query",
+      "candidate_ids": [
+        "calendar_remove",
+        "calendar_set",
+        "alarm_query",
+        "calendar_query"
+      ],
+      "record_id": "massive-en-us-00033"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/6714",
+        "response_id": "resp_0788a599d5c5be16016ac86c20006c8198bcf5e86022a5d9cc",
+        "request_sha256": "F712311CF0137547B76A7A944271F231214939FBDB97FC02BD0104D8E16F952B",
+        "response_sha256": "FDF6842B0AE0BAC43CF59EBD0BD7D9ECB478AAC6E0E00D591CE1F1666D0E0B3B",
+        "selected_candidate_id": "calendar_remove",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-6714",
+      "selected_candidate_id": "calendar_remove",
+      "candidate_ids": [
+        "calendar_remove",
+        "calendar_query",
+        "calendar_set",
+        "alarm_query"
+      ],
+      "record_id": "massive-en-us-06714"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/3201",
+        "response_id": "resp_0b8c09aedb7cdf79016ac87a46c1688198b281af04e05c5178",
+        "request_sha256": "1AADBDBAAC525AACE5B486E985FA7C60D68760E07B27A7416B6CC9B23FA87801",
+        "response_sha256": "865FEE0449A80F20EC873960A635709A7CAC2A455CECCB7DB019B0989734DC7C",
+        "selected_candidate_id": "conditional_reminder",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-3201",
+      "selected_candidate_id": "conditional_reminder",
+      "candidate_ids": [
+        "calendar_remove",
+        "conditional_reminder",
+        "alarm_query",
+        "calendar_set",
+        "calendar_query"
+      ],
+      "record_id": "massive-en-us-03201"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/6637",
+        "response_id": "resp_0714d7757eb36da8016ac86c2025d8819abb4add6f4f59729a",
+        "request_sha256": "51D49D1637F2D5BF70549E16A7E5E034012BEFD1E2400763E494FC6D82A3C58B",
+        "response_sha256": "875633DA3AB304F560AC5EA682EAC4B6A6EF0C43E0275E64E7A57411007FD580",
+        "selected_candidate_id": "cooking_query",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-6637",
+      "selected_candidate_id": "cooking_query",
+      "candidate_ids": [
+        "cooking_recipe",
+        "qa_currency",
+        "cooking_query",
+        "qa_definition"
+      ],
+      "record_id": "massive-en-us-06637"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/9911",
+        "response_id": "resp_0714d7757eb36da8016ac86c2025d8819abb4add6f4f59729a",
+        "request_sha256": "51D49D1637F2D5BF70549E16A7E5E034012BEFD1E2400763E494FC6D82A3C58B",
+        "response_sha256": "875633DA3AB304F560AC5EA682EAC4B6A6EF0C43E0275E64E7A57411007FD580",
+        "selected_candidate_id": "cooking_query",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-9911",
+      "selected_candidate_id": "cooking_query",
+      "candidate_ids": [
+        "cooking_query",
+        "qa_currency",
+        "qa_definition",
+        "cooking_recipe"
+      ],
+      "record_id": "massive-en-us-09911"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/49",
+        "response_id": "resp_0714d7757eb36da8016ac86c2025d8819abb4add6f4f59729a",
+        "request_sha256": "51D49D1637F2D5BF70549E16A7E5E034012BEFD1E2400763E494FC6D82A3C58B",
+        "response_sha256": "875633DA3AB304F560AC5EA682EAC4B6A6EF0C43E0275E64E7A57411007FD580",
+        "selected_candidate_id": "datetime_query",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-49",
+      "selected_candidate_id": "datetime_query",
+      "candidate_ids": [
+        "datetime_convert",
+        "datetime_query",
+        "alarm_query",
+        "alarm_remove"
+      ],
+      "record_id": "massive-en-us-00049"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/48",
+        "response_id": "resp_0714d7757eb36da8016ac86c2025d8819abb4add6f4f59729a",
+        "request_sha256": "51D49D1637F2D5BF70549E16A7E5E034012BEFD1E2400763E494FC6D82A3C58B",
+        "response_sha256": "875633DA3AB304F560AC5EA682EAC4B6A6EF0C43E0275E64E7A57411007FD580",
+        "selected_candidate_id": "datetime_query",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-48",
+      "selected_candidate_id": "datetime_query",
+      "candidate_ids": [
+        "datetime_convert",
+        "datetime_query",
+        "alarm_query",
+        "alarm_remove"
+      ],
+      "record_id": "massive-en-us-00048"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/10137",
+        "response_id": "resp_0b8c09aedb7cdf79016ac87a46c1688198b281af04e05c5178",
+        "request_sha256": "1AADBDBAAC525AACE5B486E985FA7C60D68760E07B27A7416B6CC9B23FA87801",
+        "response_sha256": "865FEE0449A80F20EC873960A635709A7CAC2A455CECCB7DB019B0989734DC7C",
+        "selected_candidate_id": "phone_call",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-10137",
+      "selected_candidate_id": "phone_call",
+      "candidate_ids": [
+        "phone_call",
+        "email_sendemail",
+        "email_addcontact",
+        "email_query",
+        "email_querycontact"
+      ],
+      "record_id": "massive-en-us-10137"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/4539",
+        "response_id": "resp_0b8c09aedb7cdf79016ac87a46c1688198b281af04e05c5178",
+        "request_sha256": "1AADBDBAAC525AACE5B486E985FA7C60D68760E07B27A7416B6CC9B23FA87801",
+        "response_sha256": "865FEE0449A80F20EC873960A635709A7CAC2A455CECCB7DB019B0989734DC7C",
+        "selected_candidate_id": "message_wait_to_send",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-4539",
+      "selected_candidate_id": "message_wait_to_send",
+      "candidate_ids": [
+        "email_querycontact",
+        "email_addcontact",
+        "message_wait_to_send",
+        "email_query",
+        "email_sendemail"
+      ],
+      "record_id": "massive-en-us-04539"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/119",
+        "response_id": "resp_06e4b67cd443284d016ac86cb30804819a8f57789a5ba242e1",
+        "request_sha256": "C04FF1AE3E7F797C1EA8898AC27B7916322CC8854C26F06FB050EF5EA45D87FB",
+        "response_sha256": "333DFDBD1C41EF1D199FF8833C6DD2C83A5BCF2A8264512BBB89F2F22FB71551",
+        "selected_candidate_id": "general_joke",
+        "target_index": 3
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-119",
+      "selected_candidate_id": "general_joke",
+      "candidate_ids": [
+        "general_greet",
+        "general_quirky",
+        "play_audiobook",
+        "general_joke"
+      ],
+      "record_id": "massive-en-us-00119"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/36",
+        "response_id": "resp_0b8c09aedb7cdf79016ac87a46c1688198b281af04e05c5178",
+        "request_sha256": "1AADBDBAAC525AACE5B486E985FA7C60D68760E07B27A7416B6CC9B23FA87801",
+        "response_sha256": "865FEE0449A80F20EC873960A635709A7CAC2A455CECCB7DB019B0989734DC7C",
+        "selected_candidate_id": "vehicle_check_ready",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-36",
+      "selected_candidate_id": "vehicle_check_ready",
+      "candidate_ids": [
+        "general_joke",
+        "play_audiobook",
+        "vehicle_check_ready",
+        "general_greet",
+        "general_quirky"
+      ],
+      "record_id": "massive-en-us-00036"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/25",
+        "response_id": "resp_06e4b67cd443284d016ac86cb30804819a8f57789a5ba242e1",
+        "request_sha256": "C04FF1AE3E7F797C1EA8898AC27B7916322CC8854C26F06FB050EF5EA45D87FB",
+        "response_sha256": "333DFDBD1C41EF1D199FF8833C6DD2C83A5BCF2A8264512BBB89F2F22FB71551",
+        "selected_candidate_id": "iot_cleaning",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-25",
+      "selected_candidate_id": "iot_cleaning",
+      "candidate_ids": [
+        "iot_coffee",
+        "iot_cleaning",
+        "iot_hue_lightchange",
+        "iot_hue_lightdim"
+      ],
+      "record_id": "massive-en-us-00025"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/162",
+        "response_id": "resp_06e4b67cd443284d016ac86cb30804819a8f57789a5ba242e1",
+        "request_sha256": "C04FF1AE3E7F797C1EA8898AC27B7916322CC8854C26F06FB050EF5EA45D87FB",
+        "response_sha256": "333DFDBD1C41EF1D199FF8833C6DD2C83A5BCF2A8264512BBB89F2F22FB71551",
+        "selected_candidate_id": "iot_coffee",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-162",
+      "selected_candidate_id": "iot_coffee",
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_hue_lightchange",
+        "iot_coffee",
+        "iot_hue_lightdim"
+      ],
+      "record_id": "massive-en-us-00162"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/9",
+        "response_id": "resp_06e4b67cd443284d016ac86cb30804819a8f57789a5ba242e1",
+        "request_sha256": "C04FF1AE3E7F797C1EA8898AC27B7916322CC8854C26F06FB050EF5EA45D87FB",
+        "response_sha256": "333DFDBD1C41EF1D199FF8833C6DD2C83A5BCF2A8264512BBB89F2F22FB71551",
+        "selected_candidate_id": "iot_hue_lightchange",
+        "target_index": 3
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-9",
+      "selected_candidate_id": "iot_hue_lightchange",
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightdim",
+        "iot_hue_lightchange"
+      ],
+      "record_id": "massive-en-us-00009"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/16",
+        "response_id": "resp_06e4b67cd443284d016ac86cb30804819a8f57789a5ba242e1",
+        "request_sha256": "C04FF1AE3E7F797C1EA8898AC27B7916322CC8854C26F06FB050EF5EA45D87FB",
+        "response_sha256": "333DFDBD1C41EF1D199FF8833C6DD2C83A5BCF2A8264512BBB89F2F22FB71551",
+        "selected_candidate_id": "iot_hue_lightdim",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-16",
+      "selected_candidate_id": "iot_hue_lightdim",
+      "candidate_ids": [
+        "iot_hue_lightdim",
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "record_id": "massive-en-us-00016"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/12",
+        "response_id": "resp_0b8c09aedb7cdf79016ac87a46c1688198b281af04e05c5178",
+        "request_sha256": "1AADBDBAAC525AACE5B486E985FA7C60D68760E07B27A7416B6CC9B23FA87801",
+        "response_sha256": "865FEE0449A80F20EC873960A635709A7CAC2A455CECCB7DB019B0989734DC7C",
+        "selected_candidate_id": "sleep_time",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-12",
+      "selected_candidate_id": "sleep_time",
+      "candidate_ids": [
+        "iot_hue_lightoff",
+        "iot_hue_lightchange",
+        "sleep_time",
+        "iot_coffee",
+        "iot_cleaning"
+      ],
+      "record_id": "massive-en-us-00012"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/81",
+        "response_id": "resp_039d88f307549322016ac86cda99a08199b85f472030f4ea00",
+        "request_sha256": "5E196D28F21D14738184D98904DA506189943B3CE486E65D84062BEDE80BE14E",
+        "response_sha256": "9801CAEA9064CA64AC27A688E74278A625B6946D02CF7C38AB5A670D12FCAFEE",
+        "selected_candidate_id": "iot_hue_lightup",
+        "target_index": 3
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-81",
+      "selected_candidate_id": "iot_hue_lightup",
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightchange",
+        "iot_hue_lightup"
+      ],
+      "record_id": "massive-en-us-00081"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/228",
+        "response_id": "resp_039d88f307549322016ac86cda99a08199b85f472030f4ea00",
+        "request_sha256": "5E196D28F21D14738184D98904DA506189943B3CE486E65D84062BEDE80BE14E",
+        "response_sha256": "9801CAEA9064CA64AC27A688E74278A625B6946D02CF7C38AB5A670D12FCAFEE",
+        "selected_candidate_id": "iot_wemo_off",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-228",
+      "selected_candidate_id": "iot_wemo_off",
+      "candidate_ids": [
+        "iot_wemo_off",
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "record_id": "massive-en-us-00228"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/190",
+        "response_id": "resp_039d88f307549322016ac86cda99a08199b85f472030f4ea00",
+        "request_sha256": "5E196D28F21D14738184D98904DA506189943B3CE486E65D84062BEDE80BE14E",
+        "response_sha256": "9801CAEA9064CA64AC27A688E74278A625B6946D02CF7C38AB5A670D12FCAFEE",
+        "selected_candidate_id": "iot_wemo_on",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-190",
+      "selected_candidate_id": "iot_wemo_on",
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_wemo_on",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "record_id": "massive-en-us-00190"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/10435",
+        "response_id": "resp_039d88f307549322016ac86cda99a08199b85f472030f4ea00",
+        "request_sha256": "5E196D28F21D14738184D98904DA506189943B3CE486E65D84062BEDE80BE14E",
+        "response_sha256": "9801CAEA9064CA64AC27A688E74278A625B6946D02CF7C38AB5A670D12FCAFEE",
+        "selected_candidate_id": "lists_createoradd",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-10435",
+      "selected_candidate_id": "lists_createoradd",
+      "candidate_ids": [
+        "lists_query",
+        "lists_remove",
+        "lists_createoradd",
+        "calendar_query"
+      ],
+      "record_id": "massive-en-us-10435"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/7742",
+        "response_id": "resp_039d88f307549322016ac86cda99a08199b85f472030f4ea00",
+        "request_sha256": "5E196D28F21D14738184D98904DA506189943B3CE486E65D84062BEDE80BE14E",
+        "response_sha256": "9801CAEA9064CA64AC27A688E74278A625B6946D02CF7C38AB5A670D12FCAFEE",
+        "selected_candidate_id": "lists_remove",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-7742",
+      "selected_candidate_id": "lists_remove",
+      "candidate_ids": [
+        "lists_remove",
+        "lists_createoradd",
+        "lists_query",
+        "calendar_query"
+      ],
+      "record_id": "massive-en-us-07742"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/69",
+        "response_id": "resp_077232ad880d0cf1016ac86eda5300819a8a3fa11375fb9a05",
+        "request_sha256": "B1394D337E96CCF6760D6E0342E4B878C653A838DA0A10720377DEB8C1872F5E",
+        "response_sha256": "29150D882A8D60829CFE2AAD1D929657E455FE1EF03A27E83192E93DCBE6D454",
+        "selected_candidate_id": "music_likeness",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-69",
+      "selected_candidate_id": "music_likeness",
+      "candidate_ids": [
+        "music_dislikeness",
+        "music_query",
+        "music_likeness",
+        "music_settings"
+      ],
+      "record_id": "massive-en-us-00069"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/75",
+        "response_id": "resp_077232ad880d0cf1016ac86eda5300819a8a3fa11375fb9a05",
+        "request_sha256": "B1394D337E96CCF6760D6E0342E4B878C653A838DA0A10720377DEB8C1872F5E",
+        "response_sha256": "29150D882A8D60829CFE2AAD1D929657E455FE1EF03A27E83192E93DCBE6D454",
+        "selected_candidate_id": "music_query",
+        "target_index": 3
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-75",
+      "selected_candidate_id": "music_query",
+      "candidate_ids": [
+        "music_dislikeness",
+        "music_likeness",
+        "music_settings",
+        "music_query"
+      ],
+      "record_id": "massive-en-us-00075"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/114",
+        "response_id": "resp_077232ad880d0cf1016ac86eda5300819a8a3fa11375fb9a05",
+        "request_sha256": "B1394D337E96CCF6760D6E0342E4B878C653A838DA0A10720377DEB8C1872F5E",
+        "response_sha256": "29150D882A8D60829CFE2AAD1D929657E455FE1EF03A27E83192E93DCBE6D454",
+        "selected_candidate_id": "music_settings",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-114",
+      "selected_candidate_id": "music_settings",
+      "candidate_ids": [
+        "music_settings",
+        "music_dislikeness",
+        "music_likeness",
+        "music_query"
+      ],
+      "record_id": "massive-en-us-00114"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/65",
+        "response_id": "resp_077232ad880d0cf1016ac86eda5300819a8a3fa11375fb9a05",
+        "request_sha256": "B1394D337E96CCF6760D6E0342E4B878C653A838DA0A10720377DEB8C1872F5E",
+        "response_sha256": "29150D882A8D60829CFE2AAD1D929657E455FE1EF03A27E83192E93DCBE6D454",
+        "selected_candidate_id": "news_query",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-65",
+      "selected_candidate_id": "news_query",
+      "candidate_ids": [
+        "qa_currency",
+        "news_query",
+        "qa_definition",
+        "qa_factoid"
+      ],
+      "record_id": "massive-en-us-00065"
+    },
+    {
+      "target_index": 4,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/3692",
+        "response_id": "resp_0b8c09aedb7cdf79016ac87a46c1688198b281af04e05c5178",
+        "request_sha256": "1AADBDBAAC525AACE5B486E985FA7C60D68760E07B27A7416B6CC9B23FA87801",
+        "response_sha256": "865FEE0449A80F20EC873960A635709A7CAC2A455CECCB7DB019B0989734DC7C",
+        "selected_candidate_id": "repeat_book_sentence",
+        "target_index": 4
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-3692",
+      "selected_candidate_id": "repeat_book_sentence",
+      "candidate_ids": [
+        "play_audiobook",
+        "play_game",
+        "play_music",
+        "play_podcasts",
+        "repeat_book_sentence"
+      ],
+      "record_id": "massive-en-us-03692"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/34",
+        "response_id": "resp_077232ad880d0cf1016ac86eda5300819a8a3fa11375fb9a05",
+        "request_sha256": "B1394D337E96CCF6760D6E0342E4B878C653A838DA0A10720377DEB8C1872F5E",
+        "response_sha256": "29150D882A8D60829CFE2AAD1D929657E455FE1EF03A27E83192E93DCBE6D454",
+        "selected_candidate_id": "play_music",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-34",
+      "selected_candidate_id": "play_music",
+      "candidate_ids": [
+        "play_music",
+        "play_audiobook",
+        "play_game",
+        "play_podcasts"
+      ],
+      "record_id": "massive-en-us-00034"
+    },
+    {
+      "target_index": 4,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/3891",
+        "response_id": "resp_05eff67a7f16e63b016ac87a46cb40819aaba643a0b3aedc75",
+        "request_sha256": "D31CE8B6BD1D9AB35A5BC07251BAEE359FB6D73C1E851CD10B12DC8525614F80",
+        "response_sha256": "86A239697CF94CBFBC6DEC9630789137C28B5677DDC206A4EA16A4BB72FC9F7D",
+        "selected_candidate_id": "go_back",
+        "target_index": 4
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-3891",
+      "selected_candidate_id": "go_back",
+      "candidate_ids": [
+        "play_audiobook",
+        "play_podcasts",
+        "play_music",
+        "play_game",
+        "go_back"
+      ],
+      "record_id": "massive-en-us-03891"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/912",
+        "response_id": "resp_02e53d14893e9cbb016ac86eda30988199ae3577f4376b3118",
+        "request_sha256": "CADDA9D413947B3E6BE876A6C6BF34E36ACB7F3A0AF6FC779950D4F82947A591",
+        "response_sha256": "2A94B125DD39E89F8F948DBEA080968C314D423128066C9A66C4F3E2124DB3FE",
+        "selected_candidate_id": "play_radio",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-912",
+      "selected_candidate_id": "play_radio",
+      "candidate_ids": [
+        "play_audiobook",
+        "play_game",
+        "play_radio",
+        "play_music"
+      ],
+      "record_id": "massive-en-us-00912"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/13053",
+        "response_id": "resp_02e53d14893e9cbb016ac86eda30988199ae3577f4376b3118",
+        "request_sha256": "CADDA9D413947B3E6BE876A6C6BF34E36ACB7F3A0AF6FC779950D4F82947A591",
+        "response_sha256": "2A94B125DD39E89F8F948DBEA080968C314D423128066C9A66C4F3E2124DB3FE",
+        "selected_candidate_id": "qa_currency",
+        "target_index": 3
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-13053",
+      "selected_candidate_id": "qa_currency",
+      "candidate_ids": [
+        "qa_definition",
+        "qa_factoid",
+        "qa_maths",
+        "qa_currency"
+      ],
+      "record_id": "massive-en-us-13053"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/6709",
+        "response_id": "resp_02e53d14893e9cbb016ac86eda30988199ae3577f4376b3118",
+        "request_sha256": "CADDA9D413947B3E6BE876A6C6BF34E36ACB7F3A0AF6FC779950D4F82947A591",
+        "response_sha256": "2A94B125DD39E89F8F948DBEA080968C314D423128066C9A66C4F3E2124DB3FE",
+        "selected_candidate_id": "qa_definition",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-6709",
+      "selected_candidate_id": "qa_definition",
+      "candidate_ids": [
+        "qa_definition",
+        "qa_currency",
+        "qa_factoid",
+        "qa_maths"
+      ],
+      "record_id": "massive-en-us-06709"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/1801",
+        "response_id": "resp_02e53d14893e9cbb016ac86eda30988199ae3577f4376b3118",
+        "request_sha256": "CADDA9D413947B3E6BE876A6C6BF34E36ACB7F3A0AF6FC779950D4F82947A591",
+        "response_sha256": "2A94B125DD39E89F8F948DBEA080968C314D423128066C9A66C4F3E2124DB3FE",
+        "selected_candidate_id": "qa_factoid",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-1801",
+      "selected_candidate_id": "qa_factoid",
+      "candidate_ids": [
+        "qa_currency",
+        "qa_factoid",
+        "qa_definition",
+        "qa_maths"
+      ],
+      "record_id": "massive-en-us-01801"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/12936",
+        "response_id": "resp_02e53d14893e9cbb016ac86eda30988199ae3577f4376b3118",
+        "request_sha256": "CADDA9D413947B3E6BE876A6C6BF34E36ACB7F3A0AF6FC779950D4F82947A591",
+        "response_sha256": "2A94B125DD39E89F8F948DBEA080968C314D423128066C9A66C4F3E2124DB3FE",
+        "selected_candidate_id": "qa_maths",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-12936",
+      "selected_candidate_id": "qa_maths",
+      "candidate_ids": [
+        "qa_currency",
+        "qa_definition",
+        "qa_maths",
+        "qa_factoid"
+      ],
+      "record_id": "massive-en-us-12936"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/681",
+        "response_id": "resp_02e53d14893e9cbb016ac86eda30988199ae3577f4376b3118",
+        "request_sha256": "CADDA9D413947B3E6BE876A6C6BF34E36ACB7F3A0AF6FC779950D4F82947A591",
+        "response_sha256": "2A94B125DD39E89F8F948DBEA080968C314D423128066C9A66C4F3E2124DB3FE",
+        "selected_candidate_id": "qa_stock",
+        "target_index": 3
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-681",
+      "selected_candidate_id": "qa_stock",
+      "candidate_ids": [
+        "qa_currency",
+        "qa_definition",
+        "qa_factoid",
+        "qa_stock"
+      ],
+      "record_id": "massive-en-us-00681"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/1208",
+        "response_id": "resp_0876075540955ac9016ac862151eb8819ba3845a11db5fae1c",
+        "request_sha256": "D1DD1ED280E378EC83F3D149072C0BB20F31EB85F53CF50FA83B83E93F0FB6A9",
+        "response_sha256": "54BB21E30D795717407F95372716EDF2E9C237DAC0E309430DCB0926722772B8",
+        "selected_candidate_id": "recommendation_locations",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-1208",
+      "selected_candidate_id": "recommendation_locations",
+      "candidate_ids": [
+        "recommendation_events",
+        "recommendation_locations",
+        "recommendation_movies",
+        "play_audiobook"
+      ],
+      "record_id": "massive-en-us-01208"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/5496",
+        "response_id": "resp_0876075540955ac9016ac862151eb8819ba3845a11db5fae1c",
+        "request_sha256": "D1DD1ED280E378EC83F3D149072C0BB20F31EB85F53CF50FA83B83E93F0FB6A9",
+        "response_sha256": "54BB21E30D795717407F95372716EDF2E9C237DAC0E309430DCB0926722772B8",
+        "selected_candidate_id": "recommendation_movies",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-5496",
+      "selected_candidate_id": "recommendation_movies",
+      "candidate_ids": [
+        "recommendation_events",
+        "recommendation_locations",
+        "recommendation_movies",
+        "play_audiobook"
+      ],
+      "record_id": "massive-en-us-05496"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/12995",
+        "response_id": "resp_05eff67a7f16e63b016ac87a46cb40819aaba643a0b3aedc75",
+        "request_sha256": "D31CE8B6BD1D9AB35A5BC07251BAEE359FB6D73C1E851CD10B12DC8525614F80",
+        "response_sha256": "86A239697CF94CBFBC6DEC9630789137C28B5677DDC206A4EA16A4BB72FC9F7D",
+        "selected_candidate_id": "social_message",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-12995",
+      "selected_candidate_id": "social_message",
+      "candidate_ids": [
+        "social_query",
+        "email_addcontact",
+        "social_message",
+        "social_post",
+        "email_query"
+      ],
+      "record_id": "massive-en-us-12995"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/4333",
+        "response_id": "resp_0876075540955ac9016ac862151eb8819ba3845a11db5fae1c",
+        "request_sha256": "D1DD1ED280E378EC83F3D149072C0BB20F31EB85F53CF50FA83B83E93F0FB6A9",
+        "response_sha256": "54BB21E30D795717407F95372716EDF2E9C237DAC0E309430DCB0926722772B8",
+        "selected_candidate_id": "social_query",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-4333",
+      "selected_candidate_id": "social_query",
+      "candidate_ids": [
+        "social_query",
+        "social_post",
+        "email_addcontact",
+        "email_query"
+      ],
+      "record_id": "massive-en-us-04333"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/87",
+        "response_id": "resp_0876075540955ac9016ac862151eb8819ba3845a11db5fae1c",
+        "request_sha256": "D1DD1ED280E378EC83F3D149072C0BB20F31EB85F53CF50FA83B83E93F0FB6A9",
+        "response_sha256": "54BB21E30D795717407F95372716EDF2E9C237DAC0E309430DCB0926722772B8",
+        "selected_candidate_id": "takeaway_order",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-87",
+      "selected_candidate_id": "takeaway_order",
+      "candidate_ids": [
+        "takeaway_query",
+        "takeaway_order",
+        "cooking_query",
+        "cooking_recipe"
+      ],
+      "record_id": "massive-en-us-00087"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/51",
+        "response_id": "resp_0876075540955ac9016ac862151eb8819ba3845a11db5fae1c",
+        "request_sha256": "D1DD1ED280E378EC83F3D149072C0BB20F31EB85F53CF50FA83B83E93F0FB6A9",
+        "response_sha256": "54BB21E30D795717407F95372716EDF2E9C237DAC0E309430DCB0926722772B8",
+        "selected_candidate_id": "takeaway_query",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-51",
+      "selected_candidate_id": "takeaway_query",
+      "candidate_ids": [
+        "takeaway_order",
+        "cooking_query",
+        "takeaway_query",
+        "cooking_recipe"
+      ],
+      "record_id": "massive-en-us-00051"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/12120",
+        "response_id": "resp_0876075540955ac9016ac862151eb8819ba3845a11db5fae1c",
+        "request_sha256": "D1DD1ED280E378EC83F3D149072C0BB20F31EB85F53CF50FA83B83E93F0FB6A9",
+        "response_sha256": "54BB21E30D795717407F95372716EDF2E9C237DAC0E309430DCB0926722772B8",
+        "selected_candidate_id": "transport_taxi",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-12120",
+      "selected_candidate_id": "transport_taxi",
+      "candidate_ids": [
+        "transport_taxi",
+        "transport_query",
+        "transport_ticket",
+        "transport_traffic"
+      ],
+      "record_id": "massive-en-us-12120"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/6453",
+        "response_id": "resp_08ecac8c51cf81d2016ac862ec9c1c8198b052b20102c94f2d",
+        "request_sha256": "D7A456FB455C3241972DB701614DF6ADF772FE019ECDEF06C964F8A8C595F5CD",
+        "response_sha256": "F3A92D538F57FC6BAD3DF9F29BC3FD3565DD96CF0C982CED692290623450706B",
+        "selected_candidate_id": "transport_query",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-6453",
+      "selected_candidate_id": "transport_query",
+      "candidate_ids": [
+        "transport_query",
+        "transport_ticket",
+        "transport_taxi",
+        "transport_traffic"
+      ],
+      "record_id": "massive-en-us-06453"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/6546",
+        "response_id": "resp_08ecac8c51cf81d2016ac862ec9c1c8198b052b20102c94f2d",
+        "request_sha256": "D7A456FB455C3241972DB701614DF6ADF772FE019ECDEF06C964F8A8C595F5CD",
+        "response_sha256": "F3A92D538F57FC6BAD3DF9F29BC3FD3565DD96CF0C982CED692290623450706B",
+        "selected_candidate_id": "transport_traffic",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-6546",
+      "selected_candidate_id": "transport_traffic",
+      "candidate_ids": [
+        "transport_query",
+        "transport_taxi",
+        "transport_traffic",
+        "transport_ticket"
+      ],
+      "record_id": "massive-en-us-06546"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/96",
+        "response_id": "resp_08ecac8c51cf81d2016ac862ec9c1c8198b052b20102c94f2d",
+        "request_sha256": "D7A456FB455C3241972DB701614DF6ADF772FE019ECDEF06C964F8A8C595F5CD",
+        "response_sha256": "F3A92D538F57FC6BAD3DF9F29BC3FD3565DD96CF0C982CED692290623450706B",
+        "selected_candidate_id": "weather_query",
+        "target_index": 3
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-96",
+      "selected_candidate_id": "weather_query",
+      "candidate_ids": [
+        "datetime_convert",
+        "datetime_query",
+        "news_query",
+        "weather_query"
+      ],
+      "record_id": "massive-en-us-00096"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/203",
+        "response_id": "resp_08ecac8c51cf81d2016ac862ec9c1c8198b052b20102c94f2d",
+        "request_sha256": "D7A456FB455C3241972DB701614DF6ADF772FE019ECDEF06C964F8A8C595F5CD",
+        "response_sha256": "F3A92D538F57FC6BAD3DF9F29BC3FD3565DD96CF0C982CED692290623450706B",
+        "selected_candidate_id": "alarm_query",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-203",
+      "selected_candidate_id": "alarm_query",
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_remove",
+        "alarm_set",
+        "calendar_query"
+      ],
+      "record_id": "massive-en-us-00203"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/202",
+        "response_id": "resp_08ecac8c51cf81d2016ac862ec9c1c8198b052b20102c94f2d",
+        "request_sha256": "D7A456FB455C3241972DB701614DF6ADF772FE019ECDEF06C964F8A8C595F5CD",
+        "response_sha256": "F3A92D538F57FC6BAD3DF9F29BC3FD3565DD96CF0C982CED692290623450706B",
+        "selected_candidate_id": "alarm_remove",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-202",
+      "selected_candidate_id": "alarm_remove",
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_remove",
+        "alarm_set",
+        "calendar_query"
+      ],
+      "record_id": "massive-en-us-00202"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/330",
+        "response_id": "resp_08ecac8c51cf81d2016ac862ec9c1c8198b052b20102c94f2d",
+        "request_sha256": "D7A456FB455C3241972DB701614DF6ADF772FE019ECDEF06C964F8A8C595F5CD",
+        "response_sha256": "F3A92D538F57FC6BAD3DF9F29BC3FD3565DD96CF0C982CED692290623450706B",
+        "selected_candidate_id": "audio_volume_down",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-330",
+      "selected_candidate_id": "audio_volume_down",
+      "candidate_ids": [
+        "audio_volume_mute",
+        "audio_volume_other",
+        "audio_volume_down",
+        "audio_volume_up"
+      ],
+      "record_id": "massive-en-us-00330"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/934",
+        "response_id": "resp_08ecac8c51cf81d2016ac862ec9c1c8198b052b20102c94f2d",
+        "request_sha256": "D7A456FB455C3241972DB701614DF6ADF772FE019ECDEF06C964F8A8C595F5CD",
+        "response_sha256": "F3A92D538F57FC6BAD3DF9F29BC3FD3565DD96CF0C982CED692290623450706B",
+        "selected_candidate_id": "audio_volume_other",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-934",
+      "selected_candidate_id": "audio_volume_other",
+      "candidate_ids": [
+        "audio_volume_down",
+        "audio_volume_mute",
+        "audio_volume_other",
+        "audio_volume_up"
+      ],
+      "record_id": "massive-zh-cn-00934"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/1137",
+        "response_id": "resp_07adca2b8c314379016ac862ed2f788199987f0c3f6974178b",
+        "request_sha256": "CBA600136F0C873C8A35346BD4015D3B47764B5F5DD10EBB685CD1586E6FB18F",
+        "response_sha256": "E0BF507752EEDF8A41354F822EE718A8579C8B8DCD0ED2E5EBF19A9C681E0DF9",
+        "selected_candidate_id": "calendar_query",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-1137",
+      "selected_candidate_id": "calendar_query",
+      "candidate_ids": [
+        "calendar_query",
+        "calendar_remove",
+        "calendar_set",
+        "alarm_query"
+      ],
+      "record_id": "massive-zh-cn-01137"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/6715",
+        "response_id": "resp_07adca2b8c314379016ac862ed2f788199987f0c3f6974178b",
+        "request_sha256": "CBA600136F0C873C8A35346BD4015D3B47764B5F5DD10EBB685CD1586E6FB18F",
+        "response_sha256": "E0BF507752EEDF8A41354F822EE718A8579C8B8DCD0ED2E5EBF19A9C681E0DF9",
+        "selected_candidate_id": "calendar_remove",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-6715",
+      "selected_candidate_id": "calendar_remove",
+      "candidate_ids": [
+        "calendar_query",
+        "calendar_remove",
+        "calendar_set",
+        "alarm_query"
+      ],
+      "record_id": "massive-zh-cn-06715"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/3601",
+        "response_id": "resp_05eff67a7f16e63b016ac87a46cb40819aaba643a0b3aedc75",
+        "request_sha256": "D31CE8B6BD1D9AB35A5BC07251BAEE359FB6D73C1E851CD10B12DC8525614F80",
+        "response_sha256": "86A239697CF94CBFBC6DEC9630789137C28B5677DDC206A4EA16A4BB72FC9F7D",
+        "selected_candidate_id": "reminder_set",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-3601",
+      "selected_candidate_id": "reminder_set",
+      "candidate_ids": [
+        "reminder_set",
+        "calendar_set",
+        "alarm_query",
+        "calendar_query",
+        "calendar_remove"
+      ],
+      "record_id": "massive-zh-cn-03601"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/13479",
+        "response_id": "resp_07adca2b8c314379016ac862ed2f788199987f0c3f6974178b",
+        "request_sha256": "CBA600136F0C873C8A35346BD4015D3B47764B5F5DD10EBB685CD1586E6FB18F",
+        "response_sha256": "E0BF507752EEDF8A41354F822EE718A8579C8B8DCD0ED2E5EBF19A9C681E0DF9",
+        "selected_candidate_id": "cooking_recipe",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-13479",
+      "selected_candidate_id": "cooking_recipe",
+      "candidate_ids": [
+        "cooking_recipe",
+        "qa_currency",
+        "qa_definition",
+        "cooking_query"
+      ],
+      "record_id": "massive-zh-cn-13479"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/9913",
+        "response_id": "resp_05eff67a7f16e63b016ac87a46cb40819aaba643a0b3aedc75",
+        "request_sha256": "D31CE8B6BD1D9AB35A5BC07251BAEE359FB6D73C1E851CD10B12DC8525614F80",
+        "response_sha256": "86A239697CF94CBFBC6DEC9630789137C28B5677DDC206A4EA16A4BB72FC9F7D",
+        "selected_candidate_id": "cooking_recipe",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-9913",
+      "selected_candidate_id": "cooking_recipe",
+      "candidate_ids": [
+        "cooking_query",
+        "qa_definition",
+        "cooking_recipe",
+        "qa_currency"
+      ],
+      "record_id": "massive-zh-cn-09913"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/394",
+        "response_id": "resp_07adca2b8c314379016ac862ed2f788199987f0c3f6974178b",
+        "request_sha256": "CBA600136F0C873C8A35346BD4015D3B47764B5F5DD10EBB685CD1586E6FB18F",
+        "response_sha256": "E0BF507752EEDF8A41354F822EE718A8579C8B8DCD0ED2E5EBF19A9C681E0DF9",
+        "selected_candidate_id": "datetime_convert",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-394",
+      "selected_candidate_id": "datetime_convert",
+      "candidate_ids": [
+        "datetime_query",
+        "datetime_convert",
+        "alarm_query",
+        "alarm_remove"
+      ],
+      "record_id": "massive-zh-cn-00394"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/195",
+        "response_id": "resp_07adca2b8c314379016ac862ed2f788199987f0c3f6974178b",
+        "request_sha256": "CBA600136F0C873C8A35346BD4015D3B47764B5F5DD10EBB685CD1586E6FB18F",
+        "response_sha256": "E0BF507752EEDF8A41354F822EE718A8579C8B8DCD0ED2E5EBF19A9C681E0DF9",
+        "selected_candidate_id": "datetime_query",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-195",
+      "selected_candidate_id": "datetime_query",
+      "candidate_ids": [
+        "datetime_convert",
+        "alarm_query",
+        "datetime_query",
+        "alarm_remove"
+      ],
+      "record_id": "massive-zh-cn-00195"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/15745",
+        "response_id": "resp_0d03b43488a3aaec016ac863a1b47c819abbea318214c33af4",
+        "request_sha256": "0EE75727406ABEE10FFB38F46F63F85CFDAD1ED05A61400C6C9AAED609F39BCE",
+        "response_sha256": "3A14997E23C8D77D1BC8E4835F664B0114008C2C9C9576E5A39460016E9581F6",
+        "selected_candidate_id": "email_sendemail",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-15745",
+      "selected_candidate_id": "email_sendemail",
+      "candidate_ids": [
+        "email_query",
+        "email_querycontact",
+        "email_sendemail",
+        "email_addcontact"
+      ],
+      "record_id": "massive-zh-cn-15745"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/13220",
+        "response_id": "resp_0d03b43488a3aaec016ac863a1b47c819abbea318214c33af4",
+        "request_sha256": "0EE75727406ABEE10FFB38F46F63F85CFDAD1ED05A61400C6C9AAED609F39BCE",
+        "response_sha256": "3A14997E23C8D77D1BC8E4835F664B0114008C2C9C9576E5A39460016E9581F6",
+        "selected_candidate_id": "email_query",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-13220",
+      "selected_candidate_id": "email_query",
+      "candidate_ids": [
+        "email_query",
+        "email_addcontact",
+        "email_querycontact",
+        "email_sendemail"
+      ],
+      "record_id": "massive-zh-cn-13220"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/15690",
+        "response_id": "resp_0d03b43488a3aaec016ac863a1b47c819abbea318214c33af4",
+        "request_sha256": "0EE75727406ABEE10FFB38F46F63F85CFDAD1ED05A61400C6C9AAED609F39BCE",
+        "response_sha256": "3A14997E23C8D77D1BC8E4835F664B0114008C2C9C9576E5A39460016E9581F6",
+        "selected_candidate_id": "email_querycontact",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-15690",
+      "selected_candidate_id": "email_querycontact",
+      "candidate_ids": [
+        "email_addcontact",
+        "email_querycontact",
+        "email_query",
+        "email_sendemail"
+      ],
+      "record_id": "massive-zh-cn-15690"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/7177",
+        "response_id": "resp_0d03b43488a3aaec016ac863a1b47c819abbea318214c33af4",
+        "request_sha256": "0EE75727406ABEE10FFB38F46F63F85CFDAD1ED05A61400C6C9AAED609F39BCE",
+        "response_sha256": "3A14997E23C8D77D1BC8E4835F664B0114008C2C9C9576E5A39460016E9581F6",
+        "selected_candidate_id": "email_sendemail",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-7177",
+      "selected_candidate_id": "email_sendemail",
+      "candidate_ids": [
+        "email_addcontact",
+        "email_query",
+        "email_sendemail",
+        "email_querycontact"
+      ],
+      "record_id": "massive-zh-cn-07177"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/166",
+        "response_id": "resp_0d03b43488a3aaec016ac863a1b47c819abbea318214c33af4",
+        "request_sha256": "0EE75727406ABEE10FFB38F46F63F85CFDAD1ED05A61400C6C9AAED609F39BCE",
+        "response_sha256": "3A14997E23C8D77D1BC8E4835F664B0114008C2C9C9576E5A39460016E9581F6",
+        "selected_candidate_id": "general_greet",
+        "target_index": 3
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-166",
+      "selected_candidate_id": "general_greet",
+      "candidate_ids": [
+        "general_joke",
+        "general_quirky",
+        "play_audiobook",
+        "general_greet"
+      ],
+      "record_id": "massive-zh-cn-00166"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/120",
+        "response_id": "resp_0d03b43488a3aaec016ac863a1b47c819abbea318214c33af4",
+        "request_sha256": "0EE75727406ABEE10FFB38F46F63F85CFDAD1ED05A61400C6C9AAED609F39BCE",
+        "response_sha256": "3A14997E23C8D77D1BC8E4835F664B0114008C2C9C9576E5A39460016E9581F6",
+        "selected_candidate_id": "general_joke",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-120",
+      "selected_candidate_id": "general_joke",
+      "candidate_ids": [
+        "general_joke",
+        "general_greet",
+        "general_quirky",
+        "play_audiobook"
+      ],
+      "record_id": "massive-zh-cn-00120"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/37",
+        "response_id": "resp_05eff67a7f16e63b016ac87a46cb40819aaba643a0b3aedc75",
+        "request_sha256": "D31CE8B6BD1D9AB35A5BC07251BAEE359FB6D73C1E851CD10B12DC8525614F80",
+        "response_sha256": "86A239697CF94CBFBC6DEC9630789137C28B5677DDC206A4EA16A4BB72FC9F7D",
+        "selected_candidate_id": "device_status_check",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-37",
+      "selected_candidate_id": "device_status_check",
+      "candidate_ids": [
+        "device_status_check",
+        "general_greet",
+        "general_joke",
+        "general_quirky",
+        "play_audiobook"
+      ],
+      "record_id": "massive-zh-cn-00037"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/28",
+        "response_id": "resp_0d03b43488a3aaec016ac863a1b47c819abbea318214c33af4",
+        "request_sha256": "0EE75727406ABEE10FFB38F46F63F85CFDAD1ED05A61400C6C9AAED609F39BCE",
+        "response_sha256": "3A14997E23C8D77D1BC8E4835F664B0114008C2C9C9576E5A39460016E9581F6",
+        "selected_candidate_id": "iot_cleaning",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-28",
+      "selected_candidate_id": "iot_cleaning",
+      "candidate_ids": [
+        "iot_coffee",
+        "iot_hue_lightchange",
+        "iot_cleaning",
+        "iot_hue_lightdim"
+      ],
+      "record_id": "massive-zh-cn-00028"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/163",
+        "response_id": "resp_0acb153e3a6ea77f016ac863a22b78819a9872f3d08a26afd2",
+        "request_sha256": "32394A633812B0064515206557A5CFE242D8AEBD02461011B428FC26057D082D",
+        "response_sha256": "61FDD8F314CF4CC591D2466FF884773D5978D5F4816311277DB7B1A92A17212A",
+        "selected_candidate_id": "iot_coffee",
+        "target_index": 3
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-163",
+      "selected_candidate_id": "iot_coffee",
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_hue_lightchange",
+        "iot_hue_lightdim",
+        "iot_coffee"
+      ],
+      "record_id": "massive-zh-cn-00163"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/10",
+        "response_id": "resp_0acb153e3a6ea77f016ac863a22b78819a9872f3d08a26afd2",
+        "request_sha256": "32394A633812B0064515206557A5CFE242D8AEBD02461011B428FC26057D082D",
+        "response_sha256": "61FDD8F314CF4CC591D2466FF884773D5978D5F4816311277DB7B1A92A17212A",
+        "selected_candidate_id": "iot_hue_lightchange",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-10",
+      "selected_candidate_id": "iot_hue_lightchange",
+      "candidate_ids": [
+        "iot_hue_lightchange",
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightdim"
+      ],
+      "record_id": "massive-zh-cn-00010"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/22",
+        "response_id": "resp_0acb153e3a6ea77f016ac863a22b78819a9872f3d08a26afd2",
+        "request_sha256": "32394A633812B0064515206557A5CFE242D8AEBD02461011B428FC26057D082D",
+        "response_sha256": "61FDD8F314CF4CC591D2466FF884773D5978D5F4816311277DB7B1A92A17212A",
+        "selected_candidate_id": "iot_hue_lightdim",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-22",
+      "selected_candidate_id": "iot_hue_lightdim",
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_hue_lightdim",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "record_id": "massive-zh-cn-00022"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/82",
+        "response_id": "resp_0acb153e3a6ea77f016ac863a22b78819a9872f3d08a26afd2",
+        "request_sha256": "32394A633812B0064515206557A5CFE242D8AEBD02461011B428FC26057D082D",
+        "response_sha256": "61FDD8F314CF4CC591D2466FF884773D5978D5F4816311277DB7B1A92A17212A",
+        "selected_candidate_id": "iot_hue_lightup",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-82",
+      "selected_candidate_id": "iot_hue_lightup",
+      "candidate_ids": [
+        "iot_hue_lightup",
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "record_id": "massive-zh-cn-00082"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/677",
+        "response_id": "resp_0acb153e3a6ea77f016ac863a22b78819a9872f3d08a26afd2",
+        "request_sha256": "32394A633812B0064515206557A5CFE242D8AEBD02461011B428FC26057D082D",
+        "response_sha256": "61FDD8F314CF4CC591D2466FF884773D5978D5F4816311277DB7B1A92A17212A",
+        "selected_candidate_id": "iot_wemo_off",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-677",
+      "selected_candidate_id": "iot_wemo_off",
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_wemo_off",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "record_id": "massive-zh-cn-00677"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/191",
+        "response_id": "resp_0acb153e3a6ea77f016ac863a22b78819a9872f3d08a26afd2",
+        "request_sha256": "32394A633812B0064515206557A5CFE242D8AEBD02461011B428FC26057D082D",
+        "response_sha256": "61FDD8F314CF4CC591D2466FF884773D5978D5F4816311277DB7B1A92A17212A",
+        "selected_candidate_id": "iot_wemo_on",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-191",
+      "selected_candidate_id": "iot_wemo_on",
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_wemo_on",
+        "iot_hue_lightchange"
+      ],
+      "record_id": "massive-zh-cn-00191"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/10436",
+        "response_id": "resp_05ea3ac1fe2f5cbf016ac8642b39b0819aaac27ec4f9148d8e",
+        "request_sha256": "2FE37C434B87466B0DD615DDFCDB617CCDB956BE2BDF187CE9AD66C7003D06C2",
+        "response_sha256": "BE7649642F7D88F2F266A74CD83637D1BB46BCFAFDDCFC617B4D292882A642AE",
+        "selected_candidate_id": "lists_createoradd",
+        "target_index": 3
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-10436",
+      "selected_candidate_id": "lists_createoradd",
+      "candidate_ids": [
+        "lists_query",
+        "lists_remove",
+        "calendar_query",
+        "lists_createoradd"
+      ],
+      "record_id": "massive-zh-cn-10436"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/10425",
+        "response_id": "resp_05ea3ac1fe2f5cbf016ac8642b39b0819aaac27ec4f9148d8e",
+        "request_sha256": "2FE37C434B87466B0DD615DDFCDB617CCDB956BE2BDF187CE9AD66C7003D06C2",
+        "response_sha256": "BE7649642F7D88F2F266A74CD83637D1BB46BCFAFDDCFC617B4D292882A642AE",
+        "selected_candidate_id": "lists_query",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-10425",
+      "selected_candidate_id": "lists_query",
+      "candidate_ids": [
+        "lists_query",
+        "lists_createoradd",
+        "lists_remove",
+        "calendar_query"
+      ],
+      "record_id": "massive-zh-cn-10425"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/7960",
+        "response_id": "resp_05ea3ac1fe2f5cbf016ac8642b39b0819aaac27ec4f9148d8e",
+        "request_sha256": "2FE37C434B87466B0DD615DDFCDB617CCDB956BE2BDF187CE9AD66C7003D06C2",
+        "response_sha256": "BE7649642F7D88F2F266A74CD83637D1BB46BCFAFDDCFC617B4D292882A642AE",
+        "selected_candidate_id": "lists_remove",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-7960",
+      "selected_candidate_id": "lists_remove",
+      "candidate_ids": [
+        "lists_createoradd",
+        "lists_remove",
+        "lists_query",
+        "calendar_query"
+      ],
+      "record_id": "massive-zh-cn-07960"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/949",
+        "response_id": "resp_05ea3ac1fe2f5cbf016ac8642b39b0819aaac27ec4f9148d8e",
+        "request_sha256": "2FE37C434B87466B0DD615DDFCDB617CCDB956BE2BDF187CE9AD66C7003D06C2",
+        "response_sha256": "BE7649642F7D88F2F266A74CD83637D1BB46BCFAFDDCFC617B4D292882A642AE",
+        "selected_candidate_id": "music_dislikeness",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-949",
+      "selected_candidate_id": "music_dislikeness",
+      "candidate_ids": [
+        "music_likeness",
+        "music_query",
+        "music_dislikeness",
+        "music_settings"
+      ],
+      "record_id": "massive-zh-cn-00949"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/70",
+        "response_id": "resp_05ea3ac1fe2f5cbf016ac8642b39b0819aaac27ec4f9148d8e",
+        "request_sha256": "2FE37C434B87466B0DD615DDFCDB617CCDB956BE2BDF187CE9AD66C7003D06C2",
+        "response_sha256": "BE7649642F7D88F2F266A74CD83637D1BB46BCFAFDDCFC617B4D292882A642AE",
+        "selected_candidate_id": "music_likeness",
+        "target_index": 3
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-70",
+      "selected_candidate_id": "music_likeness",
+      "candidate_ids": [
+        "music_dislikeness",
+        "music_query",
+        "music_settings",
+        "music_likeness"
+      ],
+      "record_id": "massive-zh-cn-00070"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/76",
+        "response_id": "resp_05ea3ac1fe2f5cbf016ac8642b39b0819aaac27ec4f9148d8e",
+        "request_sha256": "2FE37C434B87466B0DD615DDFCDB617CCDB956BE2BDF187CE9AD66C7003D06C2",
+        "response_sha256": "BE7649642F7D88F2F266A74CD83637D1BB46BCFAFDDCFC617B4D292882A642AE",
+        "selected_candidate_id": "music_query",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-76",
+      "selected_candidate_id": "music_query",
+      "candidate_ids": [
+        "music_query",
+        "music_dislikeness",
+        "music_likeness",
+        "music_settings"
+      ],
+      "record_id": "massive-zh-cn-00076"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/153",
+        "response_id": "resp_05ea3ac1fe2f5cbf016ac8642b39b0819aaac27ec4f9148d8e",
+        "request_sha256": "2FE37C434B87466B0DD615DDFCDB617CCDB956BE2BDF187CE9AD66C7003D06C2",
+        "response_sha256": "BE7649642F7D88F2F266A74CD83637D1BB46BCFAFDDCFC617B4D292882A642AE",
+        "selected_candidate_id": "music_settings",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-153",
+      "selected_candidate_id": "music_settings",
+      "candidate_ids": [
+        "music_dislikeness",
+        "music_settings",
+        "music_likeness",
+        "music_query"
+      ],
+      "record_id": "massive-zh-cn-00153"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/104",
+        "response_id": "resp_05ea3ac1fe2f5cbf016ac8642b39b0819aaac27ec4f9148d8e",
+        "request_sha256": "2FE37C434B87466B0DD615DDFCDB617CCDB956BE2BDF187CE9AD66C7003D06C2",
+        "response_sha256": "BE7649642F7D88F2F266A74CD83637D1BB46BCFAFDDCFC617B4D292882A642AE",
+        "selected_candidate_id": "news_query",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-104",
+      "selected_candidate_id": "news_query",
+      "candidate_ids": [
+        "qa_currency",
+        "qa_definition",
+        "news_query",
+        "qa_factoid"
+      ],
+      "record_id": "massive-zh-cn-00104"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/9665",
+        "response_id": "resp_05eff67a7f16e63b016ac87a46cb40819aaba643a0b3aedc75",
+        "request_sha256": "D31CE8B6BD1D9AB35A5BC07251BAEE359FB6D73C1E851CD10B12DC8525614F80",
+        "response_sha256": "86A239697CF94CBFBC6DEC9630789137C28B5677DDC206A4EA16A4BB72FC9F7D",
+        "selected_candidate_id": "play_audiobook",
+        "target_index": 3
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-9665",
+      "selected_candidate_id": "play_audiobook",
+      "candidate_ids": [
+        "play_music",
+        "play_game",
+        "play_podcasts",
+        "play_audiobook"
+      ],
+      "record_id": "massive-zh-cn-09665"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/10246",
+        "response_id": "resp_0e68f16cfe1f219c016ac8642b8548819abf346c72a49ade7f",
+        "request_sha256": "A2A6D40CC6DE58E50D2F4387A19280FD9033578032780C5F886DECF7738FA422",
+        "response_sha256": "F2B30240B815E836834CE7ED1D3EAACF99075B12DFC1F265E363CD1024C2274F",
+        "selected_candidate_id": "play_game",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-10246",
+      "selected_candidate_id": "play_game",
+      "candidate_ids": [
+        "play_game",
+        "play_audiobook",
+        "play_music",
+        "play_podcasts"
+      ],
+      "record_id": "massive-zh-cn-10246"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/35",
+        "response_id": "resp_0e68f16cfe1f219c016ac8642b8548819abf346c72a49ade7f",
+        "request_sha256": "A2A6D40CC6DE58E50D2F4387A19280FD9033578032780C5F886DECF7738FA422",
+        "response_sha256": "F2B30240B815E836834CE7ED1D3EAACF99075B12DFC1F265E363CD1024C2274F",
+        "selected_candidate_id": "play_music",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-35",
+      "selected_candidate_id": "play_music",
+      "candidate_ids": [
+        "play_audiobook",
+        "play_music",
+        "play_game",
+        "play_podcasts"
+      ],
+      "record_id": "massive-zh-cn-00035"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/9416",
+        "response_id": "resp_0e68f16cfe1f219c016ac8642b8548819abf346c72a49ade7f",
+        "request_sha256": "A2A6D40CC6DE58E50D2F4387A19280FD9033578032780C5F886DECF7738FA422",
+        "response_sha256": "F2B30240B815E836834CE7ED1D3EAACF99075B12DFC1F265E363CD1024C2274F",
+        "selected_candidate_id": "play_podcasts",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-9416",
+      "selected_candidate_id": "play_podcasts",
+      "candidate_ids": [
+        "play_audiobook",
+        "play_game",
+        "play_podcasts",
+        "play_music"
+      ],
+      "record_id": "massive-zh-cn-09416"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/913",
+        "response_id": "resp_0ebd9b5403993645016ac87a6eb8a4819ab9e8c551929b1a87",
+        "request_sha256": "EAE5490C2929BA07B05633916DDFCC84426BEEB47BBFF183E0E461760661DCA0",
+        "response_sha256": "564A6AF5B2270B74AC5B01027B73F2BF5CA999DBC4982770EC74A72A7021BFC4",
+        "selected_candidate_id": "open_object",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-913",
+      "selected_candidate_id": "open_object",
+      "candidate_ids": [
+        "play_radio",
+        "play_audiobook",
+        "open_object",
+        "play_game",
+        "play_music"
+      ],
+      "record_id": "massive-zh-cn-00913"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/13054",
+        "response_id": "resp_0e68f16cfe1f219c016ac8642b8548819abf346c72a49ade7f",
+        "request_sha256": "A2A6D40CC6DE58E50D2F4387A19280FD9033578032780C5F886DECF7738FA422",
+        "response_sha256": "F2B30240B815E836834CE7ED1D3EAACF99075B12DFC1F265E363CD1024C2274F",
+        "selected_candidate_id": "qa_currency",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-13054",
+      "selected_candidate_id": "qa_currency",
+      "candidate_ids": [
+        "qa_currency",
+        "qa_definition",
+        "qa_factoid",
+        "qa_maths"
+      ],
+      "record_id": "massive-zh-cn-13054"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/4969",
+        "response_id": "resp_0e68f16cfe1f219c016ac8642b8548819abf346c72a49ade7f",
+        "request_sha256": "A2A6D40CC6DE58E50D2F4387A19280FD9033578032780C5F886DECF7738FA422",
+        "response_sha256": "F2B30240B815E836834CE7ED1D3EAACF99075B12DFC1F265E363CD1024C2274F",
+        "selected_candidate_id": "qa_factoid",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-4969",
+      "selected_candidate_id": "qa_factoid",
+      "candidate_ids": [
+        "qa_currency",
+        "qa_definition",
+        "qa_factoid",
+        "qa_maths"
+      ],
+      "record_id": "massive-zh-cn-04969"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/12938",
+        "response_id": "resp_0989a1de65856492016ac864f2ef5c819bb9e9dc4f06307124",
+        "request_sha256": "332C4F213CFBD5CD4A7DCF9621556F2C4AA43798B37CE479BF289DF56A169E64",
+        "response_sha256": "ED76AABB302D0F8EEA7A4F725982ACB1FA5A3363F84F5BB01DB013D92A0027C5",
+        "selected_candidate_id": "qa_maths",
+        "target_index": 3
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-12938",
+      "selected_candidate_id": "qa_maths",
+      "candidate_ids": [
+        "qa_currency",
+        "qa_definition",
+        "qa_factoid",
+        "qa_maths"
+      ],
+      "record_id": "massive-zh-cn-12938"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/2996",
+        "response_id": "resp_0ebd9b5403993645016ac87a6eb8a4819ab9e8c551929b1a87",
+        "request_sha256": "EAE5490C2929BA07B05633916DDFCC84426BEEB47BBFF183E0E461760661DCA0",
+        "response_sha256": "564A6AF5B2270B74AC5B01027B73F2BF5CA999DBC4982770EC74A72A7021BFC4",
+        "selected_candidate_id": "qa_stock_news",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-2996",
+      "selected_candidate_id": "qa_stock_news",
+      "candidate_ids": [
+        "qa_definition",
+        "qa_stock",
+        "qa_stock_news",
+        "qa_currency",
+        "qa_factoid"
+      ],
+      "record_id": "massive-zh-cn-02996"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/5551",
+        "response_id": "resp_0989a1de65856492016ac864f2ef5c819bb9e9dc4f06307124",
+        "request_sha256": "332C4F213CFBD5CD4A7DCF9621556F2C4AA43798B37CE479BF289DF56A169E64",
+        "response_sha256": "ED76AABB302D0F8EEA7A4F725982ACB1FA5A3363F84F5BB01DB013D92A0027C5",
+        "selected_candidate_id": "recommendation_locations",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-5551",
+      "selected_candidate_id": "recommendation_locations",
+      "candidate_ids": [
+        "recommendation_events",
+        "recommendation_movies",
+        "recommendation_locations",
+        "play_audiobook"
+      ],
+      "record_id": "massive-zh-cn-05551"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/6362",
+        "response_id": "resp_0989a1de65856492016ac864f2ef5c819bb9e9dc4f06307124",
+        "request_sha256": "332C4F213CFBD5CD4A7DCF9621556F2C4AA43798B37CE479BF289DF56A169E64",
+        "response_sha256": "ED76AABB302D0F8EEA7A4F725982ACB1FA5A3363F84F5BB01DB013D92A0027C5",
+        "selected_candidate_id": "recommendation_movies",
+        "target_index": 3
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-6362",
+      "selected_candidate_id": "recommendation_movies",
+      "candidate_ids": [
+        "recommendation_events",
+        "recommendation_locations",
+        "play_audiobook",
+        "recommendation_movies"
+      ],
+      "record_id": "massive-zh-cn-06362"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/15142",
+        "response_id": "resp_0989a1de65856492016ac864f2ef5c819bb9e9dc4f06307124",
+        "request_sha256": "332C4F213CFBD5CD4A7DCF9621556F2C4AA43798B37CE479BF289DF56A169E64",
+        "response_sha256": "ED76AABB302D0F8EEA7A4F725982ACB1FA5A3363F84F5BB01DB013D92A0027C5",
+        "selected_candidate_id": "social_post",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-15142",
+      "selected_candidate_id": "social_post",
+      "candidate_ids": [
+        "social_post",
+        "social_query",
+        "email_addcontact",
+        "email_query"
+      ],
+      "record_id": "massive-zh-cn-15142"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/13743",
+        "response_id": "resp_0989a1de65856492016ac864f2ef5c819bb9e9dc4f06307124",
+        "request_sha256": "332C4F213CFBD5CD4A7DCF9621556F2C4AA43798B37CE479BF289DF56A169E64",
+        "response_sha256": "ED76AABB302D0F8EEA7A4F725982ACB1FA5A3363F84F5BB01DB013D92A0027C5",
+        "selected_candidate_id": "social_query",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-13743",
+      "selected_candidate_id": "social_query",
+      "candidate_ids": [
+        "social_post",
+        "social_query",
+        "email_addcontact",
+        "email_query"
+      ],
+      "record_id": "massive-zh-cn-13743"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/88",
+        "response_id": "resp_0989a1de65856492016ac864f2ef5c819bb9e9dc4f06307124",
+        "request_sha256": "332C4F213CFBD5CD4A7DCF9621556F2C4AA43798B37CE479BF289DF56A169E64",
+        "response_sha256": "ED76AABB302D0F8EEA7A4F725982ACB1FA5A3363F84F5BB01DB013D92A0027C5",
+        "selected_candidate_id": "takeaway_order",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-88",
+      "selected_candidate_id": "takeaway_order",
+      "candidate_ids": [
+        "takeaway_query",
+        "cooking_query",
+        "takeaway_order",
+        "cooking_recipe"
+      ],
+      "record_id": "massive-zh-cn-00088"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/52",
+        "response_id": "resp_0ebd9b5403993645016ac87a6eb8a4819ab9e8c551929b1a87",
+        "request_sha256": "EAE5490C2929BA07B05633916DDFCC84426BEEB47BBFF183E0E461760661DCA0",
+        "response_sha256": "564A6AF5B2270B74AC5B01027B73F2BF5CA999DBC4982770EC74A72A7021BFC4",
+        "selected_candidate_id": "takeaway_rating_query",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-52",
+      "selected_candidate_id": "takeaway_rating_query",
+      "candidate_ids": [
+        "cooking_query",
+        "takeaway_rating_query",
+        "takeaway_query",
+        "takeaway_order",
+        "cooking_recipe"
+      ],
+      "record_id": "massive-zh-cn-00052"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/12122",
+        "response_id": "resp_0fb7257169afaf01016ac864f38274819a884d274c1455656c",
+        "request_sha256": "ED6FD06634FF7945AC060343D2C8FD2C2DCE0068E1A74BA1C16A9A10CDBCC1F3",
+        "response_sha256": "FB8F87BD53AEAA914DAE0685E374EAC21903B53A501563500F46064CD571D07C",
+        "selected_candidate_id": "transport_taxi",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-12122",
+      "selected_candidate_id": "transport_taxi",
+      "candidate_ids": [
+        "transport_query",
+        "transport_taxi",
+        "transport_ticket",
+        "transport_traffic"
+      ],
+      "record_id": "massive-zh-cn-12122"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/6656",
+        "response_id": "resp_0fb7257169afaf01016ac864f38274819a884d274c1455656c",
+        "request_sha256": "ED6FD06634FF7945AC060343D2C8FD2C2DCE0068E1A74BA1C16A9A10CDBCC1F3",
+        "response_sha256": "FB8F87BD53AEAA914DAE0685E374EAC21903B53A501563500F46064CD571D07C",
+        "selected_candidate_id": "transport_traffic",
+        "target_index": 3
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-6656",
+      "selected_candidate_id": "transport_traffic",
+      "candidate_ids": [
+        "transport_query",
+        "transport_taxi",
+        "transport_ticket",
+        "transport_traffic"
+      ],
+      "record_id": "massive-zh-cn-06656"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/97",
+        "response_id": "resp_0fb7257169afaf01016ac864f38274819a884d274c1455656c",
+        "request_sha256": "ED6FD06634FF7945AC060343D2C8FD2C2DCE0068E1A74BA1C16A9A10CDBCC1F3",
+        "response_sha256": "FB8F87BD53AEAA914DAE0685E374EAC21903B53A501563500F46064CD571D07C",
+        "selected_candidate_id": "weather_query",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-97",
+      "selected_candidate_id": "weather_query",
+      "candidate_ids": [
+        "weather_query",
+        "datetime_convert",
+        "datetime_query",
+        "news_query"
+      ],
+      "record_id": "massive-zh-cn-00097"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/204",
+        "response_id": "resp_0fb7257169afaf01016ac864f38274819a884d274c1455656c",
+        "request_sha256": "ED6FD06634FF7945AC060343D2C8FD2C2DCE0068E1A74BA1C16A9A10CDBCC1F3",
+        "response_sha256": "FB8F87BD53AEAA914DAE0685E374EAC21903B53A501563500F46064CD571D07C",
+        "selected_candidate_id": "alarm_query",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-204",
+      "selected_candidate_id": "alarm_query",
+      "candidate_ids": [
+        "alarm_remove",
+        "alarm_query",
+        "alarm_set",
+        "calendar_query"
+      ],
+      "record_id": "massive-zh-cn-00204"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/561",
+        "response_id": "resp_0fb7257169afaf01016ac864f38274819a884d274c1455656c",
+        "request_sha256": "ED6FD06634FF7945AC060343D2C8FD2C2DCE0068E1A74BA1C16A9A10CDBCC1F3",
+        "response_sha256": "FB8F87BD53AEAA914DAE0685E374EAC21903B53A501563500F46064CD571D07C",
+        "selected_candidate_id": "alarm_remove",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-561",
+      "selected_candidate_id": "alarm_remove",
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_set",
+        "alarm_remove",
+        "calendar_query"
+      ],
+      "record_id": "massive-zh-cn-00561"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/93",
+        "response_id": "resp_0ec8c0c23f3bcedd016ac86572b8ac81998901e78119bce537",
+        "request_sha256": "0F90CEA53E60B5FE127ED8EAF4DF628B64CD65F2EB46E69C4A6545632FF86E6A",
+        "response_sha256": "B5B242A2651F3C2A4836FAD78BDE14C291DEA7B8B14A74BE23D90278618A8B09",
+        "selected_candidate_id": "alarm_set",
+        "target_index": 3
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-93",
+      "selected_candidate_id": "alarm_set",
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_remove",
+        "calendar_query",
+        "alarm_set"
+      ],
+      "record_id": "massive-zh-cn-00093"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/599",
+        "response_id": "resp_0ec8c0c23f3bcedd016ac86572b8ac81998901e78119bce537",
+        "request_sha256": "0F90CEA53E60B5FE127ED8EAF4DF628B64CD65F2EB46E69C4A6545632FF86E6A",
+        "response_sha256": "B5B242A2651F3C2A4836FAD78BDE14C291DEA7B8B14A74BE23D90278618A8B09",
+        "selected_candidate_id": "audio_volume_down",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-599",
+      "selected_candidate_id": "audio_volume_down",
+      "candidate_ids": [
+        "audio_volume_down",
+        "audio_volume_mute",
+        "audio_volume_other",
+        "audio_volume_up"
+      ],
+      "record_id": "massive-zh-cn-00599"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/6",
+        "response_id": "resp_0ebd9b5403993645016ac87a6eb8a4819ab9e8c551929b1a87",
+        "request_sha256": "EAE5490C2929BA07B05633916DDFCC84426BEEB47BBFF183E0E461760661DCA0",
+        "response_sha256": "564A6AF5B2270B74AC5B01027B73F2BF5CA999DBC4982770EC74A72A7021BFC4",
+        "selected_candidate_id": "audio_pause",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-6",
+      "selected_candidate_id": "audio_pause",
+      "candidate_ids": [
+        "audio_pause",
+        "audio_volume_up",
+        "audio_volume_down",
+        "audio_volume_mute",
+        "audio_volume_other"
+      ],
+      "record_id": "massive-zh-cn-00006"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/1049",
+        "response_id": "resp_0ebd9b5403993645016ac87a6eb8a4819ab9e8c551929b1a87",
+        "request_sha256": "EAE5490C2929BA07B05633916DDFCC84426BEEB47BBFF183E0E461760661DCA0",
+        "response_sha256": "564A6AF5B2270B74AC5B01027B73F2BF5CA999DBC4982770EC74A72A7021BFC4",
+        "selected_candidate_id": "audio_settings_general",
+        "target_index": 2
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-1049",
+      "selected_candidate_id": "audio_settings_general",
+      "candidate_ids": [
+        "audio_volume_up",
+        "audio_volume_down",
+        "audio_settings_general",
+        "audio_volume_other",
+        "audio_volume_mute"
+      ],
+      "record_id": "massive-zh-cn-01049"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/458",
+        "response_id": "resp_0ec8c0c23f3bcedd016ac86572b8ac81998901e78119bce537",
+        "request_sha256": "0F90CEA53E60B5FE127ED8EAF4DF628B64CD65F2EB46E69C4A6545632FF86E6A",
+        "response_sha256": "B5B242A2651F3C2A4836FAD78BDE14C291DEA7B8B14A74BE23D90278618A8B09",
+        "selected_candidate_id": "audio_volume_up",
+        "target_index": 3
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-458",
+      "selected_candidate_id": "audio_volume_up",
+      "candidate_ids": [
+        "audio_volume_down",
+        "audio_volume_mute",
+        "audio_volume_other",
+        "audio_volume_up"
+      ],
+      "record_id": "massive-zh-cn-00458"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/1274",
+        "response_id": "resp_0ec8c0c23f3bcedd016ac86572b8ac81998901e78119bce537",
+        "request_sha256": "0F90CEA53E60B5FE127ED8EAF4DF628B64CD65F2EB46E69C4A6545632FF86E6A",
+        "response_sha256": "B5B242A2651F3C2A4836FAD78BDE14C291DEA7B8B14A74BE23D90278618A8B09",
+        "selected_candidate_id": "calendar_query",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "massive-1.1-utterance-1274",
+      "selected_candidate_id": "calendar_query",
+      "candidate_ids": [
+        "calendar_query",
+        "calendar_remove",
+        "calendar_set",
+        "alarm_query"
+      ],
+      "record_id": "massive-zh-cn-01274"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/237",
+        "response_id": "resp_0ec8c0c23f3bcedd016ac86572b8ac81998901e78119bce537",
+        "request_sha256": "0F90CEA53E60B5FE127ED8EAF4DF628B64CD65F2EB46E69C4A6545632FF86E6A",
+        "response_sha256": "B5B242A2651F3C2A4836FAD78BDE14C291DEA7B8B14A74BE23D90278618A8B09",
+        "selected_candidate_id": "alarm_query",
+        "target_index": 0
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-237",
+      "selected_candidate_id": "alarm_query",
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_remove",
+        "alarm_set",
+        "calendar_query"
+      ],
+      "record_id": "massive-en-us-00237"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/562",
+        "response_id": "resp_0ec8c0c23f3bcedd016ac86572b8ac81998901e78119bce537",
+        "request_sha256": "0F90CEA53E60B5FE127ED8EAF4DF628B64CD65F2EB46E69C4A6545632FF86E6A",
+        "response_sha256": "B5B242A2651F3C2A4836FAD78BDE14C291DEA7B8B14A74BE23D90278618A8B09",
+        "selected_candidate_id": "alarm_remove",
+        "target_index": 1
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-562",
+      "selected_candidate_id": "alarm_remove",
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_remove",
+        "alarm_set",
+        "calendar_query"
+      ],
+      "record_id": "massive-en-us-00562"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/173",
+        "response_id": "resp_03ebd2cd158aab9a016ac86572ed74819988efa39c3f458e48",
+        "request_sha256": "E4F8158C2438D217293F59206FEFACE53CE9B0AAF1E62220289867E6A72923BF",
+        "response_sha256": "E78E2AEBF0971541E6883149323BAD925372967CC000DE6FDA93355143FE3EDC",
+        "selected_candidate_id": "alarm_set",
+        "target_index": 2
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-173",
+      "selected_candidate_id": "alarm_set",
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_remove",
+        "alarm_set",
+        "calendar_query"
+      ],
+      "record_id": "massive-en-us-00173"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/115",
+        "response_id": "resp_0ebd9b5403993645016ac87a6eb8a4819ab9e8c551929b1a87",
+        "request_sha256": "EAE5490C2929BA07B05633916DDFCC84426BEEB47BBFF183E0E461760661DCA0",
+        "response_sha256": "564A6AF5B2270B74AC5B01027B73F2BF5CA999DBC4982770EC74A72A7021BFC4",
+        "selected_candidate_id": "audio_volume_other",
+        "target_index": 1
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-115",
+      "selected_candidate_id": "audio_volume_other",
+      "candidate_ids": [
+        "audio_volume_mute",
+        "audio_volume_other",
+        "audio_volume_down",
+        "audio_volume_up"
+      ],
+      "record_id": "massive-en-us-00115"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/516",
+        "response_id": "resp_03ebd2cd158aab9a016ac86572ed74819988efa39c3f458e48",
+        "request_sha256": "E4F8158C2438D217293F59206FEFACE53CE9B0AAF1E62220289867E6A72923BF",
+        "response_sha256": "E78E2AEBF0971541E6883149323BAD925372967CC000DE6FDA93355143FE3EDC",
+        "selected_candidate_id": "audio_volume_mute",
+        "target_index": 0
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-516",
+      "selected_candidate_id": "audio_volume_mute",
+      "candidate_ids": [
+        "audio_volume_mute",
+        "audio_volume_down",
+        "audio_volume_other",
+        "audio_volume_up"
+      ],
+      "record_id": "massive-en-us-00516"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/188",
+        "response_id": "resp_03ebd2cd158aab9a016ac86572ed74819988efa39c3f458e48",
+        "request_sha256": "E4F8158C2438D217293F59206FEFACE53CE9B0AAF1E62220289867E6A72923BF",
+        "response_sha256": "E78E2AEBF0971541E6883149323BAD925372967CC000DE6FDA93355143FE3EDC",
+        "selected_candidate_id": "audio_volume_up",
+        "target_index": 1
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-188",
+      "selected_candidate_id": "audio_volume_up",
+      "candidate_ids": [
+        "audio_volume_down",
+        "audio_volume_up",
+        "audio_volume_mute",
+        "audio_volume_other"
+      ],
+      "record_id": "massive-en-us-00188"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/2042",
+        "response_id": "resp_03ebd2cd158aab9a016ac86572ed74819988efa39c3f458e48",
+        "request_sha256": "E4F8158C2438D217293F59206FEFACE53CE9B0AAF1E62220289867E6A72923BF",
+        "response_sha256": "E78E2AEBF0971541E6883149323BAD925372967CC000DE6FDA93355143FE3EDC",
+        "selected_candidate_id": "calendar_query",
+        "target_index": 2
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-2042",
+      "selected_candidate_id": "calendar_query",
+      "candidate_ids": [
+        "calendar_remove",
+        "calendar_set",
+        "calendar_query",
+        "alarm_query"
+      ],
+      "record_id": "massive-en-us-02042"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/6734",
+        "response_id": "resp_03ebd2cd158aab9a016ac86572ed74819988efa39c3f458e48",
+        "request_sha256": "E4F8158C2438D217293F59206FEFACE53CE9B0AAF1E62220289867E6A72923BF",
+        "response_sha256": "E78E2AEBF0971541E6883149323BAD925372967CC000DE6FDA93355143FE3EDC",
+        "selected_candidate_id": "calendar_remove",
+        "target_index": 3
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-6734",
+      "selected_candidate_id": "calendar_remove",
+      "candidate_ids": [
+        "calendar_query",
+        "calendar_set",
+        "alarm_query",
+        "calendar_remove"
+      ],
+      "record_id": "massive-en-us-06734"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/6540",
+        "response_id": "resp_03ebd2cd158aab9a016ac86572ed74819988efa39c3f458e48",
+        "request_sha256": "E4F8158C2438D217293F59206FEFACE53CE9B0AAF1E62220289867E6A72923BF",
+        "response_sha256": "E78E2AEBF0971541E6883149323BAD925372967CC000DE6FDA93355143FE3EDC",
+        "selected_candidate_id": "calendar_set",
+        "target_index": 0
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-6540",
+      "selected_candidate_id": "calendar_set",
+      "candidate_ids": [
+        "calendar_set",
+        "calendar_query",
+        "calendar_remove",
+        "alarm_query"
+      ],
+      "record_id": "massive-en-us-06540"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/1209",
+        "response_id": "resp_0eb47e74be2ce47e016ac865e4cde8819aa011e4d3315a6c2c",
+        "request_sha256": "5A7AEA76AABF6B62C84CBB7FE69A3F53FCB77C3D3D6F49E208AAEBB02E367D4A",
+        "response_sha256": "1B9FB68C3460BCA60897B52C66248517460C9C6A60103D9EE9ABDC10A5983D7E",
+        "selected_candidate_id": "cooking_query",
+        "target_index": 0
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-1209",
+      "selected_candidate_id": "cooking_query",
+      "candidate_ids": [
+        "cooking_query",
+        "qa_currency",
+        "cooking_recipe",
+        "qa_definition"
+      ],
+      "record_id": "massive-en-us-01209"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/676",
+        "response_id": "resp_01659b4e6eb1e0af016ac87a892b20819b90cba736520a3178",
+        "request_sha256": "8006E5185679802F05D1FF67E703787E4353485DBE2791F69CF5467635656F8D",
+        "response_sha256": "BC28CDA907A325201E18DD6ABF9B3005C8E4B19CA19A588230F45B08A8D86107",
+        "selected_candidate_id": "datetime_set_timezone",
+        "target_index": 2
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-676",
+      "selected_candidate_id": "datetime_set_timezone",
+      "candidate_ids": [
+        "datetime_convert",
+        "alarm_query",
+        "datetime_set_timezone",
+        "alarm_remove",
+        "datetime_query"
+      ],
+      "record_id": "massive-en-us-00676"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/127",
+        "response_id": "resp_0eb47e74be2ce47e016ac865e4cde8819aa011e4d3315a6c2c",
+        "request_sha256": "5A7AEA76AABF6B62C84CBB7FE69A3F53FCB77C3D3D6F49E208AAEBB02E367D4A",
+        "response_sha256": "1B9FB68C3460BCA60897B52C66248517460C9C6A60103D9EE9ABDC10A5983D7E",
+        "selected_candidate_id": "datetime_query",
+        "target_index": 0
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-127",
+      "selected_candidate_id": "datetime_query",
+      "candidate_ids": [
+        "datetime_query",
+        "datetime_convert",
+        "alarm_query",
+        "alarm_remove"
+      ],
+      "record_id": "massive-en-us-00127"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/11061",
+        "response_id": "resp_0eb47e74be2ce47e016ac865e4cde8819aa011e4d3315a6c2c",
+        "request_sha256": "5A7AEA76AABF6B62C84CBB7FE69A3F53FCB77C3D3D6F49E208AAEBB02E367D4A",
+        "response_sha256": "1B9FB68C3460BCA60897B52C66248517460C9C6A60103D9EE9ABDC10A5983D7E",
+        "selected_candidate_id": "email_addcontact",
+        "target_index": 1
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-11061",
+      "selected_candidate_id": "email_addcontact",
+      "candidate_ids": [
+        "email_query",
+        "email_addcontact",
+        "email_querycontact",
+        "email_sendemail"
+      ],
+      "record_id": "massive-en-us-11061"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/15753",
+        "response_id": "resp_0eb47e74be2ce47e016ac865e4cde8819aa011e4d3315a6c2c",
+        "request_sha256": "5A7AEA76AABF6B62C84CBB7FE69A3F53FCB77C3D3D6F49E208AAEBB02E367D4A",
+        "response_sha256": "1B9FB68C3460BCA60897B52C66248517460C9C6A60103D9EE9ABDC10A5983D7E",
+        "selected_candidate_id": "email_query",
+        "target_index": 2
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-15753",
+      "selected_candidate_id": "email_query",
+      "candidate_ids": [
+        "email_addcontact",
+        "email_querycontact",
+        "email_query",
+        "email_sendemail"
+      ],
+      "record_id": "massive-en-us-15753"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/15867",
+        "response_id": "resp_0eb47e74be2ce47e016ac865e4cde8819aa011e4d3315a6c2c",
+        "request_sha256": "5A7AEA76AABF6B62C84CBB7FE69A3F53FCB77C3D3D6F49E208AAEBB02E367D4A",
+        "response_sha256": "1B9FB68C3460BCA60897B52C66248517460C9C6A60103D9EE9ABDC10A5983D7E",
+        "selected_candidate_id": "email_querycontact",
+        "target_index": 3
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-15867",
+      "selected_candidate_id": "email_querycontact",
+      "candidate_ids": [
+        "email_addcontact",
+        "email_query",
+        "email_sendemail",
+        "email_querycontact"
+      ],
+      "record_id": "massive-en-us-15867"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/8101",
+        "response_id": "resp_0eb47e74be2ce47e016ac865e4cde8819aa011e4d3315a6c2c",
+        "request_sha256": "5A7AEA76AABF6B62C84CBB7FE69A3F53FCB77C3D3D6F49E208AAEBB02E367D4A",
+        "response_sha256": "1B9FB68C3460BCA60897B52C66248517460C9C6A60103D9EE9ABDC10A5983D7E",
+        "selected_candidate_id": "email_sendemail",
+        "target_index": 1
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-8101",
+      "selected_candidate_id": "email_sendemail",
+      "candidate_ids": [
+        "email_addcontact",
+        "email_sendemail",
+        "email_query",
+        "email_querycontact"
+      ],
+      "record_id": "massive-zh-cn-08101"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/638",
+        "response_id": "resp_0758be14b8faba9a016ac865e4c0c0819aa854e2f834bdbaa4",
+        "request_sha256": "94B57F24FF6932C7BDFAF2DE857806B6AA30066A6AB7F3DCD64BB93FE51A0B29",
+        "response_sha256": "3492C6E6DE22255BE051497EEDD4D9E08C9C62C062DD9CDD960665F060D34FB7",
+        "selected_candidate_id": "general_joke",
+        "target_index": 3
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-638",
+      "selected_candidate_id": "general_joke",
+      "candidate_ids": [
+        "general_greet",
+        "general_quirky",
+        "play_audiobook",
+        "general_joke"
+      ],
+      "record_id": "massive-zh-cn-00638"
+    },
+    {
+      "target_index": 4,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/42",
+        "response_id": "resp_01659b4e6eb1e0af016ac87a892b20819b90cba736520a3178",
+        "request_sha256": "8006E5185679802F05D1FF67E703787E4353485DBE2791F69CF5467635656F8D",
+        "response_sha256": "BC28CDA907A325201E18DD6ABF9B3005C8E4B19CA19A588230F45B08A8D86107",
+        "selected_candidate_id": "memory_query",
+        "target_index": 4
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-42",
+      "selected_candidate_id": "memory_query",
+      "candidate_ids": [
+        "general_joke",
+        "play_audiobook",
+        "general_quirky",
+        "general_greet",
+        "memory_query"
+      ],
+      "record_id": "massive-zh-cn-00042"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/26",
+        "response_id": "resp_0758be14b8faba9a016ac865e4c0c0819aa854e2f834bdbaa4",
+        "request_sha256": "94B57F24FF6932C7BDFAF2DE857806B6AA30066A6AB7F3DCD64BB93FE51A0B29",
+        "response_sha256": "3492C6E6DE22255BE051497EEDD4D9E08C9C62C062DD9CDD960665F060D34FB7",
+        "selected_candidate_id": "iot_cleaning",
+        "target_index": 1
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-26",
+      "selected_candidate_id": "iot_cleaning",
+      "candidate_ids": [
+        "iot_coffee",
+        "iot_cleaning",
+        "iot_hue_lightchange",
+        "iot_hue_lightdim"
+      ],
+      "record_id": "massive-zh-cn-00026"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/710",
+        "response_id": "resp_0758be14b8faba9a016ac865e4c0c0819aa854e2f834bdbaa4",
+        "request_sha256": "94B57F24FF6932C7BDFAF2DE857806B6AA30066A6AB7F3DCD64BB93FE51A0B29",
+        "response_sha256": "3492C6E6DE22255BE051497EEDD4D9E08C9C62C062DD9CDD960665F060D34FB7",
+        "selected_candidate_id": "iot_coffee",
+        "target_index": 2
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-710",
+      "selected_candidate_id": "iot_coffee",
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_hue_lightchange",
+        "iot_coffee",
+        "iot_hue_lightdim"
+      ],
+      "record_id": "massive-zh-cn-00710"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/415",
+        "response_id": "resp_0758be14b8faba9a016ac865e4c0c0819aa854e2f834bdbaa4",
+        "request_sha256": "94B57F24FF6932C7BDFAF2DE857806B6AA30066A6AB7F3DCD64BB93FE51A0B29",
+        "response_sha256": "3492C6E6DE22255BE051497EEDD4D9E08C9C62C062DD9CDD960665F060D34FB7",
+        "selected_candidate_id": "iot_hue_lightchange",
+        "target_index": 3
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-415",
+      "selected_candidate_id": "iot_hue_lightchange",
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightdim",
+        "iot_hue_lightchange"
+      ],
+      "record_id": "massive-zh-cn-00415"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/17",
+        "response_id": "resp_0758be14b8faba9a016ac865e4c0c0819aa854e2f834bdbaa4",
+        "request_sha256": "94B57F24FF6932C7BDFAF2DE857806B6AA30066A6AB7F3DCD64BB93FE51A0B29",
+        "response_sha256": "3492C6E6DE22255BE051497EEDD4D9E08C9C62C062DD9CDD960665F060D34FB7",
+        "selected_candidate_id": "iot_hue_lightdim",
+        "target_index": 0
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-17",
+      "selected_candidate_id": "iot_hue_lightdim",
+      "candidate_ids": [
+        "iot_hue_lightdim",
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "record_id": "massive-zh-cn-00017"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/11",
+        "response_id": "resp_0758be14b8faba9a016ac865e4c0c0819aa854e2f834bdbaa4",
+        "request_sha256": "94B57F24FF6932C7BDFAF2DE857806B6AA30066A6AB7F3DCD64BB93FE51A0B29",
+        "response_sha256": "3492C6E6DE22255BE051497EEDD4D9E08C9C62C062DD9CDD960665F060D34FB7",
+        "selected_candidate_id": "iot_hue_lightoff",
+        "target_index": 1
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-11",
+      "selected_candidate_id": "iot_hue_lightoff",
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_hue_lightoff",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "record_id": "massive-zh-cn-00011"
+    },
+    {
+      "target_index": 4,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/697",
+        "response_id": "resp_01659b4e6eb1e0af016ac87a892b20819b90cba736520a3178",
+        "request_sha256": "8006E5185679802F05D1FF67E703787E4353485DBE2791F69CF5467635656F8D",
+        "response_sha256": "BC28CDA907A325201E18DD6ABF9B3005C8E4B19CA19A588230F45B08A8D86107",
+        "selected_candidate_id": "iot_light_on",
+        "target_index": 4
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-697",
+      "selected_candidate_id": "iot_light_on",
+      "candidate_ids": [
+        "iot_hue_lightup",
+        "iot_coffee",
+        "iot_hue_lightchange",
+        "iot_cleaning",
+        "iot_light_on"
+      ],
+      "record_id": "massive-zh-cn-00697"
+    },
+    {
+      "target_index": 3,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/388",
+        "response_id": "resp_0eacd207c2055c35016ac8669ab60881998fb57a785384a053",
+        "request_sha256": "CAC03A3CF37388F6D50092EF02DF8D07C11CC5214EEC969A1A8613712B144CB5",
+        "response_sha256": "B46C6A181211431CDB6C0A9A85AD7C009EC52AED0CC0C8A456EE356822E35238",
+        "selected_candidate_id": "iot_wemo_off",
+        "target_index": 3
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-388",
+      "selected_candidate_id": "iot_wemo_off",
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightchange",
+        "iot_wemo_off"
+      ],
+      "record_id": "massive-zh-cn-00388"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/678",
+        "response_id": "resp_0eacd207c2055c35016ac8669ab60881998fb57a785384a053",
+        "request_sha256": "CAC03A3CF37388F6D50092EF02DF8D07C11CC5214EEC969A1A8613712B144CB5",
+        "response_sha256": "B46C6A181211431CDB6C0A9A85AD7C009EC52AED0CC0C8A456EE356822E35238",
+        "selected_candidate_id": "iot_wemo_on",
+        "target_index": 0
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-678",
+      "selected_candidate_id": "iot_wemo_on",
+      "candidate_ids": [
+        "iot_wemo_on",
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "record_id": "massive-zh-cn-00678"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/10468",
+        "response_id": "resp_0eacd207c2055c35016ac8669ab60881998fb57a785384a053",
+        "request_sha256": "CAC03A3CF37388F6D50092EF02DF8D07C11CC5214EEC969A1A8613712B144CB5",
+        "response_sha256": "B46C6A181211431CDB6C0A9A85AD7C009EC52AED0CC0C8A456EE356822E35238",
+        "selected_candidate_id": "lists_createoradd",
+        "target_index": 1
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-10468",
+      "selected_candidate_id": "lists_createoradd",
+      "candidate_ids": [
+        "lists_query",
+        "lists_createoradd",
+        "lists_remove",
+        "calendar_query"
+      ],
+      "record_id": "massive-zh-cn-10468"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/10424",
+        "response_id": "resp_0eacd207c2055c35016ac8669ab60881998fb57a785384a053",
+        "request_sha256": "CAC03A3CF37388F6D50092EF02DF8D07C11CC5214EEC969A1A8613712B144CB5",
+        "response_sha256": "B46C6A181211431CDB6C0A9A85AD7C009EC52AED0CC0C8A456EE356822E35238",
+        "selected_candidate_id": "lists_query",
+        "target_index": 2
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-10424",
+      "selected_candidate_id": "lists_query",
+      "candidate_ids": [
+        "lists_createoradd",
+        "lists_remove",
+        "lists_query",
+        "calendar_query"
+      ],
+      "record_id": "massive-zh-cn-10424"
+    },
+    {
+      "target_index": 2,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/10449",
+        "response_id": "resp_01659b4e6eb1e0af016ac87a892b20819b90cba736520a3178",
+        "request_sha256": "8006E5185679802F05D1FF67E703787E4353485DBE2791F69CF5467635656F8D",
+        "response_sha256": "BC28CDA907A325201E18DD6ABF9B3005C8E4B19CA19A588230F45B08A8D86107",
+        "selected_candidate_id": "travel_cancel",
+        "target_index": 2
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-10449",
+      "selected_candidate_id": "travel_cancel",
+      "candidate_ids": [
+        "lists_query",
+        "lists_createoradd",
+        "travel_cancel",
+        "calendar_query",
+        "lists_remove"
+      ],
+      "record_id": "massive-zh-cn-10449"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/1179",
+        "response_id": "resp_01659b4e6eb1e0af016ac87a892b20819b90cba736520a3178",
+        "request_sha256": "8006E5185679802F05D1FF67E703787E4353485DBE2791F69CF5467635656F8D",
+        "response_sha256": "BC28CDA907A325201E18DD6ABF9B3005C8E4B19CA19A588230F45B08A8D86107",
+        "selected_candidate_id": "music_settings",
+        "target_index": 0
+      },
+      "split": "development",
+      "family_id": "massive-1.1-utterance-1179",
+      "selected_candidate_id": "music_settings",
+      "candidate_ids": [
+        "music_settings",
+        "music_dislikeness",
+        "music_likeness",
+        "music_query"
+      ],
+      "record_id": "massive-zh-cn-01179"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/0",
+        "response_id": "resp_0eacd207c2055c35016ac8669ab60881998fb57a785384a053",
+        "request_sha256": "CAC03A3CF37388F6D50092EF02DF8D07C11CC5214EEC969A1A8613712B144CB5",
+        "response_sha256": "B46C6A181211431CDB6C0A9A85AD7C009EC52AED0CC0C8A456EE356822E35238",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-EC83896BC5A3B3013AF309B215CEE60B3B956ABDEAF4FFB7E9D601FA4F329EE4",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-000"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/1",
+        "response_id": "resp_0eacd207c2055c35016ac8669ab60881998fb57a785384a053",
+        "request_sha256": "CAC03A3CF37388F6D50092EF02DF8D07C11CC5214EEC969A1A8613712B144CB5",
+        "response_sha256": "B46C6A181211431CDB6C0A9A85AD7C009EC52AED0CC0C8A456EE356822E35238",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-06E86C8D0BE98999443CB207C2E5315AE49935D05D735841F6D616F745C125E6",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-001"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/2",
+        "response_id": "resp_000248b03c413d25016ac8669b8d98819a899415bc533e735a",
+        "request_sha256": "74F34377C7FA6D215551FAB7EC59E3725EAE331C525EBDE2B8B6361058109264",
+        "response_sha256": "45BDD1773EAB7DA7583BB71F96A8A25E967E14A5D473890FAEDF03804A9721B5",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-2AC66DABF1A9712FE5E5C2DE3CB81F928433B1598F8FB7FA10C84BC0970F9DD7",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-002"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/3",
+        "response_id": "resp_01659b4e6eb1e0af016ac87a892b20819b90cba736520a3178",
+        "request_sha256": "8006E5185679802F05D1FF67E703787E4353485DBE2791F69CF5467635656F8D",
+        "response_sha256": "BC28CDA907A325201E18DD6ABF9B3005C8E4B19CA19A588230F45B08A8D86107",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-F51033E88850895E888A772AB7FF0A4DB00CA2964011BA9292DDD0115CB6C232",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-003"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/4",
+        "response_id": "resp_000248b03c413d25016ac8669b8d98819a899415bc533e735a",
+        "request_sha256": "74F34377C7FA6D215551FAB7EC59E3725EAE331C525EBDE2B8B6361058109264",
+        "response_sha256": "45BDD1773EAB7DA7583BB71F96A8A25E967E14A5D473890FAEDF03804A9721B5",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "boolq-passage-970C178BE04812BE45F081A15387672969E135F27440CA389E8F33BC104A6CD5",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-004"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/5",
+        "response_id": "resp_000248b03c413d25016ac8669b8d98819a899415bc533e735a",
+        "request_sha256": "74F34377C7FA6D215551FAB7EC59E3725EAE331C525EBDE2B8B6361058109264",
+        "response_sha256": "45BDD1773EAB7DA7583BB71F96A8A25E967E14A5D473890FAEDF03804A9721B5",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "boolq-passage-42C80C84581A7EF850B83B94FF9F5E057F7029D36A422463312EEF1CA51C2599",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-005"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/6",
+        "response_id": "resp_000248b03c413d25016ac8669b8d98819a899415bc533e735a",
+        "request_sha256": "74F34377C7FA6D215551FAB7EC59E3725EAE331C525EBDE2B8B6361058109264",
+        "response_sha256": "45BDD1773EAB7DA7583BB71F96A8A25E967E14A5D473890FAEDF03804A9721B5",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "boolq-passage-33FE7B2C8F2724B466490C4EE75F5944C0760F20CA69F5532114C201C3944494",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-006"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/7",
+        "response_id": "resp_000248b03c413d25016ac8669b8d98819a899415bc533e735a",
+        "request_sha256": "74F34377C7FA6D215551FAB7EC59E3725EAE331C525EBDE2B8B6361058109264",
+        "response_sha256": "45BDD1773EAB7DA7583BB71F96A8A25E967E14A5D473890FAEDF03804A9721B5",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "boolq-passage-A5034DB6A63A1C01CF51A44B4E68F3F9B10DECD893AD0DF438C404306B1865F7",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-007"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/9",
+        "response_id": "resp_000248b03c413d25016ac8669b8d98819a899415bc533e735a",
+        "request_sha256": "74F34377C7FA6D215551FAB7EC59E3725EAE331C525EBDE2B8B6361058109264",
+        "response_sha256": "45BDD1773EAB7DA7583BB71F96A8A25E967E14A5D473890FAEDF03804A9721B5",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-0A262919F86B25A02A37F447E80620FFF54A479A9889DE00E6F242D9DAD9FBEF",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-009"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/10",
+        "response_id": "resp_0222878634a7e875016ac8675edbcc81989fc4dadf121887e1",
+        "request_sha256": "C94588B28519B86A8D311191878F3130D068C25411EC51E553460206061FED5A",
+        "response_sha256": "314BDBE0133F1980EA3687E1AF6973002355AF93FD14FF1B3E9D56DF42400B29",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "boolq-passage-F12718FFAB299DB7DDB56B7F52211E55878C43E062D2A113ABB6FA72DBC27488",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-010"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/11",
+        "response_id": "resp_0222878634a7e875016ac8675edbcc81989fc4dadf121887e1",
+        "request_sha256": "C94588B28519B86A8D311191878F3130D068C25411EC51E553460206061FED5A",
+        "response_sha256": "314BDBE0133F1980EA3687E1AF6973002355AF93FD14FF1B3E9D56DF42400B29",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "boolq-passage-9AD6CDB3F938906B14E4F51F8D58208607FBB8DCA43BB5F85BA39EDE923FC8F1",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-011"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/13",
+        "response_id": "resp_031bf357cd73e10b016ac87a9ef474819995a31c9676e34174",
+        "request_sha256": "7EDFC572E715D73BC9BF801DD0ECD0BF4A0630B747B0018E57ABF986FA02148D",
+        "response_sha256": "26AD48C6E2022A5EDAFB3CA7AA337359EEEEE505437CD46E2C795ACDE818C824",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-738BC5E6995B2E8856B64D91DBEE2385C67DAE12916AB558FBFD7A2DC937BB0F",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-013"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/14",
+        "response_id": "resp_0222878634a7e875016ac8675edbcc81989fc4dadf121887e1",
+        "request_sha256": "C94588B28519B86A8D311191878F3130D068C25411EC51E553460206061FED5A",
+        "response_sha256": "314BDBE0133F1980EA3687E1AF6973002355AF93FD14FF1B3E9D56DF42400B29",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-1FF51D1D5E017DF1C71749CACDF7687216705828F65C4718EAC55A4F290133DC",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-014"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/15",
+        "response_id": "resp_0222878634a7e875016ac8675edbcc81989fc4dadf121887e1",
+        "request_sha256": "C94588B28519B86A8D311191878F3130D068C25411EC51E553460206061FED5A",
+        "response_sha256": "314BDBE0133F1980EA3687E1AF6973002355AF93FD14FF1B3E9D56DF42400B29",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "boolq-passage-05C3457194CFBA1FA8F6BB2F0FADDEE5E38E6874B8200E4783869A6116084773",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-015"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/16",
+        "response_id": "resp_0222878634a7e875016ac8675edbcc81989fc4dadf121887e1",
+        "request_sha256": "C94588B28519B86A8D311191878F3130D068C25411EC51E553460206061FED5A",
+        "response_sha256": "314BDBE0133F1980EA3687E1AF6973002355AF93FD14FF1B3E9D56DF42400B29",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "boolq-passage-C4C5CA2759704233EC06712B261772801EB5654A5FA11A204B08258127AE06B7",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-016"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/17",
+        "response_id": "resp_0222878634a7e875016ac8675edbcc81989fc4dadf121887e1",
+        "request_sha256": "C94588B28519B86A8D311191878F3130D068C25411EC51E553460206061FED5A",
+        "response_sha256": "314BDBE0133F1980EA3687E1AF6973002355AF93FD14FF1B3E9D56DF42400B29",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-C50ABD5491582D1DEEEE9EED48557AD914D117D174201816768E9D1345AD8A66",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-017"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/18",
+        "response_id": "resp_039bfe45e3c45e20016ac8676024888199ab39ad4aafc4e4e3",
+        "request_sha256": "F97D9FDA0ABF047D81BBAD3EC473A7863818682D919C5E8978EF340233F28C9B",
+        "response_sha256": "34AC3C4141C5B296D57C17269380E695882946D53F86DBAEB5DAFA5408EF8635",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-012D595608296679C947201F5A6E096F6D8F69221BF11159D4888A8A80426DDC",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-018"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/19",
+        "response_id": "resp_039bfe45e3c45e20016ac8676024888199ab39ad4aafc4e4e3",
+        "request_sha256": "F97D9FDA0ABF047D81BBAD3EC473A7863818682D919C5E8978EF340233F28C9B",
+        "response_sha256": "34AC3C4141C5B296D57C17269380E695882946D53F86DBAEB5DAFA5408EF8635",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-3FF206A5F09A781911A2E6C63685A303BA31EE2B54473A5052CA2C82AC3CAF88",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-019"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/21",
+        "response_id": "resp_039bfe45e3c45e20016ac8676024888199ab39ad4aafc4e4e3",
+        "request_sha256": "F97D9FDA0ABF047D81BBAD3EC473A7863818682D919C5E8978EF340233F28C9B",
+        "response_sha256": "34AC3C4141C5B296D57C17269380E695882946D53F86DBAEB5DAFA5408EF8635",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-DB5D677C9F411CF8FA0CD2CDC1050C7AA206F342E9834C37A9D80A8C8800E4FF",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-021"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/22",
+        "response_id": "resp_039bfe45e3c45e20016ac8676024888199ab39ad4aafc4e4e3",
+        "request_sha256": "F97D9FDA0ABF047D81BBAD3EC473A7863818682D919C5E8978EF340233F28C9B",
+        "response_sha256": "34AC3C4141C5B296D57C17269380E695882946D53F86DBAEB5DAFA5408EF8635",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-30EF12A43191E37FD665048B1F3790435F54BD91BAE4B4F1847249D9DFDEE902",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-022"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/23",
+        "response_id": "resp_039bfe45e3c45e20016ac8676024888199ab39ad4aafc4e4e3",
+        "request_sha256": "F97D9FDA0ABF047D81BBAD3EC473A7863818682D919C5E8978EF340233F28C9B",
+        "response_sha256": "34AC3C4141C5B296D57C17269380E695882946D53F86DBAEB5DAFA5408EF8635",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "boolq-passage-AD407AD277934DC51890A272A57D69A37D1AFCE382ED6CA48518609CC4C8FBC4",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-023"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/24",
+        "response_id": "resp_039bfe45e3c45e20016ac8676024888199ab39ad4aafc4e4e3",
+        "request_sha256": "F97D9FDA0ABF047D81BBAD3EC473A7863818682D919C5E8978EF340233F28C9B",
+        "response_sha256": "34AC3C4141C5B296D57C17269380E695882946D53F86DBAEB5DAFA5408EF8635",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-08993F4402EB4F049645F0FC53F19C10847974135BCF9A09AE0D72AF8E49E374",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-024"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/25",
+        "response_id": "resp_039bfe45e3c45e20016ac8676024888199ab39ad4aafc4e4e3",
+        "request_sha256": "F97D9FDA0ABF047D81BBAD3EC473A7863818682D919C5E8978EF340233F28C9B",
+        "response_sha256": "34AC3C4141C5B296D57C17269380E695882946D53F86DBAEB5DAFA5408EF8635",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-B6C1CBEC9A22B1E6F3FA06FD17C035D7E0D6CE35D64EF5784876FBC37460FCE8",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-025"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/26",
+        "response_id": "resp_0fd538534c536285016ac8689245cc81988d4e22c80cc24f88",
+        "request_sha256": "D4BD6742DC848A5FF0B67EB1803C127D93345FA8FDB82C52E384BBE0676B9163",
+        "response_sha256": "E5CCFBBA5E2252AF51DCD555250F0F3F9BE86B579EABCCDAEBC86631B6E858A2",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-BDFF0A6AEB1FDFB1EE0E765283CA0CF1E00F9FE6ABC86705FBB43A7D06EFFB9E",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-026"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/27",
+        "response_id": "resp_031bf357cd73e10b016ac87a9ef474819995a31c9676e34174",
+        "request_sha256": "7EDFC572E715D73BC9BF801DD0ECD0BF4A0630B747B0018E57ABF986FA02148D",
+        "response_sha256": "26AD48C6E2022A5EDAFB3CA7AA337359EEEEE505437CD46E2C795ACDE818C824",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-BB1D0A05E4FD6D0D452D6BB8009B537360788BEA7A6A66CA7521F0292F63189E",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-027"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/28",
+        "response_id": "resp_0fd538534c536285016ac8689245cc81988d4e22c80cc24f88",
+        "request_sha256": "D4BD6742DC848A5FF0B67EB1803C127D93345FA8FDB82C52E384BBE0676B9163",
+        "response_sha256": "E5CCFBBA5E2252AF51DCD555250F0F3F9BE86B579EABCCDAEBC86631B6E858A2",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-71027ECCA03140805CE94D6A4C69D7DC708F8E70BD6FB9E49ECE85DB318508CB",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-028"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/29",
+        "response_id": "resp_0fd538534c536285016ac8689245cc81988d4e22c80cc24f88",
+        "request_sha256": "D4BD6742DC848A5FF0B67EB1803C127D93345FA8FDB82C52E384BBE0676B9163",
+        "response_sha256": "E5CCFBBA5E2252AF51DCD555250F0F3F9BE86B579EABCCDAEBC86631B6E858A2",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "boolq-passage-AE5C36B8FF50370C65E9F2AC6FF1346AFF513B6508D0935B30AB8EEE4FD8EDAE",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-029"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/30",
+        "response_id": "resp_0fd538534c536285016ac8689245cc81988d4e22c80cc24f88",
+        "request_sha256": "D4BD6742DC848A5FF0B67EB1803C127D93345FA8FDB82C52E384BBE0676B9163",
+        "response_sha256": "E5CCFBBA5E2252AF51DCD555250F0F3F9BE86B579EABCCDAEBC86631B6E858A2",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-29AFEDF7285EE52AE4A7144146EB1B2C66489C85DBB96D06D26C7AF441B4FCAF",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-030"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/31",
+        "response_id": "resp_0fd538534c536285016ac8689245cc81988d4e22c80cc24f88",
+        "request_sha256": "D4BD6742DC848A5FF0B67EB1803C127D93345FA8FDB82C52E384BBE0676B9163",
+        "response_sha256": "E5CCFBBA5E2252AF51DCD555250F0F3F9BE86B579EABCCDAEBC86631B6E858A2",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-C3B4AED0A86CC2B03C5E837BAD723BAE208FF4D62E4CC6B44A24354B688F8BA3",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-031"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/32",
+        "response_id": "resp_031bf357cd73e10b016ac87a9ef474819995a31c9676e34174",
+        "request_sha256": "7EDFC572E715D73BC9BF801DD0ECD0BF4A0630B747B0018E57ABF986FA02148D",
+        "response_sha256": "26AD48C6E2022A5EDAFB3CA7AA337359EEEEE505437CD46E2C795ACDE818C824",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-E9D3DB3F7CEC2404AABE2022205B6A1B6AD007DAB71BCDB258A708EA8496EAD8",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-032"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/34",
+        "response_id": "resp_043368acf715550a016ac8689205bc81989946416858411579",
+        "request_sha256": "3DF0C6029E4A8FBDEF19A0DDDF9F7BF87C3BE5A19F53E5FBB7BF91CE47A02E7F",
+        "response_sha256": "C349653E1784861C145C07AB488C9D75B8D4B7C68899D3A6CB9527E39F0431ED",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "boolq-passage-7518470FD9C0E3894C7384E82AC8A466EEB29AD8B9D3DA9FB88200A0DB2530DA",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-034"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/35",
+        "response_id": "resp_043368acf715550a016ac8689205bc81989946416858411579",
+        "request_sha256": "3DF0C6029E4A8FBDEF19A0DDDF9F7BF87C3BE5A19F53E5FBB7BF91CE47A02E7F",
+        "response_sha256": "C349653E1784861C145C07AB488C9D75B8D4B7C68899D3A6CB9527E39F0431ED",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-4A0F6811305102B26E0CC3D39EEE0330FB0D62A9396F727627226CB2EBE66287",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-035"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/36",
+        "response_id": "resp_043368acf715550a016ac8689205bc81989946416858411579",
+        "request_sha256": "3DF0C6029E4A8FBDEF19A0DDDF9F7BF87C3BE5A19F53E5FBB7BF91CE47A02E7F",
+        "response_sha256": "C349653E1784861C145C07AB488C9D75B8D4B7C68899D3A6CB9527E39F0431ED",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-1EF3449BAA1CC973300860FAB3FE3151D886E3198149F7A65CF052AEF4EBA4C7",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-036"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/37",
+        "response_id": "resp_043368acf715550a016ac8689205bc81989946416858411579",
+        "request_sha256": "3DF0C6029E4A8FBDEF19A0DDDF9F7BF87C3BE5A19F53E5FBB7BF91CE47A02E7F",
+        "response_sha256": "C349653E1784861C145C07AB488C9D75B8D4B7C68899D3A6CB9527E39F0431ED",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "boolq-passage-9320A81D4F03E2B7AEEF97D0B2C2DED8124E807510F269A55360B3DE4F4D1C0B",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-037"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/38",
+        "response_id": "resp_043368acf715550a016ac8689205bc81989946416858411579",
+        "request_sha256": "3DF0C6029E4A8FBDEF19A0DDDF9F7BF87C3BE5A19F53E5FBB7BF91CE47A02E7F",
+        "response_sha256": "C349653E1784861C145C07AB488C9D75B8D4B7C68899D3A6CB9527E39F0431ED",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "boolq-passage-4AED0C753DD99FC301F1706AB2E4B18A54668FE7FE7757FE0482008779830810",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-038"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/41",
+        "response_id": "resp_043368acf715550a016ac8689205bc81989946416858411579",
+        "request_sha256": "3DF0C6029E4A8FBDEF19A0DDDF9F7BF87C3BE5A19F53E5FBB7BF91CE47A02E7F",
+        "response_sha256": "C349653E1784861C145C07AB488C9D75B8D4B7C68899D3A6CB9527E39F0431ED",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-A50C3F39054C7BFD08F6ACE1DC3AE3E54F9E7A732C07C02D2535A0565E1F099A",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-041"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/42",
+        "response_id": "resp_043368acf715550a016ac8689205bc81989946416858411579",
+        "request_sha256": "3DF0C6029E4A8FBDEF19A0DDDF9F7BF87C3BE5A19F53E5FBB7BF91CE47A02E7F",
+        "response_sha256": "C349653E1784861C145C07AB488C9D75B8D4B7C68899D3A6CB9527E39F0431ED",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "boolq-passage-85F0A850899A74E6860A45744D62C8882B22543A81AB134C8DE2EA9CD4882B5F",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-042"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/43",
+        "response_id": "resp_0db687a2b0e365fa016ac86901bcb081988f5e5f5bd40efa95",
+        "request_sha256": "E7C114C3F6959C21236C241BF9769AA6BFCC369355C839DCAEB137D501EEE996",
+        "response_sha256": "8A22C042E66DA043BA3CAAC974AF133E62824CDE6D54A26D62556F28807C0801",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-AD4003B2D9F4B81F0EEC266C49F51CD041CF940906F7BD5BB8154B998CF0B126",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-043"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/44",
+        "response_id": "resp_0db687a2b0e365fa016ac86901bcb081988f5e5f5bd40efa95",
+        "request_sha256": "E7C114C3F6959C21236C241BF9769AA6BFCC369355C839DCAEB137D501EEE996",
+        "response_sha256": "8A22C042E66DA043BA3CAAC974AF133E62824CDE6D54A26D62556F28807C0801",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "boolq-passage-406854CB54AD8FF391BA7E8C400E8129872FE695AB9C5574D769EC170D26EFF2",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-044"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/45",
+        "response_id": "resp_0db687a2b0e365fa016ac86901bcb081988f5e5f5bd40efa95",
+        "request_sha256": "E7C114C3F6959C21236C241BF9769AA6BFCC369355C839DCAEB137D501EEE996",
+        "response_sha256": "8A22C042E66DA043BA3CAAC974AF133E62824CDE6D54A26D62556F28807C0801",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-51AD8BF0C0EA94EF5DBE58951EC460BE128C39C4350F9705EB105B5B359BCB21",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-045"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/50",
+        "response_id": "resp_031bf357cd73e10b016ac87a9ef474819995a31c9676e34174",
+        "request_sha256": "7EDFC572E715D73BC9BF801DD0ECD0BF4A0630B747B0018E57ABF986FA02148D",
+        "response_sha256": "26AD48C6E2022A5EDAFB3CA7AA337359EEEEE505437CD46E2C795ACDE818C824",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-94EC609B14DCADFA37F16DD21388CFD48A9C0FD5D5CF8C1922D01A48FE198BC7",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-050"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/51",
+        "response_id": "resp_0db687a2b0e365fa016ac86901bcb081988f5e5f5bd40efa95",
+        "request_sha256": "E7C114C3F6959C21236C241BF9769AA6BFCC369355C839DCAEB137D501EEE996",
+        "response_sha256": "8A22C042E66DA043BA3CAAC974AF133E62824CDE6D54A26D62556F28807C0801",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-155F7BBFF62FA7BCA34ACFC0692888D7578CB301822BE750CB335203C10E418A",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-051"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/52",
+        "response_id": "resp_036de8be70419d3c016ac86929f8a0819981c17b3826266b97",
+        "request_sha256": "44AB8E46C5D0BB5AC1E302F1B0B8FA63DA5C9BE476479F9F78CBE24FC70A02AC",
+        "response_sha256": "6B4B8365A35F650935A218433E8ED814720D7ACAB6E0650576699034B968DB96",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-B55DF74B397E962C728B8088536A63423ADB61D9AA6740BA4DDE2940A7D65738",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-052"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/53",
+        "response_id": "resp_036de8be70419d3c016ac86929f8a0819981c17b3826266b97",
+        "request_sha256": "44AB8E46C5D0BB5AC1E302F1B0B8FA63DA5C9BE476479F9F78CBE24FC70A02AC",
+        "response_sha256": "6B4B8365A35F650935A218433E8ED814720D7ACAB6E0650576699034B968DB96",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-025DBA0CB847C0B8BF7AFB80C67E2FB28E1D51C60F257A205BA8E3633D710D84",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-053"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/56",
+        "response_id": "resp_031bf357cd73e10b016ac87a9ef474819995a31c9676e34174",
+        "request_sha256": "7EDFC572E715D73BC9BF801DD0ECD0BF4A0630B747B0018E57ABF986FA02148D",
+        "response_sha256": "26AD48C6E2022A5EDAFB3CA7AA337359EEEEE505437CD46E2C795ACDE818C824",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "boolq-passage-CAC7D3123743E16A25BE51898A3B354153DC689D9825136109A1D5527F1537C9",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-056"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/60",
+        "response_id": "resp_036de8be70419d3c016ac86929f8a0819981c17b3826266b97",
+        "request_sha256": "44AB8E46C5D0BB5AC1E302F1B0B8FA63DA5C9BE476479F9F78CBE24FC70A02AC",
+        "response_sha256": "6B4B8365A35F650935A218433E8ED814720D7ACAB6E0650576699034B968DB96",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "boolq-passage-579540B5C3FC4484F345678173FC7841727A8D1C76005D4D4098DFA44776B0FF",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-060"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/72",
+        "response_id": "resp_036de8be70419d3c016ac86929f8a0819981c17b3826266b97",
+        "request_sha256": "44AB8E46C5D0BB5AC1E302F1B0B8FA63DA5C9BE476479F9F78CBE24FC70A02AC",
+        "response_sha256": "6B4B8365A35F650935A218433E8ED814720D7ACAB6E0650576699034B968DB96",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "boolq-passage-5F61BB8D5598723CE1BE6F08E6CD587193AF58483E40AFC5E0202B2D52F8248F",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-072"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/75",
+        "response_id": "resp_031bf357cd73e10b016ac87a9ef474819995a31c9676e34174",
+        "request_sha256": "7EDFC572E715D73BC9BF801DD0ECD0BF4A0630B747B0018E57ABF986FA02148D",
+        "response_sha256": "26AD48C6E2022A5EDAFB3CA7AA337359EEEEE505437CD46E2C795ACDE818C824",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "boolq-passage-D2521EDF563F8ECC22DB1C43541722A0FD919F5F61DF9830FCA9B8950F364423",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-075"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/77",
+        "response_id": "resp_006b7010550491c3016ac87ac1b3288199a76b4d3f5c2d8c9c",
+        "request_sha256": "70D929C325B5F8790404E1942763BFD3FC503E616EBA6FAF0F6C4AADCE0E3BEF",
+        "response_sha256": "4BAE4036D2EE3E1FDD123248F500859E12F85F857C42046CB2D58A6A3B700057",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "train",
+      "family_id": "boolq-passage-CC2CC6B66CF9118FFADE00712F5D36235B967FB48B9D1AE83A75346D0700F74B",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-077"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/82",
+        "response_id": "resp_0822c9924a20b6ea016ac869dd5fe8819a8e6e79dea82de905",
+        "request_sha256": "4CA9B677F55F53ADEF34F8EBEC6717F62397C18C8312D29936492123D8890E86",
+        "response_sha256": "A46AAC3FB4676D169699F142B62F440C34CA63C6FB892D7A8AF1B51C7D5CDB76",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "boolq-passage-A42CFD98A933B3A6F67B66B3D04D7DADECAA8C9C835163464C121446C17CB512",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-082"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/88",
+        "response_id": "resp_0822c9924a20b6ea016ac869dd5fe8819a8e6e79dea82de905",
+        "request_sha256": "4CA9B677F55F53ADEF34F8EBEC6717F62397C18C8312D29936492123D8890E86",
+        "response_sha256": "A46AAC3FB4676D169699F142B62F440C34CA63C6FB892D7A8AF1B51C7D5CDB76",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "boolq-passage-B5FE8408501815FF68ECB5AEDAEBD6BB03F2EA641607DC9B88BF821FC4CEB693",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-088"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/train/90",
+        "response_id": "resp_0822c9924a20b6ea016ac869dd5fe8819a8e6e79dea82de905",
+        "request_sha256": "4CA9B677F55F53ADEF34F8EBEC6717F62397C18C8312D29936492123D8890E86",
+        "response_sha256": "A46AAC3FB4676D169699F142B62F440C34CA63C6FB892D7A8AF1B51C7D5CDB76",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "train",
+      "family_id": "boolq-passage-286A99947CA1E0E717F9BDCC8D3055B223A7899841E4B9FC7CE0E604FF459869",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-train-row-090"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/0",
+        "response_id": "resp_006b7010550491c3016ac87ac1b3288199a76b4d3f5c2d8c9c",
+        "request_sha256": "70D929C325B5F8790404E1942763BFD3FC503E616EBA6FAF0F6C4AADCE0E3BEF",
+        "response_sha256": "4BAE4036D2EE3E1FDD123248F500859E12F85F857C42046CB2D58A6A3B700057",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "development",
+      "family_id": "boolq-passage-E4C26DD7E6545D7BC194CDE932BB1D87330733C71FF6122491564C4F2E7E6DA4",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-000"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/1",
+        "response_id": "resp_006b7010550491c3016ac87ac1b3288199a76b4d3f5c2d8c9c",
+        "request_sha256": "70D929C325B5F8790404E1942763BFD3FC503E616EBA6FAF0F6C4AADCE0E3BEF",
+        "response_sha256": "4BAE4036D2EE3E1FDD123248F500859E12F85F857C42046CB2D58A6A3B700057",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "development",
+      "family_id": "boolq-passage-65E1D32982EA11B74A64E2F05DDE6284081CEB62BEFCDF1C0A10821F139177AB",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-001"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/2",
+        "response_id": "resp_0a08603e253f05f9016ac86a11b90c8199b25b51ee6c6079d6",
+        "request_sha256": "5A43E89F82AA5E4B68155A10DE03057A339B47E4A4EBF586179F524C9F796DFC",
+        "response_sha256": "9894A330B3B3B9BA5574A60A152ECA7F9F21BD4C2BC8029DE959963B07D2F9BB",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "development",
+      "family_id": "boolq-passage-0748C6EE7D53841AE8FF2783C4BDDFE8D7A8187F824639D38A11AF93471B2FF3",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-002"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/3",
+        "response_id": "resp_0a08603e253f05f9016ac86a11b90c8199b25b51ee6c6079d6",
+        "request_sha256": "5A43E89F82AA5E4B68155A10DE03057A339B47E4A4EBF586179F524C9F796DFC",
+        "response_sha256": "9894A330B3B3B9BA5574A60A152ECA7F9F21BD4C2BC8029DE959963B07D2F9BB",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "development",
+      "family_id": "boolq-passage-44DD2879143A827D1B2D284569671DEF8C24A3BF166F7A2F61FE1643AEDC5C60",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-003"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/4",
+        "response_id": "resp_0a08603e253f05f9016ac86a11b90c8199b25b51ee6c6079d6",
+        "request_sha256": "5A43E89F82AA5E4B68155A10DE03057A339B47E4A4EBF586179F524C9F796DFC",
+        "response_sha256": "9894A330B3B3B9BA5574A60A152ECA7F9F21BD4C2BC8029DE959963B07D2F9BB",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "development",
+      "family_id": "boolq-passage-12778C17B6D0C393B2476746DD62967C262E9233F28E36A60BE9AFE47DE1F3D8",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-004"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/5",
+        "response_id": "resp_0a08603e253f05f9016ac86a11b90c8199b25b51ee6c6079d6",
+        "request_sha256": "5A43E89F82AA5E4B68155A10DE03057A339B47E4A4EBF586179F524C9F796DFC",
+        "response_sha256": "9894A330B3B3B9BA5574A60A152ECA7F9F21BD4C2BC8029DE959963B07D2F9BB",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "development",
+      "family_id": "boolq-passage-4E240BC1B1FC38AE03F76D07037642FD5897B1DA39596D2B37BC1183856B0031",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-005"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/6",
+        "response_id": "resp_006b7010550491c3016ac87ac1b3288199a76b4d3f5c2d8c9c",
+        "request_sha256": "70D929C325B5F8790404E1942763BFD3FC503E616EBA6FAF0F6C4AADCE0E3BEF",
+        "response_sha256": "4BAE4036D2EE3E1FDD123248F500859E12F85F857C42046CB2D58A6A3B700057",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "development",
+      "family_id": "boolq-passage-F3E6D2815DEF799AE24E403416912365C2A207472FF7917BF1C8B1EAE9131D78",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-006"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/7",
+        "response_id": "resp_0a08603e253f05f9016ac86a11b90c8199b25b51ee6c6079d6",
+        "request_sha256": "5A43E89F82AA5E4B68155A10DE03057A339B47E4A4EBF586179F524C9F796DFC",
+        "response_sha256": "9894A330B3B3B9BA5574A60A152ECA7F9F21BD4C2BC8029DE959963B07D2F9BB",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "development",
+      "family_id": "boolq-passage-2194A7A58DECAF232A0EF3149D6464A8086C6F51602EF1CEB48A05BF1CFB5E31",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-007"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/9",
+        "response_id": "resp_0a08603e253f05f9016ac86a11b90c8199b25b51ee6c6079d6",
+        "request_sha256": "5A43E89F82AA5E4B68155A10DE03057A339B47E4A4EBF586179F524C9F796DFC",
+        "response_sha256": "9894A330B3B3B9BA5574A60A152ECA7F9F21BD4C2BC8029DE959963B07D2F9BB",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "development",
+      "family_id": "boolq-passage-04FF6F083D3A10631E0EEF8CB7E3EBA149530C309FAC5525B88759B39AE3CF6D",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-009"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/10",
+        "response_id": "resp_070969a3a133d34d016ac86a9ad458819aa0ca73b09690a4be",
+        "request_sha256": "02830ECD311604459CAF49760BE473778AF708503FF20B9C2421B0ACF8EA2C4D",
+        "response_sha256": "616C9E816F5AE1C5230AFC67A07D4ADCE7722991B61C857FC336F934C119A75C",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "development",
+      "family_id": "boolq-passage-55B3636A48519C32DC634790EBA18FB8F397416D4A42CC64423CCC3938424885",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-010"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/12",
+        "response_id": "resp_070969a3a133d34d016ac86a9ad458819aa0ca73b09690a4be",
+        "request_sha256": "02830ECD311604459CAF49760BE473778AF708503FF20B9C2421B0ACF8EA2C4D",
+        "response_sha256": "616C9E816F5AE1C5230AFC67A07D4ADCE7722991B61C857FC336F934C119A75C",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "development",
+      "family_id": "boolq-passage-F2418A017230674D4B9085D7FB3F3228328A8B3815C6AF30BD2641549AE10FFE",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-012"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/14",
+        "response_id": "resp_070969a3a133d34d016ac86a9ad458819aa0ca73b09690a4be",
+        "request_sha256": "02830ECD311604459CAF49760BE473778AF708503FF20B9C2421B0ACF8EA2C4D",
+        "response_sha256": "616C9E816F5AE1C5230AFC67A07D4ADCE7722991B61C857FC336F934C119A75C",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "development",
+      "family_id": "boolq-passage-2F043A46B003BFF1653812DA970B836D645E25F7B984B7DDF2C79E9E7D073F4C",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-014"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/15",
+        "response_id": "resp_070969a3a133d34d016ac86a9ad458819aa0ca73b09690a4be",
+        "request_sha256": "02830ECD311604459CAF49760BE473778AF708503FF20B9C2421B0ACF8EA2C4D",
+        "response_sha256": "616C9E816F5AE1C5230AFC67A07D4ADCE7722991B61C857FC336F934C119A75C",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "development",
+      "family_id": "boolq-passage-69678CFF7C5A7D23A39A05488A7946AF5B8913C1F234DE58E0B92396A6300939",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-015"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/16",
+        "response_id": "resp_006b7010550491c3016ac87ac1b3288199a76b4d3f5c2d8c9c",
+        "request_sha256": "70D929C325B5F8790404E1942763BFD3FC503E616EBA6FAF0F6C4AADCE0E3BEF",
+        "response_sha256": "4BAE4036D2EE3E1FDD123248F500859E12F85F857C42046CB2D58A6A3B700057",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "development",
+      "family_id": "boolq-passage-0385F1D87B1A439FB963553F0BE310152883F503E7E7B4FDA621DBE5729CC1FE",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-016"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/17",
+        "response_id": "resp_070969a3a133d34d016ac86a9ad458819aa0ca73b09690a4be",
+        "request_sha256": "02830ECD311604459CAF49760BE473778AF708503FF20B9C2421B0ACF8EA2C4D",
+        "response_sha256": "616C9E816F5AE1C5230AFC67A07D4ADCE7722991B61C857FC336F934C119A75C",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "development",
+      "family_id": "boolq-passage-2BD3CEE4645BA3A058827F3E6F5FE37CBC67426B1144C3C8B52E053902B1EB5C",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-017"
+    },
+    {
+      "target_index": 1,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/18",
+        "response_id": "resp_006b7010550491c3016ac87ac1b3288199a76b4d3f5c2d8c9c",
+        "request_sha256": "70D929C325B5F8790404E1942763BFD3FC503E616EBA6FAF0F6C4AADCE0E3BEF",
+        "response_sha256": "4BAE4036D2EE3E1FDD123248F500859E12F85F857C42046CB2D58A6A3B700057",
+        "selected_candidate_id": "true",
+        "target_index": 1
+      },
+      "split": "development",
+      "family_id": "boolq-passage-29158800A36E12F20801E98F7BAEB393B928AAF819EA4EE93759BF1872617094",
+      "selected_candidate_id": "true",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-018"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/20",
+        "response_id": "resp_0034c147be553c52016ac87ae3ecec81998a1e8383f566996b",
+        "request_sha256": "56325592F5E259F86F04609E05D074D72442DEA25282060B4B9EAC1C52F6BF02",
+        "response_sha256": "197BD345CD6A3B552472E306155C7D8B40A6628F3FC630FD39FCDB01124E7F84",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "development",
+      "family_id": "boolq-passage-B9FE4E37FD2ACED3C07ADA7FA36FDD44F1B179B49E850014B69D10A90CD0C8F2",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-020"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/27",
+        "response_id": "resp_0a49f517703c4601016ac86abdbef88199a8464dcb3eb9d5e6",
+        "request_sha256": "C6C5E42A9BA06038962A784AE245CEC40A2029A2905160B563A00D97D717F3DA",
+        "response_sha256": "66E184BEFB6588E4A0F7967D8B81B2885AA59418FF61457FD49CC8A7632457A7",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "development",
+      "family_id": "boolq-passage-6EB04D9204B261F4BDEADA663D843FD1AC7DBB0DD5213C64F0FD607C2F0DAABC",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-027"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/32",
+        "response_id": "resp_0a49f517703c4601016ac86abdbef88199a8464dcb3eb9d5e6",
+        "request_sha256": "C6C5E42A9BA06038962A784AE245CEC40A2029A2905160B563A00D97D717F3DA",
+        "response_sha256": "66E184BEFB6588E4A0F7967D8B81B2885AA59418FF61457FD49CC8A7632457A7",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "development",
+      "family_id": "boolq-passage-B7AE4054950EE6B4E20C485EFE67C165343A46580A1AA9F413EE9B2A0A23291F",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-032"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/36",
+        "response_id": "resp_0a49f517703c4601016ac86abdbef88199a8464dcb3eb9d5e6",
+        "request_sha256": "C6C5E42A9BA06038962A784AE245CEC40A2029A2905160B563A00D97D717F3DA",
+        "response_sha256": "66E184BEFB6588E4A0F7967D8B81B2885AA59418FF61457FD49CC8A7632457A7",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "development",
+      "family_id": "boolq-passage-449BC10A0E7240B247D3D05F4CB8F97FCA025D5397654754895A108546DE382D",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-036"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/41",
+        "response_id": "resp_0a49f517703c4601016ac86abdbef88199a8464dcb3eb9d5e6",
+        "request_sha256": "C6C5E42A9BA06038962A784AE245CEC40A2029A2905160B563A00D97D717F3DA",
+        "response_sha256": "66E184BEFB6588E4A0F7967D8B81B2885AA59418FF61457FD49CC8A7632457A7",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "development",
+      "family_id": "boolq-passage-F11BC2A5B53D149326E14122297D6D1FD159839CCF812EF6A3CCE469E30049A9",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-041"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/54",
+        "response_id": "resp_0d4ca817b601e8ce016ac86b456060819bb738fb719d8c73bb",
+        "request_sha256": "72E566651807E4F885DFA57D532D9BAF008A4526B674AD7088AD5B1B23071473",
+        "response_sha256": "3579959775E016BEC113354A1FB67ED942CC760052ACF00F28C1A59776C49204",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "development",
+      "family_id": "boolq-passage-18A5D31C813F3BF2E2804FD3DB1EE32B6B2E272E53082E02CD9B38475E7AEB4C",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-054"
+    },
+    {
+      "target_index": 0,
+      "teacher_binding": {
+        "source_canonical_id": "google/boolq/validation/60",
+        "response_id": "resp_0d4ca817b601e8ce016ac86b456060819bb738fb719d8c73bb",
+        "request_sha256": "72E566651807E4F885DFA57D532D9BAF008A4526B674AD7088AD5B1B23071473",
+        "response_sha256": "3579959775E016BEC113354A1FB67ED942CC760052ACF00F28C1A59776C49204",
+        "selected_candidate_id": "false",
+        "target_index": 0
+      },
+      "split": "development",
+      "family_id": "boolq-passage-5A7B6063F928DEBF29ED3E3A318F7DFD674CD7D1B4E3520FD2F2989ED0AEC376",
+      "selected_candidate_id": "false",
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "record_id": "boolq-validation-row-060"
+    }
+  ]
+}

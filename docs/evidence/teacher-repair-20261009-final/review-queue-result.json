@@ -1,0 +1,88 @@
+{
+  "started_utc": "2026-10-09T05:23:08.789Z",
+  "finished_utc": "2026-10-09T05:26:31.948Z",
+  "maximum_new_batches": 7,
+  "maximum_concurrency": 2,
+  "history": [
+    {
+      "batch": "review00",
+      "start": 0,
+      "count": 6,
+      "lane": 1,
+      "exit": 0,
+      "remaining_session": null,
+      "output": "Owned API guardian: PID 26476, limit 280s, label review00.\r\nOwned PID 26476 running 32s; observation errors=0.\r\nOwned guardian completed: Succeeded, child exit 0; result: D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\api-owned-logs\\20261009-052309-572-review00.result.json\r\n",
+      "finished_utc": "2026-10-09T05:23:51.473Z"
+    },
+    {
+      "batch": "review01",
+      "start": 6,
+      "count": 6,
+      "lane": 2,
+      "exit": 0,
+      "remaining_session": null,
+      "output": "Owned API guardian: PID 67236, limit 280s, label review01.\r\nOwned PID 67236 running 32s; observation errors=0.\r\nOwned guardian completed: Succeeded, child exit 0; result: D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\api-owned-logs\\20261009-052309-633-review01.result.json\r\n",
+      "finished_utc": "2026-10-09T05:24:15.132Z"
+    },
+    {
+      "batch": "review02",
+      "start": 12,
+      "count": 6,
+      "lane": 1,
+      "exit": 0,
+      "remaining_session": null,
+      "output": "Owned API guardian: PID 37084, limit 280s, label review02.\r\nOwned PID 37084 running 33s; observation errors=0.\r\nOwned guardian completed: Succeeded, child exit 0; result: D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\api-owned-logs\\20261009-052352-008-review02.result.json\r\n",
+      "finished_utc": "2026-10-09T05:24:39.614Z"
+    },
+    {
+      "batch": "review03",
+      "start": 18,
+      "count": 6,
+      "lane": 2,
+      "exit": 0,
+      "remaining_session": null,
+      "output": "Owned API guardian: PID 36460, limit 280s, label review03.\r\nOwned PID 36460 running 33s; observation errors=0.\r\nOwned guardian completed: Succeeded, child exit 0; result: D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\api-owned-logs\\20261009-052417-807-review03.result.json\r\n",
+      "finished_utc": "2026-10-09T05:25:13.380Z"
+    },
+    {
+      "batch": "review04",
+      "start": 24,
+      "count": 6,
+      "lane": 1,
+      "exit": 0,
+      "remaining_session": null,
+      "output": "Owned API guardian: PID 64804, limit 280s, label review04.\r\nOwned PID 64804 running 33s; observation errors=0.\r\nOwned guardian completed: Succeeded, child exit 0; result: D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\api-owned-logs\\20261009-052440-151-review04.result.json\r\n",
+      "finished_utc": "2026-10-09T05:25:42.664Z"
+    },
+    {
+      "batch": "review06",
+      "start": 36,
+      "count": 1,
+      "lane": 1,
+      "exit": 0,
+      "remaining_session": null,
+      "output": "Owned API guardian: PID 64840, limit 280s, label review06.\r\nOwned guardian completed: Succeeded, child exit 0; result: D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\api-owned-logs\\20261009-052545-779-review06.result.json\r\n",
+      "finished_utc": "2026-10-09T05:26:12.885Z"
+    },
+    {
+      "batch": "review05",
+      "start": 30,
+      "count": 6,
+      "lane": 2,
+      "exit": 0,
+      "remaining_session": null,
+      "output": "Owned API guardian: PID 32956, limit 280s, label review05.\r\nOwned PID 32956 running 33s; observation errors=0.\r\nOwned guardian completed: Succeeded, child exit 0; result: D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\api-owned-logs\\20261009-052514-124-review05.result.json\r\n",
+      "finished_utc": "2026-10-09T05:26:31.948Z"
+    }
+  ],
+  "lanes": [
+    {
+      "status": "fulfilled",
+      "error": null
+    },
+    {
+      "status": "fulfilled",
+      "error": null
+    }
+  ]
+}

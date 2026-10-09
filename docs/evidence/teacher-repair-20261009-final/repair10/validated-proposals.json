@@ -1,0 +1,210 @@
+[
+  {
+    "formal": false,
+    "revised_row": null,
+    "evidence_quotes": [
+      "It is one of the three ancient documented languages that likely arose from a common root language now referred to as the Proto-Indo-European language:"
+    ],
+    "record_id": "boolq-train-row-054",
+    "original_source_gold": 0,
+    "decision": "delete",
+    "human_review": "pending",
+    "reason": "原文只说明梵语是古老的有文献记载的语言之一，并可能源于共同祖语，不能确定它是否是世界第一种语言。改问是否源于原始印欧语会改变原问题的核心命题；在不能补充原文的条件下，应删除。"
+  },
+  {
+    "formal": false,
+    "revised_row": {
+      "record_id": "boolq-train-row-056",
+      "family_id": "boolq-passage-CAC7D3123743E16A25BE51898A3B354153DC689D9825136109A1D5527F1537C9",
+      "language": "en",
+      "split": "train",
+      "target_index": 0,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "The Air Force usually does not have fighter aircraft escort the presidential aircraft over the United States but it has occurred, for example during the attack on the World Trade Center."
+        },
+        "questions": [
+          {
+            "id": "evidence_answer",
+            "type": "boolean",
+            "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge. Treat statement as a question, not an assertion.",
+            "statement": "Does the Air Force usually have fighter aircraft escort the presidential aircraft over the United States?",
+            "when_false": "The answer to the question is No based on the passage",
+            "when_true": "The answer to the question is Yes based on the passage"
+          }
+        ]
+      },
+      "source": {
+        "dataset": "google/boolq",
+        "original_dataset": "BoolQ",
+        "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+        "viewer_snapshot_revision_bound": false,
+        "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+        "official_id": "train/56",
+        "original_split": "train",
+        "original_label": false,
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-train.rows.json",
+        "file_sha256": "AFE3CFA22F2271796A0AC4E837623F01ED7A3AF2794382F0A183499FD561C674",
+        "raw_record_sha256": "FE9BE3CACD210A1A67AD3CF857B2E366511B2E604314C26B4575D332306EA998",
+        "license": "CC-BY-SA-3.0",
+        "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "google/boolq/train/56"
+    },
+    "evidence_quotes": [
+      "The Air Force usually does not have fighter aircraft escort the presidential aircraft over the United States but it has occurred, for example during the attack on the World Trade Center."
+    ],
+    "record_id": "boolq-train-row-056",
+    "original_source_gold": 0,
+    "decision": "repair",
+    "human_review": "pending",
+    "reason": "将问题限定为美国境内通常是否安排战斗机护航，消除通常安排与曾经发生过护航之间的歧义，保留原题的护航主题。原文明确说通常不安排，答案为 No。"
+  },
+  {
+    "formal": false,
+    "revised_row": null,
+    "evidence_quotes": [
+      "The Roberti-Roos Assault Weapons Control Act of 1989 banned Colt AR-15 rifles by name in the State of California.",
+      "California's 2000 Assault Weapons ban went further and banned AR-15s made by other manufacturers by name such as Bushmaster, PWA, and Olympic Arms."
+    ],
+    "record_id": "boolq-train-row-057",
+    "original_source_gold": 0,
+    "decision": "delete",
+    "human_review": "pending",
+    "reason": "原文提供的是特定年份对特定厂商枪支的按名称禁令，没有说明持有行为的具体规则，也未涵盖所有 AR-15 型号的法律地位。即使限定年份或厂商，仍缺少判断持有是否合法的关键证据；改问是否被按名称禁止会替换原问题的核心命题，应删除。"
+  },
+  {
+    "formal": false,
+    "revised_row": {
+      "record_id": "boolq-train-row-075",
+      "family_id": "boolq-passage-D2521EDF563F8ECC22DB1C43541722A0FD919F5F61DF9830FCA9B8950F364423",
+      "language": "en",
+      "split": "train",
+      "target_index": 0,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "Gov. Perry also signed H.B. 1815 after passage by the 2007 Legislature, a bill that allows any Texas resident to carry a handgun in the resident's motor vehicle without a CHL or other permit. The bill revised Chapter 46, Section 2 of the Penal Code to state that it is in fact not ``Unlawful Carry of a Weapon'', as defined by the statute, for a person to carry a handgun while in a motor vehicle they own or control, or to carry while heading directly from the person's home to that car. However, lawful carry while in a vehicle requires these four critical qualifiers: (1) the weapon must not be in plain sight (in Texas law, ``plain sight'' and ``concealed'' are mutually exclusive opposing terms); (2) the carrier cannot be involved in criminal activities, other than Class C traffic misdemeanors; (3) the carrier cannot be prohibited by state or federal law from possessing a firearm; and (4) the carrier cannot be a member of a criminal gang."
+        },
+        "questions": [
+          {
+            "id": "evidence_answer",
+            "type": "boolean",
+            "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge. Treat statement as a question, not an assertion.",
+            "statement": "Under H.B. 1815, is it illegal for a Texas resident who meets all four lawful-carry conditions listed in the passage to carry a handgun in a motor vehicle they own or control?",
+            "when_false": "The answer to the question is No based on the passage",
+            "when_true": "The answer to the question is Yes based on the passage"
+          }
+        ]
+      },
+      "source": {
+        "dataset": "google/boolq",
+        "original_dataset": "BoolQ",
+        "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+        "viewer_snapshot_revision_bound": false,
+        "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+        "official_id": "train/75",
+        "original_split": "train",
+        "original_label": false,
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-train.rows.json",
+        "file_sha256": "AFE3CFA22F2271796A0AC4E837623F01ED7A3AF2794382F0A183499FD561C674",
+        "raw_record_sha256": "9E3D1140D0508CA023A654BEBEF72D304C8DA41409AD677B72DFB2ED16CD9EA3",
+        "license": "CC-BY-SA-3.0",
+        "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "google/boolq/train/75"
+    },
+    "evidence_quotes": [
+      "Gov. Perry also signed H.B. 1815 after passage by the 2007 Legislature, a bill that allows any Texas resident to carry a handgun in the resident's motor vehicle without a CHL or other permit.",
+      "The bill revised Chapter 46, Section 2 of the Penal Code to state that it is in fact not ``Unlawful Carry of a Weapon'', as defined by the statute, for a person to carry a handgun while in a motor vehicle they own or control, or to carry while heading directly from the person's home to that car.",
+      "However, lawful carry while in a vehicle requires these four critical qualifiers: (1) the weapon must not be in plain sight (in Texas law, ``plain sight'' and ``concealed'' are mutually exclusive opposing terms); (2) the carrier cannot be involved in criminal activities, other than Class C traffic misdemeanors; (3) the carrier cannot be prohibited by state or federal law from possessing a firearm; and (4) the carrier cannot be a member of a criminal gang."
+    ],
+    "record_id": "boolq-train-row-075",
+    "original_source_gold": 0,
+    "decision": "repair",
+    "human_review": "pending",
+    "reason": "保留车内携带手枪是否违法的原命题，明确适用原文所述 H.B. 1815，并限定为满足全部四项条件的得州居民及其拥有或控制的车辆。原文明确允许这种情形，答案为 No。"
+  },
+  {
+    "formal": false,
+    "revised_row": {
+      "record_id": "boolq-train-row-077",
+      "family_id": "boolq-passage-CC2CC6B66CF9118FFADE00712F5D36235B967FB48B9D1AE83A75346D0700F74B",
+      "language": "en",
+      "split": "train",
+      "target_index": 1,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "The hypoglossal nerve is the twelfth cranial nerve, and innervates all the extrinsic and intrinsic muscles of the tongue, except for the palatoglossus which is innervated by the vagus nerve. It is a nerve with a solely motor function. The nerve arises from the hypoglossal nucleus in the brain stem as a number of small rootlets, passes through the hypoglossal canal and down through the neck, and eventually passes up again over the tongue muscles it supplies into the tongue. There are two hypoglossal nerves in the body: one on the left, and one on the right."
+        },
+        "questions": [
+          {
+            "id": "evidence_answer",
+            "type": "boolean",
+            "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge. Treat statement as a question, not an assertion.",
+            "statement": "Do both the hypoglossal nerve and the vagus nerve innervate muscles of the tongue?",
+            "when_false": "The answer to the question is No based on the passage",
+            "when_true": "The answer to the question is Yes based on the passage"
+          }
+        ]
+      },
+      "source": {
+        "dataset": "google/boolq",
+        "original_dataset": "BoolQ",
+        "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+        "viewer_snapshot_revision_bound": false,
+        "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+        "official_id": "train/77",
+        "original_split": "train",
+        "original_label": false,
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-train.rows.json",
+        "file_sha256": "AFE3CFA22F2271796A0AC4E837623F01ED7A3AF2794382F0A183499FD561C674",
+        "raw_record_sha256": "4385588902E124AA6B2E70596C2FFC104EBBE301D6A7D2E194BDD6F87B8AFA83",
+        "license": "CC-BY-SA-3.0",
+        "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "google/boolq/train/77"
+    },
+    "evidence_quotes": [
+      "The hypoglossal nerve is the twelfth cranial nerve, and innervates all the extrinsic and intrinsic muscles of the tongue, except for the palatoglossus which is innervated by the vagus nerve."
+    ],
+    "record_id": "boolq-train-row-077",
+    "original_source_gold": 0,
+    "decision": "repair",
+    "human_review": "pending",
+    "reason": "将含混的 several 及神经计数口径明确为舌下神经和迷走神经是否都支配舌肌，保留原题关于多个神经参与舌结构支配的主要含义。原文说明舌下神经支配舌肌，而腭舌肌由迷走神经支配，答案为 Yes。"
+  },
+  {
+    "formal": false,
+    "revised_row": null,
+    "evidence_quotes": [
+      "White flour is made from the endosperm only.",
+      "Brown flour includes some of the grain's germ and bran, while whole grain or wholemeal flour is made from the entire grain, including the bran, endosperm, and germ."
+    ],
+    "record_id": "boolq-train-row-086",
+    "original_source_gold": 0,
+    "decision": "delete",
+    "human_review": "pending",
+    "reason": "原文没有定义 wheat flour，也没有说明它与 white flour 的关系，缺少同一性判断所需的关键证据。不能把 wheat flour 擅自替换为 wholemeal flour，或因原文未提及就回答 No；保持原文和原问题主要含义时无法可靠修复，应删除。"
+  }
+]

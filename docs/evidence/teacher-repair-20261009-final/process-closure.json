@@ -1,0 +1,1028 @@
+{
+  "utc": "2026-10-09T05:27:24.9969865+00:00",
+  "receipts": 22,
+  "matching_live": 0,
+  "records": [
+    {
+      "Pid": 54424,
+      "Started": "2026-10-09T05:06:22.5787870+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-OwnedApiProcess.ps1 -FixtureExitCode 0",
+      "ParentPid": 14160,
+      "source": "20261009-050621-246-probe-exit-0.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 58732,
+      "Started": "2026-10-09T05:06:22.5898170+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 54424,
+      "source": "20261009-050621-246-probe-exit-0.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 54424,
+      "Started": "2026-10-09T05:06:22.5787879+00:00",
+      "CommandLine": null,
+      "ParentPid": 14160,
+      "source": "20261009-050621-246-probe-exit-0.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 14160,
+      "Started": "2026-10-09T05:06:20.4825319+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/teacher-repair-20261009/Prepare-Jobs.ps1 -Stage repair\n& ./.artifacts/teacher-repair-20261009/Invoke-OwnedApiProcess.ps1 -ProbeExitCode 0\nexit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-050621-246-probe-exit-0.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 6048,
+      "Started": "2026-10-09T05:06:48.7586110+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch repair00 -Start 0 -Count 2 -SelectionFile plan.json -Transport Direct",
+      "ParentPid": 65608,
+      "source": "20261009-050647-423-repair00.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 57096,
+      "Started": "2026-10-09T05:06:48.7696340+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 6048,
+      "source": "20261009-050647-423-repair00.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 6048,
+      "Started": "2026-10-09T05:06:48.7586116+00:00",
+      "CommandLine": null,
+      "ParentPid": 65608,
+      "source": "20261009-050647-423-repair00.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 65608,
+      "Started": "2026-10-09T05:06:46.9448542+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/teacher-repair-20261009/Invoke-OwnedApiProcess.ps1 -Batch repair00 -Start 0 -Count 2 -SelectionFile plan.json -Transport Direct\nexit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-050647-423-repair00.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 46060,
+      "Started": "2026-10-09T05:08:30.4707800+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch repair01 -Start 2 -Count 6 -SelectionFile plan.json -Transport Direct",
+      "ParentPid": 61928,
+      "source": "20261009-050828-209-repair01.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 1576,
+      "Started": "2026-10-09T05:08:32.0715200+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009/Send-TeacherDirect.py repair01 240",
+      "ParentPid": 46060,
+      "source": "20261009-050828-209-repair01.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 66768,
+      "Started": "2026-10-09T05:08:30.4867790+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 46060,
+      "source": "20261009-050828-209-repair01.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 36312,
+      "Started": "2026-10-09T05:08:32.0860200+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 1576,
+      "source": "20261009-050828-209-repair01.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 46060,
+      "Started": "2026-10-09T05:08:30.4707808+00:00",
+      "CommandLine": null,
+      "ParentPid": 61928,
+      "source": "20261009-050828-209-repair01.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 61928,
+      "Started": "2026-10-09T05:08:27.6023247+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/teacher-repair-20261009/Invoke-OwnedApiProcess.ps1 -Batch repair01 -Start 2 -Count 6 -SelectionFile plan.json -Transport Direct\nexit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-050828-209-repair01.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 6300,
+      "Started": "2026-10-09T05:08:30.4889360+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch repair02 -Start 8 -Count 6 -SelectionFile plan.json -Transport Direct",
+      "ParentPid": 45240,
+      "source": "20261009-050828-238-repair02.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 43164,
+      "Started": "2026-10-09T05:08:32.1092420+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009/Send-TeacherDirect.py repair02 240",
+      "ParentPid": 6300,
+      "source": "20261009-050828-238-repair02.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 56704,
+      "Started": "2026-10-09T05:08:30.5040290+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 6300,
+      "source": "20261009-050828-238-repair02.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 52464,
+      "Started": "2026-10-09T05:08:32.1208240+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 43164,
+      "source": "20261009-050828-238-repair02.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 6300,
+      "Started": "2026-10-09T05:08:30.4889362+00:00",
+      "CommandLine": null,
+      "ParentPid": 45240,
+      "source": "20261009-050828-238-repair02.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 45240,
+      "Started": "2026-10-09T05:08:27.6262684+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/teacher-repair-20261009/Invoke-OwnedApiProcess.ps1 -Batch repair02 -Start 8 -Count 6 -SelectionFile plan.json -Transport Direct\nexit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-050828-238-repair02.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 7948,
+      "Started": "2026-10-09T05:09:46.0367970+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch repair03 -Start 14 -Count 6 -SelectionFile plan.json -Transport Direct",
+      "ParentPid": 52600,
+      "source": "20261009-050944-587-repair03.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 45356,
+      "Started": "2026-10-09T05:09:47.3778430+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009/Send-TeacherDirect.py repair03 240",
+      "ParentPid": 7948,
+      "source": "20261009-050944-587-repair03.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 63044,
+      "Started": "2026-10-09T05:09:46.0502300+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 7948,
+      "source": "20261009-050944-587-repair03.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 66552,
+      "Started": "2026-10-09T05:09:47.3899440+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 45356,
+      "source": "20261009-050944-587-repair03.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 52600,
+      "Started": "2026-10-09T05:09:44.0779139+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/teacher-repair-20261009/Invoke-OwnedApiProcess.ps1 -Batch repair03 -Start 14 -Count 6 -SelectionFile plan.json -Transport Direct\nexit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-050944-587-repair03.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 44232,
+      "Started": "2026-10-09T05:09:52.5457990+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch repair04 -Start 20 -Count 6 -SelectionFile plan.json -Transport Direct",
+      "ParentPid": 41452,
+      "source": "20261009-050950-328-repair04.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 55920,
+      "Started": "2026-10-09T05:09:52.5614640+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 44232,
+      "source": "20261009-050950-328-repair04.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 64212,
+      "Started": "2026-10-09T05:09:54.0100330+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009/Send-TeacherDirect.py repair04 240",
+      "ParentPid": 44232,
+      "source": "20261009-050950-328-repair04.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 44232,
+      "Started": "2026-10-09T05:09:52.5457993+00:00",
+      "CommandLine": null,
+      "ParentPid": 41452,
+      "source": "20261009-050950-328-repair04.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 41452,
+      "Started": "2026-10-09T05:09:49.7200206+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/teacher-repair-20261009/Invoke-OwnedApiProcess.ps1 -Batch repair04 -Start 20 -Count 6 -SelectionFile plan.json -Transport Direct\nexit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-050950-328-repair04.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 51012,
+      "Started": "2026-10-09T05:11:11.0529540+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch repair05 -Start 26 -Count 6 -SelectionFile plan.json -Transport Direct",
+      "ParentPid": 47256,
+      "source": "20261009-051107-615-repair05.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 57796,
+      "Started": "2026-10-09T05:11:11.0789160+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 51012,
+      "source": "20261009-051107-615-repair05.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 66108,
+      "Started": "2026-10-09T05:11:16.1180550+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009/Send-TeacherDirect.py repair05 240",
+      "ParentPid": 51012,
+      "source": "20261009-051107-615-repair05.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 39416,
+      "Started": "2026-10-09T05:11:16.1628570+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 66108,
+      "source": "20261009-051107-615-repair05.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 51012,
+      "Started": "2026-10-09T05:11:11.0529546+00:00",
+      "CommandLine": null,
+      "ParentPid": 47256,
+      "source": "20261009-051107-615-repair05.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 47256,
+      "Started": "2026-10-09T05:11:06.4813819+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/teacher-repair-20261009/Invoke-OwnedApiProcess.ps1 -Batch repair05 -Start 26 -Count 6 -SelectionFile plan.json -Transport Direct\nexit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-051107-615-repair05.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 32696,
+      "Started": "2026-10-09T05:11:16.4095350+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch repair06 -Start 32 -Count 6 -SelectionFile plan.json -Transport Direct",
+      "ParentPid": 64336,
+      "source": "20261009-051111-832-repair06.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 65716,
+      "Started": "2026-10-09T05:11:19.8839860+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009/Send-TeacherDirect.py repair06 240",
+      "ParentPid": 32696,
+      "source": "20261009-051111-832-repair06.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 65856,
+      "Started": "2026-10-09T05:11:16.4484870+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 32696,
+      "source": "20261009-051111-832-repair06.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 61416,
+      "Started": "2026-10-09T05:11:19.9049360+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 65716,
+      "source": "20261009-051111-832-repair06.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 32696,
+      "Started": "2026-10-09T05:11:16.4095356+00:00",
+      "CommandLine": null,
+      "ParentPid": 64336,
+      "source": "20261009-051111-832-repair06.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 64336,
+      "Started": "2026-10-09T05:11:09.9025046+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/teacher-repair-20261009/Invoke-OwnedApiProcess.ps1 -Batch repair06 -Start 32 -Count 6 -SelectionFile plan.json -Transport Direct\nexit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-051111-832-repair06.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 42952,
+      "Started": "2026-10-09T05:13:00.3965920+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch repair07 -Start 38 -Count 6 -SelectionFile plan.json -Transport Direct",
+      "ParentPid": 17724,
+      "source": "20261009-051258-156-repair07.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 16060,
+      "Started": "2026-10-09T05:13:00.4147500+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 42952,
+      "source": "20261009-051258-156-repair07.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 62384,
+      "Started": "2026-10-09T05:13:02.0968630+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009/Send-TeacherDirect.py repair07 240",
+      "ParentPid": 42952,
+      "source": "20261009-051258-156-repair07.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 12200,
+      "Started": "2026-10-09T05:13:02.1100320+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 62384,
+      "source": "20261009-051258-156-repair07.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 42952,
+      "Started": "2026-10-09T05:13:00.3965921+00:00",
+      "CommandLine": null,
+      "ParentPid": 17724,
+      "source": "20261009-051258-156-repair07.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 17724,
+      "Started": "2026-10-09T05:12:57.4546860+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/teacher-repair-20261009/Invoke-OwnedApiProcess.ps1 -Batch repair07 -Start 38 -Count 6 -SelectionFile plan.json -Transport Direct\nexit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-051258-156-repair07.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 64828,
+      "Started": "2026-10-09T05:13:51.0257210+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch repair08 -Start 44 -Count 6 -SelectionFile plan.json -Transport Direct",
+      "ParentPid": 39452,
+      "source": "20261009-051349-040-repair08.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 44412,
+      "Started": "2026-10-09T05:13:51.0385200+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 64828,
+      "source": "20261009-051349-040-repair08.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 59316,
+      "Started": "2026-10-09T05:13:52.3981870+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009/Send-TeacherDirect.py repair08 240",
+      "ParentPid": 64828,
+      "source": "20261009-051349-040-repair08.result.json",
+      "state": "pid_reused",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 64828,
+      "Started": "2026-10-09T05:13:51.0257212+00:00",
+      "CommandLine": null,
+      "ParentPid": 39452,
+      "source": "20261009-051349-040-repair08.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 39452,
+      "Started": "2026-10-09T05:13:48.4303923+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/teacher-repair-20261009/Invoke-OwnedApiProcess.ps1 -Batch repair08 -Start 44 -Count 6 -SelectionFile plan.json -Transport Direct\nexit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-051349-040-repair08.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 64464,
+      "Started": "2026-10-09T05:15:07.2479370+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch repair09 -Start 50 -Count 6 -SelectionFile plan.json -Transport Direct",
+      "ParentPid": 61444,
+      "source": "20261009-051504-768-repair09.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 61360,
+      "Started": "2026-10-09T05:15:09.0867600+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009/Send-TeacherDirect.py repair09 240",
+      "ParentPid": 64464,
+      "source": "20261009-051504-768-repair09.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 66344,
+      "Started": "2026-10-09T05:15:07.2668410+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 64464,
+      "source": "20261009-051504-768-repair09.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 64464,
+      "Started": "2026-10-09T05:15:07.2479373+00:00",
+      "CommandLine": null,
+      "ParentPid": 61444,
+      "source": "20261009-051504-768-repair09.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 61444,
+      "Started": "2026-10-09T05:15:03.8038999+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/teacher-repair-20261009/Invoke-OwnedApiProcess.ps1 -Batch repair09 -Start 50 -Count 6 -SelectionFile plan.json -Transport Direct\nexit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-051504-768-repair09.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 19760,
+      "Started": "2026-10-09T05:15:18.4550200+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch repair10 -Start 56 -Count 6 -SelectionFile plan.json -Transport Direct",
+      "ParentPid": 62480,
+      "source": "20261009-051515-400-repair10.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 9472,
+      "Started": "2026-10-09T05:15:18.4793130+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 19760,
+      "source": "20261009-051515-400-repair10.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 64444,
+      "Started": "2026-10-09T05:15:21.1237610+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009/Send-TeacherDirect.py repair10 240",
+      "ParentPid": 19760,
+      "source": "20261009-051515-400-repair10.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 62988,
+      "Started": "2026-10-09T05:15:21.1457130+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 64444,
+      "source": "20261009-051515-400-repair10.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 19760,
+      "Started": "2026-10-09T05:15:18.4550206+00:00",
+      "CommandLine": null,
+      "ParentPid": 62480,
+      "source": "20261009-051515-400-repair10.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 62480,
+      "Started": "2026-10-09T05:15:14.0871445+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/teacher-repair-20261009/Invoke-OwnedApiProcess.ps1 -Batch repair10 -Start 56 -Count 6 -SelectionFile plan.json -Transport Direct\nexit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-051515-400-repair10.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 66872,
+      "Started": "2026-10-09T05:16:01.1322020+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch repair11 -Start 62 -Count 6 -SelectionFile plan.json -Transport Direct",
+      "ParentPid": 27544,
+      "source": "20261009-051558-768-repair11.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 54184,
+      "Started": "2026-10-09T05:16:01.1494680+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 66872,
+      "source": "20261009-051558-768-repair11.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 67152,
+      "Started": "2026-10-09T05:16:03.0325800+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009/Send-TeacherDirect.py repair11 240",
+      "ParentPid": 66872,
+      "source": "20261009-051558-768-repair11.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 584,
+      "Started": "2026-10-09T05:16:03.0472260+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 67152,
+      "source": "20261009-051558-768-repair11.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 27544,
+      "Started": "2026-10-09T05:15:58.1431396+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/teacher-repair-20261009/Invoke-OwnedApiProcess.ps1 -Batch repair11 -Start 62 -Count 6 -SelectionFile plan.json -Transport Direct\nexit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-051558-768-repair11.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 65108,
+      "Started": "2026-10-09T05:16:55.2759550+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch repair12 -Start 68 -Count 6 -SelectionFile plan.json -Transport Direct",
+      "ParentPid": 62448,
+      "source": "20261009-051652-923-repair12.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 28956,
+      "Started": "2026-10-09T05:16:57.0075760+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009/Send-TeacherDirect.py repair12 240",
+      "ParentPid": 65108,
+      "source": "20261009-051652-923-repair12.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 62424,
+      "Started": "2026-10-09T05:16:55.2941520+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 65108,
+      "source": "20261009-051652-923-repair12.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 44688,
+      "Started": "2026-10-09T05:16:57.0230120+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 28956,
+      "source": "20261009-051652-923-repair12.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 65108,
+      "Started": "2026-10-09T05:16:55.2759559+00:00",
+      "CommandLine": null,
+      "ParentPid": 62448,
+      "source": "20261009-051652-923-repair12.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 62448,
+      "Started": "2026-10-09T05:16:52.0148203+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/teacher-repair-20261009/Invoke-OwnedApiProcess.ps1 -Batch repair12 -Start 68 -Count 6 -SelectionFile plan.json -Transport Direct\nexit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-051652-923-repair12.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 55948,
+      "Started": "2026-10-09T05:17:34.8197170+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch repair13 -Start 74 -Count 4 -SelectionFile plan.json -Transport Direct",
+      "ParentPid": 59740,
+      "source": "20261009-051731-516-repair13.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 6232,
+      "Started": "2026-10-09T05:17:38.3106380+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009/Send-TeacherDirect.py repair13 240",
+      "ParentPid": 55948,
+      "source": "20261009-051731-516-repair13.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 52508,
+      "Started": "2026-10-09T05:17:34.8528020+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 55948,
+      "source": "20261009-051731-516-repair13.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 55948,
+      "Started": "2026-10-09T05:17:34.8197172+00:00",
+      "CommandLine": null,
+      "ParentPid": 59740,
+      "source": "20261009-051731-516-repair13.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 59740,
+      "Started": "2026-10-09T05:17:29.6853356+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/teacher-repair-20261009/Invoke-OwnedApiProcess.ps1 -Batch repair13 -Start 74 -Count 4 -SelectionFile plan.json -Transport Direct\nexit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-051731-516-repair13.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 26476,
+      "Started": "2026-10-09T05:23:11.8927580+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch review00 -Start 0 -Count 6 -SelectionFile plan.json -Transport Direct",
+      "ParentPid": 31404,
+      "source": "20261009-052309-572-review00.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 33616,
+      "Started": "2026-10-09T05:23:11.9157930+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 26476,
+      "source": "20261009-052309-572-review00.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 49628,
+      "Started": "2026-10-09T05:23:14.4534750+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009/Send-TeacherDirect.py review00 240",
+      "ParentPid": 26476,
+      "source": "20261009-052309-572-review00.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 31404,
+      "Started": "2026-10-09T05:23:08.8154589+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-OwnedApiProcess.ps1' -Batch review00 -Start 0 -Count 6 -SelectionFile plan.json -Transport Direct\"",
+      "ParentPid": 49492,
+      "source": "20261009-052309-572-review00.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 67236,
+      "Started": "2026-10-09T05:23:11.9676150+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch review01 -Start 6 -Count 6 -SelectionFile plan.json -Transport Direct",
+      "ParentPid": 63168,
+      "source": "20261009-052309-633-review01.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 49504,
+      "Started": "2026-10-09T05:23:14.5469290+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009/Send-TeacherDirect.py review01 240",
+      "ParentPid": 67236,
+      "source": "20261009-052309-633-review01.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 55136,
+      "Started": "2026-10-09T05:23:11.9883900+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 67236,
+      "source": "20261009-052309-633-review01.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 67236,
+      "Started": "2026-10-09T05:23:11.9676159+00:00",
+      "CommandLine": null,
+      "ParentPid": 63168,
+      "source": "20261009-052309-633-review01.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 63168,
+      "Started": "2026-10-09T05:23:08.8533051+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-OwnedApiProcess.ps1' -Batch review01 -Start 6 -Count 6 -SelectionFile plan.json -Transport Direct\"",
+      "ParentPid": 49492,
+      "source": "20261009-052309-633-review01.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 37084,
+      "Started": "2026-10-09T05:23:53.2629360+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch review02 -Start 12 -Count 6 -SelectionFile plan.json -Transport Direct",
+      "ParentPid": 28500,
+      "source": "20261009-052352-008-review02.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 37636,
+      "Started": "2026-10-09T05:23:53.2748030+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 37084,
+      "source": "20261009-052352-008-review02.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 66404,
+      "Started": "2026-10-09T05:23:54.4501490+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009/Send-TeacherDirect.py review02 240",
+      "ParentPid": 37084,
+      "source": "20261009-052352-008-review02.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 37084,
+      "Started": "2026-10-09T05:23:53.2629362+00:00",
+      "CommandLine": null,
+      "ParentPid": 28500,
+      "source": "20261009-052352-008-review02.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 28500,
+      "Started": "2026-10-09T05:23:51.4877124+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-OwnedApiProcess.ps1' -Batch review02 -Start 12 -Count 6 -SelectionFile plan.json -Transport Direct\"",
+      "ParentPid": 49492,
+      "source": "20261009-052352-008-review02.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 36460,
+      "Started": "2026-10-09T05:24:20.0917450+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch review03 -Start 18 -Count 6 -SelectionFile plan.json -Transport Direct",
+      "ParentPid": 44444,
+      "source": "20261009-052417-807-review03.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 40084,
+      "Started": "2026-10-09T05:24:21.5717700+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009/Send-TeacherDirect.py review03 240",
+      "ParentPid": 36460,
+      "source": "20261009-052417-807-review03.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 55792,
+      "Started": "2026-10-09T05:24:20.1085030+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 36460,
+      "source": "20261009-052417-807-review03.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 36460,
+      "Started": "2026-10-09T05:24:20.0917455+00:00",
+      "CommandLine": null,
+      "ParentPid": 44444,
+      "source": "20261009-052417-807-review03.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 44444,
+      "Started": "2026-10-09T05:24:15.2300339+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-OwnedApiProcess.ps1' -Batch review03 -Start 18 -Count 6 -SelectionFile plan.json -Transport Direct\"",
+      "ParentPid": 49492,
+      "source": "20261009-052417-807-review03.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 64804,
+      "Started": "2026-10-09T05:24:41.9434000+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch review04 -Start 24 -Count 6 -SelectionFile plan.json -Transport Direct",
+      "ParentPid": 6448,
+      "source": "20261009-052440-151-review04.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 58972,
+      "Started": "2026-10-09T05:24:43.3480940+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009/Send-TeacherDirect.py review04 240",
+      "ParentPid": 64804,
+      "source": "20261009-052440-151-review04.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 67236,
+      "Started": "2026-10-09T05:24:41.9583750+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 64804,
+      "source": "20261009-052440-151-review04.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 64804,
+      "Started": "2026-10-09T05:24:41.9434003+00:00",
+      "CommandLine": null,
+      "ParentPid": 6448,
+      "source": "20261009-052440-151-review04.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 6448,
+      "Started": "2026-10-09T05:24:39.6286746+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-OwnedApiProcess.ps1' -Batch review04 -Start 24 -Count 6 -SelectionFile plan.json -Transport Direct\"",
+      "ParentPid": 49492,
+      "source": "20261009-052440-151-review04.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 32956,
+      "Started": "2026-10-09T05:25:16.2885360+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch review05 -Start 30 -Count 6 -SelectionFile plan.json -Transport Direct",
+      "ParentPid": 64960,
+      "source": "20261009-052514-124-review05.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 44248,
+      "Started": "2026-10-09T05:25:17.8619000+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009/Send-TeacherDirect.py review05 240",
+      "ParentPid": 32956,
+      "source": "20261009-052514-124-review05.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 57552,
+      "Started": "2026-10-09T05:25:16.3057260+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 32956,
+      "source": "20261009-052514-124-review05.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 32956,
+      "Started": "2026-10-09T05:25:16.2885363+00:00",
+      "CommandLine": null,
+      "ParentPid": 64960,
+      "source": "20261009-052514-124-review05.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 64960,
+      "Started": "2026-10-09T05:25:13.4003946+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-OwnedApiProcess.ps1' -Batch review05 -Start 30 -Count 6 -SelectionFile plan.json -Transport Direct\"",
+      "ParentPid": 49492,
+      "source": "20261009-052514-124-review05.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 64840,
+      "Started": "2026-10-09T05:25:48.9669760+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch review06 -Start 36 -Count 1 -SelectionFile plan.json -Transport Direct",
+      "ParentPid": 7712,
+      "source": "20261009-052545-779-review06.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 65336,
+      "Started": "2026-10-09T05:25:48.9934710+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 64840,
+      "source": "20261009-052545-779-review06.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 7712,
+      "Started": "2026-10-09T05:25:42.7740454+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-OwnedApiProcess.ps1' -Batch review06 -Start 36 -Count 1 -SelectionFile plan.json -Transport Direct\"",
+      "ParentPid": 49492,
+      "source": "20261009-052545-779-review06.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    }
+  ],
+  "unknown": 0,
+  "identity_records": 112,
+  "unique_pids": 93,
+  "reader": {
+    "ProcessId": 66136,
+    "CreationDate": "2026-10-09T13:26:54.306228+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/teacher-repair-20261009/Build-RepairedPackage.ps1; if(-not $?){exit 1}; & .artifacts/teacher-repair-20261009/Verify-Package.ps1; if(-not $?){exit 1}; & .artifacts/teacher-repair-20261009/Build-HttpLedger.ps1; if(-not $?){exit 1}; & .artifacts/teacher-repair-20261009/Close-RepairProcesses.ps1\"",
+    "ParentProcessId": 49492
+  },
+  "scope": "recorded task identities only; read-only, no signals",
+  "limitation": "Current absence does not reconstruct missing historical argv or unobserved short-lived descendants; retained-handle exits and bounded commands are preserved separately.",
+  "historical_records_without_observed_argv": 18,
+  "query_errors": []
+}

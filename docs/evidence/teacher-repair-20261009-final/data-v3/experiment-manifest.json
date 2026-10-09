@@ -1,0 +1,64 @@
+{
+  "schema_version": 3,
+  "contract": "sezika/teacher-labelled-experiment-data/v3",
+  "dataset_id": "general-zh-en-repaired-20261009-v1",
+  "purpose": "teacher_labelled_experiment",
+  "protocol": "decision-v1",
+  "student_model_id": "sezika/mmbert-base-independent-s4",
+  "formal": false,
+  "human_review": "pending",
+  "teacher_output_training_permitted": false,
+  "user_authorized_experiment": true,
+  "teacher_answer_exposed": true,
+  "eligible_as_sealed_test": false,
+  "total": 215,
+  "train": 162,
+  "development": 53,
+  "records": {
+    "sha256": "C87B4C8A7BADD4795856C48C21FB35CF0F0B4D6C0469258C2B5B5F01B9F8F634",
+    "bytes": 276609,
+    "path": "D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\data-v3\\experiment-records.jsonl"
+  },
+  "sources": [
+    {
+      "kind": "source_catalog",
+      "sha256": "CC5E60BD9726B572A2DE9CF6C762FB74E01EA5107097EA3B0A19957FAD8B9C60",
+      "bytes": 251742,
+      "path": "D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\data-v3\\source-catalog.json"
+    },
+    {
+      "kind": "teacher_requests",
+      "sha256": "066B673461B591AA3E420F8485304485B8C21D7C2B85D055CD8D613B235DBAEC",
+      "bytes": 543928,
+      "path": "D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\data-v3\\teacher-requests.json"
+    },
+    {
+      "kind": "teacher_responses",
+      "sha256": "A0F79BBA0EBDC52E7995E83949E832C56DBF1DCAC216658B29305DC4702AEE26",
+      "bytes": 3188340,
+      "path": "D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\data-v3\\teacher-responses.json"
+    }
+  ],
+  "teacher": null,
+  "teacher_api": {
+    "training_permission": "user-authorized-experiment-only",
+    "model": "gpt-6.1-sol",
+    "identity": "gateway-response-declaration-only",
+    "effort": "max",
+    "provider": "sonnet_vip",
+    "license": "unknown"
+  },
+  "fixture_only": false,
+  "split_rule": "inherit-parent-family-split-no-reshuffle-with-explicit-deletions",
+  "split_rule_frozen_utc": "2026-10-08T11:38:40.6891325Z",
+  "provenance": {
+    "sha256": "44D8A650E0738AA745BF3054575D4E58E2C728C45A80437639BB4940A13C2BF0",
+    "bytes": 171477,
+    "path": "D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\data-v3\\input-provenance.json"
+  },
+  "derivation": {
+    "sha256": "55F3226946831C4B9CBD7F6EE10D1194764860C8343A9386CAA40C678CE24EC0",
+    "bytes": 527890,
+    "path": "D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\data-v3\\derivation-ledger.json"
+  }
+}

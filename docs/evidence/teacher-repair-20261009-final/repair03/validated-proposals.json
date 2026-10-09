@@ -1,0 +1,198 @@
+[
+  {
+    "formal": false,
+    "evidence_quotes": [
+      "go back"
+    ],
+    "human_review": "pending",
+    "decision": "repair",
+    "record_id": "massive-en-us-03891",
+    "reason": "原话明确表达返回请求，现有候选缺少这一意图。新增一般返回候选即可匹配原话，无须推断具体返回位置或任何播放请求。",
+    "revised_row": {
+      "record_id": "massive-en-us-03891",
+      "family_id": "massive-1.1-utterance-3891",
+      "language": "en",
+      "split": "train",
+      "target_index": 4,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "go back"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "Choose the given candidate that best matches the user utterance's main intent. Use only the utterance; do not infer unmentioned requests.",
+            "candidates": [
+              {
+                "id": "play_audiobook",
+                "text": "Play an audiobook"
+              },
+              {
+                "id": "play_podcasts",
+                "text": "Play a podcast"
+              },
+              {
+                "id": "play_game",
+                "text": "Start or play a game"
+              },
+              {
+                "id": "play_music",
+                "text": "Play music"
+              },
+              {
+                "id": "go_back",
+                "text": "Go back or return to a previous state or step"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "en-US",
+        "official_id": "3891",
+        "original_split": "train",
+        "original_label": "play_podcasts",
+        "original_scenario": "play",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\en-US.jsonl",
+        "file_sha256": "C70F75C6A543A26E249EC383DF67733AD9B1066F6C0406C2E04A3F03356E407E",
+        "raw_record_sha256": "A5A7B30492A3F45879A0D54D578691E7B8DAE0452B3941CE4795625103A6D8B1",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/3891"
+    },
+    "original_source_gold": 1
+  },
+  {
+    "formal": false,
+    "evidence_quotes": [
+      "what is happening olly"
+    ],
+    "human_review": "pending",
+    "decision": "delete",
+    "record_id": "massive-en-us-06479",
+    "reason": "原话可能是寒暄，也可能询问当前情况或正在发生的事件，缺少确定所问对象和请求类型的上下文。无法唯一确定主要意图，新增“其他或不明确”选项也不能解决这一歧义。",
+    "revised_row": null,
+    "original_source_gold": 0
+  },
+  {
+    "formal": false,
+    "evidence_quotes": [
+      "send a message on facebook to pending friend requests that my friend list is full and i will be creating a new profile soon"
+    ],
+    "human_review": "pending",
+    "decision": "repair",
+    "record_id": "massive-en-us-12995",
+    "reason": "原话明确要求在Facebook上发送消息，现有候选缺少社交网络消息发送类别。补入该候选即可保留原意图识别任务，并与发布帖子、查询帖子及邮件操作区分。",
+    "revised_row": {
+      "record_id": "massive-en-us-12995",
+      "family_id": "massive-1.1-utterance-12995",
+      "language": "en",
+      "split": "train",
+      "target_index": 4,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "send a message on facebook to pending friend requests that my friend list is full and i will be creating a new profile soon"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "Choose the given candidate that best matches the user utterance's main intent. Use only the utterance; do not infer unmentioned requests.",
+            "candidates": [
+              {
+                "id": "social_query",
+                "text": "Read or query social-network posts"
+              },
+              {
+                "id": "email_addcontact",
+                "text": "Add an email contact"
+              },
+              {
+                "id": "email_query",
+                "text": "Read or query email messages"
+              },
+              {
+                "id": "social_post",
+                "text": "Publish a social-network post"
+              },
+              {
+                "id": "social_message",
+                "text": "Send a social-network message"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "en-US",
+        "official_id": "12995",
+        "original_split": "train",
+        "original_label": "social_post",
+        "original_scenario": "social",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\en-US.jsonl",
+        "file_sha256": "C70F75C6A543A26E249EC383DF67733AD9B1066F6C0406C2E04A3F03356E407E",
+        "raw_record_sha256": "9DE952C2EFF025233145E2A7D8CBC65D39F809796C9315A41255056A5AE49AD2",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/12995"
+    },
+    "original_source_gold": 3
+  },
+  {
+    "formal": false,
+    "evidence_quotes": [
+      "you need to give me different directions"
+    ],
+    "human_review": "pending",
+    "decision": "delete",
+    "record_id": "massive-en-us-04444",
+    "reason": "directions既可能指路线指引，也可能指一般指示；原话没有说明指引对象或交通方式。新增路线查询候选仍需猜测词义，合并不同含义则无法唯一识别原话的主要意图，因此不能忠实修复。",
+    "revised_row": null,
+    "original_source_gold": 3
+  },
+  {
+    "formal": false,
+    "evidence_quotes": [
+      "stop"
+    ],
+    "human_review": "pending",
+    "decision": "delete",
+    "record_id": "massive-en-us-00005",
+    "reason": "原话没有说明要停止的对象或操作，也没有提供与音量有关的证据。确定任何具体操作都依赖缺失的上下文，不能将其直接归为静音或其他音量请求。",
+    "revised_row": null,
+    "original_source_gold": 3
+  },
+  {
+    "formal": false,
+    "evidence_quotes": [
+      "欧丽我几乎听不见你说的"
+    ],
+    "human_review": "pending",
+    "decision": "delete",
+    "record_id": "massive-zh-cn-00260",
+    "reason": "原话表达听不清对方讲话，但没有确定希望采取哪种操作。将其解释为提高音量需要推断未提及的请求；新增仅复述听觉困难的候选也不能确定其操作意图，无法在保留原任务的前提下可靠修复。",
+    "revised_row": null,
+    "original_source_gold": 3
+  }
+]

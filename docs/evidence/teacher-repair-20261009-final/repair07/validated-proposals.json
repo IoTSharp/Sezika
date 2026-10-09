@@ -1,0 +1,362 @@
+[
+  {
+    "reason": "“嘿嘿”既可表示笑声式闲聊，也可用作招呼，原文没有区分两者的语境。指定分类优先级会任意替代用户意图，无法忠实确定唯一答案。",
+    "human_review": "pending",
+    "original_source_gold": 2,
+    "evidence_quotes": [
+      "嘿嘿"
+    ],
+    "revised_row": null,
+    "decision": "delete",
+    "formal": false,
+    "record_id": "massive-zh-cn-00167"
+  },
+  {
+    "reason": "原话明确请求查询当前可用内存，补充对应候选即可覆盖该意图；同时限定闲聊候选不含打招呼，避免候选范围重叠。",
+    "human_review": "pending",
+    "original_source_gold": 0,
+    "evidence_quotes": [
+      "告诉我现在的可用内存状况"
+    ],
+    "revised_row": {
+      "record_id": "massive-zh-cn-00042",
+      "family_id": "massive-1.1-utterance-42",
+      "language": "zh",
+      "split": "development",
+      "target_index": 2,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "告诉我现在的可用内存状况"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；不推测未提及的请求。",
+            "candidates": [
+              {
+                "id": "general_quirky",
+                "text": "闲聊或非任务型对话（不含打招呼）"
+              },
+              {
+                "id": "general_greet",
+                "text": "向助手打招呼"
+              },
+              {
+                "id": "memory_query",
+                "text": "查询当前可用内存状况"
+              },
+              {
+                "id": "general_joke",
+                "text": "让助手讲笑话"
+              },
+              {
+                "id": "play_audiobook",
+                "text": "播放有声书"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "zh-CN",
+        "official_id": "42",
+        "original_split": "dev",
+        "original_label": "general_quirky",
+        "original_scenario": "general",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+        "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+        "raw_record_sha256": "04981F59D66CD16E00DB6D468912285936CFB7CDB8D96225F2E64F1EB071AB4E",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/42"
+    },
+    "decision": "repair",
+    "formal": false,
+    "record_id": "massive-zh-cn-00042"
+  },
+  {
+    "reason": "“点亮灯光”表达开启灯光的请求，补充开启候选，并限定其他设置候选不含开关及亮度调节，使开启、调亮与其他设置变更相互区分。",
+    "human_review": "pending",
+    "original_source_gold": 2,
+    "evidence_quotes": [
+      "你能点亮灯光吗"
+    ],
+    "revised_row": {
+      "record_id": "massive-zh-cn-00697",
+      "family_id": "massive-1.1-utterance-697",
+      "language": "zh",
+      "split": "development",
+      "target_index": 3,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "你能点亮灯光吗"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；不推测未提及的请求。",
+            "candidates": [
+              {
+                "id": "iot_cleaning",
+                "text": "操作清洁设备"
+              },
+              {
+                "id": "iot_coffee",
+                "text": "操作咖啡设备"
+              },
+              {
+                "id": "iot_hue_lightup",
+                "text": "调亮智能灯"
+              },
+              {
+                "id": "iot_light_on",
+                "text": "开启灯光"
+              },
+              {
+                "id": "iot_hue_lightchange",
+                "text": "更改智能灯的其他设置或模式（不含开关及亮度调节）"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "zh-CN",
+        "official_id": "697",
+        "original_split": "dev",
+        "original_label": "iot_hue_lightup",
+        "original_scenario": "iot",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+        "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+        "raw_record_sha256": "BCF8AB6BA3981662676C0FB4D31A4336FE257DDCA953B68C06E7E641BFD35C57",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/697"
+    },
+    "decision": "repair",
+    "formal": false,
+    "record_id": "massive-zh-cn-00697"
+  },
+  {
+    "reason": "原话明确要求取消指定旅行，补充“取消旅行安排”即可覆盖该意图，无须假定清单或日历归属。",
+    "human_review": "pending",
+    "original_source_gold": 3,
+    "evidence_quotes": [
+      "取消下周去包头的旅行"
+    ],
+    "revised_row": {
+      "record_id": "massive-zh-cn-10449",
+      "family_id": "massive-1.1-utterance-10449",
+      "language": "zh",
+      "split": "development",
+      "target_index": 2,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "取消下周去包头的旅行"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；不推测未提及的请求，也不假定旅行属于某个清单或日历记录。",
+            "candidates": [
+              {
+                "id": "lists_createoradd",
+                "text": "创建清单或添加条目"
+              },
+              {
+                "id": "lists_query",
+                "text": "查询清单"
+              },
+              {
+                "id": "travel_cancel",
+                "text": "取消旅行安排"
+              },
+              {
+                "id": "calendar_query",
+                "text": "查询日历事件"
+              },
+              {
+                "id": "lists_remove",
+                "text": "删除清单或清单条目"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "zh-CN",
+        "official_id": "10449",
+        "original_split": "dev",
+        "original_label": "lists_remove",
+        "original_scenario": "lists",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+        "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+        "raw_record_sha256": "89F5E131280E10F1F96ED8BB4B526C0BD9F2D125493D661658607CB2214D6D52",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/10449"
+    },
+    "decision": "repair",
+    "formal": false,
+    "record_id": "massive-zh-cn-10449"
+  },
+  {
+    "reason": "原话直接要求限制播放内容。补充播放设置候选的内容范围含义，并明确偏好表达与播放要求的分类边界，保留两类候选而不推断隐含好恶。",
+    "human_review": "pending",
+    "original_source_gold": 0,
+    "evidence_quotes": [
+      "别给我播放任何乡村音乐"
+    ],
+    "revised_row": {
+      "record_id": "massive-zh-cn-01179",
+      "family_id": "massive-1.1-utterance-1179",
+      "language": "zh",
+      "split": "development",
+      "target_index": 3,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "别给我播放任何乡村音乐"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "只依据用户原话明确表达的请求或评价，选择给定候选中最符合其主要意图的一项；不推测未提及的请求或隐含好恶。音乐偏好候选用于直接表达喜欢或不喜欢；播放设置候选用于要求改变播放方式或可播放的内容范围。",
+            "candidates": [
+              {
+                "id": "music_dislikeness",
+                "text": "表达不喜欢某音乐"
+              },
+              {
+                "id": "music_likeness",
+                "text": "表达喜欢某音乐"
+              },
+              {
+                "id": "music_query",
+                "text": "查询音乐信息"
+              },
+              {
+                "id": "music_settings",
+                "text": "设置音乐播放方式或可播放的内容范围"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "zh-CN",
+        "official_id": "1179",
+        "original_split": "dev",
+        "original_label": "music_dislikeness",
+        "original_scenario": "music",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+        "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+        "raw_record_sha256": "84DA8B0DC0EECCBCDC97BC0BE2BE708C16FD33E1CBE9C7D67FAD8A600EECFE4A",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/1179"
+    },
+    "decision": "repair",
+    "formal": false,
+    "record_id": "massive-zh-cn-01179"
+  },
+  {
+    "reason": "将问题中的“confectionary sugar”纠正为原文使用的“confectioners' sugar”，保留两种名称是否指同一种糖的原问题。原文明示后者是 powdered sugar 的别名，答案为 Yes。",
+    "human_review": "pending",
+    "original_source_gold": 1,
+    "evidence_quotes": [
+      "Powdered sugar, also called confectioners' sugar, icing sugar, and icing cake, is a finely ground sugar produced by milling granulated sugar into a powdered state."
+    ],
+    "revised_row": {
+      "record_id": "boolq-train-row-003",
+      "family_id": "boolq-passage-F51033E88850895E888A772AB7FF0A4DB00CA2964011BA9292DDD0115CB6C232",
+      "language": "en",
+      "split": "train",
+      "target_index": 1,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "Powdered sugar, also called confectioners' sugar, icing sugar, and icing cake, is a finely ground sugar produced by milling granulated sugar into a powdered state. It usually contains a small amount of anti-caking agent to prevent clumping and improve flow. Although most often produced in a factory, powdered sugar can also be made by processing ordinary granulated sugar in a coffee grinder, or by crushing it by hand in a mortar and pestle."
+        },
+        "questions": [
+          {
+            "id": "evidence_answer",
+            "type": "boolean",
+            "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge.",
+            "statement": "Is confectioners' sugar the same as powdered sugar?",
+            "when_false": "The answer to the question is No based on the passage",
+            "when_true": "The answer to the question is Yes based on the passage"
+          }
+        ]
+      },
+      "source": {
+        "dataset": "google/boolq",
+        "original_dataset": "BoolQ",
+        "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+        "viewer_snapshot_revision_bound": false,
+        "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+        "official_id": "train/3",
+        "original_split": "train",
+        "original_label": true,
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-train.rows.json",
+        "file_sha256": "AFE3CFA22F2271796A0AC4E837623F01ED7A3AF2794382F0A183499FD561C674",
+        "raw_record_sha256": "7204F822F66213772F79A7E6F55775AE2FDC18FE118977DEF78AD6C7A30F4D86",
+        "license": "CC-BY-SA-3.0",
+        "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "google/boolq/train/3"
+    },
+    "decision": "repair",
+    "formal": false,
+    "record_id": "boolq-train-row-003"
+  }
+]

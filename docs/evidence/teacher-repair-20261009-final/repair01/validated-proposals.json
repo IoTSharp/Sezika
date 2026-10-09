@@ -1,0 +1,260 @@
+[
+  {
+    "decision": "delete",
+    "record_id": "massive-en-us-15744",
+    "revised_row": null,
+    "evidence_quotes": [
+      "add new email to anna"
+    ],
+    "reason": "email 可能指邮箱地址或邮件消息，add 也未明确是添加联系信息还是创建邮件。原文无法唯一确定操作，不能通过补写用户意图或指定分类规则忠实修复。",
+    "formal": false,
+    "human_review": "pending",
+    "original_source_gold": 2
+  },
+  {
+    "decision": "delete",
+    "record_id": "massive-en-us-06510",
+    "revised_row": null,
+    "evidence_quotes": [
+      "emails"
+    ],
+    "reason": "原文只有邮件主题词，没有说明读取、发送、查询联系人或添加联系人等操作。缺少确定主意图的必要信息，补充候选或调整指令也无法得到唯一答案。",
+    "formal": false,
+    "human_review": "pending",
+    "original_source_gold": 3
+  },
+  {
+    "decision": "repair",
+    "record_id": "massive-en-us-10137",
+    "revised_row": {
+      "record_id": "massive-en-us-10137",
+      "family_id": "massive-1.1-utterance-10137",
+      "language": "en",
+      "split": "train",
+      "target_index": 4,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "call mom"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "Choose the candidate that best matches the user utterance's main intent. Use only the utterance; do not infer unmentioned requests.",
+            "candidates": [
+              {
+                "id": "email_querycontact",
+                "text": "Query email-contact details"
+              },
+              {
+                "id": "email_addcontact",
+                "text": "Add an email contact"
+              },
+              {
+                "id": "email_query",
+                "text": "Read or query email messages"
+              },
+              {
+                "id": "email_sendemail",
+                "text": "Send an email"
+              },
+              {
+                "id": "phone_call",
+                "text": "Make a phone call"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "en-US",
+        "official_id": "10137",
+        "original_split": "train",
+        "original_label": "email_querycontact",
+        "original_scenario": "email",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\en-US.jsonl",
+        "file_sha256": "C70F75C6A543A26E249EC383DF67733AD9B1066F6C0406C2E04A3F03356E407E",
+        "raw_record_sha256": "9EA41B85937A4AE54952381C5C2EDBE9EEFC5908DA30CE9D29B2584E0F0E0BC9",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/10137"
+    },
+    "evidence_quotes": [
+      "call mom"
+    ],
+    "reason": "原文明示给母亲打电话，原候选集缺少拨打电话这一意图。补充对应候选即可保留原任务，无需推断邮件或联系人查询操作。",
+    "formal": false,
+    "human_review": "pending",
+    "original_source_gold": 0
+  },
+  {
+    "decision": "repair",
+    "record_id": "massive-en-us-04539",
+    "revised_row": {
+      "record_id": "massive-en-us-04539",
+      "family_id": "massive-1.1-utterance-4539",
+      "language": "en",
+      "split": "train",
+      "target_index": 2,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "i did not want you to send that text yet wait until i say send"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "Choose the candidate that best matches the user utterance's main intent. Use only the utterance; do not infer unmentioned requests.",
+            "candidates": [
+              {
+                "id": "email_addcontact",
+                "text": "Add an email contact"
+              },
+              {
+                "id": "email_sendemail",
+                "text": "Send an email"
+              },
+              {
+                "id": "message_wait_to_send",
+                "text": "Defer sending a message until the user explicitly says to send it"
+              },
+              {
+                "id": "email_query",
+                "text": "Read or query email messages"
+              },
+              {
+                "id": "email_querycontact",
+                "text": "Query email-contact details"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "en-US",
+        "official_id": "4539",
+        "original_split": "train",
+        "original_label": "email_sendemail",
+        "original_scenario": "email",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\en-US.jsonl",
+        "file_sha256": "C70F75C6A543A26E249EC383DF67733AD9B1066F6C0406C2E04A3F03356E407E",
+        "raw_record_sha256": "9E1C39E376598FA7E808FB105FF80FEEE3096010509769154529083E3A0D5FAC",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/4539"
+    },
+    "evidence_quotes": [
+      "i did not want you to send that text yet wait until i say send"
+    ],
+    "reason": "原文明确要求暂缓发送，直到用户发出发送指令。补充包含这一时序要求的消息暂缓发送候选即可，不需要将消息推定为电子邮件。",
+    "formal": false,
+    "human_review": "pending",
+    "original_source_gold": 1
+  },
+  {
+    "decision": "delete",
+    "record_id": "massive-en-us-00045",
+    "revised_row": null,
+    "evidence_quotes": [
+      "what's up"
+    ],
+    "reason": "该短语既可用于打招呼，也可用于询问近况。原文缺少区分这两种用法的上下文；指定其归入某一类别会强行消除原话的多义性，无法忠实修复。",
+    "formal": false,
+    "human_review": "pending",
+    "original_source_gold": 2
+  },
+  {
+    "decision": "repair",
+    "record_id": "massive-en-us-00036",
+    "revised_row": {
+      "record_id": "massive-en-us-00036",
+      "family_id": "massive-1.1-utterance-36",
+      "language": "en",
+      "split": "train",
+      "target_index": 2,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "check my car is ready"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "Choose the candidate that best matches the user utterance's main intent. Use only the utterance; do not infer unmentioned requests.",
+            "candidates": [
+              {
+                "id": "general_quirky",
+                "text": "Conversational small talk or miscellaneous chat, excluding greetings and specific task requests"
+              },
+              {
+                "id": "general_greet",
+                "text": "Greet the assistant"
+              },
+              {
+                "id": "vehicle_check_ready",
+                "text": "Check whether a vehicle is ready"
+              },
+              {
+                "id": "general_joke",
+                "text": "Request a joke"
+              },
+              {
+                "id": "play_audiobook",
+                "text": "Play an audiobook"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "en-US",
+        "official_id": "36",
+        "original_split": "train",
+        "original_label": "general_quirky",
+        "original_scenario": "general",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\en-US.jsonl",
+        "file_sha256": "C70F75C6A543A26E249EC383DF67733AD9B1066F6C0406C2E04A3F03356E407E",
+        "raw_record_sha256": "E70221BF72E132372A5BD008BABF5AA35FEAE0B7ADC03E7F3866149E17D50904",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/36"
+    },
+    "evidence_quotes": [
+      "check my car is ready"
+    ],
+    "reason": "原文明确要求检查车辆是否已准备好，原候选集缺少对应的状态检查意图。补充该候选，并明确闲聊项不包含问候或具体任务请求，使候选范围互斥；无需推断车辆的具体准备事项。",
+    "formal": false,
+    "human_review": "pending",
+    "original_source_gold": 0
+  }
+]

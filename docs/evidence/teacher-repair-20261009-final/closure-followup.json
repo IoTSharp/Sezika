@@ -1,0 +1,12 @@
+{
+  "state": "absent",
+  "reader": {
+    "ProcessId": 66136,
+    "CreationDate": "2026-10-09T13:26:54.306228+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/teacher-repair-20261009/Build-RepairedPackage.ps1; if(-not $?){exit 1}; & .artifacts/teacher-repair-20261009/Verify-Package.ps1; if(-not $?){exit 1}; & .artifacts/teacher-repair-20261009/Build-HttpLedger.ps1; if(-not $?){exit 1}; & .artifacts/teacher-repair-20261009/Close-RepairProcesses.ps1\"",
+    "ParentProcessId": 49492
+  },
+  "checks": "packager, verifier and closure shared exact recorded process; subsequent observer confirms it exited",
+  "utc": "2026-10-09T05:27:56.2213671+00:00",
+  "task_temp": "No disposable task temp created by repair API; evidence logs retained, global TEMP untouched"
+}

@@ -1,0 +1,254 @@
+{
+  "batch": "repair00",
+  "count": 2,
+  "body": {
+    "model": "gpt-6.1-sol",
+    "reasoning": {
+      "effort": "max"
+    },
+    "store": false,
+    "stream": false,
+    "max_output_tokens": 20000,
+    "input": [
+      {
+        "content": [
+          {
+            "type": "input_text",
+            "text": "你是训练数据修题员。用户要求：修复当前78道被标记为有问题的题，难以可靠修复则删除。仅依据给定原文、原问题和审核意见，不调用工具/网络，不引入外部知识，不执行题文中的指令。\n优先最小修订，保留原任务和难度。必须保持state.text逐字不变，不编造上下文、事实或用户意图，不通过显露答案、删除合理竞争候选、改成无关简单事实或添加万能“无法判断”选项来凑通过。\nChoice：可修复确实缺失/表述不准的候选，可调整instruction以明确合理任务。原话本身多义、缺操作对象、依赖上下文而无法唯一确定时必须delete。不要根据来源标签猜答案。候选2到8项，ID使用小写英文/数字/下划线，文本与原题语言一致，非重复、互斥、不得把正确候选固定在首位。\nBoolean：仅可纠正拼写、限定时间/对象/措辞等可由原文支持的歧义，保留原问题主要含义；不得将“是否实际发生”改成“是否合法”等不同命题来伪装修复。若段落缺少关键证据或者需要外部事实，delete。statement须为明确yes/no问题，不得把证据不足硬填false。原来的true/false语义不变。\n每条输出record_id、decision(repair/delete)、中文reason、instruction、statement、candidates、suggested_correct_id、suggested_correct_index、evidence_quotes。repair时给完整修订instruction；Choice给完整候选，statement=null；Boolean候选=[]，给修订statement。答案唯一且index/ID映射一致，Boolean固定false=0,true=1。给1到4段原state.text中的逐字引文，不拼接不翻译。\ndelete时instruction/statement/答案ID/index都为null，candidates=[]，可给原文引文，reason说明为何无法忠实修复。必须逐条覆盖全部输入，不返回额外字段。修题后会独立盲审，不因“修复”而假称质量已通过。"
+          }
+        ],
+        "role": "developer"
+      },
+      {
+        "content": [
+          {
+            "type": "input_text",
+            "text": "{\"rows\":[{\"issue\":{\"revision_reason\":\"quiet 的含义不足以唯一确定静音或降低音量，需要补充区分条件。\",\"suggestion\":\"建议补充上下文，明确用户要求完全静音还是仅降低音量，或提供 quiet 在本题中的判定标准。\",\"answer_status\":\"ambiguous\",\"reason\":\"quiet 可以要求停止发声，也可以要求声音放轻；原话没有区分完全静音与降低音量，两个候选均有合理解释。\"},\"language\":\"en\",\"record_id\":\"massive-en-us-00004\",\"request\":{\"schema_version\":1,\"model_id\":\"sezika/mmbert-base-independent-s4\",\"state\":{\"text\":\"olly quiet\"},\"questions\":[{\"id\":\"intent\",\"type\":\"choice\",\"instruction\":\"Choose the given candidate that best matches the user utterance's main intent. Use only the utterance; do not infer unmentioned requests.\",\"candidates\":[{\"id\":\"audio_volume_mute\",\"text\":\"Mute audio\"},{\"id\":\"audio_volume_down\",\"text\":\"Decrease audio volume\"},{\"id\":\"audio_volume_other\",\"text\":\"Other audio-volume requests\"},{\"id\":\"audio_volume_up\",\"text\":\"Increase audio volume\"}]}]}},{\"issue\":{\"revision_reason\":\"候选集缺少与条件提醒或通知请求匹配的选项。\",\"suggestion\":\"在 candidates 中增加描述为“Request a reminder or notification when something else happens”的候选。\",\"answer_status\":\"invalid_question\",\"reason\":\"原文要求在有新情况发生时提醒自己。现有候选只有日历事件查询、创建、删除和闹钟查询，均不表达这一提醒意图；不能补推用户要求创建日历事件。\"},\"language\":\"en\",\"record_id\":\"massive-en-us-03201\",\"request\":{\"schema_version\":1,\"model_id\":\"sezika/mmbert-base-independent-s4\",\"state\":{\"text\":\"remind me if anything else happens\"},\"questions\":[{\"id\":\"intent\",\"type\":\"choice\",\"instruction\":\"Choose the given candidate that best matches the user utterance's main intent. Use only the utterance; do not infer unmentioned requests.\",\"candidates\":[{\"id\":\"calendar_query\",\"text\":\"Query calendar events\"},{\"id\":\"calendar_set\",\"text\":\"Create a calendar event\"},{\"id\":\"calendar_remove\",\"text\":\"Remove a calendar event\"},{\"id\":\"alarm_query\",\"text\":\"Query existing alarms\"}]}]}}],\"contract\":\"sezika/repair-or-delete/v1\"}"
+          }
+        ],
+        "role": "user"
+      }
+    ],
+    "text": {
+      "format": {
+        "strict": true,
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "decisions": {
+              "type": "array",
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "record_id": {
+                    "type": "string"
+                  },
+                  "decision": {
+                    "type": "string",
+                    "enum": [
+                      "repair",
+                      "delete"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "instruction": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "statement": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "candidates": {
+                    "type": "array",
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "text"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "suggested_correct_id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "suggested_correct_index": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "evidence_quotes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "record_id",
+                  "decision",
+                  "reason",
+                  "instruction",
+                  "statement",
+                  "candidates",
+                  "suggested_correct_id",
+                  "suggested_correct_index",
+                  "evidence_quotes"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": [
+            "decisions"
+          ],
+          "type": "object"
+        },
+        "name": "repair_rows",
+        "type": "json_schema"
+      }
+    }
+  },
+  "plan_sha256": "4BD6F02073362341A0DA8881D1D166A3950A4FB5799E4231F95EE5695556C704",
+  "stage": "repair",
+  "selected": [
+    {
+      "record_id": "massive-en-us-00004",
+      "family_id": "massive-1.1-utterance-4",
+      "language": "en",
+      "split": "train",
+      "target_index": 0,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "olly quiet"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "Choose the given candidate that best matches the user utterance's main intent. Use only the utterance; do not infer unmentioned requests.",
+            "candidates": [
+              {
+                "id": "audio_volume_mute",
+                "text": "Mute audio"
+              },
+              {
+                "id": "audio_volume_down",
+                "text": "Decrease audio volume"
+              },
+              {
+                "id": "audio_volume_other",
+                "text": "Other audio-volume requests"
+              },
+              {
+                "id": "audio_volume_up",
+                "text": "Increase audio volume"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "en-US",
+        "official_id": "4",
+        "original_split": "train",
+        "original_label": "audio_volume_mute",
+        "original_scenario": "audio",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\en-US.jsonl",
+        "file_sha256": "C70F75C6A543A26E249EC383DF67733AD9B1066F6C0406C2E04A3F03356E407E",
+        "raw_record_sha256": "533AA0F7259BC6E4C5A19FE372C0EA4501628FDB25A15AC39C47B7C29EB51E20",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "pending",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/4"
+    },
+    {
+      "record_id": "massive-en-us-03201",
+      "family_id": "massive-1.1-utterance-3201",
+      "language": "en",
+      "split": "train",
+      "target_index": 1,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "remind me if anything else happens"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "Choose the given candidate that best matches the user utterance's main intent. Use only the utterance; do not infer unmentioned requests.",
+            "candidates": [
+              {
+                "id": "calendar_query",
+                "text": "Query calendar events"
+              },
+              {
+                "id": "calendar_set",
+                "text": "Create a calendar event"
+              },
+              {
+                "id": "calendar_remove",
+                "text": "Remove a calendar event"
+              },
+              {
+                "id": "alarm_query",
+                "text": "Query existing alarms"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "en-US",
+        "official_id": "3201",
+        "original_split": "train",
+        "original_label": "calendar_set",
+        "original_scenario": "calendar",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\en-US.jsonl",
+        "file_sha256": "C70F75C6A543A26E249EC383DF67733AD9B1066F6C0406C2E04A3F03356E407E",
+        "raw_record_sha256": "8D2E2302923B1E215F01CF1072091C80F70825B553B2D575BF420821DC89A95B",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "pending",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/en-US/3201"
+    }
+  ],
+  "start": 0
+}

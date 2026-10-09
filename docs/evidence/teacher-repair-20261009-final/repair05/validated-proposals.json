@@ -1,0 +1,260 @@
+[
+  {
+    "record_id": "massive-zh-cn-00913",
+    "human_review": "pending",
+    "decision": "repair",
+    "evidence_quotes": [
+      "打开 pandora"
+    ],
+    "original_source_gold": 3,
+    "revised_row": {
+      "record_id": "massive-zh-cn-00913",
+      "family_id": "massive-1.1-utterance-913",
+      "language": "zh",
+      "split": "train",
+      "target_index": 4,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "打开 pandora"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；按明确表达的操作分类，不推测对象类别或未提及的请求。",
+            "candidates": [
+              {
+                "id": "play_audiobook",
+                "text": "播放有声书"
+              },
+              {
+                "id": "play_game",
+                "text": "开始或玩游戏"
+              },
+              {
+                "id": "play_music",
+                "text": "播放音乐"
+              },
+              {
+                "id": "play_radio",
+                "text": "播放广播"
+              },
+              {
+                "id": "open_object",
+                "text": "打开指定对象"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "zh-CN",
+        "official_id": "913",
+        "original_split": "train",
+        "original_label": "play_radio",
+        "original_scenario": "play",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+        "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+        "raw_record_sha256": "DC55C2C3B83B51736E6C8618B2327B868C80E220A2FE34418B5763556D530EB8",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/913"
+    },
+    "reason": "原话明确给出了打开操作和对象名称。补充不限定对象类别的打开候选，即可对应该请求，无需推断 pandora 的含义或补入播放请求。",
+    "formal": false
+  },
+  {
+    "record_id": "massive-zh-cn-12939",
+    "human_review": "pending",
+    "decision": "delete",
+    "evidence_quotes": [
+      "告诉我怎么回事儿"
+    ],
+    "original_source_gold": 1,
+    "revised_row": null,
+    "reason": "“怎么回事儿”缺少指代对象及前文，无法确定所问主题属于事实、定义、货币或数学。指定任何类别都需要补入未提供的内容，无法忠实修复。",
+    "formal": false
+  },
+  {
+    "record_id": "massive-zh-cn-02996",
+    "human_review": "pending",
+    "decision": "repair",
+    "evidence_quotes": [
+      "股市有什么新鲜事"
+    ],
+    "original_source_gold": 0,
+    "revised_row": {
+      "record_id": "massive-zh-cn-02996",
+      "family_id": "massive-1.1-utterance-2996",
+      "language": "zh",
+      "split": "train",
+      "target_index": 2,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "股市有什么新鲜事"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；区分股票价格或行情走势查询与股市新闻查询，一般事实知识类别不包含其他候选已列出的查询类型，不推测未提及的请求。",
+            "candidates": [
+              {
+                "id": "qa_stock",
+                "text": "查询股票价格或行情走势（不含新闻查询）"
+              },
+              {
+                "id": "qa_currency",
+                "text": "查询货币或汇率"
+              },
+              {
+                "id": "qa_stock_news",
+                "text": "查询股市新闻或最新消息"
+              },
+              {
+                "id": "qa_definition",
+                "text": "查询词语或概念定义"
+              },
+              {
+                "id": "qa_factoid",
+                "text": "询问股票行情、货币或汇率、词语或概念定义及新闻以外的一般事实知识"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "zh-CN",
+        "official_id": "2996",
+        "original_split": "train",
+        "original_label": "qa_stock",
+        "original_scenario": "qa",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+        "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+        "raw_record_sha256": "58F3D490D86434CC93EF1E4AEC853D628EA9507F6E25BC9FACF2D335D61DBEC7",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/2996"
+    },
+    "reason": "“股市”明确了主题，“有什么新鲜事”表达对最新消息的查询。补充股市新闻候选，并限定行情与一般事实知识的边界，可消除原候选之间的分类歧义。",
+    "formal": false
+  },
+  {
+    "record_id": "massive-zh-cn-06480",
+    "human_review": "pending",
+    "decision": "delete",
+    "evidence_quotes": [
+      "正发生啥事"
+    ],
+    "original_source_gold": 1,
+    "revised_row": null,
+    "reason": "原话未说明所问事情的对象、范围或背景，无法确定是在询问新闻、活动信息还是当前具体情境。补充宽泛的事件或近况查询候选仍不能确定其指代，缺失的上下文无法仅靠候选修订补足。",
+    "formal": false
+  },
+  {
+    "record_id": "massive-zh-cn-00052",
+    "human_review": "pending",
+    "decision": "repair",
+    "evidence_quotes": [
+      "评分最高的中餐外送"
+    ],
+    "original_source_gold": 3,
+    "revised_row": {
+      "record_id": "massive-zh-cn-00052",
+      "family_id": "massive-1.1-utterance-52",
+      "language": "zh",
+      "split": "train",
+      "target_index": 1,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "评分最高的中餐外送"
+        },
+        "questions": [
+          {
+            "id": "intent",
+            "type": "choice",
+            "instruction": "只依据用户原话，选择给定候选中最符合其主要意图的一项；区分按评分查找外卖、订购外卖、查询已有订单或配送情况，以及烹饪知识和食谱请求，不推测未提及的操作。",
+            "candidates": [
+              {
+                "id": "takeaway_order",
+                "text": "订购外卖"
+              },
+              {
+                "id": "takeaway_rating_query",
+                "text": "按评分查询或推荐外卖选项"
+              },
+              {
+                "id": "cooking_query",
+                "text": "询问食谱以外的烹饪知识"
+              },
+              {
+                "id": "cooking_recipe",
+                "text": "获取食谱"
+              },
+              {
+                "id": "takeaway_query",
+                "text": "查询外卖订单或配送情况"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "dataset": "AmazonScience/MASSIVE",
+        "version": "1.1",
+        "locale": "zh-CN",
+        "official_id": "52",
+        "original_split": "train",
+        "original_label": "takeaway_query",
+        "original_scenario": "takeaway",
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\zh-CN.jsonl",
+        "file_sha256": "992BF0BEF3D678F08C27E514739BC851163E8F40F530BFB4D5970A2C24408ACE",
+        "raw_record_sha256": "F4F10A7DDC6BDBA61980693A9FCCFCDC7796396D6389392AD0095AED8C7FF189",
+        "license": "CC-BY-4.0",
+        "modification": "Original utterance retained; descriptive candidate labels, distractors and decision-v1 instruction added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "AmazonScience/MASSIVE/1.1/zh-CN/52"
+    },
+    "reason": "原话给出了中餐外送这一对象及最高评分这一筛选条件，支持按评分查找外卖选项。补充评分查询或推荐候选即可覆盖该需求，无需推断下单或已有订单；同时明确烹饪知识与食谱候选的边界。",
+    "formal": false
+  },
+  {
+    "record_id": "massive-zh-cn-04445",
+    "human_review": "pending",
+    "decision": "delete",
+    "evidence_quotes": [
+      "欧力你需要给我不同的方向"
+    ],
+    "original_source_gold": 0,
+    "revised_row": null,
+    "reason": "“方向”未限定为出行或导航方向，也可能指方案或思路。原话缺少能够确定交通意图的对象和语境，补充导航候选仍需要假设其含义，无法可靠修复。",
+    "formal": false
+  }
+]

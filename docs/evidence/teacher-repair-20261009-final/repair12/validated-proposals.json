@@ -1,0 +1,209 @@
+[
+  {
+    "formal": false,
+    "reason": "原文描述肝脏的功能，但未说明排泄系统的组成标准，也未明确肝脏的系统归属。仅凭功能描述无法回答原问题；改问解毒或转化氨的功能会改变问题主旨，因此删除。",
+    "revised_row": null,
+    "record_id": "boolq-validation-row-013",
+    "decision": "delete",
+    "original_source_gold": 1,
+    "human_review": "pending",
+    "evidence_quotes": [
+      "The liver detoxifies and breaks down chemicals, poisons and other toxins that enter the body.",
+      "For example, the liver transforms ammonia (which is poisonous) into urea in fish, amphibians and mammals, and into uric acid in birds and reptiles."
+    ]
+  },
+  {
+    "formal": false,
+    "reason": "将“based on a true story”明确为受到真实事件启发，保留询问电影与真实事件关系的主要含义，消除“改编”与“启发”的措辞歧义。原文明确说明该片编剧兼导演受到真实事件启发。",
+    "revised_row": {
+      "record_id": "boolq-validation-row-016",
+      "family_id": "boolq-passage-0385F1D87B1A439FB963553F0BE310152883F503E7E7B4FDA621DBE5729CC1FE",
+      "language": "en",
+      "split": "development",
+      "target_index": 1,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "The Strangers is a 2008 American slasher film written and directed by Bryan Bertino. Kristen (Liv Tyler) and James (Scott Speedman) are expecting a relaxing weekend at a family vacation home, but their stay turns out to be anything but peaceful as three masked torturers leave Kristen and James struggling for survival. Writer-director Bertino was inspired by real-life events: the Manson family Tate murders, a multiple homicide; the Keddie Cabin Murders, that occurred in California in 1981; and a series of break-ins that occurred in his own neighborhood as a child. Made on a budget of $9 million, the film was shot on location in rural South Carolina in the fall of 2006."
+        },
+        "questions": [
+          {
+            "id": "evidence_answer",
+            "type": "boolean",
+            "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge. The statement field contains a question, not an assertion.",
+            "statement": "Was the movie The Strangers inspired by real-life events?",
+            "when_false": "The answer to the question is No based on the passage",
+            "when_true": "The answer to the question is Yes based on the passage"
+          }
+        ]
+      },
+      "source": {
+        "dataset": "google/boolq",
+        "original_dataset": "BoolQ",
+        "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+        "viewer_snapshot_revision_bound": false,
+        "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+        "official_id": "validation/16",
+        "original_split": "validation",
+        "original_label": true,
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-validation.rows.json",
+        "file_sha256": "3DECB23D0A08673127D5C8BA12843C83B12152B637FBA87D883B950B2B9FEF36",
+        "raw_record_sha256": "558659535D293AECE3C72269B513EE7D43D4C6E22C45EDEA0BD94417E385E52E",
+        "license": "CC-BY-SA-3.0",
+        "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "google/boolq/validation/16"
+    },
+    "record_id": "boolq-validation-row-016",
+    "decision": "repair",
+    "original_source_gold": 1,
+    "human_review": "pending",
+    "evidence_quotes": [
+      "The Strangers is a 2008 American slasher film written and directed by Bryan Bertino.",
+      "Writer-director Bertino was inspired by real-life events: the Manson family Tate murders, a multiple homicide; the Keddie Cabin Murders, that occurred in California in 1981; and a series of break-ins that occurred in his own neighborhood as a child."
+    ]
+  },
+  {
+    "formal": false,
+    "reason": "将所问季数限定为第一季，并将时间限定为2018年5月14日，保留询问该季是否结束的主要含义。原文明确第一季于当日结束，可以唯一回答。",
+    "revised_row": {
+      "record_id": "boolq-validation-row-018",
+      "family_id": "boolq-passage-29158800A36E12F20801E98F7BAEB393B928AAF819EA4EE93759BF1872617094",
+      "language": "en",
+      "split": "development",
+      "target_index": 1,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "The Resident is an American medical drama television series aired by Fox Broadcasting Company that premiered on January 21, 2018, as a mid-season replacement entry in the 2017--18 television season. The fictional series focuses on the lives and duties of staff members at Chastain Park Memorial Hospital, while delving into the bureaucratic practices of the hospital industry. Formerly called The City, the show was purchased by Fox from Showtime in 2017. It was created by created by Amy Holden Jones, Hayley Schore, and Roshan Sethi. On May 10, 2017, Fox ordered a full 14-episode season and renewed the series for a second season on May 7, 2018. The first season officially concluded on May 14, 2018."
+        },
+        "questions": [
+          {
+            "id": "evidence_answer",
+            "type": "boolean",
+            "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge. The statement field contains a question, not an assertion.",
+            "statement": "As of May 14, 2018, had the first season of The Resident ended?",
+            "when_false": "The answer to the question is No based on the passage",
+            "when_true": "The answer to the question is Yes based on the passage"
+          }
+        ]
+      },
+      "source": {
+        "dataset": "google/boolq",
+        "original_dataset": "BoolQ",
+        "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+        "viewer_snapshot_revision_bound": false,
+        "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+        "official_id": "validation/18",
+        "original_split": "validation",
+        "original_label": true,
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-validation.rows.json",
+        "file_sha256": "3DECB23D0A08673127D5C8BA12843C83B12152B637FBA87D883B950B2B9FEF36",
+        "raw_record_sha256": "C7B55FECFBAC5117C0C8A870737A1352D9B6AB3BCAA5FAE310D4433042574C0B",
+        "license": "CC-BY-SA-3.0",
+        "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "google/boolq/validation/18"
+    },
+    "record_id": "boolq-validation-row-018",
+    "decision": "repair",
+    "original_source_gold": 1,
+    "human_review": "pending",
+    "evidence_quotes": [
+      "The first season officially concluded on May 14, 2018."
+    ]
+  },
+  {
+    "formal": false,
+    "reason": "将“come before”明确为原文 Street Addressing 示例中的书写顺序，并将对象限定为与 P.O. Box 号码一致的 Unit 编号，保留地址中先后位置的问意。示例中街道地址在前，Unit 编号在后，因此答案为否。",
+    "revised_row": {
+      "record_id": "boolq-validation-row-020",
+      "family_id": "boolq-passage-B9FE4E37FD2ACED3C07ADA7FA36FDD44F1B179B49E850014B69D10A90CD0C8F2",
+      "language": "en",
+      "split": "development",
+      "target_index": 0,
+      "request": {
+        "schema_version": 1,
+        "model_id": "sezika/mmbert-base-independent-s4",
+        "state": {
+          "text": "Street Addressing will have the same street address of the post office, plus a ``unit number'' that matches the P.O. Box number. As an example, in El Centro, California, the post office is located at 1598 Main Street. Therefore, for P.O. Box 9975 (fictitious), the Street Addressing would be: 1598 Main Street Unit 9975, El Centro, CA. Nationally, the first five digits of the zip code may or may not be the same as the P.O. Box address, and the last four digits (Zip + 4) are virtually always different. Except for a few of the largest post offices in the U.S., the 'Street Addressing' (not the P.O. Box address) nine digit Zip + 4 is the same for all boxes at a given location."
+        },
+        "questions": [
+          {
+            "id": "evidence_answer",
+            "type": "boolean",
+            "instruction": "Answer the yes/no question in statement using only the passage. true means Yes; false means No. Do not use outside knowledge. The statement field contains a question, not an assertion.",
+            "statement": "In the Street Addressing example, does the unit number that matches the P.O. Box number appear before the street address?",
+            "when_false": "The answer to the question is No based on the passage",
+            "when_true": "The answer to the question is Yes based on the passage"
+          }
+        ]
+      },
+      "source": {
+        "dataset": "google/boolq",
+        "original_dataset": "BoolQ",
+        "observed_repository_revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+        "viewer_snapshot_revision_bound": false,
+        "official_id_kind": "HF split row_idx in frozen local rows snapshot",
+        "official_id": "validation/20",
+        "original_split": "validation",
+        "original_label": false,
+        "file": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\sources\\boolq-validation.rows.json",
+        "file_sha256": "3DECB23D0A08673127D5C8BA12843C83B12152B637FBA87D883B950B2B9FEF36",
+        "raw_record_sha256": "86E90B878F88245FF581CD24AE8356C83F53B1963B1CADE87281E519796788DF",
+        "license": "CC-BY-SA-3.0",
+        "modification": "Passage and yes/no question retained; explicit decision-v1 Boolean instruction and answer semantics added",
+        "target_role": "host_only_original_source_annotation_not_teacher_payload"
+      },
+      "human_review": "pending",
+      "formal": false,
+      "eligible_as_sealed_test": false,
+      "ai_review_status": "repair_proposed_pending_blind_reaudit",
+      "source_canonical_id": "google/boolq/validation/20"
+    },
+    "record_id": "boolq-validation-row-020",
+    "decision": "repair",
+    "original_source_gold": 0,
+    "human_review": "pending",
+    "evidence_quotes": [
+      "Street Addressing will have the same street address of the post office, plus a ``unit number'' that matches the P.O. Box number.",
+      "Therefore, for P.O. Box 9975 (fictitious), the Street Addressing would be: 1598 Main Street Unit 9975, El Centro, CA."
+    ]
+  },
+  {
+    "formal": false,
+    "reason": "原问题询问形成极性碳氢共价键的可能性，原文只说明碳氢键通常被视为非极性。“通常”不能排除例外，原文也未提供极性实例。改问通常如何分类会改变原命题，不能以此伪装修复，因此删除。",
+    "revised_row": null,
+    "record_id": "boolq-validation-row-038",
+    "decision": "delete",
+    "original_source_gold": 0,
+    "human_review": "pending",
+    "evidence_quotes": [
+      "Because of this small difference in electronegativities, the C−H bond is generally regarded as being non-polar."
+    ]
+  },
+  {
+    "formal": false,
+    "reason": "原文未明确“the first film”指《The Golden Compass》，且只报道2011年关于未来不会制作续集的表态，无法据此确定续集是否实际存在。改问 Pullman 当年的表态会改变原问题的主要命题，因此删除。",
+    "revised_row": null,
+    "record_id": "boolq-validation-row-039",
+    "decision": "delete",
+    "original_source_gold": 0,
+    "human_review": "pending",
+    "evidence_quotes": [
+      "In 2011, Philip Pullman remarked at the British Humanist Association annual conference that due to the first film's disappointing sales in the United States, there would not be any sequels made."
+    ]
+  }
+]

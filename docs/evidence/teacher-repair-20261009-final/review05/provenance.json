@@ -1,0 +1,25 @@
+{
+  "endpoint": "https://sonnet.vip/v1/responses",
+  "labels_hidden_from_reaudit": true,
+  "model": "gpt-6.1-sol",
+  "transport_sha256": "9F0FBB33132FEE188CAFEF4EDAF399AA6D26EDD8FAD768EA60545706D392F1F8",
+  "plan_sha256": "4BD6F02073362341A0DA8881D1D166A3950A4FB5799E4231F95EE5695556C704",
+  "formal": false,
+  "state_text_immutable": true,
+  "worker_sha256": "CB332CE36EBA5867230FB6AB43DC8606B96823206CB616805C2DD8EA4948B2C1",
+  "batch": "review05",
+  "input_sha256": "144E93FAB3E810E182E55BD5D2FE45EFF8EBBD25ADCBC30D8415574084AB163E",
+  "human_review": "pending",
+  "credential_source": "CC Switch selected sonnet_vip, memory only",
+  "effort": "max",
+  "stage": "review",
+  "source_ids": [
+    "boolq-train-row-077",
+    "boolq-validation-row-000",
+    "boolq-validation-row-001",
+    "boolq-validation-row-006",
+    "boolq-validation-row-016",
+    "boolq-validation-row-018"
+  ],
+  "request_sha256": "70D929C325B5F8790404E1942763BFD3FC503E616EBA6FAF0F6C4AADCE0E3BEF"
+}

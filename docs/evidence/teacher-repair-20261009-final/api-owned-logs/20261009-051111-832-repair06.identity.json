@@ -1,0 +1,96 @@
+{
+  "Pid": 32696,
+  "Started": "2026-10-09T05:11:16.4095356Z",
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoLogo",
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1",
+    "-Batch",
+    "repair06",
+    "-Start",
+    "32",
+    "-Count",
+    "6",
+    "-SelectionFile",
+    "plan.json",
+    "-Transport",
+    "Direct"
+  ],
+  "CapturedCommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch repair06 -Start 32 -Count 6 -SelectionFile plan.json -Transport Direct",
+  "ParentPid": 64336,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 64336,
+    "Started": "2026-10-09T05:11:09.9025046Z",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/teacher-repair-20261009/Invoke-OwnedApiProcess.ps1 -Batch repair06 -Start 32 -Count 6 -SelectionFile plan.json -Transport Direct\nexit $LASTEXITCODE\"",
+    "ParentPid": 49492,
+    "ParentChain": [
+      {
+        "Pid": 49492,
+        "Started": "2026-10-09T03:26:12.07574Z",
+        "CommandLine": "C:\\Users\\mysti\\AppData\\Local\\OpenAI\\Codex\\bin\\9691020b546a15b2\\codex.exe -c features.code_mode_host=true app-server --analytics-default-enabled -c plugins.codex-app-tools@openai-bundled.mcp_servers.codex_app.enabled=true -c plugins.code-review@openai-bundled.mcp_servers.code-review.enabled=true",
+        "ParentPid": 33904
+      },
+      {
+        "Pid": 33904,
+        "Started": "2026-10-09T03:24:36.453279Z",
+        "CommandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.1002.7124.0_x64__2p2nqsd0c76g0\\app\\ChatGPT.exe\" ",
+        "ParentPid": 19684
+      }
+    ],
+    "IdentityObserved": true
+  },
+  "TimeoutSeconds": 280,
+  "QueryTimeoutSeconds": 5,
+  "MaximumTaskProcesses": 16,
+  "IdentityObservation": "exact_cim",
+  "Processes": [
+    {
+      "Pid": 32696,
+      "CreationDate": "2026-10-09T13:11:16.409535+08:00",
+      "Started": "2026-10-09T05:11:16.409535Z",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009\\Invoke-TeacherBatch.ps1 -Batch repair06 -Start 32 -Count 6 -SelectionFile plan.json -Transport Direct",
+      "ParentPid": 64336,
+      "Depth": 0,
+      "TerminatedByGuardian": false,
+      "Closure": "absent",
+      "ExitObservedUtc": null
+    },
+    {
+      "Pid": 65716,
+      "CreationDate": "2026-10-09T13:11:19.883986+08:00",
+      "Started": "2026-10-09T05:11:19.883986Z",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-repair-20261009/Send-TeacherDirect.py repair06 240",
+      "ParentPid": 32696,
+      "Depth": 1,
+      "TerminatedByGuardian": false,
+      "Closure": "absent",
+      "ExitObservedUtc": null
+    },
+    {
+      "Pid": 65856,
+      "CreationDate": "2026-10-09T13:11:16.448487+08:00",
+      "Started": "2026-10-09T05:11:16.448487Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 32696,
+      "Depth": 1,
+      "TerminatedByGuardian": false,
+      "Closure": "absent",
+      "ExitObservedUtc": null
+    },
+    {
+      "Pid": 61416,
+      "CreationDate": "2026-10-09T13:11:19.904936+08:00",
+      "Started": "2026-10-09T05:11:19.904936Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 65716,
+      "Depth": 2,
+      "TerminatedByGuardian": false,
+      "Closure": "absent",
+      "ExitObservedUtc": null
+    }
+  ],
+  "CredentialArguments": false
+}
