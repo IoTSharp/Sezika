@@ -11,6 +11,17 @@
 仅 `D:\source\Tomur` 已获核最新、拉取、必要修改提交及推送授权。Sezika 只 commit；发布、部署及正式默认切换仍按各自门槛处理。用户未跟踪的 Sezika `docs/wechat-introduction.md`、`.html` 及 Tomur `docs/articles/` 不修改或暂存。
 
 ## 当前结果
+### 2026-10-09 修题/盲审完成：215题候选包，新会话接续训练
+
+用户授权使用sonnet_vip修复歧义题，修不好就删，再新建会话开始下一步。本轮78问题题由同一sonnet.vip/gpt-6.1-sol/max处理：模型39修/39删，root另排除2项改变原义的修订，剩余37题全部独立盲审通过。原178通过题复用，最终215题（train162/development53，Choice140/Boolean75），删除41题（train30/dev11）。原state.text/source gold/family/split保留，全256分母及删除原因有账本；原32另列已曝光回归，Score无新增监督。
+
+数据与完整证据已本地提交a804cc9（334文件），未push。任务根.artifacts/teacher-repair-20261009；修题cell120与复审cell135已全部结束，14修题批+7复审批共21次HTTP200、21成功验证，无网络重试；原33批只本地重解析，成功请求不得重发。原5400秒窗口已关闭，不重置、不再补发。永久证据docs/evidence/teacher-repair-20261009-final，332文件+inventory、8,281,934 bytes；详见docs/evidence/teacher-repair-2026-10-09.md。
+
+新data-v3 manifest SHA E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6，账本SHA55F3226946831C4B9CBD7F6EE10D1194764860C8343A9386CAA40C678CE24EC0。静态分母/字节hash/身份/映射/原文与分组核验通过；C#原生v3合同、新strict1024长度、GPU训练/独立验证尚未运行，不把旧914tokens当新测量，不把AI审题当模型质量通过。正式人审/许可发布/校准/封存/AOT性能均pending。
+
+22回执/112身份/93PID终核matching_live0/unknown0，打包/核验/closure进程另核absent；18历史argv缺失局限保留。所有API guardian Succeeded/exit0，无GPU或教师在途，未停现有服务。日志保留，未清空全局TEMP。
+
+按用户要求完成本地分项commit后创建Sezika本地新会话（projectId d83b0c15-7f7d-4480-b937-ccca4abcc86a），立即按docs/training-next-handoff-2026-10-09.md接续C#可变分母v3合同、长度、一次固定24576updates/LR0.001/seed17/strict1024/零head/encoder冻结、独立加载完整CE/逐题/16Choice换序与原32回归。创建后新会话独占Git/API/GPU，旧会话停止实施并迁移heartbeat；不自动扩量、加训、LoRA或encoder反传。保留其他暂停源码、ROADMAP旧诊断hunk及用户文件，只commit不push/发布部署。
 
 ### 2026-10-09 扩样256题审核完成；78题质量阻塞，GPU未启动
 

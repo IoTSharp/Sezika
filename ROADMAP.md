@@ -20,6 +20,8 @@
 
 ## 当前执行顺序与门槛
 
+2026-10-09 用户授权的78题修题/删题已完成：37修订并独立盲审通过、41排除，加上178原题形成215题v3候选包（train162/dev53；Choice140/Boolean75）。原文/来源/旧标签/family/split及256题删除账本保留；21次HTTP200/21有效批、窗口关闭，禁止重发。静态打包与字节hash核验通过，新C# v3合同与strict1024长度尚待验；按用户要求新建会话开始必要合同适配和一次固定24576updates训练/独立验证，实际分母不再声称128epoch。详见[修题证据](docs/evidence/teacher-repair-2026-10-09.md)和[新会话交接](docs/training-next-handoff-2026-10-09.md)。正式人审、许可发布、模型质量、校准、封存及AOT/性能仍pending，不把AI审题通过当质量通过。
+
 2026-10-09 本轮256/256公开样本已完成同一教师max盲审：178题符合当前AI审核条件、78题需修订；33成功批、无重复成功题，原source gold/split/family保持。真实打包程序重验全部原响应后拒绝准入，未生成训练manifest，GPU训练未启动。工程已分项本地提交e6f7979/d30655f，256题长度检查全通过、最长914tokens；这些不代表质量通过。下一步按[78题修订清单与完整证据](docs/evidence/teacher-expansion-2026-10-09.md)形成新版本并对变更题复审，新的教师窗口另行授权；不自动加训/扩量、不以178题替代192/64分母。全部API及登记进程已收口，等待修题范围推进；正式人审、许可发布、校准、封存、新head AOT/性能仍pending。
 
 2026-10-08 用户新授权依据32题审核扩大真实题型与训练样本，继续sonnet.vip/gpt-6.1-sol/max教师。新切片先核公开数据来源、许可及原始split/family，首批256新样本/192train64development，上次修正32另列回归；来源与候选映射在教师请求前冻结，不把训练/开发/回归混称封存测试。补齐纯C# head GPU批量容量及checkpoint/asset恢复，固定一次24576updates/LR0.001/seed17/strict1024、encoder冻结，再独立新进程重新GPU编码/完整CE/逐题验证；GPU并发1、owned≤3GiB、host≤4GiB，CLI≤1500s、SGD≤300s、forward≤384。教师≤33成功请求/每批≤8/并发2/全阶段≤3600s，完整原字节/hash与失败保留，不自动补采/调参/加LoRA。真实质量仍另验；其他暂停源码与ROADMAP诊断hunk保持，Git只本地commit。
