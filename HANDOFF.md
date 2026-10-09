@@ -1,6 +1,6 @@
 # Sezika 监督交接
 
-更新：2026-10-08，Asia/Shanghai。规范工作区 `D:\source\Sezika`，分支 `main`，监督起点 `716130e`。ROADMAP.md 是唯一阶段计划；本文件只记录当前交接。此前交接的过程状态保留在 Git 历史及下列证据中。
+更新：2026-10-09，Asia/Shanghai。规范工作区 `D:\source\Sezika`，分支 `main`，监督起点 `716130e`。ROADMAP.md 是唯一阶段计划；本文件只记录当前交接。此前交接的过程状态保留在 Git 历史及下列证据中。
 
 ## 授权与定时接续
 
@@ -11,6 +11,34 @@
 仅 `D:\source\Tomur` 已获核最新、拉取、必要修改提交及推送授权。Sezika 只 commit；发布、部署及正式默认切换仍按各自门槛处理。用户未跟踪的 Sezika `docs/wechat-introduction.md`、`.html` 及 Tomur `docs/articles/` 不修改或暂存。
 
 ## 当前结果
+
+### 2026-10-09 扩样256题审核完成；78题质量阻塞，GPU未启动
+
+完整教师证据已本地提交 `10dee08`（279文件），未push。Git stage/commit真实child exit0、提交对象存在；短进程快于CIM采样，通用wrapper仍保留CleanupFailed/unknown1，不能称其历史进程观测完整，另核准确PID已退出。
+
+本轮256/256唯一题取得有效教师盲审：178题符合当前AI审核条件、78题需修订、8条建议改标；train192中137符合/55阻塞，dev64中41符合/23阻塞。Choice160中117符合/43阻塞，Boolean96中61符合/35阻塞。全部原source gold、family/split、题文保持，原修正32另列已曝光回归，Score无新监督。真实打包从33份原响应严格复验后拒绝，保存78条清单，manifest不存在、训练未启动；外层exit3为真实拒绝，不当成功。详见 docs/evidence/teacher-expansion-2026-10-09.md。
+
+工程已分项本地提交 e6f7979（256题/24576步容量与存储）、d30655f（显式v2训练与独立验证）；实际GPU容量、训练、独立加载及原32回归均未运行。256题严格renderer全通过，最长914tokens；原32/审核sidecar绑定3修正通过。小参考、fixture及历史短进程身份局限见工程证据，不冒称真实训练或完整历史进程审计。
+
+用户批准的北京时间2026-10-09 11:28:03.8319509–12:28:03.8319509窗口（含额外4请求）终态为累计38HTTP尝试/31成功批/240题/73阻塞，原235文件归档 teacher-expansion-20261009-final 保持。用户随后明确批准最后16题的新600秒窗口，model-selection-final16-20261009.json 起算UTC04:32:06.5190229、截止04:42:06.5190229；最多2次HTTP/并发2/每批8/单次240秒。final05/06因旧脚本依赖当前Codex全局model变化在HTTP前失败，无request/provenance；保留失败后，Direct路径改为固定已批准教师模型并读取同一CC Switch选中sonnet_vip凭据，不修改用户配置。final05v2/final06v2各一次实际HTTP200/8条严格验证/guardian Succeeded0清理空，于UTC04:36:44完成。函数cell89已终结，不得重发或重置计时。
+
+最终累计40次教师HTTP尝试/33成功批/256唯一题；5次HTTP前失败不混入HTTP，失败/中断上游计费及完成未知。只有另1次连通性GET。final16-request-ledger.json逐原响应重解析、核原请求hash及保存结果一致、成功题去重为0。完整补充41文件位于 teacher-expansion-20261009-complete，绑定旧235归档hash；final16-repair-proposals.{json,md}包含78原题/建议，仅提案未应用，不能作为已审核新题。batch07旧provenance/redirect与Direct children_started字段局限以纠正sidecar为准，不回写旧字节；上游模型仅服务响应声明。
+
+进程终核86回执/403身份/331唯一PID matching_live0/unknown0，checker与打包进程另核absent；82条历史记录缺argv，不能补造历史完整性。compiler-temp两日志按hash移存、七个空目录非递归清理，未触碰全局TEMP；regression publish未指定专属TEMP局限保留。未启动/停止GPU服务，没有本任务GPU训练或API在途。
+
+当前只允许继续必要证据/分项本地commit/交接，不能自动进入GPU训练、再次扩量或重新教师采集。下一实质步骤是按78题清单准备修订版本，保留来源/修改声明与split/family，变更题复审另行固定范围和窗口；新教师调用需新明确授权。正式人审、许可发布、质量、校准、封存、新head AOT/性能均pending/false。准入闭合后才可执行原固定一次24576updates/LR0.001/seed17/strict1024/encoder冻结，再独立验证；不按dev调参、不自动加训/LoRA/encoder反传。其他ROADMAP暂停，root独占Git/API/GPU；只commit不push、不发布部署。
+
+### 2026-10-08 用户新授权：公开样本扩量与同教师学习（进行中）
+
+用户已要求搜索更多真实题型和训练样本，并明确继续 sonnet.vip / gpt-6.1-sol / max；ACM发卡机消息已确认发错，不修改LaneApp。旧72步、768步A/B/C与32题审题均已完成，禁止重复；本轮授权覆盖旧“不扩量/不重新采集”限定，其他ROADMAP仍暂停。
+
+任务根 `.artifacts/teacher-expansion-20261008/`，计划256新题：MASSIVE 1.1的160中英Choice（128train/32development）与BoolQ的96英文Boolean（64train/32development），沿官方split、跨语言/段落family冻结192/64；原32修正题保持独立回归，不覆盖旧标签/来源。MASSIVE官方tar及两locale真实下载/hash/CC BY4.0全文已核；BoolQ官方storage403保留，公开HF metadata和train/validation各100行实际响应已取得，CC BY-SA3.0，viewer字节身份冻结但未独立证明等于metadata revision。五级Score来源尚未核实，本轮不新增Score监督。
+
+固定一次24576 GPU updates/LR0.001/seed17/strict1024/encoder冻结/零初始化head，随后独立新进程重新GPU编码完整CE与256原题/16训练Choice固定左移检查；CLI1500s/SGD300s/forward384，GPU并发1/owned3GiB/host4GiB/空闲5120MiB。教师每批8/并发2/成功请求最多33/单次240s/全阶段3600s；原标签隐藏，真实wire bytes原样保存，成功请求不重发，不确定或需改题保留并阻止训练，不默默丢弃。正式人审、训练输出许可发布、质量、校准、封存、新head AOT/性能仍未通过。
+
+当前扩样C#工具build1零警告错误、fixture合同tiny1→full16、旧core247检查通过（固定tokenizer oracle因相应路径资产缺失仍skip），单H4小参考24576保存/加载、257题与24577步拒绝通过；这不是正式训练。容量fixture首次参数漏项/身份不合法失败已保留并修正。Linux新工具与修正容量fixture已发布，source-freeze已锁；远端新根 `/root/sezika-experiments/20261008-teacher-expansion-v3` 仅bootstrap创建成功，未执行教师HTTP或GPU。已核现有GPU空闲15294MiB，未停任何服务。新runner只把旧600s上限提升1520s，新SHA32167e8cf7396ac6d1f8f54a8d664dfbfaaef71fccba871433b0fdf73e24f2f1，旧runner原字节不改；独立退出码/生命周期probes待执行。
+
+监督者root独占Git/GPU/API调度；contract_review仅准备数据，evaluation_impl完成工程后独审core/API，expansion_runner准备脚本后独审trainer。接续先读各自实际回执/身份与保存批次，不能以Windows0、fixture或准备文件替代真实运行。heartbeat已更新至本轮范围，完成后安静等待新指令；只本地分项commit，不push/发布/部署，保留暂停源码、旧ROADMAP诊断hunk与用户文件。
 
 ### 2026-10-08 当前32题独立AI审题已完成
 
