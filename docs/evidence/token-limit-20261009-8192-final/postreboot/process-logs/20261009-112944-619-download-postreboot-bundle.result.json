@@ -1,0 +1,132 @@
+{
+  "Status": "Failed",
+  "Pid": 74592,
+  "ExitCode": 1,
+  "Error": "Process failed with exit code 1.",
+  "ElapsedSeconds": 9.228,
+  "TimeoutSeconds": 105,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Download-PostrebootEvidence.ps1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T11:29:45.603207Z",
+  "ParentPid": 63580,
+  "Launcher": {
+    "Pid": 63580,
+    "Started": "2026-10-09T19:29:44.057062+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'; $task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'; $text=[IO.File]::ReadAllText((Join-Path $task 'Download-RecoveryEvidence.ps1')); $text=$text.Replace('recovery','postreboot').Replace('0A10AE919521C7A8F52CF31980DB5E51BB23E6460DD36C3F720E18C217ABB94A','B560F670054FC36987D65E86FE58814C1C9E65BBF4B86711B49B4216E83040A3').Replace('-ne 143360','-ne 40960'); $path=Join-Path $task 'Download-PostrebootEvidence.ps1'; if(Test-Path -LiteralPath $path){throw 'download script exists'}; [IO.File]::WriteAllText($path,$text,[Text.UTF8Encoding]::new($false)); & (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',$path) -TimeoutSeconds 105 -LogName download-postreboot-bundle -ProcessQueryTimeoutSeconds 2 -CancelFile (Join-Path $task 'cancel.request')\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-112944-619-download-postreboot-bundle.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-112944-619-download-postreboot-bundle.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 1.5124221,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 74592,
+      "CreationDate": "2026-10-09T19:29:45.603207+08:00",
+      "Started": "2026-10-09T11:29:45.603207Z",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Download-PostrebootEvidence.ps1",
+      "ParentPid": 63580,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 33484,
+      "CreationDate": "2026-10-09T19:29:45.616515+08:00",
+      "Started": "2026-10-09T11:29:45.616515Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 74592,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 74592,
+          "CreationDate": "2026-10-09T19:29:45.603207+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Download-PostrebootEvidence.ps1",
+          "ParentPid": 63580
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 35468,
+      "CreationDate": "2026-10-09T19:29:47.241203+08:00",
+      "Started": "2026-10-09T11:29:47.241203Z",
+      "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\scp.exe\" -P 2222 -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=8 root@211.149.170.42:/root/sezika-experiments/20261009-repaired-training-8192/postreboot-evidence.tar D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\postreboot-evidence.tar",
+      "ParentPid": 74592,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 74592,
+          "CreationDate": "2026-10-09T19:29:45.603207+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Download-PostrebootEvidence.ps1",
+          "ParentPid": 63580
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 50360,
+      "CreationDate": "2026-10-09T19:29:47.285388+08:00",
+      "Started": "2026-10-09T11:29:47.285388Z",
+      "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -x -oPermitLocalCommand=no -oClearAllForwardings=yes -oRemoteCommand=none -oRequestTTY=no -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=8 -oForwardAgent=no -p 2222 -l root -s -- 211.149.170.42 sftp",
+      "ParentPid": 35468,
+      "Depth": 2,
+      "ParentChain": [
+        {
+          "Pid": 74592,
+          "CreationDate": "2026-10-09T19:29:45.603207+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Download-PostrebootEvidence.ps1",
+          "ParentPid": 63580
+        },
+        {
+          "Pid": 35468,
+          "CreationDate": "2026-10-09T19:29:47.241203+08:00",
+          "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\scp.exe\" -P 2222 -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=8 root@211.149.170.42:/root/sezika-experiments/20261009-repaired-training-8192/postreboot-evidence.tar D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\postreboot-evidence.tar",
+          "ParentPid": 74592
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 65740,
+      "CreationDate": "2026-10-09T19:29:47.25126+08:00",
+      "Started": "2026-10-09T11:29:47.25126Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 35468,
+      "Depth": 2,
+      "ParentChain": [
+        {
+          "Pid": 74592,
+          "CreationDate": "2026-10-09T19:29:45.603207+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Download-PostrebootEvidence.ps1",
+          "ParentPid": 63580
+        },
+        {
+          "Pid": 35468,
+          "CreationDate": "2026-10-09T19:29:47.241203+08:00",
+          "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\scp.exe\" -P 2222 -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=8 root@211.149.170.42:/root/sezika-experiments/20261009-repaired-training-8192/postreboot-evidence.tar D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\postreboot-evidence.tar",
+          "ParentPid": 74592
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

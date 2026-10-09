@@ -1,0 +1,25 @@
+{
+  "Pid": 60544,
+  "Started": "2026-10-09T11:33:34.4011128Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Finalize-PostReboot.ps1 -Preview",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 12660,
+  "ObservedParentPid": 12660,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 12660,
+    "Started": "2026-10-09T19:33:32.7723+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'; & (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $task 'Finalize-PostReboot.ps1'),'-Preview') -TimeoutSeconds 35 -LogName postreboot-final-preview -ProcessQueryTimeoutSeconds 2 -CancelFile (Join-Path $task 'cancel.request')\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 35,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Finalize-PostReboot.ps1",
+    "-Preview"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

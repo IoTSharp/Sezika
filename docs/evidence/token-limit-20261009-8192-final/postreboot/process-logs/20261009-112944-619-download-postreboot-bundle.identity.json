@@ -1,0 +1,24 @@
+{
+  "Pid": 74592,
+  "Started": "2026-10-09T11:29:45.603207Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Download-PostrebootEvidence.ps1",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 63580,
+  "ObservedParentPid": 63580,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 63580,
+    "Started": "2026-10-09T19:29:44.057062+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'; $task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'; $text=[IO.File]::ReadAllText((Join-Path $task 'Download-RecoveryEvidence.ps1')); $text=$text.Replace('recovery','postreboot').Replace('0A10AE919521C7A8F52CF31980DB5E51BB23E6460DD36C3F720E18C217ABB94A','B560F670054FC36987D65E86FE58814C1C9E65BBF4B86711B49B4216E83040A3').Replace('-ne 143360','-ne 40960'); $path=Join-Path $task 'Download-PostrebootEvidence.ps1'; if(Test-Path -LiteralPath $path){throw 'download script exists'}; [IO.File]::WriteAllText($path,$text,[Text.UTF8Encoding]::new($false)); & (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',$path) -TimeoutSeconds 105 -LogName download-postreboot-bundle -ProcessQueryTimeoutSeconds 2 -CancelFile (Join-Path $task 'cancel.request')\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 105,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Download-PostrebootEvidence.ps1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

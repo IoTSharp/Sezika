@@ -1,6 +1,6 @@
 # 修题后8192固定训练与独立验证交接
 
-更新：2026-10-09，Asia/Shanghai。规范工作区 `D:\source\Sezika`，本会话 `01a11f25-335a-7571-a735-7171ace8c3b9` 独占Git/API/GPU。**用户已选择直接8192、原215题保持；工程与唯一固定训练完成，独立验证因GPU驱动故障失败，原32回归未启动。不得再次训练。** 用户已明确批准GPU重置及必要主机重启，10:56:29 UTC已请求一次reboot；软件reset及同版本驱动重载均未恢复GPU。截至2026-10-09 11:15:39 UTC（北京时间19:15:39）最新SSH及直接TCP仍被拒绝，需管理控制台/机房检查启动与网络；连通后观察新的boot_id及显卡/共享服务状态，不重复reboot/reset或索要已获许可。
+更新：2026-10-09，Asia/Shanghai。规范工作区 `D:\source\Sezika`，本会话 `01a11f25-335a-7571-a735-7171ace8c3b9` 独占Git/API/GPU。**用户已选择直接8192、原215题保持；工程与唯一固定训练完成，独立验证因GPU驱动故障失败，原32回归未启动。不得再次训练。** 用户已明确批准GPU重置及必要主机重启，10:56:29 UTC已请求一次reboot；软件reset及同版本驱动重载均未恢复GPU。11:24:57 UTC已确认新boot_id和SSH恢复；11:27:35 UTC显卡仍No devices/GSP初始化失败，需服务器管理方处理GPU故障；两容器running、翻译health200/ASR503，保存物六项SHA保持，不重复reboot/reset或索要已获许可。
 
 本轮事实、原始证据与具体恢复范围见 [8192证据](evidence/token-limit-8192-2026-10-09.md)，最新状态见根HANDOFF.md；ROADMAP.md仍为唯一阶段计划。仅本地commit，不push、发布、部署或上传模型平台。此前“等待删题”“strict1024”“训练未启动”是历史状态，由用户8192选择和本轮回执取代。
 
@@ -22,7 +22,7 @@ Linux容量首次保存失败原件/tmp保持；statx稳定dev/inode/birthtime�
 
 服务器 `root@211.149.170.42:2222` / `digisyn-gpu01`，GPU UUID `GPU-e786e313-bc92-a63d-a833-f4e48cbafb66`。10:28:20 UTC只读核共享容器仍running：翻译 `digisyn-hearon-hymt2-gguf-translation-1`（PID3055/starttick1542/父2990→2938），语音识别 `digisyn-hearon-gigaam-asr-1`（PID3068/starttick1586/父2982→2937）。完整容器ID、argv、image、策略在证据中。上述10:28快照之后已按用户许可停止并恢复两容器、执行一次软件reset及同版本驱动重载；两原容器重启前running、翻译health200/ASR503。一次reboot已请求，见新证据；尚无新的GPU训练/验证。
 
-1. 先读最新回执、HANDOFF与证据。用户已经明确批准GPU reset及必要服务器reboot；主智能体已发一次reboot/request exit0。有界重连尚未取得新的boot_id；只观察，不重复执行重启或询问该许可。
+1. 先读最新回执、HANDOFF与证据。用户已经明确批准GPU reset及必要服务器reboot；主智能体已发一次reboot/request exit0。已经取得新boot_id 31951b0f-232d-40c2-aec0-d7e7dd5215a6，但显卡仍GSP初始化失败；只观察，不重复执行重启或询问该许可。
 2. 重连后必须验证新的boot_id、准确GPU UUID/资源、两原容器启动及健康和模型保存物SHA。旧boot的PID/starttick不能冒充重启后的OS身份。若仍无GPU或SSH，记录实际状态并等待进一步恢复，不自动额外reset/reboot、升级驱动或更改业务配置。
 3. 资源准入通过后，仅继续已保存head的独立新进程验证：磁盘加载、重新GPU编码215原题+16训练Choice固定换序=231 forwards，完整CE/逐题/hash及实际回执。保留失败stage，用准确新阶段名记录恢复尝试。
 4. 随后原修正32题回归，≤32 forwards/300秒，保留已曝光身份；不作为独立封存或新监督。

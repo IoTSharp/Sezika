@@ -1,0 +1,23 @@
+{
+  "Pid": 72396,
+  "Started": "2026-10-09T11:30:27.035937Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 59268,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 59268,
+    "Started": "2026-10-09T19:30:19.655546+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Download-PostrebootEvidence-v2.ps1",
+    "ParentPid": 53016
+  },
+  "TimeoutSeconds": 10,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Windows\\System32\\tar.exe",
+  "Arguments": [
+    "-tf",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\postreboot-diagnosis-evidence.tar"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

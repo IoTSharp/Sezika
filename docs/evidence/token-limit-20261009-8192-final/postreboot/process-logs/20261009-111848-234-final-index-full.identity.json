@@ -1,0 +1,24 @@
+{
+  "Pid": 57400,
+  "Started": "2026-10-09T11:18:49.4444195Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Complete-Evidence-Index.ps1",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 37660,
+  "ObservedParentPid": 37660,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 37660,
+    "Started": "2026-10-09T19:18:47.229231+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'; & (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $task 'Complete-Evidence-Index.ps1')) -TimeoutSeconds 180 -LogName final-index-full -ProcessQueryTimeoutSeconds 2 -CancelFile (Join-Path $task 'cancel.request')\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 180,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Complete-Evidence-Index.ps1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

@@ -1,0 +1,244 @@
+diagnosis_linux_runner_exit=0
+status	completed
+payload_exit	0
+elapsed_ms	5720
+cleanup_elapsed_ms	3750
+cleanup_deadline_ms	510290
+cleanup_incomplete	0
+final_check_complete	1
+verified_live_count	0
+unknown_count	0
+unchecked_count	0
+cleanup_budget_exhausted	0
+tracked_identities	2
+token	sezika-23871-29580-18512
+supervisor_pid	23871
+fixture	none
+clock_resolution_ms	10
+clock_tolerance_ms	20
+limitation	cooperative_checks_only_blocking_kernel_io_and_short_intermediates_not_guaranteed
+control_unaffected	0
+control_owner_closed	0
+seam_mismatch	na
+seam_unreadable	na
+work_pause_reason	na
+work_pause_read_rc	na
+work_pause_failed_ms	na
+cleanup_deferred_proofs	0
+read_only_postreboot_diagnosis=true
+2026-10-09T11:27:35Z
+31951b0f-232d-40c2-aec0-d7e7dd5215a6
+6.8.0-142-generic
+NVRM version: NVIDIA UNIX Open Kernel Module for x86_64  580.173.02  Release Build  (dvs-builder@U22-I3-AK02-24-4)  Tue Jun 23 08:17:01 UTC 2026
+GCC version:  gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 
+Model: 		 NVIDIA GeForce RTX 4090
+IRQ:   		 246
+GPU UUID: 	 GPU-e786e313-bc92-a63d-a833-f4e48cbafb66
+Video BIOS: 	 ??.??.??.??.??
+Bus Type: 	 PCIe
+DMA Size: 	 47 bits
+DMA Mask: 	 0x7fffffffffff
+Bus Location: 	 0000:65:00.0
+Device Minor: 	 0
+GPU Firmware: 	 N/A
+GPU Excluded:	 No
+pci_vendor=0x10de
+pci_device=0x2684
+pci_enable=1
+pci_power_state=D0
+65:00.0 VGA compatible controller [0300]: NVIDIA Corporation AD102 [GeForce RTX 4090] [10de:2684] (rev a1)
+	Subsystem: NVIDIA Corporation AD102 [GeForce RTX 4090] [10de:16f3]
+	Kernel driver in use: nvidia
+	Kernel modules: nvidiafb, nouveau, nvidia_drm, nvidia
+No devices were found
+postreboot_gpu_query_exit=6
+2026-10-09T11:27:36+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:36+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:36+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:36+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:36+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:36+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:36+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:36+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:36+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:36+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:36+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:36+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:36+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:36+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:36+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:35+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:35+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:35+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:35+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:35+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:35+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:35+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:35+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:35+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:35+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:34+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:34+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:34+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:34+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:34+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:33+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:33+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:33+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:33+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:33+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:33+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:33+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:33+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:33+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:33+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:33+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:33+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:33+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:33+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:33+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:32+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:32+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:32+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:32+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:32+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:32+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:32+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:32+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:32+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:32+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:31+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:31+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:31+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:31+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:31+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:30+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:30+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:30+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:30+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:30+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:30+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:30+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:30+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:30+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:30+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:30+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:30+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:30+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:30+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:30+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:29+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:29+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:29+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:29+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:29+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:29+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:29+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:29+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:29+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:29+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:29+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:29+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:29+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:29+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:29+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:27+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:27+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:27+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:27+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:27+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:27+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:27+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:27+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:27+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:27+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:27+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:27+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:27+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:27+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:27+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:26+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:26+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:26+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:26+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:26+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:26+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:26+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:26+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:26+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:26+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:26+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:26+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:26+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:26+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:26+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:24+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:24+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:24+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:24+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:24+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:24+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:24+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:24+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:24+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:24+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:24+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:24+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:24+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:24+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:24+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:23+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:23+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:23+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:23+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:23+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:23+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:23+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:23+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:23+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:23+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:23+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:23+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:23+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:23+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:23+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:22+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:22+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:22+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:22+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:22+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:21+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:21+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:21+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:21+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:21+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:21+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:21+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:21+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:21+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:21+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:21+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:21+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:21+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:21+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:21+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:20+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:20+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:20+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:20+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:20+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+2026-10-09T11:27:20+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+2026-10-09T11:27:20+00:00 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x40:2028)
+2026-10-09T11:27:20+00:00 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+2026-10-09T11:27:20+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: (the GPU is likely in a bad state and may need to be reset)
+2026-10-09T11:27:20+00:00 digisyn-gpu01 kernel: NVRM: _kgspBootGspRm: unexpected WPR2 already up, cannot proceed with booting GSP
+/root/sezika-experiments/20261009-repaired-training-8192/output/run-24576/expanded-training-report.json: OK
+/root/sezika-experiments/20261009-repaired-training-8192/output/run-24576/expanded-head.asset: OK
+/root/sezika-experiments/20261009-repaired-training-8192/output/run-24576/expanded-training.checkpoint: OK
+/root/sezika-experiments/20261009-repaired-training-8192/data/experiment-manifest.json: OK
+/root/sezika-experiments/20261009-repaired-training-8192/data/derivation-ledger.json: OK
+/root/sezika-experiments/20261009-repaired-training-8192/package/model.json: OK
+saved_artifact_hashes_verified=true
+container=da214fdd10e65e4800fd8ac02b66ec21f19ab56541f4c2e7f18e63a6a80d3011 state=running pid=2974 started=2026-10-09T11:19:27.769830628Z image=sha256:c77df4f569146e3b5ba9a3116e3f406baa584dd4b72877e3227f660cc3101bc7 command=["--model","/models/Hy-MT2-30B-A3B-Q8_0.gguf","--alias","hy-mt2-30b-a3b-q8-0","--host","127.0.0.1","--port","8003","--ctx-size","4096","--n-predict","4096","--n-gpu-layers","all","--parallel","1","--batch-size","512","--ubatch-size","256","--flash-attn","on","--jinja","--temperature","0.7","--top-k","-1","--top-p","1.0","--repeat-penalty","1.0"]
+container=74301ee0b2cf9e39d0901bbc7b4e4e9f641d0668a31d67ae920c35f9d1ad62d5 state=running pid=2973 started=2026-10-09T11:19:27.763759211Z image=sha256:d70ffd114f2d04aeeedfd5e34f8efda0f6b9dedd2a1ad134e2b9a2302e749a4e command=["uvicorn","app:app","--host","127.0.0.1","--port","8001","--workers","1","--no-access-log"]
+diagnosis_completed=true elapsed_seconds=1 gpu_recovered=false

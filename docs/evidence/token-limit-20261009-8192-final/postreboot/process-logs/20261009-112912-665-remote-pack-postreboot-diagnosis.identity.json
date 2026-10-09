@@ -1,0 +1,26 @@
+{
+  "Pid": 32972,
+  "Started": "2026-10-09T11:29:13.6023946Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\pack-postreboot-diagnosis.sh",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 56340,
+  "ObservedParentPid": 56340,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 56340,
+    "Started": "2026-10-09T19:29:12.126102+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'; & (Join-Path $task 'Run-Remote.ps1') -Phase pack-postreboot-diagnosis -Seconds 42\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 42,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\pack-postreboot-diagnosis.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

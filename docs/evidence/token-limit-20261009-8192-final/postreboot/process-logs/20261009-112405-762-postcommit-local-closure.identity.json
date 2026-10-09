@@ -1,0 +1,24 @@
+{
+  "Pid": 56040,
+  "Started": "2026-10-09T11:24:06.8599952Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Inspect-Closure-PostCommit.ps1",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 23248,
+  "ObservedParentPid": 23248,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 23248,
+    "Started": "2026-10-09T19:24:04.995972+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'; & (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $task 'Inspect-Closure-PostCommit.ps1')) -TimeoutSeconds 92 -LogName postcommit-local-closure -ProcessQueryTimeoutSeconds 2 -CancelFile (Join-Path $task 'cancel.request')\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 92,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Inspect-Closure-PostCommit.ps1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

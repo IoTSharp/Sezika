@@ -1,0 +1,26 @@
+{
+  "Pid": 67340,
+  "Started": "2026-10-09T11:22:12.6815015Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 62724,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 62724,
+    "Started": "2026-10-09T19:22:01.490971+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Commit-Evidence-Final.ps1",
+    "ParentPid": 74224
+  },
+  "TimeoutSeconds": 25,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\Git\\cmd\\git.exe",
+  "Arguments": [
+    "ls-tree",
+    "-r",
+    "HEAD",
+    "--",
+    "docs/evidence/token-limit-20261009-8192-final"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

@@ -1,0 +1,49 @@
+{
+  "Status": "CleanupFailed",
+  "Pid": 16120,
+  "ExitCode": 0,
+  "Error": "Process cleanup or output capture failed.",
+  "ElapsedSeconds": 1.909,
+  "TimeoutSeconds": 25,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\Git\\cmd\\git.exe",
+  "Arguments": [
+    "diff",
+    "--cached",
+    "--check",
+    "--",
+    "HANDOFF.md",
+    "CHANGELOG.md",
+    "docs/training-next-handoff-2026-10-09.md",
+    "docs/evidence/token-limit-8192-2026-10-09.md",
+    "ROADMAP.md"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T11:21:43.6377806Z",
+  "ParentPid": 3728,
+  "Launcher": {
+    "Pid": 3728,
+    "Started": "2026-10-09T19:21:41.144779+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'; $task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'; $files=@(Get-ChildItem -LiteralPath (Join-Path $task 'process-logs') -File -Filter '*final-doc-review-restage.result.json'|Select-Object -First 2); if($files.Count -ne 1){throw 'restage receipt count differs'}; $r=Get-Content -Raw -LiteralPath $files[0].FullName|ConvertFrom-Json; $r|Select-Object Status,Pid,Started,ExitCode,VerifiedLiveCount,UnknownCount,CleanupErrors|ConvertTo-Json; if($null -eq $r.ExitCode -or $r.ExitCode -ne 0){throw 'Git restage actual failed'}; $items=@($r)+@($r.Processes); if($items.Count -gt 65){throw 'task item cap65'}; $sw=[Diagnostics.Stopwatch]::StartNew(); $checks=@(foreach($p in $items){if($sw.Elapsed.TotalSeconds -ge 12){throw 'short process check deadline'};$actual=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$($p.Pid)\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 2; if($null -ne $actual){throw 'post-restage PID requires identity review'};[pscustomobject]@{pid=$p.Pid;recorded_start=$p.Started;state='absent'}}); [IO.File]::WriteAllText((Join-Path $task 'final-restage-process-check.json'),(@{utc=[DateTime]::UtcNow.ToString('o');checks=$checks;actual_git_exit=$r.ExitCode;original_guardian_status=$r.Status;limitation='later absence does not reconstruct missing historical argv'}|ConvertTo-Json -Depth 4),[Text.UTF8Encoding]::new($false)); $docs=@('HANDOFF.md','CHANGELOG.md','docs/training-next-handoff-2026-10-09.md','docs/evidence/token-limit-8192-2026-10-09.md'); try{& (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\Git\\cmd\\git.exe' -ArgumentList (@('diff','--cached','--check','--')+$docs+@('ROADMAP.md')) -TimeoutSeconds 25 -LogName final-doc-review-whitespace -ProcessQueryTimeoutSeconds 2 -CancelFile (Join-Path $task 'cancel.request') | Select-Object -Last 2}catch{Write-Output ('guardian retained: '+$_.Exception.Message)}; $files=@(Get-ChildItem -LiteralPath (Join-Path $task 'process-logs') -File -Filter '*final-doc-review-whitespace.result.json'|Select-Object -First 2); if($files.Count -ne 1){throw 'doc check receipt differs'}; $r=Get-Content -Raw -LiteralPath $files[0].FullName|ConvertFrom-Json; $r|Select-Object Status,Pid,ExitCode,UnknownCount|ConvertTo-Json; if($null -eq $r.ExitCode -or $r.ExitCode -ne 0){throw 'latest own docs whitespace failed'}\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-112142-696-final-doc-review-whitespace.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-112142-696-final-doc-review-whitespace.stderr.log",
+  "CleanupErrors": [
+    "Final task inventory unverified: live=0 unknown=1"
+  ],
+  "FinalCheckComplete": false,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 1,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 0.0290636,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

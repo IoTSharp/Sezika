@@ -1,0 +1,30 @@
+{
+  "Pid": 50976,
+  "Started": "2026-10-09T11:19:08.9456964Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 57400,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 57400,
+    "Started": "2026-10-09T19:18:49.444419+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Complete-Evidence-Index.ps1",
+    "ParentPid": 37660
+  },
+  "TimeoutSeconds": 25,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\Git\\cmd\\git.exe",
+  "Arguments": [
+    "diff",
+    "--cached",
+    "--check",
+    "--",
+    "HANDOFF.md",
+    "CHANGELOG.md",
+    "docs/training-next-handoff-2026-10-09.md",
+    "docs/evidence/token-limit-8192-2026-10-09.md",
+    "ROADMAP.md"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

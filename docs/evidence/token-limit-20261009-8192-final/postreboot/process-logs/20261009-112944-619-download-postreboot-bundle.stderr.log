@@ -1,0 +1,5 @@
+Exception: D:\source\Sezika\.artifacts\token-limit-20261009-8192\Download-PostrebootEvidence.ps1:12
+Line |
+  12 |  бн e -or $r.ExitCode -ne 0){throw ('actual child exit failed: '+$Label)}
+     |                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | actual child exit failed: download-postreboot-evidence

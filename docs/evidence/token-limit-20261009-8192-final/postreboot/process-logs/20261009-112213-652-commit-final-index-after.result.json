@@ -1,0 +1,43 @@
+{
+  "Status": "CleanupFailed",
+  "Pid": 29528,
+  "ExitCode": 0,
+  "Error": "Process cleanup or output capture failed.",
+  "ElapsedSeconds": 1.642,
+  "TimeoutSeconds": 25,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\Git\\cmd\\git.exe",
+  "Arguments": [
+    "diff",
+    "--cached",
+    "--name-only"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T11:22:14.4835019Z",
+  "ParentPid": 62724,
+  "Launcher": {
+    "Pid": 62724,
+    "Started": "2026-10-09T19:22:01.490971+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Commit-Evidence-Final.ps1",
+    "ParentPid": 74224
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-112213-652-commit-final-index-after.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-112213-652-commit-final-index-after.stderr.log",
+  "CleanupErrors": [
+    "Final task inventory unverified: live=0 unknown=1"
+  ],
+  "FinalCheckComplete": false,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 1,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 0.0006239,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

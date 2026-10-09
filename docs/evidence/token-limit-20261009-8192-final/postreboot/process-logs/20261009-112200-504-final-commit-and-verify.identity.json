@@ -1,0 +1,24 @@
+{
+  "Pid": 62724,
+  "Started": "2026-10-09T11:22:01.490971Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Commit-Evidence-Final.ps1",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 74224,
+  "ObservedParentPid": 74224,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 74224,
+    "Started": "2026-10-09T19:22:00.001295+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'; & (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $task 'Commit-Evidence-Final.ps1')) -TimeoutSeconds 125 -LogName final-commit-and-verify -ProcessQueryTimeoutSeconds 2 -CancelFile (Join-Path $task 'cancel.request')\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 125,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Commit-Evidence-Final.ps1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

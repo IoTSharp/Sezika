@@ -1,0 +1,74 @@
+{
+  "Status": "Failed",
+  "Pid": 2208,
+  "ExitCode": 6,
+  "Error": "Process failed with exit code 6.",
+  "ElapsedSeconds": 13.953,
+  "TimeoutSeconds": 65,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\reboot-observe-postcommit.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T11:24:49.3183435Z",
+  "ParentPid": 68728,
+  "Launcher": {
+    "Pid": 68728,
+    "Started": "2026-10-09T19:24:43.782001+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'; $new=Join-Path $task 'remote/reboot-observe-postcommit.sh'; if(Test-Path -LiteralPath $new){throw 'phase already exists'}; Copy-Item -LiteralPath (Join-Path $task 'remote/reboot-observe.sh') -Destination $new; & (Join-Path $task 'Run-Remote.ps1') -Phase reboot-observe-postcommit -Seconds 65\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-112447-104-remote-reboot-observe-postcommit.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-112447-104-remote-reboot-observe-postcommit.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 2.76729,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [
+    "observer incomplete: 已超时 ",
+    "observer incomplete: Task creation/complete argv is not observed."
+  ],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 2208,
+      "CreationDate": "2026-10-09T19:24:49.318343+08:00",
+      "Started": "2026-10-09T11:24:49.318343Z",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\reboot-observe-postcommit.sh",
+      "ParentPid": 68728,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 74456,
+      "CreationDate": "2026-10-09T19:24:49.363934+08:00",
+      "Started": "2026-10-09T11:24:49.363934Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 2208,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 2208,
+          "CreationDate": "2026-10-09T19:24:49.318343+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\reboot-observe-postcommit.sh",
+          "ParentPid": 68728
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

@@ -1,0 +1,27 @@
+{
+  "Pid": 47356,
+  "Started": "2026-10-09T11:21:08.739Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 71028,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 71028,
+    "Started": "2026-10-09T19:21:07.154236+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'; $docs=@('HANDOFF.md','CHANGELOG.md','docs/training-next-handoff-2026-10-09.md','docs/evidence/token-limit-8192-2026-10-09.md'); & (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\Git\\cmd\\git.exe' -ArgumentList (@('add','--')+$docs) -TimeoutSeconds 25 -LogName final-doc-review-restage -ProcessQueryTimeoutSeconds 2 -CancelFile (Join-Path $task 'cancel.request') | Select-Object -Last 2; & (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\Git\\cmd\\git.exe' -ArgumentList (@('diff','--cached','--check','--')+$docs+@('ROADMAP.md')) -TimeoutSeconds 25 -LogName final-doc-review-whitespace -ProcessQueryTimeoutSeconds 2 -CancelFile (Join-Path $task 'cancel.request') | Select-Object -Last 2\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 25,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\Git\\cmd\\git.exe",
+  "Arguments": [
+    "add",
+    "--",
+    "HANDOFF.md",
+    "CHANGELOG.md",
+    "docs/training-next-handoff-2026-10-09.md",
+    "docs/evidence/token-limit-8192-2026-10-09.md"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

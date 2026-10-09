@@ -1,0 +1,88 @@
+{
+  "Status": "Succeeded",
+  "Pid": 31840,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 17.948,
+  "TimeoutSeconds": 94,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\postreboot-diagnosis.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T11:27:27.9451926Z",
+  "ParentPid": 26656,
+  "Launcher": {
+    "Pid": 26656,
+    "Started": "2026-10-09T19:27:22.473169+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'; $task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'; $payload=Join-Path $task 'remote/postreboot-diagnosis-payload.sh'; $text=[IO.File]::ReadAllText($payload).Replace(\\\"`r`n\\\",\\\"`n\\\"); [IO.File]::WriteAllText($payload,$text,[Text.UTF8Encoding]::new($false)); $bytes=[IO.File]::ReadAllBytes($payload); $b64=[Convert]::ToBase64String($bytes); $hash=(Get-FileHash -LiteralPath $payload).Hash.ToLowerInvariant(); $script=@'\n#!/bin/bash\nset -euo pipefail\numask 077\ntask=/root/sezika-experiments/20261009-repaired-training-8192\ntest \\\"$(hostname)\\\" = digisyn-gpu01\ntest \\\"$(timeout 2s cat \\\"$task/task-identity\\\")\\\" = sezika-token-limit-20261009-8192\ntest \\\"$(timeout 2s cat /proc/sys/kernel/random/boot_id)\\\" = 31951b0f-232d-40c2-aec0-d7e7dd5215a6\ntest ! -e \\\"$task/cancel.request\\\" && test ! -L \\\"$task/stage.lock\\\"\nexec {lockfd}> \\\"$task/stage.lock\\\"\nflock -n \\\"$lockfd\\\" || exit 73\nrun=$task/.artifacts/stage-postreboot-diagnosis\ntest ! -e \\\"$run\\\" && test ! -L \\\"$run\\\"\nmkdir \\\"$run\\\"\nprintf '%s' '__PAYLOAD__' | base64 --decode > \\\"$run/diagnose.sh\\\"\nprintf '%s  %s\\n' '__HASH__' \\\"$run/diagnose.sh\\\" | timeout 2s sha256sum -c --quiet -\ntimeout 2s bash -n \\\"$run/diagnose.sh\\\"\nset +e\ntimeout --signal=TERM --kill-after=3s 72s bash \\\"$task/remote/Invoke-BoundedLinux.sh\\\" \\\"$run\\\" 60 8 0 file none -- /bin/bash \\\"$run/diagnose.sh\\\"\nrc=$?\nset -e\nprintf 'diagnosis_linux_runner_exit=%s\\n' \\\"$rc\\\"\ntimeout 2s cat \\\"$run/result.tsv\\\"\ntimeout 2s cat \\\"$run/payload.stdout.log\\\" \\\"$run/payload.stderr.log\\\"\nexit \\\"$rc\\\"\n'@; $script=$script.Replace('__PAYLOAD__',$b64).Replace('__HASH__',$hash); $path=Join-Path $task 'remote/postreboot-diagnosis.sh'; if(Test-Path -LiteralPath $path){throw 'new diagnosis stage required'}; [IO.File]::WriteAllText($path,$script.Replace(\\\"`r`n\\\",\\\"`n\\\"),[Text.UTF8Encoding]::new($false)); & (Join-Path $task 'Run-Remote.ps1') -Phase postreboot-diagnosis -Seconds 94\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-112726-274-remote-postreboot-diagnosis.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-112726-274-remote-postreboot-diagnosis.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 2.292616,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 31840,
+      "CreationDate": "2026-10-09T19:27:27.945192+08:00",
+      "Started": "2026-10-09T11:27:27.945192Z",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\postreboot-diagnosis.sh",
+      "ParentPid": 26656,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 61064,
+      "CreationDate": "2026-10-09T19:27:31.885674+08:00",
+      "Started": "2026-10-09T11:27:31.885674Z",
+      "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "ParentPid": 31840,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 31840,
+          "CreationDate": "2026-10-09T19:27:27.945192+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\postreboot-diagnosis.sh",
+          "ParentPid": 26656
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 71468,
+      "CreationDate": "2026-10-09T19:27:28.014426+08:00",
+      "Started": "2026-10-09T11:27:28.014426Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 31840,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 31840,
+          "CreationDate": "2026-10-09T19:27:27.945192+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\postreboot-diagnosis.sh",
+          "ParentPid": 26656
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

@@ -1,0 +1,11 @@
+boot_id_before=d5489509-b67a-436d-b331-05390e3048cc
+boot_id_after=31951b0f-232d-40c2-aec0-d7e7dd5215a6
+2026-10-09T11:24:57Z
+No devices were found
+gpu_observation_exit=6
+container=da214fdd10e65e4800fd8ac02b66ec21f19ab56541f4c2e7f18e63a6a80d3011 name=/digisyn-hearon-hymt2-gguf-translation-1 state=running init_pid=2974 restart={"MaximumRetryCount":0,"Name":"unless-stopped"}
+container=74301ee0b2cf9e39d0901bbc7b4e4e9f641d0668a31d67ae920c35f9d1ad62d5 name=/digisyn-hearon-gigaam-asr-1 state=running init_pid=2973 restart={"MaximumRetryCount":0,"Name":"unless-stopped"}
+{"status":"error","model_loaded":false,"model":"ai-sage/GigaAM-Multilingual","api_model":"gigaam-multilingual-large-ctc","revision":"large_ctc","commit":null,"device":"cuda:0","precision":"fp32","gpu":null,"supported_languages":["en","kk","ky","ru","uz"],"error":"CUDA is required but torch.cuda.is_available() returned false"} port=http://127.0.0.1:8001/health http_status=503
+health_curl_exit=0
+{"status":"ok"} port=http://127.0.0.1:8003/health http_status=200
+health_curl_exit=0

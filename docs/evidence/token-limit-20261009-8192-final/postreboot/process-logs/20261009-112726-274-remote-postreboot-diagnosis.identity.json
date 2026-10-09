@@ -1,0 +1,26 @@
+{
+  "Pid": 31840,
+  "Started": "2026-10-09T11:27:27.9451926Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\postreboot-diagnosis.sh",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 26656,
+  "ObservedParentPid": 26656,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 26656,
+    "Started": "2026-10-09T19:27:22.473169+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'; $task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'; $payload=Join-Path $task 'remote/postreboot-diagnosis-payload.sh'; $text=[IO.File]::ReadAllText($payload).Replace(\\\"`r`n\\\",\\\"`n\\\"); [IO.File]::WriteAllText($payload,$text,[Text.UTF8Encoding]::new($false)); $bytes=[IO.File]::ReadAllBytes($payload); $b64=[Convert]::ToBase64String($bytes); $hash=(Get-FileHash -LiteralPath $payload).Hash.ToLowerInvariant(); $script=@'\n#!/bin/bash\nset -euo pipefail\numask 077\ntask=/root/sezika-experiments/20261009-repaired-training-8192\ntest \\\"$(hostname)\\\" = digisyn-gpu01\ntest \\\"$(timeout 2s cat \\\"$task/task-identity\\\")\\\" = sezika-token-limit-20261009-8192\ntest \\\"$(timeout 2s cat /proc/sys/kernel/random/boot_id)\\\" = 31951b0f-232d-40c2-aec0-d7e7dd5215a6\ntest ! -e \\\"$task/cancel.request\\\" && test ! -L \\\"$task/stage.lock\\\"\nexec {lockfd}> \\\"$task/stage.lock\\\"\nflock -n \\\"$lockfd\\\" || exit 73\nrun=$task/.artifacts/stage-postreboot-diagnosis\ntest ! -e \\\"$run\\\" && test ! -L \\\"$run\\\"\nmkdir \\\"$run\\\"\nprintf '%s' '__PAYLOAD__' | base64 --decode > \\\"$run/diagnose.sh\\\"\nprintf '%s  %s\\n' '__HASH__' \\\"$run/diagnose.sh\\\" | timeout 2s sha256sum -c --quiet -\ntimeout 2s bash -n \\\"$run/diagnose.sh\\\"\nset +e\ntimeout --signal=TERM --kill-after=3s 72s bash \\\"$task/remote/Invoke-BoundedLinux.sh\\\" \\\"$run\\\" 60 8 0 file none -- /bin/bash \\\"$run/diagnose.sh\\\"\nrc=$?\nset -e\nprintf 'diagnosis_linux_runner_exit=%s\\n' \\\"$rc\\\"\ntimeout 2s cat \\\"$run/result.tsv\\\"\ntimeout 2s cat \\\"$run/payload.stdout.log\\\" \\\"$run/payload.stderr.log\\\"\nexit \\\"$rc\\\"\n'@; $script=$script.Replace('__PAYLOAD__',$b64).Replace('__HASH__',$hash); $path=Join-Path $task 'remote/postreboot-diagnosis.sh'; if(Test-Path -LiteralPath $path){throw 'new diagnosis stage required'}; [IO.File]::WriteAllText($path,$script.Replace(\\\"`r`n\\\",\\\"`n\\\"),[Text.UTF8Encoding]::new($false)); & (Join-Path $task 'Run-Remote.ps1') -Phase postreboot-diagnosis -Seconds 94\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 94,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\postreboot-diagnosis.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

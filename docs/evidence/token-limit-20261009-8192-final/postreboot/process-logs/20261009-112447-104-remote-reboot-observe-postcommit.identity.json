@@ -1,0 +1,26 @@
+{
+  "Pid": 2208,
+  "Started": "2026-10-09T11:24:49.3183435Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\reboot-observe-postcommit.sh",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 68728,
+  "ObservedParentPid": 68728,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 68728,
+    "Started": "2026-10-09T19:24:43.782001+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'; $new=Join-Path $task 'remote/reboot-observe-postcommit.sh'; if(Test-Path -LiteralPath $new){throw 'phase already exists'}; Copy-Item -LiteralPath (Join-Path $task 'remote/reboot-observe.sh') -Destination $new; & (Join-Path $task 'Run-Remote.ps1') -Phase reboot-observe-postcommit -Seconds 65\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 65,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\reboot-observe-postcommit.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}
