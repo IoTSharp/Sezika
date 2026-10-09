@@ -9,7 +9,7 @@ using Sezika.Cuda;
 namespace Sezika.ExperimentTrainer;
 
 internal sealed record ExpansionOptions(string Command, string Data, string ManifestSha256, string Package, string Output,
-    string? ReportSha256, string? ValidationOutput, int Device, int TimeoutSeconds, int TrainingSeconds)
+    string? ReportSha256, string? ValidationOutput, int Device, int TimeoutSeconds, int TrainingSeconds, int MaxTokens = 1024)
 {
     internal static ExpansionOptions Parse(IReadOnlyList<string> arguments, CancellationToken token)
     {
@@ -33,10 +33,11 @@ internal sealed record ExpansionOptions(string Command, string Data, string Mani
         var report = validate ? Need("--report-sha256") : null; if (report is not null) ExperimentData.RequireHash(report);
         if (!validate && (values.ContainsKey("--report-sha256") || values.ContainsKey("--validation-output"))) throw ExperimentData.Invalid("Training does not accept validation output/source options.");
         if (validate && new[] { "--training-seconds", "--steps", "--seed", "--learning-rate", "--max-tokens" }.Any(values.ContainsKey)) throw ExperimentData.Invalid("Fresh validation uses the pinned training report configuration.");
-        if (Number("--steps", 24_576, 24_576, 24_576) != 24_576 || Number("--seed", 17, 17, 17) != 17 || Number("--max-tokens", 1024, 1024, 1024) != 1024 ||
+        var maxTokens = Number("--max-tokens", 1024, 8192, 1024);
+        if (maxTokens is not (1024 or 8192) || Number("--steps", 24_576, 24_576, 24_576) != 24_576 || Number("--seed", 17, 17, 17) != 17 ||
             (values.TryGetValue("--learning-rate", out var rate) && (!float.TryParse(rate, NumberStyles.Float, CultureInfo.InvariantCulture, out var parsedRate) || parsedRate != 0.001f))) throw ExperimentData.Invalid("Expanded training configuration is fixed.");
         return new(arguments[0], Path.GetFullPath(Need("--data")), manifest, Path.GetFullPath(Need("--package")), Path.GetFullPath(Need("--output")), report,
-            validate ? Path.GetFullPath(Need("--validation-output")) : null, Number("--device", 0, 15, 0), Number("--timeout-seconds", 1, 1500, 1500), Number("--training-seconds", 1, 300, 300));
+            validate ? Path.GetFullPath(Need("--validation-output")) : null, Number("--device", 0, 15, 0), Number("--timeout-seconds", 1, 1500, 1500), Number("--training-seconds", 1, 300, 300), maxTokens);
     }
 }
 
@@ -50,25 +51,26 @@ internal static partial class ExperimentOperations
         var options = ExpansionOptions.Parse(arguments, token);
         using var budget = new ExperimentBudget(options.TimeoutSeconds, token) { EncoderForwardLimit = 384 };
         using var data = ExperimentData.OpenExpanded(options.Data, options.ManifestSha256, budget.Check, budget.Token);
+        if (options.MaxTokens == 8192 && data.Manifest.SchemaVersion != 3) throw ExperimentData.Invalid("8192 tokens requires the explicit repaired v3 data contract.");
         if (options.Command == "train-expanded") TrainExpanded(options, data, budget); else ValidateExpanded(options, data, budget);
     }
     private static MarkerFeatureSet ExportExpandedRows(CudaDevice device, IndependentEncoderModelPackage model, ExperimentRecord[] rows, MarkerFeatureIdentity identity, ExperimentBudget budget)
     {
         if (rows.Length is < 1 or > 256) throw ExperimentData.Invalid("Expanded GPU export denominator differs.");
         var examples = new MarkerFeatureExample[rows.Length];
-        using (var encoder = new CudaModernBertEncoder(device, model.Encoder.Config, model.Encoder.Weights, budget.Token))
+        using (var encoder = new CudaModernBertEncoder(device, model.Encoder.Config, model.Encoder.Weights, budget.Token, GpuLimit))
         {
             for (var index = 0; index < rows.Length && index < 256; index++)
             {
                 CheckGpu(device, budget); var row = rows[index];
                 Progress($"expanded GPU feature export {index + 1}/{rows.Length} {row.RecordId}");
-                var sequence = IndependentDecisionV1SequenceBuilder.Build(model.Tokenizer, row.Request, row.Question, new IndependentDecisionSequenceOptions { MaxTokens = 1024 }, budget.Token);
+                var sequence = IndependentDecisionV1SequenceBuilder.Build(model.Tokenizer, row.Request, row.Question, new IndependentDecisionSequenceOptions { MaxTokens = model.Encoder.Config.MaxTokens }, budget.Token);
                 if (row.Request.ModelId != model.ModelId || !sequence.CandidateIds.SequenceEqual(row.CandidateIds) || sequence.MarkerPositions.Length != row.CandidateIds.Length) throw ExperimentData.Invalid("Expanded actual rendered model/candidate identity differs.");
                 budget.BeginEncoderForward(); var hidden = encoder.Encode(sequence.TokenIds, budget.Token); budget.CompleteEncoderForward();
                 try
                 {
-                    if (hidden.Length != checked(sequence.TokenIds.Length * identity.HiddenSize) || hidden.Length > 1024 * 2048) throw ExperimentData.Invalid("Expanded GPU hidden tensor incomplete.");
-                    for (var offset = 0; offset < hidden.Length && offset < 1024 * 2048; offset++)
+                    if (hidden.Length != checked(sequence.TokenIds.Length * identity.HiddenSize) || hidden.Length > model.Encoder.Config.MaxTokens * 2048) throw ExperimentData.Invalid("Expanded GPU hidden tensor incomplete.");
+                    for (var offset = 0; offset < hidden.Length && offset < model.Encoder.Config.MaxTokens * 2048; offset++)
                     { if ((offset & 255) == 0) budget.Check(); if (!float.IsFinite(hidden[offset])) throw ExperimentData.Invalid("Expanded GPU hidden tensor nonfinite."); }
                     var markers = new float[sequence.MarkerPositions.Length][];
                     for (var candidate = 0; candidate < markers.Length && candidate < 8; candidate++) { budget.Check(); markers[candidate] = hidden.AsSpan(sequence.MarkerPositions[candidate] * identity.HiddenSize, identity.HiddenSize).ToArray(); }
@@ -149,7 +151,7 @@ internal static partial class ExperimentOperations
         var swapped = ScoreExpandedFeatures("train", "fixed-left1", device, rotated, head.Head, data, budget, trained.Rows);
         var rows = trained.Rows.Concat(dev.Rows).Concat(swapped.Rows).ToArray();
         var result = new ExpansionObservations(trained.Loss, dev.Loss, swapped.Loss, rows, Groups(rows, budget.Check), ExpandedPositionComparisons(rows, budget.Check));
-        ExpansionTrainingReport.ValidateObservations(result, trained.Loss.ParameterSha256, budget.Check, data.Manifest.Train, data.Manifest.Development); return result;
+        ExpansionTrainingReport.ValidateObservations(result, trained.Loss.ParameterSha256, budget.Check, data.Manifest.Train, data.Manifest.Development, model.Encoder.Config.MaxTokens); return result;
     }
     internal static ExperimentPositionComparison[] ExpandedPositionComparisons(ExperimentEvaluationRow[] rows, Action check)
     {
@@ -175,7 +177,11 @@ internal static partial class ExperimentOperations
     }
     private static void TrainExpandedCore(ExpansionOptions options, ExperimentData data, ExperimentBudget budget, ExpansionOutput output)
     {
-        using var model = LoadModel(options.Package, budget); using var device = CudaDevice.Open(options.Device); CheckGpu(device, budget);
+        using var encoderManifestLease = new FileStream(Path.Combine(options.Package, "model.json"), FileMode.Open, FileAccess.Read, FileShare.Read);
+        var encoderManifestHash = ExperimentData.Hash(ExperimentData.Snapshot(encoderManifestLease, 16_384, budget.Check));
+        using var model = LoadModel(options.Package, budget);
+        if (model.Encoder.Config.MaxTokens != options.MaxTokens) throw ExperimentData.Invalid("Expanded CLI and encoder manifest token profiles differ.");
+        using var device = CudaDevice.Open(options.Device); CheckGpu(device, budget);
         var artifacts = CudaTrainingExecutionIdentity.Read(budget.Token); var features = ExportExpanded(device, model, data, budget);
         var zero = new LinearMarkerHead(model.Encoder.Config.HiddenSize, new float[3 * model.Encoder.Config.HiddenSize]);
         var baselineTrain = Measure($"expanded_zero_train{features.Train.Examples.Count}", device, features.Train, zero, budget); var baselineDev = Measure($"expanded_zero_development{features.Development.Examples.Count}", device, features.Development, zero, budget);
@@ -198,12 +204,12 @@ internal static partial class ExperimentOperations
         var observations = ObserveExpanded(device, model, data, features.Train, features.Development, loadedHead, budget); var info = device.Info;
         var resources = CloseResources(device, model, budget);
         var repaired = data.Manifest.SchemaVersion == 3;
-        var report = new ExpansionTrainingReport(repaired ? ExpansionTrainingReport.RepairedContract : ExpansionTrainingReport.Contract, "completed_experiment_not_formal_acceptance", data.Manifest, data.ManifestSha256, data.RecordsSha256, data.ProvenanceSha256, data.Root,
+        var report = new ExpansionTrainingReport(options.MaxTokens == 8192 ? ExpansionTrainingReport.ExtendedContract : repaired ? ExpansionTrainingReport.RepairedContract : ExpansionTrainingReport.Contract, "completed_experiment_not_formal_acceptance", data.Manifest, data.ManifestSha256, data.RecordsSha256, data.ProvenanceSha256, data.Root,
             state.Identity, artifacts, new(info.Uuid, info.Name, info.DriverVersion, info.ComputeCapabilityMajor, info.ComputeCapabilityMinor, info.TotalMemoryBytes, device.DeviceIndex),
             state.Seed, state.LearningRate, state.CompletedSteps, state.LastLoss, true, "all_zero_three_linear_rows", IndependentCudaMarkerHeadTrainer.Backend, "cuda-modernbert-fp32-v1",
-            repaired ? ExpansionTrainingReport.RepairedStepSemantics : "24576_total_committed_updates_128_complete_192_example_epochs_no_resume", data.Manifest.Train, data.Manifest.Development, 1024, options.TrainingSeconds, options.TimeoutSeconds, budget.EncoderForwardLimit, budget.EncoderForwardsStarted, budget.EncoderForwardsCompleted,
+            repaired ? ExpansionTrainingReport.RepairedStepSemantics : "24576_total_committed_updates_128_complete_192_example_epochs_no_resume", data.Manifest.Train, data.Manifest.Development, options.MaxTokens, options.TrainingSeconds, options.TimeoutSeconds, budget.EncoderForwardLimit, budget.EncoderForwardsStarted, budget.EncoderForwardsCompleted,
             state.FeatureSha256, parameterHash, headHash, checkpointHash, true, baselineTrain, baselineDev, trainedTrain, trainedDev, observations, new(), resources, budget.ElapsedSeconds)
-        { DerivationLedgerSha256 = data.DerivationLedgerSha256, SampleVisits = visits?.Complete(state.CompletedSteps) };
+        { DerivationLedgerSha256 = data.DerivationLedgerSha256, SampleVisits = visits?.Complete(state.CompletedSteps), EncoderManifestSha256 = options.MaxTokens == 8192 ? encoderManifestHash : null };
         report.Validate(budget.Check); var bytes = JsonSerializer.SerializeToUtf8Bytes(report, ExperimentJsonContext.Default.ExpansionTrainingReport);
         if (bytes.Length > 4_194_304) throw ExperimentData.Invalid("Expanded report exceeds4MiB.");
         var hash = ExperimentData.Hash(bytes); output.Report.WriteNew(bytes, hash); budget.Check(); output.Commit();
@@ -230,7 +236,12 @@ internal static partial class ExperimentOperations
         var report = JsonSerializer.Deserialize(bytes, ExperimentJsonContext.Default.ExpansionTrainingReport) ?? throw ExperimentData.Invalid("Expanded report null."); report.Validate(budget.Check);
         if (!ExperimentData.SameHash(report.ManifestSha256, data.ManifestSha256) || !ExperimentData.SameHash(report.RecordsSha256, data.RecordsSha256) || !ExperimentData.SameHash(report.InputProvenanceSha256, data.ProvenanceSha256) || report.DataDeclaration.Contract != data.Manifest.Contract ||
             (data.Manifest.SchemaVersion == 3 && !ExperimentData.SameHash(report.DerivationLedgerSha256, data.DerivationLedgerSha256))) throw ExperimentData.Invalid("Expanded fresh data/derivation identity differs.");
-        using var model = LoadModel(options.Package, budget); using var device = CudaDevice.Open(options.Device); CheckGpu(device, budget); var artifacts = CudaTrainingExecutionIdentity.Read(budget.Token);
+        using var encoderManifestLease = new FileStream(Path.Combine(options.Package, "model.json"), FileMode.Open, FileAccess.Read, FileShare.Read);
+        var encoderManifestHash = ExperimentData.Hash(ExperimentData.Snapshot(encoderManifestLease, 16_384, budget.Check));
+        if (report.MaxTokens == 8192 && !ExperimentData.SameHash(encoderManifestHash, report.EncoderManifestSha256)) throw ExperimentData.Invalid("Fresh validation encoder manifest profile differs from training.");
+        using var model = LoadModel(options.Package, budget);
+        if (model.Encoder.Config.MaxTokens != report.MaxTokens) throw ExperimentData.Invalid("Fresh validation encoder and training token profiles differ.");
+        using var device = CudaDevice.Open(options.Device); CheckGpu(device, budget); var artifacts = CudaTrainingExecutionIdentity.Read(budget.Token);
         if (device.Info.Uuid != report.Device.Uuid || device.Info.DriverVersion != report.Device.DriverVersion || model.ModelId != report.Identity.ModelId || !ExperimentData.SameHash(model.EncoderSha256, report.Identity.EncoderSha256) || !ExperimentData.SameHash(model.TokenizerSha256, report.Identity.TokenizerSha256)) throw ExperimentData.Invalid("Expanded fresh encoder/device identity differs.");
         RequireArtifactIdentities(report.CudaArtifacts, artifacts, budget.Check);
         var features = ExportExpanded(device, model, data, budget); var checkpoint = MarkerTrainingCheckpoint.Load(checkpointPath, features.Train, report.CheckpointSha256, budget.Token);
@@ -240,9 +251,9 @@ internal static partial class ExperimentOperations
         var forwardCount = data.Manifest.Total + 16;
         if (budget.EncoderForwardsStarted != forwardCount || budget.EncoderForwardsCompleted != forwardCount) throw ExperimentData.Invalid("Expanded fresh forward denominator differs.");
         var resources = CloseResources(device, model, budget); ExpansionTrainingReport.ValidateResources(resources);
-        var validation = new ExpansionValidationReport(data.Manifest.SchemaVersion == 3 ? "sezika/teacher-labelled-gpu-expanded-experiment-validation/v3" : "sezika/teacher-labelled-gpu-expanded-experiment-validation/v2", "completed_experiment_not_formal_acceptance", options.ReportSha256!, data.ManifestSha256, data.RecordsSha256, data.ProvenanceSha256,
+        var validation = new ExpansionValidationReport(report.MaxTokens == 8192 ? "sezika/teacher-labelled-gpu-expanded-experiment-validation/v4" : data.Manifest.SchemaVersion == 3 ? "sezika/teacher-labelled-gpu-expanded-experiment-validation/v3" : "sezika/teacher-labelled-gpu-expanded-experiment-validation/v2", "completed_experiment_not_formal_acceptance", options.ReportSha256!, data.ManifestSha256, data.RecordsSha256, data.ProvenanceSha256,
             head.FileSha256, report.CheckpointSha256, report.ParameterSha256, true, budget.EncoderForwardsStarted, budget.EncoderForwardsCompleted, observed, new(), resources, budget.ElapsedSeconds)
-        { DerivationLedgerSha256 = data.DerivationLedgerSha256 };
+        { DerivationLedgerSha256 = data.DerivationLedgerSha256, MaxTokens = report.MaxTokens == 8192 ? 8192 : null, EncoderManifestSha256 = report.EncoderManifestSha256 };
         bytes = JsonSerializer.SerializeToUtf8Bytes(validation, ExperimentJsonContext.Default.ExpansionValidationReport); if (bytes.Length > 4_194_304) throw ExperimentData.Invalid("Expanded validation output exceeds4MiB.");
         var hash = ExperimentData.Hash(bytes); output.WriteNew(bytes, hash); budget.Check();
         Console.WriteLine($"{{\"status\":\"completed_experiment_not_formal_acceptance\",\"fresh_disk_outputs_matched\":true,\"validation_sha256\":\"{hash}\",\"encoder_forwards_completed\":{budget.EncoderForwardsCompleted}}}");

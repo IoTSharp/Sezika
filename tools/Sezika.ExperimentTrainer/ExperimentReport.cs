@@ -183,15 +183,21 @@ internal sealed record ExpansionTrainingReport(string TrainingContract, string S
 {
     internal const string Contract = "sezika/teacher-labelled-gpu-expanded-experiment-training/v2";
     internal const string RepairedContract = "sezika/teacher-labelled-gpu-expanded-experiment-training/v3";
+    internal const string ExtendedContract = "sezika/teacher-labelled-gpu-expanded-experiment-training/v4";
     internal const string RepairedStepSemantics = "24576_total_committed_updates_seeded_fixed_order_cycles_actual_train_count_no_resume";
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? DerivationLedgerSha256 { get; init; }
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public ExpansionSampleVisits? SampleVisits { get; init; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? EncoderManifestSha256 { get; init; }
     internal void Validate(Action check)
     {
         check(); Acceptance.Validate(); ExperimentData.ValidateExpandedManifest(DataDeclaration);
         var repaired = DataDeclaration.SchemaVersion == 3;
+        var extended = TrainingContract == ExtendedContract;
+        if (extended) { if (!repaired || MaxTokens != 8192) throw ExperimentData.Invalid("Extended report requires repaired data and strict8192."); ExperimentData.RequireHash(EncoderManifestSha256); }
+        else if (MaxTokens != 1024 || EncoderManifestSha256 is not null) throw ExperimentData.Invalid("Historical report must retain its strict1024 contract.");
         var train = repaired ? 162 : 192; var development = repaired ? 53 : 64; var forwards = train + development + 16;
         if (repaired)
         {
@@ -201,11 +207,11 @@ internal sealed record ExpansionTrainingReport(string TrainingContract, string S
             SampleVisits.Validate(LoadedObservations.Rows.Where(row => row.Split == "train" && row.Variant == "original").Select(row => row.RecordId).ToArray(), Seed, CompletedSteps, check);
         }
         else if (DerivationLedgerSha256 is not null || SampleVisits is not null) throw ExperimentData.Invalid("Legacy v2 report cannot declare repaired data evidence.");
-        if (TrainingContract != (repaired ? RepairedContract : Contract) || Status != "completed_experiment_not_formal_acceptance" || Seed != 17 || LearningRate != 0.001f ||
+        if (TrainingContract != (extended ? ExtendedContract : repaired ? RepairedContract : Contract) || Status != "completed_experiment_not_formal_acceptance" || Seed != 17 || LearningRate != 0.001f ||
             CompletedSteps != 24_576 || !double.IsFinite(LastStepPreUpdateSelectedExampleLoss) || LastStepPreUpdateSelectedExampleLoss < 0 ||
             !EncoderFrozen || InitialParameterSource != "all_zero_three_linear_rows" || TrainingBackend != IndependentCudaMarkerHeadTrainer.Backend ||
             FeatureBackend != "cuda-modernbert-fp32-v1" || StepSemantics != (repaired ? RepairedStepSemantics : "24576_total_committed_updates_128_complete_192_example_epochs_no_resume") ||
-            TrainCount != train || DevelopmentCount != development || MaxTokens != 1024 || TrainingTimeoutSeconds is < 1 or > 300 || OverallTimeoutSeconds is < 1 or > 1500 ||
+            TrainCount != train || DevelopmentCount != development || TrainingTimeoutSeconds is < 1 or > 300 || OverallTimeoutSeconds is < 1 or > 1500 ||
             EncoderForwardLimit != 384 || EncoderForwardsStarted != forwards || EncoderForwardsCompleted != forwards || !CheckpointAndHeadRoundtripMatched ||
             Identity.ModelId != IndependentModelLoader.ModelId || Identity.HiddenSize != 768 || Identity.Protocol != "decision-v1" || Identity.LengthPolicy != "strict" ||
             !ExperimentData.SameHash(Identity.EncoderSha256, IndependentModelLoader.ConvertedEncoderSha256) || !ExperimentData.SameHash(Identity.TokenizerSha256, IndependentModelLoader.TokenizerSha256) ||
@@ -219,7 +225,7 @@ internal sealed record ExpansionTrainingReport(string TrainingContract, string S
             !ExperimentData.SameHash(BaselineTrain.FeatureSha256, FeatureSha256) || !ExperimentData.SameHash(TrainedTrain.FeatureSha256, FeatureSha256) ||
             Math.Abs(TrainedTrain.MeanLoss - LoadedObservations.Train.MeanLoss) > 2e-6 || Math.Abs(TrainedDevelopment.MeanLoss - LoadedObservations.Development.MeanLoss) > 2e-6)
             throw ExperimentData.Invalid("Expanded baseline/trained/disk CE identity differs.");
-        ValidateObservations(LoadedObservations, ParameterSha256, check, train, development);
+        ValidateObservations(LoadedObservations, ParameterSha256, check, train, development, MaxTokens);
     }
     internal static void ValidateResources(ExperimentResources resources)
     {
@@ -235,9 +241,10 @@ internal sealed record ExpansionTrainingReport(string TrainingContract, string S
             throw ExperimentData.Invalid("Expanded complete GPU CE/device parameter denominator differs.");
         ExperimentData.RequireHash(loss.FeatureSha256); ExperimentData.RequireHash(loss.ParameterSha256);
     }
-    internal static void ValidateObservations(ExpansionObservations observations, string parameters, Action check, int trainCount = 192, int developmentCount = 64)
+    internal static void ValidateObservations(ExpansionObservations observations, string parameters, Action check, int trainCount = 192, int developmentCount = 64, int maxTokens = 1024)
     {
         if ((trainCount, developmentCount) is not ((192, 64) or (162, 53))) throw ExperimentData.Invalid("Expanded observation data version denominator differs.");
+        if (maxTokens is not (1024 or 8192) || (maxTokens == 8192 && trainCount != 162)) throw ExperimentData.Invalid("Expanded observation token profile differs.");
         var rowCount = trainCount + developmentCount + 16;
         ValidateLoss(observations.Train, trainCount, parameters); ValidateLoss(observations.Development, developmentCount, parameters); ValidateLoss(observations.RotatedTrainingChoice, 16, parameters);
         if (observations.Rows.Length != rowCount || observations.PositionComparisons.Length != 16 || observations.Rows.Count(row => row.Split == "train" && row.Variant == "original") != trainCount ||
@@ -250,7 +257,7 @@ internal sealed record ExpansionTrainingReport(string TrainingContract, string S
             if (!unique.Add(row.RecordId + ":" + row.Variant) || row.Language is not ("zh" or "en") || row.Split is not ("train" or "development") ||
                 row.Variant is not ("original" or "fixed-left1") || row.Type is not ("choice" or "score" or "boolean") ||
                 (row.Type == "choice" ? count is < 2 or > 8 : count != (row.Type == "score" ? 5 : 2)) || row.OriginalCandidateIds.Length != count || row.CandidateTextSha256.Length != count ||
-                row.Logits.Length != count || row.Probabilities.Length != count || row.TokenIds.Length is < 2 or > 1024 || row.MarkerPositions.Length != count ||
+                row.Logits.Length != count || row.Probabilities.Length != count || row.TokenIds.Length < 2 || row.TokenIds.Length > maxTokens || row.MarkerPositions.Length != count ||
                 (uint)row.TeacherTargetIndex >= (uint)count || (uint)row.OriginalTeacherTargetIndex >= (uint)count || (uint)row.PredictedIndex >= (uint)count ||
                 row.TeacherTargetId != row.CandidateIds[row.TeacherTargetIndex] || row.TeacherTargetId != row.OriginalCandidateIds[row.OriginalTeacherTargetIndex] ||
                 row.SelectedCandidateId != row.CandidateIds[row.PredictedIndex] || row.AgreesWithTeacher != (row.SelectedCandidateId == row.TeacherTargetId) ||
@@ -286,6 +293,10 @@ internal sealed record ExpansionValidationReport(string Contract, string Status,
 {
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? DerivationLedgerSha256 { get; init; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public int? MaxTokens { get; init; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? EncoderManifestSha256 { get; init; }
 }
 internal sealed record ExpansionLengthReport(string Contract, string DataContract, string? DerivationLedgerSha256, ExperimentLengthReport Measurement);
 internal sealed record RepairedLengthRow(string RecordId, string Language, string Split, string Type, bool Accepted,

@@ -313,10 +313,13 @@ internal static class ExpansionChecks
 
     internal static int RunLengths(string[] arguments, CancellationToken token)
     {
-        if (arguments.Length != 9 || arguments[1] != "--data" || arguments[3] != "--manifest-sha256" || arguments[5] != "--tokenizer" || arguments[7] != "--max-records" ||
+        if (arguments.Length is not (9 or 11) || arguments[1] != "--data" || arguments[3] != "--manifest-sha256" || arguments[5] != "--tokenizer" || arguments[7] != "--max-records" ||
             !int.TryParse(arguments[8], NumberStyles.None, CultureInfo.InvariantCulture, out var maximum)) throw ExperimentData.Invalid("lengths-expanded requires fixed --data --manifest-sha256 --tokenizer --max-records pairs.");
+        var maxTokens = 1024;
+        if (arguments.Length == 11 && (arguments[9] != "--max-tokens" || !int.TryParse(arguments[10], NumberStyles.None, CultureInfo.InvariantCulture, out maxTokens) || maxTokens is not (1024 or 8192))) throw ExperimentData.Invalid("Lengths accepts only explicit1024 or8192 token profiles.");
         using var budget = new ExperimentBudget(120, token);
         using var data = ExperimentData.OpenExpanded(arguments[2], arguments[4], budget.Check, budget.Token);
+        if (maxTokens == 8192 && data.Manifest.SchemaVersion != 3) throw ExperimentData.Invalid("8192 lengths requires repaired v3 data.");
         if (maximum != 1 && maximum != data.Manifest.Total) throw ExperimentData.Invalid("Expanded lengths must probe1 or cover all actual records.");
         var tokenizerPath = Path.GetFullPath(arguments[6]); ExperimentData.CheckPath(tokenizerPath, budget.Check);
         using var lease = new FileStream(tokenizerPath, FileMode.Open, FileAccess.Read, FileShare.Read);
@@ -335,7 +338,7 @@ internal static class ExpansionChecks
             Console.Error.WriteLine($"expanded lengths {index + 1}/{maximum}: {row.RecordId}");
             IndependentDecisionSequence sequence;
             attempted++;
-            try { sequence = IndependentDecisionV1SequenceBuilder.Build(tokenizer, row.Request, row.Question, new IndependentDecisionSequenceOptions { MaxTokens = 1024 }, budget.Token); }
+            try { sequence = IndependentDecisionV1SequenceBuilder.Build(tokenizer, row.Request, row.Question, new IndependentDecisionSequenceOptions { MaxTokens = maxTokens }, budget.Token); }
             catch (DecisionException error) when (repaired && !budget.Token.IsCancellationRequested && error.Code is
                 "decision_v1_token_budget_exceeded" or "decision_v1_input_limit_exceeded" or "decision_v1_control_token" or
                 "decision_v1_identity_invalid" or "decision_v1_state_invalid" or "decision_v1_question_invalid" or "decision_v1_candidate_invalid" or "decision_v1_text_invalid")
@@ -344,11 +347,11 @@ internal static class ExpansionChecks
                 // Cancellation and both renderer/caller deadlines propagate instead of becoming row failures.
                 budget.Check(); failed++;
                 repairedRows![index] = new(row.RecordId, row.Language, row.Split, row.Type.ToString().ToLowerInvariant(), false, null, null, row.CandidateIds, error.Code, error.Message);
-                Console.Error.WriteLine($"expanded strict1024 rejected {index + 1}/{maximum}: {row.RecordId} {error.Code}");
+                Console.Error.WriteLine($"expanded strict{maxTokens} rejected {index + 1}/{maximum}: {row.RecordId} {error.Code}");
                 continue;
             }
-            if (sequence.TokenIds.Length is < 2 or > 1024 || !sequence.CandidateIds.SequenceEqual(row.CandidateIds) || sequence.MarkerPositions.Length != row.CandidateIds.Length)
-                throw ExperimentData.Invalid("Expanded strict1024 render/candidate/marker identity differs.");
+            if (sequence.TokenIds.Length < 2 || sequence.TokenIds.Length > maxTokens || !sequence.CandidateIds.SequenceEqual(row.CandidateIds) || sequence.MarkerPositions.Length != row.CandidateIds.Length)
+                throw ExperimentData.Invalid("Expanded strict token profile/render/candidate/marker identity differs.");
             rows[index] = new(row.RecordId, row.Language, row.Split, row.Type.ToString().ToLowerInvariant(), sequence.TokenIds.Length, sequence.MarkerPositions, sequence.CandidateIds);
             accepted++; maximumSuccessfulTokens = Math.Max(maximumSuccessfulTokens ?? 0, sequence.TokenIds.Length);
             if (repaired) repairedRows![index] = new(row.RecordId, row.Language, row.Split, row.Type.ToString().ToLowerInvariant(), true, sequence.TokenIds.Length, sequence.MarkerPositions, sequence.CandidateIds, null, null);
@@ -361,10 +364,10 @@ internal static class ExpansionChecks
         {
             if (attempted != maximum || accepted + failed != attempted || repairedRows!.Length != attempted) throw ExperimentData.Invalid("Repaired length attempt/result denominator differs.");
             ExperimentData.RequireHash(data.DerivationLedgerSha256);
-            var report = new RepairedLengthReport("sezika/teacher-labelled-expanded-rendered-token-lengths/v3", data.Manifest.Contract,
+            var report = new RepairedLengthReport(maxTokens == 8192 ? "sezika/teacher-labelled-expanded-rendered-token-lengths/v4" : "sezika/teacher-labelled-expanded-rendered-token-lengths/v3", data.Manifest.Contract,
                 failed > 0 ? "completed_rendered_lengths_with_failures_no_model_execution" : "completed_rendered_lengths_no_model_execution", IndependentModelLoader.ModelId,
                 data.ManifestSha256, data.RecordsSha256, data.ProvenanceSha256, data.DerivationLedgerSha256!, tokenizerHash, data.Root, tokenizerPath,
-                data.Manifest.Total, maximum, attempted, accepted, failed, data.Manifest.Total - attempted, 1024, maximumSuccessfulTokens,
+                data.Manifest.Total, maximum, attempted, accepted, failed, data.Manifest.Total - attempted, maxTokens, maximumSuccessfulTokens,
                 120, budget.ElapsedSeconds, false, false, false, false, process.PeakWorkingSet64, repairedRows!);
             Console.WriteLine(JsonSerializer.Serialize(report, ExperimentJsonContext.Default.RepairedLengthReport));
             return failed > 0 ? 1 : 0;
