@@ -14,12 +14,13 @@ internal sealed partial class ExperimentData
 
     internal static void ValidateExpandedManifest(ExperimentManifest value, bool fixtureOnly = false)
     {
+        if (value.SchemaVersion == 3) { if (fixtureOnly) throw Invalid("Repaired v3 cannot be a fixture-only teacher substitute."); ValidateRepairedManifest(value); return; }
         if (value.SchemaVersion != 2 || value.Contract != ExpandedContract || value.DatasetId != "general-zh-en-teacher-expansion-256-v1" ||
             value.Purpose != "teacher_labelled_experiment" || value.Protocol != "decision-v1" || value.StudentModelId != IndependentModelLoader.ModelId ||
             value.Formal || value.HumanReview != "pending" || value.TeacherOutputTrainingPermitted || !value.UserAuthorizedExperiment ||
             !value.TeacherAnswerExposed || value.EligibleAsSealedTest || value.Total != 256 || value.Train != 192 || value.Development != 64 ||
             value.SplitRule != "source-family-frozen-192-64-v1" || string.IsNullOrWhiteSpace(value.SplitRuleFrozenUtc) ||
-            value.Teacher is not null || value.FixtureOnly != fixtureOnly || value.Sources is null || value.Sources.Length != 3)
+            value.Teacher is not null || value.FixtureOnly != fixtureOnly || value.Sources is null || value.Sources.Length != 3 || value.Derivation is not null)
             throw Invalid("Only the explicitly exposed, pending 256/192/64 v2 expansion contract is accepted.");
         if (fixtureOnly)
         {
@@ -48,6 +49,20 @@ internal sealed partial class ExperimentData
     internal static ExperimentData OpenExpanded(string directory, string expectedManifestSha256, Action check, CancellationToken token, bool fixtureOnly = false)
     {
         RequireHash(expectedManifestSha256);
+        var manifestPath = Path.Combine(Path.GetFullPath(directory), "experiment-manifest.json"); CheckPath(manifestPath, check);
+        bool repaired;
+        using (var probe = new FileStream(manifestPath, FileMode.Open, FileAccess.Read, FileShare.Read))
+        {
+            var pinned = Snapshot(probe, 1_048_576, check);
+            if (!SameHash(Hash(pinned), expectedManifestSha256)) throw Invalid("Expanded pinned manifest probe hash differs.");
+            CheckJson(pinned, 1_048_576, token); using var declaration = JsonDocument.Parse(pinned);
+            repaired = declaration.RootElement.GetProperty("schema_version").GetInt32() == 3;
+        }
+        if (repaired)
+        {
+            if (fixtureOnly) throw Invalid("Repaired v3 cannot bypass real teacher/derivation verification.");
+            return OpenRepaired(directory, expectedManifestSha256, check, token);
+        }
         var result = new ExperimentData { Root = Path.GetFullPath(directory) };
         try
         {
@@ -245,19 +260,22 @@ internal static class ExpansionChecks
     internal static void Run(string[] arguments, CancellationToken token)
     {
         if (arguments.Length != 9 || arguments[1] != "--data" || arguments[3] != "--manifest-sha256" || arguments[5] != "--fixture-only" || arguments[7] != "--max-checks" ||
-            !bool.TryParse(arguments[6], out var fixtureOnly) || !int.TryParse(arguments[8], out var checks) || checks is < 1 or > 16) throw ExperimentData.Invalid("check-expanded-input requires fixed named pairs and1..16checks.");
+            !bool.TryParse(arguments[6], out var fixtureOnly) || !int.TryParse(arguments[8], out var checks) || checks is < 1 or > 24) throw ExperimentData.Invalid("check-expanded-input requires fixed named pairs and1..24checks (legacy v2 max16).");
         using var budget = new ExperimentBudget(30, token);
         using var data = ExperimentData.OpenExpanded(arguments[2], arguments[4], budget.Check, budget.Token, fixtureOnly);
+        if (data.Manifest.SchemaVersion != 3 && checks > 16) throw ExperimentData.Invalid("Legacy v2 check count remains1..16.");
         var negatives = new (string Field, JsonNode? Value)[]
         {
             ("schema_version", JsonValue.Create(1)), ("contract", JsonValue.Create(ExperimentData.Contract)), ("dataset_id", JsonValue.Create("wrong")),
             ("formal", JsonValue.Create(true)), ("human_review", JsonValue.Create("approved")), ("teacher_output_training_permitted", JsonValue.Create(true)),
             ("user_authorized_experiment", JsonValue.Create(false)), ("teacher_answer_exposed", JsonValue.Create(false)), ("eligible_as_sealed_test", JsonValue.Create(true)),
             ("total", JsonValue.Create(255)), ("train", JsonValue.Create(191)), ("development", JsonValue.Create(63)), ("split_rule", JsonValue.Create("random")),
-            ("sources", new JsonArray()), ("fixture_only", JsonValue.Create(!fixtureOnly))
+            ("sources", new JsonArray()), ("fixture_only", JsonValue.Create(!fixtureOnly)),
+            ("derivation", null), ("contract", JsonValue.Create(ExperimentData.ExpandedContract)), ("total", JsonValue.Create(256)),
+            ("train", JsonValue.Create(192)), ("development", JsonValue.Create(64))
         };
         var manifest = JsonSerializer.SerializeToUtf8Bytes(data.Manifest, ExperimentJsonContext.Default.ExperimentManifest);
-        for (var index = 1; index < checks && index <= 15; index++)
+        for (var index = 1; index < checks && index <= 20; index++)
         {
             budget.Check(); var mutated = JsonNode.Parse(manifest)!.AsObject(); mutated[negatives[index - 1].Field] = negatives[index - 1].Value?.DeepClone();
             var rejected = false;
@@ -266,6 +284,95 @@ internal static class ExpansionChecks
             if (!rejected) throw ExperimentData.Invalid("Expanded negative contract was accepted: " + negatives[index - 1].Field);
             Console.Error.WriteLine($"expansion fixture/input check {index + 1}/{checks}");
         }
+        if (checks >= 22)
+        {
+            var tiny = new ExpansionVisitObserver(["tiny-a", "tiny-b"], 17, budget.Check);
+            for (var step = 0; step <= 3; step++) { budget.Check(); tiny.Committed(step); }
+            var tinyVisits = tiny.Complete(3); tinyVisits.Validate(["tiny-a", "tiny-b"], 17, 3, budget.Check);
+            if (tinyVisits.CompleteOrderCycles != 1 || tinyVisits.FinalCyclePrefixCount != 1 || tinyVisits.Visits.Sum(row => row.CommittedUpdates) != 3)
+                throw ExperimentData.Invalid("Tiny visit probe failed.");
+        }
+        if (checks >= 23)
+        {
+            var ids = data.Records.Where(row => row.Split == "train").Select(row => row.RecordId).ToArray();
+            var observer = new ExpansionVisitObserver(ids, 17, budget.Check);
+            for (var step = 0; step <= 24_576; step++) { budget.Check(); observer.Committed(step); }
+            var visits = observer.Complete(24_576); visits.Validate(ids, 17, 24_576, budget.Check);
+            if (visits.CompleteOrderCycles != 151 || visits.FinalCyclePrefixCount != 114 || visits.Visits.Sum(row => row.CommittedUpdates) != 24_576 ||
+                visits.Visits.Count(row => row.CommittedUpdates == 152) != 114 || visits.Visits.Count(row => row.CommittedUpdates == 151) != 48)
+                throw ExperimentData.Invalid("Repaired162 visit cycle reference differs.");
+        }
+        if (checks >= 24)
+        {
+            var observer = new ExpansionVisitObserver(["tiny"], 17, budget.Check); observer.Committed(0); var rejected = false;
+            try { observer.Committed(2); } catch (DecisionException) { rejected = true; }
+            if (!rejected) throw ExperimentData.Invalid("Skipped commit was accepted.");
+        }
         Console.WriteLine($"{{\"status\":\"passed\",\"checks\":{checks},\"fixture_only\":{fixtureOnly.ToString().ToLowerInvariant()},\"training_executed\":false,\"gpu_opened\":false,\"api_called\":false}}");
+    }
+
+    internal static int RunLengths(string[] arguments, CancellationToken token)
+    {
+        if (arguments.Length != 9 || arguments[1] != "--data" || arguments[3] != "--manifest-sha256" || arguments[5] != "--tokenizer" || arguments[7] != "--max-records" ||
+            !int.TryParse(arguments[8], NumberStyles.None, CultureInfo.InvariantCulture, out var maximum)) throw ExperimentData.Invalid("lengths-expanded requires fixed --data --manifest-sha256 --tokenizer --max-records pairs.");
+        using var budget = new ExperimentBudget(120, token);
+        using var data = ExperimentData.OpenExpanded(arguments[2], arguments[4], budget.Check, budget.Token);
+        if (maximum != 1 && maximum != data.Manifest.Total) throw ExperimentData.Invalid("Expanded lengths must probe1 or cover all actual records.");
+        var tokenizerPath = Path.GetFullPath(arguments[6]); ExperimentData.CheckPath(tokenizerPath, budget.Check);
+        using var lease = new FileStream(tokenizerPath, FileMode.Open, FileAccess.Read, FileShare.Read);
+        const int tokenizerBytes = 17_525_329;
+        var bytes = ExperimentData.Snapshot(lease, tokenizerBytes, budget.Check); var tokenizerHash = ExperimentData.Hash(bytes);
+        if (bytes.Length != tokenizerBytes || !ExperimentData.SameHash(tokenizerHash, IndependentModelLoader.TokenizerSha256)) throw ExperimentData.Invalid("Expanded lengths require pinned actual tokenizer bytes/hash.");
+        Array.Clear(bytes); var tokenizer = new TokenizerJson(tokenizerPath, budget.Token); budget.Check();
+        if (tokenizer.BosId != 2 || tokenizer.EosId != 1 || tokenizer.MaskId != 4) throw ExperimentData.Invalid("Expanded tokenizer special IDs differ.");
+        var rows = new ExperimentLengthRow[maximum];
+        var repaired = data.Manifest.SchemaVersion == 3;
+        var repairedRows = repaired ? new RepairedLengthRow[maximum] : null;
+        var attempted = 0; var accepted = 0; var failed = 0; int? maximumSuccessfulTokens = null;
+        for (var index = 0; index < maximum && index < 256; index++)
+        {
+            budget.Check(); var row = data.Records[index];
+            Console.Error.WriteLine($"expanded lengths {index + 1}/{maximum}: {row.RecordId}");
+            IndependentDecisionSequence sequence;
+            attempted++;
+            try { sequence = IndependentDecisionV1SequenceBuilder.Build(tokenizer, row.Request, row.Question, new IndependentDecisionSequenceOptions { MaxTokens = 1024 }, budget.Token); }
+            catch (DecisionException error) when (repaired && !budget.Token.IsCancellationRequested && error.Code is
+                "decision_v1_token_budget_exceeded" or "decision_v1_input_limit_exceeded" or "decision_v1_control_token" or
+                "decision_v1_identity_invalid" or "decision_v1_state_invalid" or "decision_v1_question_invalid" or "decision_v1_candidate_invalid" or "decision_v1_text_invalid")
+            {
+                // Strict rendering can stop at a partial segment; do not invent a full token count.
+                // Cancellation and both renderer/caller deadlines propagate instead of becoming row failures.
+                budget.Check(); failed++;
+                repairedRows![index] = new(row.RecordId, row.Language, row.Split, row.Type.ToString().ToLowerInvariant(), false, null, null, row.CandidateIds, error.Code, error.Message);
+                Console.Error.WriteLine($"expanded strict1024 rejected {index + 1}/{maximum}: {row.RecordId} {error.Code}");
+                continue;
+            }
+            if (sequence.TokenIds.Length is < 2 or > 1024 || !sequence.CandidateIds.SequenceEqual(row.CandidateIds) || sequence.MarkerPositions.Length != row.CandidateIds.Length)
+                throw ExperimentData.Invalid("Expanded strict1024 render/candidate/marker identity differs.");
+            rows[index] = new(row.RecordId, row.Language, row.Split, row.Type.ToString().ToLowerInvariant(), sequence.TokenIds.Length, sequence.MarkerPositions, sequence.CandidateIds);
+            accepted++; maximumSuccessfulTokens = Math.Max(maximumSuccessfulTokens ?? 0, sequence.TokenIds.Length);
+            if (repaired) repairedRows![index] = new(row.RecordId, row.Language, row.Split, row.Type.ToString().ToLowerInvariant(), true, sequence.TokenIds.Length, sequence.MarkerPositions, sequence.CandidateIds, null, null);
+        }
+        budget.Check(); lease.Position = 0; bytes = ExperimentData.Snapshot(lease, tokenizerBytes, budget.Check);
+        if (bytes.Length != tokenizerBytes || !ExperimentData.SameHash(ExperimentData.Hash(bytes), tokenizerHash)) throw ExperimentData.Invalid("Tokenizer changed during expanded lengths.");
+        Array.Clear(bytes); using var process = Process.GetCurrentProcess(); budget.Check();
+        if (process.PeakWorkingSet64 > 4L * 1024 * 1024 * 1024) throw ExperimentData.Invalid("Expanded lengths exceeded host bound.");
+        if (repaired)
+        {
+            if (attempted != maximum || accepted + failed != attempted || repairedRows!.Length != attempted) throw ExperimentData.Invalid("Repaired length attempt/result denominator differs.");
+            ExperimentData.RequireHash(data.DerivationLedgerSha256);
+            var report = new RepairedLengthReport("sezika/teacher-labelled-expanded-rendered-token-lengths/v3", data.Manifest.Contract,
+                failed > 0 ? "completed_rendered_lengths_with_failures_no_model_execution" : "completed_rendered_lengths_no_model_execution", IndependentModelLoader.ModelId,
+                data.ManifestSha256, data.RecordsSha256, data.ProvenanceSha256, data.DerivationLedgerSha256!, tokenizerHash, data.Root, tokenizerPath,
+                data.Manifest.Total, maximum, attempted, accepted, failed, data.Manifest.Total - attempted, 1024, maximumSuccessfulTokens,
+                120, budget.ElapsedSeconds, false, false, false, false, process.PeakWorkingSet64, repairedRows!);
+            Console.WriteLine(JsonSerializer.Serialize(report, ExperimentJsonContext.Default.RepairedLengthReport));
+            return failed > 0 ? 1 : 0;
+        }
+        var measurement = new ExperimentLengthReport("sezika/teacher-labelled-rendered-token-lengths/v1", "completed_rendered_lengths_no_model_execution", IndependentModelLoader.ModelId,
+            data.ManifestSha256, data.RecordsSha256, data.ProvenanceSha256, tokenizerHash, data.Root, tokenizerPath, data.Manifest.Total, maximum, rows.Length,
+            1024, rows.Max(row => row.TokenCount), 120, budget.ElapsedSeconds, false, false, false, false, process.PeakWorkingSet64, rows);
+        Console.WriteLine(JsonSerializer.Serialize(measurement, ExperimentJsonContext.Default.ExperimentLengthReport));
+        return 0;
     }
 }

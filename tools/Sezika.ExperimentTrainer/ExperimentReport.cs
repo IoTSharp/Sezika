@@ -161,6 +161,9 @@ internal sealed record ExperimentLengthReport(string Contract, string Status, st
 [JsonSerializable(typeof(ExperimentEvaluationReport))]
 [JsonSerializable(typeof(ExpansionTrainingReport))]
 [JsonSerializable(typeof(ExpansionValidationReport))]
+[JsonSerializable(typeof(ExpansionLengthReport))]
+[JsonSerializable(typeof(RepairedLengthReport))]
+[JsonSerializable(typeof(ExpansionSampleVisits))]
 [JsonSerializable(typeof(ExperimentEvaluationRow))]
 internal partial class ExperimentJsonContext : JsonSerializerContext;
 
@@ -179,28 +182,44 @@ internal sealed record ExpansionTrainingReport(string TrainingContract, string S
     ExperimentAcceptance Acceptance, ExperimentResources Resources, double ElapsedSeconds)
 {
     internal const string Contract = "sezika/teacher-labelled-gpu-expanded-experiment-training/v2";
+    internal const string RepairedContract = "sezika/teacher-labelled-gpu-expanded-experiment-training/v3";
+    internal const string RepairedStepSemantics = "24576_total_committed_updates_seeded_fixed_order_cycles_actual_train_count_no_resume";
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? DerivationLedgerSha256 { get; init; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public ExpansionSampleVisits? SampleVisits { get; init; }
     internal void Validate(Action check)
     {
         check(); Acceptance.Validate(); ExperimentData.ValidateExpandedManifest(DataDeclaration);
-        if (TrainingContract != Contract || Status != "completed_experiment_not_formal_acceptance" || Seed != 17 || LearningRate != 0.001f ||
+        var repaired = DataDeclaration.SchemaVersion == 3;
+        var train = repaired ? 162 : 192; var development = repaired ? 53 : 64; var forwards = train + development + 16;
+        if (repaired)
+        {
+            ExperimentData.RequireHash(DerivationLedgerSha256);
+            if (!ExperimentData.SameHash(DerivationLedgerSha256, DataDeclaration.Derivation?.Sha256) || SampleVisits is null)
+                throw ExperimentData.Invalid("Repaired report derivation/visit evidence differs.");
+            SampleVisits.Validate(LoadedObservations.Rows.Where(row => row.Split == "train" && row.Variant == "original").Select(row => row.RecordId).ToArray(), Seed, CompletedSteps, check);
+        }
+        else if (DerivationLedgerSha256 is not null || SampleVisits is not null) throw ExperimentData.Invalid("Legacy v2 report cannot declare repaired data evidence.");
+        if (TrainingContract != (repaired ? RepairedContract : Contract) || Status != "completed_experiment_not_formal_acceptance" || Seed != 17 || LearningRate != 0.001f ||
             CompletedSteps != 24_576 || !double.IsFinite(LastStepPreUpdateSelectedExampleLoss) || LastStepPreUpdateSelectedExampleLoss < 0 ||
             !EncoderFrozen || InitialParameterSource != "all_zero_three_linear_rows" || TrainingBackend != IndependentCudaMarkerHeadTrainer.Backend ||
-            FeatureBackend != "cuda-modernbert-fp32-v1" || StepSemantics != "24576_total_committed_updates_128_complete_192_example_epochs_no_resume" ||
-            TrainCount != 192 || DevelopmentCount != 64 || MaxTokens != 1024 || TrainingTimeoutSeconds is < 1 or > 300 || OverallTimeoutSeconds is < 1 or > 1500 ||
-            EncoderForwardLimit != 384 || EncoderForwardsStarted != 272 || EncoderForwardsCompleted != 272 || !CheckpointAndHeadRoundtripMatched ||
+            FeatureBackend != "cuda-modernbert-fp32-v1" || StepSemantics != (repaired ? RepairedStepSemantics : "24576_total_committed_updates_128_complete_192_example_epochs_no_resume") ||
+            TrainCount != train || DevelopmentCount != development || MaxTokens != 1024 || TrainingTimeoutSeconds is < 1 or > 300 || OverallTimeoutSeconds is < 1 or > 1500 ||
+            EncoderForwardLimit != 384 || EncoderForwardsStarted != forwards || EncoderForwardsCompleted != forwards || !CheckpointAndHeadRoundtripMatched ||
             Identity.ModelId != IndependentModelLoader.ModelId || Identity.HiddenSize != 768 || Identity.Protocol != "decision-v1" || Identity.LengthPolicy != "strict" ||
             !ExperimentData.SameHash(Identity.EncoderSha256, IndependentModelLoader.ConvertedEncoderSha256) || !ExperimentData.SameHash(Identity.TokenizerSha256, IndependentModelLoader.TokenizerSha256) ||
             !ExperimentData.SameHash(Identity.DataManifestSha256, ManifestSha256) || !double.IsFinite(ElapsedSeconds) || ElapsedSeconds < 0 || ElapsedSeconds > OverallTimeoutSeconds)
             throw ExperimentData.Invalid("Expanded execution contract differs.");
         ValidateResources(Resources);
         foreach (var hash in new[] { ManifestSha256, RecordsSha256, InputProvenanceSha256, FeatureSha256, ParameterSha256, HeadSha256, CheckpointSha256 }) { check(); ExperimentData.RequireHash(hash); }
-        ValidateLoss(BaselineTrain, 192, null); ValidateLoss(BaselineDevelopment, 64, null);
-        ValidateLoss(TrainedTrain, 192, ParameterSha256); ValidateLoss(TrainedDevelopment, 64, ParameterSha256);
+        ValidateLoss(BaselineTrain, train, null); ValidateLoss(BaselineDevelopment, development, null);
+        ValidateLoss(TrainedTrain, train, ParameterSha256); ValidateLoss(TrainedDevelopment, development, ParameterSha256);
         if (!ExperimentData.SameHash(BaselineTrain.ParameterSha256, BaselineDevelopment.ParameterSha256) ||
             !ExperimentData.SameHash(BaselineTrain.FeatureSha256, FeatureSha256) || !ExperimentData.SameHash(TrainedTrain.FeatureSha256, FeatureSha256) ||
             Math.Abs(TrainedTrain.MeanLoss - LoadedObservations.Train.MeanLoss) > 2e-6 || Math.Abs(TrainedDevelopment.MeanLoss - LoadedObservations.Development.MeanLoss) > 2e-6)
             throw ExperimentData.Invalid("Expanded baseline/trained/disk CE identity differs.");
-        ValidateObservations(LoadedObservations, ParameterSha256, check);
+        ValidateObservations(LoadedObservations, ParameterSha256, check, train, development);
     }
     internal static void ValidateResources(ExperimentResources resources)
     {
@@ -216,14 +235,16 @@ internal sealed record ExpansionTrainingReport(string TrainingContract, string S
             throw ExperimentData.Invalid("Expanded complete GPU CE/device parameter denominator differs.");
         ExperimentData.RequireHash(loss.FeatureSha256); ExperimentData.RequireHash(loss.ParameterSha256);
     }
-    internal static void ValidateObservations(ExpansionObservations observations, string parameters, Action check)
+    internal static void ValidateObservations(ExpansionObservations observations, string parameters, Action check, int trainCount = 192, int developmentCount = 64)
     {
-        ValidateLoss(observations.Train, 192, parameters); ValidateLoss(observations.Development, 64, parameters); ValidateLoss(observations.RotatedTrainingChoice, 16, parameters);
-        if (observations.Rows.Length != 272 || observations.PositionComparisons.Length != 16 || observations.Rows.Count(row => row.Split == "train" && row.Variant == "original") != 192 ||
-            observations.Rows.Count(row => row.Split == "development" && row.Variant == "original") != 64 || observations.Rows.Count(row => row.Split == "train" && row.Variant == "fixed-left1") != 16)
+        if ((trainCount, developmentCount) is not ((192, 64) or (162, 53))) throw ExperimentData.Invalid("Expanded observation data version denominator differs.");
+        var rowCount = trainCount + developmentCount + 16;
+        ValidateLoss(observations.Train, trainCount, parameters); ValidateLoss(observations.Development, developmentCount, parameters); ValidateLoss(observations.RotatedTrainingChoice, 16, parameters);
+        if (observations.Rows.Length != rowCount || observations.PositionComparisons.Length != 16 || observations.Rows.Count(row => row.Split == "train" && row.Variant == "original") != trainCount ||
+            observations.Rows.Count(row => row.Split == "development" && row.Variant == "original") != developmentCount || observations.Rows.Count(row => row.Split == "train" && row.Variant == "fixed-left1") != 16)
             throw ExperimentData.Invalid("Expanded original/rotation row denominator differs.");
         var unique = new HashSet<string>(StringComparer.Ordinal);
-        for (var index = 0; index < 272; index++)
+        for (var index = 0; index < rowCount && index < 272; index++)
         {
             check(); var row = observations.Rows[index]; var count = row.CandidateIds.Length;
             if (!unique.Add(row.RecordId + ":" + row.Variant) || row.Language is not ("zh" or "en") || row.Split is not ("train" or "development") ||
@@ -261,4 +282,17 @@ internal sealed record ExpansionTrainingReport(string TrainingContract, string S
 internal sealed record ExpansionValidationReport(string Contract, string Status, string SourceReportSha256,
     string ManifestSha256, string RecordsSha256, string InputProvenanceSha256, string HeadSha256, string CheckpointSha256,
     string ParameterSha256, bool FreshDiskOutputsMatched, int EncoderForwardsStarted, int EncoderForwardsCompleted,
-    ExpansionObservations Observations, ExperimentAcceptance Acceptance, ExperimentResources Resources, double ElapsedSeconds);
+    ExpansionObservations Observations, ExperimentAcceptance Acceptance, ExperimentResources Resources, double ElapsedSeconds)
+{
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? DerivationLedgerSha256 { get; init; }
+}
+internal sealed record ExpansionLengthReport(string Contract, string DataContract, string? DerivationLedgerSha256, ExperimentLengthReport Measurement);
+internal sealed record RepairedLengthRow(string RecordId, string Language, string Split, string Type, bool Accepted,
+    int? TokenCount, int[]? MarkerPositions, string[] CandidateIds, string? FailureCode, string? Failure);
+internal sealed record RepairedLengthReport(string Contract, string DataContract, string Status, string ModelId,
+    string ManifestSha256, string RecordsSha256, string InputProvenanceSha256, string DerivationLedgerSha256, string TokenizerSha256,
+    string ActualDataRoot, string ActualTokenizerPath, int DataRecords, int RequestedRecords, int AttemptedRecords,
+    int AcceptedRecords, int FailedRecords, int UnattemptedRecords, int MaxAllowedTokens, int? MaximumSuccessfulTokens,
+    int TimeoutSeconds, double ElapsedSeconds, bool EncoderLoaded, bool FeatureComputed, bool TrainingExecuted, bool GpuOpened,
+    long ProcessPeakWorkingSetBytes, RepairedLengthRow[] Rows);

@@ -149,7 +149,7 @@ internal static partial class ExperimentOperations
         var swapped = ScoreExpandedFeatures("train", "fixed-left1", device, rotated, head.Head, data, budget, trained.Rows);
         var rows = trained.Rows.Concat(dev.Rows).Concat(swapped.Rows).ToArray();
         var result = new ExpansionObservations(trained.Loss, dev.Loss, swapped.Loss, rows, Groups(rows, budget.Check), ExpandedPositionComparisons(rows, budget.Check));
-        ExpansionTrainingReport.ValidateObservations(result, trained.Loss.ParameterSha256, budget.Check); return result;
+        ExpansionTrainingReport.ValidateObservations(result, trained.Loss.ParameterSha256, budget.Check, data.Manifest.Train, data.Manifest.Development); return result;
     }
     internal static ExperimentPositionComparison[] ExpandedPositionComparisons(ExperimentEvaluationRow[] rows, Action check)
     {
@@ -178,16 +178,18 @@ internal static partial class ExperimentOperations
         using var model = LoadModel(options.Package, budget); using var device = CudaDevice.Open(options.Device); CheckGpu(device, budget);
         var artifacts = CudaTrainingExecutionIdentity.Read(budget.Token); var features = ExportExpanded(device, model, data, budget);
         var zero = new LinearMarkerHead(model.Encoder.Config.HiddenSize, new float[3 * model.Encoder.Config.HiddenSize]);
-        var baselineTrain = Measure("expanded_zero_train192", device, features.Train, zero, budget); var baselineDev = Measure("expanded_zero_development64", device, features.Development, zero, budget);
+        var baselineTrain = Measure($"expanded_zero_train{features.Train.Examples.Count}", device, features.Train, zero, budget); var baselineDev = Measure($"expanded_zero_development{features.Development.Examples.Count}", device, features.Development, zero, budget);
         var lastProgress = Stopwatch.StartNew();
+        var visits = data.Manifest.SchemaVersion == 3 ? new ExpansionVisitObserver(features.Train.Examples.Select(row => row.RecordId).ToArray(), 17, budget.Check) : null;
         var state = IndependentCudaMarkerHeadTrainer.Train(device, features.Train, new(17, 24_576, 0.001f, TimeSpan.FromSeconds(options.TrainingSeconds)), progress: item =>
         {
+            visits?.Committed(item.CompletedSteps);
             CheckGpu(device, budget); if (item.CompletedSteps == 24_576 || lastProgress.Elapsed.TotalSeconds >= 5) { Progress($"expanded GPU SGD {item.CompletedSteps}/24576 pre-update selected-example CE={item.LastLoss:R}"); lastProgress.Restart(); }
         }, cancellationToken: budget.Token);
         RequireReleased(device, budget); var weights = state.Head.CopyWeights(); string parameterHash;
         try { parameterHash = ExperimentData.Hash(MemoryMarshal.AsBytes(weights.AsSpan())); if (state.CompletedSteps != 24_576 || !weights.Any(value => value != 0)) throw ExperimentData.Invalid("Expanded fixed24576 committed updates were not completed."); }
         finally { Array.Clear(weights); }
-        var trainedTrain = Measure("expanded_trained_train192", device, features.Train, state.Head, budget); var trainedDev = Measure("expanded_trained_development64", device, features.Development, state.Head, budget);
+        var trainedTrain = Measure($"expanded_trained_train{features.Train.Examples.Count}", device, features.Train, state.Head, budget); var trainedDev = Measure($"expanded_trained_development{features.Development.Examples.Count}", device, features.Development, state.Head, budget);
         var checkpointHash = MarkerTrainingCheckpoint.SaveNew(output.Checkpoint.Path, state, budget.Token); output.Checkpoint.Acquire(checkpointHash);
         var headHash = IndependentMarkerHeadAssetStore.SaveNew(output.Head.Path, state, budget.Token); output.Head.Acquire(headHash);
         var loadedCheckpoint = MarkerTrainingCheckpoint.Load(output.Checkpoint.Path, features.Train, checkpointHash, budget.Token);
@@ -195,15 +197,17 @@ internal static partial class ExperimentOperations
         RequireRoundtrip(state, loadedCheckpoint, loadedHead, parameterHash);
         var observations = ObserveExpanded(device, model, data, features.Train, features.Development, loadedHead, budget); var info = device.Info;
         var resources = CloseResources(device, model, budget);
-        var report = new ExpansionTrainingReport(ExpansionTrainingReport.Contract, "completed_experiment_not_formal_acceptance", data.Manifest, data.ManifestSha256, data.RecordsSha256, data.ProvenanceSha256, data.Root,
+        var repaired = data.Manifest.SchemaVersion == 3;
+        var report = new ExpansionTrainingReport(repaired ? ExpansionTrainingReport.RepairedContract : ExpansionTrainingReport.Contract, "completed_experiment_not_formal_acceptance", data.Manifest, data.ManifestSha256, data.RecordsSha256, data.ProvenanceSha256, data.Root,
             state.Identity, artifacts, new(info.Uuid, info.Name, info.DriverVersion, info.ComputeCapabilityMajor, info.ComputeCapabilityMinor, info.TotalMemoryBytes, device.DeviceIndex),
             state.Seed, state.LearningRate, state.CompletedSteps, state.LastLoss, true, "all_zero_three_linear_rows", IndependentCudaMarkerHeadTrainer.Backend, "cuda-modernbert-fp32-v1",
-            "24576_total_committed_updates_128_complete_192_example_epochs_no_resume", 192, 64, 1024, options.TrainingSeconds, options.TimeoutSeconds, budget.EncoderForwardLimit, budget.EncoderForwardsStarted, budget.EncoderForwardsCompleted,
-            state.FeatureSha256, parameterHash, headHash, checkpointHash, true, baselineTrain, baselineDev, trainedTrain, trainedDev, observations, new(), resources, budget.ElapsedSeconds);
+            repaired ? ExpansionTrainingReport.RepairedStepSemantics : "24576_total_committed_updates_128_complete_192_example_epochs_no_resume", data.Manifest.Train, data.Manifest.Development, 1024, options.TrainingSeconds, options.TimeoutSeconds, budget.EncoderForwardLimit, budget.EncoderForwardsStarted, budget.EncoderForwardsCompleted,
+            state.FeatureSha256, parameterHash, headHash, checkpointHash, true, baselineTrain, baselineDev, trainedTrain, trainedDev, observations, new(), resources, budget.ElapsedSeconds)
+        { DerivationLedgerSha256 = data.DerivationLedgerSha256, SampleVisits = visits?.Complete(state.CompletedSteps) };
         report.Validate(budget.Check); var bytes = JsonSerializer.SerializeToUtf8Bytes(report, ExperimentJsonContext.Default.ExpansionTrainingReport);
         if (bytes.Length > 4_194_304) throw ExperimentData.Invalid("Expanded report exceeds4MiB.");
         var hash = ExperimentData.Hash(bytes); output.Report.WriteNew(bytes, hash); budget.Check(); output.Commit();
-        Console.WriteLine($"{{\"status\":\"completed_experiment_not_formal_acceptance\",\"report_sha256\":\"{hash}\",\"head_sha256\":\"{headHash}\",\"checkpoint_sha256\":\"{checkpointHash}\",\"completed_steps\":24576,\"encoder_forwards_completed\":272}}");
+        Console.WriteLine($"{{\"status\":\"completed_experiment_not_formal_acceptance\",\"report_sha256\":\"{hash}\",\"head_sha256\":\"{headHash}\",\"checkpoint_sha256\":\"{checkpointHash}\",\"completed_steps\":24576,\"encoder_forwards_completed\":{budget.EncoderForwardsCompleted}}}");
     }
     private static void ValidateExpanded(ExpansionOptions options, ExperimentData data, ExperimentBudget budget)
     {
@@ -224,7 +228,8 @@ internal static partial class ExperimentOperations
         if (!ExperimentData.SameHash(ExperimentData.Hash(bytes), options.ReportSha256)) throw ExperimentData.Invalid("Expanded source report pinned hash differs.");
         ExperimentData.CheckJson(bytes, 4_194_304, budget.Token, 500_000);
         var report = JsonSerializer.Deserialize(bytes, ExperimentJsonContext.Default.ExpansionTrainingReport) ?? throw ExperimentData.Invalid("Expanded report null."); report.Validate(budget.Check);
-        if (!ExperimentData.SameHash(report.ManifestSha256, data.ManifestSha256) || !ExperimentData.SameHash(report.RecordsSha256, data.RecordsSha256) || !ExperimentData.SameHash(report.InputProvenanceSha256, data.ProvenanceSha256)) throw ExperimentData.Invalid("Expanded fresh data identity differs.");
+        if (!ExperimentData.SameHash(report.ManifestSha256, data.ManifestSha256) || !ExperimentData.SameHash(report.RecordsSha256, data.RecordsSha256) || !ExperimentData.SameHash(report.InputProvenanceSha256, data.ProvenanceSha256) || report.DataDeclaration.Contract != data.Manifest.Contract ||
+            (data.Manifest.SchemaVersion == 3 && !ExperimentData.SameHash(report.DerivationLedgerSha256, data.DerivationLedgerSha256))) throw ExperimentData.Invalid("Expanded fresh data/derivation identity differs.");
         using var model = LoadModel(options.Package, budget); using var device = CudaDevice.Open(options.Device); CheckGpu(device, budget); var artifacts = CudaTrainingExecutionIdentity.Read(budget.Token);
         if (device.Info.Uuid != report.Device.Uuid || device.Info.DriverVersion != report.Device.DriverVersion || model.ModelId != report.Identity.ModelId || !ExperimentData.SameHash(model.EncoderSha256, report.Identity.EncoderSha256) || !ExperimentData.SameHash(model.TokenizerSha256, report.Identity.TokenizerSha256)) throw ExperimentData.Invalid("Expanded fresh encoder/device identity differs.");
         RequireArtifactIdentities(report.CudaArtifacts, artifacts, budget.Check);
@@ -232,24 +237,27 @@ internal static partial class ExperimentOperations
         var head = IndependentMarkerHeadAssetStore.Load(headPath, features.Train.Identity, report.FeatureSha256, report.HeadSha256, budget.Token); RequireRoundtrip(checkpoint, checkpoint, head, report.ParameterSha256);
         if (checkpoint.CompletedSteps != report.CompletedSteps || checkpoint.Seed != report.Seed || checkpoint.LearningRate != report.LearningRate || checkpoint.LastLoss != report.LastStepPreUpdateSelectedExampleLoss) throw ExperimentData.Invalid("Expanded fresh optimizer metadata differs.");
         var observed = ObserveExpanded(device, model, data, features.Train, features.Development, head, budget); RequireExpandedObservationsMatch(report.LoadedObservations, observed, budget.Check);
-        if (budget.EncoderForwardsStarted != 272 || budget.EncoderForwardsCompleted != 272) throw ExperimentData.Invalid("Expanded fresh forward denominator differs.");
+        var forwardCount = data.Manifest.Total + 16;
+        if (budget.EncoderForwardsStarted != forwardCount || budget.EncoderForwardsCompleted != forwardCount) throw ExperimentData.Invalid("Expanded fresh forward denominator differs.");
         var resources = CloseResources(device, model, budget); ExpansionTrainingReport.ValidateResources(resources);
-        var validation = new ExpansionValidationReport("sezika/teacher-labelled-gpu-expanded-experiment-validation/v2", "completed_experiment_not_formal_acceptance", options.ReportSha256!, data.ManifestSha256, data.RecordsSha256, data.ProvenanceSha256,
-            head.FileSha256, report.CheckpointSha256, report.ParameterSha256, true, budget.EncoderForwardsStarted, budget.EncoderForwardsCompleted, observed, new(), resources, budget.ElapsedSeconds);
+        var validation = new ExpansionValidationReport(data.Manifest.SchemaVersion == 3 ? "sezika/teacher-labelled-gpu-expanded-experiment-validation/v3" : "sezika/teacher-labelled-gpu-expanded-experiment-validation/v2", "completed_experiment_not_formal_acceptance", options.ReportSha256!, data.ManifestSha256, data.RecordsSha256, data.ProvenanceSha256,
+            head.FileSha256, report.CheckpointSha256, report.ParameterSha256, true, budget.EncoderForwardsStarted, budget.EncoderForwardsCompleted, observed, new(), resources, budget.ElapsedSeconds)
+        { DerivationLedgerSha256 = data.DerivationLedgerSha256 };
         bytes = JsonSerializer.SerializeToUtf8Bytes(validation, ExperimentJsonContext.Default.ExpansionValidationReport); if (bytes.Length > 4_194_304) throw ExperimentData.Invalid("Expanded validation output exceeds4MiB.");
         var hash = ExperimentData.Hash(bytes); output.WriteNew(bytes, hash); budget.Check();
-        Console.WriteLine($"{{\"status\":\"completed_experiment_not_formal_acceptance\",\"fresh_disk_outputs_matched\":true,\"validation_sha256\":\"{hash}\",\"encoder_forwards_completed\":272}}");
+        Console.WriteLine($"{{\"status\":\"completed_experiment_not_formal_acceptance\",\"fresh_disk_outputs_matched\":true,\"validation_sha256\":\"{hash}\",\"encoder_forwards_completed\":{budget.EncoderForwardsCompleted}}}");
     }
     internal static void RequireExpandedObservationsMatch(ExpansionObservations expected, ExpansionObservations actual, Action check)
     {
-        check(); if (expected.Rows.Length != 272 || actual.Rows.Length != 272 || expected.Groups.Length != actual.Groups.Length || !expected.PositionComparisons.SequenceEqual(actual.PositionComparisons)) throw ExperimentData.Invalid("Expanded fresh observations denominator/position differs.");
+        check(); var count = expected.Train.ExampleCount + expected.Development.ExampleCount + 16;
+        if (count is not (272 or 231) || expected.Rows.Length != count || actual.Rows.Length != count || expected.Groups.Length != actual.Groups.Length || !expected.PositionComparisons.SequenceEqual(actual.PositionComparisons)) throw ExperimentData.Invalid("Expanded fresh observations denominator/position differs.");
         var oldLoss = new[] { expected.Train, expected.Development, expected.RotatedTrainingChoice }; var freshLoss = new[] { actual.Train, actual.Development, actual.RotatedTrainingChoice };
         for (var index = 0; index < 3; index++)
         {
             check(); var old = oldLoss[index]; var fresh = freshLoss[index];
             if (old.ExampleCount != fresh.ExampleCount || old.CompletedExamples != fresh.CompletedExamples || !ExperimentData.SameHash(old.FeatureSha256, fresh.FeatureSha256) || !ExperimentData.SameHash(old.ParameterSha256, fresh.ParameterSha256) || !ExperimentData.SameHash(old.DeviceParameterSha256, fresh.DeviceParameterSha256) || Math.Abs(old.MeanLoss - fresh.MeanLoss) > 2e-6) throw ExperimentData.Invalid("Expanded fresh GPU CE/feature/device parameter differs.");
         }
-        for (var index = 0; index < 272; index++)
+        for (var index = 0; index < count && index < 272; index++)
         {
             check(); var old = expected.Rows[index]; var fresh = actual.Rows[index];
             if (old.Logits.Length != fresh.Logits.Length || old.Probabilities.Length != fresh.Probabilities.Length || Math.Abs(old.GpuTeacherCe - fresh.GpuTeacherCe) > 2e-6 || Math.Abs(old.StableSoftmaxTeacherNll - fresh.StableSoftmaxTeacherNll) > 2e-6) throw ExperimentData.Invalid("Expanded fresh row CE/shape differs.");
@@ -262,6 +270,67 @@ internal static partial class ExperimentOperations
             check(); var old = expected.Groups[index]; var fresh = actual.Groups[index];
             if (Math.Abs(old.MeanGpuTeacherCe - fresh.MeanGpuTeacherCe) > 2e-6 || (old with { MeanGpuTeacherCe = fresh.MeanGpuTeacherCe }) != fresh) throw ExperimentData.Invalid("Expanded fresh grouped teacher agreement/rank differs.");
         }
+    }
+}
+
+internal sealed record ExpansionSampleVisit(string RecordId, int CommittedUpdates);
+internal sealed record ExpansionSampleVisits(string Semantics, int Seed, int TrainCount, int ObservedCommittedUpdates,
+    int CompleteOrderCycles, int FinalCyclePrefixCount, string OrderIndexSha256, string[] FrozenFileOrder,
+    string[] SeededCycleOrder, string[] FinalCyclePrefix, ExpansionSampleVisit[] Visits)
+{
+    internal const string VisitSemantics = "contiguous_actual_commit_callbacks_with_selected_ids_replayed_from_core_xorshift32_fisher_yates_fixed_order_not_direct_kernel_id_observation";
+    internal void Validate(string[] fileOrder, int seed, int steps, Action check)
+    {
+        if (fileOrder.Length is < 1 or > 256 || steps is < 0 or > 24_576) throw ExperimentData.Invalid("Visit validation bound differs.");
+        var replay = ExpansionVisitObserver.Replay(fileOrder, seed, steps, check);
+        if (!JsonSerializer.SerializeToUtf8Bytes(this, ExperimentJsonContext.Default.ExpansionSampleVisits).AsSpan().SequenceEqual(
+            JsonSerializer.SerializeToUtf8Bytes(replay, ExperimentJsonContext.Default.ExpansionSampleVisits))) throw ExperimentData.Invalid("Sample visit/order/partial cycle evidence differs from actual committed count.");
+    }
+}
+internal sealed class ExpansionVisitObserver
+{
+    private readonly string[] _ids;
+    private readonly int[] _order;
+    private readonly int[] _visits;
+    private readonly int _seed;
+    private readonly Action _check;
+    private int _committed = -1;
+    internal ExpansionVisitObserver(string[] ids, int seed, Action check)
+    {
+        check();
+        if (ids.Length is < 1 or > 256 || ids.Distinct(StringComparer.Ordinal).Count() != ids.Length) throw ExperimentData.Invalid("Visit file-order identities are incomplete/duplicate.");
+        _ids = ids.ToArray(); _seed = seed; _check = check; _visits = new int[ids.Length]; _order = Enumerable.Range(0, ids.Length).ToArray();
+        // Exact replay of the reviewed core MakeOrder; the GPU progress callback observes commits, not selected IDs.
+        uint state = unchecked((uint)seed) ^ 0x9E3779B9u; if (state == 0) state = 0xA341316Cu;
+        for (var index = ids.Length - 1; index > 0 && index < 256; index--)
+        {
+            check(); state ^= state << 13; state ^= state >> 17; state ^= state << 5;
+            var other = (int)(state % (uint)(index + 1)); (_order[index], _order[other]) = (_order[other], _order[index]);
+        }
+    }
+    internal void Committed(int completed)
+    {
+        _check();
+        if (completed != _committed + 1 || completed is < 0 or > 24_576) throw ExperimentData.Invalid("Training commit callback skipped/repeated or exceeds fixed update bound.");
+        if (completed > 0) _visits[_order[(completed - 1) % _ids.Length]]++;
+        _committed = completed;
+    }
+    internal ExpansionSampleVisits Complete(int completed)
+    {
+        _check(); if (_committed != completed || completed < 0) throw ExperimentData.Invalid("Final visit observation differs from committed training state.");
+        return new(ExpansionSampleVisits.VisitSemantics, _seed, _ids.Length, completed, completed / _ids.Length, completed % _ids.Length,
+            ExperimentOperations.IntHash(_order), _ids.ToArray(), _order.Select(index => _ids[index]).ToArray(),
+            _order.Take(completed % _ids.Length).Select(index => _ids[index]).ToArray(), _ids.Select((id, index) => new ExpansionSampleVisit(id, _visits[index])).ToArray());
+    }
+    internal static ExpansionSampleVisits Replay(string[] ids, int seed, int completed, Action check)
+    {
+        if (completed is < 0 or > 24_576) throw ExperimentData.Invalid("Visit replay step bound differs.");
+        var expected = new ExpansionVisitObserver(ids, seed, check);
+        for (var index = 0; index < ids.Length && index < 256; index++)
+        {
+            check(); expected._visits[expected._order[index]] = completed / ids.Length + (index < completed % ids.Length ? 1 : 0);
+        }
+        expected._committed = completed; return expected.Complete(completed);
     }
 }
 

@@ -23,9 +23,10 @@ try
         Console.WriteLine("validate --diagnostics fixed-left1 additionally requires --evaluation-sha256 <same-process-evaluation-hash> --evaluation-output <fresh-json-outside-source>; fresh disk/encoder/CE/row-output comparison, max72 forwards");
         Console.WriteLine("Sezika.ExperimentTrainer check-evaluation --data <same-package> --manifest-sha256 <hash> --source <old-training-directory> --report-sha256 <hash> --max-checks <1|6>; bounded CPU contracts and synthetic fixtures only,no GPU");
         Console.WriteLine("Explicit teacher-labelled experiment only: human review/license-release/quality/calibration/sealed/AOT/performance/publication remain false. Frozen encoder forward and head CE/SGD use GPU. No resume or CPU encoder fallback.");
-        Console.WriteLine("train-expanded --data <v2-six-file-package> --manifest-sha256 <hash> --package <fixed-package> --output <fresh-directory> [--device 0..15] [--timeout-seconds 1..1500]; fixed192train/64dev,24576updates,seed17,LR0.001,strict1024,SGD<=300s,272encoder-forwards<=384");
-        Console.WriteLine("validate-expanded --data <same-v2-package> --manifest-sha256 <hash> --package <fixed-package> --output <training-directory> --report-sha256 <hash> --validation-output <fresh-file-outside-source> [--device 0..15] [--timeout-seconds 1..1500]; independent fresh272forwards and disk/CE/output comparison");
-        Console.WriteLine("check-expanded-input --data <v2-package> --manifest-sha256 <hash> --fixture-only <true|false> --max-checks <1..16>; bounded contracts only,fixture-only never train");
+        Console.WriteLine("train-expanded --data <explicit-v2-or-repaired-v3-package> --manifest-sha256 <hash> --package <fixed-package> --output <fresh-directory> [--device 0..15] [--timeout-seconds 1..1500]; 24576updates,seed17,LR0.001,strict1024,SGD<=300s; v2=192train/64dev/272forwards; v3=162train/53dev/231forwards<=384 with actual sample visit evidence");
+        Console.WriteLine("validate-expanded --data <same-package> --manifest-sha256 <hash> --package <fixed-package> --output <training-directory> --report-sha256 <hash> --validation-output <fresh-file-outside-source> [--device 0..15] [--timeout-seconds 1..1500]; independent fresh full-data+16forwards and disk/CE/output comparison");
+        Console.WriteLine("check-expanded-input --data <v2-or-v3-package> --manifest-sha256 <hash> --fixture-only <true|false> --max-checks <1..16|v3:24>; bounded contracts and commit-order references only,fixture-only never train");
+        Console.WriteLine("lengths-expanded --data <v2-or-v3-package> --manifest-sha256 <hash> --tokenizer <fixed-tokenizer.json> --max-records <1|actual-total>; formal renderer strict1024,120seconds,no encoder/GPU/training");
         return 2;
     }
     if (args[0] == "check") { ExperimentChecks.Run(args, cancellation.Token); return 0; }
@@ -33,6 +34,7 @@ try
     if (args[0] == "lengths") { ExperimentChecks.RunLengths(args, cancellation.Token); return 0; }
     if (args[0] == "check-evaluation") { ExperimentEvaluationChecks.Run(args, cancellation.Token); return 0; }
     if (args[0] == "check-expanded-input") { ExpansionChecks.Run(args, cancellation.Token); return 0; }
+    if (args[0] == "lengths-expanded") return ExpansionChecks.RunLengths(args, cancellation.Token);
     if (args[0] is "train-expanded" or "validate-expanded") { ExperimentOperations.RunExpanded(args, cancellation.Token); return 0; }
     var options = ExperimentOptions.Parse(args, cancellation.Token);
     using var budget = new ExperimentBudget(options.TimeoutSeconds, cancellation.Token);
@@ -105,6 +107,8 @@ namespace Sezika.ExperimentTrainer
     {
         private readonly CancellationTokenSource _deadline;
         private readonly Stopwatch _clock = Stopwatch.StartNew();
+        private readonly Process _process = Process.GetCurrentProcess();
+        private double _nextMemoryCheck;
         private readonly int _seconds;
         internal CancellationToken Token => _deadline.Token;
         internal double ElapsedSeconds => _clock.Elapsed.TotalSeconds;
@@ -125,11 +129,20 @@ namespace Sezika.ExperimentTrainer
         internal void Check()
         {
             Token.ThrowIfCancellationRequested();
-            if (_clock.Elapsed.TotalSeconds >= _seconds) throw new OperationCanceledException("Experiment overall deadline expired.");
-            using var process = Process.GetCurrentProcess();
-            if (process.WorkingSet64 > 4L * 1024 * 1024 * 1024) throw ExperimentData.Invalid("Experiment process resident memory exceeds4GiB.");
+            var elapsed = _clock.Elapsed.TotalSeconds;
+            if (elapsed >= _seconds) throw new OperationCanceledException("Experiment overall deadline expired.");
+            // Cancellation and time are checked on every guard. OS memory queries
+            // are sampled to keep contract/token/commit loops within their budget;
+            // final reports additionally reject a process peak above4GiB.
+            if (elapsed >= _nextMemoryCheck)
+            {
+                _nextMemoryCheck = elapsed + 0.25;
+                _process.Refresh();
+                if (_process.WorkingSet64 > 4L * 1024 * 1024 * 1024 || _process.PeakWorkingSet64 > 4L * 1024 * 1024 * 1024)
+                    throw ExperimentData.Invalid("Experiment process resident/peak memory exceeds4GiB.");
+            }
         }
-        public void Dispose() => _deadline.Dispose();
+        public void Dispose() { _deadline.Dispose(); _process.Dispose(); }
     }
 
     internal static partial class ExperimentOperations
