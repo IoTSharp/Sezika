@@ -15,3 +15,4 @@
 永久证据见[evidence/rental-training-2026-10-09.md](evidence/rental-training-2026-10-09.md)，95份远端原字节镜像与SHA inventory；新head/checkpoint和完整weights留在ignored外部模型目录，本机含连接信息的原argv回执只保留任务根。head/checkpoint与旧确定性实验自然同SHA，新任务/root/GPU/PID/report绑定证明实际新训练，不能以同SHA误判为旧输出复用。
 
 训练、下载和回归已停止，其他ROADMAP暂停。不得自动扩量、加训、按dev调参、LoRA、encoder反传、教师调用或重复旧机恢复。正式人审、许可发布、质量、校准、封存、新head AOT/性能保持pending。PS7、Bash单引号here-string/stdin wrapper、循环项目与墙钟双界、取消/进度/backoff、准确进程身份及精准清理规则继续适用；禁止Graphify。仅本地分项commit，不push、发布或部署。
+2026-10-09完成后第一次heartbeat仅核本机真实回执，确认10/10 PASS及本地完整模型仍已保存；已将本聊天 `sezika` 定时监督设为PAUSED，按原要求停止并等待用户。未再次SSH、上传、训练或调用教师。
