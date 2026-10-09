@@ -12,6 +12,9 @@ internal static class IndependentLoaderContractChecks
         var config = IndependentModelContract.ReadManifest(Encoding.UTF8.GetBytes(manifest), deadline.Token);
         check(config.HeadCount == 12 && config.LocalAttention == 128 && config.LayerCount == 22,
             "independent manifest accepts fixed numerical contract without allocating weights");
+        var extended = IndependentModelContract.ReadManifest(Encoding.UTF8.GetBytes(manifest.Replace("\"runtime_max_tokens\": 1024", "\"runtime_max_tokens\": 8192", StringComparison.Ordinal)), deadline.Token);
+        check(extended.MaxTokens == 8192 && extended.HeadCount == config.HeadCount && extended.GlobalRopeTheta == config.GlobalRopeTheta,
+            "explicit 8192 profile preserves the pinned encoder numerical identity");
         var mutations = new (string From, string To)[]
         {
             ("\"head_count\": 12", "\"head_count\": 8"),
@@ -20,7 +23,8 @@ internal static class IndependentLoaderContractChecks
             ("\"global_rope_theta\": 160000", "\"global_rope_theta\": 10000"),
             ("\"local_rope_theta\": 160000", "\"local_rope_theta\": 10000"),
             ("\"norm_epsilon\": 1e-5", "\"norm_epsilon\": 1e-4"),
-            ("\"runtime_max_tokens\": 1024", "\"runtime_max_tokens\": 8192"),
+            ("\"runtime_max_tokens\": 1024", "\"runtime_max_tokens\": 8193"),
+            ("\"runtime_max_tokens\": 1024", "\"runtime_max_tokens\": 2048"),
             ("\"hidden_size\": 768", "\"hidden_size\": 512"),
             ("\"vocab_size\": 256000", "\"vocab_size\": 256001"),
             ("\"intermediate_size\": 1152", "\"intermediate_size\": 1536"),

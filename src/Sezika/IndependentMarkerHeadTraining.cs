@@ -125,7 +125,7 @@ public static class IndependentMarkerHeadTrainer
     public const int MaximumExamples = 256;
     public const int MaximumSteps = 24_576;
     internal const int MaxExamples = MaximumExamples;
-    private const int MaxTokens = 1024;
+    private const int MaxTokens = ModernBertConfig.MaximumSupportedTokens;
 
     public static MarkerTrainingState Train(MarkerFeatureSet set, MarkerTrainingOptions options,
         MarkerTrainingState? resume = null, Action<MarkerTrainingProgress>? progress = null,

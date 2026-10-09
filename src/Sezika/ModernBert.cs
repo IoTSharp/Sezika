@@ -7,6 +7,7 @@ public interface IEncoder
 
 public sealed record ModernBertConfig
 {
+    public const int MaximumSupportedTokens = 8192;
     public required int VocabularySize { get; init; }
     public required int HiddenSize { get; init; }
     public required int IntermediateSize { get; init; }
@@ -23,7 +24,7 @@ public sealed record ModernBertConfig
     {
         if (VocabularySize is < 1 or > 300000 || HiddenSize is < 2 or > 2048 || IntermediateSize is < 2 or > 8192 ||
             LayerCount is < 1 or > 64 || HeadCount < 1 || HiddenSize % HeadCount != 0 || (HiddenSize / HeadCount) % 2 != 0 ||
-            MaxTokens is < 2 or > 1024 || GlobalAttentionEvery < 1 || LocalAttention is < 2 or > 1024 ||
+            MaxTokens is < 2 or > MaximumSupportedTokens || GlobalAttentionEvery < 1 || LocalAttention is < 2 or > 1024 ||
             !float.IsFinite(GlobalRopeTheta) || GlobalRopeTheta <= 0 || !float.IsFinite(LocalRopeTheta) || LocalRopeTheta <= 0 ||
             !float.IsFinite(NormEpsilon) || NormEpsilon <= 0)
             throw new DecisionException("model_architecture_unsupported", "ModernBERT dimensions or numerical settings exceed the validated runtime bounds.");

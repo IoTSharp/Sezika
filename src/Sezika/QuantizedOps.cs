@@ -79,7 +79,7 @@ public static class QuantizedOps
     public static float[] Linear(float[] input, Int8WeightMatrix weights, float[]? bias, int rows, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(weights);
-        if (rows is < 1 or > 1024) throw new ArgumentOutOfRangeException(nameof(rows));
+        if (rows is < 1 or > ModernBertConfig.MaximumSupportedTokens) throw new ArgumentOutOfRangeException(nameof(rows));
         ScalarOps.Shape(input, checked(rows * weights.InputSize));
         if (bias is not null) ScalarOps.Shape(bias, weights.OutputSize);
         cancellationToken.ThrowIfCancellationRequested();

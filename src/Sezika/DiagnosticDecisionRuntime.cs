@@ -64,7 +64,7 @@ public sealed class DiagnosticDecisionV1Runtime : IDisposable
                 !string.Equals(pipeline.DiagnosticAssetSha256, asset.FileSha256, StringComparison.OrdinalIgnoreCase) ||
                 !string.Equals(pipeline.InitializationDescriptorSha256, asset.InitializationDescriptorSha256, StringComparison.OrdinalIgnoreCase) ||
                 string.IsNullOrWhiteSpace(pipeline.Backend) || pipeline.Backend.Length > 128 ||
-                pipeline.MaxTokens is < 2 or > 1024 || effective.MaxTokens > pipeline.MaxTokens)
+                pipeline.MaxTokens is < 2 or > ModernBertConfig.MaximumSupportedTokens || effective.MaxTokens > pipeline.MaxTokens)
                 throw new DecisionException("diagnostic_runtime_identity_mismatch", "Diagnostic pipeline differs from the asset or token budget.");
             _asset = asset;
             _session = new DecisionV1ExecutionSession(model, pipeline.Score, pipeline, () => pipeline.Backend, effective, this);

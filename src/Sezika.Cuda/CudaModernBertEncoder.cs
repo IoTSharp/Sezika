@@ -13,13 +13,21 @@ public sealed class CudaModernBertEncoder : IEncoder, IDisposable
     private readonly CudaDeviceBuffer _embeddingNorm;
     private readonly CudaDeviceBuffer _finalNorm;
     private readonly Layer[] _layers;
+    private readonly ulong _maximumOwnedBytes;
     private bool _disposed;
 
     public CudaModernBertEncoder(CudaDevice device, ModernBertConfig config, ModernBertWeights weights, CancellationToken cancellationToken = default)
+        : this(device, config, weights, cancellationToken, (config?.MaxTokens ?? 1024) > 1024 ? 6UL * 1024 * 1024 * 1024 : 3UL * 1024 * 1024 * 1024)
+    {
+    }
+
+    public CudaModernBertEncoder(CudaDevice device, ModernBertConfig config, ModernBertWeights weights, CancellationToken cancellationToken, ulong maximumOwnedBytes)
     {
         ArgumentNullException.ThrowIfNull(device);
         ArgumentNullException.ThrowIfNull(config);
         ArgumentNullException.ThrowIfNull(weights);
+        if (maximumOwnedBytes is < 1 or > 6UL * 1024 * 1024 * 1024) throw new ArgumentOutOfRangeException(nameof(maximumOwnedBytes));
+        _maximumOwnedBytes = maximumOwnedBytes;
         cancellationToken.ThrowIfCancellationRequested();
         // The scalar encoder validates the shared tensor contract without running inference.
         using (var validatedEncoder = new ModernBertEncoder(config, weights))
@@ -34,6 +42,13 @@ public sealed class CudaModernBertEncoder : IEncoder, IDisposable
         _layers = new Layer[config.LayerCount];
         using var deadline = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
         deadline.CancelAfter(TimeSpan.FromMinutes(10));
+        ulong resident = checked((ulong)(weights.TokenEmbeddings.LongLength + weights.EmbeddingNorm.LongLength + weights.FinalNorm.LongLength) * sizeof(float));
+        foreach (var layer in weights.Layers)
+        {
+            deadline.Token.ThrowIfCancellationRequested();
+            resident = checked(resident + (ulong)((layer.AttentionNorm?.LongLength ?? 0) + layer.Qkv.LongLength + layer.AttentionOutput.LongLength + layer.MlpNorm.LongLength + layer.MlpUp.LongLength + layer.MlpDown.LongLength) * sizeof(float));
+        }
+        RequireOwnedBudget(resident);
         _kernels = new CudaKernels(device, deadline.Token);
         try
         {
@@ -60,7 +75,23 @@ public sealed class CudaModernBertEncoder : IEncoder, IDisposable
 
     public ModernBertConfig Config { get; }
     public ModernBertWeights Weights { get; }
+    public ulong MaximumOwnedBytes => _maximumOwnedBytes;
     internal CudaDevice Device => _device;
+
+    public static ulong EstimateWorkspaceBytes(ModernBertConfig config, int rows)
+    {
+        ArgumentNullException.ThrowIfNull(config); config.Validate();
+        if (rows < 2 || rows > config.MaxTokens) throw new ArgumentOutOfRangeException(nameof(rows));
+        var count = (ulong)rows;
+        return checked(count * sizeof(int) + (10UL * count * (ulong)config.HiddenSize + 3UL * count * (ulong)config.IntermediateSize + count * count * (ulong)config.HeadCount) * sizeof(float));
+    }
+
+    private void RequireOwnedBudget(ulong additionalBytes)
+    {
+        var owned = _device.GetMemorySnapshot().OwnedBytes;
+        if (owned > _maximumOwnedBytes || additionalBytes > _maximumOwnedBytes - owned)
+            throw new DecisionException("decision_gpu_memory_budget_exceeded", "CUDA encoder resident weights and complete attention workspace exceed the configured owned-memory budget.");
+    }
 
     /// <summary>Optional diagnostic snapshots; enabling this copies each named operator output to the host.</summary>
     public Action<string, float[]>? Trace { get; set; }
@@ -76,8 +107,8 @@ public sealed class CudaModernBertEncoder : IEncoder, IDisposable
     internal T RunOnDevice<T>(ReadOnlySpan<int> tokenIds, Func<CudaDeviceBuffer, int, CancellationToken, T> continuation, CancellationToken cancellationToken)
     {
         ObjectDisposedException.ThrowIf(_disposed, this);
-        if (tokenIds.Length < 2 || tokenIds.Length > Config.MaxTokens || tokenIds.Length > 1024)
-            throw new DecisionException("decision_token_limit_exceeded", $"Sequence length must be between 2 and {Math.Min(Config.MaxTokens, 1024)}.");
+        if (tokenIds.Length < 2 || tokenIds.Length > Config.MaxTokens || tokenIds.Length > ModernBertConfig.MaximumSupportedTokens)
+            throw new DecisionException("decision_token_limit_exceeded", $"Sequence length must be between 2 and {Math.Min(Config.MaxTokens, ModernBertConfig.MaximumSupportedTokens)}.");
         foreach (var value in tokenIds)
             if ((uint)value >= (uint)Config.VocabularySize)
                 throw new DecisionException("tokenizer_token_out_of_range", $"Token ID {value} is outside the vocabulary.");
@@ -91,6 +122,8 @@ public sealed class CudaModernBertEncoder : IEncoder, IDisposable
             ct.ThrowIfCancellationRequested();
             _device.ThrowIfDisposed();
             var rows = tokenIds.Length;
+            // Admit the complete frame before creating any transient buffer. No partial attention or truncation.
+            RequireOwnedBudget(EstimateWorkspaceBytes(Config, rows));
             var hiddenSize = Config.HiddenSize;
             var intermediateSize = Config.IntermediateSize;
             var hiddenCount = checked(rows * hiddenSize);

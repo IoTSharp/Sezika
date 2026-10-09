@@ -348,9 +348,9 @@ internal sealed record CliOptions
         }
 
         var effectiveMaxTokens = maxTokens ?? (modelFormat == CliModelFormat.IndependentV1 ? 1024 : 4096);
-        if (modelFormat == CliModelFormat.IndependentV1 ? effectiveMaxTokens is < 2 or > 1024 : effectiveMaxTokens is < 1 or > 4096)
+        if (modelFormat == CliModelFormat.IndependentV1 ? effectiveMaxTokens is < 2 or > ModernBertConfig.MaximumSupportedTokens : effectiveMaxTokens is < 1 or > 4096)
             throw new DecisionException("cli_option_invalid", modelFormat == CliModelFormat.IndependentV1
-                ? "independent-v1 --max-tokens must be between 2 and 1024."
+                ? "independent-v1 --max-tokens must be between 2 and 8192."
                 : "legacy-laya --max-tokens must be between 1 and 4096.");
 
         return new CliOptions

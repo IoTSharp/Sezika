@@ -115,7 +115,7 @@ public sealed class IndependentDecisionV1Runtime : IDisposable
                 !string.Equals(pipeline.FeatureSha256, head.FeatureSha256, StringComparison.OrdinalIgnoreCase) ||
                 !string.Equals(pipeline.HeadSha256, head.FileSha256, StringComparison.OrdinalIgnoreCase) ||
                 string.IsNullOrWhiteSpace(pipeline.Backend) || pipeline.Backend.Length > 128 ||
-                pipeline.MaxTokens is < 2 or > 1024 || effective.MaxTokens > pipeline.MaxTokens)
+                pipeline.MaxTokens is < 2 or > ModernBertConfig.MaximumSupportedTokens || effective.MaxTokens > pipeline.MaxTokens)
                 throw new DecisionException("independent_runtime_identity_mismatch", "The independent execution pipeline differs from the loaded assets or token budget.");
 
             _session = new DecisionV1ExecutionSession(model, pipeline.Score, pipeline,

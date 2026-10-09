@@ -46,7 +46,7 @@ internal static class IndependentModelContract
                 NormEpsilon = encoder.GetProperty("norm_epsilon").GetSingle(),
             };
             if (config.VocabularySize != 256000 || config.HiddenSize != 768 || config.IntermediateSize != 1152 ||
-                config.LayerCount != 22 || config.HeadCount != 12 || config.MaxTokens != 1024 ||
+                config.LayerCount != 22 || config.HeadCount != 12 || config.MaxTokens is not (1024 or 8192) ||
                 config.GlobalAttentionEvery != 3 || config.LocalAttention != 128 || config.GlobalRopeTheta != 160000f ||
                 config.LocalRopeTheta != 160000f || config.NormEpsilon != 1e-5f ||
                 encoder.GetProperty("source_max_position_embeddings").GetInt32() != 8192)
