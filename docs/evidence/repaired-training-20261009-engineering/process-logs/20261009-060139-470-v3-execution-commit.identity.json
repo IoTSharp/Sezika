@@ -1,0 +1,24 @@
+{
+  "Pid": 33660,
+  "Started": "2026-10-09T06:01:39.9159089Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 26764,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 26764,
+    "Started": "2026-10-09T14:01:38.959715+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\ngit diff --cached --check\ngit diff --cached --name-only\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\Git\\cmd\\git.exe' -ArgumentList @('commit','-m','Report repaired v3 denominators, sample visits and strict length failures') -TimeoutSeconds 45 -ProcessQueryTimeoutSeconds 2 -LogName 'v3-execution-commit' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs'\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 45,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\Git\\cmd\\git.exe",
+  "Arguments": [
+    "commit",
+    "-m",
+    "Report repaired v3 denominators, sample visits and strict length failures"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

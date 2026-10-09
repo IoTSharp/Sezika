@@ -1,0 +1,29 @@
+{
+  "Pid": 65972,
+  "Started": "2026-10-09T05:40:35.6568712Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\capacity-check\\CapacityCheck.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 66824,
+  "ObservedParentPid": 66824,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 66824,
+    "Started": "2026-10-09T13:40:34.165252+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/repaired-training-20261009/Build-Helpers.ps1\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 180,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\capacity-check\\CapacityCheck.csproj",
+    "-c",
+    "Release",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

@@ -1,0 +1,131 @@
+{
+  "Status": "Failed",
+  "Pid": 69456,
+  "ExitCode": 1,
+  "Error": "Process failed with exit code 1.",
+  "ElapsedSeconds": 19.509,
+  "TimeoutSeconds": 180,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj",
+    "-c",
+    "Release",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T05:38:27.0201557Z",
+  "ParentPid": 22748,
+  "Launcher": {
+    "Pid": 22748,
+    "Started": "2026-10-09T13:38:25.624687+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\repaired-training-20261009';$old='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008';$clock=[Diagnostics.Stopwatch]::StartNew()\nforeach($kind in @('regression-check','capacity-check')){if($clock.Elapsed.TotalSeconds -gt 15){throw 'helper setup deadline'};[void][IO.Directory]::CreateDirectory((Join-Path $task $kind));foreach($name in @('Program.cs',$(if($kind -eq 'regression-check'){'RegressionCheck.csproj'}else{'CapacityCheck.csproj'}))){[IO.File]::Copy((Join-Path $old ($kind+'/'+$name)),(Join-Path $task ($kind+'/'+$name)),$false)}}\n$path=Join-Path $task 'regression-check/Program.cs';$text=[IO.File]::ReadAllText($path)\n$text=$text.Replace('teacher-labelled-gpu-expanded-experiment-training/v2','teacher-labelled-gpu-expanded-experiment-training/v3').Replace('report.TrainCount != 192 || report.DevelopmentCount != 64 || report.EncoderForwardsCompleted != 272 || report.LoadedObservations.Rows.Length != 272','report.TrainCount != 162 || report.DevelopmentCount != 53 || report.EncoderForwardsCompleted != 231 || report.LoadedObservations.Rows.Length != 231')\n$oldLine='RequireHash(report.Identity.EncoderSha256, IndependentModelLoader.ConvertedEncoderSha256);'\n$newLine=@'\nRequireHash(report.ManifestSha256, \\\"E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6\\\");\n        RequireHash(report.DerivationLedgerSha256, \\\"55F3226946831C4B9CBD7F6EE10D1194764860C8343A9386CAA40C678CE24EC0\\\");\n        if (report.LoadedObservations.Rows.Count(row=>row.Split==\\\"train\\\" && row.Variant==\\\"original\\\")!=162 || report.LoadedObservations.Rows.Count(row=>row.Split==\\\"development\\\" && row.Variant==\\\"original\\\")!=53 || report.LoadedObservations.Rows.Count(row=>row.Split==\\\"train\\\" && row.Variant==\\\"fixed-left1\\\" && row.Type==\\\"choice\\\")!=16 || report.LoadedObservations.Rows.Any(row=>row.Type==\\\"score\\\")) throw new InvalidDataException(\\\"Repaired actual observation denominator differs.\\\");\n        RequireHash(report.Identity.EncoderSha256, IndependentModelLoader.ConvertedEncoderSha256);\n'@\n$text=$text.Replace($oldLine,$newLine).Replace('internal sealed class TrainingInput {','internal sealed class TrainingInput { public required string DerivationLedgerSha256 { get; init; }')\n[IO.File]::WriteAllText($path,$text,[Text.UTF8Encoding]::new($false))\n$path=Join-Path $task 'capacity-check/Program.cs';$text=[IO.File]::ReadAllText($path).Replace('IndependentMarkerHeadTrainer.MaximumSteps','1').Replace('state.CompletedSteps==24576','state.CompletedSteps==1').Replace('loaded.CompletedSteps==24576','loaded.CompletedSteps==1').Replace('head.CompletedSteps==24576','head.CompletedSteps==1').Replace('24576 checkpoint','tiny1 checkpoint').Replace('CPU one-question synthetic step boundary','CPU one-question H4 synthetic reference').Replace('Set(192)','Set(162)').Replace('Set(256)','Set(215)').Replace('new(17,24576,0.001f','new(17,1,0.001f').Replace('GPU 192 examples and 24576 updates','GPU actual162 synthetic examples and1 update').Replace('==256','==215').Replace('fixture-255','fixture-214').Replace('GPU full256 denominator including last row','GPU actual215 synthetic denominator including last row').Replace('192-buffer','162-buffer')\n[IO.File]::WriteAllText($path,$text,[Text.UTF8Encoding]::new($false))\nWrite-Output 'fresh_helpers_created_only_new_task_paths'\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build','tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj','-c','Release','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false') -TimeoutSeconds 180 -ProcessQueryTimeoutSeconds 2 -LogName 'trainer-first-build' -LogDirectory (Join-Path $task 'process-logs')\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053826-261-trainer-first-build.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053826-261-trainer-first-build.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 0.8874476,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 69456,
+      "CreationDate": "2026-10-09T13:38:27.020155+08:00",
+      "Started": "2026-10-09T05:38:27.020155Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+      "ParentPid": 22748,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 41752,
+      "CreationDate": "2026-10-09T13:38:27.033682+08:00",
+      "Started": "2026-10-09T05:38:27.033682Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 69456,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 69456,
+          "CreationDate": "2026-10-09T13:38:27.020155+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+          "ParentPid": 22748
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 43700,
+      "CreationDate": "2026-10-09T13:38:31.652805+08:00",
+      "Started": "2026-10-09T05:38:31.652805Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempriiir4sb.m3f\\tmp99c60ad8c5e94a0690f6fa825b777033.rsp\"",
+      "ParentPid": 69456,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 69456,
+          "CreationDate": "2026-10-09T13:38:27.020155+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+          "ParentPid": 22748
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 69468,
+      "CreationDate": "2026-10-09T13:38:37.784826+08:00",
+      "Started": "2026-10-09T05:38:37.784826Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempriiir4sb.m3f\\tmpd6ed0bf81fa9438db73e28eebdda4b95.rsp\"",
+      "ParentPid": 69456,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 69456,
+          "CreationDate": "2026-10-09T13:38:27.020155+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+          "ParentPid": 22748
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 38924,
+      "CreationDate": "2026-10-09T13:38:31.666044+08:00",
+      "Started": "2026-10-09T05:38:31.666044Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 43700,
+      "Depth": 2,
+      "ParentChain": [
+        {
+          "Pid": 69456,
+          "CreationDate": "2026-10-09T13:38:27.020155+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+          "ParentPid": 22748
+        },
+        {
+          "Pid": 43700,
+          "CreationDate": "2026-10-09T13:38:31.652805+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempriiir4sb.m3f\\tmp99c60ad8c5e94a0690f6fa825b777033.rsp\"",
+          "ParentPid": 69456
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

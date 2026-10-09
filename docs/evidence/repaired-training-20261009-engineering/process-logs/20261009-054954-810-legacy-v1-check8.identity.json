@@ -1,0 +1,31 @@
+{
+  "Pid": 69860,
+  "Started": "2026-10-09T05:49:55.2477133Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 21732,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 21732,
+    "Started": "2026-10-09T13:49:54.308432+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$legacy='D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data';$hash=(Get-FileHash -LiteralPath (Join-Path $legacy 'experiment-manifest.json')).Hash\n[void][IO.Directory]::CreateDirectory('D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\legacy-v1-check')\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll','check','--data',$legacy,'--manifest-sha256',$hash,'--max-checks','8','--artifact-directory','D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\legacy-v1-check') -TimeoutSeconds 45 -ProcessQueryTimeoutSeconds 2 -LogName 'legacy-v1-check8' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs'\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 45,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll",
+    "check",
+    "--data",
+    "D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data",
+    "--manifest-sha256",
+    "B8C8D5E018C2BC0029BA100F8F46272AC4CB3B1EFEA27280FF449F685778B954",
+    "--max-checks",
+    "8",
+    "--artifact-directory",
+    "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\legacy-v1-check"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

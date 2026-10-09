@@ -1,0 +1,27 @@
+{
+  "Pid": 71456,
+  "Started": "2026-10-09T06:09:26.2579772Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 69860,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 69860,
+    "Started": "2026-10-09T14:09:23.802222+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$path='D:\\source\\Sezika\\docs\\evidence\\repaired-training-engineering-2026-10-09.md';$text=[IO.File]::ReadAllText($path);$extra=@'\n\n本地工程提交：`afcca10`（原生v3数据/账本绑定）、`e808191`（报告、访问参考、长度失败分母）。新永久工程镜像 `docs/evidence/repaired-training-20261009-engineering` 包含206个字节原样文件/873,396 bytes，另有inventory；实际复制hash核验通过，不包含模型权重或运行时二进制。34回执/151登记身份/110唯一PID终核matching_live0/unknown_current0，closure reader随后另核absent；该分母不包括未同时登记OS身份的短命只读工具命令，不宣称完整历史观测。原closure字段 `historical_argv_observed` 的含义不精确，单独纠正sidecar明确仅表示recorded argv存在，spawn argv不冒充OS argv，原字节保留。\n\n三个专属compiler-temp根检查24项：6个确切任务日志按hash移存，仅非递归移除确切空目录，全局TEMP/共享缓存/用户文件未动。子审查一次编译临时目录清理被自动审核在CreateProcess前拒绝，后续使用核绝对路径、hash移存及空目录非递归删除的更小范围方式真实Succeeded/exit0；保留原拒绝及审查证据写入稍超4分钟估算的局限。最后远端只读终核确认新root没有upload/data/bundle/capacity/regression或任何GPU stage；现有三个GPU服务保持，显存空闲仍15294MiB，仅当前快照。\n'@\n[IO.File]::WriteAllText($path,$text+$extra,[Text.UTF8Encoding]::new($false))\n$path='D:\\source\\Sezika\\HANDOFF.md';$text=[IO.File]::ReadAllText($path);$anchor='### 2026-10-09 修题后固定训练：新会话已接管';$extra=\\\"`n`n工程本地提交 afcca10 / e808191，完整新证据镜像 docs/evidence/repaired-training-20261009-engineering（206文件+inventory、873396bytes）。本轮34回执/151登记身份/110PID终核无matching/unknown current；短命OS argv未观测局限及字段纠正sidecar保留，不宣称全部历史命令有OS身份。三专属compiler-temp24项按确切日志hash移存/空目录非递归清理，现有GPU服务未停，新远端仅bootstrap，无上传或GPU stage。`n\\\";[IO.File]::WriteAllText($path,$text.Replace($anchor,$anchor+$extra),[Text.UTF8Encoding]::new($false))\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\Git\\cmd\\git.exe' -ArgumentList @('add','--','HANDOFF.md','CHANGELOG.md','docs/evidence/repaired-training-engineering-2026-10-09.md','docs/evidence/repaired-training-20261009-engineering') -TimeoutSeconds 45 -ProcessQueryTimeoutSeconds 2 -LogName 'engineering-evidence-stage' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs'\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 45,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\Git\\cmd\\git.exe",
+  "Arguments": [
+    "add",
+    "--",
+    "HANDOFF.md",
+    "CHANGELOG.md",
+    "docs/evidence/repaired-training-engineering-2026-10-09.md",
+    "docs/evidence/repaired-training-20261009-engineering"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

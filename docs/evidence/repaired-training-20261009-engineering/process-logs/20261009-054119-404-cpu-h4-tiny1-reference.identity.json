@@ -1,0 +1,24 @@
+{
+  "Pid": 47328,
+  "Started": "2026-10-09T05:41:20.0343734Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 65232,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 65232,
+    "Started": "2026-10-09T13:41:18.874903+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\repaired-training-20261009'\n$path=Join-Path $task 'Prepare-Transfer.ps1';$text=[IO.File]::ReadAllText($path).Replace('$DataDirectory 10 100MB','$DataDirectory 11 100MB').Replace('may accompany six-file data','may accompany eight-file data');[IO.File]::WriteAllText($path,$text,[Text.UTF8Encoding]::new($false))\n$path=Join-Path $task 'remote/final-evidence.sh';$text=[IO.File]::ReadAllText($path)\n$before=@'\n      [[ $pid == pid ]] && continue\n      ((rows<256 && SECONDS-begin<20)) || exit 124\n      rows=$((rows+1)); check_identity \\\"$name/$basename\\\" \\\"$pid\\\" \\\"$tick\\\"\n'@\n$after=@'\n      ((rows<256 && SECONDS-begin<20)) || exit 124\n      rows=$((rows+1))\n      [[ $pid == pid ]] && continue\n      check_identity \\\"$name/$basename\\\" \\\"$pid\\\" \\\"$tick\\\"\n'@\nif(-not $text.Contains($before)){throw 'Exact closure fix anchor missing'}\n[IO.File]::WriteAllText($path,$text.Replace($before,$after),[Text.UTF8Encoding]::new($false))\n[void][IO.Directory]::CreateDirectory((Join-Path $task 'cpu-reference'))\n& (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @((Join-Path $task 'capacity-check/bin/Release/net10.0/CapacityCheck.dll'),'cpu',(Join-Path $task 'cpu-reference')) -TimeoutSeconds 85 -ProcessQueryTimeoutSeconds 2 -LogName 'cpu-h4-tiny1-reference' -LogDirectory (Join-Path $task 'process-logs')\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 85,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\capacity-check\\bin\\Release\\net10.0\\CapacityCheck.dll",
+    "cpu",
+    "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\cpu-reference"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

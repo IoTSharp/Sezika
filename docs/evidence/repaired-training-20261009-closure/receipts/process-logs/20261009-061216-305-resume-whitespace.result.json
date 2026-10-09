@@ -1,0 +1,43 @@
+{
+  "Status": "Failed",
+  "Pid": 32440,
+  "ExitCode": 2,
+  "Error": "Process failed with exit code 2.",
+  "ElapsedSeconds": 0.838,
+  "TimeoutSeconds": 30,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "git",
+  "Arguments": [
+    "diff",
+    "--cached",
+    "--check"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T06:12:16.7536871Z",
+  "ParentPid": 30912,
+  "Launcher": {
+    "Pid": 30912,
+    "Started": "2026-10-09T14:12:14.739637+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\nif($PSVersionTable.PSVersion.Major -lt 7){throw 'PowerShell 7 required'}\nfunction Invoke-ReviewGit([string[]]$Arguments,[string]$Label){\n try { & .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath git -ArgumentList $Arguments -TimeoutSeconds 30 -LogName $Label } catch { Write-Output ('Guardian retained: '+$_.Exception.Message) }\n $items=@(Get-ChildItem -LiteralPath .artifacts/repaired-training-20261009/process-logs -Filter \\\"*-$Label.result.json\\\" -File|Select-Object -First 3)\n if($items.Count -ne 1){throw 'Expected one exact receipt'}\n $receipt=Get-Content -Raw -LiteralPath $items[0].FullName|ConvertFrom-Json\n if($null -eq $receipt.ExitCode){throw 'Missing actual child exit'}\n Write-Output ('actual_exit='+$receipt.ExitCode+' receipt='+$items[0].FullName)\n}\nInvoke-ReviewGit -Arguments @('diff','--cached','--','CHANGELOG.md','HANDOFF.md','ROADMAP.md','docs/evidence/repaired-training-engineering-2026-10-09.md') -Label resume-doc-diff\nInvoke-ReviewGit -Arguments @('diff','--cached','--check') -Label resume-whitespace\nGet-Content -LiteralPath .artifacts/repaired-training-20261009/preservation-check.json -TotalCount 50\nGet-Content -LiteralPath .artifacts/repaired-training-20261009/task-identity.json -TotalCount 80\nGet-Content -LiteralPath .artifacts/repaired-training-20261009/process-logs/20261009-061131-222-resume-status.result.json -TotalCount 65\nGet-ChildItem -LiteralPath .artifacts/repaired-training-20261009 -File|Select-Object -First 80 Name,Length\n\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-061216-305-resume-whitespace.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-061216-305-resume-whitespace.stderr.log",
+  "CleanupErrors": [
+    "Final task inventory unverified: live=0 unknown=1"
+  ],
+  "FinalCheckComplete": false,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 1,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 0.0010749,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

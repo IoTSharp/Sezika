@@ -1,0 +1,85 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index e1d0aa3..4193ec6 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -1,6 +1,9 @@
+ # Changelog
+ 
+ ## Unreleased
++
++- 增加修题后215题显式v3合同、完整256派生账本及40审核/14修题原字节绑定、实际访问/分母报告与完整strict1024失败分母；v1/v2兼容、24项合同参考与Linux自包含构建通过。全215长度检查214通过/1题1037tokens超限，GPU训练尚未启动；见[工程及准入证据](docs/evidence/repaired-training-engineering-2026-10-09.md)。
++
+ - 福海真实 GPU 实验完成：冻结真实 mmBERT encoder，24 条实际教师标签训练三行 head 72 次更新，保存新权重/checkpoint并在独立进程重载、重算完整32特征/24与8 CE/8题推理；结果与磁盘参数一致。训练 CE下降，开发 CE略升、教师一致2/8；正式质量仍未通过，见[闭环证据](docs/evidence/real-gpu-head-experiment-2026-10-08.md)。
+ - 增加只读 GPU 决策头完整 CE evaluator：全分母、GPU 参数读回身份、独立清理及三个实卡数值/取消检查通过，最大误差 8.324e-8；没有在 evaluator 中执行 SGD，见[证据](docs/evidence/gpu-head-evaluator-2026-10-08.md)。
+ - 增加独立typed诊断runtime和CUDA pipeline：显式SZDH1身份与非null pipeline，共用无训练身份的执行session及真正GPU三行forward，正式入口保留契约。两项目零警告/错误、CPUtiny5/full41、核心247（tokenizer oracle明确skip）、实卡诊断19及正式CUDA16项通过；11源/5DLL/37条记录身份、7专属fixture根核验完成，见[证据](docs/evidence/diagnostic-runtime-2026-10-08.md)。编译后临时资源检查失败及后续精确清理保留，真实H768画像、深层driver fault、AOT和质量另验。
+diff --git a/HANDOFF.md b/HANDOFF.md
+index 3dcd718..0b8d7b6 100644
+--- a/HANDOFF.md
++++ b/HANDOFF.md
+@@ -11,6 +11,14 @@
+ 仅 `D:\source\Tomur` 已获核最新、拉取、必要修改提交及推送授权。Sezika 只 commit；发布、部署及正式默认切换仍按各自门槛处理。用户未跟踪的 Sezika `docs/wechat-introduction.md`、`.html` 及 Tomur `docs/articles/` 不修改或暂存。
+ 
+ ## 当前结果
++### 2026-10-09 修题后固定训练：新会话已接管
++
++工程本地提交 afcca10 / e808191，完整新证据镜像 docs/evidence/repaired-training-20261009-engineering（206文件+inventory、873396bytes）。本轮34回执/151登记身份/110PID终核无matching/unknown current；短命OS argv未观测局限及字段纠正sidecar保留，不宣称全部历史命令有OS身份。三专属compiler-temp24项按确切日志hash移存/空目录非递归清理，现有GPU服务未停，新远端仅bootstrap，无上传或GPU stage。
++
++当前准入阻塞：本会话C# v3合同/账本/分母及报告、24项反例/访问参考、旧v1八项/v2十六项、Linux10.0.12自包含发布已完成。全215题正式strict1024检查214通过/1失败；唯一train Choice `massive-zh-cn-02996` 修订1037tokens（父题482），通过题最长910。本次无GPU训练、独立加载或原32回归；没有教师HTTP。用户已收到具体选择：删该题后214/train161/dev53再沿原24576配置，或保留215并暂停；尚未回复前不得变分母、删除/修改原包、提高1024或启动GPU。原215文件hash保持，新远端root仅bootstrap。见 docs/evidence/repaired-training-engineering-2026-10-09.md。短进程guardian历史CleanupFailed/unknown1保留，当前准确PID后核另列；正式质量/人审/许可/AOT均pending。heartbeat已迁到本会话并更新此阻塞，状态无变化安静，不重跑检查、派单或训练。
++
++本会话 `01a11f25-335a-7571-a735-7171ace8c3b9` 已从 `main / 4e7b304` 接管，独占 Git/API/GPU；旧会话停止实施。任务根 `.artifacts/repaired-training-20261009`，新远端根 `/root/sezika-experiments/20261009-repaired-training-v3`。先执行 C# 显式 v3 合同、实际215/162/53分母及账本绑定、新 strict1024 长度检查和必要工程验收；随后仅一次固定24576updates/LR0.001/seed17/零head/encoder冻结及独立验证、原32回归。禁止再发教师请求、重跑历史训练或按dev调参。暂停源码、旧ROADMAP诊断hunk及用户文件身份已记录，保留；仅本地分项commit，完成后停止新增训练。
++
+ ### 2026-10-09 修题/盲审完成：215题候选包，新会话接续训练
+ 
+ 用户授权使用sonnet_vip修复歧义题，修不好就删，再新建会话开始下一步。本轮78问题题由同一sonnet.vip/gpt-6.1-sol/max处理：模型39修/39删，root另排除2项改变原义的修订，剩余37题全部独立盲审通过。原178通过题复用，最终215题（train162/development53，Choice140/Boolean75），删除41题（train30/dev11）。原state.text/source gold/family/split保留，全256分母及删除原因有账本；原32另列已曝光回归，Score无新增监督。
+diff --git a/ROADMAP.md b/ROADMAP.md
+index 6c2f690..742c22b 100644
+--- a/ROADMAP.md
++++ b/ROADMAP.md
+@@ -20,6 +20,9 @@
+ 
+ ## 当前执行顺序与门槛
+ 
++2026-10-09 新会话完成修题后215题v3合同/全256账本、实际分母/访问报告、旧v1/v2兼容与Linux构建。正式strict1024全215检查214通过、1题1037tokens超限；通过题最长910。GPU训练/独立加载/原32回归尚未开始。用户已收到删该train Choice后214/train161/dev53并保持24576updates的具体选择，回复前保持原215包和固定1024。不能冒充长度准入、真实训练、质量、人审、许可、校准、封存或新head AOT/性能通过；原暂停诊断hunk保留，详见[本轮工程与阻塞](docs/evidence/repaired-training-engineering-2026-10-09.md)。
++
++
+ 2026-10-09 用户授权的78题修题/删题已完成：37修订并独立盲审通过、41排除，加上178原题形成215题v3候选包（train162/dev53；Choice140/Boolean75）。原文/来源/旧标签/family/split及256题删除账本保留；21次HTTP200/21有效批、窗口关闭，禁止重发。静态打包与字节hash核验通过，新C# v3合同与strict1024长度尚待验；按用户要求新建会话开始必要合同适配和一次固定24576updates训练/独立验证，实际分母不再声称128epoch。详见[修题证据](docs/evidence/teacher-repair-2026-10-09.md)和[新会话交接](docs/training-next-handoff-2026-10-09.md)。正式人审、许可发布、模型质量、校准、封存及AOT/性能仍pending，不把AI审题通过当质量通过。
+ 
+ 2026-10-09 本轮256/256公开样本已完成同一教师max盲审：178题符合当前AI审核条件、78题需修订；33成功批、无重复成功题，原source gold/split/family保持。真实打包程序重验全部原响应后拒绝准入，未生成训练manifest，GPU训练未启动。工程已分项本地提交e6f7979/d30655f，256题长度检查全通过、最长914tokens；这些不代表质量通过。下一步按[78题修订清单与完整证据](docs/evidence/teacher-expansion-2026-10-09.md)形成新版本并对变更题复审，新的教师窗口另行授权；不自动加训/扩量、不以178题替代192/64分母。全部API及登记进程已收口，等待修题范围推进；正式人审、许可发布、校准、封存、新head AOT/性能仍pending。
+diff --git a/docs/evidence/repaired-training-engineering-2026-10-09.md b/docs/evidence/repaired-training-engineering-2026-10-09.md
+new file mode 100644
+index 0000000..6ab8089
+--- /dev/null
++++ b/docs/evidence/repaired-training-engineering-2026-10-09.md
+@@ -0,0 +1,31 @@
++# 修题后 v3 工程与长度准入
++
++2026-10-09，Asia/Shanghai。本会话 `01a11f25-335a-7571-a735-7171ace8c3b9` 从 `main / 4e7b304` 接管必要工程。原215题包完整保留。**C#合同、执行报告与Linux构建已完成，strict1024准入失败；尚未启动GPU训练、独立加载或原32题GPU回归。**
++
++原生合同明确使用 `sezika/teacher-labelled-experiment-data/v3`、215/train162/dev53，不把v3当固定256题的v2。读取器绑定七个原文件的bytes/hash、完整256派生账本、固定父记录SHA、原33审核与7修题盲审的40组实际wire bytes，以及14组修题原始request/response。178复用、37修订、41删除，来源、source gold、state、family/split保持。两项语义排除的null修题hash仅以准确ID、理由和原始响应hash单独绑定。Catalog继承的256/192/64汇总明确属于父快照，实际数组及新manifest为215/162/53。
++
++数据manifest SHA256 `E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6`、账本SHA256 `55F3226946831C4B9CBD7F6EE10D1194764860C8343A9386CAA40C678CE24EC0` 均保持。独立审计核332个inventory条目/8,281,934 bytes；含inventory的333个永久Git对象与本地实际字节一致（8,339,780 bytes）。原18条argv缺失历史保留。
++
++v3训练/独立验证报告分别绑定账本、实际分母和预计215+16=231次前向，仍限制384次；这些是实现及合同审查结果，**未获得本轮真实GPU执行结果**。固定24576次更新、seed17/LR0.001/strict1024/零head/encoder冻结保持。访问证明使用实际连续commit回调及已审核的核心XorShift32/Fisher-Yates固定顺序重放，明确不是直接观测kernel选择ID；162题对应151完整循环+114前缀，114题访问152次、48题151次，不称128完整epoch。独立新进程重编码及原修正32题回归工程已准备，Score没有新监督。
++
++Release最终构建零警告/错误；v3合同1→24检查、旧v1八项/旧v2十六项兼容检查及一题H4 CPU微型参考通过真实退出码验证。预算守卫逐次检查取消/墙钟，每250ms核进程resident和peak≤4GiB，避免每guard调用OS查询；JSON/数据计数及所有时间上限保持。Linux-x64/.NET10.0.12自包含trainer、H4容量fixture、原32回归工具三项publish真实exit0，源码与产物身份冻结；这是managed工具构建，不是新head Native AOT或性能验收。
++
++## 实际长度阻塞
++
++正式renderer与固定tokenizer全215题检查：attempted215、accepted214、failed1、unattempted0，真实CLI exit1。通过题最长910tokens，是本版本新测量；旧256题914不是本版本结果。失败题 `massive-zh-cn-02996` 为train/zh/Choice。失败行token_count=null，保留错误码 `decision_v1_token_budget_exceeded`，不会用成功行的最大值替代完整失败分母。
++
++独立一题C#参考以同一正式builder/tokenizer读取父题与修订题：父题482tokens，修订1037tokens，增加555。state保持51tokens；question225→483、candidate JSON198→494、控制项8→9，候选4→5。8192仅用于这次tokenizer计数诊断，没有改变生产1024上限，也没有encoder forward、GPU或教师调用。
++
++具体可审阅方案是排除该一题并保留新删除账本，得到214/train161/dev53、Choice139/Boolean75，固定24576更新配置保持。该方案尚待用户明确选择；原交接指定215/162/53，不能把214冒充215，也不擅自改题、缩短文本、提高上下文或补发教师。原215包未修改。后续需要准确新版本身份、账本与分母合同及准入，再开始唯一固定实验。
++
++## 资源与保留项
++
++任务根 `.artifacts/repaired-training-20261009`；新远端根 `/root/sezika-experiments/20261009-repaired-training-v3` 只bootstrap，没有上传数据或运行GPU。最初只读预检核准确GPU UUID，显存空闲15294MiB、既有三个GPU服务保持；该数值是本轮预检快照，后续GPU阶段仍须重新核资源。教师调用0次，旧72/768训练及32/256审核均未重跑。
++
++原未跟踪用户文档与暂停源码保留，ROADMAP旧诊断hunk不暂存。短命CPU/Git进程有guardian CleanupFailed/unknown1，真实child exit0及具体PID/start后核另存；不改写原回执或补造历史argv。初次合并前编译失败、两项null账本校验失败、30秒守卫开销超时、辅助脚本字段/布尔值错误及首次长度中止均保留，最终验收引用修正后的确切回执。
++
++AI审题、合同/构建通过不等于模型真实正确率。正式人审、教师输出许可发布、质量、校准、封存、新head AOT/性能均pending/false。仅本地分项commit，不push、发布或部署；heartbeat只核真实交接和用户新选择，未变状态不重复派单、采集或训练。
++
++本地工程提交：`afcca10`（原生v3数据/账本绑定）、`e808191`（报告、访问参考、长度失败分母）。新永久工程镜像 `docs/evidence/repaired-training-20261009-engineering` 包含206个字节原样文件/873,396 bytes，另有inventory；实际复制hash核验通过，不包含模型权重或运行时二进制。34回执/151登记身份/110唯一PID终核matching_live0/unknown_current0，closure reader随后另核absent；该分母不包括未同时登记OS身份的短命只读工具命令，不宣称完整历史观测。原closure字段 `historical_argv_observed` 的含义不精确，单独纠正sidecar明确仅表示recorded argv存在，spawn argv不冒充OS argv，原字节保留。
++
++三个专属compiler-temp根检查24项：6个确切任务日志按hash移存，仅非递归移除确切空目录，全局TEMP/共享缓存/用户文件未动。子审查一次编译临时目录清理被自动审核在CreateProcess前拒绝，后续使用核绝对路径、hash移存及空目录非递归删除的更小范围方式真实Succeeded/exit0；保留原拒绝及审查证据写入稍超4分钟估算的局限。最后远端只读终核确认新root没有upload/data/bundle/capacity/regression或任何GPU stage；现有三个GPU服务保持，显存空闲仍15294MiB，仅当前快照。
+\ No newline at end of file

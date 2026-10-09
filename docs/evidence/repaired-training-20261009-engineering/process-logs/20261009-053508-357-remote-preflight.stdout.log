@@ -1,0 +1,12 @@
+GPU-e786e313-bc92-a63d-a833-f4e48cbafb66, NVIDIA GeForce RTX 4090, 33215, 15294, 580.173.02
+3055, /app/llama-server, 31140
+3068, /usr/bin/python, 1670
+2376890, /opt/tomur/releases/0.5.0-r7-cuda129-sampler-uiuuid-5c853dd8/tomur/Tomur, 386
+MemAvailable:   56579360 kB
+       Avail
+286946820096
+    PID    PPID                  STARTED COMMAND
+2663377 2663364 Fri Oct  9 05:35:13 2026 timeout 2s awk NR==1 || /Sezika.ExperimentTrainer|RegressionCheck|teacher-expansion|repaired-training|real-head-v1/ {print; count++; if(count>48)exit 2}
+2663379 2663377 Fri Oct  9 05:35:13 2026 awk NR==1 || /Sezika.ExperimentTrainer|RegressionCheck|teacher-expansion|repaired-training|real-head-v1/ {print; count++; if(count>48)exit 2}
+new_task_root_absent=true
+read_only_preflight_complete=true

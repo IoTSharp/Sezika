@@ -1,0 +1,774 @@
+{
+  "utc": "2026-10-09T05:37:00.6258667+00:00",
+  "status": "passed_independent_static_checks",
+  "seconds": 7.4172908,
+  "permanent_inventory_files": 332,
+  "permanent_total_with_inventory": 333,
+  "permanent_inventory_bytes": 8281934,
+  "manifest_sha256": "E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6",
+  "derivation_sha256": "55F3226946831C4B9CBD7F6EE10D1194764860C8343A9386CAA40C678CE24EC0",
+  "original": 256,
+  "retained": 215,
+  "train": 162,
+  "development": 53,
+  "choice": 140,
+  "boolean": 75,
+  "unchanged": 178,
+  "repaired": 37,
+  "deleted": 41,
+  "deleted_split": {
+    "development": 11,
+    "train": 30
+  },
+  "actual_catalog_rows": 215,
+  "actual_provenance_rows": 215,
+  "catalog_inherited_record_count": 256,
+  "catalog_inherited_split_counts": {
+    "boolean": 96,
+    "zh": 80,
+    "development": 64,
+    "choice": 160,
+    "train": 192,
+    "en": 176
+  },
+  "catalog_metadata_caveat": "Catalog aggregate fields remain parent256/192/64/160/96 snapshot values. Native v3 must derive actual denominators from manifest and retained rows, validate them, and explicitly distinguish parent aggregates.",
+  "original_state_family_split_language_gold_source_preserved": true,
+  "retained_target_mapping_and_wire_binding": true,
+  "wire_request_response_pairs": 40,
+  "source_files": 5,
+  "http200": 21,
+  "closure_historical_receipts": 22,
+  "closure_historical_identity_records": 112,
+  "closure_historical_unique_pids": 93,
+  "historical_missing_argv": 18,
+  "current_registered_records": 118,
+  "current_registered_unique_pids": 99,
+  "matching_live": 0,
+  "unknown": 0,
+  "current_states": [
+    {
+      "pid": 54424,
+      "started": "2026-10-09T05:06:22.5787870+00:00",
+      "source": "20261009-050621-246-probe-exit-0.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 58732,
+      "started": "2026-10-09T05:06:22.5898170+00:00",
+      "source": "20261009-050621-246-probe-exit-0.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 54424,
+      "started": "2026-10-09T05:06:22.5787879+00:00",
+      "source": "20261009-050621-246-probe-exit-0.result.json:retained_handle",
+      "state": "absent"
+    },
+    {
+      "pid": 14160,
+      "started": "2026-10-09T05:06:20.4825319+00:00",
+      "source": "20261009-050621-246-probe-exit-0.result.json:guardian",
+      "state": "absent"
+    },
+    {
+      "pid": 6048,
+      "started": "2026-10-09T05:06:48.7586110+00:00",
+      "source": "20261009-050647-423-repair00.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 57096,
+      "started": "2026-10-09T05:06:48.7696340+00:00",
+      "source": "20261009-050647-423-repair00.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 6048,
+      "started": "2026-10-09T05:06:48.7586116+00:00",
+      "source": "20261009-050647-423-repair00.result.json:retained_handle",
+      "state": "absent"
+    },
+    {
+      "pid": 65608,
+      "started": "2026-10-09T05:06:46.9448542+00:00",
+      "source": "20261009-050647-423-repair00.result.json:guardian",
+      "state": "absent"
+    },
+    {
+      "pid": 46060,
+      "started": "2026-10-09T05:08:30.4707800+00:00",
+      "source": "20261009-050828-209-repair01.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 1576,
+      "started": "2026-10-09T05:08:32.0715200+00:00",
+      "source": "20261009-050828-209-repair01.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 66768,
+      "started": "2026-10-09T05:08:30.4867790+00:00",
+      "source": "20261009-050828-209-repair01.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 36312,
+      "started": "2026-10-09T05:08:32.0860200+00:00",
+      "source": "20261009-050828-209-repair01.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 46060,
+      "started": "2026-10-09T05:08:30.4707808+00:00",
+      "source": "20261009-050828-209-repair01.result.json:retained_handle",
+      "state": "absent"
+    },
+    {
+      "pid": 61928,
+      "started": "2026-10-09T05:08:27.6023247+00:00",
+      "source": "20261009-050828-209-repair01.result.json:guardian",
+      "state": "absent"
+    },
+    {
+      "pid": 6300,
+      "started": "2026-10-09T05:08:30.4889360+00:00",
+      "source": "20261009-050828-238-repair02.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 43164,
+      "started": "2026-10-09T05:08:32.1092420+00:00",
+      "source": "20261009-050828-238-repair02.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 56704,
+      "started": "2026-10-09T05:08:30.5040290+00:00",
+      "source": "20261009-050828-238-repair02.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 52464,
+      "started": "2026-10-09T05:08:32.1208240+00:00",
+      "source": "20261009-050828-238-repair02.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 6300,
+      "started": "2026-10-09T05:08:30.4889362+00:00",
+      "source": "20261009-050828-238-repair02.result.json:retained_handle",
+      "state": "absent"
+    },
+    {
+      "pid": 45240,
+      "started": "2026-10-09T05:08:27.6262684+00:00",
+      "source": "20261009-050828-238-repair02.result.json:guardian",
+      "state": "absent"
+    },
+    {
+      "pid": 7948,
+      "started": "2026-10-09T05:09:46.0367970+00:00",
+      "source": "20261009-050944-587-repair03.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 45356,
+      "started": "2026-10-09T05:09:47.3778430+00:00",
+      "source": "20261009-050944-587-repair03.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 63044,
+      "started": "2026-10-09T05:09:46.0502300+00:00",
+      "source": "20261009-050944-587-repair03.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 66552,
+      "started": "2026-10-09T05:09:47.3899440+00:00",
+      "source": "20261009-050944-587-repair03.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 52600,
+      "started": "2026-10-09T05:09:44.0779139+00:00",
+      "source": "20261009-050944-587-repair03.result.json:guardian",
+      "state": "absent"
+    },
+    {
+      "pid": 44232,
+      "started": "2026-10-09T05:09:52.5457990+00:00",
+      "source": "20261009-050950-328-repair04.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 55920,
+      "started": "2026-10-09T05:09:52.5614640+00:00",
+      "source": "20261009-050950-328-repair04.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 64212,
+      "started": "2026-10-09T05:09:54.0100330+00:00",
+      "source": "20261009-050950-328-repair04.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 44232,
+      "started": "2026-10-09T05:09:52.5457993+00:00",
+      "source": "20261009-050950-328-repair04.result.json:retained_handle",
+      "state": "absent"
+    },
+    {
+      "pid": 41452,
+      "started": "2026-10-09T05:09:49.7200206+00:00",
+      "source": "20261009-050950-328-repair04.result.json:guardian",
+      "state": "absent"
+    },
+    {
+      "pid": 51012,
+      "started": "2026-10-09T05:11:11.0529540+00:00",
+      "source": "20261009-051107-615-repair05.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 57796,
+      "started": "2026-10-09T05:11:11.0789160+00:00",
+      "source": "20261009-051107-615-repair05.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 66108,
+      "started": "2026-10-09T05:11:16.1180550+00:00",
+      "source": "20261009-051107-615-repair05.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 39416,
+      "started": "2026-10-09T05:11:16.1628570+00:00",
+      "source": "20261009-051107-615-repair05.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 51012,
+      "started": "2026-10-09T05:11:11.0529546+00:00",
+      "source": "20261009-051107-615-repair05.result.json:retained_handle",
+      "state": "absent"
+    },
+    {
+      "pid": 47256,
+      "started": "2026-10-09T05:11:06.4813819+00:00",
+      "source": "20261009-051107-615-repair05.result.json:guardian",
+      "state": "absent"
+    },
+    {
+      "pid": 32696,
+      "started": "2026-10-09T05:11:16.4095350+00:00",
+      "source": "20261009-051111-832-repair06.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 65716,
+      "started": "2026-10-09T05:11:19.8839860+00:00",
+      "source": "20261009-051111-832-repair06.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 65856,
+      "started": "2026-10-09T05:11:16.4484870+00:00",
+      "source": "20261009-051111-832-repair06.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 61416,
+      "started": "2026-10-09T05:11:19.9049360+00:00",
+      "source": "20261009-051111-832-repair06.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 32696,
+      "started": "2026-10-09T05:11:16.4095356+00:00",
+      "source": "20261009-051111-832-repair06.result.json:retained_handle",
+      "state": "absent"
+    },
+    {
+      "pid": 64336,
+      "started": "2026-10-09T05:11:09.9025046+00:00",
+      "source": "20261009-051111-832-repair06.result.json:guardian",
+      "state": "absent"
+    },
+    {
+      "pid": 42952,
+      "started": "2026-10-09T05:13:00.3965920+00:00",
+      "source": "20261009-051258-156-repair07.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 16060,
+      "started": "2026-10-09T05:13:00.4147500+00:00",
+      "source": "20261009-051258-156-repair07.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 62384,
+      "started": "2026-10-09T05:13:02.0968630+00:00",
+      "source": "20261009-051258-156-repair07.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 12200,
+      "started": "2026-10-09T05:13:02.1100320+00:00",
+      "source": "20261009-051258-156-repair07.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 42952,
+      "started": "2026-10-09T05:13:00.3965921+00:00",
+      "source": "20261009-051258-156-repair07.result.json:retained_handle",
+      "state": "absent"
+    },
+    {
+      "pid": 17724,
+      "started": "2026-10-09T05:12:57.4546860+00:00",
+      "source": "20261009-051258-156-repair07.result.json:guardian",
+      "state": "absent"
+    },
+    {
+      "pid": 64828,
+      "started": "2026-10-09T05:13:51.0257210+00:00",
+      "source": "20261009-051349-040-repair08.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 44412,
+      "started": "2026-10-09T05:13:51.0385200+00:00",
+      "source": "20261009-051349-040-repair08.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 59316,
+      "started": "2026-10-09T05:13:52.3981870+00:00",
+      "source": "20261009-051349-040-repair08.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 64828,
+      "started": "2026-10-09T05:13:51.0257212+00:00",
+      "source": "20261009-051349-040-repair08.result.json:retained_handle",
+      "state": "absent"
+    },
+    {
+      "pid": 39452,
+      "started": "2026-10-09T05:13:48.4303923+00:00",
+      "source": "20261009-051349-040-repair08.result.json:guardian",
+      "state": "absent"
+    },
+    {
+      "pid": 64464,
+      "started": "2026-10-09T05:15:07.2479370+00:00",
+      "source": "20261009-051504-768-repair09.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 61360,
+      "started": "2026-10-09T05:15:09.0867600+00:00",
+      "source": "20261009-051504-768-repair09.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 66344,
+      "started": "2026-10-09T05:15:07.2668410+00:00",
+      "source": "20261009-051504-768-repair09.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 64464,
+      "started": "2026-10-09T05:15:07.2479373+00:00",
+      "source": "20261009-051504-768-repair09.result.json:retained_handle",
+      "state": "absent"
+    },
+    {
+      "pid": 61444,
+      "started": "2026-10-09T05:15:03.8038999+00:00",
+      "source": "20261009-051504-768-repair09.result.json:guardian",
+      "state": "absent"
+    },
+    {
+      "pid": 19760,
+      "started": "2026-10-09T05:15:18.4550200+00:00",
+      "source": "20261009-051515-400-repair10.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 9472,
+      "started": "2026-10-09T05:15:18.4793130+00:00",
+      "source": "20261009-051515-400-repair10.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 64444,
+      "started": "2026-10-09T05:15:21.1237610+00:00",
+      "source": "20261009-051515-400-repair10.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 62988,
+      "started": "2026-10-09T05:15:21.1457130+00:00",
+      "source": "20261009-051515-400-repair10.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 19760,
+      "started": "2026-10-09T05:15:18.4550206+00:00",
+      "source": "20261009-051515-400-repair10.result.json:retained_handle",
+      "state": "absent"
+    },
+    {
+      "pid": 62480,
+      "started": "2026-10-09T05:15:14.0871445+00:00",
+      "source": "20261009-051515-400-repair10.result.json:guardian",
+      "state": "absent"
+    },
+    {
+      "pid": 66872,
+      "started": "2026-10-09T05:16:01.1322020+00:00",
+      "source": "20261009-051558-768-repair11.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 54184,
+      "started": "2026-10-09T05:16:01.1494680+00:00",
+      "source": "20261009-051558-768-repair11.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 67152,
+      "started": "2026-10-09T05:16:03.0325800+00:00",
+      "source": "20261009-051558-768-repair11.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 584,
+      "started": "2026-10-09T05:16:03.0472260+00:00",
+      "source": "20261009-051558-768-repair11.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 27544,
+      "started": "2026-10-09T05:15:58.1431396+00:00",
+      "source": "20261009-051558-768-repair11.result.json:guardian",
+      "state": "absent"
+    },
+    {
+      "pid": 65108,
+      "started": "2026-10-09T05:16:55.2759550+00:00",
+      "source": "20261009-051652-923-repair12.result.json",
+      "state": "pid_reused"
+    },
+    {
+      "pid": 28956,
+      "started": "2026-10-09T05:16:57.0075760+00:00",
+      "source": "20261009-051652-923-repair12.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 62424,
+      "started": "2026-10-09T05:16:55.2941520+00:00",
+      "source": "20261009-051652-923-repair12.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 44688,
+      "started": "2026-10-09T05:16:57.0230120+00:00",
+      "source": "20261009-051652-923-repair12.result.json",
+      "state": "pid_reused"
+    },
+    {
+      "pid": 65108,
+      "started": "2026-10-09T05:16:55.2759559+00:00",
+      "source": "20261009-051652-923-repair12.result.json:retained_handle",
+      "state": "pid_reused"
+    },
+    {
+      "pid": 62448,
+      "started": "2026-10-09T05:16:52.0148203+00:00",
+      "source": "20261009-051652-923-repair12.result.json:guardian",
+      "state": "absent"
+    },
+    {
+      "pid": 55948,
+      "started": "2026-10-09T05:17:34.8197170+00:00",
+      "source": "20261009-051731-516-repair13.result.json",
+      "state": "pid_reused"
+    },
+    {
+      "pid": 6232,
+      "started": "2026-10-09T05:17:38.3106380+00:00",
+      "source": "20261009-051731-516-repair13.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 52508,
+      "started": "2026-10-09T05:17:34.8528020+00:00",
+      "source": "20261009-051731-516-repair13.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 55948,
+      "started": "2026-10-09T05:17:34.8197172+00:00",
+      "source": "20261009-051731-516-repair13.result.json:retained_handle",
+      "state": "pid_reused"
+    },
+    {
+      "pid": 59740,
+      "started": "2026-10-09T05:17:29.6853356+00:00",
+      "source": "20261009-051731-516-repair13.result.json:guardian",
+      "state": "absent"
+    },
+    {
+      "pid": 26476,
+      "started": "2026-10-09T05:23:11.8927580+00:00",
+      "source": "20261009-052309-572-review00.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 33616,
+      "started": "2026-10-09T05:23:11.9157930+00:00",
+      "source": "20261009-052309-572-review00.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 49628,
+      "started": "2026-10-09T05:23:14.4534750+00:00",
+      "source": "20261009-052309-572-review00.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 31404,
+      "started": "2026-10-09T05:23:08.8154589+00:00",
+      "source": "20261009-052309-572-review00.result.json:guardian",
+      "state": "absent"
+    },
+    {
+      "pid": 67236,
+      "started": "2026-10-09T05:23:11.9676150+00:00",
+      "source": "20261009-052309-633-review01.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 49504,
+      "started": "2026-10-09T05:23:14.5469290+00:00",
+      "source": "20261009-052309-633-review01.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 55136,
+      "started": "2026-10-09T05:23:11.9883900+00:00",
+      "source": "20261009-052309-633-review01.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 67236,
+      "started": "2026-10-09T05:23:11.9676159+00:00",
+      "source": "20261009-052309-633-review01.result.json:retained_handle",
+      "state": "absent"
+    },
+    {
+      "pid": 63168,
+      "started": "2026-10-09T05:23:08.8533051+00:00",
+      "source": "20261009-052309-633-review01.result.json:guardian",
+      "state": "absent"
+    },
+    {
+      "pid": 37084,
+      "started": "2026-10-09T05:23:53.2629360+00:00",
+      "source": "20261009-052352-008-review02.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 37636,
+      "started": "2026-10-09T05:23:53.2748030+00:00",
+      "source": "20261009-052352-008-review02.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 66404,
+      "started": "2026-10-09T05:23:54.4501490+00:00",
+      "source": "20261009-052352-008-review02.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 37084,
+      "started": "2026-10-09T05:23:53.2629362+00:00",
+      "source": "20261009-052352-008-review02.result.json:retained_handle",
+      "state": "absent"
+    },
+    {
+      "pid": 28500,
+      "started": "2026-10-09T05:23:51.4877124+00:00",
+      "source": "20261009-052352-008-review02.result.json:guardian",
+      "state": "absent"
+    },
+    {
+      "pid": 36460,
+      "started": "2026-10-09T05:24:20.0917450+00:00",
+      "source": "20261009-052417-807-review03.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 40084,
+      "started": "2026-10-09T05:24:21.5717700+00:00",
+      "source": "20261009-052417-807-review03.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 55792,
+      "started": "2026-10-09T05:24:20.1085030+00:00",
+      "source": "20261009-052417-807-review03.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 36460,
+      "started": "2026-10-09T05:24:20.0917455+00:00",
+      "source": "20261009-052417-807-review03.result.json:retained_handle",
+      "state": "absent"
+    },
+    {
+      "pid": 44444,
+      "started": "2026-10-09T05:24:15.2300339+00:00",
+      "source": "20261009-052417-807-review03.result.json:guardian",
+      "state": "absent"
+    },
+    {
+      "pid": 64804,
+      "started": "2026-10-09T05:24:41.9434000+00:00",
+      "source": "20261009-052440-151-review04.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 58972,
+      "started": "2026-10-09T05:24:43.3480940+00:00",
+      "source": "20261009-052440-151-review04.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 67236,
+      "started": "2026-10-09T05:24:41.9583750+00:00",
+      "source": "20261009-052440-151-review04.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 64804,
+      "started": "2026-10-09T05:24:41.9434003+00:00",
+      "source": "20261009-052440-151-review04.result.json:retained_handle",
+      "state": "absent"
+    },
+    {
+      "pid": 6448,
+      "started": "2026-10-09T05:24:39.6286746+00:00",
+      "source": "20261009-052440-151-review04.result.json:guardian",
+      "state": "absent"
+    },
+    {
+      "pid": 32956,
+      "started": "2026-10-09T05:25:16.2885360+00:00",
+      "source": "20261009-052514-124-review05.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 44248,
+      "started": "2026-10-09T05:25:17.8619000+00:00",
+      "source": "20261009-052514-124-review05.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 57552,
+      "started": "2026-10-09T05:25:16.3057260+00:00",
+      "source": "20261009-052514-124-review05.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 32956,
+      "started": "2026-10-09T05:25:16.2885363+00:00",
+      "source": "20261009-052514-124-review05.result.json:retained_handle",
+      "state": "absent"
+    },
+    {
+      "pid": 64960,
+      "started": "2026-10-09T05:25:13.4003946+00:00",
+      "source": "20261009-052514-124-review05.result.json:guardian",
+      "state": "absent"
+    },
+    {
+      "pid": 64840,
+      "started": "2026-10-09T05:25:48.9669760+00:00",
+      "source": "20261009-052545-779-review06.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 65336,
+      "started": "2026-10-09T05:25:48.9934710+00:00",
+      "source": "20261009-052545-779-review06.result.json",
+      "state": "absent"
+    },
+    {
+      "pid": 7712,
+      "started": "2026-10-09T05:25:42.7740454+00:00",
+      "source": "20261009-052545-779-review06.result.json:guardian",
+      "state": "absent"
+    },
+    {
+      "pid": 66136,
+      "started": "2026-10-09T13:26:54.306228+08:00",
+      "source": "packager-followup",
+      "state": "absent"
+    },
+    {
+      "pid": 57460,
+      "started": "2026-10-09T05:29:36.3028814Z",
+      "source": "git-closure",
+      "state": "absent"
+    },
+    {
+      "pid": 63200,
+      "started": "2026-10-09T05:29:51.7522659Z",
+      "source": "git-closure",
+      "state": "absent"
+    },
+    {
+      "pid": 65900,
+      "started": "2026-10-09T05:30:12.2517268Z",
+      "source": "git-closure",
+      "state": "absent"
+    },
+    {
+      "pid": 21692,
+      "started": "2026-10-09T05:30:27.3092398Z",
+      "source": "git-closure",
+      "state": "absent"
+    },
+    {
+      "pid": 47276,
+      "started": "2026-10-09T05:30:29.0018434Z",
+      "source": "git-closure",
+      "state": "absent"
+    }
+  ],
+  "reader": {
+    "ProcessId": 12592,
+    "CreationDate": "2026-10-09T13:36:52.864343+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); & 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-data-validation.ps1'; if($LASTEXITCODE -ne 0){exit $LASTEXITCODE}\"",
+    "ParentProcessId": 49492
+  },
+  "limits": "Read-only PS7;90seconds;332inventory/256original/215retained/40wire-pairs/8source-files/118identities/99PIDs/4queries;cancel audit-cancel.request;no child process launched",
+  "limitations": [
+    "No native renderer/tokenizer strict1024 measurement in this audit.",
+    "No GPU training, teacher calls, or model quality review.",
+    "Current absence does not fill18missing historical argv or prove unobserved short-lived descendants.",
+    "Git object byte comparison pending separate read-only audit."
+  ],
+  "formal_human_review": "pending",
+  "model_quality_passed": false,
+  "training_executed": false
+}

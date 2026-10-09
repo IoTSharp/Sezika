@@ -1,0 +1,23 @@
+{
+  "Pid": 60564,
+  "Started": "2026-10-09T06:11:31.9559775Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 71260,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 71260,
+    "Started": "2026-10-09T14:11:30.759619+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference = 'Stop'\nif ($PSVersionTable.PSVersion.Major -lt 7) { throw 'PowerShell 7 is required' }\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath git -ArgumentList @('status','--short') -TimeoutSeconds 30 -LogName resume-status\nGet-Content -LiteralPath HANDOFF.md -TotalCount 180\nGet-Content -LiteralPath docs/evidence/repaired-training-engineering-2026-10-09.md\nGet-Content -LiteralPath .artifacts/repaired-training-20261009/local-process-closure.json -TotalCount 75\nGet-Content -LiteralPath .artifacts/repaired-training-20261009/closure-field-correction.json\nGet-ChildItem -LiteralPath .artifacts/repaired-training-20261009 -File | Select-Object -First 100 Name,Length\n\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 30,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "git",
+  "Arguments": [
+    "status",
+    "--short"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

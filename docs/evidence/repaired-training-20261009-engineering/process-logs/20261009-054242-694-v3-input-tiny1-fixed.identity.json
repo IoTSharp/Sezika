@@ -1,0 +1,31 @@
+{
+  "Pid": 64748,
+  "Started": "2026-10-09T05:42:43.4820863Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll check-expanded-input --data D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\data --manifest-sha256 E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6 --fixture-only false --max-checks 1",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 48972,
+  "ObservedParentPid": 48972,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 48972,
+    "Started": "2026-10-09T13:42:42.214746+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll','check-expanded-input','--data','D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\data','--manifest-sha256','E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6','--fixture-only','false','--max-checks','1') -TimeoutSeconds 45 -ProcessQueryTimeoutSeconds 2 -LogName 'v3-input-tiny1-fixed' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs'\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 45,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll",
+    "check-expanded-input",
+    "--data",
+    "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\data",
+    "--manifest-sha256",
+    "E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6",
+    "--fixture-only",
+    "false",
+    "--max-checks",
+    "1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

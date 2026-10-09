@@ -1,0 +1,42 @@
+{
+  "Status": "CleanupFailed",
+  "Pid": 60564,
+  "ExitCode": 0,
+  "Error": "Process cleanup or output capture failed.",
+  "ElapsedSeconds": 1.434,
+  "TimeoutSeconds": 30,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "git",
+  "Arguments": [
+    "status",
+    "--short"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T06:11:31.9559775Z",
+  "ParentPid": 71260,
+  "Launcher": {
+    "Pid": 71260,
+    "Started": "2026-10-09T14:11:30.759619+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference = 'Stop'\nif ($PSVersionTable.PSVersion.Major -lt 7) { throw 'PowerShell 7 is required' }\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath git -ArgumentList @('status','--short') -TimeoutSeconds 30 -LogName resume-status\nGet-Content -LiteralPath HANDOFF.md -TotalCount 180\nGet-Content -LiteralPath docs/evidence/repaired-training-engineering-2026-10-09.md\nGet-Content -LiteralPath .artifacts/repaired-training-20261009/local-process-closure.json -TotalCount 75\nGet-Content -LiteralPath .artifacts/repaired-training-20261009/closure-field-correction.json\nGet-ChildItem -LiteralPath .artifacts/repaired-training-20261009 -File | Select-Object -First 100 Name,Length\n\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-061131-222-resume-status.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-061131-222-resume-status.stderr.log",
+  "CleanupErrors": [
+    "Final task inventory unverified: live=0 unknown=1"
+  ],
+  "FinalCheckComplete": false,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 1,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 0.0243857,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

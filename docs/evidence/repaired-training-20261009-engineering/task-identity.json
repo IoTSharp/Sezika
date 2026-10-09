@@ -1,0 +1,66 @@
+{
+  "thread": "01a11f25-335a-7571-a735-7171ace8c3b9",
+  "task": "sezika-repaired-training-20261009",
+  "utc": "2026-10-09T05:33:47.0314333Z",
+  "head": "4e7b304",
+  "remote": "/root/sezika-experiments/20261009-repaired-training-v3",
+  "manifest_sha256": "E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6",
+  "ledger_sha256": "55F3226946831C4B9CBD7F6EE10D1194764860C8343A9386CAA40C678CE24EC0",
+  "paused": [
+    {
+      "sha256": "499759610BC7F79CE2F5D62BB61FC471E1CBF75374D3584F8D0E7C786CF84AFF",
+      "path": "ROADMAP.md"
+    },
+    {
+      "sha256": "6329E7F222484BBE5FA7395D507B121D3550CAA94BD1E7FB355F32E936F094AA",
+      "path": "docs/evidence/diagnostic-runtime-2026-10-08.md"
+    },
+    {
+      "sha256": "2B7F0B12AF4CAFF116B0424B563E503EE8F459AEB215A18666C2DBF54FB9EA20",
+      "path": "tools/Sezika.Benchmarks/Program.cs"
+    },
+    {
+      "sha256": "4A827337F07004271D7A9765D41383EB25646193359C8925EE7019F7193ADD1D",
+      "path": "tools/Sezika.IndependentModelTool/Program.cs"
+    },
+    {
+      "sha256": "0819E0BDA7CC7723234E18C28FE3C776B39FC9E088BB8ADCB32DA45284014772",
+      "path": "docs/wechat-introduction.md"
+    },
+    {
+      "sha256": "2918478097C879AD00C6A04FD949A93D865A34ED44FBDC17306EC04AB78F0FDD",
+      "path": "docs/wechat-introduction.html"
+    },
+    {
+      "sha256": "EE904798CCDB656D6E32F9445481CD1015962ADEE7F47A051546AE0783051EA6",
+      "path": "tools/Sezika.Benchmarks/DiagnosticIndependentProfile.cs"
+    },
+    {
+      "sha256": "DDFD23ABFB026D04A85D622634290584C023F4D28DB6E7CDC59BD4772E1145B0",
+      "path": "tools/Sezika.Benchmarks/DiagnosticProfileChecks.cs"
+    },
+    {
+      "sha256": "4B4DE1E78D54BCDCC8CD600A703906C518118A83AA7E7CAD65C8EBA69E2D6C2C",
+      "path": "tools/Sezika.Benchmarks/DiagnosticProfileReport.cs"
+    },
+    {
+      "sha256": "BF9CB5F6B74863CFDC04A749DB197533990F0D331B4A98A2EB4C866A75BE6C1A",
+      "path": "tools/Sezika.IndependentModelTool/DiagnosticAssetPreparationChecks.cs"
+    },
+    {
+      "sha256": "EAE77A60A77B5A419CA9712C1E941DD1A306733AB30439783F56EE534D2E073A",
+      "path": "tools/Sezika.IndependentModelTool/DiagnosticAssetPreparationCommand.cs"
+    }
+  ],
+  "budgets": {
+    "updates": 24576,
+    "cli_seconds": 1500,
+    "learning_rate": 0.001,
+    "forward_limit": 384,
+    "seed": 17,
+    "host_bytes": 4294967296,
+    "max_tokens": 1024,
+    "sgd_seconds": 300,
+    "gpu_bytes": 3221225472
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "whitespace_exception": {
+    "scope": "One invocation only; no Git configuration change",
+    "line": 262,
+    "reason": "Preserve raw evidence bytes",
+    "path": "docs/evidence/repaired-training-20261009-engineering/Invoke-BoundedProcess.ps1"
+  },
+  "original_ledger_sha256": "55F3226946831C4B9CBD7F6EE10D1194764860C8343A9386CAA40C678CE24EC0",
+  "original_manifest_sha256": "E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6",
+  "limitation": "A prior short preservation read failed at the guessed manifest.json filename before writing a report; exact experiment-manifest.json used here.",
+  "original_identities_preserved": true,
+  "raw_guardian_sha256": "2E158E527CDA1DC5B4CCC8FBA913BA3A789AE5190D2E59CAB6A6FBC10D867ED5",
+  "raw_guardian_copy_matches": true,
+  "utc": "2026-10-09T06:15:09.4193842Z",
+  "paused": [
+    {
+      "path": "ROADMAP.md",
+      "sha256": "499759610BC7F79CE2F5D62BB61FC471E1CBF75374D3584F8D0E7C786CF84AFF",
+      "preserved": true
+    },
+    {
+      "path": "docs/evidence/diagnostic-runtime-2026-10-08.md",
+      "sha256": "6329E7F222484BBE5FA7395D507B121D3550CAA94BD1E7FB355F32E936F094AA",
+      "preserved": true
+    },
+    {
+      "path": "tools/Sezika.Benchmarks/Program.cs",
+      "sha256": "2B7F0B12AF4CAFF116B0424B563E503EE8F459AEB215A18666C2DBF54FB9EA20",
+      "preserved": true
+    },
+    {
+      "path": "tools/Sezika.IndependentModelTool/Program.cs",
+      "sha256": "4A827337F07004271D7A9765D41383EB25646193359C8925EE7019F7193ADD1D",
+      "preserved": true
+    },
+    {
+      "path": "docs/wechat-introduction.md",
+      "sha256": "0819E0BDA7CC7723234E18C28FE3C776B39FC9E088BB8ADCB32DA45284014772",
+      "preserved": true
+    },
+    {
+      "path": "docs/wechat-introduction.html",
+      "sha256": "2918478097C879AD00C6A04FD949A93D865A34ED44FBDC17306EC04AB78F0FDD",
+      "preserved": true
+    },
+    {
+      "path": "tools/Sezika.Benchmarks/DiagnosticIndependentProfile.cs",
+      "sha256": "EE904798CCDB656D6E32F9445481CD1015962ADEE7F47A051546AE0783051EA6",
+      "preserved": true
+    },
+    {
+      "path": "tools/Sezika.Benchmarks/DiagnosticProfileChecks.cs",
+      "sha256": "DDFD23ABFB026D04A85D622634290584C023F4D28DB6E7CDC59BD4772E1145B0",
+      "preserved": true
+    },
+    {
+      "path": "tools/Sezika.Benchmarks/DiagnosticProfileReport.cs",
+      "sha256": "4B4DE1E78D54BCDCC8CD600A703906C518118A83AA7E7CAD65C8EBA69E2D6C2C",
+      "preserved": true
+    },
+    {
+      "path": "tools/Sezika.IndependentModelTool/DiagnosticAssetPreparationChecks.cs",
+      "sha256": "BF9CB5F6B74863CFDC04A749DB197533990F0D331B4A98A2EB4C866A75BE6C1A",
+      "preserved": true
+    },
+    {
+      "path": "tools/Sezika.IndependentModelTool/DiagnosticAssetPreparationCommand.cs",
+      "sha256": "EAE77A60A77B5A419CA9712C1E941DD1A306733AB30439783F56EE534D2E073A",
+      "preserved": true
+    }
+  ],
+  "reader": {
+    "ProcessId": 70988,
+    "CreationDate": "2026-10-09T14:15:08.43938+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\nif($PSVersionTable.PSVersion.Major -lt 7){throw 'PowerShell 7 required'}\n$watch=[Diagnostics.Stopwatch]::StartNew()\n$task='D:\\source\\Sezika\\.artifacts\\repaired-training-20261009'\n$self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 2|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId\n$identity=[IO.File]::ReadAllText((Join-Path $task 'task-identity.json'))|ConvertFrom-Json\nif($identity.paused.Count -ne 11){throw 'Expected11 paused files'}\n$note=[IO.File]::ReadAllText((Join-Path $task 'roadmap-own-note.txt'))\n$checks=@(foreach($entry in $identity.paused){\n if($watch.Elapsed.TotalSeconds -ge 20 -or [IO.File]::Exists((Join-Path $task 'cancel.request'))){throw 'Preservation bound'}\n $path=Join-Path 'D:\\source\\Sezika' $entry.path\n $sha=if($entry.path -eq 'ROADMAP.md'){\n  $content=[IO.File]::ReadAllText($path)\n  if(-not $content.Contains($note)){throw 'Expected exact owned ROADMAP note'}\n  [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData([Text.UTF8Encoding]::new($false).GetBytes($content.Replace($note,''))))\n }else{(Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash}\n if($sha -cne $entry.sha256){throw ('Paused bytes changed: '+$entry.path)}\n @{path=$entry.path;sha256=$sha;preserved=$true}\n})\n$source=(Get-FileHash -LiteralPath (Join-Path $task 'Invoke-BoundedProcess.ps1')).Hash\n$mirror=(Get-FileHash -LiteralPath docs/evidence/repaired-training-20261009-engineering/Invoke-BoundedProcess.ps1).Hash\nif($source -cne $mirror){throw 'Raw guardian copy differs'}\n$manifest=(Get-FileHash -LiteralPath docs/evidence/teacher-repair-20261009-final/data-v3/experiment-manifest.json).Hash\n$ledger=(Get-FileHash -LiteralPath docs/evidence/teacher-repair-20261009-final/data-v3/derivation-ledger.json).Hash\nif($manifest -cne $identity.manifest_sha256 -or $ledger -cne $identity.ledger_sha256){throw 'Original v3 identity changed'}\n$report=@{utc=[DateTime]::UtcNow.ToString('o');reader=$self;paused=$checks;raw_guardian_sha256=$source;raw_guardian_copy_matches=$true;original_manifest_sha256=$manifest;original_ledger_sha256=$ledger;original_identities_preserved=$true;whitespace_exception=@{path='docs/evidence/repaired-training-20261009-engineering/Invoke-BoundedProcess.ps1';line=262;reason='Preserve raw evidence bytes';scope='One invocation only; no Git configuration change'};limitation='A prior short preservation read failed at the guessed manifest.json filename before writing a report; exact experiment-manifest.json used here.'}\n$out=Join-Path $task 'resume-preservation.json'\nif([IO.File]::Exists($out)){throw 'Preserve old report'}\n[IO.File]::WriteAllText($out,($report|ConvertTo-Json -Depth 6),[Text.UTF8Encoding]::new($false))\nWrite-Output \\\"preserved11 original_data_preserved raw_guardian=$source reader=$PID\\\"\n\"",
+    "ParentProcessId": 49492
+  }
+}

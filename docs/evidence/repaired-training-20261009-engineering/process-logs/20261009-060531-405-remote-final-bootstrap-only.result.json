@@ -1,0 +1,89 @@
+{
+  "Status": "Succeeded",
+  "Pid": 49920,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 3.675,
+  "TimeoutSeconds": 35,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoLogo",
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\remote\\final-status.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T06:05:31.7704662Z",
+  "ParentPid": 64272,
+  "Launcher": {
+    "Pid": 64272,
+    "Started": "2026-10-09T14:05:30.518552+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\repaired-training-20261009';$closure=Get-Content -Raw -LiteralPath (Join-Path $task 'local-process-closure.json')|ConvertFrom-Json;$actual=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$($closure.reader.ProcessId)\\\" -OperationTimeoutSec 2;if($actual){throw 'Closure reader still live or reused: inspect exact identity'}\n[IO.File]::WriteAllText((Join-Path $task 'closure-field-correction.json'),(@{utc=[DateTime]::UtcNow.ToString('o');original_sha256=(Get-FileHash -LiteralPath (Join-Path $task 'local-process-closure.json')).Hash;clarification='Rows historical_argv_observed is imprecise: it only means recorded argv was present. Root entries use retained spawn argv, not necessarily an OS snapshot. No complete historical OS argv claim is made; source corrected for future runs without rewriting saved bytes.';closure_reader_pid=$closure.reader.ProcessId;closure_reader_state='absent';registered_records=$closure.records;registered_pids=$closure.unique_pids;matching_live=$closure.matching_live;unknown_current=$closure.unknown_current}|ConvertTo-Json -Depth 4),[Text.UTF8Encoding]::new($false))\n& (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoLogo','-NoProfile','-File',(Join-Path $task 'Invoke-Ssh.ps1'),'-ScriptFile',(Join-Path $task 'remote/final-status.sh')) -TimeoutSeconds 35 -ProcessQueryTimeoutSeconds 2 -LogName 'remote-final-bootstrap-only' -LogDirectory (Join-Path $task 'process-logs')\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060531-405-remote-final-bootstrap-only.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060531-405-remote-final-bootstrap-only.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 0.7232146,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 49920,
+      "CreationDate": "2026-10-09T14:05:31.770466+08:00",
+      "Started": "2026-10-09T06:05:31.770466Z",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\remote\\final-status.sh",
+      "ParentPid": 64272,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 6436,
+      "CreationDate": "2026-10-09T14:05:32.268574+08:00",
+      "Started": "2026-10-09T06:05:32.268574Z",
+      "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "ParentPid": 49920,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 49920,
+          "CreationDate": "2026-10-09T14:05:31.770466+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\remote\\final-status.sh",
+          "ParentPid": 64272
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 63760,
+      "CreationDate": "2026-10-09T14:05:31.779249+08:00",
+      "Started": "2026-10-09T06:05:31.779249Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 49920,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 49920,
+          "CreationDate": "2026-10-09T14:05:31.770466+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\remote\\final-status.sh",
+          "ParentPid": 64272
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

@@ -1,0 +1,277 @@
+{
+  "utc": "2026-10-09T05:54:42.0470593+00:00",
+  "status": "confirmed_actual_repaired_request_exceeds_production_strict1024",
+  "record_id": "massive-zh-cn-02996",
+  "retained_row_one_based": 93,
+  "parent_row_one_based": 108,
+  "parent_tokens": 482,
+  "repaired_tokens": 1037,
+  "delta_tokens": 555,
+  "production_max_tokens": 1024,
+  "diagnostic_max_tokens": 8192,
+  "diagnostic_does_not_authorize_larger_model_context": true,
+  "parent_strict1024_passed": true,
+  "repaired_strict1024_result": "decision_v1_token_budget_exceeded",
+  "segments": {
+    "question": {
+      "repaired": 483,
+      "delta": 258,
+      "parent": 225
+    },
+    "control": {
+      "repaired": 9,
+      "delta": 1,
+      "parent": 8
+    },
+    "candidate_json": {
+      "repaired": 494,
+      "delta": 296,
+      "parent": 198
+    },
+    "state": {
+      "repaired": 51,
+      "delta": 0,
+      "parent": 51
+    }
+  },
+  "instruction_characters": {
+    "repaired": 82,
+    "parent": 37
+  },
+  "candidate_count": {
+    "repaired": 5,
+    "parent": 4
+  },
+  "cause": "Same formalbuilder and pinnedtokenizer appliedto parent/new. Requestrepair increases instruction andstock/factoid boundarydescriptions,addsqa_stock_news;defaultJSONunicodeescaping is existingformalrendering. Aggregate1037 genuinely exceeds1024. No newv3lengthsmethod neededtoexplainfailure.",
+  "source_invariants": {
+    "split": "train",
+    "state_unchanged": true,
+    "original_source_gold_index": 0,
+    "new_teacher_target_index": 2,
+    "family": "massive-1.1-utterance-2996",
+    "state_text": "股市有什么新鲜事",
+    "candidate_ids": [
+      "qa_definition",
+      "qa_stock",
+      "qa_stock_news",
+      "qa_currency",
+      "qa_factoid"
+    ]
+  },
+  "model_constraint": "FrozenIndependentModelContract/config/runtime MaxTokens1024;SequenceBuilderallowsbounded8192onlyfordiagnosticsequencecount. Productionbuilder/model/datawereunchanged.",
+  "pair_evidence": {
+    "contract": "sezika/one-row-formal-renderer-tokenizer-diagnostic/v1",
+    "utc": "2026-10-09T13:53:08.8008764+08:00",
+    "mode": "pair",
+    "tokenizer_path": "D:\\source\\Sezika\\.artifacts\\models\\mmbert-independent\\converted\\tokenizer\\tokenizer.json",
+    "tokenizer_sha256": "197D4CC5406EE12CC50C8B5511F2393CC32D9DB321545979CE041C1199178356",
+    "diagnostic_max_tokens": 8192,
+    "production_max_tokens": 1024,
+    "rows": [
+      {
+        "variant": "parent",
+        "row_one_based": 108,
+        "record_id": "massive-zh-cn-02996",
+        "instruction_characters": 37,
+        "candidate_count": 4,
+        "candidate_ids": [
+          "qa_stock",
+          "qa_currency",
+          "qa_definition",
+          "qa_factoid"
+        ],
+        "candidate_text_characters": [
+          6,
+          7,
+          9,
+          6
+        ],
+        "question_tokens": 225,
+        "state_tokens": 51,
+        "candidate_tokens": [
+          45,
+          51,
+          58,
+          44
+        ],
+        "control_tokens": 8,
+        "tokens": 482,
+        "strict1024_result": "passed",
+        "serialized_question": "{\"type\":\"choice\",\"id\":\"intent\",\"instruction\":\"\\u53EA\\u4F9D\\u636E\\u7528\\u6237\\u539F\\u8BDD\\uFF0C\\u9009\\u62E9\\u7ED9\\u5B9A\\u5019\\u9009\\u4E2D\\u6700\\u7B26\\u5408\\u5176\\u4E3B\\u8981\\u610F\\u56FE\\u7684\\u4E00\\u9879\\uFF1B\\u4E0D\\u63A8\\u6D4B\\u672A\\u63D0\\u53CA\\u7684\\u8BF7\\u6C42\\u3002\"}",
+        "serialized_state": "{\"text\":\"\\u80A1\\u5E02\\u6709\\u4EC0\\u4E48\\u65B0\\u9C9C\\u4E8B\"}"
+      },
+      {
+        "variant": "repaired",
+        "row_one_based": 93,
+        "record_id": "massive-zh-cn-02996",
+        "instruction_characters": 82,
+        "candidate_count": 5,
+        "candidate_ids": [
+          "qa_definition",
+          "qa_stock",
+          "qa_stock_news",
+          "qa_currency",
+          "qa_factoid"
+        ],
+        "candidate_text_characters": [
+          9,
+          19,
+          11,
+          7,
+          32
+        ],
+        "question_tokens": 483,
+        "state_tokens": 51,
+        "candidate_tokens": [
+          58,
+          117,
+          76,
+          51,
+          192
+        ],
+        "control_tokens": 9,
+        "tokens": 1037,
+        "strict1024_result": "decision_v1_token_budget_exceeded",
+        "serialized_question": "{\"type\":\"choice\",\"id\":\"intent\",\"instruction\":\"\\u53EA\\u4F9D\\u636E\\u7528\\u6237\\u539F\\u8BDD\\uFF0C\\u9009\\u62E9\\u7ED9\\u5B9A\\u5019\\u9009\\u4E2D\\u6700\\u7B26\\u5408\\u5176\\u4E3B\\u8981\\u610F\\u56FE\\u7684\\u4E00\\u9879\\uFF1B\\u533A\\u5206\\u80A1\\u7968\\u4EF7\\u683C\\u6216\\u884C\\u60C5\\u8D70\\u52BF\\u67E5\\u8BE2\\u4E0E\\u80A1\\u5E02\\u65B0\\u95FB\\u67E5\\u8BE2\\uFF0C\\u4E00\\u822C\\u4E8B\\u5B9E\\u77E5\\u8BC6\\u7C7B\\u522B\\u4E0D\\u5305\\u542B\\u5176\\u4ED6\\u5019\\u9009\\u5DF2\\u5217\\u51FA\\u7684\\u67E5\\u8BE2\\u7C7B\\u578B\\uFF0C\\u4E0D\\u63A8\\u6D4B\\u672A\\u63D0\\u53CA\\u7684\\u8BF7\\u6C42\\u3002\"}",
+        "serialized_state": "{\"text\":\"\\u80A1\\u5E02\\u6709\\u4EC0\\u4E48\\u65B0\\u9C9C\\u4E8B\"}"
+      }
+    ],
+    "encoder_loaded": false,
+    "gpu_opened": false,
+    "api_called": false,
+    "seconds": 0.5852647,
+    "process_peak_working_set_bytes": 149999616
+  },
+  "hashes": {
+    "formal_renderer_source": "2D5AE93607EF29DCF02216284D9CF28913A6C55D4C9B6D0C08D29CCB743B3AB7",
+    "tokenizer": "197D4CC5406EE12CC50C8B5511F2393CC32D9DB321545979CE041C1199178356",
+    "manifest": "E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6",
+    "core_dll": "9863D4ED67F11AB9B70F2CF26DF0271462005F9AB39DF77071329E8E7497B099",
+    "reference_source": "466E7DAF612EE44533EBEEECF609D81A3B6B14DEC7A819D9AEEA4905B092CFA5",
+    "ledger": "55F3226946831C4B9CBD7F6EE10D1194764860C8343A9386CAA40C678CE24EC0",
+    "reference_dll": "05DF62C43E8EF851757D2E234E5F2045B1803FDF70CA4162E04519444D7F46A2"
+  },
+  "guardian_receipts": [
+    {
+      "Status": "Succeeded",
+      "Pid": 68044,
+      "Started": "2026-10-09T05:52:37.9786097Z",
+      "ExitCode": 0,
+      "FinalCheckComplete": true,
+      "VerifiedLiveCount": 0,
+      "UnknownCount": 0,
+      "Launcher": {
+        "Pid": 68224,
+        "Started": "2026-10-09T13:52:36.723834+08:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'; $PSVersionTable.PSVersion.ToString(); $auditTask='D:\\source\\Sezika\\.artifacts\\repaired-training-20261009'; $auditTemp=Join-Path $auditTask 'audit-length-reference/compiler-temp'; if(Test-Path -LiteralPath $auditTemp){throw 'Fresh compiler temp required'};[void][IO.Directory]::CreateDirectory($auditTemp);$env:TEMP=$auditTemp;$env:TMP=$auditTemp;$env:MSBUILDDISABLENODEREUSE='1'; & (Join-Path $auditTask 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build',(Join-Path $auditTask 'audit-length-reference/AuditLengthReference.csproj'),'-c','Release','--disable-build-servers','-p:RestoreIgnoreFailedSources=true','-v:minimal') -TimeoutSeconds 45 -ProcessQueryTimeoutSeconds 5 -LogName 'audit-length-build' -LogDirectory (Join-Path $auditTask 'audit-length-process-logs')\"",
+        "ParentPid": 49492
+      },
+      "Processes": [
+        {
+          "Pid": 68044,
+          "CreationDate": "2026-10-09T13:52:37.978609+08:00",
+          "Started": "2026-10-09T05:52:37.978609Z",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-length-reference\\AuditLengthReference.csproj -c Release --disable-build-servers -p:RestoreIgnoreFailedSources=true -v:minimal",
+          "ParentPid": 68224,
+          "Depth": 0,
+          "ParentChain": [],
+          "TerminatedByRunner": false
+        },
+        {
+          "Pid": 49560,
+          "CreationDate": "2026-10-09T13:52:37.986365+08:00",
+          "Started": "2026-10-09T05:52:37.986365Z",
+          "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+          "ParentPid": 68044,
+          "Depth": 1,
+          "ParentChain": [
+            {
+              "Pid": 68044,
+              "CreationDate": "2026-10-09T13:52:37.978609+08:00",
+              "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-length-reference\\AuditLengthReference.csproj -c Release --disable-build-servers -p:RestoreIgnoreFailedSources=true -v:minimal",
+              "ParentPid": 68224
+            }
+          ],
+          "TerminatedByRunner": false
+        }
+      ]
+    },
+    {
+      "Status": "Succeeded",
+      "Pid": 12556,
+      "Started": "2026-10-09T05:52:57.3218394Z",
+      "ExitCode": 0,
+      "FinalCheckComplete": true,
+      "VerifiedLiveCount": 0,
+      "UnknownCount": 0,
+      "Launcher": {
+        "Pid": 50564,
+        "Started": "2026-10-09T13:52:56.121627+08:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'; $PSVersionTable.PSVersion.ToString(); $auditTask='D:\\source\\Sezika\\.artifacts\\repaired-training-20261009'; & (Join-Path $auditTask 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @((Join-Path $auditTask 'audit-length-reference/bin/Release/net10.0/AuditLengthReference.dll'),'probe') -TimeoutSeconds 25 -ProcessQueryTimeoutSeconds 5 -LogName 'audit-length-probe' -LogDirectory (Join-Path $auditTask 'audit-length-process-logs')\"",
+        "ParentPid": 49492
+      },
+      "Processes": [
+        {
+          "Pid": 12556,
+          "CreationDate": "2026-10-09T13:52:57.321839+08:00",
+          "Started": "2026-10-09T05:52:57.321839Z",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-length-reference\\bin\\Release\\net10.0\\AuditLengthReference.dll probe",
+          "ParentPid": 50564,
+          "Depth": 0,
+          "ParentChain": [],
+          "TerminatedByRunner": false
+        }
+      ]
+    },
+    {
+      "Status": "Succeeded",
+      "Pid": 12624,
+      "Started": "2026-10-09T05:53:08.1490259Z",
+      "ExitCode": 0,
+      "FinalCheckComplete": true,
+      "VerifiedLiveCount": 0,
+      "UnknownCount": 0,
+      "Launcher": {
+        "Pid": 21528,
+        "Started": "2026-10-09T13:53:06.959629+08:00",
+        "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'; $PSVersionTable.PSVersion.ToString(); $auditTask='D:\\source\\Sezika\\.artifacts\\repaired-training-20261009'; & (Join-Path $auditTask 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @((Join-Path $auditTask 'audit-length-reference/bin/Release/net10.0/AuditLengthReference.dll'),'pair') -TimeoutSeconds 25 -ProcessQueryTimeoutSeconds 5 -LogName 'audit-length-pair' -LogDirectory (Join-Path $auditTask 'audit-length-process-logs')\"",
+        "ParentPid": 49492
+      },
+      "Processes": [
+        {
+          "Pid": 12624,
+          "CreationDate": "2026-10-09T13:53:08.149025+08:00",
+          "Started": "2026-10-09T05:53:08.149025Z",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-length-reference\\bin\\Release\\net10.0\\AuditLengthReference.dll pair",
+          "ParentPid": 21528,
+          "Depth": 0,
+          "ParentChain": [],
+          "TerminatedByRunner": false
+        }
+      ]
+    }
+  ],
+  "current_registered_pids": [
+    12556,
+    12624,
+    21528,
+    49560,
+    50564,
+    68044,
+    68224
+  ],
+  "current_processes": null,
+  "compiler_temp": "preserved_nonempty_owned_compiler_temp",
+  "reader": {
+    "ProcessId": 57068,
+    "CreationDate": "2026-10-09T13:54:40.37058+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'; $PSVersionTable.PSVersion.ToString(); $auditTask='D:\\source\\Sezika\\.artifacts\\repaired-training-20261009';$auditClock=[Diagnostics.Stopwatch]::StartNew();$auditReader=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5;$auditReceiptFiles=@(Get-ChildItem -LiteralPath (Join-Path $auditTask 'audit-length-process-logs') -Filter '*.result.json' -File|Select-Object -First 4);if($auditReceiptFiles.Count -ne 3){throw 'Exact3one-row receipts'};$auditReceipts=[Collections.Generic.List[object]]::new();$auditPids=[Collections.Generic.List[int]]::new();foreach($auditFile in $auditReceiptFiles){if($auditClock.Elapsed.TotalSeconds -ge 15){throw 'Auditclosure15s'};$auditReceipt=Get-Content -LiteralPath $auditFile.FullName -Raw|ConvertFrom-Json -Depth 20 -DateKind String;if(@($auditReceipt.Processes).Count -gt 16){throw 'Receiptprocesscap16'};$auditReceipts.Add($auditReceipt);$auditPids.Add([int]$auditReceipt.Pid);$auditPids.Add([int]$auditReceipt.Launcher.Pid);foreach($auditProc in @($auditReceipt.Processes)){$auditPids.Add([int]$auditProc.Pid)}};$auditUnique=@($auditPids|Sort-Object -Unique);if($auditUnique.Count -gt 32){throw 'ExactPIDcap32'};$auditFilter=(@($auditUnique|ForEach-Object {'ProcessId='+$_}) -join ' OR ');$auditCurrent=@(Get-CimInstance Win32_Process -Filter $auditFilter -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5);$auditPairReceipt=@($auditReceipts|Where-Object {$_.Arguments[-1] -ceq 'pair'})[0];$auditPair=Get-Content -LiteralPath $auditPairReceipt.StdoutPath -Raw|ConvertFrom-Json -Depth 20;$auditTemp=[IO.Path]::GetFullPath((Join-Path $auditTask 'audit-length-reference/compiler-temp'));if($auditTemp -cne 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-length-reference\\compiler-temp'){throw 'Exacttempownership'};$auditTempEntries=@(Get-ChildItem -LiteralPath $auditTemp -Force|Select-Object -First 1);$auditTempState='preserved_nonempty_owned_compiler_temp';if($auditTempEntries.Count -eq 0){[IO.Directory]::Delete($auditTemp,$false);$auditTempState='exact_empty_owned_compiler_temp_deleted'};$auditOutput=Join-Path $auditTask 'audit-length-block.json';if(Test-Path -LiteralPath $auditOutput){throw 'Preserveoldlengthaudit'};$auditReport=[ordered]@{utc=[DateTimeOffset]::UtcNow.ToString('o');status='confirmed_actual_repaired_request_exceeds_production_strict1024';record_id='massive-zh-cn-02996';retained_row_one_based=93;parent_row_one_based=108;parent_tokens=482;repaired_tokens=1037;delta_tokens=555;production_max_tokens=1024;diagnostic_max_tokens=8192;diagnostic_does_not_authorize_larger_model_context=$true;parent_strict1024_passed=$true;repaired_strict1024_result='decision_v1_token_budget_exceeded';segments=@{question=@{parent=225;repaired=483;delta=258};state=@{parent=51;repaired=51;delta=0};candidate_json=@{parent=198;repaired=494;delta=296};control=@{parent=8;repaired=9;delta=1}};instruction_characters=@{parent=37;repaired=82};candidate_count=@{parent=4;repaired=5};cause='Same formalbuilder and pinnedtokenizer appliedto parent/new. Requestrepair increases instruction andstock/factoid boundarydescriptions,addsqa_stock_news;defaultJSONunicodeescaping is existingformalrendering. Aggregate1037 genuinely exceeds1024. No newv3lengthsmethod neededtoexplainfailure.';source_invariants=@{state_text='股市有什么新鲜事';state_unchanged=$true;family='massive-1.1-utterance-2996';split='train';original_source_gold_index=0;new_teacher_target_index=2;candidate_ids=$auditPair.rows[1].candidate_ids};model_constraint='FrozenIndependentModelContract/config/runtime MaxTokens1024;SequenceBuilderallowsbounded8192onlyfordiagnosticsequencecount. Productionbuilder/model/datawereunchanged.';pair_evidence=$auditPair;hashes=@{formal_renderer_source=(Get-FileHash -LiteralPath 'D:\\source\\Sezika\\src\\Sezika\\IndependentDecisionV1.cs').Hash;core_dll=(Get-FileHash -LiteralPath 'D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.dll').Hash;reference_source=(Get-FileHash -LiteralPath (Join-Path $auditTask 'audit-length-reference/Program.cs')).Hash;reference_dll=(Get-FileHash -LiteralPath (Join-Path $auditTask 'audit-length-reference/bin/Release/net10.0/AuditLengthReference.dll')).Hash;tokenizer=$auditPair.tokenizer_sha256;manifest='E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6';ledger='55F3226946831C4B9CBD7F6EE10D1194764860C8343A9386CAA40C678CE24EC0'};guardian_receipts=@($auditReceipts|Select-Object Status,Pid,Started,ExitCode,FinalCheckComplete,VerifiedLiveCount,UnknownCount,Launcher,Processes);current_registered_pids=$auditUnique;current_processes=$auditCurrent|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId;compiler_temp=$auditTempState;reader=$auditReader|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId;encoder_loaded=$false;gpu_opened=$false;api_called=$false;training_started=$false;limits='Oneexclusivehelperbuild<=45s;parenttinyprobe thenparent/newpair;eachreference20s cancellation/wall,eachinputsearch<=256rows,targetonly1row,candidates<=8;guardianexactPIDtreefinallyclosure;noGit/SSH/data/sourcechanges.';next_gate='Full215strictlengthaudit canlistallrejections; frozen215package cannotproceedfixedstrict1024GPUtrainingwhilethisrowretained. Datasetchange orrenderingchange needsnewexplicitcontract/evidence;do notsilentlytruncate,increaseproductioncap,orclaimquality.'};[IO.File]::WriteAllText($auditOutput,($auditReport|ConvertTo-Json -Depth 18),[Text.UTF8Encoding]::new($false));[ordered]@{evidence=$auditOutput;sha256=(Get-FileHash -LiteralPath $auditOutput).Hash;current_prior_pids=$auditCurrent.Count;registered_pids=$auditUnique.Count;compiler_temp=$auditTempState;reader=$auditReader.ProcessId;reader_start=$auditReader.CreationDate}|ConvertTo-Json -Depth 4\"",
+    "ParentProcessId": 49492
+  },
+  "encoder_loaded": false,
+  "gpu_opened": false,
+  "api_called": false,
+  "training_started": false,
+  "limits": "Oneexclusivehelperbuild<=45s;parenttinyprobe thenparent/newpair;eachreference20s cancellation/wall,eachinputsearch<=256rows,targetonly1row,candidates<=8;guardianexactPIDtreefinallyclosure;noGit/SSH/data/sourcechanges.",
+  "next_gate": "Full215strictlengthaudit canlistallrejections; frozen215package cannotproceedfixedstrict1024GPUtrainingwhilethisrowretained. Datasetchange orrenderingchange needsnewexplicitcontract/evidence;do notsilentlytruncate,increaseproductioncap,orclaimquality."
+}

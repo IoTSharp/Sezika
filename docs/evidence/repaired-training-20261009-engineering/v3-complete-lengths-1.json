@@ -1,0 +1,52 @@
+{
+  "contract": "sezika/teacher-labelled-expanded-rendered-token-lengths/v3",
+  "data_contract": "sezika/teacher-labelled-experiment-data/v3",
+  "status": "completed_rendered_lengths_no_model_execution",
+  "model_id": "sezika/mmbert-base-independent-s4",
+  "manifest_sha256": "E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6",
+  "records_sha256": "C87B4C8A7BADD4795856C48C21FB35CF0F0B4D6C0469258C2B5B5F01B9F8F634",
+  "input_provenance_sha256": "44D8A650E0738AA745BF3054575D4E58E2C728C45A80437639BB4940A13C2BF0",
+  "derivation_ledger_sha256": "55F3226946831C4B9CBD7F6EE10D1194764860C8343A9386CAA40C678CE24EC0",
+  "tokenizer_sha256": "197D4CC5406EE12CC50C8B5511F2393CC32D9DB321545979CE041C1199178356",
+  "actual_data_root": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\data",
+  "actual_tokenizer_path": "D:\\source\\Sezika\\.artifacts\\models\\mmbert-independent\\converted\\tokenizer\\tokenizer.json",
+  "data_records": 215,
+  "requested_records": 1,
+  "attempted_records": 1,
+  "accepted_records": 1,
+  "failed_records": 0,
+  "unattempted_records": 214,
+  "max_allowed_tokens": 1024,
+  "maximum_successful_tokens": 120,
+  "timeout_seconds": 120,
+  "elapsed_seconds": 0.9556975,
+  "encoder_loaded": false,
+  "feature_computed": false,
+  "training_executed": false,
+  "gpu_opened": false,
+  "process_peak_working_set_bytes": 188391424,
+  "rows": [
+    {
+      "record_id": "massive-en-us-00001",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 120,
+      "marker_positions": [
+        59,
+        75,
+        89,
+        105
+      ],
+      "candidate_ids": [
+        "alarm_set",
+        "alarm_query",
+        "alarm_remove",
+        "calendar_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    }
+  ]
+}

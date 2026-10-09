@@ -1,0 +1,6 @@
+Get-FileHash: D:\source\Sezika\.artifacts\repaired-training-20261009\Archive-Engineering.ps1:9
+Line |
+   9 |  бн $item.Length;sha256=(Get-FileHash -LiteralPath $item.FullName).Hash}) бн
+     |                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | The process cannot access the file
+     | 'D:\source\Sezika\.artifacts\repaired-training-20261009\process-logs\20261009-060627-879-permanent-engineering-archive.stderr.log' because it is being used by another process.

@@ -1,0 +1,55 @@
+{
+  "Status": "Succeeded",
+  "Pid": 22228,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 2.65,
+  "TimeoutSeconds": 85,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoLogo",
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Archive-Engineering.ps1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T06:07:24.6924263Z",
+  "ParentPid": 39232,
+  "Launcher": {
+    "Pid": 39232,
+    "Started": "2026-10-09T14:07:23.701066+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoLogo','-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Archive-Engineering.ps1') -TimeoutSeconds 85 -ProcessQueryTimeoutSeconds 2 -LogName 'permanent-engineering-archive-fixed' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs'\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060724-185-permanent-engineering-archive-fixed.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060724-185-permanent-engineering-archive-fixed.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 1.0537901,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [
+    "observer incomplete: unverified child of absent/reused registered parent"
+  ],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 22228,
+      "CreationDate": "2026-10-09T14:07:24.692426+08:00",
+      "Started": "2026-10-09T06:07:24.692426Z",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Archive-Engineering.ps1",
+      "ParentPid": 39232,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

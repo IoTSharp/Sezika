@@ -1,0 +1,25 @@
+{
+  "Pid": 71636,
+  "Started": "2026-10-09T05:42:47.3758219Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 54248,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 54248,
+    "Started": "2026-10-09T13:42:46.155427+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'; $PSVersionTable.PSVersion.ToString(); & 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Invoke-BoundedProcess.ps1' -FilePath 'C:\\Program Files\\Git\\cmd\\git.exe' -ArgumentList @('-C','D:\\source\\Sezika','show','d30655f:tools/Sezika.ExperimentTrainer/ExpansionChecks.cs') -TimeoutSeconds 10 -ProcessQueryTimeoutSeconds 5 -LogName 'audit-v2-length-contract' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-v2-git-logs' | Out-Null; $auditReceipts=@(Get-ChildItem -LiteralPath 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-v2-git-logs' -Filter '*.result.json' -File | Select-Object -First 2); if($auditReceipts.Count -ne 1){throw 'Audit receipt1'};$auditReceipt=Get-Content -LiteralPath $auditReceipts[0].FullName -Raw|ConvertFrom-Json -Depth 20; Get-Content -LiteralPath $auditReceipt.StdoutPath | Select-Object -Last 16; $auditReceipt|Select-Object Status,Pid,Started,ExitCode,FinalCheckComplete,VerifiedLiveCount,UnknownCount,Processes|ConvertTo-Json -Depth 6; Get-Content -LiteralPath 'D:\\source\\Sezika\\src\\Sezika\\IndependentMarkerHeadTraining.cs' | Select-Object -Skip 259 -First 25\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 10,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Program Files\\Git\\cmd\\git.exe",
+  "Arguments": [
+    "-C",
+    "D:\\source\\Sezika",
+    "show",
+    "d30655f:tools/Sezika.ExperimentTrainer/ExpansionChecks.cs"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

@@ -1,0 +1,50 @@
+{
+  "Status": "CleanupFailed",
+  "Pid": 55500,
+  "ExitCode": 0,
+  "Error": "Process cleanup or output capture failed.",
+  "ElapsedSeconds": 0.954,
+  "TimeoutSeconds": 45,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll",
+    "check-expanded-input",
+    "--data",
+    "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\input-fixture",
+    "--manifest-sha256",
+    "F3DA9504F9771AD0038756BA379EA645AFEDAF55FFBABD033905DA1A5946524A",
+    "--fixture-only",
+    "true",
+    "--max-checks",
+    "16"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T05:49:53.6754819Z",
+  "ParentPid": 71308,
+  "Launcher": {
+    "Pid": 71308,
+    "Started": "2026-10-09T13:49:52.647818+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$legacy='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\input-fixture';$hash=(Get-FileHash -LiteralPath (Join-Path $legacy 'experiment-manifest.json')).Hash\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll','check-expanded-input','--data',$legacy,'--manifest-sha256',$hash,'--fixture-only','true','--max-checks','16') -TimeoutSeconds 45 -ProcessQueryTimeoutSeconds 2 -LogName 'legacy-v2-fixture16' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs'\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054953-131-legacy-v2-fixture16.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054953-131-legacy-v2-fixture16.stderr.log",
+  "CleanupErrors": [
+    "Final task inventory unverified: live=0 unknown=1"
+  ],
+  "FinalCheckComplete": false,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 1,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 0.0225235,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

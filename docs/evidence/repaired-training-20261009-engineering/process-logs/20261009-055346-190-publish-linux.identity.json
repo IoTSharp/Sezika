@@ -1,0 +1,36 @@
+{
+  "Pid": 58216,
+  "Started": "2026-10-09T05:53:46.825677Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\Sezika.ExperimentTrainer.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\publish-linux",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 34848,
+  "ObservedParentPid": 34848,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 34848,
+    "Started": "2026-10-09T13:53:45.665611+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Publish-Linux.ps1",
+    "ParentPid": 53684
+  },
+  "TimeoutSeconds": 180,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "publish",
+    "D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\Sezika.ExperimentTrainer.csproj",
+    "-c",
+    "Release",
+    "-r",
+    "linux-x64",
+    "--self-contained",
+    "true",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false",
+    "-p:RuntimeFrameworkVersion=10.0.12",
+    "-o",
+    "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\publish-linux"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

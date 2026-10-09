@@ -1,0 +1,29 @@
+{
+  "Pid": 66060,
+  "Started": "2026-10-09T05:46:02.9174656Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 70184,
+  "ObservedParentPid": 70184,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 70184,
+    "Started": "2026-10-09T13:46:02.065323+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build','tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj','-c','Release','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false') -TimeoutSeconds 180 -ProcessQueryTimeoutSeconds 2 -LogName 'trainer-final-prechecks-build' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs'\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll','check-expanded-input','--data','D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\data','--manifest-sha256','E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6','--fixture-only','false','--max-checks','24') -TimeoutSeconds 45 -ProcessQueryTimeoutSeconds 2 -LogName 'v3-input-full24' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs'\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 180,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj",
+    "-c",
+    "Release",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

@@ -1,0 +1,118 @@
+{
+  "utc": "2026-10-09T05:45:09.1884134+00:00",
+  "status": "reviewed_no_remaining_P1_P2_in_execution_transfer_scope",
+  "reader": {
+    "ProcessId": 69308,
+    "CreationDate": "2026-10-09T13:45:08.325822+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'; $PSVersionTable.PSVersion.ToString(); $auditTask='D:\\source\\Sezika\\.artifacts\\repaired-training-20261009'; $auditClock=[Diagnostics.Stopwatch]::StartNew(); $auditReader=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; $auditTiny=Get-FileHash -LiteralPath 'D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\ExpansionEvaluation.cs'; if($auditClock.Elapsed.TotalSeconds -ge 6){throw 'Tiny hash6s'}; $auditPaths=@('D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\ExpansionEvaluation.cs','D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\ExperimentReport.cs','D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\ExpansionChecks.cs','D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\Program.cs','D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\RepairedDataContract.cs','D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Prepare-Transfer.ps1','D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Prepare-Inputs.ps1','D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Invoke-Ssh.ps1','D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\remote\\bootstrap.sh','D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\remote\\runner-probe.sh','D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\remote\\phase-common.sh','D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\remote\\final-evidence.sh','D:\\source\\Sezika\\src\\Sezika.Cuda\\IndependentCudaMarkerHeadTrainer.cs','D:\\source\\Sezika\\src\\Sezika\\IndependentMarkerHeadTraining.cs');if($auditPaths.Count -ne 14){throw 'Hash14cap'};$auditHashes=[Collections.Generic.List[object]]::new(); foreach($auditPath in $auditPaths){if($auditClock.Elapsed.TotalSeconds -ge 20 -or (Test-Path -LiteralPath (Join-Path $auditTask 'audit-cancel.request'))){throw 'Hash20s/cancel'};$auditHashes.Add([pscustomobject]@{path=$auditPath;sha256=(Get-FileHash -LiteralPath $auditPath).Hash;bytes=(Get-Item -LiteralPath $auditPath).Length})}; $auditReport=[ordered]@{utc=[DateTimeOffset]::UtcNow.ToString('o');status='reviewed_no_remaining_P1_P2_in_execution_transfer_scope';reader=$auditReader|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId;source_hashes=@($auditHashes);execution=@('Explicit v3 training/validation contracts and derivation hash; v2 remains192/64/272 with nullable repaired evidence forbidden.','v3train162/dev53 CE with original215plus16firsttrainingChoice fixed-left1 encoderforwards=231; stages capped384.','24576/LR0.001/seed17/strict1024/headzero/encoderfrozen pinned; no resume/LoRA/encoderbackward/autotuning branch introduced.','Visit observer sees initial0 then contiguous commits1..24576, replay matches coreXorShift32/FisherYates fixed-order selection,151completecycles+114prefix,114examples152updates+48examples151updates. Semantics explicitly deny direct kernel ID observation.','Independent validate command rereads pinned report/head/checkpoint and freshly exports215features plus16rotations; comparesfull CE/rows/features/parameters/logits; original32 separate regression stage <=32forward/300seconds.','Native v3 catalog semantics explicitly treat inherited256/192/64 aggregates as parent metadata and validateactual215retained source records.','Manifest/visit negative checks and strictlength command have bounded120seconds/actualtotal; actual root checks and lengths are required before GPU.');transfer=@('Fresh newtask/threadroot, uploadartifact frozenhash, exact8datafiles+28repairrawfiles, data/repair-evidence independent SHA manifests; regularfiles/reparsepoint guards; archive scopednestedlevel permitted.','FixedSSH argument/stdinwrapper with trueexit; bounded Windowsguardian records identity and cleanup; stageflock preventsownGPU overlap, priorstage successful receipts required and stageexists rejects repeated launch.','EveryGPUstage checks exactUUID,free>=5120MiB,ownedGPU<=3GiB enforcedC#,RSS<=4GiB enforcedC#,hostavailable>=4GiB; frozen oldencoderpackage only.','PrepareDataDirectory cap changed10to11 for8files+2alloweddiagnostics+repairdirectory; independently reread resolved.','Finalclosure row bound/deadline movedbefore header skip; independently reread resolved; registeredPIDs/ticks only, no signals; failure evidence preserved.');findings=@();withdrawn_note='Potential legacyv2lengthwrapper break withdrawn: d30655f ExpansionChecks had no RunLengths command; newlength API does not itself prove oldcontract change.';git_read_failure=@{receipt_directory=(Join-Path $auditTask 'audit-v2-git-logs');payload_exit=0;guardian_status='CleanupFailed';guardian_unknown=1;git_pid=71636;launcher_pid=54248;subsequently_both='absent';reason='Shortgitprocess endedbeforetrackedinventory; does not imply full historicalidentity reconstruction.'};limitations=@('Read-only source audit; no build/test/GPU/SSH/API execution in this review.','Root must freeze actualpublishedLinuxapp and sourceidentity then complete nativecontracts/negativefixtures/strict1024/allrequiredchecks before launch.','RepairedDataContract was read only for integration/catalogscope, fullinputsecurityreview remains assignedtoitsreviewer.','Actualcapacity/training/freshdiskvalidation/regression/resourceclosure outcomes pending.');created_children='Only onereadonlygitshow via rootguardian; exactPID/launcherlaterabsent. Auditplainread commands bounded and toolreturn completed; no disposabletemp orservice created.';seconds=$auditClock.Elapsed.TotalSeconds};$auditOutput=Join-Path $auditTask 'audit-execution-transfer-review.json';if(Test-Path -LiteralPath $auditOutput){throw 'Preserve priorreview'};[IO.File]::WriteAllText($auditOutput,($auditReport|ConvertTo-Json -Depth 8),[Text.UTF8Encoding]::new($false));[ordered]@{review_path=$auditOutput;sha256=(Get-FileHash -LiteralPath $auditOutput).Hash;reader=$auditReader.ProcessId;utc=$auditReport.utc;execution_hashes=@($auditHashes|Select-Object -First 4)}|ConvertTo-Json -Depth 4\"",
+    "ParentProcessId": 49492
+  },
+  "source_hashes": [
+    {
+      "path": "D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\ExpansionEvaluation.cs",
+      "sha256": "40B0577269B1D1E1B6689DA8AB0D484437FB5C6FAB4C9DDB8826079AAF30EB64",
+      "bytes": 37534
+    },
+    {
+      "path": "D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\ExperimentReport.cs",
+      "sha256": "34A36EFD87673F3EA7AFC0D5DD232AF6D5ACC0F7A6847E36F5D29BE46A84A670",
+      "bytes": 25412
+    },
+    {
+      "path": "D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\ExpansionChecks.cs",
+      "sha256": "8E23A3B0D3B01B6781BD0575F2772EF72A2A592CBA98F6246511D1346D79B92A",
+      "bytes": 32048
+    },
+    {
+      "path": "D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\Program.cs",
+      "sha256": "48778B7F509AB890AFEB02ED06A3362DE0868225EA9BAC904180D5FF7FB7FCF7",
+      "bytes": 42533
+    },
+    {
+      "path": "D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\RepairedDataContract.cs",
+      "sha256": "CB1BC01E272735729675396727E8917B706C6094EFA0AED0B076C3D7D4845448",
+      "bytes": 42276
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Prepare-Transfer.ps1",
+      "sha256": "A0B9BBD021512D814E594B0765D25C341FDE0A2FF9321789373CF31AF4099CFC",
+      "bytes": 9496
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Prepare-Inputs.ps1",
+      "sha256": "CB099C0DACA34EB235B33678711B3F2D1D26AA5E185C56245CEB5879D1F1FC99",
+      "bytes": 2678
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Invoke-Ssh.ps1",
+      "sha256": "F8B4727CB2B73BC172FF12524894C97B8D1D095263C065739917F614ADBBFC86",
+      "bytes": 918
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\remote\\bootstrap.sh",
+      "sha256": "88B8F6C371EBC838D007CC0EC649712D7224FDC05F83A51E902DEC389BA6F1A0",
+      "bytes": 3963
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\remote\\runner-probe.sh",
+      "sha256": "97D12D9AEBA1D591F6EE59E5E0D277609BDCE837A14E85486F50E972559C07FE",
+      "bytes": 2108
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\remote\\phase-common.sh",
+      "sha256": "D270F3A065F95B7C7634269F75F93AAB0F93726E21B320BBE24CD1964B625B43",
+      "bytes": 7871
+    },
+    {
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\remote\\final-evidence.sh",
+      "sha256": "84664ABEC6878303799CEDF47015517680C9C6638223F3F998498E2E126E4F39",
+      "bytes": 3991
+    },
+    {
+      "path": "D:\\source\\Sezika\\src\\Sezika.Cuda\\IndependentCudaMarkerHeadTrainer.cs",
+      "sha256": "6AF61B1FDE650A6699BFACD20AA76CEBD1506A63CE6E250DFCF88A54F2278FAB",
+      "bytes": 9032
+    },
+    {
+      "path": "D:\\source\\Sezika\\src\\Sezika\\IndependentMarkerHeadTraining.cs",
+      "sha256": "A74D10035130A3411AFC607E9807A7B9C4003548EC49952BFD16A4C07A122276",
+      "bytes": 25768
+    }
+  ],
+  "execution": [
+    "Explicit v3 training/validation contracts and derivation hash; v2 remains192/64/272 with nullable repaired evidence forbidden.",
+    "v3train162/dev53 CE with original215plus16firsttrainingChoice fixed-left1 encoderforwards=231; stages capped384.",
+    "24576/LR0.001/seed17/strict1024/headzero/encoderfrozen pinned; no resume/LoRA/encoderbackward/autotuning branch introduced.",
+    "Visit observer sees initial0 then contiguous commits1..24576, replay matches coreXorShift32/FisherYates fixed-order selection,151completecycles+114prefix,114examples152updates+48examples151updates. Semantics explicitly deny direct kernel ID observation.",
+    "Independent validate command rereads pinned report/head/checkpoint and freshly exports215features plus16rotations; comparesfull CE/rows/features/parameters/logits; original32 separate regression stage <=32forward/300seconds.",
+    "Native v3 catalog semantics explicitly treat inherited256/192/64 aggregates as parent metadata and validateactual215retained source records.",
+    "Manifest/visit negative checks and strictlength command have bounded120seconds/actualtotal; actual root checks and lengths are required before GPU."
+  ],
+  "transfer": [
+    "Fresh newtask/threadroot, uploadartifact frozenhash, exact8datafiles+28repairrawfiles, data/repair-evidence independent SHA manifests; regularfiles/reparsepoint guards; archive scopednestedlevel permitted.",
+    "FixedSSH argument/stdinwrapper with trueexit; bounded Windowsguardian records identity and cleanup; stageflock preventsownGPU overlap, priorstage successful receipts required and stageexists rejects repeated launch.",
+    "EveryGPUstage checks exactUUID,free>=5120MiB,ownedGPU<=3GiB enforcedC#,RSS<=4GiB enforcedC#,hostavailable>=4GiB; frozen oldencoderpackage only.",
+    "PrepareDataDirectory cap changed10to11 for8files+2alloweddiagnostics+repairdirectory; independently reread resolved.",
+    "Finalclosure row bound/deadline movedbefore header skip; independently reread resolved; registeredPIDs/ticks only, no signals; failure evidence preserved."
+  ],
+  "findings": [],
+  "withdrawn_note": "Potential legacyv2lengthwrapper break withdrawn: d30655f ExpansionChecks had no RunLengths command; newlength API does not itself prove oldcontract change.",
+  "git_read_failure": {
+    "guardian_status": "CleanupFailed",
+    "receipt_directory": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-v2-git-logs",
+    "payload_exit": 0,
+    "reason": "Shortgitprocess endedbeforetrackedinventory; does not imply full historicalidentity reconstruction.",
+    "git_pid": 71636,
+    "launcher_pid": 54248,
+    "guardian_unknown": 1,
+    "subsequently_both": "absent"
+  },
+  "limitations": [
+    "Read-only source audit; no build/test/GPU/SSH/API execution in this review.",
+    "Root must freeze actualpublishedLinuxapp and sourceidentity then complete nativecontracts/negativefixtures/strict1024/allrequiredchecks before launch.",
+    "RepairedDataContract was read only for integration/catalogscope, fullinputsecurityreview remains assignedtoitsreviewer.",
+    "Actualcapacity/training/freshdiskvalidation/regression/resourceclosure outcomes pending."
+  ],
+  "created_children": "Only onereadonlygitshow via rootguardian; exactPID/launcherlaterabsent. Auditplainread commands bounded and toolreturn completed; no disposabletemp orservice created.",
+  "seconds": 0.5775121
+}

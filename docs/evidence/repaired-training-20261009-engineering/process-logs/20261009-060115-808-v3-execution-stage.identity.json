@@ -1,0 +1,27 @@
+{
+  "Pid": 43968,
+  "Started": "2026-10-09T06:01:16.2435196Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 70476,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 70476,
+    "Started": "2026-10-09T14:01:15.371446+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$path='D:\\source\\Sezika\\CHANGELOG.md';$text=[IO.File]::ReadAllText($path);$line=\\\"`n`n- 增加修题后215题显式v3合同、完整256派生账本及40审核/14修题原字节绑定、实际访问/分母报告与完整strict1024失败分母；v1/v2兼容、24项合同参考与Linux自包含构建通过。全215长度检查214通过/1题1037tokens超限，GPU训练尚未启动；见[工程及准入证据](docs/evidence/repaired-training-engineering-2026-10-09.md)。`n\\\";[IO.File]::WriteAllText($path,$text.Replace('## Unreleased','## Unreleased'+$line),[Text.UTF8Encoding]::new($false))\n$path='D:\\source\\Sezika\\HANDOFF.md';$text=[IO.File]::ReadAllText($path);$anchor='### 2026-10-09 修题后固定训练：新会话已接管';$note=@'\n\n当前准入阻塞：本会话C# v3合同/账本/分母及报告、24项反例/访问参考、旧v1八项/v2十六项、Linux10.0.12自包含发布已完成。全215题正式strict1024检查214通过/1失败；唯一train Choice `massive-zh-cn-02996` 修订1037tokens（父题482），通过题最长910。本次无GPU训练、独立加载或原32回归；没有教师HTTP。用户已收到具体选择：删该题后214/train161/dev53再沿原24576配置，或保留215并暂停；尚未回复前不得变分母、删除/修改原包、提高1024或启动GPU。原215文件hash保持，新远端root仅bootstrap。见 docs/evidence/repaired-training-engineering-2026-10-09.md。短进程guardian历史CleanupFailed/unknown1保留，当前准确PID后核另列；正式质量/人审/许可/AOT均pending。heartbeat已迁到本会话并更新此阻塞，状态无变化安静，不重跑检查、派单或训练。\n'@\n[IO.File]::WriteAllText($path,$text.Replace($anchor,$anchor+$note),[Text.UTF8Encoding]::new($false))\n$path='D:\\source\\Sezika\\ROADMAP.md';$text=[IO.File]::ReadAllText($path);$oldNote=\\\"`n`n2026-10-09 新会话已接管修题后215题v3：先完成严格合同/账本/实际分母、正式renderer长度和独立源码审查，再唯一固定24576updates实验、231前向独立验证与32题已曝光回归。原暂停诊断hunk保留；记录实际train162访问次数，不声称128完整epoch。正式质量、人审、许可发布、校准、封存和新head AOT/性能仍pending。`n\\\"\n$newNote=\\\"`n`n2026-10-09 新会话完成修题后215题v3合同/全256账本、实际分母/访问报告、旧v1/v2兼容与Linux构建。正式strict1024全215检查214通过、1题1037tokens超限；通过题最长910。GPU训练/独立加载/原32回归尚未开始。用户已收到删该train Choice后214/train161/dev53并保持24576updates的具体选择，回复前保持原215包和固定1024。不能冒充长度准入、真实训练、质量、人审、许可、校准、封存或新head AOT/性能通过；原暂停诊断hunk保留，详见[本轮工程与阻塞](docs/evidence/repaired-training-engineering-2026-10-09.md)。`n\\\"\nif(-not $text.Contains($oldNote)){throw 'Own ROADMAP note anchor differs'}\n[IO.File]::WriteAllText($path,$text.Replace($oldNote,$newNote),[Text.UTF8Encoding]::new($false))\n[IO.File]::WriteAllText('D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\roadmap-own-note.txt',$newNote,[Text.UTF8Encoding]::new($false))\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\Git\\cmd\\git.exe' -ArgumentList @('add','--','tools/Sezika.ExperimentTrainer/ExpansionChecks.cs','tools/Sezika.ExperimentTrainer/ExpansionEvaluation.cs','tools/Sezika.ExperimentTrainer/ExperimentReport.cs','tools/Sezika.ExperimentTrainer/Program.cs') -TimeoutSeconds 30 -ProcessQueryTimeoutSeconds 2 -LogName 'v3-execution-stage' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs'\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 30,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\Git\\cmd\\git.exe",
+  "Arguments": [
+    "add",
+    "--",
+    "tools/Sezika.ExperimentTrainer/ExpansionChecks.cs",
+    "tools/Sezika.ExperimentTrainer/ExpansionEvaluation.cs",
+    "tools/Sezika.ExperimentTrainer/ExperimentReport.cs",
+    "tools/Sezika.ExperimentTrainer/Program.cs"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

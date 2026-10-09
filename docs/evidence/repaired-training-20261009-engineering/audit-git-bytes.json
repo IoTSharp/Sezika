@@ -1,0 +1,1702 @@
+{
+  "utc": "2026-10-09T05:38:48.2209800+00:00",
+  "status": "passed",
+  "probe": false,
+  "commit": "a804cc9",
+  "checked": 333,
+  "bytes": 8339780,
+  "seconds": 2.3036627,
+  "reader": {
+    "ProcessId": 47140,
+    "CreationDate": "2026-10-09T13:38:45.580823+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); & 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-git-bytes.ps1'; if($LASTEXITCODE -ne 0){exit $LASTEXITCODE}\"",
+    "ParentProcessId": 49492
+  },
+  "git_child": {
+    "pid": 9028,
+    "started": "2026-10-09T05:38:46.6867429Z",
+    "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+    "arguments": [
+      "-C",
+      "D:\\source\\Sezika",
+      "ls-tree",
+      "-r",
+      "a804cc9",
+      "--",
+      "docs/evidence/teacher-repair-20261009-final"
+    ],
+    "parent_pid": 47140,
+    "observed_command_line": "\"C:\\Program Files\\Git\\cmd\\git.exe\" -C D:\\source\\Sezika ls-tree -r a804cc9 -- docs/evidence/teacher-repair-20261009-final"
+  },
+  "git_exit": 0,
+  "git_stderr": "",
+  "files": [
+    {
+      "path": "Archive-RepairEvidence.ps1",
+      "git_blob": "838bef65c3137d0fe1ace1e6be29ac0863aadde4",
+      "bytes": 3769
+    },
+    {
+      "path": "Build-HttpLedger.ps1",
+      "git_blob": "57305495e91d2915fb7e3359ae1de36f3762c972",
+      "bytes": 2151
+    },
+    {
+      "path": "Build-RepairedPackage.ps1",
+      "git_blob": "472238a601eb5111119ea8ee2abe1aad014dceb5",
+      "bytes": 13541
+    },
+    {
+      "path": "Close-RepairProcesses.ps1",
+      "git_blob": "d181026c55e3c341d7f2a24507802e42db7fee74",
+      "bytes": 5094
+    },
+    {
+      "path": "Invoke-OwnedApiProcess.ps1",
+      "git_blob": "66d62fc8c2c437e415085f2c2240f16748d35da6",
+      "bytes": 22444
+    },
+    {
+      "path": "Invoke-TeacherBatch.ps1",
+      "git_blob": "1e16c2256caabdfb7d94a7f466463e3bbd78aea0",
+      "bytes": 5198
+    },
+    {
+      "path": "Prepare-Jobs.ps1",
+      "git_blob": "572efd74aa233210f5ac52017c03a87302aecb4e",
+      "bytes": 7510
+    },
+    {
+      "path": "Send-TeacherDirect.py",
+      "git_blob": "a9324d1a86d2d664662fb852742eb4aa09bdd62c",
+      "bytes": 4167
+    },
+    {
+      "path": "Test-LabelAuditPayload.ps1",
+      "git_blob": "57196e9440a06f8e87806b51d4b8329688203969",
+      "bytes": 15362
+    },
+    {
+      "path": "Test-RepairPayload.ps1",
+      "git_blob": "9f74d64c24b95f75844cb51d80ec0502331c4cc1",
+      "bytes": 4519
+    },
+    {
+      "path": "Verify-Package.ps1",
+      "git_blob": "9c5c9f4f45b79caf3ef1685e5b784e5d2827c55d",
+      "bytes": 4435
+    },
+    {
+      "path": "api-owned-logs/20261009-050621-246-probe-exit-0.identity.json",
+      "git_blob": "9ed28c0a614e3ea17d510e40ec28739fc5d884f0",
+      "bytes": 2834
+    },
+    {
+      "path": "api-owned-logs/20261009-050621-246-probe-exit-0.result.json",
+      "git_blob": "46bd47965d1002ff87c0c16764d95263a225c725",
+      "bytes": 2524
+    },
+    {
+      "path": "api-owned-logs/20261009-050621-246-probe-exit-0.stderr.log",
+      "git_blob": "7ca6ec3e2855bbb2ccc7aeed31a029af1101f1b1",
+      "bytes": 29
+    },
+    {
+      "path": "api-owned-logs/20261009-050621-246-probe-exit-0.stdout.log",
+      "git_blob": "17b9c9bef8ebb8f5dbd538f072a9336ebb359507",
+      "bytes": 30
+    },
+    {
+      "path": "api-owned-logs/20261009-050647-423-repair00.identity.json",
+      "git_blob": "1aac29c2e5de3fb3029e529712bdf8685366ec37",
+      "bytes": 3050
+    },
+    {
+      "path": "api-owned-logs/20261009-050647-423-repair00.result.json",
+      "git_blob": "e7e4f07b12f31be61808fb74477c30c835270b9f",
+      "bytes": 2692
+    },
+    {
+      "path": "api-owned-logs/20261009-050647-423-repair00.stderr.log",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "api-owned-logs/20261009-050647-423-repair00.stdout.log",
+      "git_blob": "a812c64256236c412af797e24120b8e25aab47fe",
+      "bytes": 24
+    },
+    {
+      "path": "api-owned-logs/20261009-050828-209-repair01.identity.json",
+      "git_blob": "c650c0ba6d2600e6965c8fd46351b903f4388598",
+      "bytes": 3907
+    },
+    {
+      "path": "api-owned-logs/20261009-050828-209-repair01.result.json",
+      "git_blob": "06c02ba3f5d298251e9a75f9fba7c0acb98c0afa",
+      "bytes": 3550
+    },
+    {
+      "path": "api-owned-logs/20261009-050828-209-repair01.stderr.log",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "api-owned-logs/20261009-050828-209-repair01.stdout.log",
+      "git_blob": "9f62569be7f3d0d3eadbabb3704445626978fbd8",
+      "bytes": 68
+    },
+    {
+      "path": "api-owned-logs/20261009-050828-238-repair02.identity.json",
+      "git_blob": "33898581d4d4e37d512937a4dfd4177105cbaf5f",
+      "bytes": 3911
+    },
+    {
+      "path": "api-owned-logs/20261009-050828-238-repair02.result.json",
+      "git_blob": "ee35f281d92775ac726655c09a7b99238ca77ba1",
+      "bytes": 3554
+    },
+    {
+      "path": "api-owned-logs/20261009-050828-238-repair02.stderr.log",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "api-owned-logs/20261009-050828-238-repair02.stdout.log",
+      "git_blob": "49cec9e537ba4643ca5a619aa2fb53e9e39e2da6",
+      "bytes": 68
+    },
+    {
+      "path": "api-owned-logs/20261009-050944-587-repair03.identity.json",
+      "git_blob": "bbf8ca91bc87943ebbacc1393d7b38a969da2228",
+      "bytes": 3912
+    },
+    {
+      "path": "api-owned-logs/20261009-050944-587-repair03.result.json",
+      "git_blob": "656323c44e055e77cb0100d62cc4f155f44466b8",
+      "bytes": 3554
+    },
+    {
+      "path": "api-owned-logs/20261009-050944-587-repair03.stderr.log",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "api-owned-logs/20261009-050944-587-repair03.stdout.log",
+      "git_blob": "ea79cba8d87aeeee3cdc20e80bdd41d7479cf5c8",
+      "bytes": 68
+    },
+    {
+      "path": "api-owned-logs/20261009-050950-328-repair04.identity.json",
+      "git_blob": "9ad3f28442bdaa5e0f12561207718fecc14e0b2b",
+      "bytes": 3562
+    },
+    {
+      "path": "api-owned-logs/20261009-050950-328-repair04.result.json",
+      "git_blob": "c96318bccd41faf549975ec419def54f2a5f1066",
+      "bytes": 3202
+    },
+    {
+      "path": "api-owned-logs/20261009-050950-328-repair04.stderr.log",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "api-owned-logs/20261009-050950-328-repair04.stdout.log",
+      "git_blob": "4603a070a96925a4e5206198f81f0eec5804ca12",
+      "bytes": 68
+    },
+    {
+      "path": "api-owned-logs/20261009-051107-615-repair05.identity.json",
+      "git_blob": "8be7855d7c9cc14208c215af21d7a44acaf14496",
+      "bytes": 3919
+    },
+    {
+      "path": "api-owned-logs/20261009-051107-615-repair05.result.json",
+      "git_blob": "d9d24ae83650412ea7523949902bbfe3ee322224",
+      "bytes": 3563
+    },
+    {
+      "path": "api-owned-logs/20261009-051107-615-repair05.stderr.log",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "api-owned-logs/20261009-051107-615-repair05.stdout.log",
+      "git_blob": "1b2ec89f45043752bf6a34cb724ff2699c7d4271",
+      "bytes": 113
+    },
+    {
+      "path": "api-owned-logs/20261009-051111-832-repair06.identity.json",
+      "git_blob": "1c03307eff9b33fd252aa5bab99f6ee3b826567a",
+      "bytes": 3919
+    },
+    {
+      "path": "api-owned-logs/20261009-051111-832-repair06.result.json",
+      "git_blob": "995fb8fef1d814e08867a6169931d261a27db188",
+      "bytes": 3562
+    },
+    {
+      "path": "api-owned-logs/20261009-051111-832-repair06.stderr.log",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "api-owned-logs/20261009-051111-832-repair06.stdout.log",
+      "git_blob": "ea2af757f32e2a0742979e3f8d5d3f2e953839d8",
+      "bytes": 68
+    },
+    {
+      "path": "api-owned-logs/20261009-051258-156-repair07.identity.json",
+      "git_blob": "a09f90ae5aac52fd4d18eee9706b652199b96d9a",
+      "bytes": 3916
+    },
+    {
+      "path": "api-owned-logs/20261009-051258-156-repair07.result.json",
+      "git_blob": "ae907e14ae2e92087ce4d26680caf0d3f417399b",
+      "bytes": 3560
+    },
+    {
+      "path": "api-owned-logs/20261009-051258-156-repair07.stderr.log",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "api-owned-logs/20261009-051258-156-repair07.stdout.log",
+      "git_blob": "84f5289303d29d29af3edb6a3850588a2d920026",
+      "bytes": 90
+    },
+    {
+      "path": "api-owned-logs/20261009-051349-040-repair08.identity.json",
+      "git_blob": "c1098e8649e728623d33726385175b8c0f59b667",
+      "bytes": 3560
+    },
+    {
+      "path": "api-owned-logs/20261009-051349-040-repair08.result.json",
+      "git_blob": "84bbc79fd11cf584a4dbcf4cbcd863c95e2a4124",
+      "bytes": 3202
+    },
+    {
+      "path": "api-owned-logs/20261009-051349-040-repair08.stderr.log",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "api-owned-logs/20261009-051349-040-repair08.stdout.log",
+      "git_blob": "3acccf63c98b6a855760d4a9e0506c7115815357",
+      "bytes": 46
+    },
+    {
+      "path": "api-owned-logs/20261009-051504-768-repair09.identity.json",
+      "git_blob": "a23463972fddb1aa10fcf5d20e8820404cc0989e",
+      "bytes": 3560
+    },
+    {
+      "path": "api-owned-logs/20261009-051504-768-repair09.result.json",
+      "git_blob": "e2fb85170501217e5ed2de4ba105f878a6744f91",
+      "bytes": 3201
+    },
+    {
+      "path": "api-owned-logs/20261009-051504-768-repair09.stderr.log",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "api-owned-logs/20261009-051504-768-repair09.stdout.log",
+      "git_blob": "36102410a747b1060ab8cce9015c971fdcff185c",
+      "bytes": 46
+    },
+    {
+      "path": "api-owned-logs/20261009-051515-400-repair10.identity.json",
+      "git_blob": "155b956f9bca9b7075f05b2e37f323157e568ac0",
+      "bytes": 3916
+    },
+    {
+      "path": "api-owned-logs/20261009-051515-400-repair10.result.json",
+      "git_blob": "0438e28057e317bbdf7fa24d95309d318a9c357a",
+      "bytes": 3557
+    },
+    {
+      "path": "api-owned-logs/20261009-051515-400-repair10.stderr.log",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "api-owned-logs/20261009-051515-400-repair10.stdout.log",
+      "git_blob": "1e2b4af5689d6f6a2b43a4fc80d43917186d643c",
+      "bytes": 68
+    },
+    {
+      "path": "api-owned-logs/20261009-051558-768-repair11.identity.json",
+      "git_blob": "a8ac7d1da1a07dc10c7c5f4410bbd596efd0e8e2",
+      "bytes": 3914
+    },
+    {
+      "path": "api-owned-logs/20261009-051558-768-repair11.result.json",
+      "git_blob": "252aadcb1991806800226e37c24f139e0d69877c",
+      "bytes": 3556
+    },
+    {
+      "path": "api-owned-logs/20261009-051558-768-repair11.stderr.log",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "api-owned-logs/20261009-051558-768-repair11.stdout.log",
+      "git_blob": "1d86112078a48555d748fd1e983ea07267881fc1",
+      "bytes": 68
+    },
+    {
+      "path": "api-owned-logs/20261009-051652-923-repair12.identity.json",
+      "git_blob": "f6057bce597021820f7cd019c88fabd8065c6190",
+      "bytes": 3919
+    },
+    {
+      "path": "api-owned-logs/20261009-051652-923-repair12.result.json",
+      "git_blob": "390caa2b50114b07afe2cbb43669c3009f3542e1",
+      "bytes": 3562
+    },
+    {
+      "path": "api-owned-logs/20261009-051652-923-repair12.stderr.log",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "api-owned-logs/20261009-051652-923-repair12.stdout.log",
+      "git_blob": "85ed4e30c96a8682e587b10c3a352c334cd9497d",
+      "bytes": 68
+    },
+    {
+      "path": "api-owned-logs/20261009-051731-516-repair13.identity.json",
+      "git_blob": "fa8b7300e231e208e5ee94064a6f9f4c11f8a432",
+      "bytes": 3561
+    },
+    {
+      "path": "api-owned-logs/20261009-051731-516-repair13.result.json",
+      "git_blob": "11d261494d582de540b846f19d231fa3d0ff22de",
+      "bytes": 3203
+    },
+    {
+      "path": "api-owned-logs/20261009-051731-516-repair13.stderr.log",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "api-owned-logs/20261009-051731-516-repair13.stdout.log",
+      "git_blob": "93590b0996fa50e0de4d8cd004f5f19e46cc4c73",
+      "bytes": 46
+    },
+    {
+      "path": "api-owned-logs/20261009-052309-572-review00.identity.json",
+      "git_blob": "3ecbd869e7f0014ad4eb515c705df64ca615b1ea",
+      "bytes": 3559
+    },
+    {
+      "path": "api-owned-logs/20261009-052309-572-review00.result.json",
+      "git_blob": "38b55c26cac306aa15c8cf40e23ac7f78df2cc3b",
+      "bytes": 3200
+    },
+    {
+      "path": "api-owned-logs/20261009-052309-572-review00.stderr.log",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "api-owned-logs/20261009-052309-572-review00.stdout.log",
+      "git_blob": "ef21ec6bd90c5a3a546167bcca798fe5b870d512",
+      "bytes": 24
+    },
+    {
+      "path": "api-owned-logs/20261009-052309-633-review01.identity.json",
+      "git_blob": "2be36c89dbc088f3ed728a2f8a7655d986450d6a",
+      "bytes": 3558
+    },
+    {
+      "path": "api-owned-logs/20261009-052309-633-review01.result.json",
+      "git_blob": "f5258d364889007d0fef4c0cb80afbab8fcfa4aa",
+      "bytes": 3200
+    },
+    {
+      "path": "api-owned-logs/20261009-052309-633-review01.stderr.log",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "api-owned-logs/20261009-052309-633-review01.stdout.log",
+      "git_blob": "a63828b2dce6f914570ed1ca2cc91e18acd15690",
+      "bytes": 46
+    },
+    {
+      "path": "api-owned-logs/20261009-052352-008-review02.identity.json",
+      "git_blob": "7230505f1af04ccf6eed46c755d022c40f0eaec6",
+      "bytes": 3564
+    },
+    {
+      "path": "api-owned-logs/20261009-052352-008-review02.result.json",
+      "git_blob": "9272f936cd968f6050d9b550109a6a0f4ff9a577",
+      "bytes": 3203
+    },
+    {
+      "path": "api-owned-logs/20261009-052352-008-review02.stderr.log",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "api-owned-logs/20261009-052352-008-review02.stdout.log",
+      "git_blob": "777323a93046e9c7dfd7e53ae9b2c2bc5e966f83",
+      "bytes": 46
+    },
+    {
+      "path": "api-owned-logs/20261009-052417-807-review03.identity.json",
+      "git_blob": "d20f31b55d6271e05dc51458e7783b8d75638fec",
+      "bytes": 3562
+    },
+    {
+      "path": "api-owned-logs/20261009-052417-807-review03.result.json",
+      "git_blob": "0723ec2bffe686b52c116bcfbcc748415a16f814",
+      "bytes": 3202
+    },
+    {
+      "path": "api-owned-logs/20261009-052417-807-review03.stderr.log",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "api-owned-logs/20261009-052417-807-review03.stdout.log",
+      "git_blob": "83dd339594f602e257fad1d488a62297b584f6e5",
+      "bytes": 46
+    },
+    {
+      "path": "api-owned-logs/20261009-052440-151-review04.identity.json",
+      "git_blob": "d0030b81bbde269555e4cbbcaca8ada66f22ee37",
+      "bytes": 3557
+    },
+    {
+      "path": "api-owned-logs/20261009-052440-151-review04.result.json",
+      "git_blob": "88781003136188f9a1e54b7dc68323d731a665aa",
+      "bytes": 3197
+    },
+    {
+      "path": "api-owned-logs/20261009-052440-151-review04.stderr.log",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "api-owned-logs/20261009-052440-151-review04.stdout.log",
+      "git_blob": "ca807d39f576effd7ac06dae9d05e0aa68760b01",
+      "bytes": 46
+    },
+    {
+      "path": "api-owned-logs/20261009-052514-124-review05.identity.json",
+      "git_blob": "d5d0c4abac6f520bbe656cc240c85f80fbfd9d17",
+      "bytes": 3560
+    },
+    {
+      "path": "api-owned-logs/20261009-052514-124-review05.result.json",
+      "git_blob": "ffff69cbb6fd174332ebd68a67374738e0a7bc73",
+      "bytes": 3199
+    },
+    {
+      "path": "api-owned-logs/20261009-052514-124-review05.stderr.log",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "api-owned-logs/20261009-052514-124-review05.stdout.log",
+      "git_blob": "bfa86b5ffef54b5ed01bc4e1b5dce3a7fd2b87fd",
+      "bytes": 46
+    },
+    {
+      "path": "api-owned-logs/20261009-052545-779-review06.identity.json",
+      "git_blob": "8f0f4b0b01a58e118e435ee6a8f9aac7c4385598",
+      "bytes": 3055
+    },
+    {
+      "path": "api-owned-logs/20261009-052545-779-review06.result.json",
+      "git_blob": "f34c625098efbbfff48f27bbf324e9dd1b0719de",
+      "bytes": 2694
+    },
+    {
+      "path": "api-owned-logs/20261009-052545-779-review06.stderr.log",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "api-owned-logs/20261009-052545-779-review06.stdout.log",
+      "git_blob": "ad91fbfe9b4fc31ded0f2bdc335c8bb4ac1103ad",
+      "bytes": 24
+    },
+    {
+      "path": "closure-followup.json",
+      "git_blob": "96f4311772425f1e714485ddc2d2d6cb01c78e02",
+      "bytes": 896
+    },
+    {
+      "path": "data-v3/derivation-ledger.json",
+      "git_blob": "6603fffb34d92ea857313c11d8d9c71f38aa27fa",
+      "bytes": 527890
+    },
+    {
+      "path": "data-v3/experiment-manifest.json",
+      "git_blob": "23f34b064c58c775ae428bd264023e7a55e21b4c",
+      "bytes": 2496
+    },
+    {
+      "path": "data-v3/experiment-records.jsonl",
+      "git_blob": "77e27b94c519ba3470fb3ec058dca9e946a1e137",
+      "bytes": 276609
+    },
+    {
+      "path": "data-v3/input-provenance.json",
+      "git_blob": "7fd1b5b39b97a2f57fb5a71793d10c2cc267eff4",
+      "bytes": 171477
+    },
+    {
+      "path": "data-v3/source-catalog.json",
+      "git_blob": "38df2101014587a35b50800afb7add5e9b2533d1",
+      "bytes": 251742
+    },
+    {
+      "path": "data-v3/teacher-requests.json",
+      "git_blob": "f86ed57785f03af6ca73c31fbc5223ba923ae4bd",
+      "bytes": 543928
+    },
+    {
+      "path": "data-v3/teacher-responses.json",
+      "git_blob": "de5a5f1aab41e6195d344a0c1c4d197ab6e6846e",
+      "bytes": 3188340
+    },
+    {
+      "path": "final-summary.json",
+      "git_blob": "68eb5dd55893e5e2ac78dea587e1fecf6bda041b",
+      "bytes": 668
+    },
+    {
+      "path": "http-ledger.json",
+      "git_blob": "c122a8b4979aa6bc3f0273de217f3aa39f983b04",
+      "bytes": 10863
+    },
+    {
+      "path": "inputs/repair00.json",
+      "git_blob": "445d44583a0a2643cbf47382a79d03402da4e5d5",
+      "bytes": 12442
+    },
+    {
+      "path": "inputs/repair01.json",
+      "git_blob": "9ce5e366e5fddc2a372b1a32db4bc7271348bb07",
+      "bytes": 26371
+    },
+    {
+      "path": "inputs/repair02.json",
+      "git_blob": "aa8bbdc085931d03452b58fb106b34adc249926c",
+      "bytes": 26305
+    },
+    {
+      "path": "inputs/repair03.json",
+      "git_blob": "fe928334f805e5a18fcf7ee915f5d37c661c0fb1",
+      "bytes": 26715
+    },
+    {
+      "path": "inputs/repair04.json",
+      "git_blob": "e5bc483d50daf35bf9bbdfbdda6b260f39950348",
+      "bytes": 25796
+    },
+    {
+      "path": "inputs/repair05.json",
+      "git_blob": "23a1631b6a5b25efac90e80576c767282c1a78c0",
+      "bytes": 25864
+    },
+    {
+      "path": "inputs/repair06.json",
+      "git_blob": "512e9d62c37c7a970cd85f4c72eea8ed2cbd0522",
+      "bytes": 26184
+    },
+    {
+      "path": "inputs/repair07.json",
+      "git_blob": "8541473d5e53118e509999ab705776eb4dbc6743",
+      "bytes": 26839
+    },
+    {
+      "path": "inputs/repair08.json",
+      "git_blob": "49ea592e17fb70d69521aebdba8235b955f3d678",
+      "bytes": 29655
+    },
+    {
+      "path": "inputs/repair09.json",
+      "git_blob": "8ef71db012ac430c9855b468e14d85544414a347",
+      "bytes": 31111
+    },
+    {
+      "path": "inputs/repair10.json",
+      "git_blob": "74f12a5f022911b432b68eb6c7b89631f9e32c25",
+      "bytes": 31379
+    },
+    {
+      "path": "inputs/repair11.json",
+      "git_blob": "95a5e4d1b79448f438400784d11d7de56cb44d01",
+      "bytes": 34887
+    },
+    {
+      "path": "inputs/repair12.json",
+      "git_blob": "cfc005d44fd6c91feaccb43faa6fbe6320e20e1e",
+      "bytes": 33630
+    },
+    {
+      "path": "inputs/repair13.json",
+      "git_blob": "cdb31973111f968b1d81d3808ed2af02320a4fcc",
+      "bytes": 29083
+    },
+    {
+      "path": "inputs/review00.json",
+      "git_blob": "ede6c05b7e4d10591d2d5b6ac88c9a14ced2e9e0",
+      "bytes": 25458
+    },
+    {
+      "path": "inputs/review01.json",
+      "git_blob": "63324b2199a64525318a581fa83724efdb40cca9",
+      "bytes": 25180
+    },
+    {
+      "path": "inputs/review02.json",
+      "git_blob": "12cb22a85a35421d6d3594f89578b465419205a7",
+      "bytes": 26016
+    },
+    {
+      "path": "inputs/review03.json",
+      "git_blob": "445185a6c42b4bd6c70d9b7a97b2b0a5093495f6",
+      "bytes": 25649
+    },
+    {
+      "path": "inputs/review04.json",
+      "git_blob": "4eb50eac5116708f8d50c5f29c23949c2d45800a",
+      "bytes": 28465
+    },
+    {
+      "path": "inputs/review05.json",
+      "git_blob": "caa3b0993a4f7502e1596cf483a75fad878056a9",
+      "bytes": 32914
+    },
+    {
+      "path": "inputs/review06.json",
+      "git_blob": "37cf22cba9d929d0fa97283fb70740f535b66323",
+      "bytes": 9803
+    },
+    {
+      "path": "inventory.json",
+      "git_blob": "1c5df0ff17949db4dff67e8d02115d4bba5cf7db",
+      "bytes": 57846
+    },
+    {
+      "path": "package-verification.json",
+      "git_blob": "4f2d850b407d4d5cf66a6e400dd57582ce214771",
+      "bytes": 464
+    },
+    {
+      "path": "plan.json",
+      "git_blob": "b095229c388716deb3ab0d77795e7b1358030510",
+      "bytes": 1359
+    },
+    {
+      "path": "process-closure.json",
+      "git_blob": "db12130b9861640839ab41eb156a026c42d46d9d",
+      "bytes": 48539
+    },
+    {
+      "path": "repair-deletion-report.md",
+      "git_blob": "d752ed7925b808e53a87a879a6e512ac188b0a7b",
+      "bytes": 21840
+    },
+    {
+      "path": "repair-queue-result.json",
+      "git_blob": "7d95202a50d45bc7545dedcbcd48525c49954e5b",
+      "bytes": 5190
+    },
+    {
+      "path": "repair-schedule.json",
+      "git_blob": "6de62994cc92e6610b037fa1ac7f53a60828a559",
+      "bytes": 2530
+    },
+    {
+      "path": "repair00/provenance.json",
+      "git_blob": "010a16f427349cb90edc11529e2f6c7de881aab7",
+      "bytes": 860
+    },
+    {
+      "path": "repair00/reader.identity.json",
+      "git_blob": "079b3dbcd2c3370950d60b287c3a7a847368bca2",
+      "bytes": 339
+    },
+    {
+      "path": "repair00/request.json",
+      "git_blob": "b6a6065daf7f0176df205a2a50cd0ac262b310ce",
+      "bytes": 5521
+    },
+    {
+      "path": "repair00/response-attempt1.json",
+      "git_blob": "05c1e5ecc97a8ec31d05f48829de5af4e32a5e66",
+      "bytes": 31911
+    },
+    {
+      "path": "repair00/response.json",
+      "git_blob": "05c1e5ecc97a8ec31d05f48829de5af4e32a5e66",
+      "bytes": 31911
+    },
+    {
+      "path": "repair00/result.json",
+      "git_blob": "d8b5299be2b8646bb68f45b5c9151d0166d02a81",
+      "bytes": 730
+    },
+    {
+      "path": "repair00/transport-result.json",
+      "git_blob": "5620f034bddac047f3929d1024a6ae7b75dc2291",
+      "bytes": 640
+    },
+    {
+      "path": "repair00/transport.identity.json",
+      "git_blob": "13e1c80abb624f8ea170800790b132dc41c935e9",
+      "bytes": 440
+    },
+    {
+      "path": "repair00/validated-proposals.json",
+      "git_blob": "86ab8de6d788864936af0fd508059b654ca70032",
+      "bytes": 3452
+    },
+    {
+      "path": "repair01/provenance.json",
+      "git_blob": "419c0b15cdbb88e0d75edaba59a031e515db22f7",
+      "bytes": 972
+    },
+    {
+      "path": "repair01/reader.identity.json",
+      "git_blob": "713938e7984fd1980eb266c28cd1df2e79574113",
+      "bytes": 340
+    },
+    {
+      "path": "repair01/request.json",
+      "git_blob": "bbd25cb1613c921542f384157018f0115409221d",
+      "bytes": 10451
+    },
+    {
+      "path": "repair01/response-attempt1.json",
+      "git_blob": "881d20412cccd88a546eab51aa7f6a0516279e8e",
+      "bytes": 45259
+    },
+    {
+      "path": "repair01/response.json",
+      "git_blob": "881d20412cccd88a546eab51aa7f6a0516279e8e",
+      "bytes": 45259
+    },
+    {
+      "path": "repair01/result.json",
+      "git_blob": "4d370424db8d0a71ab9a27fae91f2b4596b9d064",
+      "bytes": 731
+    },
+    {
+      "path": "repair01/transport-result.json",
+      "git_blob": "c222f381f8f1e4eff65c04e2604f00d87e567d35",
+      "bytes": 640
+    },
+    {
+      "path": "repair01/transport.identity.json",
+      "git_blob": "c93a866e5993de477c281215a900587fa3e9a2fa",
+      "bytes": 440
+    },
+    {
+      "path": "repair01/validated-proposals.json",
+      "git_blob": "18f062171a13aeb8ccb5f6047a1f5fa87b322fb9",
+      "bytes": 10111
+    },
+    {
+      "path": "repair02/provenance.json",
+      "git_blob": "26bb503cc3dac4d80ff195679279d6812e747a31",
+      "bytes": 972
+    },
+    {
+      "path": "repair02/reader.identity.json",
+      "git_blob": "edb6127ef4d1e6a38a08c1e7952a75b4f342636c",
+      "bytes": 339
+    },
+    {
+      "path": "repair02/request.json",
+      "git_blob": "ee3aed84c0751b6585d62662e74566c42c482b60",
+      "bytes": 10459
+    },
+    {
+      "path": "repair02/response-attempt1.json",
+      "git_blob": "d409d75ed3dad565f5820326122c215313f1f22b",
+      "bytes": 45298
+    },
+    {
+      "path": "repair02/response.json",
+      "git_blob": "d409d75ed3dad565f5820326122c215313f1f22b",
+      "bytes": 45298
+    },
+    {
+      "path": "repair02/result.json",
+      "git_blob": "7eaee5a7f4ba0f215307f9c6501c0768abaa26f8",
+      "bytes": 730
+    },
+    {
+      "path": "repair02/transport-result.json",
+      "git_blob": "7548bce81daff5ff728ed1995d2b0d49e2b18d34",
+      "bytes": 640
+    },
+    {
+      "path": "repair02/transport.identity.json",
+      "git_blob": "b2746e5bec9c91f9bc3b9009270243dc36ace14e",
+      "bytes": 440
+    },
+    {
+      "path": "repair02/validated-proposals.json",
+      "git_blob": "2ce5423f11e969c034944bce794587eb7e64b092",
+      "bytes": 7816
+    },
+    {
+      "path": "repair03/provenance.json",
+      "git_blob": "1c884e92d22d5acc86c1aab8ce83e488b830a278",
+      "bytes": 972
+    },
+    {
+      "path": "repair03/reader.identity.json",
+      "git_blob": "6cccddd1f100e3aca1f0f48b3c19050edfd07923",
+      "bytes": 340
+    },
+    {
+      "path": "repair03/request.json",
+      "git_blob": "41c77aa6675b02fae0d5a3d6a16039827ebdae61",
+      "bytes": 10699
+    },
+    {
+      "path": "repair03/response-attempt1.json",
+      "git_blob": "a7a10a8543446805dd2a9e8c53e5a39b1506d765",
+      "bytes": 45765
+    },
+    {
+      "path": "repair03/response.json",
+      "git_blob": "a7a10a8543446805dd2a9e8c53e5a39b1506d765",
+      "bytes": 45765
+    },
+    {
+      "path": "repair03/result.json",
+      "git_blob": "425ae73a2acd66ed3fd5ee007f73715e22245bb3",
+      "bytes": 731
+    },
+    {
+      "path": "repair03/transport-result.json",
+      "git_blob": "0d7f90a0072c6cef48dccb6a6d646106d7dfc911",
+      "bytes": 640
+    },
+    {
+      "path": "repair03/transport.identity.json",
+      "git_blob": "36791d5cf61b833a8af471240dcfab3fd31d8a98",
+      "bytes": 440
+    },
+    {
+      "path": "repair03/validated-proposals.json",
+      "git_blob": "729b07bd279988e91aeb4aec2a5e6641a4b4708d",
+      "bytes": 7917
+    },
+    {
+      "path": "repair04/provenance.json",
+      "git_blob": "16805ddd6e937fd8a95a7d113b3251a419bd96bc",
+      "bytes": 972
+    },
+    {
+      "path": "repair04/reader.identity.json",
+      "git_blob": "1ac857e741b7fb996b53fdf910f12ee139d87763",
+      "bytes": 341
+    },
+    {
+      "path": "repair04/request.json",
+      "git_blob": "068d1a4f2b5416be4db4d1d6f742e9e8b92f6ed5",
+      "bytes": 10149
+    },
+    {
+      "path": "repair04/response-attempt1.json",
+      "git_blob": "00f74f8032676b17fc0c2673b2b39109d6b17a04",
+      "bytes": 44974
+    },
+    {
+      "path": "repair04/response.json",
+      "git_blob": "00f74f8032676b17fc0c2673b2b39109d6b17a04",
+      "bytes": 44974
+    },
+    {
+      "path": "repair04/result.json",
+      "git_blob": "863f5f43fc3971973a43cd541d45abd1f87b78b3",
+      "bytes": 732
+    },
+    {
+      "path": "repair04/transport-result.json",
+      "git_blob": "92536032cf75d1570ad3845f3e633ec77f81850d",
+      "bytes": 640
+    },
+    {
+      "path": "repair04/transport.identity.json",
+      "git_blob": "6690e73588840a4ca9a88d7cbe628d27646e6fec",
+      "bytes": 441
+    },
+    {
+      "path": "repair04/validated-proposals.json",
+      "git_blob": "134e30df455995f3e93788455c361997eb733051",
+      "bytes": 12391
+    },
+    {
+      "path": "repair05/provenance.json",
+      "git_blob": "54351394c211ff9a2f48416088a07be25b6bfbbd",
+      "bytes": 972
+    },
+    {
+      "path": "repair05/reader.identity.json",
+      "git_blob": "831e8df22303d0e92e95307dbe6d3dec17b8b1cb",
+      "bytes": 341
+    },
+    {
+      "path": "repair05/request.json",
+      "git_blob": "0c4d1ea0a00aedcfa8bb7555a05a11f3255ae29d",
+      "bytes": 10196
+    },
+    {
+      "path": "repair05/response-attempt1.json",
+      "git_blob": "f49fccfd950efcb4cf93212fc5f83b95a3ae4cd3",
+      "bytes": 69718
+    },
+    {
+      "path": "repair05/response.json",
+      "git_blob": "f49fccfd950efcb4cf93212fc5f83b95a3ae4cd3",
+      "bytes": 69718
+    },
+    {
+      "path": "repair05/result.json",
+      "git_blob": "4bb0d95b242f2a01461ac5b159c1baf87ce4e1cd",
+      "bytes": 733
+    },
+    {
+      "path": "repair05/transport-result.json",
+      "git_blob": "7e94d28f24fea4108b3befae1ee0fe96c04f2ff4",
+      "bytes": 640
+    },
+    {
+      "path": "repair05/transport.identity.json",
+      "git_blob": "b8e2dc997fa81bd391cb9f1c58013741ce99e3df",
+      "bytes": 441
+    },
+    {
+      "path": "repair05/validated-proposals.json",
+      "git_blob": "dca1c873b65cbb1dd9cd96b0daff24be78cda527",
+      "bytes": 10378
+    },
+    {
+      "path": "repair06/provenance.json",
+      "git_blob": "fc61883b415b021fa995ea8f315453712a728520",
+      "bytes": 972
+    },
+    {
+      "path": "repair06/reader.identity.json",
+      "git_blob": "bd9f5fa8fbc9d3304048b9dbb61b8feab2aa26f5",
+      "bytes": 341
+    },
+    {
+      "path": "repair06/request.json",
+      "git_blob": "4cff4d7cf134fca0c78c296df860ff8996278d08",
+      "bytes": 10319
+    },
+    {
+      "path": "repair06/response-attempt1.json",
+      "git_blob": "4366340c06f8d3573b5f55509e707cef31e74c59",
+      "bytes": 48174
+    },
+    {
+      "path": "repair06/response.json",
+      "git_blob": "4366340c06f8d3573b5f55509e707cef31e74c59",
+      "bytes": 48174
+    },
+    {
+      "path": "repair06/result.json",
+      "git_blob": "21cb721d94435596568249a9b49f53e9e252fe7b",
+      "bytes": 732
+    },
+    {
+      "path": "repair06/transport-result.json",
+      "git_blob": "9d3a93ce0fa992d276b6a9c199ab7d3612e1823e",
+      "bytes": 640
+    },
+    {
+      "path": "repair06/transport.identity.json",
+      "git_blob": "392ae94077ed765ee52980da4c5a7beb93e829ed",
+      "bytes": 441
+    },
+    {
+      "path": "repair06/validated-proposals.json",
+      "git_blob": "28391f4a7fa65466a8107e95d41d3ea1f911dadd",
+      "bytes": 12560
+    },
+    {
+      "path": "repair07/provenance.json",
+      "git_blob": "830c2adc7ef05fc01d06eeff44b68db6bc419bbd",
+      "bytes": 972
+    },
+    {
+      "path": "repair07/reader.identity.json",
+      "git_blob": "885b734c0e1be75ac7f7ae0365f10605196c0556",
+      "bytes": 341
+    },
+    {
+      "path": "repair07/request.json",
+      "git_blob": "26d36dc2e95b1935a533f0fa2d76a036dd4cf952",
+      "bytes": 10710
+    },
+    {
+      "path": "repair07/response-attempt1.json",
+      "git_blob": "174612bb0e8426d4886c5c63b76cb6cc496cc5b2",
+      "bytes": 61576
+    },
+    {
+      "path": "repair07/response.json",
+      "git_blob": "174612bb0e8426d4886c5c63b76cb6cc496cc5b2",
+      "bytes": 61576
+    },
+    {
+      "path": "repair07/result.json",
+      "git_blob": "b501237360ffe85e15cbdd2d5c5f7011b5218cbc",
+      "bytes": 733
+    },
+    {
+      "path": "repair07/transport-result.json",
+      "git_blob": "e8ba9945b50885cf5030a6878ec910c5609e3065",
+      "bytes": 640
+    },
+    {
+      "path": "repair07/transport.identity.json",
+      "git_blob": "f49f170f2e6989ea53f7fe103c8d25944dbbe213",
+      "bytes": 441
+    },
+    {
+      "path": "repair07/validated-proposals.json",
+      "git_blob": "4c942b368f9c57633250dbd903e5e3e7b3f5a414",
+      "bytes": 15075
+    },
+    {
+      "path": "repair08/provenance.json",
+      "git_blob": "454496b7bb839ba889870528d9269590183336ac",
+      "bytes": 972
+    },
+    {
+      "path": "repair08/reader.identity.json",
+      "git_blob": "54345aac56300f07d2e44b17e243e83958d5704b",
+      "bytes": 341
+    },
+    {
+      "path": "repair08/request.json",
+      "git_blob": "2838e35ebfc28b54af855d440ebf24e896bcc020",
+      "bytes": 12305
+    },
+    {
+      "path": "repair08/response-attempt1.json",
+      "git_blob": "17768d41ec25c2c0f72ca0932667ba6469dae26c",
+      "bytes": 45148
+    },
+    {
+      "path": "repair08/response.json",
+      "git_blob": "17768d41ec25c2c0f72ca0932667ba6469dae26c",
+      "bytes": 45148
+    },
+    {
+      "path": "repair08/result.json",
+      "git_blob": "d7cecf81c5ed907ce3160918eabc5aeb1551018b",
+      "bytes": 732
+    },
+    {
+      "path": "repair08/transport-result.json",
+      "git_blob": "54cb40163d2869b5bb92894b5d5e58d4bb012d7e",
+      "bytes": 640
+    },
+    {
+      "path": "repair08/transport.identity.json",
+      "git_blob": "b43930f901dfdf1fe30040f13c500dd60414a0cc",
+      "bytes": 441
+    },
+    {
+      "path": "repair08/validated-proposals.json",
+      "git_blob": "4f0baf84be8b9ea157b89ebe5908a423062a26ea",
+      "bytes": 11836
+    },
+    {
+      "path": "repair09/provenance.json",
+      "git_blob": "2a808f93adfc0ebdc60447c96ae718307d51ca10",
+      "bytes": 972
+    },
+    {
+      "path": "repair09/reader.identity.json",
+      "git_blob": "53521747e4b655ed6b1dd9b4533bc7722838f9ce",
+      "bytes": 341
+    },
+    {
+      "path": "repair09/request.json",
+      "git_blob": "fe9224678f9f5d009468789cbf0e758c3f79f64e",
+      "bytes": 12898
+    },
+    {
+      "path": "repair09/response-attempt1.json",
+      "git_blob": "f33d17045ffc612d0bead134023eedb452be6605",
+      "bytes": 35851
+    },
+    {
+      "path": "repair09/response.json",
+      "git_blob": "f33d17045ffc612d0bead134023eedb452be6605",
+      "bytes": 35851
+    },
+    {
+      "path": "repair09/result.json",
+      "git_blob": "222ff96611251083c2761cdda48e946af9b923a7",
+      "bytes": 732
+    },
+    {
+      "path": "repair09/transport-result.json",
+      "git_blob": "5757490f7373e0be25ac2232dfcc6d6651923c40",
+      "bytes": 640
+    },
+    {
+      "path": "repair09/transport.identity.json",
+      "git_blob": "b8acc62fe3c5b81e0d608dce430d025b19d53643",
+      "bytes": 441
+    },
+    {
+      "path": "repair09/validated-proposals.json",
+      "git_blob": "ed3ba77448024208a724b878506a80f206bdfa6e",
+      "bytes": 7073
+    },
+    {
+      "path": "repair10/provenance.json",
+      "git_blob": "70ab03661080abe1c13aca609a155ef411b11c97",
+      "bytes": 972
+    },
+    {
+      "path": "repair10/reader.identity.json",
+      "git_blob": "3de092c92c5c6945213181eacd9d61a5de463921",
+      "bytes": 341
+    },
+    {
+      "path": "repair10/request.json",
+      "git_blob": "d67b906baae8a6e6f11cb69594f981ebfb64f6f9",
+      "bytes": 13241
+    },
+    {
+      "path": "repair10/response-attempt1.json",
+      "git_blob": "1de43a0c695088abbee9fade943a14086ce7aa4f",
+      "bytes": 47312
+    },
+    {
+      "path": "repair10/response.json",
+      "git_blob": "1de43a0c695088abbee9fade943a14086ce7aa4f",
+      "bytes": 47312
+    },
+    {
+      "path": "repair10/result.json",
+      "git_blob": "3bfd2b425b08e3cc9e4a4757a6199e2a3ce4665b",
+      "bytes": 732
+    },
+    {
+      "path": "repair10/transport-result.json",
+      "git_blob": "697da8675c9f29a3bc20c5415e0165db0aaac5eb",
+      "bytes": 640
+    },
+    {
+      "path": "repair10/transport.identity.json",
+      "git_blob": "040c4934f0047c3029181d43666bfbe040fa6165",
+      "bytes": 441
+    },
+    {
+      "path": "repair10/validated-proposals.json",
+      "git_blob": "3aec66c6ee8b04d9a3556b36c9a773989d2b7be9",
+      "bytes": 13507
+    },
+    {
+      "path": "repair11/provenance.json",
+      "git_blob": "56f5d5c08ca584cfe157db73579829517728fbb1",
+      "bytes": 997
+    },
+    {
+      "path": "repair11/reader.identity.json",
+      "git_blob": "b4689be0fecf229338e40da1ee052368ecbffd24",
+      "bytes": 341
+    },
+    {
+      "path": "repair11/request.json",
+      "git_blob": "1a9b329ffaf7ba1a434aec1e96da5d3615229e38",
+      "bytes": 14753
+    },
+    {
+      "path": "repair11/response-attempt1.json",
+      "git_blob": "7c1897863521d4edc5f1f60c8a176d309f6f823c",
+      "bytes": 49325
+    },
+    {
+      "path": "repair11/response.json",
+      "git_blob": "7c1897863521d4edc5f1f60c8a176d309f6f823c",
+      "bytes": 49325
+    },
+    {
+      "path": "repair11/result.json",
+      "git_blob": "a484ee82246cee9092cd0f272078e17ee39e1d02",
+      "bytes": 732
+    },
+    {
+      "path": "repair11/transport-result.json",
+      "git_blob": "d62eb9e9cb5aa97d36d450f7960a0b5b195f2b41",
+      "bytes": 640
+    },
+    {
+      "path": "repair11/transport.identity.json",
+      "git_blob": "6a68efab2ba20deb715aeb107172c64cea687f3d",
+      "bytes": 441
+    },
+    {
+      "path": "repair11/validated-proposals.json",
+      "git_blob": "88d99437bd2343eb13cf2c7e90a2f414fd25bcc5",
+      "bytes": 16951
+    },
+    {
+      "path": "repair12/provenance.json",
+      "git_blob": "46ea500187059ae626ba85c42b9b98007e83d0d3",
+      "bytes": 1002
+    },
+    {
+      "path": "repair12/reader.identity.json",
+      "git_blob": "d2b0a92fdcd835c6aec45573f0496bb7836a58b9",
+      "bytes": 341
+    },
+    {
+      "path": "repair12/request.json",
+      "git_blob": "cce43c3359cff48b8b1910f524970fa9c8733af3",
+      "bytes": 14303
+    },
+    {
+      "path": "repair12/response-attempt1.json",
+      "git_blob": "04713f3b7b2db1c0bef8916815cdd6a7ac0d1244",
+      "bytes": 50228
+    },
+    {
+      "path": "repair12/response.json",
+      "git_blob": "04713f3b7b2db1c0bef8916815cdd6a7ac0d1244",
+      "bytes": 50228
+    },
+    {
+      "path": "repair12/result.json",
+      "git_blob": "af71d1777fbbaeb515988362a5b9c9b597967480",
+      "bytes": 732
+    },
+    {
+      "path": "repair12/transport-result.json",
+      "git_blob": "06424fa12a4c88c4d3ba0ef2b1af1ab1b2b8a945",
+      "bytes": 640
+    },
+    {
+      "path": "repair12/transport.identity.json",
+      "git_blob": "a7e6481eecef0f015a0527b5ed2e907aba76a2f2",
+      "bytes": 441
+    },
+    {
+      "path": "repair12/validated-proposals.json",
+      "git_blob": "42dff60155e77b3d548366a04de51ad477f3856c",
+      "bytes": 12984
+    },
+    {
+      "path": "repair13/provenance.json",
+      "git_blob": "a4768e46dbae1361caabca3cb95e59f85635f044",
+      "bytes": 936
+    },
+    {
+      "path": "repair13/reader.identity.json",
+      "git_blob": "7b6b2d0aa6737d2c29270d75d9a4017c0815defe",
+      "bytes": 341
+    },
+    {
+      "path": "repair13/request.json",
+      "git_blob": "2054f5659ed0058cd96875e81fcb12093033d731",
+      "bytes": 13093
+    },
+    {
+      "path": "repair13/response-attempt1.json",
+      "git_blob": "a4adbfb174678f4eeeebc44e5eb87642ea9ff42f",
+      "bytes": 43069
+    },
+    {
+      "path": "repair13/response.json",
+      "git_blob": "a4adbfb174678f4eeeebc44e5eb87642ea9ff42f",
+      "bytes": 43069
+    },
+    {
+      "path": "repair13/result.json",
+      "git_blob": "c2f305f9b038a25ca747078e78807a359f34e083",
+      "bytes": 732
+    },
+    {
+      "path": "repair13/transport-result.json",
+      "git_blob": "ca9b162e4832ea52af931a131b95974f7800d9b2",
+      "bytes": 640
+    },
+    {
+      "path": "repair13/transport.identity.json",
+      "git_blob": "7c3e631f7e8edcc6b73e0845b99d9aa5e2d0d483",
+      "bytes": 440
+    },
+    {
+      "path": "repair13/validated-proposals.json",
+      "git_blob": "2ee2317b8b4cabd9c188af8d4effe26eb839881e",
+      "bytes": 5930
+    },
+    {
+      "path": "review-queue-result.json",
+      "git_blob": "ffb43be66ae93d2d2d02d3cc85e4eb87026bdcaf",
+      "bytes": 3789
+    },
+    {
+      "path": "review-schedule.json",
+      "git_blob": "188a1f2218414be407199b1d3850ad2a589afe7b",
+      "bytes": 1459
+    },
+    {
+      "path": "review00/provenance.json",
+      "git_blob": "ede779fccf8e6c8193c59b26d18208293c166778",
+      "bytes": 971
+    },
+    {
+      "path": "review00/reader.identity.json",
+      "git_blob": "23f3a37b0bec4797854f923c498a991a1f55049e",
+      "bytes": 340
+    },
+    {
+      "path": "review00/request.json",
+      "git_blob": "a934b2232f0510e21160d284c64bf53f9a70290c",
+      "bytes": 8372
+    },
+    {
+      "path": "review00/response-attempt1.json",
+      "git_blob": "0b88614dc8c9213df3cd578e2c4750ab762c6c8e",
+      "bytes": 33440
+    },
+    {
+      "path": "review00/response.json",
+      "git_blob": "0b88614dc8c9213df3cd578e2c4750ab762c6c8e",
+      "bytes": 33440
+    },
+    {
+      "path": "review00/result.json",
+      "git_blob": "15b4b3c25ce3b09eb18e9248491c9c8e95456082",
+      "bytes": 731
+    },
+    {
+      "path": "review00/transport-result.json",
+      "git_blob": "3ee76ccc347196c131e6a5031b37fef9df635280",
+      "bytes": 640
+    },
+    {
+      "path": "review00/transport.identity.json",
+      "git_blob": "8f04716cea1b7b2af505a61f687e2b0592b37fb5",
+      "bytes": 441
+    },
+    {
+      "path": "review00/validated-reviews.json",
+      "git_blob": "f23919b30237d8fcc238090a2adb38be3b076cb9",
+      "bytes": 5820
+    },
+    {
+      "path": "review01/provenance.json",
+      "git_blob": "08874c22387a04e729c70e56e0529cb81f0ff500",
+      "bytes": 971
+    },
+    {
+      "path": "review01/reader.identity.json",
+      "git_blob": "b3be25905db2d4fecd2b5d730a86afabab26aa5d",
+      "bytes": 340
+    },
+    {
+      "path": "review01/request.json",
+      "git_blob": "0e3936e935ab7ef641326c9aab7eed7ce9c5ce8c",
+      "bytes": 8252
+    },
+    {
+      "path": "review01/response-attempt1.json",
+      "git_blob": "76c4b7588462c64a346d4baabb9e66cca7ceec52",
+      "bytes": 39786
+    },
+    {
+      "path": "review01/response.json",
+      "git_blob": "76c4b7588462c64a346d4baabb9e66cca7ceec52",
+      "bytes": 39786
+    },
+    {
+      "path": "review01/result.json",
+      "git_blob": "3635546694ea24a5feef3c12cc8095b9685dd755",
+      "bytes": 731
+    },
+    {
+      "path": "review01/transport-result.json",
+      "git_blob": "250e29f8bcfc9f12897b68a4c373d0eb345f64c4",
+      "bytes": 640
+    },
+    {
+      "path": "review01/transport.identity.json",
+      "git_blob": "ce4717eaf3051b5656cc46e27846fb69056f9fca",
+      "bytes": 441
+    },
+    {
+      "path": "review01/validated-reviews.json",
+      "git_blob": "2292a954d72dc31ea5cb1d0d1e4e6b6f773f634b",
+      "bytes": 6462
+    },
+    {
+      "path": "review02/provenance.json",
+      "git_blob": "0382a1f97fca84bb69ee0150ede4d7f84b970393",
+      "bytes": 971
+    },
+    {
+      "path": "review02/reader.identity.json",
+      "git_blob": "7a0a87257c94973c47844cbb4142d2576a4d4795",
+      "bytes": 341
+    },
+    {
+      "path": "review02/request.json",
+      "git_blob": "8243fec15e6587d7565a0fd239b03fc89562a280",
+      "bytes": 8683
+    },
+    {
+      "path": "review02/response-attempt1.json",
+      "git_blob": "72fe291accb6a1f77146994db5b00179a4a48a45",
+      "bytes": 35694
+    },
+    {
+      "path": "review02/response.json",
+      "git_blob": "72fe291accb6a1f77146994db5b00179a4a48a45",
+      "bytes": 35694
+    },
+    {
+      "path": "review02/result.json",
+      "git_blob": "572fe0c52bce3f2bed5adf7dcdc79e71d889dae3",
+      "bytes": 732
+    },
+    {
+      "path": "review02/transport-result.json",
+      "git_blob": "77e76b2fd65b4de0e12f624382dcdd1f90531168",
+      "bytes": 640
+    },
+    {
+      "path": "review02/transport.identity.json",
+      "git_blob": "50dd2c9bc939fb8ba6ce6206bb52fa853ae0bb04",
+      "bytes": 441
+    },
+    {
+      "path": "review02/validated-reviews.json",
+      "git_blob": "e34e2320836aadc2f1fea3358a385816ca62c917",
+      "bytes": 6271
+    },
+    {
+      "path": "review03/provenance.json",
+      "git_blob": "46299b786a7a6ee9efe9e3e99b4bcc1abbf185bc",
+      "bytes": 971
+    },
+    {
+      "path": "review03/reader.identity.json",
+      "git_blob": "d9c0f54dea6f5eeaa5637f56874f1a79b87ec959",
+      "bytes": 341
+    },
+    {
+      "path": "review03/request.json",
+      "git_blob": "de8b00a48099f514601ae184911dfcb83170ea66",
+      "bytes": 8491
+    },
+    {
+      "path": "review03/response-attempt1.json",
+      "git_blob": "57ed8881b994478925b48ee6fab37b3c5441418a",
+      "bytes": 39369
+    },
+    {
+      "path": "review03/response.json",
+      "git_blob": "57ed8881b994478925b48ee6fab37b3c5441418a",
+      "bytes": 39369
+    },
+    {
+      "path": "review03/result.json",
+      "git_blob": "82cd786a9de9f4a5e09bdfff4c3ce2162edc9378",
+      "bytes": 731
+    },
+    {
+      "path": "review03/transport-result.json",
+      "git_blob": "6335b0ae0df5944b40c34219aebe21e340e03459",
+      "bytes": 640
+    },
+    {
+      "path": "review03/transport.identity.json",
+      "git_blob": "624538c0de9b59d3347408bfc75f857e0f9703a1",
+      "bytes": 441
+    },
+    {
+      "path": "review03/validated-reviews.json",
+      "git_blob": "87fcc64e10117373ad4852d75961f742ac7192c8",
+      "bytes": 6670
+    },
+    {
+      "path": "review04/provenance.json",
+      "git_blob": "ed5e872345002eff98a8e574c601165b840e1fb3",
+      "bytes": 971
+    },
+    {
+      "path": "review04/reader.identity.json",
+      "git_blob": "52f728adcf3b1f96e4fd4f10743177987b615c28",
+      "bytes": 340
+    },
+    {
+      "path": "review04/request.json",
+      "git_blob": "b3137f1bb9ea8389451a2f44788cdd3723b0c6b5",
+      "bytes": 9977
+    },
+    {
+      "path": "review04/response-attempt1.json",
+      "git_blob": "696b6491ca98ef18d48a88b57af082c72ee336b6",
+      "bytes": 41430
+    },
+    {
+      "path": "review04/response.json",
+      "git_blob": "696b6491ca98ef18d48a88b57af082c72ee336b6",
+      "bytes": 41430
+    },
+    {
+      "path": "review04/result.json",
+      "git_blob": "0e37a14aacdd87d3e42aeb0b3dce5f11e118c2c1",
+      "bytes": 731
+    },
+    {
+      "path": "review04/transport-result.json",
+      "git_blob": "690ec856f2aae0b2b0ce0bda7f49361acc90c7d0",
+      "bytes": 640
+    },
+    {
+      "path": "review04/transport.identity.json",
+      "git_blob": "c62f1751223bb55433c07aa38ea9c6350a95d30f",
+      "bytes": 441
+    },
+    {
+      "path": "review04/validated-reviews.json",
+      "git_blob": "25f7ebc18606530354a443a9d6a8a59823e69012",
+      "bytes": 7251
+    },
+    {
+      "path": "review05/provenance.json",
+      "git_blob": "1f59e754eada460cf98c6ed45706a3af75ede5c0",
+      "bytes": 996
+    },
+    {
+      "path": "review05/reader.identity.json",
+      "git_blob": "c368962ea96482c3389245182434917270d4f86e",
+      "bytes": 341
+    },
+    {
+      "path": "review05/request.json",
+      "git_blob": "17af3df98165fb09f20298d1334daacfb78b0fb8",
+      "bytes": 12140
+    },
+    {
+      "path": "review05/response-attempt1.json",
+      "git_blob": "2ed725cfb80b0305811f429e7e032b745bca70c3",
+      "bytes": 43832
+    },
+    {
+      "path": "review05/response.json",
+      "git_blob": "2ed725cfb80b0305811f429e7e032b745bca70c3",
+      "bytes": 43832
+    },
+    {
+      "path": "review05/result.json",
+      "git_blob": "4da95c177eba9f770c9bc333919c4bb9d8c01728",
+      "bytes": 731
+    },
+    {
+      "path": "review05/transport-result.json",
+      "git_blob": "5aacca147e872db4cab672aeab25052fa44ebda4",
+      "bytes": 640
+    },
+    {
+      "path": "review05/transport.identity.json",
+      "git_blob": "d3a9c777f39721707f83cf5f3294e14b915fae73",
+      "bytes": 441
+    },
+    {
+      "path": "review05/validated-reviews.json",
+      "git_blob": "ef7fae599f46fe0ba27cfcec667fa836405d3125",
+      "bytes": 7293
+    },
+    {
+      "path": "review06/provenance.json",
+      "git_blob": "47f9494a9065113814e33470db6f222635b51f37",
+      "bytes": 836
+    },
+    {
+      "path": "review06/reader.identity.json",
+      "git_blob": "bec91c97e4c591ac3d683d556bff3d4914d807a9",
+      "bytes": 340
+    },
+    {
+      "path": "review06/request.json",
+      "git_blob": "81fa07b4db376f171d8978e93e0cb4a64d955fc0",
+      "bytes": 4369
+    },
+    {
+      "path": "review06/response-attempt1.json",
+      "git_blob": "fb5892ac4f76ffc58b780747b26d585be0f494f7",
+      "bytes": 29542
+    },
+    {
+      "path": "review06/response.json",
+      "git_blob": "fb5892ac4f76ffc58b780747b26d585be0f494f7",
+      "bytes": 29542
+    },
+    {
+      "path": "review06/result.json",
+      "git_blob": "e981b8c004825f3ab23649cfbf2bf8acb944a9f6",
+      "bytes": 731
+    },
+    {
+      "path": "review06/transport-result.json",
+      "git_blob": "2c9e55e92f8803795c04886e69e8fab67fa6a6fb",
+      "bytes": 640
+    },
+    {
+      "path": "review06/transport.identity.json",
+      "git_blob": "dd820596ff041aa6dab9b5496da8868b6228b5f3",
+      "bytes": 441
+    },
+    {
+      "path": "review06/validated-reviews.json",
+      "git_blob": "89833eb878f091087d746449aeb3fd087c2b42df",
+      "bytes": 1071
+    },
+    {
+      "path": "revised-drafts.json",
+      "git_blob": "b5fb9f3586baf2af196565a29c789ba70461cf18",
+      "bytes": 91909
+    },
+    {
+      "path": "root-semantic-exclusions.json",
+      "git_blob": "f4a4ecb698ce1d7a7baf18b0a3eb6823ffaa42fc",
+      "bytes": 671
+    },
+    {
+      "path": "semantic-review.json",
+      "git_blob": "fdd7569475b1475e9e870820c4db7805f91d0375",
+      "bytes": 712
+    },
+    {
+      "path": "state.json",
+      "git_blob": "bdd0dc84e9932a24b6d681580a7650d0bf70494e",
+      "bytes": 478
+    },
+    {
+      "path": "validator-probe.json",
+      "git_blob": "f94475039120361c803d2f7f6f19767bb2c079cb",
+      "bytes": 178
+    }
+  ],
+  "limitation": "Git child may exit before CIM argv sample; retained process handle records exact launch arguments, PID/start/parent and actual exit. No repository mutation or filters.",
+  "cleanup": "Retained git process exited; no external child or disposable temp created."
+}

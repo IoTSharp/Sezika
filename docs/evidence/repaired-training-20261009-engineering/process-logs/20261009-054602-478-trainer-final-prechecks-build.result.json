@@ -1,0 +1,114 @@
+{
+  "Status": "Succeeded",
+  "Pid": 66060,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 7.461,
+  "TimeoutSeconds": 180,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj",
+    "-c",
+    "Release",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T05:46:02.9174656Z",
+  "ParentPid": 70184,
+  "Launcher": {
+    "Pid": 70184,
+    "Started": "2026-10-09T13:46:02.065323+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build','tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj','-c','Release','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false') -TimeoutSeconds 180 -ProcessQueryTimeoutSeconds 2 -LogName 'trainer-final-prechecks-build' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs'\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll','check-expanded-input','--data','D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\data','--manifest-sha256','E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6','--fixture-only','false','--max-checks','24') -TimeoutSeconds 45 -ProcessQueryTimeoutSeconds 2 -LogName 'v3-input-full24' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs'\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054602-478-trainer-final-prechecks-build.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054602-478-trainer-final-prechecks-build.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 0.7187293,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 66060,
+      "CreationDate": "2026-10-09T13:46:02.917465+08:00",
+      "Started": "2026-10-09T05:46:02.917465Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+      "ParentPid": 70184,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 9472,
+      "CreationDate": "2026-10-09T13:46:02.924493+08:00",
+      "Started": "2026-10-09T05:46:02.924493Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 66060,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 66060,
+          "CreationDate": "2026-10-09T13:46:02.917465+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+          "ParentPid": 70184
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 71408,
+      "CreationDate": "2026-10-09T13:46:04.536462+08:00",
+      "Started": "2026-10-09T05:46:04.536462Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempzqsq2e1l.jcy\\tmp46bae3b305d14e049c098cf7b0ac79a8.rsp\"",
+      "ParentPid": 66060,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 66060,
+          "CreationDate": "2026-10-09T13:46:02.917465+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+          "ParentPid": 70184
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 7712,
+      "CreationDate": "2026-10-09T13:46:04.543313+08:00",
+      "Started": "2026-10-09T05:46:04.543313Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 71408,
+      "Depth": 2,
+      "ParentChain": [
+        {
+          "Pid": 66060,
+          "CreationDate": "2026-10-09T13:46:02.917465+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+          "ParentPid": 70184
+        },
+        {
+          "Pid": 71408,
+          "CreationDate": "2026-10-09T13:46:04.536462+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempzqsq2e1l.jcy\\tmp46bae3b305d14e049c098cf7b0ac79a8.rsp\"",
+          "ParentPid": 66060
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

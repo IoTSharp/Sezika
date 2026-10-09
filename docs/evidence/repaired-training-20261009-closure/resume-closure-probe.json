@@ -1,0 +1,188 @@
+{
+  "reader": {
+    "ProcessId": 70800,
+    "CreationDate": "2026-10-09T14:13:59.473731+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\nif($PSVersionTable.PSVersion.Major -lt 7){throw 'PowerShell 7 required'}\n& .artifacts/repaired-training-20261009/Close-ResumeProcesses.ps1 -MaximumReceiptsPerDirectory 1 -Probe -OutputPath D:/source/Sezika/.artifacts/repaired-training-20261009/resume-closure-probe.json\n\"",
+    "ParentProcessId": 49492
+  },
+  "matching_start_live": 0,
+  "bounds": {
+    "seconds": 40,
+    "receipts_per_directory": 1,
+    "identities": 750,
+    "unique_pids": 280,
+    "directories": 3
+  },
+  "scope": "Only registered task PID/start identities; retained spawn argv is not historical OS observation; no process signals.",
+  "current_reader_excluded": 0,
+  "rows": [
+    {
+      "started": "2026-10-09T05:33:48.0258848Z",
+      "state": "absent",
+      "recorded_argv_present": true,
+      "pid": 51820,
+      "live_argv_matches": null,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053347-150-guardian-tiny1.result.json",
+      "live_parent_matches": null
+    },
+    {
+      "started": "2026-10-09T05:33:46.180318Z",
+      "state": "absent",
+      "recorded_argv_present": true,
+      "pid": 65724,
+      "live_argv_matches": null,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053347-150-guardian-tiny1.result.json#launcher",
+      "live_parent_matches": null
+    },
+    {
+      "started": "2026-10-09T05:33:48.025884Z",
+      "state": "absent",
+      "recorded_argv_present": true,
+      "pid": 51820,
+      "live_argv_matches": null,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053347-150-guardian-tiny1.result.json#observed",
+      "live_parent_matches": null
+    },
+    {
+      "started": "2026-10-09T05:33:48.042352Z",
+      "state": "absent",
+      "recorded_argv_present": true,
+      "pid": 23468,
+      "live_argv_matches": null,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053347-150-guardian-tiny1.result.json#observed",
+      "live_parent_matches": null
+    },
+    {
+      "started": "2026-10-09T05:42:47.3758219Z",
+      "state": "absent",
+      "recorded_argv_present": true,
+      "pid": 71636,
+      "live_argv_matches": null,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-v2-git-logs\\20261009-054246-567-audit-v2-length-contract.result.json",
+      "live_parent_matches": null
+    },
+    {
+      "started": "2026-10-09T05:42:46.155427Z",
+      "state": "absent",
+      "recorded_argv_present": true,
+      "pid": 54248,
+      "live_argv_matches": null,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-v2-git-logs\\20261009-054246-567-audit-v2-length-contract.result.json#launcher",
+      "live_parent_matches": null
+    },
+    {
+      "started": "2026-10-09T05:36:52.864343Z",
+      "state": "absent",
+      "recorded_argv_present": true,
+      "pid": 12592,
+      "live_argv_matches": null,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-data-validation.json#reader",
+      "live_parent_matches": null
+    },
+    {
+      "started": "2026-10-09T05:38:45.580823Z",
+      "state": "absent",
+      "recorded_argv_present": true,
+      "pid": 47140,
+      "live_argv_matches": null,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-git-bytes.json#reader",
+      "live_parent_matches": null
+    },
+    {
+      "started": "2026-10-09T05:38:46.6867429Z",
+      "state": "absent",
+      "recorded_argv_present": true,
+      "pid": 9028,
+      "live_argv_matches": null,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-git-bytes.json#git_child",
+      "live_parent_matches": null
+    },
+    {
+      "started": "2026-10-09T05:38:39.03872Z",
+      "state": "absent",
+      "recorded_argv_present": true,
+      "pid": 21708,
+      "live_argv_matches": null,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-git-bytes-probe.json#reader",
+      "live_parent_matches": null
+    },
+    {
+      "started": "2026-10-09T05:38:40.1390645Z",
+      "state": "absent",
+      "recorded_argv_present": true,
+      "pid": 65844,
+      "live_argv_matches": null,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-git-bytes-probe.json#git_child",
+      "live_parent_matches": null
+    },
+    {
+      "started": "2026-10-09T05:45:08.325822Z",
+      "state": "absent",
+      "recorded_argv_present": true,
+      "pid": 69308,
+      "live_argv_matches": null,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-execution-transfer-review.json#reader",
+      "live_parent_matches": null
+    },
+    {
+      "started": "2026-10-09T05:48:26.834572Z",
+      "state": "absent",
+      "recorded_argv_present": true,
+      "pid": 62304,
+      "live_argv_matches": null,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-budget-helpers-review.json#reader",
+      "live_parent_matches": null
+    },
+    {
+      "started": "2026-10-09T05:54:40.37058Z",
+      "state": "absent",
+      "recorded_argv_present": true,
+      "pid": 57068,
+      "live_argv_matches": null,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-length-block.json#reader",
+      "live_parent_matches": null
+    },
+    {
+      "started": "2026-10-09T05:50:31.364519Z",
+      "state": "absent",
+      "recorded_argv_present": true,
+      "pid": 66236,
+      "live_argv_matches": null,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\short-process-followup.json#observer",
+      "live_parent_matches": null
+    },
+    {
+      "started": "2026-10-09T06:04:20.342203Z",
+      "state": "absent",
+      "recorded_argv_present": true,
+      "pid": 65252,
+      "live_argv_matches": null,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\closure-field-correction.json#original-reader",
+      "live_parent_matches": null
+    }
+  ],
+  "receipts": 2,
+  "utc": "2026-10-09T06:14:01.0945760Z",
+  "records": 16,
+  "limitations": [
+    "Short read-only commands lacking contemporaneous OS identities remain outside this ledger.",
+    "No claim that exited parents had no never-observed descendants.",
+    "Current reader requires actual tool exit and a later independent absence check."
+  ],
+  "receipt_sources": [
+    {
+      "status": "Succeeded",
+      "actual_exit": 0,
+      "sha256": "1FF8379289223355598B5C3666360F158DCBC23E68612FC9AA9189857E691759",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053347-150-guardian-tiny1.result.json"
+    },
+    {
+      "status": "CleanupFailed",
+      "actual_exit": 0,
+      "sha256": "0FC95E07CCC7F5AA7A628FF1FA11F41FEE5E95716191812E37EF3E3609B8FDE4",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-v2-git-logs\\20261009-054246-567-audit-v2-length-contract.result.json"
+    }
+  ],
+  "unique_pids": 15,
+  "probe": true
+}

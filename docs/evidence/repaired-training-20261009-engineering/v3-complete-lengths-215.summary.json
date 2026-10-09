@@ -1,0 +1,32 @@
+{
+  "failed": 1,
+  "guardian_error": "Process failed with exit code 1.",
+  "unattempted": 0,
+  "accepted": 214,
+  "failed_rows": [
+    {
+      "record_id": "massive-zh-cn-02996",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": false,
+      "token_count": null,
+      "marker_positions": null,
+      "candidate_ids": [
+        "qa_definition",
+        "qa_stock",
+        "qa_stock_news",
+        "qa_currency",
+        "qa_factoid"
+      ],
+      "failure_code": "decision_v1_token_budget_exceeded",
+      "failure": "decision-v1 sequence exceeds its strict token budget."
+    }
+  ],
+  "process_exit": 1,
+  "attempted": 215,
+  "guardian_status": "Failed",
+  "receipt": "20261009-055156-809-v3-complete-lengths-215.result.json",
+  "maximum_successful_tokens": 910,
+  "status": "completed_rendered_lengths_with_failures_no_model_execution"
+}

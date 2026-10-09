@@ -1,0 +1,28 @@
+{
+  "Pid": 50740,
+  "Started": "2026-10-09T06:12:15.641691Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 30912,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 30912,
+    "Started": "2026-10-09T14:12:14.739637+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\nif($PSVersionTable.PSVersion.Major -lt 7){throw 'PowerShell 7 required'}\nfunction Invoke-ReviewGit([string[]]$Arguments,[string]$Label){\n try { & .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath git -ArgumentList $Arguments -TimeoutSeconds 30 -LogName $Label } catch { Write-Output ('Guardian retained: '+$_.Exception.Message) }\n $items=@(Get-ChildItem -LiteralPath .artifacts/repaired-training-20261009/process-logs -Filter \\\"*-$Label.result.json\\\" -File|Select-Object -First 3)\n if($items.Count -ne 1){throw 'Expected one exact receipt'}\n $receipt=Get-Content -Raw -LiteralPath $items[0].FullName|ConvertFrom-Json\n if($null -eq $receipt.ExitCode){throw 'Missing actual child exit'}\n Write-Output ('actual_exit='+$receipt.ExitCode+' receipt='+$items[0].FullName)\n}\nInvoke-ReviewGit -Arguments @('diff','--cached','--','CHANGELOG.md','HANDOFF.md','ROADMAP.md','docs/evidence/repaired-training-engineering-2026-10-09.md') -Label resume-doc-diff\nInvoke-ReviewGit -Arguments @('diff','--cached','--check') -Label resume-whitespace\nGet-Content -LiteralPath .artifacts/repaired-training-20261009/preservation-check.json -TotalCount 50\nGet-Content -LiteralPath .artifacts/repaired-training-20261009/task-identity.json -TotalCount 80\nGet-Content -LiteralPath .artifacts/repaired-training-20261009/process-logs/20261009-061131-222-resume-status.result.json -TotalCount 65\nGet-ChildItem -LiteralPath .artifacts/repaired-training-20261009 -File|Select-Object -First 80 Name,Length\n\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 30,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "git",
+  "Arguments": [
+    "diff",
+    "--cached",
+    "--",
+    "CHANGELOG.md",
+    "HANDOFF.md",
+    "ROADMAP.md",
+    "docs/evidence/repaired-training-engineering-2026-10-09.md"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

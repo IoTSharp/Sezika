@@ -1,0 +1,31 @@
+{
+  "Pid": 55500,
+  "Started": "2026-10-09T05:49:53.6754819Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 71308,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 71308,
+    "Started": "2026-10-09T13:49:52.647818+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$legacy='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\input-fixture';$hash=(Get-FileHash -LiteralPath (Join-Path $legacy 'experiment-manifest.json')).Hash\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll','check-expanded-input','--data',$legacy,'--manifest-sha256',$hash,'--fixture-only','true','--max-checks','16') -TimeoutSeconds 45 -ProcessQueryTimeoutSeconds 2 -LogName 'legacy-v2-fixture16' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs'\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 45,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll",
+    "check-expanded-input",
+    "--data",
+    "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\input-fixture",
+    "--manifest-sha256",
+    "F3DA9504F9771AD0038756BA379EA645AFEDAF55FFBABD033905DA1A5946524A",
+    "--fixture-only",
+    "true",
+    "--max-checks",
+    "16"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

@@ -1,0 +1,29 @@
+{
+  "Pid": 66004,
+  "Started": "2026-10-09T05:39:23.2969858Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 66872,
+  "ObservedParentPid": 66872,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 66872,
+    "Started": "2026-10-09T13:39:22.467113+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build','tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj','-c','Release','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false') -TimeoutSeconds 180 -ProcessQueryTimeoutSeconds 2 -LogName 'trainer-complete-build' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs'\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 180,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj",
+    "-c",
+    "Release",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

@@ -1,0 +1,294 @@
+{
+  "Status": "Succeeded",
+  "Pid": 34848,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 25.621,
+  "TimeoutSeconds": 580,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoLogo",
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Publish-Linux.ps1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T05:53:45.6656112Z",
+  "ParentPid": 53684,
+  "Launcher": {
+    "Pid": 53684,
+    "Started": "2026-10-09T13:53:44.674912+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoLogo','-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Publish-Linux.ps1') -TimeoutSeconds 580 -ProcessQueryTimeoutSeconds 2 -LogName 'linux-publish-orchestrator-fixed' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs'\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055345-065-linux-publish-orchestrator-fixed.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055345-065-linux-publish-orchestrator-fixed.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 1.4310558,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 34848,
+      "CreationDate": "2026-10-09T13:53:45.665611+08:00",
+      "Started": "2026-10-09T05:53:45.665611Z",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Publish-Linux.ps1",
+      "ParentPid": 53684,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 6528,
+      "CreationDate": "2026-10-09T13:54:00.923344+08:00",
+      "Started": "2026-10-09T05:54:00.923344Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\regression-check\\RegressionCheck.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\regression-linux",
+      "ParentPid": 34848,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 34848,
+          "CreationDate": "2026-10-09T13:53:45.665611+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Publish-Linux.ps1",
+          "ParentPid": 53684
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 50396,
+      "CreationDate": "2026-10-09T13:53:55.222879+08:00",
+      "Started": "2026-10-09T05:53:55.222879Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\capacity-check\\CapacityCheck.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\capacity-linux",
+      "ParentPid": 34848,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 34848,
+          "CreationDate": "2026-10-09T13:53:45.665611+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Publish-Linux.ps1",
+          "ParentPid": 53684
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 56936,
+      "CreationDate": "2026-10-09T13:53:45.675401+08:00",
+      "Started": "2026-10-09T05:53:45.675401Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 34848,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 34848,
+          "CreationDate": "2026-10-09T13:53:45.665611+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Publish-Linux.ps1",
+          "ParentPid": 53684
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 58216,
+      "CreationDate": "2026-10-09T13:53:46.825677+08:00",
+      "Started": "2026-10-09T05:53:46.825677Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\Sezika.ExperimentTrainer.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\publish-linux",
+      "ParentPid": 34848,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 34848,
+          "CreationDate": "2026-10-09T13:53:45.665611+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Publish-Linux.ps1",
+          "ParentPid": 53684
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 34380,
+      "CreationDate": "2026-10-09T13:54:03.153551+08:00",
+      "Started": "2026-10-09T05:54:03.153551Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\linux-compiler-temp\\MSBuildTempfini0kyu.all\\tmpb589adf72d0f468c9205ae9a88f6fc07.rsp\"",
+      "ParentPid": 6528,
+      "Depth": 2,
+      "ParentChain": [
+        {
+          "Pid": 34848,
+          "CreationDate": "2026-10-09T13:53:45.665611+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Publish-Linux.ps1",
+          "ParentPid": 53684
+        },
+        {
+          "Pid": 6528,
+          "CreationDate": "2026-10-09T13:54:00.923344+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\regression-check\\RegressionCheck.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\regression-linux",
+          "ParentPid": 34848
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 44852,
+      "CreationDate": "2026-10-09T13:53:48.925702+08:00",
+      "Started": "2026-10-09T05:53:48.925702Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\linux-compiler-temp\\MSBuildTempda4pcw5b.mpn\\tmp540f2e200007406d947eef114fcd0cf3.rsp\"",
+      "ParentPid": 58216,
+      "Depth": 2,
+      "ParentChain": [
+        {
+          "Pid": 34848,
+          "CreationDate": "2026-10-09T13:53:45.665611+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Publish-Linux.ps1",
+          "ParentPid": 53684
+        },
+        {
+          "Pid": 58216,
+          "CreationDate": "2026-10-09T13:53:46.825677+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\Sezika.ExperimentTrainer.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\publish-linux",
+          "ParentPid": 34848
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 45860,
+      "CreationDate": "2026-10-09T13:54:00.93156+08:00",
+      "Started": "2026-10-09T05:54:00.93156Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 6528,
+      "Depth": 2,
+      "ParentChain": [
+        {
+          "Pid": 34848,
+          "CreationDate": "2026-10-09T13:53:45.665611+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Publish-Linux.ps1",
+          "ParentPid": 53684
+        },
+        {
+          "Pid": 6528,
+          "CreationDate": "2026-10-09T13:54:00.923344+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\regression-check\\RegressionCheck.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\regression-linux",
+          "ParentPid": 34848
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 60048,
+      "CreationDate": "2026-10-09T13:53:46.833618+08:00",
+      "Started": "2026-10-09T05:53:46.833618Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 58216,
+      "Depth": 2,
+      "ParentChain": [
+        {
+          "Pid": 34848,
+          "CreationDate": "2026-10-09T13:53:45.665611+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Publish-Linux.ps1",
+          "ParentPid": 53684
+        },
+        {
+          "Pid": 58216,
+          "CreationDate": "2026-10-09T13:53:46.825677+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\Sezika.ExperimentTrainer.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\publish-linux",
+          "ParentPid": 34848
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 69736,
+      "CreationDate": "2026-10-09T13:53:55.229507+08:00",
+      "Started": "2026-10-09T05:53:55.229507Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 50396,
+      "Depth": 2,
+      "ParentChain": [
+        {
+          "Pid": 34848,
+          "CreationDate": "2026-10-09T13:53:45.665611+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Publish-Linux.ps1",
+          "ParentPid": 53684
+        },
+        {
+          "Pid": 50396,
+          "CreationDate": "2026-10-09T13:53:55.222879+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\capacity-check\\CapacityCheck.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\capacity-linux",
+          "ParentPid": 34848
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 26052,
+      "CreationDate": "2026-10-09T13:53:48.932846+08:00",
+      "Started": "2026-10-09T05:53:48.932846Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 44852,
+      "Depth": 3,
+      "ParentChain": [
+        {
+          "Pid": 34848,
+          "CreationDate": "2026-10-09T13:53:45.665611+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Publish-Linux.ps1",
+          "ParentPid": 53684
+        },
+        {
+          "Pid": 58216,
+          "CreationDate": "2026-10-09T13:53:46.825677+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\Sezika.ExperimentTrainer.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\publish-linux",
+          "ParentPid": 34848
+        },
+        {
+          "Pid": 44852,
+          "CreationDate": "2026-10-09T13:53:48.925702+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\linux-compiler-temp\\MSBuildTempda4pcw5b.mpn\\tmp540f2e200007406d947eef114fcd0cf3.rsp\"",
+          "ParentPid": 58216
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 56864,
+      "CreationDate": "2026-10-09T13:54:03.161457+08:00",
+      "Started": "2026-10-09T05:54:03.161457Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 34380,
+      "Depth": 3,
+      "ParentChain": [
+        {
+          "Pid": 34848,
+          "CreationDate": "2026-10-09T13:53:45.665611+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Publish-Linux.ps1",
+          "ParentPid": 53684
+        },
+        {
+          "Pid": 6528,
+          "CreationDate": "2026-10-09T13:54:00.923344+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\regression-check\\RegressionCheck.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\regression-linux",
+          "ParentPid": 34848
+        },
+        {
+          "Pid": 34380,
+          "CreationDate": "2026-10-09T13:54:03.153551+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\linux-compiler-temp\\MSBuildTempfini0kyu.all\\tmpb589adf72d0f468c9205ae9a88f6fc07.rsp\"",
+          "ParentPid": 6528
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

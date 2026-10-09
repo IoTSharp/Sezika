@@ -1,0 +1,42 @@
+{
+  "utc": "2026-10-09T05:38:40.8501599+00:00",
+  "status": "passed",
+  "probe": true,
+  "commit": "a804cc9",
+  "checked": 1,
+  "bytes": 3769,
+  "seconds": 1.4696643,
+  "reader": {
+    "ProcessId": 21708,
+    "CreationDate": "2026-10-09T13:38:39.03872+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); & 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-git-bytes.ps1' -Probe; if($LASTEXITCODE -ne 0){exit $LASTEXITCODE}\"",
+    "ParentProcessId": 49492
+  },
+  "git_child": {
+    "pid": 65844,
+    "started": "2026-10-09T05:38:40.1390645Z",
+    "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+    "arguments": [
+      "-C",
+      "D:\\source\\Sezika",
+      "ls-tree",
+      "-r",
+      "a804cc9",
+      "--",
+      "docs/evidence/teacher-repair-20261009-final"
+    ],
+    "parent_pid": 21708,
+    "observed_command_line": "\"C:\\Program Files\\Git\\cmd\\git.exe\" -C D:\\source\\Sezika ls-tree -r a804cc9 -- docs/evidence/teacher-repair-20261009-final"
+  },
+  "git_exit": 0,
+  "git_stderr": "",
+  "files": [
+    {
+      "path": "Archive-RepairEvidence.ps1",
+      "git_blob": "838bef65c3137d0fe1ace1e6be29ac0863aadde4",
+      "bytes": 3769
+    }
+  ],
+  "limitation": "Git child may exit before CIM argv sample; retained process handle records exact launch arguments, PID/start/parent and actual exit. No repository mutation or filters.",
+  "cleanup": "Retained git process exited; no external child or disposable temp created."
+}

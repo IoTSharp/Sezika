@@ -1,0 +1,89 @@
+{
+  "Status": "Succeeded",
+  "Pid": 48004,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 4.77,
+  "TimeoutSeconds": 90,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoLogo",
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\remote\\bootstrap.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T05:40:06.4423966Z",
+  "ParentPid": 65884,
+  "Launcher": {
+    "Pid": 65884,
+    "Started": "2026-10-09T13:40:05.232787+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoLogo','-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Invoke-Ssh.ps1','-ScriptFile','D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\remote\\bootstrap.sh') -TimeoutSeconds 90 -ProcessQueryTimeoutSeconds 2 -LogName 'remote-create-root' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs'\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054005-740-remote-create-root.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054005-740-remote-create-root.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 1.2232231,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 48004,
+      "CreationDate": "2026-10-09T13:40:06.442396+08:00",
+      "Started": "2026-10-09T05:40:06.442396Z",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\remote\\bootstrap.sh",
+      "ParentPid": 65884,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 51848,
+      "CreationDate": "2026-10-09T13:40:07.000237+08:00",
+      "Started": "2026-10-09T05:40:07.000237Z",
+      "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "ParentPid": 48004,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 48004,
+          "CreationDate": "2026-10-09T13:40:06.442396+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\remote\\bootstrap.sh",
+          "ParentPid": 65884
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 67024,
+      "CreationDate": "2026-10-09T13:40:06.45412+08:00",
+      "Started": "2026-10-09T05:40:06.45412Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 48004,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 48004,
+          "CreationDate": "2026-10-09T13:40:06.442396+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\remote\\bootstrap.sh",
+          "ParentPid": 65884
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

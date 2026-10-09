@@ -1,0 +1,34 @@
+Started PID 58216, timeout 180s: C:\Program Files\dotnet\dotnet.exe publish D:\source\Sezika\tools\Sezika.ExperimentTrainer\Sezika.ExperimentTrainer.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\source\Sezika\.artifacts\repaired-training-20261009\publish-linux
+  正在确定要还原的项目…
+  已还原 D:\source\Sezika\src\Sezika\Sezika.csproj (用时 233 毫秒)。
+  已还原 D:\source\Sezika\src\Sezika.Cuda\Sezika.Cuda.csproj (用时 233 毫秒)。
+  已还原 D:\source\Sezika\tools\Sezika.ExperimentTrainer\Sezika.ExperimentTrainer.csproj (用时 233 毫秒)。
+  Sezika -> D:\source\Sezika\src\Sezika\bin\Release\net10.0\Sezika.dll
+  Sezika.Cuda -> D:\source\Sezika\src\Sezika.Cuda\bin\Release\net10.0\Sezika.Cuda.dll
+  Sezika.ExperimentTrainer -> D:\source\Sezika\tools\Sezika.ExperimentTrainer\bin\Release\net10.0\linux-x64\Sezika.ExperimentTrainer.dll
+  Sezika.ExperimentTrainer -> D:\source\Sezika\.artifacts\repaired-training-20261009\publish-linux\
+
+
+Completed PID 58216, status Succeeded, exit 0, elapsed 8.653s; result: D:\source\Sezika\.artifacts\repaired-training-20261009\process-logs\20261009-055346-190-publish-linux.result.json
+Started PID 50396, timeout 180s: C:\Program Files\dotnet\dotnet.exe publish D:\source\Sezika\.artifacts\repaired-training-20261009\capacity-check\CapacityCheck.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\source\Sezika\.artifacts\repaired-training-20261009\capacity-linux
+  正在确定要还原的项目…
+  已还原 D:\source\Sezika\.artifacts\repaired-training-20261009\capacity-check\CapacityCheck.csproj (用时 257 毫秒)。
+  2 个项目(共 3 个)是最新的，无法还原。
+  Sezika -> D:\source\Sezika\src\Sezika\bin\Release\net10.0\Sezika.dll
+  Sezika.Cuda -> D:\source\Sezika\src\Sezika.Cuda\bin\Release\net10.0\Sezika.Cuda.dll
+  CapacityCheck -> D:\source\Sezika\.artifacts\repaired-training-20261009\capacity-check\bin\Release\net10.0\linux-x64\CapacityCheck.dll
+  CapacityCheck -> D:\source\Sezika\.artifacts\repaired-training-20261009\capacity-linux\
+
+
+Completed PID 50396, status Succeeded, exit 0, elapsed 5.537s; result: D:\source\Sezika\.artifacts\repaired-training-20261009\process-logs\20261009-055354-882-capacity-linux.result.json
+Started PID 6528, timeout 180s: C:\Program Files\dotnet\dotnet.exe publish D:\source\Sezika\.artifacts\repaired-training-20261009\regression-check\RegressionCheck.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\source\Sezika\.artifacts\repaired-training-20261009\regression-linux
+  正在确定要还原的项目…
+  已还原 D:\source\Sezika\.artifacts\repaired-training-20261009\regression-check\RegressionCheck.csproj (用时 285 毫秒)。
+  2 个项目(共 3 个)是最新的，无法还原。
+  Sezika -> D:\source\Sezika\src\Sezika\bin\Release\net10.0\Sezika.dll
+  Sezika.Cuda -> D:\source\Sezika\src\Sezika.Cuda\bin\Release\net10.0\Sezika.Cuda.dll
+  RegressionCheck -> D:\source\Sezika\.artifacts\repaired-training-20261009\regression-check\bin\Release\net10.0\linux-x64\RegressionCheck.dll
+  RegressionCheck -> D:\source\Sezika\.artifacts\repaired-training-20261009\regression-linux\
+
+
+Completed PID 6528, status Succeeded, exit 0, elapsed 8.568s; result: D:\source\Sezika\.artifacts\repaired-training-20261009\process-logs\20261009-055400-428-regression-linux.result.json

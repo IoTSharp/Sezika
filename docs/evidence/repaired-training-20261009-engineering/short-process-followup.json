@@ -1,0 +1,97 @@
+{
+  "observer": {
+    "ProcessId": 66236,
+    "CreationDate": "2026-10-09T13:50:31.364519+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$root='D:\\source\\Sezika\\.artifacts\\repaired-training-20261009'\n$items=Get-ChildItem -LiteralPath (Join-Path $root 'process-logs') -File -Filter '*.result.json' | Select-Object -First 35\n$timer=[Diagnostics.Stopwatch]::StartNew();$known=[Collections.Generic.List[object]]::new()\nforeach($file in $items){if($timer.Elapsed.TotalSeconds -ge 20){throw 'short receipt scan bound'};$receipt=Get-Content -Raw -LiteralPath $file.FullName|ConvertFrom-Json; if($receipt.Status -eq 'CleanupFailed' -and $receipt.UnknownCount -gt 0){$proc=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$($receipt.Pid)\\\" -OperationTimeoutSec 2;$state=if($null -eq $proc){'absent'}elseif([Math]::Abs(($proc.CreationDate.ToUniversalTime()-[DateTime]$receipt.Started).Ticks) -gt 10){'reused'}else{'matching_start_live'};$known.Add([ordered]@{receipt=$file.Name;pid=$receipt.Pid;started=$receipt.Started;recorded_argv=@($receipt.FilePath)+@($receipt.Arguments);exit=$receipt.ExitCode;original_status=$receipt.Status;original_unknown=$receipt.UnknownCount;state=$state;limitation='short-lived root exited before OS argv/parent snapshot; retained spawn argv/start/exit and subsequent absence do not replace historical observation'})}}\n$observer=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -OperationTimeoutSec 2\n[IO.File]::WriteAllText((Join-Path $root 'short-process-followup.json'),(@{utc=[DateTime]::UtcNow.ToString('o');records=$known;observer=$observer|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId;scope='exact registered short process PIDs; no signal'}|ConvertTo-Json -Depth 5),[Text.UTF8Encoding]::new($false))\n$known|Select-Object pid,exit,original_status,state\nWrite-Output \\\"short_process_observer=$PID\\\"\"",
+    "ParentProcessId": 49492
+  },
+  "scope": "exact registered short process PIDs; no signal",
+  "utc": "2026-10-09T05:50:33.6245118Z",
+  "records": [
+    {
+      "receipt": "20261009-054119-404-cpu-h4-tiny1-reference.result.json",
+      "pid": 47328,
+      "started": "2026-10-09T05:41:20.0343734Z",
+      "recorded_argv": [
+        "C:\\Program Files\\dotnet\\dotnet.exe",
+        "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\capacity-check\\bin\\Release\\net10.0\\CapacityCheck.dll",
+        "cpu",
+        "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\cpu-reference"
+      ],
+      "exit": 0,
+      "original_status": "CleanupFailed",
+      "original_unknown": 1,
+      "state": "absent",
+      "limitation": "short-lived root exited before OS argv/parent snapshot; retained spawn argv/start/exit and subsequent absence do not replace historical observation"
+    },
+    {
+      "receipt": "20261009-054501-427-v3-input-tiny1-budget-fixed.result.json",
+      "pid": 54820,
+      "started": "2026-10-09T05:45:01.85621Z",
+      "recorded_argv": [
+        "C:\\Program Files\\dotnet\\dotnet.exe",
+        "D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll",
+        "check-expanded-input",
+        "--data",
+        "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\data",
+        "--manifest-sha256",
+        "E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6",
+        "--fixture-only",
+        "false",
+        "--max-checks",
+        "1"
+      ],
+      "exit": 0,
+      "original_status": "CleanupFailed",
+      "original_unknown": 1,
+      "state": "absent",
+      "limitation": "short-lived root exited before OS argv/parent snapshot; retained spawn argv/start/exit and subsequent absence do not replace historical observation"
+    },
+    {
+      "receipt": "20261009-054953-131-legacy-v2-fixture16.result.json",
+      "pid": 55500,
+      "started": "2026-10-09T05:49:53.6754819Z",
+      "recorded_argv": [
+        "C:\\Program Files\\dotnet\\dotnet.exe",
+        "D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll",
+        "check-expanded-input",
+        "--data",
+        "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\input-fixture",
+        "--manifest-sha256",
+        "F3DA9504F9771AD0038756BA379EA645AFEDAF55FFBABD033905DA1A5946524A",
+        "--fixture-only",
+        "true",
+        "--max-checks",
+        "16"
+      ],
+      "exit": 0,
+      "original_status": "CleanupFailed",
+      "original_unknown": 1,
+      "state": "absent",
+      "limitation": "short-lived root exited before OS argv/parent snapshot; retained spawn argv/start/exit and subsequent absence do not replace historical observation"
+    },
+    {
+      "receipt": "20261009-054954-810-legacy-v1-check8.result.json",
+      "pid": 69860,
+      "started": "2026-10-09T05:49:55.2477133Z",
+      "recorded_argv": [
+        "C:\\Program Files\\dotnet\\dotnet.exe",
+        "D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll",
+        "check",
+        "--data",
+        "D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data",
+        "--manifest-sha256",
+        "B8C8D5E018C2BC0029BA100F8F46272AC4CB3B1EFEA27280FF449F685778B954",
+        "--max-checks",
+        "8",
+        "--artifact-directory",
+        "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\legacy-v1-check"
+      ],
+      "exit": 0,
+      "original_status": "CleanupFailed",
+      "original_unknown": 1,
+      "state": "absent",
+      "limitation": "short-lived root exited before OS argv/parent snapshot; retained spawn argv/start/exit and subsequent absence do not replace historical observation"
+    }
+  ]
+}

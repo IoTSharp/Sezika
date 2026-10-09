@@ -1,0 +1,27 @@
+{
+  "Pid": 49920,
+  "Started": "2026-10-09T06:05:31.7704662Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\remote\\final-status.sh",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 64272,
+  "ObservedParentPid": 64272,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 64272,
+    "Started": "2026-10-09T14:05:30.518552+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\repaired-training-20261009';$closure=Get-Content -Raw -LiteralPath (Join-Path $task 'local-process-closure.json')|ConvertFrom-Json;$actual=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$($closure.reader.ProcessId)\\\" -OperationTimeoutSec 2;if($actual){throw 'Closure reader still live or reused: inspect exact identity'}\n[IO.File]::WriteAllText((Join-Path $task 'closure-field-correction.json'),(@{utc=[DateTime]::UtcNow.ToString('o');original_sha256=(Get-FileHash -LiteralPath (Join-Path $task 'local-process-closure.json')).Hash;clarification='Rows historical_argv_observed is imprecise: it only means recorded argv was present. Root entries use retained spawn argv, not necessarily an OS snapshot. No complete historical OS argv claim is made; source corrected for future runs without rewriting saved bytes.';closure_reader_pid=$closure.reader.ProcessId;closure_reader_state='absent';registered_records=$closure.records;registered_pids=$closure.unique_pids;matching_live=$closure.matching_live;unknown_current=$closure.unknown_current}|ConvertTo-Json -Depth 4),[Text.UTF8Encoding]::new($false))\n& (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoLogo','-NoProfile','-File',(Join-Path $task 'Invoke-Ssh.ps1'),'-ScriptFile',(Join-Path $task 'remote/final-status.sh')) -TimeoutSeconds 35 -ProcessQueryTimeoutSeconds 2 -LogName 'remote-final-bootstrap-only' -LogDirectory (Join-Path $task 'process-logs')\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 35,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoLogo",
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\remote\\final-status.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

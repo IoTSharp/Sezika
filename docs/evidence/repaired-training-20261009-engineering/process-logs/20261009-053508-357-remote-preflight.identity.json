@@ -1,0 +1,27 @@
+{
+  "Pid": 36652,
+  "Started": "2026-10-09T05:35:09.4163679Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\remote\\preflight.sh",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 65500,
+  "ObservedParentPid": 65500,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 65500,
+    "Started": "2026-10-09T13:35:07.536267+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoLogo','-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Invoke-Ssh.ps1','-ScriptFile','D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\remote\\preflight.sh') -TimeoutSeconds 45 -ProcessQueryTimeoutSeconds 2 -LogName 'remote-preflight' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs'\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 45,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoLogo",
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\remote\\preflight.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

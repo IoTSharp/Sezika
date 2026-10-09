@@ -1,0 +1,43 @@
+{
+  "Status": "CleanupFailed",
+  "Pid": 33660,
+  "ExitCode": 0,
+  "Error": "Process cleanup or output capture failed.",
+  "ElapsedSeconds": 0.849,
+  "TimeoutSeconds": 45,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\Git\\cmd\\git.exe",
+  "Arguments": [
+    "commit",
+    "-m",
+    "Report repaired v3 denominators, sample visits and strict length failures"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T06:01:39.9159089Z",
+  "ParentPid": 26764,
+  "Launcher": {
+    "Pid": 26764,
+    "Started": "2026-10-09T14:01:38.959715+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\ngit diff --cached --check\ngit diff --cached --name-only\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\Git\\cmd\\git.exe' -ArgumentList @('commit','-m','Report repaired v3 denominators, sample visits and strict length failures') -TimeoutSeconds 45 -ProcessQueryTimeoutSeconds 2 -LogName 'v3-execution-commit' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs'\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060139-470-v3-execution-commit.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060139-470-v3-execution-commit.stderr.log",
+  "CleanupErrors": [
+    "Final task inventory unverified: live=0 unknown=1"
+  ],
+  "FinalCheckComplete": false,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 1,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 0.026057,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

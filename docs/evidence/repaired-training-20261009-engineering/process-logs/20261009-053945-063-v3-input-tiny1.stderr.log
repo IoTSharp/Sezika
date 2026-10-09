@@ -1,0 +1,7 @@
+experiment: Sezika.DecisionException: A pinned64hex SHA256 is required.
+   at Sezika.ExperimentTrainer.ExperimentData.RequireHash(String hash) in D:\source\Sezika\tools\Sezika.ExperimentTrainer\ExperimentData.cs:line 181
+   at Sezika.ExperimentTrainer.ExperimentData.VerifyRepairedLedger(JsonElement value, Dictionary`2 parents, ExperimentRecord[] records, Action check) in D:\source\Sezika\tools\Sezika.ExperimentTrainer\RepairedDataContract.cs:line 195
+   at Sezika.ExperimentTrainer.ExperimentData.OpenRepaired(String directory, String expectedManifestSha256, Action check, CancellationToken token) in D:\source\Sezika\tools\Sezika.ExperimentTrainer\RepairedDataContract.cs:line 76
+   at Sezika.ExperimentTrainer.ExperimentData.OpenExpanded(String directory, String expectedManifestSha256, Action check, CancellationToken token, Boolean fixtureOnly) in D:\source\Sezika\tools\Sezika.ExperimentTrainer\ExpansionChecks.cs:line 64
+   at Sezika.ExperimentTrainer.ExpansionChecks.Run(String[] arguments, CancellationToken token) in D:\source\Sezika\tools\Sezika.ExperimentTrainer\ExpansionChecks.cs:line 265
+   at Program.<Main>$(String[] args) in D:\source\Sezika\tools\Sezika.ExperimentTrainer\Program.cs:line 36

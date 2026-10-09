@@ -1,0 +1,25 @@
+{
+  "Pid": 14040,
+  "Started": "2026-10-09T05:53:28.1137977Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Publish-Linux.ps1",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 34168,
+  "ObservedParentPid": 34168,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 34168,
+    "Started": "2026-10-09T13:53:26.878511+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoLogo','-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Publish-Linux.ps1') -TimeoutSeconds 580 -ProcessQueryTimeoutSeconds 2 -LogName 'linux-publish-orchestrator' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs'\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 580,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoLogo",
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Publish-Linux.ps1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

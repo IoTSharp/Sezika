@@ -1,0 +1,1901 @@
+{
+  "bounds": {
+    "seconds": 40,
+    "receipts_per_directory": 64,
+    "identities": 750,
+    "unique_pids": 280,
+    "directories": 3
+  },
+  "receipts": 43,
+  "utc": "2026-10-09T06:15:28.9599038Z",
+  "matching_start_live": 0,
+  "reader": {
+    "ProcessId": 71416,
+    "CreationDate": "2026-10-09T14:15:27.056124+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\nif($PSVersionTable.PSVersion.Major -lt 7){throw 'PowerShell 7 required'}\n& .artifacts/repaired-training-20261009/Close-ResumeProcesses.ps1 -OutputPath D:/source/Sezika/.artifacts/repaired-training-20261009/resume-precommit-closure.json\n$task='D:\\source\\Sezika\\.artifacts\\repaired-training-20261009'\n$destination='D:\\source\\Sezika\\docs\\evidence\\repaired-training-20261009-closure'\nif([IO.Directory]::Exists($destination)){throw 'Preserve previous supplement'}\n[IO.Directory]::CreateDirectory($destination)|Out-Null\n$watch=[Diagnostics.Stopwatch]::StartNew()\n$names=@('Close-ResumeProcesses.ps1','resume-closure-probe.json','resume-precommit-closure.json','resume-preservation.json')\n$rows=@(foreach($name in $names){\n if($watch.Elapsed.TotalSeconds -ge 10 -or [IO.File]::Exists((Join-Path $task 'cancel.request'))){throw 'Supplement copy bound'}\n $from=Join-Path $task $name\n $to=Join-Path $destination $name\n [IO.File]::Copy($from,$to,$false)\n $original=(Get-FileHash -LiteralPath $from).Hash\n $copy=(Get-FileHash -LiteralPath $to).Hash\n if($original -cne $copy){throw 'Copy hash differs'}\n @{relative=$name;source=$from;sha256=$copy;bytes=(Get-Item -LiteralPath $to).Length}\n})\n[IO.File]::WriteAllText((Join-Path $destination 'inventory.json'),(@{utc=[DateTime]::UtcNow.ToString('o');thread='01a11f25-335a-7571-a735-7171ace8c3b9';records=$rows;scope='Supplement after the raw engineering mirror; precommit current identity closure and byte preservation; does not replace old receipts.'}|ConvertTo-Json -Depth 6),[Text.UTF8Encoding]::new($false))\nWrite-Output 'Supplement4 plus inventory copied with exact SHA256 match.'\n\"",
+    "ParentProcessId": 49492
+  },
+  "probe": false,
+  "records": 179,
+  "unique_pids": 131,
+  "receipt_sources": [
+    {
+      "status": "Succeeded",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053347-150-guardian-tiny1.result.json",
+      "actual_exit": 0,
+      "sha256": "1FF8379289223355598B5C3666360F158DCBC23E68612FC9AA9189857E691759"
+    },
+    {
+      "status": "Succeeded",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053508-357-remote-preflight.result.json",
+      "actual_exit": 0,
+      "sha256": "EE73F0EDE8C093F6AFEFB12D621B997090B094DF8C9F2417C8B8D71A340BF303"
+    },
+    {
+      "status": "Succeeded",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053610-268-prepare-inputs.result.json",
+      "actual_exit": 0,
+      "sha256": "E7F7D673E4498B8733323E0B51BC29737109C14BBBBDCD7CDEE4D3125B4DE807"
+    },
+    {
+      "status": "Failed",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053826-261-trainer-first-build.result.json",
+      "actual_exit": 1,
+      "sha256": "22BF9C6F69CB851545F573B4015EBE79A22005281F246FB6E9809EA338A5FD9E"
+    },
+    {
+      "status": "Succeeded",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053922-859-trainer-complete-build.result.json",
+      "actual_exit": 0,
+      "sha256": "9AAC4912507F64ECF46E510A3ACDBC0F45592DB8263D0C47645EF655FBC7F91E"
+    },
+    {
+      "status": "Failed",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053945-063-v3-input-tiny1.result.json",
+      "actual_exit": 1,
+      "sha256": "ADD67B827F93EE3E9DA2AED0C7DA0A9D7DD545F540451DBAA97E26CA00985585"
+    },
+    {
+      "status": "Succeeded",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054005-740-remote-create-root.result.json",
+      "actual_exit": 0,
+      "sha256": "41E952851FC2B1F541D7EB93379EB2191E2D0D06B3E8B354E79DDD337A178EB2"
+    },
+    {
+      "status": "Succeeded",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054034-936-capacity-check-CapacityCheck_csproj.result.json",
+      "actual_exit": 0,
+      "sha256": "A17236EA09CD046693024F9E3F69D427D350E3330BD26E9A1FB55B26082746B9"
+    },
+    {
+      "status": "Succeeded",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054042-516-regression-check-RegressionCheck_csproj.result.json",
+      "actual_exit": 0,
+      "sha256": "4377C3F7187996C167E65C5C56A1D822D80B820BFC58C7EBA7F6E2F80E3E09EA"
+    },
+    {
+      "status": "CleanupFailed",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054119-404-cpu-h4-tiny1-reference.result.json",
+      "actual_exit": 0,
+      "sha256": "A555A08719DBD226F0BDC3611CD314A29321D1C9DDE02F77E91BD277FC1AB9B7"
+    },
+    {
+      "status": "Succeeded",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054208-067-trainer-ledger-fix-build.result.json",
+      "actual_exit": 0,
+      "sha256": "611088E6E082B51810E2CDF33CC6AA7FDF362EC005925A9DEE3CC6BA622491AE"
+    },
+    {
+      "status": "Failed",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054242-694-v3-input-tiny1-fixed.result.json",
+      "actual_exit": 124,
+      "sha256": "F2596E3CFE73486C035EA61499413121744EC1D81566BDA63868D76FE22BF939"
+    },
+    {
+      "status": "Succeeded",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054438-436-trainer-budget-build.result.json",
+      "actual_exit": 0,
+      "sha256": "7B046DB4A0E0E3B3052361404F7DCB632475C97C5D23C8D9FCBE63B4C733FD26"
+    },
+    {
+      "status": "CleanupFailed",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054501-427-v3-input-tiny1-budget-fixed.result.json",
+      "actual_exit": 0,
+      "sha256": "AE0862E55C19EB13BE110640D17A537762FEF864916E584F5CFE23A650B15508"
+    },
+    {
+      "status": "Succeeded",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054602-478-trainer-final-prechecks-build.result.json",
+      "actual_exit": 0,
+      "sha256": "F664D7DC8D74C51EC2A8061B7759C66C68FBB84F78407C8632043470821B1081"
+    },
+    {
+      "status": "Succeeded",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054610-011-v3-input-full24.result.json",
+      "actual_exit": 0,
+      "sha256": "858297A46504C36C719C8D75E335C0E358765664F6D0A76FE408AD75F881987B"
+    },
+    {
+      "status": "Succeeded",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054651-749-v3-lengths-1.result.json",
+      "actual_exit": 0,
+      "sha256": "A236290EE6173E91E932BDB8F8799BCAB4D4A53B6D270297E9016550255D0E31"
+    },
+    {
+      "status": "Failed",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054731-211-v3-lengths-215.result.json",
+      "actual_exit": 1,
+      "sha256": "3749510D4C808A43E7868E5742256299833F2BACD2BC8B0911658CA54C7EB591"
+    },
+    {
+      "status": "CleanupFailed",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054953-131-legacy-v2-fixture16.result.json",
+      "actual_exit": 0,
+      "sha256": "41563C2CE584F10791C46DCD13B40301D66F06E5EDBAC9B64EC9FE7ED88E627A"
+    },
+    {
+      "status": "CleanupFailed",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054954-810-legacy-v1-check8.result.json",
+      "actual_exit": 0,
+      "sha256": "A103B34F737267415DADABE9C360F323D096D7BE1A1991E47036AAF630A5A8E4"
+    },
+    {
+      "status": "Succeeded",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055144-860-trainer-all-lengths-build.result.json",
+      "actual_exit": 0,
+      "sha256": "51A9634401E5BC1BC3EB69A27E8753E33E5E67E7F0F1290E6D0071A6A7E2744D"
+    },
+    {
+      "status": "Succeeded",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055153-723-v3-complete-lengths-1.result.json",
+      "actual_exit": 0,
+      "sha256": "C3A6C6E513CB63C2FB9DAB8FD1ABBAC5AF88FCEC6961A774B3C305438E5376E4"
+    },
+    {
+      "status": "Failed",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055156-809-v3-complete-lengths-215.result.json",
+      "actual_exit": 1,
+      "sha256": "50E246F642B7807147D65DF890FB7892D66A23C03975A6F276461FFC96C8C554"
+    },
+    {
+      "status": "Failed",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055327-396-linux-publish-orchestrator.result.json",
+      "actual_exit": 1,
+      "sha256": "3324D323BCB3A17B7F52346EC06F55075C59F78C4CEE1AA0D23B97197D6F99CF"
+    },
+    {
+      "status": "Succeeded",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055345-065-linux-publish-orchestrator-fixed.result.json",
+      "actual_exit": 0,
+      "sha256": "0AFA4A6997716D30F67BBBED6EE3DF756D7E5E0FBF5D54C03A18E5131AC24CB4"
+    },
+    {
+      "status": "Succeeded",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055346-190-publish-linux.result.json",
+      "actual_exit": 0,
+      "sha256": "B9665365C6E2A57F809657A3F54DDEBCB155695A75132C92F1BD2B52F4A7DFDF"
+    },
+    {
+      "status": "Succeeded",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055354-882-capacity-linux.result.json",
+      "actual_exit": 0,
+      "sha256": "C37107005E0A2F72FD054ABD169F40B57D56D01191CC62CBA99B1945A5244238"
+    },
+    {
+      "status": "Succeeded",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055400-428-regression-linux.result.json",
+      "actual_exit": 0,
+      "sha256": "6245ECA829C795D58743DFCC4FCDF0736CAA34161D05254B560D77A484ECB714"
+    },
+    {
+      "status": "CleanupFailed",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055912-620-v3-contract-stage.result.json",
+      "actual_exit": 0,
+      "sha256": "41C628BF9783ABB6139A68B152EC0395811872A99EA61D47BF6CDE7E14589876"
+    },
+    {
+      "status": "CleanupFailed",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055928-793-v3-contract-commit.result.json",
+      "actual_exit": 0,
+      "sha256": "44722C09169657B8296A68608B6A10212BC0704F49C29EC2D1C3C22831204F0C"
+    },
+    {
+      "status": "CleanupFailed",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060115-808-v3-execution-stage.result.json",
+      "actual_exit": 0,
+      "sha256": "6F256AE53C15639CF625679F73FF8A38F7637D165833841AE48A2A43CE6ECCA2"
+    },
+    {
+      "status": "CleanupFailed",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060139-470-v3-execution-commit.result.json",
+      "actual_exit": 0,
+      "sha256": "4C0429F2D651F8E53034BA96BA45ED521B5B21212F7527C2C781DD7C9F2996D2"
+    },
+    {
+      "status": "Succeeded",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060231-731-precise-compiler-temp-cleanup.result.json",
+      "actual_exit": 0,
+      "sha256": "3933B94C9E9CAB12F910330E629797A92867D8BE7B4253D3D78AE3F33B461AB9"
+    },
+    {
+      "status": "Succeeded",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060419-853-local-independent-closure.result.json",
+      "actual_exit": 0,
+      "sha256": "D40471CC89716BEA78E7AA51922DE2E19B2F1B2D80E8E9B60526639D692C071F"
+    },
+    {
+      "status": "Succeeded",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060531-405-remote-final-bootstrap-only.result.json",
+      "actual_exit": 0,
+      "sha256": "287D0B09BDCBE12374E48661239740CDA3E301261E2378C0AA3203987B10CF8A"
+    },
+    {
+      "status": "Failed",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060627-879-permanent-engineering-archive.result.json",
+      "actual_exit": 1,
+      "sha256": "BDC7B6865A9ED908E0E151856AAB55B31B60E7F7907395211DCD9275265E3117"
+    },
+    {
+      "status": "Succeeded",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060724-185-permanent-engineering-archive-fixed.result.json",
+      "actual_exit": 0,
+      "sha256": "CF3BE350570550097E9CBD4246179448E9AC2F9C6CA74F7B1447BC2D9A659B85"
+    },
+    {
+      "status": "CleanupFailed",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060925-478-engineering-evidence-stage.result.json",
+      "actual_exit": 0,
+      "sha256": "89C6E315D9D0B3C57AB4EDFEC57F4E59333314601EAB824AB529F3AC7FD046F6"
+    },
+    {
+      "status": "CleanupFailed",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-061131-222-resume-status.result.json",
+      "actual_exit": 0,
+      "sha256": "CC59A10B35649ACEA28A9FC321F80690892515A183E14B902880A27CBD90587F"
+    },
+    {
+      "status": "CleanupFailed",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-061215-158-resume-doc-diff.result.json",
+      "actual_exit": 0,
+      "sha256": "8332A911BB96F29FF0F201D4AB856108143CF6F3356FBE9E6500F3ED35CE2788"
+    },
+    {
+      "status": "Failed",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-061216-305-resume-whitespace.result.json",
+      "actual_exit": 2,
+      "sha256": "901FA83A8897174CD470E85FA972E9DF23D488F8F174CC5AAD76845F68A50D96"
+    },
+    {
+      "status": "CleanupFailed",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-061222-271-third-doc-readonly-review.result.json",
+      "actual_exit": 0,
+      "sha256": "56BBFC76F803C0081BE70F7803FAB71E80C535EA6A6DACBED4BFBBD031C8B911"
+    },
+    {
+      "status": "CleanupFailed",
+      "path": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-v2-git-logs\\20261009-054246-567-audit-v2-length-contract.result.json",
+      "actual_exit": 0,
+      "sha256": "0FC95E07CCC7F5AA7A628FF1FA11F41FEE5E95716191812E37EF3E3609B8FDE4"
+    }
+  ],
+  "current_reader_excluded": 0,
+  "limitations": [
+    "Short read-only commands lacking contemporaneous OS identities remain outside this ledger.",
+    "No claim that exited parents had no never-observed descendants.",
+    "Current reader requires actual tool exit and a later independent absence check."
+  ],
+  "rows": [
+    {
+      "started": "2026-10-09T05:33:48.0258848Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 51820,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053347-150-guardian-tiny1.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:33:46.180318Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 65724,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053347-150-guardian-tiny1.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:33:48.025884Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 51820,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053347-150-guardian-tiny1.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:33:48.042352Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 23468,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053347-150-guardian-tiny1.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:35:09.4163679Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 36652,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053508-357-remote-preflight.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:35:07.536267Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 65500,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053508-357-remote-preflight.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:35:09.416367Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 36652,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053508-357-remote-preflight.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:35:09.435468Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 35500,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053508-357-remote-preflight.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:35:10.376921Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 65232,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053508-357-remote-preflight.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:36:10.7655545Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 22668,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053610-268-prepare-inputs.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:36:09.835241Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 34824,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053610-268-prepare-inputs.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:36:10.765554Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 22668,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053610-268-prepare-inputs.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:38:27.0201557Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 69456,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053826-261-trainer-first-build.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:38:25.624687Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 22748,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053826-261-trainer-first-build.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:38:27.020155Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 69456,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053826-261-trainer-first-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:38:27.033682Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 41752,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053826-261-trainer-first-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:38:31.652805Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 43700,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053826-261-trainer-first-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:38:37.784826Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 69468,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053826-261-trainer-first-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:38:31.666044Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 38924,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053826-261-trainer-first-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:39:23.2969858Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 66004,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053922-859-trainer-complete-build.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:39:22.467113Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 66872,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053922-859-trainer-complete-build.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:39:23.296985Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 66004,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053922-859-trainer-complete-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:39:25.080769Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 68508,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053922-859-trainer-complete-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:39:23.303312Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 69216,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053922-859-trainer-complete-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:39:25.086371Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 68156,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053922-859-trainer-complete-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:39:45.5790706Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 65928,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053945-063-v3-input-tiny1.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:39:44.643679Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 47372,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053945-063-v3-input-tiny1.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:39:45.57907Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 65928,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053945-063-v3-input-tiny1.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:39:45.587381Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 44492,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-053945-063-v3-input-tiny1.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:40:06.4423966Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 48004,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054005-740-remote-create-root.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:40:05.232787Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 65884,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054005-740-remote-create-root.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:40:06.442396Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 48004,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054005-740-remote-create-root.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:40:07.000237Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 51848,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054005-740-remote-create-root.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:40:06.45412Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 67024,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054005-740-remote-create-root.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:40:35.6568712Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 65972,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054034-936-capacity-check-CapacityCheck_csproj.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:40:34.165252Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 66824,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054034-936-capacity-check-CapacityCheck_csproj.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:40:35.656871Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 65972,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054034-936-capacity-check-CapacityCheck_csproj.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:40:35.680074Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 66328,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054034-936-capacity-check-CapacityCheck_csproj.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:40:43.2050303Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 65308,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054042-516-regression-check-RegressionCheck_csproj.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:40:34.165252Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 66824,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054042-516-regression-check-RegressionCheck_csproj.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:40:43.20503Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 65308,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054042-516-regression-check-RegressionCheck_csproj.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:40:50.338065Z",
+      "state": "reused",
+      "live_argv_matches": null,
+      "pid": 62596,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054042-516-regression-check-RegressionCheck_csproj.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:40:43.371569Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 65632,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054042-516-regression-check-RegressionCheck_csproj.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:40:50.642812Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 30152,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054042-516-regression-check-RegressionCheck_csproj.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:41:20.0343734Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 47328,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054119-404-cpu-h4-tiny1-reference.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:41:18.874903Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 65232,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054119-404-cpu-h4-tiny1-reference.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:42:08.7709742Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 14112,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054208-067-trainer-ledger-fix-build.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:42:07.657773Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 53148,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054208-067-trainer-ledger-fix-build.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:42:08.770974Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 14112,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054208-067-trainer-ledger-fix-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:42:08.777448Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 11124,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054208-067-trainer-ledger-fix-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:42:10.384036Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 48420,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054208-067-trainer-ledger-fix-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:42:43.4820863Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 64748,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054242-694-v3-input-tiny1-fixed.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:42:42.214746Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 48972,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054242-694-v3-input-tiny1-fixed.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:42:43.482086Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 64748,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054242-694-v3-input-tiny1-fixed.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:42:43.48983Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 70136,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054242-694-v3-input-tiny1-fixed.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:44:39.3175369Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 68640,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054438-436-trainer-budget-build.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:44:37.679164Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 48196,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054438-436-trainer-budget-build.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:44:39.317536Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 68640,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054438-436-trainer-budget-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:44:41.26774Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 39740,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054438-436-trainer-budget-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:44:39.327515Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 60352,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054438-436-trainer-budget-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:45:01.85621Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 54820,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054501-427-v3-input-tiny1-budget-fixed.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:45:01.060916Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 56012,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054501-427-v3-input-tiny1-budget-fixed.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:46:02.9174656Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 66060,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054602-478-trainer-final-prechecks-build.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:46:02.065323Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 70184,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054602-478-trainer-final-prechecks-build.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:46:02.917465Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 66060,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054602-478-trainer-final-prechecks-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:46:02.924493Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 9472,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054602-478-trainer-final-prechecks-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:46:04.536462Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 71408,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054602-478-trainer-final-prechecks-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:46:04.543313Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 7712,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054602-478-trainer-final-prechecks-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:46:10.3241317Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 68296,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054610-011-v3-input-full24.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:46:02.065323Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 70184,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054610-011-v3-input-full24.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:46:10.324131Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 68296,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054610-011-v3-input-full24.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:46:52.1574239Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 39588,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054651-749-v3-lengths-1.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:46:51.290359Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 57800,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054651-749-v3-lengths-1.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:46:52.157423Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 39588,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054651-749-v3-lengths-1.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:46:52.16406Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 62072,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054651-749-v3-lengths-1.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:47:31.6223123Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 63792,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054731-211-v3-lengths-215.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:47:30.686947Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 38928,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054731-211-v3-lengths-215.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:47:31.622312Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 63792,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054731-211-v3-lengths-215.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:47:31.628558Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 41992,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054731-211-v3-lengths-215.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:49:53.6754819Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 55500,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054953-131-legacy-v2-fixture16.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:49:52.647818Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 71308,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054953-131-legacy-v2-fixture16.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:49:55.2477133Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 69860,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054954-810-legacy-v1-check8.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:49:54.308432Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 21732,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054954-810-legacy-v1-check8.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:51:45.3436255Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 67804,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055144-860-trainer-all-lengths-build.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:51:44.378468Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 4004,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055144-860-trainer-all-lengths-build.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:51:45.343625Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 67804,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055144-860-trainer-all-lengths-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:51:47.488627Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 33604,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055144-860-trainer-all-lengths-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:51:45.351648Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 70260,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055144-860-trainer-all-lengths-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:51:47.506559Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 69528,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055144-860-trainer-all-lengths-build.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:51:54.166208Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 64008,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055153-723-v3-complete-lengths-1.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:51:53.245087Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 64468,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055153-723-v3-complete-lengths-1.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:51:54.166208Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 64008,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055153-723-v3-complete-lengths-1.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:51:54.172914Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 35156,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055153-723-v3-complete-lengths-1.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:51:57.3166147Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 54868,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055156-809-v3-complete-lengths-215.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:51:53.245087Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 64468,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055156-809-v3-complete-lengths-215.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:51:57.316614Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 54868,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055156-809-v3-complete-lengths-215.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:51:57.325126Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 45500,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055156-809-v3-complete-lengths-215.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:28.1137977Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 14040,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055327-396-linux-publish-orchestrator.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:26.878511Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 34168,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055327-396-linux-publish-orchestrator.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:28.113797Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 14040,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055327-396-linux-publish-orchestrator.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:45.6656112Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 34848,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055345-065-linux-publish-orchestrator-fixed.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:44.674912Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 53684,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055345-065-linux-publish-orchestrator-fixed.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:45.665611Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 34848,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055345-065-linux-publish-orchestrator-fixed.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:54:00.923344Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 6528,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055345-065-linux-publish-orchestrator-fixed.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:55.222879Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 50396,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055345-065-linux-publish-orchestrator-fixed.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:45.675401Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 56936,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055345-065-linux-publish-orchestrator-fixed.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:46.825677Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 58216,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055345-065-linux-publish-orchestrator-fixed.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:54:03.153551Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 34380,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055345-065-linux-publish-orchestrator-fixed.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:48.925702Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 44852,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055345-065-linux-publish-orchestrator-fixed.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:54:00.93156Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 45860,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055345-065-linux-publish-orchestrator-fixed.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:46.833618Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 60048,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055345-065-linux-publish-orchestrator-fixed.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:55.229507Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 69736,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055345-065-linux-publish-orchestrator-fixed.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:48.932846Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 26052,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055345-065-linux-publish-orchestrator-fixed.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:54:03.161457Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 56864,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055345-065-linux-publish-orchestrator-fixed.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:46.825677Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 58216,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055346-190-publish-linux.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:45.665611Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 34848,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055346-190-publish-linux.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:46.825677Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 58216,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055346-190-publish-linux.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:48.925702Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 44852,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055346-190-publish-linux.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:46.833618Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 60048,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055346-190-publish-linux.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:48.932846Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 26052,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055346-190-publish-linux.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:55.2228799Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 50396,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055354-882-capacity-linux.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:45.665611Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 34848,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055354-882-capacity-linux.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:55.222879Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 50396,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055354-882-capacity-linux.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:55.229507Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 69736,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055354-882-capacity-linux.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:54:00.9233447Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 6528,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055400-428-regression-linux.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:53:45.665611Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 34848,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055400-428-regression-linux.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:54:00.923344Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 6528,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055400-428-regression-linux.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:54:03.153551Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 34380,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055400-428-regression-linux.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:54:00.93156Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 45860,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055400-428-regression-linux.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:59:13.0911912Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 26284,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055912-620-v3-contract-stage.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:59:12.185421Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 44464,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055912-620-v3-contract-stage.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:59:29.2825475Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 64720,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055928-793-v3-contract-commit.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:59:28.357418Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 63992,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055928-793-v3-contract-commit.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:01:16.2435196Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 43968,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060115-808-v3-execution-stage.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:01:15.371446Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 70476,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060115-808-v3-execution-stage.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:01:39.9159089Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 33660,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060139-470-v3-execution-commit.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:01:38.959715Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 26764,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060139-470-v3-execution-commit.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:02:32.1604988Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 62352,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060231-731-precise-compiler-temp-cleanup.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:02:31.313605Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 23272,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060231-731-precise-compiler-temp-cleanup.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:02:32.160498Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 62352,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060231-731-precise-compiler-temp-cleanup.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:04:20.3422034Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 65252,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060419-853-local-independent-closure.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:04:19.435916Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 50240,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060419-853-local-independent-closure.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:04:20.342203Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 65252,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060419-853-local-independent-closure.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:04:20.351133Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 60536,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060419-853-local-independent-closure.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:05:31.7704662Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 49920,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060531-405-remote-final-bootstrap-only.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:05:30.518552Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 64272,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060531-405-remote-final-bootstrap-only.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:05:31.770466Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 49920,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060531-405-remote-final-bootstrap-only.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:05:32.268574Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 6436,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060531-405-remote-final-bootstrap-only.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:05:31.779249Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 63760,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060531-405-remote-final-bootstrap-only.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:06:28.5168136Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 68872,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060627-879-permanent-engineering-archive.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:06:27.476982Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 23628,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060627-879-permanent-engineering-archive.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:06:28.516813Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 68872,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060627-879-permanent-engineering-archive.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:07:24.6924263Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 22228,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060724-185-permanent-engineering-archive-fixed.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:07:23.701066Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 39232,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060724-185-permanent-engineering-archive-fixed.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:07:24.692426Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 22228,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060724-185-permanent-engineering-archive-fixed.result.json#observed",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:09:26.2579772Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 71456,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060925-478-engineering-evidence-stage.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:09:23.802222Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 69860,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-060925-478-engineering-evidence-stage.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:11:31.9559775Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 60564,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-061131-222-resume-status.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:11:30.759619Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 71260,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-061131-222-resume-status.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:12:15.641691Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 50740,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-061215-158-resume-doc-diff.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:12:14.739637Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 30912,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-061215-158-resume-doc-diff.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:12:16.7536871Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 32440,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-061216-305-resume-whitespace.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:12:14.739637Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 30912,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-061216-305-resume-whitespace.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:12:22.9688965Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 71180,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-061222-271-third-doc-readonly-review.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:12:21.780761Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 59248,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-061222-271-third-doc-readonly-review.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:42:47.3758219Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 71636,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-v2-git-logs\\20261009-054246-567-audit-v2-length-contract.result.json",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:42:46.155427Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 54248,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-v2-git-logs\\20261009-054246-567-audit-v2-length-contract.result.json#launcher",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:36:52.864343Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 12592,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-data-validation.json#reader",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:38:45.580823Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 47140,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-git-bytes.json#reader",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:38:46.6867429Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 9028,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-git-bytes.json#git_child",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:38:39.03872Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 21708,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-git-bytes-probe.json#reader",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:38:40.1390645Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 65844,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-git-bytes-probe.json#git_child",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:45:08.325822Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 69308,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-execution-transfer-review.json#reader",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:48:26.834572Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 62304,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-budget-helpers-review.json#reader",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:54:40.37058Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 57068,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\audit-length-block.json#reader",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T05:50:31.364519Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 66236,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\short-process-followup.json#observer",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:04:20.342203Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 65252,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\closure-field-correction.json#original-reader",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:13:59.473731Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 70800,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\resume-closure-probe.json#reader",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    },
+    {
+      "started": "2026-10-09T06:15:08.43938Z",
+      "state": "absent",
+      "live_argv_matches": null,
+      "pid": 70988,
+      "source": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\resume-preservation.json#reader",
+      "live_parent_matches": null,
+      "recorded_argv_present": true
+    }
+  ],
+  "scope": "Only registered task PID/start identities; retained spawn argv is not historical OS observation; no process signals."
+}

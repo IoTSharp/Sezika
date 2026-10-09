@@ -1,0 +1,25 @@
+{
+  "Pid": 26284,
+  "Started": "2026-10-09T05:59:13.0911912Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 44464,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 44464,
+    "Started": "2026-10-09T13:59:12.185421+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\Git\\cmd\\git.exe' -ArgumentList @('add','--','tools/Sezika.ExperimentTrainer/ExperimentData.cs','tools/Sezika.ExperimentTrainer/RepairedDataContract.cs') -TimeoutSeconds 30 -ProcessQueryTimeoutSeconds 2 -LogName 'v3-contract-stage' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs'\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 30,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\Git\\cmd\\git.exe",
+  "Arguments": [
+    "add",
+    "--",
+    "tools/Sezika.ExperimentTrainer/ExperimentData.cs",
+    "tools/Sezika.ExperimentTrainer/RepairedDataContract.cs"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

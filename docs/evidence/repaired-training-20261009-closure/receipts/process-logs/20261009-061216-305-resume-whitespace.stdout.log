@@ -1,0 +1,2 @@
+docs/evidence/repaired-training-20261009-engineering/Invoke-BoundedProcess.ps1:262: trailing whitespace.
++    if(-not $finalComplete){$cleanupErrors.Add("Final task inventory unverified: live=$verifiedLiveCount unknown=$unknownCount")} 

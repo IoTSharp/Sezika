@@ -1,0 +1,25 @@
+{
+  "Pid": 22668,
+  "Started": "2026-10-09T05:36:10.7655545Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Prepare-Inputs.ps1",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 34824,
+  "ObservedParentPid": 34824,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 34824,
+    "Started": "2026-10-09T13:36:09.835241+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/repaired-training-20261009/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoLogo','-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Prepare-Inputs.ps1') -TimeoutSeconds 70 -ProcessQueryTimeoutSeconds 2 -LogName 'prepare-inputs' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs'\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 70,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoLogo",
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Prepare-Inputs.ps1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

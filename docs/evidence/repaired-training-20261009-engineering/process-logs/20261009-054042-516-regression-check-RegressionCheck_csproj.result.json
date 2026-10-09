@@ -1,0 +1,114 @@
+{
+  "Status": "Succeeded",
+  "Pid": 65308,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 15.906,
+  "TimeoutSeconds": 180,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\regression-check\\RegressionCheck.csproj",
+    "-c",
+    "Release",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T05:40:43.2050303Z",
+  "ParentPid": 66824,
+  "Launcher": {
+    "Pid": 66824,
+    "Started": "2026-10-09T13:40:34.165252+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/repaired-training-20261009/Build-Helpers.ps1\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054042-516-regression-check-RegressionCheck_csproj.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-054042-516-regression-check-RegressionCheck_csproj.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 1.2780949,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 65308,
+      "CreationDate": "2026-10-09T13:40:43.20503+08:00",
+      "Started": "2026-10-09T05:40:43.20503Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\regression-check\\RegressionCheck.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+      "ParentPid": 66824,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 62596,
+      "CreationDate": "2026-10-09T13:40:50.338065+08:00",
+      "Started": "2026-10-09T05:40:50.338065Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\helper-compiler-temp\\MSBuildTempc035bc1a.cty\\tmp2ac90c8c7ba342a682c07d4400e658b7.rsp\"",
+      "ParentPid": 65308,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 65308,
+          "CreationDate": "2026-10-09T13:40:43.20503+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\regression-check\\RegressionCheck.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+          "ParentPid": 66824
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 65632,
+      "CreationDate": "2026-10-09T13:40:43.371569+08:00",
+      "Started": "2026-10-09T05:40:43.371569Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 65308,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 65308,
+          "CreationDate": "2026-10-09T13:40:43.20503+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\regression-check\\RegressionCheck.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+          "ParentPid": 66824
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 30152,
+      "CreationDate": "2026-10-09T13:40:50.642812+08:00",
+      "Started": "2026-10-09T05:40:50.642812Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 62596,
+      "Depth": 2,
+      "ParentChain": [
+        {
+          "Pid": 65308,
+          "CreationDate": "2026-10-09T13:40:43.20503+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\regression-check\\RegressionCheck.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+          "ParentPid": 66824
+        },
+        {
+          "Pid": 62596,
+          "CreationDate": "2026-10-09T13:40:50.338065+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\helper-compiler-temp\\MSBuildTempc035bc1a.cty\\tmp2ac90c8c7ba342a682c07d4400e658b7.rsp\"",
+          "ParentPid": 65308
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

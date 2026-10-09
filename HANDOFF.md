@@ -11,6 +11,14 @@
 仅 `D:\source\Tomur` 已获核最新、拉取、必要修改提交及推送授权。Sezika 只 commit；发布、部署及正式默认切换仍按各自门槛处理。用户未跟踪的 Sezika `docs/wechat-introduction.md`、`.html` 及 Tomur `docs/articles/` 不修改或暂存。
 
 ## 当前结果
+### 2026-10-09 修题后固定训练：新会话已接管
+
+工程本地提交 afcca10 / e808191，完整新证据镜像 docs/evidence/repaired-training-20261009-engineering（206文件+inventory、873396bytes）。06:04 UTC的34回执/151登记身份/110PID快照无matching/unknown current；后续归档、暂存与只读复核进程另见 repaired-training-20261009-closure 补充，短命OS argv未观测局限及字段纠正sidecar保留，不宣称全部历史命令有OS身份。三专属compiler-temp24项按确切日志hash移存/空目录非递归清理，现有GPU服务未停，新远端仅bootstrap，无上传或GPU stage。
+
+当前准入阻塞：本会话C# v3合同/账本/分母及报告、24项反例/访问参考、旧v1八项/v2十六项、Linux10.0.12自包含发布已完成。全215题正式strict1024检查214通过/1失败；唯一train Choice `massive-zh-cn-02996` 修订1037tokens（父题482），通过题最长910。本次无GPU训练、独立加载或原32回归；没有教师HTTP。用户已收到具体选择：删该题后214/train161/dev53再沿原24576配置，或保留215并暂停；尚未回复前不得变分母、删除/修改原包、提高1024或启动GPU。原215文件hash保持，新远端root仅bootstrap。见 docs/evidence/repaired-training-engineering-2026-10-09.md。短进程guardian历史CleanupFailed/unknown1保留，当前准确PID后核另列；正式质量/人审/许可/AOT均pending。heartbeat已迁到本会话并更新此阻塞，状态无变化安静，不重跑检查、派单或训练。
+
+本会话 `01a11f25-335a-7571-a735-7171ace8c3b9` 已从 `main / 4e7b304` 接管，独占 Git/API/GPU；旧会话停止实施。任务根 `.artifacts/repaired-training-20261009`，新远端根 `/root/sezika-experiments/20261009-repaired-training-v3`。先执行 C# 显式 v3 合同、实际215/162/53分母及账本绑定、新 strict1024 长度检查和必要工程验收；随后仅一次固定24576updates/LR0.001/seed17/零head/encoder冻结及独立验证、原32回归。禁止再发教师请求、重跑历史训练或按dev调参。暂停源码、旧ROADMAP诊断hunk及用户文件身份已记录，保留；仅本地分项commit，完成后停止新增训练。
+
 ### 2026-10-09 修题/盲审完成：215题候选包，新会话接续训练
 
 用户授权使用sonnet_vip修复歧义题，修不好就删，再新建会话开始下一步。本轮78问题题由同一sonnet.vip/gpt-6.1-sol/max处理：模型39修/39删，root另排除2项改变原义的修订，剩余37题全部独立盲审通过。原178通过题复用，最终215题（train162/development53，Choice140/Boolean75），删除41题（train30/dev11）。原state.text/source gold/family/split保留，全256分母及删除原因有账本；原32另列已曝光回归，Score无新增监督。

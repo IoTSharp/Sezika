@@ -1,0 +1,105 @@
+repaired input 1/5: manifest, final records and provenance (0.001s)
+repaired input 2/5: frozen256 parent and complete derivation ledger (0.106s)
+repaired input 3/5: preserved source catalog and parent aggregate scope (0.149s)
+repaired input 4/5: original33 audits and repaired7 blind reaudits (0.155s)
+repaired input 5/5: repair14 raw pairs, proposals and final label agreement (0.244s)
+repaired input complete: 215 final / 256 parent (0.270s)
+expanded lengths 1/215: massive-en-us-00001
+expanded lengths 2/215: massive-zh-cn-00002
+expanded lengths 3/215: massive-en-us-00062
+expanded lengths 4/215: massive-en-us-00060
+expanded lengths 5/215: massive-en-us-00259
+expanded lengths 6/215: massive-en-us-00152
+expanded lengths 7/215: massive-en-us-00187
+expanded lengths 8/215: massive-en-us-00033
+expanded lengths 9/215: massive-en-us-06714
+expanded lengths 10/215: massive-en-us-03201
+expanded lengths 11/215: massive-en-us-06637
+expanded lengths 12/215: massive-en-us-09911
+expanded lengths 13/215: massive-en-us-00049
+expanded lengths 14/215: massive-en-us-00048
+expanded lengths 15/215: massive-en-us-10137
+expanded lengths 16/215: massive-en-us-04539
+expanded lengths 17/215: massive-en-us-00119
+expanded lengths 18/215: massive-en-us-00036
+expanded lengths 19/215: massive-en-us-00025
+expanded lengths 20/215: massive-en-us-00162
+expanded lengths 21/215: massive-en-us-00009
+expanded lengths 22/215: massive-en-us-00016
+expanded lengths 23/215: massive-en-us-00012
+expanded lengths 24/215: massive-en-us-00081
+expanded lengths 25/215: massive-en-us-00228
+expanded lengths 26/215: massive-en-us-00190
+expanded lengths 27/215: massive-en-us-10435
+expanded lengths 28/215: massive-en-us-07742
+expanded lengths 29/215: massive-en-us-00069
+expanded lengths 30/215: massive-en-us-00075
+expanded lengths 31/215: massive-en-us-00114
+expanded lengths 32/215: massive-en-us-00065
+expanded lengths 33/215: massive-en-us-03692
+expanded lengths 34/215: massive-en-us-00034
+expanded lengths 35/215: massive-en-us-03891
+expanded lengths 36/215: massive-en-us-00912
+expanded lengths 37/215: massive-en-us-13053
+expanded lengths 38/215: massive-en-us-06709
+expanded lengths 39/215: massive-en-us-01801
+expanded lengths 40/215: massive-en-us-12936
+expanded lengths 41/215: massive-en-us-00681
+expanded lengths 42/215: massive-en-us-01208
+expanded lengths 43/215: massive-en-us-05496
+expanded lengths 44/215: massive-en-us-12995
+expanded lengths 45/215: massive-en-us-04333
+expanded lengths 46/215: massive-en-us-00087
+expanded lengths 47/215: massive-en-us-00051
+expanded lengths 48/215: massive-en-us-12120
+expanded lengths 49/215: massive-en-us-06453
+expanded lengths 50/215: massive-en-us-06546
+expanded lengths 51/215: massive-en-us-00096
+expanded lengths 52/215: massive-en-us-00203
+expanded lengths 53/215: massive-en-us-00202
+expanded lengths 54/215: massive-en-us-00330
+expanded lengths 55/215: massive-zh-cn-00934
+expanded lengths 56/215: massive-zh-cn-01137
+expanded lengths 57/215: massive-zh-cn-06715
+expanded lengths 58/215: massive-zh-cn-03601
+expanded lengths 59/215: massive-zh-cn-13479
+expanded lengths 60/215: massive-zh-cn-09913
+expanded lengths 61/215: massive-zh-cn-00394
+expanded lengths 62/215: massive-zh-cn-00195
+expanded lengths 63/215: massive-zh-cn-15745
+expanded lengths 64/215: massive-zh-cn-13220
+expanded lengths 65/215: massive-zh-cn-15690
+expanded lengths 66/215: massive-zh-cn-07177
+expanded lengths 67/215: massive-zh-cn-00166
+expanded lengths 68/215: massive-zh-cn-00120
+expanded lengths 69/215: massive-zh-cn-00037
+expanded lengths 70/215: massive-zh-cn-00028
+expanded lengths 71/215: massive-zh-cn-00163
+expanded lengths 72/215: massive-zh-cn-00010
+expanded lengths 73/215: massive-zh-cn-00022
+expanded lengths 74/215: massive-zh-cn-00082
+expanded lengths 75/215: massive-zh-cn-00677
+expanded lengths 76/215: massive-zh-cn-00191
+expanded lengths 77/215: massive-zh-cn-10436
+expanded lengths 78/215: massive-zh-cn-10425
+expanded lengths 79/215: massive-zh-cn-07960
+expanded lengths 80/215: massive-zh-cn-00949
+expanded lengths 81/215: massive-zh-cn-00070
+expanded lengths 82/215: massive-zh-cn-00076
+expanded lengths 83/215: massive-zh-cn-00153
+expanded lengths 84/215: massive-zh-cn-00104
+expanded lengths 85/215: massive-zh-cn-09665
+expanded lengths 86/215: massive-zh-cn-10246
+expanded lengths 87/215: massive-zh-cn-00035
+expanded lengths 88/215: massive-zh-cn-09416
+expanded lengths 89/215: massive-zh-cn-00913
+expanded lengths 90/215: massive-zh-cn-13054
+expanded lengths 91/215: massive-zh-cn-04969
+expanded lengths 92/215: massive-zh-cn-12938
+expanded lengths 93/215: massive-zh-cn-02996
+experiment: Sezika.DecisionException: decision-v1 sequence exceeds its strict token budget.
+   at Sezika.IndependentDecisionV1SequenceBuilder.AppendUserSegment(TokenizerJson tokenizer, String text, List`1 destination, Int32 maxTokens, CancellationToken cancellationToken) in D:\source\Sezika\src\Sezika\IndependentDecisionV1.cs:line 268
+   at Sezika.IndependentDecisionV1SequenceBuilder.BuildCore(TokenizerJson tokenizer, IndependentDecisionRequest request, IndependentDecisionQuestion question, IndependentDecisionSequenceOptions options, CancellationToken cancellationToken) in D:\source\Sezika\src\Sezika\IndependentDecisionV1.cs:line 224
+   at Sezika.IndependentDecisionV1SequenceBuilder.Build(TokenizerJson tokenizer, IndependentDecisionRequest request, IndependentDecisionQuestion question, IndependentDecisionSequenceOptions options, CancellationToken cancellationToken) in D:\source\Sezika\src\Sezika\IndependentDecisionV1.cs:line 181
+   at Sezika.ExperimentTrainer.ExpansionChecks.RunLengths(String[] arguments, CancellationToken token) in D:\source\Sezika\tools\Sezika.ExperimentTrainer\ExpansionChecks.cs:line 333
+   at Program.<Main>$(String[] args) in D:\source\Sezika\tools\Sezika.ExperimentTrainer\Program.cs:line 37

@@ -1,0 +1,25 @@
+{
+  "Pid": 51820,
+  "Started": "2026-10-09T05:33:48.0258848Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -Command \"Start-Sleep -Seconds 1; exit 0\"",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 65724,
+  "ObservedParentPid": 65724,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 65724,
+    "Started": "2026-10-09T13:33:46.180318+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$taskRoot='D:\\source\\Sezika\\.artifacts\\repaired-training-20261009'\nif(Test-Path -LiteralPath $taskRoot){$existing=Get-ChildItem -LiteralPath $taskRoot -Force | Select-Object -First 15; $existing | Select-Object Name}else{[void][IO.Directory]::CreateDirectory($taskRoot)}\n[void][IO.Directory]::CreateDirectory((Join-Path $taskRoot 'remote'))\n[void][IO.Directory]::CreateDirectory((Join-Path $taskRoot 'process-logs'))\n$runnerText=[IO.File]::ReadAllText('D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-ExpansionBoundedProcess.ps1').Replace('D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\cancel.request',(Join-Path $taskRoot 'cancel.request'))\n[IO.File]::WriteAllText((Join-Path $taskRoot 'Invoke-BoundedProcess.ps1'),$runnerText,[Text.UTF8Encoding]::new($false))\n$freezeFiles=@('ROADMAP.md','docs/evidence/diagnostic-runtime-2026-10-08.md','tools/Sezika.Benchmarks/Program.cs','tools/Sezika.IndependentModelTool/Program.cs','docs/wechat-introduction.md','docs/wechat-introduction.html','tools/Sezika.Benchmarks/DiagnosticIndependentProfile.cs','tools/Sezika.Benchmarks/DiagnosticProfileChecks.cs','tools/Sezika.Benchmarks/DiagnosticProfileReport.cs','tools/Sezika.IndependentModelTool/DiagnosticAssetPreparationChecks.cs','tools/Sezika.IndependentModelTool/DiagnosticAssetPreparationCommand.cs')\n$timer=[Diagnostics.Stopwatch]::StartNew(); $paused=@(foreach($name in $freezeFiles){if($timer.Elapsed.TotalSeconds -gt 10){throw 'freeze deadline'};@{path=$name;sha256=(Get-FileHash -LiteralPath $name).Hash}})\n$identity=[ordered]@{thread=$env:CODEX_THREAD_ID;task='sezika-repaired-training-20261009';utc=[DateTime]::UtcNow.ToString('o');head='4e7b304';remote='/root/sezika-experiments/20261009-repaired-training-v3';manifest_sha256='E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6';ledger_sha256='55F3226946831C4B9CBD7F6EE10D1194764860C8343A9386CAA40C678CE24EC0';paused=$paused;budgets=@{updates=24576;seed=17;learning_rate=0.001;max_tokens=1024;sgd_seconds=300;cli_seconds=1500;forward_limit=384;gpu_bytes=3221225472;host_bytes=4294967296}}\n[IO.File]::WriteAllText((Join-Path $taskRoot 'task-identity.json'),($identity|ConvertTo-Json -Depth 6),[Text.UTF8Encoding]::new($false))\n$handoff=[IO.File]::ReadAllText('D:\\source\\Sezika\\HANDOFF.md');$anchor='## 当前结果';$newSection=@'\n### 2026-10-09 修题后固定训练：新会话已接管\n\n本会话 `01a11f25-335a-7571-a735-7171ace8c3b9` 已从 `main / 4e7b304` 接管，独占 Git/API/GPU；旧会话停止实施。任务根 `.artifacts/repaired-training-20261009`，新远端根 `/root/sezika-experiments/20261009-repaired-training-v3`。先执行 C# 显式 v3 合同、实际215/162/53分母及账本绑定、新 strict1024 长度检查和必要工程验收；随后仅一次固定24576updates/LR0.001/seed17/零head/encoder冻结及独立验证、原32回归。禁止再发教师请求、重跑历史训练或按dev调参。暂停源码、旧ROADMAP诊断hunk及用户文件身份已记录，保留；仅本地分项commit，完成后停止新增训练。\n\n'@\n$handoff=$handoff.Replace($anchor,$anchor+\\\"`n\\\"+$newSection)\n[IO.File]::WriteAllText('D:\\source\\Sezika\\HANDOFF.md',$handoff,[Text.UTF8Encoding]::new($false))\n$roadmap=[IO.File]::ReadAllText('D:\\source\\Sezika\\ROADMAP.md');$anchor='## 当前执行顺序与门槛';$note=\\\"`n`n2026-10-09 新会话已接管修题后215题v3：先完成严格合同/账本/实际分母、正式renderer长度和独立源码审查，再唯一固定24576updates实验、231前向独立验证与32题已曝光回归。原暂停诊断hunk保留；记录实际train162访问次数，不声称128完整epoch。正式质量、人审、许可发布、校准、封存和新head AOT/性能仍pending。`n\\\"\n[IO.File]::WriteAllText('D:\\source\\Sezika\\ROADMAP.md',$roadmap.Replace($anchor,$anchor+$note),[Text.UTF8Encoding]::new($false))\nWrite-Output 'takeover_identity_and_preservation_freeze_saved'\n& (Join-Path $taskRoot 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoLogo','-NoProfile','-Command','Start-Sleep -Seconds 1; exit 0') -TimeoutSeconds 12 -ProcessQueryTimeoutSeconds 2 -LogName 'guardian-tiny1' -LogDirectory (Join-Path $taskRoot 'process-logs')\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 12,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoLogo",
+    "-NoProfile",
+    "-Command",
+    "Start-Sleep -Seconds 1; exit 0"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

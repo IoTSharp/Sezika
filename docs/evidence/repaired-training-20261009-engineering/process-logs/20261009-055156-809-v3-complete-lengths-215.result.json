@@ -1,0 +1,76 @@
+{
+  "Status": "Failed",
+  "Pid": 54868,
+  "ExitCode": 1,
+  "Error": "Process failed with exit code 1.",
+  "ElapsedSeconds": 3.106,
+  "TimeoutSeconds": 130,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll",
+    "lengths-expanded",
+    "--data",
+    "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\data",
+    "--manifest-sha256",
+    "E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6",
+    "--tokenizer",
+    "D:\\source\\Sezika\\.artifacts\\models\\mmbert-independent\\converted\\tokenizer\\tokenizer.json",
+    "--max-records",
+    "215"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T05:51:57.3166147Z",
+  "ParentPid": 64468,
+  "Launcher": {
+    "Pid": 64468,
+    "Started": "2026-10-09T13:51:53.245087+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/repaired-training-20261009/Run-CompleteLengths.ps1\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055156-809-v3-complete-lengths-215.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\process-logs\\20261009-055156-809-v3-complete-lengths-215.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 1.0210209,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 54868,
+      "CreationDate": "2026-10-09T13:51:57.316614+08:00",
+      "Started": "2026-10-09T05:51:57.316614Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll lengths-expanded --data D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\data --manifest-sha256 E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6 --tokenizer D:\\source\\Sezika\\.artifacts\\models\\mmbert-independent\\converted\\tokenizer\\tokenizer.json --max-records 215",
+      "ParentPid": 64468,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 45500,
+      "CreationDate": "2026-10-09T13:51:57.325126+08:00",
+      "Started": "2026-10-09T05:51:57.325126Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 54868,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 54868,
+          "CreationDate": "2026-10-09T13:51:57.316614+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll lengths-expanded --data D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\data --manifest-sha256 E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6 --tokenizer D:\\source\\Sezika\\.artifacts\\models\\mmbert-independent\\converted\\tokenizer\\tokenizer.json --max-records 215",
+          "ParentPid": 64468
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}
