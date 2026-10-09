@@ -1,0 +1,93 @@
+{
+  "Status": "Succeeded",
+  "Pid": 44768,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 7.45,
+  "TimeoutSeconds": 40,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Windows\\System32\\OpenSSH\\scp.exe",
+  "Arguments": [
+    "-P",
+    "2222",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\boundary-uuid-patch.tar",
+    "root@211.149.170.42:/root/sezika-experiments/20261009-repaired-training-8192/"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T09:52:15.0122936Z",
+  "ParentPid": 51852,
+  "Launcher": {
+    "Pid": 51852,
+    "Started": "2026-10-09T17:52:13.239694+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/token-limit-20261009-8192/Apply-BoundaryRevision.ps1\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-095213-963-boundary-revision-upload.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-095213-963-boundary-revision-upload.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 1.9326486,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 44768,
+      "CreationDate": "2026-10-09T17:52:15.012293+08:00",
+      "Started": "2026-10-09T09:52:15.012293Z",
+      "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\scp.exe\" -P 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\boundary-uuid-patch.tar root@211.149.170.42:/root/sezika-experiments/20261009-repaired-training-8192/",
+      "ParentPid": 51852,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 32340,
+      "CreationDate": "2026-10-09T17:52:15.057742+08:00",
+      "Started": "2026-10-09T09:52:15.057742Z",
+      "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -x -oPermitLocalCommand=no -oClearAllForwardings=yes -oRemoteCommand=none -oRequestTTY=no -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -oForwardAgent=no -p 2222 -l root -s -- 211.149.170.42 sftp",
+      "ParentPid": 44768,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 44768,
+          "CreationDate": "2026-10-09T17:52:15.012293+08:00",
+          "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\scp.exe\" -P 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\boundary-uuid-patch.tar root@211.149.170.42:/root/sezika-experiments/20261009-repaired-training-8192/",
+          "ParentPid": 51852
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 63912,
+      "CreationDate": "2026-10-09T17:52:15.020566+08:00",
+      "Started": "2026-10-09T09:52:15.020566Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 44768,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 44768,
+          "CreationDate": "2026-10-09T17:52:15.012293+08:00",
+          "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\scp.exe\" -P 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\boundary-uuid-patch.tar root@211.149.170.42:/root/sezika-experiments/20261009-repaired-training-8192/",
+          "ParentPid": 51852
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

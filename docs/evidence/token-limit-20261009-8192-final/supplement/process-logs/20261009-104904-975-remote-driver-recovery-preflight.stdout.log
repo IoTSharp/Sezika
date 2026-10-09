@@ -1,0 +1,52 @@
+2026-10-09T10:49:08Z
+NVRM version: NVIDIA UNIX Open Kernel Module for x86_64  580.173.02  Release Build  (dvs-builder@U22-I3-AK02-24-4)  Tue Jun 23 08:17:01 UTC 2026
+GCC version:  gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 
+nvidia_uvm 2158592 0 - Live 0xffffffffc2163000 (OE)
+nvidia_drm 139264 0 - Live 0xffffffffc0e74000 (OE)
+nvidia_modeset 1822720 1 nvidia_drm, Live 0xffffffffc1f4b000 (OE)
+nvidia 14417920 2 nvidia_uvm,nvidia_modeset, Live 0xffffffffc0e91000 (OE)
+module=nvidia refcnt=2
+module=nvidia_uvm refcnt=0
+module=nvidia_drm refcnt=0
+module=nvidia_modeset refcnt=1
+/lib/modules/6.8.0-136-generic/updates/dkms/nvidia.ko.zst
+580.173.02
+/usr/sbin/modprobe
+/usr/sbin/rmmod
+/usr/bin/fuser
+inactive
+display_manager_query_exit=4
+all_nvidia_device_users_query_exit=1
+/proc/driver/nvidia/gpus/0000:65:00.0
+Oct 09 10:48:42 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+Oct 09 10:48:42 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x55:2028)
+Oct 09 10:48:42 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+Oct 09 10:48:44 digisyn-gpu01 kernel: NVRM: gpuWaitForGfwBootComplete_TU102: failed to wait for GFW_BOOT: (progress 0x9)
+Oct 09 10:48:44 digisyn-gpu01 kernel: NVRM: kgspWaitForGfwBootOk_TU102: failed to wait for GFW boot complete: 0x55 VBIOS version 95.02.3C.00.02
+Oct 09 10:48:44 digisyn-gpu01 kernel: NVRM: kgspWaitForGfwBootOk_TU102: (the GPU may be in a bad state and may need to be reset)
+Oct 09 10:48:44 digisyn-gpu01 kernel: NVRM: nvCheckOkFailedNoLog: Check failed: Generic Error: Not ready [NV_ERR_NOT_READY] (0x00000055) returned from kgspWaitForGfwBootOk_HAL(pGpu, pKernelGsp) @ kernel_gsp.c:4138
+Oct 09 10:48:44 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+Oct 09 10:48:44 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x55:2028)
+Oct 09 10:48:44 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+Oct 09 10:48:46 digisyn-gpu01 kernel: NVRM: gpuWaitForGfwBootComplete_TU102: failed to wait for GFW_BOOT: (progress 0x9)
+Oct 09 10:48:46 digisyn-gpu01 kernel: NVRM: kgspWaitForGfwBootOk_TU102: failed to wait for GFW boot complete: 0x55 VBIOS version 95.02.3C.00.02
+Oct 09 10:48:46 digisyn-gpu01 kernel: NVRM: kgspWaitForGfwBootOk_TU102: (the GPU may be in a bad state and may need to be reset)
+Oct 09 10:48:46 digisyn-gpu01 kernel: NVRM: nvCheckOkFailedNoLog: Check failed: Generic Error: Not ready [NV_ERR_NOT_READY] (0x00000055) returned from kgspWaitForGfwBootOk_HAL(pGpu, pKernelGsp) @ kernel_gsp.c:4138
+Oct 09 10:48:46 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+Oct 09 10:48:46 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x55:2028)
+Oct 09 10:48:46 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+Oct 09 10:48:49 digisyn-gpu01 kernel: NVRM: gpuWaitForGfwBootComplete_TU102: failed to wait for GFW_BOOT: (progress 0x9)
+Oct 09 10:48:49 digisyn-gpu01 kernel: NVRM: kgspWaitForGfwBootOk_TU102: failed to wait for GFW boot complete: 0x55 VBIOS version 95.02.3C.00.02
+Oct 09 10:48:49 digisyn-gpu01 kernel: NVRM: kgspWaitForGfwBootOk_TU102: (the GPU may be in a bad state and may need to be reset)
+Oct 09 10:48:49 digisyn-gpu01 kernel: NVRM: nvCheckOkFailedNoLog: Check failed: Generic Error: Not ready [NV_ERR_NOT_READY] (0x00000055) returned from kgspWaitForGfwBootOk_HAL(pGpu, pKernelGsp) @ kernel_gsp.c:4138
+Oct 09 10:48:49 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+Oct 09 10:48:49 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x55:2028)
+Oct 09 10:48:49 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+Oct 09 10:48:51 digisyn-gpu01 kernel: NVRM: gpuWaitForGfwBootComplete_TU102: failed to wait for GFW_BOOT: (progress 0x9)
+Oct 09 10:48:51 digisyn-gpu01 kernel: NVRM: kgspWaitForGfwBootOk_TU102: failed to wait for GFW boot complete: 0x55 VBIOS version 95.02.3C.00.02
+Oct 09 10:48:51 digisyn-gpu01 kernel: NVRM: kgspWaitForGfwBootOk_TU102: (the GPU may be in a bad state and may need to be reset)
+Oct 09 10:48:51 digisyn-gpu01 kernel: NVRM: nvCheckOkFailedNoLog: Check failed: Generic Error: Not ready [NV_ERR_NOT_READY] (0x00000055) returned from kgspWaitForGfwBootOk_HAL(pGpu, pKernelGsp) @ kernel_gsp.c:4138
+Oct 09 10:48:51 digisyn-gpu01 kernel: NVRM: RmInitAdapter: Cannot initialize GSP firmware RM
+Oct 09 10:48:51 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: RmInitAdapter failed! (0x62:0x55:2028)
+Oct 09 10:48:51 digisyn-gpu01 kernel: NVRM: GPU 0000:65:00.0: rm_init_adapter failed, device minor number 0
+Oct 09 10:48:53 digisyn-gpu01 kernel: NVRM: gpuWaitForGfwBootComplete_TU102: failed to wait for GFW_BOOT: (progress 0x9)

@@ -1,0 +1,26 @@
+{
+  "Pid": 18184,
+  "Started": "2026-10-09T09:54:52.8582237Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\progress.sh",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 4152,
+  "ObservedParentPid": 4152,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 4152,
+    "Started": "2026-10-09T17:54:51.385322+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop';$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192';try{& (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $task 'Invoke-Ssh.ps1'),'-ScriptFile',(Join-Path $task 'remote/progress.sh')) -TimeoutSeconds 40 -LogName 'progress-01' -ProcessQueryTimeoutSeconds 2 -CancelFile (Join-Path $task 'cancel.request')|Out-Null}catch{Write-Output $_.Exception.Message};$r=Get-ChildItem -LiteralPath (Join-Path $task 'process-logs') -File -Filter '*progress-01.result.json'|Select-Object -First 1|Get-Content -Raw|ConvertFrom-Json;Get-Content -LiteralPath $r.StdoutPath -Tail 35\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 40,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\progress.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

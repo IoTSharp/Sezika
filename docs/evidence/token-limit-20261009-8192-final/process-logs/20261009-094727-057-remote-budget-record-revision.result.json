@@ -1,0 +1,88 @@
+{
+  "Status": "Failed",
+  "Pid": 71048,
+  "ExitCode": 1,
+  "Error": "Process failed with exit code 1.",
+  "ElapsedSeconds": 6.765,
+  "TimeoutSeconds": 40,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\budget-record-revision.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T09:47:28.1624341Z",
+  "ParentPid": 29232,
+  "Launcher": {
+    "Pid": 29232,
+    "Started": "2026-10-09T17:47:26.135828+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop';$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192';$p=Join-Path $task 'remote/phase-common.sh';$oldHash=(Get-FileHash -LiteralPath $p).Hash.ToLowerInvariant();[IO.File]::Copy($p,(Join-Path $task 'phase-common-before-budget-record.sh'),$false);$s=[IO.File]::ReadAllText($p);$s=$s.Replace('# Sourced only by the three fixed stage entrypoints. C# enforces owned GPU<=3GiB and RSS<=4GiB.','# Fixed experiment stages<=3GiB; the separate real8192 boundary<=6GiB; host<=4GiB.').Replace(\\\"printf 'gpu_uuid\\\",'owned_limit=3221225472; if [[ $phase == boundary-real ]]; then owned_limit=6442450944; fi'+\\\"`n\\\"+\\\"printf 'gpu_uuid\\\").Replace('owned_gpu_limit_bytes\\t3221225472','owned_gpu_limit_bytes\\t%s').Replace('\\\"$uuid\\\" \\\"$free\\\" \\\"$available\\\" \\\"$disk\\\" >','\\\"$uuid\\\" \\\"$free\\\" \\\"$available\\\" \\\"$disk\\\" \\\"$owned_limit\\\" >');[IO.File]::WriteAllText($p,$s,[Text.UTF8Encoding]::new($false));$newHash=(Get-FileHash -LiteralPath $p).Hash.ToLowerInvariant();$template=@'\n#!/bin/bash\nset -euo pipefail\numask 077\ntask=/root/sezika-experiments/20261009-repaired-training-8192\ntest \\\"$(hostname)\\\" = digisyn-gpu01\ntest \\\"$(timeout 2s cat \\\"$task/task-identity\\\")\\\" = sezika-token-limit-20261009-8192\ntest ! -e \\\"$task/.artifacts/stage-boundary-tiny\\\" && test ! -e \\\"$task/logs/phase-common-before-budget-record.sh\\\"\nprintf '%s  %s\\n' OLDHASH \\\"$task/remote/phase-common.sh\\\" | timeout 2s sha256sum -c --quiet -\ncp -- \\\"$task/remote/phase-common.sh\\\" \\\"$task/logs/phase-common-before-budget-record.sh\\\"\ncp -- \\\"$task/remote/files.sha256\\\" \\\"$task/logs/remote-files-before-budget-record.sha256\\\"\ncat > \\\"$task/remote/phase-common.sh\\\" <<'SEZIKA_LITERAL_SCRIPT_8192_20261009'\nCONTENT\nSEZIKA_LITERAL_SCRIPT_8192_20261009\nprintf '%s  %s\\n' NEWHASH \\\"$task/remote/phase-common.sh\\\" | timeout 2s sha256sum -c --quiet -\ntimeout 2s bash -n \\\"$task/remote/phase-common.sh\\\"\nsed -i 's/^OLDHASH  phase-common.sh$/NEWHASH  phase-common.sh/' \\\"$task/remote/files.sha256\\\"\n(cd \\\"$task/remote\\\" && timeout 5s sha256sum -c --quiet files.sha256)\nprintf 'old_sha256\\tOLDHASH\\nnew_sha256\\tNEWHASH\\nreason\\trecord separate real8192 6GiB budget accurately\\n' > \\\"$task/logs/phase-common-budget-record-revision.tsv\\\"\nprintf 'budget_record_revision_verified_no_gpu_started=true\\n'\n'@;$template=$template.Replace('OLDHASH',$oldHash).Replace('NEWHASH',$newHash).Replace('CONTENT',$s.TrimEnd(\\\"`n\\\",\\\"`r\\\"));[IO.File]::WriteAllText((Join-Path $task 'remote/budget-record-revision.sh'),$template+\\\"`n\\\",[Text.UTF8Encoding]::new($false)); & (Join-Path $task 'Run-Remote.ps1') -Phase budget-record-revision -Seconds 40; & (Join-Path $task 'Run-Remote.ps1') -Phase runner-probe -Seconds 75\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-094727-057-remote-budget-record-revision.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-094727-057-remote-budget-record-revision.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 2.3269032,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 71048,
+      "CreationDate": "2026-10-09T17:47:28.162434+08:00",
+      "Started": "2026-10-09T09:47:28.162434Z",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\budget-record-revision.sh",
+      "ParentPid": 29232,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 45860,
+      "CreationDate": "2026-10-09T17:47:29.037215+08:00",
+      "Started": "2026-10-09T09:47:29.037215Z",
+      "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "ParentPid": 71048,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 71048,
+          "CreationDate": "2026-10-09T17:47:28.162434+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\budget-record-revision.sh",
+          "ParentPid": 29232
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 54744,
+      "CreationDate": "2026-10-09T17:47:28.180539+08:00",
+      "Started": "2026-10-09T09:47:28.180539Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 71048,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 71048,
+          "CreationDate": "2026-10-09T17:47:28.162434+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\budget-record-revision.sh",
+          "ParentPid": 29232
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

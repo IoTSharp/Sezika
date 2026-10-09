@@ -1,0 +1,4498 @@
+{
+  "contract": "sezika/teacher-labelled-expanded-rendered-token-lengths/v4",
+  "data_contract": "sezika/teacher-labelled-experiment-data/v3",
+  "status": "completed_rendered_lengths_no_model_execution",
+  "model_id": "sezika/mmbert-base-independent-s4",
+  "manifest_sha256": "E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6",
+  "records_sha256": "C87B4C8A7BADD4795856C48C21FB35CF0F0B4D6C0469258C2B5B5F01B9F8F634",
+  "input_provenance_sha256": "44D8A650E0738AA745BF3054575D4E58E2C728C45A80437639BB4940A13C2BF0",
+  "derivation_ledger_sha256": "55F3226946831C4B9CBD7F6EE10D1194764860C8343A9386CAA40C678CE24EC0",
+  "tokenizer_sha256": "197D4CC5406EE12CC50C8B5511F2393CC32D9DB321545979CE041C1199178356",
+  "actual_data_root": "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\data",
+  "actual_tokenizer_path": "D:\\source\\Sezika\\.artifacts\\models\\mmbert-independent\\converted\\tokenizer\\tokenizer.json",
+  "data_records": 215,
+  "requested_records": 215,
+  "attempted_records": 215,
+  "accepted_records": 215,
+  "failed_records": 0,
+  "unattempted_records": 0,
+  "max_allowed_tokens": 8192,
+  "maximum_successful_tokens": 1037,
+  "timeout_seconds": 120,
+  "elapsed_seconds": 1.2580875,
+  "encoder_loaded": false,
+  "feature_computed": false,
+  "training_executed": false,
+  "gpu_opened": false,
+  "process_peak_working_set_bytes": 207372288,
+  "rows": [
+    {
+      "record_id": "massive-en-us-00001",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 120,
+      "marker_positions": [
+        59,
+        75,
+        89,
+        105
+      ],
+      "candidate_ids": [
+        "alarm_set",
+        "alarm_query",
+        "alarm_remove",
+        "calendar_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00002",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 480,
+      "marker_positions": [
+        285,
+        330,
+        381,
+        434
+      ],
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_set",
+        "alarm_remove",
+        "calendar_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00062",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 116,
+      "marker_positions": [
+        55,
+        71,
+        85,
+        101
+      ],
+      "candidate_ids": [
+        "alarm_remove",
+        "alarm_query",
+        "alarm_set",
+        "calendar_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00060",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 116,
+      "marker_positions": [
+        55,
+        69,
+        85,
+        101
+      ],
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_set",
+        "alarm_remove",
+        "calendar_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00259",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 127,
+      "marker_positions": [
+        61,
+        76,
+        94,
+        110
+      ],
+      "candidate_ids": [
+        "audio_volume_mute",
+        "audio_volume_other",
+        "audio_volume_up",
+        "audio_volume_down"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00152",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 120,
+      "marker_positions": [
+        54,
+        70,
+        88,
+        103
+      ],
+      "candidate_ids": [
+        "audio_volume_down",
+        "audio_volume_other",
+        "audio_volume_mute",
+        "audio_volume_up"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00187",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 121,
+      "marker_positions": [
+        55,
+        71,
+        86,
+        102
+      ],
+      "candidate_ids": [
+        "audio_volume_down",
+        "audio_volume_mute",
+        "audio_volume_up",
+        "audio_volume_other"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00033",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 115,
+      "marker_positions": [
+        56,
+        71,
+        86,
+        100
+      ],
+      "candidate_ids": [
+        "calendar_remove",
+        "calendar_set",
+        "alarm_query",
+        "calendar_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-06714",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 117,
+      "marker_positions": [
+        58,
+        73,
+        87,
+        102
+      ],
+      "candidate_ids": [
+        "calendar_remove",
+        "calendar_query",
+        "calendar_set",
+        "alarm_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-03201",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 136,
+      "marker_positions": [
+        57,
+        72,
+        92,
+        106,
+        121
+      ],
+      "candidate_ids": [
+        "calendar_remove",
+        "conditional_reminder",
+        "alarm_query",
+        "calendar_set",
+        "calendar_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-06637",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 123,
+      "marker_positions": [
+        56,
+        70,
+        89,
+        104
+      ],
+      "candidate_ids": [
+        "cooking_recipe",
+        "qa_currency",
+        "cooking_query",
+        "qa_definition"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-09911",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 125,
+      "marker_positions": [
+        58,
+        73,
+        92,
+        110
+      ],
+      "candidate_ids": [
+        "cooking_query",
+        "qa_currency",
+        "qa_definition",
+        "cooking_recipe"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00049",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 133,
+      "marker_positions": [
+        64,
+        84,
+        102,
+        116
+      ],
+      "candidate_ids": [
+        "datetime_convert",
+        "datetime_query",
+        "alarm_query",
+        "alarm_remove"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00048",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 127,
+      "marker_positions": [
+        58,
+        78,
+        96,
+        110
+      ],
+      "candidate_ids": [
+        "datetime_convert",
+        "datetime_query",
+        "alarm_query",
+        "alarm_remove"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-10137",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 133,
+      "marker_positions": [
+        52,
+        67,
+        83,
+        99,
+        115
+      ],
+      "candidate_ids": [
+        "phone_call",
+        "email_sendemail",
+        "email_addcontact",
+        "email_query",
+        "email_querycontact"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-04539",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 159,
+      "marker_positions": [
+        65,
+        82,
+        98,
+        126,
+        142
+      ],
+      "candidate_ids": [
+        "email_querycontact",
+        "email_addcontact",
+        "message_wait_to_send",
+        "email_query",
+        "email_sendemail"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00119",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 117,
+      "marker_positions": [
+        54,
+        68,
+        87,
+        102
+      ],
+      "candidate_ids": [
+        "general_greet",
+        "general_quirky",
+        "play_audiobook",
+        "general_joke"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00036",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 144,
+      "marker_positions": [
+        55,
+        69,
+        84,
+        103,
+        117
+      ],
+      "candidate_ids": [
+        "general_joke",
+        "play_audiobook",
+        "vehicle_check_ready",
+        "general_greet",
+        "general_quirky"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00025",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 126,
+      "marker_positions": [
+        56,
+        71,
+        86,
+        107
+      ],
+      "candidate_ids": [
+        "iot_coffee",
+        "iot_cleaning",
+        "iot_hue_lightchange",
+        "iot_hue_lightdim"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00162",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 125,
+      "marker_positions": [
+        55,
+        70,
+        91,
+        106
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_hue_lightchange",
+        "iot_coffee",
+        "iot_hue_lightdim"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00009",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 128,
+      "marker_positions": [
+        58,
+        73,
+        88,
+        106
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightdim",
+        "iot_hue_lightchange"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00016",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 129,
+      "marker_positions": [
+        59,
+        77,
+        92,
+        107
+      ],
+      "candidate_ids": [
+        "iot_hue_lightdim",
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00012",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 143,
+      "marker_positions": [
+        54,
+        73,
+        94,
+        112,
+        127
+      ],
+      "candidate_ids": [
+        "iot_hue_lightoff",
+        "iot_hue_lightchange",
+        "sleep_time",
+        "iot_coffee",
+        "iot_cleaning"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00081",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 126,
+      "marker_positions": [
+        55,
+        70,
+        85,
+        106
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightchange",
+        "iot_hue_lightup"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00228",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 128,
+      "marker_positions": [
+        57,
+        76,
+        91,
+        106
+      ],
+      "candidate_ids": [
+        "iot_wemo_off",
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00190",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 126,
+      "marker_positions": [
+        55,
+        70,
+        89,
+        104
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_wemo_on",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-10435",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 125,
+      "marker_positions": [
+        57,
+        71,
+        89,
+        110
+      ],
+      "candidate_ids": [
+        "lists_query",
+        "lists_remove",
+        "lists_createoradd",
+        "calendar_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-07742",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 129,
+      "marker_positions": [
+        61,
+        79,
+        100,
+        114
+      ],
+      "candidate_ids": [
+        "lists_remove",
+        "lists_createoradd",
+        "lists_query",
+        "calendar_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00069",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 120,
+      "marker_positions": [
+        55,
+        72,
+        87,
+        103
+      ],
+      "candidate_ids": [
+        "music_dislikeness",
+        "music_query",
+        "music_likeness",
+        "music_settings"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00075",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 134,
+      "marker_positions": [
+        69,
+        86,
+        102,
+        118
+      ],
+      "candidate_ids": [
+        "music_dislikeness",
+        "music_likeness",
+        "music_settings",
+        "music_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00114",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 119,
+      "marker_positions": [
+        54,
+        70,
+        87,
+        103
+      ],
+      "candidate_ids": [
+        "music_settings",
+        "music_dislikeness",
+        "music_likeness",
+        "music_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00065",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 132,
+      "marker_positions": [
+        63,
+        82,
+        96,
+        114
+      ],
+      "candidate_ids": [
+        "qa_currency",
+        "news_query",
+        "qa_definition",
+        "qa_factoid"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-03692",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 145,
+      "marker_positions": [
+        64,
+        80,
+        96,
+        109,
+        124
+      ],
+      "candidate_ids": [
+        "play_audiobook",
+        "play_game",
+        "play_music",
+        "play_podcasts",
+        "repeat_book_sentence"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00034",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 122,
+      "marker_positions": [
+        62,
+        75,
+        90,
+        106
+      ],
+      "candidate_ids": [
+        "play_music",
+        "play_audiobook",
+        "play_game",
+        "play_podcasts"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-03891",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 134,
+      "marker_positions": [
+        53,
+        68,
+        83,
+        96,
+        112
+      ],
+      "candidate_ids": [
+        "play_audiobook",
+        "play_podcasts",
+        "play_music",
+        "play_game",
+        "go_back"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00912",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 116,
+      "marker_positions": [
+        56,
+        71,
+        87,
+        102
+      ],
+      "candidate_ids": [
+        "play_audiobook",
+        "play_game",
+        "play_radio",
+        "play_music"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-13053",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 137,
+      "marker_positions": [
+        66,
+        84,
+        101,
+        117
+      ],
+      "candidate_ids": [
+        "qa_definition",
+        "qa_factoid",
+        "qa_maths",
+        "qa_currency"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-06709",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 126,
+      "marker_positions": [
+        55,
+        73,
+        92,
+        109
+      ],
+      "candidate_ids": [
+        "qa_definition",
+        "qa_currency",
+        "qa_factoid",
+        "qa_maths"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-01801",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 130,
+      "marker_positions": [
+        59,
+        78,
+        95,
+        113
+      ],
+      "candidate_ids": [
+        "qa_currency",
+        "qa_factoid",
+        "qa_definition",
+        "qa_maths"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-12936",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 126,
+      "marker_positions": [
+        55,
+        74,
+        92,
+        108
+      ],
+      "candidate_ids": [
+        "qa_currency",
+        "qa_definition",
+        "qa_maths",
+        "qa_factoid"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00681",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 130,
+      "marker_positions": [
+        58,
+        77,
+        95,
+        112
+      ],
+      "candidate_ids": [
+        "qa_currency",
+        "qa_definition",
+        "qa_factoid",
+        "qa_stock"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-01208",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 116,
+      "marker_positions": [
+        58,
+        72,
+        86,
+        100
+      ],
+      "candidate_ids": [
+        "recommendation_events",
+        "recommendation_locations",
+        "recommendation_movies",
+        "play_audiobook"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-05496",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 114,
+      "marker_positions": [
+        56,
+        70,
+        84,
+        98
+      ],
+      "candidate_ids": [
+        "recommendation_events",
+        "recommendation_locations",
+        "recommendation_movies",
+        "play_audiobook"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-12995",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 160,
+      "marker_positions": [
+        75,
+        93,
+        109,
+        126,
+        143
+      ],
+      "candidate_ids": [
+        "social_query",
+        "email_addcontact",
+        "social_message",
+        "social_post",
+        "email_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-04333",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 127,
+      "marker_positions": [
+        59,
+        77,
+        94,
+        110
+      ],
+      "candidate_ids": [
+        "social_query",
+        "social_post",
+        "email_addcontact",
+        "email_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00087",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 121,
+      "marker_positions": [
+        57,
+        76,
+        91,
+        106
+      ],
+      "candidate_ids": [
+        "takeaway_query",
+        "takeaway_order",
+        "cooking_query",
+        "cooking_recipe"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00051",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 125,
+      "marker_positions": [
+        61,
+        76,
+        91,
+        110
+      ],
+      "candidate_ids": [
+        "takeaway_order",
+        "cooking_query",
+        "takeaway_query",
+        "cooking_recipe"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-12120",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 128,
+      "marker_positions": [
+        64,
+        80,
+        96,
+        113
+      ],
+      "candidate_ids": [
+        "transport_taxi",
+        "transport_query",
+        "transport_ticket",
+        "transport_traffic"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-06453",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 125,
+      "marker_positions": [
+        61,
+        77,
+        94,
+        110
+      ],
+      "candidate_ids": [
+        "transport_query",
+        "transport_ticket",
+        "transport_taxi",
+        "transport_traffic"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-06546",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 123,
+      "marker_positions": [
+        59,
+        75,
+        91,
+        105
+      ],
+      "candidate_ids": [
+        "transport_query",
+        "transport_taxi",
+        "transport_traffic",
+        "transport_ticket"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00096",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 122,
+      "marker_positions": [
+        54,
+        74,
+        92,
+        106
+      ],
+      "candidate_ids": [
+        "datetime_convert",
+        "datetime_query",
+        "news_query",
+        "weather_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00203",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 118,
+      "marker_positions": [
+        57,
+        71,
+        87,
+        103
+      ],
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_remove",
+        "alarm_set",
+        "calendar_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00202",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 115,
+      "marker_positions": [
+        54,
+        68,
+        84,
+        100
+      ],
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_remove",
+        "alarm_set",
+        "calendar_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00330",
+      "language": "en",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 119,
+      "marker_positions": [
+        53,
+        68,
+        86,
+        102
+      ],
+      "candidate_ids": [
+        "audio_volume_mute",
+        "audio_volume_other",
+        "audio_volume_down",
+        "audio_volume_up"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00934",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 444,
+      "marker_positions": [
+        272,
+        308,
+        351,
+        408
+      ],
+      "candidate_ids": [
+        "audio_volume_down",
+        "audio_volume_mute",
+        "audio_volume_other",
+        "audio_volume_up"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-01137",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 476,
+      "marker_positions": [
+        294,
+        339,
+        385,
+        430
+      ],
+      "candidate_ids": [
+        "calendar_query",
+        "calendar_remove",
+        "calendar_set",
+        "alarm_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-06715",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 480,
+      "marker_positions": [
+        298,
+        343,
+        389,
+        434
+      ],
+      "candidate_ids": [
+        "calendar_query",
+        "calendar_remove",
+        "calendar_set",
+        "alarm_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-03601",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 861,
+      "marker_positions": [
+        633,
+        679,
+        724,
+        769,
+        814
+      ],
+      "candidate_ids": [
+        "reminder_set",
+        "calendar_set",
+        "alarm_query",
+        "calendar_query",
+        "calendar_remove"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-13479",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 474,
+      "marker_positions": [
+        284,
+        318,
+        370,
+        429
+      ],
+      "candidate_ids": [
+        "cooking_recipe",
+        "qa_currency",
+        "qa_definition",
+        "cooking_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-09913",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 890,
+      "marker_positions": [
+        700,
+        744,
+        803,
+        837
+      ],
+      "candidate_ids": [
+        "cooking_query",
+        "qa_definition",
+        "cooking_recipe",
+        "qa_currency"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00394",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 544,
+      "marker_positions": [
+        328,
+        380,
+        445,
+        490
+      ],
+      "candidate_ids": [
+        "datetime_query",
+        "datetime_convert",
+        "alarm_query",
+        "alarm_remove"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00195",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 460,
+      "marker_positions": [
+        244,
+        309,
+        354,
+        406
+      ],
+      "candidate_ids": [
+        "datetime_convert",
+        "alarm_query",
+        "datetime_query",
+        "alarm_remove"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-15745",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 524,
+      "marker_positions": [
+        330,
+        379,
+        439,
+        474
+      ],
+      "candidate_ids": [
+        "email_query",
+        "email_querycontact",
+        "email_sendemail",
+        "email_addcontact"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-13220",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 483,
+      "marker_positions": [
+        289,
+        338,
+        387,
+        447
+      ],
+      "candidate_ids": [
+        "email_query",
+        "email_addcontact",
+        "email_querycontact",
+        "email_sendemail"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-15690",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 498,
+      "marker_positions": [
+        304,
+        353,
+        413,
+        462
+      ],
+      "candidate_ids": [
+        "email_addcontact",
+        "email_querycontact",
+        "email_query",
+        "email_sendemail"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-07177",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 618,
+      "marker_positions": [
+        424,
+        473,
+        522,
+        557
+      ],
+      "candidate_ids": [
+        "email_addcontact",
+        "email_query",
+        "email_sendemail",
+        "email_querycontact"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00166",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 437,
+      "marker_positions": [
+        244,
+        287,
+        349,
+        390
+      ],
+      "candidate_ids": [
+        "general_joke",
+        "general_quirky",
+        "play_audiobook",
+        "general_greet"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00120",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 444,
+      "marker_positions": [
+        251,
+        294,
+        340,
+        402
+      ],
+      "candidate_ids": [
+        "general_joke",
+        "general_greet",
+        "general_quirky",
+        "play_audiobook"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00037",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 548,
+      "marker_positions": [
+        296,
+        355,
+        401,
+        444,
+        506
+      ],
+      "candidate_ids": [
+        "device_status_check",
+        "general_greet",
+        "general_joke",
+        "general_quirky",
+        "play_audiobook"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00028",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 467,
+      "marker_positions": [
+        261,
+        306,
+        378,
+        423
+      ],
+      "candidate_ids": [
+        "iot_coffee",
+        "iot_hue_lightchange",
+        "iot_cleaning",
+        "iot_hue_lightdim"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00163",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 474,
+      "marker_positions": [
+        268,
+        313,
+        385,
+        428
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_hue_lightchange",
+        "iot_hue_lightdim",
+        "iot_coffee"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00010",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 495,
+      "marker_positions": [
+        289,
+        361,
+        406,
+        451
+      ],
+      "candidate_ids": [
+        "iot_hue_lightchange",
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightdim"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00022",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 485,
+      "marker_positions": [
+        279,
+        324,
+        367,
+        412
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_hue_lightdim",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00082",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 477,
+      "marker_positions": [
+        272,
+        314,
+        359,
+        404
+      ],
+      "candidate_ids": [
+        "iot_hue_lightup",
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00677",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 520,
+      "marker_positions": [
+        309,
+        354,
+        402,
+        447
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_wemo_off",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00191",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 468,
+      "marker_positions": [
+        256,
+        301,
+        346,
+        395
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_wemo_on",
+        "iot_hue_lightchange"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-10436",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 475,
+      "marker_positions": [
+        267,
+        301,
+        365,
+        410
+      ],
+      "candidate_ids": [
+        "lists_query",
+        "lists_remove",
+        "calendar_query",
+        "lists_createoradd"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-10425",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 511,
+      "marker_positions": [
+        303,
+        337,
+        401,
+        465
+      ],
+      "candidate_ids": [
+        "lists_query",
+        "lists_createoradd",
+        "lists_remove",
+        "calendar_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-07960",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 498,
+      "marker_positions": [
+        290,
+        354,
+        418,
+        452
+      ],
+      "candidate_ids": [
+        "lists_createoradd",
+        "lists_remove",
+        "lists_query",
+        "calendar_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00949",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 494,
+      "marker_positions": [
+        278,
+        331,
+        376,
+        436
+      ],
+      "candidate_ids": [
+        "music_likeness",
+        "music_query",
+        "music_dislikeness",
+        "music_settings"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00070",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 519,
+      "marker_positions": [
+        303,
+        363,
+        408,
+        465
+      ],
+      "candidate_ids": [
+        "music_dislikeness",
+        "music_query",
+        "music_settings",
+        "music_likeness"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00076",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 522,
+      "marker_positions": [
+        306,
+        351,
+        411,
+        464
+      ],
+      "candidate_ids": [
+        "music_query",
+        "music_dislikeness",
+        "music_likeness",
+        "music_settings"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00153",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 483,
+      "marker_positions": [
+        267,
+        327,
+        384,
+        437
+      ],
+      "candidate_ids": [
+        "music_dislikeness",
+        "music_settings",
+        "music_likeness",
+        "music_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00104",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 479,
+      "marker_positions": [
+        289,
+        341,
+        400,
+        433
+      ],
+      "candidate_ids": [
+        "qa_currency",
+        "qa_definition",
+        "news_query",
+        "qa_factoid"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-09665",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 486,
+      "marker_positions": [
+        286,
+        320,
+        366,
+        399
+      ],
+      "candidate_ids": [
+        "play_music",
+        "play_game",
+        "play_podcasts",
+        "play_audiobook"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-10246",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 428,
+      "marker_positions": [
+        273,
+        319,
+        360,
+        394
+      ],
+      "candidate_ids": [
+        "play_game",
+        "play_audiobook",
+        "play_music",
+        "play_podcasts"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00035",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 446,
+      "marker_positions": [
+        291,
+        332,
+        366,
+        412
+      ],
+      "candidate_ids": [
+        "play_audiobook",
+        "play_music",
+        "play_game",
+        "play_podcasts"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-09416",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 460,
+      "marker_positions": [
+        305,
+        346,
+        392,
+        425
+      ],
+      "candidate_ids": [
+        "play_audiobook",
+        "play_game",
+        "play_podcasts",
+        "play_music"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00913",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 538,
+      "marker_positions": [
+        337,
+        370,
+        411,
+        457,
+        503
+      ],
+      "candidate_ids": [
+        "play_radio",
+        "play_audiobook",
+        "open_object",
+        "play_game",
+        "play_music"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-13054",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 510,
+      "marker_positions": [
+        297,
+        349,
+        408,
+        453
+      ],
+      "candidate_ids": [
+        "qa_currency",
+        "qa_definition",
+        "qa_factoid",
+        "qa_maths"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-04969",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 514,
+      "marker_positions": [
+        301,
+        353,
+        412,
+        457
+      ],
+      "candidate_ids": [
+        "qa_currency",
+        "qa_definition",
+        "qa_factoid",
+        "qa_maths"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-12938",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 463,
+      "marker_positions": [
+        250,
+        302,
+        361,
+        406
+      ],
+      "candidate_ids": [
+        "qa_currency",
+        "qa_definition",
+        "qa_factoid",
+        "qa_maths"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-02996",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 1037,
+      "marker_positions": [
+        537,
+        596,
+        714,
+        791,
+        843
+      ],
+      "candidate_ids": [
+        "qa_definition",
+        "qa_stock",
+        "qa_stock_news",
+        "qa_currency",
+        "qa_factoid"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-05551",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 486,
+      "marker_positions": [
+        306,
+        352,
+        398,
+        444
+      ],
+      "candidate_ids": [
+        "recommendation_events",
+        "recommendation_movies",
+        "recommendation_locations",
+        "play_audiobook"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-06362",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 458,
+      "marker_positions": [
+        278,
+        324,
+        370,
+        411
+      ],
+      "candidate_ids": [
+        "recommendation_events",
+        "recommendation_locations",
+        "play_audiobook",
+        "recommendation_movies"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-15142",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 512,
+      "marker_positions": [
+        302,
+        358,
+        413,
+        462
+      ],
+      "candidate_ids": [
+        "social_post",
+        "social_query",
+        "email_addcontact",
+        "email_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-13743",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 493,
+      "marker_positions": [
+        283,
+        339,
+        394,
+        443
+      ],
+      "candidate_ids": [
+        "social_post",
+        "social_query",
+        "email_addcontact",
+        "email_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00088",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 470,
+      "marker_positions": [
+        280,
+        356,
+        400,
+        435
+      ],
+      "candidate_ids": [
+        "takeaway_query",
+        "cooking_query",
+        "takeaway_order",
+        "cooking_recipe"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00052",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 808,
+      "marker_positions": [
+        506,
+        578,
+        662,
+        738,
+        773
+      ],
+      "candidate_ids": [
+        "cooking_query",
+        "takeaway_rating_query",
+        "takeaway_query",
+        "takeaway_order",
+        "cooking_recipe"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-12122",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 547,
+      "marker_positions": [
+        346,
+        402,
+        457,
+        514
+      ],
+      "candidate_ids": [
+        "transport_query",
+        "transport_taxi",
+        "transport_ticket",
+        "transport_traffic"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-06656",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 467,
+      "marker_positions": [
+        266,
+        322,
+        377,
+        434
+      ],
+      "candidate_ids": [
+        "transport_query",
+        "transport_taxi",
+        "transport_ticket",
+        "transport_traffic"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00097",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 447,
+      "marker_positions": [
+        262,
+        296,
+        361,
+        413
+      ],
+      "candidate_ids": [
+        "weather_query",
+        "datetime_convert",
+        "datetime_query",
+        "news_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00204",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 473,
+      "marker_positions": [
+        278,
+        331,
+        376,
+        427
+      ],
+      "candidate_ids": [
+        "alarm_remove",
+        "alarm_query",
+        "alarm_set",
+        "calendar_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00561",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 487,
+      "marker_positions": [
+        292,
+        337,
+        388,
+        441
+      ],
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_set",
+        "alarm_remove",
+        "calendar_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00093",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 475,
+      "marker_positions": [
+        280,
+        325,
+        378,
+        423
+      ],
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_remove",
+        "calendar_query",
+        "alarm_set"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00599",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 427,
+      "marker_positions": [
+        255,
+        291,
+        334,
+        391
+      ],
+      "candidate_ids": [
+        "audio_volume_down",
+        "audio_volume_mute",
+        "audio_volume_other",
+        "audio_volume_up"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00006",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 493,
+      "marker_positions": [
+        268,
+        321,
+        356,
+        392,
+        435
+      ],
+      "candidate_ids": [
+        "audio_pause",
+        "audio_volume_up",
+        "audio_volume_down",
+        "audio_volume_mute",
+        "audio_volume_other"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-01049",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 671,
+      "marker_positions": [
+        308,
+        343,
+        379,
+        472,
+        627
+      ],
+      "candidate_ids": [
+        "audio_volume_up",
+        "audio_volume_down",
+        "audio_settings_general",
+        "audio_volume_other",
+        "audio_volume_mute"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00458",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 439,
+      "marker_positions": [
+        267,
+        303,
+        346,
+        403
+      ],
+      "candidate_ids": [
+        "audio_volume_down",
+        "audio_volume_mute",
+        "audio_volume_other",
+        "audio_volume_up"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-01274",
+      "language": "zh",
+      "split": "train",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 513,
+      "marker_positions": [
+        331,
+        376,
+        422,
+        467
+      ],
+      "candidate_ids": [
+        "calendar_query",
+        "calendar_remove",
+        "calendar_set",
+        "alarm_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00237",
+      "language": "en",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 123,
+      "marker_positions": [
+        62,
+        76,
+        92,
+        108
+      ],
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_remove",
+        "alarm_set",
+        "calendar_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00562",
+      "language": "en",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 119,
+      "marker_positions": [
+        58,
+        72,
+        88,
+        104
+      ],
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_remove",
+        "alarm_set",
+        "calendar_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00173",
+      "language": "en",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 118,
+      "marker_positions": [
+        57,
+        71,
+        87,
+        103
+      ],
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_remove",
+        "alarm_set",
+        "calendar_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00115",
+      "language": "en",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 167,
+      "marker_positions": [
+        75,
+        90,
+        120,
+        143
+      ],
+      "candidate_ids": [
+        "audio_volume_mute",
+        "audio_volume_other",
+        "audio_volume_down",
+        "audio_volume_up"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00516",
+      "language": "en",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 123,
+      "marker_positions": [
+        57,
+        72,
+        88,
+        106
+      ],
+      "candidate_ids": [
+        "audio_volume_mute",
+        "audio_volume_down",
+        "audio_volume_other",
+        "audio_volume_up"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00188",
+      "language": "en",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 119,
+      "marker_positions": [
+        53,
+        69,
+        85,
+        100
+      ],
+      "candidate_ids": [
+        "audio_volume_down",
+        "audio_volume_up",
+        "audio_volume_mute",
+        "audio_volume_other"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-02042",
+      "language": "en",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 116,
+      "marker_positions": [
+        57,
+        72,
+        87,
+        101
+      ],
+      "candidate_ids": [
+        "calendar_remove",
+        "calendar_set",
+        "calendar_query",
+        "alarm_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-06734",
+      "language": "en",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 115,
+      "marker_positions": [
+        56,
+        70,
+        85,
+        99
+      ],
+      "candidate_ids": [
+        "calendar_query",
+        "calendar_set",
+        "alarm_query",
+        "calendar_remove"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-06540",
+      "language": "en",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 119,
+      "marker_positions": [
+        60,
+        75,
+        89,
+        104
+      ],
+      "candidate_ids": [
+        "calendar_set",
+        "calendar_query",
+        "calendar_remove",
+        "alarm_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-01209",
+      "language": "en",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 127,
+      "marker_positions": [
+        60,
+        75,
+        94,
+        108
+      ],
+      "candidate_ids": [
+        "cooking_query",
+        "qa_currency",
+        "cooking_recipe",
+        "qa_definition"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00676",
+      "language": "en",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 140,
+      "marker_positions": [
+        54,
+        74,
+        88,
+        105,
+        121
+      ],
+      "candidate_ids": [
+        "datetime_convert",
+        "alarm_query",
+        "datetime_set_timezone",
+        "alarm_remove",
+        "datetime_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00127",
+      "language": "en",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 131,
+      "marker_positions": [
+        62,
+        80,
+        100,
+        114
+      ],
+      "candidate_ids": [
+        "datetime_query",
+        "datetime_convert",
+        "alarm_query",
+        "alarm_remove"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-11061",
+      "language": "en",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 124,
+      "marker_positions": [
+        58,
+        74,
+        90,
+        107
+      ],
+      "candidate_ids": [
+        "email_query",
+        "email_addcontact",
+        "email_querycontact",
+        "email_sendemail"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-15753",
+      "language": "en",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 129,
+      "marker_positions": [
+        63,
+        79,
+        96,
+        112
+      ],
+      "candidate_ids": [
+        "email_addcontact",
+        "email_querycontact",
+        "email_query",
+        "email_sendemail"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-15867",
+      "language": "en",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 126,
+      "marker_positions": [
+        60,
+        76,
+        92,
+        108
+      ],
+      "candidate_ids": [
+        "email_addcontact",
+        "email_query",
+        "email_sendemail",
+        "email_querycontact"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-08101",
+      "language": "zh",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 534,
+      "marker_positions": [
+        340,
+        389,
+        424,
+        473
+      ],
+      "candidate_ids": [
+        "email_addcontact",
+        "email_sendemail",
+        "email_query",
+        "email_querycontact"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00638",
+      "language": "zh",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 493,
+      "marker_positions": [
+        300,
+        346,
+        408,
+        449
+      ],
+      "candidate_ids": [
+        "general_greet",
+        "general_quirky",
+        "play_audiobook",
+        "general_joke"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00042",
+      "language": "zh",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 603,
+      "marker_positions": [
+        302,
+        345,
+        386,
+        487,
+        533
+      ],
+      "candidate_ids": [
+        "general_joke",
+        "play_audiobook",
+        "general_quirky",
+        "general_greet",
+        "memory_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00026",
+      "language": "zh",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 461,
+      "marker_positions": [
+        255,
+        300,
+        345,
+        417
+      ],
+      "candidate_ids": [
+        "iot_coffee",
+        "iot_cleaning",
+        "iot_hue_lightchange",
+        "iot_hue_lightdim"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00710",
+      "language": "zh",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 462,
+      "marker_positions": [
+        256,
+        301,
+        373,
+        418
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_hue_lightchange",
+        "iot_coffee",
+        "iot_hue_lightdim"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00415",
+      "language": "zh",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 510,
+      "marker_positions": [
+        304,
+        349,
+        394,
+        437
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightdim",
+        "iot_hue_lightchange"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00017",
+      "language": "zh",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 485,
+      "marker_positions": [
+        279,
+        322,
+        367,
+        412
+      ],
+      "candidate_ids": [
+        "iot_hue_lightdim",
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00011",
+      "language": "zh",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 466,
+      "marker_positions": [
+        261,
+        306,
+        348,
+        393
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_hue_lightoff",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00697",
+      "language": "zh",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 592,
+      "marker_positions": [
+        272,
+        314,
+        359,
+        509,
+        554
+      ],
+      "candidate_ids": [
+        "iot_hue_lightup",
+        "iot_coffee",
+        "iot_hue_lightchange",
+        "iot_cleaning",
+        "iot_light_on"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00388",
+      "language": "zh",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 477,
+      "marker_positions": [
+        266,
+        311,
+        356,
+        428
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightchange",
+        "iot_wemo_off"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00678",
+      "language": "zh",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 508,
+      "marker_positions": [
+        296,
+        345,
+        390,
+        435
+      ],
+      "candidate_ids": [
+        "iot_wemo_on",
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-10468",
+      "language": "zh",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 497,
+      "marker_positions": [
+        289,
+        323,
+        387,
+        451
+      ],
+      "candidate_ids": [
+        "lists_query",
+        "lists_createoradd",
+        "lists_remove",
+        "calendar_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-10424",
+      "language": "zh",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 523,
+      "marker_positions": [
+        315,
+        379,
+        443,
+        477
+      ],
+      "candidate_ids": [
+        "lists_createoradd",
+        "lists_remove",
+        "lists_query",
+        "calendar_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-10449",
+      "language": "zh",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 652,
+      "marker_positions": [
+        397,
+        431,
+        495,
+        542,
+        587
+      ],
+      "candidate_ids": [
+        "lists_query",
+        "lists_createoradd",
+        "travel_cancel",
+        "calendar_query",
+        "lists_remove"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-01179",
+      "language": "zh",
+      "split": "development",
+      "type": "choice",
+      "accepted": true,
+      "token_count": 910,
+      "marker_positions": [
+        643,
+        751,
+        811,
+        864
+      ],
+      "candidate_ids": [
+        "music_settings",
+        "music_dislikeness",
+        "music_likeness",
+        "music_query"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-000",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 342,
+      "marker_positions": [
+        301,
+        321
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-001",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 276,
+      "marker_positions": [
+        235,
+        255
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-002",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 173,
+      "marker_positions": [
+        132,
+        152
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-003",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 203,
+      "marker_positions": [
+        162,
+        182
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-004",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 304,
+      "marker_positions": [
+        263,
+        283
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-005",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 199,
+      "marker_positions": [
+        158,
+        178
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-006",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 225,
+      "marker_positions": [
+        184,
+        204
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-007",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 220,
+      "marker_positions": [
+        179,
+        199
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-009",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 308,
+      "marker_positions": [
+        267,
+        287
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-010",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 253,
+      "marker_positions": [
+        212,
+        232
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-011",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 265,
+      "marker_positions": [
+        224,
+        244
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-013",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 145,
+      "marker_positions": [
+        104,
+        124
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-014",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 290,
+      "marker_positions": [
+        249,
+        269
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-015",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 254,
+      "marker_positions": [
+        213,
+        233
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-016",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 279,
+      "marker_positions": [
+        238,
+        258
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-017",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 233,
+      "marker_positions": [
+        192,
+        212
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-018",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 225,
+      "marker_positions": [
+        184,
+        204
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-019",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 315,
+      "marker_positions": [
+        274,
+        294
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-021",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 235,
+      "marker_positions": [
+        194,
+        214
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-022",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 175,
+      "marker_positions": [
+        134,
+        154
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-023",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 164,
+      "marker_positions": [
+        123,
+        143
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-024",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 247,
+      "marker_positions": [
+        206,
+        226
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-025",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 272,
+      "marker_positions": [
+        231,
+        251
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-026",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 315,
+      "marker_positions": [
+        274,
+        294
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-027",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 221,
+      "marker_positions": [
+        180,
+        200
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-028",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 171,
+      "marker_positions": [
+        130,
+        150
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-029",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 197,
+      "marker_positions": [
+        156,
+        176
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-030",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 194,
+      "marker_positions": [
+        153,
+        173
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-031",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 326,
+      "marker_positions": [
+        285,
+        305
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-032",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 214,
+      "marker_positions": [
+        173,
+        193
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-034",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 344,
+      "marker_positions": [
+        303,
+        323
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-035",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 161,
+      "marker_positions": [
+        120,
+        140
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-036",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 323,
+      "marker_positions": [
+        282,
+        302
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-037",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 177,
+      "marker_positions": [
+        136,
+        156
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-038",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 266,
+      "marker_positions": [
+        225,
+        245
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-041",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 283,
+      "marker_positions": [
+        242,
+        262
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-042",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 196,
+      "marker_positions": [
+        155,
+        175
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-043",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 265,
+      "marker_positions": [
+        224,
+        244
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-044",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 274,
+      "marker_positions": [
+        233,
+        253
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-045",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 213,
+      "marker_positions": [
+        172,
+        192
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-050",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 292,
+      "marker_positions": [
+        251,
+        271
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-051",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 260,
+      "marker_positions": [
+        219,
+        239
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-052",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 499,
+      "marker_positions": [
+        458,
+        478
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-053",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 422,
+      "marker_positions": [
+        381,
+        401
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-056",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 152,
+      "marker_positions": [
+        111,
+        131
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-060",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 160,
+      "marker_positions": [
+        119,
+        139
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-072",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 170,
+      "marker_positions": [
+        129,
+        149
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-075",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 442,
+      "marker_positions": [
+        401,
+        421
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-077",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 246,
+      "marker_positions": [
+        205,
+        225
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-082",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 355,
+      "marker_positions": [
+        314,
+        334
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-088",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 240,
+      "marker_positions": [
+        199,
+        219
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-090",
+      "language": "en",
+      "split": "train",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 282,
+      "marker_positions": [
+        241,
+        261
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-000",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 402,
+      "marker_positions": [
+        361,
+        381
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-001",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 385,
+      "marker_positions": [
+        344,
+        364
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-002",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 174,
+      "marker_positions": [
+        133,
+        153
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-003",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 231,
+      "marker_positions": [
+        190,
+        210
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-004",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 216,
+      "marker_positions": [
+        175,
+        195
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-005",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 239,
+      "marker_positions": [
+        198,
+        218
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-006",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 261,
+      "marker_positions": [
+        220,
+        240
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-007",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 247,
+      "marker_positions": [
+        206,
+        226
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-009",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 229,
+      "marker_positions": [
+        188,
+        208
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-010",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 302,
+      "marker_positions": [
+        261,
+        281
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-012",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 229,
+      "marker_positions": [
+        188,
+        208
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-014",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 272,
+      "marker_positions": [
+        231,
+        251
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-015",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 211,
+      "marker_positions": [
+        170,
+        190
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-016",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 268,
+      "marker_positions": [
+        227,
+        247
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-017",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 175,
+      "marker_positions": [
+        134,
+        154
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-018",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 302,
+      "marker_positions": [
+        261,
+        281
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-020",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 355,
+      "marker_positions": [
+        314,
+        334
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-027",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 339,
+      "marker_positions": [
+        298,
+        318
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-032",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 202,
+      "marker_positions": [
+        161,
+        181
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-036",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 243,
+      "marker_positions": [
+        202,
+        222
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-041",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 265,
+      "marker_positions": [
+        224,
+        244
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-054",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 186,
+      "marker_positions": [
+        145,
+        165
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-060",
+      "language": "en",
+      "split": "development",
+      "type": "boolean",
+      "accepted": true,
+      "token_count": 275,
+      "marker_positions": [
+        234,
+        254
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure_code": null,
+      "failure": null
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+GPU-e786e313-bc92-a63d-a833-f4e48cbafb66, 00000000:65:00.0, 32824, 15685
+gpu_query_exit=0
+[N/A], [N/A], [N/A]
+gpu_apps_exit=0
+   3055    2990 Thu Aug 13 09:37:13 2026 /app/llama-server --model /models/Hy-MT2-30B-A3B-Q8_0.gguf --alias hy-mt2-30b-a3b-q8-0 --host 127.0.0.1 --port 8003 --ctx-size 4096 --n-predict 4096 --n-gpu-layers all --parallel 1 --batch-size 512 --ubatch-size 256 --flash-attn on --jinja --temperature 0.7 --top-k -1 --top-p 1.0 --repeat-penalty 1.0
+   3068    2982 Thu Aug 13 09:37:13 2026 /usr/bin/python /usr/local/bin/uvicorn app:app --host 127.0.0.1 --port 8001 --workers 1 --no-access-log
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_server.c:259
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: status == NV_OK @ nv_gpu_ops.c:10347
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: status == NV_OK @ nv_gpu_ops.c:10353
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_client.c:844
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_server.c:259
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: status == NV_OK @ nv_gpu_ops.c:10332
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_client.c:844
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_server.c:259
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: status == NV_OK @ nv_gpu_ops.c:10341
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_client.c:844
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_server.c:259
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: status == NV_OK @ nv_gpu_ops.c:10347
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: status == NV_OK @ nv_gpu_ops.c:10353
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_client.c:844
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_server.c:259
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: status == NV_OK @ nv_gpu_ops.c:10332
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_client.c:844
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_server.c:259
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: status == NV_OK @ nv_gpu_ops.c:10341
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_client.c:844
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_server.c:259
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: status == NV_OK @ nv_gpu_ops.c:10347
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: status == NV_OK @ nv_gpu_ops.c:10353
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ vaspace_api.c:573
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_client.c:844
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_server.c:259
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_server.c:1375
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_client.c:844
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_server.c:259
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_server.c:1375
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_client.c:844
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_server.c:259
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_server.c:1375
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_client.c:844
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_server.c:259
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_server.c:1375
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_client.c:844
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_server.c:259
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_server.c:1375
+Oct 09 10:10:30 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: (status == NV_OK) || (status == NV_ERR_GPU_IN_FULLCHIP_RESET) @ rs_client.c:844
+status	payload_failed
+payload_exit	1
+elapsed_ms	178730
+cleanup_elapsed_ms	3980
+cleanup_deadline_ms	4926793450
+cleanup_incomplete	0
+final_check_complete	1
+verified_live_count	0
+unknown_count	0
+unchecked_count	0
+cleanup_budget_exhausted	0
+tracked_identities	2
+token	sezika-3116233-13791-21008
+supervisor_pid	3116233
+fixture	none
+clock_resolution_ms	10
+clock_tolerance_ms	20
+limitation	cooperative_checks_only_blocking_kernel_io_and_short_intermediates_not_guaranteed
+control_unaffected	0
+control_owner_closed	0
+seam_mismatch	na
+seam_unreadable	na
+work_pause_reason	na
+work_pause_read_rc	na
+work_pause_failed_ms	na
+cleanup_deferred_proofs	0
+experiment: expanded GPU feature export 195/215 boolq-validation-row-002
+experiment: expanded GPU feature export 196/215 boolq-validation-row-003
+experiment: expanded GPU feature export 197/215 boolq-validation-row-004
+experiment: expanded GPU feature export 198/215 boolq-validation-row-005
+experiment: expanded GPU feature export 199/215 boolq-validation-row-006
+experiment: expanded GPU feature export 200/215 boolq-validation-row-007
+experiment: expanded GPU feature export 201/215 boolq-validation-row-009
+experiment: expanded GPU feature export 202/215 boolq-validation-row-010
+experiment: expanded GPU feature export 203/215 boolq-validation-row-012
+experiment: expanded GPU feature export 204/215 boolq-validation-row-014
+experiment: expanded GPU feature export 205/215 boolq-validation-row-015
+experiment: expanded GPU feature export 206/215 boolq-validation-row-016
+experiment: expanded GPU feature export 207/215 boolq-validation-row-017
+experiment: expanded GPU feature export 208/215 boolq-validation-row-018
+experiment: expanded GPU feature export 209/215 boolq-validation-row-020
+experiment: expanded GPU feature export 210/215 boolq-validation-row-027
+experiment: expanded GPU feature export 211/215 boolq-validation-row-032
+experiment: Sezika.Cuda.CudaException: CUDA resource release 'cuMemFree' failed with CUresult 999.
+   at Sezika.Cuda.CudaDevice.Dispose() in D:\source\Sezika\src\Sezika.Cuda\CudaDevice.cs:line 569
+   at Sezika.ExperimentTrainer.ExperimentOperations.ValidateExpandedCore(ExpansionOptions options, ExperimentData data, ExperimentBudget budget, ExperimentOwnedFile output) in D:\source\Sezika\tools\Sezika.ExperimentTrainer\ExpansionEvaluation.cs:line 260
+   at Sezika.ExperimentTrainer.ExperimentOperations.ValidateExpanded(ExpansionOptions options, ExperimentData data, ExperimentBudget budget) in D:\source\Sezika\tools\Sezika.ExperimentTrainer\ExpansionEvaluation.cs:line 222
+--- End of stack trace from previous location ---
+   at Sezika.ExperimentTrainer.ExperimentOperations.ValidateExpanded(ExpansionOptions options, ExperimentData data, ExperimentBudget budget) in D:\source\Sezika\tools\Sezika.ExperimentTrainer\ExpansionEvaluation.cs:line 226
+   at Sezika.ExperimentTrainer.ExperimentOperations.RunExpanded(String[] arguments, CancellationToken token) in D:\source\Sezika\tools\Sezika.ExperimentTrainer\ExpansionEvaluation.cs:line 55
+   at Program.<Main>$(String[] args) in D:\source\Sezika\tools\Sezika.ExperimentTrainer\Program.cs:line 38
+validation_output_absent=true
+regression_stage_absent=true
+diagnosis_no_signals_or_gpu_work elapsed_seconds=0

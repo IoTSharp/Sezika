@@ -1,0 +1,8 @@
+PASS: statx fixed native ABI size and identity offsets
+PASS: Linux identity survives real writes and matches handle/path
+PASS: Linux atomic head publication and disk roundtrip
+PASS: Linux cancellation deletes only its verified partial prefix
+PASS: identical-byte replacement has a different inode identity
+PASS: Linux identical-byte replacement is retained and never published or deleted
+linux_publication_cleanup_returned=true elapsed_seconds=0.0380413
+Linux publication checks passed: 6

@@ -1,0 +1,26 @@
+{
+  "Pid": 58948,
+  "Started": "2026-10-09T10:04:33.6067897Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 11916,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 11916,
+    "Started": "2026-10-09T18:04:26.30501+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/token-limit-20261009-8192/Apply-PublicationFix.ps1\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 25,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Windows\\System32\\tar.exe",
+  "Arguments": [
+    "-cf",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\publication-patch.tar",
+    "-C",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\publication-patch",
+    "."
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

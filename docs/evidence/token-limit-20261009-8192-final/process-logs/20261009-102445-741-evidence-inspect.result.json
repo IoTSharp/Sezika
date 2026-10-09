@@ -1,0 +1,71 @@
+{
+  "Status": "Succeeded",
+  "Pid": 71560,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 5.163,
+  "TimeoutSeconds": 75,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Archive-Evidence.ps1",
+    "-Mode",
+    "inspect"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T10:24:46.6473811Z",
+  "ParentPid": 21080,
+  "Launcher": {
+    "Pid": 21080,
+    "Started": "2026-10-09T18:24:45.151281+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'\n& (Join-Path $task 'Archive-Evidence.ps1') -Mode tiny\n& (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $task 'Archive-Evidence.ps1'),'-Mode','inspect') -TimeoutSeconds 75 -LogName evidence-inspect -CancelFile (Join-Path $task 'cancel.request')\n& (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $task 'Inspect-Closure.ps1')) -TimeoutSeconds 85 -LogName closure-supplement -CancelFile (Join-Path $task 'cancel.request')\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-102445-741-evidence-inspect.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-102445-741-evidence-inspect.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 1.6147638,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 71560,
+      "CreationDate": "2026-10-09T18:24:46.647381+08:00",
+      "Started": "2026-10-09T10:24:46.647381Z",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Archive-Evidence.ps1 -Mode inspect",
+      "ParentPid": 21080,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 60268,
+      "CreationDate": "2026-10-09T18:24:46.662402+08:00",
+      "Started": "2026-10-09T10:24:46.662402Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 71560,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 71560,
+          "CreationDate": "2026-10-09T18:24:46.647381+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Archive-Evidence.ps1 -Mode inspect",
+          "ParentPid": 21080
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

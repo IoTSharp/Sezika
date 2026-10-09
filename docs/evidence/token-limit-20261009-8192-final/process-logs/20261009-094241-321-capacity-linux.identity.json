@@ -1,0 +1,36 @@
+{
+  "Pid": 29888,
+  "Started": "2026-10-09T09:42:42.1727929Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\capacity-check\\CapacityCheck.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\capacity-linux",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 35348,
+  "ObservedParentPid": 35348,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 35348,
+    "Started": "2026-10-09T17:42:26.535071+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop';$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'; $p=Join-Path $task 'Publish-Linux.ps1';$s=[IO.File]::ReadAllText($p);$s=$s.Replace(\\\"'src/Sezika/IndependentMarkerHeadTraining.cs',\\\",\\\"'src/Sezika/ModernBert.cs','src/Sezika/IndependentModelContract.cs','src/Sezika.Cuda/CudaModernBertEncoder.cs','src/Sezika/IndependentDecisionRuntime.cs','src/Sezika/DiagnosticDecisionRuntime.cs','src/Sezika/QuantizedOps.cs','src/Sezika/IndependentMarkerHeadTraining.cs',\\\");[IO.File]::WriteAllText($p,$s,[Text.UTF8Encoding]::new($false)); & $p\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 180,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "publish",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\capacity-check\\CapacityCheck.csproj",
+    "-c",
+    "Release",
+    "-r",
+    "linux-x64",
+    "--self-contained",
+    "true",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false",
+    "-p:RuntimeFrameworkVersion=10.0.12",
+    "-o",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\capacity-linux"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

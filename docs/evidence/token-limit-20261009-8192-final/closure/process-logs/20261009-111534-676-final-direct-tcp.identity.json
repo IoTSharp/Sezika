@@ -1,0 +1,24 @@
+{
+  "Pid": 51680,
+  "Started": "2026-10-09T11:15:35.7935002Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Probe-Tcp-Final.ps1",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 67700,
+  "ObservedParentPid": 67700,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 67700,
+    "Started": "2026-10-09T19:15:34.137309+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'; & (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $task 'Probe-Tcp-Final.ps1')) -TimeoutSeconds 18 -LogName final-direct-tcp -ProcessQueryTimeoutSeconds 2 -CancelFile (Join-Path $task 'cancel.request')\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 18,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Probe-Tcp-Final.ps1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

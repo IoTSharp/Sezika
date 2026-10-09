@@ -1,0 +1,88 @@
+{
+  "Status": "Succeeded",
+  "Pid": 66432,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 5.274,
+  "TimeoutSeconds": 70,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\final-evidence.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T10:12:19.6166846Z",
+  "ParentPid": 14168,
+  "Launcher": {
+    "Pid": 14168,
+    "Started": "2026-10-09T18:12:13.129553+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/token-limit-20261009-8192/Run-Remote.ps1 -Phase cuda-xid -Seconds 35; & .artifacts/token-limit-20261009-8192/Run-Remote.ps1 -Phase final-evidence -Seconds 70\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-101218-805-remote-final-evidence.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-101218-805-remote-final-evidence.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 1.5281988,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 66432,
+      "CreationDate": "2026-10-09T18:12:19.616684+08:00",
+      "Started": "2026-10-09T10:12:19.616684Z",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\final-evidence.sh",
+      "ParentPid": 14168,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 22988,
+      "CreationDate": "2026-10-09T18:12:20.087712+08:00",
+      "Started": "2026-10-09T10:12:20.087712Z",
+      "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "ParentPid": 66432,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 66432,
+          "CreationDate": "2026-10-09T18:12:19.616684+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\final-evidence.sh",
+          "ParentPid": 14168
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 49920,
+      "CreationDate": "2026-10-09T18:12:19.629002+08:00",
+      "Started": "2026-10-09T10:12:19.629002Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 66432,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 66432,
+          "CreationDate": "2026-10-09T18:12:19.616684+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\final-evidence.sh",
+          "ParentPid": 14168
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

@@ -1,0 +1,90 @@
+{
+  "Status": "TimedOut",
+  "Pid": 45488,
+  "ExitCode": null,
+  "Error": "Process timeout (45s).",
+  "ElapsedSeconds": 51.683,
+  "TimeoutSeconds": 45,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192/Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192/remote/progress.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T10:09:08.7544485Z",
+  "ParentPid": 74732,
+  "Launcher": {
+    "Pid": 74732,
+    "Started": "2026-10-09T18:09:06.910481+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192';try{& $task/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',\\\"$task/Invoke-Ssh.ps1\\\",'-ScriptFile',\\\"$task/remote/progress.sh\\\") -TimeoutSeconds 45 -LogName 'progress-03' -ProcessQueryTimeoutSeconds 2 -CancelFile \\\"$task/cancel.request\\\"|Out-Null}catch{Write-Output $_.Exception.Message};$r=Get-ChildItem -LiteralPath $task/process-logs -File -Filter '*progress-03.result.json'|Select-Object -First 1|Get-Content -Raw|ConvertFrom-Json;Get-Content -LiteralPath $r.StdoutPath -Tail 32;Get-Content -LiteralPath $r.StderrPath -Tail 7\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-100907-637-progress-03.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-100907-637-progress-03.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 6.2745569,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [
+    "observer incomplete: 已超时 "
+  ],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 45488,
+      "CreationDate": "2026-10-09T18:09:08.754448+08:00",
+      "Started": "2026-10-09T10:09:08.754448Z",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192/Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192/remote/progress.sh",
+      "ParentPid": 74732,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 47988,
+      "CreationDate": "2026-10-09T18:09:08.770044+08:00",
+      "Started": "2026-10-09T10:09:08.770044Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 45488,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 45488,
+          "CreationDate": "2026-10-09T18:09:08.754448+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192/Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192/remote/progress.sh",
+          "ParentPid": 74732
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 72812,
+      "CreationDate": "2026-10-09T18:09:09.540681+08:00",
+      "Started": "2026-10-09T10:09:09.540681Z",
+      "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "ParentPid": 45488,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 45488,
+          "CreationDate": "2026-10-09T18:09:08.754448+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192/Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192/remote/progress.sh",
+          "ParentPid": 74732
+        }
+      ],
+      "TerminatedByRunner": true
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

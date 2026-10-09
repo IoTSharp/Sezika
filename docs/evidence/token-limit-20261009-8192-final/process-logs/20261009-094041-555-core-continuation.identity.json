@@ -1,0 +1,23 @@
+{
+  "Pid": 33680,
+  "Started": "2026-10-09T09:40:42.3719933Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 5172,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 5172,
+    "Started": "2026-10-09T17:39:38.673097+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/token-limit-20261009-8192/Build-Check.ps1\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 50,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\tests\\Sezika.Tests\\bin\\Release\\net10.0\\Sezika.Tests.dll",
+    "--continuation-contract"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

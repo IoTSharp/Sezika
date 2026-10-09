@@ -1,0 +1,49 @@
+active_stage_cancel_file=/root/sezika-experiments/20261009-repaired-training-8192/.artifacts/stage-capacity/cancel.request
+payload_argv /root/sezika-experiments/20261009-repaired-training-8192/capacity/CapacityCheck gpu /root/sezika-experiments/20261009-repaired-training-8192/output/capacity
+linux_runner_exit=127
+status	payload_failed
+payload_exit	1
+elapsed_ms	5940
+cleanup_elapsed_ms	3890
+cleanup_deadline_ms	4925839590
+cleanup_incomplete	0
+final_check_complete	1
+verified_live_count	0
+unknown_count	0
+unchecked_count	0
+cleanup_budget_exhausted	0
+tracked_identities	2
+token	sezika-3093721-19157-29292
+supervisor_pid	3093721
+fixture	none
+clock_resolution_ms	10
+clock_tolerance_ms	20
+limitation	cooperative_checks_only_blocking_kernel_io_and_short_intermediates_not_guaranteed
+control_unaffected	0
+control_owner_closed	0
+seam_mismatch	na
+seam_unreadable	na
+work_pause_reason	na
+work_pause_read_rc	na
+work_pause_failed_ms	na
+cleanup_deferred_proofs	0
+==> /root/sezika-experiments/20261009-repaired-training-8192/.artifacts/stage-capacity/payload.stdout.log <==
+PASS GPU tiny1 update
+PASS GPU actual162 synthetic examples and1 update
+PASS GPU actual215 synthetic denominator including last row
+PASS GPU CE includes complete denominator
+device_dispose_returned=true
+
+==> /root/sezika-experiments/20261009-repaired-training-8192/.artifacts/stage-capacity/payload.stderr.log <==
+   at Sezika.HeadAssetFilePublisher.HeadAssetTemporaryOwner.CapturePrefix(FileStream file, Action check) in D:\source\Sezika\src\Sezika\HeadAssetFilePublisher.cs:line 120
+   at Sezika.HeadAssetFilePublisher.PublishNew(String path, Byte[] bytes, String hash, Action check, TimeSpan cleanupDuration, HeadAssetPublicationHooks hooks) in D:\source\Sezika\src\Sezika\HeadAssetFilePublisher.cs:line 61
+   --- End of inner exception stack trace ---
+   at Sezika.HeadAssetFilePublisher.PublishNew(String path, Byte[] bytes, String hash, Action check, TimeSpan cleanupDuration, HeadAssetPublicationHooks hooks) in D:\source\Sezika\src\Sezika\HeadAssetFilePublisher.cs:line 99
+   at Sezika.IndependentMarkerHeadAssetStore.SaveCore(String path, MarkerTrainingState state, CancellationToken cancellationToken, HeadAssetPublicationHooks hooks) in D:\source\Sezika\src\Sezika\IndependentMarkerHeadAsset.cs:line 63
+   at Sezika.IndependentMarkerHeadAssetStore.SaveNew(String path, MarkerTrainingState state, CancellationToken cancellationToken) in D:\source\Sezika\src\Sezika\IndependentMarkerHeadAsset.cs:line 27
+   at Program.<Main>$(String[] args) in D:\source\Sezika\.artifacts\token-limit-20261009-8192\capacity-check\Program.cs:line 46
+ ---> (Inner Exception #1) System.IO.IOException: Head asset actual prefix ownership is unknown; retained path: /root/sezika-experiments/20261009-repaired-training-8192/output/capacity/.gpu-capacity.asset.3c2fff10cb8b476bb3479049273c35c2.tmp
+   at Sezika.HeadAssetFilePublisher.HeadAssetTemporaryOwner.Verify(Action check) in D:\source\Sezika\src\Sezika\HeadAssetFilePublisher.cs:line 137
+   at Sezika.HeadAssetFilePublisher.HeadAssetTemporaryOwner.DeleteVerified(Action check) in D:\source\Sezika\src\Sezika\HeadAssetFilePublisher.cs:line 150
+   at Sezika.HeadAssetFilePublisher.PublishNew(String path, Byte[] bytes, String hash, Action check, TimeSpan cleanupDuration, HeadAssetPublicationHooks hooks) in D:\source\Sezika\src\Sezika\HeadAssetFilePublisher.cs:line 90<---
+

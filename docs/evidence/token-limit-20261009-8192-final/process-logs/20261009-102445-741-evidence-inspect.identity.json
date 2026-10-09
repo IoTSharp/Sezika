@@ -1,0 +1,26 @@
+{
+  "Pid": 71560,
+  "Started": "2026-10-09T10:24:46.6473811Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Archive-Evidence.ps1 -Mode inspect",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 21080,
+  "ObservedParentPid": 21080,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 21080,
+    "Started": "2026-10-09T18:24:45.151281+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'\n& (Join-Path $task 'Archive-Evidence.ps1') -Mode tiny\n& (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $task 'Archive-Evidence.ps1'),'-Mode','inspect') -TimeoutSeconds 75 -LogName evidence-inspect -CancelFile (Join-Path $task 'cancel.request')\n& (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $task 'Inspect-Closure.ps1')) -TimeoutSeconds 85 -LogName closure-supplement -CancelFile (Join-Path $task 'cancel.request')\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 75,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Archive-Evidence.ps1",
+    "-Mode",
+    "inspect"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

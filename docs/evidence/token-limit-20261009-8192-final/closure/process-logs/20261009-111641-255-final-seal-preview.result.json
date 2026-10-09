@@ -1,0 +1,55 @@
+{
+  "Status": "Succeeded",
+  "Pid": 45328,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 4.964,
+  "TimeoutSeconds": 30,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Seal-Closure.ps1",
+    "-Preview",
+    "-MaxItems",
+    "1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T11:16:42.3151169Z",
+  "ParentPid": 69036,
+  "Launcher": {
+    "Pid": 69036,
+    "Started": "2026-10-09T19:16:40.712823+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'; $path=Join-Path $task 'Inspect-Closure-Final.ps1'; if(Test-Path -LiteralPath $path){throw 'closure script already exists'}; $script=[IO.File]::ReadAllText((Join-Path $task 'Inspect-Closure.ps1')); $script=$script.Replace(\\\"'local-closure-supplement.json'\\\",\\\"'local-closure-final.json'\\\").Replace('First 129','First 193').Replace('Count -gt 128','Count -gt 192').Replace('receipt cap128','receipt cap192').Replace('Count -ge 768','Count -ge 1536').Replace('identity cap768','identity cap1536').Replace('foreach($extra in @(74388,73880,$PID))','foreach($extra in @($PID))').Replace('Count -gt 384','Count -gt 640').Replace('PID cap384','PID cap640').Replace('$i -lt 384','$i -lt 640'); [IO.File]::WriteAllText($path,$script,[Text.UTF8Encoding]::new($false)); $receipts=@(Get-ChildItem -LiteralPath (Join-Path $task 'process-logs') -File -Filter '*.result.json'|Select-Object -First 193); \\\"current_receipts=$($receipts.Count)\\\"; & (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $task 'Seal-Closure.ps1'),'-Preview','-MaxItems','1') -TimeoutSeconds 30 -LogName final-seal-preview -ProcessQueryTimeoutSeconds 2 -CancelFile (Join-Path $task 'cancel.request')\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-111641-255-final-seal-preview.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-111641-255-final-seal-preview.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 1.7744923,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 45328,
+      "CreationDate": "2026-10-09T19:16:42.315116+08:00",
+      "Started": "2026-10-09T11:16:42.315116Z",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Seal-Closure.ps1 -Preview -MaxItems 1",
+      "ParentPid": 69036,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

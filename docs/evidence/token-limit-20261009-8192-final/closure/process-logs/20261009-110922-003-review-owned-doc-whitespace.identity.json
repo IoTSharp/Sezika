@@ -1,0 +1,30 @@
+{
+  "Pid": 20196,
+  "Started": "2026-10-09T11:09:22.918869Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 19744,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 19744,
+    "Started": "2026-10-09T19:09:00.818885+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'\n& (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $task 'Seal-Supplement.ps1')) -TimeoutSeconds 100 -LogName seal-recovery-supplement -CancelFile (Join-Path $task 'cancel.request')\n& (Join-Path $task 'Stage-And-Review.ps1')\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 25,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\Git\\cmd\\git.exe",
+  "Arguments": [
+    "diff",
+    "--cached",
+    "--check",
+    "--",
+    "HANDOFF.md",
+    "ROADMAP.md",
+    "CHANGELOG.md",
+    "docs/training-next-handoff-2026-10-09.md",
+    "docs/evidence/token-limit-8192-2026-10-09.md"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

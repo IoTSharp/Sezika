@@ -1,0 +1,5 @@
+reboot_approved_host=digisyn-gpu01 boot_id_before=d5489509-b67a-436d-b331-05390e3048cc
+reboot_request_utc=2026-10-09T10:56:29Z
+container=da214fdd10e65e4800fd8ac02b66ec21f19ab56541f4c2e7f18e63a6a80d3011 name=/digisyn-hearon-hymt2-gguf-translation-1 state=running init_pid=3189036 restart={"MaximumRetryCount":0,"Name":"unless-stopped"}
+container=74301ee0b2cf9e39d0901bbc7b4e4e9f641d0668a31d67ae920c35f9d1ad62d5 name=/digisyn-hearon-gigaam-asr-1 state=running init_pid=3189171 restart={"MaximumRetryCount":0,"Name":"unless-stopped"}
+reboot_request_exit=0

@@ -1,0 +1,18 @@
+2026-10-09T10:43:17Z
+container=da214fdd10e65e4800fd8ac02b66ec21f19ab56541f4c2e7f18e63a6a80d3011 state=running init_pid=3168797
+PID                 PPID                STARTED             COMMAND
+3168797             3168771             Fri                 Oct 9 10:41:00 2026 /sbin/docker-init -- /app/llama-server --model /models/Hy-MT2-30B-A3B-Q8_0.gguf --alias hy-mt2-30b-a3b-q8-0 --host 127.0.0.1 --port 8003 --ctx-size 4096 --n-predict 4096 --n-gpu-layers all --parallel 1 --batch-size 512 --ubatch-size 256 --flash-attn on --jinja --temperature 0.7 --top-k -1 --top-p 1.0 --repeat-penalty 1.0
+3168859             3168797             Fri                 Oct 9 10:41:00 2026 /app/llama-server --model /models/Hy-MT2-30B-A3B-Q8_0.gguf --alias hy-mt2-30b-a3b-q8-0 --host 127.0.0.1 --port 8003 --ctx-size 4096 --n-predict 4096 --n-gpu-layers all --parallel 1 --batch-size 512 --ubatch-size 256 --flash-attn on --jinja --temperature 0.7 --top-k -1 --top-p 1.0 --repeat-penalty 1.0
+container=74301ee0b2cf9e39d0901bbc7b4e4e9f641d0668a31d67ae920c35f9d1ad62d5 state=running init_pid=3169044
+PID                 PPID                STARTED             COMMAND
+3169044             3169014             Fri                 Oct 9 10:41:00 2026 /sbin/docker-init -- uvicorn app:app --host 127.0.0.1 --port 8001 --workers 1 --no-access-log
+3169105             3169044             Fri                 Oct 9 10:41:01 2026 /usr/bin/python /usr/local/bin/uvicorn app:app --host 127.0.0.1 --port 8001 --workers 1 --no-access-log
+gpu_users_snapshot=1
+fuser_exit=1 users=
+gpu_users_snapshot=2
+fuser_exit=1 users=
+gpu_users_snapshot=3
+fuser_exit=1 users=
+gpu_users_snapshot=4
+fuser_exit=1 users=
+read_only=true

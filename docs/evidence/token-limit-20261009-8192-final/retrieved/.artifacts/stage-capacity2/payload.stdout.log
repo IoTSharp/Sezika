@@ -1,0 +1,9 @@
+PASS GPU tiny1 update
+PASS GPU actual162 synthetic examples and1 update
+PASS GPU actual215 synthetic denominator including last row
+PASS GPU CE includes complete denominator
+PASS GPU expanded saved weights roundtrip
+PASS GPU3GiB/host4GiB synthetic capacity stage limits
+PASS 162-buffer training cleanup restores caller baseline
+owned_peak_bytes=5852 elapsed_seconds=0.2183586
+device_dispose_returned=true

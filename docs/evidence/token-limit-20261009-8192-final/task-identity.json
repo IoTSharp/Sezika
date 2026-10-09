@@ -1,0 +1,79 @@
+{
+  "base_commit": "ce7a7c3334c89eefa0bf919d2ba1e135d27add27",
+  "authorization": "User explicitly requests directly8192 tokens and continuing; keep215/train162/dev53 and original fixed single experiment. No teacher, tuning, extra formal training, publication or push.",
+  "thread": "01a11f25-335a-7571-a735-7171ace8c3b9",
+  "source_model_max_tokens": 8192,
+  "remote": "/root/sezika-experiments/20261009-repaired-training-8192",
+  "budgets": {
+    "task_seconds": 7200,
+    "sgd_seconds": 300,
+    "cli_seconds": 1500,
+    "encoder_forward_limit": 384,
+    "lr": 0.001,
+    "gpu_concurrency": 1,
+    "regression_forwards": 32,
+    "regression_seconds": 300,
+    "updates": 24576,
+    "free_mib": 5120,
+    "seed": 17,
+    "host_bytes": 4294967296,
+    "gpu_bytes": 3221225472
+  },
+  "reader": {
+    "ProcessId": 47768,
+    "CreationDate": "2026-10-09T17:11:25.227598+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\nif($PSVersionTable.PSVersion.Major -lt 7){throw 'PS7 required'}\n$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-2048'\nif([IO.Directory]::Exists($task)){throw 'Task root already exists; inspect before reusing'}\n[IO.Directory]::CreateDirectory($task)|Out-Null\n$self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 2|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId\n[IO.File]::Copy('D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\Invoke-BoundedProcess.ps1',(Join-Path $task 'Invoke-BoundedProcess.ps1'),$false)\n$old=[IO.File]::ReadAllText('D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\task-identity.json')|ConvertFrom-Json\n[IO.File]::WriteAllText((Join-Path $task 'task-identity.json'),(@{utc=[DateTime]::UtcNow.ToString('o');reader=$self;thread='01a11f25-335a-7571-a735-7171ace8c3b9';task='sezika-token-limit-20261009-2048';remote='/root/sezika-experiments/20261009-repaired-training-2048';base_commit='ce7a7c3334c89eefa0bf919d2ba1e135d27add27';authorization='User requests raising tokens limit and continuing; retain original215/train162/dev53. Original one fixed GPU experiment authorized; no extra teachers/tuning/training.';max_tokens=2048;source_model_max_tokens=8192;data_manifest_sha256=$old.manifest_sha256;data_ledger_sha256=$old.ledger_sha256;paused=$old.paused;budgets=@{task_seconds=7200;updates=24576;lr=0.001;seed=17;cli_seconds=1500;sgd_seconds=300;encoder_forward_limit=384;gpu_bytes=3221225472;host_bytes=4294967296;free_mib=5120;gpu_concurrency=1;regression_forwards=32;regression_seconds=300}}|ConvertTo-Json -Depth 7),[Text.UTF8Encoding]::new($false))\ntry { & (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath git -ArgumentList @('status','--porcelain') -TimeoutSeconds 20 -LogName initial-status -CancelFile (Join-Path $task 'cancel.request') | Out-Null } catch { Write-Output ('Retained guardian: '+$_.Exception.Message) }\n$receipt=@(Get-ChildItem -LiteralPath (Join-Path $task 'process-logs') -File -Filter '*-initial-status.result.json'|Select-Object -First 2)\nif($receipt.Count -ne 1){throw 'Exact initial status receipt required'}\n$r=[IO.File]::ReadAllText($receipt[0].FullName)|ConvertFrom-Json\nif($null -eq $r.ExitCode -or $r.ExitCode -ne 0){throw 'Actual Git status failure'}\n[IO.File]::ReadAllText($r.StdoutPath)\n\"",
+    "ParentProcessId": 49492
+  },
+  "max_tokens": 8192,
+  "data_ledger_sha256": "55F3226946831C4B9CBD7F6EE10D1194764860C8343A9386CAA40C678CE24EC0",
+  "task": "sezika-token-limit-20261009-8192",
+  "paused": [
+    {
+      "sha256": "499759610BC7F79CE2F5D62BB61FC471E1CBF75374D3584F8D0E7C786CF84AFF",
+      "path": "ROADMAP.md"
+    },
+    {
+      "sha256": "6329E7F222484BBE5FA7395D507B121D3550CAA94BD1E7FB355F32E936F094AA",
+      "path": "docs/evidence/diagnostic-runtime-2026-10-08.md"
+    },
+    {
+      "sha256": "2B7F0B12AF4CAFF116B0424B563E503EE8F459AEB215A18666C2DBF54FB9EA20",
+      "path": "tools/Sezika.Benchmarks/Program.cs"
+    },
+    {
+      "sha256": "4A827337F07004271D7A9765D41383EB25646193359C8925EE7019F7193ADD1D",
+      "path": "tools/Sezika.IndependentModelTool/Program.cs"
+    },
+    {
+      "sha256": "0819E0BDA7CC7723234E18C28FE3C776B39FC9E088BB8ADCB32DA45284014772",
+      "path": "docs/wechat-introduction.md"
+    },
+    {
+      "sha256": "2918478097C879AD00C6A04FD949A93D865A34ED44FBDC17306EC04AB78F0FDD",
+      "path": "docs/wechat-introduction.html"
+    },
+    {
+      "sha256": "EE904798CCDB656D6E32F9445481CD1015962ADEE7F47A051546AE0783051EA6",
+      "path": "tools/Sezika.Benchmarks/DiagnosticIndependentProfile.cs"
+    },
+    {
+      "sha256": "DDFD23ABFB026D04A85D622634290584C023F4D28DB6E7CDC59BD4772E1145B0",
+      "path": "tools/Sezika.Benchmarks/DiagnosticProfileChecks.cs"
+    },
+    {
+      "sha256": "4B4DE1E78D54BCDCC8CD600A703906C518118A83AA7E7CAD65C8EBA69E2D6C2C",
+      "path": "tools/Sezika.Benchmarks/DiagnosticProfileReport.cs"
+    },
+    {
+      "sha256": "BF9CB5F6B74863CFDC04A749DB197533990F0D331B4A98A2EB4C866A75BE6C1A",
+      "path": "tools/Sezika.IndependentModelTool/DiagnosticAssetPreparationChecks.cs"
+    },
+    {
+      "sha256": "EAE77A60A77B5A419CA9712C1E941DD1A306733AB30439783F56EE534D2E073A",
+      "path": "tools/Sezika.IndependentModelTool/DiagnosticAssetPreparationCommand.cs"
+    }
+  ],
+  "data_manifest_sha256": "E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6",
+  "utc": "2026-10-09T09:25:17.5854728Z"
+}

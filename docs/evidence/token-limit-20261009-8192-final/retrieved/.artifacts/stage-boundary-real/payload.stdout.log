@@ -1,0 +1,13 @@
+PASS 8193 config rejected
+PASS complete H4 8192 frame byte calculation
+PASS pinned GPU UUID
+PASS real encoder explicit8192 profile
+PASS real8192 exceeds formal3GiB budget
+real8192_forward_started=true
+PASS real8192 complete output shape
+PASS real8192 final row nonzero
+real8192_forward_completed=true
+PASS encoder resources zero after disposal
+PASS boundary6GiB/host4GiB limits
+owned_peak_bytes=4813921280 host_peak_bytes=2741837824 elapsed_seconds=13.1195563
+device_dispose_returned=true

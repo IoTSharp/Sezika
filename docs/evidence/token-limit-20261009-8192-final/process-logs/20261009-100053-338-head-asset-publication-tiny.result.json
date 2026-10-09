@@ -1,0 +1,51 @@
+{
+  "Status": "Succeeded",
+  "Pid": 69540,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 5.566,
+  "TimeoutSeconds": 45,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\tests\\Sezika.Tests\\bin\\Release\\net10.0\\Sezika.Tests.dll",
+    "--head-asset-publication-tiny"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T10:00:54.3649853Z",
+  "ParentPid": 65108,
+  "Launcher": {
+    "Pid": 65108,
+    "Started": "2026-10-09T18:00:52.781223+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/token-limit-20261009-8192/Publish-PublicationFix.ps1\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-100053-338-head-asset-publication-tiny.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-100053-338-head-asset-publication-tiny.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 2.2706546,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 69540,
+      "CreationDate": "2026-10-09T18:00:54.364985+08:00",
+      "Started": "2026-10-09T10:00:54.364985Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" D:\\source\\Sezika\\tests\\Sezika.Tests\\bin\\Release\\net10.0\\Sezika.Tests.dll --head-asset-publication-tiny",
+      "ParentPid": 65108,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

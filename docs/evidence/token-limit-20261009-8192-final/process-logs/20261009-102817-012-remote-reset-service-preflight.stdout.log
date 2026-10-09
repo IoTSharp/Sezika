@@ -1,0 +1,17 @@
+snapshot_utc=2026-10-09T10:28:20Z
+digisyn-gpu01
+    PID    PPID                  STARTED COMMAND
+   2937       1 Thu Aug 13 09:37:10 2026 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 74301ee0b2cf9e39d0901bbc7b4e4e9f641d0668a31d67ae920c35f9d1ad62d5 -address /run/containerd/containerd.sock
+   2938       1 Thu Aug 13 09:37:10 2026 /usr/bin/containerd-shim-runc-v2 -namespace moby -id da214fdd10e65e4800fd8ac02b66ec21f19ab56541f4c2e7f18e63a6a80d3011 -address /run/containerd/containerd.sock
+   2982    2937 Thu Aug 13 09:37:10 2026 /sbin/docker-init -- uvicorn app:app --host 127.0.0.1 --port 8001 --workers 1 --no-access-log
+   2990    2938 Thu Aug 13 09:37:10 2026 /sbin/docker-init -- /app/llama-server --model /models/Hy-MT2-30B-A3B-Q8_0.gguf --alias hy-mt2-30b-a3b-q8-0 --host 127.0.0.1 --port 8003 --ctx-size 4096 --n-predict 4096 --n-gpu-layers all --parallel 1 --batch-size 512 --ubatch-size 256 --flash-attn on --jinja --temperature 0.7 --top-k -1 --top-p 1.0 --repeat-penalty 1.0
+   3055    2990 Thu Aug 13 09:37:13 2026 /app/llama-server --model /models/Hy-MT2-30B-A3B-Q8_0.gguf --alias hy-mt2-30b-a3b-q8-0 --host 127.0.0.1 --port 8003 --ctx-size 4096 --n-predict 4096 --n-gpu-layers all --parallel 1 --batch-size 512 --ubatch-size 256 --flash-attn on --jinja --temperature 0.7 --top-k -1 --top-p 1.0 --repeat-penalty 1.0
+   3068    2982 Thu Aug 13 09:37:13 2026 /usr/bin/python /usr/local/bin/uvicorn app:app --host 127.0.0.1 --port 8001 --workers 1 --no-access-log
+known_pid=3055 starttick=1542
+0::/system.slice/docker-da214fdd10e65e4800fd8ac02b66ec21f19ab56541f4c2e7f18e63a6a80d3011.scope
+container=da214fdd10e65e4800fd8ac02b66ec21f19ab56541f4c2e7f18e63a6a80d3011 name=/digisyn-hearon-hymt2-gguf-translation-1 image=digisyn-hymt2-translation:30b-a3b-q8-0-cuda12 state=running init_pid=2990 restart={"MaximumRetryCount":0,"Name":"unless-stopped"} gpu=[{"Capabilities":[["gpu"]],"Count":-1,"DeviceIDs":null,"Driver":"","Options":null}] cmd=["--model","/models/Hy-MT2-30B-A3B-Q8_0.gguf","--alias","hy-mt2-30b-a3b-q8-0","--host","127.0.0.1","--port","8003","--ctx-size","4096","--n-predict","4096","--n-gpu-layers","all","--parallel","1","--batch-size","512","--ubatch-size","256","--flash-attn","on","--jinja","--temperature","0.7","--top-k","-1","--top-p","1.0","--repeat-penalty","1.0"]
+known_pid=3068 starttick=1586
+0::/system.slice/docker-74301ee0b2cf9e39d0901bbc7b4e4e9f641d0668a31d67ae920c35f9d1ad62d5.scope
+container=74301ee0b2cf9e39d0901bbc7b4e4e9f641d0668a31d67ae920c35f9d1ad62d5 name=/digisyn-hearon-gigaam-asr-1 image=digisyn-gigaam-asr:large-ctc-cuda12 state=running init_pid=2982 restart={"MaximumRetryCount":0,"Name":"unless-stopped"} gpu=[{"Capabilities":[["gpu"]],"Count":-1,"DeviceIDs":null,"Driver":"","Options":null}] cmd=["uvicorn","app:app","--host","127.0.0.1","--port","8001","--workers","1","--no-access-log"]
+read_only_no_reset_no_signals_no_gpu_work=true
+elapsed_seconds=1

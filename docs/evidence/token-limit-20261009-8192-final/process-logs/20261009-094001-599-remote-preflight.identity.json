@@ -1,0 +1,26 @@
+{
+  "Pid": 68364,
+  "Started": "2026-10-09T09:40:02.7237896Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\preflight.sh",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 61144,
+  "ObservedParentPid": 61144,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 61144,
+    "Started": "2026-10-09T17:40:00.87842+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop';$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'; & (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $task 'Invoke-Ssh.ps1'),'-ScriptFile',(Join-Path $task 'remote/preflight.sh')) -TimeoutSeconds 60 -LogName 'remote-preflight' -ProcessQueryTimeoutSeconds 2 -CancelFile (Join-Path $task 'cancel.request');$receipt=Get-ChildItem -LiteralPath (Join-Path $task 'process-logs') -File -Filter '*remote-preflight.result.json'|Select-Object -First 1;$r=Get-Content -Raw -LiteralPath $receipt.FullName|ConvertFrom-Json;Get-Content -LiteralPath $r.StdoutPath -Tail 25;Get-Content -LiteralPath $r.StderrPath -Tail 8\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 60,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\preflight.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

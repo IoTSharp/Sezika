@@ -1,0 +1,133 @@
+{
+  "training_forwards": 231,
+  "acceptance": {
+    "formal_training_admission": false,
+    "human_quality": false,
+    "license_release": false,
+    "calibration": false,
+    "sealed_test": false,
+    "native_aot": false,
+    "performance": false,
+    "publication": false
+  },
+  "development": 53,
+  "training_resources": {
+    "snapshot_before_context_dispose": {
+      "total_bytes": 50864390144,
+      "free_bytes": 15625748480,
+      "owned_bytes": 0,
+      "peak_owned_bytes": 1325572580,
+      "owned_allocation_count": 0,
+      "loaded_module_count": 0,
+      "release_failure_count": 0
+    },
+    "process_peak_working_set_bytes": 2757898240,
+    "process_working_set_bytes": 2631737344,
+    "device_dispose_returned": true,
+    "model_dispose_returned": true
+  },
+  "visit_maximum": 152,
+  "independent_validation_report_present": false,
+  "visit_minimum": 151,
+  "paused": [
+    {
+      "sha256": "6329E7F222484BBE5FA7395D507B121D3550CAA94BD1E7FB355F32E936F094AA",
+      "path": "docs/evidence/diagnostic-runtime-2026-10-08.md",
+      "unchanged": true
+    },
+    {
+      "sha256": "2B7F0B12AF4CAFF116B0424B563E503EE8F459AEB215A18666C2DBF54FB9EA20",
+      "path": "tools/Sezika.Benchmarks/Program.cs",
+      "unchanged": true
+    },
+    {
+      "sha256": "4A827337F07004271D7A9765D41383EB25646193359C8925EE7019F7193ADD1D",
+      "path": "tools/Sezika.IndependentModelTool/Program.cs",
+      "unchanged": true
+    },
+    {
+      "sha256": "0819E0BDA7CC7723234E18C28FE3C776B39FC9E088BB8ADCB32DA45284014772",
+      "path": "docs/wechat-introduction.md",
+      "unchanged": true
+    },
+    {
+      "sha256": "2918478097C879AD00C6A04FD949A93D865A34ED44FBDC17306EC04AB78F0FDD",
+      "path": "docs/wechat-introduction.html",
+      "unchanged": true
+    },
+    {
+      "sha256": "EE904798CCDB656D6E32F9445481CD1015962ADEE7F47A051546AE0783051EA6",
+      "path": "tools/Sezika.Benchmarks/DiagnosticIndependentProfile.cs",
+      "unchanged": true
+    },
+    {
+      "sha256": "DDFD23ABFB026D04A85D622634290584C023F4D28DB6E7CDC59BD4772E1145B0",
+      "path": "tools/Sezika.Benchmarks/DiagnosticProfileChecks.cs",
+      "unchanged": true
+    },
+    {
+      "sha256": "4B4DE1E78D54BCDCC8CD600A703906C518118A83AA7E7CAD65C8EBA69E2D6C2C",
+      "path": "tools/Sezika.Benchmarks/DiagnosticProfileReport.cs",
+      "unchanged": true
+    },
+    {
+      "sha256": "BF9CB5F6B74863CFDC04A749DB197533990F0D331B4A98A2EB4C866A75BE6C1A",
+      "path": "tools/Sezika.IndependentModelTool/DiagnosticAssetPreparationChecks.cs",
+      "unchanged": true
+    },
+    {
+      "sha256": "EAE77A60A77B5A419CA9712C1E941DD1A306733AB30439783F56EE534D2E073A",
+      "path": "tools/Sezika.IndependentModelTool/DiagnosticAssetPreparationCommand.cs",
+      "unchanged": true
+    }
+  ],
+  "original32_stage_present": false,
+  "hashes": {
+    "retrieved/package/model.json": "B8FB9CECC0912F034E0FEA184E8AA78871D11533093DCCF4F5AAD74646007551",
+    "retrieved/output/run-24576/expanded-training-report.json": "C6F3AE942FB90CA842FD49AFF7AE6505EB02A71128264EDC2EF08BC323A48905",
+    "retrieved/output/run-24576/expanded-training.checkpoint": "4709E847A135265F71C092BB18C66CF291DE87D90970CD8932ADD6FBC7F4264F",
+    "retrieved/output/run-24576/expanded-head.asset": "4205457556736AB07799B462D42C377710E765CB14EDB9AAE508C1558C5E9D64"
+  },
+  "visit_total": 24576,
+  "utc": "2026-10-09T10:18:41.1415715Z",
+  "selected_id_changed": 6,
+  "groups": [
+    {
+      "split": "train",
+      "variant": "original",
+      "total": 162,
+      "agreement": 118,
+      "mean_gpu_ce": 0.8185527480586812
+    },
+    {
+      "split": "development",
+      "variant": "original",
+      "total": 53,
+      "agreement": 27,
+      "mean_gpu_ce": 1.0354540944099426
+    },
+    {
+      "split": "train",
+      "variant": "fixed-left1",
+      "total": 16,
+      "agreement": 7,
+      "mean_gpu_ce": 1.3445008620619774
+    }
+  ],
+  "limitations": [
+    "initial8192 identity reader was carried from2048 bootstrap metadata; not a new OS observation",
+    "short-lived guardian unknown histories retained; later absent does not reconstruct argv",
+    "GPU reset required; validation last log starts211/215, not proof of211 completed forwards; device release failed",
+    "NVML final compute apps N/A; no claim GPU final context cleanup success",
+    "CLI progress03 observer timed out; final validation actual exit1 independently retained"
+  ],
+  "training_steps": 24576,
+  "status": "training_complete_independent_validation_failed_gpu_reset_required",
+  "visit_map_count": 162,
+  "final_cycle_prefix": 114,
+  "full_order_cycles": 151,
+  "max_tokens": 8192,
+  "train": 162,
+  "training_elapsed_seconds": 46.5468512,
+  "visit_semantics": "contiguous_actual_commit_callbacks_with_selected_ids_replayed_from_core_xorshift32_fisher_yates_fixed_order_not_direct_kernel_id_observation"
+}

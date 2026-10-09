@@ -1,0 +1,65 @@
+identity_progress known=32 elapsed_seconds=0
+run_absent stage-regress
+source	pid	expected_start_tick	state
+runner-exit7/identity.tsv	3083600	492547795	absent
+runner-exit7/identity.tsv	3083601	492547796	absent
+runner-exit7/supervisor.tsv	3083599	492547791	absent
+runner-tiny1/identity.tsv	3083854	492548373	absent
+runner-tiny1/identity.tsv	3083855	492548374	absent
+runner-tiny1/supervisor.tsv	3083853	492548369	absent
+stage-boundary-tiny/identity.tsv	3084067	492549590	absent
+stage-boundary-tiny/identity.tsv	3084068	492549591	absent
+stage-boundary-tiny/supervisor.tsv	3084066	492549586	absent
+stage-boundary-tiny/stage-shell.tsv	3083998	492549520	absent
+stage-boundary-tiny2/identity.tsv	3090510	492573206	absent
+stage-boundary-tiny2/identity.tsv	3090511	492573207	absent
+stage-boundary-tiny2/supervisor.tsv	3090509	492573203	absent
+stage-boundary-tiny2/stage-shell.tsv	3090439	492573135	absent
+stage-publication/identity.tsv	3112065	492648883	absent
+stage-publication/identity.tsv	3112066	492648884	absent
+stage-publication/supervisor.tsv	3112064	492648880	absent
+stage-publication/stage-shell.tsv	3111998	492648799	absent
+stage-capacity2/identity.tsv	3113016	492650485	absent
+stage-capacity2/identity.tsv	3113017	492650486	absent
+stage-capacity2/supervisor.tsv	3113015	492650482	absent
+stage-capacity2/stage-shell.tsv	3112934	492650413	absent
+stage-boundary-full/identity.tsv	3092384	492577739	absent
+stage-boundary-full/identity.tsv	3092385	492577740	absent
+stage-boundary-full/identity.tsv	3092385	492577740	absent
+stage-boundary-full/supervisor.tsv	3092383	492577736	absent
+stage-boundary-full/stage-shell.tsv	3092087	492577667	absent
+stage-boundary-real/identity.tsv	3092612	492578971	absent
+stage-boundary-real/identity.tsv	3092613	492578972	absent
+stage-boundary-real/identity.tsv	3092613	492578972	absent
+stage-boundary-real/supervisor.tsv	3092611	492578968	absent
+stage-boundary-real/stage-shell.tsv	3092527	492578899	absent
+stage-capacity/identity.tsv	3093722	492582957	absent
+stage-capacity/identity.tsv	3093723	492582958	absent
+stage-capacity/supervisor.tsv	3093721	492582954	absent
+stage-capacity/stage-shell.tsv	3093640	492582886	absent
+stage-train/identity.tsv	3114198	492655330	absent
+stage-train/identity.tsv	3114199	492655331	absent
+stage-train/identity.tsv	3114199	492655331	absent
+stage-train/supervisor.tsv	3114197	492655326	absent
+stage-train/stage-shell.tsv	3114113	492655255	absent
+stage-validate/identity.tsv	3116234	492661074	absent
+stage-validate/identity.tsv	3116235	492661075	absent
+stage-validate/identity.tsv	3116235	492661075	absent
+stage-validate/supervisor.tsv	3116233	492661070	absent
+stage-validate/stage-shell.tsv	3116128	492660997	absent
+summary	known=46	live=0	unknown=0	files=31	scope=registered_identities_no_signal
+0a10ae919521c7a8f52cf31980db5e51bb23e6460dd36c3f720e18c217abb94a  recovery-evidence.tar
+final_gpu_query_exit=6
+port=http://127.0.0.1:8001/health http_status=503
+health_port=8001 curl_exit=0
+port=http://127.0.0.1:8003/health http_status=200
+health_port=8003 curl_exit=0
+container=da214fdd10e65e4800fd8ac02b66ec21f19ab56541f4c2e7f18e63a6a80d3011 name=/digisyn-hearon-hymt2-gguf-translation-1 state=running init_pid=3189036 image=digisyn-hymt2-translation:30b-a3b-q8-0-cuda12 restart={"MaximumRetryCount":0,"Name":"unless-stopped"}
+PID                 PPID                STARTED             COMMAND
+3189036             3189012             Fri                 Oct 9 10:51:09 2026 /sbin/docker-init -- /app/llama-server --model /models/Hy-MT2-30B-A3B-Q8_0.gguf --alias hy-mt2-30b-a3b-q8-0 --host 127.0.0.1 --port 8003 --ctx-size 4096 --n-predict 4096 --n-gpu-layers all --parallel 1 --batch-size 512 --ubatch-size 256 --flash-attn on --jinja --temperature 0.7 --top-k -1 --top-p 1.0 --repeat-penalty 1.0
+3189097             3189036             Fri                 Oct 9 10:51:09 2026 /app/llama-server --model /models/Hy-MT2-30B-A3B-Q8_0.gguf --alias hy-mt2-30b-a3b-q8-0 --host 127.0.0.1 --port 8003 --ctx-size 4096 --n-predict 4096 --n-gpu-layers all --parallel 1 --batch-size 512 --ubatch-size 256 --flash-attn on --jinja --temperature 0.7 --top-k -1 --top-p 1.0 --repeat-penalty 1.0
+container=74301ee0b2cf9e39d0901bbc7b4e4e9f641d0668a31d67ae920c35f9d1ad62d5 name=/digisyn-hearon-gigaam-asr-1 state=running init_pid=3189171 image=digisyn-gigaam-asr:large-ctc-cuda12 restart={"MaximumRetryCount":0,"Name":"unless-stopped"}
+PID                 PPID                STARTED             COMMAND
+3189171             3189143             Fri                 Oct 9 10:51:09 2026 /sbin/docker-init -- uvicorn app:app --host 127.0.0.1 --port 8001 --workers 1 --no-access-log
+3189234             3189171             Fri                 Oct 9 10:51:09 2026 /usr/bin/python /usr/local/bin/uvicorn app:app --host 127.0.0.1 --port 8001 --workers 1 --no-access-log
+recovery_evidence_complete bytes=143360 no_new_training=true

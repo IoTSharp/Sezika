@@ -1,0 +1,25 @@
+{
+  "Pid": 63364,
+  "Started": "2026-10-09T10:55:55.5713533Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 60616,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 60616,
+    "Started": "2026-10-09T18:55:44.252446+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n& .artifacts/token-limit-20261009-8192/Download-RecoveryEvidence.ps1\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 15,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Windows\\System32\\tar.exe",
+  "Arguments": [
+    "-xf",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\recovery-evidence.tar",
+    "-C",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\recovery-retrieved"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

@@ -1,0 +1,26 @@
+{
+  "Pid": 74252,
+  "Started": "2026-10-09T09:56:33.6846226Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\publication-diagnosis.sh",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 73228,
+  "ObservedParentPid": 73228,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 73228,
+    "Started": "2026-10-09T17:56:32.078155+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/token-limit-20261009-8192/Run-Remote.ps1 -Phase publication-diagnosis -Seconds 35\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 35,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\publication-diagnosis.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

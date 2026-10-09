@@ -1,0 +1,40 @@
+file=device-users-before.txt
+  3055  3068file=device-users-after-stop.txt
+ 3167835 3167841file=device-users-after-stop.stderr
+/dev/nvidia0:       
+file=restoration.tsv
+da214fdd10e65e4800fd8ac02b66ec21f19ab56541f4c2e7f18e63a6a80d3011
+restore_container=da214fdd10e65e4800fd8ac02b66ec21f19ab56541f4c2e7f18e63a6a80d3011 exit=0
+74301ee0b2cf9e39d0901bbc7b4e4e9f641d0668a31d67ae920c35f9d1ad62d5
+restore_container=74301ee0b2cf9e39d0901bbc7b4e4e9f641d0668a31d67ae920c35f9d1ad62d5 exit=0
+payload_original_exit=73 restore_exit=0 restore_done=1
+file=result.tsv
+status	payload_failed
+payload_exit	73
+elapsed_ms	14610
+cleanup_elapsed_ms	4190
+cleanup_deadline_ms	4928651300
+cleanup_incomplete	0
+final_check_complete	1
+verified_live_count	0
+unknown_count	0
+unchecked_count	0
+cleanup_budget_exhausted	0
+tracked_identities	4
+token	sezika-3167538-27105-31769
+supervisor_pid	3167538
+fixture	none
+clock_resolution_ms	10
+clock_tolerance_ms	20
+limitation	cooperative_checks_only_blocking_kernel_io_and_short_intermediates_not_guaranteed
+control_unaffected	0
+control_owner_closed	0
+seam_mismatch	na
+seam_unreadable	na
+work_pause_reason	na
+work_pause_read_rc	na
+work_pause_failed_ms	na
+cleanup_deferred_proofs	0
+container=da214fdd10e65e4800fd8ac02b66ec21f19ab56541f4c2e7f18e63a6a80d3011 state=running init_pid=3168797 exit=0
+container=74301ee0b2cf9e39d0901bbc7b4e4e9f641d0668a31d67ae920c35f9d1ad62d5 state=running init_pid=3169044 exit=0
+    PID    PPID                  STARTED COMMAND

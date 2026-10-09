@@ -1,0 +1,29 @@
+{
+  "Pid": 74568,
+  "Started": "2026-10-09T09:39:59.9246441Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build D:\\source\\Sezika\\tests\\Sezika.Tests\\Sezika.Tests.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 5172,
+  "ObservedParentPid": 5172,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 5172,
+    "Started": "2026-10-09T17:39:38.673097+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/token-limit-20261009-8192/Build-Check.ps1\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 180,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "D:\\source\\Sezika\\tests\\Sezika.Tests\\Sezika.Tests.csproj",
+    "-c",
+    "Release",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

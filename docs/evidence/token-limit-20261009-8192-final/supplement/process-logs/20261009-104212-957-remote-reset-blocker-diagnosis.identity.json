@@ -1,0 +1,26 @@
+{
+  "Pid": 44200,
+  "Started": "2026-10-09T10:42:13.7950795Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\reset-blocker-diagnosis.sh",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 51772,
+  "ObservedParentPid": 51772,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 51772,
+    "Started": "2026-10-09T18:42:12.355878+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n& .artifacts/token-limit-20261009-8192/Run-Remote.ps1 -Phase reset-blocker-diagnosis -Seconds 55\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 55,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\reset-blocker-diagnosis.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

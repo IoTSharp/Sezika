@@ -1,0 +1,26 @@
+{
+  "Pid": 55904,
+  "Started": "2026-10-09T10:11:25.0394449Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\cuda-failure-diagnosis.sh",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 71156,
+  "ObservedParentPid": 71156,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 71156,
+    "Started": "2026-10-09T18:11:23.714823+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/token-limit-20261009-8192/Run-Remote.ps1 -Phase cuda-failure-diagnosis -Seconds 45\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 45,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\cuda-failure-diagnosis.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

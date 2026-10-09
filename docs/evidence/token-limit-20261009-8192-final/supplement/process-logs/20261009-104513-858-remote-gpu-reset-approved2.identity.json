@@ -1,0 +1,26 @@
+{
+  "Pid": 72620,
+  "Started": "2026-10-09T10:45:14.6877963Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\gpu-reset-approved2.sh",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 57304,
+  "ObservedParentPid": 57304,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 57304,
+    "Started": "2026-10-09T18:45:13.138653+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n& .artifacts/token-limit-20261009-8192/Prepare-GpuRecovery2.ps1\n& .artifacts/token-limit-20261009-8192/Run-Remote.ps1 -Phase gpu-reset-approved2 -Seconds 395\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 395,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\gpu-reset-approved2.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

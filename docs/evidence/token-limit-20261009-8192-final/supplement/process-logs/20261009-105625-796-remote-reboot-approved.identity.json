@@ -1,0 +1,26 @@
+{
+  "Pid": 57832,
+  "Started": "2026-10-09T10:56:26.7348877Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\reboot-approved.sh",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 39716,
+  "ObservedParentPid": 39716,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 39716,
+    "Started": "2026-10-09T18:56:25.195186+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'\n[IO.File]::WriteAllText((Join-Path $task 'server-reboot-user-authorization.json'),(@{utc=[DateTime]::UtcNow.ToString('o');user_message='我们如果需要重启这台服务器就重启， 然后重启后观察 显卡是否恢复。';host='digisyn-gpu01';address='211.149.170.42:2222';gpu='GPU-e786e313-bc92-a63d-a833-f4e48cbafb66';reason='NVIDIA reset exit6 No devices; same580.173.02 driver unload/reload succeeded but GPU still exit6';scope='one host reboot, bounded reconnect, actual changed boot_id, GPU and restored services observation; no retraining'} | ConvertTo-Json),[Text.UTF8Encoding]::new($false))\n& (Join-Path $task 'Run-Remote.ps1') -Phase reboot-approved -Seconds 45\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 45,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\reboot-approved.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

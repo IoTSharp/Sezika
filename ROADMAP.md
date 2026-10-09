@@ -20,6 +20,8 @@
 
 ## 当前执行顺序与门槛
 
+2026-10-09 用户明确选择8192，原215/train162/dev53及全部原字节/账本保持。显式8192工程/长度/H4数值/真实8k前向通过；唯一24576updates/LR0.001/seed17/strict8192/零head/encoder冻结训练完成并保存，231forwards/46.5468512s。首次独立验证payload1/runner127，开始211/215后Xid119/154，完整验证报告不存在、32回归未启动。用户已批准GPU reset和必要主机reboot；NVIDIA reset命令exit6，既有580.173.02驱动重载exit0/原配置保持但GPU仍No devices。10:56:29 UTC请求一次主机重启exit0，截至11:15:39 UTC最新SSH及直接TCP仍被拒绝，新的boot_id/显卡恢复待实际观察，需管理控制台/机房检查。不重复训练/reboot/reset或询问已得许可；恢复并核资源后仅继续保存head的独立验证和32回归。工程a5f4d9c/167470a/44b4082，只本地commit；正式质量/校准/封存/AOT/性能仍pending。原1024等待状态为历史，暂停诊断hunk保持。见[8192训练与恢复证据](docs/evidence/token-limit-8192-2026-10-09.md)。
+
 2026-10-09 新会话完成修题后215题v3合同/全256账本、实际分母/访问报告、旧v1/v2兼容与Linux构建。正式strict1024全215检查214通过、1题1037tokens超限；通过题最长910。GPU训练/独立加载/原32回归尚未开始。用户已收到删该train Choice后214/train161/dev53并保持24576updates的具体选择，回复前保持原215包和固定1024。不能冒充长度准入、真实训练、质量、人审、许可、校准、封存或新head AOT/性能通过；原暂停诊断hunk保留，详见[本轮工程与阻塞](docs/evidence/repaired-training-engineering-2026-10-09.md)。
 
 

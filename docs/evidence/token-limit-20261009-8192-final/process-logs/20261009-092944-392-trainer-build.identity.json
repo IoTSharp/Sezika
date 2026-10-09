@@ -1,0 +1,29 @@
+{
+  "Pid": 29632,
+  "Started": "2026-10-09T09:29:45.2840289Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 50860,
+  "ObservedParentPid": 50860,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 50860,
+    "Started": "2026-10-09T17:29:43.888092+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\nif($PSVersionTable.PSVersion.Major -lt 7){throw 'PS7 required'}\n$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'\n$temp=Join-Path $task 'compiler-temp'\n[IO.Directory]::CreateDirectory($temp)|Out-Null\ntry { & (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build','tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj','-c','Release','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false') -TimeoutSeconds 180 -ProcessQueryTimeoutSeconds 2 -LogName trainer-build -CancelFile (Join-Path $task 'cancel.request') -Environment @{TEMP=$temp;TMP=$temp} | Out-Null } catch { Write-Output ('Guardian: '+$_.Exception.Message) }\n$files=@(Get-ChildItem -LiteralPath (Join-Path $task 'process-logs') -File -Filter '*-trainer-build.result.json'|Select-Object -First 2)\nif($files.Count -ne 1){throw 'Exact build receipt required'}\n$r=[IO.File]::ReadAllText($files[0].FullName)|ConvertFrom-Json\n[IO.File]::ReadAllText($r.StdoutPath)\n[IO.File]::ReadAllText($r.StderrPath)\nif($null -eq $r.ExitCode -or $r.ExitCode -ne 0){throw 'Actual build failed'}\n\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 180,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj",
+    "-c",
+    "Release",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

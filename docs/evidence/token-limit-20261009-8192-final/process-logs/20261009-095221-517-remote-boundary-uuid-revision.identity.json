@@ -1,0 +1,26 @@
+{
+  "Pid": 18464,
+  "Started": "2026-10-09T09:52:22.4328372Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\boundary-uuid-revision.sh",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 51852,
+  "ObservedParentPid": 51852,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 51852,
+    "Started": "2026-10-09T17:52:13.239694+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/token-limit-20261009-8192/Apply-BoundaryRevision.ps1\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 45,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\boundary-uuid-revision.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

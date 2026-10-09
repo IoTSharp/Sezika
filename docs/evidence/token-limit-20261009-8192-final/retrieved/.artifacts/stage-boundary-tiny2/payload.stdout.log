@@ -1,0 +1,15 @@
+PASS 8193 config rejected
+PASS complete H4 8192 frame byte calculation
+PASS pinned GPU UUID
+H4 CPU reference rows=16
+PASS 8193 rejects before allocation
+PASS pre-cancelled forward no allocation
+PASS H4 GPU full output shape
+PASS H4 CPU/GPU all rows absolute error<=2e-4
+rows=16 maximum_absolute_error=2.384185791015625E-07
+PASS transient frame restored resident baseline
+PASS 8192 complete frame budget rejects before allocation
+PASS encoder resources zero after disposal
+PASS boundary6GiB/host4GiB limits
+owned_peak_bytes=6128 host_peak_bytes=132628480 elapsed_seconds=0.1909561
+device_dispose_returned=true

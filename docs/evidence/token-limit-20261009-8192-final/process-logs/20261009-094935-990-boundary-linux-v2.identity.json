@@ -1,0 +1,36 @@
+{
+  "Pid": 68196,
+  "Started": "2026-10-09T09:49:37.1112791Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\boundary-check\\BoundaryCheck.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\boundary-linux-v2",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 47268,
+  "ObservedParentPid": 47268,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 47268,
+    "Started": "2026-10-09T17:49:35.134759+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop';$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192';$p=Join-Path $task 'boundary-check/Program.cs';[IO.File]::Copy($p,(Join-Path $task 'BoundaryCheck-before-uuid-fix.cs'),$false);$s=[IO.File]::ReadAllText($p).Replace('device.Info.Uuid==\\\"GPU-e786e313-bc92-a63d-a833-f4e48cbafb66\\\"','device.Info.Uuid==\\\"E786E313BC92A63DA833F4E48CBAFB66\\\"');[IO.File]::WriteAllText($p,$s,[Text.UTF8Encoding]::new($false));[IO.File]::WriteAllText((Join-Path $task 'boundary-uuid-revision.json'),(@{utc=[DateTime]::UtcNow.ToString('o');sha256=(Get-FileHash -LiteralPath $p).Hash;original=(Get-FileHash -LiteralPath (Join-Path $task 'BoundaryCheck-before-uuid-fix.cs')).Hash;reason='CUDA UUID is 32 hex characters, nvidia-smi UUID has GPU prefix and hyphens; failed stage before encoder open, no formal training';source_freeze='original source-freeze preserved; this is additive correction'}|ConvertTo-Json)); & (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('publish',(Join-Path $task 'boundary-check/BoundaryCheck.csproj'),'-c','Release','-r','linux-x64','--self-contained','true','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false','-p:RuntimeFrameworkVersion=10.0.12','-o',(Join-Path $task 'boundary-linux-v2')) -TimeoutSeconds 180 -LogName 'boundary-linux-v2' -ProcessQueryTimeoutSeconds 2 -CancelFile (Join-Path $task 'cancel.request') -Environment @{TEMP=(Join-Path $task 'linux-compiler-temp');TMP=(Join-Path $task 'linux-compiler-temp')} |Out-Null\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 180,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "publish",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\boundary-check\\BoundaryCheck.csproj",
+    "-c",
+    "Release",
+    "-r",
+    "linux-x64",
+    "--self-contained",
+    "true",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false",
+    "-p:RuntimeFrameworkVersion=10.0.12",
+    "-o",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\boundary-linux-v2"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

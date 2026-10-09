@@ -1,0 +1,26 @@
+{
+  "Pid": 55904,
+  "Started": "2026-10-09T11:03:19.6996974Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\reboot-observe-later-05.sh",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 4836,
+  "ObservedParentPid": 4836,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 4836,
+    "Started": "2026-10-09T19:01:52.857442+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n& .artifacts/token-limit-20261009-8192/Wait-Reboot-Later.ps1\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 45,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\reboot-observe-later-05.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

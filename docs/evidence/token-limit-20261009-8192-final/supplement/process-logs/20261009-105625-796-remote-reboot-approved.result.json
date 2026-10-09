@@ -1,0 +1,88 @@
+{
+  "Status": "Succeeded",
+  "Pid": 57832,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 5.09,
+  "TimeoutSeconds": 45,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\reboot-approved.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T10:56:26.7348877Z",
+  "ParentPid": 39716,
+  "Launcher": {
+    "Pid": 39716,
+    "Started": "2026-10-09T18:56:25.195186+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'\n[IO.File]::WriteAllText((Join-Path $task 'server-reboot-user-authorization.json'),(@{utc=[DateTime]::UtcNow.ToString('o');user_message='我们如果需要重启这台服务器就重启， 然后重启后观察 显卡是否恢复。';host='digisyn-gpu01';address='211.149.170.42:2222';gpu='GPU-e786e313-bc92-a63d-a833-f4e48cbafb66';reason='NVIDIA reset exit6 No devices; same580.173.02 driver unload/reload succeeded but GPU still exit6';scope='one host reboot, bounded reconnect, actual changed boot_id, GPU and restored services observation; no retraining'} | ConvertTo-Json),[Text.UTF8Encoding]::new($false))\n& (Join-Path $task 'Run-Remote.ps1') -Phase reboot-approved -Seconds 45\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-105625-796-remote-reboot-approved.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-105625-796-remote-reboot-approved.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 1.6368058,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 57832,
+      "CreationDate": "2026-10-09T18:56:26.734887+08:00",
+      "Started": "2026-10-09T10:56:26.734887Z",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\reboot-approved.sh",
+      "ParentPid": 39716,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 63848,
+      "CreationDate": "2026-10-09T18:56:26.748034+08:00",
+      "Started": "2026-10-09T10:56:26.748034Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 57832,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 57832,
+          "CreationDate": "2026-10-09T18:56:26.734887+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\reboot-approved.sh",
+          "ParentPid": 39716
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 72352,
+      "CreationDate": "2026-10-09T18:56:27.309894+08:00",
+      "Started": "2026-10-09T10:56:27.309894Z",
+      "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "ParentPid": 57832,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 57832,
+          "CreationDate": "2026-10-09T18:56:26.734887+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\reboot-approved.sh",
+          "ParentPid": 39716
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

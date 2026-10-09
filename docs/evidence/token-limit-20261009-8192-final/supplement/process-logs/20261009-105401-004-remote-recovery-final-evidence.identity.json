@@ -1,0 +1,26 @@
+{
+  "Pid": 74144,
+  "Started": "2026-10-09T10:54:01.9126296Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\recovery-final-evidence.sh",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 71656,
+  "ObservedParentPid": 71656,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 71656,
+    "Started": "2026-10-09T18:54:00.296941+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n& .artifacts/token-limit-20261009-8192/Prepare-RecoveryEvidence.ps1\n& .artifacts/token-limit-20261009-8192/Run-Remote.ps1 -Phase recovery-final-evidence -Seconds 100\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 100,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\recovery-final-evidence.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

@@ -1,0 +1,26 @@
+{
+  "Pid": 34824,
+  "Started": "2026-10-09T09:48:31.6314441Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\boundary-tiny.sh",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 64148,
+  "ObservedParentPid": 64148,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 64148,
+    "Started": "2026-10-09T17:48:07.036344+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop';$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192';$oldHash=(Get-FileHash -LiteralPath (Join-Path $task 'phase-common-before-budget-record.sh')).Hash.ToLowerInvariant();$newHash=(Get-FileHash -LiteralPath (Join-Path $task 'remote/phase-common.sh')).Hash.ToLowerInvariant();$s=@'\n#!/bin/bash\nset -euo pipefail\numask 077\ntask=/root/sezika-experiments/20261009-repaired-training-8192\ntest \\\"$(hostname)\\\" = digisyn-gpu01\ntest \\\"$(timeout 2s cat \\\"$task/task-identity\\\")\\\" = sezika-token-limit-20261009-8192\ntest ! -e \\\"$task/.artifacts/stage-boundary-tiny\\\" && test ! -e \\\"$task/logs/budget-manifest-correction.tsv\\\"\nprintf '%s  %s\\n' OLDHASH \\\"$task/logs/phase-common-before-budget-record.sh\\\" NEWHASH \\\"$task/remote/phase-common.sh\\\" | timeout 2s sha256sum -c --quiet -\ncp -- \\\"$task/remote/files.sha256\\\" \\\"$task/logs/remote-files-before-crlf-correction.sha256\\\"\nsed -i 's/^OLDHASH  phase-common.sh/NEWHASH  phase-common.sh/' \\\"$task/remote/files.sha256\\\"\n(cd \\\"$task/remote\\\" && timeout 5s sha256sum -c --quiet files.sha256)\nprintf 'old_sha256\\tOLDHASH\\nnew_sha256\\tNEWHASH\\nreason\\tCRLF inventory sed anchor correction; original failure retained; real8192 budget6GiB\\n' > \\\"$task/logs/budget-manifest-correction.tsv\\\"\nprintf 'budget_manifest_correction_verified_no_gpu_started=true\\n'\n'@;$s=$s.Replace('OLDHASH',$oldHash).Replace('NEWHASH',$newHash);[IO.File]::WriteAllText((Join-Path $task 'remote/budget-manifest-correction.sh'),$s+\\\"`n\\\",[Text.UTF8Encoding]::new($false)); & (Join-Path $task 'Run-Remote.ps1') -Phase budget-manifest-correction -Seconds 40; & (Join-Path $task 'Run-Remote.ps1') -Phase runner-probe -Seconds 75; & (Join-Path $task 'Run-Remote.ps1') -Phase boundary-tiny -Seconds 170\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 170,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\boundary-tiny.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

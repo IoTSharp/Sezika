@@ -1,0 +1,47 @@
+linux_reset_command_runner_exit=127
+status	payload_failed
+payload_exit	6
+elapsed_ms	5970
+cleanup_elapsed_ms	3880
+cleanup_deadline_ms	4929024490
+cleanup_incomplete	0
+final_check_complete	1
+verified_live_count	0
+unknown_count	0
+unchecked_count	0
+cleanup_budget_exhausted	0
+tracked_identities	2
+token	sezika-3181358-3570-18516
+supervisor_pid	3181358
+fixture	none
+clock_resolution_ms	10
+clock_tolerance_ms	20
+limitation	cooperative_checks_only_blocking_kernel_io_and_short_intermediates_not_guaranteed
+control_unaffected	0
+control_owner_closed	0
+seam_mismatch	na
+seam_unreadable	na
+work_pause_reason	na
+work_pause_read_rc	na
+work_pause_failed_ms	na
+cleanup_deferred_proofs	0
+2026-10-09T10:47:13Z
+source=/proc/driver/nvidia/gpus/0000:65:00.0/information
+Model: 		 NVIDIA GeForce RTX 4090
+IRQ:   		 246
+GPU UUID: 	 GPU-e786e313-bc92-a63d-a833-f4e48cbafb66
+Video BIOS: 	 ??.??.??.??.??
+Bus Type: 	 PCIe
+DMA Size: 	 47 bits
+DMA Mask: 	 0x7fffffffffff
+Bus Location: 	 0000:65:00.0
+Device Minor: 	 0
+GPU Firmware: 	 N/A
+GPU Excluded:	 No
+source=/sys/bus/pci/devices/0000:65:00.0/vendor
+0x10de
+source=/sys/bus/pci/devices/0000:65:00.0/device
+0x2684
+authorized_reset_uuid=GPU-e786e313-bc92-a63d-a833-f4e48cbafb66
+reset_exit=6
+No devices were found

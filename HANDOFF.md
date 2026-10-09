@@ -1,5 +1,7 @@
 # Sezika 监督交接
 
+当前状态：用户已明确采用8192、保留215/train162/dev53，并批准GPU重置及必要主机重启。8192工程/长度/真实8k前向和唯一24576updates训练已完成，head/report/checkpoint已核SHA保存。首次独立验证因Xid119/154失败，原32回归未运行。NVIDIA reset实际exit6/No devices；既有580.173.02驱动卸载重载exit0、原文件/参数保持，但GPU仍exit6。两原容器已恢复启动，重启前翻译health200/ASR503，不称GPU健康。10:56:29 UTC已请求一次主机reboot/request exit0；截至2026-10-09 11:15:39 UTC（北京时间19:15:39），最新SSH exit255与直接TCP探针均被拒绝，尚未取得不同boot_id或GPU恢复证明，需管理控制台/机房检查启动与网络。禁止重复reboot/reset/训练；只观察恢复，连通及资源准入后仅接续保存head的独立验证和32回归。用户许可已取得，不重复询问。见[本轮完整证据](docs/evidence/token-limit-8192-2026-10-09.md)。
+
 更新：2026-10-09，Asia/Shanghai。规范工作区 `D:\source\Sezika`，分支 `main`，监督起点 `716130e`。ROADMAP.md 是唯一阶段计划；本文件只记录当前交接。此前交接的过程状态保留在 Git 历史及下列证据中。
 
 ## 授权与定时接续
@@ -11,13 +13,15 @@
 仅 `D:\source\Tomur` 已获核最新、拉取、必要修改提交及推送授权。Sezika 只 commit；发布、部署及正式默认切换仍按各自门槛处理。用户未跟踪的 Sezika `docs/wechat-introduction.md`、`.html` 及 Tomur `docs/articles/` 不修改或暂存。
 
 ## 当前结果
-### 2026-10-09 修题后固定训练：新会话已接管
+### 2026-10-09 8192固定训练完成；GPU恢复及主机重启已获批准
 
-工程本地提交 afcca10 / e808191，完整新证据镜像 docs/evidence/repaired-training-20261009-engineering（206文件+inventory、873396bytes）。06:04 UTC的34回执/151登记身份/110PID快照无matching/unknown current；后续归档、暂存与只读复核进程另见 repaired-training-20261009-closure 补充，短命OS argv未观测局限及字段纠正sidecar保留，不宣称全部历史命令有OS身份。三专属compiler-temp24项按确切日志hash移存/空目录非递归清理，现有GPU服务未停，新远端仅bootstrap，无上传或GPU stage。
+本轮8192工程本地提交 a5f4d9c / 167470a / 44b4082，未push。新profile仅改变runtime_max_tokens并绑定encoder manifest B8FB9CECC0912F034E0FEA184E8AA78871D11533093DCCF4F5AAD74646007551；历史1024包/旧v2v3报告不变。215/215长度通过、最长1037；H4完整8192最大误差3.5762786865234375E-07，真实mmBERT8192 GPU前向owned峰4813921280bytes/host2741837824bytes、结束归零。该独立边界≤6GiB，正式215实验仍≤3GiB GPU/4GiB host，CLI1500s/SGD300s/每阶段384forwards。
 
-当前准入阻塞：本会话C# v3合同/账本/分母及报告、24项反例/访问参考、旧v1八项/v2十六项、Linux10.0.12自包含发布已完成。全215题正式strict1024检查214通过/1失败；唯一train Choice `massive-zh-cn-02996` 修订1037tokens（父题482），通过题最长910。本次无GPU训练、独立加载或原32回归；没有教师HTTP。用户已收到具体选择：删该题后214/train161/dev53再沿原24576配置，或保留215并暂停；尚未回复前不得变分母、删除/修改原包、提高1024或启动GPU。原215文件hash保持，新远端root仅bootstrap。见 docs/evidence/repaired-training-engineering-2026-10-09.md。短进程guardian历史CleanupFailed/unknown1保留，当前准确PID后核另列；正式质量/人审/许可/AOT均pending。heartbeat已迁到本会话并更新此阻塞，状态无变化安静，不重跑检查、派单或训练。
+唯一训练为24576updates/LR0.001/seed17/strict8192/零head/encoder冻结，实际46.5468512秒、231encoder forwards。同进程磁盘roundtrip通过；train教师一致118/162、dev27/53、换序7/16、换序ID改变6/16；train CE1.1844641080609075→0.8185527480586812，dev CE1.10233565996278→1.0354540944099426。实际commit回调及固定顺序重放为151周期+114前缀，每题151或152次，不称128完整epoch或直接kernel ID观测。report SHA C6F3AE942FB90CA842FD49AFF7AE6505EB02A71128264EDC2EF08BC323A48905，head4205457556736AB07799B462D42C377710E765CB14EDB9AAE508C1558C5E9D64；checkpoint及完整身份见新证据。教师一致性不等于正式准确率或质量通过，Score无新监督。
 
-本会话 `01a11f25-335a-7571-a735-7171ace8c3b9` 已从 `main / 4e7b304` 接管，独占 Git/API/GPU；旧会话停止实施。任务根 `.artifacts/repaired-training-20261009`，新远端根 `/root/sezika-experiments/20261009-repaired-training-v3`。先执行 C# 显式 v3 合同、实际215/162/53分母及账本绑定、新 strict1024 长度检查和必要工程验收；随后仅一次固定24576updates/LR0.001/seed17/零head/encoder冻结及独立验证、原32回归。禁止再发教师请求、重跑历史训练或按dev调参。暂停源码、旧ROADMAP诊断hunk及用户文件身份已记录，保留；仅本地分项commit，完成后停止新增训练。
+准确新任务根 .artifacts/token-limit-20261009-8192、远端 /root/sezika-experiments/20261009-repaired-training-8192，本会话独占Git/API/GPU。永久镜像 docs/evidence/token-limit-20261009-8192-final 的inventory绑定原始报告/保存物/回执/日志/脚本/源码；完整13,496,320bytes tar本机保留。Linux46登记身份live0/unknown0，但验证CUDA释放失败及NVML进程N/A，不能宣称最终GPU正常回收。10:28:20 UTC只读预检确认Hearon翻译PID3055及ASR PID3068仍running，准确容器/启动/argv/父链与恢复方案已记录；该10:28快照尚未停止服务或reset/reboot；随后真实恢复动作见顶部当前状态与新证据。以上10:28快照之后用户已明确批准GPU重置及必要主机重启；软件恢复未成功，已发一次reboot并等待新的boot_id。授权不包括重复训练。相同heartbeat阻塞安静，不重复通知/索要已取得许可；主智能体已有重启请求时不得重复操作。
+
+本机当前登记身份及直系子进程补充只读检查matching0/unknown0/unproven_children0，正在观察的launcher/console另后核；历史短命unknown及第一次收口误计当前launcher的失败保持。16份专属编译日志按hash保留，仅非递归移除36个确切空目录，未清共享TEMP/失败Linux临时asset。暂停源码、ROADMAP旧诊断hunk及用户文件保持，仅本地commit。原1024准入、合同afcca10/e808191及旧工程镜像为已完成历史，见 repaired-training-engineering-2026-10-09.md；旧“等待删题/未训练”状态已被明确8192选择与本轮实际训练取代。正式质量、人审、许可发布、校准、封存及新head AOT/性能仍pending。以下各小节记录此前快照，不作为当前在途任务。
 
 ### 2026-10-09 修题/盲审完成：215题候选包，新会话接续训练
 

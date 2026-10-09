@@ -1,0 +1,26 @@
+{
+  "Pid": 28384,
+  "Started": "2026-10-09T10:49:05.8687253Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\driver-recovery-preflight.sh",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 58736,
+  "ObservedParentPid": 58736,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 58736,
+    "Started": "2026-10-09T18:49:04.424743+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n& .artifacts/token-limit-20261009-8192/Run-Remote.ps1 -Phase driver-recovery-preflight -Seconds 65\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 65,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\driver-recovery-preflight.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

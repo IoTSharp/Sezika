@@ -1,0 +1,88 @@
+{
+  "Status": "Succeeded",
+  "Pid": 50816,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 5.481,
+  "TimeoutSeconds": 45,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192/Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\progress.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T10:07:03.0576645Z",
+  "ParentPid": 60820,
+  "Launcher": {
+    "Pid": 60820,
+    "Started": "2026-10-09T18:07:01.186145+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop';$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192';$p=Join-Path $task 'remote/progress.sh';$s=[IO.File]::ReadAllText($p).Replace('boundary-tiny boundary-full boundary-real capacity train validate regress','boundary-tiny boundary-tiny2 boundary-full boundary-real publication capacity capacity2 train validate regress').Replace('count<7','count<10');[IO.File]::WriteAllText($p,$s,[Text.UTF8Encoding]::new($false));try{& $task/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',\\\"$task/Invoke-Ssh.ps1\\\",'-ScriptFile',$p) -TimeoutSeconds 45 -LogName 'progress-02' -ProcessQueryTimeoutSeconds 2 -CancelFile \\\"$task/cancel.request\\\"|Out-Null}catch{Write-Output $_.Exception.Message};$r=Get-ChildItem -LiteralPath $task/process-logs -Filter '*progress-02.result.json' -File|Select-Object -First 1|Get-Content -Raw|ConvertFrom-Json;Get-Content -LiteralPath $r.StdoutPath -Tail 30;Get-Content -LiteralPath $r.StderrPath -Tail 5\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-100701-989-progress-02.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-100701-989-progress-02.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 1.7646935,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 50816,
+      "CreationDate": "2026-10-09T18:07:03.057664+08:00",
+      "Started": "2026-10-09T10:07:03.057664Z",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192/Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\progress.sh",
+      "ParentPid": 60820,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 2556,
+      "CreationDate": "2026-10-09T18:07:03.072019+08:00",
+      "Started": "2026-10-09T10:07:03.072019Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 50816,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 50816,
+          "CreationDate": "2026-10-09T18:07:03.057664+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192/Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\progress.sh",
+          "ParentPid": 60820
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 30784,
+      "CreationDate": "2026-10-09T18:07:03.719422+08:00",
+      "Started": "2026-10-09T10:07:03.719422Z",
+      "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "ParentPid": 50816,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 50816,
+          "CreationDate": "2026-10-09T18:07:03.057664+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192/Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\progress.sh",
+          "ParentPid": 60820
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

@@ -1,0 +1,98 @@
+{
+  "Status": "Succeeded",
+  "Pid": 10968,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 55.92,
+  "TimeoutSeconds": 180,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Windows\\System32\\OpenSSH\\scp.exe",
+  "Arguments": [
+    "-P",
+    "2222",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "ServerAliveInterval=5",
+    "-o",
+    "ServerAliveCountMax=2",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\upload.tar",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\upload.sha256",
+    "root@211.149.170.42:/root/sezika-experiments/20261009-repaired-training-8192/"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T09:44:30.2476864Z",
+  "ParentPid": 32564,
+  "Launcher": {
+    "Pid": 32564,
+    "Started": "2026-10-09T17:44:24.747074+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/token-limit-20261009-8192/Prepare-Transfer.ps1 -Mode Upload\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-094428-699-expansion-upload.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-094428-699-expansion-upload.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 3.2350477,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 10968,
+      "CreationDate": "2026-10-09T17:44:30.247686+08:00",
+      "Started": "2026-10-09T09:44:30.247686Z",
+      "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\scp.exe\" -P 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\upload.tar D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\upload.sha256 root@211.149.170.42:/root/sezika-experiments/20261009-repaired-training-8192/",
+      "ParentPid": 32564,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 72124,
+      "CreationDate": "2026-10-09T17:44:30.268633+08:00",
+      "Started": "2026-10-09T09:44:30.268633Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 10968,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 10968,
+          "CreationDate": "2026-10-09T17:44:30.247686+08:00",
+          "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\scp.exe\" -P 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\upload.tar D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\upload.sha256 root@211.149.170.42:/root/sezika-experiments/20261009-repaired-training-8192/",
+          "ParentPid": 32564
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 72532,
+      "CreationDate": "2026-10-09T17:44:30.549803+08:00",
+      "Started": "2026-10-09T09:44:30.549803Z",
+      "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -x -oPermitLocalCommand=no -oClearAllForwardings=yes -oRemoteCommand=none -oRequestTTY=no -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 -oForwardAgent=no -p 2222 -l root -s -- 211.149.170.42 sftp",
+      "ParentPid": 10968,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 10968,
+          "CreationDate": "2026-10-09T17:44:30.247686+08:00",
+          "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\scp.exe\" -P 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\upload.tar D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\upload.sha256 root@211.149.170.42:/root/sezika-experiments/20261009-repaired-training-8192/",
+          "ParentPid": 32564
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

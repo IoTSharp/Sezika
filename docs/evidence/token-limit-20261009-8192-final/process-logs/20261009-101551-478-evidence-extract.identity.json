@@ -1,0 +1,25 @@
+{
+  "Pid": 57056,
+  "Started": "2026-10-09T10:15:52.2962775Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 10412,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 10412,
+    "Started": "2026-10-09T18:15:49.111522+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop';$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192';function Run([string]$Label,[string[]]$Arguments){try{& $task/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Windows\\System32\\tar.exe' -ArgumentList $Arguments -TimeoutSeconds 35 -LogName $Label -ProcessQueryTimeoutSeconds 2 -CancelFile \\\"$task/cancel.request\\\"|Out-Null}catch{Write-Output $_.Exception.Message};$r=Get-ChildItem -LiteralPath \\\"$task/process-logs\\\" -File -Filter ('*'+$Label+'.result.json')|Select-Object -First 1|Get-Content -Raw|ConvertFrom-Json;if($null -eq $r.ExitCode -or $r.ExitCode -ne 0){throw 'tar actual exit failed'};return $r};$r=Run 'evidence-list-complete' @('-tf',\\\"$task/evidence-bundle.tar\\\");$entries=@([IO.File]::ReadAllLines($r.StdoutPath));$clock=[Diagnostics.Stopwatch]::StartNew();if($entries.Count -gt 1000){throw 'archive entry cap'};foreach($name in $entries){if($clock.Elapsed.TotalSeconds -ge 10){throw 'entry timeout'};if($name -match '(^/|\\.\\.|\\\\)' -or $name -cnotmatch '^((output|logs|\\.artifacts|remote|data|bundle|boundary|profile|package|capacity|regression|regression_input)(/|$)|task-identity$|thread-identity$)'){throw ('unsafe evidence path '+$name)}};[IO.File]::WriteAllLines(\\\"$task/evidence-inventory.txt\\\",$entries,[Text.UTF8Encoding]::new($false));$dest=Join-Path $task 'retrieved';if(Test-Path -LiteralPath $dest){throw 'fresh retrieval extraction required'};[IO.Directory]::CreateDirectory($dest)|Out-Null;Run 'evidence-extract' @('-xf',\\\"$task/evidence-bundle.tar\\\",'-C',$dest)|Select-Object Status,ExitCode,Pid;$r=Get-Content -Raw -LiteralPath \\\"$dest/output/run-24576/expanded-training-report.json\\\"|ConvertFrom-Json;$r|Select-Object training_contract,train_count,development_count,max_tokens,completed_steps,encoder_forwards_completed,encoder_manifest_sha256,elapsed_seconds,baseline_train,baseline_development,trained_train,trained_development,resources|ConvertTo-Json -Depth 6;$r.loaded_observations|Select-Object groups,position_comparisons|ConvertTo-Json -Depth 4\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 35,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Windows\\System32\\tar.exe",
+  "Arguments": [
+    "-xf",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192/evidence-bundle.tar",
+    "-C",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\retrieved"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

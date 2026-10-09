@@ -1,0 +1,45 @@
+active_stage_cancel_file=/root/sezika-experiments/20261009-repaired-training-8192/.artifacts/stage-boundary-full/cancel.request
+payload_argv /root/sezika-experiments/20261009-repaired-training-8192/boundary/BoundaryCheck full /root/sezika-experiments/20261009-repaired-training-8192/package
+linux_runner_exit=0
+status	completed
+payload_exit	0
+elapsed_ms	6010
+cleanup_elapsed_ms	3880
+cleanup_deadline_ms	4925787490
+cleanup_incomplete	0
+final_check_complete	1
+verified_live_count	0
+unknown_count	0
+unchecked_count	0
+cleanup_budget_exhausted	0
+tracked_identities	2
+token	sezika-3092383-19292-475
+supervisor_pid	3092383
+fixture	none
+clock_resolution_ms	10
+clock_tolerance_ms	20
+limitation	cooperative_checks_only_blocking_kernel_io_and_short_intermediates_not_guaranteed
+control_unaffected	0
+control_owner_closed	0
+seam_mismatch	na
+seam_unreadable	na
+work_pause_reason	na
+work_pause_read_rc	na
+work_pause_failed_ms	na
+cleanup_deferred_proofs	0
+==> /root/sezika-experiments/20261009-repaired-training-8192/.artifacts/stage-boundary-full/payload.stdout.log <==
+H4 CPU reference rows=8192
+PASS 8193 rejects before allocation
+PASS pre-cancelled forward no allocation
+PASS H4 GPU full output shape
+PASS H4 CPU/GPU all rows absolute error<=2e-4
+rows=8192 maximum_absolute_error=3.5762786865234375E-07
+PASS transient frame restored resident baseline
+PASS 8192 complete frame budget rejects before allocation
+PASS encoder resources zero after disposal
+PASS boundary6GiB/host4GiB limits
+owned_peak_bytes=270566320 host_peak_bytes=147677184 elapsed_seconds=1.8222069
+device_dispose_returned=true
+
+==> /root/sezika-experiments/20261009-repaired-training-8192/.artifacts/stage-boundary-full/payload.stderr.log <==
+stage_completed=boundary-full elapsed_seconds=7

@@ -1,0 +1,121 @@
+{
+  "Status": "Succeeded",
+  "Pid": 49048,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 23.484,
+  "TimeoutSeconds": 180,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "publish",
+    "D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\Sezika.ExperimentTrainer.csproj",
+    "-c",
+    "Release",
+    "-r",
+    "linux-x64",
+    "--self-contained",
+    "true",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false",
+    "-p:RuntimeFrameworkVersion=10.0.12",
+    "-o",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\publish-linux-v2"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T10:01:08.3220681Z",
+  "ParentPid": 65108,
+  "Launcher": {
+    "Pid": 65108,
+    "Started": "2026-10-09T18:00:52.781223+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/token-limit-20261009-8192/Publish-PublicationFix.ps1\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-100107-264-publish-linux-v2.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-100107-264-publish-linux-v2.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 2.0362377,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 49048,
+      "CreationDate": "2026-10-09T18:01:08.322068+08:00",
+      "Started": "2026-10-09T10:01:08.322068Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\Sezika.ExperimentTrainer.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\publish-linux-v2",
+      "ParentPid": 65108,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 1772,
+      "CreationDate": "2026-10-09T18:01:14.757818+08:00",
+      "Started": "2026-10-09T10:01:14.757818Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\linux-compiler-temp\\MSBuildTempijqhw04e.qxo\\tmpe3250c0f876f496c8cd0bf6a35a9a726.rsp\"",
+      "ParentPid": 49048,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 49048,
+          "CreationDate": "2026-10-09T18:01:08.322068+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\Sezika.ExperimentTrainer.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\publish-linux-v2",
+          "ParentPid": 65108
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 54668,
+      "CreationDate": "2026-10-09T18:01:08.33283+08:00",
+      "Started": "2026-10-09T10:01:08.33283Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 49048,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 49048,
+          "CreationDate": "2026-10-09T18:01:08.322068+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\Sezika.ExperimentTrainer.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\publish-linux-v2",
+          "ParentPid": 65108
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 66536,
+      "CreationDate": "2026-10-09T18:01:14.773094+08:00",
+      "Started": "2026-10-09T10:01:14.773094Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 1772,
+      "Depth": 2,
+      "ParentChain": [
+        {
+          "Pid": 49048,
+          "CreationDate": "2026-10-09T18:01:08.322068+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\Sezika.ExperimentTrainer.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\publish-linux-v2",
+          "ParentPid": 65108
+        },
+        {
+          "Pid": 1772,
+          "CreationDate": "2026-10-09T18:01:14.757818+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\linux-compiler-temp\\MSBuildTempijqhw04e.qxo\\tmpe3250c0f876f496c8cd0bf6a35a9a726.rsp\"",
+          "ParentPid": 49048
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

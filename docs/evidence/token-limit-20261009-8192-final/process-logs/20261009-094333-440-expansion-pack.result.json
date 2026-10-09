@@ -1,0 +1,71 @@
+{
+  "Status": "Succeeded",
+  "Pid": 61152,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 20.82,
+  "TimeoutSeconds": 45,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Windows\\System32\\tar.exe",
+  "Arguments": [
+    "-czf",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\upload.tar",
+    "-C",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\upload-staging",
+    "."
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T09:43:34.5571825Z",
+  "ParentPid": 6188,
+  "Launcher": {
+    "Pid": 6188,
+    "Started": "2026-10-09T17:43:29.641432+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'; Get-Content -LiteralPath $task/remote/phase-common.sh -TotalCount 32;Get-Content -LiteralPath $task/remote/bootstrap.sh | Select-Object -Skip 58 -First 40;Get-FileHash -LiteralPath $task/remote/Invoke-BoundedLinux.sh; $old='D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\data'; & $task/Prepare-Transfer.ps1 -Mode Prepare -BundleDirectory $task/publish-linux -CapacityDirectory $task/capacity-linux -DataDirectory $old\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-094333-440-expansion-pack.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-094333-440-expansion-pack.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 1.6142243,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 61152,
+      "CreationDate": "2026-10-09T17:43:34.557182+08:00",
+      "Started": "2026-10-09T09:43:34.557182Z",
+      "CommandLine": "\"C:\\Windows\\System32\\tar.exe\" -czf D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\upload.tar -C D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\upload-staging .",
+      "ParentPid": 6188,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 9768,
+      "CreationDate": "2026-10-09T17:43:34.567884+08:00",
+      "Started": "2026-10-09T09:43:34.567884Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 61152,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 61152,
+          "CreationDate": "2026-10-09T17:43:34.557182+08:00",
+          "CommandLine": "\"C:\\Windows\\System32\\tar.exe\" -czf D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\upload.tar -C D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\upload-staging .",
+          "ParentPid": 6188
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

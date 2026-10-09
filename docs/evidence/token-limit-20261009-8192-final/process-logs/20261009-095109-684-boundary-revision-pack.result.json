@@ -1,0 +1,45 @@
+{
+  "Status": "CleanupFailed",
+  "Pid": 73880,
+  "ExitCode": 0,
+  "Error": "Process cleanup or output capture failed.",
+  "ElapsedSeconds": 1.997,
+  "TimeoutSeconds": 20,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Windows\\System32\\tar.exe",
+  "Arguments": [
+    "-cf",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\boundary-uuid-patch.tar",
+    "-C",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\boundary-uuid-patch",
+    "."
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T09:51:10.7055627Z",
+  "ParentPid": 74000,
+  "Launcher": {
+    "Pid": 74000,
+    "Started": "2026-10-09T17:51:08.983414+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop';$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192';$revision=Join-Path $task 'boundary-uuid-patch';[IO.Directory]::CreateDirectory($revision)|Out-Null;$p=Join-Path $task 'remote/phase-common.sh';$oldCommon=(Get-FileHash -LiteralPath $p).Hash.ToLowerInvariant();[IO.File]::Copy($p,(Join-Path $task 'phase-common-before-uuid-revision.sh'),$false);$s=[IO.File]::ReadAllText($p).Replace('${phase-} == boundary-tiny ||','${phase-} == boundary-tiny2 || ${phase-} == boundary-tiny ||').Replace('stage-boundary-tiny/result.tsv','stage-boundary-tiny2/result.tsv').Replace('boundary-tiny|boundary-full|boundary-real)','boundary-tiny2|boundary-tiny|boundary-full|boundary-real)').Replace('mode=${phase#boundary-};','mode=${phase#boundary-}; if [[ $mode == tiny2 ]]; then mode=tiny; fi;');[IO.File]::WriteAllText($p,$s,[Text.UTF8Encoding]::new($false));[IO.File]::Copy($p,(Join-Path $revision 'phase-common.sh'),$false)\n$watch=[Diagnostics.Stopwatch]::StartNew();$lines=@(foreach($name in @('BoundaryCheck.dll','BoundaryCheck.pdb')){if($watch.Elapsed.TotalSeconds -ge 20){throw 'revision deadline'};$new=Join-Path $task ('boundary-linux-v2/'+$name);[IO.File]::Copy($new,(Join-Path $revision $name),$false);(Get-FileHash -LiteralPath $new).Hash.ToLowerInvariant()+'  '+$name});$newCommon=(Get-FileHash -LiteralPath $p).Hash.ToLowerInvariant();$lines+=$newCommon+'  phase-common.sh';[IO.File]::WriteAllText((Join-Path $revision 'files.sha256'),(($lines -join \\\"`n\\\")+\\\"`n\\\"),[Text.UTF8Encoding]::new($false))\n& (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Windows\\System32\\tar.exe' -ArgumentList @('-cf',(Join-Path $task 'boundary-uuid-patch.tar'),'-C',$revision,'.') -TimeoutSeconds 20 -LogName 'boundary-revision-pack' -ProcessQueryTimeoutSeconds 2 -CancelFile (Join-Path $task 'cancel.request')|Out-Null\n$archive=(Get-FileHash -LiteralPath (Join-Path $task 'boundary-uuid-patch.tar')).Hash.ToLowerInvariant();$oldDll=(Get-FileHash -LiteralPath (Join-Path $task 'boundary-linux/BoundaryCheck.dll')).Hash.ToLowerInvariant();$oldPdb=(Get-FileHash -LiteralPath (Join-Path $task 'boundary-linux/BoundaryCheck.pdb')).Hash.ToLowerInvariant();$newDll=(Get-FileHash -LiteralPath (Join-Path $revision 'BoundaryCheck.dll')).Hash.ToLowerInvariant();$newPdb=(Get-FileHash -LiteralPath (Join-Path $revision 'BoundaryCheck.pdb')).Hash.ToLowerInvariant()\n$template=@'\n#!/bin/bash\nset -euo pipefail\numask 077\ntask=/root/sezika-experiments/20261009-repaired-training-8192\ntest \\\"$(hostname)\\\" = digisyn-gpu01\ntest \\\"$(timeout 2s cat \\\"$task/task-identity\\\")\\\" = sezika-token-limit-20261009-8192\ntest ! -e \\\"$task/.artifacts/stage-boundary-tiny2\\\" && test ! -e \\\"$task/logs/boundary-uuid-patch\\\"\nprintf '%s  %s\\n' ARCHIVE \\\"$task/boundary-uuid-patch.tar\\\" OLDCOMMON \\\"$task/remote/phase-common.sh\\\" OLDDLL \\\"$task/boundary/BoundaryCheck.dll\\\" OLDPDB \\\"$task/boundary/BoundaryCheck.pdb\\\" | timeout 3s sha256sum -c --quiet -\n(( $(stat -c %s \\\"$task/boundary-uuid-patch.tar\\\") <= 1048576 ))\ntimeout 2s tar -tf \\\"$task/boundary-uuid-patch.tar\\\" > \\\"$task/logs/boundary-uuid-patch-inventory.txt\\\"\ncount=0; begin=$SECONDS\nwhile IFS= read -r name; do\n ((count<5 && SECONDS-begin<5)) || exit 124\n [[ $name == ./ || $name == ./BoundaryCheck.dll || $name == ./BoundaryCheck.pdb || $name == ./phase-common.sh || $name == ./files.sha256 ]] || exit 65\n count=$((count+1))\ndone < \\\"$task/logs/boundary-uuid-patch-inventory.txt\\\"\nmkdir \\\"$task/logs/boundary-uuid-patch\\\" \\\"$task/logs/boundary-before-uuid-fix\\\"\ntimeout 2s tar -xf \\\"$task/boundary-uuid-patch.tar\\\" -C \\\"$task/logs/boundary-uuid-patch\\\"\n(cd \\\"$task/logs/boundary-uuid-patch\\\" && timeout 2s sha256sum -c --quiet files.sha256)\ncp -- \\\"$task/boundary/BoundaryCheck.dll\\\" \\\"$task/boundary/BoundaryCheck.pdb\\\" \\\"$task/boundary/files.sha256\\\" \\\"$task/logs/boundary-before-uuid-fix/\\\"\ncp -- \\\"$task/remote/phase-common.sh\\\" \\\"$task/logs/phase-common-before-uuid-revision.sh\\\"\ncp -- \\\"$task/remote/files.sha256\\\" \\\"$task/logs/remote-files-before-uuid-revision.sha256\\\"\ncp -- \\\"$task/logs/boundary-uuid-patch/BoundaryCheck.dll\\\" \\\"$task/logs/boundary-uuid-patch/BoundaryCheck.pdb\\\" \\\"$task/boundary/\\\"\ncp -- \\\"$task/logs/boundary-uuid-patch/phase-common.sh\\\" \\\"$task/remote/phase-common.sh\\\"\nsed -i 's/^OLDDLL  BoundaryCheck.dll/NEWDLL  BoundaryCheck.dll/;s/^OLDPDB  BoundaryCheck.pdb/NEWPDB  BoundaryCheck.pdb/' \\\"$task/boundary/files.sha256\\\"\nsed -i 's/^OLDCOMMON  phase-common.sh/NEWCOMMON  phase-common.sh/' \\\"$task/remote/files.sha256\\\"\n(cd \\\"$task/boundary\\\" && timeout 5s sha256sum -c --quiet files.sha256)\n(cd \\\"$task/remote\\\" && timeout 5s sha256sum -c --quiet files.sha256)\ntimeout 2s bash -n \\\"$task/remote/phase-common.sh\\\"\nprintf 'uuid_format_fix_applied_original_failure_preserved_no_encoder_forward_yet=true\\n'\n'@;$template=$template.Replace('ARCHIVE',$archive).Replace('OLDCOMMON',$oldCommon).Replace('NEWCOMMON',$newCommon).Replace('OLDDLL',$oldDll).Replace('NEWDLL',$newDll).Replace('OLDPDB',$oldPdb).Replace('NEWPDB',$newPdb);[IO.File]::WriteAllText((Join-Path $task 'remote/boundary-uuid-revision.sh'),$template+\\\"`n\\\",[Text.UTF8Encoding]::new($false));[IO.File]::WriteAllText((Join-Path $task 'remote/boundary-tiny2.sh'),('#!/bin/bash'+\\\"`n\\\"+'phase=boundary-tiny2'+\\\"`n\\\"+'source /root/sezika-experiments/20261009-repaired-training-8192/remote/phase-common.sh'+\\\"`n\\\"),[Text.UTF8Encoding]::new($false))\n& (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Windows\\System32\\OpenSSH\\scp.exe' -ArgumentList @('-P','2222','-o','BatchMode=yes','-o','ConnectTimeout=8','-o','StrictHostKeyChecking=yes',(Join-Path $task 'boundary-uuid-patch.tar'),'root@211.149.170.42:/root/sezika-experiments/20261009-repaired-training-8192/') -TimeoutSeconds 40 -LogName 'boundary-revision-upload' -ProcessQueryTimeoutSeconds 2 -CancelFile (Join-Path $task 'cancel.request')|Out-Null\n& (Join-Path $task 'Run-Remote.ps1') -Phase boundary-uuid-revision -Seconds 45\n& (Join-Path $task 'Run-Remote.ps1') -Phase boundary-tiny2 -Seconds 170\n\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-095109-684-boundary-revision-pack.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-095109-684-boundary-revision-pack.stderr.log",
+  "CleanupErrors": [
+    "Final task inventory unverified: live=0 unknown=1"
+  ],
+  "FinalCheckComplete": false,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 1,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 0.0338301,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

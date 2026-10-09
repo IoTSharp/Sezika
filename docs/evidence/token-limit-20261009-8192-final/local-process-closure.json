@@ -1,0 +1,2485 @@
+{
+  "matching_live": 0,
+  "limitation": "later absent does not repair short-lived historical missing argv; current closure launcher checked separately after exit",
+  "registered_records": 272,
+  "utc": "2026-10-09T10:20:15.6822068Z",
+  "unknown_current": 0,
+  "receipts": 63,
+  "unique_pids": 187,
+  "checks": [
+    {
+      "source": "20261009-092944-392-trainer-build.result.json",
+      "pid": 29632,
+      "expected_start": "2026-10-09T09:29:45.2840289Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-092944-392-trainer-build.result.json",
+      "pid": 29632,
+      "expected_start": "2026-10-09T09:29:45.284028Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-092944-392-trainer-build.result.json",
+      "pid": 61936,
+      "expected_start": "2026-10-09T09:30:02.286405Z",
+      "state": "reused",
+      "actual": {
+        "ProcessId": 61936,
+        "CreationDate": "2026-10-09T17:35:08.454395+08:00",
+        "CommandLine": "\"C:\\Program Files\\nodejs\\\\node.exe\"  \"C:\\Program Files\\nodejs\\\\node_modules\\npm\\bin\\npx-cli.js\" -y @upstash/context7-mcp",
+        "ParentProcessId": 58080
+      },
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-092944-392-trainer-build.result.json",
+      "pid": 69844,
+      "expected_start": "2026-10-09T09:29:49.32384Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-092944-392-trainer-build.result.json",
+      "pid": 74164,
+      "expected_start": "2026-10-09T09:29:45.296703Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-092944-392-trainer-build.result.json",
+      "pid": 74596,
+      "expected_start": "2026-10-09T09:29:56.901854Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-092944-392-trainer-build.result.json",
+      "pid": 53420,
+      "expected_start": "2026-10-09T09:30:02.29649Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-092944-392-trainer-build.result.json",
+      "pid": 59188,
+      "expected_start": "2026-10-09T09:29:49.348236Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-092944-392-trainer-build.result.json",
+      "pid": 61164,
+      "expected_start": "2026-10-09T09:29:56.911757Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-092944-392-trainer-build.result.json",
+      "pid": 50860,
+      "expected_start": "2026-10-09T17:29:43.888092+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-093939-143-build-0.result.json",
+      "pid": 47220,
+      "expected_start": "2026-10-09T09:39:40.0376271Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-093939-143-build-0.result.json",
+      "pid": 47220,
+      "expected_start": "2026-10-09T09:39:40.037627Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-093939-143-build-0.result.json",
+      "pid": 21540,
+      "expected_start": "2026-10-09T09:39:47.779381Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-093939-143-build-0.result.json",
+      "pid": 62852,
+      "expected_start": "2026-10-09T09:39:41.952476Z",
+      "state": "reused",
+      "actual": {
+        "ProcessId": 62852,
+        "CreationDate": "2026-10-09T18:08:11.241184+08:00",
+        "CommandLine": "\"C:\\Program Files (x86)\\WXWork\\5.0.11.6029\\updated_web\\WXWorkWeb.exe\" --type=renderer --string-annotations=is-enterprise-managed=no --noerrdialogs --user-agent=\"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.6668.101 Safari/537.36 Language/zh ColorScheme/Light wxwork/5.0.11 (MicroMessenger/6.2) WindowsWechat  MailPlugin_Electron WeMail embeddisk wwmver/3.26.511.637\" --user-data-dir=\"C:\\Users\\mysti\\Documents\\WXWork\" --log-severity=info --disable-databases --autoplay-policy=no-user-gesture-required --video-capture-use-gpu-memory-buffer --lang=zh-CN --device-scale-factor=1 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=18 --time-ticks-at-unix-epoch=-1791513214073363 --launch-time-ticks=27274422376 --field-trial-handle=7096,i,5578062887397167410,11907405768737835833,262144 --enable-features=NetworkServiceInProcess --variations-seed-version --enable-logging=handle --log-file=6800 --mojo-platform-channel-handle=8652 /prefetch:1",
+        "ParentProcessId": 17288
+      },
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-093939-143-build-0.result.json",
+      "pid": 72652,
+      "expected_start": "2026-10-09T09:39:40.046008Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-093939-143-build-0.result.json",
+      "pid": 43268,
+      "expected_start": "2026-10-09T09:39:47.789892Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-093939-143-build-0.result.json",
+      "pid": 5172,
+      "expected_start": "2026-10-09T17:39:38.673097+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-093959-091-build-1.result.json",
+      "pid": 74568,
+      "expected_start": "2026-10-09T09:39:59.9246441Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-093959-091-build-1.result.json",
+      "pid": 74568,
+      "expected_start": "2026-10-09T09:39:59.924644Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-093959-091-build-1.result.json",
+      "pid": 35156,
+      "expected_start": "2026-10-09T09:39:59.933027Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-093959-091-build-1.result.json",
+      "pid": 72172,
+      "expected_start": "2026-10-09T09:40:02.365716Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-093959-091-build-1.result.json",
+      "pid": 36664,
+      "expected_start": "2026-10-09T09:40:02.376041Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-093959-091-build-1.result.json",
+      "pid": 5172,
+      "expected_start": "2026-10-09T17:39:38.673097+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094001-599-remote-preflight.result.json",
+      "pid": 68364,
+      "expected_start": "2026-10-09T09:40:02.7237896Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094001-599-remote-preflight.result.json",
+      "pid": 68364,
+      "expected_start": "2026-10-09T09:40:02.723789Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094001-599-remote-preflight.result.json",
+      "pid": 33460,
+      "expected_start": "2026-10-09T09:40:02.74294Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094001-599-remote-preflight.result.json",
+      "pid": 72712,
+      "expected_start": "2026-10-09T09:40:03.651719Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094001-599-remote-preflight.result.json",
+      "pid": 61144,
+      "expected_start": "2026-10-09T17:40:00.87842+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094015-261-build-2.result.json",
+      "pid": 43444,
+      "expected_start": "2026-10-09T09:40:16.0569879Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094015-261-build-2.result.json",
+      "pid": 43444,
+      "expected_start": "2026-10-09T09:40:16.056987Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094015-261-build-2.result.json",
+      "pid": 63708,
+      "expected_start": "2026-10-09T09:40:16.065448Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094015-261-build-2.result.json",
+      "pid": 5172,
+      "expected_start": "2026-10-09T17:39:38.673097+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094022-983-build-3.result.json",
+      "pid": 54736,
+      "expected_start": "2026-10-09T09:40:23.8254845Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094022-983-build-3.result.json",
+      "pid": 54736,
+      "expected_start": "2026-10-09T09:40:23.825484Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094022-983-build-3.result.json",
+      "pid": 59280,
+      "expected_start": "2026-10-09T09:40:23.834495Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094022-983-build-3.result.json",
+      "pid": 5172,
+      "expected_start": "2026-10-09T17:39:38.673097+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094031-494-build-4.result.json",
+      "pid": 33252,
+      "expected_start": "2026-10-09T09:40:32.402985Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094031-494-build-4.result.json",
+      "pid": 33252,
+      "expected_start": "2026-10-09T09:40:32.402985Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094031-494-build-4.result.json",
+      "pid": 74284,
+      "expected_start": "2026-10-09T09:40:32.412359Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094031-494-build-4.result.json",
+      "pid": 5172,
+      "expected_start": "2026-10-09T17:39:38.673097+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094041-555-core-continuation.result.json",
+      "pid": 33680,
+      "expected_start": "2026-10-09T09:40:42.3719933Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-094041-555-core-continuation.result.json",
+      "pid": 5172,
+      "expected_start": "2026-10-09T17:39:38.673097+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-094043-243-boundary-cpu.result.json",
+      "pid": 50464,
+      "expected_start": "2026-10-09T09:40:44.1155252Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-094043-243-boundary-cpu.result.json",
+      "pid": 5172,
+      "expected_start": "2026-10-09T17:39:38.673097+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-094044-924-lengths8192-1.result.json",
+      "pid": 72984,
+      "expected_start": "2026-10-09T09:40:45.7214861Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094044-924-lengths8192-1.result.json",
+      "pid": 72984,
+      "expected_start": "2026-10-09T09:40:45.721486Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094044-924-lengths8192-1.result.json",
+      "pid": 5172,
+      "expected_start": "2026-10-09T17:39:38.673097+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094049-062-lengths8192-215.result.json",
+      "pid": 72416,
+      "expected_start": "2026-10-09T09:40:49.9114892Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094049-062-lengths8192-215.result.json",
+      "pid": 72416,
+      "expected_start": "2026-10-09T09:40:49.911489Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094049-062-lengths8192-215.result.json",
+      "pid": 5172,
+      "expected_start": "2026-10-09T17:39:38.673097+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094227-271-publish-linux.result.json",
+      "pid": 47420,
+      "expected_start": "2026-10-09T09:42:28.3651171Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094227-271-publish-linux.result.json",
+      "pid": 47420,
+      "expected_start": "2026-10-09T09:42:28.365117Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094227-271-publish-linux.result.json",
+      "pid": 17316,
+      "expected_start": "2026-10-09T09:42:28.375349Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094227-271-publish-linux.result.json",
+      "pid": 36488,
+      "expected_start": "2026-10-09T09:42:31.290629Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094227-271-publish-linux.result.json",
+      "pid": 58200,
+      "expected_start": "2026-10-09T09:42:31.300729Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094227-271-publish-linux.result.json",
+      "pid": 35348,
+      "expected_start": "2026-10-09T17:42:26.535071+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094241-321-capacity-linux.result.json",
+      "pid": 29888,
+      "expected_start": "2026-10-09T09:42:42.1727929Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094241-321-capacity-linux.result.json",
+      "pid": 29888,
+      "expected_start": "2026-10-09T09:42:42.172792Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094241-321-capacity-linux.result.json",
+      "pid": 31916,
+      "expected_start": "2026-10-09T09:42:42.181052Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094241-321-capacity-linux.result.json",
+      "pid": 35348,
+      "expected_start": "2026-10-09T17:42:26.535071+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094250-024-regression-linux.result.json",
+      "pid": 56868,
+      "expected_start": "2026-10-09T09:42:50.9953305Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094250-024-regression-linux.result.json",
+      "pid": 56868,
+      "expected_start": "2026-10-09T09:42:50.99533Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094250-024-regression-linux.result.json",
+      "pid": 49340,
+      "expected_start": "2026-10-09T09:42:51.006078Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094250-024-regression-linux.result.json",
+      "pid": 35348,
+      "expected_start": "2026-10-09T17:42:26.535071+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094300-242-boundary-linux.result.json",
+      "pid": 6028,
+      "expected_start": "2026-10-09T09:43:01.1606356Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094300-242-boundary-linux.result.json",
+      "pid": 6028,
+      "expected_start": "2026-10-09T09:43:01.160635Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094300-242-boundary-linux.result.json",
+      "pid": 7600,
+      "expected_start": "2026-10-09T09:43:01.170472Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094300-242-boundary-linux.result.json",
+      "pid": 35348,
+      "expected_start": "2026-10-09T17:42:26.535071+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094313-332-remote-bootstrap-create.result.json",
+      "pid": 10320,
+      "expected_start": "2026-10-09T09:43:14.3672327Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094313-332-remote-bootstrap-create.result.json",
+      "pid": 10320,
+      "expected_start": "2026-10-09T09:43:14.367232Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094313-332-remote-bootstrap-create.result.json",
+      "pid": 15840,
+      "expected_start": "2026-10-09T09:43:14.380536Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094313-332-remote-bootstrap-create.result.json",
+      "pid": 60820,
+      "expected_start": "2026-10-09T09:43:14.94643Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094313-332-remote-bootstrap-create.result.json",
+      "pid": 66324,
+      "expected_start": "2026-10-09T17:43:12.881613+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094333-440-expansion-pack.result.json",
+      "pid": 61152,
+      "expected_start": "2026-10-09T09:43:34.5571825Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094333-440-expansion-pack.result.json",
+      "pid": 61152,
+      "expected_start": "2026-10-09T09:43:34.557182Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094333-440-expansion-pack.result.json",
+      "pid": 9768,
+      "expected_start": "2026-10-09T09:43:34.567884Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094333-440-expansion-pack.result.json",
+      "pid": 6188,
+      "expected_start": "2026-10-09T17:43:29.641432+08:00",
+      "state": "reused",
+      "actual": {
+        "ProcessId": 6188,
+        "CreationDate": "2026-10-09T18:06:01.697095+08:00",
+        "CommandLine": "\"C:\\Users\\mysti\\AppData\\Local\\Microsoft\\WinGet\\Links\\uv.exe\" tool uvx mcp-server-fetch",
+        "ParentProcessId": 12468
+      },
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094428-699-expansion-upload.result.json",
+      "pid": 10968,
+      "expected_start": "2026-10-09T09:44:30.2476864Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094428-699-expansion-upload.result.json",
+      "pid": 10968,
+      "expected_start": "2026-10-09T09:44:30.247686Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094428-699-expansion-upload.result.json",
+      "pid": 72124,
+      "expected_start": "2026-10-09T09:44:30.268633Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094428-699-expansion-upload.result.json",
+      "pid": 72532,
+      "expected_start": "2026-10-09T09:44:30.549803Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094428-699-expansion-upload.result.json",
+      "pid": 32564,
+      "expected_start": "2026-10-09T17:44:24.747074+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094556-898-remote-bootstrap.result.json",
+      "pid": 3780,
+      "expected_start": "2026-10-09T09:45:58.2910696Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094556-898-remote-bootstrap.result.json",
+      "pid": 3780,
+      "expected_start": "2026-10-09T09:45:58.291069Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094556-898-remote-bootstrap.result.json",
+      "pid": 58176,
+      "expected_start": "2026-10-09T09:45:58.314328Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094556-898-remote-bootstrap.result.json",
+      "pid": 59464,
+      "expected_start": "2026-10-09T09:45:59.395958Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094556-898-remote-bootstrap.result.json",
+      "pid": 17084,
+      "expected_start": "2026-10-09T17:45:55.834316+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094727-057-remote-budget-record-revision.result.json",
+      "pid": 71048,
+      "expected_start": "2026-10-09T09:47:28.1624341Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Failed",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094727-057-remote-budget-record-revision.result.json",
+      "pid": 71048,
+      "expected_start": "2026-10-09T09:47:28.162434Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Failed",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094727-057-remote-budget-record-revision.result.json",
+      "pid": 45860,
+      "expected_start": "2026-10-09T09:47:29.037215Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Failed",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094727-057-remote-budget-record-revision.result.json",
+      "pid": 54744,
+      "expected_start": "2026-10-09T09:47:28.180539Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Failed",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094727-057-remote-budget-record-revision.result.json",
+      "pid": 29232,
+      "expected_start": "2026-10-09T17:47:26.135828+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Failed",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094807-794-remote-budget-manifest-correction.result.json",
+      "pid": 36572,
+      "expected_start": "2026-10-09T09:48:08.826132Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094807-794-remote-budget-manifest-correction.result.json",
+      "pid": 36572,
+      "expected_start": "2026-10-09T09:48:08.826132Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094807-794-remote-budget-manifest-correction.result.json",
+      "pid": 18936,
+      "expected_start": "2026-10-09T09:48:09.463694Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094807-794-remote-budget-manifest-correction.result.json",
+      "pid": 73992,
+      "expected_start": "2026-10-09T09:48:08.844424Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094807-794-remote-budget-manifest-correction.result.json",
+      "pid": 64148,
+      "expected_start": "2026-10-09T17:48:07.036344+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094813-658-remote-runner-probe.result.json",
+      "pid": 45096,
+      "expected_start": "2026-10-09T09:48:14.614435Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094813-658-remote-runner-probe.result.json",
+      "pid": 45096,
+      "expected_start": "2026-10-09T09:48:14.614435Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094813-658-remote-runner-probe.result.json",
+      "pid": 46160,
+      "expected_start": "2026-10-09T09:48:15.257839Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094813-658-remote-runner-probe.result.json",
+      "pid": 74504,
+      "expected_start": "2026-10-09T09:48:14.631368Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094813-658-remote-runner-probe.result.json",
+      "pid": 64148,
+      "expected_start": "2026-10-09T17:48:07.036344+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094830-625-remote-boundary-tiny.result.json",
+      "pid": 34824,
+      "expected_start": "2026-10-09T09:48:31.6314441Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Failed",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094830-625-remote-boundary-tiny.result.json",
+      "pid": 34824,
+      "expected_start": "2026-10-09T09:48:31.631444Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Failed",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094830-625-remote-boundary-tiny.result.json",
+      "pid": 56868,
+      "expected_start": "2026-10-09T09:48:31.65332Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Failed",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094830-625-remote-boundary-tiny.result.json",
+      "pid": 68160,
+      "expected_start": "2026-10-09T09:48:32.463148Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Failed",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094830-625-remote-boundary-tiny.result.json",
+      "pid": 64148,
+      "expected_start": "2026-10-09T17:48:07.036344+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Failed",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094935-990-boundary-linux-v2.result.json",
+      "pid": 68196,
+      "expected_start": "2026-10-09T09:49:37.1112791Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094935-990-boundary-linux-v2.result.json",
+      "pid": 68196,
+      "expected_start": "2026-10-09T09:49:37.111279Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094935-990-boundary-linux-v2.result.json",
+      "pid": 73792,
+      "expected_start": "2026-10-09T09:49:37.123073Z",
+      "state": "reused",
+      "actual": {
+        "ProcessId": 73792,
+        "CreationDate": "2026-10-09T18:06:01.662225+08:00",
+        "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+        "ParentProcessId": 19512
+      },
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-094935-990-boundary-linux-v2.result.json",
+      "pid": 47268,
+      "expected_start": "2026-10-09T17:49:35.134759+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095109-684-boundary-revision-pack.result.json",
+      "pid": 73880,
+      "expected_start": "2026-10-09T09:51:10.7055627Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-095109-684-boundary-revision-pack.result.json",
+      "pid": 74000,
+      "expected_start": "2026-10-09T17:51:08.983414+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-095213-963-boundary-revision-upload.result.json",
+      "pid": 44768,
+      "expected_start": "2026-10-09T09:52:15.0122936Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095213-963-boundary-revision-upload.result.json",
+      "pid": 44768,
+      "expected_start": "2026-10-09T09:52:15.012293Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095213-963-boundary-revision-upload.result.json",
+      "pid": 32340,
+      "expected_start": "2026-10-09T09:52:15.057742Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095213-963-boundary-revision-upload.result.json",
+      "pid": 63912,
+      "expected_start": "2026-10-09T09:52:15.020566Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095213-963-boundary-revision-upload.result.json",
+      "pid": 51852,
+      "expected_start": "2026-10-09T17:52:13.239694+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095221-517-remote-boundary-uuid-revision.result.json",
+      "pid": 18464,
+      "expected_start": "2026-10-09T09:52:22.4328372Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095221-517-remote-boundary-uuid-revision.result.json",
+      "pid": 18464,
+      "expected_start": "2026-10-09T09:52:22.432837Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095221-517-remote-boundary-uuid-revision.result.json",
+      "pid": 9244,
+      "expected_start": "2026-10-09T09:52:22.450103Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095221-517-remote-boundary-uuid-revision.result.json",
+      "pid": 49240,
+      "expected_start": "2026-10-09T09:52:23.099989Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095221-517-remote-boundary-uuid-revision.result.json",
+      "pid": 51852,
+      "expected_start": "2026-10-09T17:52:13.239694+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095227-252-remote-boundary-tiny2.result.json",
+      "pid": 51548,
+      "expected_start": "2026-10-09T09:52:28.1850831Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095227-252-remote-boundary-tiny2.result.json",
+      "pid": 51548,
+      "expected_start": "2026-10-09T09:52:28.185083Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095227-252-remote-boundary-tiny2.result.json",
+      "pid": 60712,
+      "expected_start": "2026-10-09T09:52:28.200219Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095227-252-remote-boundary-tiny2.result.json",
+      "pid": 63140,
+      "expected_start": "2026-10-09T09:52:28.843583Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095227-252-remote-boundary-tiny2.result.json",
+      "pid": 51852,
+      "expected_start": "2026-10-09T17:52:13.239694+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095312-373-remote-boundary-full.result.json",
+      "pid": 56148,
+      "expected_start": "2026-10-09T09:53:13.3090948Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095312-373-remote-boundary-full.result.json",
+      "pid": 56148,
+      "expected_start": "2026-10-09T09:53:13.309094Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095312-373-remote-boundary-full.result.json",
+      "pid": 34764,
+      "expected_start": "2026-10-09T09:53:13.988209Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095312-373-remote-boundary-full.result.json",
+      "pid": 64116,
+      "expected_start": "2026-10-09T09:53:13.321428Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095312-373-remote-boundary-full.result.json",
+      "pid": 44156,
+      "expected_start": "2026-10-09T17:53:11.851965+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095324-575-remote-boundary-real.result.json",
+      "pid": 56144,
+      "expected_start": "2026-10-09T09:53:25.4505201Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095324-575-remote-boundary-real.result.json",
+      "pid": 56144,
+      "expected_start": "2026-10-09T09:53:25.45052Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095324-575-remote-boundary-real.result.json",
+      "pid": 39536,
+      "expected_start": "2026-10-09T09:53:26.079757Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095324-575-remote-boundary-real.result.json",
+      "pid": 49872,
+      "expected_start": "2026-10-09T09:53:25.467932Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095324-575-remote-boundary-real.result.json",
+      "pid": 44156,
+      "expected_start": "2026-10-09T17:53:11.851965+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095404-484-remote-capacity.result.json",
+      "pid": 56652,
+      "expected_start": "2026-10-09T09:54:05.5400727Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Failed",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095404-484-remote-capacity.result.json",
+      "pid": 56652,
+      "expected_start": "2026-10-09T09:54:05.540072Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Failed",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095404-484-remote-capacity.result.json",
+      "pid": 3824,
+      "expected_start": "2026-10-09T09:54:05.556967Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Failed",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095404-484-remote-capacity.result.json",
+      "pid": 45172,
+      "expected_start": "2026-10-09T09:54:06.256145Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Failed",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095404-484-remote-capacity.result.json",
+      "pid": 65016,
+      "expected_start": "2026-10-09T17:54:03.603623+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Failed",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095451-854-progress-01.result.json",
+      "pid": 18184,
+      "expected_start": "2026-10-09T09:54:52.8582237Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095451-854-progress-01.result.json",
+      "pid": 18184,
+      "expected_start": "2026-10-09T09:54:52.858223Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095451-854-progress-01.result.json",
+      "pid": 49848,
+      "expected_start": "2026-10-09T09:54:52.873068Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095451-854-progress-01.result.json",
+      "pid": 74476,
+      "expected_start": "2026-10-09T09:54:53.585903Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095451-854-progress-01.result.json",
+      "pid": 4152,
+      "expected_start": "2026-10-09T17:54:51.385322+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095458-466-stage-runtime.result.json",
+      "pid": 67180,
+      "expected_start": "2026-10-09T09:54:59.4386426Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-095458-466-stage-runtime.result.json",
+      "pid": 41472,
+      "expected_start": "2026-10-09T17:54:57.92011+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-095632-688-remote-publication-diagnosis.result.json",
+      "pid": 74252,
+      "expected_start": "2026-10-09T09:56:33.6846226Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095632-688-remote-publication-diagnosis.result.json",
+      "pid": 74252,
+      "expected_start": "2026-10-09T09:56:33.684622Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095632-688-remote-publication-diagnosis.result.json",
+      "pid": 62796,
+      "expected_start": "2026-10-09T09:56:34.262983Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095632-688-remote-publication-diagnosis.result.json",
+      "pid": 69020,
+      "expected_start": "2026-10-09T09:56:33.698354Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095632-688-remote-publication-diagnosis.result.json",
+      "pid": 73228,
+      "expected_start": "2026-10-09T17:56:32.078155+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095910-817-build-publication-fix.result.json",
+      "pid": 69868,
+      "expected_start": "2026-10-09T09:59:11.7347298Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095910-817-build-publication-fix.result.json",
+      "pid": 69868,
+      "expected_start": "2026-10-09T09:59:11.734729Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095910-817-build-publication-fix.result.json",
+      "pid": 33616,
+      "expected_start": "2026-10-09T09:59:13.915269Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095910-817-build-publication-fix.result.json",
+      "pid": 67784,
+      "expected_start": "2026-10-09T09:59:27.347472Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095910-817-build-publication-fix.result.json",
+      "pid": 68720,
+      "expected_start": "2026-10-09T09:59:22.518167Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095910-817-build-publication-fix.result.json",
+      "pid": 73660,
+      "expected_start": "2026-10-09T09:59:11.742708Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095910-817-build-publication-fix.result.json",
+      "pid": 45608,
+      "expected_start": "2026-10-09T09:59:13.92443Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095910-817-build-publication-fix.result.json",
+      "pid": 71048,
+      "expected_start": "2026-10-09T09:59:22.528442Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095910-817-build-publication-fix.result.json",
+      "pid": 74176,
+      "expected_start": "2026-10-09T09:59:27.354998Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-095910-817-build-publication-fix.result.json",
+      "pid": 64720,
+      "expected_start": "2026-10-09T17:59:10.322063+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100053-338-head-asset-publication-tiny.result.json",
+      "pid": 69540,
+      "expected_start": "2026-10-09T10:00:54.3649853Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100053-338-head-asset-publication-tiny.result.json",
+      "pid": 69540,
+      "expected_start": "2026-10-09T10:00:54.364985Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100053-338-head-asset-publication-tiny.result.json",
+      "pid": 65108,
+      "expected_start": "2026-10-09T18:00:52.781223+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100059-184-head-asset-publication.result.json",
+      "pid": 64264,
+      "expected_start": "2026-10-09T10:01:00.3212901Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100059-184-head-asset-publication.result.json",
+      "pid": 64264,
+      "expected_start": "2026-10-09T10:01:00.32129Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100059-184-head-asset-publication.result.json",
+      "pid": 65108,
+      "expected_start": "2026-10-09T18:00:52.781223+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100105-076-linux-publication.result.json",
+      "pid": 25956,
+      "expected_start": "2026-10-09T10:01:06.1262819Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-100105-076-linux-publication.result.json",
+      "pid": 65108,
+      "expected_start": "2026-10-09T18:00:52.781223+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-100107-264-publish-linux-v2.result.json",
+      "pid": 49048,
+      "expected_start": "2026-10-09T10:01:08.3220681Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100107-264-publish-linux-v2.result.json",
+      "pid": 49048,
+      "expected_start": "2026-10-09T10:01:08.322068Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100107-264-publish-linux-v2.result.json",
+      "pid": 1772,
+      "expected_start": "2026-10-09T10:01:14.757818Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100107-264-publish-linux-v2.result.json",
+      "pid": 54668,
+      "expected_start": "2026-10-09T10:01:08.33283Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100107-264-publish-linux-v2.result.json",
+      "pid": 66536,
+      "expected_start": "2026-10-09T10:01:14.773094Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100107-264-publish-linux-v2.result.json",
+      "pid": 65108,
+      "expected_start": "2026-10-09T18:00:52.781223+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100130-786-capacity-linux-v2.result.json",
+      "pid": 31924,
+      "expected_start": "2026-10-09T10:01:31.9074075Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100130-786-capacity-linux-v2.result.json",
+      "pid": 31924,
+      "expected_start": "2026-10-09T10:01:31.907407Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100130-786-capacity-linux-v2.result.json",
+      "pid": 41756,
+      "expected_start": "2026-10-09T10:01:31.920823Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100130-786-capacity-linux-v2.result.json",
+      "pid": 72304,
+      "expected_start": "2026-10-09T10:01:36.112428Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100130-786-capacity-linux-v2.result.json",
+      "pid": 65108,
+      "expected_start": "2026-10-09T18:00:52.781223+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100143-268-regression-linux-v2.result.json",
+      "pid": 64264,
+      "expected_start": "2026-10-09T10:01:44.3014722Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100143-268-regression-linux-v2.result.json",
+      "pid": 64264,
+      "expected_start": "2026-10-09T10:01:44.301472Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100143-268-regression-linux-v2.result.json",
+      "pid": 56652,
+      "expected_start": "2026-10-09T10:01:48.47835Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100143-268-regression-linux-v2.result.json",
+      "pid": 71908,
+      "expected_start": "2026-10-09T10:01:44.314414Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100143-268-regression-linux-v2.result.json",
+      "pid": 62788,
+      "expected_start": "2026-10-09T10:01:48.488816Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100143-268-regression-linux-v2.result.json",
+      "pid": 65108,
+      "expected_start": "2026-10-09T18:00:52.781223+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100155-943-tests-linux.result.json",
+      "pid": 21584,
+      "expected_start": "2026-10-09T10:01:56.8698977Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100155-943-tests-linux.result.json",
+      "pid": 21584,
+      "expected_start": "2026-10-09T10:01:56.869897Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100155-943-tests-linux.result.json",
+      "pid": 50052,
+      "expected_start": "2026-10-09T10:01:56.880101Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100155-943-tests-linux.result.json",
+      "pid": 65108,
+      "expected_start": "2026-10-09T18:00:52.781223+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100244-557-commit-runtime.result.json",
+      "pid": 58944,
+      "expected_start": "2026-10-09T10:02:45.5588007Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-100244-557-commit-runtime.result.json",
+      "pid": 52316,
+      "expected_start": "2026-10-09T18:02:43.980593+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-100432-289-publication-patch-pack.result.json",
+      "pid": 58948,
+      "expected_start": "2026-10-09T10:04:33.6067897Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-100432-289-publication-patch-pack.result.json",
+      "pid": 11916,
+      "expected_start": "2026-10-09T18:04:26.30501+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-100435-114-publication-patch-upload.result.json",
+      "pid": 62720,
+      "expected_start": "2026-10-09T10:04:36.3475438Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100435-114-publication-patch-upload.result.json",
+      "pid": 62720,
+      "expected_start": "2026-10-09T10:04:36.347543Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100435-114-publication-patch-upload.result.json",
+      "pid": 63912,
+      "expected_start": "2026-10-09T10:04:36.462216Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100435-114-publication-patch-upload.result.json",
+      "pid": 71844,
+      "expected_start": "2026-10-09T10:04:36.365273Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100435-114-publication-patch-upload.result.json",
+      "pid": 11916,
+      "expected_start": "2026-10-09T18:04:26.30501+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100444-518-remote-publication-fix.result.json",
+      "pid": 51708,
+      "expected_start": "2026-10-09T10:04:45.5068602Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100444-518-remote-publication-fix.result.json",
+      "pid": 51708,
+      "expected_start": "2026-10-09T10:04:45.50686Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100444-518-remote-publication-fix.result.json",
+      "pid": 44336,
+      "expected_start": "2026-10-09T10:04:45.855418Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100444-518-remote-publication-fix.result.json",
+      "pid": 55772,
+      "expected_start": "2026-10-09T10:04:51.456343Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100444-518-remote-publication-fix.result.json",
+      "pid": 11916,
+      "expected_start": "2026-10-09T18:04:26.30501+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100459-432-remote-publication.result.json",
+      "pid": 29612,
+      "expected_start": "2026-10-09T10:05:00.4603558Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100459-432-remote-publication.result.json",
+      "pid": 29612,
+      "expected_start": "2026-10-09T10:05:00.460355Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100459-432-remote-publication.result.json",
+      "pid": 56024,
+      "expected_start": "2026-10-09T10:05:04.61149Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100459-432-remote-publication.result.json",
+      "pid": 73332,
+      "expected_start": "2026-10-09T10:05:00.488967Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100459-432-remote-publication.result.json",
+      "pid": 11916,
+      "expected_start": "2026-10-09T18:04:26.30501+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100517-049-remote-capacity2.result.json",
+      "pid": 15684,
+      "expected_start": "2026-10-09T10:05:18.0090475Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100517-049-remote-capacity2.result.json",
+      "pid": 15684,
+      "expected_start": "2026-10-09T10:05:18.009047Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100517-049-remote-capacity2.result.json",
+      "pid": 56200,
+      "expected_start": "2026-10-09T10:05:18.235469Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100517-049-remote-capacity2.result.json",
+      "pid": 57720,
+      "expected_start": "2026-10-09T10:05:21.349986Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100517-049-remote-capacity2.result.json",
+      "pid": 11916,
+      "expected_start": "2026-10-09T18:04:26.30501+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100545-910-stage-publication-fix.result.json",
+      "pid": 65576,
+      "expected_start": "2026-10-09T10:05:47.1120272Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-100545-910-stage-publication-fix.result.json",
+      "pid": 31608,
+      "expected_start": "2026-10-09T18:05:45.12367+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-100607-367-remote-train.result.json",
+      "pid": 18236,
+      "expected_start": "2026-10-09T10:06:08.5517821Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100607-367-remote-train.result.json",
+      "pid": 18236,
+      "expected_start": "2026-10-09T10:06:08.551782Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100607-367-remote-train.result.json",
+      "pid": 29204,
+      "expected_start": "2026-10-09T10:06:09.413326Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100607-367-remote-train.result.json",
+      "pid": 61060,
+      "expected_start": "2026-10-09T10:06:08.571178Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100607-367-remote-train.result.json",
+      "pid": 51660,
+      "expected_start": "2026-10-09T18:06:06.589846+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100617-227-commit-publication-fix.result.json",
+      "pid": 72540,
+      "expected_start": "2026-10-09T10:06:18.1035939Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-100617-227-commit-publication-fix.result.json",
+      "pid": 39600,
+      "expected_start": "2026-10-09T18:06:16.795032+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-100701-989-progress-02.result.json",
+      "pid": 50816,
+      "expected_start": "2026-10-09T10:07:03.0576645Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100701-989-progress-02.result.json",
+      "pid": 50816,
+      "expected_start": "2026-10-09T10:07:03.057664Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100701-989-progress-02.result.json",
+      "pid": 2556,
+      "expected_start": "2026-10-09T10:07:03.072019Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100701-989-progress-02.result.json",
+      "pid": 30784,
+      "expected_start": "2026-10-09T10:07:03.719422Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100701-989-progress-02.result.json",
+      "pid": 60820,
+      "expected_start": "2026-10-09T18:07:01.186145+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100705-964-remote-validate.result.json",
+      "pid": 3728,
+      "expected_start": "2026-10-09T10:07:06.7961011Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Failed",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100705-964-remote-validate.result.json",
+      "pid": 3728,
+      "expected_start": "2026-10-09T10:07:06.796101Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Failed",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100705-964-remote-validate.result.json",
+      "pid": 34660,
+      "expected_start": "2026-10-09T10:07:07.364039Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Failed",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100705-964-remote-validate.result.json",
+      "pid": 61408,
+      "expected_start": "2026-10-09T10:07:06.807647Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Failed",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100705-964-remote-validate.result.json",
+      "pid": 51660,
+      "expected_start": "2026-10-09T18:06:06.589846+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Failed",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100708-207-stage-report-profile.result.json",
+      "pid": 28840,
+      "expected_start": "2026-10-09T10:07:09.0993643Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-100708-207-stage-report-profile.result.json",
+      "pid": 72352,
+      "expected_start": "2026-10-09T18:07:07.658012+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-100729-147-commit-report-profile.result.json",
+      "pid": 65736,
+      "expected_start": "2026-10-09T10:07:30.0323283Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-100729-147-commit-report-profile.result.json",
+      "pid": 62684,
+      "expected_start": "2026-10-09T18:07:28.727409+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-100907-637-progress-03.result.json",
+      "pid": 45488,
+      "expected_start": "2026-10-09T10:09:08.7544485Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "TimedOut",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100907-637-progress-03.result.json",
+      "pid": 45488,
+      "expected_start": "2026-10-09T10:09:08.754448Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "TimedOut",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100907-637-progress-03.result.json",
+      "pid": 47988,
+      "expected_start": "2026-10-09T10:09:08.770044Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "TimedOut",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100907-637-progress-03.result.json",
+      "pid": 72812,
+      "expected_start": "2026-10-09T10:09:09.540681Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "TimedOut",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-100907-637-progress-03.result.json",
+      "pid": 74732,
+      "expected_start": "2026-10-09T18:09:06.910481+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "TimedOut",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-101124-180-remote-cuda-failure-diagnosis.result.json",
+      "pid": 55904,
+      "expected_start": "2026-10-09T10:11:25.0394449Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-101124-180-remote-cuda-failure-diagnosis.result.json",
+      "pid": 55904,
+      "expected_start": "2026-10-09T10:11:25.039444Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-101124-180-remote-cuda-failure-diagnosis.result.json",
+      "pid": 35136,
+      "expected_start": "2026-10-09T10:11:25.050471Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-101124-180-remote-cuda-failure-diagnosis.result.json",
+      "pid": 42692,
+      "expected_start": "2026-10-09T10:11:25.510895Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-101124-180-remote-cuda-failure-diagnosis.result.json",
+      "pid": 71156,
+      "expected_start": "2026-10-09T18:11:23.714823+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-101213-667-remote-cuda-xid.result.json",
+      "pid": 53776,
+      "expected_start": "2026-10-09T10:12:14.6053357Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-101213-667-remote-cuda-xid.result.json",
+      "pid": 53776,
+      "expected_start": "2026-10-09T10:12:14.605335Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-101213-667-remote-cuda-xid.result.json",
+      "pid": 44336,
+      "expected_start": "2026-10-09T10:12:15.102047Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-101213-667-remote-cuda-xid.result.json",
+      "pid": 48684,
+      "expected_start": "2026-10-09T10:12:14.618501Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-101213-667-remote-cuda-xid.result.json",
+      "pid": 14168,
+      "expected_start": "2026-10-09T18:12:13.129553+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-101218-805-remote-final-evidence.result.json",
+      "pid": 66432,
+      "expected_start": "2026-10-09T10:12:19.6166846Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-101218-805-remote-final-evidence.result.json",
+      "pid": 66432,
+      "expected_start": "2026-10-09T10:12:19.616684Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-101218-805-remote-final-evidence.result.json",
+      "pid": 22988,
+      "expected_start": "2026-10-09T10:12:20.087712Z",
+      "state": "reused",
+      "actual": {
+        "ProcessId": 22988,
+        "CreationDate": "2026-10-09T18:20:14.656605+08:00",
+        "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+        "ParentProcessId": 73976
+      },
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-101218-805-remote-final-evidence.result.json",
+      "pid": 49920,
+      "expected_start": "2026-10-09T10:12:19.629002Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-101218-805-remote-final-evidence.result.json",
+      "pid": 14168,
+      "expected_start": "2026-10-09T18:12:13.129553+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-101408-476-expansion-evidence-download.result.json",
+      "pid": 9328,
+      "expected_start": "2026-10-09T10:14:09.435045Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-101408-476-expansion-evidence-download.result.json",
+      "pid": 9328,
+      "expected_start": "2026-10-09T10:14:09.435045Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-101408-476-expansion-evidence-download.result.json",
+      "pid": 23248,
+      "expected_start": "2026-10-09T10:14:09.478556Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-101408-476-expansion-evidence-download.result.json",
+      "pid": 62148,
+      "expected_start": "2026-10-09T10:14:09.444426Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-101408-476-expansion-evidence-download.result.json",
+      "pid": 28840,
+      "expected_start": "2026-10-09T18:14:07.906677+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Succeeded",
+      "historical_unknown": 0
+    },
+    {
+      "source": "20261009-101454-608-evidence-list.result.json",
+      "pid": 27784,
+      "expected_start": "2026-10-09T10:14:55.7928942Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Failed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-101454-608-evidence-list.result.json",
+      "pid": 65876,
+      "expected_start": "2026-10-09T18:14:53.924747+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "Failed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-101549-582-evidence-list-complete.result.json",
+      "pid": 45532,
+      "expected_start": "2026-10-09T10:15:50.4897441Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-101549-582-evidence-list-complete.result.json",
+      "pid": 10412,
+      "expected_start": "2026-10-09T18:15:49.111522+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-101551-478-evidence-extract.result.json",
+      "pid": 57056,
+      "expected_start": "2026-10-09T10:15:52.2962775Z",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    },
+    {
+      "source": "20261009-101551-478-evidence-extract.result.json",
+      "pid": 10412,
+      "expected_start": "2026-10-09T18:15:49.111522+08:00",
+      "state": "absent",
+      "actual": null,
+      "historical_status": "CleanupFailed",
+      "historical_unknown": 1
+    }
+  ],
+  "scope": "only registered PIDs and their direct children; read only; no signals"
+}

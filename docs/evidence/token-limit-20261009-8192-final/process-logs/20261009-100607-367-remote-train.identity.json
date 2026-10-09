@@ -1,0 +1,26 @@
+{
+  "Pid": 18236,
+  "Started": "2026-10-09T10:06:08.5517821Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\train.sh",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 51660,
+  "ObservedParentPid": 51660,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 51660,
+    "Started": "2026-10-09T18:06:06.589846+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/token-limit-20261009-8192/Run-Remote.ps1 -Phase train -Seconds 1570; & .artifacts/token-limit-20261009-8192/Run-Remote.ps1 -Phase validate -Seconds 1570; & .artifacts/token-limit-20261009-8192/Run-Remote.ps1 -Phase regress -Seconds 360\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 1570,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\train.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

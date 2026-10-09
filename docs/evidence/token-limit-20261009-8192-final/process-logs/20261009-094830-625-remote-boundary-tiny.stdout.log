@@ -1,0 +1,38 @@
+active_stage_cancel_file=/root/sezika-experiments/20261009-repaired-training-8192/.artifacts/stage-boundary-tiny/cancel.request
+payload_argv /root/sezika-experiments/20261009-repaired-training-8192/boundary/BoundaryCheck tiny /root/sezika-experiments/20261009-repaired-training-8192/package
+linux_runner_exit=127
+status	payload_failed
+payload_exit	1
+elapsed_ms	5770
+cleanup_elapsed_ms	3820
+cleanup_deadline_ms	4925505810
+cleanup_incomplete	0
+final_check_complete	1
+verified_live_count	0
+unknown_count	0
+unchecked_count	0
+cleanup_budget_exhausted	0
+tracked_identities	2
+token	sezika-3084066-26478-21540
+supervisor_pid	3084066
+fixture	none
+clock_resolution_ms	10
+clock_tolerance_ms	20
+limitation	cooperative_checks_only_blocking_kernel_io_and_short_intermediates_not_guaranteed
+control_unaffected	0
+control_owner_closed	0
+seam_mismatch	na
+seam_unreadable	na
+work_pause_reason	na
+work_pause_read_rc	na
+work_pause_failed_ms	na
+cleanup_deferred_proofs	0
+==> /root/sezika-experiments/20261009-repaired-training-8192/.artifacts/stage-boundary-tiny/payload.stdout.log <==
+PASS 8193 config rejected
+PASS complete H4 8192 frame byte calculation
+device_dispose_returned=true
+
+==> /root/sezika-experiments/20261009-repaired-training-8192/.artifacts/stage-boundary-tiny/payload.stderr.log <==
+System.InvalidOperationException: pinned GPU UUID
+   at Program.<<Main>$>g__Assert|0_2(Boolean ok, String name, <>c__DisplayClass0_1&) in D:\source\Sezika\.artifacts\token-limit-20261009-8192\boundary-check\Program.cs:line 13
+   at Program.<Main>$(String[] args) in D:\source\Sezika\.artifacts\token-limit-20261009-8192\boundary-check\Program.cs:line 38

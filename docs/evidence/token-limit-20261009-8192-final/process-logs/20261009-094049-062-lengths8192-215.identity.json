@@ -1,0 +1,33 @@
+{
+  "Pid": 72416,
+  "Started": "2026-10-09T09:40:49.9114892Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll lengths-expanded --data D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\data --manifest-sha256 E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6 --tokenizer D:\\source\\Sezika\\.artifacts\\models\\mmbert-independent\\converted\\tokenizer\\tokenizer.json --max-records 215 --max-tokens 8192",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 5172,
+  "ObservedParentPid": 5172,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 5172,
+    "Started": "2026-10-09T17:39:38.673097+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/token-limit-20261009-8192/Build-Check.ps1\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 130,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll",
+    "lengths-expanded",
+    "--data",
+    "D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\data",
+    "--manifest-sha256",
+    "E8E74CE0BBF1A72DA5FCDF4DCAD9D302513DC5DC42CB548BFD21D2569621AEB6",
+    "--tokenizer",
+    "D:\\source\\Sezika\\.artifacts\\models\\mmbert-independent\\converted\\tokenizer\\tokenizer.json",
+    "--max-records",
+    "215",
+    "--max-tokens",
+    "8192"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

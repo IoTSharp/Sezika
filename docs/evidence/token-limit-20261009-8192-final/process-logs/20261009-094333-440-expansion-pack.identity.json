@@ -1,0 +1,26 @@
+{
+  "Pid": 61152,
+  "Started": "2026-10-09T09:43:34.5571825Z",
+  "CommandLine": "\"C:\\Windows\\System32\\tar.exe\" -czf D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\upload.tar -C D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\upload-staging .",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 6188,
+  "ObservedParentPid": 6188,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 6188,
+    "Started": "2026-10-09T17:43:29.641432+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'; Get-Content -LiteralPath $task/remote/phase-common.sh -TotalCount 32;Get-Content -LiteralPath $task/remote/bootstrap.sh | Select-Object -Skip 58 -First 40;Get-FileHash -LiteralPath $task/remote/Invoke-BoundedLinux.sh; $old='D:\\source\\Sezika\\.artifacts\\repaired-training-20261009\\data'; & $task/Prepare-Transfer.ps1 -Mode Prepare -BundleDirectory $task/publish-linux -CapacityDirectory $task/capacity-linux -DataDirectory $old\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 45,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Windows\\System32\\tar.exe",
+  "Arguments": [
+    "-czf",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\upload.tar",
+    "-C",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\upload-staging",
+    "."
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

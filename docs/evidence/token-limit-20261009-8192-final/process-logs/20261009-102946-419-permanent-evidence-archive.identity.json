@@ -1,0 +1,26 @@
+{
+  "Pid": 27676,
+  "Started": "2026-10-09T10:29:47.2823708Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Archive-Evidence.ps1 -Mode archive",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 52852,
+  "ObservedParentPid": 52852,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 52852,
+    "Started": "2026-10-09T18:29:45.928291+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'\n& (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $task 'Archive-Evidence.ps1'),'-Mode','archive') -TimeoutSeconds 170 -LogName permanent-evidence-archive -CancelFile (Join-Path $task 'cancel.request')\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 170,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Archive-Evidence.ps1",
+    "-Mode",
+    "archive"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

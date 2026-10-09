@@ -1,0 +1,26 @@
+{
+  "Pid": 35548,
+  "Started": "2026-10-09T10:43:14.5997542Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\reset-current-identities.sh",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 28216,
+  "ObservedParentPid": 28216,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 28216,
+    "Started": "2026-10-09T18:43:12.946345+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n& .artifacts/token-limit-20261009-8192/Run-Remote.ps1 -Phase reset-current-identities -Seconds 65\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 65,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\reset-current-identities.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

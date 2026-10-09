@@ -1,0 +1,6 @@
+Get-FileHash: D:\source\Sezika\.artifacts\token-limit-20261009-8192\Archive-Evidence.ps1:71
+Line |
+  71 |  бн bytes=$f.Length;sha256=(Get-FileHash -LiteralPath $f.FullName).Hash;r бн
+     |                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | The process cannot access the file
+     | 'D:\source\Sezika\.artifacts\token-limit-20261009-8192\process-logs\20261009-103127-398-permanent-evidence-archive-v3.stderr.log' because it is being used by another process.

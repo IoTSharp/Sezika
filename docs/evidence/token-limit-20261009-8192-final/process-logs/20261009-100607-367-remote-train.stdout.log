@@ -1,0 +1,46 @@
+active_stage_cancel_file=/root/sezika-experiments/20261009-repaired-training-8192/.artifacts/stage-train/cancel.request
+payload_argv /root/sezika-experiments/20261009-repaired-training-8192/bundle/Sezika.ExperimentTrainer train-expanded --data /root/sezika-experiments/20261009-repaired-training-8192/data --manifest-sha256 e8e74ce0bbf1a72da5fcdf4dcad9d302513dc5dc42cb548bfd21d2569621aeb6 --package /root/sezika-experiments/20261009-repaired-training-8192/package --output /root/sezika-experiments/20261009-repaired-training-8192/output/run-24576 --device 0 --steps 24576 --seed 17 --learning-rate 0.001 --max-tokens 8192 --training-seconds 300 --timeout-seconds 1500
+linux_runner_exit=0
+status	completed
+payload_exit	0
+elapsed_ms	51780
+cleanup_elapsed_ms	4060
+cleanup_deadline_ms	4926608980
+cleanup_incomplete	0
+final_check_complete	1
+verified_live_count	0
+unknown_count	0
+unchecked_count	0
+cleanup_budget_exhausted	0
+tracked_identities	2
+token	sezika-3114197-454-23598
+supervisor_pid	3114197
+fixture	none
+clock_resolution_ms	10
+clock_tolerance_ms	20
+limitation	cooperative_checks_only_blocking_kernel_io_and_short_intermediates_not_guaranteed
+control_unaffected	0
+control_owner_closed	0
+seam_mismatch	na
+seam_unreadable	na
+work_pause_reason	na
+work_pause_read_rc	na
+work_pause_failed_ms	na
+cleanup_deferred_proofs	0
+==> /root/sezika-experiments/20261009-repaired-training-8192/.artifacts/stage-train/payload.stdout.log <==
+{"status":"completed_experiment_not_formal_acceptance","report_sha256":"C6F3AE942FB90CA842FD49AFF7AE6505EB02A71128264EDC2EF08BC323A48905","head_sha256":"4205457556736AB07799B462D42C377710E765CB14EDB9AAE508C1558C5E9D64","checkpoint_sha256":"4709E847A135265F71C092BB18C66CF291DE87D90970CD8932ADD6FBC7F4264F","completed_steps":24576,"encoder_forwards_completed":231}
+
+==> /root/sezika-experiments/20261009-repaired-training-8192/.artifacts/stage-train/payload.stderr.log <==
+experiment: expanded GPU feature export 8/16 massive-en-us-00033
+experiment: expanded GPU feature export 9/16 massive-en-us-06714
+experiment: expanded GPU feature export 10/16 massive-en-us-03201
+experiment: expanded GPU feature export 11/16 massive-en-us-06637
+experiment: expanded GPU feature export 12/16 massive-en-us-09911
+experiment: expanded GPU feature export 13/16 massive-en-us-00049
+experiment: expanded GPU feature export 14/16 massive-en-us-00048
+experiment: expanded GPU feature export 15/16 massive-en-us-10137
+experiment: expanded GPU feature export 16/16 massive-en-us-04539
+experiment: expanded GPU row CE train/fixed-left1 1/16
+experiment: expanded GPU row CE train/fixed-left1 16/16
+experiment: expanded GPU row logits train/fixed-left1 16/16
+stage_completed=train elapsed_seconds=53

@@ -1,0 +1,24 @@
+{
+  "Pid": 60400,
+  "Started": "2026-10-09T10:26:58.9064064Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Close-CompilerTemp.ps1",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 48564,
+  "ObservedParentPid": 48564,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 48564,
+    "Started": "2026-10-09T18:26:34.225779+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'\n& (Join-Path $task 'Close-CompilerTemp.ps1') -Tiny\n& (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $task 'Inspect-Closure.ps1')) -TimeoutSeconds 85 -LogName closure-supplement-v2 -CancelFile (Join-Path $task 'cancel.request')\n& (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $task 'Close-CompilerTemp.ps1')) -TimeoutSeconds 45 -LogName compiler-temp-closure -CancelFile (Join-Path $task 'cancel.request')\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 45,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Close-CompilerTemp.ps1"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

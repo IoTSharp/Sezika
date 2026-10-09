@@ -1,0 +1,36 @@
+{
+  "Pid": 10968,
+  "Started": "2026-10-09T09:44:30.2476864Z",
+  "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\scp.exe\" -P 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\upload.tar D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\upload.sha256 root@211.149.170.42:/root/sezika-experiments/20261009-repaired-training-8192/",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 32564,
+  "ObservedParentPid": 32564,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 32564,
+    "Started": "2026-10-09T17:44:24.747074+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/token-limit-20261009-8192/Prepare-Transfer.ps1 -Mode Upload\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 180,
+  "ProcessQueryTimeoutSeconds": 5,
+  "FilePath": "C:\\Windows\\System32\\OpenSSH\\scp.exe",
+  "Arguments": [
+    "-P",
+    "2222",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "ServerAliveInterval=5",
+    "-o",
+    "ServerAliveCountMax=2",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\upload.tar",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\upload.sha256",
+    "root@211.149.170.42:/root/sezika-experiments/20261009-repaired-training-8192/"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

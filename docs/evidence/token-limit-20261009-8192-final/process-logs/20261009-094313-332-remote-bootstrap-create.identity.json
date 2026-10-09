@@ -1,0 +1,26 @@
+{
+  "Pid": 10320,
+  "Started": "2026-10-09T09:43:14.3672327Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\bootstrap.sh",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 66324,
+  "ObservedParentPid": 66324,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 66324,
+    "Started": "2026-10-09T17:43:12.881613+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop';$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192';try{& (Join-Path $task 'Invoke-BoundedProcess.ps1') -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $task 'Invoke-Ssh.ps1'),'-ScriptFile',(Join-Path $task 'remote/bootstrap.sh')) -TimeoutSeconds 80 -LogName 'remote-bootstrap-create' -ProcessQueryTimeoutSeconds 2 -CancelFile (Join-Path $task 'cancel.request')|Out-Null}catch{Write-Output $_.Exception.Message};$r=Get-ChildItem -LiteralPath (Join-Path $task 'process-logs') -File -Filter '*remote-bootstrap-create.result.json'|Select-Object -First 1|Get-Content -Raw|ConvertFrom-Json;$r|Select-Object Status,ExitCode;Get-Content -LiteralPath $r.StdoutPath -Tail 6;Get-Content -LiteralPath $r.StderrPath -Tail 6\n$lengths=Get-Content -Raw -LiteralPath (Join-Path $task 'lengths8192-215.json')|ConvertFrom-Json\nif($lengths.accepted_records -ne 215 -or $lengths.failed_records -ne 0 -or $lengths.maximum_successful_tokens -ne 1037 -or $lengths.rows.Count -ne 215){throw 'length facts mismatch'}\n$receipts=@(Get-ChildItem -LiteralPath (Join-Path $task 'process-logs') -File -Filter '*.result.json'|Select-Object -First 32)\n$watch=[Diagnostics.Stopwatch]::StartNew();$checks=@(foreach($file in $receipts){if($watch.Elapsed.TotalSeconds -gt 15){throw 'receipt limit'};$x=Get-Content -Raw -LiteralPath $file.FullName|ConvertFrom-Json;[pscustomobject]@{receipt=$file.Name;Status=$x.Status;ExitCode=$x.ExitCode;Pid=$x.Pid;Unknown=$x.UnknownCount}})\n$checks|ConvertTo-Json -Depth 3\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 80,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\bootstrap.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

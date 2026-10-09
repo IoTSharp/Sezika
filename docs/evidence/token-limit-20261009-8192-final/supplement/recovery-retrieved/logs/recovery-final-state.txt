@@ -1,0 +1,5 @@
+final_gpu_query_exit=6
+port=http://127.0.0.1:8001/health http_status=503
+health_port=8001 curl_exit=0
+port=http://127.0.0.1:8003/health http_status=200
+health_port=8003 curl_exit=0

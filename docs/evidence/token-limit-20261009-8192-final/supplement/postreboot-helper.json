@@ -1,0 +1,12 @@
+{
+  "requires_changed_boot_id": true,
+  "old_failure_receipts_preserved": true,
+  "new_regression_output": "output/original32-regression-postreboot.json",
+  "phases": [
+    "validate-postreboot",
+    "regress-postreboot"
+  ],
+  "training_branch_removed": true,
+  "sha256": "94a8470b7f1f130121d0ff9ed1551557aedd0e0ab4d7dd70fc09e80d1c9bc1f7",
+  "new_validation_output": "output/expanded-validation-postreboot.json"
+}

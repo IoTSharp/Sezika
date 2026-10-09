@@ -1,0 +1,13 @@
+diff --git a/ROADMAP.md b/ROADMAP.md
+index f5b1dc9..0a0fd43 100644
+--- a/ROADMAP.md
++++ b/ROADMAP.md
+@@ -167,6 +167,8 @@ S4-15诊断runtime/CUDA工程切片已验收：平行IDiagnosticDecisionPipeline
+ 
+ 下一S4-15/S5-06工程切片是显式independent-diagnostic-profile入口与独立source-generated报告：正式head/feature身份为空、正式接受全部false，保留所有请求分母和实际entered/returned/validated/unknown；仅CUDA、原子不覆盖输出及独立清理。CLI诊断资产准备另外实现，之后最多1request/1sample/0warmup真实CUDA画像独立执行。不得以sidecar、零步骤或历史hash冒充训练provenance，不关闭训练收益/质量/AOT/性能门槛。
+ 
++S4-12/S4-15独立CLI资产准备同步登记：prepare-diagnostic-head从实际加载的固定独立package派生encoder/tokenizer/宽度身份，创建并专用Load复验SZDH1，stdout source-generated独立JSON记录实际hash/seed/域/零更新/未测loss；无encoder forward、训练records/state/feature/checkpoint或训练report。先check-diagnostic-asset-preparation tiny→最多8有界fixture，再独立真实单资产准备，产物不作为trained-head验收。
++
+ ## 编号任务板
+ 
+ 任务使用 `S0`–`S6` 阶段编号和两位序号。状态只表示当前证据：`✅ 已完成`、`🚧 进行中`、`⏳ 计划中`、`⛔ 阻塞`。同一泳道内的任务可以并行；跨泳道按依赖推进。实现、真实推理、质量、AOT 和性能分别验收，不能用构建成功替代真实模型证据。

@@ -1,0 +1,36 @@
+{
+  "Pid": 21584,
+  "Started": "2026-10-09T10:01:56.8698977Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\tests\\Sezika.Tests\\Sezika.Tests.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\tests-linux",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 65108,
+  "ObservedParentPid": 65108,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 65108,
+    "Started": "2026-10-09T18:00:52.781223+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/token-limit-20261009-8192/Publish-PublicationFix.ps1\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 180,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "publish",
+    "D:\\source\\Sezika\\tests\\Sezika.Tests\\Sezika.Tests.csproj",
+    "-c",
+    "Release",
+    "-r",
+    "linux-x64",
+    "--self-contained",
+    "true",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false",
+    "-p:RuntimeFrameworkVersion=10.0.12",
+    "-o",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\tests-linux"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

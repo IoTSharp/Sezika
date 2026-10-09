@@ -1,0 +1,23 @@
+{
+  "checks": [
+    {
+      "pid": 33680,
+      "observed_utc": "2026-10-09T09:45:47.8029987Z",
+      "actual": null,
+      "state": "absent"
+    },
+    {
+      "pid": 50464,
+      "observed_utc": "2026-10-09T09:45:48.9023016Z",
+      "actual": null,
+      "state": "absent"
+    },
+    {
+      "pid": 74388,
+      "observed_utc": "2026-10-09T09:45:49.9403353Z",
+      "actual": null,
+      "state": "absent"
+    }
+  ],
+  "limitation": "later exact PID observation does not reconstruct missing historical OS argv; no signals sent"
+}

@@ -1,0 +1,93 @@
+{
+  "Status": "Succeeded",
+  "Pid": 41172,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 6.557,
+  "TimeoutSeconds": 30,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Windows\\System32\\OpenSSH\\scp.exe",
+  "Arguments": [
+    "-P",
+    "2222",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "root@211.149.170.42:/root/sezika-experiments/20261009-repaired-training-8192/recovery-evidence.tar",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\recovery-evidence.tar"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T10:55:45.8037101Z",
+  "ParentPid": 60616,
+  "Launcher": {
+    "Pid": 60616,
+    "Started": "2026-10-09T18:55:44.252446+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n& .artifacts/token-limit-20261009-8192/Download-RecoveryEvidence.ps1\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-105544-866-download-recovery-evidence.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-105544-866-download-recovery-evidence.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 1.5747932,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 41172,
+      "CreationDate": "2026-10-09T18:55:45.80371+08:00",
+      "Started": "2026-10-09T10:55:45.80371Z",
+      "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\scp.exe\" -P 2222 -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=8 root@211.149.170.42:/root/sezika-experiments/20261009-repaired-training-8192/recovery-evidence.tar D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\recovery-evidence.tar",
+      "ParentPid": 60616,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 66092,
+      "CreationDate": "2026-10-09T18:55:45.813197+08:00",
+      "Started": "2026-10-09T10:55:45.813197Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 41172,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 41172,
+          "CreationDate": "2026-10-09T18:55:45.80371+08:00",
+          "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\scp.exe\" -P 2222 -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=8 root@211.149.170.42:/root/sezika-experiments/20261009-repaired-training-8192/recovery-evidence.tar D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\recovery-evidence.tar",
+          "ParentPid": 60616
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 71976,
+      "CreationDate": "2026-10-09T18:55:45.844903+08:00",
+      "Started": "2026-10-09T10:55:45.844903Z",
+      "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -x -oPermitLocalCommand=no -oClearAllForwardings=yes -oRemoteCommand=none -oRequestTTY=no -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=8 -oForwardAgent=no -p 2222 -l root -s -- 211.149.170.42 sftp",
+      "ParentPid": 41172,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 41172,
+          "CreationDate": "2026-10-09T18:55:45.80371+08:00",
+          "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\scp.exe\" -P 2222 -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=8 root@211.149.170.42:/root/sezika-experiments/20261009-repaired-training-8192/recovery-evidence.tar D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\recovery-evidence.tar",
+          "ParentPid": 60616
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

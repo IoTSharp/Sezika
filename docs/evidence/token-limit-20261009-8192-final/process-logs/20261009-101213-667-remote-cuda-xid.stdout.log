@@ -1,0 +1,19 @@
+Oct 09 10:10:03 digisyn-gpu01 kernel: NVRM: Xid (PCI:0000:65:00): 154, GPU recovery action changed from 0x0 (None) to 0x1 (GPU Reset Required)
+Oct 09 10:10:03 digisyn-gpu01 kernel: NVRM: nvAssertFailedNoLog: Assertion failed: Back to back GSP RPC timeout detected! GPU marked for reset @ kernel_gsp.c:2496
+Oct 09 10:10:03 digisyn-gpu01 kernel: NVRM: kgspDumpMailbox_TU102: GSP: MAILBOX(3) = 0x00000000
+Oct 09 10:10:03 digisyn-gpu01 kernel: NVRM: kgspDumpMailbox_TU102: GSP: MAILBOX(2) = 0x00000000
+Oct 09 10:10:03 digisyn-gpu01 kernel: NVRM: kgspDumpMailbox_TU102: GSP: MAILBOX(1) = 0x00000000
+Oct 09 10:10:03 digisyn-gpu01 kernel: NVRM: kgspDumpMailbox_TU102: GSP: MAILBOX(0) = 0x00000000
+Oct 09 10:10:03 digisyn-gpu01 kernel: NVRM: Xid (PCI:0000:65:00): 119, pid=3116235, name=Sezika.Experime, Timeout after 45s of waiting for RPC response from GPU0 GSP! Expected function 76 (GSP_RM_CONTROL) sequence 70782908 (0x20800a9a 0x8).
+Oct 09 10:09:18 digisyn-gpu01 kernel: NVRM: rpcRmApiAlloc_GSP: GspRmAlloc failed: hClient=0xc1d93a19; hParent=0xc1d93a19; hObject=0xa55a0020; hClass=0x00000080; paramsSize=0x00000038; paramsStatus=0x00000000; status=0x00000065
+Oct 09 10:09:18 digisyn-gpu01 kernel: NVRM: kgspDumpMailbox_TU102: GSP: MAILBOX(3) = 0x00000000
+Oct 09 10:09:18 digisyn-gpu01 kernel: NVRM: kgspDumpMailbox_TU102: GSP: MAILBOX(2) = 0x00000000
+Oct 09 10:09:18 digisyn-gpu01 kernel: NVRM: kgspDumpMailbox_TU102: GSP: MAILBOX(1) = 0x00000000
+Oct 09 10:09:18 digisyn-gpu01 kernel: NVRM: kgspDumpMailbox_TU102: GSP: MAILBOX(0) = 0x00000000
+kernel_query_exit=0
+GPU 0: NVIDIA GeForce RTX 4090 (UUID: GPU-e786e313-bc92-a63d-a833-f4e48cbafb66)
+   2982    2937 Thu Aug 13 09:37:10 2026 /sbin/docker-init -- uvicorn app:app --host 127.0.0.1 --port 8001 --workers 1 --no-access-log
+   2990    2938 Thu Aug 13 09:37:10 2026 /sbin/docker-init -- /app/llama-server --model /models/Hy-MT2-30B-A3B-Q8_0.gguf --alias hy-mt2-30b-a3b-q8-0 --host 127.0.0.1 --port 8003 --ctx-size 4096 --n-predict 4096 --n-gpu-layers all --parallel 1 --batch-size 512 --ubatch-size 256 --flash-attn on --jinja --temperature 0.7 --top-k -1 --top-p 1.0 --repeat-penalty 1.0
+   3055    2990 Thu Aug 13 09:37:13 2026 /app/llama-server --model /models/Hy-MT2-30B-A3B-Q8_0.gguf --alias hy-mt2-30b-a3b-q8-0 --host 127.0.0.1 --port 8003 --ctx-size 4096 --n-predict 4096 --n-gpu-layers all --parallel 1 --batch-size 512 --ubatch-size 256 --flash-attn on --jinja --temperature 0.7 --top-k -1 --top-p 1.0 --repeat-penalty 1.0
+   3068    2982 Thu Aug 13 09:37:13 2026 /usr/bin/python /usr/local/bin/uvicorn app:app --host 127.0.0.1 --port 8001 --workers 1 --no-access-log
+read_only_no_reset_no_signals=true

@@ -1,0 +1,74 @@
+{
+  "Status": "Succeeded",
+  "Pid": 43444,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 7.701,
+  "TimeoutSeconds": 180,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "D:\\source\\Sezika\\src\\Sezika.Cli\\Sezika.Cli.csproj",
+    "-c",
+    "Release",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T09:40:16.0569879Z",
+  "ParentPid": 5172,
+  "Launcher": {
+    "Pid": 5172,
+    "Started": "2026-10-09T17:39:38.673097+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/token-limit-20261009-8192/Build-Check.ps1\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-094015-261-build-2.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-094015-261-build-2.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 1.7071994,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 43444,
+      "CreationDate": "2026-10-09T17:40:16.056987+08:00",
+      "Started": "2026-10-09T09:40:16.056987Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build D:\\source\\Sezika\\src\\Sezika.Cli\\Sezika.Cli.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+      "ParentPid": 5172,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 63708,
+      "CreationDate": "2026-10-09T17:40:16.065448+08:00",
+      "Started": "2026-10-09T09:40:16.065448Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 43444,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 43444,
+          "CreationDate": "2026-10-09T17:40:16.056987+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build D:\\source\\Sezika\\src\\Sezika.Cli\\Sezika.Cli.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+          "ParentPid": 5172
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

@@ -1,0 +1,26 @@
+{
+  "Pid": 50104,
+  "Started": "2026-10-09T11:12:50.051106Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\reboot-observe-final.sh",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 5516,
+  "ObservedParentPid": 5516,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 5516,
+    "Started": "2026-10-09T19:12:48.331203+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'; $new=Join-Path $task 'remote/reboot-observe-final.sh'; if(Test-Path -LiteralPath $new){throw 'unique phase already exists'}; Copy-Item -LiteralPath (Join-Path $task 'remote/reboot-observe.sh') -Destination $new; & (Join-Path $task 'Run-Remote.ps1') -Phase reboot-observe-final -Seconds 65\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 65,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\reboot-observe-final.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

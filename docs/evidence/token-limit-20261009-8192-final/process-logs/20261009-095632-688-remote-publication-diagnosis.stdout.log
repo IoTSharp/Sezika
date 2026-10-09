@@ -1,0 +1,93 @@
+System.AggregateException: Head asset publication/cleanup failed; inspect retained task path: /root/sezika-experiments/20261009-repaired-training-8192/output/capacity/.gpu-capacity.asset.3c2fff10cb8b476bb3479049273c35c2.tmp (Head asset creation identity changed; retained path: /root/sezika-experiments/20261009-repaired-training-8192/output/capacity/.gpu-capacity.asset.3c2fff10cb8b476bb3479049273c35c2.tmp) (Head asset actual prefix ownership is unknown; retained path: /root/sezika-experiments/20261009-repaired-training-8192/output/capacity/.gpu-capacity.asset.3c2fff10cb8b476bb3479049273c35c2.tmp)
+ ---> System.IO.IOException: Head asset creation identity changed; retained path: /root/sezika-experiments/20261009-repaired-training-8192/output/capacity/.gpu-capacity.asset.3c2fff10cb8b476bb3479049273c35c2.tmp
+   at Sezika.HeadAssetFilePublisher.HeadAssetTemporaryOwner.RequireCreation() in D:\source\Sezika\src\Sezika\HeadAssetFilePublisher.cs:line 174
+   at Sezika.HeadAssetFilePublisher.HeadAssetTemporaryOwner.CapturePrefix(FileStream file, Action check) in D:\source\Sezika\src\Sezika\HeadAssetFilePublisher.cs:line 120
+   at Sezika.HeadAssetFilePublisher.PublishNew(String path, Byte[] bytes, String hash, Action check, TimeSpan cleanupDuration, HeadAssetPublicationHooks hooks) in D:\source\Sezika\src\Sezika\HeadAssetFilePublisher.cs:line 61
+   --- End of inner exception stack trace ---
+   at Sezika.HeadAssetFilePublisher.PublishNew(String path, Byte[] bytes, String hash, Action check, TimeSpan cleanupDuration, HeadAssetPublicationHooks hooks) in D:\source\Sezika\src\Sezika\HeadAssetFilePublisher.cs:line 99
+   at Sezika.IndependentMarkerHeadAssetStore.SaveCore(String path, MarkerTrainingState state, CancellationToken cancellationToken, HeadAssetPublicationHooks hooks) in D:\source\Sezika\src\Sezika\IndependentMarkerHeadAsset.cs:line 63
+   at Sezika.IndependentMarkerHeadAssetStore.SaveNew(String path, MarkerTrainingState state, CancellationToken cancellationToken) in D:\source\Sezika\src\Sezika\IndependentMarkerHeadAsset.cs:line 27
+   at Program.<Main>$(String[] args) in D:\source\Sezika\.artifacts\token-limit-20261009-8192\capacity-check\Program.cs:line 46
+ ---> (Inner Exception #1) System.IO.IOException: Head asset actual prefix ownership is unknown; retained path: /root/sezika-experiments/20261009-repaired-training-8192/output/capacity/.gpu-capacity.asset.3c2fff10cb8b476bb3479049273c35c2.tmp
+   at Sezika.HeadAssetFilePublisher.HeadAssetTemporaryOwner.Verify(Action check) in D:\source\Sezika\src\Sezika\HeadAssetFilePublisher.cs:line 137
+   at Sezika.HeadAssetFilePublisher.HeadAssetTemporaryOwner.DeleteVerified(Action check) in D:\source\Sezika\src\Sezika\HeadAssetFilePublisher.cs:line 150
+   at Sezika.HeadAssetFilePublisher.PublishNew(String path, Byte[] bytes, String hash, Action check, TimeSpan cleanupDuration, HeadAssetPublicationHooks hooks) in D:\source\Sezika\src\Sezika\HeadAssetFilePublisher.cs:line 90<---
+
+ext2/ext3
+inode=27421224 dev=64512 birth=2026-10-09 09:54:08.860245927 +0000 changed=2026-10-09 09:54:08.867246087 +0000 modified=2026-10-09 09:54:08.861245949 +0000 size=450 name=/root/sezika-experiments/20261009-repaired-training-8192/output/capacity/gpu-capacity.checkpoint
+ * Items in STATX_BASIC_STATS may be marked unavailable on return, but they
+ * will have values installed for compatibility purposes so that stat() and
+ * co. can be emulated in userspace.
+ */
+struct statx {
+	/* 0x00 */
+	__u32	stx_mask;	/* What results were written [uncond] */
+	__u32	stx_blksize;	/* Preferred general I/O size [uncond] */
+	__u64	stx_attributes;	/* Flags conveying information about the file [uncond] */
+	/* 0x10 */
+	__u32	stx_nlink;	/* Number of hard links */
+	__u32	stx_uid;	/* User ID of owner */
+	__u32	stx_gid;	/* Group ID of owner */
+	__u16	stx_mode;	/* File mode */
+	__u16	__spare0[1];
+	/* 0x20 */
+	__u64	stx_ino;	/* Inode number */
+	__u64	stx_size;	/* File size */
+	__u64	stx_blocks;	/* Number of 512-byte blocks allocated */
+	__u64	stx_attributes_mask; /* Mask to show what's supported in stx_attributes */
+	/* 0x40 */
+	struct statx_timestamp	stx_atime;	/* Last access time */
+	struct statx_timestamp	stx_btime;	/* File creation time */
+	struct statx_timestamp	stx_ctime;	/* Last attribute change time */
+	struct statx_timestamp	stx_mtime;	/* Last data modification time */
+	/* 0x80 */
+	__u32	stx_rdev_major;	/* Device ID of special file [if bdev/cdev] */
+	__u32	stx_rdev_minor;
+	__u32	stx_dev_major;	/* ID of device containing file [uncond] */
+	__u32	stx_dev_minor;
+	/* 0x90 */
+	__u64	stx_mnt_id;
+	__u32	stx_dio_mem_align;	/* Memory buffer alignment for direct I/O */
+	__u32	stx_dio_offset_align;	/* File offset alignment for direct I/O */
+	/* 0xa0 */
+	__u64	__spare3[12];	/* Spare space for future expansion */
+	/* 0x100 */
+};
+
+/*
+ * Flags to be stx_mask
+ *
+ * Query request/result mask for statx() and struct statx::stx_mask.
+ *
+ * These bits should be set in the mask argument of statx() to request
+ * particular items when calling statx().
+ */
+#define STATX_TYPE		0x00000001U	/* Want/got stx_mode & S_IFMT */
+#define STATX_MODE		0x00000002U	/* Want/got stx_mode & ~S_IFMT */
+#define STATX_NLINK		0x00000004U	/* Want/got stx_nlink */
+#define STATX_UID		0x00000008U	/* Want/got stx_uid */
+#define STATX_GID		0x00000010U	/* Want/got stx_gid */
+#define STATX_ATIME		0x00000020U	/* Want/got stx_atime */
+#define STATX_MTIME		0x00000040U	/* Want/got stx_mtime */
+#define STATX_CTIME		0x00000080U	/* Want/got stx_ctime */
+#define STATX_INO		0x00000100U	/* Want/got stx_ino */
+#define STATX_SIZE		0x00000200U	/* Want/got stx_size */
+#define STATX_BLOCKS		0x00000400U	/* Want/got stx_blocks */
+#define STATX_BASIC_STATS	0x000007ffU	/* The stuff in the normal stat struct */
+#define STATX_BTIME		0x00000800U	/* Want/got stx_btime */
+#define STATX_MNT_ID		0x00001000U	/* Got stx_mnt_id */
+#define STATX_DIOALIGN		0x00002000U	/* Want/got direct I/O alignment info */
+#define STATX_MNT_ID_UNIQUE	0x00004000U	/* Want/got extended stx_mount_id */
+
+#define STATX__RESERVED		0x80000000U	/* Reserved for future struct statx expansion */
+
+/*
+ * This is deprecated, and shall remain the same value in the future.  To avoid
+ * confusion please use the equivalent (STATX_BASIC_STATS | STATX_BTIME)
+ * instead.
+ */
+#define STATX_ALL		0x00000fffU
+
+/*
+ * Attributes to be found in stx_attributes and masked in stx_attributes_mask.
+ *

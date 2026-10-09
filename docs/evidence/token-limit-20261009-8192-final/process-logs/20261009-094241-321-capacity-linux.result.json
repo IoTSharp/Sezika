@@ -1,0 +1,81 @@
+{
+  "Status": "Succeeded",
+  "Pid": 29888,
+  "ExitCode": 0,
+  "Error": null,
+  "ElapsedSeconds": 8.68,
+  "TimeoutSeconds": 180,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "publish",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\capacity-check\\CapacityCheck.csproj",
+    "-c",
+    "Release",
+    "-r",
+    "linux-x64",
+    "--self-contained",
+    "true",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false",
+    "-p:RuntimeFrameworkVersion=10.0.12",
+    "-o",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\capacity-linux"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T09:42:42.1727929Z",
+  "ParentPid": 35348,
+  "Launcher": {
+    "Pid": 35348,
+    "Started": "2026-10-09T17:42:26.535071+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop';$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192'; $p=Join-Path $task 'Publish-Linux.ps1';$s=[IO.File]::ReadAllText($p);$s=$s.Replace(\\\"'src/Sezika/IndependentMarkerHeadTraining.cs',\\\",\\\"'src/Sezika/ModernBert.cs','src/Sezika/IndependentModelContract.cs','src/Sezika.Cuda/CudaModernBertEncoder.cs','src/Sezika/IndependentDecisionRuntime.cs','src/Sezika/DiagnosticDecisionRuntime.cs','src/Sezika/QuantizedOps.cs','src/Sezika/IndependentMarkerHeadTraining.cs',\\\");[IO.File]::WriteAllText($p,$s,[Text.UTF8Encoding]::new($false)); & $p\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-094241-321-capacity-linux.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-094241-321-capacity-linux.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 2.009683,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 29888,
+      "CreationDate": "2026-10-09T17:42:42.172792+08:00",
+      "Started": "2026-10-09T09:42:42.172792Z",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\capacity-check\\CapacityCheck.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\capacity-linux",
+      "ParentPid": 35348,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 31916,
+      "CreationDate": "2026-10-09T17:42:42.181052+08:00",
+      "Started": "2026-10-09T09:42:42.181052Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 29888,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 29888,
+          "CreationDate": "2026-10-09T17:42:42.172792+08:00",
+          "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\capacity-check\\CapacityCheck.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\capacity-linux",
+          "ParentPid": 35348
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

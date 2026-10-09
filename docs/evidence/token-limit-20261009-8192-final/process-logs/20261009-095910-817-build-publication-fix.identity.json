@@ -1,0 +1,29 @@
+{
+  "Pid": 69868,
+  "Started": "2026-10-09T09:59:11.7347298Z",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tests/Sezika.Tests/Sezika.Tests.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 64720,
+  "ObservedParentPid": 64720,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 64720,
+    "Started": "2026-10-09T17:59:10.322063+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop';$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192';try{& $task/Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build','tests/Sezika.Tests/Sezika.Tests.csproj','-c','Release','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false') -TimeoutSeconds 180 -LogName 'build-publication-fix' -ProcessQueryTimeoutSeconds 2 -CancelFile $task/cancel.request -Environment @{TEMP=\\\"$task/compiler-temp\\\";TMP=\\\"$task/compiler-temp\\\"}|Out-Null}catch{Write-Output $_.Exception.Message};$r=Get-ChildItem -LiteralPath $task/process-logs -Filter '*build-publication-fix.result.json' -File|Select-Object -First 1|Get-Content -Raw|ConvertFrom-Json;Get-Content -LiteralPath $r.StdoutPath -Tail 12;Get-Content -LiteralPath $r.StderrPath -Tail 8;if($null -eq $r.ExitCode -or $r.ExitCode -ne 0){throw 'build fix failed'}\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 180,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+  "Arguments": [
+    "build",
+    "tests/Sezika.Tests/Sezika.Tests.csproj",
+    "-c",
+    "Release",
+    "--disable-build-servers",
+    "-m:1",
+    "-nr:false",
+    "-p:UseSharedCompilation=false"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

@@ -1,0 +1,24 @@
+{
+  "Pid": 72540,
+  "Started": "2026-10-09T10:06:18.1035939Z",
+  "CommandLine": null,
+  "IdentityObservation": "exited_before_cim_snapshot_see_recorded_argv",
+  "ParentPid": 39600,
+  "ObservedParentPid": null,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 39600,
+    "Started": "2026-10-09T18:06:16.795032+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop';$task='D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192';try{& $task/Invoke-BoundedProcess.ps1 -FilePath git -ArgumentList @('commit','-m','fix: verify Linux head publication with stable file identities') -TimeoutSeconds 30 -LogName 'commit-publication-fix' -ProcessQueryTimeoutSeconds 2 -CancelFile $task/cancel.request|Out-Null}catch{Write-Output $_.Exception.Message};$r=Get-ChildItem -LiteralPath $task/process-logs -Filter '*commit-publication-fix.result.json' -File|Select-Object -First 1|Get-Content -Raw|ConvertFrom-Json;if($null -eq $r.ExitCode -or $r.ExitCode -ne 0){throw 'actual commit failure'};Get-Content -LiteralPath $r.StdoutPath -Tail 3;git log -1 --format='%H %s'\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 30,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "git",
+  "Arguments": [
+    "commit",
+    "-m",
+    "fix: verify Linux head publication with stable file identities"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}

@@ -1,0 +1,88 @@
+{
+  "Status": "Failed",
+  "Pid": 3728,
+  "ExitCode": 127,
+  "Error": "Process failed with exit code 127.",
+  "ElapsedSeconds": 184.428,
+  "TimeoutSeconds": 1570,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\validate.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika",
+  "Started": "2026-10-09T10:07:06.7961011Z",
+  "ParentPid": 51660,
+  "Launcher": {
+    "Pid": 51660,
+    "Started": "2026-10-09T18:06:06.589846+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& .artifacts/token-limit-20261009-8192/Run-Remote.ps1 -Phase train -Seconds 1570; & .artifacts/token-limit-20261009-8192/Run-Remote.ps1 -Phase validate -Seconds 1570; & .artifacts/token-limit-20261009-8192/Run-Remote.ps1 -Phase regress -Seconds 360\"",
+    "ParentPid": 49492
+  },
+  "StdoutPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-100705-964-remote-validate.stdout.log",
+  "StderrPath": "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\process-logs\\20261009-100705-964-remote-validate.stderr.log",
+  "CleanupErrors": [],
+  "FinalCheckComplete": true,
+  "VerifiedLiveCount": 0,
+  "UnknownCount": 0,
+  "CleanupSeconds": 30,
+  "CleanupElapsedSeconds": 1.957192,
+  "CleanupBudgetExhausted": false,
+  "ObservationWarnings": [],
+  "ProcessInventoryScope": "registered_task_pid_or_parentpid_only",
+  "MaximumTrackedItems": 64,
+  "MaximumDepth": 32,
+  "MaximumQueriesPerPass": 10,
+  "MaximumPassSeconds": 20,
+  "Processes": [
+    {
+      "Pid": 3728,
+      "CreationDate": "2026-10-09T18:07:06.796101+08:00",
+      "Started": "2026-10-09T10:07:06.796101Z",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\validate.sh",
+      "ParentPid": 51660,
+      "Depth": 0,
+      "ParentChain": [],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 34660,
+      "CreationDate": "2026-10-09T18:07:07.364039+08:00",
+      "Started": "2026-10-09T10:07:07.364039Z",
+      "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "ParentPid": 3728,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 3728,
+          "CreationDate": "2026-10-09T18:07:06.796101+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\validate.sh",
+          "ParentPid": 51660
+        }
+      ],
+      "TerminatedByRunner": false
+    },
+    {
+      "Pid": 61408,
+      "CreationDate": "2026-10-09T18:07:06.807647+08:00",
+      "Started": "2026-10-09T10:07:06.807647Z",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 3728,
+      "Depth": 1,
+      "ParentChain": [
+        {
+          "Pid": 3728,
+          "CreationDate": "2026-10-09T18:07:06.796101+08:00",
+          "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\validate.sh",
+          "ParentPid": 51660
+        }
+      ],
+      "TerminatedByRunner": false
+    }
+  ],
+  "Limitation": "WSL/Linux processes need their independent Linux runner. CIM limits are cooperative; blocking provider calls can overrun. Short intermediates can exit before observation, and new children of an already-exited parent cannot be safely registered. Incomplete observations are retained, never treated as an empty inventory."
+}

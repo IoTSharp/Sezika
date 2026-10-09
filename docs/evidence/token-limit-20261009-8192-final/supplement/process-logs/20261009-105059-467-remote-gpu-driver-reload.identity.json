@@ -1,0 +1,26 @@
+{
+  "Pid": 72580,
+  "Started": "2026-10-09T10:51:00.4255383Z",
+  "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\gpu-driver-reload.sh",
+  "IdentityObservation": "cim_snapshot",
+  "ParentPid": 64196,
+  "ObservedParentPid": 64196,
+  "ParentIdentitySource": "Process.Start caller",
+  "Launcher": {
+    "Pid": 64196,
+    "Started": "2026-10-09T18:50:58.776425+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n& .artifacts/token-limit-20261009-8192/Run-Remote.ps1 -Phase gpu-driver-reload -Seconds 425\"",
+    "ParentPid": 49492
+  },
+  "TimeoutSeconds": 425,
+  "ProcessQueryTimeoutSeconds": 2,
+  "FilePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+  "Arguments": [
+    "-NoProfile",
+    "-File",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\Invoke-Ssh.ps1",
+    "-ScriptFile",
+    "D:\\source\\Sezika\\.artifacts\\token-limit-20261009-8192\\remote\\gpu-driver-reload.sh"
+  ],
+  "WorkingDirectory": "D:\\source\\Sezika"
+}
