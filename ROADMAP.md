@@ -20,6 +20,8 @@
 
 ## 当前执行顺序与门槛
 
+2026-10-09 用户授权的新项：仓库租用训练技能已完成并通过独立行为审查（新实例仍须迁移现有脚本绑定）；18文件/1,245,737,223 bytes实验模型公开包、双语模型卡、分项许可及真实head加载身份已冻结并核SHA。Hugging Face实际创建403，失败后确认目标不存在；模力方舟固定IoTSharp组织，实际GET401，需要有效认证。两平台目标同名 `IoTSharp/Sezika-mmBERT-8192-experimental`，上传与真实公开链接仍未完成，已索取必要凭据；取得后先核组织/远端状态，逐件上传验证再更新中英README。发布授权已取得，第三方权利补证与正式质量/AOT/校准/封存仍分别pending；不重训、不调用教师、不push源码、heartbeat保持PAUSED。暂停源码与旧诊断hunk保持。见[技能验收](docs/evidence/rental-training-skill-2026-10-09.md)和[发布回执](docs/evidence/model-publishing-2026-10-09.md)。
+
 2026-10-09 租用GPU固定实验已完成：RTX5090上唯一24576updates/LR0.001/seed17/strict8192/零head/encoder冻结训练35.2160222秒/231 forwards；新进程独立验证231 forwards及原修正32回归完成。完整模型于北京时间21:17:08下载并逐项核SHA，早于23:22目标和2026-10-10 00:22租期截止。本机独立证据核验10/10 PASS；teacher一致train118/162、dev27/53、换序7/16，selected ID改变6/16，不代表正式准确率或质量通过。原215/train162/dev53、全256账本及修题/教师证据不变。训练/下载已停止，其他ROADMAP暂停；正式人审、许可发布、质量、校准、封存、新head AOT/性能仍pending。旧服务器实验及故障保留为历史，不重复新旧机训练。见[租用实验完整证据](docs/evidence/rental-training-2026-10-09.md)。
 
 2026-10-09 用户明确选择8192，原215/train162/dev53及全部原字节/账本保持。显式8192工程/长度/H4数值/真实8k前向通过；唯一24576updates/LR0.001/seed17/strict8192/零head/encoder冻结训练完成并保存，231forwards/46.5468512s。首次独立验证payload1/runner127，开始211/215后Xid119/154，完整验证报告不存在、32回归未启动。用户已批准GPU reset和必要主机reboot；NVIDIA reset命令exit6，既有580.173.02驱动重载exit0/原配置保持但GPU仍No devices。10:56:29 UTC请求一次主机重启exit0，11:24:57 UTC已确认SSH恢复和新boot_id；11:27:35 UTC PCI仍识别RTX4090但显卡No devices/GSP初始化失败，六项保存物SHA保持，需服务器管理方处理GPU故障。不重复训练/reboot/reset或询问已得许可；恢复并核资源后仅继续保存head的独立验证和32回归。工程a5f4d9c/167470a/44b4082，只本地commit；正式质量/校准/封存/AOT/性能仍pending。原1024等待状态为历史，暂停诊断hunk保持。见[8192训练与恢复证据](docs/evidence/token-limit-8192-2026-10-09.md)。
