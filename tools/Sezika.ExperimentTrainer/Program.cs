@@ -6,7 +6,7 @@ using Sezika;
 using Sezika.Cuda;
 using Sezika.ExperimentTrainer;
 
-using var cancellation = new CancellationTokenSource(TimeSpan.FromSeconds(1200));
+using var cancellation = new CancellationTokenSource(TimeSpan.FromSeconds(args.Length > 0 && (args[0] is "train-expanded" or "validate-expanded") ? 1500 : 1200));
 ConsoleCancelEventHandler cancel = (_, value) => { value.Cancel = true; cancellation.Cancel(); };
 Console.CancelKeyPress += cancel;
 try
@@ -23,12 +23,17 @@ try
         Console.WriteLine("validate --diagnostics fixed-left1 additionally requires --evaluation-sha256 <same-process-evaluation-hash> --evaluation-output <fresh-json-outside-source>; fresh disk/encoder/CE/row-output comparison, max72 forwards");
         Console.WriteLine("Sezika.ExperimentTrainer check-evaluation --data <same-package> --manifest-sha256 <hash> --source <old-training-directory> --report-sha256 <hash> --max-checks <1|6>; bounded CPU contracts and synthetic fixtures only,no GPU");
         Console.WriteLine("Explicit teacher-labelled experiment only: human review/license-release/quality/calibration/sealed/AOT/performance/publication remain false. Frozen encoder forward and head CE/SGD use GPU. No resume or CPU encoder fallback.");
+        Console.WriteLine("train-expanded --data <v2-six-file-package> --manifest-sha256 <hash> --package <fixed-package> --output <fresh-directory> [--device 0..15] [--timeout-seconds 1..1500]; fixed192train/64dev,24576updates,seed17,LR0.001,strict1024,SGD<=300s,272encoder-forwards<=384");
+        Console.WriteLine("validate-expanded --data <same-v2-package> --manifest-sha256 <hash> --package <fixed-package> --output <training-directory> --report-sha256 <hash> --validation-output <fresh-file-outside-source> [--device 0..15] [--timeout-seconds 1..1500]; independent fresh272forwards and disk/CE/output comparison");
+        Console.WriteLine("check-expanded-input --data <v2-package> --manifest-sha256 <hash> --fixture-only <true|false> --max-checks <1..16>; bounded contracts only,fixture-only never train");
         return 2;
     }
     if (args[0] == "check") { ExperimentChecks.Run(args, cancellation.Token); return 0; }
     if (args[0] == "check-gpu") { ExperimentChecks.RunGpu(args, cancellation.Token); return 0; }
     if (args[0] == "lengths") { ExperimentChecks.RunLengths(args, cancellation.Token); return 0; }
     if (args[0] == "check-evaluation") { ExperimentEvaluationChecks.Run(args, cancellation.Token); return 0; }
+    if (args[0] == "check-expanded-input") { ExpansionChecks.Run(args, cancellation.Token); return 0; }
+    if (args[0] is "train-expanded" or "validate-expanded") { ExperimentOperations.RunExpanded(args, cancellation.Token); return 0; }
     var options = ExperimentOptions.Parse(args, cancellation.Token);
     using var budget = new ExperimentBudget(options.TimeoutSeconds, cancellation.Token);
     using var data = ExperimentData.Open(options.Data, options.ManifestSha256, budget.Check, budget.Token);
@@ -413,7 +418,12 @@ namespace Sezika.ExperimentTrainer
         private string? _hash;
         private DateTime? _creationUtc;
         private long _length;
-        internal ExperimentOwnedFile(string path) { Path = System.IO.Path.GetFullPath(path); _info = new(Path); }
+        private readonly int _maximumBytes;
+        internal ExperimentOwnedFile(string path, int maximumBytes = 1_048_576)
+        {
+            if (maximumBytes is < 1 or > 4_194_304) throw ExperimentData.Invalid("Owned output byte bound differs.");
+            Path = System.IO.Path.GetFullPath(path); _info = new(Path); _maximumBytes = maximumBytes;
+        }
         internal void Acquire(string hash) { _hash = hash; _info.Refresh(); _length = _info.Length; _creationUtc = _info.CreationTimeUtc; }
         internal void WriteNew(byte[] bytes, string hash)
         {
@@ -453,10 +463,10 @@ namespace Sezika.ExperimentTrainer
         internal void Cleanup(Action check)
         {
             if (_hash is null) return; check(); ExperimentData.CheckPath(Path, check); _info.Refresh(); if (!_info.Exists) return;
-            if (_creationUtc is null || _info.CreationTimeUtc != _creationUtc || _info.Length != _length || _length > 1_048_576) throw new IOException("Output ownership differs; file preserved.");
+            if (_creationUtc is null || _info.CreationTimeUtc != _creationUtc || _info.Length != _length || _length > _maximumBytes) throw new IOException("Output ownership differs; file preserved.");
             using (var input = new FileStream(Path, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                if (input.Length != _length || input.Length > 1_048_576) throw new IOException("Output size changed; preserved.");
+                if (input.Length != _length || input.Length > _maximumBytes) throw new IOException("Output size changed; preserved.");
                 var bytes = new byte[(int)input.Length]; input.ReadExactly(bytes); check();
                 if (!ExperimentData.SameHash(ExperimentData.Hash(bytes), _hash)) throw new IOException("Output hash differs; file preserved.");
             }

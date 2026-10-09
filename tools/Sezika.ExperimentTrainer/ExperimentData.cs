@@ -8,12 +8,12 @@ using Sezika;
 
 namespace Sezika.ExperimentTrainer;
 
-internal sealed class ExperimentData : IDisposable
+internal sealed partial class ExperimentData : IDisposable
 {
     internal const string Contract = "sezika/teacher-labelled-experiment-data/v1";
     internal const int RecordsLimit = 32 * 65_538 + 3;
-    private readonly FileStream?[] _leases = new FileStream?[3];
-    private readonly Exception?[] _cleanupErrors = new Exception?[4];
+    private readonly FileStream?[] _leases = new FileStream?[6];
+    private readonly Exception?[] _cleanupErrors = new Exception?[7];
     private readonly IOException _cleanupTimeout = new("Experiment input lease cleanup deadline expired.");
     internal ExperimentManifest Manifest { get; private set; } = null!;
     internal ExperimentRecord[] Records { get; private set; } = [];
@@ -81,7 +81,7 @@ internal sealed class ExperimentData : IDisposable
             value.Purpose != "teacher_labelled_experiment" || value.Protocol != "decision-v1" || value.StudentModelId != IndependentModelLoader.ModelId ||
             value.Formal || value.HumanReview != "pending" || value.TeacherOutputTrainingPermitted || !value.UserAuthorizedExperiment ||
             !value.TeacherAnswerExposed || value.EligibleAsSealedTest || value.Total != 32 || value.Train != 24 || value.Development != 8 ||
-            value.SplitRule != "zh_en_first2_choice_first1_score_first1_boolean_development_v1" ||
+            value.SplitRule != "zh_en_first2_choice_first1_score_first1_boolean_development_v1" || value.TeacherApi is not null || value.FixtureOnly ||
             string.IsNullOrWhiteSpace(value.SplitRuleFrozenUtc) || value.Sources is null || value.Sources.Length != 3)
             throw Invalid("Only the explicit pending, exposed, user-authorized 24/8 teacher experiment contract is accepted.");
         ValidateAsset(value.Records); ValidateAsset(value.Provenance);
@@ -114,6 +114,7 @@ internal sealed class ExperimentData : IDisposable
             if (line == 32 || string.IsNullOrWhiteSpace(text)) throw Invalid("Exactly32 nonempty experiment rows are required.");
             var utf8 = Encoding.UTF8.GetBytes(text); CheckJson(utf8, 65_536, token);
             var row = JsonSerializer.Deserialize(utf8, ExperimentJsonContext.Default.ExperimentRecordJson) ?? throw Invalid("Experiment row is null.");
+            if (row.TeacherBinding is not null) throw Invalid("API teacher bindings are accepted only by the explicit v2 expansion command.");
             if (string.IsNullOrWhiteSpace(row.RecordId) || row.RecordId.Length > 128 || !ids.Add(row.RecordId) ||
                 string.IsNullOrWhiteSpace(row.FamilyId) || row.FamilyId.Length > 128 || !families.Add(row.FamilyId) ||
                 row.Language is not ("zh" or "en") || row.Split is not ("train" or "development")) throw Invalid("Experiment record identity/split is invalid or duplicated.");
@@ -140,15 +141,15 @@ internal sealed class ExperimentData : IDisposable
         return result.ToArray();
     }
 
-    internal static void CheckJson(ReadOnlySpan<byte> bytes, int maximum, CancellationToken token)
+    internal static void CheckJson(ReadOnlySpan<byte> bytes, int maximum, CancellationToken token, int maximumTokens = 65_536)
     {
-        if (bytes.Length is < 1 || bytes.Length > maximum) throw Invalid("JSON byte bound exceeded.");
+        if (bytes.Length is < 1 || bytes.Length > maximum || maximumTokens is < 1 or > 500_000) throw Invalid("JSON byte/token bound exceeded.");
         var watch = Stopwatch.StartNew(); var reader = new Utf8JsonReader(bytes, new JsonReaderOptions { MaxDepth = 32 });
         var objects = new Stack<HashSet<string>>(); var count = 0;
         while (reader.Read())
         {
             token.ThrowIfCancellationRequested();
-            if (++count > 65_536 || watch.Elapsed > TimeSpan.FromSeconds(10)) throw Invalid("JSON token/deadline bound exceeded.");
+            if (++count > maximumTokens || watch.Elapsed > TimeSpan.FromSeconds(10)) throw Invalid("JSON token/deadline bound exceeded.");
             if (reader.TokenType == JsonTokenType.StartObject) objects.Push(new(StringComparer.Ordinal));
             else if (reader.TokenType == JsonTokenType.EndObject) objects.Pop();
             else if (reader.TokenType == JsonTokenType.PropertyName && !objects.Peek().Add(reader.GetString()!)) throw Invalid("Duplicate JSON properties are rejected.");
@@ -187,21 +188,22 @@ internal sealed class ExperimentData : IDisposable
     public void Dispose()
     {
         var started = Stopwatch.GetTimestamp(); Array.Clear(_cleanupErrors);
-        for (var index = 0; index < 3; index++)
+        for (var index = 0; index < 6; index++)
         {
-            if (Stopwatch.GetElapsedTime(started) > TimeSpan.FromSeconds(5)) _cleanupErrors[3] = _cleanupTimeout;
+            if (Stopwatch.GetElapsedTime(started) > TimeSpan.FromSeconds(5)) _cleanupErrors[6] = _cleanupTimeout;
             try { _leases[index]?.Dispose(); _leases[index] = null; } catch (Exception error) { _cleanupErrors[index] = error; }
         }
-        if (Stopwatch.GetElapsedTime(started) > TimeSpan.FromSeconds(5)) _cleanupErrors[3] = _cleanupTimeout;
-        var errors = new List<Exception>(4);
-        for (var index = 0; index < 4; index++) if (_cleanupErrors[index] is { } error) errors.Add(error);
+        if (Stopwatch.GetElapsedTime(started) > TimeSpan.FromSeconds(5)) _cleanupErrors[6] = _cleanupTimeout;
+        var errors = new List<Exception>(7);
+        for (var index = 0; index < 7; index++) if (_cleanupErrors[index] is { } error) errors.Add(error);
         if (errors.Count == 1) ExceptionDispatchInfo.Capture(errors[0]).Throw();
         if (errors.Count > 1) throw new AggregateException("Experiment input lease cleanup errors.", errors);
     }
 }
 
 internal sealed record ExperimentRecord(string RecordId, string FamilyId, string Language, string Split, int TargetIndex,
-    IndependentDecisionRequest Request, IndependentDecisionQuestion Question, MarkerQuestionType Type, string[] CandidateIds);
+    IndependentDecisionRequest Request, IndependentDecisionQuestion Question, MarkerQuestionType Type, string[] CandidateIds,
+    ExperimentTeacherBinding? TeacherBinding = null, JsonElement? OriginalRequestJson = null);
 internal sealed class ExperimentRecordJson
 {
     public required string RecordId { get; init; }
@@ -210,6 +212,8 @@ internal sealed class ExperimentRecordJson
     public required string Split { get; init; }
     public required int TargetIndex { get; init; }
     public required JsonElement Request { get; init; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public ExperimentTeacherBinding? TeacherBinding { get; init; }
 }
 internal class ExperimentAsset
 {
@@ -249,8 +253,18 @@ internal sealed class ExperimentManifest
     public required int Development { get; init; }
     public required ExperimentAsset Records { get; init; }
     public required ExperimentSource[] Sources { get; init; }
-    public required ExperimentTeacher Teacher { get; init; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public ExperimentTeacher? Teacher { get; init; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public ExperimentTeacherApi? TeacherApi { get; init; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public bool FixtureOnly { get; init; }
     public required string SplitRule { get; init; }
     public required string SplitRuleFrozenUtc { get; init; }
     public required ExperimentAsset Provenance { get; init; }
 }
+
+internal sealed record ExperimentTeacherApi(string Provider, string Model, string Effort, string Identity,
+    string TrainingPermission, string License);
+internal sealed record ExperimentTeacherBinding(string SourceCanonicalId, string ResponseId, string RequestSha256,
+    string ResponseSha256, string SelectedCandidateId, int TargetIndex);
