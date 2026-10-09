@@ -12,14 +12,15 @@ internal sealed partial class ExperimentData : IDisposable
 {
     internal const string Contract = "sezika/teacher-labelled-experiment-data/v1";
     internal const int RecordsLimit = 32 * 65_538 + 3;
-    private readonly FileStream?[] _leases = new FileStream?[6];
-    private readonly Exception?[] _cleanupErrors = new Exception?[7];
+    private readonly FileStream?[] _leases = new FileStream?[7];
+    private readonly Exception?[] _cleanupErrors = new Exception?[8];
     private readonly IOException _cleanupTimeout = new("Experiment input lease cleanup deadline expired.");
     internal ExperimentManifest Manifest { get; private set; } = null!;
     internal ExperimentRecord[] Records { get; private set; } = [];
     internal string ManifestSha256 { get; private set; } = "";
     internal string RecordsSha256 { get; private set; } = "";
     internal string ProvenanceSha256 { get; private set; } = "";
+    internal string? DerivationLedgerSha256 { get; private set; }
     internal string Root { get; private set; } = "";
 
     internal static ExperimentData Open(string directory, string expectedManifestSha256, Action check, CancellationToken token)
@@ -81,7 +82,7 @@ internal sealed partial class ExperimentData : IDisposable
             value.Purpose != "teacher_labelled_experiment" || value.Protocol != "decision-v1" || value.StudentModelId != IndependentModelLoader.ModelId ||
             value.Formal || value.HumanReview != "pending" || value.TeacherOutputTrainingPermitted || !value.UserAuthorizedExperiment ||
             !value.TeacherAnswerExposed || value.EligibleAsSealedTest || value.Total != 32 || value.Train != 24 || value.Development != 8 ||
-            value.SplitRule != "zh_en_first2_choice_first1_score_first1_boolean_development_v1" || value.TeacherApi is not null || value.FixtureOnly ||
+            value.SplitRule != "zh_en_first2_choice_first1_score_first1_boolean_development_v1" || value.TeacherApi is not null || value.Derivation is not null || value.FixtureOnly ||
             string.IsNullOrWhiteSpace(value.SplitRuleFrozenUtc) || value.Sources is null || value.Sources.Length != 3)
             throw Invalid("Only the explicit pending, exposed, user-authorized 24/8 teacher experiment contract is accepted.");
         ValidateAsset(value.Records); ValidateAsset(value.Provenance);
@@ -188,14 +189,14 @@ internal sealed partial class ExperimentData : IDisposable
     public void Dispose()
     {
         var started = Stopwatch.GetTimestamp(); Array.Clear(_cleanupErrors);
-        for (var index = 0; index < 6; index++)
+        for (var index = 0; index < _leases.Length; index++)
         {
-            if (Stopwatch.GetElapsedTime(started) > TimeSpan.FromSeconds(5)) _cleanupErrors[6] = _cleanupTimeout;
+            if (Stopwatch.GetElapsedTime(started) > TimeSpan.FromSeconds(5)) _cleanupErrors[^1] = _cleanupTimeout;
             try { _leases[index]?.Dispose(); _leases[index] = null; } catch (Exception error) { _cleanupErrors[index] = error; }
         }
-        if (Stopwatch.GetElapsedTime(started) > TimeSpan.FromSeconds(5)) _cleanupErrors[6] = _cleanupTimeout;
-        var errors = new List<Exception>(7);
-        for (var index = 0; index < 7; index++) if (_cleanupErrors[index] is { } error) errors.Add(error);
+        if (Stopwatch.GetElapsedTime(started) > TimeSpan.FromSeconds(5)) _cleanupErrors[^1] = _cleanupTimeout;
+        var errors = new List<Exception>(_cleanupErrors.Length);
+        for (var index = 0; index < _cleanupErrors.Length; index++) if (_cleanupErrors[index] is { } error) errors.Add(error);
         if (errors.Count == 1) ExceptionDispatchInfo.Capture(errors[0]).Throw();
         if (errors.Count > 1) throw new AggregateException("Experiment input lease cleanup errors.", errors);
     }
@@ -262,6 +263,8 @@ internal sealed class ExperimentManifest
     public required string SplitRule { get; init; }
     public required string SplitRuleFrozenUtc { get; init; }
     public required ExperimentAsset Provenance { get; init; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public ExperimentAsset? Derivation { get; init; }
 }
 
 internal sealed record ExperimentTeacherApi(string Provider, string Model, string Effort, string Identity,
