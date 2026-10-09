@@ -38,7 +38,7 @@ internal static class HeadAssetFilePublisher
             file = new FileStream(temporary, FileMode.CreateNew, FileAccess.ReadWrite,
                 FileShare.None, bufferSize: 1);
             acquired = true;
-            owner.CaptureCreation();
+            owner.CaptureCreation(file);
             hooks?.Observe?.Invoke(HeadAssetPublicationStage.Created, temporary);
             for (var offset = 0; offset < bytes.Length; offset += 256)
             {
@@ -103,26 +103,33 @@ internal static class HeadAssetFilePublisher
     {
         private readonly string _path = Path.GetFullPath(path);
         private DateTime _creationUtc;
+        private LinuxFileIdentity _linuxIdentity;
         private bool _creationKnown, _prefixKnown;
         internal long Length { get; private set; }
         internal string Sha256 { get; private set; } = string.Empty;
 
-        internal void CaptureCreation()
+        internal void CaptureCreation(FileStream file)
         {
             var info = Inspect();
-            _creationUtc = info.CreationTimeUtc;
+            if (OperatingSystem.IsLinux())
+            {
+                _linuxIdentity = LinuxFileIdentity.ReadHandle(file.SafeFileHandle);
+                if (LinuxFileIdentity.ReadPath(_path) != _linuxIdentity)
+                    throw new IOException($"Head asset path and opened file differ; retained path: {_path}");
+            }
+            else _creationUtc = info.CreationTimeUtc;
             _creationKnown = true;
         }
 
         internal void CapturePrefix(FileStream file, Action check)
         {
             check();
-            RequireCreation();
+            RequireCreation(file);
             var length = file.Length;
             if (length is < 0 or > MaxBytes)
                 throw new IOException($"Head asset actual prefix is outside its bound; retained path: {_path}");
             var hash = HashHandle(file, length, check);
-            RequireCreation();
+            RequireCreation(file);
             if (file.Length != length)
                 throw new IOException($"Head asset prefix changed during capture; retained path: {_path}");
             Length = length;
@@ -168,9 +175,14 @@ internal static class HeadAssetFilePublisher
             return info;
         }
 
-        private void RequireCreation()
+        private void RequireCreation(FileStream? file = null)
         {
-            if (!_creationKnown || Inspect().CreationTimeUtc != _creationUtc)
+            var info = Inspect();
+            var same = OperatingSystem.IsLinux()
+                ? LinuxFileIdentity.ReadPath(_path) == _linuxIdentity &&
+                    (file is null || LinuxFileIdentity.ReadHandle(file.SafeFileHandle) == _linuxIdentity)
+                : info.CreationTimeUtc == _creationUtc;
+            if (!_creationKnown || !same)
                 throw new IOException($"Head asset creation identity changed; retained path: {_path}");
         }
 

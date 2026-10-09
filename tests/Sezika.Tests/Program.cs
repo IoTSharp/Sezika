@@ -50,6 +50,12 @@ try
         Console.WriteLine($"Diagnostic head asset checks passed: {passed}");
         return 0;
     }
+    if (args.Length == 1 && args[0] == "--linux-publication")
+    {
+        global::Sezika.Tests.LinuxPublicationChecks.Run(Check);
+        Console.WriteLine($"Linux publication checks passed: {passed}");
+        return 0;
+    }
     if (args.Length == 1 && args[0] is "--head-asset-publication-tiny" or "--head-asset-publication")
     {
         global::Sezika.Tests.HeadAssetPublicationChecks.Run(Check,

@@ -9,6 +9,7 @@
     <PackageProjectUrl>https://github.com/IoTSharp/Sezika</PackageProjectUrl>
     <IsPackable>true</IsPackable>
     <IsAotCompatible>true</IsAotCompatible>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <None Include="../../README.md" Pack="true" PackagePath="README.md" />
