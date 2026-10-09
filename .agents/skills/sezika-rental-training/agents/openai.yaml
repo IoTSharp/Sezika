@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sezika 租用 GPU 训练"
+  short_description: "在租期内准备完整 GPU 资料、固定训练、下载模型并独立验收"
+  default_prompt: "使用 $sezika-rental-training，在指定租期内准备本次 SSH 和完整资产，执行已授权的固定训练，优先下载模型并独立验收。"
