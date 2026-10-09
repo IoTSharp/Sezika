@@ -1,0 +1,149 @@
+{
+  "batch": "batch30",
+  "status": "completed_and_validated",
+  "start_index": 234,
+  "record_count": 8,
+  "http_status": 200,
+  "response_id": "resp_070969a3a133d34d016ac86a9ad458819aa0ca73b09690a4be",
+  "response_model": "gpt-6.1-sol",
+  "response_reasoning_effort": "max",
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning_effort": "max",
+  "initially_requested_effort": "ultra",
+  "usage": {
+    "input_tokens": 6918,
+    "input_tokens_details": {
+      "cached_tokens": 4224,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 6101,
+    "output_tokens_details": {
+      "reasoning_tokens": 4142
+    },
+    "total_tokens": 13019,
+    "attribution": {
+      "items": {
+        "msg_070969a3a133d34d016ac86a9ad520819a804091c162c6305f": {
+          "input_tokens": 2157,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 0,
+          "content": [
+            {
+              "input_tokens": 2157,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            }
+          ]
+        },
+        "msg_070969a3a133d34d016ac86a9ad520819a8b287e2b89efc6d1": {
+          "input_tokens": 355,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 0,
+          "content": [
+            {
+              "input_tokens": 355,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            }
+          ]
+        },
+        "msg_070969a3a133d34d016ac86b118ba0819a877a05132323c997": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 1959,
+          "content": [
+            {
+              "input_tokens": 0,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 1959
+            }
+          ]
+        },
+        "rs_070969a3a133d34d016ac86aac2754819a8849c0d05e37be80": {
+          "input_tokens": 2,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 516
+        },
+        "rs_070969a3a133d34d016ac86aba4864819ab01793f931bbd18a": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_070969a3a133d34d016ac86ac92148819aaf1e46c9a87b622a": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_070969a3a133d34d016ac86ad826cc819aa19ee7f9648cb586": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_070969a3a133d34d016ac86ae99210819aad694dee503c4f34": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_070969a3a133d34d016ac86af583fc819ab6b84f61ac94bf21": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_070969a3a133d34d016ac86b02d1bc819aafad0cce60f3b0ad": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_070969a3a133d34d016ac86b112d68819a978b1ab8ec5149ed": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        }
+      },
+      "request_fields": {
+        "instructions": {
+          "input_tokens": 4216,
+          "cached_tokens": 4036,
+          "cache_write_tokens": 0,
+          "output_tokens": 0
+        },
+        "text.format": {
+          "input_tokens": 188,
+          "cached_tokens": 188,
+          "cache_write_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    }
+  },
+  "failure_type": null,
+  "elapsed_seconds": 156.2646372,
+  "maximum_seconds": 260,
+  "maximum_http_requests": 1,
+  "identity": {
+    "Pid": 19540,
+    "Started": "2026-10-09T04:16:21.6289330Z",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch30 -Start 234 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+    "ParentPid": 38980
+  },
+  "children_started": false,
+  "credential_persisted": false,
+  "cleanup_errors": [],
+  "cleanup_elapsed_seconds": 0.0054317,
+  "human_review": "pending",
+  "formal": false
+}

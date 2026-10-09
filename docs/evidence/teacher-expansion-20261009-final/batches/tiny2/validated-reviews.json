@@ -1,0 +1,56 @@
+[
+  {
+    "record_id": "massive-en-us-00001",
+    "question_id": "intent",
+    "family_id": "massive-1.1-utterance-1",
+    "language": "en",
+    "split": "train",
+    "type": "choice",
+    "original_target_index": 0,
+    "original_target_id": "alarm_set",
+    "clarity_status": "clear",
+    "answer_status": "determinate",
+    "suggested_correct_id": "alarm_set",
+    "suggested_correct_index": 0,
+    "alternative_ids": [],
+    "reason": "原话要求在周五上午九点叫醒用户，主要意图是设置闹钟，唯一对应 alarm_set。",
+    "evidence_quotes": [
+      "wake me up at nine am on friday"
+    ],
+    "question_revision_needed": false,
+    "revision_reason": "",
+    "suggested_text_revision": null,
+    "change_original_label": false,
+    "reviewer_kind": "ai",
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false
+  },
+  {
+    "record_id": "massive-zh-cn-00002",
+    "question_id": "intent",
+    "family_id": "massive-1.1-utterance-2",
+    "language": "zh",
+    "split": "train",
+    "type": "choice",
+    "original_target_index": 1,
+    "original_target_id": "alarm_set",
+    "clarity_status": "clear",
+    "answer_status": "determinate",
+    "suggested_correct_id": "alarm_set",
+    "suggested_correct_index": 1,
+    "alternative_ids": [],
+    "reason": "原话明确要求设置两小时后的闹钟，唯一对应 alarm_set。",
+    "evidence_quotes": [
+      "设个两小时后的闹钟"
+    ],
+    "question_revision_needed": false,
+    "revision_reason": "",
+    "suggested_text_revision": null,
+    "change_original_label": false,
+    "reviewer_kind": "ai",
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false
+  }
+]

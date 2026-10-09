@@ -1,0 +1,131 @@
+{
+  "batch": "batch16",
+  "status": "completed_and_validated",
+  "start_index": 122,
+  "record_count": 8,
+  "http_status": 200,
+  "response_id": "resp_0ec8c0c23f3bcedd016ac86572b8ac81998901e78119bce537",
+  "response_model": "gpt-6.1-sol",
+  "response_reasoning_effort": "max",
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning_effort": "max",
+  "initially_requested_effort": "ultra",
+  "usage": {
+    "input_tokens": 6148,
+    "input_tokens_details": {
+      "cached_tokens": 4224,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 3195,
+    "output_tokens_details": {
+      "reasoning_tokens": 2109
+    },
+    "total_tokens": 9343,
+    "attribution": {
+      "items": {
+        "msg_0ec8c0c23f3bcedd016ac86572b9dc8199848733603e6135b6": {
+          "input_tokens": 355,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 0,
+          "content": [
+            {
+              "input_tokens": 355,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            }
+          ]
+        },
+        "msg_0ec8c0c23f3bcedd016ac86572b9dc819998a0fd6fc515df48": {
+          "input_tokens": 1387,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 0,
+          "content": [
+            {
+              "input_tokens": 1387,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            }
+          ]
+        },
+        "msg_0ec8c0c23f3bcedd016ac865b7b8a081999d4f980101eea0ae": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 1086,
+          "content": [
+            {
+              "input_tokens": 0,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 1086
+            }
+          ]
+        },
+        "rs_0ec8c0c23f3bcedd016ac865842a84819996a0af5d9a385d40": {
+          "input_tokens": 2,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 516
+        },
+        "rs_0ec8c0c23f3bcedd016ac865948e2c819994822bcf86433a9b": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_0ec8c0c23f3bcedd016ac865a389a48199962aad1866695907": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_0ec8c0c23f3bcedd016ac865b633d08199a177e81cb3fd2668": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_0ec8c0c23f3bcedd016ac865b72e308199952c13de053cc8a2": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 39
+        }
+      },
+      "request_fields": {
+        "instructions": {
+          "input_tokens": 4216,
+          "cached_tokens": 4036,
+          "cache_write_tokens": 0,
+          "output_tokens": 0
+        },
+        "text.format": {
+          "input_tokens": 188,
+          "cached_tokens": 188,
+          "cache_write_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    }
+  },
+  "failure_type": null,
+  "elapsed_seconds": 94.3081805,
+  "maximum_seconds": 260,
+  "maximum_http_requests": 1,
+  "identity": {
+    "Pid": 11624,
+    "Started": "2026-10-09T03:54:21.6231100Z",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch16 -Start 122 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+    "ParentPid": 57036
+  },
+  "children_started": false,
+  "credential_persisted": false,
+  "cleanup_errors": [],
+  "cleanup_elapsed_seconds": 0.0024383,
+  "human_review": "pending",
+  "formal": false
+}

@@ -1,0 +1,155 @@
+{
+  "batch": "batch32",
+  "status": "completed_and_validated",
+  "start_index": 250,
+  "record_count": 6,
+  "http_status": 200,
+  "response_id": "resp_0d4ca817b601e8ce016ac86b456060819bb738fb719d8c73bb",
+  "response_model": "gpt-6.1-sol",
+  "response_reasoning_effort": "max",
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning_effort": "max",
+  "initially_requested_effort": "ultra",
+  "usage": {
+    "input_tokens": 6915,
+    "input_tokens_details": {
+      "cached_tokens": 4224,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 6049,
+    "output_tokens_details": {
+      "reasoning_tokens": 4408
+    },
+    "total_tokens": 12964,
+    "attribution": {
+      "items": {
+        "msg_0d4ca817b601e8ce016ac86b4560fc819b8dcca21f02f07c6a": {
+          "input_tokens": 2154,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 0,
+          "content": [
+            {
+              "input_tokens": 2154,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            }
+          ]
+        },
+        "msg_0d4ca817b601e8ce016ac86b4560fc819b98f25cc3dfad0006": {
+          "input_tokens": 355,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 0,
+          "content": [
+            {
+              "input_tokens": 355,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            }
+          ]
+        },
+        "msg_0d4ca817b601e8ce016ac86bc7f07c819b881018c20a37a0f9": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 1641,
+          "content": [
+            {
+              "input_tokens": 0,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 1641
+            }
+          ]
+        },
+        "rs_0d4ca817b601e8ce016ac86b54bbc0819b81913e8536b3f900": {
+          "input_tokens": 2,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 516
+        },
+        "rs_0d4ca817b601e8ce016ac86b65770c819b8982b06bc1bf4599": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_0d4ca817b601e8ce016ac86b7519c4819b8b8400af8c614917": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_0d4ca817b601e8ce016ac86b839db0819b947b4410ca816813": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_0d4ca817b601e8ce016ac86b933518819b87c55897292b6e30": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_0d4ca817b601e8ce016ac86ba00074819ba81ea56151e10293": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_0d4ca817b601e8ce016ac86bb012b0819b94e21313e8bb9a32": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_0d4ca817b601e8ce016ac86bbff194819bade11c01b9d3d8e7": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_0d4ca817b601e8ce016ac86bc77d28819b8f0894e251eb124e": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 266
+        }
+      },
+      "request_fields": {
+        "instructions": {
+          "input_tokens": 4216,
+          "cached_tokens": 4036,
+          "cache_write_tokens": 0,
+          "output_tokens": 0
+        },
+        "text.format": {
+          "input_tokens": 188,
+          "cached_tokens": 188,
+          "cache_write_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    }
+  },
+  "failure_type": null,
+  "elapsed_seconds": 161.5103361,
+  "maximum_seconds": 260,
+  "maximum_http_requests": 1,
+  "identity": {
+    "Pid": 62784,
+    "Started": "2026-10-09T04:19:11.2238330Z",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch32 -Start 250 -Count 6 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+    "ParentPid": 44488
+  },
+  "children_started": false,
+  "credential_persisted": false,
+  "cleanup_errors": [],
+  "cleanup_elapsed_seconds": 0.0053187,
+  "human_review": "pending",
+  "formal": false
+}

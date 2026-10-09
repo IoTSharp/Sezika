@@ -1,0 +1,125 @@
+{
+  "batch": "final05v2",
+  "status": "completed_and_validated",
+  "start_index": 34,
+  "record_count": 8,
+  "http_status": 200,
+  "response_id": "resp_077232ad880d0cf1016ac86eda5300819a8a3fa11375fb9a05",
+  "response_model": "gpt-6.1-sol",
+  "response_reasoning_effort": "max",
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning_effort": "max",
+  "initially_requested_effort": "ultra",
+  "usage": {
+    "input_tokens": 6129,
+    "input_tokens_details": {
+      "cached_tokens": 5888,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 3537,
+    "output_tokens_details": {
+      "reasoning_tokens": 1992
+    },
+    "total_tokens": 9666,
+    "attribution": {
+      "items": {
+        "msg_077232ad880d0cf1016ac86eda537c819aa56db5bf6b5a6ce8": {
+          "input_tokens": 1368,
+          "cached_tokens": 1129,
+          "cache_write_tokens": 0,
+          "output_tokens": 0,
+          "content": [
+            {
+              "input_tokens": 1368,
+              "cached_tokens": 1129,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            }
+          ]
+        },
+        "msg_077232ad880d0cf1016ac86eda537c819ab219f96d616c396c": {
+          "input_tokens": 355,
+          "cached_tokens": 355,
+          "cache_write_tokens": 0,
+          "output_tokens": 0,
+          "content": [
+            {
+              "input_tokens": 355,
+              "cached_tokens": 355,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            }
+          ]
+        },
+        "msg_077232ad880d0cf1016ac86f15a964819a87f07fd399ba8c2f": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 1545,
+          "content": [
+            {
+              "input_tokens": 0,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 1545
+            }
+          ]
+        },
+        "rs_077232ad880d0cf1016ac86eea6024819a83f295cf3c3a28c3": {
+          "input_tokens": 2,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 516
+        },
+        "rs_077232ad880d0cf1016ac86ef97a08819a94dfa559c3bda9eb": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_077232ad880d0cf1016ac86f084540819aae3d3e29d658d3c1": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_077232ad880d0cf1016ac86f154690819a92f29312dfb29099": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 440
+        }
+      },
+      "request_fields": {
+        "instructions": {
+          "input_tokens": 4216,
+          "cached_tokens": 4216,
+          "cache_write_tokens": 0,
+          "output_tokens": 0
+        },
+        "text.format": {
+          "input_tokens": 188,
+          "cached_tokens": 188,
+          "cache_write_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    }
+  },
+  "failure_type": null,
+  "elapsed_seconds": 94.1052987,
+  "maximum_seconds": 260,
+  "maximum_http_requests": 1,
+  "identity": {
+    "Pid": 6432,
+    "Started": "2026-10-09T04:34:26.9974370Z",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch final05v2 -Start 34 -Count 8 -SelectionFile model-selection-final16-20261009.json -Transport Direct",
+    "ParentPid": 66220
+  },
+  "children_started": false,
+  "credential_persisted": false,
+  "cleanup_errors": [],
+  "cleanup_elapsed_seconds": 0.0068099,
+  "human_review": "pending",
+  "formal": false
+}

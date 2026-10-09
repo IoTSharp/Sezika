@@ -1,0 +1,17 @@
+{
+  "marker": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\cancel.request",
+  "marker_content": "owned-queue-handoff-after-saved-responses-20261009",
+  "utc": "2026-10-09T04:05:31.7862610+00:00",
+  "no_successful_request_repeated": true,
+  "controller": {
+    "ProcessId": 54876,
+    "CreationDate": "2026-10-09T11:43:26.296493+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$root='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008';$t=$null;$e=$null;[void][Management.Automation.Language.Parser]::ParseFile(\\\"$root/Invoke-DirectRemaining.ps1\\\",[ref]$t,[ref]$e);if($e.Count){throw ($e.Message -join ',')}; & \\\"$root/Invoke-DirectRemaining.ps1\\\";exit $LASTEXITCODE\"",
+    "ParentProcessId": 49492
+  },
+  "completed_before_marker": [
+    "batch22",
+    "batch23"
+  ],
+  "reason": "replace pair barriers with two continuously filled slots; original deadline unchanged"
+}

@@ -1,0 +1,19 @@
+{
+  "package_gate_actual_tool_exit": 3,
+  "checker_actual_tool_exit": 0,
+  "checker": {
+    "ProcessId": 66404,
+    "CreationDate": "2026-10-09T12:37:58.328587+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/teacher-expansion-20261008/Close-RecoveryWindows.ps1 -Final16\"",
+    "ParentProcessId": 49492
+  },
+  "package_writer": {
+    "ProcessId": 49664,
+    "CreationDate": "2026-10-09T12:37:29.914328+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$ErrorActionPreference='Stop'\n& ./.artifacts/teacher-expansion-20261008/Finalize-TeacherLedger.ps1 -Final16\ntry {\n  & ./.artifacts/teacher-expansion-20261008/Build-ExpansionPackage.ps1\n  throw 'Unexpected package acceptance while review blockers remain'\n} catch {\n  $root='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'\n  $report=@{utc=[DateTimeOffset]::UtcNow.ToString('o');status='rejected';reason=$_.Exception.Message;manifest_exists=(Test-Path \\\"$root/data/experiment-manifest.json\\\");blockers_saved=(Test-Path \\\"$root/data/not-eligible-reviews.json\\\");training_started=$false}\n  [IO.File]::WriteAllText(\\\"$root/final16-package-gate.json\\\",($report|ConvertTo-Json -Depth 5),[Text.UTF8Encoding]::new($false))\n  $report|ConvertTo-Json\n  exit 3\n}\"",
+    "ParentProcessId": 49492
+  },
+  "currently_found": [],
+  "both_absent": true,
+  "utc": "2026-10-09T04:38:43.1641195+00:00"
+}

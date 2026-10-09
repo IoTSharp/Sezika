@@ -1,0 +1,12 @@
+{
+  "scope": "Clarification only; original request, response, provenance and results are unchanged",
+  "batch": "batch07",
+  "actual_transport_evidence": "batch07/transport-result.json",
+  "actual_endpoint": "https://sonnet.vip/v1/responses",
+  "actual_credential_source": "Current CC Switch selected sonnet_vip provider, read in memory",
+  "original_endpoint_and_credential_description": "Stale adapter description; do not use as actual transmission route",
+  "redirect_limitation": "First Python transport version used urllib defaults. Original automatic_redirects=false does not establish that redirects were prohibited for batch07. No actual redirect was recorded. Later versions explicitly reject redirects.",
+  "direct_result_children_started_limitation": "Direct batch result.json inherited children_started=false, but Direct transport launches Python. Use api-owned-logs process identities and final closure for actual child processes.",
+  "historical_source_limit": "Not all worker source versions were snapshotted; original requests, responses, version hashes and transport receipts are retained",
+  "upstream_identity": "Provider-declared model and effort; upstream identity not independently attested"
+}

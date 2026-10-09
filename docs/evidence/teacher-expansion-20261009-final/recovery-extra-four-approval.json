@@ -1,0 +1,44 @@
+{
+  "deadline_unchanged": true,
+  "maximum_additional_requests": 4,
+  "original_recovery_selection_sha256": "CABBE3B3AB715208CAC957AA7C2DE45EB83C69E7B60846C9828D9542E74F0280",
+  "approval": "User explicitly approved maximum4 additional requests to recover32 failed rows; same deadline, concurrency2, per-request240s; no successful request repeats",
+  "user_approved": true,
+  "batches": [
+    {
+      "start": 18,
+      "failed_result_sha256": "5D0592FE735CF0EA51ACF55BC9948D73F9A537F690F484AE1247A0E5883DD3FC",
+      "scheduled_batch": "batch03",
+      "failed_batch": "batch03v2",
+      "batch": "retry03",
+      "count": 8
+    },
+    {
+      "start": 26,
+      "failed_result_sha256": "B3A974A2E7248EF0813BE271104187C552AB3172FAF94AE3189F9A11E8781448",
+      "scheduled_batch": "batch04",
+      "failed_batch": "batch04v2",
+      "batch": "retry04",
+      "count": 8
+    },
+    {
+      "start": 34,
+      "failed_result_sha256": "446C2456C8910AD9A2093CAF36B208AB69EE1A78BEA599D45B0A9F224A6DB884",
+      "scheduled_batch": "batch05",
+      "failed_batch": "batch05",
+      "batch": "retry05",
+      "count": 8
+    },
+    {
+      "start": 42,
+      "failed_result_sha256": "1244D0DD981538A9DB74867CA46EF1EF97793133AA612DED04D865FAA78EAC56",
+      "scheduled_batch": "batch06",
+      "failed_batch": "batch06",
+      "batch": "retry06",
+      "count": 8
+    }
+  ],
+  "maximum_recovery_http_attempts": 36,
+  "maximum_total_http_attempts": 39,
+  "utc": "2026-10-09T03:46:42.5435137+00:00"
+}

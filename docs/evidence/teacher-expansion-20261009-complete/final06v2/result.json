@@ -1,0 +1,137 @@
+{
+  "batch": "final06v2",
+  "status": "completed_and_validated",
+  "start_index": 42,
+  "record_count": 8,
+  "http_status": 200,
+  "response_id": "resp_02e53d14893e9cbb016ac86eda30988199ae3577f4376b3118",
+  "response_model": "gpt-6.1-sol",
+  "response_reasoning_effort": "max",
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning_effort": "max",
+  "initially_requested_effort": "ultra",
+  "usage": {
+    "input_tokens": 6148,
+    "input_tokens_details": {
+      "cached_tokens": 6016,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 4225,
+    "output_tokens_details": {
+      "reasoning_tokens": 2737
+    },
+    "total_tokens": 10373,
+    "attribution": {
+      "items": {
+        "msg_02e53d14893e9cbb016ac86eda314c81999f1b23f3460f6ca3": {
+          "input_tokens": 1387,
+          "cached_tokens": 1257,
+          "cache_write_tokens": 0,
+          "output_tokens": 0,
+          "content": [
+            {
+              "input_tokens": 1387,
+              "cached_tokens": 1257,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            }
+          ]
+        },
+        "msg_02e53d14893e9cbb016ac86eda314c8199a1a922444bdce26b": {
+          "input_tokens": 355,
+          "cached_tokens": 355,
+          "cache_write_tokens": 0,
+          "output_tokens": 0,
+          "content": [
+            {
+              "input_tokens": 355,
+              "cached_tokens": 355,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            }
+          ]
+        },
+        "msg_02e53d14893e9cbb016ac86f2e399c8199955fda25625612e7": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 1488,
+          "content": [
+            {
+              "input_tokens": 0,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 1488
+            }
+          ]
+        },
+        "rs_02e53d14893e9cbb016ac86eebe1e08199a667607bda216b41": {
+          "input_tokens": 2,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 516
+        },
+        "rs_02e53d14893e9cbb016ac86efb86108199b7866bf66de3bef2": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_02e53d14893e9cbb016ac86f0aaea08199bea19195e1fe37e5": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_02e53d14893e9cbb016ac86f1a18708199af4291e1fe6a995b": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_02e53d14893e9cbb016ac86f2929a88199a7f802d13132a1db": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_02e53d14893e9cbb016ac86f2dd54481999c3a0fd834ade29e": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 149
+        }
+      },
+      "request_fields": {
+        "instructions": {
+          "input_tokens": 4216,
+          "cached_tokens": 4216,
+          "cache_write_tokens": 0,
+          "output_tokens": 0
+        },
+        "text.format": {
+          "input_tokens": 188,
+          "cached_tokens": 188,
+          "cache_write_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    }
+  },
+  "failure_type": null,
+  "elapsed_seconds": 118.2162274,
+  "maximum_seconds": 260,
+  "maximum_http_requests": 1,
+  "identity": {
+    "Pid": 52180,
+    "Started": "2026-10-09T04:34:27.0009220Z",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch final06v2 -Start 42 -Count 8 -SelectionFile model-selection-final16-20261009.json -Transport Direct",
+    "ParentPid": 60564
+  },
+  "children_started": false,
+  "credential_persisted": false,
+  "cleanup_errors": [],
+  "cleanup_elapsed_seconds": 0.0043312,
+  "human_review": "pending",
+  "formal": false
+}

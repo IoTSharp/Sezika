@@ -1,0 +1,181 @@
+[
+  {
+    "record_id": "boolq-validation-row-052",
+    "question_id": "evidence_answer",
+    "family_id": "boolq-passage-48F21F122B903504495415839EF0EC607E204BBF6F936ABF27F905C26DF9D8D2",
+    "language": "en",
+    "split": "development",
+    "type": "boolean",
+    "original_target_index": 0,
+    "original_target_id": "false",
+    "clarity_status": "clear",
+    "answer_status": "insufficient_info",
+    "suggested_correct_id": null,
+    "suggested_correct_index": null,
+    "alternative_ids": [
+      "false",
+      "true"
+    ],
+    "reason": "原文说明传统猎狐形式的历史及2005年生效的禁令，但没有明确说明禁令后英格兰是否仍实际举办猎狐活动。禁止活动不能直接证明活动不再发生，因此不足以唯一回答这个实际发生情况的问题。",
+    "evidence_quotes": [
+      "Fox hunting with hounds, as a formalised activity, originated in England in the sixteenth century, in a form very similar to that practised until February 2005, when a law banning the activity in England and Wales came into force.",
+      "do they still have fox hunts in england"
+    ],
+    "question_revision_needed": true,
+    "revision_reason": "问题询问活动是否仍发生，而原文主要提供历史与法律状态；需要补充禁令后的实际活动信息，或改问法律状态。",
+    "suggested_text_revision": "建议改问原文明确支持的法律状态：Is fox hunting with hounds legal in England after the February 2005 ban came into force?",
+    "change_original_label": null,
+    "reviewer_kind": "ai",
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false
+  },
+  {
+    "record_id": "boolq-validation-row-054",
+    "question_id": "evidence_answer",
+    "family_id": "boolq-passage-18A5D31C813F3BF2E2804FD3DB1EE32B6B2E272E53082E02CD9B38475E7AEB4C",
+    "language": "en",
+    "split": "development",
+    "type": "boolean",
+    "original_target_index": 0,
+    "original_target_id": "false",
+    "clarity_status": "clear",
+    "answer_status": "determinate",
+    "suggested_correct_id": "false",
+    "suggested_correct_index": 0,
+    "alternative_ids": [],
+    "reason": "截至原文统计的2018年，Wisconsin明确列在从未进入Little League World Series的州中，因此按原文答案为No。",
+    "evidence_quotes": [
+      "As of the 2018 LLWS, eight states had never reached the LLWS: Alaska, Colorado, Kansas, North Dakota, Utah, Vermont, Wisconsin, and Wyoming; additionally, the District of Columbia has never reached the LLWS."
+    ],
+    "question_revision_needed": false,
+    "revision_reason": "",
+    "suggested_text_revision": null,
+    "change_original_label": false,
+    "reviewer_kind": "ai",
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false
+  },
+  {
+    "record_id": "boolq-validation-row-055",
+    "question_id": "evidence_answer",
+    "family_id": "boolq-passage-F453E4F0F1CED9ED00FE874E179A884ABD2262A190D8EF71C52471DE65D9FFA0",
+    "language": "en",
+    "split": "development",
+    "type": "boolean",
+    "original_target_index": 0,
+    "original_target_id": "false",
+    "clarity_status": "ambiguous",
+    "answer_status": "ambiguous",
+    "suggested_correct_id": null,
+    "suggested_correct_index": null,
+    "alternative_ids": [
+      "false",
+      "true"
+    ],
+    "reason": "get together未明确指接吻、互有感情还是正式交往。原文写Elena主动亲吻Damon，也写她在季终选择去Stefan和朋友身边；这些事实不能为未定义的关系状态提供唯一标签。",
+    "evidence_quotes": [
+      "The rocky relationship between the two continues until the sexual tension hits the fan and in a moment of heated passion, Elena -- for the first time in the three seasons -- kisses Damon of her own accord.",
+      "In the season finale, a trip designed to get her to safety forces Elena to make her choice: to go to Damon and possibly see him one last time; or to go to Stefan and her friends and see them one last time.",
+      "She chooses the latter when she calls Damon to tell him her decision."
+    ],
+    "question_revision_needed": true,
+    "revision_reason": "需要明确get together的判定标准，避免把接吻或感情发展直接等同于正式交往。",
+    "suggested_text_revision": "建议将关系里程碑明确为原文可验证的行为：Does Elena kiss Damon of her own accord in season 3? 若要询问正式交往，则应明确该标准并补充直接证据。",
+    "change_original_label": null,
+    "reviewer_kind": "ai",
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false
+  },
+  {
+    "record_id": "boolq-validation-row-058",
+    "question_id": "evidence_answer",
+    "family_id": "boolq-passage-621B451622D882D3D26F9E923AE78407E9F3E27A0F220D58961E5342D7D2B731",
+    "language": "en",
+    "split": "development",
+    "type": "boolean",
+    "original_target_index": 0,
+    "original_target_id": "false",
+    "clarity_status": "ambiguous",
+    "answer_status": "ambiguous",
+    "suggested_correct_id": null,
+    "suggested_correct_index": null,
+    "alternative_ids": [
+      "false",
+      "true"
+    ],
+    "reason": "原文确认The Five Heartbeats是电影中的虚构组合，并将现实演唱团体称为The Dells。问题未限定是在问虚构组合还是现实乐队：包含虚构组合时可答Yes，而现实中是否存在同名乐队未获原文确认。",
+    "evidence_quotes": [
+      "To promote the film prior to its release, Townsend, along with the other actors who portrayed the fictional musical quartet The Five Heartbeats (Leon Robinson, Michael Wright, Harry J. Lennix, and Tico Wells) performed in a concert with real-life Soul/R&B vocal group The Dells, one of many groups that inspired the film.",
+      "The Dells sang and recorded the vocals as the actors lip synced."
+    ],
+    "question_revision_needed": true,
+    "revision_reason": "需要明确组合的存在范围，区分电影中的虚构组合与现实中的音乐团体。",
+    "suggested_text_revision": "建议明确询问电影中的虚构组合：Does the film depict a fictional musical group called The Five Heartbeats?",
+    "change_original_label": null,
+    "reviewer_kind": "ai",
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false
+  },
+  {
+    "record_id": "boolq-validation-row-060",
+    "question_id": "evidence_answer",
+    "family_id": "boolq-passage-5A7B6063F928DEBF29ED3E3A318F7DFD674CD7D1B4E3520FD2F2989ED0AEC376",
+    "language": "en",
+    "split": "development",
+    "type": "boolean",
+    "original_target_index": 0,
+    "original_target_id": "false",
+    "clarity_status": "clear",
+    "answer_status": "determinate",
+    "suggested_correct_id": "false",
+    "suggested_correct_index": 0,
+    "alternative_ids": [],
+    "reason": "原文将IV therapy列为EMT-I/85超出EMT-Basic所涵盖范围的侵入性操作，因此按文中描述的等级范围，EMT-Basic不能开展该操作，答案为No。",
+    "evidence_quotes": [
+      "This training level includes more invasive procedures than are covered at the EMT-Basic level, including IV therapy, the use of advanced airway devices, and provides for advanced assessment skills."
+    ],
+    "question_revision_needed": false,
+    "revision_reason": "",
+    "suggested_text_revision": null,
+    "change_original_label": false,
+    "reviewer_kind": "ai",
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false
+  },
+  {
+    "record_id": "boolq-validation-row-061",
+    "question_id": "evidence_answer",
+    "family_id": "boolq-passage-5B96161F4937C6E753BC2C3BF25016A799EA24821EAEB625E0344E4BE3C614B6",
+    "language": "en",
+    "split": "development",
+    "type": "boolean",
+    "original_target_index": 0,
+    "original_target_id": "false",
+    "clarity_status": "clear",
+    "answer_status": "insufficient_info",
+    "suggested_correct_id": null,
+    "suggested_correct_index": null,
+    "alternative_ids": [
+      "false",
+      "true"
+    ],
+    "reason": "原文只报告2013年的建造意向和预计2019年投入使用，未确认实际建成状态。预计完成时间不能作为已经完工的事实，也不足以确定提问时仍没有屋顶。",
+    "evidence_quotes": [
+      "In April 2013, the All England Club confirmed its intention to build a retractable roof over No.1 Court.",
+      "The roof is expected to be in place for the 2019 Championships."
+    ],
+    "question_revision_needed": true,
+    "revision_reason": "问题询问实际拥有屋顶的状态，原文仅提供计划与预期；需要明确参考时点并补充实际完工信息。",
+    "suggested_text_revision": "若保留实际状态问题，应指定参考日期并补充截至该日期的完工事实；若只使用现有原文，建议改问：Was the roof over No.1 Court expected to be in place for the 2019 Championships?",
+    "change_original_label": null,
+    "reviewer_kind": "ai",
+    "human_review": "pending",
+    "formal": false,
+    "eligible_as_sealed_test": false
+  }
+]

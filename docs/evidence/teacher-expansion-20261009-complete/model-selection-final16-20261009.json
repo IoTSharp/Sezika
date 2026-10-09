@@ -1,0 +1,39 @@
+{
+  "original_api_phase_started_utc": "2026-10-08T11:46:03.0835791Z",
+  "formal": false,
+  "user_approved": true,
+  "maximum_concurrency": 2,
+  "batches": [
+    {
+      "failed_batch": "retry05",
+      "start": 34,
+      "batch": "final05",
+      "count": 8
+    },
+    {
+      "failed_batch": "retry06",
+      "start": 42,
+      "batch": "final06",
+      "count": 8
+    }
+  ],
+  "model": "gpt-6.1-sol",
+  "maximum_requests": 2,
+  "prior_interrupted_upstream_outcome": "unknown",
+  "prior_interrupted_requests": 2,
+  "original_selection_sha256": "0D0285173FDF06D7DF7111EA86DA1CAFDF61974B170F5283C76053E92078DCD0",
+  "api_phase_started_utc": "2026-10-09T04:32:06.5190229+00:00",
+  "maximum_request_seconds": 240,
+  "effort": "max",
+  "provider": "sonnet_vip",
+  "approval": "User explicitly approved final16, maximum2 requests of8, concurrency2, per-request240s, a new600s window on2026-10-09.",
+  "maximum_phase_seconds": 600,
+  "remaining_records": 16,
+  "human_review": "pending",
+  "prior_successful_requests": 31,
+  "maximum_total_http_attempts": 40,
+  "catalog_sha256": "313197600B9B823A246B9C971EC5F96D4DCFD365BA396F5F4B0DBF3737A1D360",
+  "maximum_total_successful_requests": 33,
+  "source_sha256": "17946E4ED202F45832C4E0E90B62F2CD7AAEDED096896E97268CCDB82DF3C937",
+  "previous_ledger_sha256": "800FFB1AACEE5470C37F2404BF70FB06DAB6CEC1609AB997F92DBDB0A18A2F1E"
+}

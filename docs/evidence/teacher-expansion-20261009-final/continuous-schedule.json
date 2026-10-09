@@ -1,0 +1,85 @@
+{
+  "started_utc": "2026-10-09T04:06:49.9076568+00:00",
+  "maximum_new_requests": 15,
+  "phase_deadline_utc": "2026-10-09T04:28:03.8319509+00:00",
+  "maximum_concurrency": 2,
+  "schedule": [
+    {
+      "start": 186,
+      "batch": "batch24",
+      "count": 8
+    },
+    {
+      "start": 194,
+      "batch": "batch25",
+      "count": 8
+    },
+    {
+      "start": 202,
+      "batch": "batch26",
+      "count": 8
+    },
+    {
+      "start": 210,
+      "batch": "batch27",
+      "count": 8
+    },
+    {
+      "start": 218,
+      "batch": "batch28",
+      "count": 8
+    },
+    {
+      "start": 226,
+      "batch": "batch29",
+      "count": 8
+    },
+    {
+      "start": 234,
+      "batch": "batch30",
+      "count": 8
+    },
+    {
+      "start": 242,
+      "batch": "batch31",
+      "count": 8
+    },
+    {
+      "start": 250,
+      "batch": "batch32",
+      "count": 6
+    },
+    {
+      "start": 2,
+      "batch": "recovery01",
+      "count": 8
+    },
+    {
+      "start": 10,
+      "batch": "recovery02",
+      "count": 8
+    },
+    {
+      "start": 18,
+      "batch": "retry03",
+      "count": 8
+    },
+    {
+      "start": 26,
+      "batch": "retry04",
+      "count": 8
+    },
+    {
+      "start": 34,
+      "batch": "retry05",
+      "count": 8
+    },
+    {
+      "start": 42,
+      "batch": "retry06",
+      "count": 8
+    }
+  ],
+  "prior_pair_actual_guardians_succeeded": true,
+  "original_pair_queue_status": "intentionally_stopped_after_saved_response_pair"
+}

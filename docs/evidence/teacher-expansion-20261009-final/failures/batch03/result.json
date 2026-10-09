@@ -1,0 +1,30 @@
+{
+  "batch": "batch03",
+  "status": "failed",
+  "start_index": 18,
+  "record_count": 8,
+  "http_status": null,
+  "response_id": null,
+  "response_model": null,
+  "response_reasoning_effort": null,
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning_effort": "max",
+  "initially_requested_effort": "ultra",
+  "usage": null,
+  "failure_type": "MethodInvocationException",
+  "elapsed_seconds": 0.8254365,
+  "maximum_seconds": 260,
+  "maximum_http_requests": 1,
+  "identity": {
+    "Pid": 40516,
+    "Started": "2026-10-09T03:28:05.7285890Z",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch03 -Start 18 -Count 8 -SelectionFile model-selection-recovery-20261009.json",
+    "ParentPid": 47872
+  },
+  "children_started": false,
+  "credential_persisted": false,
+  "cleanup_errors": [],
+  "cleanup_elapsed_seconds": 0.0019322,
+  "human_review": "pending",
+  "formal": false
+}

@@ -1,0 +1,3647 @@
+{
+  "scope": "recorded task identities only; read-only, no signals",
+  "matching_live": 0,
+  "reader": {
+    "ProcessId": 66404,
+    "CreationDate": "2026-10-09T12:37:58.328587+08:00",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& ./.artifacts/teacher-expansion-20261008/Close-RecoveryWindows.ps1 -Final16\"",
+    "ParentProcessId": 49492
+  },
+  "unknown": 0,
+  "identity_records": 403,
+  "records": [
+    {
+      "Pid": 3320,
+      "Started": "2026-10-08T11:10:02.7463680+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-ExpansionSsh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\remote\\preflight.sh",
+      "ParentPid": 88144,
+      "source": "20261008-111001-496-expansion-preflight.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 63904,
+      "Started": "2026-10-08T11:10:03.4089960+00:00",
+      "CommandLine": "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 2222 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o ServerAliveInterval=5 -o ServerAliveCountMax=2 root@211.149.170.42 \"bash -se\"",
+      "ParentPid": 3320,
+      "source": "20261008-111001-496-expansion-preflight.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 72728,
+      "Started": "2026-10-08T11:10:02.7681760+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 3320,
+      "source": "20261008-111001-496-expansion-preflight.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 88144,
+      "Started": "2026-10-08T19:09:59.4161910+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $root='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $root 'root-readers.jsonl'),(($self|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId|ConvertTo-Json -Compress)+[Environment]::NewLine)); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $root 'Invoke-ExpansionSsh.ps1'),'-ScriptFile',(Join-Path $root 'remote/preflight.sh')) -TimeoutSeconds 85 -ProcessQueryTimeoutSeconds 5 -LogName 'expansion-preflight' -LogDirectory (Join-Path $root 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+      "ParentPid": 52200,
+      "source": "20261008-111001-496-expansion-preflight.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 3320,
+      "Started": "2026-10-08T11:10:02.7463682+00:00",
+      "CommandLine": null,
+      "ParentPid": 88144,
+      "source": "20261008-111001-496-expansion-preflight.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 56104,
+      "Started": "2026-10-08T11:18:39.9465510+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\capacity-check\\CapacityCheck.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+      "ParentPid": 50876,
+      "source": "20261008-111838-711-core-capacity-build.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 41232,
+      "Started": "2026-10-08T11:18:44.8910720+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempbpwbedke.vrm\\tmpea26347fd3c143aea2d7e87e33bdcf69.rsp\"",
+      "ParentPid": 56104,
+      "source": "20261008-111838-711-core-capacity-build.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 43236,
+      "Started": "2026-10-08T11:18:53.0420990+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempbpwbedke.vrm\\tmpc5ef27f224ab48fca40221cbb17155d7.rsp\"",
+      "ParentPid": 56104,
+      "source": "20261008-111838-711-core-capacity-build.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 73624,
+      "Started": "2026-10-08T11:18:39.9656900+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 56104,
+      "source": "20261008-111838-711-core-capacity-build.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 46784,
+      "Started": "2026-10-08T11:18:53.0577110+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 43236,
+      "source": "20261008-111838-711-core-capacity-build.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 63828,
+      "Started": "2026-10-08T11:18:44.9144930+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 41232,
+      "source": "20261008-111838-711-core-capacity-build.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 50876,
+      "Started": "2026-10-08T19:18:36.7670800+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $root='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $root 'root-readers.jsonl'),(($self|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId|ConvertTo-Json -Compress)+[Environment]::NewLine)); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build',(Join-Path $root 'capacity-check/CapacityCheck.csproj'),'-c','Release','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false') -TimeoutSeconds 150 -ProcessQueryTimeoutSeconds 5 -LogName 'core-capacity-build' -LogDirectory (Join-Path $root 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+      "ParentPid": 52200,
+      "source": "20261008-111838-711-core-capacity-build.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 56104,
+      "Started": "2026-10-08T11:18:39.9465513+00:00",
+      "CommandLine": null,
+      "ParentPid": 50876,
+      "source": "20261008-111838-711-core-capacity-build.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 85088,
+      "Started": "2026-10-08T11:20:28.9995860+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Fetch-BoolQ.ps1",
+      "ParentPid": 42680,
+      "source": "20261008-112027-794-boolq-public-acquisition.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 62648,
+      "Started": "2026-10-08T11:20:29.0191220+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 85088,
+      "source": "20261008-112027-794-boolq-public-acquisition.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 42680,
+      "Started": "2026-10-08T19:20:25.8491340+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $root='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $root 'root-readers.jsonl'),(($self|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId|ConvertTo-Json -Compress)+[Environment]::NewLine)); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',(Join-Path $root 'Fetch-BoolQ.ps1')) -TimeoutSeconds 170 -ProcessQueryTimeoutSeconds 5 -LogName 'boolq-public-acquisition' -LogDirectory (Join-Path $root 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+      "ParentPid": 52200,
+      "source": "20261008-112027-794-boolq-public-acquisition.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 85088,
+      "Started": "2026-10-08T11:20:28.9995864+00:00",
+      "CommandLine": null,
+      "ParentPid": 42680,
+      "source": "20261008-112027-794-boolq-public-acquisition.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 39548,
+      "Started": "2026-10-08T11:22:12.4659040+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\capacity-check\\CapacityCheck.csproj -c Release --no-restore --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+      "ParentPid": 58996,
+      "source": "20261008-112210-561-core-capacity-build-fixed.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 35372,
+      "Started": "2026-10-08T11:22:12.5242320+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 39548,
+      "source": "20261008-112210-561-core-capacity-build-fixed.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 76404,
+      "Started": "2026-10-08T11:22:16.6952780+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTemploptmmzx.4ym\\tmpb81ca64e38154d9db24f8285b4622302.rsp\"",
+      "ParentPid": 39548,
+      "source": "20261008-112210-561-core-capacity-build-fixed.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 60020,
+      "Started": "2026-10-08T11:22:16.7519070+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 76404,
+      "source": "20261008-112210-561-core-capacity-build-fixed.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 58996,
+      "Started": "2026-10-08T19:22:07.8778570+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $root='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $root 'root-readers.jsonl'),(($self|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId|ConvertTo-Json -Compress)+[Environment]::NewLine)); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build',(Join-Path $root 'capacity-check/CapacityCheck.csproj'),'-c','Release','--no-restore','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false') -TimeoutSeconds 150 -ProcessQueryTimeoutSeconds 5 -LogName 'core-capacity-build-fixed' -LogDirectory (Join-Path $root 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+      "ParentPid": 52200,
+      "source": "20261008-112210-561-core-capacity-build-fixed.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 39548,
+      "Started": "2026-10-08T11:22:12.4659041+00:00",
+      "CommandLine": null,
+      "ParentPid": 58996,
+      "source": "20261008-112210-561-core-capacity-build-fixed.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 92276,
+      "Started": "2026-10-08T11:27:38.7544290+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj -c Release --no-restore --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+      "ParentPid": 25536,
+      "source": "20261008-112737-561-expanded-trainer-build-1.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 76572,
+      "Started": "2026-10-08T11:27:40.4451340+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTemp2cmj40t2.3gf\\tmp77fe632db8064d86a34a2759e50f5315.rsp\"",
+      "ParentPid": 92276,
+      "source": "20261008-112737-561-expanded-trainer-build-1.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 85176,
+      "Started": "2026-10-08T11:27:38.7823100+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 92276,
+      "source": "20261008-112737-561-expanded-trainer-build-1.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 52116,
+      "Started": "2026-10-08T11:27:40.4668600+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 76572,
+      "source": "20261008-112737-561-expanded-trainer-build-1.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 25536,
+      "Started": "2026-10-08T19:27:35.6761990+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $task 'root-readers.jsonl'),(($self|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId|ConvertTo-Json -Compress)+[Environment]::NewLine)); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build','tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj','-c','Release','--no-restore','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false') -TimeoutSeconds 180 -ProcessQueryTimeoutSeconds 5 -LogName 'expanded-trainer-build-1' -LogDirectory (Join-Path $task 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+      "ParentPid": 52200,
+      "source": "20261008-112737-561-expanded-trainer-build-1.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 92276,
+      "Started": "2026-10-08T11:27:38.7544299+00:00",
+      "CommandLine": null,
+      "ParentPid": 25536,
+      "source": "20261008-112737-561-expanded-trainer-build-1.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 21000,
+      "Started": "2026-10-08T11:28:36.0691250+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\capacity-check\\CapacityCheck.csproj -c Release --no-restore --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+      "ParentPid": 70620,
+      "source": "20261008-112834-798-core-capacity-build-3.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 41456,
+      "Started": "2026-10-08T11:28:36.0872030+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 21000,
+      "source": "20261008-112834-798-core-capacity-build-3.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 93048,
+      "Started": "2026-10-08T11:28:37.9772380+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempwqky3nxe.czi\\tmpb3869a1f062c4850ab1691e83e3a83e9.rsp\"",
+      "ParentPid": 21000,
+      "source": "20261008-112834-798-core-capacity-build-3.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 62632,
+      "Started": "2026-10-08T11:28:37.9934520+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 93048,
+      "source": "20261008-112834-798-core-capacity-build-3.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 70620,
+      "Started": "2026-10-08T19:28:32.8323180+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $task 'root-readers.jsonl'),(($self|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId|ConvertTo-Json -Compress)+[Environment]::NewLine)); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build',(Join-Path $task 'capacity-check/CapacityCheck.csproj'),'-c','Release','--no-restore','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false') -TimeoutSeconds 150 -ProcessQueryTimeoutSeconds 5 -LogName 'core-capacity-build-3' -LogDirectory (Join-Path $task 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+      "ParentPid": 52200,
+      "source": "20261008-112834-798-core-capacity-build-3.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 21000,
+      "Started": "2026-10-08T11:28:36.0691257+00:00",
+      "CommandLine": null,
+      "ParentPid": 70620,
+      "source": "20261008-112834-798-core-capacity-build-3.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 11652,
+      "Started": "2026-10-08T11:29:23.4872280+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\capacity-check\\bin\\Release\\net10.0\\CapacityCheck.dll cpu D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\capacity-cpu-reference",
+      "ParentPid": 75712,
+      "source": "20261008-112921-445-capacity-cpu-small-reference.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 27108,
+      "Started": "2026-10-08T11:29:26.3632070+00:00",
+      "CommandLine": null,
+      "ParentPid": 11652,
+      "source": "20261008-112921-445-capacity-cpu-small-reference.result.json",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 50400,
+      "Started": "2026-10-08T11:29:27.6872750+00:00",
+      "CommandLine": "C:\\Windows\\system32\\WerFault.exe -u -p 11652 -s 832",
+      "ParentPid": 11652,
+      "source": "20261008-112921-445-capacity-cpu-small-reference.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 74712,
+      "Started": "2026-10-08T11:29:23.5844100+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 11652,
+      "source": "20261008-112921-445-capacity-cpu-small-reference.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 75712,
+      "Started": "2026-10-08T19:29:17.1042960+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $task 'root-readers.jsonl'),(($self|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId|ConvertTo-Json -Compress)+[Environment]::NewLine)); $output=Join-Path $task 'capacity-cpu-reference';if(Test-Path -LiteralPath $output){throw 'Fresh output required'};[IO.Directory]::CreateDirectory($output)|Out-Null;& .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @((Join-Path $task 'capacity-check/bin/Release/net10.0/CapacityCheck.dll'),'cpu',$output) -TimeoutSeconds 90 -ProcessQueryTimeoutSeconds 5 -LogName 'capacity-cpu-small-reference' -LogDirectory (Join-Path $task 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+      "ParentPid": 52200,
+      "source": "20261008-112921-445-capacity-cpu-small-reference.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 11652,
+      "Started": "2026-10-08T11:29:23.4872284+00:00",
+      "CommandLine": null,
+      "ParentPid": 75712,
+      "source": "20261008-112921-445-capacity-cpu-small-reference.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 71768,
+      "Started": "2026-10-08T11:30:03.4406720+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\capacity-check\\CapacityCheck.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\capacity-linux",
+      "ParentPid": 72172,
+      "source": "20261008-113001-980-capacity-linux-publish.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 23868,
+      "Started": "2026-10-08T11:30:09.7338540+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTemppxuix5ft.e0m\\tmp84c38d1001494c1aa84861ce11e3f8a4.rsp\"",
+      "ParentPid": 71768,
+      "source": "20261008-113001-980-capacity-linux-publish.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 54984,
+      "Started": "2026-10-08T11:30:03.4645150+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 71768,
+      "source": "20261008-113001-980-capacity-linux-publish.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 78888,
+      "Started": "2026-10-08T11:30:09.7608590+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 23868,
+      "source": "20261008-113001-980-capacity-linux-publish.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 72172,
+      "Started": "2026-10-08T19:29:58.7098420+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $task 'root-readers.jsonl'),(($self|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId|ConvertTo-Json -Compress)+[Environment]::NewLine)); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('publish',(Join-Path $task 'capacity-check/CapacityCheck.csproj'),'-c','Release','-r','linux-x64','--self-contained','true','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false','-p:RuntimeFrameworkVersion=10.0.12','-o',(Join-Path $task 'capacity-linux')) -TimeoutSeconds 180 -ProcessQueryTimeoutSeconds 5 -LogName 'capacity-linux-publish' -LogDirectory (Join-Path $task 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+      "ParentPid": 52200,
+      "source": "20261008-113001-980-capacity-linux-publish.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 71768,
+      "Started": "2026-10-08T11:30:03.4406724+00:00",
+      "CommandLine": null,
+      "ParentPid": 72172,
+      "source": "20261008-113001-980-capacity-linux-publish.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 91856,
+      "Started": "2026-10-08T11:30:48.7466200+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\capacity-check\\CapacityCheck.csproj -c Release --no-restore --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+      "ParentPid": 79400,
+      "source": "20261008-113047-497-capacity-fixture-identity-build.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 50688,
+      "Started": "2026-10-08T11:30:50.7133740+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTemplbzvhhwn.2b2\\tmpaba5115e6fc04984b77af99845fcd4f6.rsp\"",
+      "ParentPid": 91856,
+      "source": "20261008-113047-497-capacity-fixture-identity-build.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 93176,
+      "Started": "2026-10-08T11:30:48.7604080+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 91856,
+      "source": "20261008-113047-497-capacity-fixture-identity-build.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 25464,
+      "Started": "2026-10-08T11:30:50.7267980+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 50688,
+      "source": "20261008-113047-497-capacity-fixture-identity-build.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 79400,
+      "Started": "2026-10-08T19:30:45.3126080+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $task 'root-readers.jsonl'),(($self|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId|ConvertTo-Json -Compress)+[Environment]::NewLine)); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build',(Join-Path $task 'capacity-check/CapacityCheck.csproj'),'-c','Release','--no-restore','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false') -TimeoutSeconds 120 -ProcessQueryTimeoutSeconds 5 -LogName 'capacity-fixture-identity-build' -LogDirectory (Join-Path $task 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+      "ParentPid": 52200,
+      "source": "20261008-113047-497-capacity-fixture-identity-build.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 91856,
+      "Started": "2026-10-08T11:30:48.7466203+00:00",
+      "CommandLine": null,
+      "ParentPid": 79400,
+      "source": "20261008-113047-497-capacity-fixture-identity-build.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 47988,
+      "Started": "2026-10-08T19:31:47.7399120+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $task 'root-readers.jsonl'),(($self|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId|ConvertTo-Json -Compress)+[Environment]::NewLine)); $output=Join-Path $task 'capacity-cpu-reference-fixed';if(Test-Path -LiteralPath $output){throw 'Fresh output required'};[IO.Directory]::CreateDirectory($output)|Out-Null;& .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @((Join-Path $task 'capacity-check/bin/Release/net10.0/CapacityCheck.dll'),'cpu',$output) -TimeoutSeconds 90 -ProcessQueryTimeoutSeconds 5 -LogName 'capacity-cpu-reference-fixed' -LogDirectory (Join-Path $task 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+      "ParentPid": 52200,
+      "source": "20261008-113149-804-capacity-cpu-reference-fixed.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 56092,
+      "Started": "2026-10-08T11:31:51.1148636+00:00",
+      "CommandLine": null,
+      "ParentPid": 47988,
+      "source": "20261008-113149-804-capacity-cpu-reference-fixed.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 16400,
+      "Started": "2026-10-08T19:32:31.4106430+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$check=@'\nset -euo pipefail\ncommand -v bash\nbegin=$SECONDS; count=0\nfor name in Invoke-BoundedLinux.sh bootstrap.sh runner-probe.sh phase-common.sh capacity.sh train.sh validate.sh final-evidence.sh; do\n  ((count<8 && SECONDS-begin<20)) || exit 124\n  timeout 2s bash -n \\\"/mnt/d/source/Sezika/.artifacts/teacher-expansion-20261008/remote/$name\\\"\n  count=$((count+1))\n  printf 'syntax_ok %s count=%s\\n' \\\"$name\\\" \\\"$count\\\"\ndone\n'@\n& 'D:\\source\\Sezika\\tools\\Invoke-BoundedProcess.ps1' -FilePath 'C:\\Windows\\System32\\wsl.exe' -ArgumentList @('-d','Ubuntu','--','timeout','--signal=TERM','--kill-after=1s','20s','bash','-c',$check) -TimeoutSeconds 25 -ProcessQueryTimeoutSeconds 5 -LogName 'expansion-script-syntax' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\process-logs'\"",
+      "ParentPid": 52200,
+      "source": "20261008-113232-234-expansion-script-syntax.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 50636,
+      "Started": "2026-10-08T11:32:33.8600893+00:00",
+      "CommandLine": null,
+      "ParentPid": 16400,
+      "source": "20261008-113232-234-expansion-script-syntax.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 86452,
+      "Started": "2026-10-08T19:33:10.3694630+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$check=@'\nset -euo pipefail\ncommand -v bash\nbegin=$SECONDS; count=0\nfor name in Invoke-BoundedLinux.sh bootstrap.sh runner-probe.sh phase-common.sh capacity.sh train.sh validate.sh final-evidence.sh; do\n  ((count<8 && SECONDS-begin<20)) || exit 124\n  timeout 2s bash -n \\\"/mnt/d/source/Sezika/.artifacts/teacher-expansion-20261008/remote/$name\\\"\n  count=$((count+1))\n  printf 'syntax_ok %s count=%s\\n' \\\"$name\\\" \\\"$count\\\"\ndone\n'@\n$checkPath='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\process-logs\\runner-syntax-check-input.txt'; if(Test-Path -LiteralPath $checkPath){throw 'Fresh check input required'}; [IO.File]::WriteAllText($checkPath,$check.Replace(\\\"`r`n\\\",\\\"`n\\\"),[Text.UTF8Encoding]::new($false)); & 'D:\\source\\Sezika\\tools\\Invoke-BoundedProcess.ps1' -FilePath 'C:\\Windows\\System32\\wsl.exe' -ArgumentList @('-d','Ubuntu','--exec','/usr/bin/timeout','--signal=TERM','--kill-after=1s','20s','/usr/bin/bash','/mnt/d/source/Sezika/.artifacts/teacher-expansion-20261008/process-logs/runner-syntax-check-input.txt') -TimeoutSeconds 25 -ProcessQueryTimeoutSeconds 5 -LogName 'expansion-script-syntax-file' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\process-logs'\"",
+      "ParentPid": 52200,
+      "source": "20261008-113311-123-expansion-script-syntax-file.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 61952,
+      "Started": "2026-10-08T11:33:12.6360798+00:00",
+      "CommandLine": null,
+      "ParentPid": 86452,
+      "source": "20261008-113311-123-expansion-script-syntax-file.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 54868,
+      "Started": "2026-10-08T11:33:29.5961480+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Build-ExpansionPackage.ps1 -FixtureOnly",
+      "ParentPid": 59252,
+      "source": "20261008-113328-254-build-expanded-contract-fixture.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 59252,
+      "Started": "2026-10-08T19:33:27.6136770+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Build-ExpansionPackage.ps1','-FixtureOnly') -TimeoutSeconds 60 -ProcessQueryTimeoutSeconds 5 -LogName 'build-expanded-contract-fixture' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\process-logs'\"",
+      "ParentPid": 52200,
+      "source": "20261008-113328-254-build-expanded-contract-fixture.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 54868,
+      "Started": "2026-10-08T11:33:29.5961486+00:00",
+      "CommandLine": null,
+      "ParentPid": 59252,
+      "source": "20261008-113328-254-build-expanded-contract-fixture.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 86560,
+      "Started": "2026-10-08T11:33:52.7082120+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll check-expanded-input --data D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\input-fixture --manifest-sha256 F3DA9504F9771AD0038756BA379EA645AFEDAF55FFBABD033905DA1A5946524A --fixture-only true --max-checks 1",
+      "ParentPid": 63224,
+      "source": "20261008-113351-392-expanded-input-tiny1.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 79532,
+      "Started": "2026-10-08T11:33:52.7259370+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 86560,
+      "source": "20261008-113351-392-expanded-input-tiny1.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 63224,
+      "Started": "2026-10-08T19:33:49.5312820+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $task 'root-readers.jsonl'),(($self|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId|ConvertTo-Json -Compress)+[Environment]::NewLine)); $data=Join-Path $task 'input-fixture'; $hash=(Get-FileHash -LiteralPath \\\"$data/experiment-manifest.json\\\").Hash;& .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll','check-expanded-input','--data',$data,'--manifest-sha256',$hash,'--fixture-only','true','--max-checks','1') -TimeoutSeconds 45 -ProcessQueryTimeoutSeconds 5 -LogName 'expanded-input-tiny1' -LogDirectory (Join-Path $task 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+      "ParentPid": 52200,
+      "source": "20261008-113351-392-expanded-input-tiny1.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 86560,
+      "Started": "2026-10-08T11:33:52.7082124+00:00",
+      "CommandLine": null,
+      "ParentPid": 63224,
+      "source": "20261008-113351-392-expanded-input-tiny1.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 4116,
+      "Started": "2026-10-08T11:35:05.6963140+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll check-expanded-input --data D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\input-fixture --manifest-sha256 F3DA9504F9771AD0038756BA379EA645AFEDAF55FFBABD033905DA1A5946524A --fixture-only true --max-checks 16",
+      "ParentPid": 73940,
+      "source": "20261008-113504-211-expanded-input-full16.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 87236,
+      "Started": "2026-10-08T11:35:05.7146660+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 4116,
+      "source": "20261008-113504-211-expanded-input-full16.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 73940,
+      "Started": "2026-10-08T19:34:59.4978000+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; $self=Get-CimInstance Win32_Process -Filter \\\"ProcessId=$PID\\\" -Property ProcessId,CreationDate,CommandLine,ParentProcessId -OperationTimeoutSec 5; [IO.File]::AppendAllText((Join-Path $task 'root-readers.jsonl'),(($self|Select-Object ProcessId,CreationDate,CommandLine,ParentProcessId|ConvertTo-Json -Compress)+[Environment]::NewLine)); $data=Join-Path $task 'input-fixture'; $hash=(Get-FileHash -LiteralPath \\\"$data/experiment-manifest.json\\\").Hash;& .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll','check-expanded-input','--data',$data,'--manifest-sha256',$hash,'--fixture-only','true','--max-checks','16') -TimeoutSeconds 45 -ProcessQueryTimeoutSeconds 5 -LogName 'expanded-input-full16' -LogDirectory (Join-Path $task 'process-logs') -WorkingDirectory 'D:\\source\\Sezika'\"",
+      "ParentPid": 52200,
+      "source": "20261008-113504-211-expanded-input-full16.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 4116,
+      "Started": "2026-10-08T11:35:05.6963142+00:00",
+      "CommandLine": null,
+      "ParentPid": 73940,
+      "source": "20261008-113504-211-expanded-input-full16.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 85292,
+      "Started": "2026-10-08T11:35:44.2001320+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Publish-Expansion.ps1",
+      "ParentPid": 71368,
+      "source": "20261008-113542-968-publish-expansion-wrapper.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 50896,
+      "Started": "2026-10-08T11:35:44.2157130+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 85292,
+      "source": "20261008-113542-968-publish-expansion-wrapper.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 52692,
+      "Started": "2026-10-08T11:35:58.5467540+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/capacity-check/CapacityCheck.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\capacity-linux-v2",
+      "ParentPid": 85292,
+      "source": "20261008-113542-968-publish-expansion-wrapper.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 91088,
+      "Started": "2026-10-08T11:35:46.1678370+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish tools/Sezika.ExperimentTrainer/Sezika.ExperimentTrainer.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\publish-linux",
+      "ParentPid": 85292,
+      "source": "20261008-113542-968-publish-expansion-wrapper.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 11488,
+      "Started": "2026-10-08T11:35:48.9332470+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\compiler-temp\\MSBuildTemplwwv4zoh.pdu\\tmpaa04b0c53cc44aa78fde20a2a0616539.rsp\"",
+      "ParentPid": 91088,
+      "source": "20261008-113542-968-publish-expansion-wrapper.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 54744,
+      "Started": "2026-10-08T11:35:46.1799490+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 91088,
+      "source": "20261008-113542-968-publish-expansion-wrapper.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 75792,
+      "Started": "2026-10-08T11:35:58.5657010+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 52692,
+      "source": "20261008-113542-968-publish-expansion-wrapper.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 40084,
+      "Started": "2026-10-08T11:35:48.9464090+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 11488,
+      "source": "20261008-113542-968-publish-expansion-wrapper.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 71368,
+      "Started": "2026-10-08T19:35:42.4900570+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Publish-Expansion.ps1') -TimeoutSeconds 470 -ProcessQueryTimeoutSeconds 5 -LogName 'publish-expansion-wrapper' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\process-logs'\"",
+      "ParentPid": 52200,
+      "source": "20261008-113542-968-publish-expansion-wrapper.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 91088,
+      "Started": "2026-10-08T11:35:46.1678373+00:00",
+      "CommandLine": null,
+      "ParentPid": 85292,
+      "source": "20261008-113544-839-publish-linux.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 52692,
+      "Started": "2026-10-08T11:35:58.5467542+00:00",
+      "CommandLine": null,
+      "ParentPid": 85292,
+      "source": "20261008-113557-312-capacity-linux-v2.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 44676,
+      "Started": "2026-10-08T11:36:53.2107530+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-ExpansionSsh.ps1 -ScriptFile D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\remote\\bootstrap.sh",
+      "ParentPid": 75452,
+      "source": "20261008-113651-859-expansion-bootstrap-create.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 75452,
+      "Started": "2026-10-08T19:36:51.2748390+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-ExpansionSsh.ps1','-ScriptFile','D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\remote\\bootstrap.sh') -TimeoutSeconds 90 -ProcessQueryTimeoutSeconds 5 -LogName 'expansion-bootstrap-create' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\process-logs'\"",
+      "ParentPid": 52200,
+      "source": "20261008-113651-859-expansion-bootstrap-create.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 44676,
+      "Started": "2026-10-08T11:36:53.2107532+00:00",
+      "CommandLine": null,
+      "ParentPid": 75452,
+      "source": "20261008-113651-859-expansion-bootstrap-create.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 56300,
+      "Started": "2026-10-08T11:36:53.1650460+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" run --project tests/Sezika.Tests/Sezika.Tests.csproj -c Release --no-restore --disable-build-servers -p:UseSharedCompilation=false",
+      "ParentPid": 87872,
+      "source": "20261008-113651-887-core-existing-regression.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 52244,
+      "Started": "2026-10-08T11:37:01.6755230+00:00",
+      "CommandLine": null,
+      "ParentPid": 56300,
+      "source": "20261008-113651-887-core-existing-regression.result.json",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 58180,
+      "Started": "2026-10-08T11:36:53.1760280+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 56300,
+      "source": "20261008-113651-887-core-existing-regression.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 77492,
+      "Started": "2026-10-08T11:36:54.4592210+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:false /low:false",
+      "ParentPid": 56300,
+      "source": "20261008-113651-887-core-existing-regression.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 11680,
+      "Started": "2026-10-08T11:36:54.4730410+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 77492,
+      "source": "20261008-113651-887-core-existing-regression.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 75056,
+      "Started": "2026-10-08T11:37:01.6921730+00:00",
+      "CommandLine": null,
+      "ParentPid": 52244,
+      "source": "20261008-113651-887-core-existing-regression.result.json",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 83804,
+      "Started": "2026-10-08T11:36:56.1296470+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTemp0qvf1llx.doa\\tmpb0a4d5f99b2b4ca0ac4e949ea1c30813.rsp\"",
+      "ParentPid": 77492,
+      "source": "20261008-113651-887-core-existing-regression.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 49828,
+      "Started": "2026-10-08T11:36:56.1443550+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 83804,
+      "source": "20261008-113651-887-core-existing-regression.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 87872,
+      "Started": "2026-10-08T19:36:51.3076610+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('run','--project','tests/Sezika.Tests/Sezika.Tests.csproj','-c','Release','--no-restore','--disable-build-servers','-p:UseSharedCompilation=false') -TimeoutSeconds 150 -ProcessQueryTimeoutSeconds 5 -LogName 'core-existing-regression' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\process-logs'\"",
+      "ParentPid": 52200,
+      "source": "20261008-113651-887-core-existing-regression.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 56300,
+      "Started": "2026-10-08T11:36:53.1650468+00:00",
+      "CommandLine": null,
+      "ParentPid": 87872,
+      "source": "20261008-113651-887-core-existing-regression.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 69836,
+      "Started": "2026-10-08T11:46:04.4943700+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Invoke-TeacherBatch.ps1 -Batch tiny2 -Start 0 -Count 2",
+      "ParentPid": 18836,
+      "source": "20261008-114603-136-expanded-teacher-tiny2.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 81808,
+      "Started": "2026-10-08T11:46:04.5126240+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 69836,
+      "source": "20261008-114603-136-expanded-teacher-tiny2.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 18836,
+      "Started": "2026-10-08T19:46:02.4098960+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; $clock=[Diagnostics.Stopwatch]::StartNew(); $rows=@(Get-Content -LiteralPath \\\"$task/prepared-records.jsonl\\\" -TotalCount 257|ForEach-Object {$_|ConvertFrom-Json}); $catalog=Get-Content -Raw -LiteralPath \\\"$task/source-catalog.json\\\"|ConvertFrom-Json; if($rows.Count -ne 256 -or @($catalog.records).Count -ne 256){throw 'Prepared/catalog full denominator'}; $families=[Collections.Generic.HashSet[string]]::new();for($i=0;$i -lt 256;$i++){if($clock.Elapsed.TotalSeconds -ge 30 -or (Test-Path -LiteralPath \\\"$task/cancel.request\\\")){throw 'Source verify bound'}; $row=$rows[$i];$map=$catalog.records[$i];if(-not $families.Add($row.family_id) -or $row.source_canonical_id -cne $map.source_canonical_id -or $row.record_id -cne $map.record_id -or $row.split -cne $map.split -or $row.language -cne $map.language){throw 'Source row mapping differs'}}; $hash=(Get-FileHash -LiteralPath \\\"$task/prepared-records.jsonl\\\").Hash;if($hash -cne '17946E4ED202F45832C4E0E90B62F2CD7AAEDED096896E97268CCDB82DF3C937' -or (Get-FileHash -LiteralPath \\\"$task/source-catalog.json\\\").Hash -cne '313197600B9B823A246B9C971EC5F96D4DCFD365BA396F5F4B0DBF3737A1D360'){throw 'Final source identity'}; if(Test-Path -LiteralPath \\\"$task/model-selection.json\\\"){throw 'API selection already exists; inspect instead'}; $freezeUtc=[DateTime]::UtcNow.ToString('o');$selection=@{user_approved=$true;provider='sonnet_vip';model='gpt-6.1-sol';effort='max';source_sha256=$hash;catalog_sha256=(Get-FileHash -LiteralPath \\\"$task/source-catalog.json\\\").Hash;split_rule_frozen_utc=$freezeUtc;api_phase_started_utc=[DateTime]::UtcNow.ToString('o');maximum_phase_seconds=3600;human_review='pending';formal=$false};[IO.File]::WriteAllText(\\\"$task/model-selection.json\\\",($selection|ConvertTo-Json),[Text.UTF8Encoding]::new($false)); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',\\\"$task/Invoke-TeacherBatch.ps1\\\",'-Batch','tiny2','-Start','0','-Count','2') -TimeoutSeconds 280 -ProcessQueryTimeoutSeconds 5 -LogName 'expanded-teacher-tiny2' -LogDirectory \\\"$task/process-logs\\\"\"",
+      "ParentPid": 52200,
+      "source": "20261008-114603-136-expanded-teacher-tiny2.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 69836,
+      "Started": "2026-10-08T11:46:04.4943706+00:00",
+      "CommandLine": null,
+      "ParentPid": 18836,
+      "source": "20261008-114603-136-expanded-teacher-tiny2.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 83820,
+      "Started": "2026-10-08T19:46:53.9169030+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File','D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherWaves.ps1','-First','1','-Last','16') -TimeoutSeconds 1765 -ProcessQueryTimeoutSeconds 5 -LogName 'expanded-teacher-waves-1-16' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\process-logs'\"",
+      "ParentPid": 52200,
+      "source": "20261008-114654-446-expanded-teacher-waves-1-16.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 87520,
+      "Started": "2026-10-08T11:46:55.7629447+00:00",
+      "CommandLine": null,
+      "ParentPid": 83820,
+      "source": "20261008-114654-446-expanded-teacher-waves-1-16.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 83012,
+      "Started": "2026-10-08T11:47:35.3263140+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Invoke-TeacherWaves.ps1 -First 1 -Last 16 -Attempt v2",
+      "ParentPid": 13380,
+      "source": "20261008-114733-086-expanded-teacher-waves-1-16-v2.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 41980,
+      "Started": "2026-10-08T11:47:41.5176020+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Invoke-TeacherBatch.ps1 -Batch batch02 -Start 10 -Count 8",
+      "ParentPid": 83012,
+      "source": "20261008-114733-086-expanded-teacher-waves-1-16-v2.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 57464,
+      "Started": "2026-10-08T11:47:39.3641470+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Invoke-TeacherBatch.ps1 -Batch batch01 -Start 2 -Count 8",
+      "ParentPid": 83012,
+      "source": "20261008-114733-086-expanded-teacher-waves-1-16-v2.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 88348,
+      "Started": "2026-10-08T11:47:35.4188780+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 83012,
+      "source": "20261008-114733-086-expanded-teacher-waves-1-16-v2.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 57276,
+      "Started": "2026-10-08T11:47:41.6468510+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 41980,
+      "source": "20261008-114733-086-expanded-teacher-waves-1-16-v2.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 75116,
+      "Started": "2026-10-08T11:47:39.4199230+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 57464,
+      "source": "20261008-114733-086-expanded-teacher-waves-1-16-v2.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 13380,
+      "Started": "2026-10-08T19:47:28.5670440+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; $failed=Get-Content -Raw -LiteralPath \\\"$task/teacher-waves-1-16.json\\\"|ConvertFrom-Json;if($failed.status -cne 'failed' -or @($failed.processes).Count -ne 0 -or (Test-Path -LiteralPath \\\"$task/batch01\\\") -or (Test-Path -LiteralPath \\\"$task/batch02\\\")){throw 'Failed wave might have sent HTTP; inspect instead'}; $selection=Get-Content -Raw -LiteralPath \\\"$task/model-selection.json\\\"|ConvertFrom-Json -DateKind String; $end=[DateTimeOffset]::Parse($selection.api_phase_started_utc).AddSeconds(3600);if([DateTimeOffset]::UtcNow -ge $end){throw 'Actual global budget expired'}; 'Before any batch children, failed DateTime conversion corrected; original phase clock retained'; & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',\\\"$task/Invoke-TeacherWaves.ps1\\\",'-First','1','-Last','16','-Attempt','v2') -TimeoutSeconds 1765 -ProcessQueryTimeoutSeconds 5 -LogName 'expanded-teacher-waves-1-16-v2' -LogDirectory \\\"$task/process-logs\\\"\"",
+      "ParentPid": 52200,
+      "source": "20261008-114733-086-expanded-teacher-waves-1-16-v2.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 89748,
+      "Started": "2026-10-08T19:49:17.7067830+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; $proof=Get-Content -Raw -LiteralPath \\\"$task/preparation-final-verification.json\\\"|ConvertFrom-Json -DateKind String; if(-not $proof.requests_splits_targets_unchanged){throw 'No split freeze proof'};$old=Get-Item -LiteralPath \\\"$task/prepared-records.pre-canonical.jsonl\\\"; if($old.LastWriteTimeUtc.ToString('o') -cne '2026-10-08T11:38:40.6891325Z'){throw 'Original freeze time differs'}; $freeze=@{source_split_frozen_utc=$old.LastWriteTimeUtc.ToString('o');source_sha256=$proof.prepared_sha256;catalog_sha256=$proof.source_catalog_sha256;pre_canonical_sha256=$proof.pre_canonical_sha256;metadata_added_without_changing_request_split_target=$true;verification_sha256=(Get-FileHash -LiteralPath \\\"$task/preparation-final-verification.json\\\").Hash;root_pre_api_verification_frozen_utc='2026-10-08T11:46:03.0801618Z'};if(Test-Path -LiteralPath \\\"$task/source-split-freeze.json\\\"){throw 'Freeze already recorded'}; [IO.File]::WriteAllText(\\\"$task/source-split-freeze.json\\\",($freeze|ConvertTo-Json)); $art=Join-Path $task 'old-v1-checks-tiny'; [IO.Directory]::CreateDirectory($art)|Out-Null;$data='D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data';$hash=(Get-FileHash -LiteralPath \\\"$data/experiment-manifest.json\\\").Hash;& .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll','check','--data',$data,'--manifest-sha256',$hash,'--max-checks','1','--artifact-directory',$art) -TimeoutSeconds 45 -ProcessQueryTimeoutSeconds 5 -LogName 'old-v1-cli-tiny' -LogDirectory \\\"$task/process-logs\\\"\"",
+      "ParentPid": 52200,
+      "source": "20261008-114919-754-old-v1-cli-tiny.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 30840,
+      "Started": "2026-10-08T11:49:22.1873617+00:00",
+      "CommandLine": null,
+      "ParentPid": 89748,
+      "source": "20261008-114919-754-old-v1-cli-tiny.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 75272,
+      "Started": "2026-10-08T11:54:55.3772530+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\regression-check\\RegressionCheck.csproj -c Release --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+      "ParentPid": 63440,
+      "source": "20261008-115453-806-regression-check-build1.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 54344,
+      "Started": "2026-10-08T11:54:55.4053420+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 75272,
+      "source": "20261008-115453-806-regression-check-build1.result.json",
+      "state": "pid_reused",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 63440,
+      "Started": "2026-10-08T19:54:53.1646080+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build','D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\regression-check\\RegressionCheck.csproj','-c','Release','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false') -TimeoutSeconds 150 -ProcessQueryTimeoutSeconds 5 -LogName 'regression-check-build1' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\process-logs'\"",
+      "ParentPid": 52200,
+      "source": "20261008-115453-806-regression-check-build1.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 75272,
+      "Started": "2026-10-08T11:54:55.3772538+00:00",
+      "CommandLine": null,
+      "ParentPid": 63440,
+      "source": "20261008-115453-806-regression-check-build1.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 34632,
+      "Started": "2026-10-08T11:56:00.7775220+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/regression-check/bin/Release/net10.0/RegressionCheck.dll check-input --records D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data\\experiment-records.jsonl --audit D:\\source\\Sezika\\docs\\evidence\\label-audit-20261008-final\\audit-report.json --output D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/regression-input-tiny.json --max-records 1",
+      "ParentPid": 71956,
+      "source": "20261008-115559-449-regression-input-tiny.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 60344,
+      "Started": "2026-10-08T11:56:00.7884920+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 34632,
+      "source": "20261008-115559-449-regression-input-tiny.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 71956,
+      "Started": "2026-10-08T19:55:58.9399240+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); $task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @(\\\"$task/regression-check/bin/Release/net10.0/RegressionCheck.dll\\\",'check-input','--records','D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data\\experiment-records.jsonl','--audit','D:\\source\\Sezika\\docs\\evidence\\label-audit-20261008-final\\audit-report.json','--output',\\\"$task/regression-input-tiny.json\\\",'--max-records','1') -TimeoutSeconds 45 -ProcessQueryTimeoutSeconds 5 -LogName 'regression-input-tiny' -LogDirectory \\\"$task/process-logs\\\"\"",
+      "ParentPid": 52200,
+      "source": "20261008-115559-449-regression-input-tiny.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 34632,
+      "Started": "2026-10-08T11:56:00.7775224+00:00",
+      "CommandLine": null,
+      "ParentPid": 71956,
+      "source": "20261008-115559-449-regression-input-tiny.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 49288,
+      "Started": "2026-10-08T11:57:25.3521530+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" build D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\regression-check\\RegressionCheck.csproj -c Release --no-restore --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false",
+      "ParentPid": 19068,
+      "source": "20261008-115723-274-regression-check-memory-sampling-build.result.json",
+      "state": "pid_reused",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 77172,
+      "Started": "2026-10-08T11:57:27.8352980+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempbr4orboz.yke\\tmp239133033aa84754abd81b98132ffcda.rsp\"",
+      "ParentPid": 49288,
+      "source": "20261008-115723-274-regression-check-memory-sampling-build.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 84000,
+      "Started": "2026-10-08T11:57:25.3827900+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 49288,
+      "source": "20261008-115723-274-regression-check-memory-sampling-build.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 31948,
+      "Started": "2026-10-08T11:57:27.8679580+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 77172,
+      "source": "20261008-115723-274-regression-check-memory-sampling-build.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 19068,
+      "Started": "2026-10-08T19:57:21.6996990+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString(); & .\\tools\\Invoke-BoundedProcess.ps1 -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('build','D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\regression-check\\RegressionCheck.csproj','-c','Release','--no-restore','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false') -TimeoutSeconds 150 -ProcessQueryTimeoutSeconds 5 -LogName 'regression-check-memory-sampling-build' -LogDirectory 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\process-logs'\"",
+      "ParentPid": 52200,
+      "source": "20261008-115723-274-regression-check-memory-sampling-build.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 49288,
+      "Started": "2026-10-08T11:57:25.3521534+00:00",
+      "CommandLine": null,
+      "ParentPid": 19068,
+      "source": "20261008-115723-274-regression-check-memory-sampling-build.result.json:retained_handle",
+      "state": "pid_reused",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 48568,
+      "Started": "2026-10-09T03:29:44.4419460+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -Command \"Start-Sleep -Seconds 3; exit 0\"",
+      "ParentPid": 55972,
+      "source": "20261009-032944-104-scoped-probe-0.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 20936,
+      "Started": "2026-10-09T03:29:44.4519450+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 48568,
+      "source": "20261009-032944-104-scoped-probe-0.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 55972,
+      "Started": "2026-10-09T11:29:43.6878190+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-ExpansionBoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-Command','Start-Sleep -Seconds 3; exit 0') -TimeoutSeconds 20 -LogName 'scoped-probe-0'\"",
+      "ParentPid": 49492,
+      "source": "20261009-032944-104-scoped-probe-0.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 48568,
+      "Started": "2026-10-09T03:29:44.4419463+00:00",
+      "CommandLine": null,
+      "ParentPid": 55972,
+      "source": "20261009-032944-104-scoped-probe-0.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 45552,
+      "Started": "2026-10-09T03:29:44.4593080+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -Command \"Start-Sleep -Seconds 3; exit 7\"",
+      "ParentPid": 43924,
+      "source": "20261009-032944-121-scoped-probe-7.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 48904,
+      "Started": "2026-10-09T03:29:44.4693720+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 45552,
+      "source": "20261009-032944-121-scoped-probe-7.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 43924,
+      "Started": "2026-10-09T11:29:43.7045080+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-ExpansionBoundedProcess.ps1' -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-Command','Start-Sleep -Seconds 3; exit 7') -TimeoutSeconds 20 -LogName 'scoped-probe-7'\"",
+      "ParentPid": 49492,
+      "source": "20261009-032944-121-scoped-probe-7.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 45552,
+      "Started": "2026-10-09T03:29:44.4593086+00:00",
+      "CommandLine": null,
+      "ParentPid": 43924,
+      "source": "20261009-032944-121-scoped-probe-7.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 42200,
+      "Started": "2026-10-09T11:30:10.6896860+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; & \\\"$task/Invoke-ExpansionBoundedProcess.ps1\\\" -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @(\\\"$task/regression-check/bin/Release/net10.0/RegressionCheck.dll\\\",'check-input','--records','D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data\\experiment-records.jsonl','--audit','D:\\source\\Sezika\\docs\\evidence\\label-audit-20261008-final\\audit-report.json','--output',\\\"$task/regression-input-tiny-v2.json\\\",'--max-records','1') -TimeoutSeconds 45 -LogName 'regression-input-tiny-v2'\"",
+      "ParentPid": 49492,
+      "source": "20261009-033011-161-regression-input-tiny-v2.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 44400,
+      "Started": "2026-10-09T03:30:11.5631550+00:00",
+      "CommandLine": null,
+      "ParentPid": 42200,
+      "source": "20261009-033011-161-regression-input-tiny-v2.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 14972,
+      "Started": "2026-10-09T11:30:37.5143820+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; & \\\"$task/Invoke-ExpansionBoundedProcess.ps1\\\" -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @(\\\"$task/regression-check/bin/Release/net10.0/RegressionCheck.dll\\\",'check-input','--records','D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data\\experiment-records.jsonl','--audit','D:\\source\\Sezika\\docs\\evidence\\label-audit-20261008-final\\audit-report.json','--output',\\\"$task/regression-input-full32.json\\\",'--max-records','32') -TimeoutSeconds 45 -LogName 'regression-input-full32'\"",
+      "ParentPid": 49492,
+      "source": "20261009-033037-942-regression-input-full32.result.json:launcher",
+      "state": "pid_reused",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 54368,
+      "Started": "2026-10-09T03:30:38.2441761+00:00",
+      "CommandLine": null,
+      "ParentPid": 14972,
+      "source": "20261009-033037-942-regression-input-full32.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 48508,
+      "Started": "2026-10-09T03:31:12.9644030+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/regression-check/bin/Release/net10.0/RegressionCheck.dll lengths --records D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/prepared-records.jsonl --records-sha256 17946E4ED202F45832C4E0E90B62F2CD7AAEDED096896E97268CCDB82DF3C937 --tokenizer D:\\source\\Sezika\\.artifacts\\models\\mmbert-independent\\converted\\tokenizer\\tokenizer.json --output D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/lengths-tiny1.json --max-records 1",
+      "ParentPid": 24080,
+      "source": "20261009-033112-663-expanded-lengths-tiny1.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 45168,
+      "Started": "2026-10-09T03:31:12.9715690+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 48508,
+      "source": "20261009-033112-663-expanded-lengths-tiny1.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 24080,
+      "Started": "2026-10-09T11:31:12.2400800+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; & \\\"$task/Invoke-ExpansionBoundedProcess.ps1\\\" -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @(\\\"$task/regression-check/bin/Release/net10.0/RegressionCheck.dll\\\",'lengths','--records',\\\"$task/prepared-records.jsonl\\\",'--records-sha256','17946E4ED202F45832C4E0E90B62F2CD7AAEDED096896E97268CCDB82DF3C937','--tokenizer','D:\\source\\Sezika\\.artifacts\\models\\mmbert-independent\\converted\\tokenizer\\tokenizer.json','--output',\\\"$task/lengths-tiny1.json\\\",'--max-records','1') -TimeoutSeconds 90 -LogName 'expanded-lengths-tiny1'\"",
+      "ParentPid": 49492,
+      "source": "20261009-033112-663-expanded-lengths-tiny1.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 48508,
+      "Started": "2026-10-09T03:31:12.9644037+00:00",
+      "CommandLine": null,
+      "ParentPid": 24080,
+      "source": "20261009-033112-663-expanded-lengths-tiny1.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 3984,
+      "Started": "2026-10-09T03:31:29.4182880+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/regression-check/bin/Release/net10.0/RegressionCheck.dll lengths --records D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/prepared-records.jsonl --records-sha256 17946E4ED202F45832C4E0E90B62F2CD7AAEDED096896E97268CCDB82DF3C937 --tokenizer D:\\source\\Sezika\\.artifacts\\models\\mmbert-independent\\converted\\tokenizer\\tokenizer.json --output D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/lengths-full256.json --max-records 256",
+      "ParentPid": 53148,
+      "source": "20261009-033128-964-expanded-lengths-full256.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 17676,
+      "Started": "2026-10-09T03:31:29.4266550+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 3984,
+      "source": "20261009-033128-964-expanded-lengths-full256.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 53148,
+      "Started": "2026-10-09T11:31:28.4180560+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\nGet-Content .artifacts/teacher-expansion-20261008/batch04v2/response.json -TotalCount 5; $task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; & \\\"$task/Invoke-ExpansionBoundedProcess.ps1\\\" -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @(\\\"$task/regression-check/bin/Release/net10.0/RegressionCheck.dll\\\",'lengths','--records',\\\"$task/prepared-records.jsonl\\\",'--records-sha256','17946E4ED202F45832C4E0E90B62F2CD7AAEDED096896E97268CCDB82DF3C937','--tokenizer','D:\\source\\Sezika\\.artifacts\\models\\mmbert-independent\\converted\\tokenizer\\tokenizer.json','--output',\\\"$task/lengths-full256.json\\\",'--max-records','256') -TimeoutSeconds 90 -LogName 'expanded-lengths-full256'\"",
+      "ParentPid": 49492,
+      "source": "20261009-033128-964-expanded-lengths-full256.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 3984,
+      "Started": "2026-10-09T03:31:29.4182883+00:00",
+      "CommandLine": null,
+      "ParentPid": 53148,
+      "source": "20261009-033128-964-expanded-lengths-full256.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 26156,
+      "Started": "2026-10-09T03:32:18.7161970+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" publish D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/regression-check/RegressionCheck.csproj -c Release -r linux-x64 --self-contained true --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false -p:RuntimeFrameworkVersion=10.0.12 -o D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/regression-linux",
+      "ParentPid": 32460,
+      "source": "20261009-033218-126-regression-linux-publish.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 9600,
+      "Started": "2026-10-09T03:32:18.7271160+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 26156,
+      "source": "20261009-033218-126-regression-linux-publish.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 35516,
+      "Started": "2026-10-09T03:32:23.1569700+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" nuget verify --all C:\\Users\\mysti\\AppData\\Local\\Temp\\hnde1bgk.2ce\\microsoft.net.workloads.10.0.400.msi.x64\\10.401.1\\microsoft.net.workloads.10.0.400.msi.x64.10.401.1.nupkg",
+      "ParentPid": 26156,
+      "source": "20261009-033218-126-regression-linux-publish.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 56684,
+      "Started": "2026-10-09T03:32:23.7967170+00:00",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\sdk\\10.0.401\\Roslyn\\bincore\\csc.exe\"  /noconfig @\"C:\\Users\\mysti\\AppData\\Local\\Temp\\MSBuildTempscn1b35m.m5y\\tmp444f38e52a80487496602835496b2778.rsp\"",
+      "ParentPid": 26156,
+      "source": "20261009-033218-126-regression-linux-publish.result.json",
+      "state": "pid_reused",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 42672,
+      "Started": "2026-10-09T03:32:23.8331770+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 56684,
+      "source": "20261009-033218-126-regression-linux-publish.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 32460,
+      "Started": "2026-10-09T11:32:17.3837490+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; & \\\"$task/Invoke-ExpansionBoundedProcess.ps1\\\" -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('publish',\\\"$task/regression-check/RegressionCheck.csproj\\\",'-c','Release','-r','linux-x64','--self-contained','true','--disable-build-servers','-m:1','-nr:false','-p:UseSharedCompilation=false','-p:RuntimeFrameworkVersion=10.0.12','-o',\\\"$task/regression-linux\\\") -TimeoutSeconds 180 -LogName 'regression-linux-publish'\"",
+      "ParentPid": 49492,
+      "source": "20261009-033218-126-regression-linux-publish.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 26156,
+      "Started": "2026-10-09T03:32:18.7161972+00:00",
+      "CommandLine": null,
+      "ParentPid": 32460,
+      "source": "20261009-033218-126-regression-linux-publish.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 56928,
+      "Started": "2026-10-09T03:33:39.7320200+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Test-TeacherConnection.ps1",
+      "ParentPid": 49904,
+      "source": "20261009-033339-411-teacher-connection.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 49904,
+      "Started": "2026-10-09T11:33:38.9760370+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; & \\\"$task/Invoke-ExpansionBoundedProcess.ps1\\\" -FilePath 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' -ArgumentList @('-NoProfile','-File',\\\"$task/Test-TeacherConnection.ps1\\\") -TimeoutSeconds 40 -LogName 'teacher-connection'\"",
+      "ParentPid": 49492,
+      "source": "20261009-033339-411-teacher-connection.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 56928,
+      "Started": "2026-10-09T03:33:39.7320208+00:00",
+      "CommandLine": null,
+      "ParentPid": 49904,
+      "source": "20261009-033339-411-teacher-connection.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 37600,
+      "Started": "2026-10-09T11:34:57.8321390+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008';$data='D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data';$hash=(Get-FileHash \\\"$data/experiment-manifest.json\\\").Hash; & \\\"$task/Invoke-ExpansionBoundedProcess.ps1\\\" -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll','check','--data',$data,'--manifest-sha256',$hash,'--max-checks','8','--artifact-directory',\\\"$task/old-v1-checks-full8\\\") -TimeoutSeconds 45 -LogName 'old-v1-checks-full8'\"",
+      "ParentPid": 49492,
+      "source": "20261009-033458-255-old-v1-checks-full8.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 45232,
+      "Started": "2026-10-09T03:34:58.5583705+00:00",
+      "CommandLine": null,
+      "ParentPid": 37600,
+      "source": "20261009-033458-255-old-v1-checks-full8.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 34928,
+      "Started": "2026-10-09T11:35:10.7948130+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008';$data='D:\\source\\Sezika\\.artifacts\\real-gpu-experiment-20261008\\data';[void][IO.Directory]::CreateDirectory(\\\"$task/old-v1-checks-full8\\\");$hash=(Get-FileHash \\\"$data/experiment-manifest.json\\\").Hash; & \\\"$task/Invoke-ExpansionBoundedProcess.ps1\\\" -FilePath 'C:\\Program Files\\dotnet\\dotnet.exe' -ArgumentList @('D:\\source\\Sezika\\tools\\Sezika.ExperimentTrainer\\bin\\Release\\net10.0\\Sezika.ExperimentTrainer.dll','check','--data',$data,'--manifest-sha256',$hash,'--max-checks','8','--artifact-directory',\\\"$task/old-v1-checks-full8\\\") -TimeoutSeconds 45 -LogName 'old-v1-checks-full8-v2'\"",
+      "ParentPid": 49492,
+      "source": "20261009-033511-275-old-v1-checks-full8-v2.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 46856,
+      "Started": "2026-10-09T03:35:11.6315121+00:00",
+      "CommandLine": null,
+      "ParentPid": 34928,
+      "source": "20261009-033511-275-old-v1-checks-full8-v2.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 16060,
+      "Started": "2026-10-09T11:37:34.1976780+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; & \\\"$task/Invoke-ExpansionBoundedProcess.ps1\\\" -FilePath 'C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe' -ArgumentList @(\\\"$task/Inspect-TeacherConfig.py\\\") -TimeoutSeconds 20 -LogName 'teacher-config-schema-readonly'\"",
+      "ParentPid": 49492,
+      "source": "20261009-033734-738-teacher-config-schema-readonly.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 36012,
+      "Started": "2026-10-09T03:37:35.2817184+00:00",
+      "CommandLine": null,
+      "ParentPid": 16060,
+      "source": "20261009-033734-738-teacher-config-schema-readonly.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 6604,
+      "Started": "2026-10-09T11:37:53.4966660+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; & \\\"$task/Invoke-ExpansionBoundedProcess.ps1\\\" -FilePath 'C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe' -ArgumentList @(\\\"$task/Inspect-TeacherConfig.py\\\") -TimeoutSeconds 20 -LogName 'teacher-current-provider-readonly'\"",
+      "ParentPid": 49492,
+      "source": "20261009-033754-025-teacher-current-provider-readonly.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 2988,
+      "Started": "2026-10-09T03:37:54.5885259+00:00",
+      "CommandLine": null,
+      "ParentPid": 6604,
+      "source": "20261009-033754-025-teacher-current-provider-readonly.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 4840,
+      "Started": "2026-10-09T03:38:25.2317510+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Test-TeacherUpstream.py",
+      "ParentPid": 36748,
+      "source": "20261009-033824-647-teacher-upstream-direct-proxy.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 46236,
+      "Started": "2026-10-09T03:38:25.2425870+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 4840,
+      "source": "20261009-033824-647-teacher-upstream-direct-proxy.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 36748,
+      "Started": "2026-10-09T11:38:24.0488070+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; & \\\"$task/Invoke-ExpansionBoundedProcess.ps1\\\" -FilePath 'C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe' -ArgumentList @(\\\"$task/Test-TeacherUpstream.py\\\") -TimeoutSeconds 35 -LogName 'teacher-upstream-direct-proxy'\"",
+      "ParentPid": 49492,
+      "source": "20261009-033824-647-teacher-upstream-direct-proxy.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 42216,
+      "Started": "2026-10-09T11:46:42.7944700+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008'; & \\\"$task/Invoke-ExpansionBoundedProcess.ps1\\\" -FilePath 'C:\\Windows\\System32\\wsl.exe' -ArgumentList @('-d','Ubuntu','--','timeout','5s','bash','-n','/mnt/d/source/Sezika/.artifacts/teacher-expansion-20261008/remote/regress.sh') -TimeoutSeconds 20 -LogName 'regression-shell-syntax-tiny1'\"",
+      "ParentPid": 49492,
+      "source": "20261009-034643-781-regression-shell-syntax-tiny1.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 37636,
+      "Started": "2026-10-09T03:46:44.5835671+00:00",
+      "CommandLine": null,
+      "ParentPid": 42216,
+      "source": "20261009-034643-781-regression-shell-syntax-tiny1.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 54628,
+      "Started": "2026-10-09T11:47:08.4415550+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$script=@'\nset -euo pipefail\nbegin=$SECONDS\ncount=0\nfor name in Invoke-BoundedLinux.sh bootstrap.sh runner-probe.sh phase-common.sh capacity.sh train.sh validate.sh regress.sh final-evidence.sh; do\n  (( count < 9 && SECONDS-begin < 15 )) || exit 124\n  timeout 1s bash -n \\\"/mnt/d/source/Sezika/.artifacts/teacher-expansion-20261008/remote/$name\\\"\n  count=$((count+1))\ndone\nprintf 'syntax_checked=%s\\n' \\\"$count\\\"\n'@;$task='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008';[IO.File]::WriteAllText(\\\"$task/remote-syntax-check.sh\\\",$script,[Text.UTF8Encoding]::new($false)); & \\\"$task/Invoke-ExpansionBoundedProcess.ps1\\\" -FilePath 'C:\\Windows\\System32\\wsl.exe' -ArgumentList @('-d','Ubuntu','--','timeout','18s','bash','/mnt/d/source/Sezika/.artifacts/teacher-expansion-20261008/remote-syntax-check.sh') -TimeoutSeconds 25 -LogName 'regression-shell-syntax-full9'\"",
+      "ParentPid": 49492,
+      "source": "20261009-034709-470-regression-shell-syntax-full9.result.json:launcher",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 54228,
+      "Started": "2026-10-09T03:47:10.2530002+00:00",
+      "CommandLine": null,
+      "ParentPid": 54628,
+      "source": "20261009-034709-470-regression-shell-syntax-full9.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 38452,
+      "Started": "2026-10-08T11:57:39.6449390+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1 -FixtureExitCode 0",
+      "ParentPid": 68336,
+      "source": "20261008-115734-856-probe-exit-0.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 48280,
+      "Started": "2026-10-08T11:57:39.6629370+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 38452,
+      "source": "20261008-115734-856-probe-exit-0.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 38452,
+      "Started": "2026-10-08T11:57:39.6449396+00:00",
+      "CommandLine": null,
+      "ParentPid": 68336,
+      "source": "20261008-115734-856-probe-exit-0.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 68336,
+      "Started": "2026-10-08T11:57:31.7361041+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString()\n$guardianParseSelf=Get-CimInstance Win32_Process -Filter \\\"ProcessId = $PID\\\" -OperationTimeoutSec 5\n[pscustomobject]@{Pid=$PID;Started=$guardianParseSelf.CreationDate;CommandLine=$guardianParseSelf.CommandLine;ParentPid=$guardianParseSelf.ParentProcessId}|ConvertTo-Json\n$guardianTokens=$null;$guardianParseErrors=$null\n[void][Management.Automation.Language.Parser]::ParseFile('D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1',[ref]$guardianTokens,[ref]$guardianParseErrors)\nif($guardianParseErrors.Count -gt 0){$guardianParseErrors|Select-Object Message,@{Name='Line';Expression={$_.Extent.StartLineNumber}}|ConvertTo-Json;exit 1}\n'Guardian parse passed'\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -ProbeExitCode 0\"",
+      "ParentPid": 52200,
+      "source": "20261008-115734-856-probe-exit-0.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 74236,
+      "Started": "2026-10-08T11:58:34.2320750+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1 -FixtureExitCode 7",
+      "ParentPid": 70312,
+      "source": "20261008-115830-631-probe-exit-7.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 22132,
+      "Started": "2026-10-08T11:58:34.2466020+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 74236,
+      "source": "20261008-115830-631-probe-exit-7.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 74236,
+      "Started": "2026-10-08T11:58:34.2320751+00:00",
+      "CommandLine": null,
+      "ParentPid": 70312,
+      "source": "20261008-115830-631-probe-exit-7.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 70312,
+      "Started": "2026-10-08T11:58:29.9968537+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$PSVersionTable.PSVersion.ToString()\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -ProbeExitCode 7\"",
+      "ParentPid": 52200,
+      "source": "20261008-115830-631-probe-exit-7.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 40516,
+      "Started": "2026-10-09T03:28:05.7285890+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch03 -Start 18 -Count 8 -SelectionFile model-selection-recovery-20261009.json",
+      "ParentPid": 47872,
+      "source": "20261009-032804-884-batch03.result.json",
+      "state": "pid_reused",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 27596,
+      "Started": "2026-10-09T03:28:05.7383760+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 40516,
+      "source": "20261009-032804-884-batch03.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 40516,
+      "Started": "2026-10-09T03:28:05.7285894+00:00",
+      "CommandLine": null,
+      "ParentPid": 47872,
+      "source": "20261009-032804-884-batch03.result.json:retained_handle",
+      "state": "pid_reused",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 47872,
+      "Started": "2026-10-09T03:28:04.2944815+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch batch03 -Start 18 -Count 8 -SelectionFile model-selection-recovery-20261009.json; exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-032804-884-batch03.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 13320,
+      "Started": "2026-10-09T03:28:05.7531970+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch04 -Start 26 -Count 8 -SelectionFile model-selection-recovery-20261009.json",
+      "ParentPid": 46880,
+      "source": "20261009-032804-924-batch04.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 42108,
+      "Started": "2026-10-09T03:28:05.7630660+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 13320,
+      "source": "20261009-032804-924-batch04.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 13320,
+      "Started": "2026-10-09T03:28:05.7531977+00:00",
+      "CommandLine": null,
+      "ParentPid": 46880,
+      "source": "20261009-032804-924-batch04.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 46880,
+      "Started": "2026-10-09T03:28:04.3209262+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch batch04 -Start 26 -Count 8 -SelectionFile model-selection-recovery-20261009.json; exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-032804-924-batch04.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 39800,
+      "Started": "2026-10-09T03:29:19.7602760+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch03v2 -Start 18 -Count 8 -SelectionFile model-selection-recovery-20261009.json",
+      "ParentPid": 18648,
+      "source": "20261009-032918-550-batch03v2.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 1436,
+      "Started": "2026-10-09T03:29:19.7721830+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 39800,
+      "source": "20261009-032918-550-batch03v2.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 39800,
+      "Started": "2026-10-09T03:29:19.7602762+00:00",
+      "CommandLine": null,
+      "ParentPid": 18648,
+      "source": "20261009-032918-550-batch03v2.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 18648,
+      "Started": "2026-10-09T03:29:18.0189738+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch batch03v2 -Start 18 -Count 8 -SelectionFile model-selection-recovery-20261009.json; exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-032918-550-batch03v2.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 55376,
+      "Started": "2026-10-09T03:29:19.8036570+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch04v2 -Start 26 -Count 8 -SelectionFile model-selection-recovery-20261009.json",
+      "ParentPid": 50448,
+      "source": "20261009-032918-601-batch04v2.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 10468,
+      "Started": "2026-10-09T03:29:19.8170650+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 55376,
+      "source": "20261009-032918-601-batch04v2.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 55376,
+      "Started": "2026-10-09T03:29:19.8036575+00:00",
+      "CommandLine": null,
+      "ParentPid": 50448,
+      "source": "20261009-032918-601-batch04v2.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 50448,
+      "Started": "2026-10-09T03:29:18.0409418+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch batch04v2 -Start 26 -Count 8 -SelectionFile model-selection-recovery-20261009.json; exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-032918-601-batch04v2.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 44376,
+      "Started": "2026-10-09T03:34:15.1885760+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch05 -Start 34 -Count 8 -SelectionFile model-selection-recovery-20261009.json",
+      "ParentPid": 41616,
+      "source": "20261009-033414-068-batch05.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 55728,
+      "Started": "2026-10-09T03:34:15.2023260+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 44376,
+      "source": "20261009-033414-068-batch05.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 44376,
+      "Started": "2026-10-09T03:34:15.1885766+00:00",
+      "CommandLine": null,
+      "ParentPid": 41616,
+      "source": "20261009-033414-068-batch05.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 41616,
+      "Started": "2026-10-09T03:34:13.6366195+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch batch05 -Start 34 -Count 8 -SelectionFile model-selection-recovery-20261009.json; exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-033414-068-batch05.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 36168,
+      "Started": "2026-10-09T03:34:15.1874230+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch06 -Start 42 -Count 8 -SelectionFile model-selection-recovery-20261009.json",
+      "ParentPid": 46624,
+      "source": "20261009-033414-080-batch06.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 55696,
+      "Started": "2026-10-09T03:34:15.2025800+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 36168,
+      "source": "20261009-033414-080-batch06.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 36168,
+      "Started": "2026-10-09T03:34:15.1874232+00:00",
+      "CommandLine": null,
+      "ParentPid": 46624,
+      "source": "20261009-033414-080-batch06.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 46624,
+      "Started": "2026-10-09T03:34:13.6534044+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch batch06 -Start 42 -Count 8 -SelectionFile model-selection-recovery-20261009.json; exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-033414-080-batch06.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 21648,
+      "Started": "2026-10-09T03:39:59.3334500+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch07 -Start 50 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 13584,
+      "source": "20261009-033957-971-batch07.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 34128,
+      "Started": "2026-10-09T03:39:59.3461250+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 21648,
+      "source": "20261009-033957-971-batch07.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 52124,
+      "Started": "2026-10-09T03:40:00.5482080+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch07 240",
+      "ParentPid": 21648,
+      "source": "20261009-033957-971-batch07.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 14308,
+      "Started": "2026-10-09T03:40:00.5583540+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 52124,
+      "source": "20261009-033957-971-batch07.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 21648,
+      "Started": "2026-10-09T03:39:59.3334501+00:00",
+      "CommandLine": null,
+      "ParentPid": 13584,
+      "source": "20261009-033957-971-batch07.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 13584,
+      "Started": "2026-10-09T03:39:57.4366395+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch batch07 -Start 50 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct; exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-033957-971-batch07.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 41424,
+      "Started": "2026-10-09T03:43:32.7175870+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch08 -Start 58 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 19120,
+      "source": "20261009-034330-372-batch08.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 16828,
+      "Started": "2026-10-09T03:43:32.7457850+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 41424,
+      "source": "20261009-034330-372-batch08.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 34956,
+      "Started": "2026-10-09T03:43:36.6058310+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch08 240",
+      "ParentPid": 41424,
+      "source": "20261009-034330-372-batch08.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 25972,
+      "Started": "2026-10-09T03:43:36.6399400+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 34956,
+      "source": "20261009-034330-372-batch08.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 41424,
+      "Started": "2026-10-09T03:43:32.7175873+00:00",
+      "CommandLine": null,
+      "ParentPid": 19120,
+      "source": "20261009-034330-372-batch08.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 19120,
+      "Started": "2026-10-09T03:43:28.4515693+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Invoke-OwnedApiProcess.ps1 -Batch batch08 -Start 58 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 54876,
+      "source": "20261009-034330-372-batch08.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 48732,
+      "Started": "2026-10-09T03:43:33.4495150+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch09 -Start 66 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 49912,
+      "source": "20261009-034331-032-batch09.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 6708,
+      "Started": "2026-10-09T03:43:37.2855060+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch09 240",
+      "ParentPid": 48732,
+      "source": "20261009-034331-032-batch09.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 33840,
+      "Started": "2026-10-09T03:43:33.4783080+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 48732,
+      "source": "20261009-034331-032-batch09.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 43324,
+      "Started": "2026-10-09T03:43:37.3085510+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 6708,
+      "source": "20261009-034331-032-batch09.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 48732,
+      "Started": "2026-10-09T03:43:33.4495152+00:00",
+      "CommandLine": null,
+      "ParentPid": 49912,
+      "source": "20261009-034331-032-batch09.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 49912,
+      "Started": "2026-10-09T03:43:29.2230250+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Invoke-OwnedApiProcess.ps1 -Batch batch09 -Start 66 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 54876,
+      "source": "20261009-034331-032-batch09.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 20840,
+      "Started": "2026-10-09T03:46:35.8412410+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch10 -Start 74 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 52272,
+      "source": "20261009-034633-994-batch10.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 11812,
+      "Started": "2026-10-09T03:46:37.8258600+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch10 240",
+      "ParentPid": 20840,
+      "source": "20261009-034633-994-batch10.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 21904,
+      "Started": "2026-10-09T03:46:35.8587330+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 20840,
+      "source": "20261009-034633-994-batch10.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 29536,
+      "Started": "2026-10-09T03:46:37.8413160+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 11812,
+      "source": "20261009-034633-994-batch10.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 20840,
+      "Started": "2026-10-09T03:46:35.8412416+00:00",
+      "CommandLine": null,
+      "ParentPid": 52272,
+      "source": "20261009-034633-994-batch10.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 52272,
+      "Started": "2026-10-09T03:46:33.1867852+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Invoke-OwnedApiProcess.ps1 -Batch batch10 -Start 74 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 54876,
+      "source": "20261009-034633-994-batch10.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 50436,
+      "Started": "2026-10-09T03:46:36.3676370+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch11 -Start 82 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 41872,
+      "source": "20261009-034634-545-batch11.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 43220,
+      "Started": "2026-10-09T03:46:38.5255090+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch11 240",
+      "ParentPid": 50436,
+      "source": "20261009-034634-545-batch11.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 46620,
+      "Started": "2026-10-09T03:46:36.3851000+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 50436,
+      "source": "20261009-034634-545-batch11.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 50932,
+      "Started": "2026-10-09T03:46:38.5458090+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 43220,
+      "source": "20261009-034634-545-batch11.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 50436,
+      "Started": "2026-10-09T03:46:36.3676379+00:00",
+      "CommandLine": null,
+      "ParentPid": 41872,
+      "source": "20261009-034634-545-batch11.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 41872,
+      "Started": "2026-10-09T03:46:33.7478294+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Invoke-OwnedApiProcess.ps1 -Batch batch11 -Start 82 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 54876,
+      "source": "20261009-034634-545-batch11.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 5716,
+      "Started": "2026-10-09T03:48:54.5028410+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch12 -Start 90 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 49032,
+      "source": "20261009-034853-387-batch12.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 29372,
+      "Started": "2026-10-09T03:48:54.5136370+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 5716,
+      "source": "20261009-034853-387-batch12.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 5716,
+      "Started": "2026-10-09T03:48:54.5028419+00:00",
+      "CommandLine": null,
+      "ParentPid": 49032,
+      "source": "20261009-034853-387-batch12.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 49032,
+      "Started": "2026-10-09T03:48:52.8940106+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Invoke-OwnedApiProcess.ps1 -Batch batch12 -Start 90 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 54876,
+      "source": "20261009-034853-387-batch12.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 56548,
+      "Started": "2026-10-09T03:48:54.9137210+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch13 -Start 98 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 46912,
+      "source": "20261009-034853-702-batch13.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 52580,
+      "Started": "2026-10-09T03:48:54.9237920+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 56548,
+      "source": "20261009-034853-702-batch13.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 54920,
+      "Started": "2026-10-09T03:48:56.2096330+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch13 240",
+      "ParentPid": 56548,
+      "source": "20261009-034853-702-batch13.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 23264,
+      "Started": "2026-10-09T03:48:56.2182850+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 54920,
+      "source": "20261009-034853-702-batch13.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 56548,
+      "Started": "2026-10-09T03:48:54.9137214+00:00",
+      "CommandLine": null,
+      "ParentPid": 46912,
+      "source": "20261009-034853-702-batch13.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 46912,
+      "Started": "2026-10-09T03:48:53.1619427+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Invoke-OwnedApiProcess.ps1 -Batch batch13 -Start 98 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 54876,
+      "source": "20261009-034853-702-batch13.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 18236,
+      "Started": "2026-10-09T03:52:14.1954730+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch14 -Start 106 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 53504,
+      "source": "20261009-035213-241-batch14.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 20388,
+      "Started": "2026-10-09T03:52:14.2048070+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 18236,
+      "source": "20261009-035213-241-batch14.result.json",
+      "state": "pid_reused",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 35468,
+      "Started": "2026-10-09T03:52:15.4684570+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch14 240",
+      "ParentPid": 18236,
+      "source": "20261009-035213-241-batch14.result.json",
+      "state": "pid_reused",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 50036,
+      "Started": "2026-10-09T03:52:15.4850320+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 35468,
+      "source": "20261009-035213-241-batch14.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 53504,
+      "Started": "2026-10-09T03:52:12.8259219+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Invoke-OwnedApiProcess.ps1 -Batch batch14 -Start 106 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 54876,
+      "source": "20261009-035213-241-batch14.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 48432,
+      "Started": "2026-10-09T03:52:14.5569130+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch15 -Start 114 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 45288,
+      "source": "20261009-035213-517-batch15.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 19644,
+      "Started": "2026-10-09T03:52:14.5686620+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 48432,
+      "source": "20261009-035213-517-batch15.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 45868,
+      "Started": "2026-10-09T03:52:15.9696940+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch15 240",
+      "ParentPid": 48432,
+      "source": "20261009-035213-517-batch15.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 38880,
+      "Started": "2026-10-09T03:52:15.9784200+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 45868,
+      "source": "20261009-035213-517-batch15.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 48432,
+      "Started": "2026-10-09T03:52:14.5569134+00:00",
+      "CommandLine": null,
+      "ParentPid": 45288,
+      "source": "20261009-035213-517-batch15.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 45288,
+      "Started": "2026-10-09T03:52:13.0905169+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Invoke-OwnedApiProcess.ps1 -Batch batch15 -Start 114 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 54876,
+      "source": "20261009-035213-517-batch15.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 11624,
+      "Started": "2026-10-09T03:54:21.6231100+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch16 -Start 122 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 57036,
+      "source": "20261009-035420-249-batch16.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 12632,
+      "Started": "2026-10-09T03:54:21.6344580+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 11624,
+      "source": "20261009-035420-249-batch16.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 21068,
+      "Started": "2026-10-09T03:54:22.9340370+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch16 240",
+      "ParentPid": 11624,
+      "source": "20261009-035420-249-batch16.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 19468,
+      "Started": "2026-10-09T03:54:22.9445320+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 21068,
+      "source": "20261009-035420-249-batch16.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 57036,
+      "Started": "2026-10-09T03:54:19.7950345+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Invoke-OwnedApiProcess.ps1 -Batch batch16 -Start 122 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 54876,
+      "source": "20261009-035420-249-batch16.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 49984,
+      "Started": "2026-10-09T03:54:21.9542400+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch17 -Start 130 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 33996,
+      "source": "20261009-035420-555-batch17.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 30552,
+      "Started": "2026-10-09T03:54:23.4032050+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch17 240",
+      "ParentPid": 49984,
+      "source": "20261009-035420-555-batch17.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 51356,
+      "Started": "2026-10-09T03:54:21.9683010+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 49984,
+      "source": "20261009-035420-555-batch17.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 35668,
+      "Started": "2026-10-09T03:54:23.4133150+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 30552,
+      "source": "20261009-035420-555-batch17.result.json",
+      "state": "pid_reused",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 49984,
+      "Started": "2026-10-09T03:54:21.9542405+00:00",
+      "CommandLine": null,
+      "ParentPid": 33996,
+      "source": "20261009-035420-555-batch17.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 33996,
+      "Started": "2026-10-09T03:54:20.0640710+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Invoke-OwnedApiProcess.ps1 -Batch batch17 -Start 130 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 54876,
+      "source": "20261009-035420-555-batch17.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 42492,
+      "Started": "2026-10-09T03:56:12.9703830+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch18 -Start 138 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 14532,
+      "source": "20261009-035610-766-batch18.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 17552,
+      "Started": "2026-10-09T03:56:16.4236610+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch18 240",
+      "ParentPid": 42492,
+      "source": "20261009-035610-766-batch18.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 37756,
+      "Started": "2026-10-09T03:56:12.9963150+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 42492,
+      "source": "20261009-035610-766-batch18.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 28820,
+      "Started": "2026-10-09T03:56:16.4469850+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 17552,
+      "source": "20261009-035610-766-batch18.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 42492,
+      "Started": "2026-10-09T03:56:12.9703834+00:00",
+      "CommandLine": null,
+      "ParentPid": 14532,
+      "source": "20261009-035610-766-batch18.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 14532,
+      "Started": "2026-10-09T03:56:08.8070401+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Invoke-OwnedApiProcess.ps1 -Batch batch18 -Start 138 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 54876,
+      "source": "20261009-035610-766-batch18.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 42784,
+      "Started": "2026-10-09T03:56:13.4919990+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch19 -Start 146 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 14072,
+      "source": "20261009-035611-407-batch19.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 48956,
+      "Started": "2026-10-09T03:56:13.5186550+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 42784,
+      "source": "20261009-035611-407-batch19.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 49664,
+      "Started": "2026-10-09T03:56:16.9146230+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch19 240",
+      "ParentPid": 42784,
+      "source": "20261009-035611-407-batch19.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 21488,
+      "Started": "2026-10-09T03:56:16.9364840+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 49664,
+      "source": "20261009-035611-407-batch19.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 42784,
+      "Started": "2026-10-09T03:56:13.4919996+00:00",
+      "CommandLine": null,
+      "ParentPid": 14072,
+      "source": "20261009-035611-407-batch19.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 14072,
+      "Started": "2026-10-09T03:56:09.4231365+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Invoke-OwnedApiProcess.ps1 -Batch batch19 -Start 146 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 54876,
+      "source": "20261009-035611-407-batch19.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 49356,
+      "Started": "2026-10-09T03:59:17.5118910+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch20 -Start 154 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 43796,
+      "source": "20261009-035915-703-batch20.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 58188,
+      "Started": "2026-10-09T03:59:19.2644240+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch20 240",
+      "ParentPid": 49356,
+      "source": "20261009-035915-703-batch20.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 58356,
+      "Started": "2026-10-09T03:59:17.5286860+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 49356,
+      "source": "20261009-035915-703-batch20.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 49312,
+      "Started": "2026-10-09T03:59:19.2802570+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 58188,
+      "source": "20261009-035915-703-batch20.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 49356,
+      "Started": "2026-10-09T03:59:17.5118913+00:00",
+      "CommandLine": null,
+      "ParentPid": 43796,
+      "source": "20261009-035915-703-batch20.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 43796,
+      "Started": "2026-10-09T03:59:15.1865073+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Invoke-OwnedApiProcess.ps1 -Batch batch20 -Start 154 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 54876,
+      "source": "20261009-035915-703-batch20.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 41100,
+      "Started": "2026-10-09T03:59:18.1518180+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch21 -Start 162 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 49224,
+      "source": "20261009-035916-282-batch21.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 18628,
+      "Started": "2026-10-09T03:59:20.0318550+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch21 240",
+      "ParentPid": 41100,
+      "source": "20261009-035916-282-batch21.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 50692,
+      "Started": "2026-10-09T03:59:18.1680870+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 41100,
+      "source": "20261009-035916-282-batch21.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 54660,
+      "Started": "2026-10-09T03:59:20.0475590+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 18628,
+      "source": "20261009-035916-282-batch21.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 41100,
+      "Started": "2026-10-09T03:59:18.1518185+00:00",
+      "CommandLine": null,
+      "ParentPid": 49224,
+      "source": "20261009-035916-282-batch21.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 49224,
+      "Started": "2026-10-09T03:59:15.7198456+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Invoke-OwnedApiProcess.ps1 -Batch batch21 -Start 162 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 54876,
+      "source": "20261009-035916-282-batch21.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 42028,
+      "Started": "2026-10-09T04:02:31.4562610+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch22 -Start 170 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 44316,
+      "source": "20261009-040229-109-batch22.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 53464,
+      "Started": "2026-10-09T04:02:31.4766580+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 42028,
+      "source": "20261009-040229-109-batch22.result.json",
+      "state": "pid_reused",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 58848,
+      "Started": "2026-10-09T04:02:34.9232580+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch22 240",
+      "ParentPid": 42028,
+      "source": "20261009-040229-109-batch22.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 57844,
+      "Started": "2026-10-09T04:02:34.9625670+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 58848,
+      "source": "20261009-040229-109-batch22.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 42028,
+      "Started": "2026-10-09T04:02:31.4562616+00:00",
+      "CommandLine": null,
+      "ParentPid": 44316,
+      "source": "20261009-040229-109-batch22.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 44316,
+      "Started": "2026-10-09T04:02:28.4647308+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Invoke-OwnedApiProcess.ps1 -Batch batch22 -Start 170 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 54876,
+      "source": "20261009-040229-109-batch22.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 10736,
+      "Started": "2026-10-09T04:02:32.4395670+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch23 -Start 178 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 59280,
+      "source": "20261009-040229-925-batch23.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 9748,
+      "Started": "2026-10-09T04:02:36.4241990+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch23 240",
+      "ParentPid": 10736,
+      "source": "20261009-040229-925-batch23.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 47660,
+      "Started": "2026-10-09T04:02:32.4668640+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 10736,
+      "source": "20261009-040229-925-batch23.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 6236,
+      "Started": "2026-10-09T04:02:36.4483020+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 9748,
+      "source": "20261009-040229-925-batch23.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 10736,
+      "Started": "2026-10-09T04:02:32.4395671+00:00",
+      "CommandLine": null,
+      "ParentPid": 59280,
+      "source": "20261009-040229-925-batch23.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 59280,
+      "Started": "2026-10-09T04:02:29.1941935+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Invoke-OwnedApiProcess.ps1 -Batch batch23 -Start 178 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 54876,
+      "source": "20261009-040229-925-batch23.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 42468,
+      "Started": "2026-10-09T04:07:38.1337050+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch24 -Start 186 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 58772,
+      "source": "20261009-040734-329-batch24.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 43100,
+      "Started": "2026-10-09T04:07:42.0416070+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch24 240",
+      "ParentPid": 42468,
+      "source": "20261009-040734-329-batch24.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 59532,
+      "Started": "2026-10-09T04:07:38.1798580+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 42468,
+      "source": "20261009-040734-329-batch24.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 60032,
+      "Started": "2026-10-09T04:07:42.0738200+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 43100,
+      "source": "20261009-040734-329-batch24.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 42468,
+      "Started": "2026-10-09T04:07:38.1337056+00:00",
+      "CommandLine": null,
+      "ParentPid": 58772,
+      "source": "20261009-040734-329-batch24.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 58772,
+      "Started": "2026-10-09T04:07:32.1264730+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch batch24 -Start 186 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct; exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-040734-329-batch24.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 59332,
+      "Started": "2026-10-09T04:07:38.1785040+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch25 -Start 194 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 20996,
+      "source": "20261009-040734-398-batch25.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 11612,
+      "Started": "2026-10-09T04:07:41.9476560+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch25 240",
+      "ParentPid": 59332,
+      "source": "20261009-040734-398-batch25.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 38836,
+      "Started": "2026-10-09T04:07:38.2054590+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 59332,
+      "source": "20261009-040734-398-batch25.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 33852,
+      "Started": "2026-10-09T04:07:41.9863230+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 11612,
+      "source": "20261009-040734-398-batch25.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 59332,
+      "Started": "2026-10-09T04:07:38.1785043+00:00",
+      "CommandLine": null,
+      "ParentPid": 20996,
+      "source": "20261009-040734-398-batch25.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 20996,
+      "Started": "2026-10-09T04:07:32.1875208+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch batch25 -Start 194 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct; exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-040734-398-batch25.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 62156,
+      "Started": "2026-10-09T04:09:32.0451110+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch26 -Start 202 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 61536,
+      "source": "20261009-040929-730-batch26.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 29264,
+      "Started": "2026-10-09T04:09:34.1251020+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch26 240",
+      "ParentPid": 62156,
+      "source": "20261009-040929-730-batch26.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 51812,
+      "Started": "2026-10-09T04:09:32.0646130+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 62156,
+      "source": "20261009-040929-730-batch26.result.json",
+      "state": "pid_reused",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 60072,
+      "Started": "2026-10-09T04:09:34.1399980+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 29264,
+      "source": "20261009-040929-730-batch26.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 62156,
+      "Started": "2026-10-09T04:09:32.0451118+00:00",
+      "CommandLine": null,
+      "ParentPid": 61536,
+      "source": "20261009-040929-730-batch26.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 61536,
+      "Started": "2026-10-09T04:09:28.8794491+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch batch26 -Start 202 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct; exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-040929-730-batch26.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 59356,
+      "Started": "2026-10-09T04:10:12.4165420+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch27 -Start 210 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 59160,
+      "source": "20261009-041010-279-batch27.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 53792,
+      "Started": "2026-10-09T04:10:14.1426070+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch27 240",
+      "ParentPid": 59356,
+      "source": "20261009-041010-279-batch27.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 60880,
+      "Started": "2026-10-09T04:10:12.4310960+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 59356,
+      "source": "20261009-041010-279-batch27.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 55004,
+      "Started": "2026-10-09T04:10:14.1611550+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 53792,
+      "source": "20261009-041010-279-batch27.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 59160,
+      "Started": "2026-10-09T04:10:09.7006908+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch batch27 -Start 210 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct; exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-041010-279-batch27.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 60836,
+      "Started": "2026-10-09T04:13:10.8784500+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch28 -Start 218 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 32852,
+      "source": "20261009-041308-312-batch28.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 25164,
+      "Started": "2026-10-09T04:13:13.4619950+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch28 240",
+      "ParentPid": 60836,
+      "source": "20261009-041308-312-batch28.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 57032,
+      "Started": "2026-10-09T04:13:10.8966990+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 60836,
+      "source": "20261009-041308-312-batch28.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 58732,
+      "Started": "2026-10-09T04:13:13.4776720+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 25164,
+      "source": "20261009-041308-312-batch28.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 60836,
+      "Started": "2026-10-09T04:13:10.8784503+00:00",
+      "CommandLine": null,
+      "ParentPid": 32852,
+      "source": "20261009-041308-312-batch28.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 32852,
+      "Started": "2026-10-09T04:13:07.4575044+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch batch28 -Start 218 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct; exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-041308-312-batch28.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 48264,
+      "Started": "2026-10-09T04:14:04.1153750+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch29 -Start 226 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 17148,
+      "source": "20261009-041401-734-batch29.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 55000,
+      "Started": "2026-10-09T04:14:06.1898600+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch29 240",
+      "ParentPid": 48264,
+      "source": "20261009-041401-734-batch29.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 59644,
+      "Started": "2026-10-09T04:14:04.1371930+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 48264,
+      "source": "20261009-041401-734-batch29.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 62360,
+      "Started": "2026-10-09T04:14:06.2065200+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 55000,
+      "source": "20261009-041401-734-batch29.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 17148,
+      "Started": "2026-10-09T04:14:00.9505233+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch batch29 -Start 226 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct; exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-041401-734-batch29.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 19540,
+      "Started": "2026-10-09T04:16:21.6289330+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch30 -Start 234 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 38980,
+      "source": "20261009-041619-475-batch30.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 40760,
+      "Started": "2026-10-09T04:16:23.3466730+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch30 240",
+      "ParentPid": 19540,
+      "source": "20261009-041619-475-batch30.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 62360,
+      "Started": "2026-10-09T04:16:21.6420500+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 19540,
+      "source": "20261009-041619-475-batch30.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 55384,
+      "Started": "2026-10-09T04:16:23.3576000+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 40760,
+      "source": "20261009-041619-475-batch30.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 19540,
+      "Started": "2026-10-09T04:16:21.6289332+00:00",
+      "CommandLine": null,
+      "ParentPid": 38980,
+      "source": "20261009-041619-475-batch30.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 38980,
+      "Started": "2026-10-09T04:16:18.9675516+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch batch30 -Start 234 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct; exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-041619-475-batch30.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 59408,
+      "Started": "2026-10-09T04:16:55.9879590+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch31 -Start 242 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 27596,
+      "source": "20261009-041653-714-batch31.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 35388,
+      "Started": "2026-10-09T04:16:56.0015430+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 59408,
+      "source": "20261009-041653-714-batch31.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 60364,
+      "Started": "2026-10-09T04:16:57.7998090+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch31 240",
+      "ParentPid": 59408,
+      "source": "20261009-041653-714-batch31.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 62352,
+      "Started": "2026-10-09T04:16:57.8157360+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 60364,
+      "source": "20261009-041653-714-batch31.result.json",
+      "state": "pid_reused",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 59408,
+      "Started": "2026-10-09T04:16:55.9879592+00:00",
+      "CommandLine": null,
+      "ParentPid": 27596,
+      "source": "20261009-041653-714-batch31.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 27596,
+      "Started": "2026-10-09T04:16:52.8812485+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch batch31 -Start 242 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct; exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-041653-714-batch31.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 62784,
+      "Started": "2026-10-09T04:19:11.2238330+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch batch32 -Start 250 -Count 6 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 44488,
+      "source": "20261009-041908-962-batch32.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 21764,
+      "Started": "2026-10-09T04:19:13.4151190+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py batch32 240",
+      "ParentPid": 62784,
+      "source": "20261009-041908-962-batch32.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 44084,
+      "Started": "2026-10-09T04:19:11.2395390+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 62784,
+      "source": "20261009-041908-962-batch32.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 61692,
+      "Started": "2026-10-09T04:19:13.4314330+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 21764,
+      "source": "20261009-041908-962-batch32.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 62784,
+      "Started": "2026-10-09T04:19:11.2238337+00:00",
+      "CommandLine": null,
+      "ParentPid": 44488,
+      "source": "20261009-041908-962-batch32.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 44488,
+      "Started": "2026-10-09T04:19:08.3849960+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch batch32 -Start 250 -Count 6 -SelectionFile model-selection-recovery-20261009.json -Transport Direct; exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-041908-962-batch32.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 59244,
+      "Started": "2026-10-09T04:22:49.8604880+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch recovery01 -Start 2 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 59408,
+      "source": "20261009-042247-804-recovery01.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 16940,
+      "Started": "2026-10-09T04:22:49.8769880+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 59244,
+      "source": "20261009-042247-804-recovery01.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 40416,
+      "Started": "2026-10-09T04:22:52.2892090+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py recovery01 240",
+      "ParentPid": 59244,
+      "source": "20261009-042247-804-recovery01.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 61980,
+      "Started": "2026-10-09T04:22:52.3077420+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 40416,
+      "source": "20261009-042247-804-recovery01.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 59244,
+      "Started": "2026-10-09T04:22:49.8604889+00:00",
+      "CommandLine": null,
+      "ParentPid": 59408,
+      "source": "20261009-042247-804-recovery01.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 59408,
+      "Started": "2026-10-09T04:22:47.3025535+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch recovery01 -Start 2 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct; exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-042247-804-recovery01.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 59652,
+      "Started": "2026-10-09T04:22:49.8651450+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch recovery02 -Start 10 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 63816,
+      "source": "20261009-042247-823-recovery02.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 13140,
+      "Started": "2026-10-09T04:22:52.2259860+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py recovery02 240",
+      "ParentPid": 59652,
+      "source": "20261009-042247-823-recovery02.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 53284,
+      "Started": "2026-10-09T04:22:49.8793260+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 59652,
+      "source": "20261009-042247-823-recovery02.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 63960,
+      "Started": "2026-10-09T04:22:52.2554590+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 13140,
+      "source": "20261009-042247-823-recovery02.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 59652,
+      "Started": "2026-10-09T04:22:49.8651459+00:00",
+      "CommandLine": null,
+      "ParentPid": 63816,
+      "source": "20261009-042247-823-recovery02.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 63816,
+      "Started": "2026-10-09T04:22:47.3224811+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch recovery02 -Start 10 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct; exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-042247-823-recovery02.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 62748,
+      "Started": "2026-10-09T04:25:15.1124310+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch retry03 -Start 18 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 65472,
+      "source": "20261009-042512-099-retry03.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 32252,
+      "Started": "2026-10-09T04:25:18.6488570+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py retry03 160",
+      "ParentPid": 62748,
+      "source": "20261009-042512-099-retry03.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 65384,
+      "Started": "2026-10-09T04:25:15.1403300+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 62748,
+      "source": "20261009-042512-099-retry03.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 64752,
+      "Started": "2026-10-09T04:25:18.6740520+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 32252,
+      "source": "20261009-042512-099-retry03.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 62748,
+      "Started": "2026-10-09T04:25:15.1124318+00:00",
+      "CommandLine": null,
+      "ParentPid": 65472,
+      "source": "20261009-042512-099-retry03.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 65472,
+      "Started": "2026-10-09T04:25:10.9907900+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch retry03 -Start 18 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct; exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-042512-099-retry03.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 40316,
+      "Started": "2026-10-09T04:25:56.7260690+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch retry04 -Start 26 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 60132,
+      "source": "20261009-042554-103-retry04.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 54124,
+      "Started": "2026-10-09T04:25:56.7410360+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 40316,
+      "source": "20261009-042554-103-retry04.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 65528,
+      "Started": "2026-10-09T04:25:58.9305780+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py retry04 120",
+      "ParentPid": 40316,
+      "source": "20261009-042554-103-retry04.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 3944,
+      "Started": "2026-10-09T04:25:58.9522640+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 65528,
+      "source": "20261009-042554-103-retry04.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 40316,
+      "Started": "2026-10-09T04:25:56.7260694+00:00",
+      "CommandLine": null,
+      "ParentPid": 60132,
+      "source": "20261009-042554-103-retry04.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 60132,
+      "Started": "2026-10-09T04:25:53.3531983+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch retry04 -Start 26 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct; exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-042554-103-retry04.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 52604,
+      "Started": "2026-10-09T04:27:33.1792090+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch retry05 -Start 34 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 59228,
+      "source": "20261009-042730-471-retry05.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 12576,
+      "Started": "2026-10-09T04:27:33.2015520+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 52604,
+      "source": "20261009-042730-471-retry05.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 52604,
+      "Started": "2026-10-09T04:27:33.1792098+00:00",
+      "CommandLine": null,
+      "ParentPid": 59228,
+      "source": "20261009-042730-471-retry05.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 59228,
+      "Started": "2026-10-09T04:27:29.7274891+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch retry05 -Start 34 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct; exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-042730-471-retry05.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 63780,
+      "Started": "2026-10-09T04:28:03.5477770+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch retry06 -Start 42 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct",
+      "ParentPid": 30748,
+      "source": "20261009-042800-951-retry06.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 54660,
+      "Started": "2026-10-09T04:28:03.5660040+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 63780,
+      "source": "20261009-042800-951-retry06.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 63780,
+      "Started": "2026-10-09T04:28:03.5477778+00:00",
+      "CommandLine": null,
+      "ParentPid": 30748,
+      "source": "20261009-042800-951-retry06.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 30748,
+      "Started": "2026-10-09T04:27:59.9714613+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch retry06 -Start 42 -Count 8 -SelectionFile model-selection-recovery-20261009.json -Transport Direct; exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-042800-951-retry06.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 36704,
+      "Started": "2026-10-09T04:32:26.1784370+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch final06 -Start 42 -Count 8 -SelectionFile model-selection-final16-20261009.json -Transport Direct",
+      "ParentPid": 59912,
+      "source": "20261009-043223-487-final06.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 15448,
+      "Started": "2026-10-09T04:32:26.1977060+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 36704,
+      "source": "20261009-043223-487-final06.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 36704,
+      "Started": "2026-10-09T04:32:26.1784372+00:00",
+      "CommandLine": null,
+      "ParentPid": 59912,
+      "source": "20261009-043223-487-final06.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 59912,
+      "Started": "2026-10-09T04:32:22.7327654+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch final06 -Start 42 -Count 8 -SelectionFile model-selection-final16-20261009.json -Transport Direct\nexit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-043223-487-final06.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 31964,
+      "Started": "2026-10-09T04:32:26.2446480+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch final05 -Start 34 -Count 8 -SelectionFile model-selection-final16-20261009.json -Transport Direct",
+      "ParentPid": 59568,
+      "source": "20261009-043223-593-final05.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 50084,
+      "Started": "2026-10-09T04:32:26.2601170+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 31964,
+      "source": "20261009-043223-593-final05.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 31964,
+      "Started": "2026-10-09T04:32:26.2446489+00:00",
+      "CommandLine": null,
+      "ParentPid": 59568,
+      "source": "20261009-043223-593-final05.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 59568,
+      "Started": "2026-10-09T04:32:22.7013280+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch final05 -Start 34 -Count 8 -SelectionFile model-selection-final16-20261009.json -Transport Direct\nexit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-043223-593-final05.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 6432,
+      "Started": "2026-10-09T04:34:26.9974370+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch final05v2 -Start 34 -Count 8 -SelectionFile model-selection-final16-20261009.json -Transport Direct",
+      "ParentPid": 66220,
+      "source": "20261009-043424-365-final05v2.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 2412,
+      "Started": "2026-10-09T04:34:30.1128540+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py final05v2 240 model-selection-final16-20261009.json",
+      "ParentPid": 6432,
+      "source": "20261009-043424-365-final05v2.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 49396,
+      "Started": "2026-10-09T04:34:27.0170690+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 6432,
+      "source": "20261009-043424-365-final05v2.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 59304,
+      "Started": "2026-10-09T04:34:30.1347950+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 2412,
+      "source": "20261009-043424-365-final05v2.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 6432,
+      "Started": "2026-10-09T04:34:26.9974375+00:00",
+      "CommandLine": null,
+      "ParentPid": 66220,
+      "source": "20261009-043424-365-final05v2.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 66220,
+      "Started": "2026-10-09T04:34:23.6348404+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch final05v2 -Start 34 -Count 8 -SelectionFile model-selection-final16-20261009.json -Transport Direct\nexit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-043424-365-final05v2.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 52180,
+      "Started": "2026-10-09T04:34:27.0009220+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-TeacherBatch.ps1 -Batch final06v2 -Start 42 -Count 8 -SelectionFile model-selection-final16-20261009.json -Transport Direct",
+      "ParentPid": 60564,
+      "source": "20261009-043424-387-final06v2.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 49664,
+      "Started": "2026-10-09T04:34:27.0189400+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 52180,
+      "source": "20261009-043424-387-final06v2.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 65612,
+      "Started": "2026-10-09T04:34:30.1297200+00:00",
+      "CommandLine": "\"C:\\Users\\mysti\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Send-TeacherDirect.py final06v2 240 model-selection-final16-20261009.json",
+      "ParentPid": 52180,
+      "source": "20261009-043424-387-final06v2.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 13140,
+      "Started": "2026-10-09T04:34:30.1551820+00:00",
+      "CommandLine": "\\??\\C:\\Windows\\system32\\conhost.exe 0x4",
+      "ParentPid": 65612,
+      "source": "20261009-043424-387-final06v2.result.json",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 52180,
+      "Started": "2026-10-09T04:34:27.0009226+00:00",
+      "CommandLine": null,
+      "ParentPid": 60564,
+      "source": "20261009-043424-387-final06v2.result.json:retained_handle",
+      "state": "absent",
+      "historical_argv_observed": false
+    },
+    {
+      "Pid": 60564,
+      "Started": "2026-10-09T04:34:23.6582346+00:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\Invoke-OwnedApiProcess.ps1' -Batch final06v2 -Start 42 -Count 8 -SelectionFile model-selection-final16-20261009.json -Transport Direct\nexit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "20261009-043424-387-final06v2.result.json:guardian",
+      "state": "absent",
+      "historical_argv_observed": true
+    },
+    {
+      "Pid": 54876,
+      "Started": "2026-10-09T11:43:26.2964930+08:00",
+      "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n$root='D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008';$t=$null;$e=$null;[void][Management.Automation.Language.Parser]::ParseFile(\\\"$root/Invoke-DirectRemaining.ps1\\\",[ref]$t,[ref]$e);if($e.Count){throw ($e.Message -join ',')}; & \\\"$root/Invoke-DirectRemaining.ps1\\\";exit $LASTEXITCODE\"",
+      "ParentPid": 49492,
+      "source": "direct-wave-controller",
+      "state": "absent",
+      "historical_argv_observed": true
+    }
+  ],
+  "unique_pids": 331,
+  "utc": "2026-10-09T04:38:09.7033754+00:00",
+  "limitation": "Current absence does not reconstruct missing historical argv or unobserved short-lived descendants; retained-handle exits and bounded commands are preserved separately.",
+  "query_errors": [],
+  "historical_records_without_observed_argv": 82,
+  "receipts": 86
+}

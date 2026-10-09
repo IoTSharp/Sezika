@@ -1,0 +1,186 @@
+{
+  "original_api_phase_started_utc": "2026-10-08T11:46:03.0835791Z",
+  "formal": false,
+  "user_approved": true,
+  "maximum_concurrency": 2,
+  "batches": [
+    {
+      "start": 18,
+      "count": 8,
+      "batch": "batch03"
+    },
+    {
+      "start": 26,
+      "count": 8,
+      "batch": "batch04"
+    },
+    {
+      "start": 34,
+      "count": 8,
+      "batch": "batch05"
+    },
+    {
+      "start": 42,
+      "count": 8,
+      "batch": "batch06"
+    },
+    {
+      "start": 50,
+      "count": 8,
+      "batch": "batch07"
+    },
+    {
+      "start": 58,
+      "count": 8,
+      "batch": "batch08"
+    },
+    {
+      "start": 66,
+      "count": 8,
+      "batch": "batch09"
+    },
+    {
+      "start": 74,
+      "count": 8,
+      "batch": "batch10"
+    },
+    {
+      "start": 82,
+      "count": 8,
+      "batch": "batch11"
+    },
+    {
+      "start": 90,
+      "count": 8,
+      "batch": "batch12"
+    },
+    {
+      "start": 98,
+      "count": 8,
+      "batch": "batch13"
+    },
+    {
+      "start": 106,
+      "count": 8,
+      "batch": "batch14"
+    },
+    {
+      "start": 114,
+      "count": 8,
+      "batch": "batch15"
+    },
+    {
+      "start": 122,
+      "count": 8,
+      "batch": "batch16"
+    },
+    {
+      "start": 130,
+      "count": 8,
+      "batch": "batch17"
+    },
+    {
+      "start": 138,
+      "count": 8,
+      "batch": "batch18"
+    },
+    {
+      "start": 146,
+      "count": 8,
+      "batch": "batch19"
+    },
+    {
+      "start": 154,
+      "count": 8,
+      "batch": "batch20"
+    },
+    {
+      "start": 162,
+      "count": 8,
+      "batch": "batch21"
+    },
+    {
+      "start": 170,
+      "count": 8,
+      "batch": "batch22"
+    },
+    {
+      "start": 178,
+      "count": 8,
+      "batch": "batch23"
+    },
+    {
+      "start": 186,
+      "count": 8,
+      "batch": "batch24"
+    },
+    {
+      "start": 194,
+      "count": 8,
+      "batch": "batch25"
+    },
+    {
+      "start": 202,
+      "count": 8,
+      "batch": "batch26"
+    },
+    {
+      "start": 210,
+      "count": 8,
+      "batch": "batch27"
+    },
+    {
+      "start": 218,
+      "count": 8,
+      "batch": "batch28"
+    },
+    {
+      "start": 226,
+      "count": 8,
+      "batch": "batch29"
+    },
+    {
+      "start": 234,
+      "count": 8,
+      "batch": "batch30"
+    },
+    {
+      "start": 242,
+      "count": 8,
+      "batch": "batch31"
+    },
+    {
+      "start": 250,
+      "count": 6,
+      "batch": "batch32"
+    },
+    {
+      "start": 2,
+      "count": 8,
+      "batch": "recovery01"
+    },
+    {
+      "start": 10,
+      "count": 8,
+      "batch": "recovery02"
+    }
+  ],
+  "model": "gpt-6.1-sol",
+  "maximum_requests": 32,
+  "prior_interrupted_upstream_outcome": "unknown",
+  "prior_interrupted_requests": 2,
+  "original_selection_sha256": "0D0285173FDF06D7DF7111EA86DA1CAFDF61974B170F5283C76053E92078DCD0",
+  "api_phase_started_utc": "2026-10-09T03:28:03.8319509+00:00",
+  "maximum_request_seconds": 240,
+  "effort": "max",
+  "provider": "sonnet_vip",
+  "approval": "2026-10-09 user explicitly approved one bounded recovery window for remaining254 / maximum32 requests",
+  "maximum_phase_seconds": 3600,
+  "remaining_records": 254,
+  "human_review": "pending",
+  "prior_successful_requests": 1,
+  "maximum_total_http_attempts": 35,
+  "catalog_sha256": "313197600B9B823A246B9C971EC5F96D4DCFD365BA396F5F4B0DBF3737A1D360",
+  "maximum_total_successful_requests": 33,
+  "source_sha256": "17946E4ED202F45832C4E0E90B62F2CD7AAEDED096896E97268CCDB82DF3C937"
+}

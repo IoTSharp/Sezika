@@ -1,0 +1,4762 @@
+{
+  "contract": "sezika/expanded-prepared256-strict-rendered-lengths/v1",
+  "status": "completed_rendered_lengths_no_model_execution",
+  "records_sha256": "17946E4ED202F45832C4E0E90B62F2CD7AAEDED096896E97268CCDB82DF3C937",
+  "tokenizer_sha256": "197d4cc5406ee12cc50c8b5511f2393cc32d9db321545979ce041c1199178356",
+  "actual_records_path": "D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008\\prepared-records.jsonl",
+  "actual_tokenizer_path": "D:\\source\\Sezika\\.artifacts\\models\\mmbert-independent\\converted\\tokenizer\\tokenizer.json",
+  "source_records": 256,
+  "requested_records": 256,
+  "attempted_records": 256,
+  "completed_records": 256,
+  "failed_records": 0,
+  "not_attempted_records": 0,
+  "strict_max_tokens": 1024,
+  "maximum_measured_tokens": 914,
+  "maximum_semantics": "maximum_measured_tokens_covers_successful_rows_only; rejected_rows_have_null_length",
+  "timeout_seconds": 60,
+  "elapsed_seconds": 0.9423868,
+  "encoder_loaded": false,
+  "feature_computed": false,
+  "training_executed": false,
+  "gpu_opened": false,
+  "process_peak_working_set_bytes": 186458112,
+  "rows": [
+    {
+      "record_id": "massive-en-us-00001",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 120,
+      "marker_positions": [
+        59,
+        75,
+        89,
+        105
+      ],
+      "candidate_ids": [
+        "alarm_set",
+        "alarm_query",
+        "alarm_remove",
+        "calendar_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00002",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 480,
+      "marker_positions": [
+        285,
+        330,
+        381,
+        434
+      ],
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_set",
+        "alarm_remove",
+        "calendar_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00062",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 116,
+      "marker_positions": [
+        55,
+        71,
+        85,
+        101
+      ],
+      "candidate_ids": [
+        "alarm_remove",
+        "alarm_query",
+        "alarm_set",
+        "calendar_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00060",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 116,
+      "marker_positions": [
+        55,
+        69,
+        85,
+        101
+      ],
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_set",
+        "alarm_remove",
+        "calendar_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00259",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 127,
+      "marker_positions": [
+        61,
+        76,
+        94,
+        110
+      ],
+      "candidate_ids": [
+        "audio_volume_mute",
+        "audio_volume_other",
+        "audio_volume_up",
+        "audio_volume_down"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00004",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 120,
+      "marker_positions": [
+        54,
+        69,
+        85,
+        103
+      ],
+      "candidate_ids": [
+        "audio_volume_mute",
+        "audio_volume_down",
+        "audio_volume_other",
+        "audio_volume_up"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00152",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 120,
+      "marker_positions": [
+        54,
+        70,
+        88,
+        103
+      ],
+      "candidate_ids": [
+        "audio_volume_down",
+        "audio_volume_other",
+        "audio_volume_mute",
+        "audio_volume_up"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00187",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 121,
+      "marker_positions": [
+        55,
+        71,
+        86,
+        102
+      ],
+      "candidate_ids": [
+        "audio_volume_down",
+        "audio_volume_mute",
+        "audio_volume_up",
+        "audio_volume_other"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00033",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 115,
+      "marker_positions": [
+        56,
+        71,
+        86,
+        100
+      ],
+      "candidate_ids": [
+        "calendar_remove",
+        "calendar_set",
+        "alarm_query",
+        "calendar_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-06714",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 117,
+      "marker_positions": [
+        58,
+        73,
+        87,
+        102
+      ],
+      "candidate_ids": [
+        "calendar_remove",
+        "calendar_query",
+        "calendar_set",
+        "alarm_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-03201",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 116,
+      "marker_positions": [
+        57,
+        71,
+        86,
+        101
+      ],
+      "candidate_ids": [
+        "calendar_query",
+        "calendar_set",
+        "calendar_remove",
+        "alarm_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-06637",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 123,
+      "marker_positions": [
+        56,
+        70,
+        89,
+        104
+      ],
+      "candidate_ids": [
+        "cooking_recipe",
+        "qa_currency",
+        "cooking_query",
+        "qa_definition"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-09911",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 125,
+      "marker_positions": [
+        58,
+        73,
+        92,
+        110
+      ],
+      "candidate_ids": [
+        "cooking_query",
+        "qa_currency",
+        "qa_definition",
+        "cooking_recipe"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00049",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 133,
+      "marker_positions": [
+        64,
+        84,
+        102,
+        116
+      ],
+      "candidate_ids": [
+        "datetime_convert",
+        "datetime_query",
+        "alarm_query",
+        "alarm_remove"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00048",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 127,
+      "marker_positions": [
+        58,
+        78,
+        96,
+        110
+      ],
+      "candidate_ids": [
+        "datetime_convert",
+        "datetime_query",
+        "alarm_query",
+        "alarm_remove"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-15744",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 122,
+      "marker_positions": [
+        56,
+        72,
+        89,
+        105
+      ],
+      "candidate_ids": [
+        "email_query",
+        "email_querycontact",
+        "email_addcontact",
+        "email_sendemail"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-06510",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 118,
+      "marker_positions": [
+        52,
+        68,
+        85,
+        101
+      ],
+      "candidate_ids": [
+        "email_addcontact",
+        "email_querycontact",
+        "email_sendemail",
+        "email_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-10137",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 119,
+      "marker_positions": [
+        53,
+        70,
+        86,
+        102
+      ],
+      "candidate_ids": [
+        "email_querycontact",
+        "email_addcontact",
+        "email_query",
+        "email_sendemail"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-04539",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 132,
+      "marker_positions": [
+        66,
+        82,
+        98,
+        114
+      ],
+      "candidate_ids": [
+        "email_addcontact",
+        "email_sendemail",
+        "email_query",
+        "email_querycontact"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00045",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 123,
+      "marker_positions": [
+        60,
+        74,
+        93,
+        107
+      ],
+      "candidate_ids": [
+        "general_joke",
+        "general_quirky",
+        "general_greet",
+        "play_audiobook"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00119",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 117,
+      "marker_positions": [
+        54,
+        68,
+        87,
+        102
+      ],
+      "candidate_ids": [
+        "general_greet",
+        "general_quirky",
+        "play_audiobook",
+        "general_joke"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00036",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 119,
+      "marker_positions": [
+        56,
+        75,
+        89,
+        103
+      ],
+      "candidate_ids": [
+        "general_quirky",
+        "general_greet",
+        "general_joke",
+        "play_audiobook"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00025",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 126,
+      "marker_positions": [
+        56,
+        71,
+        86,
+        107
+      ],
+      "candidate_ids": [
+        "iot_coffee",
+        "iot_cleaning",
+        "iot_hue_lightchange",
+        "iot_hue_lightdim"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00162",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 125,
+      "marker_positions": [
+        55,
+        70,
+        91,
+        106
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_hue_lightchange",
+        "iot_coffee",
+        "iot_hue_lightdim"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00009",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 128,
+      "marker_positions": [
+        58,
+        73,
+        88,
+        106
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightdim",
+        "iot_hue_lightchange"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00016",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 129,
+      "marker_positions": [
+        59,
+        77,
+        92,
+        107
+      ],
+      "candidate_ids": [
+        "iot_hue_lightdim",
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00012",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 125,
+      "marker_positions": [
+        54,
+        69,
+        88,
+        103
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_hue_lightoff",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00212",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 126,
+      "marker_positions": [
+        55,
+        70,
+        85,
+        104
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lighton",
+        "iot_hue_lightchange"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00081",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 126,
+      "marker_positions": [
+        55,
+        70,
+        85,
+        106
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightchange",
+        "iot_hue_lightup"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00228",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 128,
+      "marker_positions": [
+        57,
+        76,
+        91,
+        106
+      ],
+      "candidate_ids": [
+        "iot_wemo_off",
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00190",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 126,
+      "marker_positions": [
+        55,
+        70,
+        89,
+        104
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_wemo_on",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-10435",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 125,
+      "marker_positions": [
+        57,
+        71,
+        89,
+        110
+      ],
+      "candidate_ids": [
+        "lists_query",
+        "lists_remove",
+        "lists_createoradd",
+        "calendar_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-06204",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 125,
+      "marker_positions": [
+        57,
+        78,
+        96,
+        110
+      ],
+      "candidate_ids": [
+        "lists_createoradd",
+        "lists_remove",
+        "calendar_query",
+        "lists_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-07742",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 129,
+      "marker_positions": [
+        61,
+        79,
+        100,
+        114
+      ],
+      "candidate_ids": [
+        "lists_remove",
+        "lists_createoradd",
+        "lists_query",
+        "calendar_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00143",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 127,
+      "marker_positions": [
+        62,
+        78,
+        95,
+        110
+      ],
+      "candidate_ids": [
+        "music_likeness",
+        "music_dislikeness",
+        "music_query",
+        "music_settings"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00069",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 120,
+      "marker_positions": [
+        55,
+        72,
+        87,
+        103
+      ],
+      "candidate_ids": [
+        "music_dislikeness",
+        "music_query",
+        "music_likeness",
+        "music_settings"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00075",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 134,
+      "marker_positions": [
+        69,
+        86,
+        102,
+        118
+      ],
+      "candidate_ids": [
+        "music_dislikeness",
+        "music_likeness",
+        "music_settings",
+        "music_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00114",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 119,
+      "marker_positions": [
+        54,
+        70,
+        87,
+        103
+      ],
+      "candidate_ids": [
+        "music_settings",
+        "music_dislikeness",
+        "music_likeness",
+        "music_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00065",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 132,
+      "marker_positions": [
+        63,
+        82,
+        96,
+        114
+      ],
+      "candidate_ids": [
+        "qa_currency",
+        "news_query",
+        "qa_definition",
+        "qa_factoid"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-03692",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 119,
+      "marker_positions": [
+        59,
+        75,
+        88,
+        103
+      ],
+      "candidate_ids": [
+        "play_game",
+        "play_music",
+        "play_audiobook",
+        "play_podcasts"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-06419",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 112,
+      "marker_positions": [
+        52,
+        67,
+        80,
+        95
+      ],
+      "candidate_ids": [
+        "play_audiobook",
+        "play_music",
+        "play_podcasts",
+        "play_game"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00034",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 122,
+      "marker_positions": [
+        62,
+        75,
+        90,
+        106
+      ],
+      "candidate_ids": [
+        "play_music",
+        "play_audiobook",
+        "play_game",
+        "play_podcasts"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-03891",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 113,
+      "marker_positions": [
+        53,
+        68,
+        83,
+        99
+      ],
+      "candidate_ids": [
+        "play_audiobook",
+        "play_podcasts",
+        "play_game",
+        "play_music"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00912",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 116,
+      "marker_positions": [
+        56,
+        71,
+        87,
+        102
+      ],
+      "candidate_ids": [
+        "play_audiobook",
+        "play_game",
+        "play_radio",
+        "play_music"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-13053",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 137,
+      "marker_positions": [
+        66,
+        84,
+        101,
+        117
+      ],
+      "candidate_ids": [
+        "qa_definition",
+        "qa_factoid",
+        "qa_maths",
+        "qa_currency"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-06709",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 126,
+      "marker_positions": [
+        55,
+        73,
+        92,
+        109
+      ],
+      "candidate_ids": [
+        "qa_definition",
+        "qa_currency",
+        "qa_factoid",
+        "qa_maths"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-01801",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 130,
+      "marker_positions": [
+        59,
+        78,
+        95,
+        113
+      ],
+      "candidate_ids": [
+        "qa_currency",
+        "qa_factoid",
+        "qa_definition",
+        "qa_maths"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-12936",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 126,
+      "marker_positions": [
+        55,
+        74,
+        92,
+        108
+      ],
+      "candidate_ids": [
+        "qa_currency",
+        "qa_definition",
+        "qa_maths",
+        "qa_factoid"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00681",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 130,
+      "marker_positions": [
+        58,
+        77,
+        95,
+        112
+      ],
+      "candidate_ids": [
+        "qa_currency",
+        "qa_definition",
+        "qa_factoid",
+        "qa_stock"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-06479",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 114,
+      "marker_positions": [
+        56,
+        70,
+        84,
+        98
+      ],
+      "candidate_ids": [
+        "recommendation_events",
+        "recommendation_locations",
+        "recommendation_movies",
+        "play_audiobook"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-01208",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 116,
+      "marker_positions": [
+        58,
+        72,
+        86,
+        100
+      ],
+      "candidate_ids": [
+        "recommendation_events",
+        "recommendation_locations",
+        "recommendation_movies",
+        "play_audiobook"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-05496",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 114,
+      "marker_positions": [
+        56,
+        70,
+        84,
+        98
+      ],
+      "candidate_ids": [
+        "recommendation_events",
+        "recommendation_locations",
+        "recommendation_movies",
+        "play_audiobook"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-12995",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 143,
+      "marker_positions": [
+        75,
+        93,
+        109,
+        125
+      ],
+      "candidate_ids": [
+        "social_query",
+        "email_addcontact",
+        "email_query",
+        "social_post"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-04333",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 127,
+      "marker_positions": [
+        59,
+        77,
+        94,
+        110
+      ],
+      "candidate_ids": [
+        "social_query",
+        "social_post",
+        "email_addcontact",
+        "email_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00087",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 121,
+      "marker_positions": [
+        57,
+        76,
+        91,
+        106
+      ],
+      "candidate_ids": [
+        "takeaway_query",
+        "takeaway_order",
+        "cooking_query",
+        "cooking_recipe"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00051",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 125,
+      "marker_positions": [
+        61,
+        76,
+        91,
+        110
+      ],
+      "candidate_ids": [
+        "takeaway_order",
+        "cooking_query",
+        "takeaway_query",
+        "cooking_recipe"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-04444",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 122,
+      "marker_positions": [
+        58,
+        74,
+        91,
+        105
+      ],
+      "candidate_ids": [
+        "transport_taxi",
+        "transport_ticket",
+        "transport_traffic",
+        "transport_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-12120",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 128,
+      "marker_positions": [
+        64,
+        80,
+        96,
+        113
+      ],
+      "candidate_ids": [
+        "transport_taxi",
+        "transport_query",
+        "transport_ticket",
+        "transport_traffic"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-06453",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 125,
+      "marker_positions": [
+        61,
+        77,
+        94,
+        110
+      ],
+      "candidate_ids": [
+        "transport_query",
+        "transport_ticket",
+        "transport_taxi",
+        "transport_traffic"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-06546",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 123,
+      "marker_positions": [
+        59,
+        75,
+        91,
+        105
+      ],
+      "candidate_ids": [
+        "transport_query",
+        "transport_taxi",
+        "transport_traffic",
+        "transport_ticket"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00096",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 122,
+      "marker_positions": [
+        54,
+        74,
+        92,
+        106
+      ],
+      "candidate_ids": [
+        "datetime_convert",
+        "datetime_query",
+        "news_query",
+        "weather_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00203",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 118,
+      "marker_positions": [
+        57,
+        71,
+        87,
+        103
+      ],
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_remove",
+        "alarm_set",
+        "calendar_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00202",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 115,
+      "marker_positions": [
+        54,
+        68,
+        84,
+        100
+      ],
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_remove",
+        "alarm_set",
+        "calendar_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00330",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 119,
+      "marker_positions": [
+        53,
+        68,
+        86,
+        102
+      ],
+      "candidate_ids": [
+        "audio_volume_mute",
+        "audio_volume_other",
+        "audio_volume_down",
+        "audio_volume_up"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00005",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 118,
+      "marker_positions": [
+        52,
+        68,
+        86,
+        102
+      ],
+      "candidate_ids": [
+        "audio_volume_down",
+        "audio_volume_other",
+        "audio_volume_up",
+        "audio_volume_mute"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00934",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 444,
+      "marker_positions": [
+        272,
+        308,
+        351,
+        408
+      ],
+      "candidate_ids": [
+        "audio_volume_down",
+        "audio_volume_mute",
+        "audio_volume_other",
+        "audio_volume_up"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00260",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 469,
+      "marker_positions": [
+        297,
+        333,
+        376,
+        433
+      ],
+      "candidate_ids": [
+        "audio_volume_down",
+        "audio_volume_mute",
+        "audio_volume_other",
+        "audio_volume_up"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-01137",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 476,
+      "marker_positions": [
+        294,
+        339,
+        385,
+        430
+      ],
+      "candidate_ids": [
+        "calendar_query",
+        "calendar_remove",
+        "calendar_set",
+        "alarm_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-06715",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 480,
+      "marker_positions": [
+        298,
+        343,
+        389,
+        434
+      ],
+      "candidate_ids": [
+        "calendar_query",
+        "calendar_remove",
+        "calendar_set",
+        "alarm_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-03601",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 462,
+      "marker_positions": [
+        280,
+        325,
+        371,
+        416
+      ],
+      "candidate_ids": [
+        "calendar_query",
+        "calendar_remove",
+        "calendar_set",
+        "alarm_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-13479",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 474,
+      "marker_positions": [
+        284,
+        318,
+        370,
+        429
+      ],
+      "candidate_ids": [
+        "cooking_recipe",
+        "qa_currency",
+        "qa_definition",
+        "cooking_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-09913",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 479,
+      "marker_positions": [
+        289,
+        323,
+        367,
+        419
+      ],
+      "candidate_ids": [
+        "cooking_recipe",
+        "cooking_query",
+        "qa_currency",
+        "qa_definition"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00394",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 544,
+      "marker_positions": [
+        328,
+        380,
+        445,
+        490
+      ],
+      "candidate_ids": [
+        "datetime_query",
+        "datetime_convert",
+        "alarm_query",
+        "alarm_remove"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00195",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 460,
+      "marker_positions": [
+        244,
+        309,
+        354,
+        406
+      ],
+      "candidate_ids": [
+        "datetime_convert",
+        "alarm_query",
+        "datetime_query",
+        "alarm_remove"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-15745",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 524,
+      "marker_positions": [
+        330,
+        379,
+        439,
+        474
+      ],
+      "candidate_ids": [
+        "email_query",
+        "email_querycontact",
+        "email_sendemail",
+        "email_addcontact"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-13220",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 483,
+      "marker_positions": [
+        289,
+        338,
+        387,
+        447
+      ],
+      "candidate_ids": [
+        "email_query",
+        "email_addcontact",
+        "email_querycontact",
+        "email_sendemail"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-15690",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 498,
+      "marker_positions": [
+        304,
+        353,
+        413,
+        462
+      ],
+      "candidate_ids": [
+        "email_addcontact",
+        "email_querycontact",
+        "email_query",
+        "email_sendemail"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-07177",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 618,
+      "marker_positions": [
+        424,
+        473,
+        522,
+        557
+      ],
+      "candidate_ids": [
+        "email_addcontact",
+        "email_query",
+        "email_sendemail",
+        "email_querycontact"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00166",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 437,
+      "marker_positions": [
+        244,
+        287,
+        349,
+        390
+      ],
+      "candidate_ids": [
+        "general_joke",
+        "general_quirky",
+        "play_audiobook",
+        "general_greet"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00120",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 444,
+      "marker_positions": [
+        251,
+        294,
+        340,
+        402
+      ],
+      "candidate_ids": [
+        "general_joke",
+        "general_greet",
+        "general_quirky",
+        "play_audiobook"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00037",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 489,
+      "marker_positions": [
+        296,
+        342,
+        404,
+        447
+      ],
+      "candidate_ids": [
+        "general_greet",
+        "general_quirky",
+        "general_joke",
+        "play_audiobook"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00028",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 467,
+      "marker_positions": [
+        261,
+        306,
+        378,
+        423
+      ],
+      "candidate_ids": [
+        "iot_coffee",
+        "iot_hue_lightchange",
+        "iot_cleaning",
+        "iot_hue_lightdim"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00163",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 474,
+      "marker_positions": [
+        268,
+        313,
+        385,
+        428
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_hue_lightchange",
+        "iot_hue_lightdim",
+        "iot_coffee"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00010",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 495,
+      "marker_positions": [
+        289,
+        361,
+        406,
+        451
+      ],
+      "candidate_ids": [
+        "iot_hue_lightchange",
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightdim"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00022",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 485,
+      "marker_positions": [
+        279,
+        324,
+        367,
+        412
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_hue_lightdim",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00013",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 475,
+      "marker_positions": [
+        270,
+        315,
+        360,
+        402
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightoff",
+        "iot_hue_lightchange"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00267",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 465,
+      "marker_positions": [
+        259,
+        304,
+        349,
+        421
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightchange",
+        "iot_hue_lighton"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00082",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 477,
+      "marker_positions": [
+        272,
+        314,
+        359,
+        404
+      ],
+      "candidate_ids": [
+        "iot_hue_lightup",
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00677",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 520,
+      "marker_positions": [
+        309,
+        354,
+        402,
+        447
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_wemo_off",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00191",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 468,
+      "marker_positions": [
+        256,
+        301,
+        346,
+        395
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_wemo_on",
+        "iot_hue_lightchange"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-10436",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 475,
+      "marker_positions": [
+        267,
+        301,
+        365,
+        410
+      ],
+      "candidate_ids": [
+        "lists_query",
+        "lists_remove",
+        "calendar_query",
+        "lists_createoradd"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-10425",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 511,
+      "marker_positions": [
+        303,
+        337,
+        401,
+        465
+      ],
+      "candidate_ids": [
+        "lists_query",
+        "lists_createoradd",
+        "lists_remove",
+        "calendar_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-07960",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 498,
+      "marker_positions": [
+        290,
+        354,
+        418,
+        452
+      ],
+      "candidate_ids": [
+        "lists_createoradd",
+        "lists_remove",
+        "lists_query",
+        "calendar_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00949",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 494,
+      "marker_positions": [
+        278,
+        331,
+        376,
+        436
+      ],
+      "candidate_ids": [
+        "music_likeness",
+        "music_query",
+        "music_dislikeness",
+        "music_settings"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00070",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 519,
+      "marker_positions": [
+        303,
+        363,
+        408,
+        465
+      ],
+      "candidate_ids": [
+        "music_dislikeness",
+        "music_query",
+        "music_settings",
+        "music_likeness"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00076",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 522,
+      "marker_positions": [
+        306,
+        351,
+        411,
+        464
+      ],
+      "candidate_ids": [
+        "music_query",
+        "music_dislikeness",
+        "music_likeness",
+        "music_settings"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00153",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 483,
+      "marker_positions": [
+        267,
+        327,
+        384,
+        437
+      ],
+      "candidate_ids": [
+        "music_dislikeness",
+        "music_settings",
+        "music_likeness",
+        "music_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00104",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 479,
+      "marker_positions": [
+        289,
+        341,
+        400,
+        433
+      ],
+      "candidate_ids": [
+        "qa_currency",
+        "qa_definition",
+        "news_query",
+        "qa_factoid"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-09665",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 441,
+      "marker_positions": [
+        286,
+        332,
+        366,
+        399
+      ],
+      "candidate_ids": [
+        "play_game",
+        "play_music",
+        "play_podcasts",
+        "play_audiobook"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-10246",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 428,
+      "marker_positions": [
+        273,
+        319,
+        360,
+        394
+      ],
+      "candidate_ids": [
+        "play_game",
+        "play_audiobook",
+        "play_music",
+        "play_podcasts"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00035",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 446,
+      "marker_positions": [
+        291,
+        332,
+        366,
+        412
+      ],
+      "candidate_ids": [
+        "play_audiobook",
+        "play_music",
+        "play_game",
+        "play_podcasts"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-09416",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 460,
+      "marker_positions": [
+        305,
+        346,
+        392,
+        425
+      ],
+      "candidate_ids": [
+        "play_audiobook",
+        "play_game",
+        "play_podcasts",
+        "play_music"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00913",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 400,
+      "marker_positions": [
+        245,
+        286,
+        332,
+        366
+      ],
+      "candidate_ids": [
+        "play_audiobook",
+        "play_game",
+        "play_music",
+        "play_radio"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-13054",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 510,
+      "marker_positions": [
+        297,
+        349,
+        408,
+        453
+      ],
+      "candidate_ids": [
+        "qa_currency",
+        "qa_definition",
+        "qa_factoid",
+        "qa_maths"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-12939",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 491,
+      "marker_positions": [
+        278,
+        330,
+        389,
+        434
+      ],
+      "candidate_ids": [
+        "qa_currency",
+        "qa_definition",
+        "qa_factoid",
+        "qa_maths"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-04969",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 514,
+      "marker_positions": [
+        301,
+        353,
+        412,
+        457
+      ],
+      "candidate_ids": [
+        "qa_currency",
+        "qa_definition",
+        "qa_factoid",
+        "qa_maths"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-12938",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 463,
+      "marker_positions": [
+        250,
+        302,
+        361,
+        406
+      ],
+      "candidate_ids": [
+        "qa_currency",
+        "qa_definition",
+        "qa_factoid",
+        "qa_maths"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-02996",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 482,
+      "marker_positions": [
+        279,
+        325,
+        377,
+        436
+      ],
+      "candidate_ids": [
+        "qa_stock",
+        "qa_currency",
+        "qa_definition",
+        "qa_factoid"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-06480",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 442,
+      "marker_positions": [
+        262,
+        308,
+        354,
+        400
+      ],
+      "candidate_ids": [
+        "recommendation_locations",
+        "recommendation_events",
+        "recommendation_movies",
+        "play_audiobook"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-05551",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 486,
+      "marker_positions": [
+        306,
+        352,
+        398,
+        444
+      ],
+      "candidate_ids": [
+        "recommendation_events",
+        "recommendation_movies",
+        "recommendation_locations",
+        "play_audiobook"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-06362",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 458,
+      "marker_positions": [
+        278,
+        324,
+        370,
+        411
+      ],
+      "candidate_ids": [
+        "recommendation_events",
+        "recommendation_locations",
+        "play_audiobook",
+        "recommendation_movies"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-15142",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 512,
+      "marker_positions": [
+        302,
+        358,
+        413,
+        462
+      ],
+      "candidate_ids": [
+        "social_post",
+        "social_query",
+        "email_addcontact",
+        "email_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-13743",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 493,
+      "marker_positions": [
+        283,
+        339,
+        394,
+        443
+      ],
+      "candidate_ids": [
+        "social_post",
+        "social_query",
+        "email_addcontact",
+        "email_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00088",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 470,
+      "marker_positions": [
+        280,
+        356,
+        400,
+        435
+      ],
+      "candidate_ids": [
+        "takeaway_query",
+        "cooking_query",
+        "takeaway_order",
+        "cooking_recipe"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00052",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 474,
+      "marker_positions": [
+        284,
+        319,
+        363,
+        397
+      ],
+      "candidate_ids": [
+        "takeaway_order",
+        "cooking_query",
+        "cooking_recipe",
+        "takeaway_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-04445",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 504,
+      "marker_positions": [
+        303,
+        359,
+        414,
+        471
+      ],
+      "candidate_ids": [
+        "transport_query",
+        "transport_taxi",
+        "transport_ticket",
+        "transport_traffic"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-12122",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 547,
+      "marker_positions": [
+        346,
+        402,
+        457,
+        514
+      ],
+      "candidate_ids": [
+        "transport_query",
+        "transport_taxi",
+        "transport_ticket",
+        "transport_traffic"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-12126",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 502,
+      "marker_positions": [
+        301,
+        357,
+        412,
+        469
+      ],
+      "candidate_ids": [
+        "transport_query",
+        "transport_taxi",
+        "transport_ticket",
+        "transport_traffic"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-06656",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 467,
+      "marker_positions": [
+        266,
+        322,
+        377,
+        434
+      ],
+      "candidate_ids": [
+        "transport_query",
+        "transport_taxi",
+        "transport_ticket",
+        "transport_traffic"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00097",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 447,
+      "marker_positions": [
+        262,
+        296,
+        361,
+        413
+      ],
+      "candidate_ids": [
+        "weather_query",
+        "datetime_convert",
+        "datetime_query",
+        "news_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00204",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 473,
+      "marker_positions": [
+        278,
+        331,
+        376,
+        427
+      ],
+      "candidate_ids": [
+        "alarm_remove",
+        "alarm_query",
+        "alarm_set",
+        "calendar_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00561",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 487,
+      "marker_positions": [
+        292,
+        337,
+        388,
+        441
+      ],
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_set",
+        "alarm_remove",
+        "calendar_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00093",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 475,
+      "marker_positions": [
+        280,
+        325,
+        378,
+        423
+      ],
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_remove",
+        "calendar_query",
+        "alarm_set"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00599",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 427,
+      "marker_positions": [
+        255,
+        291,
+        334,
+        391
+      ],
+      "candidate_ids": [
+        "audio_volume_down",
+        "audio_volume_mute",
+        "audio_volume_other",
+        "audio_volume_up"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00006",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 440,
+      "marker_positions": [
+        268,
+        304,
+        347,
+        404
+      ],
+      "candidate_ids": [
+        "audio_volume_down",
+        "audio_volume_mute",
+        "audio_volume_other",
+        "audio_volume_up"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-01049",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 439,
+      "marker_positions": [
+        267,
+        303,
+        346,
+        403
+      ],
+      "candidate_ids": [
+        "audio_volume_down",
+        "audio_volume_mute",
+        "audio_volume_other",
+        "audio_volume_up"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00458",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 439,
+      "marker_positions": [
+        267,
+        303,
+        346,
+        403
+      ],
+      "candidate_ids": [
+        "audio_volume_down",
+        "audio_volume_mute",
+        "audio_volume_other",
+        "audio_volume_up"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-01274",
+      "language": "zh",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 513,
+      "marker_positions": [
+        331,
+        376,
+        422,
+        467
+      ],
+      "candidate_ids": [
+        "calendar_query",
+        "calendar_remove",
+        "calendar_set",
+        "alarm_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00237",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 123,
+      "marker_positions": [
+        62,
+        76,
+        92,
+        108
+      ],
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_remove",
+        "alarm_set",
+        "calendar_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00562",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 119,
+      "marker_positions": [
+        58,
+        72,
+        88,
+        104
+      ],
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_remove",
+        "alarm_set",
+        "calendar_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00173",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 118,
+      "marker_positions": [
+        57,
+        71,
+        87,
+        103
+      ],
+      "candidate_ids": [
+        "alarm_query",
+        "alarm_remove",
+        "alarm_set",
+        "calendar_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00115",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 122,
+      "marker_positions": [
+        56,
+        71,
+        89,
+        105
+      ],
+      "candidate_ids": [
+        "audio_volume_mute",
+        "audio_volume_other",
+        "audio_volume_up",
+        "audio_volume_down"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00516",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 123,
+      "marker_positions": [
+        57,
+        72,
+        88,
+        106
+      ],
+      "candidate_ids": [
+        "audio_volume_mute",
+        "audio_volume_down",
+        "audio_volume_other",
+        "audio_volume_up"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00188",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 119,
+      "marker_positions": [
+        53,
+        69,
+        85,
+        100
+      ],
+      "candidate_ids": [
+        "audio_volume_down",
+        "audio_volume_up",
+        "audio_volume_mute",
+        "audio_volume_other"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-02042",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 116,
+      "marker_positions": [
+        57,
+        72,
+        87,
+        101
+      ],
+      "candidate_ids": [
+        "calendar_remove",
+        "calendar_set",
+        "calendar_query",
+        "alarm_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-06734",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 115,
+      "marker_positions": [
+        56,
+        70,
+        85,
+        99
+      ],
+      "candidate_ids": [
+        "calendar_query",
+        "calendar_set",
+        "alarm_query",
+        "calendar_remove"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-06540",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 119,
+      "marker_positions": [
+        60,
+        75,
+        89,
+        104
+      ],
+      "candidate_ids": [
+        "calendar_set",
+        "calendar_query",
+        "calendar_remove",
+        "alarm_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-06613",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 119,
+      "marker_positions": [
+        52,
+        66,
+        81,
+        100
+      ],
+      "candidate_ids": [
+        "cooking_recipe",
+        "cooking_query",
+        "qa_currency",
+        "qa_definition"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-01209",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 127,
+      "marker_positions": [
+        60,
+        75,
+        94,
+        108
+      ],
+      "candidate_ids": [
+        "cooking_query",
+        "qa_currency",
+        "cooking_recipe",
+        "qa_definition"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00676",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 123,
+      "marker_positions": [
+        54,
+        72,
+        86,
+        102
+      ],
+      "candidate_ids": [
+        "datetime_query",
+        "alarm_query",
+        "alarm_remove",
+        "datetime_convert"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-00127",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 131,
+      "marker_positions": [
+        62,
+        80,
+        100,
+        114
+      ],
+      "candidate_ids": [
+        "datetime_query",
+        "datetime_convert",
+        "alarm_query",
+        "alarm_remove"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-11061",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 124,
+      "marker_positions": [
+        58,
+        74,
+        90,
+        107
+      ],
+      "candidate_ids": [
+        "email_query",
+        "email_addcontact",
+        "email_querycontact",
+        "email_sendemail"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-15753",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 129,
+      "marker_positions": [
+        63,
+        79,
+        96,
+        112
+      ],
+      "candidate_ids": [
+        "email_addcontact",
+        "email_querycontact",
+        "email_query",
+        "email_sendemail"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-en-us-15867",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 126,
+      "marker_positions": [
+        60,
+        76,
+        92,
+        108
+      ],
+      "candidate_ids": [
+        "email_addcontact",
+        "email_query",
+        "email_sendemail",
+        "email_querycontact"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-08101",
+      "language": "zh",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 534,
+      "marker_positions": [
+        340,
+        389,
+        424,
+        473
+      ],
+      "candidate_ids": [
+        "email_addcontact",
+        "email_sendemail",
+        "email_query",
+        "email_querycontact"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00167",
+      "language": "zh",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 437,
+      "marker_positions": [
+        244,
+        287,
+        349,
+        395
+      ],
+      "candidate_ids": [
+        "general_joke",
+        "general_quirky",
+        "general_greet",
+        "play_audiobook"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00638",
+      "language": "zh",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 493,
+      "marker_positions": [
+        300,
+        346,
+        408,
+        449
+      ],
+      "candidate_ids": [
+        "general_greet",
+        "general_quirky",
+        "play_audiobook",
+        "general_joke"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00042",
+      "language": "zh",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 495,
+      "marker_positions": [
+        302,
+        364,
+        410,
+        453
+      ],
+      "candidate_ids": [
+        "general_quirky",
+        "general_greet",
+        "general_joke",
+        "play_audiobook"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00026",
+      "language": "zh",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 461,
+      "marker_positions": [
+        255,
+        300,
+        345,
+        417
+      ],
+      "candidate_ids": [
+        "iot_coffee",
+        "iot_cleaning",
+        "iot_hue_lightchange",
+        "iot_hue_lightdim"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00710",
+      "language": "zh",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 462,
+      "marker_positions": [
+        256,
+        301,
+        373,
+        418
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_hue_lightchange",
+        "iot_coffee",
+        "iot_hue_lightdim"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00415",
+      "language": "zh",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 510,
+      "marker_positions": [
+        304,
+        349,
+        394,
+        437
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightdim",
+        "iot_hue_lightchange"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00017",
+      "language": "zh",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 485,
+      "marker_positions": [
+        279,
+        322,
+        367,
+        412
+      ],
+      "candidate_ids": [
+        "iot_hue_lightdim",
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00011",
+      "language": "zh",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 466,
+      "marker_positions": [
+        261,
+        306,
+        348,
+        393
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_hue_lightoff",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00697",
+      "language": "zh",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 477,
+      "marker_positions": [
+        272,
+        317,
+        362,
+        404
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightup",
+        "iot_hue_lightchange"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00388",
+      "language": "zh",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 477,
+      "marker_positions": [
+        266,
+        311,
+        356,
+        428
+      ],
+      "candidate_ids": [
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightchange",
+        "iot_wemo_off"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-00678",
+      "language": "zh",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 508,
+      "marker_positions": [
+        296,
+        345,
+        390,
+        435
+      ],
+      "candidate_ids": [
+        "iot_wemo_on",
+        "iot_cleaning",
+        "iot_coffee",
+        "iot_hue_lightchange"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-10468",
+      "language": "zh",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 497,
+      "marker_positions": [
+        289,
+        323,
+        387,
+        451
+      ],
+      "candidate_ids": [
+        "lists_query",
+        "lists_createoradd",
+        "lists_remove",
+        "calendar_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-10424",
+      "language": "zh",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 523,
+      "marker_positions": [
+        315,
+        379,
+        443,
+        477
+      ],
+      "candidate_ids": [
+        "lists_createoradd",
+        "lists_remove",
+        "lists_query",
+        "calendar_query"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-10449",
+      "language": "zh",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 499,
+      "marker_positions": [
+        291,
+        355,
+        389,
+        434
+      ],
+      "candidate_ids": [
+        "lists_createoradd",
+        "lists_query",
+        "calendar_query",
+        "lists_remove"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "massive-zh-cn-01179",
+      "language": "zh",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 511,
+      "marker_positions": [
+        295,
+        355,
+        408,
+        453
+      ],
+      "candidate_ids": [
+        "music_dislikeness",
+        "music_likeness",
+        "music_query",
+        "music_settings"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-000",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 342,
+      "marker_positions": [
+        301,
+        321
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-001",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 276,
+      "marker_positions": [
+        235,
+        255
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-002",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 173,
+      "marker_positions": [
+        132,
+        152
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-003",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 208,
+      "marker_positions": [
+        167,
+        187
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-004",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 304,
+      "marker_positions": [
+        263,
+        283
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-005",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 199,
+      "marker_positions": [
+        158,
+        178
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-006",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 225,
+      "marker_positions": [
+        184,
+        204
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-007",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 220,
+      "marker_positions": [
+        179,
+        199
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-008",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 175,
+      "marker_positions": [
+        134,
+        154
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-009",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 308,
+      "marker_positions": [
+        267,
+        287
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-010",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 253,
+      "marker_positions": [
+        212,
+        232
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-011",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 265,
+      "marker_positions": [
+        224,
+        244
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-012",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 176,
+      "marker_positions": [
+        135,
+        155
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-013",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 149,
+      "marker_positions": [
+        108,
+        128
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-014",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 290,
+      "marker_positions": [
+        249,
+        269
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-015",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 254,
+      "marker_positions": [
+        213,
+        233
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-016",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 279,
+      "marker_positions": [
+        238,
+        258
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-017",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 233,
+      "marker_positions": [
+        192,
+        212
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-018",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 225,
+      "marker_positions": [
+        184,
+        204
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-019",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 315,
+      "marker_positions": [
+        274,
+        294
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-020",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 228,
+      "marker_positions": [
+        187,
+        207
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-021",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 235,
+      "marker_positions": [
+        194,
+        214
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-022",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 175,
+      "marker_positions": [
+        134,
+        154
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-023",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 164,
+      "marker_positions": [
+        123,
+        143
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-024",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 247,
+      "marker_positions": [
+        206,
+        226
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-025",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 272,
+      "marker_positions": [
+        231,
+        251
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-026",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 315,
+      "marker_positions": [
+        274,
+        294
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-027",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 203,
+      "marker_positions": [
+        162,
+        182
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-028",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 171,
+      "marker_positions": [
+        130,
+        150
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-029",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 197,
+      "marker_positions": [
+        156,
+        176
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-030",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 194,
+      "marker_positions": [
+        153,
+        173
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-031",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 326,
+      "marker_positions": [
+        285,
+        305
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-032",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 210,
+      "marker_positions": [
+        169,
+        189
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-033",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 192,
+      "marker_positions": [
+        151,
+        171
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-034",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 344,
+      "marker_positions": [
+        303,
+        323
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-035",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 161,
+      "marker_positions": [
+        120,
+        140
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-036",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 323,
+      "marker_positions": [
+        282,
+        302
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-037",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 177,
+      "marker_positions": [
+        136,
+        156
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-038",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 266,
+      "marker_positions": [
+        225,
+        245
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-040",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 310,
+      "marker_positions": [
+        269,
+        289
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-041",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 283,
+      "marker_positions": [
+        242,
+        262
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-042",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 196,
+      "marker_positions": [
+        155,
+        175
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-043",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 265,
+      "marker_positions": [
+        224,
+        244
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-044",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 274,
+      "marker_positions": [
+        233,
+        253
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-045",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 213,
+      "marker_positions": [
+        172,
+        192
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-046",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 229,
+      "marker_positions": [
+        188,
+        208
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-047",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 200,
+      "marker_positions": [
+        159,
+        179
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-048",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 305,
+      "marker_positions": [
+        264,
+        284
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-050",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 288,
+      "marker_positions": [
+        247,
+        267
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-051",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 260,
+      "marker_positions": [
+        219,
+        239
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-052",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 499,
+      "marker_positions": [
+        458,
+        478
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-053",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 422,
+      "marker_positions": [
+        381,
+        401
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-054",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 155,
+      "marker_positions": [
+        114,
+        134
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-056",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 145,
+      "marker_positions": [
+        104,
+        124
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-057",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 189,
+      "marker_positions": [
+        148,
+        168
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-060",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 160,
+      "marker_positions": [
+        119,
+        139
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-072",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 170,
+      "marker_positions": [
+        129,
+        149
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-075",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 413,
+      "marker_positions": [
+        372,
+        392
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-077",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 238,
+      "marker_positions": [
+        197,
+        217
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-082",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 355,
+      "marker_positions": [
+        314,
+        334
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-086",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 234,
+      "marker_positions": [
+        193,
+        213
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-088",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 240,
+      "marker_positions": [
+        199,
+        219
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-090",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 282,
+      "marker_positions": [
+        241,
+        261
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-train-row-094",
+      "language": "en",
+      "split": "train",
+      "status": "rendered",
+      "token_count": 297,
+      "marker_positions": [
+        256,
+        276
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-000",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 401,
+      "marker_positions": [
+        360,
+        380
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-001",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 390,
+      "marker_positions": [
+        349,
+        369
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-002",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 174,
+      "marker_positions": [
+        133,
+        153
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-003",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 231,
+      "marker_positions": [
+        190,
+        210
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-004",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 216,
+      "marker_positions": [
+        175,
+        195
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-005",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 239,
+      "marker_positions": [
+        198,
+        218
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-006",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 267,
+      "marker_positions": [
+        226,
+        246
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-007",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 247,
+      "marker_positions": [
+        206,
+        226
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-008",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 134,
+      "marker_positions": [
+        93,
+        113
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-009",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 229,
+      "marker_positions": [
+        188,
+        208
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-010",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 302,
+      "marker_positions": [
+        261,
+        281
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-011",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 247,
+      "marker_positions": [
+        206,
+        226
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-012",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 229,
+      "marker_positions": [
+        188,
+        208
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-013",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 249,
+      "marker_positions": [
+        208,
+        228
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-014",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 272,
+      "marker_positions": [
+        231,
+        251
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-015",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 211,
+      "marker_positions": [
+        170,
+        190
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-016",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 266,
+      "marker_positions": [
+        225,
+        245
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-017",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 175,
+      "marker_positions": [
+        134,
+        154
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-018",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 291,
+      "marker_positions": [
+        250,
+        270
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-020",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 339,
+      "marker_positions": [
+        298,
+        318
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-027",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 339,
+      "marker_positions": [
+        298,
+        318
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-032",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 202,
+      "marker_positions": [
+        161,
+        181
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-036",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 243,
+      "marker_positions": [
+        202,
+        222
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-038",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 349,
+      "marker_positions": [
+        308,
+        328
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-039",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 160,
+      "marker_positions": [
+        119,
+        139
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-041",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 265,
+      "marker_positions": [
+        224,
+        244
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-052",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 323,
+      "marker_positions": [
+        282,
+        302
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-054",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 186,
+      "marker_positions": [
+        145,
+        165
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-055",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 914,
+      "marker_positions": [
+        873,
+        893
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-058",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 204,
+      "marker_positions": [
+        163,
+        183
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-060",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 275,
+      "marker_positions": [
+        234,
+        254
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    },
+    {
+      "record_id": "boolq-validation-row-061",
+      "language": "en",
+      "split": "development",
+      "status": "rendered",
+      "token_count": 158,
+      "marker_positions": [
+        117,
+        137
+      ],
+      "candidate_ids": [
+        "false",
+        "true"
+      ],
+      "failure": null
+    }
+  ]
+}

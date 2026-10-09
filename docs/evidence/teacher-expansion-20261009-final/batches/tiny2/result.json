@@ -1,0 +1,107 @@
+{
+  "batch": "tiny2",
+  "status": "completed_and_validated",
+  "start_index": 0,
+  "record_count": 2,
+  "http_status": 200,
+  "response_id": "resp_0e6cf9e8812af87f016ac782821a488198b9226568d7b65949",
+  "response_model": "gpt-6.1-sol",
+  "response_reasoning_effort": "max",
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning_effort": "max",
+  "initially_requested_effort": "ultra",
+  "usage": {
+    "input_tokens": 5121,
+    "input_tokens_details": {
+      "cached_tokens": 4224,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 411,
+    "output_tokens_details": {
+      "reasoning_tokens": 187
+    },
+    "total_tokens": 5532,
+    "attribution": {
+      "items": {
+        "msg_0e6cf9e8812af87f016ac782821b288198927be0482e267bc9": {
+          "input_tokens": 360,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 0,
+          "content": [
+            {
+              "input_tokens": 360,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            }
+          ]
+        },
+        "msg_0e6cf9e8812af87f016ac782821b288198bc38d6ed4e54d440": {
+          "input_tokens": 355,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 0,
+          "content": [
+            {
+              "input_tokens": 355,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 0
+            }
+          ]
+        },
+        "msg_0e6cf9e8812af87f016ac78289f0d08198b63e4a37cb2e261e": {
+          "input_tokens": 0,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 224,
+          "content": [
+            {
+              "input_tokens": 0,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "output_tokens": 224
+            }
+          ]
+        },
+        "rs_0e6cf9e8812af87f016ac7828981d881989b2ba23359526814": {
+          "input_tokens": 2,
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "output_tokens": 187
+        }
+      },
+      "request_fields": {
+        "instructions": {
+          "input_tokens": 4216,
+          "cached_tokens": 4036,
+          "cache_write_tokens": 0,
+          "output_tokens": 0
+        },
+        "text.format": {
+          "input_tokens": 188,
+          "cached_tokens": 188,
+          "cache_write_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    }
+  },
+  "failure_type": null,
+  "elapsed_seconds": 15.2307675,
+  "maximum_seconds": 260,
+  "maximum_http_requests": 1,
+  "identity": {
+    "Pid": 69836,
+    "Started": "2026-10-08T11:46:04.4943700Z",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -File D:\\source\\Sezika\\.artifacts\\teacher-expansion-20261008/Invoke-TeacherBatch.ps1 -Batch tiny2 -Start 0 -Count 2",
+    "ParentPid": 18836
+  },
+  "children_started": false,
+  "credential_persisted": false,
+  "cleanup_errors": [],
+  "cleanup_elapsed_seconds": 0.0157069,
+  "human_review": "pending",
+  "formal": false
+}

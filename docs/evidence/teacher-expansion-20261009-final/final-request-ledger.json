@@ -1,0 +1,525 @@
+{
+  "connectivity_get_requests": 1,
+  "pre_http_failures": 3,
+  "successful_requests": 31,
+  "duplicate_successful_records": 0,
+  "upstream_billing_for_failed_or_interrupted_requests": "unknown",
+  "not_reviewed": 16,
+  "maximum_total_http_attempts": 39,
+  "training_executed": false,
+  "reviewed": 240,
+  "conservative_http_attempts": 38,
+  "missing_records": [
+    {
+      "record_id": "massive-en-us-00143",
+      "family_id": "massive-1.1-utterance-143",
+      "split": "train",
+      "language": "en"
+    },
+    {
+      "record_id": "massive-en-us-00069",
+      "family_id": "massive-1.1-utterance-69",
+      "split": "train",
+      "language": "en"
+    },
+    {
+      "record_id": "massive-en-us-00075",
+      "family_id": "massive-1.1-utterance-75",
+      "split": "train",
+      "language": "en"
+    },
+    {
+      "record_id": "massive-en-us-00114",
+      "family_id": "massive-1.1-utterance-114",
+      "split": "train",
+      "language": "en"
+    },
+    {
+      "record_id": "massive-en-us-00065",
+      "family_id": "massive-1.1-utterance-65",
+      "split": "train",
+      "language": "en"
+    },
+    {
+      "record_id": "massive-en-us-03692",
+      "family_id": "massive-1.1-utterance-3692",
+      "split": "train",
+      "language": "en"
+    },
+    {
+      "record_id": "massive-en-us-06419",
+      "family_id": "massive-1.1-utterance-6419",
+      "split": "train",
+      "language": "en"
+    },
+    {
+      "record_id": "massive-en-us-00034",
+      "family_id": "massive-1.1-utterance-34",
+      "split": "train",
+      "language": "en"
+    },
+    {
+      "record_id": "massive-en-us-03891",
+      "family_id": "massive-1.1-utterance-3891",
+      "split": "train",
+      "language": "en"
+    },
+    {
+      "record_id": "massive-en-us-00912",
+      "family_id": "massive-1.1-utterance-912",
+      "split": "train",
+      "language": "en"
+    },
+    {
+      "record_id": "massive-en-us-13053",
+      "family_id": "massive-1.1-utterance-13053",
+      "split": "train",
+      "language": "en"
+    },
+    {
+      "record_id": "massive-en-us-06709",
+      "family_id": "massive-1.1-utterance-6709",
+      "split": "train",
+      "language": "en"
+    },
+    {
+      "record_id": "massive-en-us-01801",
+      "family_id": "massive-1.1-utterance-1801",
+      "split": "train",
+      "language": "en"
+    },
+    {
+      "record_id": "massive-en-us-12936",
+      "family_id": "massive-1.1-utterance-12936",
+      "split": "train",
+      "language": "en"
+    },
+    {
+      "record_id": "massive-en-us-00681",
+      "family_id": "massive-1.1-utterance-681",
+      "split": "train",
+      "language": "en"
+    },
+    {
+      "record_id": "massive-en-us-06479",
+      "family_id": "massive-1.1-utterance-6479",
+      "split": "train",
+      "language": "en"
+    }
+  ],
+  "entries": [
+    {
+      "batch": "tiny2",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 2,
+      "http_status": 200,
+      "transport_request_sent": null,
+      "request_sha256": "D841D65315D0BFD6671A6F0E01764DBA4E4BCAA4D4521B9CE1B9D942AD24D8AA",
+      "response_sha256": "BC9E00D49D870E1B7C8122CA7958EFDFFA471DCFC1AB04012CB69FC382AABB6C"
+    },
+    {
+      "batch": "batch01",
+      "status": "request_running",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": null,
+      "transport_request_sent": null,
+      "request_sha256": "41F0BDA51E87C93E2C2F8293F3D59BCB56544DF9FA2079FD044936F84C9DB30A",
+      "response_sha256": null
+    },
+    {
+      "batch": "batch02",
+      "status": "interrupted_upstream_unknown",
+      "request_persisted": true,
+      "count": null,
+      "http_status": null,
+      "transport_request_sent": null,
+      "request_sha256": "430ABEED980C9828B8225AC1364D99830BCCF2EB66CDE9B17C2F4EF2CAD37207",
+      "response_sha256": null
+    },
+    {
+      "batch": "batch03",
+      "status": "failed",
+      "request_persisted": false,
+      "count": 8,
+      "http_status": null,
+      "transport_request_sent": null,
+      "request_sha256": null,
+      "response_sha256": null
+    },
+    {
+      "batch": "batch04",
+      "status": "failed",
+      "request_persisted": false,
+      "count": 8,
+      "http_status": null,
+      "transport_request_sent": null,
+      "request_sha256": null,
+      "response_sha256": null
+    },
+    {
+      "batch": "batch05",
+      "status": "failed",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 502,
+      "transport_request_sent": null,
+      "request_sha256": "A46BBD6A245F96FD444E4FFFF48B18292F0FAEE7F5310B22BBA4978D3C92694E",
+      "response_sha256": "2A77A61897244A74DAACEC7D3B1FC876DEA736D367CB246F68FF63884FC6166C"
+    },
+    {
+      "batch": "batch06",
+      "status": "failed",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 502,
+      "transport_request_sent": null,
+      "request_sha256": "B4D8FBFB4722234972A90318BA398BA263110B98CB09EA0CD5362CCF070DAD8F",
+      "response_sha256": "2A77A61897244A74DAACEC7D3B1FC876DEA736D367CB246F68FF63884FC6166C"
+    },
+    {
+      "batch": "batch07",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "D1DD1ED280E378EC83F3D149072C0BB20F31EB85F53CF50FA83B83E93F0FB6A9",
+      "response_sha256": "54BB21E30D795717407F95372716EDF2E9C237DAC0E309430DCB0926722772B8"
+    },
+    {
+      "batch": "batch08",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "D7A456FB455C3241972DB701614DF6ADF772FE019ECDEF06C964F8A8C595F5CD",
+      "response_sha256": "F3A92D538F57FC6BAD3DF9F29BC3FD3565DD96CF0C982CED692290623450706B"
+    },
+    {
+      "batch": "batch09",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "CBA600136F0C873C8A35346BD4015D3B47764B5F5DD10EBB685CD1586E6FB18F",
+      "response_sha256": "E0BF507752EEDF8A41354F822EE718A8579C8B8DCD0ED2E5EBF19A9C681E0DF9"
+    },
+    {
+      "batch": "batch10",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "0EE75727406ABEE10FFB38F46F63F85CFDAD1ED05A61400C6C9AAED609F39BCE",
+      "response_sha256": "3A14997E23C8D77D1BC8E4835F664B0114008C2C9C9576E5A39460016E9581F6"
+    },
+    {
+      "batch": "batch11",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "32394A633812B0064515206557A5CFE242D8AEBD02461011B428FC26057D082D",
+      "response_sha256": "61FDD8F314CF4CC591D2466FF884773D5978D5F4816311277DB7B1A92A17212A"
+    },
+    {
+      "batch": "batch12",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "2FE37C434B87466B0DD615DDFCDB617CCDB956BE2BDF187CE9AD66C7003D06C2",
+      "response_sha256": "BE7649642F7D88F2F266A74CD83637D1BB46BCFAFDDCFC617B4D292882A642AE"
+    },
+    {
+      "batch": "batch13",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "A2A6D40CC6DE58E50D2F4387A19280FD9033578032780C5F886DECF7738FA422",
+      "response_sha256": "F2B30240B815E836834CE7ED1D3EAACF99075B12DFC1F265E363CD1024C2274F"
+    },
+    {
+      "batch": "batch14",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "332C4F213CFBD5CD4A7DCF9621556F2C4AA43798B37CE479BF289DF56A169E64",
+      "response_sha256": "ED76AABB302D0F8EEA7A4F725982ACB1FA5A3363F84F5BB01DB013D92A0027C5"
+    },
+    {
+      "batch": "batch15",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "ED6FD06634FF7945AC060343D2C8FD2C2DCE0068E1A74BA1C16A9A10CDBCC1F3",
+      "response_sha256": "FB8F87BD53AEAA914DAE0685E374EAC21903B53A501563500F46064CD571D07C"
+    },
+    {
+      "batch": "batch16",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "0F90CEA53E60B5FE127ED8EAF4DF628B64CD65F2EB46E69C4A6545632FF86E6A",
+      "response_sha256": "B5B242A2651F3C2A4836FAD78BDE14C291DEA7B8B14A74BE23D90278618A8B09"
+    },
+    {
+      "batch": "batch17",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "E4F8158C2438D217293F59206FEFACE53CE9B0AAF1E62220289867E6A72923BF",
+      "response_sha256": "E78E2AEBF0971541E6883149323BAD925372967CC000DE6FDA93355143FE3EDC"
+    },
+    {
+      "batch": "batch18",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "5A7AEA76AABF6B62C84CBB7FE69A3F53FCB77C3D3D6F49E208AAEBB02E367D4A",
+      "response_sha256": "1B9FB68C3460BCA60897B52C66248517460C9C6A60103D9EE9ABDC10A5983D7E"
+    },
+    {
+      "batch": "batch19",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "94B57F24FF6932C7BDFAF2DE857806B6AA30066A6AB7F3DCD64BB93FE51A0B29",
+      "response_sha256": "3492C6E6DE22255BE051497EEDD4D9E08C9C62C062DD9CDD960665F060D34FB7"
+    },
+    {
+      "batch": "batch20",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "CAC03A3CF37388F6D50092EF02DF8D07C11CC5214EEC969A1A8613712B144CB5",
+      "response_sha256": "B46C6A181211431CDB6C0A9A85AD7C009EC52AED0CC0C8A456EE356822E35238"
+    },
+    {
+      "batch": "batch21",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "74F34377C7FA6D215551FAB7EC59E3725EAE331C525EBDE2B8B6361058109264",
+      "response_sha256": "45BDD1773EAB7DA7583BB71F96A8A25E967E14A5D473890FAEDF03804A9721B5"
+    },
+    {
+      "batch": "batch22",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "C94588B28519B86A8D311191878F3130D068C25411EC51E553460206061FED5A",
+      "response_sha256": "314BDBE0133F1980EA3687E1AF6973002355AF93FD14FF1B3E9D56DF42400B29"
+    },
+    {
+      "batch": "batch23",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "F97D9FDA0ABF047D81BBAD3EC473A7863818682D919C5E8978EF340233F28C9B",
+      "response_sha256": "34AC3C4141C5B296D57C17269380E695882946D53F86DBAEB5DAFA5408EF8635"
+    },
+    {
+      "batch": "batch24",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "D4BD6742DC848A5FF0B67EB1803C127D93345FA8FDB82C52E384BBE0676B9163",
+      "response_sha256": "E5CCFBBA5E2252AF51DCD555250F0F3F9BE86B579EABCCDAEBC86631B6E858A2"
+    },
+    {
+      "batch": "batch25",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "3DF0C6029E4A8FBDEF19A0DDDF9F7BF87C3BE5A19F53E5FBB7BF91CE47A02E7F",
+      "response_sha256": "C349653E1784861C145C07AB488C9D75B8D4B7C68899D3A6CB9527E39F0431ED"
+    },
+    {
+      "batch": "batch26",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "E7C114C3F6959C21236C241BF9769AA6BFCC369355C839DCAEB137D501EEE996",
+      "response_sha256": "8A22C042E66DA043BA3CAAC974AF133E62824CDE6D54A26D62556F28807C0801"
+    },
+    {
+      "batch": "batch27",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "44AB8E46C5D0BB5AC1E302F1B0B8FA63DA5C9BE476479F9F78CBE24FC70A02AC",
+      "response_sha256": "6B4B8365A35F650935A218433E8ED814720D7ACAB6E0650576699034B968DB96"
+    },
+    {
+      "batch": "batch28",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "4CA9B677F55F53ADEF34F8EBEC6717F62397C18C8312D29936492123D8890E86",
+      "response_sha256": "A46AAC3FB4676D169699F142B62F440C34CA63C6FB892D7A8AF1B51C7D5CDB76"
+    },
+    {
+      "batch": "batch29",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "5A43E89F82AA5E4B68155A10DE03057A339B47E4A4EBF586179F524C9F796DFC",
+      "response_sha256": "9894A330B3B3B9BA5574A60A152ECA7F9F21BD4C2BC8029DE959963B07D2F9BB"
+    },
+    {
+      "batch": "batch30",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "02830ECD311604459CAF49760BE473778AF708503FF20B9C2421B0ACF8EA2C4D",
+      "response_sha256": "616C9E816F5AE1C5230AFC67A07D4ADCE7722991B61C857FC336F934C119A75C"
+    },
+    {
+      "batch": "batch31",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "C6C5E42A9BA06038962A784AE245CEC40A2029A2905160B563A00D97D717F3DA",
+      "response_sha256": "66E184BEFB6588E4A0F7967D8B81B2885AA59418FF61457FD49CC8A7632457A7"
+    },
+    {
+      "batch": "batch32",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 6,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "72E566651807E4F885DFA57D532D9BAF008A4526B674AD7088AD5B1B23071473",
+      "response_sha256": "3579959775E016BEC113354A1FB67ED942CC760052ACF00F28C1A59776C49204"
+    },
+    {
+      "batch": "batch03v2",
+      "status": "failed",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": null,
+      "transport_request_sent": null,
+      "request_sha256": "15E2FD133D3F9D167534D48A7B1C4FDDEE3A7D53050150B1263B49F9716E4DAE",
+      "response_sha256": null
+    },
+    {
+      "batch": "batch04v2",
+      "status": "failed",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 502,
+      "transport_request_sent": null,
+      "request_sha256": "FCBB4AFAA4C03E1C4EAB7CB7E0B98F1B4B2FDD0DCA5C887CBB8D33BE0689179A",
+      "response_sha256": "2A77A61897244A74DAACEC7D3B1FC876DEA736D367CB246F68FF63884FC6166C"
+    },
+    {
+      "batch": "recovery01",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "F712311CF0137547B76A7A944271F231214939FBDB97FC02BD0104D8E16F952B",
+      "response_sha256": "FDF6842B0AE0BAC43CF59EBD0BD7D9ECB478AAC6E0E00D591CE1F1666D0E0B3B"
+    },
+    {
+      "batch": "recovery02",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "51D49D1637F2D5BF70549E16A7E5E034012BEFD1E2400763E494FC6D82A3C58B",
+      "response_sha256": "875633DA3AB304F560AC5EA682EAC4B6A6EF0C43E0275E64E7A57411007FD580"
+    },
+    {
+      "batch": "retry03",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "C04FF1AE3E7F797C1EA8898AC27B7916322CC8854C26F06FB050EF5EA45D87FB",
+      "response_sha256": "333DFDBD1C41EF1D199FF8833C6DD2C83A5BCF2A8264512BBB89F2F22FB71551"
+    },
+    {
+      "batch": "retry04",
+      "status": "completed_and_validated",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": 200,
+      "transport_request_sent": true,
+      "request_sha256": "5E196D28F21D14738184D98904DA506189943B3CE486E65D84062BEDE80BE14E",
+      "response_sha256": "9801CAEA9064CA64AC27A688E74278A625B6946D02CF7C38AB5A670D12FCAFEE"
+    },
+    {
+      "batch": "retry05",
+      "status": "failed",
+      "request_persisted": true,
+      "count": 8,
+      "http_status": null,
+      "transport_request_sent": true,
+      "request_sha256": "5D3A4E02E3A89BD126C0E84EEDCFF3542141715A08FE1E613BE4EE0E3F91A25A",
+      "response_sha256": null
+    },
+    {
+      "batch": "retry06",
+      "status": "failed",
+      "request_persisted": false,
+      "count": 8,
+      "http_status": null,
+      "transport_request_sent": null,
+      "request_sha256": null,
+      "response_sha256": null
+    }
+  ],
+  "count_rule": "Persisted request counts conservatively as one attempted HTTP, including interruptions; GET connectivity probe listed separately",
+  "recovery_http_attempts": 35,
+  "utc": "2026-10-09T04:28:42.2629677+00:00"
+}
