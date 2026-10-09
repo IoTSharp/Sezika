@@ -1,6 +1,6 @@
 ---
 license: unknown
-license_link: LICENSE-COMPONENTS.md
+license_link: https://huggingface.co/{{REPOSITORY_ID}}/blob/main/LICENSE-COMPONENTS.md
 language:
   - en
   - zh

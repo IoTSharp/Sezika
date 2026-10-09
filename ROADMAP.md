@@ -20,7 +20,7 @@
 
 ## 当前执行顺序与门槛
 
-2026-10-09 用户授权的新项：仓库租用训练技能已完成并通过独立行为审查（新实例仍须迁移现有脚本绑定）；18文件/1,245,737,223 bytes实验模型公开包、双语模型卡、分项许可及真实head加载身份已冻结并核SHA。Hugging Face实际创建403，失败后确认目标不存在；模力方舟固定IoTSharp组织，实际GET401，需要有效认证。两平台目标同名 `IoTSharp/Sezika-mmBERT-8192-experimental`，上传与真实公开链接仍未完成，已索取必要凭据；取得后先核组织/远端状态，逐件上传验证再更新中英README。发布授权已取得，第三方权利补证与正式质量/AOT/校准/封存仍分别pending；不重训、不调用教师、不push源码、heartbeat保持PAUSED。暂停源码与旧诊断hunk保持。见[技能验收](docs/evidence/rental-training-skill-2026-10-09.md)和[发布回执](docs/evidence/model-publishing-2026-10-09.md)。
+2026-10-10 北京时间发布进展：租用训练技能及独立审查完成；Hugging Face IoTSharp/Sezika-mmBERT-8192-experimental实验模型已发布，18文件/1,245,737,297 bytes、revision a46028dfebd539bd04a1c567fbb24c26a649a50a，匿名文件集合/大小/SHA及大文件真实内容检查通过，中英README已更新下载链接。新HF令牌存当前用户Windows凭据管理器，读回与账户/组织核验通过；历史403、Xet取消、串行HTTP超时和分片恢复保留。模力方舟IoTSharp同名镜像仍缺独立认证，尚未创建或上传；取得后核组织和真实远端状态，再上传同一冻结包并核链接。发布授权已取得，第三方权利补证与正式质量/AOT/校准/封存仍分别pending；新租用实例仍须迁移脚本身份绑定。不重训、不调用教师、不push源码、heartbeat保持PAUSED。暂停源码与旧诊断hunk保持。见[技能验收](docs/evidence/rental-training-skill-2026-10-09.md)、[发布回执](docs/evidence/model-publishing-2026-10-09.md)和[凭据保存说明](docs/model-credential-storage.md)。
 
 2026-10-09 租用GPU固定实验已完成：RTX5090上唯一24576updates/LR0.001/seed17/strict8192/零head/encoder冻结训练35.2160222秒/231 forwards；新进程独立验证231 forwards及原修正32回归完成。完整模型于北京时间21:17:08下载并逐项核SHA，早于23:22目标和2026-10-10 00:22租期截止。本机独立证据核验10/10 PASS；teacher一致train118/162、dev27/53、换序7/16，selected ID改变6/16，不代表正式准确率或质量通过。原215/train162/dev53、全256账本及修题/教师证据不变。训练/下载已停止，其他ROADMAP暂停；正式人审、许可发布、质量、校准、封存、新head AOT/性能仍pending。旧服务器实验及故障保留为历史，不重复新旧机训练。见[租用实验完整证据](docs/evidence/rental-training-2026-10-09.md)。
 
