@@ -44,7 +44,7 @@ HF 初始 revision `d114243af8934186653635cb00d7ff30d10c4922` 仅含 `.gitattrib
 
 00:52已核匿名 `HfApi(token=False)` 固定revision验证18路径、总 **1,245,737,297 bytes**、逐文件大小/SHA全部PASS。encoder/tokenizer核服务端LFS SHA并实际范围读取、比对本机前缀，确认可取真实对象而非pointer；其余16文件完整下载重算SHA。大文件没有重复完整下载，不能称全量二次网络SHA。结果 `hf-publication-complete.json` 为 `PASS_public_upload_all_files_verified`，31.481秒；guardian Succeeded/exit0/live0/unknown0。中英README已更新为真实下载链接，模力方舟仍明确未发布。匿名下载通过不构成正式质量、完整CLI部署或新head AOT/性能验收。
 
-模力方舟取得独立认证后，先核身份、IoTSharp组织及远端状态，再按官方Git/LFS/gai通道镜像同一固定公开包；成功后核实际commit、公开文件集合/大小/SHA及真实大文件对象，再增加镜像链接。HF上述流程已经完成。部分失败保留现场，先检查远端状态，不盲目重复写请求。
+2026-10-10已取得模力方舟独立令牌和IoTSharp组织登录，并创建同名公开模型库。冻结18文件镜像提交已准备；普通Git LFS受企业权限限制，官方gai missing-lfs接口返回HTTP500，远端仍初始提交，权重上传未完成。模型库链接已按真实状态写中英首页，详见[本次模力方舟回执](moark-model-publishing-2026-10-10.md)。HF上述流程已经完成。失败保留现场，先检查接口与远端状态，不盲目重复写请求。
 
 ## 证据与收口
 
