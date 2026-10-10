@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- 2026-10-11接续用户授权的模力方舟maikebing个人公开模型库发布（模型库于10月10日创建），完整encoder的BOS196分片合并及真实HEAD200长度检查通过。平台登记和公开镜像仍未通过，保留callback空路径、单次正确路径请求超时及8次只读missing-lfs记录；中英README更新个人库链接和准确边界，Windows个人凭据安全保存。见[实际证据](docs/evidence/moark-maikebing-model-publishing-2026-10-11.md)。
+
 - 将完整租用GPU准备、唯一训练、优先下载和独立验收整理为仓库技能，官方格式及独立行为审查通过。2026-10-10完成Hugging Face IoTSharp组织18文件/1,245,737,297 bytes实验模型发布，revision a46028dfebd539bd04a1c567fbb24c26a649a50a；匿名文件集合/大小/SHA及大文件真实内容检查全部通过，中英README更新下载链接。新HF令牌按用户要求存Windows凭据管理器并读回；历史失败和恢复如实保留。已创建模力方舟IoTSharp公开模型库，新MoArk令牌及gai双凭据接入Windows凭据管理器；普通LFS企业权限限制和gai初始化HTTP500阻断权重上传，镜像未完成，见[回执](docs/evidence/moark-model-publishing-2026-10-10.md)；正式质量、新head AOT/校准/性能仍另验。见[技能验收](docs/evidence/rental-training-skill-2026-10-09.md)、[发布回执](docs/evidence/model-publishing-2026-10-09.md)和[凭据说明](docs/model-credential-storage.md)。
 
 - 完成租用RTX5090唯一固定24576updates/strict8192/冻结encoder实验、新进程231 forwards独立验证和原32回归；完整模型于2026-10-09北京时间21:17:08下载并核SHA，早于23:22目标，独立证据核验10/10 PASS。增加参数化迁移/训练/优先下载入口，保留首次准入失败并修复结果路径与reader行序；教师一致性不构成正式质量，Score无新监督，新head AOT/校准/性能仍另验。见[证据](docs/evidence/rental-training-2026-10-09.md)。

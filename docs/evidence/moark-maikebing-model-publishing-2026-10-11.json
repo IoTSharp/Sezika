@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "checked_date": "2026-10-11 Asia/Shanghai",
+  "status": "PENDING_platform_encoder_registration",
+  "model_url": "https://moark.com/maikebing/Sezika-mmBERT-8192-experimental",
+  "model_id": 28817,
+  "gitee_repository_id": 50738359,
+  "public_repository_created": true,
+  "prepared_local_revision": "06ebe82325e58c0ae723fb9014a38cdb2f87b22a",
+  "last_observed_remote_master": "f33889013d3c2d60bb25edf5e725681d370f2fd2",
+  "package_files": 18,
+  "package_bytes": 1245737297,
+  "personal_checkout_source_sha": "PASS",
+  "encoder": {
+    "bytes": 1227772549,
+    "sha256": "6168c84d2498cdacdcafee16b71a69b5c1636ad569bfabaf2855f5ce7dabd528",
+    "source_full_sha": "PASS",
+    "completed_parts": 196,
+    "completed_part_bytes": 1227772549,
+    "bos_complete_http_status": 200,
+    "actual_upstream_attempts": 201,
+    "remote_full_content_sha": "NOT_RUN",
+    "complete_response_identity": {
+      "bucket": "gitee-ai-lfs",
+      "key": "maikebing/Sezika-mmBERT-8192-experimental/6168c84d2498cdacdcafee16b71a69b5c1636ad569bfabaf2855f5ce7dabd528",
+      "eTag": "-c58a6da7328b02340d26367167aa5215"
+    },
+    "part_validation_evidence": {
+      "kind": "source_guards_and_success_receipt",
+      "script": "maikebing_bos_direct.py",
+      "sha256": "8568d39e1c4f0404dd801f5cb607e7c8957fc058f6914ca73006e5a758c052b3",
+      "function": "put_part",
+      "checks": "actual PUT200 and returned ETag equals local part MD5 before counting a completed part"
+    }
+  },
+  "correct_path_callback": {
+    "http_status": "UNKNOWN_ReadTimeout",
+    "attempts": 1,
+    "write_not_repeated": true,
+    "public_identity": {
+      "owner": "maikebing",
+      "repo_path": "Sezika-mmBERT-8192-experimental",
+      "lfs_files": [
+        {
+          "lfs_file_path": "encoder.safetensors",
+          "oid": "6168c84d2498cdacdcafee16b71a69b5c1636ad569bfabaf2855f5ce7dabd528",
+          "size": 1227772549
+        }
+      ]
+    }
+  },
+  "post_callback_missing_checks": [
+    {
+      "check": 1,
+      "attempt": 1,
+      "mode": "direct",
+      "http_status": 200,
+      "missing_oids": [
+        "6168c84d2498cdacdcafee16b71a69b5c1636ad569bfabaf2855f5ce7dabd528"
+      ],
+      "elapsed_seconds": 0.954
+    },
+    {
+      "check": 2,
+      "attempt": 2,
+      "mode": "direct",
+      "http_status": 200,
+      "missing_oids": [
+        "6168c84d2498cdacdcafee16b71a69b5c1636ad569bfabaf2855f5ce7dabd528"
+      ],
+      "elapsed_seconds": 17.038
+    },
+    {
+      "check": 3,
+      "attempt": 3,
+      "mode": "direct",
+      "http_status": 200,
+      "missing_oids": [
+        "6168c84d2498cdacdcafee16b71a69b5c1636ad569bfabaf2855f5ce7dabd528"
+      ],
+      "elapsed_seconds": 32.844
+    },
+    {
+      "check": 4,
+      "attempt": 4,
+      "mode": "direct",
+      "http_status": 200,
+      "missing_oids": [
+        "6168c84d2498cdacdcafee16b71a69b5c1636ad569bfabaf2855f5ce7dabd528"
+      ],
+      "elapsed_seconds": 48.655
+    },
+    {
+      "check": 5,
+      "attempt": 5,
+      "mode": "direct",
+      "http_status": 200,
+      "missing_oids": [
+        "6168c84d2498cdacdcafee16b71a69b5c1636ad569bfabaf2855f5ce7dabd528"
+      ],
+      "elapsed_seconds": 64.84
+    },
+    {
+      "check": 6,
+      "attempt": 6,
+      "mode": "direct",
+      "http_status": 200,
+      "missing_oids": [
+        "6168c84d2498cdacdcafee16b71a69b5c1636ad569bfabaf2855f5ce7dabd528"
+      ],
+      "elapsed_seconds": 80.807
+    },
+    {
+      "check": 7,
+      "attempt": 7,
+      "mode": "direct",
+      "http_status": 200,
+      "missing_oids": [
+        "6168c84d2498cdacdcafee16b71a69b5c1636ad569bfabaf2855f5ce7dabd528"
+      ],
+      "elapsed_seconds": 96.609
+    },
+    {
+      "check": 8,
+      "attempt": 8,
+      "mode": "direct",
+      "http_status": 200,
+      "missing_oids": [
+        "6168c84d2498cdacdcafee16b71a69b5c1636ad569bfabaf2855f5ce7dabd528"
+      ],
+      "elapsed_seconds": 112.512
+    }
+  ],
+  "public_model_git_push": "NOT_COMPLETED",
+  "anonymous_18_file_verification": "NOT_RUN",
+  "model_directory": "D:\\source\\Sezika\\.artifacts\\model-publishing-20261009-01a12099\\moark-maikebing-20261010\\model-repository",
+  "frozen_package_source_readme_drift_preserved": true,
+  "hf_verified_revision_unchanged": "a46028dfebd539bd04a1c567fbb24c26a649a50a",
+  "native_windows_personal_credential": "Codex:MoArk:maikebing:Sezika",
+  "historical_failures_preserved": true,
+  "source_receipts_sha256": {
+    "prepare.json": "15764e72b3a779aea66d186e5910db1290df198900d5846d58a3beae8a67345a",
+    "bos-direct.json": "cbb282f1cfd28b6987da1eda90c9d7a3f66739440665a9967cd13da51d423297",
+    "official-finalize-empty-path-cancelled-history.json": "81ef5dcd1d665b8554dd8305ace168bb90117145f472b5fc5493d813b96c65de",
+    "official-finalize-name-only-running-history.json": "de50c02edc431ed0ff1d370da7a8757ca4daa7d5595482c48898a77af10efe4a",
+    "official-finalize-object-path-running-history.json": "a0dc19f60f8eb7047ae71f372a695010c5a5d84844395f3eec274fd170e50407",
+    "official-finalize-real-git-lfs-running-history.json": "cdd9fde0b79af1301acb1447630051f2b4c87bb1b4c215e82176d029df082ff9",
+    "register-correct-path.json": "b23e5020ce7a608db9f46f75a453310b7b846ce3dd441ad08dedc4572f7ec7b6",
+    "registration-readback.json": "deaab93c62da3681daf8cdaa3814633d5bfdae4d78170fbe6a95ffb23dfedae7",
+    "process-logs/20261010-182209-386-maikebing-readonly-remote-before-registration.result.json": "a02496aea330faeff962399afef30b4faba0d2e0f208549b1d4997cdf3e35be1",
+    "process-logs/20261010-182209-386-maikebing-readonly-remote-before-registration.stdout.log": "f2bec4721e77b188237b1d4e871f36edc7007cf43e94d3ddc5ee03ee74c5c2e1",
+    "process-logs/20261010-182728-104-maikebing-personal-process-closure-verified-exit.result.json": "0197438b4f1b4c948995790817b0a5c170ca945f8edecf49d5b6a1b3d5a78429",
+    "personal-process-closure.json": "4a2927698f3ab6936e9bbc55b5e78a93fbf1ac01f70af7facebc49695d75d03c",
+    "personal-secret-scan.json": "542d7fa913aad3c167b6a7bf2f2937a9b05c66e642e44ec3b4c78992b2985de2"
+  },
+  "current_process_check": {
+    "status": "PASS_current_readonly_identity_snapshot",
+    "receipts": 37,
+    "identities": 139,
+    "unique_pids": 138,
+    "matching_current_live": 0,
+    "current_unknown": 0,
+    "different_identity_children_preserved": 3,
+    "limitation": "Current absence does not supply missing historical argv or undiscovered past child identities."
+  },
+  "historical_unknown_and_cleanupfailed_preserved": true
+}

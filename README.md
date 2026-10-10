@@ -4,7 +4,7 @@
 
 Sezika 面向本地软件中的语义判断，目标是使用 **C#、.NET 10 与 Native AOT**，把文本或结构化状态转换为类型化决策与概率分布。模型、CPU/GPU 算子及调度以 C# 实现，GPU 运行时允许调用系统显卡驱动。
 
-本轮 **8192-token 实验模型**已完成训练、独立验证和完整本地保存，可从 [Hugging Face 下载](https://huggingface.co/IoTSharp/Sezika-mmBERT-8192-experimental)：18文件、约1.25 GB，匿名访问、大小/SHA及大文件实际内容检查通过。[模力方舟 IoTSharp 模型库](https://moark.com/IoTSharp/Sezika-mmBERT-8192-experimental)已创建；权重上传被平台 LFS 初始化 HTTP500 阻断，镜像尚未完成，见[实际回执](docs/evidence/moark-model-publishing-2026-10-10.md)。见[发布回执与使用限制](docs/evidence/model-publishing-2026-10-09.md)。development 教师一致27/53，概率未校准，正式质量与新 head AOT/性能仍待验收。下次租用训练可使用仓库内的[训练技能](.agents/skills/sezika-rental-training/SKILL.md)。
+本轮 **8192-token 实验模型**已完成训练、独立验证和完整本地保存，可从 [Hugging Face 下载](https://huggingface.co/IoTSharp/Sezika-mmBERT-8192-experimental)：18文件、约1.25 GB，匿名访问、大小/SHA及大文件实际内容检查通过。[模力方舟 maikebing 模型库](https://moark.com/maikebing/Sezika-mmBERT-8192-experimental)已创建，完整encoder存储上传完成；平台注册仍未通过，完整镜像尚不可下载，见[实际回执](docs/evidence/moark-maikebing-model-publishing-2026-10-11.md)。旧IoTSharp组织上传失败保留为历史。见[发布回执与使用限制](docs/evidence/model-publishing-2026-10-09.md)。development 教师一致27/53，概率未校准，正式质量与新 head AOT/性能仍待验收。下次租用训练可使用仓库内的[训练技能](.agents/skills/sezika-rental-training/SKILL.md)。
 
 ```text
 文本 / JSON 状态 + 类型化问题 + 候选标准

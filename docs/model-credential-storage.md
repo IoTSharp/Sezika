@@ -19,3 +19,7 @@ Hugging Face 发布令牌按用户 2026-10-09 的明确要求，保存于当前 
 - `gitee-ai.IoTSharp.Sezika-mmBERT-8192-experimental:gitee-token`：已核身份的 Gitee 令牌。
 
 本轮通过原生接口在进程内读取既有凭据并写入这两个目标，不把真实值传给 `gai config` 参数。按实测，gai目标为 UTF8 blob，主发布桥接目标为 UTF16-LE；均为 Generic、Persist=2，写入和读回比较分别验收。`.git/config` 只包含适配器路径和非秘密选项。原生缓冲区清零；Python字符串全内存擦除仍未证明。独立安全审查通过；平台上传接口HTTP500和模型发布状态另见[实际回执](evidence/moark-model-publishing-2026-10-10.md)。
+
+2026-10-10 用户随后明确改用 **maikebing 个人归属**并提供新模力方舟令牌。新目标为 `Codex:MoArk:maikebing:Sezika`，沿用上述 Windows 原生安全存储，不回显输入，写入和读回比较通过。个人模型专用 gai 目标为 `gitee-ai.maikebing.Sezika-mmBERT-8192-experimental:gitee-ai-token` 与同前缀 `:gitee-token`，分别读取新 MoArk 凭据和既有已核 Gitee 凭据；值均未放入命令行或 Git 配置。
+
+个人模型的官方上传初始化实际返回 HTTP200。网页 `/api/base/*` 使用该 Bearer 令牌返回401，不代表其官方模型上传权限无效。存储临时 AK/SK/session token 仅在上传进程内使用，不落盘；日志记录请求身份、状态及公开文件校验值。个人模型的完成状态以独立发布回执为准，旧组织失败记录保留。
