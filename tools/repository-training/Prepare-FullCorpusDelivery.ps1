@@ -103,6 +103,66 @@ function TransportBytes {
     foreach($file in $files){Guard;$sum+=[long]$file['bytes']}
     return $sum
 }
+function Counter($Object,[string]$Name,[long]$Minimum,[long]$Maximum){
+    $value=Value $Object $Name
+    if(($value -isnot [int] -and $value -isnot [long]) -or $value -lt $Minimum -or $value -gt $Maximum){throw "Complete scan integer bound differs: $Name"}
+    return [long]$value
+}
+function VerifyCompleteScan($Scan,$Length,$Manifest,$Binding,[string]$Root,[string]$PolicySha,[string]$TokenizerSha,[int]$MaximumTokens,[long]$Physical,[string]$ScanSha){
+    Guard
+    # The old miniature receipt is a synthetic test contract, never production admission.
+    if($LocalFixture -and (Value $Scan 'synthetic_fixture') -eq $true -and -not $Scan.Contains('Inputs')){
+        if((Value $Scan 'Status') -cne 'PASS_complete_full_corpus_fixture' -or (Value $Scan 'CompleteScan') -ne $true -or (Value $Scan 'SourcePolicySha256') -cne $PolicySha -or (Value $Scan 'UnresolvedErrors') -ne 0){throw 'Synthetic complete-scan fixture differs.'}
+        return $false
+    }
+    if((Value $Scan 'Status') -cne 'PASS_complete_strict_scan_explicit_exclusions_private_only'){throw 'Exact complete C# scan status required; partial/PASS-prefix receipts rejected.'}
+    $inputs=Value $Scan 'Inputs'
+    if($inputs -isnot [Collections.IDictionary]){throw 'Complete C# scan Inputs required.'}
+    if((Counter $inputs 'SchemaVersion' 1 1) -ne 1 -or (Value $inputs 'Algorithm') -cne 'strict_decision_v1_choice_rotation_chunk4096_explicit_source_and_token_exclusions_v1'){throw 'Complete C# scan schema/algorithm differs.'}
+    foreach($name in @('ManifestSha256','BindingsSha256','OriginalExclusionsSha256','TokenizerSha256','SourcePolicySha256')){Guard;Pin (Value $inputs $name) 64 ('scan '+$name)}
+    $chunkRows=Counter $inputs 'ChunkRows' 1 50000;$maximumExclusions=Counter $inputs 'MaximumExclusions' 1 1000000
+    $inputPhysical=Counter $inputs 'PhysicalRows' 1 50000000;$inputShards=Counter $inputs 'Shards' 1 4096;$inputChunks=Counter $inputs 'Chunks' 1 32768
+    if((Counter $inputs 'MaximumTokens' 2 8192) -ne $MaximumTokens -or $inputPhysical -ne $Physical -or $inputs.SourcePolicySha256 -cne $PolicySha -or $inputs.TokenizerSha256 -cne $TokenizerSha){throw 'Complete scan tokenizer/policy/physical/length identity differs.'}
+    foreach($name in @('PhysicalRows','OriginalExcluded','SourceScopeExcluded','TokenLimitExcluded','Accepted','Train','Development')){[void](Counter $Scan $name 0 50000000)}
+    $excluded=[long]$Scan.OriginalExcluded+[long]$Scan.SourceScopeExcluded+[long]$Scan.TokenLimitExcluded
+    if($Scan.PhysicalRows -ne $inputPhysical -or $Scan.PhysicalRows -ne $excluded+$Scan.Accepted -or $Scan.Accepted -ne $Scan.Train+$Scan.Development -or $Scan.Train -lt 1 -or $Scan.Development -lt 1 -or (Counter $Scan 'ExclusionIdentities' 0 $maximumExclusions) -ne $excluded){throw 'Complete scan admitted/excluded counters differ.'}
+    if((Value $Scan 'FamilyIsolationChecked') -isnot [bool] -or -not $Scan.FamilyIsolationChecked -or (Counter $Scan 'Families' 1 4000000) -gt $Scan.Accepted -or (Value $Scan 'GpuFeaturesComputed') -isnot [bool] -or $Scan.GpuFeaturesComputed -or (Value $Scan 'FormalTrainingAdmitted') -isnot [bool] -or $Scan.FormalTrainingAdmitted){throw 'Complete scan family isolation/experimental state differs.'}
+    $longest=Counter $Scan 'LongestTokens' 2 $MaximumTokens;$longestTrain=Counter $Scan 'LongestTrainTokens' 2 $longest
+    if([string]::IsNullOrWhiteSpace((Value $Scan 'LongestTrainId')) -or [string]::IsNullOrWhiteSpace((Value $Scan 'LongestTrainSource')) -or (Value $Scan 'ExclusionsPath') -cne 'scan-exclusions.jsonl'){throw 'Complete scan maximum/ledger identities required.'}
+    Pin (Value $Scan 'ScanPlanSha256') 64 'scan plan SHA';Pin (Value $Scan 'ExclusionsSha256') 64 'scan exclusions SHA'
+    $refs=Value $Scan 'Chunks'
+    if($refs -isnot [array] -or $refs.Count -ne $inputChunks){throw 'Complete scan chunk reference denominator differs.'}
+    for($index=0;$index -lt $refs.Count;$index++){
+        Guard;$reference=$refs[$index]
+        if((Counter $reference 'Index' 0 32767) -ne $index -or (Value $reference 'Path') -cne ('chunks/chunk-'+$index.ToString('D5',[Globalization.CultureInfo]::InvariantCulture)+'.json')){throw 'Complete scan chunk references are not contiguous canonical identities.'}
+        Pin (Value $reference 'Sha256') 64 'scan chunk reference SHA'
+    }
+    $bySource=Value $Scan 'TrainingBySource'
+    if($bySource -isnot [Collections.IDictionary] -or $bySource.Count -lt 1 -or $bySource.Count -gt 128 -or $bySource.Count -ne $Length.TrainingBySource.Count){throw 'Complete scan training source denominator differs.'}
+    $sourceSum=0L
+    foreach($source in $bySource.Keys){Guard;$count=Counter $bySource $source 1 50000000;$sourceSum+=$count;if(-not $Length.TrainingBySource.Contains($source) -or $Length.TrainingBySource[$source] -ne $count){throw 'Complete scan training sources differ from final lengths.'}}
+    if($sourceSum -ne $Scan.Train -or -not $bySource.Contains($Scan.LongestTrainSource)){throw 'Complete scan train/max-source counter differs.'}
+    # C# Admit transports the archived parent contract, but not scan-plan/chunk payloads.
+    # Their references are checked here; C# Completion validates their bytes before Admit.
+    AddAsset $Root 'components/length-parent/manifest.json' 'corpus' $inputs.ManifestSha256
+    AddAsset $Root 'components/length-parent/corpus-bindings.json' 'corpus' $inputs.BindingsSha256
+    AddAsset $Root 'components/length-parent/exclusions.jsonl' 'corpus' $inputs.OriginalExclusionsSha256
+    $parentManifest=Json (Within $Root 'components/length-parent/manifest.json');$parentBinding=Json (Within $Root 'components/length-parent/corpus-bindings.json')
+    if($parentBinding.ManifestSha256 -cne $inputs.ManifestSha256 -or $parentBinding.ExclusionsSha256 -cne $inputs.OriginalExclusionsSha256 -or $parentBinding.SourceAssetsSha256 -cne $Binding.SourceAssetsSha256 -or $parentBinding.SourceRightsSha256 -cne $Binding.SourceRightsSha256 -or (Value $parentBinding 'FormalTrainingAdmitted') -ne $false -or $parentManifest.records_written -ne $Physical -or (Value $parentManifest 'pilot' $false)){throw 'Complete scan archived parent corpus/binding identity differs.'}
+    $parentShards=@(Value $parentManifest 'shards');$derivedShards=@(Value $Manifest 'shards');$expectedChunks=0L
+    if($parentShards.Count -ne $derivedShards.Count -or $inputShards -ne $parentShards.Count){throw 'Complete scan parent shard denominator differs.'}
+    for($index=0;$index -lt $parentShards.Count;$index++){
+        Guard
+        foreach($name in @('path','source','split','records','bytes','sha256')){if((Value $parentShards[$index] $name) -cne (Value $derivedShards[$index] $name)){throw 'Derived corpus changed an original shard identity.'}}
+        $expectedChunks+=[long][Math]::Ceiling([double]$parentShards[$index].records/$chunkRows)
+    }
+    if($expectedChunks -ne $inputChunks){throw 'Complete scan shard/chunk coverage differs.'}
+    $admission=Value $Manifest 'length_admission'
+    if($admission -isnot [Collections.IDictionary] -or (Value $admission 'SchemaVersion') -ne 1 -or (Value $admission 'Status') -cne 'COMPLETE_SCAN_APPLIED_EXPLICIT_EXCLUSIONS' -or (Value $admission 'ParentManifestSha256') -cne $inputs.ManifestSha256 -or (Value $admission 'ParentBindingsSha256') -cne $inputs.BindingsSha256 -or (Value $admission 'ScanCompletionSha256') -cne $ScanSha -or (Value $admission 'SourcePolicySha256') -cne $PolicySha -or (Value $admission 'ExclusionsSha256') -cne $Scan.ExclusionsSha256){throw 'Derived manifest length admission identity differs.'}
+    foreach($name in @('OriginalExcluded','SourceScopeExcluded','TokenLimitExcluded')){Guard;if((Counter $admission $name 0 50000000) -ne $Scan[$name]){throw 'Derived manifest length admission counters differ.'}}
+    if((Value $Length 'ParentCorpusManifestSha256') -cne $inputs.ManifestSha256 -or $Scan.ExclusionsSha256 -cne $Binding.ExclusionsSha256 -or $Length.FailureLedgerSha256 -cne $Scan.ExclusionsSha256 -or $Scan.PhysicalRows -ne $Length.PhysicalRows -or $Scan.ExclusionIdentities -ne $Length.ExcludedRows -or $Scan.Accepted -ne $Length.Accepted -or $Scan.Train -ne $Length.Train -or $Scan.Development -ne $Length.Development -or $Scan.OriginalExcluded -ne (Value $Length 'OriginalExcludedRows' 0) -or $Scan.SourceScopeExcluded -ne (Value $Length 'SourceScopeExcludedRows' 0) -or $Scan.TokenLimitExcluded -ne (Value $Length 'TokenLimitExcludedRows' 0) -or $longest -ne $Length.LongestTokens -or $longestTrain -ne $Length.LongestTrainingTokens -or $Scan.LongestTrainId -cne $Length.LongestTrainingRecordId -or $Scan.LongestTrainSource -cne $Length.LongestTrainingSource){throw 'Derived strict length receipt and real complete scan differ.'}
+    return $true
+}
 
 try {
     # A cooperative payload does no file hashing before the guardian registers it.
@@ -186,17 +246,19 @@ try {
             if($length.CorpusManifestSha256 -cne $manifestSha -or $length.CorpusBindingsSha256 -cne $bindingsSha -or $length.TokenizerSha256 -cne $tokenizerSha -or $length.MaximumTokens -ne $maxTokens -or $length.PhysicalRows -ne $physical -or $length.Rejected -ne 0 -or $length.PhysicalRows -ne $length.ExcludedRows+$length.Accepted -or $length.Accepted -ne $length.Train+$length.Development -or $length.Train -lt 2 -or $length.Development -lt 1 -or $length.GpuFeaturesComputed -or $length.FormalTrainingAdmitted){throw 'Full identity-bound strict length denominator differs.'}
             if($length.TrainingBySource.Count -lt 1 -or $length.TrainingBySource.Count -gt 128 -or @($length.TrainingBySource.Keys|Where-Object {-not $trainSources.Contains($_)}).Count -gt 0 -or @($length.TrainingBySource.Values|Where-Object {$_ -lt 1}).Count -gt 0 -or ($length.TrainingBySource.Values|Measure-Object -Sum).Sum -ne $length.Train){throw 'Full training-by-source denominator differs.'}
             if($length.LongestTokens -lt 2 -or $length.LongestTokens -gt $maxTokens -or $length.LongestTrainingTokens -lt 2 -or $length.LongestTrainingTokens -gt $length.LongestTokens -or [string]::IsNullOrWhiteSpace($length.LongestTrainingRecordId) -or [string]::IsNullOrWhiteSpace($length.LongestTrainingSource)){throw 'Complete maximum length identities required.'}
+            $realScan=$false
             $hasScanIdentity=$length.Contains('CompleteScan') -or $length.Contains('SourcePolicySha256') -or $length.Contains('ScanCompletionSha256') -or $binding.Contains('LengthScanSha256')
             if($hasScanIdentity){
                 $scanSha=Value $binding 'LengthScanSha256'
                 if((Value $length 'CompleteScan') -ne $true -or -not $policySha -or (Value $length 'SourcePolicySha256') -cne $policySha -or (Value $binding 'SourcePolicySha256') -cne $policySha -or (Value $length 'ScanCompletionSha256') -cne $scanSha){throw 'Complete length/corpus/source policy three-way identity differs.'}
                 AddAsset $corpusRoot 'length-scan-complete.json' 'corpus' $scanSha
                 $scan=Json (Within $corpusRoot 'length-scan-complete.json')
-                if((Value $scan 'Status' '') -cnotmatch '^PASS_complete_full_corpus' -or (Value $scan 'CompleteScan') -ne $true -or (Value $scan 'SourcePolicySha256') -cne $policySha){throw 'Partial or unbound complete-scan receipt rejected.'}
-                if($scan.Contains('UnresolvedErrors') -and $scan.UnresolvedErrors -ne 0){throw 'Complete scan has unresolved errors.'}
+                $realScan=VerifyCompleteScan $scan $length $manifest $binding $corpusRoot $policySha $tokenizerSha $maxTokens $physical $scanSha
             }
-            $failureLedger=Join-Path ([IO.Path]::GetDirectoryName([IO.Path]::GetFullPath($lengthPath))) 'length-failures.jsonl'
-            if(-not [IO.File]::Exists($failureLedger)){Pending 'length_failure_ledger_identity'}else{AddExternal $failureLedger 'audit/length-failures' $length.FailureLedgerSha256}
+            if($realScan){AddAsset $corpusRoot 'exclusions.jsonl' 'corpus' $length.FailureLedgerSha256}else{
+                $failureLedger=Join-Path ([IO.Path]::GetDirectoryName([IO.Path]::GetFullPath($lengthPath))) 'length-failures.jsonl'
+                if(-not [IO.File]::Exists($failureLedger)){Pending 'length_failure_ledger_identity'}else{AddExternal $failureLedger 'audit/length-failures' $length.FailureLedgerSha256}
+            }
         }
     }
     $bundleRoot=Value $spec 'ToolBundleRoot';$bundleSha=Value $spec 'ToolBundleManifestSha256';$engineering=$null
