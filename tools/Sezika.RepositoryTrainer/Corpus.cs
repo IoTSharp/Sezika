@@ -13,7 +13,11 @@ internal sealed record CorpusManifest(
     [property:JsonPropertyName("schema_version")]int SchemaVersion,[property:JsonPropertyName("status")]string Status,[property:JsonPropertyName("pilot")]bool Pilot,
     [property:JsonPropertyName("formal_training_admitted")]bool FormalTrainingAdmitted,[property:JsonPropertyName("records_written")]long RecordsWritten,[property:JsonPropertyName("shards")]CorpusShard[] Shards);
 internal sealed record CorpusExclusion([property:JsonPropertyName("record_id")]string RecordId,[property:JsonPropertyName("reason")]string Reason);
-internal sealed record CorpusBindings(string ManifestSha256,string ExclusionsSha256,string SourceRightsSha256,string SourceAssetsSha256,bool FormalTrainingAdmitted,string? SourceRoot=null,string? SourceAssetsPath=null);
+internal sealed record CorpusBindings(string ManifestSha256,string ExclusionsSha256,string SourceRightsSha256,string SourceAssetsSha256,bool FormalTrainingAdmitted,string? SourceRoot=null,string? SourceAssetsPath=null)
+{
+    [JsonIgnore(Condition=JsonIgnoreCondition.WhenWritingNull)]public string? SourcePolicySha256 {get;init;}
+    [JsonIgnore(Condition=JsonIgnoreCondition.WhenWritingNull)]public string? LengthScanSha256 {get;init;}
+}
 internal sealed record CorpusCheck(string Status,string ManifestSha256,string ExclusionsSha256,long PhysicalRows,long ExcludedRows,long Train,long Development,
     int Families,int Shards,bool FormalTrainingAdmitted,bool TokenLengthAccepted,bool GpuTrainingAccepted,string FamilyReview,Dictionary<string,long> BySourceAndType,Dictionary<string,CorpusTargetStats> TargetDistributions);
 internal sealed record CorpusTargetStats(long Records,long OneHotRecords,double[] MeanTargetMassByCandidatePosition);
@@ -24,6 +28,7 @@ internal sealed class Corpus
     private readonly string _root;
     private readonly HashSet<string> _excluded=new(StringComparer.Ordinal);
     internal CorpusManifest Manifest {get;}
+    internal string Root=>_root;
     internal string ManifestSha256 {get;}
     internal string ExclusionsSha256 {get;}
     internal Corpus(string root,string expectedSha,string expectedBindingsSha,RunBudget budget)
@@ -44,6 +49,8 @@ internal sealed class Corpus
             binding.SourceRoot is not null?Data.Within(Path.GetFullPath(binding.SourceRoot),"ASSET_MANIFEST.json"):
             throw new InvalidDataException("Bound source assets manifest is absent.");
         if(binding.SourceAssetsSha256.Length!=64||Data.FileHash(sourceAssets,budget)!=binding.SourceAssetsSha256)throw new InvalidDataException("Bound source assets manifest SHA differs.");
+        if(binding.SourcePolicySha256 is not null&&(binding.SourcePolicySha256.Length!=64||Data.FileHash(Data.Within(_root,"source-scope-policy.json"),budget)!=binding.SourcePolicySha256))throw new InvalidDataException("Bound private source scope policy SHA differs.");
+        if(binding.LengthScanSha256 is not null&&(binding.LengthScanSha256.Length!=64||Data.FileHash(Data.Within(_root,"length-scan-complete.json"),budget)!=binding.LengthScanSha256))throw new InvalidDataException("Bound completed length scan SHA differs.");
         using var reader=File.OpenText(ledger);
         for(var i=0;i<1000000;i++)
         {
@@ -56,9 +63,17 @@ internal sealed class Corpus
     }
     internal IEnumerable<(TrainingRow Row,string Source,bool Excluded)> Rows(RunBudget budget,string? sourceFilter=null,string? splitFilter=null)
     {
-        foreach(var shard in Manifest.Shards)
+        for(var shardIndex=0;shardIndex<Manifest.Shards.Length;shardIndex++)
         {
+            var shard=Manifest.Shards[shardIndex];
             if((sourceFilter is not null&&shard.Source!=sourceFilter)||(splitFilter is not null&&shard.Split!=splitFilter))continue;
+            foreach(var item in RowsForShard(shardIndex,budget))yield return item;
+        }
+    }
+    internal IEnumerable<(TrainingRow Row,string Source,bool Excluded)> RowsForShard(int shardIndex,RunBudget budget)
+    {
+            if(shardIndex<0||shardIndex>=Manifest.Shards.Length)throw new ArgumentOutOfRangeException(nameof(shardIndex));
+            var shard=Manifest.Shards[shardIndex];
             budget.Check();var path=Data.Within(_root,shard.Path);
             if(shard.Records is <1 or >50000||shard.Bytes is <1 or >2L*1024*1024*1024||new FileInfo(path).Length!=shard.Bytes||Data.FileHash(path,budget)!=shard.Sha256||shard.Split is not("train" or "development"))throw new InvalidDataException("Shard identity/count/split differs.");
             using var compressed=File.OpenRead(path);using var gzip=new GZipStream(compressed,CompressionMode.Decompress);
@@ -69,10 +84,10 @@ internal sealed class Corpus
                 if(line.Length>4*1024*1024)throw new InvalidDataException("Corpus row character bound.");
                 var row=JsonSerializer.Deserialize(line,TrainerJson.Default.TrainingRow)??throw new InvalidDataException("Null corpus record.");
                 Validate(row);if(row.Split!=shard.Split)throw new InvalidDataException("Row/shard split differs.");
+                if(row.Source is not null&&(row.Source.Dataset!=shard.Source||row.Source.Row!=row.SourceRow))throw new InvalidDataException("Row source provenance differs from shard/row identity.");
                 yield return(row,shard.Source,_excluded.Contains(row.RecordId));
             }
             if(reader.ReadLine() is not null)throw new InvalidDataException("Shard denominator differs.");
-        }
     }
     internal static void Validate(TrainingRow row)
     {

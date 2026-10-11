@@ -1,0 +1,111 @@
+# 全量训练的离线交付与新实例绑定（2026-10-12）
+
+`tools/repository-training/Prepare-FullCorpusDelivery.ps1` 只读核验声明的资产，生成私有训练输入、运输清单、待绑定计划和准备状态。它不连接服务器、不租机、不训练、不调用教师、不发布或复制数据，也不修改现有输入。全部声明文件的大小与 SHA 都通过才生成完整运输清单；失败输出和已检查的文件保留为部分证据。
+
+本轮使用 `CorpusRunPlan`，不用旧 `New-TrainingTask.ps1` 的最大一百万条、48/17615 更新、旧 commit 或旧 GPU 合同。全量指最终固定派生 corpus 中没有被排除且 `Split=train` 的全部记录。development、test、calibration、OOD 不作监督，拒绝和排除账本保留。`FormalTrainingAdmitted=false` 是实验状态，不自动表示所有来源禁止训练；来源政策、严格长度、GPU 工程及模型质量分别验收。
+
+## 输入配置
+
+配置为 JSON 对象，`SchemaVersion=1`，以下字段显式固定：
+
+| 字段 | 内容 |
+| --- | --- |
+| `RunId` | 独立的新任务 ID，小写字母、数字和连字符，3–64 字符 |
+| `SourceCommit` | 最终代码提交；尚未提交时为 null，保持 Pending，不能填旧提交冒充新工具 |
+| `DatasetCommit`、`ModelCommit` | 本轮固定的来源仓库提交；当前已验收来源分别为 `d19515802d31310b4050226b51ab85c60f130d42`、`e2e5bc97d62dfbd4e2bbd070542324bb544e6b32` |
+| `CorpusRoot`、`CorpusManifestSha256`、`CorpusBindingsSha256` | 最终关闭的完整派生语料及 manifest/bindings SHA；不能使用正在写入的 shard 或 pilot |
+| `SourcePolicyPath`、`SourcePolicySha256` | 本轮来源政策原件；最终 corpus 明确命名的 `source-scope-policy.json` 与 `source_notice_bindings` 或 bindings 的 `SourcePolicySha256` 必须绑定同一 SHA，其他路径碰巧同 SHA 不作为政策绑定 |
+| `LengthReportPath`、`LengthReportSha256` | 完整 `CorpusLengthReceipt`；缺失、部分扫描、未解决错误均不能成为长度通过 |
+| `BaseModelRoot` | 已验底座 model checkout，独立于旧训练产物 |
+| `ModelReadbackReceiptPath`、`ModelReadbackReceiptSha256` | 固定的 `source-assets-readback.json`；复核其准确模型 commit 和 root，以及前 `base_files` 项实际底座字节 |
+| `ToolBundleRoot`、`ToolBundleManifestSha256` | 由既有 `New-ToolBundle.ps1` 冻结的 Linux 自包含工具包及 `files.sha256` SHA |
+| `SourceRoot` | 本机准确源码路径；对 `engineering-sources.json` 声明的全部文件复算大小与 SHA |
+| `BackwardManifestSha256` | 与本次冻结 C# / PTX/ABI 对应的反向 kernel 身份；绑定 profile 时必须提供 |
+
+所有 SHA 必须为 64 位小写 hex，commit 为 40 位。代码、模型、tokenizer 和来源政策各有独立身份。模型仅使用固定底座 encoder，head 从零初始化；不把历史 run 的 head、checkpoint 或 optimizer 误当新初始化。底座 notices 与许可证原件随底座完整资产保留，不能用 encoder 的许可替代整体许可审查。
+
+若只能提供初始已提交快照，可填准确基线 `SourceCommit` 并设置 `SourceCommitIsFinal=false`；输入报告将它单独列为 `SourceBaselineCommit`，固定训练草案的 SourceCommit 保持 null，直到最终工具、代码和门槛验收后由主任务给出准确最终提交。准备器自己的源文件 SHA 与配置 SHA 单独记录，不能借基线提交宣称新工具已包含在远端代码中。
+
+配置骨架如下。尖括号字段必须替换为主任务已经复算的真实固定身份，示例本身不能作为已验收配置执行；缺失长度和实例信息明确留空：
+
+```json
+{
+  "SchemaVersion": 1,
+  "RunId": "full-corpus-new-instance",
+  "SourceCommit": null,
+  "SourceCommitIsFinal": false,
+  "DatasetCommit": "d19515802d31310b4050226b51ab85c60f130d42",
+  "ModelCommit": "e2e5bc97d62dfbd4e2bbd070542324bb544e6b32",
+  "CorpusRoot": "<fixed closed corpus root>",
+  "CorpusManifestSha256": "<actual manifest SHA256>",
+  "CorpusBindingsSha256": "<actual bindings SHA256>",
+  "SourcePolicyPath": "<fixed original source policy file>",
+  "SourcePolicySha256": "<actual source policy SHA256>",
+  "BaseModelRoot": "<verified local model checkout>",
+  "ModelReadbackReceiptPath": "<fixed source-assets-readback.json>",
+  "ModelReadbackReceiptSha256": "<actual readback receipt SHA256>",
+  "LengthReportPath": null,
+  "LengthReportSha256": null,
+  "ToolBundleRoot": null,
+  "ToolBundleManifestSha256": null,
+  "SourceRoot": "D:/source/Sezika",
+  "Epochs": 1,
+  "MaximumTokens": 8192,
+  "LocalArchiveCopies": 0,
+  "NewInstance": {}
+}
+```
+
+`Epochs` 默认 1；`Seed=17`、`MaximumTokens=8192`、`CheckpointEvery=128`、`ValidationPerSource=32`、`EncoderRate=0.00001`、`HeadRate=0.001`、`WeightDecay=0.01`、`MaximumOwnedBytes=25769803776` 可显式指定并按 C# 工程合同检查。`TrainRecords` 只从完整严格长度回执取得，`GlobalUpdates=TrainRecords×Epochs`，没有用样本上限替代全量分母。分阶段 `StageUpdates` 不改变全部 epoch 的固定计划。
+
+工具要求 `PASS_full_corpus_strict_lengths_only`，manifest、bindings、tokenizer、最大 tokens 和全部 physical/excluded/accepted/train/development 分母一致，Rejected=0；完整 TrainingBySource、最大训练题身份与 `length-failures.jsonl` SHA 同时核对。全量扫描后的显式排除应另建派生版本，绑定新 manifest/bindings 与新完整长度回执；原数据和原 FAIL 不覆盖。
+
+新报告带 `CompleteScan`、`SourcePolicySha256`、`ScanCompletionSha256` 时，三项必须齐备；CompleteScan=true，政策与 corpus bindings 一致，扫描 SHA 与 bindings 的 `LengthScanSha256` 一致。准确命名的 `length-scan-complete.json` 原 bytes/SHA 一起进入运输清单，必须为完整 PASS 和同一政策，有未解决错误仍拒绝。旧完整回执可保持原合同，但不能用部分新扫描冒充旧完整 PASS。
+
+## 执行和空间
+
+先以独立、明确标为 `fixture-` 的微型资产使用 `-LocalFixture` 检查。fixture 永不成为真实训练准入。真实调用使用 PowerShell 7，经 `tools/rental-training/Invoke-BoundedProcess.ps1` 和协作 gate 登记进程身份；gate 必须在工作区 `.artifacts/repository-training-*`，日志和生成的私有交付物可放本轮 artifact root。`SEZIKA_START_GATE` 由 guardian 写入 go 后才开始文件核验。
+
+```powershell
+& tools/repository-training/Prepare-FullCorpusDelivery.ps1 `
+  -SpecificationPath '<fixed-delivery-spec.json>' `
+  -OutputDirectory '<fresh-private-delivery-directory>' `
+  -MaximumFiles 8192 -MaximumBytes 137438953472 -MaximumSeconds 1800 `
+  -CancelFile '<current-task/cancel.request>'
+```
+
+上面只是入口格式，实际调用必须放入 guardian，不应直接运行无进程归属的长任务。最大 4,096 shards、128 个训练来源、2,048 个来源元数据绑定、600 个工具包文件；总文件预算 8,192，累计读取字节 128 GiB，单文件 8 GiB。逐 MiB 核 SHA，同时检查取消、EOF、文件大小及写入时间；两个秒数进度间隔不额外启动进程。路径不允许绝对/越界/链接，也不扫描盘符、用户主目录或共享缓存。任何超限、缺文件或 SHA 不一致均保留 FAIL，不能以已完成文件数报告全部 PASS。
+
+工具生成清单而不复制完整输入。`LocalArchiveCopies` 默认 0，`LocalReserveBytes` 默认 1 GiB；将来需要本机归档与解包共存时显式设 2，并按全部输入实际 bytes 检查当前输出卷剩余空间。`ServerReserveBytes` 默认 4 GiB；新实例数据盘最低估算为输入、两份完整 checkpoint、最终完整 package、输出归档和余量，checkpoint 按 encoder 加小型 head 的保守 FP32 权重估算三倍（权重及两份 AdamW moment）。这只是准入估算，仍须新实例只读预检确认实际剩余容量与租期。
+
+所有输出为私有训练资料。`transport-manifest.json` 的 PASS 仅表示全部声明字节/SHA；它不代表许可、长度、GPU、质量或公开发布通过。
+
+## 新实例与 profile
+
+尚无新 GPU/SSH/期限时，`NewInstance` 可省略或为空，草案 `ExpectedGpuUuid=null`。不使用旧实例默认值，不在草案中填虚假 UUID，也不购买或恢复旧实例。
+
+实际新实例取得后显式提供 `NewInstance.GpuUuid`（C# 已观测的 32hex）、Linux 上 `CorpusRoot`、`BaseModelRoot`、`LengthReportPath` 与 `LeaseEndUtc`（UTC Z 格式）。运输不得修改 manifest、bindings、shard、政策、tokenizer 或长度回执字节；远端另外逐文件核 SHA 后，按已确定 Linux 路径冻结计划。由草案得到的计划字节必须与 `profile-corpus` 使用的计划完全一致；只要路径或计划改变，profile SHA 就不能沿用。
+
+`PreflightReceiptPath/Sha256` 指向新实例只读回执，包含实际 `GpuUuid`、`GpuName`、`DriverVersion`、`TotalMemoryBytes`、`FreeDataDiskBytes`、`ComputeUsers`、`BootId`。要求当前 UUID、RTX 5090、Driver≥12080、显存≥30 GiB、没有 compute 使用者，且真实 data disk 容量足够。回执身份由主调度核新实例和新租期；本工具不收集 SSH 凭据或执行连接。
+
+新实例先经 Linux guardian 探针、实际工具依赖、逐文件 SHA 和 tiny 验收，再执行 `profile-corpus`。之后提供 `ProfileReceiptPath/Sha256` 与同目录 `resources-reclaimed.txt`。准备器核本轮 run、完整七项 InputIdentity、当前 UUID、最大完整序列、非零实测耗时和资源释放标记；不复用旧 48 更新 profile。跨租赁实例恢复仍由 C# 显式 stage UUID / 新 profile / 完整 checkpoint+cursor 合同控制。
+
+有 profile 后给出全 epoch 与当前 stage 的估算：`4×MaximumStepSeconds×updates + 600 + 120×预计保存数`。`RemainingPhaseReserveSeconds` 默认 1,800，独立验证、保存运输等必需阶段另留实际预算；总期限不足保持 Pending，不降低全局分母或自动续租。
+
+准备器始终将实际 C# 远端运行准入标为 NOT_RUN，并保持 `TrainingReady=false`。`LocalDeliveryReady` 仅表示离线资产、完整长度、源码工具包与本机容量门槛齐备；不代表新实例已启动、完整训练已完成或准确率已提高。实际 GPU 与最终固定全量训练由主调度唯一启动，独立验证和完整模型保存各保留自己的回执。
+
+## 输出与失败
+
+新目录保存 `training-inputs.json`、`transport-manifest.json`、`corpus-run-plan.pending.json`、`readiness.json`。记录完整训练分母、初始化方式、各输入 SHA、具体 Pending、空间和耗时估算。发生失败时保存 `failure.json` 与已验证文件列表，保留原 guardian stdout/stderr/result；失败目录不删除重建。只精确清理本任务已核实退出的进程和临时 gate，交付物、旧模型、旧回执和用户文件均保留。
+
+## 本轮实际离线证据
+
+2026-10-12 的 `question-delivery-fixtures-v3/receipt.json` 为 `PASS_ten_synthetic_offline_delivery_fixtures`：缺失长度、完整长度、部分长度、分母错误、encoder 改动、越界 notice、政策未绑定、扫描政策不一致、同 SHA 政策别名、基线提交十项均通过预期结果检查。夹具声明为 synthetic，未运行 GPU、教师或网络。准备器源文件 SHA 为 `eda7d006322cc2aab2fbe06da652a26080d7504dccaecdc2aea6ea97c4665a35`。原 v1 失败、v2 通过及其输入和 guardian 回执均保留。
+
+真实原始语料准备版本位于 `C:/Users/mysti/.codex/artifacts/sezika-full-training-20261012-01a12b4c/question-full-delivery-pending-v1`。此次完整复核原始 `combined-corpus-v1` 的 353 个 shard 与完整 18 个底座文件，连同声明的来源 notices、政策原件与身份元数据，共 421 个运输文件、3,854,272,286 bytes，状态为 `PASS_all_declared_transport_bytes_SHA_only`。原始语料 manifest 的 physical 记录数为 16,276,841；它不表示严格长度后可训练记录数，`TrainRecords` 和 `GlobalUpdates` 仍为 null。
+
+输入配置 SHA 为 `fc0944e72e05fcbc30c62d039eae844522521c5a6c3bfabacca6f4172ad40479`。模型来源 readback SHA 为 `febe2486c85bbc247842cb0ed78391a7efa1ecdf23312dde8fce16e065c963cd`；底座 encoder SHA 为 `6168c84d2498cdacdcafee16b71a69b5c1636ad569bfabaf2855f5ce7dabd528`，tokenizer SHA 为 `197d4cc5406ee12cc50c8b5511f2393cc32d9db321545979ce041c1199178356`。初始源码基线 `275d064f37145a7a31962bae4d30af2aa1cf09aa` 单独保留，最终 SourceCommit=null。
+
+这版离线 Pending 为最终源码提交、原始 corpus 尚未绑定本轮政策、完整严格长度回执和冻结 Linux 工具包。实例 Pending 为新 GPU UUID、固定 Linux 输入路径、只读 preflight、新租期、同计划实测 profile 与远端 C# 准入；ExpectedGpuUuid=null，LocalDeliveryReady=false，TrainingReady=false。完整派生 corpus 后续另建版本，不能覆盖这版原始证据。
+
+本次只生成清单，无输入复制与归档，输出卷当时剩余 37,054,619,648 bytes，所需本机余量 1 GiB。服务器最低容量估算为 22,895,093,082 bytes，须由真实新实例复核，当前没有全量耗时估算。guardian 回执 `process-logs/20261011-193425-542-question-full-delivery-pending-v1.result.json` 记录 PID 4588、启动时间 `2026-10-11T19:34:26.329017Z`、父 PID 77256、Succeeded、14.897 秒；最终观察完成、已验证存活进程 0、未知进程 0，专属 gate 已清理。日期为 UTC，对应本地 2026-10-12 凌晨。

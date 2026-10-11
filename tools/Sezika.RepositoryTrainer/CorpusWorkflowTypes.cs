@@ -14,7 +14,16 @@ internal sealed record CorpusLengthReceipt(
     string Status,string CorpusManifestSha256,string CorpusBindingsSha256,string TokenizerSha256,int MaximumTokens,
     long PhysicalRows,long ExcludedRows,long Accepted,long Rejected,long Train,long Development,
     int LongestTokens,string? LongestTrainingRecordId,int LongestTrainingTokens,string? LongestTrainingSource,
-    Dictionary<string,long> TrainingBySource,string FailureLedgerSha256,bool GpuFeaturesComputed,bool FormalTrainingAdmitted);
+    Dictionary<string,long> TrainingBySource,string FailureLedgerSha256,bool GpuFeaturesComputed,bool FormalTrainingAdmitted)
+{
+    [JsonIgnore(Condition=JsonIgnoreCondition.WhenWritingDefault)]public bool CompleteScan {get;init;}
+    [JsonIgnore(Condition=JsonIgnoreCondition.WhenWritingNull)]public string? SourcePolicySha256 {get;init;}
+    [JsonIgnore(Condition=JsonIgnoreCondition.WhenWritingNull)]public string? ScanCompletionSha256 {get;init;}
+    [JsonIgnore(Condition=JsonIgnoreCondition.WhenWritingNull)]public string? ParentCorpusManifestSha256 {get;init;}
+    [JsonIgnore(Condition=JsonIgnoreCondition.WhenWritingDefault)]public long OriginalExcludedRows {get;init;}
+    [JsonIgnore(Condition=JsonIgnoreCondition.WhenWritingDefault)]public long SourceScopeExcludedRows {get;init;}
+    [JsonIgnore(Condition=JsonIgnoreCondition.WhenWritingDefault)]public long TokenLimitExcludedRows {get;init;}
+}
 internal sealed record CorpusProfileReceipt(
     string Status,string RunId,InputIdentity Inputs,string GpuUuid,int MaximumTokensTested,double MaximumStepSeconds,
     double ElapsedSeconds,ulong PeakOwnedBytes,bool SyntheticMaximumLengthProbe,bool QualityAccepted);

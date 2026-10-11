@@ -5,6 +5,7 @@ using System.Text.Json;
 using Sezika;
 
 var passed = 0;
+if(args.Length is not(0 or 1 or 4)||args.Length==1&&args[0]=="--tokenizer-cache-asset"||args.Length==4&&(args[0]!="--tokenizer-cache-asset"||args[2]!="--tokenizer-sha"))throw new ArgumentException("Optional pinned tokenizer cache asset requires path and SHA.");
 void Check(bool condition, string name)
 {
     if (!condition) throw new InvalidOperationException($"FAIL: {name}");
@@ -153,6 +154,8 @@ try
     ], epochs: 20);
     Check(trained.Weights[0] > 0 && double.IsFinite(trained.FinalLogLoss), "frozen encoder head training");
     global::Sezika.Tests.IndependentMarkerHeadChecks.Run(Check, ExpectDecisionCode);
+    global::Sezika.Tests.TokenizerCacheChecks.Run(Check, ExpectDecisionCode);
+    if(args.Length==4)global::Sezika.Tests.TokenizerCacheChecks.RunPinnedAsset(args[1],args[3],Check);
     global::Sezika.Tests.HeadAssetPublicationChecks.Run(Check);
     global::Sezika.Tests.DiagnosticHeadAssetChecks.Run(Check);
     global::Sezika.Tests.IndependentTrainingWorkflowChecks.Run(Check, ExpectDecisionCode);

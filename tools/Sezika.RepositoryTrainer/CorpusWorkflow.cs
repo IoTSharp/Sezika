@@ -135,6 +135,8 @@ internal static class CorpusWorkflow
             throw new InvalidDataException("Complete, identity-bound experimental length coverage gate differs.");
         var sourceSet=Sources(corpus,budget).ToHashSet(StringComparer.Ordinal);
         if(r.TrainingBySource.Keys.Any(s=>!sourceSet.Contains(s)))throw new InvalidDataException("Length report/source identity differs.");
+        var binding=Assets.Read(Data.Within(corpus.Root,"corpus-bindings.json"),TrainerJson.Default.CorpusBindings);
+        if(binding.SourcePolicySha256 is not null||binding.LengthScanSha256 is not null||r.SourcePolicySha256 is not null||r.ScanCompletionSha256 is not null||r.CompleteScan)CorpusLengthScan.VerifyDerived(corpus,r,budget);
         return r;
     }
 

@@ -8,8 +8,12 @@ using Sezika;
 namespace Sezika.RepositoryTrainer;
 
 internal sealed record TrainingCandidate(string Id,string Text);
+internal sealed record CorpusRowSource(string Dataset,string? Revision,string Path,string FileSha256,string OriginalSplit,int Row);
 internal sealed record TrainingRow(string RecordId,string Family,string OriginalStateId,string Split,string Language,
-    MarkerQuestionType Type,string State,string Instruction,TrainingCandidate[] Candidates,float[] Target,string SourceLineSha256,int SourceRow);
+    MarkerQuestionType Type,string State,string Instruction,TrainingCandidate[] Candidates,float[] Target,string SourceLineSha256,int SourceRow)
+{
+    [JsonIgnore(Condition=JsonIgnoreCondition.WhenWritingNull)]public CorpusRowSource? Source {get;init;}
+}
 internal sealed record LedgerRow(int SourceRow,string SourceLineSha256,string? RecordId,string Action,string Reason);
 internal sealed record DataManifest(int SchemaVersion,string DatasetRepository,string DatasetCommit,string SourceDataset,string SourceRevision,
     string SourcePath,string SourceSha256,string License,string LabelSemantics,string RecordsSha256,string LedgerSha256,int OriginalRows,

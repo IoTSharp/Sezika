@@ -14,9 +14,22 @@ public sealed class TokenizerJson
     private readonly int _bos;
     private readonly int _eos;
     private readonly int _mask;
+    private readonly int _bpeCacheMaximumEntries;
+    private readonly Dictionary<string,string[]>? _bpeCache;
+    private readonly Queue<string>? _bpeCacheKeys;
+    private readonly object _bpeCacheGuard=new();
 
     public TokenizerJson(string tokenizerJsonPath, CancellationToken cancellationToken = default)
+        : this(tokenizerJsonPath,0,cancellationToken)
     {
+    }
+
+    /// <summary>Uses an optional bounded cache of exact BPE word fragments; token IDs and limits are unchanged.</summary>
+    public TokenizerJson(string tokenizerJsonPath,int bpeCacheEntries,CancellationToken cancellationToken = default)
+    {
+        if(bpeCacheEntries is <0 or >65536)throw new ArgumentOutOfRangeException(nameof(bpeCacheEntries));
+        _bpeCacheMaximumEntries=bpeCacheEntries;
+        if(bpeCacheEntries>0){_bpeCache=new(Math.Min(bpeCacheEntries,1024),StringComparer.Ordinal);_bpeCacheKeys=new(Math.Min(bpeCacheEntries,1024));}
         if (!File.Exists(tokenizerJsonPath)) throw new DecisionException("tokenizer_asset_missing", "tokenizer.json is missing.");
         using var document = JsonDocument.Parse(File.ReadAllBytes(tokenizerJsonPath), new JsonDocumentOptions { MaxDepth = 32 });
         var root = document.RootElement;
@@ -134,6 +147,9 @@ public sealed class TokenizerJson
 
     private IEnumerable<string> Bpe(string segment, CancellationToken cancellationToken)
     {
+        cancellationToken.ThrowIfCancellationRequested();
+        var cacheable=_bpeCache is not null&&segment.Length<=256;
+        if(cacheable)lock(_bpeCacheGuard){if(_bpeCache!.TryGetValue(segment,out var cached))return cached;}
         var symbols = new List<string>(segment.Length);
         foreach (var rune in segment.EnumerateRunes())
         {
@@ -153,6 +169,18 @@ public sealed class TokenizerJson
             }
             if (bestIndex < 0) break;
             symbols[bestIndex] += symbols[bestIndex + 1]; symbols.RemoveAt(bestIndex + 1);
+        }
+        if(cacheable)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            var result=symbols.ToArray();
+            lock(_bpeCacheGuard)
+            {
+                if(_bpeCache!.TryGetValue(segment,out var existing))return existing;
+                if(_bpeCache.Count>=_bpeCacheMaximumEntries)_bpeCache.Remove(_bpeCacheKeys!.Dequeue());
+                _bpeCache.Add(segment,result);_bpeCacheKeys!.Enqueue(segment);
+            }
+            return result;
         }
         return symbols;
     }

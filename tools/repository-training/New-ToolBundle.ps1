@@ -25,10 +25,11 @@ $guardian=$guardian.Replace($needle,'budget <= 86400')
 foreach($file in @('clone-inputs.sh','pack-result.sh')){Guard;Copy-Item -LiteralPath (Join-Path $PSScriptRoot ('remote/'+$file)) -Destination (Join-Path $bundle $file)}
 foreach($name in @('LICENSE','NOTICE')){Guard;Copy-Item -LiteralPath (Join-Path $root $name) -Destination (Join-Path $bundle ('code-'+$name+'.txt'))}
 $sourceManifest=Join-Path $bundle 'engineering-sources.json'
-$sourcePaths=@('src/Sezika.Cuda/CudaKernels.cs','src/Sezika.Cuda/CudaFullEncoderTrainer.cs','src/Sezika.Cuda/CudaEncoderBackwardKernels.cs','src/Sezika.Kernels/EncoderBackwardKernels.cs')
+$sourcePaths=@('Directory.Build.props','src/Sezika/TokenizerJson.cs','src/Sezika/IndependentDecisionV1.cs','src/Sezika.Cuda/CudaKernels.cs','src/Sezika.Cuda/CudaFullEncoderTrainer.cs','src/Sezika.Cuda/CudaEncoderBackwardKernels.cs','src/Sezika.Kernels/EncoderBackwardKernels.cs')
 foreach($folder in @('tools/Sezika.RepositoryTrainer','tools/Sezika.FullTrainingChecks','tools/Sezika.BackwardKernelCompiler','src/Sezika.Cuda/Generated/EncoderBackward')){
     Guard
-    $selected=@(Get-ChildItem -LiteralPath (Join-Path $root $folder) -File | Select-Object -First 40)
+    $selected=@(Get-ChildItem -LiteralPath (Join-Path $root $folder) -File | Sort-Object Name | Select-Object -First 41)
+    if($selected.Count -gt 40){throw 'Engineering source folder exceeded40; refuse silently incomplete bundle identity.'}
     foreach($file in $selected){$sourcePaths+=($folder+'/'+$file.Name)}
 }
 $sources=@();foreach($relative in $sourcePaths){Guard;$path=Join-Path $root $relative;$sources+=@{path=$relative;bytes=(Get-Item -LiteralPath $path).Length;sha256=(Get-FileHash -LiteralPath $path).Hash.ToLowerInvariant()}}

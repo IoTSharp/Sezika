@@ -10,10 +10,13 @@ if(args.Length==0||args[0]=="help")
     Console.WriteLine("RepositoryTrainer admit-lengths --data <derived> --lengths <report> --output <fresh-derived>");
     Console.WriteLine("RepositoryTrainer attach-notices --dataset <checkout> --data <existing-derived> (adds source notices; preserves data bytes)");
     Console.WriteLine("RepositoryTrainer corpus-check|corpus-export --corpus <root> --corpus-sha <64hex> --bindings-sha <64hex> --output <fresh-path> [--max-records 30000000] [--per-source 10000 --dataset-commit <40hex>]");
-    Console.WriteLine("RepositoryTrainer lengths-corpus --corpus <root> --corpus-sha <64hex> --bindings-sha <64hex> --tokenizer <json> --output <fresh-directory> [--max-tokens 8192 --max-records 50000000]");
+    Console.WriteLine("RepositoryTrainer lengths-corpus --corpus <root> --corpus-sha <64hex> --bindings-sha <64hex> --tokenizer <json> --output <scan-directory> [--source-policy <json> --source-policy-sha <64hex> --resume true --chunk-rows 4096 --stage-chunks 64 --max-tokens 8192 --max-records 50000000]");
+    Console.WriteLine("RepositoryTrainer admit-corpus-lengths --corpus <root> --corpus-sha <64hex> --bindings-sha <64hex> --scan <complete-directory> --scan-sha <64hex> --source-policy <json> --source-policy-sha <64hex> --third-party-notice <original> --third-party-notice-sha <64hex> --output <fresh-derived-corpus>");
     Console.WriteLine("RepositoryTrainer profile-corpus|train-corpus --plan <fixed-json> --output <fresh-directory> [--profile <same-instance-profile> --resume <checkpoint-directory> --stage-updates <1..800000000> --gpu-uuid <32hex>]");
     Console.WriteLine("RepositoryTrainer validate-corpus --plan <same-json> --package <saved-directory> --package-sha <64hex> --output <fresh-json> [--gpu-uuid <32hex>]");
     Console.WriteLine("RepositoryTrainer corpus-schedule-check --output <fresh-json> (bounded synthetic and gzip scheduling/resume checks; no GPU)");
+    Console.WriteLine("RepositoryTrainer corpus-source-policy-check|corpus-length-scan-check --output <fresh-json> (bounded synthetic admission, interruption and tamper checks; no GPU)");
+    Console.WriteLine("RepositoryTrainer corpus-length-pilot --corpus <root> --corpus-sha <64hex> --bindings-sha <64hex> --tokenizer <json> --source-policy <json> --source-policy-sha <64hex> --per-source 32 --output <fresh-json> (bounded preprocessing diagnostic; no full coverage or GPU claim)");
     Console.WriteLine("RepositoryTrainer profile|train --plan <pinned-json> --output <fresh-directory> [--profile <real-base-profile>] [--resume <complete-checkpoint>]");
     Console.WriteLine("RepositoryTrainer validate --plan <same-json> --package <saved-package> --package-sha <64hex> --output <fresh-json>");
     Console.WriteLine("RepositoryTrainer predict-package --package <new-run-directory> --package-sha <64hex> --cases <json> --cases-sha <64hex> --gpu-uuid <32hex> --output <fresh-json> [--max-cases 512] [--max-tokens 1024] [--owned-mib 4096]");
@@ -30,10 +33,37 @@ using var budget=new RunBudget(Number("--timeout-seconds",900,1,86400),options.G
 try
 {
     if(args[0]=="corpus-schedule-check"){CorpusWorkflow.SchedulerChecks(Need("--output"),budget);return 0;}
+    if(args[0]=="corpus-source-policy-check"){CorpusSourcePolicyChecks.Run(Need("--output"),budget);return 0;}
+    if(args[0]=="corpus-length-scan-check"){CorpusLengthScanChecks.Run(Need("--output"),budget);return 0;}
+    if(args[0]=="corpus-length-pilot")
+    {
+        var corpus=new Corpus(Need("--corpus"),Need("--corpus-sha"),Need("--bindings-sha"),budget);
+        var tokenizer=new TokenizerJson(Need("--tokenizer"),32768,budget.Token);var policy=new CorpusSourcePolicy(Need("--source-policy"),Need("--source-policy-sha"),budget);
+        CorpusLengthPilot.Run(corpus,tokenizer,policy,Number("--max-tokens",8192,2,8192),Number("--per-source",32,1,128),Need("--output"),budget);return 0;
+    }
+    if(args[0]=="admit-corpus-lengths")
+    {
+        var corpus=new Corpus(Need("--corpus"),Need("--corpus-sha"),Need("--bindings-sha"),budget);
+        CorpusLengthScan.Admit(corpus,Need("--bindings-sha"),Need("--scan"),Need("--scan-sha"),Need("--output"),
+            Need("--source-policy"),Need("--source-policy-sha"),Need("--third-party-notice"),Need("--third-party-notice-sha"),budget);return 0;
+    }
     if(args[0]=="lengths-corpus")
     {
         var corpus=new Corpus(Need("--corpus"),Need("--corpus-sha"),Need("--bindings-sha"),budget);
-        CorpusWorkflow.Lengths(corpus,Need("--bindings-sha"),Need("--tokenizer"),Number("--max-tokens",8192,2,8192),LongNumber("--max-records",50000000,1,50000000),Need("--output"),budget);return 0;
+        var policyPath=options.GetValueOrDefault("--source-policy");var policySha=options.GetValueOrDefault("--source-policy-sha");
+        if((policyPath is null)!=(policySha is null))throw new ArgumentException("Source policy path and pinned SHA must be supplied together.");
+        if(policyPath is null)
+        {
+            if(options.ContainsKey("--resume")||options.ContainsKey("--chunk-rows")||options.ContainsKey("--stage-chunks"))throw new ArgumentException("Resumable length scanning requires a pinned source policy.");
+            CorpusWorkflow.Lengths(corpus,Need("--bindings-sha"),Need("--tokenizer"),Number("--max-tokens",8192,2,8192),LongNumber("--max-records",50000000,1,50000000),Need("--output"),budget);return 0;
+        }
+        var policy=new CorpusSourcePolicy(policyPath,policySha!,budget);
+        var resume=options.GetValueOrDefault("--resume","false");
+        if(resume is not("true" or "false"))throw new ArgumentException("Length scan resume must be true or false.");
+        var tokenizerPath=Need("--tokenizer");var tokenizer=new TokenizerJson(tokenizerPath,32768,budget.Token);
+        CorpusLengthScan.Run(corpus,Need("--bindings-sha"),tokenizerPath,tokenizer,Number("--max-tokens",8192,2,8192),
+            LongNumber("--max-records",50000000,1,50000000),Need("--output"),resume=="true",Number("--chunk-rows",4096,1,50000),
+            Number("--stage-chunks",64,1,32768),policyPath,policy.Sha256,policy.Failure,budget);return 0;
     }
     if(args[0] is "profile-corpus" or "train-corpus")
     {
@@ -101,6 +131,7 @@ namespace Sezika.RepositoryTrainer
         private readonly CancellationTokenSource _source;private readonly Stopwatch _watch=Stopwatch.StartNew();private readonly int _seconds;private readonly string? _cancel;
         private readonly ConsoleCancelEventHandler _handler;
         internal CancellationToken Token=>_source.Token;
+        internal string? CancelFile=>_cancel;
         internal double RemainingSeconds=>Math.Max(0,_seconds-_watch.Elapsed.TotalSeconds);
         internal RunBudget(int seconds,string? cancel){_seconds=seconds;_cancel=cancel;_source=new(TimeSpan.FromSeconds(seconds));_handler=(_,e)=>{e.Cancel=true;_source.Cancel();};Console.CancelKeyPress+=_handler;}
         internal void Check(){Token.ThrowIfCancellationRequested();if(_watch.Elapsed.TotalSeconds>=_seconds||(_cancel is not null&&File.Exists(_cancel)))throw new OperationCanceledException("Task deadline or cancel file.");}

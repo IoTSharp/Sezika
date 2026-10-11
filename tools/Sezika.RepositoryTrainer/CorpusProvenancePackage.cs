@@ -27,9 +27,11 @@ internal static class CorpusProvenancePackage
     private static string Role(string path)
     {
         var portable=PortableRelative(path);var name=portable[(portable.LastIndexOf('/')+1)..];
+        if(portable=="source-scope-policy.json")return "private_source_scope_metadata";
+        if(portable=="length-scan-complete.json")return "private_complete_length_scan_metadata";
         if(name=="exclusions.jsonl")return "private_exclusion_identity_ledger";
         if(name is "manifest.json" or "corpus-bindings.json" or "source-rights.json" or "source-assets.json")return "source_metadata_descriptor";
-        if(name is "SOURCE-README.md" or "SOURCE-NOTICE.txt" or "UPSTREAM-README.md" or "SOURCE_LICENSES.md"||
+        if(name is "SOURCE-README.md" or "SOURCE-NOTICE.txt" or "UPSTREAM-README.md" or "SOURCE_LICENSES.md" or "THIRD_PARTY_NOTICES.md"||
             name.StartsWith("README",StringComparison.OrdinalIgnoreCase)||name.StartsWith("LICENSE",StringComparison.OrdinalIgnoreCase)||
             name.StartsWith("NOTICE",StringComparison.OrdinalIgnoreCase)||name.StartsWith("COPYING",StringComparison.OrdinalIgnoreCase)||name.Equals("CITATION.cff",StringComparison.OrdinalIgnoreCase))return "source_notice_declared_private";
         throw new InvalidDataException("Source notice binding references unsupported/raw-example filename; preserve the failed package.");
@@ -38,6 +40,41 @@ internal static class CorpusProvenancePackage
     {
         var parts=PortableRelative(path).Split('/');
         if(parts.Length is <1 or >16||parts.Any(p=>p.Length==0||p is "." or ".."||p.Equals("shards",StringComparison.OrdinalIgnoreCase)))throw new InvalidDataException("Provenance path depth/raw-shard bound.");
+    }
+
+    private static void AdmissionMetadata(string path,string relative,string sha,CorpusBindings binding,RunBudget budget)
+    {
+        if(PortableRelative(relative)=="source-scope-policy.json")
+        {
+            if(binding.SourcePolicySha256!=sha)throw new InvalidDataException("Private policy metadata requires its exact corpus binding.");
+            _=new CorpusSourcePolicy(path,sha,budget);
+            using var stream=File.OpenRead(path);using var document=JsonDocument.Parse(stream,new(){MaxDepth=16});
+            var allowed=new HashSet<string>(StringComparer.Ordinal){"SchemaVersion","Status","FormalTrainingAdmitted","FullTokenLengthAccepted","TrainingPurpose","DefaultAction","SourceAllowlist","SourceDenylist","SourceAssetAllowlist","SourceAssetDenylist","OpenJevAllowedConfigurations","OpenJevDeniedConfigurations","UnknownSourceOrPathReason","MandatoryRecordGates","ScopeCountsBeforeAdditionalLengthAndQualityExclusions","UnresolvedQualityBoundaries","RightsInterpretation","SourceRevisionInterpretation","MetadataIdentityVerification"};
+            var seen=new HashSet<string>(StringComparer.Ordinal);
+            foreach(var property in document.RootElement.EnumerateObject())
+            {budget.Check();if(!allowed.Contains(property.Name)||!seen.Add(property.Name))throw new InvalidDataException("Private source policy contains unsupported/raw metadata fields.");}
+            var assetFields=new HashSet<string>(StringComparer.Ordinal){"Path","FileSha256","SourceRevision","OriginalSplit","FrozenOriginalRowsRead","CardMetadataRevision"};
+            foreach(var dataset in document.RootElement.GetProperty("SourceAssetAllowlist").EnumerateObject())
+            foreach(var asset in dataset.Value.EnumerateArray())
+            {
+                var assetSeen=new HashSet<string>(StringComparer.Ordinal);
+                foreach(var field in asset.EnumerateObject())
+                {budget.Check();if(!assetFields.Contains(field.Name)||!assetSeen.Add(field.Name))throw new InvalidDataException("Private source policy assets contain unsupported/raw fields.");}
+            }
+        }
+        if(PortableRelative(relative)=="length-scan-complete.json")
+        {
+            if(binding.LengthScanSha256!=sha||binding.SourcePolicySha256 is null)throw new InvalidDataException("Complete scan metadata requires its exact corpus/policy bindings.");
+            var scan=Assets.Read(path,CorpusLengthScanJson.Default.CorpusScanCompletion,16*1024*1024);
+            CorpusLengthScan.CheckCompletion(scan,scan.Inputs);
+            if(scan.Inputs.SourcePolicySha256!=binding.SourcePolicySha256||scan.ExclusionsSha256!=binding.ExclusionsSha256)throw new InvalidDataException("Complete scan source scope/exclusion metadata binding differs.");
+        }
+    }
+
+    private static void AdmissionMappings(CorpusBindings binding,IReadOnlyDictionary<string,string> notices)
+    {
+        if(binding.SourcePolicySha256 is not null&&(!notices.TryGetValue("corpus-provenance/source-scope-policy.json",out var policy)||policy!=binding.SourcePolicySha256))throw new InvalidDataException("Bound private source policy omitted from portable metadata.");
+        if(binding.LengthScanSha256 is not null&&(!notices.TryGetValue("corpus-provenance/length-scan-complete.json",out var scan)||scan!=binding.LengthScanSha256))throw new InvalidDataException("Bound complete scan omitted from portable metadata.");
     }
 
     internal static string Export(string corpusRoot,string manifestSha,string bindingsSha,string packageRoot,RunBudget budget)
@@ -75,10 +112,12 @@ internal static class CorpusProvenancePackage
             foreach(var item in bindings.EnumerateObject())
             {
                 Check();PathShape(item.Name);var role=Role(item.Name);var sha=item.Value.GetString()??throw new InvalidDataException("Missing source notice SHA.");
+                AdmissionMetadata(Data.Within(corpusRoot,PortableRelative(item.Name)),item.Name,sha,binding,budget);
                 var destination="corpus-provenance/"+item.Name.Replace('\\','/');
                 Copy(corpusRoot,item.Name,destination,sha,role);if(!notices.TryAdd(destination,sha))throw new InvalidDataException("Duplicate source notice path.");
             }
         }
+        AdmissionMappings(binding,notices);
         Check();var receipt=new CorpusProvenanceReceipt(1,"PASS_private_bound_source_metadata_bytes_only",manifestSha,bindingsSha,binding.SourceAssetsPath,binding.SourceRoot,
             "input-source-assets.json",null,files.ToArray(),notices,true,false,false,files.Any(f=>f.Role=="private_exclusion_identity_ledger"));
         var receiptPath=Data.Within(packageRoot,"corpus-provenance.json");var pending=Data.Within(packageRoot,"corpus-provenance.pending");
@@ -114,9 +153,11 @@ internal static class CorpusProvenancePackage
             {
                 budget.Check();if(declared.Count>=MaximumItems)throw new InvalidDataException("Historical notice item bound512.");PathShape(notice.Name);
                 var destination="corpus-provenance/"+notice.Name.Replace('\\','/');var role=Role(notice.Name);var sha=notice.Value.GetString()??throw new InvalidDataException("Historical notice SHA absent.");
+                AdmissionMetadata(Data.Within(packageRoot,destination),notice.Name,sha,original,budget);
                 if(!declared.TryAdd(destination,sha)||!mapped.TryGetValue(destination,out var file)||file.Sha256!=sha||file.Role!=role||file.OriginalRelativePath!=notice.Name)throw new InvalidDataException("Complete historical notice mapping differs.");
             }
         }
+        AdmissionMappings(original,declared);
         if(declared.Count!=receipt.SourceNoticeBindings.Count||mapped.Count!=4+declared.Count)throw new InvalidDataException("Source metadata receipt omits or adds declared files.");
         foreach(var notice in receipt.SourceNoticeBindings)
         {budget.Check();if(!declared.TryGetValue(notice.Key,out var expected)||expected!=notice.Value||!mapped.TryGetValue(notice.Key,out var file)||file.Sha256!=notice.Value)throw new InvalidDataException("Notice SHA/mapping differs.");}
@@ -181,6 +222,19 @@ internal static class CorpusProvenancePackage
         try{var changed=originalLicenseBytes.ToArray();changed[0]^=1;File.WriteAllBytes(licensePath,changed);try{Export(licenseSource,licenseManifestSha,licenseBindingsSha,licenseFailed,budget);}catch(InvalidDataException){licenseChangedRejected=true;}}
         finally{File.WriteAllBytes(licensePath,originalLicenseBytes);}
         if(!licenseChangedRejected||File.Exists(Data.Within(licenseFailed,"corpus-provenance.json")))throw new InvalidDataException("SOURCE_LICENSES.md original SHA changed but package completed.");checks++;
+        if(Role("source-scope-policy.json")!="private_source_scope_metadata"||Role("length-scan-complete.json")!="private_complete_length_scan_metadata"||Role("THIRD_PARTY_NOTICES.md")!="source_notice_declared_private")throw new InvalidDataException("Exact private admission metadata/notice roles differ.");checks++;
+        var payloadRejected=false;try{_ = Role("source-scope-questions.json");}catch(InvalidDataException){payloadRejected=true;}
+        if(!payloadRejected)throw new InvalidDataException("Arbitrary source-scope raw payload filename accepted.");checks++;
+        var policyPath=Data.Within(source,"private-policy-fixture.json");
+        Data.WriteNew(policyPath,new CorpusSourcePolicyDescriptor(1,"PRIVATE_EXPERIMENT_SCOPE_FIXED_METADATA_ONLY",false,false,"deny",["fixture/source"],[],new(StringComparer.Ordinal){["fixture/source"]=[new("raw/fixture/train.jsonl",new('a',64),"fixture revision","train")]}),CorpusSourcePolicyJson.Default.CorpusSourcePolicyDescriptor);
+        var policySha=Data.FileHash(policyPath,budget);var unboundRejected=false;
+        try{AdmissionMetadata(policyPath,"source-scope-policy.json",policySha,binding,budget);}catch(InvalidDataException){unboundRejected=true;}
+        if(!unboundRejected)throw new InvalidDataException("Private source policy without corpus SHA binding accepted.");checks++;
+        AdmissionMetadata(policyPath,"source-scope-policy.json",policySha,binding with{SourcePolicySha256=policySha},budget);
+        var rawPolicyPath=Data.Within(source,"private-policy-raw-payload-failed.json");var policyText=File.ReadAllText(policyPath);File.WriteAllText(rawPolicyPath,policyText[..^1]+",\"RawGoldLabels\":[\"synthetic raw answer\"]}",new UTF8Encoding(false));
+        var rawPolicySha=Data.FileHash(rawPolicyPath,budget);var rawPolicyRejected=false;
+        try{AdmissionMetadata(rawPolicyPath,"source-scope-policy.json",rawPolicySha,binding with{SourcePolicySha256=rawPolicySha},budget);}catch(InvalidDataException exception)when(exception.Message.Contains("unsupported/raw",StringComparison.Ordinal)){rawPolicyRejected=true;}
+        if(!rawPolicyRejected)throw new InvalidDataException("Self-consistent bound private policy containing raw fields accepted.");checks++;
         return checks;
     }
 }
