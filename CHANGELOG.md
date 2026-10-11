@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- 2026-10-11完成模力方舟maikebing个人实验模型标准Git LFS上传、平台注册与固定提交发布；原18文件/1,245,737,297 bytes、两个大对象完整匿名SHA及19 Git路径通过。中英首页更新可下载镜像；gai回调、备用运输tiny失败及旧组织权限错误保留。见[完整实证](docs/evidence/moark-personal-publication-complete-2026-10-11.md)。
+
+
 - 2026-10-11接续用户授权的模力方舟maikebing个人公开模型库发布（模型库于10月10日创建），完整encoder的BOS196分片合并及真实HEAD200长度检查通过。平台登记和公开镜像仍未通过，保留callback空路径、单次正确路径请求超时及8次只读missing-lfs记录；中英README更新个人库链接和准确边界，Windows个人凭据安全保存。见[实际证据](docs/evidence/moark-maikebing-model-publishing-2026-10-11.md)。
 
 - 将完整租用GPU准备、唯一训练、优先下载和独立验收整理为仓库技能，官方格式及独立行为审查通过。2026-10-10完成Hugging Face IoTSharp组织18文件/1,245,737,297 bytes实验模型发布，revision a46028dfebd539bd04a1c567fbb24c26a649a50a；匿名文件集合/大小/SHA及大文件真实内容检查全部通过，中英README更新下载链接。新HF令牌按用户要求存Windows凭据管理器并读回；历史失败和恢复如实保留。已创建模力方舟IoTSharp公开模型库，新MoArk令牌及gai双凭据接入Windows凭据管理器；普通LFS企业权限限制和gai初始化HTTP500阻断权重上传，镜像未完成，见[回执](docs/evidence/moark-model-publishing-2026-10-10.md)；正式质量、新head AOT/校准/性能仍另验。见[技能验收](docs/evidence/rental-training-skill-2026-10-09.md)、[发布回执](docs/evidence/model-publishing-2026-10-09.md)和[凭据说明](docs/model-credential-storage.md)。

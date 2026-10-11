@@ -1,0 +1,1348 @@
+{
+  "schema_version": 1,
+  "checked_date": "2026-10-11 Asia/Shanghai",
+  "status": "PASS_public_personal_model_complete",
+  "model_url": "https://moark.com/maikebing/Sezika-mmBERT-8192-experimental",
+  "model_id": 28817,
+  "repository_id": 50738359,
+  "revision": "06ebe82325e58c0ae723fb9014a38cdb2f87b22a",
+  "package_files": 18,
+  "package_bytes": 1245737297,
+  "layout": "original_frozen_18_files_no_transport_split",
+  "platform_missing_oids": [],
+  "standard_lfs_publication": {
+    "pid": 56144,
+    "created": 1791685130.5508213,
+    "argv": [
+      "C:\\Users\\mysti\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+      "D:\\source\\Sezika\\.artifacts\\model-publishing-20261009-01a12099\\maikebing_standard_lfs_publish.py"
+    ],
+    "parent_pid": 668,
+    "max_seconds": 1700,
+    "max_commands": 8,
+    "max_files": 18,
+    "max_hash_chunks_per_file": 400,
+    "commands": [
+      {
+        "pid": 11776,
+        "created": 1791685132.002498,
+        "argv": [
+          "C:\\Program Files\\Git\\cmd\\git.exe",
+          "-c",
+          "credential.helper=",
+          "-c",
+          "credential.helper=!\"C:/Users/mysti/AppData/Local/Python/pythoncore-3.14-64/python.exe\" \"D:/source/Sezika/.artifacts/model-publishing-20261009-01a12099/maikebing_git_credential.py\"",
+          "-c",
+          "credential.useHttpPath=true",
+          "-c",
+          "core.hooksPath=D:\\source\\Sezika\\.artifacts\\model-publishing-20261009-01a12099\\moark-maikebing-20261010\\model-repository\\.git\\hooks",
+          "-c",
+          "lfs.standalonetransferagent=",
+          "-c",
+          "lfs.basictransfersonly=true",
+          "-c",
+          "lfs.concurrenttransfers=1",
+          "-c",
+          "lfs.activitytimeout=180",
+          "-c",
+          "lfs.dialtimeout=15",
+          "-c",
+          "lfs.transfer.maxretries=0",
+          "rev-parse",
+          "HEAD"
+        ],
+        "parent_pid": 56144,
+        "args": [
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "06ebe82325e58c0ae723fb9014a38cdb2f87b22a\n",
+        "stderr": ""
+      },
+      {
+        "pid": 63224,
+        "created": 1791685132.0490644,
+        "argv": [
+          "C:\\Program Files\\Git\\cmd\\git.exe",
+          "-c",
+          "credential.helper=",
+          "-c",
+          "credential.helper=!\"C:/Users/mysti/AppData/Local/Python/pythoncore-3.14-64/python.exe\" \"D:/source/Sezika/.artifacts/model-publishing-20261009-01a12099/maikebing_git_credential.py\"",
+          "-c",
+          "credential.useHttpPath=true",
+          "-c",
+          "core.hooksPath=D:\\source\\Sezika\\.artifacts\\model-publishing-20261009-01a12099\\moark-maikebing-20261010\\model-repository\\.git\\hooks",
+          "-c",
+          "lfs.standalonetransferagent=",
+          "-c",
+          "lfs.basictransfersonly=true",
+          "-c",
+          "lfs.concurrenttransfers=1",
+          "-c",
+          "lfs.activitytimeout=180",
+          "-c",
+          "lfs.dialtimeout=15",
+          "-c",
+          "lfs.transfer.maxretries=0",
+          "config",
+          "--get",
+          "remote.origin.url"
+        ],
+        "parent_pid": 56144,
+        "args": [
+          "config",
+          "--get",
+          "remote.origin.url"
+        ],
+        "exit_code": 0,
+        "stdout": "https://moark.com/maikebing/Sezika-mmBERT-8192-experimental\n",
+        "stderr": ""
+      },
+      {
+        "pid": 60264,
+        "created": 1791685132.0926385,
+        "argv": [
+          "C:\\Program Files\\Git\\cmd\\git.exe",
+          "-c",
+          "credential.helper=",
+          "-c",
+          "credential.helper=!\"C:/Users/mysti/AppData/Local/Python/pythoncore-3.14-64/python.exe\" \"D:/source/Sezika/.artifacts/model-publishing-20261009-01a12099/maikebing_git_credential.py\"",
+          "-c",
+          "credential.useHttpPath=true",
+          "-c",
+          "core.hooksPath=D:\\source\\Sezika\\.artifacts\\model-publishing-20261009-01a12099\\moark-maikebing-20261010\\model-repository\\.git\\hooks",
+          "-c",
+          "lfs.standalonetransferagent=",
+          "-c",
+          "lfs.basictransfersonly=true",
+          "-c",
+          "lfs.concurrenttransfers=1",
+          "-c",
+          "lfs.activitytimeout=180",
+          "-c",
+          "lfs.dialtimeout=15",
+          "-c",
+          "lfs.transfer.maxretries=0",
+          "ls-remote",
+          "origin",
+          "refs/heads/master"
+        ],
+        "parent_pid": 56144,
+        "args": [
+          "ls-remote",
+          "origin",
+          "refs/heads/master"
+        ],
+        "exit_code": 0,
+        "stdout": "f33889013d3c2d60bb25edf5e725681d370f2fd2\trefs/heads/master\n",
+        "stderr": ""
+      },
+      {
+        "pid": 22108,
+        "created": 1791685132.7147753,
+        "argv": [
+          "C:\\Program Files\\Git\\cmd\\git.exe",
+          "-c",
+          "credential.helper=",
+          "-c",
+          "credential.helper=!\"C:/Users/mysti/AppData/Local/Python/pythoncore-3.14-64/python.exe\" \"D:/source/Sezika/.artifacts/model-publishing-20261009-01a12099/maikebing_git_credential.py\"",
+          "-c",
+          "credential.useHttpPath=true",
+          "-c",
+          "core.hooksPath=D:\\source\\Sezika\\.artifacts\\model-publishing-20261009-01a12099\\moark-maikebing-20261010\\model-repository\\.git\\hooks",
+          "-c",
+          "lfs.standalonetransferagent=",
+          "-c",
+          "lfs.basictransfersonly=true",
+          "-c",
+          "lfs.concurrenttransfers=1",
+          "-c",
+          "lfs.activitytimeout=180",
+          "-c",
+          "lfs.dialtimeout=15",
+          "-c",
+          "lfs.transfer.maxretries=0",
+          "push",
+          "origin",
+          "06ebe82325e58c0ae723fb9014a38cdb2f87b22a:refs/heads/master"
+        ],
+        "parent_pid": 56144,
+        "args": [
+          "push",
+          "origin",
+          "06ebe82325e58c0ae723fb9014a38cdb2f87b22a:refs/heads/master"
+        ],
+        "exit_code": 0,
+        "stdout": "Uploading LFS objects: 100% (2/2), 1.2 GB | 12 MB/s, done.\n",
+        "stderr": "remote: Powered by \u001b[01;33mGITEE.COM \u001b[0m[1.1.23]        \nremote: Set trace flag 174b87bd        \nTo https://moark.com/maikebing/Sezika-mmBERT-8192-experimental\n   f338890..06ebe82  06ebe82325e58c0ae723fb9014a38cdb2f87b22a -> master\n"
+      },
+      {
+        "pid": 24064,
+        "created": 1791685241.8266883,
+        "argv": [
+          "C:\\Program Files\\Git\\cmd\\git.exe",
+          "-c",
+          "credential.helper=",
+          "-c",
+          "credential.helper=!\"C:/Users/mysti/AppData/Local/Python/pythoncore-3.14-64/python.exe\" \"D:/source/Sezika/.artifacts/model-publishing-20261009-01a12099/maikebing_git_credential.py\"",
+          "-c",
+          "credential.useHttpPath=true",
+          "-c",
+          "core.hooksPath=D:\\source\\Sezika\\.artifacts\\model-publishing-20261009-01a12099\\moark-maikebing-20261010\\model-repository\\.git\\hooks",
+          "-c",
+          "lfs.standalonetransferagent=",
+          "-c",
+          "lfs.basictransfersonly=true",
+          "-c",
+          "lfs.concurrenttransfers=1",
+          "-c",
+          "lfs.activitytimeout=180",
+          "-c",
+          "lfs.dialtimeout=15",
+          "-c",
+          "lfs.transfer.maxretries=0",
+          "ls-remote",
+          "origin",
+          "refs/heads/master"
+        ],
+        "parent_pid": 56144,
+        "args": [
+          "ls-remote",
+          "origin",
+          "refs/heads/master"
+        ],
+        "exit_code": 0,
+        "stdout": "06ebe82325e58c0ae723fb9014a38cdb2f87b22a\trefs/heads/master\n",
+        "stderr": ""
+      }
+    ],
+    "hook_bypass": false,
+    "source_push": false,
+    "standalone_gai_override": "empty",
+    "basic_transfer": true,
+    "lfs_concurrency": 1,
+    "frozen_source_sha": "PASS",
+    "elapsed_seconds": 111.81,
+    "before_refs": "f33889013d3c2d60bb25edf5e725681d370f2fd2\trefs/heads/master",
+    "after_refs": "06ebe82325e58c0ae723fb9014a38cdb2f87b22a\trefs/heads/master",
+    "status": "PASS_original_model_commit_published_standard_lfs",
+    "revision": "06ebe82325e58c0ae723fb9014a38cdb2f87b22a"
+  },
+  "anonymous_verification": {
+    "pid": 27392,
+    "parent_pid": 33588,
+    "max_seconds": 850,
+    "max_git_commands": 24,
+    "max_http_attempts": 8,
+    "max_files": 19,
+    "max_chunks_per_object": 400,
+    "anonymous": true,
+    "files": [
+      {
+        "path": "encoder.safetensors",
+        "expected_sha256": "6168c84d2498cdacdcafee16b71a69b5c1636ad569bfabaf2855f5ce7dabd528",
+        "bytes": 1227772549,
+        "git_lfs_pointer": "PASS",
+        "full_content": "PASS"
+      },
+      {
+        "path": "tokenizer/tokenizer.json",
+        "expected_sha256": "197d4cc5406ee12cc50c8b5511f2393cc32d9db321545979ce041c1199178356",
+        "bytes": 17525329,
+        "git_lfs_pointer": "PASS",
+        "full_content": "PASS"
+      },
+      {
+        "path": "expanded-head.asset",
+        "sha256": "4205457556736ab07799b462d42c377710e765cb14edb9aae508c1558c5e9d64",
+        "bytes": 9619,
+        "full_content": "PASS"
+      },
+      {
+        "path": "expanded-training.checkpoint",
+        "sha256": "4709e847a135265f71c092bb18c66cf291de87d90970cd8932add6fbc7f4264f",
+        "bytes": 9619,
+        "full_content": "PASS"
+      },
+      {
+        "path": "model.json",
+        "sha256": "b8fb9cecc0912f034e0fea184e8aa78871d11533093dccf4f5aad74646007551",
+        "bytes": 1225,
+        "full_content": "PASS"
+      },
+      {
+        "path": "LICENSE-COMPONENTS.md",
+        "sha256": "85176552d20e93b15fda9b1d1990d4c397762b172e130be0f93782caef09803e",
+        "bytes": 4526,
+        "full_content": "PASS"
+      },
+      {
+        "path": "notices/BoolQ-source-README.md",
+        "sha256": "0afe70d7cdbb644637592212f0cb15339389910bf00f35764ec3c545257aa663",
+        "bytes": 2675,
+        "full_content": "PASS"
+      },
+      {
+        "path": "notices/BoolQ-CC-BY-SA-3.0-legalcode.html",
+        "sha256": "c33d7ebdbcc5c8db073e69a794b2ac44805f5d7d9edcfb8b5181a71869a9b7d5",
+        "bytes": 54093,
+        "full_content": "PASS"
+      },
+      {
+        "path": "notices/Gemma-terms-current.html",
+        "sha256": "462f3889b3f7c72247045ec334fb6c69fbedd7c2d94258df7985cb559427035d",
+        "bytes": 144410,
+        "full_content": "PASS"
+      },
+      {
+        "path": "notices/Gemma-prohibited-use-policy-current.html",
+        "sha256": "7c69a7731e86088bcc06a51d7333089690df6e610036c033ef5eccad948e17d2",
+        "bytes": 135447,
+        "full_content": "PASS"
+      },
+      {
+        "path": "notices/MASSIVE-CC-BY-4.0-LICENSE.txt",
+        "sha256": "c2e6ea015269147de02117ebdd91f30ef09831251f5345fa8365273b1db1d435",
+        "bytes": 18704,
+        "full_content": "PASS"
+      },
+      {
+        "path": "notices/MIT-LICENSE-TEMPLATE.txt",
+        "sha256": "57d11141df969c81f74ee78de61b6934c3f16efd061b43e47ba6b5be70853a28",
+        "bytes": 1173,
+        "full_content": "PASS"
+      },
+      {
+        "path": "notices/mmbert-pinned-README.md",
+        "sha256": "35724415037ee3159aa733c16050620cc19a76219112a6ceeb3949572e0b37e9",
+        "bytes": 29650,
+        "full_content": "PASS"
+      },
+      {
+        "path": "license-provenance.json",
+        "sha256": "8bf1072e4602e592977cc4761f5d53344808aa2e58c41d707635ffc50d76338e",
+        "bytes": 2412,
+        "full_content": "PASS"
+      },
+      {
+        "path": "experiment-summary.json",
+        "sha256": "8e5eb29fd43bb5ceba38a3f1a7a6496400d244b194957f2b6bd893d9fbbf6b17",
+        "bytes": 8164,
+        "full_content": "PASS"
+      },
+      {
+        "path": "README.md",
+        "sha256": "385f40f051d9a62a134309e589fe0e2bdf8ce5ea4aa60ae66775bda6c1824064",
+        "bytes": 9678,
+        "full_content": "PASS"
+      },
+      {
+        "path": "publication-manifest.json",
+        "sha256": "18aa253b28ffc20f189b0c450fe35432df90488785e7045d0d3b8d41b3998c13",
+        "bytes": 6433,
+        "full_content": "PASS"
+      },
+      {
+        "path": "SHA256SUMS",
+        "sha256": "53d51e5904f9a8fc9940536812462339a18d71a42319b832ad7f4d576cbf39c8",
+        "bytes": 1591,
+        "full_content": "PASS"
+      }
+    ],
+    "git": [
+      {
+        "pid": 25052,
+        "created": 1791685320.1181805,
+        "argv": [
+          "C:\\Program Files\\Git\\cmd\\git.exe",
+          "-c",
+          "credential.helper=",
+          "-c",
+          "core.askPass=",
+          "-c",
+          "http.extraHeader=",
+          "-c",
+          "core.autocrlf=false",
+          "clone",
+          "--depth",
+          "1",
+          "https://moark.com/maikebing/Sezika-mmBERT-8192-experimental",
+          "D:\\source\\Sezika\\.artifacts\\model-publishing-20261009-01a12099\\moark-maikebing-20261010\\anonymous-verification"
+        ],
+        "parent_pid": 27392,
+        "args": [
+          "clone",
+          "--depth",
+          "1",
+          "https://moark.com/maikebing/Sezika-mmBERT-8192-experimental",
+          "D:\\source\\Sezika\\.artifacts\\model-publishing-20261009-01a12099\\moark-maikebing-20261010\\anonymous-verification"
+        ],
+        "exit_code": 0,
+        "stderr": "Cloning into 'D:\\source\\Sezika\\.artifacts\\model-publishing-20261009-01a12099\\moark-maikebing-20261010\\anonymous-verification'...\n"
+      },
+      {
+        "pid": 18032,
+        "created": 1791685321.1970387,
+        "argv": [
+          "C:\\Program Files\\Git\\cmd\\git.exe",
+          "-c",
+          "credential.helper=",
+          "-c",
+          "core.askPass=",
+          "-c",
+          "http.extraHeader=",
+          "-c",
+          "core.autocrlf=false",
+          "rev-parse",
+          "HEAD"
+        ],
+        "parent_pid": 27392,
+        "args": [
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stderr": ""
+      },
+      {
+        "pid": 46496,
+        "created": 1791685321.2549567,
+        "argv": [
+          "C:\\Program Files\\Git\\cmd\\git.exe",
+          "-c",
+          "credential.helper=",
+          "-c",
+          "core.askPass=",
+          "-c",
+          "http.extraHeader=",
+          "-c",
+          "core.autocrlf=false",
+          "ls-tree",
+          "-r",
+          "--name-only",
+          "HEAD"
+        ],
+        "parent_pid": 27392,
+        "args": [
+          "ls-tree",
+          "-r",
+          "--name-only",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stderr": ""
+      }
+    ],
+    "downloads": [
+      {
+        "path": "tokenizer/tokenizer.json",
+        "mode": "direct",
+        "expected_bytes": 17525329,
+        "expected_sha256": "197d4cc5406ee12cc50c8b5511f2393cc32d9db321545979ce041c1199178356",
+        "anonymous": true,
+        "status": "PASS_full_content",
+        "final_host": "s3.gitee.com",
+        "redirects": [
+          {
+            "status": 302,
+            "host": "hf-api.gitee.com"
+          }
+        ],
+        "content_length": "17525329",
+        "etag": "\"8e41b6d524087d090e1ebfdadb9cbd59\"",
+        "bytes": 17525329,
+        "sha256": "197d4cc5406ee12cc50c8b5511f2393cc32d9db321545979ce041c1199178356",
+        "elapsed_seconds": 3.041
+      },
+      {
+        "path": "encoder.safetensors",
+        "mode": "direct",
+        "expected_bytes": 1227772549,
+        "expected_sha256": "6168c84d2498cdacdcafee16b71a69b5c1636ad569bfabaf2855f5ce7dabd528",
+        "anonymous": true,
+        "status": "PASS_full_content",
+        "final_host": "s3.gitee.com",
+        "redirects": [
+          {
+            "status": 302,
+            "host": "hf-api.gitee.com"
+          }
+        ],
+        "content_length": "1227772549",
+        "etag": "\"b09fa9ee6e4a194739ce96b2449f8c1f\"",
+        "bytes": 1227772549,
+        "sha256": "6168c84d2498cdacdcafee16b71a69b5c1636ad569bfabaf2855f5ce7dabd528",
+        "elapsed_seconds": 108.188
+      }
+    ],
+    "git_auth_isolation": {
+      "system_global_config": "disabled",
+      "inherited_git_environment": "removed",
+      "client_home": "task_owned_empty",
+      "helpers_askpass_extraheader": "disabled"
+    },
+    "revision": "06ebe82325e58c0ae723fb9014a38cdb2f87b22a",
+    "package_bytes": 1245737297,
+    "package_files": 18,
+    "public_path_set": "PASS",
+    "status": "PASS_anonymous_18_files_full_content_sha256",
+    "elapsed_seconds": 116.078
+  },
+  "final_registration": {
+    "pid": 61392,
+    "created": 1791685319.6043086,
+    "argv": [
+      "C:\\Users\\mysti\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+      "D:\\source\\Sezika\\.artifacts\\model-publishing-20261009-01a12099\\maikebing_final_registration.py"
+    ],
+    "parent_pid": 44640,
+    "max_seconds": 70,
+    "max_requests": 6,
+    "requests": [
+      {
+        "method": "POST",
+        "path": "api/v1/hub/lfs/missing-lfs",
+        "mode": "direct",
+        "http_status": 200
+      },
+      {
+        "method": "GET",
+        "path": "api/models/maikebing/Sezika-mmBERT-8192-experimental",
+        "mode": "direct",
+        "http_status": 200
+      },
+      {
+        "method": "GET",
+        "path": "api/gitee/repos/maikebing/Sezika-mmBERT-8192-experimental",
+        "mode": "direct",
+        "http_status": 200
+      }
+    ],
+    "callback_requests": 0,
+    "storage_writes": 0,
+    "missing_oids": [],
+    "model_id": 28817,
+    "repository_id": 50738359,
+    "full_name": "maikebing/Sezika-mmBERT-8192-experimental",
+    "public": true,
+    "default_branch": "master",
+    "status": "PASS_final_platform_registration_identity",
+    "elapsed_seconds": 2.164
+  },
+  "prior_evidence_retained": "docs/evidence/moark-maikebing-model-publishing-2026-10-11.md",
+  "prior_gai_callback_failure_retained": true,
+  "transport_variation_published": false,
+  "formal_quality_calibration_new_head_aot_performance": "pending",
+  "source_code_push": false,
+  "receipts": [
+    {
+      "name": "inspect.json",
+      "bytes": 1912,
+      "sha256": "2bdd66ae8a78dce74db9c82589c6c0069e21062a8b09c7f93afc460b5dc7450e",
+      "status": "PASS_inspected_registration_pending"
+    },
+    {
+      "name": "register.json",
+      "bytes": 4923,
+      "sha256": "d1427bcd6be15a6277cafd42a2570c9539f2d9a3f9d44b1b7826b713776c3f6d",
+      "status": "FAIL_or_PARTIAL"
+    },
+    {
+      "name": "bos-verify.json",
+      "bytes": 2429,
+      "sha256": "631c1d0f63259b26bac269f0b7b2b0bb26f4f00b06ecc2f4cc675609ca5af595",
+      "status": "PASS_remote_full_encoder_sha"
+    },
+    {
+      "name": "register-alternate.json",
+      "bytes": 3455,
+      "sha256": "8b608064bd445ca9fee324009f956273adf7f3cd0d729062f57e25935c21c1e8",
+      "status": "FAIL_or_PARTIAL"
+    },
+    {
+      "name": "transport-prepare.json",
+      "bytes": 8886,
+      "sha256": "f612fb3c90702aace7c88375044e405dd9fa905255ea8d80c4b642de771bed5e",
+      "status": "PASS_prepared_not_published"
+    },
+    {
+      "name": "transport-local-restore.json",
+      "bytes": 4779,
+      "sha256": "320544c0290208673623abc114795845caee74ff95eed20137a37501fd0c6ceb",
+      "status": "PASS"
+    },
+    {
+      "name": "transport-tiny.json",
+      "bytes": 2797,
+      "sha256": "08ceec896b3e700b4955c6be6cb5f2344dd6acb185621a1005051e8d4e92905a",
+      "status": "FAIL_or_PARTIAL"
+    },
+    {
+      "name": "gitee-encoding-identity.json",
+      "bytes": 807,
+      "sha256": "593b4351bf94ac24637b62f73561af433be812cbf921644d7e0fed5f6c50c297",
+      "status": "PASS_real_gitee_identity_encoding_verified"
+    },
+    {
+      "name": "backend-readback.json",
+      "bytes": 2796,
+      "sha256": "379d7e7e2f58ce6ca640a9219731c13e0a04aaad44675ca212d255e3b7f339db",
+      "status": "PASS_readback_only"
+    },
+    {
+      "name": "basic-lfs-admission.json",
+      "bytes": 1053,
+      "sha256": "119b93dc1e7c0c00d68e6edc00bcbdf48ddc047d4e524e982b96fcdca0260cc2",
+      "status": "PASS_basic_upload_admitted"
+    },
+    {
+      "name": "standard-lfs-tiny.json",
+      "bytes": 4385,
+      "sha256": "e310415c49476934113841be9c1c33dcee8770d5b35c0ba1ba7f73d49f64ab9a",
+      "status": "PASS_standard_lfs_uploaded_registered_full_sha"
+    },
+    {
+      "name": "standard-lfs-publish.json",
+      "bytes": 7434,
+      "sha256": "640859535f32ccc573861bcaf451ae950daa0fbfdadabcd98015cbd7c8664231",
+      "status": "PASS_original_model_commit_published_standard_lfs"
+    },
+    {
+      "name": "final-registration.json",
+      "bytes": 1138,
+      "sha256": "6563e62e02cf5b2f7aa6de91c75cf0f49bd5a40cb1a58df99c444342678e39db",
+      "status": "PASS_final_platform_registration_identity"
+    }
+  ],
+  "process_monitor_receipts": [
+    {
+      "name": "20261011-015345-672-moark-resume-inspect.result.json",
+      "sha256": "85ce40f29b97bb7a1bce7c98478ff741a5d5d9626aeb45a150ba1b027f1c888a",
+      "Status": "Succeeded",
+      "Pid": 59964,
+      "ExitCode": 0,
+      "Started": "2026-10-11T01:53:46.3921373Z",
+      "ElapsedSeconds": 8.502,
+      "FinalCheckComplete": true,
+      "VerifiedLiveCount": 0,
+      "UnknownCount": 0
+    },
+    {
+      "name": "20261011-015451-223-moark-resume-browser-tree.result.json",
+      "sha256": "8dbbb59ee24e8df4705b11ff41fe53bba88b97bafd760218814ee06e1099ac44",
+      "Status": "Succeeded",
+      "Pid": 31188,
+      "ExitCode": 0,
+      "Started": "2026-10-11T01:54:51.7840692Z",
+      "ElapsedSeconds": 9.363,
+      "FinalCheckComplete": true,
+      "VerifiedLiveCount": 0,
+      "UnknownCount": 0
+    },
+    {
+      "name": "20261011-015551-174-moark-resume-browser-menu.result.json",
+      "sha256": "ae209dc9480a8f6d80b079e3d57fff8c811578bf963ea3959f3e4ddb1963f38a",
+      "Status": "Succeeded",
+      "Pid": 62976,
+      "ExitCode": 0,
+      "Started": "2026-10-11T01:55:51.7648359Z",
+      "ElapsedSeconds": 9.739,
+      "FinalCheckComplete": true,
+      "VerifiedLiveCount": 0,
+      "UnknownCount": 0
+    },
+    {
+      "name": "20261011-015654-785-moark-resume-register-long-read.result.json",
+      "sha256": "f9e325883227d5f7bb79c762cf5a45005e6185ccaeeb799567b04fd72b4550e5",
+      "Status": "Failed",
+      "Pid": 1804,
+      "ExitCode": 1,
+      "Started": "2026-10-11T01:56:55.40601Z",
+      "ElapsedSeconds": 96.975,
+      "FinalCheckComplete": true,
+      "VerifiedLiveCount": 0,
+      "UnknownCount": 0
+    },
+    {
+      "name": "20261011-020403-331-moark-resume-bos-full-sha.result.json",
+      "sha256": "8de7a44b848d4fdf98d1a7ce922a4695b3c60a94debbfe2772e84980e5c863c0",
+      "Status": "Succeeded",
+      "Pid": 59020,
+      "ExitCode": 0,
+      "Started": "2026-10-11T02:04:04.1013985Z",
+      "ElapsedSeconds": 56.412,
+      "FinalCheckComplete": true,
+      "VerifiedLiveCount": 0,
+      "UnknownCount": 0
+    },
+    {
+      "name": "20261011-020600-383-moark-resume-official-alternate.result.json",
+      "sha256": "8ba14d586e528d0ee4ba0b02cf95486e91523bed0ff8631827fd9b49d55e7510",
+      "Status": "Failed",
+      "Pid": 64964,
+      "ExitCode": 1,
+      "Started": "2026-10-11T02:06:01.4688549Z",
+      "ElapsedSeconds": 95.018,
+      "FinalCheckComplete": true,
+      "VerifiedLiveCount": 0,
+      "UnknownCount": 0
+    },
+    {
+      "name": "20261011-020700-863-moark-transport-baseline.result.json",
+      "sha256": "a63167f6b23f189b706884a10a13a5537187d00652c37b0151e2761a83a752aa",
+      "Status": "Succeeded",
+      "Pid": 49384,
+      "ExitCode": 0,
+      "Started": "2026-10-11T02:07:01.5318408Z",
+      "ElapsedSeconds": 3.079,
+      "FinalCheckComplete": true,
+      "VerifiedLiveCount": 0,
+      "UnknownCount": 0
+    },
+    {
+      "name": "20261011-021006-624-moark-transport-prepare.result.json",
+      "sha256": "104fb1cc2299305357bba8d967847db048e1c12462ab9fccb6359e0df15218f0",
+      "Status": "Succeeded",
+      "Pid": 42300,
+      "ExitCode": 0,
+      "Started": "2026-10-11T02:10:07.2664516Z",
+      "ElapsedSeconds": 5.482,
+      "FinalCheckComplete": true,
+      "VerifiedLiveCount": 0,
+      "UnknownCount": 0
+    },
+    {
+      "name": "20261011-021022-935-moark-transport-full-restore.result.json",
+      "sha256": "b3bfdaecf9ea78622ebc7c3afb4570d37dcefd9730c50488f62e47ee474db392",
+      "Status": "Succeeded",
+      "Pid": 38732,
+      "ExitCode": 0,
+      "Started": "2026-10-11T02:10:23.5702067Z",
+      "ElapsedSeconds": 7.985,
+      "FinalCheckComplete": true,
+      "VerifiedLiveCount": 0,
+      "UnknownCount": 0
+    },
+    {
+      "name": "20261011-021040-861-moark-transport-tiny-registration.result.json",
+      "sha256": "1811eec51d30fa5c7c7dcf48e5b17e1bb7d1c84d12eff08b39dbb08cfb6455f6",
+      "Status": "Failed",
+      "Pid": 53956,
+      "ExitCode": 1,
+      "Started": "2026-10-11T02:10:42.1689037Z",
+      "ElapsedSeconds": 26.522,
+      "FinalCheckComplete": true,
+      "VerifiedLiveCount": 0,
+      "UnknownCount": 0
+    },
+    {
+      "name": "20261011-021237-276-moark-real-gitee-identity.result.json",
+      "sha256": "de9bf1f22d1b0d0d2eab2a0bd83914d6b0d2a16537e991bebbd3eeddb4e8c181",
+      "Status": "Succeeded",
+      "Pid": 8568,
+      "ExitCode": 0,
+      "Started": "2026-10-11T02:12:37.817687Z",
+      "ElapsedSeconds": 5.09,
+      "FinalCheckComplete": true,
+      "VerifiedLiveCount": 0,
+      "UnknownCount": 0
+    },
+    {
+      "name": "20261011-021401-400-moark-backend-reconcile.result.json",
+      "sha256": "71d6ecd6ca96d4fb3321944d653eee776f0bba374b068abd1cb11a9ad2a7b456",
+      "Status": "Succeeded",
+      "Pid": 29992,
+      "ExitCode": 0,
+      "Started": "2026-10-11T02:14:01.9646598Z",
+      "ElapsedSeconds": 6.924,
+      "FinalCheckComplete": true,
+      "VerifiedLiveCount": 0,
+      "UnknownCount": 0
+    },
+    {
+      "name": "20261011-021503-741-moark-personal-basic-lfs-admission.result.json",
+      "sha256": "9ebe68b215e37f5780516ab779375a4dfea57be2485ab502f6ec61bf52cc4db1",
+      "Status": "Succeeded",
+      "Pid": 41428,
+      "ExitCode": 0,
+      "Started": "2026-10-11T02:15:04.2346855Z",
+      "ElapsedSeconds": 4.823,
+      "FinalCheckComplete": true,
+      "VerifiedLiveCount": 0,
+      "UnknownCount": 0
+    },
+    {
+      "name": "20261011-021640-582-moark-standard-lfs-real-tiny.result.json",
+      "sha256": "af252e0238298a4b741517ebd306380371669c286bdb08b274693b2d5f252617",
+      "Status": "Succeeded",
+      "Pid": 61572,
+      "ExitCode": 0,
+      "Started": "2026-10-11T02:16:41.089305Z",
+      "ElapsedSeconds": 11.274,
+      "FinalCheckComplete": true,
+      "VerifiedLiveCount": 0,
+      "UnknownCount": 0
+    },
+    {
+      "name": "20261011-021850-037-moark-standard-lfs-publish-original.result.json",
+      "sha256": "671b2f8ee0cd364452a6191f53c79444dba945ca03f265cdcdf90769373b5513",
+      "Status": "Succeeded",
+      "Pid": 56144,
+      "ExitCode": 0,
+      "Started": "2026-10-11T02:18:50.5508213Z",
+      "ElapsedSeconds": 115.451,
+      "FinalCheckComplete": true,
+      "VerifiedLiveCount": 0,
+      "UnknownCount": 0
+    },
+    {
+      "name": "20261011-022159-043-moark-anonymous-original-full-verification.result.json",
+      "sha256": "738a19b0d30a0e09b834be841edac2fc014877b369f6beaa8babe337ab7283c2",
+      "Status": "Succeeded",
+      "Pid": 27392,
+      "ExitCode": 0,
+      "Started": "2026-10-11T02:21:59.6149577Z",
+      "ElapsedSeconds": 118.096,
+      "FinalCheckComplete": true,
+      "VerifiedLiveCount": 0,
+      "UnknownCount": 0
+    },
+    {
+      "name": "20261011-022159-043-moark-final-registration-identity.result.json",
+      "sha256": "0a795a9514065ba79cef2b7f1ca9810f9bb11b8caa47d0f845d6b96a4163388a",
+      "Status": "Succeeded",
+      "Pid": 61392,
+      "ExitCode": 0,
+      "Started": "2026-10-11T02:21:59.6043086Z",
+      "ElapsedSeconds": 7.04,
+      "FinalCheckComplete": true,
+      "VerifiedLiveCount": 0,
+      "UnknownCount": 0
+    }
+  ],
+  "process_closure_before_commit": {
+    "checked_utc": "2026-10-11T02:25:31.4977285Z",
+    "status": "PASS_current_readonly_identity_snapshot",
+    "max_seconds": 45,
+    "max_receipts": 64,
+    "max_identities": 320,
+    "receipts": 18,
+    "identities": 61,
+    "unique_pids": 61,
+    "matching_current_live": 0,
+    "current_unknown": 0,
+    "different_identity_children_preserved": 0,
+    "historical_unknown_and_cleanupfailed_preserved": true,
+    "limitation": "Current absence does not supply missing historical argv or undiscovered past child identities.",
+    "rows": [
+      {
+        "Pid": 59964,
+        "Receipt": "20261011-015345-672-moark-resume-inspect.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 38536,
+        "Receipt": "20261011-015345-672-moark-resume-inspect.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 31188,
+        "Receipt": "20261011-015451-223-moark-resume-browser-tree.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 24908,
+        "Receipt": "20261011-015451-223-moark-resume-browser-tree.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 58312,
+        "Receipt": "20261011-015451-223-moark-resume-browser-tree.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 60728,
+        "Receipt": "20261011-015451-223-moark-resume-browser-tree.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 14284,
+        "Receipt": "20261011-015451-223-moark-resume-browser-tree.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 40408,
+        "Receipt": "20261011-015451-223-moark-resume-browser-tree.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 50508,
+        "Receipt": "20261011-015451-223-moark-resume-browser-tree.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 54792,
+        "Receipt": "20261011-015451-223-moark-resume-browser-tree.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 54816,
+        "Receipt": "20261011-015451-223-moark-resume-browser-tree.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 56188,
+        "Receipt": "20261011-015451-223-moark-resume-browser-tree.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 39128,
+        "Receipt": "20261011-015451-223-moark-resume-browser-tree.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 62976,
+        "Receipt": "20261011-015551-174-moark-resume-browser-menu.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 55468,
+        "Receipt": "20261011-015551-174-moark-resume-browser-menu.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 56572,
+        "Receipt": "20261011-015551-174-moark-resume-browser-menu.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 63736,
+        "Receipt": "20261011-015551-174-moark-resume-browser-menu.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 3584,
+        "Receipt": "20261011-015551-174-moark-resume-browser-menu.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 7716,
+        "Receipt": "20261011-015551-174-moark-resume-browser-menu.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 9032,
+        "Receipt": "20261011-015551-174-moark-resume-browser-menu.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 51640,
+        "Receipt": "20261011-015551-174-moark-resume-browser-menu.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 57324,
+        "Receipt": "20261011-015551-174-moark-resume-browser-menu.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 61980,
+        "Receipt": "20261011-015551-174-moark-resume-browser-menu.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 1804,
+        "Receipt": "20261011-015654-785-moark-resume-register-long-read.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 49972,
+        "Receipt": "20261011-015654-785-moark-resume-register-long-read.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 59020,
+        "Receipt": "20261011-020403-331-moark-resume-bos-full-sha.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 30792,
+        "Receipt": "20261011-020403-331-moark-resume-bos-full-sha.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 64964,
+        "Receipt": "20261011-020600-383-moark-resume-official-alternate.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 58788,
+        "Receipt": "20261011-020600-383-moark-resume-official-alternate.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 49384,
+        "Receipt": "20261011-020700-863-moark-transport-baseline.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 42300,
+        "Receipt": "20261011-021006-624-moark-transport-prepare.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 40712,
+        "Receipt": "20261011-021006-624-moark-transport-prepare.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 38732,
+        "Receipt": "20261011-021022-935-moark-transport-full-restore.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 20280,
+        "Receipt": "20261011-021022-935-moark-transport-full-restore.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 53956,
+        "Receipt": "20261011-021040-861-moark-transport-tiny-registration.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 63460,
+        "Receipt": "20261011-021040-861-moark-transport-tiny-registration.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 8568,
+        "Receipt": "20261011-021237-276-moark-real-gitee-identity.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 24728,
+        "Receipt": "20261011-021237-276-moark-real-gitee-identity.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 29992,
+        "Receipt": "20261011-021401-400-moark-backend-reconcile.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 55556,
+        "Receipt": "20261011-021401-400-moark-backend-reconcile.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 41428,
+        "Receipt": "20261011-021503-741-moark-personal-basic-lfs-admission.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 44716,
+        "Receipt": "20261011-021503-741-moark-personal-basic-lfs-admission.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 61572,
+        "Receipt": "20261011-021640-582-moark-standard-lfs-real-tiny.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 49284,
+        "Receipt": "20261011-021640-582-moark-standard-lfs-real-tiny.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 64804,
+        "Receipt": "20261011-021640-582-moark-standard-lfs-real-tiny.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 56144,
+        "Receipt": "20261011-021850-037-moark-standard-lfs-publish-original.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 22108,
+        "Receipt": "20261011-021850-037-moark-standard-lfs-publish-original.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 55096,
+        "Receipt": "20261011-021850-037-moark-standard-lfs-publish-original.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 60636,
+        "Receipt": "20261011-021850-037-moark-standard-lfs-publish-original.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 56032,
+        "Receipt": "20261011-021850-037-moark-standard-lfs-publish-original.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 56428,
+        "Receipt": "20261011-021850-037-moark-standard-lfs-publish-original.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 42260,
+        "Receipt": "20261011-021850-037-moark-standard-lfs-publish-original.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 52504,
+        "Receipt": "20261011-021850-037-moark-standard-lfs-publish-original.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 44720,
+        "Receipt": "20261011-021850-037-moark-standard-lfs-publish-original.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 30028,
+        "Receipt": "20261011-021850-037-moark-standard-lfs-publish-original.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 27392,
+        "Receipt": "20261011-022159-043-moark-anonymous-original-full-verification.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 25052,
+        "Receipt": "20261011-022159-043-moark-anonymous-original-full-verification.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 27084,
+        "Receipt": "20261011-022159-043-moark-anonymous-original-full-verification.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 61392,
+        "Receipt": "20261011-022159-043-moark-final-registration-identity.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 55716,
+        "Receipt": "20261011-022159-043-moark-final-registration-identity.result.json",
+        "Scope": "registered_complete_identity",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      },
+      {
+        "Pid": 50860,
+        "Receipt": "20261011-022451-996-moark-publication-complete-docs.result.json",
+        "Scope": "pid_start_fallback_unobserved_argv",
+        "Current": "absent_current",
+        "DirectChildren": 0,
+        "Action": "read_only_no_signals"
+      }
+    ],
+    "elapsed_seconds": 1.2650776
+  },
+  "secret_scan": {
+    "max_seconds": 35,
+    "max_files": 160,
+    "max_file_bytes": 2097152,
+    "max_total_bytes": 16777216,
+    "status": "PASS_exact_credential_value_scan",
+    "files": 95,
+    "bytes": 567748,
+    "elapsed_seconds": 0.01
+  },
+  "documentation_monitor_limitation": {
+    "exit_code": 0,
+    "current_registered_identity_snapshot": "absent",
+    "historical_receipt_unchanged": true,
+    "historical_unknown": 1,
+    "receipt": "20261011-022451-996-moark-publication-complete-docs.result.json",
+    "status": "CleanupFailed"
+  }
+}
