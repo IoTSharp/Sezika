@@ -1,0 +1,152 @@
+{
+  "version": "public-decision-2026-10-10",
+  "formal_training_admitted": false,
+  "principles": [
+    "preserve_raw_and_derivation_ledger",
+    "original_split_and_family_isolation",
+    "source_specific_license",
+    "physical_rows_are_not_unique_questions",
+    "model_prediction_is_not_execution_authorization"
+  ],
+  "priorities": [
+    {
+      "rank": 1,
+      "sources": [
+        "PolyAI/banking77",
+        "AmazonScience/massive",
+        "clinc/clinc_oos"
+      ],
+      "supervision": "Choice / intent / scenario / explicit OOS",
+      "admission": "original train only; label mapping, language, source identity and rights review"
+    },
+    {
+      "rank": 2,
+      "sources": [
+        "samatv256/jev-decisions-v1"
+      ],
+      "supervision": "Choice / value / completion according to eligibility flags",
+      "admission": "separate source and trajectory families; preserve SOURCE_LICENSES; do not treat value as calibrated probability; completion class balance review",
+      "clean50k": "derived train subset; do not mix as independent records with parent corpus"
+    },
+    {
+      "rank": 3,
+      "sources": [
+        "LocalLLaMA/typed-decisions",
+        "ZefanCai/Open-Jev",
+        "HIT-TMG/JevEmbed-Data",
+        "C-Tianyu/NanoJev-Data",
+        "hotchpotch/bekko-system-one-dataset-v0"
+      ],
+      "supervision": "typed decision supervision after per-schema inspection",
+      "admission": "exclude test and aggregated duplicate configurations; synthetic provenance retained; source conditions reviewed"
+    },
+    {
+      "rank": 4,
+      "sources": [
+        "C-MTEB/AFQMC",
+        "C-MTEB/CMNLI",
+        "C-MTEB/OCNLI",
+        "C-MTEB/LCQMC",
+        "clue/clue",
+        "google-research-datasets/paws-x"
+      ],
+      "supervision": "Chinese and multilingual Choice / Boolean",
+      "admission": "original train and upstream rights; never replace missing truth with teacher certainty"
+    },
+    {
+      "rank": 5,
+      "sources": [
+        "nvidia/HelpSteer",
+        "nvidia/HelpSteer2",
+        "C-MTEB/STSB",
+        "nyu-mll/glue"
+      ],
+      "supervision": "ordinal Score / similarity ratings (GLUE STS-B configuration only)",
+      "admission": "retain rating dimension and scale; labels do not establish probability calibration"
+    },
+    {
+      "rank": 6,
+      "sources": [
+        "Anthropic/hh-rlhf",
+        "HuggingFaceH4/ultrafeedback_binarized",
+        "google/civil_comments",
+        "google-research-datasets/go_emotions"
+      ],
+      "supervision": "preference Choice / multi-label safety and emotion",
+      "admission": "differentiate human labels, synthetic judgments, soft annotations and preference policies"
+    },
+    {
+      "rank": 7,
+      "sources": [
+        "Salesforce/xlam-function-calling-60k",
+        "Team-ACE/ToolACE"
+      ],
+      "supervision": "tool selection / function arguments; preserve original schema",
+      "admission": "tool-choice derivation required; xLAM gated source needs account access approval, current authenticated request HTTP403"
+    }
+  ],
+  "evaluation_and_calibration": [
+    {
+      "source": "hotchpotch/s1mb-dataset",
+      "use": "independent evaluation",
+      "train": "not admitted",
+      "upstream_overlap": "must check against training families"
+    },
+    {
+      "source": "little-g-ai/Sys1Cal-v1",
+      "use": "exact gold probability recovery / calibration evaluation",
+      "group": "latent_instance_id",
+      "train": "not admitted"
+    },
+    {
+      "source": "Praveenrajus/jev-bench",
+      "use": "quarantine pending original split mapping",
+      "train": "filename alone does not establish admission"
+    },
+    {
+      "source": "Quazim0t0/Byrne-Jev-79M",
+      "use": "model-card source discovery only",
+      "dataset": false
+    },
+    {
+      "source": "gorilla-llm/Berkeley-Function-Calling-Leaderboard",
+      "use": "independent function-calling evaluation",
+      "train": "not admitted"
+    },
+    {
+      "use": "independent multilingual Winograd evaluation",
+      "train": "not admitted",
+      "source": "Muennighoff/xwinograd"
+    }
+  ],
+  "excluded_collection": [
+    {
+      "source": "google-research-datasets/discofuse",
+      "reason": "generative discourse corpus without the selected decision labels; relevance exclusion, not byte/file limit"
+    }
+  ],
+  "upload": {
+    "target_platform": "Moark",
+    "namespace": "maikebing",
+    "status": "published_reviewed_subset_anonymous_full_content_verified",
+    "published": true,
+    "repository_url": "https://moark.com/datasets/maikebing/public-decision-data",
+    "whole_local_collection_published": false,
+    "source_repositories": 18,
+    "asset_files": 275,
+    "asset_bytes": 1076726933,
+    "verified_data_commit": "b8ea13b81aaaca722baf6a3c0f12e2217fc4353e",
+    "publication_commit": "08f1fdad70add4e0dd442ec3c796242df596c669",
+    "receipt": "publication-receipt.json",
+    "download_guide": "download-guide.md"
+  },
+  "remaining_downloads": [
+    {
+      "source": "Salesforce/xlam-function-calling-60k",
+      "file": "xlam_function_calling_60k.json",
+      "bytes": 96116570,
+      "status": "gated_account_access_not_approved",
+      "current_authenticated_http_status": 403
+    }
+  ]
+}

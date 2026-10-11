@@ -1,0 +1,1173 @@
+{
+  "schema_version": 1,
+  "status": "PASS_AUTHORIZED_PUBLIC_MASTER_HISTORY_AND_MODEL_SHA",
+  "recorded_utc": "2026-10-11T13:41:11.605641+00:00",
+  "run_id": "encoder-full-20261011-121827",
+  "publication_acceptance": "PASS_private_assets_public_model_and_authorized_master_history_scope",
+  "continuation": "Windows_local_Git_LFS_no_GPU_no_SSH_no_new_rental",
+  "local_root": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617",
+  "private_model": {
+    "commit": "e2e5bc97d62dfbd4e2bbd070542324bb544e6b32",
+    "visibility": "private",
+    "base_files": 18,
+    "base_bytes": 1245737297,
+    "run_files": 33,
+    "run_bytes": 4929157012,
+    "authenticated_complete_readback": "PASS_actual_all_bytes_SHA",
+    "optimizer_actual_restore": "PASS",
+    "optimizer_bytes": 2455565752,
+    "optimizer_sha256": "2cd5a601d63c658598e5717ce4c05cd26d1197a14212f82f3b47fba4bfb83426"
+  },
+  "private_dataset": {
+    "commit": "d19515802d31310b4050226b51ab85c60f130d42",
+    "visibility": "private",
+    "original_files": 275,
+    "original_bytes": 1076726933,
+    "new_derived_files": 8,
+    "new_derived_bytes": 64322231,
+    "authenticated_complete_readback": "PASS_actual_all283_bytes_SHA",
+    "pointer_attribute_acceptance": "FAIL_two_known_original_blobs_preserved_content_SHA_PASS",
+    "organization_mirrored": false
+  },
+  "public_model": {
+    "url": "https://moark.com/IoTSharp/Sezika-Decision-Base",
+    "name": "Sezika-Decision-Base",
+    "version": "v0.1-preview",
+    "commit": "9c522c4e227c52c86f493a90595a894a41e1935a",
+    "parent_commit": "2a410d64a70955364439514cba60207b8b9ee796",
+    "visibility": "public",
+    "owned_files": 55,
+    "preserved_baseline_files": 1,
+    "total_bytes": 6174855372,
+    "normal_Git_LFS_push": "ordinary_model_push_then_one_explicitly_authorized_exact_master_lease",
+    "fresh_anonymous_complete_readback": "PASS_fresh_anonymous_full_history_and_all_model_SHA_in_original_independent_cache",
+    "authentication": false,
+    "private_source_cache_reused": false,
+    "private_dataset_included": false,
+    "optimizer_logical_reassembly_SHA": "PASS",
+    "optimizer_actual_restore_in_anonymous_checkout": false,
+    "approved_model_card_sha256": "8a2bf6a270deef2cba9f2b5689d23b850325b03114cb92c0a1fe36ed8beabd19",
+    "current_tree_detailed_records": false,
+    "source_weights_and_optimizer_bytes_changed": false,
+    "historical_detail_commit": "dfef170bc9e26dff7e4317fc08686d0abd013438",
+    "public_history_cleanup": "PASS_old_detail_commit_and_path_not_reachable_from_public_master",
+    "previous_summary_commit": "c68049c735c24da5f1c611c2b229619bb4b391ac",
+    "all_current_model_bytes_unchanged": true,
+    "public_reachable_history_commits": [
+      "9c522c4e227c52c86f493a90595a894a41e1935a",
+      "2a410d64a70955364439514cba60207b8b9ee796",
+      "c23c3c428beaece8a116c4d75ae51df2c97206d2",
+      "db71e778414ff17136952e0d91f0c2a8431a1da4"
+    ]
+  },
+  "formal_quality": "NOT_ACCEPTED",
+  "calibration": "NOT_ACCEPTED",
+  "new_weights_AOT_and_performance": "NOT_ACCEPTED",
+  "training_updates": 48,
+  "training_rows_used": 48,
+  "available_train_rows": 17615,
+  "independent_GPU_forwards": 196,
+  "source_repository_push": false,
+  "receipts": [
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\model-clone-v1.json",
+      "bytes": 8924,
+      "sha256": "9f4c95b1be3d3b4f7549d62b453cf637d4c1a33ad9036e9eae5a678421d5706a",
+      "status": "PASS_fixed_metadata_clone_LFS_bytes_NOT_DOWNLOADED"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\model-pull-v2.json",
+      "bytes": 4772,
+      "sha256": "77ad98cbf37dfa3f211c5475abc4005f46e7189a625818ecb718df6ac55b236d",
+      "status": "PASS_standard_LFS_pull_objects_only_full_manifest_SHA_PENDING"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\model-materialize-v1.json",
+      "bytes": 6763,
+      "sha256": "b594b870dcd36749f70acce5897de77e59265da8123c3af7fcb4218db1d7df9a",
+      "status": "PASS_LFS_materialized_objects_full_manifest_SHA_PENDING"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\source-assets-readback.json",
+      "bytes": 10528,
+      "sha256": "febe2486c85bbc247842cb0ed78391a7efa1ecdf23312dde8fce16e065c963cd",
+      "status": "PASS_local_complete_base_and_run_full_bytes_sha256"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\dataset-clone-v1.json",
+      "bytes": 17945,
+      "sha256": "b42b49473642e98abff29a1d18d709b306180e8c784b52bd8167c486a20135ed",
+      "status": "PASS_fixed_metadata_clone_LFS_bytes_NOT_DOWNLOADED"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\dataset-pull-v1.json",
+      "bytes": 4755,
+      "sha256": "baf3a299c49efb2e3ec716c550c95b281bcd20a4a42a004b6ebb93c8439df784",
+      "status": "PASS_standard_LFS_pull_objects_only_full_manifest_SHA_PENDING"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\dataset-materialize-v1.json",
+      "bytes": 7183,
+      "sha256": "c411b5798c7b581e841f3ae353aab8255d11dc0269866eb12326258f659aeb93",
+      "status": "PASS_LFS_materialized_objects_full_manifest_SHA_PENDING"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\private-dataset-readback-v1\\receipt.json",
+      "bytes": 3469,
+      "sha256": "dc1558c79f339f71a7e3add6cb5d705d3d1341caedd77e24bfed8b4b369532d6",
+      "status": "PASS_local_private_dataset_original275_and_derived8_full_bytes_sha256"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\mirror-state\\owned-mirror.json",
+      "bytes": 15112,
+      "sha256": "ecd092e935b090daa28c42a9e7fdf3926de269386332b09708e5c03a197d6bdf",
+      "status": "PASS_local_mirror_prepared_NOT_PUSHED"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\mirror-state\\transport-prepare-commit-v3.json",
+      "bytes": 111395,
+      "sha256": "5ed2c8d84d9cbb9e365dd4ad6a0e6424582e7c6d5b769a268cc14f644c2d1c0e",
+      "status": "PASS_normal_owned_commit_NOT_PUSHED"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\mirror-state\\transport-push-v1.json",
+      "bytes": 55568,
+      "sha256": "dea765f6b3054626199b7a6458788111e99a0e64221f59f9f39b438a8a3dbfca",
+      "status": "PASS_ordinary_public_push_actual_ref_CONFIRMED_ANONYMOUS_BYTES_PENDING"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\mirror-state\\transport-anonymous-readback-v1.json",
+      "bytes": 24924,
+      "sha256": "377d25d0a04442217523dce9dc95a88dd3b57026434131708192c02da40a0050",
+      "status": "FAIL_or_PARTIAL_preserved"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\mirror-state\\transport-anonymous-readback-resume-v2.json",
+      "bytes": 36107,
+      "sha256": "0e06174b879ddda2cff460e7a6aded5551b5d503720f0d10d8efd49688bd9ba3",
+      "status": "FAIL_or_PARTIAL_preserved"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\mirror-state\\transport-anonymous-readback-materialize-v3.json",
+      "bytes": 20041,
+      "sha256": "c93c0129495f1d6842b837aa5900669d391e3f29c4b620cdb2b1a0e8bf07e04c",
+      "status": "FAIL_or_PARTIAL_preserved"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\mirror-state\\transport-anonymous-readback-materialize-v5-tiny.json",
+      "bytes": 788,
+      "sha256": "cbd7358e7d9c1de9174aa13b3092b2ef7e9744cf2e3bf106b8def051cb4d0c23",
+      "status": "PASS_tiny_known_exited_process_observation_ONLY"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\mirror-state\\transport-anonymous-readback-materialize-v5.json",
+      "bytes": 41126,
+      "sha256": "84bca928c9d9a0f8f09a2d0c4fee80aac3a3b0521a52177f5ddedad0a978549b",
+      "status": "PASS_independent_anonymous_LFS_transport_ONLY_full_file_SHA_PENDING"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\mirror-assets-readback.json",
+      "bytes": 903,
+      "sha256": "fb559a683ff1adbab4a07e4b59810025d4dad4e25a65213a5d0622fe444dde74",
+      "status": "PASS_local_mirror_full_bytes_sha256"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\visibility-anonymous-final-v3.json",
+      "bytes": 1863,
+      "sha256": "6bb07d01c9ac721ce759f2fad9a68b36d1121a0f1d9798db8c29b7bdae3bb3b3",
+      "status": "PASS_private_anonymous_denied_public_metadata_and_ref"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\mirror-state\\transport-push-public-summary-publish-v1.json",
+      "bytes": 82682,
+      "sha256": "9e8581d1d013cc1f369d768b2095ea93927bb92dec8fc4e7be9177ad9021f68b"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\mirror-state\\public-summary-owned-v1.json",
+      "bytes": 15625,
+      "sha256": "91a0a55e51733001177284bbfb8a656ae8d72d188146eaa5d4628736d59d0c3d"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\mirror-state\\transport-prepare-commit-history-cleanup-proposal-v1.json",
+      "bytes": 53517,
+      "sha256": "180652ef8a652d628c900ebfa77ca8133e9e94178eb95b7adb209e18fbaa97db"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\optional-validation-dependency-cleanup-v2.json",
+      "bytes": 13978,
+      "sha256": "9d47b7e1bde17b2a601fef698fe57b8e0746c9de548d4e9da33f5616001ef4b4"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-130314-375-public-summary-publish-and-anonymous-readback-v1.result.json",
+      "bytes": 27797,
+      "sha256": "75d3ea0d8564952bc07f614fa3daed5732d4ba893de0d47848ba50d44a3a73f6"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-130858-033-history-cleanup-proposal-v1.result.json",
+      "bytes": 3873,
+      "sha256": "b0e092dc869044d2bb8e14d7cd5a1c912953a3ea46caed41bc0a104202441a55"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-130925-544-task-dependency-cleanup-final-v2.result.json",
+      "bytes": 3886,
+      "sha256": "01aa0e04981faa50687bc1b0c681919f32bb3a7605c2153d621f3b44c9f48860"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\mirror-state\\transport-push-history-cleanup-publish-v2.json",
+      "bytes": 63826,
+      "sha256": "3e4b0b4698e422a99466dc9af7e240151e741b91a477118a9ef13909dc52ffd7"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\mirror-state\\transport-anonymous-readback-history-cleanup-readback-v2.json",
+      "bytes": 75359,
+      "sha256": "c2c4ec9267faa6df5ba6d6c8d4c010db80d97eb034fb9437a35217c569308c78"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-133317-107-authorized-history-cleanup-tiny-v2.result.json",
+      "bytes": 3932,
+      "sha256": "9ce79ab8837ca4cf817bcd40f11ed2387ac39e691f781d10f8ae6801c58caa24"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-133441-479-authorized-exact-master-history-publish-v2.result.json",
+      "bytes": 26313,
+      "sha256": "8eb611fba9aaf34e207b694d0666869cc099f6b47c572af72a3aa5b1cf78014c"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-133524-490-authorized-history-anonymous-readback-v2.result.json",
+      "bytes": 11570,
+      "sha256": "d483cfba4ad2eee87ab8f9e9262d427b4f19dc2de2a38bb6d19d4f0fabb9ca4a"
+    }
+  ],
+  "process_closure": {
+    "status": "PASS_known_prior_task_identities_now_exited_or_foreign_reused",
+    "result_files": 32,
+    "identity_audit": [
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-112618-416-local-mirror-tiny.result.json",
+        "status": "Failed",
+        "original_FinalCheckComplete": false,
+        "historical_UnknownCount": 1,
+        "now": [
+          {
+            "pid": 63636,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-112650-460-local-mirror-tiny-v2.result.json",
+        "status": "Succeeded",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 42528,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 31700,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-112748-132-local-fixed-clone-model.result.json",
+        "status": "Succeeded",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 41008,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 12088,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 36424,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-112748-168-local-fixed-clone-dataset.result.json",
+        "status": "Succeeded",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 3716,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 5844,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 37144,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 34412,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 28064,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 48452,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 27784,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-112748-199-local-fixed-clone-target.result.json",
+        "status": "Succeeded",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 51976,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 36296,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-112925-299-local-private-model-lfs.result.json",
+        "status": "Failed",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 58496,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 75552,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-113024-730-local-private-model-lfs-v2.result.json",
+        "status": "Succeeded",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 74052,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 63416,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 79156,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 79704,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 53812,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 69996,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 66772,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 73624,
+            "status": "foreign_reused_PID_preserved"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-113102-202-local-private-dataset-lfs.result.json",
+        "status": "Succeeded",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 71100,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 42472,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 60304,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 79316,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 42420,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-113521-124-local-lfs-materialize-model.result.json",
+        "status": "Succeeded",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 70680,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 13572,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 63000,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 79348,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 3752,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 62680,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 4952,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 74784,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 75760,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 66752,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 28264,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-113521-190-local-lfs-materialize-dataset.result.json",
+        "status": "Succeeded",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 42740,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 9476,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 51972,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 53876,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 47068,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 56152,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 38332,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 46892,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 75296,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 67872,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 31560,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-113843-539-source-assets-readback-real-restore.result.json",
+        "status": "Succeeded",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 9784,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 70668,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-114033-564-mirror-assets-prepare-real.result.json",
+        "status": "Failed",
+        "original_FinalCheckComplete": false,
+        "historical_UnknownCount": 1,
+        "now": [
+          {
+            "pid": 67700,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-114325-799-mirror-preserved-baseline-fixture-v3.result.json",
+        "status": "Succeeded",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 75832,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 35336,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-114345-720-mirror-assets-prepare-real-v2.result.json",
+        "status": "Succeeded",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 27776,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 27536,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-114538-440-anonymous-repository-roles-before-model-mirror.result.json",
+        "status": "Succeeded",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 70672,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 60304,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-115519-458-organization-model-prepare-commit-v1.result.json",
+        "status": "Failed",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 49560,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 47752,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-120437-115-organization-model-prepare-commit-v2.result.json",
+        "status": "Failed",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 55208,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 41568,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 78160,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 74032,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 72740,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 64076,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-120648-013-organization-staged-whitespace-diagnosis-v1.result.json",
+        "status": "Failed",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 59576,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 61620,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-120739-819-organization-staged-whitespace-diagnosis-v2.result.json",
+        "status": "Succeeded",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 52668,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 3192,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-120855-081-organization-binary-attributes-repair-v1.result.json",
+        "status": "Succeeded",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 62192,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 67324,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-120916-074-organization-model-prepare-commit-v3.result.json",
+        "status": "Succeeded",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 66260,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 53732,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 69656,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 72464,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 62172,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 69524,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 1448,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 66228,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 34028,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-121024-065-organization-model-normal-lfs-push-v1.result.json",
+        "status": "Succeeded",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 70196,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 14976,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 19620,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 61336,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 49124,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 54196,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 49424,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 76536,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 76776,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 20916,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 22948,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 4976,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 45004,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-121122-333-organization-independent-anonymous-lfs-readback-v1.result.json",
+        "status": "Cancelled",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 73140,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 19532,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 42868,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 59904,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 24628,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 33216,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 54820,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 72992,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 6636,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 57944,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-121843-279-anonymous-repository-roles-after-model-mirror.result.json",
+        "status": "Succeeded",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 1040,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 30424,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-122144-273-organization-independent-anonymous-lfs-resume-v2.result.json",
+        "status": "Failed",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 72024,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 13332,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 67832,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 69344,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 53036,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 57692,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 67040,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 74852,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 64076,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 30356,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 54452,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-122622-517-organization-independent-anonymous-materialize-v3.result.json",
+        "status": "Failed",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 24784,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 3888,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-123038-812-anonymous-single-pointer-diagnostic-v4.result.json",
+        "status": "Failed",
+        "original_FinalCheckComplete": false,
+        "historical_UnknownCount": 1,
+        "now": [
+          {
+            "pid": 36172,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-123231-648-anonymous-materialize-v5-tiny.result.json",
+        "status": "Succeeded",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 68648,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 74636,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-123245-708-anonymous-materialize-v5.result.json",
+        "status": "Succeeded",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 61544,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 17340,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 49364,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 67104,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 57944,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 70312,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 38304,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 76440,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 67764,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 79264,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-123348-226-organization-anonymous-full-file-SHA-v1.result.json",
+        "status": "Succeeded",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 77208,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 76124,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-123555-209-final-anonymous-visibility-ref-v3.result.json",
+        "status": "Succeeded",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 12144,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 37708,
+            "status": "original_process_exited"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-123841-072-final-receipt-tiny-v1.result.json",
+        "status": "Succeeded",
+        "original_FinalCheckComplete": true,
+        "historical_UnknownCount": 0,
+        "now": [
+          {
+            "pid": 28340,
+            "status": "original_process_exited"
+          },
+          {
+            "pid": 69272,
+            "status": "original_process_exited"
+          }
+        ]
+      }
+    ],
+    "terminated_by_finalizer": 0,
+    "historical_unknown_or_failure_receipts_preserved": true
+  },
+  "preserved_artifacts": [
+    "anonymous-partial-checkout-before-materialization-v3",
+    "anonymous-stale-index-lock-preserved-v5",
+    "CANCEL.planned-anonymous-concurrency-upgrade-v1"
+  ],
+  "policy_rejected_cleanup": {
+    "status": "PRESERVED_no_bypass",
+    "reason": "blocked by policy",
+    "files": [
+      "org-transport-tiny-gate/go",
+      "org-transport-tiny-v2-gate/go",
+      "org-transport-tiny-v2b-gate/go"
+    ]
+  },
+  "overall_completion": false,
+  "historical_snapshot": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\final-publication-readback-v2.json",
+  "public_report_privacy": "PASS_current_tree_and_master_reachable_history_PLATFORM_STORAGE_DELETION_NOT_VERIFIED",
+  "legacy_stage_default": {
+    "full_file_readback_acceptance": false,
+    "interpretation": "Stage_default_unassigned_original_preserved_actual_full_SHA_loop_checked_before_PASS",
+    "reviewed_script": "D:\\source\\Sezika\\.artifacts\\repository-training-encoder-full-20261011-121827\\local-mirror-runtime\\public_summary_release.py"
+  },
+  "optional_validation_dependency_cleanup": {
+    "Status": "PASS_exact_task_dependency_removed_shared_environment_unchanged",
+    "Target": "D:\\source\\Sezika\\.artifacts\\repository-training-encoder-full-20261011-121827\\documentation-dependencies\\pyyaml-local-final-6.0.3",
+    "RemovedFiles": 44,
+    "RemovedDirectories": 6
+  },
+  "authorized_training_publication_scope_complete": true,
+  "platform_old_object_physical_deletion": "NOT_VERIFIED_not_attempted",
+  "model_quality_and_comparison": "separate_new_session_01a12b1d-ddfc-7693-94a5-9f245eb7db4d",
+  "history_cleanup_proposal_historical": {
+    "status": "READY_FOR_EXPLICIT_HISTORY_REWRITE_APPROVAL_NOT_PUSHED",
+    "expected_remote_commit": "c68049c735c24da5f1c611c2b229619bb4b391ac",
+    "candidate_commit": "9c522c4e227c52c86f493a90595a894a41e1935a",
+    "candidate_tree": "d7743fde522c22352aee1048b29f303924f6b5b1",
+    "preserved_intro_parent": "2a410d64a70955364439514cba60207b8b9ee796",
+    "files_changed_against_current_public_summary": 0,
+    "actual_remote_ref_writes": 0,
+    "platform_old_object_purge": "NOT_ATTEMPTED_requires_platform_confirmation"
+  },
+  "history_cleanup": {
+    "status": "PASS_authorized_public_master_history_and_anonymous_complete_model_SHA",
+    "publication_commit": "9c522c4e227c52c86f493a90595a894a41e1935a",
+    "publication_tree": "d7743fde522c22352aee1048b29f303924f6b5b1",
+    "anonymous_reachable_commits": [
+      "9c522c4e227c52c86f493a90595a894a41e1935a",
+      "2a410d64a70955364439514cba60207b8b9ee796",
+      "c23c3c428beaece8a116c4d75ae51df2c97206d2",
+      "db71e778414ff17136952e0d91f0c2a8431a1da4"
+    ],
+    "old_detail_commit_reachable": false,
+    "old_detail_path_in_reachable_history": false,
+    "full_file_readback_acceptance": true,
+    "private_repositories_modified": false,
+    "large_LFS_objects_changed": false,
+    "physical_platform_object_deletion_acceptance": "NOT_VERIFIED",
+    "single_push_attempts": 1,
+    "authorization": {
+      "schema_version": 1,
+      "authorization_source": "direct_human_question_reply_in_current_chat",
+      "question_call_id": "call_RaicXYFV724m8Y2C5pMmHn8w",
+      "human_answer": "授权清理该公开分支历史（推荐）",
+      "recorded_utc": "2026-10-11T13:28:47Z",
+      "target": "https://moark.com/IoTSharp/Sezika-Decision-Base",
+      "branch": "refs/heads/master",
+      "expected_remote_commit": "c68049c735c24da5f1c611c2b229619bb4b391ac",
+      "candidate_commit": "9c522c4e227c52c86f493a90595a894a41e1935a",
+      "authorized": true,
+      "maximum_push_attempts": 1,
+      "files_changed_against_current_public_summary": 0,
+      "private_repository_writes_authorized": false,
+      "platform_object_purge_authorized": false
+    },
+    "prior_summary_commit": "c68049c735c24da5f1c611c2b229619bb4b391ac",
+    "reviewed_script_sha256": "656de54a2f6104d47303bf5882b089ac38802cff6ef049de3bae86bfa17b3b14",
+    "receipts": [
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\mirror-state\\transport-push-history-cleanup-publish-v2.json",
+        "bytes": 63826,
+        "sha256": "3e4b0b4698e422a99466dc9af7e240151e741b91a477118a9ef13909dc52ffd7"
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\mirror-state\\transport-anonymous-readback-history-cleanup-readback-v2.json",
+        "bytes": 75359,
+        "sha256": "c2c4ec9267faa6df5ba6d6c8d4c010db80d97eb034fb9437a35217c569308c78"
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-133317-107-authorized-history-cleanup-tiny-v2.result.json",
+        "bytes": 3932,
+        "sha256": "9ce79ab8837ca4cf817bcd40f11ed2387ac39e691f781d10f8ae6801c58caa24"
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-133441-479-authorized-exact-master-history-publish-v2.result.json",
+        "bytes": 26313,
+        "sha256": "8eb611fba9aaf34e207b694d0666869cc099f6b47c572af72a3aa5b1cf78014c"
+      },
+      {
+        "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-133524-490-authorized-history-anonymous-readback-v2.result.json",
+        "bytes": 11570,
+        "sha256": "d483cfba4ad2eee87ab8f9e9262d427b4f19dc2de2a38bb6d19d4f0fabb9ca4a"
+      }
+    ]
+  }
+}

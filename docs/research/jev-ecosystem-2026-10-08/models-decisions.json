@@ -1,0 +1,672 @@
+[
+  {
+    "repo": "NandhaKishorM/laya",
+    "category": "多语言编码器与训练",
+    "priority": "P0",
+    "learn": "保持固定mmBERT基线；借鉴独立校准、候选预算诊断、loss对照与失败披露",
+    "adoption": "采纳",
+    "rationale": "当前多语言权重无拟合temperature，base在typed-decisions低于多数类；源码RLCD附加项无已证收益，采纳方法不接PyTorch运行时",
+    "evidenceLevel": "code",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "TheoLeeCJ/SemIf",
+    "category": "共享上下文推理与证据",
+    "priority": "P1",
+    "learn": "同模型同输入比较生成/直读；前缀复用须检查argmax、数值误差与逐行证据",
+    "adoption": "采纳",
+    "rationale": "适合验证调度收益；BF16复用自述改变5至6个argmax，不可把提速等同语义等价；与SemIf-OpenJev为同仓别名",
+    "evidenceLevel": "readme",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "TianyuCodings/NanoJev",
+    "category": "候选集合头与训练闭环",
+    "priority": "P1",
+    "learn": "完整问题加权、动态候选set attention、train/dev/calibration/test/OOD与独立模拟器oracle",
+    "adoption": "实验",
+    "rationale": "训练和轨迹公开且有完整问题目标；当前RLCD和共享前缀仍有路线边界；游戏表现不代表中文开放语义",
+    "evidenceLevel": "code",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "jaredpalmer/kev",
+    "category": "适配训练与评测治理",
+    "priority": "P1",
+    "learn": "保留原checkpoint再适配，记录base/revision/head尺寸；按未见来源冻结评测与新旧域回归",
+    "adoption": "采纳",
+    "rationale": "当前版本是Qwen3.5/Qwen3.8系列，与清单早期Qwen2.5说明不同；大模型依赖和规模不直接移入Sezika",
+    "evidenceLevel": "readme",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "bespokelabsai/nimble",
+    "category": "反事实数据工程",
+    "priority": "P0",
+    "learn": "只改一个决定性事实生成标签翻转对；独立校验、证据删减检查、按source family拆分",
+    "adoption": "采纳",
+    "rationale": "比继续扩大32条教师标签优先；最新权重T=1尚未独立fit，旧版T不可复用；许可分别审代码、权重与数据",
+    "evidenceLevel": "readme",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "vinnylarouge/jevlike",
+    "category": "动态候选注意力头",
+    "priority": "P1",
+    "learn": "候选query注意state token、共享scorer；错误上下文shuffle控制与target-disjoint拆分",
+    "adoption": "实验",
+    "rationale": "最接近纯C#可实现的小头；byte encoder语义弱，公开Doom/chess窗口为挑选片段，不能视作质量验收",
+    "evidenceLevel": "readme",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "githubnext/localjev",
+    "category": "协议桥与生成置信度",
+    "priority": "P3",
+    "learn": "协议兼容与故障提示；作为生成式对照识别自报概率的局限",
+    "adoption": "仅上层参考",
+    "rationale": "调用OpenAI兼容端点并解析生成概率，与独立本地真实分布路线不符",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "razorback16/openjev",
+    "category": "扩散模型prefill读出",
+    "priority": "P2",
+    "learn": "研究一步mask槽位读取与算子需求，记录依赖未合入扩展的风险",
+    "adoption": "暂不采纳",
+    "rationale": "打补丁vLLM和DiffusionGemma不符合核心实现约束，缺少C#算子与训练基础时性价比低",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "ekzhang/openjev-sglang",
+    "category": "prefill服务",
+    "priority": "P2",
+    "learn": "prefill-only对照和兼容端点的输入/输出契约",
+    "adoption": "仅上层参考",
+    "rationale": "SGLang实现不能作本项目runtime依赖，当前无必要新增decoder算子",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "TheoLeeCJ/SemIf-OpenJev",
+    "category": "共享上下文推理与证据",
+    "priority": "P1",
+    "learn": "复用SemIf同仓的固定输入、数值/质量/校准证据；别名归一避免重复计数",
+    "adoption": "采纳",
+    "rationale": "与TheoLeeCJ/SemIf同一canonical仓库及SHA，不是额外独立模型",
+    "evidenceLevel": "readme",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "Mapika/decider",
+    "category": "小型decoder决策微调",
+    "priority": "P2",
+    "learn": "Qwen3.5-2B的单pass typed微调作为未来decoder质量路线对照",
+    "adoption": "实验",
+    "rationale": "清单层说明不足以确认校准与权重许可；新增骨干必须先证明比已实现mmBERT收益",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "nokia-applied-research/AnyJev",
+    "category": "顺序偏差与自蒸馏",
+    "priority": "P1",
+    "learn": "候选循环置换、去label prior、预算受限的一致性早停；记录校正级别",
+    "adoption": "实验",
+    "rationale": "L0明确不做有标签校准；与自身full-cycle一致不是正确率；K次前向和内部CoT不应污染Sezika单pass核心",
+    "evidenceLevel": "readme",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "wfzyx/von",
+    "category": "小型编码器模型",
+    "priority": "P2",
+    "learn": "395M non-autoregressive的head与广泛OOD测试作为权重候选",
+    "adoption": "实验",
+    "rationale": "清单亚15ms与校准均未复现；不因速度标题替换固定mmBERT",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "featherless-ai/simple-jev",
+    "category": "接口与评分逻辑",
+    "priority": "P2",
+    "learn": "共享校验、分类logit读出、服务限流和schema错误；构造跨实现contract tests",
+    "adoption": "采纳",
+    "rationale": "可借行为契约，纯Python/scorer依赖不直接采纳；27测试不等于语言质量",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "Heman10x-NGU/openJev-verdict-2.0",
+    "category": "分布与正确率双头",
+    "priority": "P1",
+    "learn": "将soft目标分布和argmax正确率分开；OOF correctness MLP、permutation KL与risk-coverage",
+    "adoption": "实验",
+    "rationale": "151M Verdict与Verdict2不同且后者权重为LFS指针；1.44% ECE属正确率通道，不能称整个分布校准",
+    "evidenceLevel": "readme",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "hr98w/jev-visual",
+    "category": "视觉候选打分教学",
+    "priority": "P3",
+    "learn": "共享图像上下文与候选打分的shape设计",
+    "adoption": "仅上层参考",
+    "rationale": "当前文字训练/校准优先；Apple MLX视觉demo不构成Sezika图像能力证据",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "logan-markewich/jeff",
+    "category": "编码器兼容服务",
+    "priority": "P2",
+    "learn": "GliFormer动态label与Jev wire兼容的schema处理",
+    "adoption": "仅上层参考",
+    "rationale": "400M外部模型运行时不直接采纳；推理重任务短板由作者披露",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "kshetrajna12/reflex",
+    "category": "小型决策模型",
+    "priority": "P2",
+    "learn": "后续核训练记录、目标定义、temperature与OOD拆分",
+    "adoption": "不可核实",
+    "rationale": "本轮只有清单描述，无法确认校准和实测性能",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "bnsd55/jevmlx",
+    "category": "MLX并行受限决策",
+    "priority": "P3",
+    "learn": "并行选择的输入结构和限候选readout",
+    "adoption": "仅上层参考",
+    "rationale": "Apple MLX不符合核心依赖路线，可作未来同机基线设计参考",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "deepanwadhwa/OpenDecision",
+    "category": "证据关系与文档决策",
+    "priority": "P1",
+    "learn": "supports/contradicts/unknown/conflicted语义；证据不足与false分开",
+    "adoption": "仅上层参考",
+    "rationale": "当前作者明确未校准；文档检索/执行器放应用层，单开发案例不能宣称泛化",
+    "evidenceLevel": "readme",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "ikermoel/open-alternative-jev",
+    "category": "packed候选性能与偏差",
+    "priority": "P1",
+    "learn": "packed vs逐题前向、处理token核算和选项反序压力测试",
+    "adoption": "实验",
+    "rationale": "清单反序72%至21%是重要故障；任意模型依赖不能直用，先重现同输入稳定性",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "r-ms/mini-jev",
+    "category": "冻结decoder接口复现",
+    "priority": "P3",
+    "learn": "冻结Qwen3-4B的typed接口最小例",
+    "adoption": "仅上层参考",
+    "rationale": "与其他prefill模型重复较多，当前未显示独立训练或质量收益",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "zhengxuyu/litjev",
+    "category": "无训练prefill读出",
+    "priority": "P2",
+    "learn": "无生成schema端点和MMLU-Pro readout对照",
+    "adoption": "仅上层参考",
+    "rationale": "Qwen任意模型需C#新骨干支持，先保留研究对照",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "mithalouni/system-one-open",
+    "category": "attention LoRA与shared state",
+    "priority": "P2",
+    "learn": "attention LoRA和每state多问题吞吐计量；发布真实demo轨迹",
+    "adoption": "实验",
+    "rationale": "Gemma许可及新算子另审；97ms/27题是H100作者自测，不是本机性能",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "rorshopping/jev-on-a-laptop",
+    "category": "Apple并行决策",
+    "priority": "P3",
+    "learn": "不同1.5B至8B的设备/精度/批量公平比较",
+    "adoption": "仅上层参考",
+    "rationale": "与SezikaWindows/CUDA路线差异大，按清单筛选无需另引MLX",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "sgoedecke/system-one",
+    "category": "单token决策最小实现",
+    "priority": "P2",
+    "learn": "同模型同prompt下生成tool call与单token选择对照",
+    "adoption": "仅上层参考",
+    "rationale": "3.5倍为作者动作间隔对比；动作执行与系统调度对质量有混杂",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "OmniJev/PlayJev",
+    "category": "视觉策略与DAgger",
+    "priority": "P2",
+    "learn": "两轮DAgger、专家/模型状态分布混合与失败回放",
+    "adoption": "实验",
+    "rationale": "视觉C#核与评测尚缺；十游戏专训不代表多语言文本泛化",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "stephanj/parallelConstraintDecoding",
+    "category": "并行受限解码",
+    "priority": "P2",
+    "learn": "Java/Python输入契约与候选边界用例",
+    "adoption": "仅上层参考",
+    "rationale": "只能迁移算法与行为，不能以双语言实现推定NativeAOT可用",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "genai-craft/openvons",
+    "category": "日文多模态决策",
+    "priority": "P2",
+    "learn": "日文input/label跨语言设计与语音图像质量拆分",
+    "adoption": "仅上层参考",
+    "rationale": "多模态不在当前主线，清单描述未足以验证权重与质量",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "siliconkernel/vllm-jev-decison",
+    "category": "vLLM分类模式",
+    "priority": "P3",
+    "learn": "仅候选row readout减少全词表投影的思路",
+    "adoption": "仅上层参考",
+    "rationale": "vLLM不是可采纳runtime依赖，Sezika已走专用head而非LM全词表",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "us/jev-local",
+    "category": "服务启动与伪模型识别",
+    "priority": "P2",
+    "learn": "明确标识确定性桩与真实HF模式；模型身份health与冒烟测试",
+    "adoption": "采纳",
+    "rationale": "防止服务启动被误记真实推理；CPU/GPU/native路径仍需本项目独立验证",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "kotoba-lang/typed-decisions",
+    "category": "head读出消融与encoder训练",
+    "priority": "P0",
+    "learn": "option/question文本span mean pooling和[q,o,q*o]共享GELU头；CE+Brier与marker对照",
+    "adoption": "实验",
+    "rationale": "源码确认span默认，单pass普通全attention不保证问题隔离；作者测得marker头不学，不可照抄模型结论",
+    "evidenceLevel": "code",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "IoTSharp/Sezika",
+    "category": "自身状态与差距",
+    "priority": "P0",
+    "learn": "保持既有C#CPU/CUDA/AOT证据；固定768步head诊断train17/24、dev1/8，换序6/8预测ID改变且磁盘验证一致",
+    "adoption": "采纳",
+    "rationale": "自身不是可学习外部竞品；机制成立仍未充分拟合且位置敏感，新增训练暂停；缺独立oracle、人审、质量校准与新权重AOT",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "NullPo-jp/PocketJev",
+    "category": "手机端视觉隐私",
+    "priority": "P3",
+    "learn": "相机暂存、三候选体验与真实端侧延迟范围",
+    "adoption": "仅上层参考",
+    "rationale": "MLX/Qwen3-VL不符合当前runtime，先不扩图像算子",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "Octalab-Inc/jqv",
+    "category": "共享前缀与校准身份",
+    "priority": "P0",
+    "learn": "naive/kvcache/packed/shared的同输入等价和负控隔离；calibration绑定model+prompt hash",
+    "adoption": "采纳",
+    "rationale": "源码有有界NLL温度搜索和身份拒绝；共享attention需C#重写，温度跨阅读任务会伤害概率",
+    "evidenceLevel": "code",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "isHeSatoshi/smalljev",
+    "category": "语义候选span头",
+    "priority": "P1",
+    "learn": "用确切token span替代slot/letter prior，共享线性scorer与shuffle augmentation",
+    "adoption": "实验",
+    "rationale": "源码共享head等变不代表causal encoder全模型无顺序偏差；公开231题私评及清单hill-climbing使外推不足",
+    "evidenceLevel": "code",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "fstandhartinger/jevbench",
+    "category": "冻结第三方横评",
+    "priority": "P0",
+    "learn": "冻结/哈希test、公开/保密题拆分和智能/校准/延迟/成本分列",
+    "adoption": "采纳",
+    "rationale": "榜单版本与评分公式会变，网络延迟假设不可算本机实测；有专门评测组进一步审",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "zhihz/openjev",
+    "category": "双语概率研究预览",
+    "priority": "P2",
+    "learn": "双语state/question/candidate组合覆盖的测试设计",
+    "adoption": "不可核实",
+    "rationale": "仅清单层预览，不能判断概率校准与训练来源",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "achimala/jev-paint",
+    "category": "像素并行创作",
+    "priority": "P3",
+    "learn": "概率可视化与批量独立问题的交互示例",
+    "adoption": "仅上层参考",
+    "rationale": "依赖hosted Jev并用于像素创作，对当前文字质量无直接增益",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "bradAGI/ruling",
+    "category": "冻结公开答案与统计",
+    "priority": "P2",
+    "learn": "保存公开题答案并用McNemar成对比较，拒绝不显著优越结论",
+    "adoption": "采纳",
+    "rationale": "公开256题不等于独立通用oracle，OpenAI/MLX依赖只作基线",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "olanotolu/jevbetter",
+    "category": "轻量候选相互作用",
+    "priority": "P2",
+    "learn": "rival-aware attention和gated head可作小头消融",
+    "adoption": "实验",
+    "rationale": "hashed n-gram不能替代多语言语义主干，先核OOD与语义弱点",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "david-cermak/jevlike-esp32",
+    "category": "微控制器导出",
+    "priority": "P3",
+    "learn": "权重导出前后数值一致与device合同的工程思想",
+    "adoption": "暂不采纳",
+    "rationale": "C scorer/ESP32不符合C#核心与当前目标，不能另建C桥",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "zwliJay/jev-forge",
+    "category": "端到端数据/训练审计",
+    "priority": "P1",
+    "learn": "website-disjoint拆分、完整question softmax、CE/Brier同协议对照与RLCD锚定",
+    "adoption": "采纳",
+    "rationale": "README明确原始baseline只首200与其他full不同；微小RLCD收益须独立统计，MIT代码不代表数据自由许可",
+    "evidenceLevel": "readme",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "zeredy879/minojev",
+    "category": "冻结特征小头训练",
+    "priority": "P1",
+    "learn": "冻结backbone缓存candidate feature、shared scorer+set attention、primitive独立温度与OOD",
+    "adoption": "实验",
+    "rationale": "当前README主模型已为1.7B+0.8M头；OOD低于生成baseline说明head专训不能替代数据广度",
+    "evidenceLevel": "readme",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "scienthoon/luce",
+    "category": "任务专训与人审回流",
+    "priority": "P0",
+    "learn": "writer/teacher解耦、真实人审集与synthetic标签分开、错误目标诊断、real-calibration",
+    "adoption": "采纳",
+    "rationale": "README更正maze高分是多数类塌缩，phishing/tickets对Jev非完全配对；100至300真标签属作者建议非保证",
+    "evidenceLevel": "readme",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "rupeshpoojary9/poorjev",
+    "category": "校准与高候选数失败",
+    "priority": "P1",
+    "learn": "五折OOF temperature、Brier/risk-coverage与候选数量分层；明确校准不可修复结构性失败",
+    "adoption": "采纳",
+    "rationale": "77-way ECE校正仍约0.416；小英文单标注者eval不能证明多语言可靠性，NLI库不得直接依赖",
+    "evidenceLevel": "readme",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "ankit-aglawe/tinyjev",
+    "category": "pointer head与拒答",
+    "priority": "P2",
+    "learn": "pointer动态候选头、明确abstain与escalate接口",
+    "adoption": "实验",
+    "rationale": "596M/MLX与权重许可/独立校准本轮未核，先做小头实验",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "pc418/jev-calculator",
+    "category": "重复输入抖动展示",
+    "priority": "P3",
+    "learn": "同输入重跑检查分布抖动、可视化完整候选概率",
+    "adoption": "仅上层参考",
+    "rationale": "逐字符调用是自回归应用包装，与单pass决策主线收益弱",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "stillmarcus24/jev-verify",
+    "category": "输出恒等式与证据来源",
+    "priority": "P1",
+    "learn": "验证Score期望、概率归一与confidence约定；区分真实响应和手写fixture",
+    "adoption": "采纳",
+    "rationale": "公开记录一致不代表模型正确率，用于本地协议/数值验收而非质量标签",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "allebee/jevk5",
+    "category": "开放权重小模型",
+    "priority": "P2",
+    "learn": "密封题与作者结果分开记录、原始概率每选项输出",
+    "adoption": "实验",
+    "rationale": "13ms/H100和sealed分数未复现，清单不足确认可迁移算子",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "Manavarya09/verdict",
+    "category": "bi-encoder与conformal",
+    "priority": "P0",
+    "learn": "冻结embedding prototype/logistic头对照；独立calibration slice、LAC/APS预测集合与risk-coverage",
+    "adoption": "采纳",
+    "rationale": "源码保证依赖exchangeability且是marginal覆盖；bi-encoder结构JSON/Score短板不能忽略，ONNX不进入runtime",
+    "evidenceLevel": "code",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "Ztrura/Jev-MedQA",
+    "category": "领域批量评测",
+    "priority": "P2",
+    "learn": "医学各来源分列、图文任务拆分、生成与prefill同题对照",
+    "adoption": "仅上层参考",
+    "rationale": "153889题自报不代表医疗可用与我们的语言质量；不同数据许可和专家oracle必须复核",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "xucian/talktojev",
+    "category": "逐词生成应用",
+    "priority": "P3",
+    "learn": "候选规模/beam/置信度驱动lookahead作为应用成本对照",
+    "adoption": "暂不采纳",
+    "rationale": "hosted Jev逐词调用远离本地非自回归决策目标，不扩核心生成循环",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "Shanghua-Gao/RSI-Jev",
+    "category": "自动研究与失败日志",
+    "priority": "P2",
+    "learn": "逐实验保留失败、截层模型参数/训练成本账本与同协议验收",
+    "adoption": "采纳",
+    "rationale": "递归自治只能限定预算与冻结评测，不能自评自授权；视觉AUROC不代表文字quality",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "Contrastive-LM/CLM",
+    "category": "对比学习与候选缓存",
+    "priority": "P1",
+    "learn": "双向InfoNCE、hard negatives、独立state/action缓存与best-of-N任务独立split",
+    "adoption": "实验",
+    "rationale": "README87.6%是30题上强生成器加verifier组合，非CLM独立编码能力；8B大数据方案不能直接照搬",
+    "evidenceLevel": "readme",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "FeiLiuEM/open-medical-jev",
+    "category": "领域拒答与两reader",
+    "priority": "P2",
+    "learn": "双模型agreement、fit-free router和conformal候选集的错误/coverage定义",
+    "adoption": "仅上层参考",
+    "rationale": "医学专域与多个冻结模型资源不宜引入核心；无训练不是无校准条件",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "getainode/jebadiah",
+    "category": "多格式模型发布",
+    "priority": "P2",
+    "learn": "base/adapter/quantization/发布revision清单和格式能力矩阵",
+    "adoption": "仅上层参考",
+    "rationale": "GGUF/MLX/llama.cpp非允许核心依赖；同weights多格式要独立数值质量验收",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "feder-cr/jev",
+    "category": "截层专用二元模型",
+    "priority": "P2",
+    "learn": "缩深度/one-logit head与不支持Choice/Score明确422的能力契约",
+    "adoption": "实验",
+    "rationale": "只Noul的1B路线适合作专项对照，llama.cpp不能成为Sezikaruntime",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "TokenRhythm/NeoHorse",
+    "category": "4B prefill模型",
+    "priority": "P2",
+    "learn": "六组来源拆分与全结果完整性，作为未来decoder路线比较",
+    "adoption": "实验",
+    "rationale": "vLLM/SGLang/Pythonruntime不能直用，77.70为作者比较非独立验收",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "firelex/jeff",
+    "category": "微调对照与显著性",
+    "priority": "P2",
+    "learn": "公开同题panel、ECE与成对区间；明确不声称统计显著",
+    "adoption": "采纳",
+    "rationale": "新Qwen/Gemma核心算子成本高，先借证据规范不借22ms数字",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "denis-pplx/autojev",
+    "category": "全权重SFT规模对照",
+    "priority": "P2",
+    "learn": "checkpoint身份和训练/calibration分开，文本与图像能力区分",
+    "adoption": "暂不采纳",
+    "rationale": "27B/49GiB与H200全权重方案远大当前资源路线，精确73000语料未打包，无法独立重建",
+    "evidenceLevel": "readme",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "daseinlabs/open-jev",
+    "category": "任务动作排序",
+    "priority": "P3",
+    "learn": "单score排序动作与真实终端trace",
+    "adoption": "仅上层参考",
+    "rationale": "Doom执行器放应用层，专任务demo不是独立训练质量证据",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "hotchpotch/bekko-system-one",
+    "category": "小encoder与shared prefix",
+    "priority": "P1",
+    "learn": "17/68/400M尺寸阶梯、共享prefix候选隔离、gold/soft targets与广泛适应评测",
+    "adoption": "实验",
+    "rationale": "README明确v0泛化有限、训练评测77来源族重叠；ONNX/FlashAttention与remote code不可接核心",
+    "evidenceLevel": "readme",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "gignac-cha/jevcrypto",
+    "category": "概率生成UUID实验",
+    "priority": "P3",
+    "learn": "展示概率输出不能当加密随机源的反例",
+    "adoption": "暂不采纳",
+    "rationale": "作者明确非密码随机，功能对决策引擎能力无实质增益",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "Xiaooolong/vev",
+    "category": "非商业视觉权重",
+    "priority": "P3",
+    "learn": "图像state与schema的未来输入合同",
+    "adoption": "暂不采纳",
+    "rationale": "CC BY-NC4.0权重限制商业且需要新视觉算子，不进入当前能力主线",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "SamratDuttaOfficial/WaterSheep",
+    "category": "ModernBERT微调与多标签",
+    "priority": "P2",
+    "learn": "多标签sigmoid和Choice softmax语义区分、数据split calibration",
+    "adoption": "实验",
+    "rationale": "清单ECE0.026未核；多标签为新能力必须另做目标/校准/源许可验收",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "kouhxp/gutsy",
+    "category": "CPU本地决策",
+    "priority": "P2",
+    "learn": "核查CPU latency测量、权重身份、calibration和训练数据",
+    "adoption": "不可核实",
+    "rationale": "只有清单概要，无法确认对mmBERT/C#的质量或效率收益",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  }
+]

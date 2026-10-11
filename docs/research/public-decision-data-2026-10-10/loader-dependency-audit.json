@@ -1,0 +1,47 @@
+{
+  "checked_utc": "2026-10-10T04:35:59.3135433Z",
+  "dependency_count": 5,
+  "dependencies": [
+    {
+      "dataset": "AmazonScience/massive",
+      "url": "https://amazon-massive-nlu-dataset.s3.amazonaws.com/amazon-massive-dataset-1.1.tar.gz",
+      "path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\raw\\upstream\\massive\\amazon-massive-dataset-1.1.tar.gz",
+      "bytes": 40251390,
+      "sha256": "4cba5faa11c71437928e17cb1b9b3d8b8e727e7ea363a3a9a8045e19c0491577",
+      "source_revision": "official release 1.1; SHA256 frozen on download"
+    },
+    {
+      "dataset": "clinc/clinc_oos",
+      "url": "https://raw.githubusercontent.com/clinc/oos-eval/master/data/data_full.json",
+      "path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\raw\\upstream\\clinc150\\data_full.json",
+      "bytes": 2495390,
+      "sha256": "36923c3705a59e08fe9c3883d8bc2dd966ef93e22cb78ac41171782a698d56e0",
+      "source_revision": "master initially; freeze content SHA256"
+    },
+    {
+      "dataset": "PolyAI/banking77",
+      "url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/master/banking_data/test.csv",
+      "path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\raw\\upstream\\banking77\\test.csv",
+      "bytes": 239961,
+      "sha256": "d12d6e3bc4c3103966ae786dc435913c0c563dfa328f5a3646d0e62cfeeb474d",
+      "source_revision": "master initially; freeze content SHA256"
+    },
+    {
+      "dataset": "PolyAI/banking77",
+      "url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/master/banking_data/train.csv",
+      "path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\raw\\upstream\\banking77\\train.csv",
+      "bytes": 839073,
+      "sha256": "b06e26ac675513959a63135f11b94ea7786ed02da65db93a5650d8838cbc664b",
+      "source_revision": "master initially; freeze content SHA256"
+    },
+    {
+      "dataset": "allenai/social_i_qa",
+      "url": "https://storage.googleapis.com/ai2-mosaic/public/socialiqa/socialiqa-train-dev.zip",
+      "path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\raw\\upstream\\socialiqa\\socialiqa-train-dev.zip",
+      "bytes": 2198056,
+      "sha256": "ee073914a0fc33265cfbcfc50ec20df9b2e07809c3f420f599138d1f394ef5c3",
+      "source_revision": "loader-declared official artifact; content SHA frozen on download"
+    }
+  ],
+  "claim": "These loader-declared question archives were actually collected; scripts were not executed."
+}

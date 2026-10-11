@@ -12,6 +12,8 @@ using Sezika.Benchmarks;
 
 if (args.Length > 0 && args[0] == "independent-profile") return IndependentProfile.Run(args[1..]);
 if (args.Length > 0 && args[0] == "check-independent-profile") return IndependentProfileChecks.Run(args[1..]);
+if (args.Length > 0 && args[0] == "independent-diagnostic-profile") return DiagnosticIndependentProfile.Run(args[1..]);
+if (args.Length > 0 && args[0] == "check-independent-diagnostic-profile") return DiagnosticProfileChecks.Run(args[1..]);
 return Benchmark.Run(args);
 
 internal static class Benchmark

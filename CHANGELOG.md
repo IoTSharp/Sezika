@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+- 2026-10-11新增显式48步新包 `predict-package` 与旧冻结模型 `evaluate-baseline` 消费入口，复用C#静态CUDA推理且不改原encoder SHA/5090训练合同；135张量/有限值/head/tokenizer与Windows Native AOT真实三题型推理通过。固定256来源标签原题+192换序每模型448、共896前向完成，新119/256、旧126/256，没有准确率提升；新Boolean负类召回0/24、Choice换序改变148/192，正式质量/校准/封存/Score gold和正式发行/性能继续未接受。全部失败/拒答检查与逐题私有回执保留，native资源和任务专属Parquet依赖已回收；未训练、租机、源码提交推送或历史改写。见[新包加载与同条件比较](docs/evidence/new-package-load-comparison-2026-10-11.md)。
+
+- 2026-10-11完成用户明确授权的IoTSharp公开master历史清理：单次精确lease推送 `9c522c4e227c52c86f493a90595a894a41e1935a`，独立匿名完整模型与fresh bare可达历史验收PASS；55个owned文件+1个保留英文README共6,174,855,372bytes全SHA一致，tree `d7743fde522c22352aee1048b29f303924f6b5b1` 与c68049相同、diff0。旧dfef170和c68049均不在该分支可达历史，validation.json路径无可达记录，原安全介绍历史保留。私有模型/数据仓库与大型LFS字节未改；无需GPU或新租期。平台旧对象/缓存物理删除为NOT_VERIFIED，平台清理未授权、未执行；正式质量、校准、新权重AOT/性能仍NOT_ACCEPTED。详见[历史清理证据](docs/evidence/repository-training-history-cleanup-2026-10-11.md)。
+
+- 2026-10-11汇总脱敏阶段快照（保留历史，已由上条授权清理状态取代）：在本机补齐私有模型e2e5bc9的18底座+33run文件新认证完整读回、私有数据d195158的275原始+8派生文件全SHA及optimizer实际恢复；IoTSharp Sezika-Decision-Base v0.1-preview当时汇总模型提交 `c68049c735c24da5f1c611c2b229619bb4b391ac` 已正常Git/LFS推送，沿用原fresh anonymous checkout及其独立LFS缓存、无私有缓存复用，新提交55个owned文件+1个保留英文README共6,174,855,372bytes全SHA通过，当时汇总模型发布与匿名全SHA验收PASS。当时tree的验证报告按Split/Type/Rotated汇总，逐题标识、候选、教师概率及预测ID已移除；模型、optimizer与原训练清单SHA保持。旧公开提交 `dfef170bc9e26dff7e4317fc08686d0abd013438` 的55+1文件/6,174,921,683bytes运输/fullSHA PASS保留历史，其详细验证标签当时仍在公开Git历史内；当时尚未授权历史改写或平台清理，整体历史隐私收尾未完成。数据仓库保持private，当时tree的脱敏结论不覆盖Git历史；正式质量、校准、新权重AOT/性能保持NOT_ACCEPTED。原匿名v3展开失败及归档的0bytes旧index.lock保留，v5在确认旧任务已退出后通过标准Git恢复。见[本机接续证据](docs/evidence/repository-training-local-mirror-2026-10-11.md)。以下服务器租期结束PARTIAL及FAIL保留历史。
+
+- 2026-10-11公开介绍发布快照：以Sezika-Decision-Base为IoTSharp公开模型正式名称，单次发布带“权重待验收”状态的中文模型介绍；组织README提交2a410d6，认证与匿名完整7585bytes/SHA读回通过，仅包含介绍。maikebing为私有内部预发布，数据集保持私有；当时组织模型权重尚未发布。
+
+- 2026-10-11服务器租期结束快照：完成RTX5090上的48步C#完整encoder/head微调及196次独立GPU前向验证；从服务器正常Git/LFS回推私有数据d195158与个人私有预发布模型e2e5bc9，超限optimizer以三块运输并绑定原完整SHA。已固定maikebing私有预发布、IoTSharp公开发布及正式名Sezika-Decision-Base/v0.1-preview，并保存382文件的小证据与原失败。个人认证完整读回480秒超时；组织权重发布、匿名完整读回及正式质量/校准/新权重AOT/性能尚未通过。见[实机证据](docs/evidence/repository-training-real-2026-10-11.md)。下一条是此前工程准备快照。
+
+- 2026-10-11新增自有数据/模型仓库训练技能、完整encoder/head的C# GPU反向20个PTX、FP32 AdamW、完整checkpoint恢复、仓库训练/独立读档CLI和有界Git/LFS回推流程；tiny梯度/恢复、Linux工具和本地发布模拟通过，首源21913实验题长度准入完成。真实mmBERT完整微调、RTX5090新实例profile、正式质量/校准与新权重AOT/性能仍待验；本轮无正式训练或真实回推。见[交接](docs/training-repository-handoff-2026-10-11.md)及[实证](docs/evidence/repository-training-engineering-2026-10-11.md)。
+
 - 2026-10-11完成模力方舟maikebing个人实验模型标准Git LFS上传、平台注册与固定提交发布；原18文件/1,245,737,297 bytes、两个大对象完整匿名SHA及19 Git路径通过。中英首页更新可下载镜像；gai回调、备用运输tiny失败及旧组织权限错误保留。见[完整实证](docs/evidence/moark-personal-publication-complete-2026-10-11.md)。
 
 

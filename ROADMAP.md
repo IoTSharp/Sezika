@@ -6,6 +6,18 @@
 
 ## 阶段
 
+2026-10-11 S4-17 / S4-08 本机验收结果：新增显式 `RepositoryTrainer predict-package` / `evaluate-baseline` 和C#静态CUDA inference-only消费入口；新48步包135张量/全部shape/F32有限值/非零head/tokenizer/SHA独立加载、Choice/Boolean/Score JIT与Windows Native AOT实际执行通过。RTX4070 Laptop 8GB按同一Native程序/FP32/1024token strict/4GiB/GPU并发1冻结256来源标签原题+192Choice换序，每模型448、合计896次真实GPU前向均成功，全部native资源归零。新正确119/256（46.48%）、旧冻结encoder/24576步head126/256（49.22%），差-2.73个百分点；新原序Choice192/192首候选、Boolean64/64 true、负类召回0/24、换序selectedID改变148/192，质量不通过。显式SHA/缺tokenizer拒绝及超长/非法输入全失败分母检查通过，原FAIL保留。未训练/调参/调用教师/租机/连接旧实例/提交推送源码或改写历史；Score金标、正式质量/校准/封存、中文组件权利、8192/受控性能、Linux新权重AOT和正式发行保持NOT_ACCEPTED。仅Windows Native AOT实际执行门槛获得本轮证据，详见[新包加载与比较](docs/evidence/new-package-load-comparison-2026-10-11.md)。
+
+2026-10-11 新会话 S4-17 / S4-08 加载与同条件比较验收：绑定已匿名读回的 `encoder-full-20261011-121827` 新包、package/weights/tokenizer SHA，先实际 C# 独立进程加载并检查完整张量/shape/finite/head，执行 Choice/Boolean/Score 小样本及显式失败/拒答；普通 CLI 与新权重 Native AOT 分别验收。只读核本机 GPU 容量后冻结可比模型、同题候选/顺序/长度/分母与未训练、未调参的真实标签来源；教师一致性独立报告。先小输入检查，再在有界 GPU 单并发预算内评测；不可用时完成离线准备并列明资源门槛，不连接旧租用实例、不租机或重训。私有逐题结果放 C 盘本轮专属目录，保留所有 FAIL，不自动提交/推送源码，历史清理由原主会话独占。正式质量/校准/新权重 AOT/性能仍 NOT_ACCEPTED，按实际证据逐项更新。
+
+2026-10-11 S4-16 / S6-04 本机接续：private模型 `e2e5bc97d62dfbd4e2bbd070542324bb544e6b32` 的18个底座+33个run文件、private数据 `d19515802d31310b4050226b51ab85c60f130d42` 的275原始+8新增文件已完整认证SHA验收，optimizer实际恢复通过；两个原始Git blob的pointer属性FAIL保留。IoTSharp **Sezika-Decision-Base v0.1-preview** 最新提交 `9c522c4e227c52c86f493a90595a894a41e1935a`，55个owned+1个保留文件共6,174,855,372bytes匿名全SHA PASS，无private缓存复用。用户明确授权后执行一次准确force-with-lease；fresh匿名全历史确认旧详细报告提交 `dfef170bc9e26dff7e4317fc08686d0abd013438` 和validation.json路径不再可达，当前模型tree与此前c68049汇总版本相同、文件diff0，安全介绍历史保留。**授权范围内公开分支历史及模型完整性验收PASS**；平台旧对象/缓存物理删除仍NOT_VERIFIED，未执行。本机接续无需GPU或新租期，数据保持private。正式质量、校准、新权重AOT/性能仍 **NOT_ACCEPTED**，由对应门槛及新会话加载/同题集对比推进。实际范围见[本机接续证据](docs/evidence/repository-training-local-mirror-2026-10-11.md)及[已授权历史清理回执](docs/evidence/repository-training-history-cleanup-2026-10-11.md)。以下租期结束PARTIAL、失败和工程准备均保留历史。
+
+2026-10-11 S4-16 / S6-04 服务器租期结束快照（保留历史）：新租用 RTX 5090 已完成真实 mmBERT 全编码器/新决策头三步反向 profile、48/48 次 FP32 AdamW 更新及完整模型/恢复状态保存；独立新进程执行 128 原题与 68 Choice 换序，共 196 次 GPU 前向。本轮仅使用固定 train 顺序前 48 条，属于短程实验；正式质量、校准、新权重 AOT/性能仍未验收。按用户要求从服务器直接上传，私有数据 master 已推送 d195158，私有个人模型 master 已正常 Git/LFS 推送 e2e5bc9，优化器原 SHA 绑定三块运输；本机保存 382 文件的小型证据，完整模型未下载到本机。个人模型 fresh 认证完整读回在 480 秒达到上限，当前仍未通过；组织公开模型权重与匿名完整读回尚未执行，不能将 ref 或分段下载诊断升级为发布验收。原 CRLF、Git helper EOF、超限对象、运输与归档失败均保留。详见[实机证据](docs/evidence/repository-training-real-2026-10-11.md)。下文“尚未真实训练”的工程准备记录保留为此前阶段历史。
+
+2026-10-11 S4-16 / S6-04 工程进度：完整 encoder/head 的20个C# backward PTX/静态ABI、FP32 AdamW、完整checkpoint/恢复及仓库训练CLI已落地；tiny GPU全图1008坐标/4检查及恢复7检查、Linux执行、249核心回归（tokenizer oracle既定fixture缺失SKIP）、file://发布5检查通过。首个固定原始train来源25002行转换为21913实验题，17615train/4298development，39超长另立派生账本隔离后严格长度全通过；其余17来源待适配，正式数据准入=false。项目技能和冻结Linux工具包已准备，可租RTX5090进入真实底座profile；尚未进行真实mmBERT完整微调、新实例显存/耗时验收、正式质量/校准、新权重AOT/性能或真实模型/data回推。见[交接](docs/training-repository-handoff-2026-10-11.md)与[实证](docs/evidence/repository-training-engineering-2026-10-11.md)。
+
+2026-10-11 新任务 S4-16 / S6-04：准备仓库驱动的新训练与回推闭环。数据来自 `maikebing/public-decision-data`，底座与模型产物来自 `maikebing/Sezika-mmBERT-8192-experimental`；源码、数据和模型分别固定 commit。用户最终选择完整 encoder 微调目标，先完成 C# 反向工程；冻结 encoder/head 路径仅作历史对照，不替代本次目标。本轮登记原始 train 转换与去重/划分隔离、完整 encoder/自有 head 的 GPU 梯度与优化器/checkpoint 合同、CPU tiny 数值参考与 GPU tiny 待验收、候选换序验证、Git/LFS 回推与读回流程及项目技能。目标租机配置 CUDA 12.8 / RTX 5090 32GB / CPU25核 / 内存48GB / 系统盘30GB / 数据盘50GB；准备完成后通知可租，新实例信息及租期取得前不连接旧实例或执行正式 GPU 训练。旧 215 题与硬编码实验合同保持历史。正式质量、概率校准、新权重 AOT/性能与真实 GPU 全编码器反向分别验收，不从本地准备推导为已通过。模型回推及有实际改动的数据回推已由当前请求授权，不重复索取同一授权；禁止 force push、改写原始数据与混用 test/calibration 训练。
+
 | 顺序 | 状态 | 范围 | 验收产物 |
 | --- | --- | --- | --- |
 | 0 | ✅ | 研究、仓库与契约草案 | 固定参考版本、架构决策与 C# 契约草案；未执行验证 |
@@ -21,6 +33,8 @@
 ## 当前执行顺序与门槛
 
 2026-10-11 北京时间个人模型完整发布完成：maikebing/Sezika-mmBERT-8192-experimental模型28817/仓库50738359已通过标准Git LFS登记及普通pre-push，远端master 06ebe82325e58c0ae723fb9014a38cdb2f87b22a；原始18文件/1,245,737,297 bytes、19 Git路径、16小文件bytes/SHA及两个大对象完整匿名SHA全部通过，无需分片重组。[个人模型下载](https://moark.com/maikebing/Sezika-mmBERT-8192-experimental)与[完整实证](docs/evidence/moark-personal-publication-complete-2026-10-11.md)已写中英首页。正确路径长等待、官方替代域名callbacktrue但仍missing、运输tiny登记失败全部保留；个人标准LFS真实准入及tiny实传/回读通过后才推送原模型，旧IoTSharp企业权限失败不能推广至个人库。Windows凭据保存及HF既有发布保持；训练技能已完成，不重训、不调用教师、不操作旧GPU、不push源码。正式质量、校准、新head AOT/性能及第三方权利补证继续pending。
+
+2026-10-10 用户授权进一步搜集公开决策训练数据。按 S4-05 执行 GitHub、Hugging Face、模力方舟及网页检索，冻结来源、许可声明、原始 split、版本和文件 hash；S1MB/Sys1Cal 与各公开 test 分割保持评测用途，训练候选优先取得上游 train。本轮只形成来源目录、原始题库和准入建议，正式人审、污染隔离、C# 转换合同、GPU 训练与质量验收另列；不把公开可下载等同于已获训练或再分发许可。产物入口：`docs/research/public-decision-data-2026-10-10/README.md`。
 
 2026-10-10 北京时间发布进展：租用训练技能及独立审查完成；Hugging Face IoTSharp/Sezika-mmBERT-8192-experimental实验模型已发布，18文件/1,245,737,297 bytes、revision a46028dfebd539bd04a1c567fbb24c26a649a50a，匿名文件集合/大小/SHA及大文件真实内容检查通过，中英README已更新下载链接。新HF令牌存当前用户Windows凭据管理器，读回与账户/组织核验通过；历史403、Xet取消、串行HTTP超时和分片恢复保留。模力方舟[IoTSharp同名公开模型库](https://moark.com/IoTSharp/Sezika-mmBERT-8192-experimental)已创建，独立MoArk令牌和官方gai双凭据均存Windows凭据管理器；普通LFS受企业权限限制、gai missing-lfs接口HTTP500，镜像未完成。固定18文件源/复制SHA一致，本地模型提交53ca528178af60aa413b08e2c4ce40b83070ce5e保留，远端仍初始6a64335eeea35e0c4058a88ce507cc04cd0c402d；恢复后须核实际对象及commit再匿名验收，见[回执](docs/evidence/moark-model-publishing-2026-10-10.md)。发布授权已取得，第三方权利补证与正式质量/AOT/校准/封存仍分别pending；新租用实例仍须迁移脚本身份绑定。不重训、不调用教师、不push源码、heartbeat保持PAUSED。暂停源码与旧诊断hunk保持。见[技能验收](docs/evidence/rental-training-skill-2026-10-09.md)、[发布回执](docs/evidence/model-publishing-2026-10-09.md)和[凭据保存说明](docs/model-credential-storage.md)。
 
@@ -173,6 +187,8 @@ S4-15诊断runtime/CUDA工程切片已验收：平行IDiagnosticDecisionPipeline
 
 下一S4-15/S5-06工程切片是显式independent-diagnostic-profile入口与独立source-generated报告：正式head/feature身份为空、正式接受全部false，保留所有请求分母和实际entered/returned/validated/unknown；仅CUDA、原子不覆盖输出及独立清理。CLI诊断资产准备另外实现，之后最多1request/1sample/0warmup真实CUDA画像独立执行。不得以sidecar、零步骤或历史hash冒充训练provenance，不关闭训练收益/质量/AOT/性能门槛。
 
+S4-12/S4-15独立CLI资产准备同步登记：prepare-diagnostic-head从实际加载的固定独立package派生encoder/tokenizer/宽度身份，创建并专用Load复验SZDH1，stdout source-generated独立JSON记录实际hash/seed/域/零更新/未测loss；无encoder forward、训练records/state/feature/checkpoint或训练report。先check-diagnostic-asset-preparation tiny→最多8有界fixture，再独立真实单资产准备，产物不作为trained-head验收。
+
 ## 编号任务板
 
 任务使用 `S0`–`S6` 阶段编号和两位序号。状态只表示当前证据：`✅ 已完成`、`🚧 进行中`、`⏳ 计划中`、`⛔ 阻塞`。同一泳道内的任务可以并行；跨泳道按依赖推进。实现、真实推理、质量、AOT 和性能分别验收，不能用构建成功替代真实模型证据。
@@ -299,6 +315,7 @@ S5-04、S5-05 已在固定硬件与两个 RID 的记录范围内闭环；S5-06�
 
 ## 6. 发布与后续研究
 
+- 固定模型渠道：`maikebing` 为 private 内部预发布，`IoTSharp` 为 public 发布渠道；公开模型正式名称为 `Sezika-Decision-Base`，当前短程产物为 `v0.1-preview`。数据集保持 private，不随组织模型镜像。正式名称、公开介绍和权重发布分别记录，不代表正式质量通过；未来每轮重验权限、准确 commit、完整字节与读回状态。
 - 当前可构建带 README、许可证和第三方声明的开发包 `Sezika.0.1.0-dev.nupkg`；正式版本号、签名、NuGet 发布、CLI、模型卡/数据卡和真实模型跨平台发布仍未完成。
 - 提供库、Native AOT CLI、模型卡、数据卡、校准报告和 C# 示例；代码/资产分别发布，不把权重打包进 NuGet 或可执行文件。
 - 正式发布前核对名称、远端归属、包 ID 与签名/许可证信息。

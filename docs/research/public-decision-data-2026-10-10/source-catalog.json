@@ -1,0 +1,5274 @@
+[
+  {
+    "id": "hotchpotch/s1mb-dataset",
+    "requested_id": "hotchpotch/s1mb-dataset",
+    "platform": "Hugging Face",
+    "task": "typed/evaluation",
+    "priority": "P0",
+    "intended_use": "benchmark",
+    "verification": "metadata_frozen",
+    "license": null,
+    "license_tags": [],
+    "languages": [
+      null
+    ],
+    "revision": "b8dc678ecefb471c6d37311d8c93f65249622842",
+    "files": 552,
+    "repository_bytes": 115335208.0,
+    "source_url": "https://huggingface.co/datasets/hotchpotch/s1mb-dataset",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\hotchpotch--s1mb-dataset.json",
+    "metadata_sha256": "71302f716b9ea0653d3e5c4c6bc4dacfd897bc5c2ea5daa213236300e25c6dd5",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "Praveenrajus/jev-bench",
+    "requested_id": "Praveenrajus/jev-bench",
+    "platform": "Hugging Face",
+    "task": "typed/mixed",
+    "priority": "P0",
+    "intended_use": "quarantine-splits",
+    "verification": "metadata_frozen",
+    "license": "other",
+    "license_tags": [
+      "license:other"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "c37b0f6ab1687376ec9ae8dbd9f343163a68252b",
+    "files": 1573,
+    "repository_bytes": 2950360225.0,
+    "source_url": "https://huggingface.co/datasets/Praveenrajus/jev-bench",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\Praveenrajus--jev-bench.json",
+    "metadata_sha256": "ef431401d7ab0ec70c0c63b95b83db3dce047a04e221f29ea8c311ccecb20e90",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "PolyAI/banking77",
+    "requested_id": "PolyAI/banking77",
+    "platform": "Hugging Face",
+    "task": "intent",
+    "priority": "P0",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "cc-by-4.0"
+    ],
+    "license_tags": [
+      "license:cc-by-4.0"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "90d4e2ee5521c04fc1488f065b8b083658768c57",
+    "files": 4,
+    "repository_bytes": 24405.0,
+    "source_url": "https://huggingface.co/datasets/PolyAI/banking77",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\PolyAI--banking77.json",
+    "metadata_sha256": "46b024920ee651c60c81fe7d586c4635f959f63d76478daaab7130a2b9c1edda",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "clinc/clinc_oos",
+    "requested_id": "clinc/clinc_oos",
+    "platform": "Hugging Face",
+    "task": "intent/OOS",
+    "priority": "P0",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "cc-by-3.0"
+    ],
+    "license_tags": [
+      "license:cc-by-3.0"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "155b9c710419136e17307b80d0a13e68cd46b4ec",
+    "files": 11,
+    "repository_bytes": 1377966.0,
+    "source_url": "https://huggingface.co/datasets/clinc/clinc_oos",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\clinc--clinc_oos.json",
+    "metadata_sha256": "86002d6a1397f7b581fcf150f68c42ed577a213d92791e7f18d378f3af915687",
+    "reported_splits": [
+      {
+        "config": "imbalanced",
+        "split": "train",
+        "rows": 10625
+      },
+      {
+        "config": "imbalanced",
+        "split": "validation",
+        "rows": 3100
+      },
+      {
+        "config": "imbalanced",
+        "split": "test",
+        "rows": 5500
+      },
+      {
+        "config": "plus",
+        "split": "train",
+        "rows": 15250
+      },
+      {
+        "config": "plus",
+        "split": "validation",
+        "rows": 3100
+      },
+      {
+        "config": "plus",
+        "split": "test",
+        "rows": 5500
+      },
+      {
+        "config": "small",
+        "split": "train",
+        "rows": 7600
+      },
+      {
+        "config": "small",
+        "split": "validation",
+        "rows": 3100
+      },
+      {
+        "config": "small",
+        "split": "test",
+        "rows": 5500
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "AmazonScience/massive",
+    "requested_id": "AmazonScience/massive",
+    "platform": "Hugging Face",
+    "task": "multilingual intent",
+    "priority": "P0",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "cc-by-4.0"
+    ],
+    "license_tags": [
+      "license:cc-by-4.0"
+    ],
+    "languages": [
+      null
+    ],
+    "revision": "ff6bd8e4b27c3543e4f8fe2108f32bb95a6f8740",
+    "files": 6,
+    "repository_bytes": 86756.0,
+    "source_url": "https://huggingface.co/datasets/AmazonScience/massive",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\AmazonScience--massive.json",
+    "metadata_sha256": "f654f8e96afd9f0264774a18e7098b8d88fb61a2e6aed546b64319db40c3e1f1",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "google/boolq",
+    "requested_id": "google/boolq",
+    "platform": "Hugging Face",
+    "task": "Boolean",
+    "priority": "P0",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "cc-by-sa-3.0"
+    ],
+    "license_tags": [
+      "license:cc-by-sa-3.0"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+    "files": 4,
+    "repository_bytes": 4950520.0,
+    "source_url": "https://huggingface.co/datasets/google/boolq",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\google--boolq.json",
+    "metadata_sha256": "078a9f0ec15e4a7b356c197c58871fff4ea526d3eb2eaea4beed8426cb7cf999",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": "train",
+        "rows": 9427
+      },
+      {
+        "config": null,
+        "split": "validation",
+        "rows": 3270
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "SetFit/sst5",
+    "requested_id": "SetFit/sst5",
+    "platform": "Hugging Face",
+    "task": "ordinal sentiment",
+    "priority": "P0",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": null,
+    "license_tags": [],
+    "languages": [
+      null
+    ],
+    "revision": "e51bdcd8cd3a30da231967c1a249ba59361279a3",
+    "files": 5,
+    "repository_bytes": 1839585.0,
+    "source_url": "https://huggingface.co/datasets/SetFit/sst5",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\SetFit--sst5.json",
+    "metadata_sha256": "d6ab3f7fb6c7f30c3e3328ad6b4e70e274a781d3e19515a38a02e4c02e23b9b1",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "Yelp/yelp_review_full",
+    "requested_id": "Yelp/yelp_review_full",
+    "platform": "Hugging Face",
+    "task": "ordinal rating",
+    "priority": "P0",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "other"
+    ],
+    "license_tags": [
+      "license:other"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "c1f9ee939b7d05667af864ee1cb066393154bf85",
+    "files": 4,
+    "repository_bytes": 322960267.0,
+    "source_url": "https://huggingface.co/datasets/Yelp/yelp_review_full",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\Yelp--yelp_review_full.json",
+    "metadata_sha256": "3c25447e942715d62174e5e13b32acfb87ff5accbfecbb85301b2ce202fc121d",
+    "reported_splits": [
+      {
+        "config": "yelp_review_full",
+        "split": "train",
+        "rows": 650000
+      },
+      {
+        "config": "yelp_review_full",
+        "split": "test",
+        "rows": 50000
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "AmazonScience/amazon_reviews_multi",
+    "platform": "Hugging Face",
+    "task": "multilingual ordinal rating",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_unavailable_401_or_missing",
+    "license": null,
+    "revision": null,
+    "source_url": "https://huggingface.co/datasets/AmazonScience/amazon_reviews_multi",
+    "training_admission": "pending",
+    "redistribution": "pending"
+  },
+  {
+    "id": "nyu-mll/glue",
+    "requested_id": "nyu-mll/glue",
+    "platform": "Hugging Face",
+    "task": "Choice/Boolean/Score",
+    "priority": "P0",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "other"
+    ],
+    "license_tags": [
+      "license:other"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c",
+    "files": 36,
+    "repository_bytes": 162286103.0,
+    "source_url": "https://huggingface.co/datasets/nyu-mll/glue",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\nyu-mll--glue.json",
+    "metadata_sha256": "dbaeabbe3d2d066d61c41f2e4cec03b531c465af93cb249035701a2129fe0f97",
+    "reported_splits": [
+      {
+        "config": "ax",
+        "split": "test",
+        "rows": 1104
+      },
+      {
+        "config": "cola",
+        "split": "train",
+        "rows": 8551
+      },
+      {
+        "config": "cola",
+        "split": "validation",
+        "rows": 1043
+      },
+      {
+        "config": "cola",
+        "split": "test",
+        "rows": 1063
+      },
+      {
+        "config": "mnli",
+        "split": "train",
+        "rows": 392702
+      },
+      {
+        "config": "mnli",
+        "split": "validation_matched",
+        "rows": 9815
+      },
+      {
+        "config": "mnli",
+        "split": "validation_mismatched",
+        "rows": 9832
+      },
+      {
+        "config": "mnli",
+        "split": "test_matched",
+        "rows": 9796
+      },
+      {
+        "config": "mnli",
+        "split": "test_mismatched",
+        "rows": 9847
+      },
+      {
+        "config": "mnli_matched",
+        "split": "validation",
+        "rows": 9815
+      },
+      {
+        "config": "mnli_matched",
+        "split": "test",
+        "rows": 9796
+      },
+      {
+        "config": "mnli_mismatched",
+        "split": "validation",
+        "rows": 9832
+      },
+      {
+        "config": "mnli_mismatched",
+        "split": "test",
+        "rows": 9847
+      },
+      {
+        "config": "mrpc",
+        "split": "train",
+        "rows": 3668
+      },
+      {
+        "config": "mrpc",
+        "split": "validation",
+        "rows": 408
+      },
+      {
+        "config": "mrpc",
+        "split": "test",
+        "rows": 1725
+      },
+      {
+        "config": "qnli",
+        "split": "train",
+        "rows": 104743
+      },
+      {
+        "config": "qnli",
+        "split": "validation",
+        "rows": 5463
+      },
+      {
+        "config": "qnli",
+        "split": "test",
+        "rows": 5463
+      },
+      {
+        "config": "qqp",
+        "split": "train",
+        "rows": 363846
+      },
+      {
+        "config": "qqp",
+        "split": "validation",
+        "rows": 40430
+      },
+      {
+        "config": "qqp",
+        "split": "test",
+        "rows": 390965
+      },
+      {
+        "config": "rte",
+        "split": "train",
+        "rows": 2490
+      },
+      {
+        "config": "rte",
+        "split": "validation",
+        "rows": 277
+      },
+      {
+        "config": "rte",
+        "split": "test",
+        "rows": 3000
+      },
+      {
+        "config": "sst2",
+        "split": "train",
+        "rows": 67349
+      },
+      {
+        "config": "sst2",
+        "split": "validation",
+        "rows": 872
+      },
+      {
+        "config": "sst2",
+        "split": "test",
+        "rows": 1821
+      },
+      {
+        "config": "stsb",
+        "split": "train",
+        "rows": 5749
+      },
+      {
+        "config": "stsb",
+        "split": "validation",
+        "rows": 1500
+      },
+      {
+        "config": "stsb",
+        "split": "test",
+        "rows": 1379
+      },
+      {
+        "config": "wnli",
+        "split": "train",
+        "rows": 635
+      },
+      {
+        "config": "wnli",
+        "split": "validation",
+        "rows": 71
+      },
+      {
+        "config": "wnli",
+        "split": "test",
+        "rows": 146
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "aps/super_glue",
+    "requested_id": "aps/super_glue",
+    "platform": "Hugging Face",
+    "task": "Choice/Boolean",
+    "priority": "P0",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "other"
+    ],
+    "license_tags": [
+      "license:other"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "3de24cf8022e94f4ee4b9d55a6f539891524d646",
+    "files": 31,
+    "repository_bytes": 102539920.0,
+    "source_url": "https://huggingface.co/datasets/aps/super_glue",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\aps--super_glue.json",
+    "metadata_sha256": "453977e0ab5144b1100d13a1f569bb7b83e37d6de7c904ec3f7febcdda2cb5a0",
+    "reported_splits": [
+      {
+        "config": "axb",
+        "split": "test",
+        "rows": 1104
+      },
+      {
+        "config": "axg",
+        "split": "test",
+        "rows": 356
+      },
+      {
+        "config": "boolq",
+        "split": "train",
+        "rows": 9427
+      },
+      {
+        "config": "boolq",
+        "split": "validation",
+        "rows": 3270
+      },
+      {
+        "config": "boolq",
+        "split": "test",
+        "rows": 3245
+      },
+      {
+        "config": "cb",
+        "split": "train",
+        "rows": 250
+      },
+      {
+        "config": "cb",
+        "split": "validation",
+        "rows": 56
+      },
+      {
+        "config": "cb",
+        "split": "test",
+        "rows": 250
+      },
+      {
+        "config": "copa",
+        "split": "train",
+        "rows": 400
+      },
+      {
+        "config": "copa",
+        "split": "validation",
+        "rows": 100
+      },
+      {
+        "config": "copa",
+        "split": "test",
+        "rows": 500
+      },
+      {
+        "config": "multirc",
+        "split": "train",
+        "rows": 27243
+      },
+      {
+        "config": "multirc",
+        "split": "validation",
+        "rows": 4848
+      },
+      {
+        "config": "multirc",
+        "split": "test",
+        "rows": 9693
+      },
+      {
+        "config": "record",
+        "split": "train",
+        "rows": 100730
+      },
+      {
+        "config": "record",
+        "split": "validation",
+        "rows": 10000
+      },
+      {
+        "config": "record",
+        "split": "test",
+        "rows": 10000
+      },
+      {
+        "config": "rte",
+        "split": "train",
+        "rows": 2490
+      },
+      {
+        "config": "rte",
+        "split": "validation",
+        "rows": 277
+      },
+      {
+        "config": "rte",
+        "split": "test",
+        "rows": 3000
+      },
+      {
+        "config": "wic",
+        "split": "train",
+        "rows": 5428
+      },
+      {
+        "config": "wic",
+        "split": "validation",
+        "rows": 638
+      },
+      {
+        "config": "wic",
+        "split": "test",
+        "rows": 1400
+      },
+      {
+        "config": "wsc",
+        "split": "train",
+        "rows": 554
+      },
+      {
+        "config": "wsc",
+        "split": "validation",
+        "rows": 104
+      },
+      {
+        "config": "wsc",
+        "split": "test",
+        "rows": 146
+      },
+      {
+        "config": "wsc.fixed",
+        "split": "train",
+        "rows": 554
+      },
+      {
+        "config": "wsc.fixed",
+        "split": "validation",
+        "rows": 104
+      },
+      {
+        "config": "wsc.fixed",
+        "split": "test",
+        "rows": 146
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "stanfordnlp/snli",
+    "requested_id": "stanfordnlp/snli",
+    "platform": "Hugging Face",
+    "task": "NLI",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "cc-by-sa-4.0"
+    ],
+    "license_tags": [
+      "license:cc-by-sa-4.0"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "cdb5c3d5eed6ead6e5a341c8e56e669bb666725b",
+    "files": 5,
+    "repository_bytes": 20456444.0,
+    "source_url": "https://huggingface.co/datasets/stanfordnlp/snli",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\stanfordnlp--snli.json",
+    "metadata_sha256": "901062b1075ebb3c9a5526ac4d4722d96aa06edf91721686329fdc47a50966cf",
+    "reported_splits": [
+      {
+        "config": "plain_text",
+        "split": "test",
+        "rows": 10000
+      },
+      {
+        "config": "plain_text",
+        "split": "validation",
+        "rows": 10000
+      },
+      {
+        "config": "plain_text",
+        "split": "train",
+        "rows": 550152
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "nyu-mll/multi_nli",
+    "requested_id": "nyu-mll/multi_nli",
+    "platform": "Hugging Face",
+    "task": "NLI",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "cc-by-3.0",
+      "cc-by-sa-3.0",
+      "mit",
+      "other"
+    ],
+    "license_tags": [
+      "license:cc-by-3.0",
+      "license:cc-by-sa-3.0",
+      "license:mit",
+      "license:other"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "da70db2af9d09693783c3320c4249840212ee221",
+    "files": 5,
+    "repository_bytes": 224015292.0,
+    "source_url": "https://huggingface.co/datasets/nyu-mll/multi_nli",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\nyu-mll--multi_nli.json",
+    "metadata_sha256": "c63dda6b9ca6ff84fa3566f1699da3a2977b489ff75d09c23aedcaa6b433e483",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": "train",
+        "rows": 392702
+      },
+      {
+        "config": null,
+        "split": "validation_matched",
+        "rows": 9815
+      },
+      {
+        "config": null,
+        "split": "validation_mismatched",
+        "rows": 9832
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "facebook/xnli",
+    "requested_id": "facebook/xnli",
+    "platform": "Hugging Face",
+    "task": "multilingual NLI",
+    "priority": "P0",
+    "intended_use": "mixed",
+    "verification": "metadata_frozen",
+    "license": null,
+    "license_tags": [],
+    "languages": [
+      "ar",
+      "bg",
+      "de",
+      "el",
+      "en",
+      "es",
+      "fr",
+      "hi",
+      "ru",
+      "sw",
+      "th",
+      "tr",
+      "ur",
+      "vi",
+      "zh"
+    ],
+    "revision": "b8dd5d7af51114dbda02c0e3f6133f332186418e",
+    "files": 53,
+    "repository_bytes": 1845646077.0,
+    "source_url": "https://huggingface.co/datasets/facebook/xnli",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\facebook--xnli.json",
+    "metadata_sha256": "4064220b20149229a2aefca7dcb661031c114be5dc6892669dd4880193c74a0c",
+    "reported_splits": [
+      {
+        "config": "all_languages",
+        "split": "train",
+        "rows": 392702
+      },
+      {
+        "config": "all_languages",
+        "split": "test",
+        "rows": 5010
+      },
+      {
+        "config": "all_languages",
+        "split": "validation",
+        "rows": 2490
+      },
+      {
+        "config": "ar",
+        "split": "train",
+        "rows": 392702
+      },
+      {
+        "config": "ar",
+        "split": "test",
+        "rows": 5010
+      },
+      {
+        "config": "ar",
+        "split": "validation",
+        "rows": 2490
+      },
+      {
+        "config": "bg",
+        "split": "train",
+        "rows": 392702
+      },
+      {
+        "config": "bg",
+        "split": "test",
+        "rows": 5010
+      },
+      {
+        "config": "bg",
+        "split": "validation",
+        "rows": 2490
+      },
+      {
+        "config": "de",
+        "split": "train",
+        "rows": 392702
+      },
+      {
+        "config": "de",
+        "split": "test",
+        "rows": 5010
+      },
+      {
+        "config": "de",
+        "split": "validation",
+        "rows": 2490
+      },
+      {
+        "config": "el",
+        "split": "train",
+        "rows": 392702
+      },
+      {
+        "config": "el",
+        "split": "test",
+        "rows": 5010
+      },
+      {
+        "config": "el",
+        "split": "validation",
+        "rows": 2490
+      },
+      {
+        "config": "en",
+        "split": "train",
+        "rows": 392702
+      },
+      {
+        "config": "en",
+        "split": "test",
+        "rows": 5010
+      },
+      {
+        "config": "en",
+        "split": "validation",
+        "rows": 2490
+      },
+      {
+        "config": "es",
+        "split": "train",
+        "rows": 392702
+      },
+      {
+        "config": "es",
+        "split": "test",
+        "rows": 5010
+      },
+      {
+        "config": "es",
+        "split": "validation",
+        "rows": 2490
+      },
+      {
+        "config": "fr",
+        "split": "train",
+        "rows": 392702
+      },
+      {
+        "config": "fr",
+        "split": "test",
+        "rows": 5010
+      },
+      {
+        "config": "fr",
+        "split": "validation",
+        "rows": 2490
+      },
+      {
+        "config": "hi",
+        "split": "train",
+        "rows": 392702
+      },
+      {
+        "config": "hi",
+        "split": "test",
+        "rows": 5010
+      },
+      {
+        "config": "hi",
+        "split": "validation",
+        "rows": 2490
+      },
+      {
+        "config": "ru",
+        "split": "train",
+        "rows": 392702
+      },
+      {
+        "config": "ru",
+        "split": "test",
+        "rows": 5010
+      },
+      {
+        "config": "ru",
+        "split": "validation",
+        "rows": 2490
+      },
+      {
+        "config": "sw",
+        "split": "train",
+        "rows": 392702
+      },
+      {
+        "config": "sw",
+        "split": "test",
+        "rows": 5010
+      },
+      {
+        "config": "sw",
+        "split": "validation",
+        "rows": 2490
+      },
+      {
+        "config": "th",
+        "split": "train",
+        "rows": 392702
+      },
+      {
+        "config": "th",
+        "split": "test",
+        "rows": 5010
+      },
+      {
+        "config": "th",
+        "split": "validation",
+        "rows": 2490
+      },
+      {
+        "config": "tr",
+        "split": "train",
+        "rows": 392702
+      },
+      {
+        "config": "tr",
+        "split": "test",
+        "rows": 5010
+      },
+      {
+        "config": "tr",
+        "split": "validation",
+        "rows": 2490
+      },
+      {
+        "config": "ur",
+        "split": "train",
+        "rows": 392702
+      },
+      {
+        "config": "ur",
+        "split": "test",
+        "rows": 5010
+      },
+      {
+        "config": "ur",
+        "split": "validation",
+        "rows": 2490
+      },
+      {
+        "config": "vi",
+        "split": "train",
+        "rows": 392702
+      },
+      {
+        "config": "vi",
+        "split": "test",
+        "rows": 5010
+      },
+      {
+        "config": "vi",
+        "split": "validation",
+        "rows": 2490
+      },
+      {
+        "config": "zh",
+        "split": "train",
+        "rows": 392702
+      },
+      {
+        "config": "zh",
+        "split": "test",
+        "rows": 5010
+      },
+      {
+        "config": "zh",
+        "split": "validation",
+        "rows": 2490
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "google-research-datasets/paws",
+    "requested_id": "google-research-datasets/paws",
+    "platform": "Hugging Face",
+    "task": "paraphrase",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "other"
+    ],
+    "license_tags": [
+      "license:other"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "161ece9501cf0a11f3e48bd356eaa82de46d6a09",
+    "files": 8,
+    "repository_bytes": 129296401.0,
+    "source_url": "https://huggingface.co/datasets/google-research-datasets/paws",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\google-research-datasets--paws.json",
+    "metadata_sha256": "37905a49ce2738fac10aadc61374ca34505b0e2707987345a840fd13ebf31b75",
+    "reported_splits": [
+      {
+        "config": "labeled_final",
+        "split": "train",
+        "rows": 49401
+      },
+      {
+        "config": "labeled_final",
+        "split": "test",
+        "rows": 8000
+      },
+      {
+        "config": "labeled_final",
+        "split": "validation",
+        "rows": 8000
+      },
+      {
+        "config": "labeled_swap",
+        "split": "train",
+        "rows": 30397
+      },
+      {
+        "config": "unlabeled_final",
+        "split": "train",
+        "rows": 645652
+      },
+      {
+        "config": "unlabeled_final",
+        "split": "validation",
+        "rows": 10000
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "google-research-datasets/paws-x",
+    "requested_id": "google-research-datasets/paws-x",
+    "platform": "Hugging Face",
+    "task": "multilingual paraphrase",
+    "priority": "P0",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "other"
+    ],
+    "license_tags": [
+      "license:other"
+    ],
+    "languages": [
+      "de",
+      "en",
+      "es",
+      "fr",
+      "ja",
+      "ko",
+      "zh"
+    ],
+    "revision": "4cd8187c404bda33cb1f62b49b001115862acf37",
+    "files": 23,
+    "repository_bytes": 67863830.0,
+    "source_url": "https://huggingface.co/datasets/google-research-datasets/paws-x",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\google-research-datasets--paws-x.json",
+    "metadata_sha256": "d66d19d004c168fe39be76c0d00d096ce4a648c84e47da3a35c6965aa0d48ab7",
+    "reported_splits": [
+      {
+        "config": "de",
+        "split": "train",
+        "rows": 49401
+      },
+      {
+        "config": "de",
+        "split": "test",
+        "rows": 2000
+      },
+      {
+        "config": "de",
+        "split": "validation",
+        "rows": 2000
+      },
+      {
+        "config": "en",
+        "split": "train",
+        "rows": 49401
+      },
+      {
+        "config": "en",
+        "split": "test",
+        "rows": 2000
+      },
+      {
+        "config": "en",
+        "split": "validation",
+        "rows": 2000
+      },
+      {
+        "config": "es",
+        "split": "train",
+        "rows": 49401
+      },
+      {
+        "config": "es",
+        "split": "test",
+        "rows": 2000
+      },
+      {
+        "config": "es",
+        "split": "validation",
+        "rows": 2000
+      },
+      {
+        "config": "fr",
+        "split": "train",
+        "rows": 49401
+      },
+      {
+        "config": "fr",
+        "split": "test",
+        "rows": 2000
+      },
+      {
+        "config": "fr",
+        "split": "validation",
+        "rows": 2000
+      },
+      {
+        "config": "ja",
+        "split": "train",
+        "rows": 49401
+      },
+      {
+        "config": "ja",
+        "split": "test",
+        "rows": 2000
+      },
+      {
+        "config": "ja",
+        "split": "validation",
+        "rows": 2000
+      },
+      {
+        "config": "ko",
+        "split": "train",
+        "rows": 49401
+      },
+      {
+        "config": "ko",
+        "split": "test",
+        "rows": 2000
+      },
+      {
+        "config": "ko",
+        "split": "validation",
+        "rows": 2000
+      },
+      {
+        "config": "zh",
+        "split": "train",
+        "rows": 49401
+      },
+      {
+        "config": "zh",
+        "split": "test",
+        "rows": 2000
+      },
+      {
+        "config": "zh",
+        "split": "validation",
+        "rows": 2000
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "cardiffnlp/tweet_eval",
+    "requested_id": "cardiffnlp/tweet_eval",
+    "platform": "Hugging Face",
+    "task": "classification/Score",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "unknown"
+    ],
+    "license_tags": [
+      "license:unknown"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "b3a375baf0f409c77e6bc7aa35102b7b3534f8be",
+    "files": 35,
+    "repository_bytes": 14244314.0,
+    "source_url": "https://huggingface.co/datasets/cardiffnlp/tweet_eval",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\cardiffnlp--tweet_eval.json",
+    "metadata_sha256": "bd86bc6bb9bf3339d398aabae8c74e7fd9733cb583069e2cf7fdc0accd9e2521",
+    "reported_splits": [
+      {
+        "config": "emoji",
+        "split": "train",
+        "rows": 45000
+      },
+      {
+        "config": "emoji",
+        "split": "test",
+        "rows": 50000
+      },
+      {
+        "config": "emoji",
+        "split": "validation",
+        "rows": 5000
+      },
+      {
+        "config": "emotion",
+        "split": "train",
+        "rows": 3257
+      },
+      {
+        "config": "emotion",
+        "split": "test",
+        "rows": 1421
+      },
+      {
+        "config": "emotion",
+        "split": "validation",
+        "rows": 374
+      },
+      {
+        "config": "hate",
+        "split": "train",
+        "rows": 9000
+      },
+      {
+        "config": "hate",
+        "split": "test",
+        "rows": 2970
+      },
+      {
+        "config": "hate",
+        "split": "validation",
+        "rows": 1000
+      },
+      {
+        "config": "irony",
+        "split": "train",
+        "rows": 2862
+      },
+      {
+        "config": "irony",
+        "split": "test",
+        "rows": 784
+      },
+      {
+        "config": "irony",
+        "split": "validation",
+        "rows": 955
+      },
+      {
+        "config": "offensive",
+        "split": "train",
+        "rows": 11916
+      },
+      {
+        "config": "offensive",
+        "split": "test",
+        "rows": 860
+      },
+      {
+        "config": "offensive",
+        "split": "validation",
+        "rows": 1324
+      },
+      {
+        "config": "sentiment",
+        "split": "train",
+        "rows": 45615
+      },
+      {
+        "config": "sentiment",
+        "split": "test",
+        "rows": 12284
+      },
+      {
+        "config": "sentiment",
+        "split": "validation",
+        "rows": 2000
+      },
+      {
+        "config": "stance_abortion",
+        "split": "train",
+        "rows": 587
+      },
+      {
+        "config": "stance_abortion",
+        "split": "test",
+        "rows": 280
+      },
+      {
+        "config": "stance_abortion",
+        "split": "validation",
+        "rows": 66
+      },
+      {
+        "config": "stance_atheism",
+        "split": "train",
+        "rows": 461
+      },
+      {
+        "config": "stance_atheism",
+        "split": "test",
+        "rows": 220
+      },
+      {
+        "config": "stance_atheism",
+        "split": "validation",
+        "rows": 52
+      },
+      {
+        "config": "stance_climate",
+        "split": "train",
+        "rows": 355
+      },
+      {
+        "config": "stance_climate",
+        "split": "test",
+        "rows": 169
+      },
+      {
+        "config": "stance_climate",
+        "split": "validation",
+        "rows": 40
+      },
+      {
+        "config": "stance_feminist",
+        "split": "train",
+        "rows": 597
+      },
+      {
+        "config": "stance_feminist",
+        "split": "test",
+        "rows": 285
+      },
+      {
+        "config": "stance_feminist",
+        "split": "validation",
+        "rows": 67
+      },
+      {
+        "config": "stance_hillary",
+        "split": "train",
+        "rows": 620
+      },
+      {
+        "config": "stance_hillary",
+        "split": "test",
+        "rows": 295
+      },
+      {
+        "config": "stance_hillary",
+        "split": "validation",
+        "rows": 69
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "cardiffnlp/tweet_sentiment_multilingual",
+    "requested_id": "cardiffnlp/tweet_sentiment_multilingual",
+    "platform": "Hugging Face",
+    "task": "multilingual sentiment",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": null,
+    "license_tags": [],
+    "languages": [
+      "en",
+      "ar",
+      "fr",
+      "de",
+      "hi",
+      "it",
+      "pt",
+      "es"
+    ],
+    "revision": "14b13edfbc4046892f6011d114c29c0f83170589",
+    "files": 27,
+    "repository_bytes": 3858580.0,
+    "source_url": "https://huggingface.co/datasets/cardiffnlp/tweet_sentiment_multilingual",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\cardiffnlp--tweet_sentiment_multilingual.json",
+    "metadata_sha256": "3daa2a4ae718ef632f8dca4d63bde03be45650649e51e7cba1177fe4539a0e88",
+    "reported_splits": [
+      {
+        "config": "sentiment",
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "google-research-datasets/go_emotions",
+    "requested_id": "google-research-datasets/go_emotions",
+    "platform": "Hugging Face",
+    "task": "multi-label emotion",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "apache-2.0"
+    ],
+    "license_tags": [
+      "license:apache-2.0"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "add492243ff905527e67aeb8b80c082af02207c3",
+    "files": 6,
+    "repository_bytes": 28303266.0,
+    "source_url": "https://huggingface.co/datasets/google-research-datasets/go_emotions",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\google-research-datasets--go_emotions.json",
+    "metadata_sha256": "130fa4da457d264dcd6f0df6d397333423a125e2abe3b04bb11303239065a175",
+    "reported_splits": [
+      {
+        "config": "raw",
+        "split": "train",
+        "rows": 211225
+      },
+      {
+        "config": "simplified",
+        "split": "train",
+        "rows": 43410
+      },
+      {
+        "config": "simplified",
+        "split": "validation",
+        "rows": 5426
+      },
+      {
+        "config": "simplified",
+        "split": "test",
+        "rows": 5427
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "dair-ai/emotion",
+    "requested_id": "dair-ai/emotion",
+    "platform": "Hugging Face",
+    "task": "emotion",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "other"
+    ],
+    "license_tags": [
+      "license:other"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "cab853a1dbdf4c42c2b3ef2173804746df8825fe",
+    "files": 6,
+    "repository_bytes": 28185957.0,
+    "source_url": "https://huggingface.co/datasets/dair-ai/emotion",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\dair-ai--emotion.json",
+    "metadata_sha256": "199ba4d311ef061cf8482fe598b246aad2aac7cc6911903e007384b8b6630b39",
+    "reported_splits": [
+      {
+        "config": "split",
+        "split": "train",
+        "rows": 16000
+      },
+      {
+        "config": "split",
+        "split": "validation",
+        "rows": 2000
+      },
+      {
+        "config": "split",
+        "split": "test",
+        "rows": 2000
+      },
+      {
+        "config": "unsplit",
+        "split": "train",
+        "rows": 416809
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "takala/financial_phrasebank",
+    "requested_id": "takala/financial_phrasebank",
+    "platform": "Hugging Face",
+    "task": "financial sentiment",
+    "priority": "P1",
+    "intended_use": "single-split",
+    "verification": "metadata_frozen",
+    "license": [
+      "cc-by-nc-sa-3.0"
+    ],
+    "license_tags": [
+      "license:cc-by-nc-sa-3.0"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "8d3fe0c36d5feec6b3cc5e455b0fcb4820fb9964",
+    "files": 4,
+    "repository_bytes": 698682.0,
+    "source_url": "https://huggingface.co/datasets/takala/financial_phrasebank",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\takala--financial_phrasebank.json",
+    "metadata_sha256": "2daf96b8a9b19bac27997fc170f6388dbf3530168d40c018440d4562f6cb0371",
+    "reported_splits": [
+      {
+        "config": "sentences_allagree",
+        "split": "train",
+        "rows": 2264
+      },
+      {
+        "config": "sentences_75agree",
+        "split": "train",
+        "rows": 3453
+      },
+      {
+        "config": "sentences_66agree",
+        "split": "train",
+        "rows": 4217
+      },
+      {
+        "config": "sentences_50agree",
+        "split": "train",
+        "rows": 4846
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "zeroshot/twitter-financial-news-sentiment",
+    "requested_id": "zeroshot/twitter-financial-news-sentiment",
+    "platform": "Hugging Face",
+    "task": "financial sentiment",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "mit"
+    ],
+    "license_tags": [
+      "license:mit"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "ccbe24de388e287beb92dd393a335c376b350ac3",
+    "files": 5,
+    "repository_bytes": 1079587.0,
+    "source_url": "https://huggingface.co/datasets/zeroshot/twitter-financial-news-sentiment",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\zeroshot--twitter-financial-news-sentiment.json",
+    "metadata_sha256": "01b447ea2d668edb82f521ecc5c6c39174eb0c51cc6dd0007bf0ef25bc36bb81",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "fancyzhx/ag_news",
+    "requested_id": "ag_news",
+    "platform": "Hugging Face",
+    "task": "topic classification",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "unknown"
+    ],
+    "license_tags": [
+      "license:unknown"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "eb185aade064a813bc0b7f42de02595523103ca4",
+    "files": 4,
+    "repository_bytes": 19829511.0,
+    "source_url": "https://huggingface.co/datasets/fancyzhx/ag_news",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\ag_news.json",
+    "metadata_sha256": "4995b19b7a6b2746e31a6ab11d3ada0ed026946523082d8d816abe30e8b3b566",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": "train",
+        "rows": 120000
+      },
+      {
+        "config": null,
+        "split": "test",
+        "rows": 7600
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "fancyzhx/dbpedia_14",
+    "requested_id": "dbpedia_14",
+    "platform": "Hugging Face",
+    "task": "topic classification",
+    "priority": "P2",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "cc-by-sa-3.0"
+    ],
+    "license_tags": [
+      "license:cc-by-sa-3.0"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "9abd46cf7fc8b4c64290f26993c540b92aa145ac",
+    "files": 4,
+    "repository_bytes": 119433190.0,
+    "source_url": "https://huggingface.co/datasets/fancyzhx/dbpedia_14",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\dbpedia_14.json",
+    "metadata_sha256": "9f34b8ecb2e4f9ee61d26f4da47e21ce04d40152215e6c184e6c0e539056e981",
+    "reported_splits": [
+      {
+        "config": "dbpedia_14",
+        "split": "train",
+        "rows": 560000
+      },
+      {
+        "config": "dbpedia_14",
+        "split": "test",
+        "rows": 70000
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "allenai/ai2_arc",
+    "requested_id": "allenai/ai2_arc",
+    "platform": "Hugging Face",
+    "task": "multiple choice",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "cc-by-sa-4.0"
+    ],
+    "license_tags": [
+      "license:cc-by-sa-4.0"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "210d026faf9955653af8916fad021475a3f00453",
+    "files": 8,
+    "repository_bytes": 1222570.0,
+    "source_url": "https://huggingface.co/datasets/allenai/ai2_arc",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\allenai--ai2_arc.json",
+    "metadata_sha256": "624ff2cb9c2e506296f95afdfb6242b5c5d4489d7a21240d47605b78f98893c9",
+    "reported_splits": [
+      {
+        "config": "ARC-Challenge",
+        "split": "train",
+        "rows": 1119
+      },
+      {
+        "config": "ARC-Challenge",
+        "split": "test",
+        "rows": 1172
+      },
+      {
+        "config": "ARC-Challenge",
+        "split": "validation",
+        "rows": 299
+      },
+      {
+        "config": "ARC-Easy",
+        "split": "train",
+        "rows": 2251
+      },
+      {
+        "config": "ARC-Easy",
+        "split": "test",
+        "rows": 2376
+      },
+      {
+        "config": "ARC-Easy",
+        "split": "validation",
+        "rows": 570
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "allenai/openbookqa",
+    "requested_id": "allenai/openbookqa",
+    "platform": "Hugging Face",
+    "task": "multiple choice",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "unknown"
+    ],
+    "license_tags": [
+      "license:unknown"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "388097ea7776314e93a529163e0fea805b8a6454",
+    "files": 8,
+    "repository_bytes": 1403637.0,
+    "source_url": "https://huggingface.co/datasets/allenai/openbookqa",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\allenai--openbookqa.json",
+    "metadata_sha256": "fe0775b5ca8687e9a7c063f62f24078af12f0b7a4e898ea26973c56e4f4f2bf8",
+    "reported_splits": [
+      {
+        "config": "additional",
+        "split": "train",
+        "rows": 4957
+      },
+      {
+        "config": "additional",
+        "split": "validation",
+        "rows": 500
+      },
+      {
+        "config": "additional",
+        "split": "test",
+        "rows": 500
+      },
+      {
+        "config": "main",
+        "split": "train",
+        "rows": 4957
+      },
+      {
+        "config": "main",
+        "split": "validation",
+        "rows": 500
+      },
+      {
+        "config": "main",
+        "split": "test",
+        "rows": 500
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "allenai/piqa",
+    "platform": "Hugging Face",
+    "task": "physical choice",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_unavailable_401_or_missing",
+    "license": null,
+    "revision": null,
+    "source_url": "https://huggingface.co/datasets/allenai/piqa",
+    "training_admission": "pending",
+    "redistribution": "pending"
+  },
+  {
+    "id": "Rowan/hellaswag",
+    "requested_id": "Rowan/hellaswag",
+    "platform": "Hugging Face",
+    "task": "continuation choice",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": null,
+    "license_tags": [],
+    "languages": [
+      "en"
+    ],
+    "revision": "218ec52e09a7e7462a5400043bb9a69a41d06b76",
+    "files": 5,
+    "repository_bytes": 36802065.0,
+    "source_url": "https://huggingface.co/datasets/Rowan/hellaswag",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\Rowan--hellaswag.json",
+    "metadata_sha256": "24c389986780ce0b3f275c83b7400ba154c12bdac7aac6f8362dbfc76d0bd768",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": "train",
+        "rows": 39905
+      },
+      {
+        "config": null,
+        "split": "test",
+        "rows": 10003
+      },
+      {
+        "config": null,
+        "split": "validation",
+        "rows": 10042
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "allenai/winogrande",
+    "requested_id": "allenai/winogrande",
+    "platform": "Hugging Face",
+    "task": "coreference choice",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": null,
+    "license_tags": [],
+    "languages": [
+      "en"
+    ],
+    "revision": "01e74176c63542e6b0bcb004dcdea22d94fb67b5",
+    "files": 20,
+    "repository_bytes": 4618916.0,
+    "source_url": "https://huggingface.co/datasets/allenai/winogrande",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\allenai--winogrande.json",
+    "metadata_sha256": "bb86a723d416c3b34cb0a87cdb14057e24bec85823e71ea17f2bd54d0c9586b1",
+    "reported_splits": [
+      {
+        "config": "winogrande_debiased",
+        "split": "train",
+        "rows": 9248
+      },
+      {
+        "config": "winogrande_debiased",
+        "split": "test",
+        "rows": 1767
+      },
+      {
+        "config": "winogrande_debiased",
+        "split": "validation",
+        "rows": 1267
+      },
+      {
+        "config": "winogrande_l",
+        "split": "train",
+        "rows": 10234
+      },
+      {
+        "config": "winogrande_l",
+        "split": "test",
+        "rows": 1767
+      },
+      {
+        "config": "winogrande_l",
+        "split": "validation",
+        "rows": 1267
+      },
+      {
+        "config": "winogrande_m",
+        "split": "train",
+        "rows": 2558
+      },
+      {
+        "config": "winogrande_m",
+        "split": "test",
+        "rows": 1767
+      },
+      {
+        "config": "winogrande_m",
+        "split": "validation",
+        "rows": 1267
+      },
+      {
+        "config": "winogrande_s",
+        "split": "train",
+        "rows": 640
+      },
+      {
+        "config": "winogrande_s",
+        "split": "test",
+        "rows": 1767
+      },
+      {
+        "config": "winogrande_s",
+        "split": "validation",
+        "rows": 1267
+      },
+      {
+        "config": "winogrande_xl",
+        "split": "train",
+        "rows": 40398
+      },
+      {
+        "config": "winogrande_xl",
+        "split": "test",
+        "rows": 1767
+      },
+      {
+        "config": "winogrande_xl",
+        "split": "validation",
+        "rows": 1267
+      },
+      {
+        "config": "winogrande_xs",
+        "split": "train",
+        "rows": 160
+      },
+      {
+        "config": "winogrande_xs",
+        "split": "test",
+        "rows": 1767
+      },
+      {
+        "config": "winogrande_xs",
+        "split": "validation",
+        "rows": 1267
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "tau/commonsense_qa",
+    "requested_id": "tau/commonsense_qa",
+    "platform": "Hugging Face",
+    "task": "multiple choice",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "mit"
+    ],
+    "license_tags": [
+      "license:mit"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "94630fe30dad47192a8546eb75f094926d47e155",
+    "files": 5,
+    "repository_bytes": 1567139.0,
+    "source_url": "https://huggingface.co/datasets/tau/commonsense_qa",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\tau--commonsense_qa.json",
+    "metadata_sha256": "246ac252069d4811d6a0332e44b74d4ca97c906754f0f7086dc43ccb77c9a55b",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": "train",
+        "rows": 9741
+      },
+      {
+        "config": null,
+        "split": "validation",
+        "rows": 1221
+      },
+      {
+        "config": null,
+        "split": "test",
+        "rows": 1140
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "allenai/social_i_qa",
+    "requested_id": "allenai/social_i_qa",
+    "platform": "Hugging Face",
+    "task": "social choice",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": null,
+    "license_tags": [],
+    "languages": [
+      "en"
+    ],
+    "revision": "8835ceb9141d7896d9d968634a9b21ae440e3ec5",
+    "files": 3,
+    "repository_bytes": 12529.0,
+    "source_url": "https://huggingface.co/datasets/allenai/social_i_qa",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\allenai--social_i_qa.json",
+    "metadata_sha256": "a87a5ac6aa5da97f988c81bc2767eb86d64715792018a62b8a269d362f57272b",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": "train",
+        "rows": 33410
+      },
+      {
+        "config": null,
+        "split": "validation",
+        "rows": 1954
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "Muennighoff/xwinograd",
+    "requested_id": "Muennighoff/xwinograd",
+    "platform": "Hugging Face",
+    "task": "multilingual coreference",
+    "priority": "P2",
+    "intended_use": "evaluation",
+    "verification": "metadata_frozen",
+    "license": "cc-by-4.0",
+    "license_tags": [
+      "license:cc-by-4.0"
+    ],
+    "languages": [
+      "en",
+      "fr",
+      "ja",
+      "pt",
+      "ru",
+      "zh"
+    ],
+    "revision": "90b619ef5278605cd4f572e3e8506ab16afd44f2",
+    "files": 8,
+    "repository_bytes": 351475.0,
+    "source_url": "https://huggingface.co/datasets/Muennighoff/xwinograd",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\Muennighoff--xwinograd.json",
+    "metadata_sha256": "150f6b5db5c8d668396accb6049640504d1daf1b34a6e3948834524ae4c4661a",
+    "reported_splits": [
+      {
+        "config": "en",
+        "split": "test",
+        "rows": 2325
+      },
+      {
+        "config": "fr",
+        "split": "test",
+        "rows": 83
+      },
+      {
+        "config": "jp",
+        "split": "test",
+        "rows": 959
+      },
+      {
+        "config": "pt",
+        "split": "test",
+        "rows": 263
+      },
+      {
+        "config": "ru",
+        "split": "test",
+        "rows": 315
+      },
+      {
+        "config": "zh",
+        "split": "test",
+        "rows": 504
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "cais/mmlu",
+    "requested_id": "cais/mmlu",
+    "platform": "Hugging Face",
+    "task": "multiple choice",
+    "priority": "P2",
+    "intended_use": "evaluation",
+    "verification": "metadata_frozen",
+    "license": [
+      "mit"
+    ],
+    "license_tags": [
+      "license:mit"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+    "files": 181,
+    "repository_bytes": 270035224.0,
+    "source_url": "https://huggingface.co/datasets/cais/mmlu",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\cais--mmlu.json",
+    "metadata_sha256": "e4f2eef66247fa5e4e64fd49add181dd6a8be4c97c9279e648453fdbbc6be4d1",
+    "reported_splits": [
+      {
+        "config": "abstract_algebra",
+        "split": "test",
+        "rows": 100
+      },
+      {
+        "config": "abstract_algebra",
+        "split": "validation",
+        "rows": 11
+      },
+      {
+        "config": "abstract_algebra",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "all",
+        "split": "test",
+        "rows": 14042
+      },
+      {
+        "config": "all",
+        "split": "validation",
+        "rows": 1531
+      },
+      {
+        "config": "all",
+        "split": "dev",
+        "rows": 285
+      },
+      {
+        "config": "all",
+        "split": "auxiliary_train",
+        "rows": 99842
+      },
+      {
+        "config": "anatomy",
+        "split": "test",
+        "rows": 135
+      },
+      {
+        "config": "anatomy",
+        "split": "validation",
+        "rows": 14
+      },
+      {
+        "config": "anatomy",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "astronomy",
+        "split": "test",
+        "rows": 152
+      },
+      {
+        "config": "astronomy",
+        "split": "validation",
+        "rows": 16
+      },
+      {
+        "config": "astronomy",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "auxiliary_train",
+        "split": "train",
+        "rows": 99842
+      },
+      {
+        "config": "business_ethics",
+        "split": "test",
+        "rows": 100
+      },
+      {
+        "config": "business_ethics",
+        "split": "validation",
+        "rows": 11
+      },
+      {
+        "config": "business_ethics",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "clinical_knowledge",
+        "split": "test",
+        "rows": 265
+      },
+      {
+        "config": "clinical_knowledge",
+        "split": "validation",
+        "rows": 29
+      },
+      {
+        "config": "clinical_knowledge",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "college_biology",
+        "split": "test",
+        "rows": 144
+      },
+      {
+        "config": "college_biology",
+        "split": "validation",
+        "rows": 16
+      },
+      {
+        "config": "college_biology",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "college_chemistry",
+        "split": "test",
+        "rows": 100
+      },
+      {
+        "config": "college_chemistry",
+        "split": "validation",
+        "rows": 8
+      },
+      {
+        "config": "college_chemistry",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "college_computer_science",
+        "split": "test",
+        "rows": 100
+      },
+      {
+        "config": "college_computer_science",
+        "split": "validation",
+        "rows": 11
+      },
+      {
+        "config": "college_computer_science",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "college_mathematics",
+        "split": "test",
+        "rows": 100
+      },
+      {
+        "config": "college_mathematics",
+        "split": "validation",
+        "rows": 11
+      },
+      {
+        "config": "college_mathematics",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "college_medicine",
+        "split": "test",
+        "rows": 173
+      },
+      {
+        "config": "college_medicine",
+        "split": "validation",
+        "rows": 22
+      },
+      {
+        "config": "college_medicine",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "college_physics",
+        "split": "test",
+        "rows": 102
+      },
+      {
+        "config": "college_physics",
+        "split": "validation",
+        "rows": 11
+      },
+      {
+        "config": "college_physics",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "computer_security",
+        "split": "test",
+        "rows": 100
+      },
+      {
+        "config": "computer_security",
+        "split": "validation",
+        "rows": 11
+      },
+      {
+        "config": "computer_security",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "conceptual_physics",
+        "split": "test",
+        "rows": 235
+      },
+      {
+        "config": "conceptual_physics",
+        "split": "validation",
+        "rows": 26
+      },
+      {
+        "config": "conceptual_physics",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "econometrics",
+        "split": "test",
+        "rows": 114
+      },
+      {
+        "config": "econometrics",
+        "split": "validation",
+        "rows": 12
+      },
+      {
+        "config": "econometrics",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "electrical_engineering",
+        "split": "test",
+        "rows": 145
+      },
+      {
+        "config": "electrical_engineering",
+        "split": "validation",
+        "rows": 16
+      },
+      {
+        "config": "electrical_engineering",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "elementary_mathematics",
+        "split": "test",
+        "rows": 378
+      },
+      {
+        "config": "elementary_mathematics",
+        "split": "validation",
+        "rows": 41
+      },
+      {
+        "config": "elementary_mathematics",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "formal_logic",
+        "split": "test",
+        "rows": 126
+      },
+      {
+        "config": "formal_logic",
+        "split": "validation",
+        "rows": 14
+      },
+      {
+        "config": "formal_logic",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "global_facts",
+        "split": "test",
+        "rows": 100
+      },
+      {
+        "config": "global_facts",
+        "split": "validation",
+        "rows": 10
+      },
+      {
+        "config": "global_facts",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "high_school_biology",
+        "split": "test",
+        "rows": 310
+      },
+      {
+        "config": "high_school_biology",
+        "split": "validation",
+        "rows": 32
+      },
+      {
+        "config": "high_school_biology",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "high_school_chemistry",
+        "split": "test",
+        "rows": 203
+      },
+      {
+        "config": "high_school_chemistry",
+        "split": "validation",
+        "rows": 22
+      },
+      {
+        "config": "high_school_chemistry",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "high_school_computer_science",
+        "split": "test",
+        "rows": 100
+      },
+      {
+        "config": "high_school_computer_science",
+        "split": "validation",
+        "rows": 9
+      },
+      {
+        "config": "high_school_computer_science",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "high_school_european_history",
+        "split": "test",
+        "rows": 165
+      },
+      {
+        "config": "high_school_european_history",
+        "split": "validation",
+        "rows": 18
+      },
+      {
+        "config": "high_school_european_history",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "high_school_geography",
+        "split": "test",
+        "rows": 198
+      },
+      {
+        "config": "high_school_geography",
+        "split": "validation",
+        "rows": 22
+      },
+      {
+        "config": "high_school_geography",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "high_school_government_and_politics",
+        "split": "test",
+        "rows": 193
+      },
+      {
+        "config": "high_school_government_and_politics",
+        "split": "validation",
+        "rows": 21
+      },
+      {
+        "config": "high_school_government_and_politics",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "high_school_macroeconomics",
+        "split": "test",
+        "rows": 390
+      },
+      {
+        "config": "high_school_macroeconomics",
+        "split": "validation",
+        "rows": 43
+      },
+      {
+        "config": "high_school_macroeconomics",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "high_school_mathematics",
+        "split": "test",
+        "rows": 270
+      },
+      {
+        "config": "high_school_mathematics",
+        "split": "validation",
+        "rows": 29
+      },
+      {
+        "config": "high_school_mathematics",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "high_school_microeconomics",
+        "split": "test",
+        "rows": 238
+      },
+      {
+        "config": "high_school_microeconomics",
+        "split": "validation",
+        "rows": 26
+      },
+      {
+        "config": "high_school_microeconomics",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "high_school_physics",
+        "split": "test",
+        "rows": 151
+      },
+      {
+        "config": "high_school_physics",
+        "split": "validation",
+        "rows": 17
+      },
+      {
+        "config": "high_school_physics",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "high_school_psychology",
+        "split": "test",
+        "rows": 545
+      },
+      {
+        "config": "high_school_psychology",
+        "split": "validation",
+        "rows": 60
+      },
+      {
+        "config": "high_school_psychology",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "high_school_statistics",
+        "split": "test",
+        "rows": 216
+      },
+      {
+        "config": "high_school_statistics",
+        "split": "validation",
+        "rows": 23
+      },
+      {
+        "config": "high_school_statistics",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "high_school_us_history",
+        "split": "test",
+        "rows": 204
+      },
+      {
+        "config": "high_school_us_history",
+        "split": "validation",
+        "rows": 22
+      },
+      {
+        "config": "high_school_us_history",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "high_school_world_history",
+        "split": "test",
+        "rows": 237
+      },
+      {
+        "config": "high_school_world_history",
+        "split": "validation",
+        "rows": 26
+      },
+      {
+        "config": "high_school_world_history",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "human_aging",
+        "split": "test",
+        "rows": 223
+      },
+      {
+        "config": "human_aging",
+        "split": "validation",
+        "rows": 23
+      },
+      {
+        "config": "human_aging",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "human_sexuality",
+        "split": "test",
+        "rows": 131
+      },
+      {
+        "config": "human_sexuality",
+        "split": "validation",
+        "rows": 12
+      },
+      {
+        "config": "human_sexuality",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "international_law",
+        "split": "test",
+        "rows": 121
+      },
+      {
+        "config": "international_law",
+        "split": "validation",
+        "rows": 13
+      },
+      {
+        "config": "international_law",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "jurisprudence",
+        "split": "test",
+        "rows": 108
+      },
+      {
+        "config": "jurisprudence",
+        "split": "validation",
+        "rows": 11
+      },
+      {
+        "config": "jurisprudence",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "logical_fallacies",
+        "split": "test",
+        "rows": 163
+      },
+      {
+        "config": "logical_fallacies",
+        "split": "validation",
+        "rows": 18
+      },
+      {
+        "config": "logical_fallacies",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "machine_learning",
+        "split": "test",
+        "rows": 112
+      },
+      {
+        "config": "machine_learning",
+        "split": "validation",
+        "rows": 11
+      },
+      {
+        "config": "machine_learning",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "management",
+        "split": "test",
+        "rows": 103
+      },
+      {
+        "config": "management",
+        "split": "validation",
+        "rows": 11
+      },
+      {
+        "config": "management",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "marketing",
+        "split": "test",
+        "rows": 234
+      },
+      {
+        "config": "marketing",
+        "split": "validation",
+        "rows": 25
+      },
+      {
+        "config": "marketing",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "medical_genetics",
+        "split": "test",
+        "rows": 100
+      },
+      {
+        "config": "medical_genetics",
+        "split": "validation",
+        "rows": 11
+      },
+      {
+        "config": "medical_genetics",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "miscellaneous",
+        "split": "test",
+        "rows": 783
+      },
+      {
+        "config": "miscellaneous",
+        "split": "validation",
+        "rows": 86
+      },
+      {
+        "config": "miscellaneous",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "moral_disputes",
+        "split": "test",
+        "rows": 346
+      },
+      {
+        "config": "moral_disputes",
+        "split": "validation",
+        "rows": 38
+      },
+      {
+        "config": "moral_disputes",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "moral_scenarios",
+        "split": "test",
+        "rows": 895
+      },
+      {
+        "config": "moral_scenarios",
+        "split": "validation",
+        "rows": 100
+      },
+      {
+        "config": "moral_scenarios",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "nutrition",
+        "split": "test",
+        "rows": 306
+      },
+      {
+        "config": "nutrition",
+        "split": "validation",
+        "rows": 33
+      },
+      {
+        "config": "nutrition",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "philosophy",
+        "split": "test",
+        "rows": 311
+      },
+      {
+        "config": "philosophy",
+        "split": "validation",
+        "rows": 34
+      },
+      {
+        "config": "philosophy",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "prehistory",
+        "split": "test",
+        "rows": 324
+      },
+      {
+        "config": "prehistory",
+        "split": "validation",
+        "rows": 35
+      },
+      {
+        "config": "prehistory",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "professional_accounting",
+        "split": "test",
+        "rows": 282
+      },
+      {
+        "config": "professional_accounting",
+        "split": "validation",
+        "rows": 31
+      },
+      {
+        "config": "professional_accounting",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "professional_law",
+        "split": "test",
+        "rows": 1534
+      },
+      {
+        "config": "professional_law",
+        "split": "validation",
+        "rows": 170
+      },
+      {
+        "config": "professional_law",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "professional_medicine",
+        "split": "test",
+        "rows": 272
+      },
+      {
+        "config": "professional_medicine",
+        "split": "validation",
+        "rows": 31
+      },
+      {
+        "config": "professional_medicine",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "professional_psychology",
+        "split": "test",
+        "rows": 612
+      },
+      {
+        "config": "professional_psychology",
+        "split": "validation",
+        "rows": 69
+      },
+      {
+        "config": "professional_psychology",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "public_relations",
+        "split": "test",
+        "rows": 110
+      },
+      {
+        "config": "public_relations",
+        "split": "validation",
+        "rows": 12
+      },
+      {
+        "config": "public_relations",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "security_studies",
+        "split": "test",
+        "rows": 245
+      },
+      {
+        "config": "security_studies",
+        "split": "validation",
+        "rows": 27
+      },
+      {
+        "config": "security_studies",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "sociology",
+        "split": "test",
+        "rows": 201
+      },
+      {
+        "config": "sociology",
+        "split": "validation",
+        "rows": 22
+      },
+      {
+        "config": "sociology",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "us_foreign_policy",
+        "split": "test",
+        "rows": 100
+      },
+      {
+        "config": "us_foreign_policy",
+        "split": "validation",
+        "rows": 11
+      },
+      {
+        "config": "us_foreign_policy",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "virology",
+        "split": "test",
+        "rows": 166
+      },
+      {
+        "config": "virology",
+        "split": "validation",
+        "rows": 18
+      },
+      {
+        "config": "virology",
+        "split": "dev",
+        "rows": 5
+      },
+      {
+        "config": "world_religions",
+        "split": "test",
+        "rows": 171
+      },
+      {
+        "config": "world_religions",
+        "split": "validation",
+        "rows": 19
+      },
+      {
+        "config": "world_religions",
+        "split": "dev",
+        "rows": 5
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "TIGER-Lab/MMLU-Pro",
+    "requested_id": "TIGER-Lab/MMLU-Pro",
+    "platform": "Hugging Face",
+    "task": "multiple choice",
+    "priority": "P2",
+    "intended_use": "evaluation",
+    "verification": "metadata_frozen",
+    "license": "mit",
+    "license_tags": [
+      "license:mit"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "b189ec765aa7ed75c8acfea42df31fdae71f97be",
+    "files": 7,
+    "repository_bytes": 4207360.0,
+    "source_url": "https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\TIGER-Lab--MMLU-Pro.json",
+    "metadata_sha256": "70c6680a0311e0da6a94b58f4d99363f657d404691239f8e196cacdf9dd70d25",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": "validation",
+        "rows": 70
+      },
+      {
+        "config": null,
+        "split": "test",
+        "rows": 12032
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "clue/clue",
+    "requested_id": "clue",
+    "platform": "Hugging Face",
+    "task": "Chinese Choice/Boolean",
+    "priority": "P0",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "unknown"
+    ],
+    "license_tags": [
+      "license:unknown"
+    ],
+    "languages": [
+      "zh"
+    ],
+    "revision": "28178267a609dd08bdc703dd6c931dfc2c2f4431",
+    "files": 37,
+    "repository_bytes": 298246299.0,
+    "source_url": "https://huggingface.co/datasets/clue/clue",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\clue.json",
+    "metadata_sha256": "4baa07fd7db07ac9a2f0d0e9b72a6a6812e3c3d4b4e9bb8d21b97d7acc91effa",
+    "reported_splits": [
+      {
+        "config": "afqmc",
+        "split": "test",
+        "rows": 3861
+      },
+      {
+        "config": "afqmc",
+        "split": "train",
+        "rows": 34334
+      },
+      {
+        "config": "afqmc",
+        "split": "validation",
+        "rows": 4316
+      },
+      {
+        "config": "c3",
+        "split": "test",
+        "rows": 1625
+      },
+      {
+        "config": "c3",
+        "split": "train",
+        "rows": 11869
+      },
+      {
+        "config": "c3",
+        "split": "validation",
+        "rows": 3816
+      },
+      {
+        "config": "chid",
+        "split": "test",
+        "rows": 3447
+      },
+      {
+        "config": "chid",
+        "split": "train",
+        "rows": 84709
+      },
+      {
+        "config": "chid",
+        "split": "validation",
+        "rows": 3218
+      },
+      {
+        "config": "cluewsc2020",
+        "split": "test",
+        "rows": 2574
+      },
+      {
+        "config": "cluewsc2020",
+        "split": "train",
+        "rows": 1244
+      },
+      {
+        "config": "cluewsc2020",
+        "split": "validation",
+        "rows": 304
+      },
+      {
+        "config": "cmnli",
+        "split": "test",
+        "rows": 13880
+      },
+      {
+        "config": "cmnli",
+        "split": "train",
+        "rows": 391783
+      },
+      {
+        "config": "cmnli",
+        "split": "validation",
+        "rows": 12241
+      },
+      {
+        "config": "cmrc2018",
+        "split": "test",
+        "rows": 2000
+      },
+      {
+        "config": "cmrc2018",
+        "split": "train",
+        "rows": 10142
+      },
+      {
+        "config": "cmrc2018",
+        "split": "validation",
+        "rows": 3219
+      },
+      {
+        "config": "cmrc2018",
+        "split": "trial",
+        "rows": 1002
+      },
+      {
+        "config": "csl",
+        "split": "test",
+        "rows": 3000
+      },
+      {
+        "config": "csl",
+        "split": "train",
+        "rows": 20000
+      },
+      {
+        "config": "csl",
+        "split": "validation",
+        "rows": 3000
+      },
+      {
+        "config": "diagnostics",
+        "split": "test",
+        "rows": 514
+      },
+      {
+        "config": "drcd",
+        "split": "test",
+        "rows": 3493
+      },
+      {
+        "config": "drcd",
+        "split": "train",
+        "rows": 26936
+      },
+      {
+        "config": "drcd",
+        "split": "validation",
+        "rows": 3524
+      },
+      {
+        "config": "iflytek",
+        "split": "test",
+        "rows": 2600
+      },
+      {
+        "config": "iflytek",
+        "split": "train",
+        "rows": 12133
+      },
+      {
+        "config": "iflytek",
+        "split": "validation",
+        "rows": 2599
+      },
+      {
+        "config": "ocnli",
+        "split": "test",
+        "rows": 3000
+      },
+      {
+        "config": "ocnli",
+        "split": "train",
+        "rows": 50437
+      },
+      {
+        "config": "ocnli",
+        "split": "validation",
+        "rows": 2950
+      },
+      {
+        "config": "tnews",
+        "split": "test",
+        "rows": 10000
+      },
+      {
+        "config": "tnews",
+        "split": "train",
+        "rows": 53360
+      },
+      {
+        "config": "tnews",
+        "split": "validation",
+        "rows": 10000
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "cluebenchmark/FewCLUE",
+    "platform": "Hugging Face",
+    "task": "Chinese few-shot",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_unavailable_401_or_missing",
+    "license": null,
+    "revision": null,
+    "source_url": "https://huggingface.co/datasets/cluebenchmark/FewCLUE",
+    "training_admission": "pending",
+    "redistribution": "pending"
+  },
+  {
+    "id": "C-MTEB/AFQMC",
+    "requested_id": "C-MTEB/AFQMC",
+    "platform": "Hugging Face",
+    "task": "Chinese Boolean",
+    "priority": "P0",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": null,
+    "license_tags": [],
+    "languages": [
+      null
+    ],
+    "revision": "b44c3b011063adb25877c13823db83bb193913c4",
+    "files": 5,
+    "repository_bytes": 2340546.0,
+    "source_url": "https://huggingface.co/datasets/C-MTEB/AFQMC",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\C-MTEB--AFQMC.json",
+    "metadata_sha256": "6768c09616b38f656c86e4212ec876f492bc48525020d549751871a4eb2a1b9a",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": "test",
+        "rows": 3861
+      },
+      {
+        "config": null,
+        "split": "train",
+        "rows": 34334
+      },
+      {
+        "config": null,
+        "split": "validation",
+        "rows": 4316
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "C-MTEB/CMNLI",
+    "requested_id": "C-MTEB/CMNLI",
+    "platform": "Hugging Face",
+    "task": "Chinese NLI",
+    "priority": "P0",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": null,
+    "license_tags": [],
+    "languages": [
+      null
+    ],
+    "revision": "41bc36f332156f7adc9e38f53777c959b2ae9766",
+    "files": 3,
+    "repository_bytes": 665855.0,
+    "source_url": "https://huggingface.co/datasets/C-MTEB/CMNLI",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\C-MTEB--CMNLI.json",
+    "metadata_sha256": "5c8ba7141025f2b2c3d53e8e3e7cbc91868c8f5c9c9a4b6674dbce164a98bc2e",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": "validation",
+        "rows": 1
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "C-MTEB/OCNLI",
+    "requested_id": "C-MTEB/OCNLI",
+    "platform": "Hugging Face",
+    "task": "Chinese NLI",
+    "priority": "P0",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": null,
+    "license_tags": [],
+    "languages": [
+      null
+    ],
+    "revision": "66e76a618a34d6d565d5538088562851e6daa7ec",
+    "files": 3,
+    "repository_bytes": 156385.0,
+    "source_url": "https://huggingface.co/datasets/C-MTEB/OCNLI",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\C-MTEB--OCNLI.json",
+    "metadata_sha256": "8e93b123cd45cac99968c13a3e75245bd787671be2ce385bbf87b51897a39c93",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": "validation",
+        "rows": 1
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "C-MTEB/Tnews",
+    "platform": "Hugging Face",
+    "task": "Chinese topic",
+    "priority": "P0",
+    "intended_use": "train",
+    "verification": "metadata_unavailable_401_or_missing",
+    "license": null,
+    "revision": null,
+    "source_url": "https://huggingface.co/datasets/C-MTEB/Tnews",
+    "training_admission": "pending",
+    "redistribution": "pending"
+  },
+  {
+    "id": "C-MTEB/IFlyTek",
+    "platform": "Hugging Face",
+    "task": "Chinese intent",
+    "priority": "P0",
+    "intended_use": "train",
+    "verification": "metadata_unavailable_401_or_missing",
+    "license": null,
+    "revision": null,
+    "source_url": "https://huggingface.co/datasets/C-MTEB/IFlyTek",
+    "training_admission": "pending",
+    "redistribution": "pending"
+  },
+  {
+    "id": "C-MTEB/STS-B",
+    "platform": "Hugging Face",
+    "task": "Chinese similarity Score",
+    "priority": "P0",
+    "intended_use": "train",
+    "verification": "metadata_unavailable_401_or_missing",
+    "license": null,
+    "revision": null,
+    "source_url": "https://huggingface.co/datasets/C-MTEB/STS-B",
+    "training_admission": "pending",
+    "redistribution": "pending"
+  },
+  {
+    "id": "C-MTEB/Toxic",
+    "platform": "Hugging Face",
+    "task": "Chinese safety",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_unavailable_401_or_missing",
+    "license": null,
+    "revision": null,
+    "source_url": "https://huggingface.co/datasets/C-MTEB/Toxic",
+    "training_admission": "pending",
+    "redistribution": "pending"
+  },
+  {
+    "id": "C-MTEB/LCQMC",
+    "requested_id": "C-MTEB/LCQMC",
+    "platform": "Hugging Face",
+    "task": "Chinese paraphrase",
+    "priority": "P0",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": null,
+    "license_tags": [],
+    "languages": [
+      null
+    ],
+    "revision": "17f9b096f80380fce5ed12a9be8be7784b337daf",
+    "files": 5,
+    "repository_bytes": 14087877.0,
+    "source_url": "https://huggingface.co/datasets/C-MTEB/LCQMC",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\C-MTEB--LCQMC.json",
+    "metadata_sha256": "21ee641108e92cb1233328bb0a122f817c8add29dd7968c2b24b2f1ccb834cd6",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": "train",
+        "rows": 238766
+      },
+      {
+        "config": null,
+        "split": "validation",
+        "rows": 8802
+      },
+      {
+        "config": null,
+        "split": "test",
+        "rows": 12500
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "C-MTEB/PAWSX",
+    "requested_id": "C-MTEB/PAWSX",
+    "platform": "Hugging Face",
+    "task": "Chinese paraphrase",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": null,
+    "license_tags": [],
+    "languages": [
+      null
+    ],
+    "revision": "9c6a90e430ac22b5779fb019a23e820b11a8b5e1",
+    "files": 5,
+    "repository_bytes": 8884201.0,
+    "source_url": "https://huggingface.co/datasets/C-MTEB/PAWSX",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\C-MTEB--PAWSX.json",
+    "metadata_sha256": "5a9311bbda58cd04d53dce3dd63cc983e2b8d362be47ed906d2255dd23a4c03e",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": "train",
+        "rows": 49401
+      },
+      {
+        "config": null,
+        "split": "validation",
+        "rows": 2000
+      },
+      {
+        "config": null,
+        "split": "test",
+        "rows": 2000
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "mteb/mtop_intent",
+    "requested_id": "mteb/mtop_intent",
+    "platform": "Hugging Face",
+    "task": "multilingual intent",
+    "priority": "P0",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": "unknown",
+    "license_tags": [
+      "license:unknown"
+    ],
+    "languages": [
+      "deu",
+      "eng",
+      "fra",
+      "hin",
+      "spa",
+      "tha"
+    ],
+    "revision": "9a200bf94b01afa0438a39c54f6a3aceaf78856f",
+    "files": 40,
+    "repository_bytes": 20375651.0,
+    "source_url": "https://huggingface.co/datasets/mteb/mtop_intent",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\mteb--mtop_intent.json",
+    "metadata_sha256": "a8b8d2ffe2e4d14ab75813dc32b41f7d8d059577aa519ae114f6c0390922ede2",
+    "reported_splits": [
+      {
+        "config": "de",
+        "split": "train",
+        "rows": 13038
+      },
+      {
+        "config": "de",
+        "split": "validation",
+        "rows": 1788
+      },
+      {
+        "config": "de",
+        "split": "test",
+        "rows": 1766
+      },
+      {
+        "config": "en",
+        "split": "train",
+        "rows": 15346
+      },
+      {
+        "config": "en",
+        "split": "validation",
+        "rows": 2192
+      },
+      {
+        "config": "en",
+        "split": "test",
+        "rows": 2185
+      },
+      {
+        "config": "es",
+        "split": "train",
+        "rows": 10637
+      },
+      {
+        "config": "es",
+        "split": "validation",
+        "rows": 1512
+      },
+      {
+        "config": "es",
+        "split": "test",
+        "rows": 1473
+      },
+      {
+        "config": "fr",
+        "split": "train",
+        "rows": 11548
+      },
+      {
+        "config": "fr",
+        "split": "validation",
+        "rows": 1551
+      },
+      {
+        "config": "fr",
+        "split": "test",
+        "rows": 1541
+      },
+      {
+        "config": "hi",
+        "split": "train",
+        "rows": 11183
+      },
+      {
+        "config": "hi",
+        "split": "validation",
+        "rows": 1998
+      },
+      {
+        "config": "hi",
+        "split": "test",
+        "rows": 1983
+      },
+      {
+        "config": "th",
+        "split": "train",
+        "rows": 2764
+      },
+      {
+        "config": "th",
+        "split": "validation",
+        "rows": 422
+      },
+      {
+        "config": "th",
+        "split": "test",
+        "rows": 418
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "mteb/amazon_counterfactual",
+    "requested_id": "mteb/amazon_counterfactual",
+    "platform": "Hugging Face",
+    "task": "Boolean counterfactual",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": "cc-by-4.0",
+    "license_tags": [
+      "license:cc-by-4.0"
+    ],
+    "languages": [
+      "deu",
+      "eng",
+      "jpn"
+    ],
+    "revision": "b9867e02b01002698f60c07fb8efdce8c5020ee8",
+    "files": 15,
+    "repository_bytes": 1651427.0,
+    "source_url": "https://huggingface.co/datasets/mteb/amazon_counterfactual",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\mteb--amazon_counterfactual.json",
+    "metadata_sha256": "1cef26b2ae05c6b11e9de4e345ca62dd820be1da9f3bbb03d4e9ec49d5ed3cc5",
+    "reported_splits": [
+      {
+        "config": "de",
+        "split": "train",
+        "rows": 5587
+      },
+      {
+        "config": "de",
+        "split": "validation",
+        "rows": 466
+      },
+      {
+        "config": "de",
+        "split": "test",
+        "rows": 463
+      },
+      {
+        "config": "en",
+        "split": "train",
+        "rows": 4018
+      },
+      {
+        "config": "en",
+        "split": "validation",
+        "rows": 335
+      },
+      {
+        "config": "en",
+        "split": "test",
+        "rows": 335
+      },
+      {
+        "config": "en-ext",
+        "split": "train",
+        "rows": 7997
+      },
+      {
+        "config": "en-ext",
+        "split": "validation",
+        "rows": 666
+      },
+      {
+        "config": "en-ext",
+        "split": "test",
+        "rows": 666
+      },
+      {
+        "config": "ja",
+        "split": "train",
+        "rows": 146
+      },
+      {
+        "config": "ja",
+        "split": "validation",
+        "rows": 11
+      },
+      {
+        "config": "ja",
+        "split": "test",
+        "rows": 11
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "mteb/amazon_massive_intent",
+    "requested_id": "mteb/amazon_massive_intent",
+    "platform": "Hugging Face",
+    "task": "multilingual intent",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": "apache-2.0",
+    "license_tags": [
+      "license:apache-2.0"
+    ],
+    "languages": [
+      "afr",
+      "amh",
+      "ara",
+      "aze",
+      "ben",
+      "cmo",
+      "cym",
+      "dan",
+      "deu",
+      "ell",
+      "eng",
+      "fas",
+      "fin",
+      "fra",
+      "heb",
+      "hin",
+      "hun",
+      "hye",
+      "ind",
+      "isl",
+      "ita",
+      "jav",
+      "jpn",
+      "kan",
+      "kat",
+      "khm",
+      "kor",
+      "lav",
+      "mal",
+      "mon",
+      "msa",
+      "mya",
+      "nld",
+      "nob",
+      "pol",
+      "por",
+      "ron",
+      "rus",
+      "slv",
+      "spa",
+      "sqi",
+      "swa",
+      "swe",
+      "tam",
+      "tel",
+      "tgl",
+      "tha",
+      "tur",
+      "urd",
+      "vie"
+    ],
+    "revision": "940fd47a81eaa7f2cc7b129674d945d618ac38c2",
+    "files": 156,
+    "repository_bytes": 16957343.0,
+    "source_url": "https://huggingface.co/datasets/mteb/amazon_massive_intent",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\mteb--amazon_massive_intent.json",
+    "metadata_sha256": "e838f6d00d18f0e9f35495d4bd7bd69acbdb9ed181b36b050f9a4e6517a2f0e3",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "mteb/amazon_massive_scenario",
+    "requested_id": "mteb/amazon_massive_scenario",
+    "platform": "Hugging Face",
+    "task": "multilingual scenario",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": "apache-2.0",
+    "license_tags": [
+      "license:apache-2.0"
+    ],
+    "languages": [
+      "afr",
+      "amh",
+      "ara",
+      "aze",
+      "ben",
+      "cmo",
+      "cym",
+      "dan",
+      "deu",
+      "ell",
+      "eng",
+      "fas",
+      "fin",
+      "fra",
+      "heb",
+      "hin",
+      "hun",
+      "hye",
+      "ind",
+      "isl",
+      "ita",
+      "jav",
+      "jpn",
+      "kan",
+      "kat",
+      "khm",
+      "kor",
+      "lav",
+      "mal",
+      "mon",
+      "msa",
+      "mya",
+      "nld",
+      "nob",
+      "pol",
+      "por",
+      "ron",
+      "rus",
+      "slv",
+      "spa",
+      "sqi",
+      "swa",
+      "swe",
+      "tam",
+      "tel",
+      "tgl",
+      "tha",
+      "tur",
+      "urd",
+      "vie"
+    ],
+    "revision": "58871793b91addb7c5f7afff26ccf08737fb6697",
+    "files": 155,
+    "repository_bytes": 16324698.0,
+    "source_url": "https://huggingface.co/datasets/mteb/amazon_massive_scenario",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\mteb--amazon_massive_scenario.json",
+    "metadata_sha256": "7192138419a3ceb774bd324a4e047e3e46b911b18c73d05f6aad941a14597d08",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "allenai/wanli",
+    "platform": "Hugging Face",
+    "task": "NLI",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_unavailable_401_or_missing",
+    "license": null,
+    "revision": null,
+    "source_url": "https://huggingface.co/datasets/allenai/wanli",
+    "training_admission": "pending",
+    "redistribution": "pending"
+  },
+  {
+    "id": "facebook/anli",
+    "requested_id": "anli",
+    "platform": "Hugging Face",
+    "task": "adversarial NLI",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "cc-by-nc-4.0"
+    ],
+    "license_tags": [
+      "license:cc-by-nc-4.0"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "8e4813d81f46d313dac7892e1c28076917cfcdf9",
+    "files": 11,
+    "repository_bytes": 26295904.0,
+    "source_url": "https://huggingface.co/datasets/facebook/anli",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\anli.json",
+    "metadata_sha256": "6c82c6b1edb6dd05af7f85a66b54094fccc7ffb7da8519c83f317e1b85e8f4c1",
+    "reported_splits": [
+      {
+        "config": "plain_text",
+        "split": "train_r1",
+        "rows": 16946
+      },
+      {
+        "config": "plain_text",
+        "split": "dev_r1",
+        "rows": 1000
+      },
+      {
+        "config": "plain_text",
+        "split": "test_r1",
+        "rows": 1000
+      },
+      {
+        "config": "plain_text",
+        "split": "train_r2",
+        "rows": 45460
+      },
+      {
+        "config": "plain_text",
+        "split": "dev_r2",
+        "rows": 1000
+      },
+      {
+        "config": "plain_text",
+        "split": "test_r2",
+        "rows": 1000
+      },
+      {
+        "config": "plain_text",
+        "split": "train_r3",
+        "rows": 100459
+      },
+      {
+        "config": "plain_text",
+        "split": "dev_r3",
+        "rows": 1200
+      },
+      {
+        "config": "plain_text",
+        "split": "test_r3",
+        "rows": 1200
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "pietrolesci/chaosnli",
+    "platform": "Hugging Face",
+    "task": "label distributions",
+    "priority": "P0",
+    "intended_use": "evaluation/calibration",
+    "verification": "metadata_unavailable_401_or_missing",
+    "license": null,
+    "revision": null,
+    "source_url": "https://huggingface.co/datasets/pietrolesci/chaosnli",
+    "training_admission": "pending",
+    "redistribution": "pending"
+  },
+  {
+    "id": "tasksource/ambinli",
+    "platform": "Hugging Face",
+    "task": "ambiguous label distributions",
+    "priority": "P1",
+    "intended_use": "calibration",
+    "verification": "metadata_unavailable_401_or_missing",
+    "license": null,
+    "revision": null,
+    "source_url": "https://huggingface.co/datasets/tasksource/ambinli",
+    "training_admission": "pending",
+    "redistribution": "pending"
+  },
+  {
+    "id": "allenai/reward-bench",
+    "requested_id": "allenai/reward-bench",
+    "platform": "Hugging Face",
+    "task": "pair preference",
+    "priority": "P2",
+    "intended_use": "evaluation",
+    "verification": "metadata_frozen",
+    "license": "odc-by",
+    "license_tags": [
+      "license:odc-by"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "168d848cdbbea9764fae4a544dc9ca1e6cca4931",
+    "files": 16,
+    "repository_bytes": 15539912.0,
+    "source_url": "https://huggingface.co/datasets/allenai/reward-bench",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\allenai--reward-bench.json",
+    "metadata_sha256": "68a2ab307e7e493c8ed7944bcf25a29f7c19795e4afc05499a6bd3371fa0c434",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": "raw",
+        "rows": 5123
+      },
+      {
+        "config": null,
+        "split": "filtered",
+        "rows": 2985
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "Anthropic/hh-rlhf",
+    "requested_id": "Anthropic/hh-rlhf",
+    "platform": "Hugging Face",
+    "task": "pair preference",
+    "priority": "P2",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": "mit",
+    "license_tags": [
+      "license:mit"
+    ],
+    "languages": [
+      null
+    ],
+    "revision": "09be8c5bbc57cb3887f3a9732ad6aa7ec602a1fa",
+    "files": 11,
+    "repository_bytes": 94745957.0,
+    "source_url": "https://huggingface.co/datasets/Anthropic/hh-rlhf",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\Anthropic--hh-rlhf.json",
+    "metadata_sha256": "f224c276ef81191b299d2c371d36e683002131d04421ed20da3b76715dccf152",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "stanfordnlp/SHP",
+    "requested_id": "stanfordnlp/SHP",
+    "platform": "Hugging Face",
+    "task": "pair preference",
+    "priority": "P2",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": null,
+    "license_tags": [],
+    "languages": [
+      "en"
+    ],
+    "revision": "e94b5f32602712d78ed494fe79105b1959396686",
+    "files": 57,
+    "repository_bytes": 827306580.0,
+    "source_url": "https://huggingface.co/datasets/stanfordnlp/SHP",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\stanfordnlp--SHP.json",
+    "metadata_sha256": "0b53aba5ebc8fa609652000e0942a45593a1ce2807335b85c520501a10b3c3e7",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "HuggingFaceH4/ultrafeedback_binarized",
+    "requested_id": "HuggingFaceH4/ultrafeedback_binarized",
+    "platform": "Hugging Face",
+    "task": "teacher pair preference",
+    "priority": "P2",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": "mit",
+    "license_tags": [
+      "license:mit"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "3949bf5f8c17c394422ccfab0c31ea9c20bdeb85",
+    "files": 9,
+    "repository_bytes": 649980296.0,
+    "source_url": "https://huggingface.co/datasets/HuggingFaceH4/ultrafeedback_binarized",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\HuggingFaceH4--ultrafeedback_binarized.json",
+    "metadata_sha256": "9bbeced7e483a4c2bdaf8f9937a16e85c1d175a7db8dd8c55129bf94a0a0452f",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": "train_prefs",
+        "rows": 61135
+      },
+      {
+        "config": null,
+        "split": "train_sft",
+        "rows": 61135
+      },
+      {
+        "config": null,
+        "split": "test_prefs",
+        "rows": 2000
+      },
+      {
+        "config": null,
+        "split": "test_sft",
+        "rows": 1000
+      },
+      {
+        "config": null,
+        "split": "train_gen",
+        "rows": 61135
+      },
+      {
+        "config": null,
+        "split": "test_gen",
+        "rows": 1000
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "SetFit/SentEval-CR",
+    "requested_id": "SetFit/SentEval-CR",
+    "platform": "Hugging Face",
+    "task": "sentiment",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": null,
+    "license_tags": [],
+    "languages": [
+      null
+    ],
+    "revision": "c9ccf96a8fea3c88f5573b8a11228e0122a3c7cc",
+    "files": 7,
+    "repository_bytes": 911502.0,
+    "source_url": "https://huggingface.co/datasets/SetFit/SentEval-CR",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\SetFit--SentEval-CR.json",
+    "metadata_sha256": "a54181003ac63bd5ebcd3bff800e551412e9fd05f00d791a118b1eb750b1e7b0",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "SetFit/SentEval-MR",
+    "platform": "Hugging Face",
+    "task": "sentiment",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_unavailable_401_or_missing",
+    "license": null,
+    "revision": null,
+    "source_url": "https://huggingface.co/datasets/SetFit/SentEval-MR",
+    "training_admission": "pending",
+    "redistribution": "pending"
+  },
+  {
+    "id": "SetFit/SentEval-SUBJ",
+    "platform": "Hugging Face",
+    "task": "subjectivity",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_unavailable_401_or_missing",
+    "license": null,
+    "revision": null,
+    "source_url": "https://huggingface.co/datasets/SetFit/SentEval-SUBJ",
+    "training_admission": "pending",
+    "redistribution": "pending"
+  },
+  {
+    "id": "SetFit/20_newsgroups",
+    "requested_id": "SetFit/20_newsgroups",
+    "platform": "Hugging Face",
+    "task": "topic",
+    "priority": "P2",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": null,
+    "license_tags": [],
+    "languages": [
+      null
+    ],
+    "revision": "f1b91292074e7cfb69be58b642d583ec262f30ed",
+    "files": 5,
+    "repository_bytes": 23720287.0,
+    "source_url": "https://huggingface.co/datasets/SetFit/20_newsgroups",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\SetFit--20_newsgroups.json",
+    "metadata_sha256": "e7ff0e7909d5b88e712a198ab9076835fa69a5e3c537202164cfb7e3ff38ed1b",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "SetFit/TREC-QC",
+    "requested_id": "SetFit/TREC-QC",
+    "platform": "Hugging Face",
+    "task": "question type",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": null,
+    "license_tags": [],
+    "languages": [
+      null
+    ],
+    "revision": "0a34640b3cac3affef6f0abdfb81e3d0ecffcf92",
+    "files": 8,
+    "repository_bytes": 1745427.0,
+    "source_url": "https://huggingface.co/datasets/SetFit/TREC-QC",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\SetFit--TREC-QC.json",
+    "metadata_sha256": "7baff1513d38c8003a2ef78531a708bd16921449fc5fa448d0f605d8f9362f0e",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "ought/raft",
+    "requested_id": "ought/raft",
+    "platform": "Hugging Face",
+    "task": "decision classification",
+    "priority": "P1",
+    "intended_use": "few-shot train",
+    "verification": "metadata_frozen",
+    "license": [
+      "other"
+    ],
+    "license_tags": [
+      "license:other"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "9ee50172ea9afda2f1033c6f1b986e568b862fb3",
+    "files": 38,
+    "repository_bytes": 9841821.0,
+    "source_url": "https://huggingface.co/datasets/ought/raft",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\ought--raft.json",
+    "metadata_sha256": "3c8ed9e3aafa78aa762a61c8e1ae24380f1f94dc9ab481b85e266ceb7a5c6aac",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "AmazonScience/mteb_multilingual",
+    "platform": "Hugging Face",
+    "task": "classification sources",
+    "priority": "P2",
+    "intended_use": "catalog",
+    "verification": "metadata_unavailable_401_or_missing",
+    "license": null,
+    "revision": null,
+    "source_url": "https://huggingface.co/datasets/AmazonScience/mteb_multilingual",
+    "training_admission": "pending",
+    "redistribution": "pending"
+  },
+  {
+    "id": "argilla/amazon-massive-dataset",
+    "platform": "Hugging Face",
+    "task": "multilingual intent mirror",
+    "priority": "P2",
+    "intended_use": "train",
+    "verification": "metadata_unavailable_401_or_missing",
+    "license": null,
+    "revision": null,
+    "source_url": "https://huggingface.co/datasets/argilla/amazon-massive-dataset",
+    "training_admission": "pending",
+    "redistribution": "pending"
+  },
+  {
+    "id": "ruanchaves/hartmann-multilingual-sentiment",
+    "platform": "Hugging Face",
+    "task": "multilingual sentiment",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_unavailable_401_or_missing",
+    "license": null,
+    "revision": null,
+    "source_url": "https://huggingface.co/datasets/ruanchaves/hartmann-multilingual-sentiment",
+    "training_admission": "pending",
+    "redistribution": "pending"
+  },
+  {
+    "id": "google-research-datasets/discofuse",
+    "requested_id": "google-research-datasets/discofuse",
+    "platform": "Hugging Face",
+    "task": "discourse",
+    "priority": "P2",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": [
+      "cc-by-sa-3.0"
+    ],
+    "license_tags": [
+      "license:cc-by-sa-3.0"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "62abc43632002177ac8460f36e7206621d51d2eb",
+    "files": 49,
+    "repository_bytes": 13351489964.0,
+    "source_url": "https://huggingface.co/datasets/google-research-datasets/discofuse",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\google-research-datasets--discofuse.json",
+    "metadata_sha256": "c1e60cb210903de5e0631d0c9827f6798b876f44036f834b73ae966d0875fc03",
+    "reported_splits": [
+      {
+        "config": "discofuse-sport",
+        "split": "train",
+        "rows": 43291020
+      },
+      {
+        "config": "discofuse-sport",
+        "split": "test",
+        "rows": 445521
+      },
+      {
+        "config": "discofuse-sport",
+        "split": "validation",
+        "rows": 440902
+      },
+      {
+        "config": "discofuse-wikipedia",
+        "split": "train",
+        "rows": 16310585
+      },
+      {
+        "config": "discofuse-wikipedia",
+        "split": "test",
+        "rows": 163657
+      },
+      {
+        "config": "discofuse-wikipedia",
+        "split": "validation",
+        "rows": 168081
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "mteb/banking77",
+    "requested_id": "mteb/banking77",
+    "platform": "Hugging Face",
+    "task": "intent mirror",
+    "priority": "P2",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": "mit",
+    "license_tags": [
+      "license:mit"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "revision": "18072d2685ea682290f7b8924d94c62acc19c0b2",
+    "files": 7,
+    "repository_bytes": 2015122.0,
+    "source_url": "https://huggingface.co/datasets/mteb/banking77",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\mteb--banking77.json",
+    "metadata_sha256": "e5ce10fa848b8c22f8b7622643aabc1e7379cc1775c50e37e3c6e22c7814c8ce",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": "train",
+        "rows": 9993
+      },
+      {
+        "config": null,
+        "split": "test",
+        "rows": 3076
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "mteb/tweet_sentiment_extraction",
+    "requested_id": "mteb/tweet_sentiment_extraction",
+    "platform": "Hugging Face",
+    "task": "sentiment",
+    "priority": "P1",
+    "intended_use": "train",
+    "verification": "metadata_frozen",
+    "license": "unknown",
+    "license_tags": [
+      "license:unknown"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "revision": "7261898ee3b9a739595e8dbf41df6b2332f429bb",
+    "files": 7,
+    "repository_bytes": 6205223.0,
+    "source_url": "https://huggingface.co/datasets/mteb/tweet_sentiment_extraction",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\mteb--tweet_sentiment_extraction.json",
+    "metadata_sha256": "7ad1e90d8a4fdba813ff46785fb083ab860f7dceda695d9d50b2a6209ed1b235",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": "train",
+        "rows": 26732
+      },
+      {
+        "config": null,
+        "split": "test",
+        "rows": 3432
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "samatv256/jev-decisions-v1",
+    "requested_id": "samatv256/jev-decisions-v1",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P0",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_frozen",
+    "license": "cc-by-4.0",
+    "license_tags": [
+      "license:cc-by-4.0"
+    ],
+    "languages": [
+      null
+    ],
+    "revision": "c12aadf1f01c72616bfab0b02480e21806397669",
+    "files": 26,
+    "repository_bytes": 22220455910.0,
+    "source_url": "https://huggingface.co/datasets/samatv256/jev-decisions-v1",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\samatv256--jev-decisions-v1.json",
+    "metadata_sha256": "ae1f1e5b638588cc5985eca3bde991fd687217d671466fe2cc3e9a665394abe4",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "LocalLLaMA/typed-decisions",
+    "requested_id": "LocalLLaMA/typed-decisions",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P0",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_frozen",
+    "license": "apache-2.0",
+    "license_tags": [
+      "license:apache-2.0"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "e039ebffcc280174dd354227424fb2b249f191de",
+    "files": 14,
+    "repository_bytes": 2166801.0,
+    "source_url": "https://huggingface.co/datasets/LocalLLaMA/typed-decisions",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\LocalLLaMA--typed-decisions.json",
+    "metadata_sha256": "a40ad8e1b0adc763a31a197792bb83560c715a6e3d735c39153dc7182c327a86",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "C-Tianyu/NanoJev-Data",
+    "requested_id": "C-Tianyu/NanoJev-Data",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P0",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_frozen",
+    "license": null,
+    "license_tags": [],
+    "languages": [
+      "en"
+    ],
+    "revision": "7afc5257c0f3ff0ba08512729888a51d94b40e7e",
+    "files": 277,
+    "repository_bytes": 931267334.0,
+    "source_url": "https://huggingface.co/datasets/C-Tianyu/NanoJev-Data",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\C-Tianyu--NanoJev-Data.json",
+    "metadata_sha256": "42d5f1df0c69a05800cfeed8065d765722f298d7ec6cafbdd21e710d11028774",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "HIT-TMG/JevEmbed-Data",
+    "requested_id": "HIT-TMG/JevEmbed-Data",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P0",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_frozen",
+    "license": [
+      "apache-2.0",
+      "cc0-1.0",
+      "cc-by-4.0"
+    ],
+    "license_tags": [
+      "license:apache-2.0",
+      "license:cc0-1.0",
+      "license:cc-by-4.0"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "fc7f44305315082d7d554d572024861e438aeffa",
+    "files": 15,
+    "repository_bytes": 388681000.0,
+    "source_url": "https://huggingface.co/datasets/HIT-TMG/JevEmbed-Data",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\HIT-TMG--JevEmbed-Data.json",
+    "metadata_sha256": "b44f08cc948e84e6845416278ba40a9ad9f37c25baa9aefc6c90e3ef9e24e49e",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "kaivoss/system-one-270m-data",
+    "requested_id": "kaivoss/system-one-270m-data",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P0",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_frozen",
+    "license": "apache-2.0",
+    "license_tags": [
+      "license:apache-2.0"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "f31d5a3f3da828021c792edf5ab4b93cf60fe01b",
+    "files": 3,
+    "repository_bytes": 59907857.0,
+    "source_url": "https://huggingface.co/datasets/kaivoss/system-one-270m-data",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\kaivoss--system-one-270m-data.json",
+    "metadata_sha256": "62b7648db177069eca84aff003596a18bada70ea475d1ba41bfc14a9848790a8",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "dwidlee/systemone-lite-phase2",
+    "requested_id": "dwidlee/systemone-lite-phase2",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P0",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_frozen",
+    "license": "apache-2.0",
+    "license_tags": [
+      "license:apache-2.0"
+    ],
+    "languages": [
+      null
+    ],
+    "revision": "3e283cb7d32f5401bee42bdb85f4c39eb3dc8a36",
+    "files": 4,
+    "repository_bytes": 52306231.0,
+    "source_url": "https://huggingface.co/datasets/dwidlee/systemone-lite-phase2",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\dwidlee--systemone-lite-phase2.json",
+    "metadata_sha256": "b0a7dcb532632e707cf1f525d90b6e7cd166c1ba3e92609a87ec98b0e236cbf0",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "loaiabdalslam/VEJI-Synth-v2-200K",
+    "requested_id": "loaiabdalslam/VEJI-Synth-v2-200K",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P0",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_frozen",
+    "license": null,
+    "license_tags": [],
+    "languages": [
+      null
+    ],
+    "revision": "aa30047aef9c5ee501f80e8ea1def512381f123a",
+    "files": 11,
+    "repository_bytes": 180357084.0,
+    "source_url": "https://huggingface.co/datasets/loaiabdalslam/VEJI-Synth-v2-200K",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\loaiabdalslam--VEJI-Synth-v2-200K.json",
+    "metadata_sha256": "794f78966e9df2cff46c136cab8abde7ebb08c5ed415e65b914a56e29062fdc5",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "ZefanCai/Open-Jev",
+    "requested_id": "ZefanCai/Open-Jev",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P0",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_frozen",
+    "license": "cc0-1.0",
+    "license_tags": [
+      "license:cc0-1.0"
+    ],
+    "languages": [
+      "en",
+      "zh",
+      "tr"
+    ],
+    "revision": "c67699e13d0ae25e35b77165a4b6b079bedc8aba",
+    "files": 236,
+    "repository_bytes": 86774571.0,
+    "source_url": "https://huggingface.co/datasets/ZefanCai/Open-Jev",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\ZefanCai--Open-Jev.json",
+    "metadata_sha256": "b017493bafcf24fe735aae4b32bf100df2acc14e6f4be842bd519b644fc28b72",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "hotchpotch/bekko-system-one-dataset-v0",
+    "requested_id": "hotchpotch/bekko-system-one-dataset-v0",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P0",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_frozen",
+    "license": null,
+    "license_tags": [],
+    "languages": [
+      null
+    ],
+    "revision": "9c673a09c31e145684ab9915871afa72ba40a383",
+    "files": 1012,
+    "repository_bytes": 3912873620.0,
+    "source_url": "https://huggingface.co/datasets/hotchpotch/bekko-system-one-dataset-v0",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\hotchpotch--bekko-system-one-dataset-v0.json",
+    "metadata_sha256": "ba5b72128246a0fd071c47db0da45ce2b3977724d67e7460d7681a31ab7301c5",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "GhostScientist/jev-decisions-v1",
+    "requested_id": "GhostScientist/jev-decisions-v1",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P0",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_frozen",
+    "license": "apache-2.0",
+    "license_tags": [
+      "license:apache-2.0"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "f2688709f55b7e0d5702be8e11211dd9742008b4",
+    "files": 4,
+    "repository_bytes": 21278431.0,
+    "source_url": "https://huggingface.co/datasets/GhostScientist/jev-decisions-v1",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\GhostScientist--jev-decisions-v1.json",
+    "metadata_sha256": "30b82efa47853eb94d57be8ee17848b150d157fa0d2f691e80e7f48fc8f1e0e1",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "little-g-ai/Sys1Cal-v1",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P1",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_unavailable_401_or_missing",
+    "license": null,
+    "revision": null,
+    "source_url": "https://huggingface.co/datasets/little-g-ai/Sys1Cal-v1",
+    "training_admission": "pending",
+    "redistribution": "pending"
+  },
+  {
+    "id": "PKU-Alignment/BeaverTails",
+    "requested_id": "PKU-Alignment/BeaverTails",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P1",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_frozen",
+    "license": "cc-by-nc-4.0",
+    "license_tags": [
+      "license:cc-by-nc-4.0"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "8401fe609d288129cc684a9b3be6a93e41cfe678",
+    "files": 8,
+    "repository_bytes": 39451314.0,
+    "source_url": "https://huggingface.co/datasets/PKU-Alignment/BeaverTails",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\PKU-Alignment--BeaverTails.json",
+    "metadata_sha256": "1d3d1a8cad1669c5f7e07caec69ec2794593282322c991d4d61909130cf4de3d",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "nvidia/HelpSteer2",
+    "requested_id": "nvidia/HelpSteer2",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P0",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_frozen",
+    "license": "cc-by-4.0",
+    "license_tags": [
+      "license:cc-by-4.0"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "990b2711a36180dd19d9c94b8627844866f8982a",
+    "files": 6,
+    "repository_bytes": 40632942.0,
+    "source_url": "https://huggingface.co/datasets/nvidia/HelpSteer2",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\nvidia--HelpSteer2.json",
+    "metadata_sha256": "959944dc00159b96614f646d616b80e88deeb67aac9907b630e12393b4f5d4c3",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "nvidia/HelpSteer",
+    "requested_id": "nvidia/HelpSteer",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P0",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_frozen",
+    "license": "cc-by-4.0",
+    "license_tags": [
+      "license:cc-by-4.0"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "3ca5d59c1bc1080af195b4254e7407db60b6f450",
+    "files": 5,
+    "repository_bytes": 16935132.0,
+    "source_url": "https://huggingface.co/datasets/nvidia/HelpSteer",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\nvidia--HelpSteer.json",
+    "metadata_sha256": "59311acd0de3b3fc8eb8251f3fa5c1c073f643505b0dff7e5aa5634dcbc9397c",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": "train",
+        "rows": 35331
+      },
+      {
+        "config": null,
+        "split": "validation",
+        "rows": 1789
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "google/civil_comments",
+    "requested_id": "civil_comments",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P1",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_frozen",
+    "license": "cc0-1.0",
+    "license_tags": [
+      "license:cc0-1.0"
+    ],
+    "languages": [
+      "en"
+    ],
+    "revision": "f2970eb3a55777454c94069077cc8d9b5866312d",
+    "files": 6,
+    "repository_bytes": 422069979.0,
+    "source_url": "https://huggingface.co/datasets/google/civil_comments",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\civil_comments.json",
+    "metadata_sha256": "571ee3b075014b71967c9b1d08e6d26750b02d087eb16bd3a4b9050f02f7cb0a",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": "train",
+        "rows": 1804874
+      },
+      {
+        "config": null,
+        "split": "validation",
+        "rows": 97320
+      },
+      {
+        "config": null,
+        "split": "test",
+        "rows": 97320
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "tasksource/ChaosNLI",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P1",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_unavailable_401_or_missing",
+    "license": null,
+    "revision": null,
+    "source_url": "https://huggingface.co/datasets/tasksource/ChaosNLI",
+    "training_admission": "pending",
+    "redistribution": "pending"
+  },
+  {
+    "id": "C-MTEB/IFlyTek-classification",
+    "requested_id": "C-MTEB/IFlyTek-classification",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P1",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_frozen",
+    "license": null,
+    "license_tags": [],
+    "languages": [
+      null
+    ],
+    "revision": "421605374b29664c5fc098418fe20ada9bd55f8a",
+    "files": 5,
+    "repository_bytes": 9783228.0,
+    "source_url": "https://huggingface.co/datasets/C-MTEB/IFlyTek-classification",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\C-MTEB--IFlyTek-classification.json",
+    "metadata_sha256": "47b86bbb1bd11fb3c48ba74393fa1fb0bd96d16d045141daa2b8b65ae2319b89",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": "test",
+        "rows": 2600
+      },
+      {
+        "config": null,
+        "split": "train",
+        "rows": 12133
+      },
+      {
+        "config": null,
+        "split": "validation",
+        "rows": 2599
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "C-MTEB/STSB",
+    "requested_id": "C-MTEB/STSB",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P1",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_frozen",
+    "license": null,
+    "license_tags": [],
+    "languages": [
+      null
+    ],
+    "revision": "0cde68302b3541bb8b3c340dc0644b0b745b3dc0",
+    "files": 5,
+    "repository_bytes": 685208.0,
+    "source_url": "https://huggingface.co/datasets/C-MTEB/STSB",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\C-MTEB--STSB.json",
+    "metadata_sha256": "15f7bc4ef9369a0ad3fa18501b83d822fef7519cfaddd9568bdef3229e9f45dd",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": "train",
+        "rows": 5231
+      },
+      {
+        "config": null,
+        "split": "validation",
+        "rows": 1458
+      },
+      {
+        "config": null,
+        "split": "test",
+        "rows": 1361
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "SetFit/mr",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P1",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_unavailable_401_or_missing",
+    "license": null,
+    "revision": null,
+    "source_url": "https://huggingface.co/datasets/SetFit/mr",
+    "training_admission": "pending",
+    "redistribution": "pending"
+  },
+  {
+    "id": "SetFit/subj",
+    "requested_id": "SetFit/subj",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P1",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_frozen",
+    "license": null,
+    "license_tags": [],
+    "languages": [
+      null
+    ],
+    "revision": "f3c1162e678417f664d76b21864fdb87b0615fcf",
+    "files": 4,
+    "repository_bytes": 1813506.0,
+    "source_url": "https://huggingface.co/datasets/SetFit/subj",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\SetFit--subj.json",
+    "metadata_sha256": "9081db6a5fb04b97d652ee594ad5077c918cb283c2b996a4ce141b761d3c68c6",
+    "reported_splits": [
+      {
+        "config": null,
+        "split": null,
+        "rows": null
+      }
+    ],
+    "training_admission": "pending_original_split_and_license_review",
+    "redistribution": "pending_upstream_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "CogComp/piqa",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P1",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_unavailable_401_or_missing",
+    "license": null,
+    "revision": null,
+    "source_url": "https://huggingface.co/datasets/CogComp/piqa",
+    "training_admission": "pending",
+    "redistribution": "pending"
+  },
+  {
+    "id": "samatv256/jevtown",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P0",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_unavailable_401_or_missing",
+    "license": null,
+    "revision": null,
+    "source_url": "https://huggingface.co/datasets/samatv256/jevtown",
+    "training_admission": "pending",
+    "redistribution": "pending"
+  },
+  {
+    "id": "jevtown/jevtown",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P0",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_unavailable_401_or_missing",
+    "license": null,
+    "revision": null,
+    "source_url": "https://huggingface.co/datasets/jevtown/jevtown",
+    "training_admission": "pending",
+    "redistribution": "pending"
+  },
+  {
+    "id": "AmazonScience/massive1.1",
+    "platform": "Hugging Face",
+    "task": "typed decisions / additional supervision: inspect card",
+    "priority": "P1",
+    "intended_use": "preserve original splits; training admission pending",
+    "verification": "metadata_unavailable_401_or_missing",
+    "license": null,
+    "revision": null,
+    "source_url": "https://huggingface.co/datasets/AmazonScience/massive1.1",
+    "training_admission": "pending",
+    "redistribution": "pending"
+  },
+  {
+    "id": "Salesforce/xlam-function-calling-60k",
+    "platform": "Hugging Face",
+    "task": "tool selection and argument supervision",
+    "priority": "P1",
+    "intended_use": "train-schema-review",
+    "verification": "metadata_frozen",
+    "license": "cc-by-4.0",
+    "license_tags": [
+      "license:cc-by-4.0"
+    ],
+    "revision": "26d14ebfe18b1f7b524bd39b404b50af5dc97866",
+    "files": 6,
+    "source_url": "https://huggingface.co/datasets/Salesforce/xlam-function-calling-60k",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\Salesforce--xlam-function-calling-60k.json",
+    "metadata_sha256": "22b0b3d86934cfb429c551bb83725b8a012d8f94da844b016dbda04d6cff6620",
+    "training_admission": "pending_schema_source_split_and_overlap_review",
+    "redistribution": "pending_source_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "Team-ACE/ToolACE",
+    "platform": "Hugging Face",
+    "task": "tool selection and argument supervision",
+    "priority": "P1",
+    "intended_use": "train-schema-review",
+    "verification": "metadata_frozen",
+    "license": "apache-2.0",
+    "license_tags": [
+      "license:apache-2.0"
+    ],
+    "revision": "6bda777c88d21e5a204703c1ee45597a8fa4f734",
+    "files": 3,
+    "source_url": "https://huggingface.co/datasets/Team-ACE/ToolACE",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\Team-ACE--ToolACE.json",
+    "metadata_sha256": "77a88ddd1862e005472c5ce08e50b4924a7bf54bac53e6b1a3704b00c448584e",
+    "training_admission": "pending_schema_source_split_and_overlap_review",
+    "redistribution": "pending_source_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  },
+  {
+    "id": "gorilla-llm/Berkeley-Function-Calling-Leaderboard",
+    "platform": "Hugging Face",
+    "task": "tool evaluation",
+    "priority": "P1",
+    "intended_use": "benchmark-only",
+    "verification": "metadata_frozen",
+    "license": "apache-2.0",
+    "license_tags": [
+      "license:apache-2.0"
+    ],
+    "revision": "61fc0608cfd831fcfbbaa676ebdfef0ed963eeda",
+    "files": 52,
+    "source_url": "https://huggingface.co/datasets/gorilla-llm/Berkeley-Function-Calling-Leaderboard",
+    "metadata_path": "C:\\Users\\mysti\\Documents\\SezikaData\\public-decision-2026-10-10\\metadata\\hf\\gorilla-llm--Berkeley-Function-Calling-Leaderboard.json",
+    "metadata_sha256": "aae170aedd0718f522d1761404508e434334a91431a099e9f55247593cc89853",
+    "training_admission": "pending_schema_source_split_and_overlap_review",
+    "redistribution": "pending_source_rights",
+    "collection": "all_structured_data_and_documentation_at_pinned_revision"
+  }
+]

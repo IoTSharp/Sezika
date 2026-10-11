@@ -16,6 +16,17 @@ ConsoleCancelEventHandler cancelHandler = (_, eventArgs) => { eventArgs.Cancel =
 Console.CancelKeyPress += cancelHandler;
 try
 {
+    if (command == "prepare-diagnostic-head")
+    {
+        DiagnosticAssetPreparationCommand.Parse(args, lifetime.Token).Run(Console.WriteLine,
+            message => Console.Error.WriteLine("prepare-diagnostic-head: " + message), lifetime.Token);
+        return 0;
+    }
+    if (command == "check-diagnostic-asset-preparation")
+    {
+        DiagnosticAssetPreparationChecks.Run(args, lifetime.Token);
+        return 0;
+    }
     if (command == "group-development-report")
     {
         using var cancellation = CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);
@@ -97,6 +108,10 @@ try
         return 0;
     }
     Console.WriteLine("Sezika.IndependentModelTool convert-pytorch --input <pytorch_model.bin> --output <model.safetensors> [--timeout-seconds 1..1800]");
+    Console.WriteLine("Sezika.IndependentModelTool prepare-diagnostic-head --package <fixed-independent-package> --head <new-SZDH1-path> --seed <int> [--timeout-seconds 1..600]");
+    Console.WriteLine("  Loads and leases the fixed package, initializes and reloads one untrained diagnostic head; zero updates, observed loss null, no encoder forward or training. Complete independent JSON on stdout; progress on stderr. Output must be outside the package in an existing directory.");
+    Console.WriteLine("Sezika.IndependentModelTool check-diagnostic-asset-preparation --max-checks <1..8> --artifact-directory <existing-directory>");
+    Console.WriteLine("  Bounded 30-second synthetic command checks; no real model load, inference, training, GPU or formal acceptance.");
     Console.WriteLine("Sezika.IndependentModelTool smoke --package <independent-model-package>");
     Console.WriteLine("Sezika.IndependentModelTool train-original --package <package> --records <records.jsonl> --checkpoint <training.checkpoint> --head <head.asset> --report <report.json> [--max-steps 1..10000] [--seed <int>] [--learning-rate 0..1] [--training-timeout-seconds 1..600] [--timeout-seconds 1..1800]");
     Console.WriteLine("  train-original is the CPU small-scale reference/diagnostic entry. Use train-original-gpu for formal GPU training batches.");

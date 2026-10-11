@@ -1,0 +1,56 @@
+[
+  {
+    "name": "MASSIVE original 1.1 (all languages)",
+    "kind": "upstream-data",
+    "dataset": "AmazonScience/massive",
+    "revision": "official release 1.1; SHA256 frozen on download",
+    "split": "official train/dev/test in archive",
+    "url": "https://amazon-massive-nlu-dataset.s3.amazonaws.com/amazon-massive-dataset-1.1.tar.gz",
+    "path": "raw/upstream/massive/amazon-massive-dataset-1.1.tar.gz"
+  },
+  {
+    "name": "Banking77 original train",
+    "kind": "upstream-data",
+    "dataset": "PolyAI/banking77",
+    "revision": "master initially; freeze content SHA256",
+    "split": "official-train",
+    "url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/master/banking_data/train.csv",
+    "path": "raw/upstream/banking77/train.csv"
+  },
+  {
+    "name": "Banking77 original test",
+    "kind": "upstream-data",
+    "dataset": "PolyAI/banking77",
+    "revision": "master initially; freeze content SHA256",
+    "split": "official-test",
+    "url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/master/banking_data/test.csv",
+    "path": "raw/upstream/banking77/test.csv"
+  },
+  {
+    "name": "CLINC150 upstream data_full",
+    "kind": "upstream-data",
+    "dataset": "clinc/clinc_oos",
+    "revision": "master initially; freeze content SHA256",
+    "split": "official split keys in file",
+    "url": "https://raw.githubusercontent.com/clinc/oos-eval/master/data/data_full.json",
+    "path": "raw/upstream/clinc150/data_full.json"
+  },
+  {
+    "name": "Moark datasets first page",
+    "kind": "discovery",
+    "url": "https://moark.com/api/base/datasets?sort_field=hot&page=1&size=24",
+    "path": "discovery/moark-datasets-page1.json"
+  },
+  {
+    "name": "Moark repositories documentation",
+    "kind": "discovery",
+    "url": "https://moark.com/docs/products/models/repositories",
+    "path": "discovery/moark-repositories.html"
+  },
+  {
+    "name": "Moark gai documentation",
+    "kind": "discovery",
+    "url": "https://moark.com/docs/products/models/gai",
+    "path": "discovery/moark-gai.html"
+  }
+]

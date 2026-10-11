@@ -49,3 +49,5 @@ CPU仅H2合成兼容与数值参考。core八组核三题型/真实tiny encoder�
 证据根 `.artifacts/diagnostic-runtime-20261008/`。七成功runner/37条记录身份无匹配、unknown0，11源/五DLL核验、七专属fixture根已删除；`root-final-closure-v2.json` SHA `295CB62C20AF0CF37D7500511A04DD6C0D92814B9452A82CA2644AACFE9A73F0`。v1作者PID88444的start误写为后续时间，v2改为原manifest实际 `05:40:12.9137134Z`，v1保留；两版本均观察该PID不存在，不倒填元数据。未观测的极短进程、作者失败调用缺PID与未知父链明确在原handoff保留，不宣称全机完整零残留。无服务/下载/独占MCP，用户文件和日志保留。
 
 CLI资产准备、独立诊断profile报告、真实单请求CUDA画像及新两RID AOT另行验收；正式许可、人工准入/封存、可信上游数值、训练收益、质量/校准和发布仍开放。
+
+本批已单独提交 `0ffeb6c406278d129aa1f801ee997a063b0aaa3f`，没有push。八Git回执/21条记录身份无匹配start存活、unknown0、cleanup为空；`root-git-resource-closure.json` SHA `A02E0EBFDDF53DA6CC54F530507056DC8F877569F4C7F13526A0FC61B7128025`。范围包含Git root/launcher及五个实际JSON绑定的已知root writer，不宣称所有历史极短进程均被观察。

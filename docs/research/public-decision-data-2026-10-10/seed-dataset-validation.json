@@ -1,0 +1,46 @@
+{
+  "verified_utc": "2026-10-10T04:24:34.0615080Z",
+  "sys1cal": {
+    "releases": [
+      {
+        "file": "v0.1.0_tiny_cleanvars_binary.jsonl",
+        "sha256": "cbd896e8acc0455b5e187cc936ab6c5306ad781e43e5f722bca422b399604f8e",
+        "physical_rows": 365,
+        "unique_instance_ids": 365,
+        "unique_latent_instance_ids": 92,
+        "gold_normalization_errors": 0,
+        "parallel_query_errors": 0
+      },
+      {
+        "file": "v0.1.0_tiny_cleanvars_parallel_primitives.jsonl",
+        "sha256": "2f31c498debb39891339e018b5c747991e54085ab231cb5a0d981d1fc83b530c",
+        "physical_rows": 365,
+        "unique_instance_ids": 365,
+        "unique_latent_instance_ids": 92,
+        "gold_normalization_errors": 0,
+        "parallel_query_errors": 0
+      }
+    ],
+    "matched_source_instance_pairs": 365,
+    "cross_primitive_probability_consistency_errors": 0,
+    "positive_event_mapping": "Official parallel_primitives.py: outcomes[0] -> True; source_instance_id binds paired rows",
+    "unique_instance_ids_across_both_releases": 730,
+    "shared_latent_instance_ids": 92,
+    "gold_construction_recomputed": false,
+    "model_calibration_validated": false,
+    "use": "Separate probability-recovery evaluation; preserve latent families"
+  },
+  "s1mb": {
+    "manifest_sha256": "8ea5c73e7950ae40589a5ed04dbc695c8219ac6c5adbc16a6df205410c834225",
+    "train_subsets": 0,
+    "evaluation_subsets": 110,
+    "cases": 15609.0,
+    "decisions": 29469.0,
+    "declared_data_files": 110,
+    "missing_declared_data_files": 0,
+    "missing": [],
+    "all_repository_documentation_complete": "See source-completeness.json",
+    "use": "Independent evaluation; no training admission"
+  },
+  "formal_training_admitted": false
+}

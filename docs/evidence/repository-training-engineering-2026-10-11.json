@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-11 Asia/Shanghai",
+  "status": "PASS_offline_engineering_READY_to_rent_for_real_base_profile",
+  "method": "full_encoder_and_head_adamw_fp32",
+  "source_commit": "9ee9eda7a45d41fa0f3a283e9377094ff6885760",
+  "source_changes_committed": false,
+  "dataset_commit": "b8ea13b81aaaca722baf6a3c0f12e2217fc4353e",
+  "model_commit": "06ebe82325e58c0ae723fb9014a38cdb2f87b22a",
+  "bundle": {
+    "v1_to_v5_preserved": true,
+    "manifest_sha256": "2b40e72cee968dba9b4b7da8355ae432f8412c7cd0d3c97ea77e26b18dab0e96",
+    "linux_execution": "PASS_final_bundle_hash_help_bash_and_controlled_failure",
+    "manifest_files": 398,
+    "directory": "D:\\source\\Sezika\\.artifacts\\repository-training-encoder-full-20261011-prep\\tool-bundle-v6",
+    "numeric_and_storage_linux_execution": "PASS_v3_same_training_kernels",
+    "sources_manifest_sha256": "52492685727ebcfac31d5ca102545cb05021472c69785facfb708a63ffbe729d"
+  },
+  "data": {
+    "other_sources_unadapted": 17,
+    "source": "kaivoss/system-one-270m-data",
+    "initial_length_failure_preserved": true,
+    "duplicate": 0,
+    "original_rows": 25002,
+    "train": 17615,
+    "development": 4298,
+    "maximum_tokens": 7740,
+    "quarantined": 3089,
+    "notices_attached_original_bytes_unchanged": true,
+    "manifest_sha256": "f7d15d200b0a11170204a862d120bd7965d18586024605d739bc1e70e379f2e1",
+    "revision": "f31d5a3f3da828021c792edf5ab4b93cf60fe01b",
+    "experimental_only": true,
+    "maximum_allowed_tokens": 8192,
+    "accepted": 21913,
+    "formal_training_admitted": false
+  },
+  "checks": {
+    "document_links": "PASS_11",
+    "gradient_checks": 4,
+    "power_shell_parser": "PASS_10_scripts",
+    "checkpoint_coordinates": 1008,
+    "checkpoint_checks": 7,
+    "frozen_source_bytes": "PASS_37",
+    "checkpoint": "PASS_tiny_bitwise_resume",
+    "maximum_absolute_error": 0.00013484732818777904,
+    "gradient": "PASS_tiny_synthetic_GPU_only",
+    "core_tests_passed": 249,
+    "skill_quick_validate": "PASS",
+    "checkpoint_maximum_difference": 0,
+    "adamw_first_step": "PASS_independent_formula",
+    "owned_git_diff_check": "PASS",
+    "local_publication_fixture_checks": 5,
+    "parameter_coordinates": 1008,
+    "tokenizer_oracle": "SKIP_missing_existing_fixture_assets",
+    "safe_archive": "PASS_9_fixture_files_only",
+    "fixture_transport": "file_only"
+  },
+  "unrun": {
+    "formal_quality": "NOT_ACCEPTED",
+    "new_instance": "WAIT_new_SSH",
+    "real_model_and_dataset_push": "NOT_RUN",
+    "real_mmbert_full_training": "NOT_RUN",
+    "deadline": "WAIT_new_lease",
+    "new_model_download": "NOT_RUN",
+    "new_weights_aot_and_performance": "NOT_ACCEPTED",
+    "rtx5090_profile": "NOT_RUN",
+    "calibration": "NOT_ACCEPTED"
+  },
+  "authorization": {
+    "model_and_changed_dataset_push": "authorized_by_current_request",
+    "source_push": false,
+    "old_server_connection": false,
+    "purchase_instance": false
+  },
+  "process_closure": {
+    "status": "PASS_current_recorded_task_identities_absent_or_reused",
+    "receipts": 131,
+    "identity_records": 266,
+    "unique_pids": 245,
+    "matching_live": 0,
+    "unknown": 0,
+    "absent_records": 265,
+    "reused_records": 1,
+    "historically_unobserved_root_receipts": 4,
+    "historical_incomplete_receipts_preserved": true,
+    "queries": 8,
+    "elapsed_seconds": 3.2759087,
+    "live": [],
+    "unknown_identities": [],
+    "termination_performed": false
+  },
+  "audited_log_directories": [
+    ".artifacts/repository-training-engineering-20261011/process-logs",
+    ".artifacts/repository-training-encoder-full-20261011-prep/process-logs",
+    ".artifacts/repository-training-fixture-repository-20261011/setup-logs",
+    ".artifacts/repository-training-fixture-repository-20261011/publication-processes",
+    ".artifacts/repository-training-fixture-repository-20261011-v2/setup-logs",
+    ".artifacts/repository-training-fixture-repository-20261011-v2/publication-processes",
+    ".artifacts/repository-training-fixture-repository-20261011-v3/setup-logs",
+    ".artifacts/repository-training-fixture-repository-20261011-v3/publication-processes"
+  ],
+  "receipts": [
+    {
+      "bytes": 1113,
+      "sha256": "6354aff644c62fc8b9619379a703f18bae02299e747a6dda8b0b375ed0b36a92",
+      "path": "docs/evidence/repository-training-engineering-2026-10-11/gradient-tightened.json"
+    },
+    {
+      "bytes": 195,
+      "sha256": "5b70a60f7b1772212a963d8df866cf2c7b37153d2b0b322713c05fd14909f2d0",
+      "path": "docs/evidence/repository-training-engineering-2026-10-11/storage-checks.json"
+    },
+    {
+      "bytes": 266,
+      "sha256": "ce05d30abf639f4d8df503078d79dd23647b5594c922b3aa0f63ce55c5d1963a",
+      "path": "docs/evidence/repository-training-engineering-2026-10-11/fixture-result.json"
+    },
+    {
+      "bytes": 1092,
+      "sha256": "f7d15d200b0a11170204a862d120bd7965d18586024605d739bc1e70e379f2e1",
+      "path": "docs/evidence/repository-training-engineering-2026-10-11/data-manifest.json"
+    },
+    {
+      "bytes": 622,
+      "sha256": "3f9f51f68db88d92e397fe6db17a7d46604a4254bfc2e0b763288d40af99aa0b",
+      "path": "docs/evidence/repository-training-engineering-2026-10-11/linux-numeric-result.tsv"
+    },
+    {
+      "bytes": 280,
+      "sha256": "972cbc5e6e8086ce6a558bfde42e0596b2be1bc556efe077104aa6a8bc9328cd",
+      "path": "docs/evidence/repository-training-engineering-2026-10-11/notices-result.json"
+    },
+    {
+      "bytes": 294,
+      "sha256": "4607af38720b2e31845a8686d87c4e9553e1616b760e1230912a401428726548",
+      "path": "docs/evidence/repository-training-engineering-2026-10-11/linux-delivery-result.json"
+    },
+    {
+      "bytes": 621,
+      "sha256": "317fc00f8eaec25c23c2a76e35a387a2fc487b119c37ad36108ea3b603151c0b",
+      "path": "docs/evidence/repository-training-engineering-2026-10-11/linux-delivery-closure.tsv"
+    },
+    {
+      "bytes": 464,
+      "sha256": "b282ec91122f340aaa6c47875d2c5e131cf780118caeec1ea6efd7bf3a69bc4c",
+      "path": "docs/evidence/repository-training-engineering-2026-10-11/process-closure.json"
+    },
+    {
+      "bytes": 270,
+      "sha256": "9b62c98bae94859a68c1153a6c55e8767895cad05a65096d7db9c53488598b97",
+      "path": "docs/evidence/repository-training-engineering-2026-10-11/static-checks.json"
+    }
+  ]
+}

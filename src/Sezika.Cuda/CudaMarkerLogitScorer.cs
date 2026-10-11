@@ -20,10 +20,17 @@ internal sealed class CudaMarkerLogitScorer
 
     internal CudaMarkerLogitScorer(CudaDevice device, IndependentEncoderModelPackage model, LinearMarkerHead head,
         string inputErrorCode, string valueErrorCode, string scope, CancellationToken cancellationToken)
+        : this(device, model.Encoder.Config, model.Encoder.Weights, head, inputErrorCode, valueErrorCode, scope, cancellationToken,
+            model.Encoder.Config.MaxTokens > 1024 ? 6UL * 1024 * 1024 * 1024 : 3UL * 1024 * 1024 * 1024) { }
+
+    internal CudaMarkerLogitScorer(CudaDevice device, ModernBertConfig config, ModernBertWeights weights, LinearMarkerHead head,
+        string inputErrorCode, string valueErrorCode, string scope, CancellationToken cancellationToken, ulong maximumOwnedBytes)
     {
+        ArgumentNullException.ThrowIfNull(device);
+        if (head.HiddenSize != config.HiddenSize) throw new DecisionException(inputErrorCode, "Marker head width differs from encoder.");
         _device = device;
         _hiddenSize = head.HiddenSize;
-        MaxTokens = model.Encoder.Config.MaxTokens;
+        MaxTokens = config.MaxTokens;
         _inputErrorCode = inputErrorCode; _valueErrorCode = valueErrorCode; _scope = scope;
         // Owner storage, cleanup clock and exception slots exist before acquiring any native resource.
         _owner = new NativeOwner();
@@ -33,7 +40,7 @@ internal sealed class CudaMarkerLogitScorer
         try
         {
             deadline.Token.ThrowIfCancellationRequested();
-            _owner.Encoder = new CudaModernBertEncoder(device, model.Encoder.Config, model.Encoder.Weights, deadline.Token);
+            _owner.Encoder = new CudaModernBertEncoder(device, config, weights, deadline.Token, maximumOwnedBytes);
             _owner.Kernels = new CudaKernels(device, deadline.Token);
             _owner.Weights = device.Allocate(checked((nuint)values.Length * sizeof(float)));
             device.CopyToDevice(_owner.Weights, values);

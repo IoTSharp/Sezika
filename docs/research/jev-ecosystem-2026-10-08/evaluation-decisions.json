@@ -1,0 +1,412 @@
+[
+  {
+    "repo": "vinilana/jev-eval-agent",
+    "category": "早期评测框架",
+    "priority": "P2",
+    "learn": "统一输入、逐题结果和失败分母，作为不同模型对比的评测入口参考。",
+    "adoption": "仅上层参考",
+    "rationale": "目录列为早期 harness；未审源码和数据授权，现有 Sezika 评测工具已具备基础合同，不另建框架。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "nekuda-ai/WindTunnel",
+    "category": "浏览器端到端评测",
+    "priority": "P2",
+    "learn": "将最终任务成功率、总成本、总时间和接口选择一起评测；DONE 需要独立结果验证。",
+    "adoption": "仅上层参考",
+    "rationale": "浏览器代理结果受执行器、页面接口和生成模型影响；不能转换为 Sezika 本地模型质量或 GPU 推理速度。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "iammrduncan/typesafe-ai-benchmark",
+    "category": "模型对照框架",
+    "priority": "P2",
+    "learn": "相同题集比较决策 API 与提示后解析的生成模型，并明确具体后端身份。",
+    "adoption": "实验",
+    "rationale": "仓库当前 canonical 为 iammrduncan/inference-benchmarks；目录旧名不能证明数学等价或代表性质量。先审 native readout 和公平输入。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "AbdelStark/jev-benchmarks",
+    "category": "概率与选择性风险",
+    "priority": "P0",
+    "learn": "保留概率原向量、非法响应分母、基线、固定 revision 和成对分层 bootstrap；区分经验风险曲线与可部署阈值。",
+    "adoption": "采纳",
+    "rationale": "300题 pilot 明确5%风险门槛同集选评，仅描述性；本地 M4 CPU 与法国云 API 延迟不是同硬件吞吐比较。接入 S4-08 的现有报告合同。",
+    "evidenceLevel": "readme",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "mahlernim/jev-korean-benchmark",
+    "category": "韩语与医学评测",
+    "priority": "P1",
+    "learn": "按语言单列语义质量、输入覆盖与医学任务，不用编码器多语言能力推断逐语言达标。",
+    "adoption": "实验",
+    "rationale": "目录给出可复现 early-access 范围；尚未审数据、版本、原始结果和医学标签，所以只选方法方向。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "anessbelbati/jev-rerank-bench",
+    "category": "重排序评测",
+    "priority": "P1",
+    "learn": "与专用 reranker 进行同 query/candidates 对照，保存原始响应、排序指标和 bootstrap 差值区间。",
+    "adoption": "实验",
+    "rationale": "候选相关性任务不能只比分类准确率；许可及14数据集实际配置待审。用于 S4-06/08 的 RAG 子任务设计。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "Gaurav-Gosain/jev-sec-bench",
+    "category": "安全盲测",
+    "priority": "P1",
+    "learn": "将提示注入、正常引用、漏洞代码与安全代码配成反事实，并同时测误报和漏报。",
+    "adoption": "实验",
+    "rationale": "借鉴公开语料盲测形式；公开题集曝光及版本绑定需要复核，不能把模型安全预测作为执行授权。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "anisselbd/jev-phishing-bench",
+    "category": "分解问题与公平对照",
+    "priority": "P0",
+    "learn": "复杂 verdict 与多个可观测信号做消融，保留简单非AI基线和同分解 LLM 对照；选阈值/权重与验证样本分开。",
+    "adoption": "采纳",
+    "rationale": "作者追加对照显示数据可被URL规则分开；五信号回归的95%不等于模型直接判断95%。采纳实验设计，业务回归留在核心外部。",
+    "evidenceLevel": "code",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "TokenTrim/jev-agent-failure-benchmark",
+    "category": "代理故障归因",
+    "priority": "P2",
+    "learn": "将谁/哪一步/哪类失败拆成类型化问题并分别统计可识别性。",
+    "adoption": "仅上层参考",
+    "rationale": "故障归因属于代理应用评价；Sezika 不内置代理调度或业务执行器，待基础质量达标后验证适配。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "lexingtonhibiki/judgekit",
+    "category": "中文任务与公开证据",
+    "priority": "P1",
+    "learn": "金标字段不发送给模型，实际后端和失败显式记录；公开数据修订、快捷特征清理和负面结果。",
+    "adoption": "采纳",
+    "rationale": "当前 README 已区分历史127/130与当前v2 rules107/130，spam120阈值同集选择没有holdout。采纳透明披露和人审，规则不替代核心推理。",
+    "evidenceLevel": "code",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "jmanhype/jev-dspy-lab",
+    "category": "校准与离线重放",
+    "priority": "P0",
+    "learn": "模型感知请求hash、录制重放、calibration绑定和固定门槛；同次阈值扫表只作探索，不作独立确认。",
+    "adoption": "采纳",
+    "rationale": "明确区分synthetic24和live24；Choice全分布Brier与正确性二元Brier分开，Noul P(true)不是正负两类正确率confidence。复用 S4-08/12。",
+    "evidenceLevel": "code",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "bitnovus/jev-spam-eval",
+    "category": "输入证据与数据漂移",
+    "priority": "P0",
+    "learn": "同模型同问题比较context字段增补；近重复家族分组、时间/来源切片和同证据监督基线。",
+    "adoption": "采纳",
+    "rationale": "当前主结果5733+3300+853不是目录旧二分类集；fresh非时间新邮件，recent仅钓鱼不能测FPR，定义看过错误样本。采纳证据保存与隔离设计，不借用分数。",
+    "evidenceLevel": "code",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "teyhouse/jev-secret-detection",
+    "category": "真实凭证识别",
+    "priority": "P1",
+    "learn": "将真实密钥、占位符、文档样例、撤销凭证及引用文本作困难负类对照。",
+    "adoption": "实验",
+    "rationale": "目录只提供目标；数据敏感性、标签来源和授权需独立审查，不能凭关键词替代模型。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "replynodes/jev-web-analyzer",
+    "category": "产品网页评价",
+    "priority": "P3",
+    "learn": "十个有界Choice问题让产品评价结构化并可解释地回看输入。",
+    "adoption": "仅上层参考",
+    "rationale": "主要是SaaS应用范例；“模型认为好”缺少客观金标，当前优先补真实质量而非产品主观评分。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "hegargarcia/jev-playground",
+    "category": "游戏连续决策",
+    "priority": "P2",
+    "learn": "只提供合法动作候选并以完整对局结果检验多步一致性。",
+    "adoption": "仅上层参考",
+    "rationale": "合法动作是调用方约束，连续决策不等于单题概率校准；可作为 S6 集成示例，不引入核心执行器。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "jgridifier/jev-research-eval",
+    "category": "浏览研究任务评测",
+    "priority": "P2",
+    "learn": "质量检查题目、保存任务级轨迹和报告，明确终态验证。",
+    "adoption": "仅上层参考",
+    "rationale": "浏览环境、代理和生成模型共同决定结果，目录摘要未足以复核其对基础决策模型的独立贡献。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "ably-labs/jev-pong",
+    "category": "实时游戏比较",
+    "priority": "P3",
+    "learn": "观察每步决策与可见状态之间的时间边界。",
+    "adoption": "暂不采纳",
+    "rationale": "Pong演示更受游戏时钟和网关影响；不优先于中英三题型、负类召回、校准与同硬件性能验收。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "abhixhek/jevcal",
+    "category": "校准锁与漂移门槛",
+    "priority": "P0",
+    "learn": "每题型/任务锁定阈值、在独立样本验证覆盖率与准确率下界；模型换版要求refit，CI同时门控质量和覆盖。",
+    "adoption": "采纳",
+    "rationale": "README演示为simulator；teacher不是金标。其optimize若反复利用heldout选改写仍会泄漏，Sezika保留独立sealed test并复用 S4-03/08。",
+    "evidenceLevel": "readme",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "Shogo-nfrealmusic/jev-eval",
+    "category": "同条件模型对照",
+    "priority": "P2",
+    "learn": "同一判断任务比较多个模型并固定输入和计时边界。",
+    "adoption": "实验",
+    "rationale": "目录称同条件，不等于已经核源码、原始数据或复现；需补模型版本、错误分母与概率读取合同。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "silverstein/minutes",
+    "category": "转录应用内评测",
+    "priority": "P3",
+    "learn": "把决策模型嵌入真实工作流评测，并保存用户拥有的本地文档。",
+    "adoption": "仅上层参考",
+    "rationale": "转录、语音和会议应用不在 Sezika 核心范围；待基础能力验收后作为集成场景参考。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "yodablocks/jev-orderby-bench",
+    "category": "Score排序与批处理不变量",
+    "priority": "P0",
+    "learn": "Score MAE与排序分开，测query内成对反序、Spearman/Kendall、ties、反向rubric和逐题/多行批处理一致性。",
+    "adoption": "采纳",
+    "rationale": "低ECE不保证好排序；Newsgroups通过不意味着ESCI通过，40行共同state会改语义。接入 S4-06/08/ S5-07质量门槛，不直接借用SQL集成。",
+    "evidenceLevel": "code",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "scienthoon/jev-ood-calibration",
+    "category": "OOD与不可知概率",
+    "priority": "P0",
+    "learn": "加入缺失政策/无法从state恢复标签的样本；分题型测NLL/Brier/ECE、零一端点与概率量化敏感性。",
+    "adoption": "采纳",
+    "rationale": "脚本后续纠正refit T受零概率floor支配；新seed不自动隔离template家族，公开数据污染未知。ECE噪声底是诊断，不是正式校准证明。",
+    "evidenceLevel": "code",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "jourdanlabs/assay-001",
+    "category": "预注册与独立复算",
+    "priority": "P0",
+    "learn": "测前冻结数据与评分协议，修订单独保存；评分器先证明能红/绿，另一实现盲复算。",
+    "adoption": "采纳",
+    "rationale": "同模型CLINC150和Banking77校准不同且零类型错误不代表高质量。引入 S4-08 独立复算与数据身份审计。",
+    "evidenceLevel": "code",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "marcosmartinez/jev-acento",
+    "category": "语言配对审计",
+    "priority": "P0",
+    "learn": "同family的EN state/目标语言state/目标语言instructions三臂配对，固定option keys，测质量与校准差值及token开销。",
+    "adoption": "采纳",
+    "rationale": "当前PREREG.md登记2026-09-21，README尚未冻结段落陈旧；未核Git先后/hashmanifest，只采配对方法。英文提示建议不能推广到Sezika，翻译父链隔离由S4-05承接。",
+    "evidenceLevel": "readme",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "jjd-lab/jev-synthetic-survey",
+    "category": "原语与问法敏感性",
+    "priority": "P1",
+    "learn": "同一二元命题用Boolean与Choice(2)双问，测语义一致性与分布差异。",
+    "adoption": "实验",
+    "rationale": "合成受访者不等于真实人类调查真值；不同原语差异需作为诊断，不能自动把输出当人群概率。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "allebee/pytest-jev",
+    "category": "语义测试断言",
+    "priority": "P2",
+    "learn": "低把握语义断言留作失败/审核，并把确定性合同测试和模型评价区分。",
+    "adoption": "仅上层参考",
+    "rationale": "目录的12例LLM一致不证明judge真值；不能以模型预测替代 C# 确定性单测或把0.8通用阈值带入核心。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "jev-ids/jev-ids",
+    "category": "网络入侵应用评测",
+    "priority": "P2",
+    "learn": "在稀有正类场景报告FPR、负类召回和安全阈值下覆盖率，而不只比总准确率。",
+    "adoption": "仅上层参考",
+    "rationale": "NSL-KDD为历史公开网络集，目录成本/速度数字不能迁移到本地模型或生产网络。安全业务执行留给调用方。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "souvikr/jev-test",
+    "category": "三原语跨模型评测",
+    "priority": "P1",
+    "learn": "统一Boolean/Choice/Score输入，显式比较native probability与生成后JSON解析，保留格式失败。",
+    "adoption": "实验",
+    "rationale": "需审打分定义、概率转换与网关版本；已有 Sezika 工具可以接 adapter，无需重写整套框架。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "KantaHayashiAI/jev-does-not-play-dice",
+    "category": "不可知事件与概率保真",
+    "priority": "P0",
+    "learn": "隐藏公平事件、证据缺失、文档显式概率和选项位置测试，检验高集中度是否虚高。",
+    "adoption": "实验",
+    "rationale": "骰子是对不确定性的探针，不是推理能力题；不能强迫模型猜中隐藏事件。区分事件发生率、P(true)和选择概率，加入 S4-06/08。",
+    "evidenceLevel": "code",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "Hanno-Labs/decision-bench",
+    "category": "固定文档型决策评测",
+    "priority": "P1",
+    "learn": "明确native readout合同、固定task spec和数据revision，按family/domain/primitive保存原始结果。",
+    "adoption": "实验",
+    "rationale": "当前 README 的生态范围已扩到23900行/9家族，目录旧摘要不足覆盖；仅审README，适配器和数据准入待验。公开suite仅audit。",
+    "evidenceLevel": "readme",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "redhatpanda/jev-regress-bench",
+    "category": "语义回归测试",
+    "priority": "P1",
+    "learn": "把仅措辞变化与事实/动作/特异度变化配对，分别测真实变更召回与误报。",
+    "adoption": "实验",
+    "rationale": "109对由配置规则导出真值，可能有模板捷径；用于新增数据family设计，不直接把模型judge当发布授权。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "blowxian/jev-fanout-bench",
+    "category": "多问题批处理与计费",
+    "priority": "P1",
+    "learn": "把同state多问题与单题重复对比，先测输出差异相对重复噪声，再测token/端到端收益。",
+    "adoption": "实验",
+    "rationale": "云API固定输入开销不是本地cross-encoder共享state可无损缓存的依据；不采纳“多问几乎免费”到本地运行。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "HarnessRouter/SystemOneHarness",
+    "category": "代理有界执行框架",
+    "priority": "P2",
+    "learn": "限定候选空间、确定性基线、预算和独立终态验证。",
+    "adoption": "仅上层参考",
+    "rationale": "Sezika核心不含业务执行器；代理编译目标和浏览MCP属于上层，优先采纳可观测合同而非整个运行时。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "get-convex/convex-evals",
+    "category": "选项换序与公开逐题结果",
+    "priority": "P1",
+    "learn": "每题多次打乱候选、保持语义映射，公开模型/概率/请求响应，并区分知识测试与state理解。",
+    "adoption": "实验",
+    "rationale": "108题Convex知识且无docs/tools，不能评价通用上下文决策；用于候选换序设计，已公开题集不得成为sealed test。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "stperic/jev-medhallu-benchmark",
+    "category": "证据消融与级联检验",
+    "priority": "P1",
+    "learn": "同问题对照、去掉source证据的消融、开发选择与测试隔离；冻结后测完整级联而非只算单模型覆盖。",
+    "adoption": "采纳",
+    "rationale": "其README承认无摘要仍66–83%，且Jev在dev调问法/阈值、LLM没调。高置信37%级联结论只适用该任务和该采样。",
+    "evidenceLevel": "readme",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "CodyQin/zh-decision-bench",
+    "category": "中文鲁棒性与人工审核",
+    "priority": "P0",
+    "learn": "中文口语/业务困难负类、zh-CN/zh-TW配对、候选换序、人审日志和model×scenario独立校准。",
+    "adoption": "采纳",
+    "rationale": "378项467问部分为单审核人LLM草拟，小组n21/34不足精细校准；数据CC BY4.0与代码Apache分开审。只作公开audit不用于sealed。",
+    "evidenceLevel": "code",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "run-llama/jev_vs_oss",
+    "category": "文档流水线对照",
+    "priority": "P1",
+    "learn": "对语言、方向、分类、bundle切分和parse-tier分别比较专用工具，按Choice候选数评测。",
+    "adoption": "实验",
+    "rationale": "任务收益应与已有专用小工具比较，而不只LLM；图像/文档支持不得推断为当前文本 Sezika已支持。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "hotchpotch/S1MB",
+    "category": "广任务覆盖与分题型评价",
+    "priority": "P1",
+    "learn": "学习137 benchmark任务覆盖、软target保留、Boolean Brier及Score归一MAE，原始指标和相对榜单排名分开。",
+    "adoption": "实验",
+    "rationale": "README明确公开137项不能证明未见泛化，TaskAvg与Borda不同。作为audit外部接口/题型契约对接，正式质量仍需独立sealed。",
+    "evidenceLevel": "readme",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "00200200/jev-judge",
+    "category": "模型评价CI与批量工具",
+    "priority": "P2",
+    "learn": "声明式判断用例、watch/CI可追溯结果和低把握处理；独立区分judge一致性与实际正确率。",
+    "adoption": "仅上层参考",
+    "rationale": "目录sub100ms和成本是API应用宣称；核心仍采用已有C#合同/真实质量验收，不引入Python/TypeScript运行依赖。",
+    "evidenceLevel": "catalog",
+    "readmeReviewed": false
+  },
+  {
+    "repo": "mandu5/jevcompat",
+    "category": "协议兼容与语义不变量",
+    "priority": "P0",
+    "learn": "按需求ID审计概率归一、argmax、Score期望、Unicode、错误语义与ID/问题换序；每个检查应能被对应故障触发。",
+    "adoption": "采纳",
+    "rationale": "只用于可选外部兼容层及自有decision-v1相同数学不变量；255候选或官方confidence公式不是本地必须支持。合规不证明语义质量/校准。",
+    "evidenceLevel": "code",
+    "readmeReviewed": true
+  },
+  {
+    "repo": "Yifan-Lan/awesome-jev-robustness",
+    "category": "失效模式研究索引",
+    "priority": "P0",
+    "learn": "把候选顺序/名字、否定、原语差异、不可回答、注入、语言、重复噪声逐项编成开发切片与验收矩阵。",
+    "adoption": "采纳",
+    "rationale": "当前146条为作者各自报告，不是146次独立复现；目录只作找证据索引。先以 S4-05/06 的新family金标重建可核验测试。",
+    "evidenceLevel": "readme",
+    "readmeReviewed": true
+  }
+]

@@ -146,7 +146,7 @@ internal sealed class CudaKernels : IDisposable
         recovery.Modules(_modules);
     }
 
-    private readonly struct KernelArg
+    internal readonly struct KernelArg
     {
         private readonly CudaArrayView _view;
         private readonly int _integer;

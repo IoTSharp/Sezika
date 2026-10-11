@@ -1,0 +1,75 @@
+{
+  "createdUtc": "2026-10-08T09:50:22.956027+00:00",
+  "sources": [
+    {
+      "repo": "yzfly/awesome-jev-zh",
+      "upstreamCommit": "8194315113a43ab79eed0055d3f2a44c43705eab",
+      "snapshotIncludesLocalSezikaSubmission": true,
+      "readmeSha256": "2ef2784624c000ced48b3f60769a7d4cdd456817435b758fe3f7d6fb3db2a95e"
+    },
+    {
+      "repo": "yibie/awesome-jev",
+      "upstreamCommit": "0839b9264dfe10f7cb72aea8e9fd74d393a5155b",
+      "snapshotIncludesLocalSezikaSubmission": true,
+      "readmeSha256": "37385e27fef9d6c1c333146753c8b9b88ed7736937658c246bd5657a99df117d"
+    }
+  ],
+  "counts": {
+    "primaryCatalogEntries": 832,
+    "repositoryUrlIdentities": 555,
+    "canonicalProjectIdentities": 552,
+    "metadataAvailable": 550,
+    "readmeAvailable": 550,
+    "selectedReadmeReviewed": 58,
+    "evidenceLevels": {
+      "readme": 39,
+      "code": 19,
+      "catalog": 494
+    },
+    "adoption": {
+      "采纳": 40,
+      "自身基线": 1,
+      "实验": 68,
+      "仅上层参考": 410,
+      "暂不采纳": 26,
+      "不可核实": 7
+    },
+    "priority": {
+      "P0": 31,
+      "P1": 58,
+      "P2": 381,
+      "P3": 82
+    },
+    "otherPrimarySourceUrls": 231
+  },
+  "method": "Extract both frozen list snapshots; repository metadata and pinned README acquisition; exhaustive per-reference triage; selected README and source review; alias normalization.",
+  "limits": "Downloaded README availability is not manual review. Catalog grade is list-level screening only. Code grade means selected files, not full audit. No external model, benchmark, or repository code was executed.",
+  "dispositionMeaning": "采纳 refers to a recommended method, 实验 to a proposed controlled test; neither means implemented or licensed for reuse. P0-P3 are Sezika relevance priorities, not quality scores.",
+  "licenseScope": "GitHub licenseInfo is metadata for repository code only; model/tokenizer/data and redistribution rights remain separate.",
+  "externalSourceScope": "231 non-GitHub primary URLs are resources/articles/products/discussions, not an additional project count; coverage records do not imply page/source audit.",
+  "sourceSnapshotIncludesPendingSezikaEntries": true,
+  "sezikaObservedHead": "06a6dedb239a4366218e4641d51ce9c7ac8571b8",
+  "sezikaBaselineEvidence": {
+    "path": "D:\\source\\Sezika\\docs\\evidence\\gpu-learnability-2026-10-08.md",
+    "sha256": "faceff256c5d5412459011f5a75e713d19ee50f3ea9805bdb1cf8ee604851e12",
+    "workingTreeEvidence": true
+  },
+  "inputHashes": {
+    "inventory.json": "198f8f5f55d379f1f2069256aa43bc8bb3606324fa2692b8836ee9b24e31317c",
+    "projects.json": "5b61d6c9e536d713ebc7f78ae3ed1b6ee8e3617cf34fb8fd721ef9528c066c64",
+    "supplemental-readmes.json": "1443b3bfbe481c6fa234b374b18c0c208a83172d9b839326320083a9a1041a9d",
+    "objects.json": "48a7c3d2a0e82f0f9c355ceb4dec0bb7167bc067c5ca8daaba7994590ce3bec7",
+    "models-decisions.json": "3edc96783b8fc6be530df633bb86fa18d41867e9bc88aa05966be937b1ba2546",
+    "evaluation-decisions.json": "80bfafd558832f16993e1ce98f1af29595466ff1cad42a30a974128e126bae7c",
+    "integration-decisions.json": "bc8ade6648d89e093d9c651653fb9d8e0e5bcde466cda14c6656bd3080ef5046",
+    "integration-owned/external-classification.json": "8d58b63d18fc8cf807a69d444bfff2a91ce908550b431b3bbc8161d96a7994f0",
+    "models-review.md": "cf7a4bcb485131581e2e00332f4fd2a3a9960e8068ded1e5c55eea18ccfe1fd1",
+    "evaluation-review.md": "7f5c40b2baed8616725b1c5955fcf6acba059e2463b9fdde270068407ea16e32",
+    "integration-review.md": "db5e92e93023063eb89b918342f8a98dbea58f395b2ab34911c5d27b32d1854e"
+  },
+  "bounds": {
+    "maxInputItems": 1200,
+    "mergeWallSeconds": 25,
+    "cancellationFile": "D:\\source\\.codex-research\\jev-ecosystem-20261008\\cancel"
+  }
+}

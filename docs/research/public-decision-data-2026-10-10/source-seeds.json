@@ -1,0 +1,674 @@
+[
+  {
+    "id": "hotchpotch/s1mb-dataset",
+    "task": "typed/evaluation",
+    "intended_use": "benchmark",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "Praveenrajus/jev-bench",
+    "task": "typed/mixed",
+    "intended_use": "quarantine-splits",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "PolyAI/banking77",
+    "task": "intent",
+    "intended_use": "train",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "clinc/clinc_oos",
+    "task": "intent/OOS",
+    "intended_use": "train",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "AmazonScience/massive",
+    "task": "multilingual intent",
+    "intended_use": "train",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "google/boolq",
+    "task": "Boolean",
+    "intended_use": "train",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "SetFit/sst5",
+    "task": "ordinal sentiment",
+    "intended_use": "train",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "Yelp/yelp_review_full",
+    "task": "ordinal rating",
+    "intended_use": "train",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "AmazonScience/amazon_reviews_multi",
+    "task": "multilingual ordinal rating",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "nyu-mll/glue",
+    "task": "Choice/Boolean/Score",
+    "intended_use": "train",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "aps/super_glue",
+    "task": "Choice/Boolean",
+    "intended_use": "train",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "stanfordnlp/snli",
+    "task": "NLI",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "nyu-mll/multi_nli",
+    "task": "NLI",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "facebook/xnli",
+    "task": "multilingual NLI",
+    "intended_use": "mixed",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "google-research-datasets/paws",
+    "task": "paraphrase",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "google-research-datasets/paws-x",
+    "task": "multilingual paraphrase",
+    "intended_use": "train",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "cardiffnlp/tweet_eval",
+    "task": "classification/Score",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "cardiffnlp/tweet_sentiment_multilingual",
+    "task": "multilingual sentiment",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "google-research-datasets/go_emotions",
+    "task": "multi-label emotion",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "dair-ai/emotion",
+    "task": "emotion",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "takala/financial_phrasebank",
+    "task": "financial sentiment",
+    "intended_use": "single-split",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "zeroshot/twitter-financial-news-sentiment",
+    "task": "financial sentiment",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "ag_news",
+    "task": "topic classification",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "dbpedia_14",
+    "task": "topic classification",
+    "intended_use": "train",
+    "priority": "P2",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "allenai/ai2_arc",
+    "task": "multiple choice",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "allenai/openbookqa",
+    "task": "multiple choice",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "allenai/piqa",
+    "task": "physical choice",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "Rowan/hellaswag",
+    "task": "continuation choice",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "allenai/winogrande",
+    "task": "coreference choice",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "tau/commonsense_qa",
+    "task": "multiple choice",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "allenai/social_i_qa",
+    "task": "social choice",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "Muennighoff/xwinograd",
+    "task": "multilingual coreference",
+    "intended_use": "evaluation",
+    "priority": "P2",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "cais/mmlu",
+    "task": "multiple choice",
+    "intended_use": "evaluation",
+    "priority": "P2",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "TIGER-Lab/MMLU-Pro",
+    "task": "multiple choice",
+    "intended_use": "evaluation",
+    "priority": "P2",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "clue",
+    "task": "Chinese Choice/Boolean",
+    "intended_use": "train",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "cluebenchmark/FewCLUE",
+    "task": "Chinese few-shot",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "C-MTEB/AFQMC",
+    "task": "Chinese Boolean",
+    "intended_use": "train",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "C-MTEB/CMNLI",
+    "task": "Chinese NLI",
+    "intended_use": "train",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "C-MTEB/OCNLI",
+    "task": "Chinese NLI",
+    "intended_use": "train",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "C-MTEB/Tnews",
+    "task": "Chinese topic",
+    "intended_use": "train",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "C-MTEB/IFlyTek",
+    "task": "Chinese intent",
+    "intended_use": "train",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "C-MTEB/STS-B",
+    "task": "Chinese similarity Score",
+    "intended_use": "train",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "C-MTEB/Toxic",
+    "task": "Chinese safety",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "C-MTEB/LCQMC",
+    "task": "Chinese paraphrase",
+    "intended_use": "train",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "C-MTEB/PAWSX",
+    "task": "Chinese paraphrase",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "mteb/mtop_intent",
+    "task": "multilingual intent",
+    "intended_use": "train",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "mteb/amazon_counterfactual",
+    "task": "Boolean counterfactual",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "mteb/amazon_massive_intent",
+    "task": "multilingual intent",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "mteb/amazon_massive_scenario",
+    "task": "multilingual scenario",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "allenai/wanli",
+    "task": "NLI",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "anli",
+    "task": "adversarial NLI",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "pietrolesci/chaosnli",
+    "task": "label distributions",
+    "intended_use": "evaluation/calibration",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "tasksource/ambinli",
+    "task": "ambiguous label distributions",
+    "intended_use": "calibration",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "allenai/reward-bench",
+    "task": "pair preference",
+    "intended_use": "evaluation",
+    "priority": "P2",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "Anthropic/hh-rlhf",
+    "task": "pair preference",
+    "intended_use": "train",
+    "priority": "P2",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "stanfordnlp/SHP",
+    "task": "pair preference",
+    "intended_use": "train",
+    "priority": "P2",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "HuggingFaceH4/ultrafeedback_binarized",
+    "task": "teacher pair preference",
+    "intended_use": "train",
+    "priority": "P2",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "SetFit/SentEval-CR",
+    "task": "sentiment",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "SetFit/SentEval-MR",
+    "task": "sentiment",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "SetFit/SentEval-SUBJ",
+    "task": "subjectivity",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "SetFit/20_newsgroups",
+    "task": "topic",
+    "intended_use": "train",
+    "priority": "P2",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "SetFit/TREC-QC",
+    "task": "question type",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "ought/raft",
+    "task": "decision classification",
+    "intended_use": "few-shot train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "AmazonScience/mteb_multilingual",
+    "task": "classification sources",
+    "intended_use": "catalog",
+    "priority": "P2",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "argilla/amazon-massive-dataset",
+    "task": "multilingual intent mirror",
+    "intended_use": "train",
+    "priority": "P2",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "ruanchaves/hartmann-multilingual-sentiment",
+    "task": "multilingual sentiment",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "google-research-datasets/discofuse",
+    "task": "discourse",
+    "intended_use": "train",
+    "priority": "P2",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "mteb/banking77",
+    "task": "intent mirror",
+    "intended_use": "train",
+    "priority": "P2",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "mteb/tweet_sentiment_extraction",
+    "task": "sentiment",
+    "intended_use": "train",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "samatv256/jev-decisions-v1",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "LocalLLaMA/typed-decisions",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "C-Tianyu/NanoJev-Data",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "HIT-TMG/JevEmbed-Data",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "kaivoss/system-one-270m-data",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "dwidlee/systemone-lite-phase2",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "loaiabdalslam/VEJI-Synth-v2-200K",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "ZefanCai/Open-Jev",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "hotchpotch/bekko-system-one-dataset-v0",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "GhostScientist/jev-decisions-v1",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "little-g-ai/Sys1Cal-v1",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "PKU-Alignment/BeaverTails",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "nvidia/HelpSteer2",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "nvidia/HelpSteer",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "civil_comments",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "tasksource/ChaosNLI",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "C-MTEB/IFlyTek-classification",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "C-MTEB/STSB",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "SetFit/mr",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "SetFit/subj",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "CogComp/piqa",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "samatv256/jevtown",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "jevtown/jevtown",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P0",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "AmazonScience/massive1.1",
+    "task": "typed decisions / additional supervision: inspect card",
+    "intended_use": "preserve original splits; training admission pending",
+    "priority": "P1",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "Salesforce/xlam-function-calling-60k",
+    "task": "tool selection and argument supervision",
+    "priority": "P1",
+    "intended_use": "train-schema-review",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "Team-ACE/ToolACE",
+    "task": "tool selection and argument supervision",
+    "priority": "P1",
+    "intended_use": "train-schema-review",
+    "platform": "Hugging Face"
+  },
+  {
+    "id": "gorilla-llm/Berkeley-Function-Calling-Leaderboard",
+    "task": "tool evaluation",
+    "priority": "P1",
+    "intended_use": "benchmark-only",
+    "platform": "Hugging Face"
+  }
+]

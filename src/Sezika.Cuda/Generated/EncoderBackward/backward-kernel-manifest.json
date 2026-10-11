@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "compiler": "ILGPU 1.5.3",
+  "target": "sm_70",
+  "ptx_version": "7.0",
+  "source_sha256": "FE8F46D4968ED5B0A8D1F99505369E6E5E5AB4B58AEB011B87E9653358CE4E3C",
+  "kernels": [
+    {
+      "name": "Clear",
+      "entry": "Kernel_Clear",
+      "parameters": 2,
+      "sha256": "3D0606B0DFD75F45034C1FF2FDDC1F9BE518E38506FB2EE12DE15499E9E22225"
+    },
+    {
+      "name": "Copy",
+      "entry": "Kernel_Copy",
+      "parameters": 3,
+      "sha256": "C4AE76F64C3EDE8012B1810041D903BB3BC12B1F8190564E23932E5D45056353"
+    },
+    {
+      "name": "LinearInput",
+      "entry": "Kernel_LinearInput",
+      "parameters": 6,
+      "sha256": "65718752C9198E81C277A2C7A54EC78E07BA1110CF14F9CB01A7050F1EE37B22"
+    },
+    {
+      "name": "LinearWeight",
+      "entry": "Kernel_LinearWeight",
+      "parameters": 6,
+      "sha256": "ED25B1B029B3C36DDFD7D21E8562E378CF9F5F935C086D9C21244BB528DE8DD5"
+    },
+    {
+      "name": "NormInput",
+      "entry": "Kernel_NormInput",
+      "parameters": 8,
+      "sha256": "C1A4D5EA68F965AF9757B537D5F0A1E82D5A4968F353706599D909B35DCD77D8"
+    },
+    {
+      "name": "NormWeight",
+      "entry": "Kernel_NormWeight",
+      "parameters": 5,
+      "sha256": "8B3F542B39B7B39B754513498949855E79809B9FF3FFFAB14756F56BE6CBB18A"
+    },
+    {
+      "name": "GatedGelu",
+      "entry": "Kernel_GatedGelu",
+      "parameters": 5,
+      "sha256": "2F2B02DADD0EB81F9ECED2F42C206C30B8ADA6A03636134375C77A3272176F87"
+    },
+    {
+      "name": "ContextProbability",
+      "entry": "Kernel_ContextProbability",
+      "parameters": 6,
+      "sha256": "9C427EB1820BB297B65FB503AE142E67A845289E64DFA64327F129700472E1F9"
+    },
+    {
+      "name": "ContextValue",
+      "entry": "Kernel_ContextValue",
+      "parameters": 6,
+      "sha256": "A92CBC9D8DF7B7C8BFD89F59CE6BA56E0CF807C710E021B054C9D01C6D488341"
+    },
+    {
+      "name": "Softmax",
+      "entry": "Kernel_Softmax",
+      "parameters": 4,
+      "sha256": "F94716508B8953F1D92C362C47FE106E238901D46B68CBC3BC9C0E3E01EF68A7"
+    },
+    {
+      "name": "AttentionQuery",
+      "entry": "Kernel_AttentionQuery",
+      "parameters": 6,
+      "sha256": "BF024A32255CA3847B709BCC688B2DB4ED26FF55B4A37E4E3A2342F582C33139"
+    },
+    {
+      "name": "AttentionKey",
+      "entry": "Kernel_AttentionKey",
+      "parameters": 6,
+      "sha256": "64B0C49CF26A54EFFC524B43936FD5D362BC10DFAE867128A4018E131B9A1CDD"
+    },
+    {
+      "name": "Rope",
+      "entry": "Kernel_Rope",
+      "parameters": 6,
+      "sha256": "5D1B9A5F3438B2AD9FAC6E59ADDF1A6D77CCAC05CAB4969A3D19588A01AD79E8"
+    },
+    {
+      "name": "Join",
+      "entry": "Kernel_Join",
+      "parameters": 6,
+      "sha256": "8F55AE55C6DAC8246B4676A99B9452AB599C9DFC4220F455FBC98F2CAAFA4111"
+    },
+    {
+      "name": "Embedding",
+      "entry": "Kernel_Embedding",
+      "parameters": 7,
+      "sha256": "3BC5422EEC29576963B22123838CB66AF0FA7336DAB0184772E9C83964934C53"
+    },
+    {
+      "name": "MarkerLoss",
+      "entry": "Kernel_MarkerLoss",
+      "parameters": 9,
+      "sha256": "21347D881CBEFD9BD2EB3FFB5A43F05A5D3E23BC393F9E4D944CBF824AE1A2B0"
+    },
+    {
+      "name": "MarkerInput",
+      "entry": "Kernel_MarkerInput",
+      "parameters": 8,
+      "sha256": "5EA14D43A528E10876F8FCEC03F7B9CF040ED2D618A951CFBC64E16726584053"
+    },
+    {
+      "name": "MarkerWeight",
+      "entry": "Kernel_MarkerWeight",
+      "parameters": 7,
+      "sha256": "A2E4E7005E3D84F280000AD7A6486166F996E89088375AC094AEE67CAA990D08"
+    },
+    {
+      "name": "AdamW",
+      "entry": "Kernel_AdamW",
+      "parameters": 12,
+      "sha256": "60CA946DA146B2D335432545ADC66C02627B0E8328E419CD3A4CE87FA2059166"
+    },
+    {
+      "name": "Finite",
+      "entry": "Kernel_Finite",
+      "parameters": 3,
+      "sha256": "EADF135571E722957E16A8F5E52A2421E6CFD36B5ACADABAB1E0F77BC5DC033E"
+    }
+  ],
+  "actual_gpu_backward": "NOT_RUN"
+}

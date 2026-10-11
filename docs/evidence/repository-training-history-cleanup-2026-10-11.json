@@ -1,0 +1,63 @@
+{
+  "status": "PASS_authorized_public_master_history_and_anonymous_complete_model_SHA",
+  "publication_commit": "9c522c4e227c52c86f493a90595a894a41e1935a",
+  "publication_tree": "d7743fde522c22352aee1048b29f303924f6b5b1",
+  "anonymous_reachable_commits": [
+    "9c522c4e227c52c86f493a90595a894a41e1935a",
+    "2a410d64a70955364439514cba60207b8b9ee796",
+    "c23c3c428beaece8a116c4d75ae51df2c97206d2",
+    "db71e778414ff17136952e0d91f0c2a8431a1da4"
+  ],
+  "old_detail_commit_reachable": false,
+  "old_detail_path_in_reachable_history": false,
+  "full_file_readback_acceptance": true,
+  "private_repositories_modified": false,
+  "large_LFS_objects_changed": false,
+  "physical_platform_object_deletion_acceptance": "NOT_VERIFIED",
+  "single_push_attempts": 1,
+  "authorization": {
+    "schema_version": 1,
+    "authorization_source": "direct_human_question_reply_in_current_chat",
+    "question_call_id": "call_RaicXYFV724m8Y2C5pMmHn8w",
+    "human_answer": "授权清理该公开分支历史（推荐）",
+    "recorded_utc": "2026-10-11T13:28:47Z",
+    "target": "https://moark.com/IoTSharp/Sezika-Decision-Base",
+    "branch": "refs/heads/master",
+    "expected_remote_commit": "c68049c735c24da5f1c611c2b229619bb4b391ac",
+    "candidate_commit": "9c522c4e227c52c86f493a90595a894a41e1935a",
+    "authorized": true,
+    "maximum_push_attempts": 1,
+    "files_changed_against_current_public_summary": 0,
+    "private_repository_writes_authorized": false,
+    "platform_object_purge_authorized": false
+  },
+  "prior_summary_commit": "c68049c735c24da5f1c611c2b229619bb4b391ac",
+  "reviewed_script_sha256": "656de54a2f6104d47303bf5882b089ac38802cff6ef049de3bae86bfa17b3b14",
+  "receipts": [
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\mirror-state\\transport-push-history-cleanup-publish-v2.json",
+      "bytes": 63826,
+      "sha256": "3e4b0b4698e422a99466dc9af7e240151e741b91a477118a9ef13909dc52ffd7"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\mirror-state\\transport-anonymous-readback-history-cleanup-readback-v2.json",
+      "bytes": 75359,
+      "sha256": "c2c4ec9267faa6df5ba6d6c8d4c010db80d97eb034fb9437a35217c569308c78"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-133317-107-authorized-history-cleanup-tiny-v2.result.json",
+      "bytes": 3932,
+      "sha256": "9ce79ab8837ca4cf817bcd40f11ed2387ac39e691f781d10f8ae6801c58caa24"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-133441-479-authorized-exact-master-history-publish-v2.result.json",
+      "bytes": 26313,
+      "sha256": "8eb611fba9aaf34e207b694d0666869cc099f6b47c572af72a3aa5b1cf78014c"
+    },
+    {
+      "path": "C:\\Users\\mysti\\.codex\\artifacts\\sezika-repository-local-mirror-20261011-192617\\process-logs\\20261011-133524-490-authorized-history-anonymous-readback-v2.result.json",
+      "bytes": 11570,
+      "sha256": "d483cfba4ad2eee87ab8f9e9262d427b4f19dc2de2a38bb6d19d4f0fabb9ca4a"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "Status": "PASS_tiny_synthetic_GPU_full_graph_only",
+  "PassedChecks": 4,
+  "Coordinates": 1008,
+  "MaximumAbsoluteError": 0.00013484732818777904,
+  "GpuUuid": "134BF256A4B04FD4E3073C3D34F79CB4",
+  "Results": [
+    {
+      "Type": "Choice",
+      "Coordinates": 336,
+      "MaximumAbsoluteError": 0.00011869384135962726,
+      "GpuLoss": 0.5367682576179504,
+      "CpuLoss": 0.5367682403297478
+    },
+    {
+      "Type": "Boolean",
+      "Coordinates": 336,
+      "MaximumAbsoluteError": 0.00013484732818777904,
+      "GpuLoss": 0.5901101231575012,
+      "CpuLoss": 0.5901101314454335
+    },
+    {
+      "Type": "Score",
+      "Coordinates": 336,
+      "MaximumAbsoluteError": 0.0001307732144004703,
+      "GpuLoss": 0.7397727966308594,
+      "CpuLoss": 0.7397729190711737
+    },
+    {
+      "Type": "AdamW",
+      "Coordinates": 336,
+      "MaximumAbsoluteError": 0,
+      "GpuLoss": 0.5367682576179504,
+      "CpuLoss": 0.5367682576179504
+    }
+  ],
+  "PeakOwnedBytes": 8064,
+  "ElapsedSeconds": 2.0373555,
+  "RealModelTraining": false,
+  "QualityAcceptance": false
+}

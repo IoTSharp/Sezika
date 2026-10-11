@@ -1,0 +1,506 @@
+[
+  {
+    "name": "S1MB repository tree",
+    "kind": "github-tree",
+    "dataset": "hotchpotch/S1MB",
+    "url": "https://api.github.com/repos/hotchpotch/S1MB/git/trees/main?recursive=1",
+    "path": "metadata/github/s1mb-tree.json"
+  },
+  {
+    "name": "Sys1Cal repository tree",
+    "kind": "github-tree",
+    "dataset": "little-g-ai/Sys1Cal-v1",
+    "url": "https://api.github.com/repos/little-g-ai/Sys1Cal-v1/git/trees/main?recursive=1",
+    "path": "metadata/github/sys1cal-tree.json"
+  },
+  {
+    "name": "Byrne model metadata",
+    "kind": "hf-model",
+    "dataset": "Praveenrajus/Byrne-Jev-79M",
+    "url": "https://huggingface.co/api/models/Praveenrajus/Byrne-Jev-79M",
+    "path": "metadata/hf/byrne-model.json"
+  },
+  {
+    "name": "hotchpotch/s1mb-dataset",
+    "kind": "hf-metadata",
+    "dataset": "hotchpotch/s1mb-dataset",
+    "url": "https://huggingface.co/api/datasets/hotchpotch/s1mb-dataset?blobs=true",
+    "path": "metadata/hf/hotchpotch--s1mb-dataset.json"
+  },
+  {
+    "name": "Praveenrajus/jev-bench",
+    "kind": "hf-metadata",
+    "dataset": "Praveenrajus/jev-bench",
+    "url": "https://huggingface.co/api/datasets/Praveenrajus/jev-bench?blobs=true",
+    "path": "metadata/hf/Praveenrajus--jev-bench.json"
+  },
+  {
+    "name": "PolyAI/banking77",
+    "kind": "hf-metadata",
+    "dataset": "PolyAI/banking77",
+    "url": "https://huggingface.co/api/datasets/PolyAI/banking77?blobs=true",
+    "path": "metadata/hf/PolyAI--banking77.json"
+  },
+  {
+    "name": "clinc/clinc_oos",
+    "kind": "hf-metadata",
+    "dataset": "clinc/clinc_oos",
+    "url": "https://huggingface.co/api/datasets/clinc/clinc_oos?blobs=true",
+    "path": "metadata/hf/clinc--clinc_oos.json"
+  },
+  {
+    "name": "AmazonScience/massive",
+    "kind": "hf-metadata",
+    "dataset": "AmazonScience/massive",
+    "url": "https://huggingface.co/api/datasets/AmazonScience/massive?blobs=true",
+    "path": "metadata/hf/AmazonScience--massive.json"
+  },
+  {
+    "name": "google/boolq",
+    "kind": "hf-metadata",
+    "dataset": "google/boolq",
+    "url": "https://huggingface.co/api/datasets/google/boolq?blobs=true",
+    "path": "metadata/hf/google--boolq.json"
+  },
+  {
+    "name": "SetFit/sst5",
+    "kind": "hf-metadata",
+    "dataset": "SetFit/sst5",
+    "url": "https://huggingface.co/api/datasets/SetFit/sst5?blobs=true",
+    "path": "metadata/hf/SetFit--sst5.json"
+  },
+  {
+    "name": "Yelp/yelp_review_full",
+    "kind": "hf-metadata",
+    "dataset": "Yelp/yelp_review_full",
+    "url": "https://huggingface.co/api/datasets/Yelp/yelp_review_full?blobs=true",
+    "path": "metadata/hf/Yelp--yelp_review_full.json"
+  },
+  {
+    "name": "AmazonScience/amazon_reviews_multi",
+    "kind": "hf-metadata",
+    "dataset": "AmazonScience/amazon_reviews_multi",
+    "url": "https://huggingface.co/api/datasets/AmazonScience/amazon_reviews_multi?blobs=true",
+    "path": "metadata/hf/AmazonScience--amazon_reviews_multi.json"
+  },
+  {
+    "name": "nyu-mll/glue",
+    "kind": "hf-metadata",
+    "dataset": "nyu-mll/glue",
+    "url": "https://huggingface.co/api/datasets/nyu-mll/glue?blobs=true",
+    "path": "metadata/hf/nyu-mll--glue.json"
+  },
+  {
+    "name": "aps/super_glue",
+    "kind": "hf-metadata",
+    "dataset": "aps/super_glue",
+    "url": "https://huggingface.co/api/datasets/aps/super_glue?blobs=true",
+    "path": "metadata/hf/aps--super_glue.json"
+  },
+  {
+    "name": "stanfordnlp/snli",
+    "kind": "hf-metadata",
+    "dataset": "stanfordnlp/snli",
+    "url": "https://huggingface.co/api/datasets/stanfordnlp/snli?blobs=true",
+    "path": "metadata/hf/stanfordnlp--snli.json"
+  },
+  {
+    "name": "nyu-mll/multi_nli",
+    "kind": "hf-metadata",
+    "dataset": "nyu-mll/multi_nli",
+    "url": "https://huggingface.co/api/datasets/nyu-mll/multi_nli?blobs=true",
+    "path": "metadata/hf/nyu-mll--multi_nli.json"
+  },
+  {
+    "name": "facebook/xnli",
+    "kind": "hf-metadata",
+    "dataset": "facebook/xnli",
+    "url": "https://huggingface.co/api/datasets/facebook/xnli?blobs=true",
+    "path": "metadata/hf/facebook--xnli.json"
+  },
+  {
+    "name": "google-research-datasets/paws",
+    "kind": "hf-metadata",
+    "dataset": "google-research-datasets/paws",
+    "url": "https://huggingface.co/api/datasets/google-research-datasets/paws?blobs=true",
+    "path": "metadata/hf/google-research-datasets--paws.json"
+  },
+  {
+    "name": "google-research-datasets/paws-x",
+    "kind": "hf-metadata",
+    "dataset": "google-research-datasets/paws-x",
+    "url": "https://huggingface.co/api/datasets/google-research-datasets/paws-x?blobs=true",
+    "path": "metadata/hf/google-research-datasets--paws-x.json"
+  },
+  {
+    "name": "cardiffnlp/tweet_eval",
+    "kind": "hf-metadata",
+    "dataset": "cardiffnlp/tweet_eval",
+    "url": "https://huggingface.co/api/datasets/cardiffnlp/tweet_eval?blobs=true",
+    "path": "metadata/hf/cardiffnlp--tweet_eval.json"
+  },
+  {
+    "name": "cardiffnlp/tweet_sentiment_multilingual",
+    "kind": "hf-metadata",
+    "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+    "url": "https://huggingface.co/api/datasets/cardiffnlp/tweet_sentiment_multilingual?blobs=true",
+    "path": "metadata/hf/cardiffnlp--tweet_sentiment_multilingual.json"
+  },
+  {
+    "name": "google-research-datasets/go_emotions",
+    "kind": "hf-metadata",
+    "dataset": "google-research-datasets/go_emotions",
+    "url": "https://huggingface.co/api/datasets/google-research-datasets/go_emotions?blobs=true",
+    "path": "metadata/hf/google-research-datasets--go_emotions.json"
+  },
+  {
+    "name": "dair-ai/emotion",
+    "kind": "hf-metadata",
+    "dataset": "dair-ai/emotion",
+    "url": "https://huggingface.co/api/datasets/dair-ai/emotion?blobs=true",
+    "path": "metadata/hf/dair-ai--emotion.json"
+  },
+  {
+    "name": "takala/financial_phrasebank",
+    "kind": "hf-metadata",
+    "dataset": "takala/financial_phrasebank",
+    "url": "https://huggingface.co/api/datasets/takala/financial_phrasebank?blobs=true",
+    "path": "metadata/hf/takala--financial_phrasebank.json"
+  },
+  {
+    "name": "zeroshot/twitter-financial-news-sentiment",
+    "kind": "hf-metadata",
+    "dataset": "zeroshot/twitter-financial-news-sentiment",
+    "url": "https://huggingface.co/api/datasets/zeroshot/twitter-financial-news-sentiment?blobs=true",
+    "path": "metadata/hf/zeroshot--twitter-financial-news-sentiment.json"
+  },
+  {
+    "name": "ag_news",
+    "kind": "hf-metadata",
+    "dataset": "ag_news",
+    "url": "https://huggingface.co/api/datasets/ag_news?blobs=true",
+    "path": "metadata/hf/ag_news.json"
+  },
+  {
+    "name": "dbpedia_14",
+    "kind": "hf-metadata",
+    "dataset": "dbpedia_14",
+    "url": "https://huggingface.co/api/datasets/dbpedia_14?blobs=true",
+    "path": "metadata/hf/dbpedia_14.json"
+  },
+  {
+    "name": "allenai/ai2_arc",
+    "kind": "hf-metadata",
+    "dataset": "allenai/ai2_arc",
+    "url": "https://huggingface.co/api/datasets/allenai/ai2_arc?blobs=true",
+    "path": "metadata/hf/allenai--ai2_arc.json"
+  },
+  {
+    "name": "allenai/openbookqa",
+    "kind": "hf-metadata",
+    "dataset": "allenai/openbookqa",
+    "url": "https://huggingface.co/api/datasets/allenai/openbookqa?blobs=true",
+    "path": "metadata/hf/allenai--openbookqa.json"
+  },
+  {
+    "name": "allenai/piqa",
+    "kind": "hf-metadata",
+    "dataset": "allenai/piqa",
+    "url": "https://huggingface.co/api/datasets/allenai/piqa?blobs=true",
+    "path": "metadata/hf/allenai--piqa.json"
+  },
+  {
+    "name": "Rowan/hellaswag",
+    "kind": "hf-metadata",
+    "dataset": "Rowan/hellaswag",
+    "url": "https://huggingface.co/api/datasets/Rowan/hellaswag?blobs=true",
+    "path": "metadata/hf/Rowan--hellaswag.json"
+  },
+  {
+    "name": "allenai/winogrande",
+    "kind": "hf-metadata",
+    "dataset": "allenai/winogrande",
+    "url": "https://huggingface.co/api/datasets/allenai/winogrande?blobs=true",
+    "path": "metadata/hf/allenai--winogrande.json"
+  },
+  {
+    "name": "tau/commonsense_qa",
+    "kind": "hf-metadata",
+    "dataset": "tau/commonsense_qa",
+    "url": "https://huggingface.co/api/datasets/tau/commonsense_qa?blobs=true",
+    "path": "metadata/hf/tau--commonsense_qa.json"
+  },
+  {
+    "name": "allenai/social_i_qa",
+    "kind": "hf-metadata",
+    "dataset": "allenai/social_i_qa",
+    "url": "https://huggingface.co/api/datasets/allenai/social_i_qa?blobs=true",
+    "path": "metadata/hf/allenai--social_i_qa.json"
+  },
+  {
+    "name": "Muennighoff/xwinograd",
+    "kind": "hf-metadata",
+    "dataset": "Muennighoff/xwinograd",
+    "url": "https://huggingface.co/api/datasets/Muennighoff/xwinograd?blobs=true",
+    "path": "metadata/hf/Muennighoff--xwinograd.json"
+  },
+  {
+    "name": "cais/mmlu",
+    "kind": "hf-metadata",
+    "dataset": "cais/mmlu",
+    "url": "https://huggingface.co/api/datasets/cais/mmlu?blobs=true",
+    "path": "metadata/hf/cais--mmlu.json"
+  },
+  {
+    "name": "TIGER-Lab/MMLU-Pro",
+    "kind": "hf-metadata",
+    "dataset": "TIGER-Lab/MMLU-Pro",
+    "url": "https://huggingface.co/api/datasets/TIGER-Lab/MMLU-Pro?blobs=true",
+    "path": "metadata/hf/TIGER-Lab--MMLU-Pro.json"
+  },
+  {
+    "name": "clue",
+    "kind": "hf-metadata",
+    "dataset": "clue",
+    "url": "https://huggingface.co/api/datasets/clue?blobs=true",
+    "path": "metadata/hf/clue.json"
+  },
+  {
+    "name": "cluebenchmark/FewCLUE",
+    "kind": "hf-metadata",
+    "dataset": "cluebenchmark/FewCLUE",
+    "url": "https://huggingface.co/api/datasets/cluebenchmark/FewCLUE?blobs=true",
+    "path": "metadata/hf/cluebenchmark--FewCLUE.json"
+  },
+  {
+    "name": "C-MTEB/AFQMC",
+    "kind": "hf-metadata",
+    "dataset": "C-MTEB/AFQMC",
+    "url": "https://huggingface.co/api/datasets/C-MTEB/AFQMC?blobs=true",
+    "path": "metadata/hf/C-MTEB--AFQMC.json"
+  },
+  {
+    "name": "C-MTEB/CMNLI",
+    "kind": "hf-metadata",
+    "dataset": "C-MTEB/CMNLI",
+    "url": "https://huggingface.co/api/datasets/C-MTEB/CMNLI?blobs=true",
+    "path": "metadata/hf/C-MTEB--CMNLI.json"
+  },
+  {
+    "name": "C-MTEB/OCNLI",
+    "kind": "hf-metadata",
+    "dataset": "C-MTEB/OCNLI",
+    "url": "https://huggingface.co/api/datasets/C-MTEB/OCNLI?blobs=true",
+    "path": "metadata/hf/C-MTEB--OCNLI.json"
+  },
+  {
+    "name": "C-MTEB/Tnews",
+    "kind": "hf-metadata",
+    "dataset": "C-MTEB/Tnews",
+    "url": "https://huggingface.co/api/datasets/C-MTEB/Tnews?blobs=true",
+    "path": "metadata/hf/C-MTEB--Tnews.json"
+  },
+  {
+    "name": "C-MTEB/IFlyTek",
+    "kind": "hf-metadata",
+    "dataset": "C-MTEB/IFlyTek",
+    "url": "https://huggingface.co/api/datasets/C-MTEB/IFlyTek?blobs=true",
+    "path": "metadata/hf/C-MTEB--IFlyTek.json"
+  },
+  {
+    "name": "C-MTEB/STS-B",
+    "kind": "hf-metadata",
+    "dataset": "C-MTEB/STS-B",
+    "url": "https://huggingface.co/api/datasets/C-MTEB/STS-B?blobs=true",
+    "path": "metadata/hf/C-MTEB--STS-B.json"
+  },
+  {
+    "name": "C-MTEB/Toxic",
+    "kind": "hf-metadata",
+    "dataset": "C-MTEB/Toxic",
+    "url": "https://huggingface.co/api/datasets/C-MTEB/Toxic?blobs=true",
+    "path": "metadata/hf/C-MTEB--Toxic.json"
+  },
+  {
+    "name": "C-MTEB/LCQMC",
+    "kind": "hf-metadata",
+    "dataset": "C-MTEB/LCQMC",
+    "url": "https://huggingface.co/api/datasets/C-MTEB/LCQMC?blobs=true",
+    "path": "metadata/hf/C-MTEB--LCQMC.json"
+  },
+  {
+    "name": "C-MTEB/PAWSX",
+    "kind": "hf-metadata",
+    "dataset": "C-MTEB/PAWSX",
+    "url": "https://huggingface.co/api/datasets/C-MTEB/PAWSX?blobs=true",
+    "path": "metadata/hf/C-MTEB--PAWSX.json"
+  },
+  {
+    "name": "mteb/mtop_intent",
+    "kind": "hf-metadata",
+    "dataset": "mteb/mtop_intent",
+    "url": "https://huggingface.co/api/datasets/mteb/mtop_intent?blobs=true",
+    "path": "metadata/hf/mteb--mtop_intent.json"
+  },
+  {
+    "name": "mteb/amazon_counterfactual",
+    "kind": "hf-metadata",
+    "dataset": "mteb/amazon_counterfactual",
+    "url": "https://huggingface.co/api/datasets/mteb/amazon_counterfactual?blobs=true",
+    "path": "metadata/hf/mteb--amazon_counterfactual.json"
+  },
+  {
+    "name": "mteb/amazon_massive_intent",
+    "kind": "hf-metadata",
+    "dataset": "mteb/amazon_massive_intent",
+    "url": "https://huggingface.co/api/datasets/mteb/amazon_massive_intent?blobs=true",
+    "path": "metadata/hf/mteb--amazon_massive_intent.json"
+  },
+  {
+    "name": "mteb/amazon_massive_scenario",
+    "kind": "hf-metadata",
+    "dataset": "mteb/amazon_massive_scenario",
+    "url": "https://huggingface.co/api/datasets/mteb/amazon_massive_scenario?blobs=true",
+    "path": "metadata/hf/mteb--amazon_massive_scenario.json"
+  },
+  {
+    "name": "allenai/wanli",
+    "kind": "hf-metadata",
+    "dataset": "allenai/wanli",
+    "url": "https://huggingface.co/api/datasets/allenai/wanli?blobs=true",
+    "path": "metadata/hf/allenai--wanli.json"
+  },
+  {
+    "name": "anli",
+    "kind": "hf-metadata",
+    "dataset": "anli",
+    "url": "https://huggingface.co/api/datasets/anli?blobs=true",
+    "path": "metadata/hf/anli.json"
+  },
+  {
+    "name": "pietrolesci/chaosnli",
+    "kind": "hf-metadata",
+    "dataset": "pietrolesci/chaosnli",
+    "url": "https://huggingface.co/api/datasets/pietrolesci/chaosnli?blobs=true",
+    "path": "metadata/hf/pietrolesci--chaosnli.json"
+  },
+  {
+    "name": "tasksource/ambinli",
+    "kind": "hf-metadata",
+    "dataset": "tasksource/ambinli",
+    "url": "https://huggingface.co/api/datasets/tasksource/ambinli?blobs=true",
+    "path": "metadata/hf/tasksource--ambinli.json"
+  },
+  {
+    "name": "allenai/reward-bench",
+    "kind": "hf-metadata",
+    "dataset": "allenai/reward-bench",
+    "url": "https://huggingface.co/api/datasets/allenai/reward-bench?blobs=true",
+    "path": "metadata/hf/allenai--reward-bench.json"
+  },
+  {
+    "name": "Anthropic/hh-rlhf",
+    "kind": "hf-metadata",
+    "dataset": "Anthropic/hh-rlhf",
+    "url": "https://huggingface.co/api/datasets/Anthropic/hh-rlhf?blobs=true",
+    "path": "metadata/hf/Anthropic--hh-rlhf.json"
+  },
+  {
+    "name": "stanfordnlp/SHP",
+    "kind": "hf-metadata",
+    "dataset": "stanfordnlp/SHP",
+    "url": "https://huggingface.co/api/datasets/stanfordnlp/SHP?blobs=true",
+    "path": "metadata/hf/stanfordnlp--SHP.json"
+  },
+  {
+    "name": "HuggingFaceH4/ultrafeedback_binarized",
+    "kind": "hf-metadata",
+    "dataset": "HuggingFaceH4/ultrafeedback_binarized",
+    "url": "https://huggingface.co/api/datasets/HuggingFaceH4/ultrafeedback_binarized?blobs=true",
+    "path": "metadata/hf/HuggingFaceH4--ultrafeedback_binarized.json"
+  },
+  {
+    "name": "SetFit/SentEval-CR",
+    "kind": "hf-metadata",
+    "dataset": "SetFit/SentEval-CR",
+    "url": "https://huggingface.co/api/datasets/SetFit/SentEval-CR?blobs=true",
+    "path": "metadata/hf/SetFit--SentEval-CR.json"
+  },
+  {
+    "name": "SetFit/SentEval-MR",
+    "kind": "hf-metadata",
+    "dataset": "SetFit/SentEval-MR",
+    "url": "https://huggingface.co/api/datasets/SetFit/SentEval-MR?blobs=true",
+    "path": "metadata/hf/SetFit--SentEval-MR.json"
+  },
+  {
+    "name": "SetFit/SentEval-SUBJ",
+    "kind": "hf-metadata",
+    "dataset": "SetFit/SentEval-SUBJ",
+    "url": "https://huggingface.co/api/datasets/SetFit/SentEval-SUBJ?blobs=true",
+    "path": "metadata/hf/SetFit--SentEval-SUBJ.json"
+  },
+  {
+    "name": "SetFit/20_newsgroups",
+    "kind": "hf-metadata",
+    "dataset": "SetFit/20_newsgroups",
+    "url": "https://huggingface.co/api/datasets/SetFit/20_newsgroups?blobs=true",
+    "path": "metadata/hf/SetFit--20_newsgroups.json"
+  },
+  {
+    "name": "SetFit/TREC-QC",
+    "kind": "hf-metadata",
+    "dataset": "SetFit/TREC-QC",
+    "url": "https://huggingface.co/api/datasets/SetFit/TREC-QC?blobs=true",
+    "path": "metadata/hf/SetFit--TREC-QC.json"
+  },
+  {
+    "name": "ought/raft",
+    "kind": "hf-metadata",
+    "dataset": "ought/raft",
+    "url": "https://huggingface.co/api/datasets/ought/raft?blobs=true",
+    "path": "metadata/hf/ought--raft.json"
+  },
+  {
+    "name": "AmazonScience/mteb_multilingual",
+    "kind": "hf-metadata",
+    "dataset": "AmazonScience/mteb_multilingual",
+    "url": "https://huggingface.co/api/datasets/AmazonScience/mteb_multilingual?blobs=true",
+    "path": "metadata/hf/AmazonScience--mteb_multilingual.json"
+  },
+  {
+    "name": "argilla/amazon-massive-dataset",
+    "kind": "hf-metadata",
+    "dataset": "argilla/amazon-massive-dataset",
+    "url": "https://huggingface.co/api/datasets/argilla/amazon-massive-dataset?blobs=true",
+    "path": "metadata/hf/argilla--amazon-massive-dataset.json"
+  },
+  {
+    "name": "ruanchaves/hartmann-multilingual-sentiment",
+    "kind": "hf-metadata",
+    "dataset": "ruanchaves/hartmann-multilingual-sentiment",
+    "url": "https://huggingface.co/api/datasets/ruanchaves/hartmann-multilingual-sentiment?blobs=true",
+    "path": "metadata/hf/ruanchaves--hartmann-multilingual-sentiment.json"
+  },
+  {
+    "name": "google-research-datasets/discofuse",
+    "kind": "hf-metadata",
+    "dataset": "google-research-datasets/discofuse",
+    "url": "https://huggingface.co/api/datasets/google-research-datasets/discofuse?blobs=true",
+    "path": "metadata/hf/google-research-datasets--discofuse.json"
+  },
+  {
+    "name": "mteb/banking77",
+    "kind": "hf-metadata",
+    "dataset": "mteb/banking77",
+    "url": "https://huggingface.co/api/datasets/mteb/banking77?blobs=true",
+    "path": "metadata/hf/mteb--banking77.json"
+  },
+  {
+    "name": "mteb/tweet_sentiment_extraction",
+    "kind": "hf-metadata",
+    "dataset": "mteb/tweet_sentiment_extraction",
+    "url": "https://huggingface.co/api/datasets/mteb/tweet_sentiment_extraction?blobs=true",
+    "path": "metadata/hf/mteb--tweet_sentiment_extraction.json"
+  }
+]

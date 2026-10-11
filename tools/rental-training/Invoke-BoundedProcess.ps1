@@ -7,7 +7,8 @@ param(
     [string]$LogDirectory,
     [hashtable]$Environment = @{},
     [ValidateRange(2,10)][int]$ProcessQueryTimeoutSeconds = 5,
-    [string]$CancelFile = ''
+    [string]$CancelFile = '',
+    [string]$StartGateDirectory = ''
 )
 $ErrorActionPreference = 'Stop'
 if ($PSVersionTable.PSVersion.Major -lt 7) { throw 'PowerShell 7 or newer is required.' }
@@ -173,6 +174,13 @@ try {
         try { Add-Identity $identity 0 } catch { $observationWarnings.Add('initial root identity deferred: '+$_.Exception.Message) }
     }
     elseif (-not $process.HasExited) { $observationWarnings.Add('Running root identity registration pending; no early observer kill.') }
+    if ($StartGateDirectory) {
+        # Cooperative payload cannot start its external operation before root registration.
+        $gate=[IO.Path]::GetFullPath($StartGateDirectory)
+        if (-not $gate.StartsWith((Join-Path $root '.artifacts\repository-training-'),[StringComparison]::OrdinalIgnoreCase) -or
+            -not $tracked.ContainsKey([int]$taskPid) -or -not [IO.Directory]::Exists($gate) -or [IO.File]::Exists((Join-Path $gate 'go'))) { throw 'Start gate ownership or root identity not confirmed.' }
+        [IO.File]::WriteAllText((Join-Path $gate 'go'),[string]$taskPid,[Text.UTF8Encoding]::new($false))
+    }
     [IO.File]::WriteAllText($identityPath, ([pscustomobject]@{
         Pid=$taskPid; Started=$rootStarted; CommandLine=$identity.CommandLine
         IdentityObservation=if ($null -ne $identity) { 'cim_snapshot' } else { 'exited_before_cim_snapshot_see_recorded_argv' }

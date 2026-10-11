@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sezika 仓库训练与回推"
+  short_description: "准备新 GPU 任务，从固定数据与模型仓库训练并验证回推"
+  default_prompt: "使用 $sezika-repository-training 准备本轮 Sezika 训练，固定自有数据集与模型仓库版本，完成离线准入；新 GPU 信息取得后执行训练、独立验证、下载与授权回推。"
