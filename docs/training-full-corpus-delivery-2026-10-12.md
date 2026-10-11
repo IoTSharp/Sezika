@@ -58,9 +58,9 @@
 
 `Epochs` 默认 1；`Seed=17`、`MaximumTokens=8192`、`CheckpointEvery=128`、`ValidationPerSource=32`、`EncoderRate=0.00001`、`HeadRate=0.001`、`WeightDecay=0.01`、`MaximumOwnedBytes=25769803776` 可显式指定并按 C# 工程合同检查。`TrainRecords` 只从完整严格长度回执取得，`GlobalUpdates=TrainRecords×Epochs`，没有用样本上限替代全量分母。分阶段 `StageUpdates` 不改变全部 epoch 的固定计划。
 
-工具要求 `PASS_full_corpus_strict_lengths_only`，manifest、bindings、tokenizer、最大 tokens 和全部 physical/excluded/accepted/train/development 分母一致，Rejected=0；完整 TrainingBySource、最大训练题身份与 `length-failures.jsonl` SHA 同时核对。全量扫描后的显式排除应另建派生版本，绑定新 manifest/bindings 与新完整长度回执；原数据和原 FAIL 不覆盖。
+工具要求 `PASS_full_corpus_strict_lengths_only`，manifest、bindings、tokenizer、最大 tokens 和全部 physical/excluded/accepted/train/development 分母一致，Rejected=0；完整 TrainingBySource、最大训练题身份与排除账本 SHA 同时核对。真实 C# 派生流程将 `FailureLedgerSha256` 绑定完整 `exclusions.jsonl`，不要求另外生成空的 `length-failures.jsonl`。全量扫描后的显式排除应另建派生版本，绑定新 manifest/bindings 与新完整长度回执；原数据和原 FAIL 不覆盖。
 
-新报告带 `CompleteScan`、`SourcePolicySha256`、`ScanCompletionSha256` 时，三项必须齐备；CompleteScan=true，政策与 corpus bindings 一致，扫描 SHA 与 bindings 的 `LengthScanSha256` 一致。准确命名的 `length-scan-complete.json` 原 bytes/SHA 一起进入运输清单，必须为完整 PASS 和同一政策，有未解决错误仍拒绝。旧完整回执可保持原合同，但不能用部分新扫描冒充旧完整 PASS。
+新长度报告带 `CompleteScan`、`SourcePolicySha256`、`ScanCompletionSha256` 时，三项必须齐备；CompleteScan=true，政策与 corpus bindings 一致，扫描 SHA 与 bindings 的 `LengthScanSha256` 一致。准确命名的 `length-scan-complete.json` 原 bytes/SHA 一起进入运输清单，其真实 C# 状态必须恰为 `PASS_complete_strict_scan_explicit_exclusions_private_only`；扫描身份位于 `Inputs`，不能要求扫描另有顶层 `CompleteScan` 字段。准备器核父 manifest/bindings/原排除账本、完整分母、family 隔离、连续分段引用、父分片身份和派生 `length_admission`。长度报告三个排除分类为零时，C# 序列化可能省略对应字段，按零核对。旧 synthetic 回执仅在 `-LocalFixture` 下接受，生产入口不接受 PASS 前缀或夹具替代真实完成。
 
 ## 执行和空间
 
@@ -98,7 +98,7 @@
 
 新目录保存 `training-inputs.json`、`transport-manifest.json`、`corpus-run-plan.pending.json`、`readiness.json`。记录完整训练分母、初始化方式、各输入 SHA、具体 Pending、空间和耗时估算。发生失败时保存 `failure.json` 与已验证文件列表，保留原 guardian stdout/stderr/result；失败目录不删除重建。只精确清理本任务已核实退出的进程和临时 gate，交付物、旧模型、旧回执和用户文件均保留。
 
-## 本轮实际离线证据
+## 早期离线证据（保留历史）
 
 2026-10-12 的 `question-delivery-fixtures-v3/receipt.json` 为 `PASS_ten_synthetic_offline_delivery_fixtures`：缺失长度、完整长度、部分长度、分母错误、encoder 改动、越界 notice、政策未绑定、扫描政策不一致、同 SHA 政策别名、基线提交十项均通过预期结果检查。夹具声明为 synthetic，未运行 GPU、教师或网络。准备器源文件 SHA 为 `eda7d006322cc2aab2fbe06da652a26080d7504dccaecdc2aea6ea97c4665a35`。原 v1 失败、v2 通过及其输入和 guardian 回执均保留。
 
@@ -109,3 +109,15 @@
 这版离线 Pending 为最终源码提交、原始 corpus 尚未绑定本轮政策、完整严格长度回执和冻结 Linux 工具包。实例 Pending 为新 GPU UUID、固定 Linux 输入路径、只读 preflight、新租期、同计划实测 profile 与远端 C# 准入；ExpectedGpuUuid=null，LocalDeliveryReady=false，TrainingReady=false。完整派生 corpus 后续另建版本，不能覆盖这版原始证据。
 
 本次只生成清单，无输入复制与归档，输出卷当时剩余 37,054,619,648 bytes，所需本机余量 1 GiB。服务器最低容量估算为 22,895,093,082 bytes，须由真实新实例复核，当前没有全量耗时估算。guardian 回执 `process-logs/20261011-193425-542-question-full-delivery-pending-v1.result.json` 记录 PID 4588、启动时间 `2026-10-11T19:34:26.329017Z`、父 PID 77256、Succeeded、14.897 秒；最终观察完成、已验证存活进程 0、未知进程 0，专属 gate 已清理。日期为 UTC，对应本地 2026-10-12 凌晨。
+
+## 最终离线交付结果
+
+最终版本为同一私有任务根的 `question-full-delivery-final-private-v2`，保持早期 pending-v1 原件不变。来源与完整长度准入后，固定 17 个来源的 train 14,592,720、development 1,619,168；Epochs=1、GlobalUpdates=14,592,720。最终代码提交为 `d925f1c51dfe172e6f5b4ccb97408a5281440bf6`；准备器 SHA 为 `730aa214c7b3b58bf6c1a2fd7e537584bf772d6b2187c741f14bae08782c2da2`，19 项夹具涵盖真实 C# 扫描 schema、账本绑定和省略的零字段。
+
+唯一一次最终真实 helper 调用核对 877 个运输文件、4,039,014,600 bytes，包含派生 corpus、父合同、固定底座及 Linux 工具包；含配置等累计读取 4,039,055,287 bytes。helper 墙钟上限 900 秒，guardian 上限 930 秒；实际 helper 14.089 秒、外层 17.153 秒。最终 `LocalDeliveryReady=true`、`OfflinePending=[]`，`TrainingReady=false`、`FormalTrainingAdmitted=false`，GPU/完整时长字段保持 null。仅剩六项实例门槛：新 UUID、固定 Linux 输入路径、只读预检、新租期、同计划真实 profile、远端 C# 实际运行准入。
+
+最终配置 SHA 为 `2bd681365e9ba5e13b6bb70f3bc2c0f5ebcdf158f22e81dc82bbfc51110b2439`；`training-inputs.json` 为 `bcf746e859502c5c0a50551ea155bf5eadc3624eaee29cdae70ddd2eb9c7ef0c`；`transport-manifest.json` 为 `4ae82fd17b804f7fed7d053941a51344d363f9a252b860e3997288d57c3fcafc`；`corpus-run-plan.pending.json` 为 `0fcb82b2b253c1d5f6dda02db2dc5847c08a30e868cea137189a6ea42d5c71ea`；`readiness.json` 为 `9cf95fe0af4315c92caf116b5bd2d142558728fd9e55d8f12fb61bc61ac2b2af`。工具包 `files.sha256` 身份为 `ca927c84407729a876a5bf1b6fa9f05a304353f479862a666c5835c5ce730637`，50 个工程源文件与准确代码提交一致；文档后续提交不改变固定训练工具身份。
+
+本机只生成清单，未复制或归档完整输入；当时输出卷剩余 26,269,200,384 bytes，所需余量 1 GiB。新服务器数据盘最低容量估算为 23,079,835,396 bytes，仍须真实预检；这个估算不是实际峰值或租期承诺。当前每条 train 记录执行一次更新，完整一轮 14,592,720 更新，必须新实例实测后评估可承担的阶段与总预算。
+
+最终执行回执 `question-full-delivery-final-private-v2.execution.json` SHA 为 `4b5dc78f5ae5096ec95a5a04c21b4a035cd32be0185e706952207ec00a5974f2`；外层回执 SHA 为 `a38d7de0fd4b81c2ff61a857cbc716678193828e5da008bba89290f16d0cdb09`，Succeeded、FinalCheckComplete=true、live/unknown=0，已退出的专属 gate 精确清理。此次仅离线准备通过，没有新实例连接、GPU 训练、教师批量采集或模型/数据发布；准确率提升尚未获得证据。
