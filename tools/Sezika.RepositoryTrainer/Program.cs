@@ -9,6 +9,11 @@ if(args.Length==0||args[0]=="help")
     Console.WriteLine("RepositoryTrainer lengths --data <derived> --tokenizer <json> --output <fresh-json> [--max-tokens 8192]");
     Console.WriteLine("RepositoryTrainer admit-lengths --data <derived> --lengths <report> --output <fresh-derived>");
     Console.WriteLine("RepositoryTrainer attach-notices --dataset <checkout> --data <existing-derived> (adds source notices; preserves data bytes)");
+    Console.WriteLine("RepositoryTrainer corpus-check|corpus-export --corpus <root> --corpus-sha <64hex> --bindings-sha <64hex> --output <fresh-path> [--max-records 30000000] [--per-source 10000 --dataset-commit <40hex>]");
+    Console.WriteLine("RepositoryTrainer lengths-corpus --corpus <root> --corpus-sha <64hex> --bindings-sha <64hex> --tokenizer <json> --output <fresh-directory> [--max-tokens 8192 --max-records 50000000]");
+    Console.WriteLine("RepositoryTrainer profile-corpus|train-corpus --plan <fixed-json> --output <fresh-directory> [--profile <same-instance-profile> --resume <checkpoint-directory> --stage-updates <1..800000000> --gpu-uuid <32hex>]");
+    Console.WriteLine("RepositoryTrainer validate-corpus --plan <same-json> --package <saved-directory> --package-sha <64hex> --output <fresh-json> [--gpu-uuid <32hex>]");
+    Console.WriteLine("RepositoryTrainer corpus-schedule-check --output <fresh-json> (bounded synthetic and gzip scheduling/resume checks; no GPU)");
     Console.WriteLine("RepositoryTrainer profile|train --plan <pinned-json> --output <fresh-directory> [--profile <real-base-profile>] [--resume <complete-checkpoint>]");
     Console.WriteLine("RepositoryTrainer validate --plan <same-json> --package <saved-package> --package-sha <64hex> --output <fresh-json>");
     Console.WriteLine("RepositoryTrainer predict-package --package <new-run-directory> --package-sha <64hex> --cases <json> --cases-sha <64hex> --gpu-uuid <32hex> --output <fresh-json> [--max-cases 512] [--max-tokens 1024] [--owned-mib 4096]");
@@ -20,9 +25,37 @@ if(args.Length>35||args.Length%2==0)throw new ArgumentException("At most17 named
 for(var i=1;i<args.Length;i+=2)if(!args[i].StartsWith("--",StringComparison.Ordinal)||!options.TryAdd(args[i],args[i+1]))throw new ArgumentException("Duplicate or invalid option.");
 string Need(string name)=>options.TryGetValue(name,out var value)?value:throw new ArgumentException("Missing "+name);
 int Number(string name,int fallback,int min,int max){var value=options.TryGetValue(name,out var text)?int.Parse(text):fallback;if(value<min||value>max)throw new ArgumentOutOfRangeException(name);return value;}
+long LongNumber(string name,long fallback,long min,long max){var value=options.TryGetValue(name,out var text)?long.Parse(text,System.Globalization.CultureInfo.InvariantCulture):fallback;if(value<min||value>max)throw new ArgumentOutOfRangeException(name);return value;}
 using var budget=new RunBudget(Number("--timeout-seconds",900,1,86400),options.GetValueOrDefault("--cancel-file"));
 try
 {
+    if(args[0]=="corpus-schedule-check"){CorpusWorkflow.SchedulerChecks(Need("--output"),budget);return 0;}
+    if(args[0]=="lengths-corpus")
+    {
+        var corpus=new Corpus(Need("--corpus"),Need("--corpus-sha"),Need("--bindings-sha"),budget);
+        CorpusWorkflow.Lengths(corpus,Need("--bindings-sha"),Need("--tokenizer"),Number("--max-tokens",8192,2,8192),LongNumber("--max-records",50000000,1,50000000),Need("--output"),budget);return 0;
+    }
+    if(args[0] is "profile-corpus" or "train-corpus")
+    {
+        CorpusWorkflow.Run(args[0],Need("--plan"),Need("--output"),options.GetValueOrDefault("--profile"),options.GetValueOrDefault("--resume"),LongNumber("--stage-updates",0,0,800000000),budget,options.GetValueOrDefault("--gpu-uuid"));return 0;
+    }
+    if(args[0]=="validate-corpus")
+    {
+        CorpusWorkflow.Validate(Need("--package"),Need("--package-sha"),Need("--plan"),Need("--output"),budget,options.GetValueOrDefault("--gpu-uuid"));return 0;
+    }
+    if(args[0]=="data-check")
+    {
+        var data=Data.Open(Need("--data"),budget);
+        Data.WriteNew(Need("--output"),data.Manifest,TrainerJson.Default.DataManifest);
+        Console.WriteLine($"data opened={data.Rows.Length};manifest={data.ManifestSha256};GPU training=NOT_RUN");return 0;
+    }
+    if(args[0] is "corpus-check" or "corpus-export")
+    {
+        var corpus=new Corpus(Need("--corpus"),Need("--corpus-sha"),Need("--bindings-sha"),budget);
+        if(args[0]=="corpus-check")Data.WriteNew(Need("--output"),corpus.Check(Number("--max-records",30000000,1,50000000),budget),TrainerJson.Default.CorpusCheck);
+        else corpus.Export(Need("--output"),Need("--dataset-commit"),Number("--per-source",10000,1,50000),budget);
+        return 0;
+    }
     if(args[0]=="evaluate-baseline")
     {
         Acceptance.Baseline(Need("--base-model"),Need("--head"),Need("--baseline-report"),Need("--head-sha"),Need("--baseline-report-sha"),

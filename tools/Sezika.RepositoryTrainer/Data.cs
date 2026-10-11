@@ -128,8 +128,11 @@ internal static class Data
         var path=Within(root,"training-records.jsonl");if(FileHash(path,budget)!=manifest.RecordsSha256||FileHash(Within(root,"derivation-ledger.jsonl"),budget)!=manifest.LedgerSha256)throw new InvalidDataException("Derived input changed.");
         var rows=new List<TrainingRow>();using var reader=File.OpenText(path);
         for(var i=0;i<1000000;i++){budget.Check();var line=reader.ReadLine();if(line is null)break;if(line.Length>262144)throw new InvalidDataException("Row bound.");var row=JsonSerializer.Deserialize(line,TrainerJson.Default.TrainingRow)??throw new InvalidDataException("Null row.");rows.Add(row);}
-        if(reader.ReadLine() is not null||manifest.SchemaVersion!=1||manifest.SourceSha256!=RawSha256||manifest.SourcePath!=SourcePath||manifest.License!="Apache-2.0"||manifest.OriginalRows!=manifest.Train+manifest.Development+manifest.Quarantined+manifest.DuplicateRows||
+        var singleSource=manifest.SchemaVersion==1&&manifest.SourceSha256==RawSha256&&manifest.SourcePath==SourcePath&&manifest.License=="Apache-2.0";
+        var mixedSource=manifest.SchemaVersion==2&&manifest.SourceDataset=="sezika/mixed-decision-corpus"&&manifest.SourcePath=="manifest.json"&&manifest.SourceSha256==manifest.ParentManifestSha256&&manifest.License=="component_specific_see_source-rights.json"&&!manifest.FormalTrainingAdmitted;
+        if(reader.ReadLine() is not null||!(singleSource||mixedSource)||manifest.OriginalRows!=manifest.Train+manifest.Development+manifest.Quarantined+manifest.DuplicateRows||
             rows.Count!=manifest.Train+manifest.Development||rows.Count(r=>r.Split=="train")!=manifest.Train||rows.Count(r=>r.Split=="development")!=manifest.Development||rows.Select(r=>r.RecordId).Distinct().Count()!=rows.Count||rows.Any(r=>r.Split is not ("train" or "development"))||rows.GroupBy(r=>r.Family).Any(g=>g.Select(r=>r.Split).Distinct().Count()>1))throw new InvalidDataException("Counts, IDs, raw identity or family split isolation differ.");
+        if(mixedSource)foreach(var row in rows){budget.Check();Corpus.Validate(row);}
         return(manifest,rows.ToArray(),Hash(bytes));
     }
     internal static DataManifest AdmitLengths(string root,string lengthPath,string output,RunBudget budget)
@@ -181,6 +184,10 @@ internal static class Data
 }
 
 [JsonSerializable(typeof(TrainingRow))]
+[JsonSerializable(typeof(CorpusManifest))]
+[JsonSerializable(typeof(CorpusExclusion))]
+[JsonSerializable(typeof(CorpusCheck))]
+[JsonSerializable(typeof(CorpusBindings))]
 [JsonSerializable(typeof(DataManifest))]
 [JsonSerializable(typeof(LedgerRow))]
 [JsonSerializable(typeof(LengthReport))]

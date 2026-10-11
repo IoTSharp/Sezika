@@ -7,6 +7,8 @@ using DuckDB.NET.Data;
 
 if (args.Length > 0 && args[0] == "audit-splits")
     return await SplitAuditCommand.RunAsync(args);
+if (args.Length > 0 && args[0] == "export-json")
+    return ExportJsonCommand.Run(args);
 
 const string ParquetSha256 = "ae342ff12bb84b84b95f468abf5db6cb7c7bd578271299fe9c99be75b8132f4d";
 const string SelectionSha256 = "4e7359ab58484e4bf716e916f688360f5dd3da41e3760a5d3cdeef03ee553069";

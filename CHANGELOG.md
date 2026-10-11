@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- 2026-10-12完成当前可适配来源的私有规范语料与完整训练消费准备：18 来源合成 353 分片、16,261,504 条排除后记录，train 14,637,199 / development 1,624,305，全量 C# 结构读取与声明家族隔离通过。新增离线 Parquet 解码、可恢复分片、去重冲突账本、来源/标签语义、完整 epoch 调度、64 位阶段游标与 optimizer checkpoint 及私有来源包；教师题库扩为 16,347 题，沿用既有配置完成 48 题试采集，开发题保持验证用途。未执行完整 GPU 训练/新质量评测、租机或提交推送；其余来源、全量长度、超长、来源权重、语义泄漏与吞吐仍待验，原始数据及失败证据保留。见[准备证据](docs/evidence/corpus-preparation-2026-10-12.md)。
+
 - 2026-10-11新增显式48步新包 `predict-package` 与旧冻结模型 `evaluate-baseline` 消费入口，复用C#静态CUDA推理且不改原encoder SHA/5090训练合同；135张量/有限值/head/tokenizer与Windows Native AOT真实三题型推理通过。固定256来源标签原题+192换序每模型448、共896前向完成，新119/256、旧126/256，没有准确率提升；新Boolean负类召回0/24、Choice换序改变148/192，正式质量/校准/封存/Score gold和正式发行/性能继续未接受。全部失败/拒答检查与逐题私有回执保留，native资源和任务专属Parquet依赖已回收；未训练、租机、源码提交推送或历史改写。见[新包加载与同条件比较](docs/evidence/new-package-load-comparison-2026-10-11.md)。
 
 - 2026-10-11完成用户明确授权的IoTSharp公开master历史清理：单次精确lease推送 `9c522c4e227c52c86f493a90595a894a41e1935a`，独立匿名完整模型与fresh bare可达历史验收PASS；55个owned文件+1个保留英文README共6,174,855,372bytes全SHA一致，tree `d7743fde522c22352aee1048b29f303924f6b5b1` 与c68049相同、diff0。旧dfef170和c68049均不在该分支可达历史，validation.json路径无可达记录，原安全介绍历史保留。私有模型/数据仓库与大型LFS字节未改；无需GPU或新租期。平台旧对象/缓存物理删除为NOT_VERIFIED，平台清理未授权、未执行；正式质量、校准、新权重AOT/性能仍NOT_ACCEPTED。详见[历史清理证据](docs/evidence/repository-training-history-cleanup-2026-10-11.md)。
