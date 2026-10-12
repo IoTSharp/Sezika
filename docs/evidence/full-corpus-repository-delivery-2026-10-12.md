@@ -22,7 +22,7 @@
 
 新增 `tools/repository-training/remote/pull-full-corpus.sh`，必须运行于任务Linux guardian下。准确最终发布提交、skip-smudge、稀疏派生入口、独立LFS cache、标准basic单并发拉取；完整413普通文件集合/大小/SHA通过后才写读取绑定。拒绝只含410文件的旧368提交；不执行数据仓库代码或下载旧raw。凭据仅由调用者受保护helper/内存提供，不进入URL/argv/日志。
 
-可信413文件TSV位于本轮独立artifact，63,028bytes，SHA `1bc7753c856b283d269dc7972f182c5135862543afa2bb1f2f0740b127647f40`；其逐项对应完整owned JSON，SHA `8227c2442ab6dfbca3f64998af021414edc0a7b8066fd4b69caa6c20fcce7d78`。小TSV作为工具输入交付，语料仍从仓库读取。13项离线fixture、语法及身份/取消检查通过；服务器实际pull **NOT_RUN**。`CorpusRunPlan.DatasetCommit`保持原来源d195，`PublishedDatasetCommit`另存绑定，不能把发布身份覆盖进原来源。
+可信413文件TSV位于本轮独立artifact，63,028bytes，SHA `1bc7753c856b283d269dc7972f182c5135862543afa2bb1f2f0740b127647f40`；其逐项对应完整owned JSON，SHA `8227c2442ab6dfbca3f64998af021414edc0a7b8066fd4b69caa6c20fcce7d78`。小TSV作为工具输入交付，语料仍从仓库读取。13项离线fixture、语法及身份/取消检查通过；福海随后完成服务器实际pull，见下方接续结果。`CorpusRunPlan.DatasetCommit`保持原来源d195，`PublishedDatasetCommit`另存绑定，不能把发布身份覆盖进原来源。
 
 发布器新增`CommitOnly`、每32路径一批与最多128 Git调用，解决Windows argv上限；原CRLF和来源notice空白按精确路径保真，其余生成文件仍严格检查。已有6项CommitOnly/7项来源空白fixture及410文件preview通过。
 
@@ -34,11 +34,15 @@
 
 UTC12:56:30发出本规避测试唯一正常重启，约11分钟后SSH恢复；新boot `0bc4e4f7-0ed0-4324-8f9c-3d3259aed4a4`、内核6.8.0-146、closed580.178.04、`EnableGpuFirmware:0`核对通过。**新启动仍出现Xid62/45/158，GPU稳定性FAIL；规避没有修复GPU。** 本任务单次SMI被新启动故障门槛拒绝，实际NVML调用0；业务服务自行创建的D态`nvidia-smi`归属已核，未结束该外部进程。
 
-4个原业务unit active/running；两个原GPU容器自动running/unpaused。ASR健康接口200、翻译健康接口503；实际识别和翻译推理未验，不能写为业务全部恢复。旧阶段超时/未知、安装/验证条件错误及各原失败分别保留，独立实际版本/配置验证与GPU故障结论分开记录。没有追加重启、回退或安装其他驱动。
+维护后21:13快照中4个原业务unit active/running、两个原GPU容器自动running/unpaused，ASR健康接口200、翻译健康接口503；实际识别和翻译推理未验，不能写为业务全部恢复。用户随后明确批准临时暂停DigisynHearon，接续状态以以下暂停结果为准。旧阶段超时/未知、安装/验证条件错误及各原失败分别保留，独立实际版本/配置验证与GPU故障结论分开记录。没有追加重启、回退或安装其他驱动。
+
+服务器CPU交付还发现DigisynHearon每约4秒创建新的GPU查询，原全/proc扫描在大量挂起进程下失败。保留冻结guardian原件，仅派生CPU任务的精确systemd cgroup扫描源：固定CG/canonical路径/稳定dev-inode、最多128当前PID/4秒，原token/starttick/fullargv/父链及清理证明保留；tiny与真实数据任务均通过，不按名称排除或结束外部进程。派生guardian SHA `7990a903b5fc852b11a61ae0090b41e9c0375379cba0306122cefaf4dad1b59b`，仅用于本数据任务，未替代GPU训练资格。
+
+用户批准临时暂停准确`digisyn-hearon.service`。正常stop后被外部机制重新启动；/run runtime mask也未压过/etc中的自定义unit，两项原FAIL保留。随后在同一服务增加独立runtime启动条件与Restart=no，保持/etc原件；22:49:55实际MainPID0、ConditionResult=no，其余3个unit active。停止结果仍为failed/timeout，旧查询进程残留744，不能写为完整子树清理或GPU修复。未直接按进程名结束旧D态、不追加重启、不自动建恢复授权文件或恢复该服务；精确runtime文件归属/SHA及回退步骤保留。
 
 ## 继续门槛
 
-独立远端完整字节读回已完成，数据发布通过；服务器精确提交拉取正在另行准备，GPU状态不影响该CPU/网络交付。福海需要另行停机冷启动/供电PCIe检查或健康GPU交叉验证；未获得新增重启范围前不扩大维护。健康GPU重新核实例、驱动、容量与当轮profile后，才能按同一全量cursor进行训练。
+独立远端完整字节读回及服务器精确提交拉取均已完成：福海在22:44:30按5e180c4从标准Git/LFS取回全部413文件/2,623,103,071bytes，逐项SHA、HEAD、413普通文件集合、ownedclean及lengths旁车验证通过。CPU数据阶段约777.360秒，guardian最终检查完整/live0/unknown0/unchecked0，独立data unit MainPID0、inactive/exit0；临时RAM数据认证已精确清理并独立确认不存在。没有SFTP大语料、执行数据仓库代码或调用GPU。福海需要另行停机冷启动/供电PCIe检查或健康GPU交叉验证；未获得新增重启范围前不扩大维护。健康GPU重新核实例、驱动、容量与当轮profile后，才能按同一全量cursor进行训练。
 
 当前训练器一记录一更新，整轮固定14,592,720次。仅举计算下限情景：即使0.1秒/条，也约16.89天；实际时间必须由新实卡profile确认，还需检查点和独立验证预算。不能承诺几小时完成、静默缩分母、用48步称全量或以全部数据训练推导准确率提升。
 

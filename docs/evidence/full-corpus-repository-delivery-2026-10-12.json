@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 1,
-  "Status": "PASS_private_corpus_repository_publication_only",
+  "Status": "PASS_private_corpus_publication_and_server_exact_commit_pull_only",
   "PublishedDatasetCommit": "5e180c4136f8dd72cb5f37cb8673bddcbe9bc7f5",
   "OriginalDatasetCommit": "d19515802d31310b4050226b51ab85c60f130d42",
   "FrozenToolSourceCommit": "3461fc0dae689d4d471654af5d85b9850d0908a4",
@@ -23,9 +23,19 @@
   "AsrHealth": 200,
   "TranslationHealth": 503,
   "RealBusinessInference": "NOT_RUN",
-  "ServerExactCommitPull": "PENDING",
+  "ServerExactCommitPull": "PASS",
   "FormalTraining": "NOT_RUN",
   "QualityAccepted": false,
   "PublicDatasetMirrored": false,
-  "OldFailUnknownRetained": true
+  "OldFailUnknownRetained": true,
+  "ServerPulledFiles": 413,
+  "ServerPulledBytes": 2623103071,
+  "ServerFullSha": "PASS_all413",
+  "ServerDataPullSeconds": 777.36,
+  "ServerCredentialCleanup": "PASS_owned_RAM_absent",
+  "FuhaiHearonPause": "MAINPID0_CONDITION_BLOCKED_old_query_processes_remain",
+  "BusinessHealthSnapshotUtc": "2026-10-12T13:13:18Z",
+  "BusinessPauseSnapshotUtc": "2026-10-12T14:49:55Z",
+  "LegacyQueryProcessesAtPauseSnapshot": 744,
+  "OtherBusinessUnitsActive": 3
 }
