@@ -1,4 +1,4 @@
-param([ValidatePattern('^fixture-[a-z0-9-]{3,48}$')][string]$RunId='fixture-repository-20261011')
+param([ValidatePattern('^fixture-[a-z0-9-]{3,48}$')][string]$RunId='fixture-repository-20261011',[switch]$CommitOnly)
 Set-StrictMode -Version Latest
 $ErrorActionPreference='Stop'
 if($PSVersionTable.PSVersion.Major -lt 7){throw 'PowerShell 7 required.'}
@@ -33,8 +33,12 @@ if($preview.status -cne 'PASS_preview_paths_hashes_destination_and_ref_only'){th
 $bad=Get-Content -LiteralPath $manifest -Raw|ConvertFrom-Json;$bad.files[0].sha256='0'*64;$badPath=Join-Path $task 'fixture-bad-manifest.json';[IO.File]::WriteAllText($badPath,($bad|ConvertTo-Json -Depth 6),[Text.UTF8Encoding]::new($false))
 $rejected=$false;try{& (Join-Path $PSScriptRoot 'Publish-RepositoryRun.ps1') -RepositoryDirectory $repository -Kind model -RunId $RunId -OwnedManifest $badPath -ExpectedRemoteCommit $expected -TaskDirectory $task -PreviewOnly -LocalFixture|Out-Host}catch{if($_.Exception.Message -notlike '*SHA mismatch*'){throw};$rejected=$true}
 if(-not $rejected){throw 'Tampered fixture was accepted.'};$checks++
-$published=& (Join-Path $PSScriptRoot 'Publish-RepositoryRun.ps1') -RepositoryDirectory $repository -Kind model -RunId $RunId -OwnedManifest $manifest -ExpectedRemoteCommit $expected -TaskDirectory $task -LocalFixture
-if($published.status -cne 'PASS_git_ref_pushed_full_public_readback_still_required'){throw 'Local fixture publish failed.'};$checks++
-$actual=LocalGit @('--git-dir',$bare,'rev-parse','master');if($actual -cne $published.publication_commit){throw 'Local bare ref readback differs.'};$checks++
+$published=& (Join-Path $PSScriptRoot 'Publish-RepositoryRun.ps1') -RepositoryDirectory $repository -Kind model -RunId $RunId -OwnedManifest $manifest -ExpectedRemoteCommit $expected -TaskDirectory $task -LocalFixture -CommitOnly:$CommitOnly
+$expectedStatus=if($CommitOnly){'PASS_owned_commit_saved_remote_NOT_PUSHED'}else{'PASS_git_ref_pushed_full_public_readback_still_required'}
+if($published.status -cne $expectedStatus){throw 'Local fixture publish or commit-only state failed.'};$checks++
+$actual=LocalGit @('--git-dir',$bare,'rev-parse','master')
+$expectedBare=if($CommitOnly){$expected}else{$published.publication_commit}
+if($actual -cne $expectedBare){throw 'Local bare ref readback differs.'};$checks++
+if($CommitOnly){$local=LocalGit @('rev-parse','HEAD');if($local -cne $published.publication_commit -or $local -ceq $expected){throw 'Commit-only local commit was not retained.'};$checks++}
 $fixtureReceipt=@{status='PASS_local_fixture_only';checks=$checks;remote_transport='file_only';real_gpu_validation=$false;real_external_publication=$false;fixture_commit=$actual;elapsed_seconds=$watch.Elapsed.TotalSeconds}
 [IO.File]::WriteAllText((Join-Path $task 'fixture-result.json'),($fixtureReceipt|ConvertTo-Json),[Text.UTF8Encoding]::new($false));$fixtureReceipt

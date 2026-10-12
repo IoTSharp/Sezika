@@ -22,7 +22,7 @@ $needle='budget <= 1520'
 if(([regex]::Matches($guardian,[regex]::Escape($needle))).Count -ne 1){throw 'Guardian source changed; review before deriving.'}
 $guardian=$guardian.Replace($needle,'budget <= 86400')
 [IO.File]::WriteAllText((Join-Path $bundle 'guardian.sh'),$guardian.Replace("`r`n","`n"),[Text.UTF8Encoding]::new($false))
-foreach($file in @('clone-inputs.sh','pack-result.sh')){Guard;Copy-Item -LiteralPath (Join-Path $PSScriptRoot ('remote/'+$file)) -Destination (Join-Path $bundle $file)}
+foreach($file in @('clone-inputs.sh','pull-full-corpus.sh','pack-result.sh')){Guard;Copy-Item -LiteralPath (Join-Path $PSScriptRoot ('remote/'+$file)) -Destination (Join-Path $bundle $file)}
 foreach($name in @('LICENSE','NOTICE')){Guard;Copy-Item -LiteralPath (Join-Path $root $name) -Destination (Join-Path $bundle ('code-'+$name+'.txt'))}
 $sourceManifest=Join-Path $bundle 'engineering-sources.json'
 $sourcePaths=@('Directory.Build.props','src/Sezika/TokenizerJson.cs','src/Sezika/IndependentDecisionV1.cs','src/Sezika.Cuda/CudaKernels.cs','src/Sezika.Cuda/CudaFullEncoderTrainer.cs','src/Sezika.Cuda/CudaEncoderBackwardKernels.cs','src/Sezika.Kernels/EncoderBackwardKernels.cs')

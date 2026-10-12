@@ -1,20 +1,36 @@
 ---
 name: sezika-repository-training
-description: 在 Sezika 项目内准备和执行从自有数据集与模型 Git/LFS 仓库克隆、训练、验证、下载及回推的闭环；用于重新租用 GPU 或更换训练方法时的可复现任务。
+description: 在 Sezika 项目内先发布完整准入语料到私有 Git/LFS 数据仓库，再按固定提交执行全量流式 GPU 训练、断点恢复与独立验证；用于准备全量训练或更换训练实例。
 ---
 
 # 仓库驱动的 Sezika 训练
 
 当前项目工作区为 `D:\source\Sezika`。数据、模型和源码是三个独立仓库。使用 [仓库合同](references/repositories.md) 中的已验收身份，每次再核实际 ref；使用 [训练方法](references/methods.md) 判断代码已经支持什么，禁止把旧 215 题合同套在新原始数据上。
 
+## 当前默认：全量语料先入私有仓库
+
+用户要求全量时，默认消费已经转换、完成严格扫描并准入的整个 corpus，不重新转换 raw，不设置抽样上限。先将完整派生目录原字节保存到既有 private 数据仓库的 `derived/<run-id>/corpus/`，正常 Git LFS push 后，以独立新 checkout 的认证完整 byte/SHA 读回验收准确发布提交。服务器随后按该真实提交克隆，只拉取该派生入口所需 LFS；本机 tar/SFTP 全量直传不作为默认数据交付路径。数据源提交与新发布提交分别记录，不为发布改写语料内原来源身份。
+
+2026-10-12 固定输入：训练工具源码 `d925f1c51dfe172e6f5b4ccb97408a5281440bf6`（冻结工具包另核50项工程源码 SHA）；原数据来源 `d19515802d31310b4050226b51ab85c60f130d42`；模型来源 `e2e5bc97d62dfbd4e2bbd070542324bb544e6b32`。准入 corpus 位于 `C:\Users\mysti\.codex\artifacts\sezika-full-training-20261012-01a12b4c\admitted-corpus-v1`，407文件含353分片、17来源，train **14,592,720** / development **1,619,168**。这是规范记录数，属性展开不等于独立题目数；隔离及未适配来源仍保留账本，development/test/calibration/OOD 不回流训练。
+
+准备入口为 `Prepare-FullCorpusDelivery.ps1` 与真实 `CorpusRunPlan`，执行入口为 `profile-corpus` / `train-corpus` / `validate-corpus`，见[当前执行合同](references/execution.md)。`Epochs=1`，全局分母为 `TrainRecords × Epochs`；`--stage-updates` 只推进同一不可变计划、AdamW 与 global cursor，不减少分母。仅全局更新完成、各来源 EOF、完整四文件 checkpoint/cursor 与独立验收通过，才能报告全量 epoch 完成；48步或单阶段完成不能替代。
+
+先完成私有数据发布，再接续新 GPU 实例。用户已暂停租用服务器；旧北京时间2026-10-12 14:30截止已过，不能沿用。旧 d925f1c5 冻结工具只准 RTX5090/32GB/CUDA12.8。本轮新增 RTX4090 候选准入：精确设备名、CC8.9、至少30GiB、Driver>=12080及固定UUID；必须重新冻结工具，在同卡执行完整8192形状前向/反向 profile，并保存设备及profile SHA绑定的 gpu-admission.json。普通24GiB 4090不准入。福海同版本closed驱动与GSP关闭已生效，但新启动仍出现Xid62/45/158，GPU稳定性失败；不宣称4090实机支持或启动正式训练。正式训练只用项目 C# GPU 路径。当前一记录一更新，按新 profile 估算整轮和保存/读回预算；不足时提前报告需续租，未经用户新授权不购买、不缩全局数据、不把短跑称全量。限时保存最后完整四文件断点与实际覆盖/未完成状态。
+
+本轮仅授权 private 数据提交与推送，模型及公开发布未授权。下面2026-10-11的模型发布、服务器直传和历史改写授权只描述历史，不能用于本轮或未来授权。
+
 ## 准备与租机
 
 1. 读取根 `AGENTS.md`、当前 `ROADMAP.md`、dirty/index、最新数据与模型证据。保护旧实验、失败回执、用户文件和不属于本任务的改动。新计划先记 ROADMAP。
 2. 用户要求“准备好再租”时，先完成全部离线准备。旧聊天 `01a12099-57a1-7bf0-bd69-7d87e8576d61` 的服务器是历史实例，其租期已在北京时间 2026-10-10 00:22 截止；不得将旧连接信息当作新服务器默认值。本轮未取得新实例和新期限前不连接、购买或恢复旧 GPU。
-3. 执行 `tools/repository-training/New-TrainingTask.ps1`，创建新 task、固定三个 commit、记录方法、逐源许可/适配器/原始 split、预算和待验收状态。任务目录不能复用或覆盖。读取 [执行合同](references/execution.md)，完成本地小输入、真实数据转换、token 长度及发布模拟；只有离线门槛都通过才能告诉用户可租。
+3. 创建新 task，使用 `tools/repository-training/Prepare-FullCorpusDelivery.ps1` 固定完整派生语料、三个输入 commit、原始 split、许可、预算和待验收状态；另记录实际 PublishedDatasetCommit。任务目录不能复用或覆盖。读取[执行合同](references/execution.md)，核既有全量扫描/准入回执与全部文件 SHA。旧 `New-TrainingTask.ps1` / `prepare` 的最大百万条入口只用于历史单来源流程，不用于当前全量 corpus。
 4. 当前完整 encoder 反向、AdamW 和保存/恢复已有 C# 工程及 tiny GPU 数值证据；2026-10-11 RTX 5090 已通过真实 mmBERT 三步 profile，详见[本轮实机证据](../../../docs/evidence/repository-training-real-2026-10-11.md)。profile 证明完整输入形状、反向和更新可运行，不能替代固定训练、质量或发布验收。用户选择完整微调；LoRA 尚未实现。每个新计划仍需真实底座 profile，取得显存、最长序列和耗时后再准入预算。不要安装 PyTorch、ONNX Runtime、LibTorch 或训练桥接替代项目实现。
 
-## 新实例执行
+## 历史2026-10-11实例、短跑与发布合同
+
+本节至“有界执行与收口”之前均为历史合同及回执；其中“本轮”“当前”和已授权发布只指2026-10-11，实际新训练以本文当前全量入口和当轮授权为准。
+
+### 历史新实例执行
 
 - 取得本轮 SSH host/user/port/auth、可信指纹（如有）、创建时间和租期、用户目标与下载/回推预留。生成无凭据 `connection.json` / `deadline.json`，每个阶段准入覆盖全部剩余必需阶段的最坏预算。服务器只做系统、磁盘、GPU/driver/UUID/boot/现有使用者的只读预检；不结束他人进程、不 reset/reboot/更新驱动。
 - Linux 在新独立任务根克隆 **源码、数据集、模型**；先按[仓库合同](references/repositories.md)核当前visibility，本轮private数据集与maikebing private模型需授权认证；IoTSharp public模型是发布目标，训练输入仍按当轮固定合同选择。固定 checkout commit，下载真实 LFS 内容，核 `ASSET_MANIFEST.json` / 模型清单与逐文件 SHA。clone 和 fsck 不能替代实际内容 SHA。不执行数据仓库带来的 `.py` loader 或任意代码。

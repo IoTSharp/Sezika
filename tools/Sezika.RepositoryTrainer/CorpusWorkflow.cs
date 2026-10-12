@@ -153,8 +153,7 @@ internal static class CorpusWorkflow
         var device=CudaDevice.Open(0);
         try
         {
-            if(device.Info.Uuid!=GpuUuid(plan,stageGpuUuid)||device.Info.Name.IndexOf("5090",StringComparison.OrdinalIgnoreCase)<0||device.Info.TotalMemoryBytes<30UL*1024*1024*1024||device.Info.DriverVersion<12080)
-                throw new InvalidDataException("Pinned new-instance RTX5090/32GB/CUDA12.8 gate failed; local 8GB is not admitted.");
+            GpuAdmission.RequireDevice(device.Info,GpuUuid(plan,stageGpuUuid));
             return device;
         }
         catch{device.Dispose();throw;}
@@ -221,7 +220,9 @@ internal static class CorpusWorkflow
             if(longest is null)throw new InvalidDataException("Profile longest training identity absent.");
         }
         using var device=Device(p,stageGpuUuid);var baseline=device.GetMemorySnapshot();
-        if(baseline.FreeBytes<p.MaximumOwnedBytes+1024UL*1024*1024)throw new InvalidDataException("Insufficient GPU memory with1GiB reserved overhead.");
+        GpuAdmission.RequireMemory(baseline.FreeBytes,p.MaximumOwnedBytes);
+        if(profile is not null)GpuAdmission.RequireProfile(profilePath!,p,profile,device.Info,budget);
+        var profileMaximumTokens=GpuAdmission.ProfileMaximumTokens(device.Info,p.MaximumTokens,lengths.LongestTokens);
         Directory.CreateDirectory(output);double loss=0,maxStep=0;var syntheticPadded=false;string? checkpointPath=null,cursorPath=null;var bound=command=="profile-corpus"?3:initial+stageUpdates;
         using(var trainer=new CudaFullEncoderTrainer(device,model.Encoder.Config,model.Encoder.Weights,maximumOwnedBytes:p.MaximumOwnedBytes,cancellationToken:budget.Token))
         {
@@ -232,7 +233,7 @@ internal static class CorpusWorkflow
                 budget.Check();var row=command=="profile-corpus"?(step==2?longest!:first.Row):stream.Current.Row;
                 if(row.Split!="train")throw new InvalidDataException("Held-out row cannot enter reverse/update path.");
                 var item=Workflow.Sequence(model.Tokenizer,row,p.MaximumTokens,command=="train-corpus"&&step%2==1,budget);var ids=item.Sequence.TokenIds;
-                if(command=="profile-corpus"&&step==2&&ids.Length<lengths.LongestTokens){syntheticPadded=true;ids=ids.Concat(Enumerable.Repeat(model.Tokenizer.EosId,lengths.LongestTokens-ids.Length)).ToArray();}
+                if(command=="profile-corpus"&&step==2&&ids.Length<profileMaximumTokens){syntheticPadded=true;ids=ids.Concat(Enumerable.Repeat(model.Tokenizer.EosId,profileMaximumTokens-ids.Length)).ToArray();}
                 var timer=Stopwatch.StartNew();var result=trainer.Backward(ids,item.Sequence.MarkerPositions,row.Type,item.Target,600,budget.Token);
                 if(command=="profile-corpus"&&step==1)
                 {
@@ -256,7 +257,7 @@ internal static class CorpusWorkflow
                 var hasNext=stream.MoveNext();if(hasNext!=(bound<global))throw new InvalidDataException("Epoch/global trailing denominator differs.");
             }
             if(command=="profile-corpus")
-                Data.WriteNew(Data.Within(output,"profile.json"),new CorpusProfileReceipt("PASS_real_base_corpus_profile_only",p.RunId,identity,device.Info.Uuid,lengths.LongestTokens,maxStep,watch.Elapsed.TotalSeconds,device.GetMemorySnapshot().PeakOwnedBytes,syntheticPadded,false),CorpusWorkflowJson.Default.CorpusProfileReceipt);
+                Data.WriteNew(Data.Within(output,"profile.json"),new CorpusProfileReceipt("PASS_real_base_corpus_profile_only",p.RunId,identity,device.Info.Uuid,profileMaximumTokens,maxStep,watch.Elapsed.TotalSeconds,device.GetMemorySnapshot().PeakOwnedBytes,syntheticPadded,false),CorpusWorkflowJson.Default.CorpusProfileReceipt);
             else
             {
                 if(checkpointPath is null||cursorPath is null||trainer.CompletedUpdates!=bound)throw new InvalidDataException("Requested phase not fully saved.");
@@ -267,7 +268,9 @@ internal static class CorpusWorkflow
                 if(complete)Package(output,p,identity,trainer,checkpointPath,report,model.TokenizerSha256,budget);
             }
         }
-        Reclaimed(device,baseline);device.Dispose();File.WriteAllText(Data.Within(output,"resources-reclaimed.txt"),"PASS_owned_buffers_modules_restored_and_context_disposed\n",new UTF8Encoding(false));
+        Reclaimed(device,baseline);device.Dispose();
+        if(command=="profile-corpus")GpuAdmission.SaveProfileBinding(output,p,device.Info,baseline.FreeBytes,budget);
+        File.WriteAllText(Data.Within(output,"resources-reclaimed.txt"),"PASS_owned_buffers_modules_restored_and_context_disposed\n",new UTF8Encoding(false));
     }
 
     private static void Reclaimed(CudaDevice device,CudaMemorySnapshot baseline)
@@ -341,7 +344,7 @@ internal static class CorpusWorkflow
         try
         {
             using var device=Device(p,stageGpuUuid);var baseline=device.GetMemorySnapshot();
-            if(baseline.FreeBytes<p.MaximumOwnedBytes+1024UL*1024*1024)throw new InvalidDataException("Validation GPU memory bound failed.");
+            GpuAdmission.RequireMemory(baseline.FreeBytes,p.MaximumOwnedBytes);
             using(var trainer=new CudaFullEncoderTrainer(device,package.Config,weights,head,p.MaximumOwnedBytes,budget.Token))
             foreach(var queue in selected.OrderBy(k=>k.Key,StringComparer.Ordinal).Select(k=>k.Value))
             {
@@ -461,6 +464,7 @@ internal static class CorpusWorkflow
         }
         if(!deadlineRejected||disposed!=3)throw new InvalidDataException("Deadline did not dispose every owned source iterator.");checks++;
         checks+=CorpusProvenancePackage.Checks(fixture,budget);
+        checks+=GpuAdmission.Checks(budget);
         Data.WriteNew(output,new CorpusSchedulerReceipt("PASS_tiny_CPU_schedule_negative_checks_only",checks,ScheduleAlgorithm,false,false),CorpusWorkflowJson.Default.CorpusSchedulerReceipt);
         Console.WriteLine($"corpus scheduler checks={checks};GPU training=NOT_RUN;real corpus coverage=NOT_RUN");
     }

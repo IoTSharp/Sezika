@@ -2,6 +2,41 @@
 
 先读methods.md。所有Windows外部命令放在 `tools/rental-training/Invoke-BoundedProcess.ps1` 下；PowerShell7、明确秒数/取消/进度/任务PID身份。新建目录，失败目录和历史回执不覆盖。
 
+## 当前全量入口与仓库交付
+
+先在已有 private 数据仓库固定准确旧 ref，将完整已转换/准入 corpus 原407文件（353分片）保存到 `derived/<run-id>/corpus/`。保留 manifest、bindings、长度扫描、排除账本、policy、notices及全部分片的原 bytes/SHA，不重转换 raw，不规范化换行。只 stage 本任务目录及审核过的精确 LFS/`-text`属性，正常 commit/push，再以独立认证 fresh checkout 和独立 LFS 读回全部新文件 byte/SHA，记录准确 PublishedDatasetCommit。源 DatasetCommit仍为 `d19515802d31310b4050226b51ab85c60f130d42`；新发布身份另存交付绑定，不能改写原 provenance。
+
+服务器取得新授权实例/有效截止后，skip-smudge克隆准确 PublishedDatasetCommit，只对 `derived/<run-id>/corpus/` 的明确路径执行有界标准 Git LFS pull，核完整清单与实际 SHA，再将 `CorpusRoot` 指向该入口。使用 `remote/pull-full-corpus.sh pull <fresh-root> <实际发布40hex提交> <trusted-413-files.tsv> <seconds>`；trusted TSV随可信工具小输入交付，SHA固定，数据仍从仓库读取。旁车 `training-inputs/lengths.json` 是训练器必需的CorpusLengthReceipt，与 `corpus/length-scan-complete.json` 分别保存，不能混称或漏交付。原 `clone-inputs.sh` 全仓拉取及 raw `prepare` 不作为此默认路径；不要为复用旧 helper重新转换或抽样。本轮 private 数据发布已授权，模型/public发布未授权。旧租期已结束且服务器已暂停，不能复用旧期限。
+
+离线交付准备命令（由 bounded wrapper 执行；spec绑定原来源身份、已验corpus及新实例实际路径）：
+
+```powershell
+& tools/repository-training/Prepare-FullCorpusDelivery.ps1 -SpecificationPath <fixed-spec.json> -OutputDirectory <fresh-delivery> -MaximumFiles 8192 -MaximumBytes 137438953472 -MaximumSeconds 900 -CancelFile <task-cancel>
+```
+
+helper输出的 `corpus-run-plan.pending.json` 只有绑定真实新实例/profile后才成为执行计划；离线 `LocalDeliveryReady=true` 不等于 `TrainingReady=true`。计划使用 `CorpusRunPlan`，固定工具 `d925f1c51dfe172e6f5b4ccb97408a5281440bf6`（另核50项工程源码 SHA）、模型 `e2e5bc97d62dfbd4e2bbd070542324bb544e6b32`、`TrainRecords=14592720`、`Epochs=1`、`MaximumTokens=8192`；17来源及development1619168保留原隔离。所有路径/SHA、seed/超参/PTX与计划字节在执行前冻结。
+
+`PublishedDatasetCommit` 是额外的交付/读取绑定；当前准备器与 `CorpusRunPlan` 没有这个独立字段，必须另存经核验的发布清单与readback回执。spec/plan的 `DatasetCommit` 保留原来源d195身份，不能用新发布提交覆盖它或据此冒称准备器已经验证发布。服务器checkout提交与该额外交付绑定一致后，再按原 corpus身份核SHA。
+
+当前 `tools/Sezika.RepositoryTrainer/Program.cs` 的真实 CLI（Linux入口 `Sezika.RepositoryTrainer/Sezika.RepositoryTrainer`）：
+
+```text
+profile-corpus --plan <fixed-plan.json> --output <fresh-profile> --gpu-uuid <actual32hex> --timeout-seconds <bounded-seconds> --cancel-file <task-cancel>
+train-corpus --plan <same-plan.json> --profile <same-instance-profile>/profile.json --output <fresh-stage> --stage-updates <positive-updates-within-remaining-global> --gpu-uuid <actual32hex> --timeout-seconds <bounded-seconds> --cancel-file <task-cancel>
+train-corpus --plan <same-plan.json> --profile <same-instance-profile>/profile.json --resume <complete-checkpoint-directory> --output <fresh-stage> --stage-updates <positive-updates-within-remaining-global> --gpu-uuid <actual32hex> --timeout-seconds <bounded-seconds> --cancel-file <task-cancel>
+validate-corpus --plan <same-plan.json> --package <completed-global-package> --package-sha <corpus-package.json-sha> --output <fresh-validation.json> --gpu-uuid <actual32hex> --timeout-seconds <bounded-seconds> --cancel-file <task-cancel>
+```
+
+`--stage-updates` 实际范围1..800000000，且不能超过固定全局剩余更新；`--timeout-seconds`实际范围1..86400，外层必须按新租期收窄并预留保存/下载/验收。阶段只推进同一plan及AdamW/global cursor，不能把48步或百万条上限称全量。新GPU重新profile，跨实例显式`--gpu-uuid`且不改原plan；旧d925f1c5工具只准RTX5090/至少30GiB/CUDA Driver>=12080。本轮候选工具另允许精确RTX4090/CC8.9/至少30GiB/Driver>=12080，仍要求UUID与当轮完整8192形状profile，并以gpu-admission.json绑定设备名、CC、driver、总/空闲显存、owned上限及profile SHA；重新冻结源码和工具后才可测试，福海稳定性失败、完整前反向NOT_RUN。禁止绕过门槛或CPU正式训练。
+
+完整checkpoint四文件为 `weights.safetensors`、`moments.safetensors`、`checkpoint.json`、`corpus-cursor.json`，最后cursor是完成标记；缺任一文件或SHA/plan/global cursor不符均不可恢复。全量完成需global14592720、所有来源EOF、`FullCorpusEpochCoverage=true`和最终完整checkpoint；阶段成功保留实际覆盖与未完成状态。`validate-corpus`只接受全局完成包并做独立子集GPU前向，不是全量测试/质量通过。
+
+整轮保守更新保存估算用新实测 `4 × MaximumStepSeconds × 剩余全局更新 + 600 + 120 × 保存次数`，另预算GPU验证和完整保存读回。不足时提前向用户报续租需求，不自行购买、降低全局分母或沿用已过期14:30期限；限时先保存完整断点并报告剩余数据。GPU并发1，进程/临时路径归属、guardian、取消、进度与原FAIL保留规则继续适用。
+
+## 历史2026-10-11执行合同
+
+以下所有“本轮/当前”的实例、17615/48步、三文件checkpoint与发布授权仅为历史记录；当前全量默认及权限以本文件上方为准。`New-TrainingTask.ps1` / `prepare --max-records`（最多百万条）、旧 `profile/train/validate` 及215题合同不能替代当前完整corpus入口。
+
 ## 准备入口
 
 ```powershell

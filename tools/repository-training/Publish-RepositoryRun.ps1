@@ -8,6 +8,7 @@ param(
     [ValidatePattern('^[A-Za-z0-9][A-Za-z0-9/_-]{0,100}$')][string]$Branch = 'master',
     [ValidateRange(30,1800)][int]$TimeoutSeconds = 900,
     [switch]$PreviewOnly,
+    [switch]$CommitOnly,
     [switch]$LocalFixture
 )
 Set-StrictMode -Version Latest
@@ -35,7 +36,7 @@ function CheckPath([string]$Path){
     throw 'Publication path ancestry bound64.'
 }
 function Git([string]$Label, [string[]]$Arguments) {
-    Check; $script:calls++; if ($script:calls -gt 24) { throw 'Git call limit 24.' }
+    Check; $script:calls++; if ($script:calls -gt 128) { throw 'Git call limit128.' }
     $remaining = [int][Math]::Floor($TimeoutSeconds - $watch.Elapsed.TotalSeconds)
     if ($remaining -lt 5) { throw 'Insufficient time for another Git command.' }
     $prefix = @('-C',$repository,'-c','lfs.standalonetransferagent=','-c','lfs.basictransfersonly=true','-c','lfs.concurrenttransfers=1','-c','lfs.transfer.maxretries=0','-c','lfs.dialtimeout=15','-c','lfs.activitytimeout=90','-c','http.lowSpeedLimit=1024','-c','http.lowSpeedTime=45')
@@ -51,6 +52,16 @@ function Git([string]$Label, [string[]]$Arguments) {
     if ($observed.Status -cne 'Succeeded' -or $observed.ExitCode -ne 0) { throw 'Git or task cleanup failed; preserve receipt and reconcile before retry.' }
     return [IO.File]::ReadAllText($observed.StdoutPath).Trim()
 }
+function GitPaths([string]$Label,[string[]]$Arguments,[string[]]$SelectedPaths){
+    if($SelectedPaths.Count -lt 1 -or $SelectedPaths.Count -gt 1001){throw 'Path batch requires1..1001 owned paths.'}
+    $outputs=[Collections.Generic.List[string]]::new()
+    for($offset=0;$offset -lt $SelectedPaths.Count;$offset+=32){
+        Check
+        $batch=@($SelectedPaths|Select-Object -Skip $offset -First 32)
+        $outputs.Add((Git ($Label+'-batch-'+[int]($offset/32)) (@($Arguments)+@('--')+$batch)))
+    }
+    return ($outputs -join "`n")
+}
 function RemoteRef([string]$Label){
     try {return Git $Label @('ls-remote','--heads','origin',('refs/heads/'+$Branch))}
     catch {
@@ -59,7 +70,7 @@ function RemoteRef([string]$Label){
         Check;return Git ($Label+'-proxy-once') @('-c','http.proxy=http://127.0.0.1:7890','ls-remote','--heads','origin',('refs/heads/'+$Branch))
     }
 }
-$result = [ordered]@{schema_version=1;run_id=$RunId;kind=$Kind;status='FAILED_or_pending';preview_only=[bool]$PreviewOnly;expected_remote_commit=$ExpectedRemoteCommit;publication_commit=$null;public_content_readback='NOT_RUN';calls=0;receipts=$null}
+$result = [ordered]@{schema_version=1;run_id=$RunId;kind=$Kind;status='FAILED_or_pending';preview_only=[bool]$PreviewOnly;commit_only=[bool]$CommitOnly;expected_remote_commit=$ExpectedRemoteCommit;publication_commit=$null;public_content_readback='NOT_RUN';calls=0;receipts=$null}
 $receiptPath=Join-Path $task ('publication-'+$Kind+'-'+[Guid]::NewGuid().ToString('N').Substring(0,8)+'.json')
 function Snapshot { $result.calls=$calls;$result.receipts=$receipts.ToArray();$result.elapsed_seconds=$watch.Elapsed.TotalSeconds;return [pscustomobject]$result }
 try {
@@ -77,7 +88,7 @@ try {
     $prefix = if ($Kind -eq 'model') {'runs/'+$RunId+'/'} else {'derived/'+$RunId+'/'}
     foreach ($file in $files) {
         Check; $path=[string]$file.path
-        if ($path -cnotmatch '^[A-Za-z0-9_.\/-]+$' -or $path.Contains('..') -or -not $path.StartsWith($prefix,[StringComparison]::Ordinal) -or -not $seen.Add($path)) { throw 'Only unique task-owned run paths are publishable.' }
+        if ($path.Length -gt 512 -or $path -cnotmatch '^[A-Za-z0-9_.\/-]+$' -or $path.Contains('..') -or -not $path.StartsWith($prefix,[StringComparison]::Ordinal) -or -not $seen.Add($path)) { throw 'Only unique bounded task-owned run paths are publishable.' }
         $actual=[IO.Path]::GetFullPath((Join-Path $repository $path))
         if (-not $actual.StartsWith($repository+[IO.Path]::DirectorySeparatorChar,[StringComparison]::OrdinalIgnoreCase)) { throw 'Owned path escaped repository.' }
         CheckPath $actual;$item=Get-Item -LiteralPath $actual
@@ -85,7 +96,7 @@ try {
         $paths.Add($path)
     }
     # New large files must already be covered by the repo's established LFS rules.
-    $attributes = Git 'lfs-rules' @(@('check-attr','filter','--')+$paths.ToArray())
+    $attributes = GitPaths 'lfs-rules' @('check-attr','filter') $paths.ToArray()
     $attributeBytes=$null
     if($manifest.PSObject.Properties.Name -contains 'attribute_change' -and $null -ne $manifest.attribute_change){
         $change=$manifest.attribute_change;$attributePath=Join-Path $repository '.gitattributes'
@@ -109,13 +120,14 @@ try {
     [void](Git 'ancestor' @('merge-base','--is-ancestor',$ExpectedRemoteCommit,'HEAD'))
     $localHead=Git 'local-base' @('rev-parse','HEAD');if($localHead -cne $ExpectedRemoteCommit){throw 'Publication checkout must start at the observed remote commit, without unrelated local commits.'}
     if($null -ne $attributeBytes){[IO.File]::WriteAllBytes((Join-Path $repository '.gitattributes'),$attributeBytes);$paths.Add('.gitattributes')}
-    [void](Git 'stage' @(@('add','--')+$paths.ToArray()))
+    [void](GitPaths 'stage' @('add') $paths.ToArray())
     $owned=Git 'staged-owned' @('diff','--cached','--name-only')
     if (-not $owned) { $result.status='NO_CHANGES_no_commit_no_push'; return Snapshot }
     if (@($owned -split "`n" | Where-Object { $_.TrimEnd("`r") -notin $paths }).Count -gt 0) { throw 'Index contains a path outside this manifest.' }
-    [void](Git 'staged-check' @('diff','--cached','--check'))
+    [void](GitPaths 'staged-check' @('-c','core.whitespace=cr-at-eol','diff','--cached','--check') $paths.ToArray())
     [void](Git 'commit' @('commit','-m',('training: save '+$Kind+' run '+$RunId)))
     $commit=Git 'commit-id' @('rev-parse','HEAD'); $result.publication_commit=$commit
+    if($CommitOnly){$result.status='PASS_owned_commit_saved_remote_NOT_PUSHED';return Snapshot}
     [void](Git 'push' @('push','--porcelain','origin',($commit+':refs/heads/'+$Branch)))
     $after=RemoteRef 'remote-after'
     if ($after -cnotmatch '^([a-f0-9]{40})\s+refs/heads/' -or $Matches[1] -cne $commit) { throw 'Remote commit was not confirmed; read-only reconciliation required.' }
