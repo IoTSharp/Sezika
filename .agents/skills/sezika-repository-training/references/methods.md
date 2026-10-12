@@ -2,7 +2,7 @@
 
 ## 当前全量 corpus 方法
 
-默认 repository-first：既有转换/准入 corpus 的407文件（353分片）按原 bytes/SHA 保存到 private dataset 的 `derived/<run-id>/corpus/`；正常 Git LFS push 与独立认证 fresh 完整读回通过后，服务器按真实 PublishedDatasetCommit 拉取派生入口，不重转换 raw。原来源 DatasetCommit `d19515802d31310b4050226b51ab85c60f130d42` 与新发布提交分别绑定。工具固定 `d925f1c51dfe172e6f5b4ccb97408a5281440bf6`，模型固定 `e2e5bc97d62dfbd4e2bbd070542324bb544e6b32`，新训练仍从底座 encoder 加零 head 开始。
+默认 repository-first：既有转换/准入 corpus 的407文件（353分片）按原 bytes/SHA 保存到 private dataset 的 `derived/<run-id>/corpus/`；正常 Git LFS push 与独立认证 fresh 完整读回通过后，服务器按真实 PublishedDatasetCommit 拉取派生入口，不重转换 raw。原来源 DatasetCommit `d19515802d31310b4050226b51ab85c60f130d42` 与新发布提交分别绑定。仓库拉取接续工具固定 `3461fc0dae689d4d471654af5d85b9850d0908a4`（51工程源码、399工具文件SHA、Ubuntu68项调度检查通过；旧d925仅历史），模型固定 `e2e5bc97d62dfbd4e2bbd070542324bb544e6b32`，新训练仍从底座 encoder 加零 head 开始。
 
 使用真实 `CorpusRunPlan`：17来源，`TrainRecords=14592720`、`Epochs=1`，development=1619168。全局更新数 `TrainRecords × Epochs`，一训练记录一更新；按 `source_round_robin_v1` 流式消费 train，不过采样、不把 development/test/calibration/OOD 纳入更新。固定 seed、manifest/bindings/length-report SHA、输入 commit 与 PTX。`--stage-updates` 仅限定这次阶段的增量，恢复相同 plan 与 optimizer/global cursor，禁止改分母以适应租期。
 

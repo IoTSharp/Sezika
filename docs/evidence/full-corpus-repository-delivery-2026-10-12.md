@@ -14,9 +14,9 @@
 
 最终数据提交 **`5e180c4136f8dd72cb5f37cb8673bddcbe9bc7f5`** 已正常Git/LFS推送，并独立核对master。总413文件、**2,623,103,071bytes**；原始树除本次派生目录和精确`.gitattributes`追加外没有改变。所有运输保持private，未改变可见性、改写历史或发布模型。
 
-354个本次LFS对象、2,616,236,586bytes分20个有界单并发批次上传；原第3批DNS失败先做只读download-batch reconcile，核1已登记/9缺失后仅恢复缺失对象。标准Git push的pre-push还核到4个历史LFS对象，因此最终hook输出358对象；不能把该数字当本次新文件分母。旧失败及启动观察UNKNOWN不改写。
+原20批计划覆盖354个LFS对象、2,616,236,586bytes；标准pre-push另外上传4个本次组件排除账本对象，共4,342,927bytes。因此本次派生目录实际为358个LFS对象、2,620,579,513bytes；另一个空排除账本为普通零字节Git文件。此前把额外4个称为历史对象的判断已纠正。原第3批DNS失败先做只读reconcile，核1已登记/9缺失后仅恢复缺失对象；旧失败及启动观察UNKNOWN不改写。
 
-发布前独立进程逐413文件、大小/SHA及目录集合验证通过。**独立远端fresh认证下载/空LFS缓存的完整读回进行中，尚未置发布完整验收PASS。** 已核fresh准确HEAD、新派生前缀稀疏checkout、无共享LFS存储及旧树不变。第一次LFS pull已fetch但因本地未安装filter跳过checkout；随后在该fresh库安装标准local LFS filter并从已fetch缓存materialize，没有重传。第2批运输通过后的汇总字段名错误保留为FAIL，后续从第3批继续。
+发布前独立进程逐413文件、大小/SHA及目录集合验证通过。**独立远端fresh认证下载/空LFS缓存的完整413文件大小/SHA与目录集合读回已通过，private数据发布验收PASS。** 已核fresh准确HEAD、新派生前缀稀疏checkout、无共享LFS存储及旧树不变。第一次LFS pull已fetch但因本地未安装filter跳过checkout；随后在该fresh库安装标准local LFS filter并从已fetch缓存materialize，没有重传。第2批运输通过后的汇总字段名错误保留为FAIL，后续从第3批继续。全SHA校验真实拦住4个遗漏的组件LFS指针，随后完整前缀pull补齐；Windows新目录中的262字符notice路径需扩展路径访问，原普通路径FAIL保留，独立微测确认文件真实存在。最终413实际bytes/SHA全通过。20批内部guardian库存均闭合；长编排外层64身份上限产生的原CleanupFailed/UNKNOWN1保留，独立定向核219条记录/151个PID，当前无同身份本任务进程，未按PID或名称终止外部进程。
 
 ## 服务器拉取与训练工具
 
@@ -26,7 +26,7 @@
 
 发布器新增`CommitOnly`、每32路径一批与最多128 Git调用，解决Windows argv上限；原CRLF和来源notice空白按精确路径保真，其余生成文件仍严格检查。已有6项CommitOnly/7项来源空白fixture及410文件preview通过。
 
-新增C# RTX4090候选门槛：精确`NVIDIA GeForce RTX 4090`、CC8.9、至少30GiB、CUDA Driver>=12080和固定UUID；普通24GiB卡不准入。保持旧5090路径。4090须重新在当轮实卡从固定底座/零head执行8192形状前反向profile，保存`gpu-admission.json`绑定profile SHA、设备/driver/架构/显存、空闲显存与owned上限；profile和资源收回未通过不能训练。Release零警告/错误、68项调度检查（22项新门槛）通过，实机前向/反向/稳定性均 **NOT_RUN**。新执行不能复用旧d925工具包，需重新冻结源码与工程清单。
+新增C# RTX4090候选门槛：精确`NVIDIA GeForce RTX 4090`、CC8.9、至少30GiB、CUDA Driver>=12080和固定UUID；普通24GiB卡不准入。保持旧5090路径。4090须重新在当轮实卡从固定底座/零head执行8192形状前反向profile，保存`gpu-admission.json`绑定profile SHA、设备/driver/架构/显存、空闲显存与owned上限；profile和资源收回未通过不能训练。Release零警告/错误、68项调度检查（22项新门槛）通过，实机前向/反向/稳定性均 **NOT_RUN**。新执行不能复用旧d925工具包。本轮已冻结工具源码 `3461fc0dae689d4d471654af5d85b9850d0908a4`，51项工程源码、399包内文件；工具清单SHA `d8829827755ea1b4bd93d02e8b2c1a5cc2bea7f1a21c8ed7651f6e0b816de5d4`，独立Ubuntu读全部399文件SHA并执行同包68项CPU调度检查通过。额外生成新的pending plan绑定3461，实例路径/UUID仍null；数据仓库的旧冻结计划快照不改写。
 
 ## 福海已授权规避测试
 
@@ -38,7 +38,7 @@ UTC12:56:30发出本规避测试唯一正常重启，约11分钟后SSH恢复；�
 
 ## 继续门槛
 
-完成独立远端完整字节读回后，数据发布才可完整验收。福海需要另行停机冷启动/供电PCIe检查或健康GPU交叉验证；未获得新增重启范围前不扩大维护。健康GPU重新核实例、驱动、容量与当轮profile后，才能按同一全量cursor进行训练。
+独立远端完整字节读回已完成，数据发布通过；服务器精确提交拉取正在另行准备，GPU状态不影响该CPU/网络交付。福海需要另行停机冷启动/供电PCIe检查或健康GPU交叉验证；未获得新增重启范围前不扩大维护。健康GPU重新核实例、驱动、容量与当轮profile后，才能按同一全量cursor进行训练。
 
 当前训练器一记录一更新，整轮固定14,592,720次。仅举计算下限情景：即使0.1秒/条，也约16.89天；实际时间必须由新实卡profile确认，还需检查点和独立验证预算。不能承诺几小时完成、静默缩分母、用48步称全量或以全部数据训练推导准确率提升。
 

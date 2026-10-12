@@ -14,7 +14,7 @@
 & tools/repository-training/Prepare-FullCorpusDelivery.ps1 -SpecificationPath <fixed-spec.json> -OutputDirectory <fresh-delivery> -MaximumFiles 8192 -MaximumBytes 137438953472 -MaximumSeconds 900 -CancelFile <task-cancel>
 ```
 
-helper输出的 `corpus-run-plan.pending.json` 只有绑定真实新实例/profile后才成为执行计划；离线 `LocalDeliveryReady=true` 不等于 `TrainingReady=true`。计划使用 `CorpusRunPlan`，固定工具 `d925f1c51dfe172e6f5b4ccb97408a5281440bf6`（另核50项工程源码 SHA）、模型 `e2e5bc97d62dfbd4e2bbd070542324bb544e6b32`、`TrainRecords=14592720`、`Epochs=1`、`MaximumTokens=8192`；17来源及development1619168保留原隔离。所有路径/SHA、seed/超参/PTX与计划字节在执行前冻结。
+helper输出的 `corpus-run-plan.pending.json` 只有绑定真实新实例/profile后才成为执行计划；离线 `LocalDeliveryReady=true` 不等于 `TrainingReady=true`。计划使用 `CorpusRunPlan`，本轮接续工具固定 `3461fc0dae689d4d471654af5d85b9850d0908a4`（51工程源码、399工具文件SHA及Ubuntu68项调度检查通过；旧d925工具仅历史）、模型 `e2e5bc97d62dfbd4e2bbd070542324bb544e6b32`、`TrainRecords=14592720`、`Epochs=1`、`MaximumTokens=8192`；17来源及development1619168保留原隔离。所有路径/SHA、seed/超参/PTX与计划字节在执行前冻结。
 
 `PublishedDatasetCommit` 是额外的交付/读取绑定；当前准备器与 `CorpusRunPlan` 没有这个独立字段，必须另存经核验的发布清单与readback回执。spec/plan的 `DatasetCommit` 保留原来源d195身份，不能用新发布提交覆盖它或据此冒称准备器已经验证发布。服务器checkout提交与该额外交付绑定一致后，再按原 corpus身份核SHA。
 
