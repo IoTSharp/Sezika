@@ -5,6 +5,9 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using DuckDB.NET.Data;
 
+if (args.Length > 0 && args[0] == "corpus")
+    return Sezika.DatasetTool.CorpusCommand.Run(args);
+
 if (args.Length > 0 && args[0] == "audit-splits")
     return await SplitAuditCommand.RunAsync(args);
 if (args.Length > 0 && args[0] == "export-json")

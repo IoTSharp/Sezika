@@ -21,6 +21,7 @@ internal static class ToolingCommand
             Console.WriteLine("Sezika.Tooling archive extract --archive <tar> --sha256 <hex> --destination <new-directory> --output <new-json> [--timeout-seconds 1..1800] [--cancel-file <path>]");
             Console.WriteLine("Sezika.Tooling inventory freeze --inventory <baseline-csv> --output <new-json> [--timeout-seconds 1..90]");
             Console.WriteLine("Sezika.Tooling process run --request <execution-json> --output <new-json> [--timeout-seconds 1..1800] [--cancel-file <path>]");
+            Console.WriteLine("Migration commands: " + string.Join(", ", MigrationCommands.Commands) + "; --request <typed-json> --output <new-json> [--timeout-seconds 1..1800] [--cancel-file <path>]");
             Console.WriteLine("C#/.NET 10. Audit is read-only. Extraction preserves partial output on failure; files.sha256 is mandatory. Process execution requires explicit bounded native targets.");
             return 0;
         }
@@ -41,6 +42,7 @@ internal static class ToolingCommand
                 "archive extract" => ["--archive", "--sha256", "--destination", "--output", "--timeout-seconds", "--cancel-file"],
                 "inventory freeze" => ["--inventory", "--output", "--timeout-seconds", "--cancel-file"],
                 "process run" => ["--request", "--output", "--timeout-seconds", "--cancel-file"],
+                _ when MigrationCommands.Commands.Contains(command, StringComparer.Ordinal) => ["--request", "--output", "--timeout-seconds", "--cancel-file"],
                 _ => throw new ArgumentException("Unknown command. Use --help.")
             };
             var options = new Dictionary<string, List<string>>(StringComparer.Ordinal);
@@ -63,6 +65,13 @@ internal static class ToolingCommand
             if (Path.Exists(output)) throw new IOException("Output already exists; preserve it.");
             if (!Directory.Exists(Path.GetDirectoryName(output))) throw new DirectoryNotFoundException("Output parent must already exist.");
             outputAvailable = true;
+            if (MigrationCommands.Commands.Contains(command, StringComparer.Ordinal))
+            {
+                var exit = MigrationCommands.Run(command, Required("--request"), output, budget, cancellation.Token);
+                outputAvailable = false;
+                Console.WriteLine($"command={command}; exit={exit}; receipt={output}");
+                return exit;
+            }
             if (command == "process run")
             {
                 var requestPath = Path.GetFullPath(Required("--request"));
