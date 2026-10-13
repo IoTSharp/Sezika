@@ -12,6 +12,7 @@ internal static class ToolingCommand
         {
             Console.WriteLine("Sezika.Tooling process audit --log-directory <path> [--log-directory <path>] --output <new-json> [--timeout-seconds 1..90] [--cancel-file <path>]");
             Console.WriteLine("Sezika.Tooling archive extract --archive <tar> --sha256 <hex> --destination <new-directory> --output <new-json> [--timeout-seconds 1..1800] [--cancel-file <path>]");
+            Console.WriteLine("Sezika.Tooling inventory freeze --inventory <baseline-csv> --output <new-json> [--timeout-seconds 1..90]");
             Console.WriteLine("C#/.NET 10; no subprocesses. Audit is read-only. Extraction preserves partial output on failure; files.sha256 is mandatory.");
             return 0;
         }
@@ -30,6 +31,7 @@ internal static class ToolingCommand
             {
                 "process audit" => ["--log-directory", "--output", "--timeout-seconds", "--cancel-file"],
                 "archive extract" => ["--archive", "--sha256", "--destination", "--output", "--timeout-seconds", "--cancel-file"],
+                "inventory freeze" => ["--inventory", "--output", "--timeout-seconds", "--cancel-file"],
                 _ => throw new ArgumentException("Unknown command. Use --help.")
             };
             var options = new Dictionary<string, List<string>>(StringComparer.Ordinal);
@@ -42,8 +44,8 @@ internal static class ToolingCommand
             }
             string Required(string name) => options.TryGetValue(name, out var list) ? list[0] : throw new ArgumentException($"Missing {name}.");
             string? Optional(string name) => options.TryGetValue(name, out var list) ? list[0] : null;
-            var maximum = command == "process audit" ? 90 : 1800;
-            var seconds = Optional("--timeout-seconds") is { } raw ? int.Parse(raw, System.Globalization.CultureInfo.InvariantCulture) : maximum;
+            var maximum = command is "process audit" or "inventory freeze" ? 90 : 1800;
+            var seconds = Optional("--timeout-seconds") is { } raw ? int.Parse(raw, System.Globalization.CultureInfo.InvariantCulture) : Math.Min(maximum, 1800);
             if (seconds < 1 || seconds > maximum) throw new ArgumentOutOfRangeException(nameof(seconds));
             cancellation.CancelAfter(TimeSpan.FromSeconds(seconds));
             var budget = new Budget(seconds, Optional("--cancel-file"), cancellation.Token);
@@ -52,6 +54,14 @@ internal static class ToolingCommand
             if (Path.Exists(output)) throw new IOException("Output already exists; preserve it.");
             if (!Directory.Exists(Path.GetDirectoryName(output))) throw new DirectoryNotFoundException("Output parent must already exist.");
             outputAvailable = true;
+            if (command == "inventory freeze")
+            {
+                var inventory = InventoryOperations.Freeze(Required("--inventory"), budget);
+                Write(output, inventory, InventoryJsonContext.Default.MigrationInventory);
+                outputAvailable = false;
+                Console.WriteLine($"{inventory.Status}; entries={inventory.Entries}; receipt={output}");
+                return 0;
+            }
             if (command == "process audit")
             {
                 _ = Required("--log-directory");

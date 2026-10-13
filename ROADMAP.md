@@ -12,7 +12,7 @@
 
 | 顺序 / 编号 | 状态 | 如何修改 / 对应旧入口 | 完成标准 |
 | --- | --- | --- | --- |
-| T0 | ✅ 范围评估；⏳ 分类冻结 | 根据 282 个 tracked 脚本及 ignored/共享依赖清单，把长期能力归入下列工作包；一次性修补退役，保留证据 | 每个当前入口有迁移或退役归属；禁止新增长期 PS/Bash/Python 代码 |
+| T0 | ✅ 范围评估与分类冻结 | 466条基线全部分配工作包及迁移/证据保留处置；C# 校验严格 CSV、唯一路径、身份和分母 | [冻结分类](docs/evidence/tooling-migration-classification-2026-10-13.json)、[检查证据](docs/evidence/tooling-migration-t0-2026-10-13.md)。分类通过不代表实现或旧调用者已退役 |
 | T1a | ✅ 首批实现与本机检查；⏳ 旧调用者切换 | 已新增 `Sezika.Tooling` 的 `process audit` / `archive extract`，对应两个旧 PS 工具；source-generated JSON、静态系统 API、预算/取消/新回执 | Windows 与 Ubuntu WSL 各32项 PASS；Windows AOT 两命令实际运行 PASS。[证据](docs/evidence/tooling-csharp-migration-2026-10-13.md)；旧执行器/完整服务器流程未替换 |
 | T1b | ⏳ | 统一旧 guardian：Windows 任务归属容器、Linux 进程身份/父链与回收，记录完整 argv、启动身份、超时、STOP/CANCEL；不使用 `pwsh/bash/python` 包装 | 成功/失败/超时/取消/父进程先退场及子树回收检查通过，再替换旧执行器；T1a 的只读审计不代替执行器 |
 | T2 | ⏳ | C# SSH/SFTP 与 Credential Manager 静态绑定；替换 `Invoke-Ssh.ps1`、`ssh_bridge*.py`、askpass、生成的 Git helper；受控原生 Git/LFS 调用 | 主机键、host/path 范围、stdin 凭据、断线和资源回收通过；helper/hook 不暗用 shell |

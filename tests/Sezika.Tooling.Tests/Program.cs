@@ -5,13 +5,22 @@ using System.Text;
 using System.Text.Json;
 using Sezika.Tooling;
 
-if (args.Length != 4 || args[0] != "--output" || args[2] != "--maximum-checks" || !int.TryParse(args[3], out var maximumChecks) || maximumChecks is < 1 or > 64)
-    throw new ArgumentException("--output <new-owned-directory> --maximum-checks 1..64");
+if (args.Length is not (4 or 6) || args[0] != "--output" || args[2] != "--maximum-checks" || !int.TryParse(args[3], out var maximumChecks) || maximumChecks is < 1 or > 256 || (args.Length == 6 && args[4] != "--suite"))
+    throw new ArgumentException("--output <new-owned-directory> --maximum-checks 1..256 [--suite baseline|inventory|all]");
+var suite = args.Length == 6 ? args[5] : "baseline";
+if (suite is not ("baseline" or "inventory" or "all")) throw new ArgumentException("Unknown suite.");
+var runSuite = suite is "baseline" or "all";
 using var cancel = new CancellationTokenSource(TimeSpan.FromSeconds(45));
 StartupGate.Wait(cancel.Token);
 var root = Path.GetFullPath(args[1]);
 if (Path.Exists(root)) throw new IOException("Test output exists; preserve evidence.");
 Directory.CreateDirectory(root);
+var testIdentity = ProcessObserver.Observe(Environment.ProcessId);
+if (testIdentity.State != "Present" || string.IsNullOrEmpty(testIdentity.CommandLine)) throw new InvalidOperationException("Test launcher identity unavailable.");
+File.WriteAllText(Path.Combine(root, "test-process.result.json"), JsonSerializer.Serialize(new LegacyReceipt
+{
+    Processes = [new ProcessRecord { Pid = testIdentity.Pid, Started = testIdentity.Started, ParentPid = testIdentity.ParentPid, CommandLine = testIdentity.CommandLine, Platform = testIdentity.Platform, StartTicks = testIdentity.StartTicks, BootId = testIdentity.BootId }]
+}, ToolingJsonContext.Default.LegacyReceipt));
 var watch = Stopwatch.StartNew();
 var checks = 0;
 var names = new List<string>();
@@ -20,6 +29,7 @@ Budget Budget() => new(30, null, cancel.Token);
 void Test(string name, Action action)
 {
     if (checks >= maximumChecks) return;
+    if (!runSuite) return;
     if (watch.Elapsed.TotalSeconds >= 40) throw new TimeoutException("Check suite deadline40s.");
     cancel.Token.ThrowIfCancellationRequested();
     action();
@@ -169,6 +179,8 @@ Test("CLI argument validation and fresh failure receipt", () =>
     Check(ToolingCommand.Run(["process", "audit", "--log-directory", root, "--output", output]) == 1 && File.ReadAllBytes(output).SequenceEqual(before), "Existing receipt overwritten.");
 });
 
+runSuite = suite is "inventory" or "all";
+InventoryChecks.Run(root, Test);
 if (checks == 0) throw new InvalidOperationException("No checks ran.");
 File.WriteAllLines(Path.Combine(root, "checks.txt"), names.Append($"PASS checks={checks}; elapsed={watch.Elapsed.TotalSeconds:F3}s; platform={Environment.OSVersion}; native_aot={!System.Runtime.CompilerServices.RuntimeFeature.IsDynamicCodeSupported}"));
-Console.WriteLine($"PASS {checks} checks; seconds={watch.Elapsed.TotalSeconds:F3}; no process was created or terminated by this suite; fixtures preserved at {root}");
+Console.WriteLine($"PASS {checks} checks; suite={suite}; seconds={watch.Elapsed.TotalSeconds:F3}; fixtures preserved at {root}");

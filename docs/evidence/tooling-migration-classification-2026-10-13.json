@@ -1,0 +1,3740 @@
+{
+  "Status": "PASS_classification_only",
+  "SourceSha256": "ec3703ae4d0f8ec285124826b0fc9a7a3f25284cf509f2b0e66205dbd7bfd568",
+  "Entries": 466,
+  "Tracked": 282,
+  "IgnoredSamples": 174,
+  "ExternalDependencies": 5,
+  "UserEvidence": 5,
+  "Assignments": [
+    {
+      "Path": "datasets/teacher-general-v1/Build-Pilot.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "datasets/teacher-general-v2-review/Build-Review.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "datasets/teacher-general-v2/Build-PromptV2.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/gpu-learnability-20261008/windows-closure-checker.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/gpu-training-aot-linux-2026-10-08/Invoke-LinuxBoundary.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/gpu-training-aot-linux-2026-10-08/bounded-linux.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/independent-aot-linux-2026-10-08/Invoke-LinuxBoundary.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/independent-aot-linux-2026-10-08/bounded-linux.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/input-aot-2026-09-26/scripts/audit-linux-processes.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/input-aot-2026-09-26/scripts/audit-processes.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/input-aot-2026-09-26/scripts/collect-evidence.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/input-aot-2026-09-26/scripts/linux-process.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/input-aot-2026-09-26/scripts/run-capture.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/label-audit-20261008-final/Build-LabelAuditReport.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/label-audit-20261008-final/Invoke-LabelAuditBatch.max-v1.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/label-audit-20261008-final/Invoke-LabelAuditBatch.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/label-audit-20261008-final/Invoke-LabelAuditBatch.ultra-v1.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/label-audit-20261008-final/Test-AuditProcessClosure.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/label-audit-20261008-final/Test-LabelAuditPayload.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-closure/Close-ResumeProcesses.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/Archive-Engineering.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/Build-Helpers.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/Clean-CompilerTemps.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/Close-LocalProcesses.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/Invoke-BoundedProcess.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/Invoke-Ssh.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/Prepare-Inputs.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/Prepare-Transfer.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/Publish-Linux.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/Run-CompleteLengths.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/Run-Prechecks.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/audit-data-validation.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/audit-git-bytes.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/remote/Invoke-BoundedLinux.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/remote/bootstrap.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/remote/capacity.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/remote/final-evidence.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/remote/final-status.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/remote/phase-common.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/remote/preflight.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/remote/regress.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/remote/runner-probe.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/remote/train.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/repaired-training-20261009-engineering/remote/validate.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/s346-continuation-2026-09-26/Archive-Evidence.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/s346-continuation-2026-09-26/Invoke-ProfileRun.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/s346-continuation-2026-09-26/Verify-Results.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/s5-profile-2026-09-26/aot-gates-final/check-aot-gates.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/s5-profile-2026-09-26/run-cuda-profile.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/teacher-expansion-20261009-complete/Build-ExpansionPackage.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/teacher-expansion-20261009-complete/Finalize-TeacherLedger.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/teacher-expansion-20261009-complete/Invoke-OwnedApiProcess.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/teacher-expansion-20261009-complete/Invoke-TeacherBatch.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/teacher-expansion-20261009-complete/Prepare-ReviewRepairs.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/teacher-expansion-20261009-complete/Send-TeacherDirect.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/teacher-expansion-20261009-complete/Summarize-TeacherReviews.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/teacher-expansion-20261009-complete/Test-LabelAuditPayload.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/teacher-repair-20261009-final/Archive-RepairEvidence.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/teacher-repair-20261009-final/Build-HttpLedger.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/teacher-repair-20261009-final/Build-RepairedPackage.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/teacher-repair-20261009-final/Close-RepairProcesses.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/teacher-repair-20261009-final/Invoke-OwnedApiProcess.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/teacher-repair-20261009-final/Invoke-TeacherBatch.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/teacher-repair-20261009-final/Prepare-Jobs.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/teacher-repair-20261009-final/Send-TeacherDirect.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/teacher-repair-20261009-final/Test-LabelAuditPayload.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/teacher-repair-20261009-final/Test-RepairPayload.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/teacher-repair-20261009-final/Verify-Package.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/Apply-BoundaryRevision.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/Apply-PublicationFix.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/Archive-Evidence-v1.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/Archive-Evidence-v2.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/Archive-Evidence-v3.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/Archive-Evidence.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/Build-Check.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/Close-CompilerTemp.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/Close-Local.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/Inspect-Closure-v1.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/Inspect-Closure.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/Invoke-BoundedProcess.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/Invoke-Ssh.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/Prepare-Transfer.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/Publish-Linux.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/Publish-PublicationFix.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/Run-Remote.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/Verify-Results.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/closure/Complete-Evidence-Index.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/closure/Inspect-Closure-Final.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/closure/Probe-Tcp-Final.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/closure/Seal-Closure.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/closure/remote/reboot-observe-final.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/phase-common-before-budget-record.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/phase-common-before-publication-fix.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/phase-common-before-uuid-revision.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/postreboot/Commit-Evidence-Final.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/postreboot/Download-PostrebootEvidence-v2.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/postreboot/Download-PostrebootEvidence.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/postreboot/Finalize-PostReboot.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/postreboot/Inspect-Closure-PostCommit.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/postreboot/postreboot-retrieved/.artifacts/stage-postreboot-diagnosis/diagnose.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/postreboot/remote/pack-postreboot-diagnosis.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/postreboot/remote/postreboot-diagnosis-payload.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/postreboot/remote/postreboot-diagnosis.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/postreboot/remote/reboot-observe-postcommit.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/Invoke-BoundedLinux.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/bootstrap.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/boundary-full.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/boundary-real.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/boundary-tiny.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/boundary-tiny2.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/boundary-uuid-revision.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/budget-manifest-correction.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/budget-record-revision.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/capacity.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/capacity2.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/cuda-failure-diagnosis.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/cuda-xid.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/final-evidence.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/final-status.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/phase-common.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/preflight.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/progress.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/publication-diagnosis.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/publication-fix.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/publication.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/regress.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/reset-service-preflight.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/runner-probe.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/train.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/remote/validate.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/retrieved/logs/boundary-uuid-patch/phase-common.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/retrieved/logs/phase-common-before-budget-record.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/retrieved/logs/phase-common-before-uuid-revision.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/retrieved/logs/publication-before-fix/remote/phase-common.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/retrieved/logs/publication-patch/remote/phase-common.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Download-RecoveryEvidence.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Finalize-Docs.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Finalize-RecoveryDocs.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Inspect-Closure-before-final.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Inspect-Closure.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Prepare-GpuRecovery.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Prepare-GpuRecovery2.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Prepare-PostRebootValidation.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Prepare-RecoveryEvidence.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Seal-Supplement.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Stage-And-Review.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Wait-Reboot-Later.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Wait-Reboot.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/recovery-retrieved/.artifacts/stage-gpu-driver-reload/payload.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/recovery-retrieved/.artifacts/stage-gpu-reset-approved/reset-payload.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/recovery-retrieved/.artifacts/stage-gpu-reset-approved2/reset-payload.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/recovery-retrieved/.artifacts/stage-gpu-reset-command/payload.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/driver-recovery-preflight.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/gpu-driver-reload.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/gpu-reset-approved.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/gpu-reset-approved2.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/gpu-reset-command.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/gpu-reset-payload.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/gpu-reset-payload2.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/install-postreboot-validation.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/phase-postreboot.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-approved.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-02.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-03.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-04.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-05.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-06.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-07.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-08.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-09.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-10.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-11.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-12.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-later-01.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-later-02.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-later-03.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-later-04.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-later-05.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-later-06.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-later-07.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-later-08.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/recovery-final-evidence.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/regress-postreboot.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reset-blocker-diagnosis.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reset-current-identities.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/validate-postreboot.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/research/public-decision-data-2026-10-10/Build-CollectionPlan.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/research/public-decision-data-2026-10-10/Build-UploadBundle.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/research/public-decision-data-2026-10-10/Check-SourceCompleteness.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/research/public-decision-data-2026-10-10/Collect-RangedFiles.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/research/public-decision-data-2026-10-10/Collect-Sources.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/research/public-decision-data-2026-10-10/Extend-CollectionPlan.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/research/public-decision-data-2026-10-10/Finalize-MoarkPublication.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/research/public-decision-data-2026-10-10/Inspect-Moark.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/research/public-decision-data-2026-10-10/Inspect-SavedMoarkSession.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/research/public-decision-data-2026-10-10/Publish-MoarkDataset.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/research/public-decision-data-2026-10-10/Resolve-GiteeRepositoryIdentity.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/research/public-decision-data-2026-10-10/Summarize-Collection.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/research/public-decision-data-2026-10-10/Test-MoarkCredential.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T2",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "remote/credentials/git",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/research/public-decision-data-2026-10-10/Use-MoarkRepositoryCredential.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T2",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "remote/credentials/git",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/research/public-decision-data-2026-10-10/Validate-SeedDatasets.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/research/public-decision-data-2026-10-10/Verify-MoarkDataset.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/research/public-decision-data-2026-10-10/moark_dataset_browser.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/Invoke-BoundedLinux.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T1b",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "process/run/audit",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/Invoke-BoundedLinuxProcess.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T1b",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "process/run/audit",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/Invoke-BoundedProcess.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T1b",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "process/run/audit",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/Sezika.Benchmarks/ValidateProfileChecks.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T6",
+      "Disposition": "MIGRATE_CHECKS_PRESERVE_FAILURE_RECEIPTS",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/Sezika.Evaluation/Invoke-CaptureChecks.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T6",
+      "Disposition": "MIGRATE_CHECKS_PRESERVE_FAILURE_RECEIPTS",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/Sezika.Evaluation/Invoke-OracleBatches.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T6",
+      "Disposition": "MIGRATE_CHECKS_PRESERVE_FAILURE_RECEIPTS",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/Sezika.Evaluation/Prepare-LanguageAudit.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T6",
+      "Disposition": "MIGRATE_CHECKS_PRESERVE_FAILURE_RECEIPTS",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/Sezika.Evaluation/Verify-BaselineChecks.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T6",
+      "Disposition": "MIGRATE_CHECKS_PRESERVE_FAILURE_RECEIPTS",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/Sezika.IndependentModelTool/Verify-Preflight.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T6",
+      "Disposition": "MIGRATE_CHECKS_PRESERVE_FAILURE_RECEIPTS",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/Sezika.IndependentOracle/export_oracle.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T6",
+      "Disposition": "FREEZE_INDEPENDENT_REFERENCE_RETIRE_PYTHON_EXECUTION",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/Sezika.LayaOracle/Invoke-LayaOracle.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T6",
+      "Disposition": "FREEZE_INDEPENDENT_REFERENCE_RETIRE_PYTHON_EXECUTION",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/Sezika.LayaOracle/export_oracle.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T6",
+      "Disposition": "FREEZE_INDEPENDENT_REFERENCE_RETIRE_PYTHON_EXECUTION",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/Sezika.LayaOracle/export_tokenizer_boundaries.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T6",
+      "Disposition": "FREEZE_INDEPENDENT_REFERENCE_RETIRE_PYTHON_EXECUTION",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/Sezika.NumericParity/Observe-QualityNearTies.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T6",
+      "Disposition": "MIGRATE_CHECKS_PRESERVE_FAILURE_RECEIPTS",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/Sezika.TeacherTool/Verify-Contract.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T6",
+      "Disposition": "MIGRATE_CHECKS_PRESERVE_FAILURE_RECEIPTS",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/Summarize-S5.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T6",
+      "Disposition": "MIGRATE_CHECKS_PRESERVE_FAILURE_RECEIPTS",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/Validate-S4Data.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T6",
+      "Disposition": "MIGRATE_CHECKS_PRESERVE_FAILURE_RECEIPTS",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/Validate-S5Profile.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T6",
+      "Disposition": "MIGRATE_CHECKS_PRESERVE_FAILURE_RECEIPTS",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/audit_coverage.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/bind_corpus.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/bounded_start.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T1b",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "process/run/audit",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/build_teacher_queue.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/check_teacher_admission.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/collect_teacher.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/compose_corpora.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/estimate_compute_budget.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/fetch_question_sources.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/inspect_extra.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/inspect_sources.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/prepare_corpus.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/question_phase2_recovery_receipt.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/question_queue.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/question_queue_checks.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/question_teacher_receipt.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/question_templates.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/run_guarded.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T1b",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "process/run/audit",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/source-review-choices.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/source-review-interpret-supplement.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/source-review-prepare-arc.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/source-review-semantics.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/source-review-supplement.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/corpus/test_corpus.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/model-publishing/Prepare-Package.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/rental-training/Askpass.cmd",
+      "Tracking": "tracked",
+      "WorkPackage": "T2",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "remote/credentials/git",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/rental-training/Askpass.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T2",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "remote/credentials/git",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/rental-training/Download-Model.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/rental-training/Invoke-BoundedProcess.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T1b",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "process/run/audit",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/rental-training/Invoke-RentalTraining.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/rental-training/Invoke-Ssh.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T2",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "remote/credentials/git",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/rental-training/Prepare-Package.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/rental-training/Verify-Experiment.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/rental-training/remote/Invoke-BoundedLinux-v2.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T1b",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "process/run/audit",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/rental-training/remote/Invoke-BoundedLinux.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T1b",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "process/run/audit",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/rental-training/remote/collect.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/rental-training/remote/install.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/rental-training/remote/lib.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/rental-training/remote/preflight.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/rental-training/remote/stage-admission-v2.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/rental-training/remote/stage.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/repository-training/Audit-TaskProcesses.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T1a",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "process/run/audit",
+      "OriginalStatus": "IMPLEMENTED_PENDING_CALLER_SWITCH"
+    },
+    {
+      "Path": "tools/repository-training/Download-RepositoryRun.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/repository-training/Expand-RepositoryArchive.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T1a",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "archive/extract",
+      "OriginalStatus": "IMPLEMENTED_PENDING_CALLER_SWITCH"
+    },
+    {
+      "Path": "tools/repository-training/Install-RemoteGitCredentials.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T2",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "remote/credentials/git",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/repository-training/Invoke-GitPayload.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T2",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "remote/credentials/git",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/repository-training/New-PublicationManifest.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/repository-training/New-ToolBundle.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/repository-training/New-TrainingTask.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/repository-training/Prepare-FullCorpusDelivery.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/repository-training/Publish-RepositoryRun.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/repository-training/Test-RepositoryWorkflow.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T6",
+      "Disposition": "MIGRATE_CHECKS_PRESERVE_FAILURE_RECEIPTS",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/repository-training/remote/clone-inputs.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/repository-training/remote/mirror-public-model.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/repository-training/remote/pack-result.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/repository-training/remote/publish-run.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/repository-training/remote/pull-full-corpus.sh",
+      "Tracking": "tracked",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/repository-training/remote/reassemble-optimizer.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/repository-training/remote/verify-publication.py",
+      "Tracking": "tracked",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "tools/tests/Test-BoundedLinuxProcess.ps1",
+      "Tracking": "tracked",
+      "WorkPackage": "T1b",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "process/run/audit",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/accept-compatibility-and-run.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/collect-gpu-window.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/create-remote-root.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/Finalize-AfterAudit.ps1",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/Finalize-Local.ps1",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/install-tools.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/Invoke-ExecutionStage.ps1",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/Invoke-Stage.ps1",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/launch-resident.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/optimized-one.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/profile-and-migrate.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/read-only-preflight.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/reference-one.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/resident-status.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/sample-gpu-smoke.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/sample-gpu.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/ssh_bridge_execution.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T2",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "remote/credentials/git",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/ssh_bridge_installation.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T2",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "remote/credentials/git",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/ssh_bridge_readonly_proxy.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T2",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "remote/credentials/git",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/ssh_bridge_readonly.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T2",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "remote/credentials/git",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/tiny-gpu-checks.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/Verify-Candidate.ps1",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T6",
+      "Disposition": "MIGRATE_CHECKS_PRESERVE_FAILURE_RECEIPTS",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/verify-inputs-smoke.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/verify-inputs.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-restart-20261013-01/verify-live-checkpoint.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/Audit-TaskProcesses.ps1",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T1a",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "process/run/audit",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/finalize_preparation.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/prepare_pending.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/verify_offline_inputs.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-optimization-20261013-01/Verify-Candidate.ps1",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T6",
+      "Disposition": "MIGRATE_CHECKS_PRESERVE_FAILURE_RECEIPTS",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-optimization-20261013-01/Verify-Processes-v2.ps1",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T1b",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "process/run/audit",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-optimization-20261013-01/Verify-Processes.ps1",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T1b",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "process/run/audit",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-encoder-full-20261011-121827/local-mirror-contract/test-local-model-assets.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T6",
+      "Disposition": "MIGRATE_CHECKS_PRESERVE_FAILURE_RECEIPTS",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-encoder-full-20261011-121827/local-mirror-contract/test-local-private-dataset.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T6",
+      "Disposition": "MIGRATE_CHECKS_PRESERVE_FAILURE_RECEIPTS",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-encoder-full-20261011-121827/local-mirror-contract/verify-local-model-assets.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-encoder-full-20261011-121827/local-mirror-contract/verify-local-private-dataset.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-encoder-full-20261011-121827/local-mirror-preparation/accelerated-lfs-readback-windows.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-encoder-full-20261011-121827/local-mirror-preparation/local_org_git_transport_tiny.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-encoder-full-20261011-121827/local-mirror-preparation/local_org_git_transport.frozen-v1.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-encoder-full-20261011-121827/local-mirror-preparation/local_org_git_transport.public-summary-v2.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-encoder-full-20261011-121827/local-mirror-preparation/local_org_git_transport.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-encoder-full-20261011-121827/local-mirror-preparation/windows-lfs-contract-fixture.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-encoder-full-20261011-121827/local-mirror-preparation/windows-lfs-fragments-fixture.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/Check-RootProcesses.ps1",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T1b",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "process/run/audit",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/Finalize-MaikebingProcesses.ps1",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T1b",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "process/run/audit",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/Finalize-ResumeProcesses.ps1",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T1b",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "process/run/audit",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/gai_static_path_review.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/Get-GaiOfficial.ps1",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/hf_cached_auth.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/hf_diagnose.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/hf_multipart_bounded.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T1b",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "process/run/audit",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/hf_preflight.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/hf_publish.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/hf_secure_preflight.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/hf_transfer_probe.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/hf_validate_card.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/inspect_gai_credential_targets.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T2",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "remote/credentials/git",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/Inspect-Moark.ps1",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_basic_lfs_admission.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_bos_direct.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_bos_forwarder.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_bos_preflight.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_browser.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_complete_commit.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_complete_docs.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_final_registration.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_finish_evidence.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_git_credential.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T2",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "remote/credentials/git",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_git_release.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_gitee_identity.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_lfs_schema.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_publication_docs_commit.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_register_correct_path.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_registration_backend.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_registration_readback.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_release.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_resume_alternate.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_resume_bos_verify.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_resume_browser.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_resume_inspect.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_resume_push.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_resume_register.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_resume_secret_scan.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_secret_scan.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_standard_lfs_publish.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_standard_lfs_tiny.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_transport_upload.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_update_publication_docs.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_upload_schema.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_verify.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/moark_docs_commit.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/moark_finalize_receipt.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/moark_gai_init_probe.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/moark_gai_object_probe.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/moark_gai_setup.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/moark_gai_transport_probe.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/moark_git_credential.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T2",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "remote/credentials/git",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/moark_git_release.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/moark_lfs_diagnose.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/moark_preflight.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/moark-gai-probe.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/moark-login-window.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/moark-model-window.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/Send-ModelBrowserCommand.ps1",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/store_moark_credential.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T2",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "remote/credentials/git",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/Update-MoarkDocs.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/windows_gitee_credential.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T2",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "remote/credentials/git",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/model-publishing-20261009-01a12099/windows_hf_credential.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T2",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "remote/credentials/git",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/publisher/full_corpus_publication.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/publisher/test_publication.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T6",
+      "Disposition": "MIGRATE_CHECKS_PRESERVE_FAILURE_RECEIPTS",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/transport/Close-TransportOffline.ps1",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/transport/full_corpus_transport.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/transport/run_transport_with_credentials.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T2",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "remote/credentials/git",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/transport/test_final_review.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T6",
+      "Disposition": "MIGRATE_CHECKS_PRESERVE_FAILURE_RECEIPTS",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/transport/test_publisher_integration.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T6",
+      "Disposition": "MIGRATE_CHECKS_PRESERVE_FAILURE_RECEIPTS",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/transport/test_transport.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T6",
+      "Disposition": "MIGRATE_CHECKS_PRESERVE_FAILURE_RECEIPTS",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/cleanup_old_copies.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/cleanup-apply.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/cleanup-preview.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/cleanup-retired.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/collect-gpu-audit.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/collect-initial-receipts.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/compact-status.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/continuation-status-v2.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/continuation-status-v3.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/continuation-status-v4.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/continuation-status.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/controller-preflight-v2.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/controller-preflight.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/gpu_utilization_audit_v2.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/gpu-utilization-180s.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/gpu-utilization-60s-1003.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/gpu-utilization-audit.template.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/gpu-utilization-pilot.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/gpu-utilization-v2.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/initialize-v2.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/initialize.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/inspect-dummy.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/inspect-real-identities.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/inspect-stop-2048.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/inspect-stop-3840.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/inspect-stop-5632.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/Invoke-Stage.ps1",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/launch-continuous-768-v2.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/launch-first-stage.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/launch-fourth-stage.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/launch-resume-stage.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/launch-third-stage.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/launch-tiny-and-status.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/pause_after_checkpoint.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/pause-after-checkpoint.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/preflight.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/prepare_input_launch.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/prepare-and-launch-inputs.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/queue-profile.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T5",
+      "Disposition": "MIGRATE_REPRODUCIBLE_DATA_CONTRACT",
+      "Replacement": "corpus/dataset/teacher",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/recover-2048-v3.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/recover-2048-v3.template.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/recover-3840-v4.install.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/recover-3840-v4.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/recover-5632-v5.install.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/recover-5632-v5.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/remove_retired_roots.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/run-inputs.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/ssh_bridge.pre-upload.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T2",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "remote/credentials/git",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/ssh_bridge.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T2",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "remote/credentials/git",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/status.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/update-noon-deadline.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/verify-tools-guardian.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T1b",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "process/run/audit",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-cadence-20261013-01/cadence-status.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-cadence-20261013-01/install-cadence.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-cadence-20261013-01/Invoke-ExecutionStage.ps1",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-cadence-20261013-01/sample-cadence-gpu.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-cadence-20261013-01/ssh_bridge_execution.py",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T2",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "remote/credentials/git",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": ".artifacts/repository-training-cadence-20261013-01/switch-cadence.sh",
+      "Tracking": "ignored-targeted-sample",
+      "WorkPackage": "T3",
+      "Disposition": "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS",
+      "Replacement": "task/bundle/inputs/checkpoint/resident",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "C:/Users/mysti/.codex/skills/moark-platform-api/scripts/Invoke-BoundedProcess.ps1",
+      "Tracking": "external-skill",
+      "WorkPackage": "T1b",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "process/run/audit",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "C:/Users/mysti/.codex/skills/moark-platform-api/scripts/Invoke-MoarkApi.ps1",
+      "Tracking": "external-skill",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "C:/Users/mysti/.codex/skills/moark-platform-api/scripts/moark_api.py",
+      "Tracking": "external-skill",
+      "WorkPackage": "T4",
+      "Disposition": "MIGRATE_TRANSFER_OR_PROTOCOL_ARCHIVE_ONE_OFF_PROBES",
+      "Replacement": "transport/publication/platform",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "C:/Users/mysti/.codex/skills/moark-platform-api/scripts/test_moark_api.py",
+      "Tracking": "external-skill",
+      "WorkPackage": "T6",
+      "Disposition": "MIGRATE_CHECKS_PRESERVE_FAILURE_RECEIPTS",
+      "Replacement": "validation/checks/oracle-compare",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "C:/Users/mysti/.codex/skills/usm-gateshell-ssh/scripts/invoke-ssh-bash.ps1",
+      "Tracking": "external-skill",
+      "WorkPackage": "T2",
+      "Disposition": "MIGRATE_CAPABILITY_RETIRE_EXECUTABLE_ENTRY",
+      "Replacement": "remote/credentials/git",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/label-audit-20261008/Build-LabelAuditReport.ps1",
+      "Tracking": "untracked-existing",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/label-audit-20261008/Invoke-LabelAuditBatch.max-v1.ps1",
+      "Tracking": "untracked-existing",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/label-audit-20261008/Invoke-LabelAuditBatch.ps1",
+      "Tracking": "untracked-existing",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/label-audit-20261008/Invoke-LabelAuditBatch.ultra-v1.ps1",
+      "Tracking": "untracked-existing",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "Path": "docs/evidence/label-audit-20261008/Test-LabelAuditPayload.ps1",
+      "Tracking": "untracked-existing",
+      "WorkPackage": "T7",
+      "Disposition": "PRESERVE_HISTORICAL_BYTES_REMOVE_CURRENT_CALLERS",
+      "Replacement": "historical-evidence",
+      "OriginalStatus": "PROPOSED_NOT_IMPLEMENTED"
+    }
+  ],
+  "ImplementationsAccepted": false
+}
