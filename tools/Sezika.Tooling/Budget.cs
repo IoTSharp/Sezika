@@ -8,11 +8,13 @@ internal sealed class Budget(int seconds, string? cancelFile, CancellationToken 
     private readonly Stopwatch clock = Stopwatch.StartNew();
     private double nextProgress = 10;
     internal double ElapsedSeconds => clock.Elapsed.TotalSeconds;
+    internal double RemainingSeconds => Math.Max(0, seconds - clock.Elapsed.TotalSeconds);
+    internal CancellationToken Cancellation => cancellation;
 
     internal void Check()
     {
         cancellation.ThrowIfCancellationRequested();
-        if (seconds is < 1 or > 1800) throw new ArgumentOutOfRangeException(nameof(seconds));
+        if (seconds is < 1 or > 86400) throw new ArgumentOutOfRangeException(nameof(seconds));
         if (cancelFile is not null && File.Exists(cancelFile)) throw new OperationCanceledException("Cancellation file observed.");
         if (clock.Elapsed.TotalSeconds >= seconds) throw new TimeoutException("Operation deadline exceeded.");
         if (clock.Elapsed.TotalSeconds >= nextProgress)

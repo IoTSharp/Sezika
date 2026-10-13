@@ -8,9 +8,10 @@ using Sezika.Tooling;
 if (args.Length is not (4 or 6) || args[0] != "--output" || args[2] != "--maximum-checks" || !int.TryParse(args[3], out var maximumChecks) || maximumChecks is < 1 or > 256 || (args.Length == 6 && args[4] != "--suite"))
     throw new ArgumentException("--output <new-owned-directory> --maximum-checks 1..256 [--suite baseline|inventory|all]");
 var suite = args.Length == 6 ? args[5] : "baseline";
-if (suite is not ("baseline" or "inventory" or "all")) throw new ArgumentException("Unknown suite.");
+if (suite is not ("baseline" or "inventory" or "execution" or "all")) throw new ArgumentException("Unknown suite.");
 var runSuite = suite is "baseline" or "all";
-using var cancel = new CancellationTokenSource(TimeSpan.FromSeconds(45));
+var suiteSeconds = 45;
+using var cancel = new CancellationTokenSource(TimeSpan.FromSeconds(suiteSeconds));
 StartupGate.Wait(cancel.Token);
 var root = Path.GetFullPath(args[1]);
 if (Path.Exists(root)) throw new IOException("Test output exists; preserve evidence.");
@@ -30,7 +31,7 @@ void Test(string name, Action action)
 {
     if (checks >= maximumChecks) return;
     if (!runSuite) return;
-    if (watch.Elapsed.TotalSeconds >= 40) throw new TimeoutException("Check suite deadline40s.");
+    if (watch.Elapsed.TotalSeconds >= suiteSeconds - 5) throw new TimeoutException("Check suite deadline exceeded.");
     cancel.Token.ThrowIfCancellationRequested();
     action();
     checks++; names.Add(name);
@@ -181,6 +182,8 @@ Test("CLI argument validation and fresh failure receipt", () =>
 
 runSuite = suite is "inventory" or "all";
 InventoryChecks.Run(root, Test);
+runSuite = suite is "execution" or "all";
+if (runSuite) ExecutionChecks.Run(root, Test);
 if (checks == 0) throw new InvalidOperationException("No checks ran.");
 File.WriteAllLines(Path.Combine(root, "checks.txt"), names.Append($"PASS checks={checks}; elapsed={watch.Elapsed.TotalSeconds:F3}s; platform={Environment.OSVersion}; native_aot={!System.Runtime.CompilerServices.RuntimeFeature.IsDynamicCodeSupported}"));
 Console.WriteLine($"PASS {checks} checks; suite={suite}; seconds={watch.Elapsed.TotalSeconds:F3}; fixtures preserved at {root}");

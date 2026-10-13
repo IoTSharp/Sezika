@@ -20,7 +20,7 @@ internal static class ArchiveOperations
             throw new ArgumentException("Expected SHA256 must contain exactly 64 hex characters.");
         archive = Path.GetFullPath(archive);
         destination = Path.GetFullPath(destination);
-        SafePaths.NoLinks(archive, budget);
+        RegularFiles.Require(archive, budget);
         SafePaths.NoLinks(destination, budget);
         if (Path.Exists(destination)) throw new IOException("Destination already exists; preserve it.");
         using var input = new FileStream(archive, FileMode.Open, FileAccess.Read, FileShare.Read);

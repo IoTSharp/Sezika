@@ -1,6 +1,6 @@
 # Sezika.Tooling
 
-C# / .NET 10 工具迁移入口，目前提供进程回执只读核查和带完整 SHA 清单的 TAR 解包。实现不启动子进程，不加载或生成脚本，不访问凭据或网络。完整执行器、SSH、上传与训练调度按根目录 ROADMAP 的 T1b–T8 继续迁移。
+C# / .NET 10 工具迁移入口，提供进程回执只读核查、带完整 SHA 清单的 TAR 解包及有界原生进程执行。执行器使用结构化参数、Windows Job 与 Linux C# broker/watchdog，详见 [执行合同](Execution/README.md)。SSH、上传及训练调度分别按根 ROADMAP 验收。
 
 ## 构建与检查
 
@@ -11,7 +11,7 @@ dotnet build tests/Sezika.Tooling.Tests/Sezika.Tooling.Tests.csproj -c Release -
 dotnet publish tools/Sezika.Tooling/Sezika.Tooling.csproj -c Release -r win-x64 -p:PublishAot=true --disable-build-servers -m:1 -p:IlcMaxDegreeOfParallelism=2
 ```
 
-检查程序接受 `--output <新的任务专属目录> --maximum-checks 1..64`。先跑 1 项，再跑完整上限；当前有 32 项实际检查，检查段限 40 秒。保留小型 TAR、失败输出、`checks.txt` 和本次实际进程身份 `self.result.json` 作为证据，不创建或终止子进程。运行已构建 DLL 的示例：
+检查程序接受 `--output <新的任务专属目录> --maximum-checks 1..256` 和 `--suite`。baseline 保留原 32 项；执行器检查启动、登记和回收独占 C# fixture 进程，先 tiny 1 项，再 Windows 18 项 / Linux 17 项。保留原始流、失败回执、`checks.txt` 和进程身份；各套件有数量和墙钟边界。运行已构建 DLL 的示例：
 
 ```text
 dotnet tests/Sezika.Tooling.Tests/bin/Release/net10.0/Sezika.Tooling.Tests.dll --output .artifacts/tooling-checks-new --maximum-checks 1
@@ -45,7 +45,7 @@ Sezika.Tooling archive extract --archive <model.tar> --sha256 <trusted-sha256> -
 
 ## 执行边界
 
-两个命令都有数量/字节上限、`--cancel-file`、Ctrl+C、协作式墙钟检查和 10 秒进度。系统调用或磁盘 I/O 阻塞时，协作式期限不能代替外层硬期限；迁移期间仍须使用已审定执行边界，完整 C# 执行器属 T1b。
+各命令都有数量/字节上限、`--cancel-file`、Ctrl+C、墙钟检查和 10 秒进度。外部原生工作通过 `process run` 登记任务容器及精确身份；只读审计仍只核回执覆盖的身份。
 
 可选 `SEZIKA_START_GATE` 对接旧 guardian：等候准确 PID 的 `go`，最多 160 次/40 秒，支持 `cancel.request`，通过后移除该环境值。此握手不启动解释器，不赋予服务器/发布权限。
 

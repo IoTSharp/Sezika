@@ -11,7 +11,7 @@ internal static class InventoryOperations
     internal static MigrationInventory Freeze(string path, Budget budget)
     {
         var absolute = System.IO.Path.GetFullPath(path);
-        SafePaths.NoLinks(absolute, budget);
+        RegularFiles.Require(absolute, budget);
         using var stream = File.OpenRead(absolute);
         if (stream.Length is < 1 or > 4 * 1024 * 1024) throw new InvalidDataException("Inventory byte bound4MiB.");
         var sha = budget.Hash(stream, stream.Length);
