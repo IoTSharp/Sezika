@@ -27,6 +27,7 @@ internal sealed class WindowsExecutionSession : IExecutionSession
     private readonly bool hiddenConsole;
     private readonly Dictionary<int, ExecutionHandle> registered = [];
     private readonly HashSet<int> consoleHosts = [];
+    private WindowsProcessNotifications? notifications;
     public int Pid { get; private set; }
     public string Ownership => "windows-job";
     internal WindowsExecutionSession(ExecutionRequest request, Dictionary<string, string> environment)
@@ -35,7 +36,7 @@ internal sealed class WindowsExecutionSession : IExecutionSession
         hiddenConsole = request.WindowsConsoleMode == "hidden";
         job = ExecutionNative.CreateJobObjectW(0, 0);
         if (job.IsInvalid) throw Error("CreateJobObject");
-        try { Start(request, environment); }
+        try { notifications = new WindowsProcessNotifications(job, request); Start(request, environment); }
         catch (Exception error)
         {
             var cleared = true;
@@ -207,17 +208,19 @@ internal sealed class WindowsExecutionSession : IExecutionSession
     public void Register(ExecutionIdentity identity)
     {
         if (identity.Pid == Pid) return;
-        var handle = ExecutionNative.OpenProcess(0x00101000, 0, (uint)identity.Pid);
+        var sampled = notifications?.RetainedHandle(identity);
+        var handle = sampled ?? ExecutionNative.OpenProcess(0x00101000, 0, (uint)identity.Pid);
         try
         {
             if (handle.IsInvalid || ExecutionNative.GetProcessTimes(handle, out var created, out _, out _, out _) == 0 ||
                 DateTimeOffset.FromFileTime(created).ToUniversalTime() != identity.Started ||
-                ExecutionNative.IsProcessInJob(handle, job, out var member) == 0 || member == 0)
+                (sampled is null && (ExecutionNative.IsProcessInJob(handle, job, out var member) == 0 || member == 0)))
                 throw Error("Job member retained birth identity");
-            if (hiddenConsole && SystemConsoleHost(handle)) { consoleHosts.Add(identity.Pid); identity.Ownership = "windows-job-console-host"; }
+            var consoleHost = notifications?.ConsoleHostProof(identity) ?? SystemConsoleHost(handle);
+            if (consoleHost) { consoleHosts.Add(identity.Pid); identity.Ownership = "windows-job-console-host"; }
             registered.Add(identity.Pid, handle);
         }
-        catch { handle.Dispose(); throw; }
+        catch { if (sampled is null) handle.Dispose(); throw; }
     }
     internal bool RetainsBirth(ExecutionIdentity identity)
     {
@@ -230,8 +233,17 @@ internal sealed class WindowsExecutionSession : IExecutionSession
         var handle = identity.Pid == Pid ? process : registered.GetValueOrDefault(identity.Pid);
         return RetainsBirth(identity) && handle is not null && ExecutionNative.WaitForSingleObject(handle, 0) == 0;
     }
-    internal bool ConsoleHost(int pid) => hiddenConsole && consoleHosts.Contains(pid);
-    private static unsafe bool SystemConsoleHost(ExecutionHandle handle)
+    internal bool ConsoleHost(int pid) => consoleHosts.Contains(pid);
+    internal int[] NotifiedPids() => notifications?.Pids() ?? [];
+    internal ProcessObservation ObserveRegisteredCandidate(int pid)
+    {
+        if (notifications?.TryComplete(pid, out var complete) == true) return complete!;
+        return ProcessObserver.Observe(pid);
+    }
+    internal string NotificationDetail(int pid) => notifications?.PendingDetail(pid) ?? "Notification unavailable.";
+    internal string[] NotificationErrors => notifications?.Errors ?? [];
+    internal void StopNotifications() => notifications?.Stop();
+    internal static unsafe bool SystemConsoleHost(ExecutionHandle handle)
     {
         var image = new char[32768]; var system = new char[32768];
         uint length = (uint)image.Length;
@@ -249,8 +261,10 @@ internal sealed class WindowsExecutionSession : IExecutionSession
     public void Dispose()
     {
         // Closing the job is also a kernel-enforced fallback for exceptional paths.
+        notifications?.Stop();
         job.Dispose(); thread?.Dispose(); process?.Dispose(); output?.Dispose(); error?.Dispose(); input?.Dispose();
         foreach (var handle in registered.Values) handle.Dispose();
+        notifications?.Dispose();
     }
     private static Win32Exception Error(string operation) => new(Marshal.GetLastPInvokeError(), operation);
 }

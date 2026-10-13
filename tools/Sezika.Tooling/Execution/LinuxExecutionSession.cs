@@ -33,6 +33,7 @@ internal sealed class LinuxExecutionSession : IExecutionSession
 {
     private ExecutionFd? input, output, error;
     private readonly Dictionary<int, ExecutionFd> pidFds = [];
+    private readonly Dictionary<int, (ulong Ticks, string Boot, int Parent, string Command)> registeredBirths = [];
     private readonly HashSet<int> known = [];
     private readonly Dictionary<int, ulong> births = [];
     private readonly int maximumProcesses;
@@ -249,7 +250,13 @@ internal sealed class LinuxExecutionSession : IExecutionSession
     }
     public void Register(ExecutionIdentity identity)
     {
-        if (pidFds.ContainsKey(identity.Pid)) return;
+        if (pidFds.ContainsKey(identity.Pid))
+        {
+            if (!RetainsBirth(identity)) throw new IOException("Registered pidfd birth identity differs.");
+            return;
+        }
+        if (identity.Platform != "linux" || identity.StartTicks is null || string.IsNullOrEmpty(identity.BootId) ||
+            identity.ParentPid <= 0 || identity.CommandLine.Length == 0) throw new IOException("Complete native birth/parent/argv required before pidfd registration.");
         var opened = ExecutionNative.PidFdOpen(434, identity.Pid, 0);
         if (opened < 0) throw Error("pidfd_open");
         var handle = new ExecutionFd(checked((int)opened));
@@ -259,9 +266,26 @@ internal sealed class LinuxExecutionSession : IExecutionSession
             handle.Dispose(); throw new IOException("Identity changed while acquiring pidfd.");
         }
         pidFds.Add(identity.Pid, handle);
+        registeredBirths.Add(identity.Pid, (identity.StartTicks.Value, identity.BootId, identity.ParentPid, identity.CommandLine));
         births[identity.Pid] = identity.StartTicks!.Value;
         if (identity.ScopeId is not null) ownershipScopes.Add(identity.ScopeId);
         if (identity.Pid == WatchdogPid()) identity.Ownership = "linux-watchdog";
+    }
+    internal bool RetainsBirth(ExecutionIdentity identity) => pidFds.ContainsKey(identity.Pid) && registeredBirths.TryGetValue(identity.Pid, out var pin) &&
+        identity.Platform == "linux" && identity.StartTicks == pin.Ticks && identity.BootId == pin.Boot && identity.ParentPid == pin.Parent &&
+        identity.CommandLine == pin.Command && pin.Command.Length > 0;
+    internal bool HasExitedBirth(ExecutionIdentity identity)
+    {
+        if (!RetainsBirth(identity)) return false;
+        try { if (ReadMetadata("/proc/sys/kernel/random/boot_id").Trim() != identity.BootId) return false; }
+        catch (IOException) { return false; }
+        catch (UnauthorizedAccessException) { return false; }
+        var descriptor = new ExecutionNative.PollFd { Descriptor = pidFds[identity.Pid].Value, Events = 1 }; // POLLIN
+        var observed = ExecutionNative.poll(ref descriptor, 1, 0);
+        if (observed < 0 || (descriptor.Returned & (8 | 32)) != 0) return false; // POLLERR/POLLNVAL never prove exit
+        // The retained descriptor was pinned while native birth/parent/argv
+        // were complete. POLLIN proves termination; POLLHUP proves reaping.
+        return observed > 0 && (descriptor.Returned & (1 | 16)) != 0;
     }
     public void Terminate()
     {

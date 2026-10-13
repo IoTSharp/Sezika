@@ -20,6 +20,14 @@ internal sealed class ExecutionFd : SafeHandleMinusOneIsInvalid
 internal static partial class ExecutionNative
 {
     [StructLayout(LayoutKind.Sequential)]
+    internal struct JobCompletionPort { internal nint Key, Port; }
+    [LibraryImport("kernel32.dll", SetLastError = true)]
+    internal static partial ExecutionHandle CreateIoCompletionPort(nint file, nint existing, nuint key, uint threads);
+    [LibraryImport("kernel32.dll", SetLastError = true)]
+    internal static partial int GetQueuedCompletionStatus(ExecutionHandle port, out uint message, out nuint key, out nint value, uint milliseconds);
+    [LibraryImport("kernel32.dll", SetLastError = true)]
+    internal static partial int PostQueuedCompletionStatus(ExecutionHandle port, uint message, nuint key, nint value);
+    [StructLayout(LayoutKind.Sequential)]
     internal struct SecurityAttributes { internal uint Length; internal nint Descriptor; internal int Inherit; }
     [StructLayout(LayoutKind.Sequential)]
     internal struct StartupInfo

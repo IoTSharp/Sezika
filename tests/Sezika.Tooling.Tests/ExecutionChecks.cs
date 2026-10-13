@@ -144,8 +144,27 @@ internal static class ExecutionChecks
             var configuration = Path.Combine(root, "supervisor-" + mode + ".json");
             File.WriteAllBytes(configuration, JsonSerializer.SerializeToUtf8Bytes(inner, ExecutionJsonContext.Default.ExecutionRequest));
             var request = Request("supervisor"); request.TimeoutSeconds = 8; request.ArgumentList = ["supervisor", broker, configuration];
+            if (OperatingSystem.IsLinux())
+            {
+                request.Environment["SEZIKA_FIXTURE_OUTER_RECEIPTS"] = request.OutputDirectory;
+                using var executable = File.OpenRead(broker);
+                request.NestedBrokers = [new() { Executable = broker, Sha256 = new Budget(10, null, cancellation.Token).Hash(executable, executable.Length) }];
+            }
             var result = Execute(request); Clean(result);
             Assert(result.Status == "PASS" && File.ReadAllText(Path.Combine(result.OutputDirectory, "stdout.bin")).Contains("fixture-supervisor-exit-terminated", StringComparison.Ordinal), string.Join(';', result.Errors));
+        });
+        if (OperatingSystem.IsLinux()) check("execution explicit nested broker wrong SHA rejects actual native admission", () =>
+        {
+            if (broker is null) throw new InvalidOperationException("Explicit native C# broker required.");
+            var inner = Request("tree"); inner.TimeoutSeconds = 6;
+            var configuration = Path.Combine(root, "supervisor-wrong-broker-pin.json");
+            File.WriteAllBytes(configuration, JsonSerializer.SerializeToUtf8Bytes(inner, ExecutionJsonContext.Default.ExecutionRequest));
+            var request = Request("supervisor"); request.TimeoutSeconds = 8; request.ArgumentList = ["supervisor", broker, configuration];
+            request.Environment["SEZIKA_FIXTURE_OUTER_RECEIPTS"] = request.OutputDirectory;
+            request.NestedBrokers = [new() { Executable = broker, Sha256 = new string('0', 64) }];
+            var result = Execute(request); Clean(result);
+            Assert(result.Status == "FAIL" && result.Errors.Any(error => error.Contains("Nested broker complete native-image SHA differs", StringComparison.Ordinal)),
+                "An actual nested native broker was accepted without its declared byte identity.");
         });
         if (OperatingSystem.IsWindows()) check("execution explicit hidden console fully registered", () =>
         {
@@ -190,6 +209,19 @@ internal static class ExecutionChecks
                 firstCancel.Cancel(); secondCancel.Cancel();
                 Task.WhenAll(firstRun, secondRun).GetAwaiter().GetResult();
             }
+        });
+        if (OperatingSystem.IsWindows()) check("execution Job notifications observe eight actual fast native children", () =>
+        {
+            var request = Request("fast-tree"); request.TimeoutSeconds = 5; request.MaximumProcesses = 16;
+            var result = Execute(request); Clean(result);
+            Assert(result.Status == "PASS", string.Join(';', result.Errors));
+            var children = File.ReadAllLines(Path.Combine(request.OutputDirectory, "stdout.bin"))
+                .Where(line => line.StartsWith("fixture-fast-child=", StringComparison.Ordinal))
+                .Select(line => int.Parse(line["fixture-fast-child=".Length..], System.Globalization.CultureInfo.InvariantCulture)).ToArray();
+            Assert(children.Length == 8 && children.Distinct().Count() == 8, "Eight actual fixture child launches were not reported.");
+            Assert(result.Processes.Length == 9 && children.All(pid => result.Processes.Any(identity => identity.Pid == pid && identity.ParentPid == result.RootPid &&
+                identity.Started is not null && identity.CommandLine.Contains("success", StringComparison.Ordinal) && identity.ParentChain.Length == 2)),
+                "A real fast child lacks complete independent outer native birth/argv/parent evidence.");
         });
     }
 }

@@ -23,6 +23,14 @@ internal sealed class ExecutionRequest
     public string? BrokerExecutable { get; set; }
     public string[] BrokerArgumentPrefix { get; set; } = ["process", "broker"];
     public string[] WatchdogArgumentPrefix { get; set; } = ["process", "watchdog"];
+    public NestedBrokerPin[] NestedBrokers { get; set; } = [];
+}
+
+internal sealed class NestedBrokerPin
+{
+    public string Executable { get; set; } = "";
+    public string Sha256 { get; set; } = "";
+    public string[] ArgumentPrefix { get; set; } = ["process", "broker"];
 }
 
 internal sealed class ExecutionIdentity

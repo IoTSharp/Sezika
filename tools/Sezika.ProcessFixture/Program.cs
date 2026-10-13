@@ -10,6 +10,7 @@ if (args.Length is < 1 or > 8) return 64;
 Console.OutputEncoding = new UTF8Encoding(false);
 Console.InputEncoding = new UTF8Encoding(false);
 var clock = Stopwatch.StartNew();
+using var fixtureCancellation = new CancellationTokenSource(TimeSpan.FromSeconds(15));
 var mode = args[0];
 switch (mode)
 {
@@ -34,6 +35,17 @@ switch (mode)
         }
         File.Move(markerPending, args[1], false);
         for (var attempt = 0; attempt < 150 && clock.Elapsed.TotalSeconds < 15; attempt++) Thread.Sleep(100);
+        return 0;
+    case "fast-tree":
+        for (var query = 0; query < 8 && clock.Elapsed.TotalSeconds < 4; query++)
+        {
+            var queryStart = new ProcessStartInfo(Environment.ProcessPath!) { UseShellExecute = false, CreateNoWindow = true };
+            queryStart.ArgumentList.Add("success");
+            using var process = FixtureProcesses.Start(queryStart);
+            Console.WriteLine("fixture-fast-child=" + process.Id.ToString(CultureInfo.InvariantCulture));
+            if (!process.WaitForExit(1000) || process.ExitCode != 0) throw new IOException("Bounded native query did not actually exit0.");
+        }
+        if (clock.Elapsed.TotalSeconds >= 4) throw new TimeoutException("Fast-tree fixture deadline4s.");
         return 0;
     case "sleep":
     case "escape-sleep":
@@ -60,13 +72,31 @@ switch (mode)
         // These children continue to be born until the group/job is terminated.
         // <=12 apphost children and a1s creation window, then a15s lifetime.
         Thread.Sleep(200);
+        var actualLateChildren = new List<int>();
         for (var childIndex = 0; childIndex < 12 && clock.Elapsed.TotalSeconds < 1; childIndex++)
         {
+            fixtureCancellation.Token.ThrowIfCancellationRequested();
             var lateStart = new ProcessStartInfo(Environment.ProcessPath!) { UseShellExecute = false, CreateNoWindow = true };
             lateStart.ArgumentList.Add("sleep");
             using var late = FixtureProcesses.Start(lateStart);
+            actualLateChildren.Add(late.Id);
             Console.WriteLine("fixture-late-child=" + late.Id.ToString(CultureInfo.InvariantCulture));
             Thread.Sleep(30);
+        }
+        if (Environment.GetEnvironmentVariable("SEZIKA_FIXTURE_LATE_BIRTHS") is { } lateBirths)
+        {
+            var innerReceipts = Environment.GetEnvironmentVariable("SEZIKA_FIXTURE_INNER_RECEIPTS") ?? throw new IOException("Exact inner receipt directory required.");
+            if (!Path.IsPathFullyQualified(innerReceipts) || Path.GetFullPath(innerReceipts) != innerReceipts || !Directory.Exists(innerReceipts))
+                throw new IOException("Strict absolute inner receipt directory required.");
+            var expectedBirths = Path.Combine(innerReceipts, "fixture-late-births");
+            if (Path.GetFullPath(lateBirths) != expectedBirths || actualLateChildren.Count is < 1 or > 12)
+                throw new IOException("Actual late-child marker scope/count differs.");
+            using (var marker = new FileStream(lateBirths + ".pending", FileMode.CreateNew, FileAccess.Write, FileShare.None))
+            {
+                marker.Write(Encoding.ASCII.GetBytes(string.Join('\n', actualLateChildren.Select(pid => pid.ToString(CultureInfo.InvariantCulture)))));
+                marker.Flush(flushToDisk: true);
+            }
+            File.Move(lateBirths + ".pending", lateBirths, false);
         }
         for (var attempt = 0; attempt < 150 && clock.Elapsed.TotalSeconds < 15; attempt++) Thread.Sleep(100);
         return 0;
@@ -76,14 +106,28 @@ switch (mode)
         {
             var innerDirectory = requestJson.RootElement.GetProperty("OutputDirectory").GetString()!;
             var ownerStart = new ProcessStartInfo(args[1]) { UseShellExecute = false, CreateNoWindow = true };
+            var outerDirectory = OperatingSystem.IsLinux()
+                ? Environment.GetEnvironmentVariable("SEZIKA_FIXTURE_OUTER_RECEIPTS") ?? throw new IOException("Explicit actual outer receipt directory required.")
+                : null;
+            if (outerDirectory is not null && (!Path.IsPathFullyQualified(outerDirectory) || Path.GetFullPath(outerDirectory) != outerDirectory || !Directory.Exists(outerDirectory)))
+                throw new IOException("Strict absolute outer receipt directory required.");
+            var lateBirthsPath = OperatingSystem.IsLinux() && requestJson.RootElement.GetProperty("ArgumentList")[0].GetString() == "late-tree"
+                ? Path.Combine(innerDirectory, "fixture-late-births") : null;
+            if (lateBirthsPath is not null)
+            {
+                ownerStart.Environment["SEZIKA_FIXTURE_INNER_RECEIPTS"] = innerDirectory;
+                ownerStart.Environment["SEZIKA_FIXTURE_LATE_BIRTHS"] = lateBirthsPath;
+            }
             foreach (var argument in new[] { "process", "run", "--request", args[2], "--output", innerDirectory + ".cli.json" }) ownerStart.ArgumentList.Add(argument);
             using var owner = FixtureProcesses.Start(ownerStart);
             Console.WriteLine("fixture-owner=" + owner.Id + ";started=" + owner.StartTime.ToUniversalTime().ToString("O") + ";executable=" + args[1]);
             var observed = new Dictionary<int, (DateTimeOffset? Started, ulong? Ticks)>();
+            var innerPids = new HashSet<int>(); var outerAdmitted = false;
             try
             {
                 for (var poll = 0; poll < 80 && clock.Elapsed.TotalSeconds < 4; poll++)
                 {
+                    fixtureCancellation.Token.ThrowIfCancellationRequested();
                     if (Directory.Exists(innerDirectory))
                     {
                         var files = 0;
@@ -91,8 +135,11 @@ switch (mode)
                         {
                             if (++files > 257 || clock.Elapsed.TotalSeconds >= 4) throw new IOException("Supervisor fixture identity inventory bound.");
                             using var json = JsonDocument.Parse(File.ReadAllBytes(receipt));
+                            if (json.RootElement.GetArrayLength() > 256) throw new IOException("Inner identity receipt member bound256.");
                             foreach (var identity in json.RootElement.EnumerateArray())
                             {
+                                innerPids.Add(identity.GetProperty("Pid").GetInt32());
+                                if (innerPids.Count > 256) throw new IOException("Inner identity inventory bound256.");
                                 if (identity.GetProperty("Ownership").GetString() == "linux-watchdog") continue;
                                 var pid = identity.GetProperty("Pid").GetInt32();
                                 var stamp = identity.GetProperty("Started"); var ticks = identity.GetProperty("StartTicks");
@@ -100,11 +147,22 @@ switch (mode)
                             }
                         }
                     }
-                    if (observed.Count >= 2) break;
+                    var birthsComplete = lateBirthsPath is null;
+                    if (lateBirthsPath is not null && File.Exists(lateBirthsPath))
+                    {
+                        if (new FileInfo(lateBirthsPath).Length > 256) throw new IOException("Late-child marker byte bound256.");
+                        var births = File.ReadAllText(lateBirthsPath).Split('\n', StringSplitOptions.RemoveEmptyEntries)
+                            .Select(text => int.Parse(text, NumberStyles.None, CultureInfo.InvariantCulture)).ToArray();
+                        if (births.Length is < 1 or > 12 || births.Distinct().Count() != births.Length) throw new IOException("Actual late-child PID count differs.");
+                        birthsComplete = births.All(innerPids.Contains);
+                    }
+                    if (observed.Count >= 2 && birthsComplete && (outerDirectory is null ||
+                        FixtureOuterReceipts.ContainsActualLiveIdentities(outerDirectory, innerPids, Environment.ProcessId, clock, fixtureCancellation.Token)))
+                    { outerAdmitted = true; break; }
                     if (owner.HasExited) throw new IOException("Supervisor exited before root/child registration.");
                     Thread.Sleep(50);
                 }
-                if (observed.Count < 2) throw new IOException("Root/child identities were not registered.");
+                if (observed.Count < 2 || !outerAdmitted) throw new IOException("Actual root/child/late births lack complete independent outer native registration within4s.");
                 owner.Kill();
                 if (!owner.WaitForExit(2000)) throw new TimeoutException("Owned supervisor did not exit.");
                 for (var poll = 0; poll < 60 && clock.Elapsed.TotalSeconds < 7; poll++)
@@ -180,6 +238,85 @@ internal static partial class FixtureNative
         uint flags, nint environment, string directory, ref StartupInfo startup, out ProcessInformation information);
     [LibraryImport("kernel32.dll")] internal static partial nint GetStdHandle(int number);
     [LibraryImport("kernel32.dll", SetLastError = true)] internal static partial int CloseHandle(nint handle);
+}
+
+// The fixture may choose when to kill its supervisor. It never contributes
+// identities to the executor: each PID must already have an independent outer
+// snapshot matching its still-live native birth, parent and complete argv.
+internal static class FixtureOuterReceipts
+{
+    private sealed record Actual(int Parent, ulong Ticks, string Boot, string Command);
+    internal static bool ContainsActualLiveIdentities(string directory, HashSet<int> pids, int fixturePid, Stopwatch fixtureClock, CancellationToken cancellation)
+    {
+        var clock = Stopwatch.StartNew();
+        void Check()
+        {
+            cancellation.ThrowIfCancellationRequested();
+            if (clock.Elapsed.TotalSeconds >= 1 || fixtureClock.Elapsed.TotalSeconds >= 4)
+                throw new TimeoutException("Independent outer native handshake deadline.");
+        }
+        if (pids.Count is < 2 or > 256 || !Path.IsPathFullyQualified(directory)) throw new IOException("Outer identity scope/count differs.");
+        var actual = new Dictionary<int, Actual>();
+        var boot = Encoding.ASCII.GetString(Read("/proc/sys/kernel/random/boot_id", 64, Check)).Trim();
+        if (!Guid.TryParse(boot, out _)) throw new IOException("Actual Linux boot identity differs.");
+        foreach (var pid in pids)
+        {
+            Check();
+            try
+            {
+                var root = "/proc/" + pid.ToString(CultureInfo.InvariantCulture);
+                var before = Stat(Encoding.UTF8.GetString(Read(root + "/stat", 65536, Check)));
+                var command = Encoding.UTF8.GetString(Read(root + "/cmdline", 65536, Check));
+                var after = Stat(Encoding.UTF8.GetString(Read(root + "/stat", 65536, Check)));
+                if (before != after || after.State is "Z" or "X" || command.Length == 0) return false;
+                actual.Add(pid, new(after.Parent, after.Ticks, boot, command));
+            }
+            catch (FileNotFoundException) { return false; }
+            catch (DirectoryNotFoundException) { return false; }
+        }
+        var matched = new HashSet<int>(); var files = 0;
+        foreach (var receipt in Directory.EnumerateFiles(directory, "registered*.json", SearchOption.TopDirectoryOnly))
+        {
+            Check();
+            if (++files > 257 || new FileInfo(receipt).Length > 1048576) throw new IOException("Outer receipt inventory/byte bound.");
+            using var json = JsonDocument.Parse(Read(receipt, 1048576, Check));
+            if (json.RootElement.GetArrayLength() > 256) throw new IOException("Outer receipt identity bound256.");
+            foreach (var identity in json.RootElement.EnumerateArray())
+            {
+                Check(); var pid = identity.GetProperty("Pid").GetInt32();
+                if (!actual.TryGetValue(pid, out var live)) continue;
+                var command = identity.GetProperty("AfterExecCommandLine").GetString() ?? identity.GetProperty("CommandLine").GetString();
+                var chain = identity.GetProperty("ParentChain").EnumerateArray().Select(value => value.GetInt32()).ToArray();
+                if (identity.GetProperty("Platform").GetString() == "linux" && identity.GetProperty("ParentPid").GetInt32() == live.Parent &&
+                    identity.GetProperty("StartTicks").ValueKind == JsonValueKind.Number && identity.GetProperty("StartTicks").GetUInt64() == live.Ticks &&
+                    identity.GetProperty("BootId").GetString() == live.Boot && command == live.Command &&
+                    identity.GetProperty("PendingObservationError").ValueKind == JsonValueKind.Null &&
+                    chain.Length is > 0 and <= 64 && chain[^1] == live.Parent && chain.Contains(fixturePid)) matched.Add(pid);
+            }
+        }
+        return matched.Count == pids.Count;
+    }
+    private static (int Parent, ulong Ticks, string State) Stat(string text)
+    {
+        var closing = text.LastIndexOf(')');
+        if (closing < 0) throw new IOException("Native stat header differs.");
+        var fields = text[(closing + 1)..].Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        if (fields.Length is < 20 or > 128) throw new IOException("Native stat field bound.");
+        return (int.Parse(fields[1], NumberStyles.None, CultureInfo.InvariantCulture), ulong.Parse(fields[19], NumberStyles.None, CultureInfo.InvariantCulture), fields[0]);
+    }
+    private static byte[] Read(string path, int maximum, Action check)
+    {
+        using var input = File.OpenRead(path); using var output = new MemoryStream();
+        var bytes = new byte[16384];
+        for (var block = 0; block < maximum / bytes.Length + 2; block++)
+        {
+            check(); var count = input.Read(bytes);
+            if (count == 0) return output.ToArray();
+            if (output.Length + count > maximum) throw new IOException("Actual fixture metadata byte bound.");
+            output.Write(bytes, 0, count);
+        }
+        throw new IOException("Actual fixture metadata read bound.");
+    }
 }
 
 internal static class FixtureProcesses
