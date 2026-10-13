@@ -1,8 +1,29 @@
 # 🧭 Sezika 路线图
 
-> ⏸️ **当前暂停，等待算力与资金支持。** 更新于 2026-10-13。本文是唯一的当前阶段计划；恢复工作后按下列顺序推进。
+> **工具链 C# 迁移已启动；GPU 全量训练暂停，等待算力与资金支持。** 更新于 2026-10-13。本文是唯一的当前阶段计划。
 
 状态：✅ 已有对应范围证据 · ⏸️ 部分完成、当前暂停 · ⏳ 待完成。实现、数值、真实训练、质量、校准、AOT 与性能分别验收。
+
+## 🔧 长期工具与技能统一为 C# / .NET 10
+
+2026-10-13 用户更新边界：**训练、离线准备和构建工具允许 JIT/自包含 .NET 10；PTX 允许构建期由 ILGPU 生成。推理部署的 Native AOT 目标保持。** 去除长期脚本依赖是当前主线，不以训练工具全部 AOT 或 ILGPU 升级作为前置门槛。范围基线见[评估与清单](docs/tooling-native-aot-assessment-2026-10-13.md)。
+
+| 顺序 / 编号 | 状态 | 如何修改 / 对应旧入口 | 完成标准 |
+| --- | --- | --- | --- |
+| T0 | ✅ 范围评估；⏳ 分类冻结 | 根据 282 个 tracked 脚本及 ignored/共享依赖清单，把长期能力归入下列工作包；一次性修补退役，保留证据 | 每个当前入口有迁移或退役归属；禁止新增长期 PS/Bash/Python 代码 |
+| T1a | ✅ 首批实现与本机检查；⏳ 旧调用者切换 | 已新增 `Sezika.Tooling` 的 `process audit` / `archive extract`，对应两个旧 PS 工具；source-generated JSON、静态系统 API、预算/取消/新回执 | Windows 与 Ubuntu WSL 各32项 PASS；Windows AOT 两命令实际运行 PASS。[证据](docs/evidence/tooling-csharp-migration-2026-10-13.md)；旧执行器/完整服务器流程未替换 |
+| T1b | ⏳ | 统一旧 guardian：Windows 任务归属容器、Linux 进程身份/父链与回收，记录完整 argv、启动身份、超时、STOP/CANCEL；不使用 `pwsh/bash/python` 包装 | 成功/失败/超时/取消/父进程先退场及子树回收检查通过，再替换旧执行器；T1a 的只读审计不代替执行器 |
+| T2 | ⏳ | C# SSH/SFTP 与 Credential Manager 静态绑定；替换 `Invoke-Ssh.ps1`、`ssh_bridge*.py`、askpass、生成的 Git helper；受控原生 Git/LFS 调用 | 主机键、host/path 范围、stdin 凭据、断线和资源回收通过；helper/hook 不暗用 shell |
+| T3 | ⏳ | 将 bundle、输入拉取、预检、resident/cadence 控制与保存恢复迁入 Tooling + 既有 RepositoryTrainer；由显式配置替代日期/服务器硬编码 | 固定 commit、PTX/ABI/工具 SHA、四文件 checkpoint、全局游标及唯一 GPU 合同保持；训练工具可 JIT |
+| T4 | ⏳ | 复用 ModelTool 下载；收编 full_corpus_publication.py、full_corpus_transport.py、HF/MoArk 上传与 local-mirror 验证；统一 HTTP Range、分块、重组、发布预览与独立读回 | 离线 fixture 先过；真实上传/发布按当轮授权；物理分块与逻辑 SHA、private/public 结果分开报告 |
+| T5 | ⏳ | 把 corpus 的适配/准入/合并/分片/教师队列并入 DatasetTool、TeacherTool；再迁移研究目录和 datasets 的保留构建逻辑 | 来源/split/family/许可、记录数、规范化、去重、恢复与冻结样本对齐；新字节生成新版本 |
+| T6 | ⏳ | 迁移校验脚本，整改 ModelTool 反射 JSON；将保留项目纳入统一检查，处理 Parquet 依赖和 Python Oracle 退役 | 独立参考来源不伪造；已有 fixture 保留；JIT、AOT、质量、性能分别验收，不为非部署工具强制 AOT |
+| T7 | ⏳ | 两个项目技能/8 份说明、AGENTS、共享 MoArk/SSH 所用入口随每批迁移同步改写；最后解除旧脚本和 ignored 源码依赖 | 当前流程无 `.ps1/.sh/.py/.cmd`、内嵌或生成脚本，长期实现正式进入版本控制；历史证据身份保持 |
+| T8 | ⏳ | Windows/Linux 本机及服务器完整流程验证：准备→拉取→训练恢复/停止→打包→上传→独立读回 | 实际执行的语言/部署模式、工具与产物 SHA、资源回收和实卡结果齐全；推理部署继续单列 AOT 门槛 |
+
+可选研究 **T-ILGPU**：官方 v2 编译管线/AOT 支持已在 2026-10-08 合入主线，但 GitHub 当前稳定 Release 仍为 v1.5.3。待稳定包/API/许可与实际 PTX、数值、恢复身份验证后再评估升级；当前继续使用固定 1.5.3 的构建期 PTX 流程，不阻塞 T1–T8。来源及限制见评估文档更新。
+
+当前优先 T1a，再按依赖推进 T1b→T2→T3/T4→T5/T6→T7/T8。新实现必须有独立检查和回执，旧入口仅在对应替代验证通过后撤销；不一次性删除全部旧工具，不改写原始失败/历史证据，也不把 C# 包装器继续运行脚本算作迁移完成。
 
 ## ✅ 已有基础
 

@@ -5,6 +5,8 @@ description: 在 Sezika 项目内先发布完整准入语料到私有 Git/LFS �
 
 # 仓库驱动的 Sezika 训练
 
+2026-10-13 工具迁移规则：长期实现统一 C# / .NET 10，训练、离线准备和构建工具不强制 AOT，PTX 继续允许构建期生成。独立进程补审和完整 TAR 解包优先使用 [Sezika.Tooling](../../../tools/Sezika.Tooling/README.md) 的 `process audit` / `archive extract`。本技能下方尚未迁移的旧脚本入口是待退役路径，不再复制或新增脚本；完整执行器、SSH、发布与数据工具按根 ROADMAP 的 T1b–T8 接续，不把本批两个命令当作整条训练链已替换。
+
 当前项目工作区为 `D:\source\Sezika`。数据、模型和源码是三个独立仓库。使用 [仓库合同](references/repositories.md) 中的已验收身份，每次再核实际 ref；使用 [训练方法](references/methods.md) 判断代码已经支持什么，禁止把旧 215 题合同套在新原始数据上。
 
 ## 当前默认：全量语料先入私有仓库

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- 2026-10-13启动长期工具 C# / .NET 10 迁移；训练/构建工具不强制 AOT，PTX 继续构建期生成。新增 Sezika.Tooling 的进程回执只读核查与完整 SHA TAR 解包，Windows/Ubuntu WSL 各32项检查通过，Windows AOT 两命令实测通过；旧执行器、SSH及完整上传/训练链待按ROADMAP迁移。见[首批证据](docs/evidence/tooling-csharp-migration-2026-10-13.md)。
+
 - 2026-10-13精简项目首页与路线图，明确全量训练暂停、剩余GPU训练预算约3,800–4,100元及未验收范围；补充维护者微信赞助与IoTSharp企业微信群入口，保留历史任务快照和估算依据。
 
 - 2026-10-12增加私有全量语料仓库交付：413文件约2.62GB已正常推送至固定提交，原407语料文件保持SHA，另补训练器必需的严格长度报告和冻结输入合同；独立完整413文件大小/SHA读回及福海实际仓库拉取413文件验证通过，临时认证清理完成。新增精确派生入口拉取/全文件校验脚本，发布器支持仅提交、路径分批与CRLF保真。增加RTX4090/CC8.9/至少30GiB候选C#准入与8192形状、设备/profile SHA旁车，68项离线调度检查及零警告构建通过；福海closed/GSP0规避后GPU仍故障，真实新设备训练和质量NOT_RUN。见[证据](docs/evidence/full-corpus-repository-delivery-2026-10-12.md)。

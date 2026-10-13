@@ -94,7 +94,7 @@ checkpoint三文件：weights.safetensors、moments.safetensors、checkpoint.jso
 
 服务器直传仍要保存本机小证据包：模型/package/checkpoint身份、训练/profile/validation报告、派生manifest、guardian回执及发布/匿名读回结果。小包同样安全解包并逐文件SHA；清单排除其自身，由归档SHA另行绑定。本轮v1生成清单时shell重定向先创建files.sha256，通配符把空清单自身纳入，实际解包拒绝；保留原FAIL，新v2明确排除清单后通过。保存的验证报告可在本机独立重算分布/CE/argmax、分母和候选ID换序，但它是报告验算，不能升级为本机真实推理或完整模型下载。
 
-保存后先 `pack-result.sh <root> trained <seconds>`，本机 `Download-RepositoryRun.ps1 -RunId <id> -TaskDirectory <task> -RemoteRoot <root>` 下载并由Expand-RepositoryArchive核tar SHA、唯一regular文件/安全路径/总16GiB与1000文件界、完整逐文件SHA；新encoder不能用旧原件补齐。归档存在时先只读核，再分别继续解包，不盲目重打包。
+保存后的旧打包/下载调用链 `pack-result.sh` / `Download-RepositoryRun.ps1` 仍属 ROADMAP T3/T4 待迁移部分，不再复制脚本。已取得归档后的独立解包改用 `Sezika.Tooling archive extract --archive <tar> --sha256 <trusted-sha256> --destination <fresh-directory> --output <new-receipt> --timeout-seconds <1..1800>`，核 tar SHA、唯一普通文件/安全路径/总16GiB与1000文件界、完整逐文件SHA。新 encoder 不能用旧原件补齐；归档存在时先只读核，再继续解包，不盲目重打包。旧下载脚本内部的解包调用仍待随调用者迁移，不据此宣称全链无脚本。
 
 完整checkpoint和两份Adam moments使输出包明显大于encoder输入。先以实际归档bytes和观测传输速率检查单项SCP上限是否足够，再在总租期内调整有界传输时限；不能因为默认600秒过小而漏掉模型或无限重试。下载中断先检查远端归档身份和本地partial，保留失败回执；仅处理本任务明确命名的归档，不清理共享缓存。
 

@@ -1,5 +1,7 @@
 # Sezika 监督交接
 
+2026-10-13 工具迁移：长期工具与技能实现统一 C# / .NET 10，训练/离线/构建工具不强制 AOT，PTX 可构建期生成；GPU训练仍暂停。ROADMAP T1a 已新增 Sezika.Tooling 的 process audit/archive extract，Windows/Ubuntu WSL各32项、Windows AOT两命令通过。见[首批证据](docs/evidence/tooling-csharp-migration-2026-10-13.md)与[用法](tools/Sezika.Tooling/README.md)；下一项 T1b 为真正的有界执行器及准确子树回收，两个旧PS入口尚有旧调用者。用户现已明确授权本批代码提交/推送，并要求新会话多智能体监督完成全部迁移编码；实际提交及远端身份以Git读回为准，既有训练优化dirty单独保留。以下为原项目暂停及文档整理历史。
+
 2026-10-13 项目按用户要求暂时暂停推进，训练实例已关机，sezika-3暂停。本次仅整理README、ROADMAP、训练预算说明、历史计划快照及赞助/企业微信群图片；费用为当前单卡实测外推约3,800–4,100元，不含最终验证。用户已授权本次文档提交与推送；当前工作树其余训练源码与既有未提交资料保留，不混入文档提交。
 
 2026-10-11 北京时间个人模型完整发布完成：maikebing/Sezika-mmBERT-8192-experimental模型28817/仓库50738359已通过标准Git LFS登记及普通pre-push，远端master 06ebe82325e58c0ae723fb9014a38cdb2f87b22a；原始18文件/1,245,737,297 bytes、19 Git路径、16小文件bytes/SHA及两个大对象完整匿名SHA全部通过，无需分片重组。[个人模型下载](https://moark.com/maikebing/Sezika-mmBERT-8192-experimental)与[完整实证](docs/evidence/moark-personal-publication-complete-2026-10-11.md)已写中英首页。正确路径长等待、官方替代域名callbacktrue但仍missing、运输tiny登记失败全部保留；个人标准LFS真实准入及tiny实传/回读通过后才推送原模型，旧IoTSharp企业权限失败不能推广至个人库。Windows凭据保存及HF既有发布保持；训练技能已完成，不重训、不调用教师、不操作旧GPU、不push源码。正式质量、校准、新head AOT/性能及第三方权利补证继续pending。

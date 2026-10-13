@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "observed_date": "2026-10-13",
+  "timezone": "Asia/Shanghai",
+  "source_commit": "e544815529affa1ef1f271f76ccd47f2f3febdaf",
+  "source_dirty": true,
+  "scope": "T1a_CSharp_process_audit_and_tar_extract",
+  "status": "PASS_local_scope_only",
+  "windows_checks": 32,
+  "ubuntu_wsl_checks": 32,
+  "windows_aot_commands": [
+    "process audit",
+    "archive extract"
+  ],
+  "windows_aot_sha256": "8167be0e2a89cd7157fe222368cba693d613dadd014212df789be0b1b63d39e8",
+  "windows_aot_bytes": 3265024,
+  "linux_aot": "NOT_RUN",
+  "server_workflow": "NOT_RUN",
+  "old_callers": "PENDING_MIGRATION",
+  "new_scripts": 0,
+  "windows_recorded_identities": 72,
+  "windows_unique_pids": 70,
+  "matching_live": 0,
+  "unknown": 0,
+  "historically_unobserved_roots": 5,
+  "linux_test_identities": 2,
+  "linux_test_identities_absent": 2,
+  "original_failures_preserved": true,
+  "artifact_root": ".artifacts/repository-training-tooling-migration-20261013-01",
+  "sources": [
+    {
+      "path": "Directory.Build.props",
+      "sha256": "d415e4369b20fc4dc6696da7e9741dadb03a89357a6ced7506846312c90b5ec7"
+    },
+    {
+      "path": "global.json",
+      "sha256": "20c93ca7812d0a9825eef71217156f95ab2f4fe5aadfeb22ebc1c24b630018d3"
+    },
+    {
+      "path": "tools/Sezika.Tooling/Sezika.Tooling.csproj",
+      "sha256": "bd20a64b5ee3bac35a82e5987c9132aa2db4ea4d49e43f5b1f25f569488b6cf7"
+    },
+    {
+      "path": "tests/Sezika.Tooling.Tests/Sezika.Tooling.Tests.csproj",
+      "sha256": "7f33738914e552160f1fcc1c14b9bc003bb5a11f58c5cd1976baed86a1903141"
+    },
+    {
+      "path": "tests/Sezika.Tooling.Tests/Program.cs",
+      "sha256": "14bb243adc6abd3fdb622edc22826b07396ca7ac605743e8464772a1607b1f28"
+    },
+    {
+      "path": "tools/Sezika.Tooling/ArchiveOperations.cs",
+      "sha256": "b22392bc5a68e9e90328b0f48f451d74553083878539911048ebfa0e5fd72da3"
+    },
+    {
+      "path": "tools/Sezika.Tooling/Budget.cs",
+      "sha256": "4fdd342acf6e359f5c1e9193cf7b88190d848941e60a0239450d8864d69d27b8"
+    },
+    {
+      "path": "tools/Sezika.Tooling/ProcessAudit.cs",
+      "sha256": "8c6b763ebbcc5ecf7972b73372a6b3eb4c418e12ec2df4a3d7b4e9e8a2fb5a27"
+    },
+    {
+      "path": "tools/Sezika.Tooling/ProcessObserver.cs",
+      "sha256": "cdc566cb8f88a7b77f572501247011de39140ac268aa7e7107ee626225f9b4f0"
+    },
+    {
+      "path": "tools/Sezika.Tooling/Program.cs",
+      "sha256": "0599a81c7a85a8b40868471464564607f28ef872bac5a5b9d364700abe9b20e7"
+    },
+    {
+      "path": "tools/Sezika.Tooling/StartupGate.cs",
+      "sha256": "ce7dd8598c9861eb90dfa70f799fde11be1a673db93b177e92cc049a3bce4c1d"
+    },
+    {
+      "path": "tools/Sezika.Tooling/ToolingJsonContext.cs",
+      "sha256": "529edbfea47b8b8615bf241f75df2915f46ae949a25469db5305ff529d2fee57"
+    }
+  ]
+}

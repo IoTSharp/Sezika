@@ -15,6 +15,8 @@
     <Project Path="samples/Sezika.IndependentModel.Smoke/Sezika.IndependentModel.Smoke.csproj" />
   </Folder>
   <Folder Name="/tools/">
+    <Project Path="tools/Sezika.Tooling/Sezika.Tooling.csproj" />
+    <Project Path="tests/Sezika.Tooling.Tests/Sezika.Tooling.Tests.csproj" />
     <Project Path="tools/Sezika.BackwardKernelCompiler/Sezika.BackwardKernelCompiler.csproj" />
     <Project Path="tools/Sezika.FullTrainingChecks/Sezika.FullTrainingChecks.csproj" />
     <Project Path="tools/Sezika.RepositoryTrainer/Sezika.RepositoryTrainer.csproj" />
