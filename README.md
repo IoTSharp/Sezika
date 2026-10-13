@@ -1,54 +1,52 @@
 # Sezika
 
-**Multilingual, non-autoregressive System 1 decision engine.**
+**用 C# 构建的本地多语言决策引擎。**
 
-Sezika 面向本地软件中的语义判断，目标是使用 **C#、.NET 10 与 Native AOT**，把文本或结构化状态转换为类型化决策与概率分布。模型、CPU/GPU 算子及调度以 C# 实现，GPU 运行时允许调用系统显卡驱动。
+Sezika 是一个非自回归的 System 1 决策引擎：输入文本或 JSON 状态，输出类型化判断与概率分布，面向意图识别、候选选择和规则语义判断等场景。
 
-模型发布采用两个渠道：[maikebing](https://moark.com/maikebing/Sezika-mmBERT-8192-experimental) 为 **私有内部预发布**，[IoTSharp/Sezika-Decision-Base](https://moark.com/IoTSharp/Sezika-Decision-Base) 为 **公开发布渠道**；正式模型名称为 **Sezika-Decision-Base**，当前版本为 **v0.1-preview**。数据集保持私有。2026-10-11 在 RTX 5090 上完成 48 步 C# 全参数微调及 196 次独立 GPU 前向验证；租期结束后，个人私有模型的18个底座文件和33个run文件、私有数据的275个原始资产和8个派生文件均已在本机完成新认证clone/LFS下载与逐文件SHA验收，optimizer实际恢复通过。用户随后授权只改写IoTSharp公开master；单次精确lease推送最新提交 `9c522c4e227c52c86f493a90595a894a41e1935a` 成功，独立匿名完整模型与fresh bare可达历史验收 **PASS**。55个owned文件和1个保留英文README共6,174,855,372bytes全SHA一致，tree与先前汇总版本c68049相同、diff为0；当前报告保持按Split/Type/Rotated汇总。旧详细标签提交dfef170和汇总提交c68049均不在该分支可达历史，历史内无validation.json路径记录，原安全介绍历史保留，私有仓库与模型/optimizer等原字节未改。**本次授权的分支历史清理已完成**；平台旧对象和缓存的物理删除仍为 **NOT_VERIFIED**，该平台清理未获授权、未执行。历史快照：c68049发布阶段曾仅完成当前tree脱敏，旧dfef170仍可达、历史改写待授权；该状态已由本次验收取代。详见[历史清理证据](docs/evidence/repository-training-history-cleanup-2026-10-11.md)与[本机接续证据](docs/evidence/repository-training-local-mirror-2026-10-11.md)；[本轮实机证据](docs/evidence/repository-training-real-2026-10-11.md)中的PARTIAL和FAIL保留历史。本机接续无需GPU或新租期。正式质量、校准及新权重AOT/性能仍为 **NOT_ACCEPTED**。后续训练使用项目内的[仓库训练与回推技能](.agents/skills/sezika-repository-training/SKILL.md)。
+`C# / .NET 10` · `CPU / CUDA` · `Native AOT 目标` · `Apache-2.0`
 
-2026-10-09 的 **8192-token 固定编码器实验模型**已完成训练、独立验证和完整本地保存。其原始18文件、约1.25 GB的历史发布版本见 [Hugging Face](https://huggingface.co/IoTSharp/Sezika-mmBERT-8192-experimental) 和[完整发布实证](docs/evidence/moark-personal-publication-complete-2026-10-11.md)；当时两个平台的完整encoder/tokenizer匿名内容SHA与其余文件大小/SHA验收通过，maikebing 随后已改为私有。该历史实验 development 教师一致27/53，概率未校准，正式质量与新 head AOT/性能仍待验收。旧IoTSharp组织上传失败及gai登记失败和[发布回执与使用限制](docs/evidence/model-publishing-2026-10-09.md)均保留；旧固定实验流程见[租用训练技能](.agents/skills/sezika-rental-training/SKILL.md)。
+> ⏸️ **项目暂缓推进，等待算力与资金支持。** 截至 2026-10-13，真实全参数训练已启动过，服务器现已关机；完整一轮训练、正式质量与概率校准仍未完成。
 
-```text
-文本 / JSON 状态 + 类型化问题 + 候选标准
-                ↓
-      多语言编码器 → 决策头 → 概率分布（当前未校准）
-                ↓
-       Choice / Score / Boolean
-                ↓
-      调用方判断、拒答或转入生成模型
-```
+## ✨ 能做什么
 
-## 项目状态
+| 决策原语 | 用途 | 输出 |
+| --- | --- | --- |
+| Choice | 从有限候选中选择 | 选中项与完整概率分布 |
+| Score | 按有序标准评分 | 概率加权得分与等级分布 |
+| Boolean | 判断一个命题 | `P(true)` |
 
-独立模型现有专用 `SZDH1` 诊断head资产格式，明确记录未训练、零更新和未测损失；专用loader校验初始化身份并逐位重生权重，正式训练head/checkpoint入口拒绝该格式。独立typed诊断runtime与CUDA接线已通过CPU tiny合同、实卡tiny数值和资源回归，CLI/真实模型画像另验；见[资产证据](docs/evidence/diagnostic-head-asset-2026-10-08.md)与[运行时证据](docs/evidence/diagnostic-runtime-2026-10-08.md)。
+模型、CPU/GPU 算子与调度使用 C# 实现。CUDA 路径采用构建期导出的 PTX 与静态 Driver 绑定；核心推理不依赖 PyTorch、ONNX Runtime、cuBLAS/cuDNN 或远程模型 API。Sezika 输出判断，业务动作由调用方负责。
 
-当前仓库包含可运行的纯 C# scalar/SIMD FP32 与 W8A32 encoder/head、固定真实 Laya/mmBERT 开发资产的安全加载、Choice/Score/Boolean typed decision、tokenizer oracle、校准评估器，以及 ILGPU 构建期 PTX/ABI 和 CUDA Driver 完整推理路径。S5-04/S5-05 已完成：Windows `win-x64` Native AOT 四后端各覆盖 1/8/32 问、每项 5 次正式采样；Ubuntu WSL2 `linux-x64` 四后端通过真实模型 Native AOT smoke，各为 3 问、1 次采样。**WSL smoke 不代表裸机 Linux 性能；逐语言质量仍未验收，模型权重不随仓库发布。** 具体范围见 [S5 性能与 AOT 证据](docs/s5-performance-aot.md)及[原始报告](docs/evidence/s5-2026-09-24/)。
+## 🚦 当前进度
 
-2026-09-30 已完成独立 `jhu-clsp/mmBERT-base` 原始权重/tokenizer 的固定 hash 核验、纯 C# 受限转换、`decision-v1` 输入和独立 encoder CPU smoke；项目自有中英三题型 head 仅完成 12 条 train/development 开发 smoke。该独立资产尚未替换默认 Laya 路径，也没有通过上游逐层数值、许可发布、校准、封存质量或 CUDA/AOT 门槛；证据见 [S4 独立模型报告](docs/evidence/s4-marker-head-prototype-2026-09-30.md)。
+| 状态 | 已有成果与边界 |
+| --- | --- |
+| ✅ 基础引擎 | 模型加载、tokenizer、CPU/CUDA 推理、三种决策原语与 CLI 已实现 |
+| ✅ 工程验证 | 指定模型上的数值对照及 Windows / Linux WSL2 Native AOT 验证已有证据，不代表新权重或所有平台均已验收 |
+| 🧪 真实训练 | 已在 RTX 5090 上执行 C# 编码器与决策头全参数反向训练、FP32 AdamW 更新和断点恢复 |
+| ⏸️ 全量训练 | 目标 **14,592,720 次更新**；最近核对的完整保存点为 **45,056 次，约 0.31%**；停机后的保存状态待重新核验 |
+| ⏳ 正式模型 | 多语言质量、校准、封存测试及新权重部署性能仍待验收；现有输出为未校准概率 |
 
-当前 W8A32 路径慢于 SIMD，且在保留 FP32 原权重之外增加量化缓存，没有降低总驻留内存。数值对齐、真实推理、AOT 与语言质量分别验收，不将量化实现视为已经取得性能或内存收益。
+现有[实验模型入口](https://moark.com/IoTSharp/Sezika-Decision-Base)用于研究与验证，不能视为本轮全量训练完成后的正式模型。模型权重独立于源码和 NuGet 管理。
 
-2026-09-25 已完成固定 Laya 的 46 条真实 oracle 捕获，并修正题型前缀、候选渲染/顺序、JSON 文本和 256 前缀 / 1024 总长度语义。SIMD 与 CUDA 各在 38 条支持范围内的回答上通过冻结数值容差，4 条非法输入的失败语义一致；另 4 条候选数量合同差异明确保留，不能声称全上游合同通过。请求默认严格拒绝截断，显式 `length_policy: "laya_compatible"` 才采用兼容截断并返回诊断。详见[输入合同](docs/input-contract-s3-09.md)与[真实数值证据](docs/evidence/laya-parity-2026-09-25.md)。
+## 💰 剩余训练预算
 
-2026-09-25 solution 构建为 0 警告/0 错误，输入与运行时、资源、CUDA 诊断分别通过 137/35/43 项检查；数据隔离与性能画像工具已同步到该次构建。2026-09-26 又完成修正路径的[两 RID Native AOT 长输入回归](docs/evidence/input-aot-2026-09-26.md)：`win-x64` / Ubuntu WSL2 `linux-x64` 的输入契约各138项通过，SIMD/CUDA各38条真实回答+4条非法拒绝通过冻结合同，scalar各3条长输入通过；4条候选数量差异继续保留。修正后的质量和性能仍分别验收，旧报告继续限定于原有输入实现。执行依赖与剩余门槛见 [路线图](ROADMAP.md)。
+以下是 **2026-10-13** 的单张 RTX 5090 方案估算：
 
-Scalar 另完成三题型×中英×短中长的 18 条核心数值对照。[token 覆盖率重测](docs/evidence/laya-coverage-2026-09-25.md)显示 PAWS 在 strict/compatible 下均为 250/250，Nimble 为 strict 306/324、compatible 324/324；这些是输入可构造率，不是推理成功率或答案正确率。
+| 项目 | 估算 |
+| --- | --- |
+| 剩余更新 | 14,547,664 次，以最近核对的保存点计算 |
+| 已跑语料实测速率 | 约 4 次更新 / 秒 |
+| 剩余训练时间 | 约 **960–1,014 GPU 小时**，即 **40–43 天连续运行** |
+| GPU 公开单价 | **4 元 / 小时** |
+| 剩余 GPU 费用 | 约 **人民币 3,800–4,100 元** |
 
-2026-09-26 的[本轮质量复测](docs/evidence/s346-continuation-2026-09-26.md)已把独立 Laya 与 C# CUDA 逐题数值比较扩展到 **PAWS 250 + Nimble 324，共574/574条通过**。全量参考发现并推动修复了 tokenizer 的 added-token 边界问题；修复后同一构建重新捕获全部题目，两实现分别答对 **170/250（68.00%）** 和 **137/324（42.28%）**，本轮均使用 `laya_compatible`。另12条原创中英fixture全部通过数值对比，双方8/12正确；该小型公开样本不构成语言质量验收。Nimble Boolean负类召回仍仅1/57，概率未校准，外部题集语言仍记 `unspecified`。
+这不是总成本或完成日期承诺：估算未包含最终独立验证、存储等费用，后续文本长度、训练优化和实际计费也会改变结果。目前可用算力余额为 **0 元**。[计算依据与实测范围](docs/training-budget-2026-10-13.md)
 
-此前构建的[Nimble strict实测](docs/evidence/quality-aligned-2026-09-26.md)处理全324题：306题实际推理，133题正确，已答准确率43.46%，按全部处理题计为41.05%；18题在forward前因需要截断而拒绝。该历史报告保留原程序身份，不与本轮tokenizer修复后的compatible结果混合。
+## 🚀 开发体验
 
-S4-04 的[归档基线验收](docs/evidence/s4-04-baseline-closure-2026-10-07.md)通过冻结数据和文件身份，将双方质量报告与16份完整逐批比较关联，统一复核586条历史审计结果。原始捕获和模型已清理，本轮不重新推理；正式语言质量、校准和新模型验收仍按各自门槛推进。
-
-[本轮分层诊断](docs/evidence/s346-continuation-2026-09-26.md)已补齐三题型×中英×短中长 **18 组、54 个三后端输出**，全部满足冻结输出合同，SIMD/CUDA 共记录 972 次完整张量诊断；首次超时与后续补齐分别保留。全量质量参考暴露并推动修复了 tokenizer 的 added-token 边界缺陷，修复后另通过 267 条独立分词参考、137 项输入契约和受影响案例三后端真实回归。内部层诊断仍缺独立上游张量及冻结阈值；新 tokenizer 实现的 AOT 尚未重测。各构建的数值、质量和性能证据按程序集哈希分别记录。
-
-[本轮性能工具验证](docs/evidence/s346-continuation-2026-09-26.md)在普通 .NET 10.0.11 / i9-13900HX / RTX4070 Laptop 下记录：CUDA long-32的`end_to_end`单样本 **38.319秒**，独立分项明确未测；SIMD long-1为 **42.183秒**。据当前单题耗时估算CPU long-32的discovery与正式两遍约45分钟，超过工具30分钟总上限，本轮未启动该格。受控CUDA截止测试正确保留3次进入、2次完成、0正式样本及资源回收证据。[历史九格画像和CPU 300秒失败](docs/evidence/s5-profile-2026-09-26.md)继续保留；这些数据不构成稳定尾延迟、新AOT性能或优化收益声明。
-
-## 独立使用
-
-独立原始 encoder 与自有 head 可通过显式 `--model-format independent-v1` 使用 inspect/predict，直接绑定 `train-original` 的 v2 报告并消费 `decision-v1`。见 [独立 CLI](docs/independent-cli-s4-15.md)；managed 41 项及 Windows Native AOT tiny fixture 42 项通过，真实新模型质量、两 RID 部署与默认切换仍按 ROADMAP 验收。以下既有示例使用 legacy 资产。
-
-Sezika 可以独立加载固定模型包并执行决策。先按[独立使用说明](docs/standalone-usage.md)准备并验证模型资产；在仓库根目录执行：
+需要 .NET 10 SDK；先按[独立使用说明](docs/standalone-usage.md)准备并校验模型资产，再执行：
 
 ```powershell
 dotnet build Sezika.slnx -c Release
@@ -56,51 +54,27 @@ dotnet run --project src/Sezika.Cli -c Release --no-build -- inspect --model .ar
 dotnet run --project src/Sezika.Cli -c Release --no-build -- predict --model .artifacts/models/laya-mmbert --input samples/requests/decision.zh.json --deadline-seconds 300
 ```
 
-`predict` 使用 CPU 返回 Choice、Score、Boolean 的 JSON 答案；[中文](samples/requests/decision.zh.json)与[英文](samples/requests/decision.en.json)请求均可直接修改。`inspect` 是固定资产预检查，完整张量配置仍在加载时验证。C# 宿主可以使用 `DecisionModelRuntime.Load(...)` 和 `Evaluate(...)` 复用同一 session；API 示例和输出语义见[独立使用说明](docs/standalone-usage.md)。当前结果为 `uncalibrated`；开发期 CLI 尚未正式发布。
+以上是已有固定资产的开发入口。[独立模型 CLI](docs/independent-cli-s4-15.md)另有显式模型格式；开发期可运行不等于正式质量验收。
 
-## 决策原语
+## 🧭 文档与路线
 
-| 原语 | 语义 | 输出 |
-| --- | --- | --- |
-| Choice | 从请求给定的有限候选中选择 | 选中项、完整概率分布、集中度 |
-| Score | 按有序 rubric 评分 | 概率加权期望、各级概率、等级说明 |
-| Boolean | 判断命题成立的可能性 | `P(true)`；外部兼容层可映射为 `noul` |
+- [路线图](ROADMAP.md)：恢复训练、质量评测、性能和发布的下一步。
+- [架构设计](docs/architecture.md) · [GPU / AOT](docs/gpu-aot.md) · [已有实测证据](docs/stage-evidence.md)。
+- [训练预算与暂停记录](docs/training-budget-2026-10-13.md) · [更新记录](CHANGELOG.md) · [English](README.en.md)。
 
-适用方向包括意图识别、模型/工具路由、RAG 候选重排、内容判断和结果核验。决策引擎返回建议，由调用方控制动作与权限；开放式回复由生成模型承担。
+自有代码采用 [Apache License 2.0](LICENSE)；模型、数据与 tokenizer 的来源和许可分别管理，见[第三方声明](THIRD_PARTY_NOTICES.md)。
 
-## 技术边界
+<a id="sponsorship"></a>
 
-- 首个候选架构采用 mmBERT-base 类多语言 encoder 加类型化决策头。权重、tokenizer 和训练数据逐项审核许可，独立于引擎代码发布。
-- 基础推理使用 C# 实现算子，不依赖 Python、PyTorch、ONNX Runtime、cuBLAS/cuDNN 或另一服务进程。开发阶段可使用固定参考实现生成数值对照数据。
-- GPU 已通过 NVIDIA CUDA Driver 路径：C# kernels 在构建期由 ILGPU 1.5.3 导出 PTX/ABI，Native AOT 通过静态 Driver 绑定执行完整 encoder/head；不使用 cuBLAS/cuDNN。
-- 类库静态纳入宿主；使用 source-generated JSON，保持 Native AOT/trimming 可分析性。
-- 模型资产、context、问题/候选数量、并发、工作空间和取消均有明确边界。
-- 多语言能力逐语言评测；概率、分布集中度、校准有效范围与拒答分别表达。
+## ❤️ 我们需要赞助
 
-## 文档与工程
+我们需要赞助来继续完成 Sezika 的全量训练与独立验证。欢迎提供训练经费、可用 GPU 算力，或参与 C# / CUDA 优化与评测。
 
-- [独立使用](docs/standalone-usage.md)：固定模型准备、CLI、C# 调用和决策输入输出。
-- [独立 head 训练 checkpoint 与恢复](docs/independent-training-checkpoint-s4-12.md)：有界累计步训练、hash 绑定恢复、v2 报告和推理 head 导出；工程 fixture 已验收，真实数据准入与质量另验。
-- [独立 head 保存加固](docs/evidence/head-asset-publication-2026-10-08.md)：实际写入prefix、失败/取消清理、替换保留与旧格式兼容的文件I/O验收。
-- [独立预测导出](docs/independent-prediction-export-s4-08.md)：获准 split 的本地模型输出接入校准工具，完整身份/失败分母和原子发布；fixture 联调保持 `not_eligible`。
-- [参考项目分析](docs/research.md)：Laya 的可审计模型实现，以及 TypeSafe Jev 的公开协议与边界。
-- [下一阶段研究](docs/next-stage-research-2026-09-25.md)：Sezika、Laya、Jev、Nimble 的路线比较，CPU/CUDA 优化、双模型训练与 IoTSharp 集成计划。
-- [修正路径质量证据](docs/evidence/quality-aligned-2026-09-26.md)：完整题集的真实模型结果、有限独立参考和可核查的 forward 证据；[旧输入报告](docs/evidence/quality-2026-09-25.md)单独保留。
-- [Laya oracle 合同](docs/laya-oracle.md)、[C# 真实捕获](docs/oracle-capture.md)与[数值对照证据](docs/evidence/laya-parity-2026-09-25.md)：固定源码/资产/输入/容差，保留完整清单差异和支持范围的 token、marker、logits 验收结果。
-- [数据隔离审计](docs/data-isolation-s4-05.md)：来源、许可、用途、家族/实体/近重复与封存声明检查；示例不代表获准训练的数据集。
-- [GPU 训练入口](docs/evidence/gpu-training-cli-2026-10-08.md)：`train-original-gpu`使用GPU计算完整特征并训练head，先核正式数据准入；CPU入口限小规模参考/诊断。工程实卡已验，正式数据训练与质量另验。
-- [独立模型画像入口](docs/evidence/independent-profile-entry-2026-10-08.md)：`independent-profile`显式接CUDA并记录实际Evaluate、失败和资源分母；`check-independent-profile`仅CPU tiny兼容。工程已验，真实GPU画像及正式性能另验。
-- [长输入性能画像](docs/evidence/s5-profile-2026-09-26.md)：当前渲染路径的真实短/中/长与 1/8/32 问请求，实际输入、端到端耗时、分项与资源证据；[工具说明](docs/performance-profile-s5-06.md)列出复现方法和计时口径。
-- [架构设计](docs/architecture.md)：推理路径、模型资产、契约、校准与资源约束。
-- [纯 C# GPU 与 Native AOT](docs/gpu-aot.md)：ILGPU 编译期边界、CUDA Driver 路径及最小验证关口。
-- [S5 性能与 AOT 证据](docs/s5-performance-aot.md)：Windows 四后端基准、Ubuntu WSL2 真实模型 AOT smoke、计时与内存边界。
-- [阶段路线图](ROADMAP.md)：实现顺序、验收条件与工作量判断。
-- [闭环审计](docs/closure-audit-2026-09-23.md)：逐阶段证据、状态与剩余条件。
-- `src/Sezika`：.NET 10 核心类库、模型加载、tokenizer、CPU encoder 与 typed decision engine。
-- [English](README.en.md)
+| 微信赞助 | IoTSharp 企业微信群 |
+| :---: | :---: |
+| <a href="docs/assets/wechat-sponsor.jpg"><img src="docs/assets/wechat-sponsor.jpg" alt="维护者提供的微信收款码，用于赞助 Sezika" width="230" /></a> | <a href="docs/assets/iotsharp-wecom.jpg"><img src="docs/assets/iotsharp-wecom.jpg" alt="IoTSharp 企业微信交流群二维码" width="230" /></a> |
+| 扫码自愿支持训练经费 | 微信扫码加入，一起交流 Sezika 与 IoTSharp |
 
-真实模型、CUDA 与 AOT 命令及实测结果见 [阶段证据](docs/stage-evidence.md) 和 [GPU/AOT 设计](docs/gpu-aot.md)。旧输入实现的首轮 PAWS 结果低于多数类基线；修正后本固定集为 68%，但已查看题集不能用于选参或冒充新封存测试。多语言质量、裸机 Linux 性能和更充分的尾延迟采样仍需独立证据。
+点击图片可查看原图。交流群二维码来自 [IoTSharp 官方项目](https://github.com/IoTSharp/IoTSharp)；如入口失效，请查看该项目的最新社区信息或提交 Issue。[图片来源](docs/assets/SOURCES.md)
 
-## 开源许可
-
-自有代码使用 [Apache License 2.0](LICENSE)。研究参考与第三方资产边界见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。本项目不声称复现 Jev 的闭源模型，也不继承上游的速度或质量结论。
+**🙏 Sezika 仍需要你的赞助与参与。每一份算力和支持，都能帮助我们继续完成真实训练与验证。**

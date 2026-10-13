@@ -1,49 +1,48 @@
 # Sezika
 
-**Multilingual, non-autoregressive System 1 decision engine.**
+**A local, multilingual, non-autoregressive System 1 decision engine, built with C#.**
 
-Sezika targets local, typed semantic decisions using **C#, .NET 10 and Native AOT**. Its inference path uses a managed bidirectional Transformer encoder and decision head to turn text or JSON state and questions into Choice, Score and Boolean answers.
+Sezika turns text or JSON state into typed semantic decisions: **Choice**, **Score** and **Boolean**, with probability distributions. Business actions remain the caller's responsibility.
 
-Model publication uses two channels: [maikebing](https://moark.com/maikebing/Sezika-mmBERT-8192-experimental) hosts **private internal prereleases**, and [IoTSharp/Sezika-Decision-Base](https://moark.com/IoTSharp/Sezika-Decision-Base) is the **public release channel**. The formal model name is **Sezika-Decision-Base**, with current version **v0.1-preview**. The dataset remains private. On October 11, 2026, the RTX 5090 completed 48 C# full-parameter updates and 196 independent GPU validation forwards. After the rental ended, fresh authenticated clones and complete LFS downloads passed file SHA checks locally for the private model's 18 base files and 33 run files, and the private dataset's 275 original assets and 8 derived files; the optimizer checkpoint was physically restored and verified. The user then authorized rewriting only the public IoTSharp master. One push with an exact lease published `9c522c4e227c52c86f493a90595a894a41e1935a`; independent anonymous full-model checks and a fresh bare clone's reachable-history audit **passed**. All 55 owned files and one preserved English README, totaling 6,174,855,372 bytes, passed full SHA checks. The tree is identical to the prior aggregate version c68049, with zero diff, and validation remains aggregated by Split/Type/Rotated. Neither the old detailed-label commit dfef170 nor c68049 is reachable from this branch, no validation.json path occurs in its reachable history, and the original safe introduction history remains. Private repositories and original model/optimizer bytes were unchanged. **The authorized branch-history cleanup is complete**. Physical deletion of old platform objects and caches remains **NOT_VERIFIED**; that platform cleanup was neither authorized nor performed. Historical snapshot: at c68049, only the current tree had been redacted, dfef170 was still reachable, and history rewriting awaited authorization; the new audit supersedes that status. See the [history cleanup evidence](docs/evidence/repository-training-history-cleanup-2026-10-11.md) and [local continuation evidence](docs/evidence/repository-training-local-mirror-2026-10-11.md); earlier PARTIAL and FAIL receipts remain in the [run evidence](docs/evidence/repository-training-real-2026-10-11.md). This local continuation needs no GPU or new rental. Formal quality, calibration, and the new weights' Native AOT and performance acceptance remain **NOT_ACCEPTED**. Future training uses the project [repository training and publication skill](.agents/skills/sezika-repository-training/SKILL.md).
+`C# / .NET 10` · `CPU / CUDA` · `Native AOT target` · `Apache-2.0`
 
-The **8,192-token frozen-encoder experiment from October 9, 2026** completed training, independent validation, and full local preservation. Its original 18-file package (about 1.25 GB) is documented on [Hugging Face](https://huggingface.co/IoTSharp/Sezika-mmBERT-8192-experimental) and in the [historical publication evidence](docs/evidence/moark-personal-publication-complete-2026-10-11.md). Both platforms passed anonymous full-content SHA checks for the encoder/tokenizer and size/SHA checks for the remaining files at that time; maikebing has since become private. That experiment's development teacher agreement is 27/53; probabilities are uncalibrated, and formal quality, newly trained head Native AOT, and performance acceptance remain pending. Earlier IoTSharp and gai failures and the [publication receipts and usage limits](docs/evidence/model-publishing-2026-10-09.md) are retained. The historical workflow remains in the [rental training skill](.agents/skills/sezika-rental-training/SKILL.md).
+> ⏸️ **Development and training are paused pending compute and funding.** Updated October 13, 2026. The GPU instance is shut down; full-corpus training, formal quality acceptance and probability calibration are unfinished.
 
-## Status
+## 🚦 Progress
 
-This repository includes bounded loading for the pinned Laya/mmBERT model, tokenizer oracle fixtures, C# scalar/SIMD FP32 and W8A32 encoder/head paths, real Choice/Score/Boolean decisions, calibration metrics, build-time ILGPU PTX/ABI artifacts, and resident CUDA inference. S5-04/S5-05 are complete within the measured scope: Windows `win-x64` Native AOT benchmarks cover all four backends at 1/8/32 questions with five samples per configuration; Ubuntu WSL2 `linux-x64` real-model Native AOT smoke covers all four backends at three questions with one sample each. **WSL smoke does not establish bare-metal Linux performance. Multilingual quality remains unaccepted, and model weights are not bundled for release.** See the [S5 performance and AOT evidence](docs/s5-performance-aot.md) and [raw reports](docs/evidence/s5-2026-09-24/).
+| Status | Scope |
+| --- | --- |
+| ✅ Engine | Model loading, tokenizer, C# CPU/CUDA inference, typed decisions and development CLI |
+| ✅ Engineering evidence | Numerical comparisons and Windows / Linux WSL2 Native AOT checks for specific models; these do not validate all platforms or newly trained weights |
+| 🧪 Training | Real C# encoder/head backpropagation, FP32 AdamW updates and checkpoint restoration on RTX 5090 |
+| ⏸️ Full corpus | Target: **14,592,720 updates**. Last inspected complete checkpoint: **45,056 updates, about 0.31%**; storage must be checked again after restart |
+| ⏳ Acceptance | Multilingual quality, calibrated probabilities, sealed evaluation and deployment performance of the new weights |
 
-The current W8A32 path is slower than SIMD. It retains the original FP32 weights and adds quantized caches, so it does not reduce total resident memory. Numerical alignment, actual inference, AOT compatibility, language quality and performance benefits remain separate claims.
+The inference core uses C# operators, build-time PTX and static CUDA Driver bindings, without PyTorch, ONNX Runtime, cuBLAS/cuDNN or remote inference services. Model weights are managed separately from code and NuGet packages. The existing [experimental model](https://moark.com/IoTSharp/Sezika-Decision-Base) is not the completed result of this full-corpus run.
 
-The [2026-09-26 continuation](docs/evidence/s346-continuation-2026-09-26.md) extends independent Laya-versus-C# CUDA comparisons to **all 574 PAWS/Nimble records**. Full reference coverage exposed an added-token boundary bug in the C# tokenizer; after fixing it, all records were recaptured with one implementation and passed the original numerical contract. Both implementations answered 250/250 PAWS records with 170 correct (68.00%) and 324/324 Nimble records with 137 correct (42.28%), using `laya_compatible`. A separate 12-record original English/Chinese fixture audit also passed all numerical comparisons, with 8/12 correct. These small public fixtures do not establish language quality. Nimble Boolean negative recall remains 1/57, probabilities are uncalibrated, and the external datasets have no explicit language metadata.
+## 💰 Remaining training budget
 
-A [prior-build Nimble strict run](docs/evidence/quality-aligned-2026-09-26.md) answered 306/324 with 133 correct: 43.46% of answered records and 41.05% of all processed records. The other 18 records were rejected before forward because they required truncation. Its implementation identity remains separate from the latest tokenizer fix.
+At the observed rate of roughly **4 updates/second**, a single RTX 5090 would need about **960–1,014 more GPU hours**, or **40–43 days of continuous operation**. At the October 13, 2026 catalog price of **CNY 4/hour**, the remaining GPU cost is approximately **CNY 3,800–4,100**. Available compute funds are currently **CNY 0**.
 
-Core three-backend diagnostics now cover all 18 primitive/language/length cells, with 54 output checks and 972 complete internal tensor comparisons; the initial timeout and continuation remain separately recorded. The tokenizer fix passes 267 independent boundary fixtures and a real scalar/SIMD/CUDA regression for an affected record. No real near tie was found among the 574 references at the frozen 0.001 margin threshold. Independent layer thresholds and fresh Native AOT validation of this tokenizer implementation remain open.
+This extrapolation excludes final independent validation, storage and other costs. Later sequence lengths, optimization and billing changes can affect both time and cost. It is not a delivery date or quality guarantee. See the [calculation and observed scope](docs/training-budget-2026-10-13.md).
 
-The latest managed .NET 10.0.11 observations on an i9-13900HX / RTX 4070 Laptop record a **38.319-second** CUDA long-32 sample in `end_to_end` mode, with separate stage timings explicitly unmeasured, and a **42.183-second** SIMD long-1 sample. Extrapolating discovery plus one formal CPU long-32 sample exceeds the tool's 30-minute total limit, so that configuration was not started in this continuation. A controlled CUDA deadline failure records three entered forwards, two completed forwards, no formal sample, and successful resource cleanup. [Earlier nine-cell profiles and the CPU 300-second failure](docs/evidence/s5-profile-2026-09-26.md) remain separate evidence. These small samples do not establish stable tail latency, new Native AOT performance or an optimization benefit.
+## 🚀 Get started
 
-## Standalone use
+Use the .NET 10 SDK and prepare verified model assets through the [standalone guide](docs/standalone-usage.md). Development entry points include `inspect` and `predict`; the [independent-model CLI](docs/independent-cli-s4-15.md) uses an explicit model format. Current probability outputs are uncalibrated.
 
-Sezika can load the pinned model package and evaluate typed decisions without a host integration. Prepare and verify the model assets using the [standalone guide](docs/standalone-usage.md), then run these commands from the repository root with the .NET 10 SDK:
+- [中文首页](README.md) · [Roadmap](ROADMAP.md) · [Changelog](CHANGELOG.md)
+- [Architecture](docs/architecture.md) · [GPU / AOT](docs/gpu-aot.md) · [Evidence](docs/stage-evidence.md)
 
-```powershell
-dotnet build Sezika.slnx -c Release
-dotnet run --project src/Sezika.Cli -c Release --no-build -- inspect --model .artifacts/models/laya-mmbert
-dotnet run --project src/Sezika.Cli -c Release --no-build -- predict --model .artifacts/models/laya-mmbert --input samples/requests/decision.en.json --deadline-seconds 300
-```
+Project code is licensed under [Apache 2.0](LICENSE). Model, tokenizer and dataset licenses are managed separately; see [third-party notices](THIRD_PARTY_NOTICES.md).
 
-The CLI uses CPU inference and returns Choice, Score and Boolean answers as JSON. Edit the supplied [English](samples/requests/decision.en.json) or [Chinese](samples/requests/decision.zh.json) request to try your own input. `inspect` checks pinned assets; loading still validates the complete tensor configuration. C# hosts can reuse a session through `DecisionModelRuntime.Load(...)` and `Evaluate(...)`. See the guide for the API example and output semantics. Results remain `uncalibrated`, and the development CLI has not been formally released.
+## ❤️ We need sponsors
 
-## Design
+Help fund the remaining training and independent validation, contribute GPU time, or work with us on C# / CUDA optimization and evaluation.
 
-- C# model code and CPU/GPU kernels with explicit resource limits, cancellation and source-generated JSON. Runtime native calls are limited to operating-system/device drivers.
-- NVIDIA path: compile C# kernels to PTX and an ABI manifest with ILGPU 1.5.3 at build time, then load and launch the static artifacts through C# CUDA Driver bindings in the Native AOT runtime. ILGPU's ordinary runtime JIT/launcher path is not considered Native AOT compatible. Native compute libraries such as cuBLAS/cuDNN are outside the design.
-- A multilingual encoder and typed decision head; the first candidate follows the mmBERT-base architecture used by Laya's multilingual checkpoint.
-- Full candidate distributions, ordinal expected scores and probability of truth. Distribution concentration and calibration status remain separate.
-- Language quality, calibration, model correctness and latency each require their own evidence.
-- Code, model weights, tokenizers and training datasets retain separate licenses and distribution checks.
-- Callers control actions and permissions. The engine makes predictions and can abstain; it does not execute tools.
+| WeChat sponsorship | IoTSharp WeCom community |
+| :---: | :---: |
+| <a href="docs/assets/wechat-sponsor.jpg"><img src="docs/assets/wechat-sponsor.jpg" alt="Maintainer-provided WeChat payment QR code for voluntary sponsorship" width="230" /></a> | <a href="docs/assets/iotsharp-wecom.jpg"><img src="docs/assets/iotsharp-wecom.jpg" alt="IoTSharp WeCom community QR code" width="230" /></a> |
 
-See the [roadmap](ROADMAP.md), [stage evidence](docs/stage-evidence.md), [S5 performance and AOT evidence](docs/s5-performance-aot.md), [closure audit](docs/closure-audit-2026-09-23.md), [research](docs/research.md), [architecture](docs/architecture.md) and [GPU/AOT design](docs/gpu-aot.md). Bare-metal Linux performance and stronger tail-latency estimates need separate measurements. Project documentation is primarily in Chinese.
+Click either image for its full resolution. The community image comes from the [IoTSharp project](https://github.com/IoTSharp/IoTSharp). If the invitation stops working, check that project's current community information. [Image sources](docs/assets/SOURCES.md)
 
-Owned source is licensed under [Apache-2.0](LICENSE). See [third-party notices](THIRD_PARTY_NOTICES.md). Sezika does not claim to reproduce Jev's closed model or inherit another project's performance results.
+**🙏 Sezika needs sponsorship to continue real training and validation. Contributions of funding, compute and engineering time are welcome.**
