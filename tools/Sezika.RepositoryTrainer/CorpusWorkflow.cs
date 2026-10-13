@@ -184,10 +184,23 @@ internal static class CorpusWorkflow
         budget.Check();File.Move(pending,path,false);
     }
 
-    internal static void Run(string command,string planPath,string output,string? profilePath,string? resume,long stageUpdates,RunBudget budget,string? stageGpuUuid=null)
+    internal static int CheckpointInterval(string command,int planInterval,int? requested)
+    {
+        if(requested is not null&&command!="train-corpus")throw new InvalidDataException("Checkpoint interval override is a training execution policy only.");
+        var interval=requested??planInterval;
+        if(interval is <1 or >1000000)throw new ArgumentOutOfRangeException(nameof(requested));
+        return interval;
+    }
+    internal static bool CheckpointDue(long completed,long bound,int interval)=>completed%interval==0||completed==bound;
+
+    internal static void Run(string command,string planPath,string output,string? profilePath,string? resume,long stageUpdates,RunBudget budget,string? stageGpuUuid=null,bool resident=false,string? stopFile=null,int? checkpointEvery=null)
     {
         if(command is not("profile-corpus" or "train-corpus"))throw new ArgumentException("Unknown corpus workflow.");
+        if(command=="profile-corpus"&&(resident||stopFile is not null))throw new ArgumentException("Safe-stop/resident options apply only to training.");
+        if(stopFile is not null&&File.Exists(stopFile))throw new OperationCanceledException("Safe stop already requested; existing checkpoint retained.");
         var watch=Stopwatch.StartNew();var p=Plan(planPath,budget,out var planSha);var corpus=new Corpus(p.CorpusRoot,p.CorpusManifestSha256,p.CorpusBindingsSha256,budget);
+        // Execution cadence never modifies the immutable plan or optimizer identity.
+        var interval=CheckpointInterval(command,p.CheckpointEvery,checkpointEvery);
         if(corpus.Manifest.Pilot)throw new InvalidDataException("Pilot corpus cannot claim complete training coverage.");
         var lengths=Lengths(p,corpus,budget);var global=checked(p.TrainRecords*p.Epochs);var storage=StoragePlan(p);
         if(Directory.Exists(output)||File.Exists(output))throw new IOException("Output exists; preserve it.");
@@ -195,16 +208,17 @@ internal static class CorpusWorkflow
         var identity=Identity(p,planSha,corpus,model.EncoderSha256,model.TokenizerSha256);var initial=Resume(resume,p,identity,budget);
         if(command=="profile-corpus"&&resume is not null)throw new InvalidDataException("Profile starts from fixed base and zero head.");
         if(command=="train-corpus"&&(stageUpdates<1||stageUpdates>MaximumUpdates||stageUpdates>global-initial))throw new InvalidDataException("Explicit stage update count must fit remaining fixed global plan.");
-        CorpusProfileReceipt? profile=null;
+        CorpusProfileReceipt? profile=null;double saveReserve=0;
         if(command=="train-corpus")
         {
             if(profilePath is null)throw new InvalidDataException("Complete same-instance corpus profile required.");
             profile=Assets.Read(profilePath,CorpusWorkflowJson.Default.CorpusProfileReceipt);
             if(profile.Status!="PASS_real_base_corpus_profile_only"||profile.Inputs!=identity||profile.RunId!=p.RunId||profile.GpuUuid!=GpuUuid(p,stageGpuUuid)||profile.MaximumTokensTested<lengths.LongestTokens||!double.IsFinite(profile.MaximumStepSeconds)||profile.MaximumStepSeconds<=0||
                 !File.Exists(Data.Within(Path.GetDirectoryName(Path.GetFullPath(profilePath))!,"resources-reclaimed.txt")))throw new InvalidDataException("Full corpus/profile/GPU identity gate differs.");
-            var saves=1+(initial+stageUpdates)/p.CheckpointEvery-initial/p.CheckpointEvery;
+            var saves=1+(initial+stageUpdates)/interval-initial/interval;
             var estimate=4*profile.MaximumStepSeconds*stageUpdates+600+120*saves;
-            if(estimate>budget.RemainingSeconds)throw new InvalidDataException($"This phase needs conservative {estimate:F0}s; available {budget.RemainingSeconds:F0}s. Lower --stage-updates without changing the global plan.");
+            if(resident)saveReserve=CorpusStopPolicy.SaveReserve(profile.CheckpointSeconds);
+            else if(estimate>budget.RemainingSeconds)throw new InvalidDataException($"This phase needs conservative {estimate:F0}s; available {budget.RemainingSeconds:F0}s. Lower --stage-updates without changing the global plan.");
         }
         // Stream a resume prefix before opening GPU ownership. No previous epoch
         // is rescanned; only the compressed current epoch prefix is necessary.
@@ -223,14 +237,34 @@ internal static class CorpusWorkflow
         GpuAdmission.RequireMemory(baseline.FreeBytes,p.MaximumOwnedBytes);
         if(profile is not null)GpuAdmission.RequireProfile(profilePath!,p,profile,device.Info,budget);
         var profileMaximumTokens=GpuAdmission.ProfileMaximumTokens(device.Info,p.MaximumTokens,lengths.LongestTokens);
-        Directory.CreateDirectory(output);double loss=0,maxStep=0;var syntheticPadded=false;string? checkpointPath=null,cursorPath=null;var bound=command=="profile-corpus"?3:initial+stageUpdates;
+        Directory.CreateDirectory(output);double loss=0,maxStep=0;var syntheticPadded=false;string? checkpointPath=null,cursorPath=null,stopReason=null;var bound=command=="profile-corpus"?3:initial+stageUpdates;
         using(var trainer=new CudaFullEncoderTrainer(device,model.Encoder.Config,model.Encoder.Weights,maximumOwnedBytes:p.MaximumOwnedBytes,cancellationToken:budget.Token))
         {
             if(resume is not null)Assets.Restore(resume,storage,identity,trainer,budget);
             if(trainer.CompletedUpdates!=initial)throw new InvalidDataException("Restored AdamW cursor differs.");
+            long lastSaved=-1;
+            void Save()
+            {
+                budget.Check();if(lastSaved==trainer.CompletedUpdates)return;
+                var timer=Stopwatch.StartNew();
+                var root=Data.Within(output,"checkpoint-"+trainer.CompletedUpdates.ToString("D10",CultureInfo.InvariantCulture));checkpointPath=Assets.SaveCheckpoint(root,storage,identity,trainer,budget);
+                cursorPath=Data.Within(root,"corpus-cursor.json");SaveCursor(cursorPath,new CorpusCursorReceipt(1,p.RunId,identity,trainer.CompletedUpdates,trainer.CompletedUpdates/p.TrainRecords,trainer.CompletedUpdates%p.TrainRecords,p.TrainRecords,p.Epochs,Data.FileHash(checkpointPath,budget),ScheduleAlgorithm),budget);
+                Trim(output,p.RunId,identity,budget);lastSaved=trainer.CompletedUpdates;
+                if(resident)saveReserve=Math.Max(saveReserve,CorpusStopPolicy.SaveReserve(timer.Elapsed.TotalSeconds));
+            }
             for(var step=initial;step<bound;step++)
             {
-                budget.Check();var row=command=="profile-corpus"?(step==2?longest!:first.Row):stream.Current.Row;
+                budget.Check();
+                if(command=="train-corpus")
+                {
+                    stopReason=CorpusStopPolicy.Reason(resident,stopFile,budget.RemainingSeconds,Math.Max(profile!.MaximumStepSeconds,maxStep),saveReserve);
+                    if(stopReason is not null)
+                    {
+                        if(trainer.CompletedUpdates==0)throw new OperationCanceledException("No committed update before safe stop; fixed base retained.");
+                        Save();break;
+                    }
+                }
+                var row=command=="profile-corpus"?(step==2?longest!:first.Row):stream.Current.Row;
                 if(row.Split!="train")throw new InvalidDataException("Held-out row cannot enter reverse/update path.");
                 var item=Workflow.Sequence(model.Tokenizer,row,p.MaximumTokens,command=="train-corpus"&&step%2==1,budget);var ids=item.Sequence.TokenIds;
                 if(command=="profile-corpus"&&step==2&&ids.Length<profileMaximumTokens){syntheticPadded=true;ids=ids.Concat(Enumerable.Repeat(model.Tokenizer.EosId,profileMaximumTokens-ids.Length)).ToArray();}
@@ -241,28 +275,32 @@ internal static class CorpusWorkflow
                     try{if(!gradient.Any(v=>float.IsFinite(v)&&v!=0))throw new ArithmeticException("Base encoder gradients remain zero after head update.");}finally{Array.Clear(gradient);}
                 }
                 trainer.ApplyAdamW(p.EncoderRate,p.HeadRate,p.WeightDecay,budget.Token);maxStep=Math.Max(maxStep,timer.Elapsed.TotalSeconds);loss+=result.Loss;
-                if(trainer.CompletedUpdates%10==0||step==initial||trainer.CompletedUpdates==bound)Console.WriteLine($"{command} updates={trainer.CompletedUpdates}/{global},phase_end={bound},epoch={trainer.CompletedUpdates/p.TrainRecords},tokens={ids.Length},loss={result.Loss:R},elapsed={watch.Elapsed.TotalSeconds:F1}s");
-                if(command=="train-corpus"&&(trainer.CompletedUpdates%p.CheckpointEvery==0||trainer.CompletedUpdates==bound))
+                var advancedAtEpochBoundary=false;
+                if(command=="train-corpus"&&trainer.CompletedUpdates%p.TrainRecords==0)
                 {
-                    var root=Data.Within(output,"checkpoint-"+trainer.CompletedUpdates.ToString("D10",CultureInfo.InvariantCulture));checkpointPath=Assets.SaveCheckpoint(root,storage,identity,trainer,budget);
-                    cursorPath=Data.Within(root,"corpus-cursor.json");SaveCursor(cursorPath,new CorpusCursorReceipt(1,p.RunId,identity,trainer.CompletedUpdates,trainer.CompletedUpdates/p.TrainRecords,trainer.CompletedUpdates%p.TrainRecords,p.TrainRecords,p.Epochs,Data.FileHash(checkpointPath,budget),ScheduleAlgorithm),budget);
-                    Trim(output,p.RunId,identity,budget);
+                    // Validate trailing gzip/source EOF and epoch/global denominator
+                    // before accepting the complete checkpoint/cursor marker.
+                    var hasNext=stream.MoveNext();
+                    if(hasNext!=(trainer.CompletedUpdates<global))throw new InvalidDataException("Epoch/global trailing denominator differs.");
+                    advancedAtEpochBoundary=true;
                 }
-                if(command=="train-corpus"&&trainer.CompletedUpdates<bound&&!stream.MoveNext())throw new InvalidDataException("Global plan exhausted before requested complete phase.");
-            }
-            if(command=="train-corpus"&&bound%p.TrainRecords==0)
-            {
-                // Resume of an iterator at its last yield validates the trailing
-                // shard EOF and full epoch denominator before coverage is claimed.
-                var hasNext=stream.MoveNext();if(hasNext!=(bound<global))throw new InvalidDataException("Epoch/global trailing denominator differs.");
+                if(trainer.CompletedUpdates%10==0||step==initial||trainer.CompletedUpdates==bound)Console.WriteLine($"{command} updates={trainer.CompletedUpdates}/{global},phase_end={bound},epoch={trainer.CompletedUpdates/p.TrainRecords},tokens={ids.Length},loss={result.Loss:R},elapsed={watch.Elapsed.TotalSeconds:F1}s");
+                if(command=="train-corpus"&&CheckpointDue(trainer.CompletedUpdates,bound,interval))
+                {
+                    Save();
+                }
+                if(command=="train-corpus"&&trainer.CompletedUpdates<bound&&!advancedAtEpochBoundary&&!stream.MoveNext())throw new InvalidDataException("Global plan exhausted before requested complete phase.");
             }
             if(command=="profile-corpus")
-                Data.WriteNew(Data.Within(output,"profile.json"),new CorpusProfileReceipt("PASS_real_base_corpus_profile_only",p.RunId,identity,device.Info.Uuid,profileMaximumTokens,maxStep,watch.Elapsed.TotalSeconds,device.GetMemorySnapshot().PeakOwnedBytes,syntheticPadded,false),CorpusWorkflowJson.Default.CorpusProfileReceipt);
+            {
+                var saveWatch=Stopwatch.StartNew();Assets.SaveCheckpoint(Data.Within(output,"profile-state-not-a-corpus-checkpoint"),storage,identity,trainer,budget);
+                Data.WriteNew(Data.Within(output,"profile.json"),new CorpusProfileReceipt("PASS_real_base_corpus_profile_only",p.RunId,identity,device.Info.Uuid,profileMaximumTokens,maxStep,watch.Elapsed.TotalSeconds,device.GetMemorySnapshot().PeakOwnedBytes,syntheticPadded,false){CheckpointSeconds=saveWatch.Elapsed.TotalSeconds},CorpusWorkflowJson.Default.CorpusProfileReceipt);
+            }
             else
             {
-                if(checkpointPath is null||cursorPath is null||trainer.CompletedUpdates!=bound)throw new InvalidDataException("Requested phase not fully saved.");
+                if(checkpointPath is null||cursorPath is null||lastSaved!=trainer.CompletedUpdates||trainer.CompletedUpdates!=bound&&stopReason is null)throw new InvalidDataException("Requested stage or safe boundary not fully saved.");
                 using var process=Process.GetCurrentProcess();var complete=trainer.CompletedUpdates==global;
-                var receipt=new CorpusStageReceipt(complete?"PASS_all_requested_corpus_epochs_GPU_saved_only":"PASS_bounded_corpus_GPU_phase_saved_only",p.RunId,identity,device.Info.Uuid,Environment.ProcessId,process.StartTime.ToUniversalTime(),initial,trainer.CompletedUpdates,stageUpdates,global,trainer.CompletedUpdates/p.TrainRecords,trainer.CompletedUpdates%p.TrainRecords,loss/(trainer.CompletedUpdates-initial),watch.Elapsed.TotalSeconds,device.GetMemorySnapshot().PeakOwnedBytes,Data.FileHash(checkpointPath,budget),Data.FileHash(cursorPath,budget),complete,false,false);
+                var receipt=new CorpusStageReceipt(complete?"PASS_all_requested_corpus_epochs_GPU_saved_only":stopReason is null?"PASS_bounded_corpus_GPU_phase_saved_only":"PARTIAL_safe_boundary_checkpoint_saved",p.RunId,identity,device.Info.Uuid,Environment.ProcessId,process.StartTime.ToUniversalTime(),initial,trainer.CompletedUpdates,stageUpdates,global,trainer.CompletedUpdates/p.TrainRecords,trainer.CompletedUpdates%p.TrainRecords,trainer.CompletedUpdates==initial?0:loss/(trainer.CompletedUpdates-initial),watch.Elapsed.TotalSeconds,device.GetMemorySnapshot().PeakOwnedBytes,Data.FileHash(checkpointPath,budget),Data.FileHash(cursorPath,budget),complete,false,false){StopReason=stopReason,CheckpointEvery=interval};
                 var report=Data.Within(output,"training-report.json");Data.WriteNew(report,receipt,CorpusWorkflowJson.Default.CorpusStageReceipt);
                 Assets.CopyNew(planPath,Data.Within(output,"run-plan.json"),budget);
                 if(complete)Package(output,p,identity,trainer,checkpointPath,report,model.TokenizerSha256,budget);

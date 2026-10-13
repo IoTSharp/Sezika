@@ -12,7 +12,7 @@ if(args.Length==0||args[0]=="help")
     Console.WriteLine("RepositoryTrainer corpus-check|corpus-export --corpus <root> --corpus-sha <64hex> --bindings-sha <64hex> --output <fresh-path> [--max-records 30000000] [--per-source 10000 --dataset-commit <40hex>]");
     Console.WriteLine("RepositoryTrainer lengths-corpus --corpus <root> --corpus-sha <64hex> --bindings-sha <64hex> --tokenizer <json> --output <scan-directory> [--source-policy <json> --source-policy-sha <64hex> --resume true --chunk-rows 4096 --stage-chunks 64 --max-tokens 8192 --max-records 50000000]");
     Console.WriteLine("RepositoryTrainer admit-corpus-lengths --corpus <root> --corpus-sha <64hex> --bindings-sha <64hex> --scan <complete-directory> --scan-sha <64hex> --source-policy <json> --source-policy-sha <64hex> --third-party-notice <original> --third-party-notice-sha <64hex> --output <fresh-derived-corpus>");
-    Console.WriteLine("RepositoryTrainer profile-corpus|train-corpus --plan <fixed-json> --output <fresh-directory> [--profile <same-instance-profile> --resume <checkpoint-directory> --stage-updates <1..800000000> --gpu-uuid <32hex>]");
+    Console.WriteLine("RepositoryTrainer profile-corpus|train-corpus --plan <fixed-json> --output <fresh-directory> [--profile <same-instance-profile> --resume <checkpoint-directory> --stage-updates <1..800000000> --gpu-uuid <32hex> --resident true --stop-file <safe-stop-path> --checkpoint-every <1..1000000>]");
     Console.WriteLine("RepositoryTrainer validate-corpus --plan <same-json> --package <saved-directory> --package-sha <64hex> --output <fresh-json> [--gpu-uuid <32hex>]");
     Console.WriteLine("RepositoryTrainer corpus-schedule-check --output <fresh-json> (bounded synthetic and gzip scheduling/resume checks; no GPU)");
     Console.WriteLine("RepositoryTrainer corpus-source-policy-check|corpus-length-scan-check --output <fresh-json> (bounded synthetic admission, interruption and tamper checks; no GPU)");
@@ -67,7 +67,7 @@ try
     }
     if(args[0] is "profile-corpus" or "train-corpus")
     {
-        CorpusWorkflow.Run(args[0],Need("--plan"),Need("--output"),options.GetValueOrDefault("--profile"),options.GetValueOrDefault("--resume"),LongNumber("--stage-updates",0,0,800000000),budget,options.GetValueOrDefault("--gpu-uuid"));return 0;
+        CorpusWorkflow.Run(args[0],Need("--plan"),Need("--output"),options.GetValueOrDefault("--profile"),options.GetValueOrDefault("--resume"),LongNumber("--stage-updates",0,0,800000000),budget,options.GetValueOrDefault("--gpu-uuid"),bool.Parse(options.GetValueOrDefault("--resident","false")),options.GetValueOrDefault("--stop-file"),options.ContainsKey("--checkpoint-every")?Number("--checkpoint-every",0,1,1000000):null);return 0;
     }
     if(args[0]=="validate-corpus")
     {

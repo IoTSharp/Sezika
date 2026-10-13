@@ -26,7 +26,10 @@ internal sealed record CorpusLengthReceipt(
 }
 internal sealed record CorpusProfileReceipt(
     string Status,string RunId,InputIdentity Inputs,string GpuUuid,int MaximumTokensTested,double MaximumStepSeconds,
-    double ElapsedSeconds,ulong PeakOwnedBytes,bool SyntheticMaximumLengthProbe,bool QualityAccepted);
+    double ElapsedSeconds,ulong PeakOwnedBytes,bool SyntheticMaximumLengthProbe,bool QualityAccepted)
+{
+    public double CheckpointSeconds {get;init;}
+}
 internal sealed record CorpusCursorReceipt(
     int SchemaVersion,string RunId,InputIdentity Inputs,long CompletedUpdates,long Epoch,long WithinEpoch,
     long TrainingRecordsPerEpoch,int PlannedEpochs,string CheckpointReceiptSha256,string ScheduleAlgorithm);
@@ -34,7 +37,11 @@ internal sealed record CorpusStageReceipt(
     string Status,string RunId,InputIdentity Inputs,string GpuUuid,int ProcessId,DateTime ProcessStartUtc,
     long InitialUpdates,long CompletedUpdates,long StageRequestedUpdates,long GlobalUpdates,long CompletedEpochs,
     long WithinEpoch,double MeanObservedLoss,double ElapsedSeconds,ulong PeakOwnedBytes,
-    string CheckpointReceiptSha256,string CursorReceiptSha256,bool FullCorpusEpochCoverage,bool QualityAccepted,bool Calibrated);
+    string CheckpointReceiptSha256,string CursorReceiptSha256,bool FullCorpusEpochCoverage,bool QualityAccepted,bool Calibrated)
+{
+    [JsonIgnore(Condition=JsonIgnoreCondition.WhenWritingNull)]public string? StopReason {get;init;}
+    [JsonIgnore(Condition=JsonIgnoreCondition.WhenWritingDefault)]public int CheckpointEvery {get;init;}
+}
 internal sealed record CorpusPackageReceipt(
     int SchemaVersion,string RunId,string Method,string SourceCommit,string DatasetCommit,string ModelCommit,
     InputIdentity Inputs,Sezika.ModernBertConfig Config,long CompletedUpdates,string WeightsSha256,string TokenizerSha256,
