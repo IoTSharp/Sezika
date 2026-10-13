@@ -19,7 +19,7 @@
 | T3 | ⏳ | 将 bundle、输入拉取、预检、resident/cadence 控制与保存恢复迁入 Tooling + 既有 RepositoryTrainer；由显式配置替代日期/服务器硬编码 | 固定 commit、PTX/ABI/工具 SHA、四文件 checkpoint、全局游标及唯一 GPU 合同保持；训练工具可 JIT |
 | T4 | ⏳ | 复用 ModelTool 下载；收编 full_corpus_publication.py、full_corpus_transport.py、HF/MoArk 上传与 local-mirror 验证；统一 HTTP Range、分块、重组、发布预览与独立读回 | 离线 fixture 先过；真实上传/发布按当轮授权；物理分块与逻辑 SHA、private/public 结果分开报告 |
 | T5 | ⏳ | 把 corpus 的适配/准入/合并/分片/教师队列并入 DatasetTool、TeacherTool；再迁移研究目录和 datasets 的保留构建逻辑 | 来源/split/family/许可、记录数、规范化、去重、恢复与冻结样本对齐；新字节生成新版本 |
-| T6 | ⏳ | 迁移校验脚本，整改 ModelTool 反射 JSON；将保留项目纳入统一检查，处理 Parquet 依赖和 Python Oracle 退役 | 独立参考来源不伪造；已有 fixture 保留；JIT、AOT、质量、性能分别验收，不为非部署工具强制 AOT |
+| T6 | ⏸️ 部分编码完成 | ModelTool 反射 JSON 已改为 source-generated DTO，Windows 构建及3项合同检查通过；[证据](docs/evidence/tooling-model-json-2026-10-13.md)。校验、Parquet/XZ和Oracle参考退役接续 | 独立参考来源不伪造；已有 fixture 保留；JIT、AOT、质量、性能分别验收，不为非部署工具强制 AOT |
 | T7 | ⏳ | 两个项目技能/8 份说明、AGENTS、共享 MoArk/SSH 所用入口随每批迁移同步改写；最后解除旧脚本和 ignored 源码依赖 | 当前流程无 `.ps1/.sh/.py/.cmd`、内嵌或生成脚本，长期实现正式进入版本控制；历史证据身份保持 |
 | T8-code | ⏳ 本次必须完成 | Windows/Linux 编译、fixture/回环服务、协议适配、调度接线与完整模拟流程；补齐适用 AOT 检查 | 所有迁移编码、调用者和失败/取消/恢复检查完成，无脚本执行旁路、TODO或假成功；提交和源码远端 SHA 验明 |
 | T8-live | ⏸️ 本次范围外 | 租用服务器后验证真实输入拉取、正式训练恢复/停止、GPU性能/长稳、真实模型上传与独立读回 | 另有当轮服务器/训练/发布授权与实际证据；当前保持 NOT_RUN，不阻塞编码收口，也不由本地模拟冒充通过 |

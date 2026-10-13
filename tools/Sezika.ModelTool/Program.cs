@@ -3,6 +3,7 @@ using System.Buffers.Binary;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Security.Cryptography;
+using System.Text;
 using System.Text.Json;
 
 const string ModelId = "convaiinnovations/laya-multilingual";
@@ -21,6 +22,9 @@ try
 {
     switch (command)
     {
+        case "serialization-check":
+            SerializationChecks.Run(GetOption(args, "--output") ?? throw new ArgumentException("--output <new-json> required"), cancellation.Token);
+            break;
         case "download":
             await DownloadAsync(Path.GetFullPath(packageDirectory), cancellation.Token);
             break;
@@ -63,6 +67,7 @@ static void PrintHelp()
     Console.WriteLine("  download  download the pinned files with resume and SHA-256 checks");
     Console.WriteLine("  manifest  read SafeTensors metadata and write model.json/source_lock.json");
     Console.WriteLine("  verify    verify pinned file hashes and tensor ranges");
+    Console.WriteLine("  serialization-check --output <new-json> verify generated JSON against frozen consumer wire keys/types");
     Console.WriteLine("Options: --package-dir <path> --timeout-seconds <1..1200>");
 }
 
@@ -162,6 +167,8 @@ static async Task DownloadOneAsync(string url, string destination, long expected
 
 static void WriteManifest(string root, CancellationToken cancellationToken)
 {
+    if (Path.Exists(Path.Combine(root, "model.json")) || Path.Exists(Path.Combine(root, "source_lock.json")))
+        throw new IOException("Manifest output exists; preserve the frozen bytes and generate a new asset version.");
     var weights = Path.Combine(root, "model.safetensors");
     var tokenizer = Path.Combine(root, "tokenizer", "tokenizer.json");
     var encoderConfig = Path.Combine(root, "encoder", "config.json");
@@ -174,45 +181,18 @@ static void WriteManifest(string root, CancellationToken cancellationToken)
     var tokenizerHash = HashFile(tokenizer, cancellationToken);
     if (!fileHash.Equals(ModelSha256, StringComparison.OrdinalIgnoreCase)) throw new InvalidDataException("Pinned model SHA-256 does not match");
     if (!tokenizerHash.Equals(TokenizerSha256, StringComparison.OrdinalIgnoreCase)) throw new InvalidDataException("Pinned tokenizer SHA-256 does not match");
-    var tensorRecords = descriptors.Select(d => new Dictionary<string, object?>
-    {
-        ["name"] = d.Name, ["file"] = "model.safetensors", ["sha256"] = HashRange(weights, d.AbsoluteStart, d.ByteLength, cancellationToken),
-        ["dtype"] = d.Dtype, ["shape"] = d.Shape, ["offsets"] = d.Offsets,
-    }).ToArray();
-    var layers = Enumerable.Range(0, 22).Select(i => new Dictionary<string, object?>
-    {
-        ["index"] = i,
-        ["qkv"] = $"encoder.layers.{i}.attn.Wqkv.weight",
-        ["attention_output"] = $"encoder.layers.{i}.attn.Wo.weight",
-        ["attention_norm"] = i == 0 ? null : $"encoder.layers.{i}.attn_norm.weight",
-        ["mlp_input"] = $"encoder.layers.{i}.mlp.Wi.weight",
-        ["mlp_output"] = $"encoder.layers.{i}.mlp.Wo.weight",
-        ["mlp_norm"] = $"encoder.layers.{i}.mlp_norm.weight",
-    }).ToArray();
-    var manifest = new Dictionary<string, object?>
-    {
-        ["schema_version"] = 1, ["model_id"] = ModelId, ["revision"] = Revision,
-        ["architecture"] = "ModernBertForSequenceClassification", ["license"] = "Apache-2.0",
-        ["source_url"] = $"https://huggingface.co/{ModelId}", ["source_revision"] = Revision,
-        ["tokenizer_revision"] = Revision, ["tokenizer_file"] = "tokenizer/tokenizer.json", ["weights_file"] = "model.safetensors",
-        ["weights_sha256"] = fileHash, ["tokenizer_sha256"] = tokenizerHash, ["dtype"] = "F16", ["tensor_layout"] = "row-major pytorch [out,in]",
-        ["tensors"] = tensorRecords,
-        ["tokenizer"] = new Dictionary<string, object?> { ["pipeline"] = "huggingface-tokenizers-json", ["normalizer"] = "Replace(space->▁)+Metaspace", ["pre_tokenizer"] = "Metaspace", ["model"] = "BPE", ["post_processor"] = "TemplateProcessing" },
-        ["special_tokens"] = new Dictionary<string, int> { ["pad"] = 0, ["eos"] = 1, ["bos"] = 2, ["unk"] = 3, ["mask"] = 4, ["start_of_turn"] = 106, ["end_of_turn"] = 107 },
-        ["encoder"] = new Dictionary<string, object?> { ["vocab_size"] = 256000, ["hidden_size"] = 768, ["intermediate_size"] = 1152, ["layer_count"] = 22, ["head_count"] = 12, ["max_tokens"] = 1024, ["global_attention_every"] = 3, ["local_attention"] = 128, ["global_rope_theta"] = 160000, ["local_rope_theta"] = 160000, ["norm_epsilon"] = 1e-5 },
-        ["head"] = new Dictionary<string, object?> { ["hidden_size"] = 768, ["layers"] = 2, ["intermediate_size"] = 3072, ["max_tokens"] = 256 },
-        ["calibration"] = new Dictionary<string, object?> { ["status"] = "uncalibrated", ["temperature"] = new[] { 1.0, 1.0, 1.0 } },
-        ["tensor_mapping"] = new Dictionary<string, object?> { ["embedding"] = "encoder.embeddings.tok_embeddings.weight", ["embedding_norm"] = "encoder.embeddings.norm.weight", ["final_norm"] = "encoder.final_norm.weight", ["layers"] = layers },
-    };
-    WriteJson(Path.Combine(root, "model.json"), manifest);
-    var lockFile = new Dictionary<string, object?>
-    {
-        ["model"] = new Dictionary<string, object?> { ["id"] = ModelId, ["revision"] = Revision, ["license"] = "Apache-2.0", ["source_url"] = $"https://huggingface.co/{ModelId}", ["weights_sha256"] = fileHash, ["tokenizer_sha256"] = tokenizerHash },
-        ["base_encoder"] = new Dictionary<string, object?> { ["id"] = BaseModelId, ["revision"] = BaseRevision, ["license"] = "MIT", ["source_url"] = $"https://huggingface.co/{BaseModelId}" },
-        ["files"] = new Dictionary<string, object?> { ["model.safetensors"] = fileHash, ["tokenizer/tokenizer.json"] = tokenizerHash, ["encoder/config.json"] = HashFile(encoderConfig, cancellationToken), ["rl_agent_config.json"] = HashFile(agentConfig, cancellationToken), ["tokenizer/tokenizer_config.json"] = HashFile(tokenizerConfig, cancellationToken) },
-        ["generated_by"] = "Sezika.ModelTool",
-    };
-    WriteJson(Path.Combine(root, "source_lock.json"), lockFile);
+    var tensorRecords = descriptors.Select(d => new TensorEntry(d.Name, "model.safetensors", HashRange(weights, d.AbsoluteStart, d.ByteLength, cancellationToken), d.Dtype, d.Shape, d.Offsets)).ToArray();
+    var layers = Enumerable.Range(0, 22).Select(i => new LayerEntry(i, $"encoder.layers.{i}.attn.Wqkv.weight", $"encoder.layers.{i}.attn.Wo.weight", i == 0 ? null : $"encoder.layers.{i}.attn_norm.weight", $"encoder.layers.{i}.mlp.Wi.weight", $"encoder.layers.{i}.mlp.Wo.weight", $"encoder.layers.{i}.mlp_norm.weight")).ToArray();
+    var manifest = new ModelManifest(1, ModelId, Revision, "ModernBertForSequenceClassification", "Apache-2.0", $"https://huggingface.co/{ModelId}", Revision, Revision, "tokenizer/tokenizer.json", "model.safetensors", fileHash, tokenizerHash, "F16", "row-major pytorch [out,in]", tensorRecords,
+        new("huggingface-tokenizers-json", "Replace(space->▁)+Metaspace", "Metaspace", "BPE", "TemplateProcessing"),
+        new() { ["pad"] = 0, ["eos"] = 1, ["bos"] = 2, ["unk"] = 3, ["mask"] = 4, ["start_of_turn"] = 106, ["end_of_turn"] = 107 },
+        new(256000, 768, 1152, 22, 12, 1024, 3, 128, 160000, 160000, 1e-5), new(768, 2, 3072, 256), new("uncalibrated", [1.0, 1.0, 1.0]),
+        new("encoder.embeddings.tok_embeddings.weight", "encoder.embeddings.norm.weight", "encoder.final_norm.weight", layers));
+    WriteJson(Path.Combine(root, "model.json"), manifest, ManifestJson.Default.ModelManifest);
+    var lockFile = new ModelSourceLock(new(ModelId, Revision, "Apache-2.0", $"https://huggingface.co/{ModelId}", fileHash, tokenizerHash),
+        new(BaseModelId, BaseRevision, "MIT", $"https://huggingface.co/{BaseModelId}"),
+        new() { ["model.safetensors"] = fileHash, ["tokenizer/tokenizer.json"] = tokenizerHash, ["encoder/config.json"] = HashFile(encoderConfig, cancellationToken), ["rl_agent_config.json"] = HashFile(agentConfig, cancellationToken), ["tokenizer/tokenizer_config.json"] = HashFile(tokenizerConfig, cancellationToken) }, "Sezika.ModelTool");
+    WriteJson(Path.Combine(root, "source_lock.json"), lockFile, ManifestJson.Default.ModelSourceLock);
     Console.WriteLine($"Wrote model.json with {descriptors.Count} tensor descriptors");
 }
 
@@ -273,10 +253,12 @@ static string HashRange(string path, long offset, long length, CancellationToken
 
 static async Task<string> HashFileAsync(string path, CancellationToken cancellationToken) => await Task.Run(() => HashFile(path, cancellationToken), cancellationToken);
 
-static void WriteJson(string path, object value)
+static void WriteJson<T>(string path, T value, System.Text.Json.Serialization.Metadata.JsonTypeInfo<T> type)
 {
-    var options = new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-    File.WriteAllText(path, JsonSerializer.Serialize(value, options) + Environment.NewLine);
+    using var file = new FileStream(path, FileMode.CreateNew, FileAccess.Write, FileShare.None);
+    JsonSerializer.Serialize(file, value, type);
+    file.Write(Encoding.UTF8.GetBytes(Environment.NewLine));
+    file.Flush(true);
 }
 
 readonly record struct TensorDescriptor(string Name, string Dtype, int[] Shape, ulong[] Offsets, long AbsoluteStart, long ByteLength);
