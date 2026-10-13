@@ -2,7 +2,7 @@ using System.Text.Json.Serialization.Metadata;
 namespace Sezika.Tooling;
 internal static class MigrationCommands
 {
-    internal static readonly string[] Commands = ["corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind"];
+    internal static readonly string[] Commands = ["task prepare", "bundle freeze", "archive pack", "checkpoint verify", "host inspect", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind"];
     internal static int Run(string command, string requestPath, string output, Budget budget, CancellationToken cancellation)
     {
         T Read<T>(JsonTypeInfo<T> type)
@@ -19,6 +19,11 @@ internal static class MigrationCommands
         }
         switch (command)
         {
+            case "task prepare": return Save(TaskOperations.Prepare(Read(TaskJsonContext.Default.TaskPreparationRequest), budget), TaskJsonContext.Default.PreparedTask);
+            case "bundle freeze": return Save(TaskOperations.Freeze(Read(TaskJsonContext.Default.BundleRequest), budget), TaskJsonContext.Default.BundleReceipt);
+            case "archive pack": return Save(TaskOperations.Pack(Read(TaskJsonContext.Default.PackRequest), budget), TaskJsonContext.Default.PackReceipt);
+            case "checkpoint verify": return Save(TaskOperations.VerifyCheckpoint(Read(TaskJsonContext.Default.CheckpointVerificationRequest), budget), TaskJsonContext.Default.CheckpointVerificationReceipt);
+            case "host inspect": return Save(TaskOperations.InspectHost(Read(TaskJsonContext.Default.HostInspectionRequest), budget), TaskJsonContext.Default.HostInspectionReceipt);
             case "corpus prepare": return Save(CorpusOperations.Prepare(Read(CorpusJsonContext.Default.CorpusPrepareRequest), budget), CorpusJsonContext.Default.CorpusManifest);
             case "corpus compose": return Save(CorpusOperations.Compose(Read(CorpusJsonContext.Default.CorpusComposeRequest), budget), CorpusJsonContext.Default.CorpusManifest);
             case "corpus queue": return Save(CorpusOperations.BuildQueue(Read(CorpusJsonContext.Default.CorpusQueueRequest), budget), CorpusJsonContext.Default.CorpusOperationReport);
