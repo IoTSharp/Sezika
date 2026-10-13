@@ -8,7 +8,7 @@ using Sezika.Tooling;
 if (args.Length is not (4 or 6) || args[0] != "--output" || args[2] != "--maximum-checks" || !int.TryParse(args[3], out var maximumChecks) || maximumChecks is < 1 or > 256 || (args.Length == 6 && args[4] != "--suite"))
     throw new ArgumentException("--output <new-owned-directory> --maximum-checks 1..256 [--suite baseline|inventory|all]");
 var suite = args.Length == 6 ? args[5] : "baseline";
-if (suite is not ("baseline" or "inventory" or "execution" or "corpus" or "task" or "all")) throw new ArgumentException("Unknown suite.");
+if (suite is not ("baseline" or "inventory" or "execution" or "corpus" or "task" or "transport" or "all")) throw new ArgumentException("Unknown suite.");
 var runSuite = suite is "baseline" or "all";
 var suiteSeconds = 45;
 using var cancel = new CancellationTokenSource(TimeSpan.FromSeconds(suiteSeconds));
@@ -188,6 +188,8 @@ runSuite = suite is "corpus" or "all";
 if (runSuite) CorpusChecks.Run(root, Test);
 runSuite = suite is "task" or "all";
 if (runSuite) TaskChecks.Run(root, Test);
+runSuite = suite is "transport" or "all";
+if (runSuite) TransportChecks.Run(root, Test);
 if (checks == 0) throw new InvalidOperationException("No checks ran.");
 File.WriteAllLines(Path.Combine(root, "checks.txt"), names.Append($"PASS checks={checks}; elapsed={watch.Elapsed.TotalSeconds:F3}s; platform={Environment.OSVersion}; native_aot={!System.Runtime.CompilerServices.RuntimeFeature.IsDynamicCodeSupported}"));
 Console.WriteLine($"PASS {checks} checks; suite={suite}; seconds={watch.Elapsed.TotalSeconds:F3}; fixtures preserved at {root}");

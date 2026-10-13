@@ -1,8 +1,20 @@
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
+
 namespace Sezika.Tooling;
+
+internal sealed record DownloadRequest(DownloadSpec Asset, string Destination, string? CredentialTarget = null, string CredentialEncoding = "utf8", string CredentialSource = "auto", string AuthenticationProvider = "bearer");
+internal sealed record TransportPrepareRequest(string SourceRoot, string LogicalManifest, string OutputRoot, long ChunkBytes);
+internal sealed record TransportReadbackRequest(string Root, string Destination, string TransportSha256, string AttributesSha256);
+internal sealed record PublicationPreviewRequest(string SourceRoot, PublicationPlan Plan);
+internal sealed record FullPublicationRequest(string PackageRoot, string Validation, string Contract, string OutputRoot, string ToolRoot, string TrainingProof, string ValidationProof);
+internal sealed record PublicationUploadRequest(string SourceRoot, string Preview, string Authorization, AssetFile Asset, string ServiceRoot, string? CredentialTarget = null, string CredentialEncoding = "utf8", string? ResumeCandidate = null, string? CheckpointRoot = null, string CredentialSource = "auto");
+internal sealed record PublicationCommitRequest(string SourceRoot, string Preview, string Authorization, string ServiceRoot, string? CredentialTarget = null, string CredentialEncoding = "utf8", string CredentialSource = "auto");
+
 internal static class MigrationCommands
 {
-    internal static readonly string[] Commands = ["task prepare", "bundle freeze", "archive pack", "checkpoint verify", "host inspect", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind"];
+    internal static readonly string[] Commands = ["transport download", "transport prepare", "transport verify", "transport reassemble", "publication preview", "publication prepare", "publication upload", "publication commit", "task prepare", "bundle freeze", "archive pack", "checkpoint verify", "host inspect", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind"];
     internal static int Run(string command, string requestPath, string output, Budget budget, CancellationToken cancellation)
     {
         T Read<T>(JsonTypeInfo<T> type)
@@ -24,6 +36,45 @@ internal static class MigrationCommands
             case "archive pack": return Save(TaskOperations.Pack(Read(TaskJsonContext.Default.PackRequest), budget), TaskJsonContext.Default.PackReceipt);
             case "checkpoint verify": return Save(TaskOperations.VerifyCheckpoint(Read(TaskJsonContext.Default.CheckpointVerificationRequest), budget), TaskJsonContext.Default.CheckpointVerificationReceipt);
             case "host inspect": return Save(TaskOperations.InspectHost(Read(TaskJsonContext.Default.HostInspectionRequest), budget), TaskJsonContext.Default.HostInspectionReceipt);
+            case "transport download":
+                var download = Read(MigrationJsonContext.Default.DownloadRequest);
+                var downloadAuthentication = HttpCredentials.Read(download.CredentialSource, download.CredentialTarget, download.CredentialEncoding, download.AuthenticationProvider, budget);
+                return Save(AssetTransport.DownloadAsync(download.Asset, download.Destination, budget, cancellation, authentication: downloadAuthentication).GetAwaiter().GetResult(), TransportJsonContext.Default.DownloadReport);
+            case "transport prepare":
+                var prepare = Read(MigrationJsonContext.Default.TransportPrepareRequest);
+                return Save(AssetTransport.Prepare(prepare.SourceRoot, prepare.LogicalManifest, prepare.OutputRoot, prepare.ChunkBytes, budget), TransportJsonContext.Default.TransportPreparationReport);
+            case "transport verify":
+                var verify = Read(MigrationJsonContext.Default.TransportReadbackRequest);
+                return Save(AssetTransport.VerifyPhysical(verify.Root, verify.TransportSha256, verify.AttributesSha256, budget), TransportJsonContext.Default.TransportManifest);
+            case "transport reassemble":
+                var reassemble = Read(MigrationJsonContext.Default.TransportReadbackRequest);
+                return Save(AssetTransport.Reassemble(reassemble.Root, reassemble.Destination, reassemble.TransportSha256, reassemble.AttributesSha256, budget), TransportJsonContext.Default.TransportReadbackReport);
+            case "publication preview":
+                var preview = Read(MigrationJsonContext.Default.PublicationPreviewRequest);
+                return Save(AssetTransport.Preview(preview.SourceRoot, preview.Plan, budget), TransportJsonContext.Default.PublicationPreview);
+            case "publication prepare":
+                var publication = Read(MigrationJsonContext.Default.FullPublicationRequest);
+                return Save(AssetTransport.PreparePublication(publication.PackageRoot, publication.Validation, publication.Contract, publication.OutputRoot, publication.ToolRoot, publication.TrainingProof, publication.ValidationProof, budget), TransportJsonContext.Default.LogicalManifest);
+            case "publication upload":
+                var upload = Read(MigrationJsonContext.Default.PublicationUploadRequest);
+                var frozenUpload = AssetTransport.ReadJson(upload.Preview, TransportJsonContext.Default.PublicationPreview, budget);
+                var uploadAuthorization = AssetTransport.ReadJson(upload.Authorization, TransportJsonContext.Default.PublicationAuthorization, budget);
+                using (var client = AssetTransport.CreateClient(false))
+                {
+                    client.Timeout = TimeSpan.FromSeconds(Math.Max(1, Math.Min(1800, budget.RemainingSeconds)));
+                    var authentication = HttpCredentials.Read(upload.CredentialSource, upload.CredentialTarget, upload.CredentialEncoding, frozenUpload.Plan.Provider, budget);
+                    return Save(AssetTransport.UploadLfsObjectAsync(frozenUpload, uploadAuthorization, upload.SourceRoot, upload.Asset, AssetTransport.ValidateUri(upload.ServiceRoot, false), client, null, budget, cancellation, upload.ResumeCandidate, upload.CheckpointRoot, authentication).GetAwaiter().GetResult(), TransportJsonContext.Default.ObjectUploadReport);
+                }
+            case "publication commit":
+                var commit = Read(MigrationJsonContext.Default.PublicationCommitRequest);
+                var frozenCommit = AssetTransport.ReadJson(commit.Preview, TransportJsonContext.Default.PublicationPreview, budget);
+                var commitAuthorization = AssetTransport.ReadJson(commit.Authorization, TransportJsonContext.Default.PublicationAuthorization, budget);
+                using (var client = AssetTransport.CreateClient(false))
+                {
+                    client.Timeout = TimeSpan.FromSeconds(Math.Max(1, Math.Min(1800, budget.RemainingSeconds)));
+                    var authentication = HttpCredentials.Read(commit.CredentialSource, commit.CredentialTarget, commit.CredentialEncoding, frozenCommit.Plan.Provider, budget);
+                    return Save(AssetTransport.CommitHuggingFaceAsync(frozenCommit, commitAuthorization, commit.SourceRoot, AssetTransport.ValidateUri(commit.ServiceRoot, false), client, null, budget, cancellation, authentication).GetAwaiter().GetResult(), TransportJsonContext.Default.HubCommitReceipt);
+                }
             case "corpus prepare": return Save(CorpusOperations.Prepare(Read(CorpusJsonContext.Default.CorpusPrepareRequest), budget), CorpusJsonContext.Default.CorpusManifest);
             case "corpus compose": return Save(CorpusOperations.Compose(Read(CorpusJsonContext.Default.CorpusComposeRequest), budget), CorpusJsonContext.Default.CorpusManifest);
             case "corpus queue": return Save(CorpusOperations.BuildQueue(Read(CorpusJsonContext.Default.CorpusQueueRequest), budget), CorpusJsonContext.Default.CorpusOperationReport);
@@ -40,3 +91,13 @@ internal static class MigrationCommands
         }
     }
 }
+
+[JsonSerializable(typeof(DownloadRequest))]
+[JsonSerializable(typeof(TransportPrepareRequest))]
+[JsonSerializable(typeof(TransportReadbackRequest))]
+[JsonSerializable(typeof(PublicationPreviewRequest))]
+[JsonSerializable(typeof(FullPublicationRequest))]
+[JsonSerializable(typeof(PublicationUploadRequest))]
+[JsonSerializable(typeof(PublicationCommitRequest))]
+[JsonSourceGenerationOptions(WriteIndented = true, PropertyNameCaseInsensitive = true, RespectRequiredConstructorParameters = true, RespectNullableAnnotations = true)]
+internal partial class MigrationJsonContext : JsonSerializerContext;
