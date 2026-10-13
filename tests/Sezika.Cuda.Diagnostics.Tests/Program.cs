@@ -43,6 +43,13 @@ static bool ValidTime(double milliseconds) => double.IsFinite(milliseconds) && m
 
 try
 {
+    if (args.Length == 1 && args[0] is "--full-encoder-limit-cpu-tiny" or "--full-encoder-limit-cpu")
+    {
+        global::Sezika.Cuda.Diagnostics.Tests.FullEncoderLimitChecks.Run(Check, deadline.Token,
+            tiny: args[0].EndsWith("-tiny", StringComparison.Ordinal));
+        Console.WriteLine($"Full encoder integer CPU checks={passed}; actual_gpu_training=false; optimizer_restore=NOT_RUN");
+        return 0;
+    }
     if (args.Length == 1 && args[0] is "--independent-training-aot-cpu-tiny" or "--independent-training-aot-cpu")
     {
         global::Sezika.Cuda.Diagnostics.Tests.IndependentCudaAotTrainingChecks.Prepare(Check, deadline.Token,

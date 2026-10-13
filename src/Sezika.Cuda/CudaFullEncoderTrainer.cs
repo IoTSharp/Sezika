@@ -160,8 +160,8 @@ public sealed class CudaFullEncoderTrainer : IDisposable
     public void ApplyAdamW(float encoderRate,float headRate,float weightDecay=0.01f,CancellationToken cancellationToken=default)
     {
         ObjectDisposedException.ThrowIf(_disposed,this);if(_busy||_poisoned||!_hasGradient)throw new InvalidOperationException("A successful fresh gradient is required.");
-        if(!float.IsFinite(encoderRate)||encoderRate<=0||encoderRate>0.01f||!float.IsFinite(headRate)||headRate<=0||headRate>0.1f||!float.IsFinite(weightDecay)||weightDecay<0||weightDecay>1||_updates>=1000000)throw new ArgumentOutOfRangeException(nameof(encoderRate));
-        var next=_updates+1;_busy=true;using var deadline=CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);deadline.CancelAfter(TimeSpan.FromSeconds(300));var watch=Stopwatch.StartNew();
+        if(!float.IsFinite(encoderRate)||encoderRate<=0||encoderRate>0.01f||!float.IsFinite(headRate)||headRate<=0||headRate>0.1f||!float.IsFinite(weightDecay)||weightDecay<0||weightDecay>1)throw new ArgumentOutOfRangeException(nameof(encoderRate));
+        var next=FullEncoderUpdateLimit.Next(_updates);_busy=true;using var deadline=CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);deadline.CancelAfter(TimeSpan.FromSeconds(300));var watch=Stopwatch.StartNew();
         try
         {
             foreach(var p in _parameters)
@@ -195,7 +195,8 @@ public sealed class CudaFullEncoderTrainer : IDisposable
     public void RestoreState(long completedUpdates,Func<FullEncoderParameter,FullEncoderStateKind,float[]> reader,CancellationToken cancellationToken=default)
     {
         ObjectDisposedException.ThrowIf(_disposed,this);ArgumentNullException.ThrowIfNull(reader);
-        if(_busy||_poisoned||_updates!=0||_hasGradient||completedUpdates is <0 or >1000000)throw new InvalidOperationException("Restore requires a pristine trainer and a bounded update count.");
+        if(_busy||_poisoned||_updates!=0||_hasGradient)throw new InvalidOperationException("Restore requires a pristine trainer and a bounded update count.");
+        FullEncoderUpdateLimit.ValidateRestore(completedUpdates);
         _busy=true;using var deadline=CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);deadline.CancelAfter(TimeSpan.FromSeconds(600));var watch=Stopwatch.StartNew();
         try
         {
