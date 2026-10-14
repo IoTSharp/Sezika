@@ -1,0 +1,47 @@
+Sezika.ReferenceTool contains an independently written C# numerical port of
+mathematical inference behavior described by Hugging Face Transformers v4.57.1.
+It does not execute that upstream Python implementation.
+
+Upstream: huggingface/transformers, tag v4.57.1, Apache License 2.0.
+
+src/transformers/models/modernbert/modeling_modernbert.py:
+Copyright 2024 Answer.AI, LightOn, and contributors, and the HuggingFace Inc.
+team. All rights reserved.
+SHA256 1b23db2f59d3f80bd9af89fb6df3ce15affd90b5ffc09925e732450e694868ff
+
+src/transformers/modeling_rope_utils.py:
+Copyright 2024 The HuggingFace Team. All rights reserved.
+SHA256 55cc0c8cb76f592ab178b4662adcbdf4ad5012bb0b4249c0a96603141f18e9ac
+
+src/transformers/activations.py:
+Copyright 2020 The HuggingFace Team. All rights reserved.
+SHA256 3dd5a81b1e5e0c5371256f00efec19df52255420318737db1e03430a98cf4264
+
+The upstream files are licensed under the Apache License, Version 2.0.
+You may not use their derived work except in compliance with that License.
+A copy is available at https://www.apache.org/licenses/LICENSE-2.0 and in the
+repository root LICENSE. Unless required by applicable law or agreed in writing,
+the work is distributed on an AS IS basis, WITHOUT WARRANTIES OR CONDITIONS OF
+ANY KIND, either express or implied. See the License for permissions and limits.
+
+The restricted static PyTorch data decoder is adapted from this repository's
+Sezika.IndependentModelTool PickleReader. It interprets data descriptors only;
+no pickle global, callback, Python code, or arbitrary object is executed.
+
+Model weights, tokenizer assets and their provenance/licensing remain separate.
+No model assets are embedded in this project or its program image.
+
+The separate Laya adapter ports Laya 0.3.20 behavior with source revision
+4066d5d5fbf08b66c6757ddeedbd797bd7655bc0. Its source-lock SHA256 is
+901527bdd7da7732c2d12903a45dcc1984ac2187e14214ae780286c585f2e287;
+the common/agent source identities are recorded separately in Laya/PortProof.cs.
+The 46 input and 42 decoder checks consume historical inputs and logits and
+do not execute the upstream implementation or verify a complete neural forward.
+
+The tokenizer asset and the 267-item regression golden retain their separate
+provenance and license records. The golden in
+tests/fixtures/tokenizer-mmbert-boundaries.v1.json records tokenizers 0.22.2
+and original minimal Apache-2.0 regression text. This declaration concerns
+that fixture, not the license or approval of model or tokenizer assets.
+The three Transformers source declarations above do not replace these
+separate adapter, asset and fixture records. No upstream tokenizer is executed.
