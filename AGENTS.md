@@ -1,6 +1,7 @@
 # Sezika engineering rules
 
 - Sezika 是独立的 multilingual, non-autoregressive System 1 decision engine，使用 C# / .NET 10；核心部署目标为 Native AOT。
+- 项目不固定 .NET SDK 版本；`global.json` 仅排除预览版 SDK，目标框架仍为 `net10.0`、语言版本仍为 C# 14。每次构建记录实际选用的 SDK 版本与工具身份，已冻结的构建证明和运行合同不随环境变化改写。
 - 模型、CPU/GPU 算子及调度必须使用 C#。运行时只允许调用系统/显卡驱动 API，如 CUDA Driver；不允许 C++ bridge、ONNX Runtime、LibTorch、cuBLAS/cuDNN、远端 API 或关键词规则替代本项目推理。
 - GPU 采用构建期 ILGPU 将 C# kernels 导出为 PTX/ABI，Native AOT runtime 通过静态 C# Driver 绑定执行。禁止在 AOT 运行时依赖 ILGPU 的 Reflection.Emit、IL 读取或动态 launcher；该路径通过原型前不得写成已支持。
 - 项目长期工具、数据准备、训练控制、上传下载、服务器程序及技能实现统一使用 C# / .NET 10；不新增 PS1、Shell、Python、CMD 脚本，也不通过 C# 嵌入、生成或调用脚本绕过。已有脚本按 ROADMAP 分批迁移，原始历史证据不原地改写。
