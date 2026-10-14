@@ -1,0 +1,62 @@
+{
+  "Status": "PASS_T7_ARCHIVE_DECISION_CONTRACT_TWO_PLATFORM_AOT_19_CHECKS",
+  "Utc": "2026-10-14T15:20:21.8671977+00:00",
+  "Sources": [
+    {
+      "Bytes": 30075,
+      "Path": "tools/Sezika.Tooling/Inventory/RetirementReview.cs",
+      "Sha256": "d9c6f0b334b6b4455954600598ee8e8dee08b760673d44ba82bf4d8d10f927b9"
+    },
+    {
+      "Bytes": 21577,
+      "Path": "tests/Sezika.Tooling.Tests/RetirementChecks.cs",
+      "Sha256": "50e5f1e1d1d52f7e16ebbc012f8165fcca542eb13e459edf74ff89465c5ad376"
+    }
+  ],
+  "BuildSnapshotManifestSha256": "8c93c5f0f014dcbcbf86f6c5a747fe976c30c64c180b481581e828724e688c9e",
+  "ChecksPerPlatform": 19,
+  "FixtureMaximum": 20,
+  "OriginalCopies": [
+    {
+      "File": "windows-native-result.json",
+      "Original": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-current-v7-phase1\\runs\\06\\result.json",
+      "Bytes": 3259,
+      "Sha256": "b0b5ceb9a1f554b85ed310b636686801541cc3bbe7fdd5acb706271d6f1eca16"
+    },
+    {
+      "File": "windows-checks.stdout",
+      "Original": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-current-v7-phase1\\runs\\06\\native-execution\\stdout.bin",
+      "Bytes": 1985,
+      "Sha256": "9d10a9293ef5c2c0a5ccc9cbe8bc319336cdcf8f6525e4760defc5f08df1f508"
+    },
+    {
+      "File": "linux-native-result.json",
+      "Original": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-current-v7-phase1\\runs\\13\\result.json",
+      "Bytes": 3449,
+      "Sha256": "2c604a8566b21763eb5da661c8bf20b7e7414e42da4d8ee1a8eaf4bea93b9de2"
+    },
+    {
+      "File": "linux-checks.stdout",
+      "Original": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-final-v7-d9bfacad1f4e\\runtime-phase1\\13\\native-execution\\stdout.bin",
+      "Bytes": 1910,
+      "Sha256": "0804ddf2f117e21decae877e9aad9431a900f60bf5cc2375c5d7cfeab2ae76b1"
+    }
+  ],
+  "RootActualReview": {
+    "PendingCapabilityOrUserEvidenceGate": 207,
+    "ExplicitLineReviews": 44,
+    "FullSourceScan": 472,
+    "Report": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\root-reentry-v10\\retirement-current-probe-v7d\\report.json",
+    "Entries": 466,
+    "ReviewRequired": 0,
+    "ReadyArchiveOnly": 259,
+    "Status": "PENDING_review_incomplete_no_mutation",
+    "ReviewScope": "Exact pinned v7 caller context; later changes require affected file and line repins",
+    "Callers": 63
+  },
+  "UnknownHistoricalUserBaselines": 5,
+  "CurrentUnknownBaselineFilesExist": true,
+  "MigrationOverallComplete": false,
+  "OriginalFailuresPreserved": true,
+  "ArchiveDecisionsPerformMutation": false
+}

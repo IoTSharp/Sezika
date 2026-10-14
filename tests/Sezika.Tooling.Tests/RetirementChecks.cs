@@ -25,7 +25,7 @@ internal static class RetirementChecks
         }
         Fixture Prepare(string name, string callerText = "当前入口为 C# Replacement.Run。\n", string kind = "documentation", bool original = true, bool external = false)
         {
-            cancellation.Token.ThrowIfCancellationRequested(); if (++fixtures > 16) throw new InvalidDataException("Retirement check fixture bound16.");
+            cancellation.Token.ThrowIfCancellationRequested(); if (++fixtures > 20) throw new InvalidDataException("Retirement check fixture bound20.");
             var directory = Path.GetFullPath(Path.Combine(root, "retirement-" + name)); Directory.CreateDirectory(directory);
             var legacy = external ? Path.GetFullPath(Path.Combine(root, "retirement-external-" + name + ".ps1")) : "tools/old.ps1";
             var old = external ? legacy : Path.Combine(directory, legacy);
@@ -160,6 +160,51 @@ internal static class RetirementChecks
             Reject(() => Review(fixture, fixture.Request with { ReviewedNonExecutionLines = [review, review] }));
             Write(Path.Combine(fixture.Root, "current.md"), line + " changed\n");
             Reject(() => Review(fixture, fixture.Request with { CurrentCallers = [new(Pin(fixture.Root, "current.md"), "documentation")], ReviewedNonExecutionLines = [review] }));
+        });
+        check("Retirement named historical archive decision preserves bytes without claiming capability equivalence", () =>
+        {
+            var fixture = Prepare("archive-only"); var original = Pin(fixture.Root, "tools/old.ps1");
+            var decision = new RetirementArchiveDecision(original, "One fixed historical experiment receipt aggregation recipe.",
+                "Independent owner review retires this exact experiment recipe; reusable capabilities remain separately reviewed.", true);
+            var request = fixture.Request with { Gates = [], HistoricalArchiveDecisions = [decision] };
+            var report = Review(fixture, request); NoMutation(report);
+            Assert(report.Ready == 1 && report.MissingGates.Length == 0 && report.Gates.Length == 0 &&
+                report.Items.Single().GateId is null && report.Items.Single().ReviewBasis == "HISTORICAL_RECIPE_ARCHIVE_DECISION" &&
+                report.Items.Single().Disposition == "MIGRATE_TASK_CONTROL_ARCHIVE_ONE_OFF_REPAIRS" &&
+                report.HistoricalArchiveDecisions.Single() == decision && Pin(fixture.Root, original.Path) == original,
+                "Archive-only owner disposition rewrote baseline intent, mutated original bytes or claimed a replacement feature gate.");
+        });
+        check("Retirement archive decisions reject unverified changed duplicate external or conflicting originals", () =>
+        {
+            var fixture = Prepare("archive-rejections");
+            var decision = new RetirementArchiveDecision(Pin(fixture.Root, "tools/old.ps1"), "One fixed historical experiment receipt aggregation recipe.",
+                "Independent owner review retires this exact historical recipe and preserves all original evidence bytes.", true);
+            var request = fixture.Request with { Gates = [], HistoricalArchiveDecisions = [decision] };
+            foreach (var invalid in new[] { decision with { IndependentlyVerified = false }, decision with { Purpose = "short" },
+                decision with { Reason = "short" }, decision with { Purpose = new string(' ', 20) }, decision with { Reason = new string(' ', 20) },
+                decision with { Purpose = "meaningful purpose padded\nwith control" }, decision with { Original = decision.Original with { Sha256 = new string('0', 64) } },
+                decision with { Original = decision.Original with { Bytes = decision.Original.Bytes + 1 } } })
+                Reject(() => Review(fixture, request with { HistoricalArchiveDecisions = [invalid] }));
+            Reject(() => Review(fixture, request with { HistoricalArchiveDecisions = [decision, decision] }));
+            Reject(() => Review(fixture, request with { Gates = fixture.Request.Gates }));
+            var external = Prepare("archive-external", external: true);
+            var externalDecision = decision with { Original = new(external.Original, new FileInfo(external.Original).Length, Hash(external.Original)) };
+            Reject(() => Review(external, external.Request with { Gates = [], HistoricalArchiveDecisions = [externalDecision] }));
+            File.AppendAllText(fixture.Original, "changed\n"); Reject(() => Review(fixture, request));
+        });
+        check("Retirement archive disposition cannot override current execution or incomplete caller scope", () =>
+        {
+            var fixture = Prepare("archive-callers", "pwsh tools/old.ps1\n");
+            var decision = new RetirementArchiveDecision(Pin(fixture.Root, "tools/old.ps1"), "One fixed historical experiment receipt aggregation recipe.",
+                "Independent owner review retires this exact historical recipe, subject to current caller removal and scope checks.", true);
+            var request = fixture.Request with { Gates = [], HistoricalArchiveDecisions = [decision] };
+            var report = Review(fixture, request); NoMutation(report);
+            Assert(report.Ready == 0 && report.Pending == 1 && report.Items.Single().ExecutionReferences == 1,
+                "Archive owner disposition concealed a current execution instruction.");
+            Write(Path.Combine(fixture.Root, "current.md"), "Current entry uses the reviewed C# replacement only.\n");
+            report = Review(fixture, request with { CurrentCallers = [new(Pin(fixture.Root, "current.md"), "documentation")], CallerScopeDeclaredComplete = false });
+            Assert(report.Ready == 0 && report.Pending == 1 && report.Items.Single().Reasons.Contains("CURRENT_CALLER_SCOPE_NOT_COMPLETE_OR_PINNED"),
+                "Archive disposition replaced complete current caller scope.");
         });
     }
 }

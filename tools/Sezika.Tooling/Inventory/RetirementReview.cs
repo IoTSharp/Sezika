@@ -12,15 +12,19 @@ internal sealed record ReplacementGate(string Id, string WorkPackage, string[] O
     ReviewFilePin Receipt, string ExpectedReceiptStatus, bool IndependentlyVerified, bool ProjectExternalDependencyReleased = false);
 internal sealed record RetirementReviewedLine(string CallerPath, string CallerSha256, int Line, string LineSha256,
     string Category, string Reason, bool IndependentlyVerified);
+internal sealed record RetirementArchiveDecision(ReviewFilePin Original, string Purpose, string Reason, bool IndependentlyVerified);
 internal sealed record RetirementReviewRequest(string ClassificationPath, string ClassificationSha256, string SourceRoot, ReplacementGate[] Gates,
     RetirementCaller[] CurrentCallers, bool CallerScopeDeclaredComplete, int ExpectedEntries = 466,
-    RetirementReviewedLine[]? ReviewedNonExecutionLines = null);
+    RetirementReviewedLine[]? ReviewedNonExecutionLines = null, RetirementArchiveDecision[]? HistoricalArchiveDecisions = null);
 internal sealed record RetirementSnapshot(string Path, string Status, long? Bytes, string? Sha256, string? Error);
 internal sealed record RetirementCallerResult(string Path, string Kind, string Status, long? Bytes, string? Sha256);
 internal sealed record RetirementGateResult(string Id, string Status, string CSharpEntry, string[] Reasons, RetirementSnapshot[] Sources, RetirementSnapshot Receipt);
 internal sealed record RetirementCallerFinding(string OriginalPath, string CallerPath, int Line, string State, string Token, string Reason);
 internal sealed record RetirementItem(string Path, string Tracking, string WorkPackage, string Disposition, string Replacement, string OriginalStatus,
-    RetirementSnapshot Current, string ReviewState, string? GateId, int ExecutionReferences, int AmbiguousReferences, string[] Reasons, bool ProjectExternalDependencyReleased);
+    RetirementSnapshot Current, string ReviewState, string? GateId, int ExecutionReferences, int AmbiguousReferences, string[] Reasons, bool ProjectExternalDependencyReleased)
+{
+    public string ReviewBasis { get; init; } = "CAPABILITY_REPLACEMENT";
+}
 internal sealed record RetirementGateGap(string Path, string WorkPackage, string Replacement, string Reason);
 internal sealed record RetirementReport(string Status, string ClassificationSha256, string SourceInventorySha256, string SourceRoot, int Entries,
     int Ready, int Pending, int ReviewRequired, int Unknown, long HashedBytes, bool CallerScopeDeclaredComplete, RetirementItem[] Items,
@@ -28,6 +32,7 @@ internal sealed record RetirementReport(string Status, string ClassificationSha2
     bool RetirementPerformed = false, bool OriginalScriptsExecuted = false, bool SharedSkillsChanged = false, string Scope = "supplied_current_callers_and_explicitly_verified_gates_only")
 {
     public RetirementReviewedLine[] ReviewedNonExecutionLines { get; init; } = [];
+    public RetirementArchiveDecision[] HistoricalArchiveDecisions { get; init; } = [];
 }
 
 internal static class RetirementReview
@@ -43,7 +48,8 @@ internal static class RetirementReview
         var clock = Stopwatch.StartNew(); long hashed = 0; var findingsCount = 0;
         void Check() { budget.Check(); if (clock.Elapsed.TotalSeconds >= 180) throw new TimeoutException("Retirement review wall bound180s."); }
         if (request.ExpectedEntries is < 1 or > MaximumEntries || request.Gates.Length > 128 || request.CurrentCallers.Length > MaximumCallers ||
-            request.ReviewedNonExecutionLines?.Length > 1024 || !Path.IsPathFullyQualified(request.SourceRoot)) throw new InvalidDataException("Retirement input item/gate/caller/root bounds differ.");
+            request.ReviewedNonExecutionLines?.Length > 1024 || request.HistoricalArchiveDecisions?.Length > MaximumEntries ||
+            !Path.IsPathFullyQualified(request.SourceRoot)) throw new InvalidDataException("Retirement input item/gate/caller/root bounds differ.");
         var root = Path.GetFullPath(request.SourceRoot); SafePaths.NoLinks(root, budget);
         if (!Directory.Exists(root) || root.StartsWith("\\\\", StringComparison.Ordinal)) throw new InvalidDataException("Explicit local SourceRoot required.");
         string Resolve(string path, bool external = false)
@@ -99,6 +105,20 @@ internal static class RetirementReview
             if (entry.Path.Length is < 1 or > 2048 || entry.WorkPackage.Length is < 1 or > 64 || entry.Disposition.Length is < 1 or > 256 || entry.Replacement.Length is < 1 or > 256 || entry.Tracking is not ("tracked" or "ignored-targeted-sample" or "external-skill" or "untracked-existing") || !classified.TryAdd(entry.Path, entry)) throw new InvalidDataException("Frozen classification item or unique path differs.");
         }
         if (inventory.Tracked != inventory.Assignments.Count(entry => entry.Tracking == "tracked") || inventory.IgnoredSamples != inventory.Assignments.Count(entry => entry.Tracking == "ignored-targeted-sample") || inventory.ExternalDependencies != inventory.Assignments.Count(entry => entry.Tracking == "external-skill") || inventory.UserEvidence != inventory.Assignments.Count(entry => entry.Tracking == "untracked-existing")) throw new InvalidDataException("Frozen tracking denominators differ.");
+
+        // A named historical recipe can be retired by an explicit owner
+        // disposition without claiming a replacement reproduces its semantics.
+        var archives = new Dictionary<string, RetirementArchiveDecision>(StringComparer.OrdinalIgnoreCase);
+        foreach (var decision in request.HistoricalArchiveDecisions ?? [])
+        {
+            Check(); Pin(decision.Original);
+            if (!decision.IndependentlyVerified || string.IsNullOrWhiteSpace(decision.Purpose) || string.IsNullOrWhiteSpace(decision.Reason) ||
+                decision.Purpose.Trim().Length < 20 || decision.Purpose.Length > 1024 || decision.Reason.Trim().Length < 20 || decision.Reason.Length > 1024 ||
+                decision.Purpose.Any(char.IsControl) || decision.Reason.Any(char.IsControl) ||
+                !classified.TryGetValue(decision.Original.Path, out var entry) || entry.Tracking is not ("tracked" or "ignored-targeted-sample") ||
+                !archives.TryAdd(decision.Original.Path, decision) || !Matches(Snapshot(decision.Original.Path), decision.Original))
+                throw new InvalidDataException("Historical archive decision requires one independently reviewed, present, exactly pinned local original and its specific purpose/reason.");
+        }
 
         var callerResults = new List<RetirementCallerResult>(); var lines = new List<CallerLine>(); var callerNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase); long callerBytes = 0;
         foreach (var caller in request.CurrentCallers)
@@ -195,7 +215,7 @@ internal static class RetirementReview
             foreach (var path in gate.OriginalPaths)
             {
                 Check();
-                if (!paths.Add(path) || !classified.TryGetValue(path, out var entry) || entry.WorkPackage != gate.WorkPackage) throw new InvalidDataException("Gate must name exact distinct classification paths within its work package.");
+                if (!paths.Add(path) || !classified.TryGetValue(path, out var entry) || entry.WorkPackage != gate.WorkPackage || archives.ContainsKey(path)) throw new InvalidDataException("Gate must name exact distinct classification paths within its work package, separate from historical archive decisions.");
                 if (!coverage.TryGetValue(path, out var ids)) coverage.Add(path, ids = []); ids.Add(gate.Id);
             }
             gateResults.Add(new(gate.Id, reasons.Count == 0 ? "VERIFIED_EXPLICIT_GATE" : "PENDING", gate.CSharpEntry, reasons.ToArray(), sourcePins.ToArray(), receipt));
@@ -257,7 +277,11 @@ internal static class RetirementReview
                 findings.Add(new(entry.Path, line.Path, line.Number, state, exact ? original : basename, reason));
             }
             string? gateId = null; var released = false;
-            if (!coverage.TryGetValue(entry.Path, out var ids)) { reasons.Add("EXPLICIT_REPLACEMENT_GATE_MISSING"); gaps.Add(new(entry.Path, entry.WorkPackage, entry.Replacement, "EXPLICIT_REPLACEMENT_GATE_MISSING")); }
+            if (archives.TryGetValue(entry.Path, out var archive))
+            {
+                if (!Matches(current, archive.Original)) reasons.Add("ARCHIVED_ORIGINAL_PIN_CHANGED");
+            }
+            else if (!coverage.TryGetValue(entry.Path, out var ids)) { reasons.Add("EXPLICIT_REPLACEMENT_GATE_MISSING"); gaps.Add(new(entry.Path, entry.WorkPackage, entry.Replacement, "EXPLICIT_REPLACEMENT_GATE_MISSING")); }
             else if (ids.Count != 1) reasons.Add("MULTIPLE_REPLACEMENT_GATES_REQUIRE_REVIEW");
             else
             {
@@ -272,13 +296,14 @@ internal static class RetirementReview
             if (unresolved.Count != 0) reasons.Add("UNRESOLVED_CURRENT_SCRIPT_EXPRESSION");
             var stateName = current.Status != "PRESENT" ? "UNKNOWN" : ambiguous != 0 || reasons.Contains("MULTIPLE_REPLACEMENT_GATES_REQUIRE_REVIEW", StringComparer.Ordinal) ? "REVIEW_REQUIRED" : reasons.Count == 0 ? "READY" : "PENDING";
             if (current.Status != "PRESENT") reasons.Add("ORIGINAL_" + current.Status);
-            items.Add(new(entry.Path, entry.Tracking, entry.WorkPackage, entry.Disposition, entry.Replacement, entry.OriginalStatus, current, stateName, gateId, executions, ambiguous, reasons.ToArray(), released));
+            items.Add(new(entry.Path, entry.Tracking, entry.WorkPackage, entry.Disposition, entry.Replacement, entry.OriginalStatus, current, stateName, gateId, executions, ambiguous, reasons.ToArray(), released)
+            { ReviewBasis = archives.ContainsKey(entry.Path) ? "HISTORICAL_RECIPE_ARCHIVE_DECISION" : "CAPABILITY_REPLACEMENT" });
         }
         Check();
         var ready = items.Count(item => item.ReviewState == "READY"); var pending = items.Count(item => item.ReviewState == "PENDING"); var review = items.Count(item => item.ReviewState == "REVIEW_REQUIRED"); var unknown = items.Count(item => item.ReviewState == "UNKNOWN");
         if (ready + pending + review + unknown != inventory.Entries) throw new InvalidDataException("Retirement review lost its frozen denominator.");
         return new(ready == inventory.Entries ? "READY_review_only_no_mutation" : "PENDING_review_incomplete_no_mutation", request.ClassificationSha256, inventory.SourceSha256, root, inventory.Entries, ready, pending, review, unknown, hashed, scopeComplete, items.ToArray(), gateResults.ToArray(), callerResults.ToArray(), findings.ToArray(), gaps.ToArray())
-        { ReviewedNonExecutionLines = reviewed.Values.ToArray() };
+        { ReviewedNonExecutionLines = reviewed.Values.ToArray(), HistoricalArchiveDecisions = archives.Values.ToArray() };
     }
     private static bool HasScriptExtension(string text)
     {

@@ -1,0 +1,2604 @@
+{
+  "Status": "OWNER_ARCHIVE_INPUTS_NOT_RUNTIME_ACCEPTANCE",
+  "HistoricalArchiveDecisions": [
+    {
+      "Original": {
+        "Path": "docs/research/public-decision-data-2026-10-10/Finalize-MoarkPublication.py",
+        "Bytes": 8293,
+        "Sha256": "df70f486e983b749c6cbc3da98566a576a1ba08cd0f9d8df7cd5d60c5a891a9b"
+      },
+      "Purpose": "核对固定 public-decision-data 的匿名全量验收、远端提交与清单后，生成并提交发布回执，再匿名读取回执提交。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/research/public-decision-data-2026-10-10/Inspect-Moark.ps1",
+        "Bytes": 975,
+        "Sha256": "10968d738cc248b7c9c96b671d2346c63197c67a04b01a76edab25e81a11f739"
+      },
+      "Purpose": "用固定浏览器会话查看 MoArk 数据集筛选页、请求记录与仓库文档，并在 finally 关闭会话。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/research/public-decision-data-2026-10-10/Inspect-SavedMoarkSession.ps1",
+        "Bytes": 1436,
+        "Sha256": "4eb5f7cc9f3d0a89c1c721669978bc6813b079dba3aed59263400708243c08be"
+      },
+      "Purpose": "在固定专用 Chrome profile 空闲时打开个人数据集创建页，读取当前会话与个人 profile 身份后关闭。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/research/public-decision-data-2026-10-10/Publish-MoarkDataset.py",
+        "Bytes": 15949,
+        "Sha256": "1715c91724b7959efc3a178b997ef0a875d2e6990d0201deb616c63f7afdf695"
+      },
+      "Purpose": "针对固定公开数据集执行 prepare/extend/push 多阶段复制、清单校验、Git/LFS 配置、提交、推送或引用核对。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/research/public-decision-data-2026-10-10/Resolve-GiteeRepositoryIdentity.ps1",
+        "Bytes": 2492,
+        "Sha256": "d928c9b0620f672d1efb69da5dbeccdc9e2899c814d5a818e2247e74c18a2d30"
+      },
+      "Purpose": "读取两个明确命名的 Windows 凭据目标，查询保存的 Gitee 账号身份并保存有限结果。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/research/public-decision-data-2026-10-10/moark_dataset_browser.py",
+        "Bytes": 7076,
+        "Sha256": "934acc4f07dbdc6c134d54e8c66475f06d69313df5eaa5ae816720c335d4a779"
+      },
+      "Purpose": "检查固定个人数据集及底层仓库是否存在，必要时经浏览器表单创建公开数据集并读取提交后的状态。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/repository-training-restart-20261013-01/create-remote-root.sh",
+        "Bytes": 448,
+        "Sha256": "ca32649a5d056842d3e8251ef3cf33eac2fc305063a3afc3f75cb157846baf29"
+      },
+      "Purpose": "给固定 full-training 父目录创建一个此前不存在的恢复根，核 realpath/非链接/20GB空闲并保留旧 CANCEL。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/repository-training-restart-20261013-01/Finalize-AfterAudit.ps1",
+        "Bytes": 4227,
+        "Sha256": "ee9128ee357e8b441d50824e7009e746d0e8a2e7548c531421ef279e8d8bf534"
+      },
+      "Purpose": "读取固定 restart 监护回执，核进程当前身份与 checkpoint/status 后生成 after-audit 本地收口文件。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/repository-training-restart-20261013-01/Finalize-Local.ps1",
+        "Bytes": 4111,
+        "Sha256": "5033fbde63c130577619583799078b5210b95841f4e3a10c42b8caf835f74e4f"
+      },
+      "Purpose": "读取同一次 restart 的监护回执与固定训练状态，核当前进程身份并生成初版本地收口文件。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/repository-training-restart-20261013-01/install-tools.sh",
+        "Bytes": 1443,
+        "Sha256": "25a50dbcaf9f6af26ce41453fa85e17f2146dcbec2ac21aad9610b8358a83354"
+      },
+      "Purpose": "向固定新恢复根安装指定离线工具归档，核399行清单与guardian身份，执行受监护true和trainer help。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/repository-training-moark-full-20261013-001/finalize_preparation.py",
+        "Bytes": 7998,
+        "Sha256": "dc41a79ad1365b8cc42df46a717f33ba3408527ecf6d9e5a9e8bd1ce6840c2a2"
+      },
+      "Purpose": "聚合固定离线准备目录的清单、集成测试和预算证据，冻结小文件并生成明确 training_ready=false 的 READY。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/repository-training-moark-full-20261013-001/prepare_pending.py",
+        "Bytes": 4787,
+        "Sha256": "eee53629d92424cc9009b5613f869aaa90b09f955e43ed208f21f2212051d627"
+      },
+      "Purpose": "从固定历史模型和语料计划抽取允许的基础资产，写待开机连接/租期/全量训练合同与可信文件清单。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/Finalize-MaikebingProcesses.ps1",
+        "Bytes": 5333,
+        "Sha256": "8cce6aa36d8420239a3705faf3bcf55489f10e143e3539ea2da1951016be5cdf"
+      },
+      "Purpose": "聚合固定个人发布进程回执，用PID出生、argv、父进程和子进程时间关系生成只读当前收口报告。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/Finalize-ResumeProcesses.ps1",
+        "Bytes": 5328,
+        "Sha256": "0326774851f7f7e8c5b6711bca3afd696a8c658a2c1833718838d47ad3838da3"
+      },
+      "Purpose": "对发布恢复阶段的固定进程回执做同类只读出生身份核对与最终收口报告。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/gai_static_path_review.py",
+        "Bytes": 1836,
+        "Sha256": "6ab4aaf194bb247daf202232e5ae1924d4cbe52905c75140831d34d16b7b4b96"
+      },
+      "Purpose": "只读扫描固定 gai 二进制中的12个路径/上传器字符串并保存二进制SHA和观察值。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/Get-GaiOfficial.ps1",
+        "Bytes": 1428,
+        "Sha256": "22b1eea06a271be8e1a51a435cdcbceec1570d4a0a58393ca96c4514620a85dd"
+      },
+      "Purpose": "从明确官方版本下载固定 gai 可执行文件与校验材料，直连失败经proxy一次回退，核MD5并记SHA256。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/hf_cached_auth.py",
+        "Bytes": 1647,
+        "Sha256": "0ea814d9465e93c13e385c7c67923a7ffccddbaeed8db6dddd0f83942fac15dd"
+      },
+      "Purpose": "探测本机 Hugging Face 缓存凭据的 whoami 可用性，并尝试默认SDK身份，保存有限身份结果。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/hf_diagnose.py",
+        "Bytes": 1256,
+        "Sha256": "9755a7f83bdd431cf7fdf9efc6111cf50a75663ea4c491b11de25bac8b5f0106"
+      },
+      "Purpose": "用 HF SDK 查询固定组织模型的存在、revision和文件元数据，保存诊断结果。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/hf_preflight.py",
+        "Bytes": 1255,
+        "Sha256": "83ad067376646663863bff3af36b2f8f70eb9a2b31a06a643e78786798c65913"
+      },
+      "Purpose": "对固定 HF 实验仓库做有时限的SDK预检并保存存在、revision、私有状态和路径集合。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/hf_publish.py",
+        "Bytes": 14412,
+        "Sha256": "f7c9ad5e6a6a02aa6154e1312968229b95dc1269e85a2310b1bba026d00dc08c"
+      },
+      "Purpose": "核固定18文件模型包与准备回执，按阶段经HF SDK建库/提交LFS对象，并校验固定revision的公开文件内容。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/hf_secure_preflight.py",
+        "Bytes": 2217,
+        "Sha256": "b6eb2aeb0e1b57b7333307c4d9c975a153f2a23e7fe6b34f940505e763820e16"
+      },
+      "Purpose": "从明确安全存储读取HF凭据，核固定仓库身份/元数据并保存受控失败结果。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/hf_transfer_probe.py",
+        "Bytes": 3091,
+        "Sha256": "4128e3c1105e9936868f3ce3c4a49b741e7e417e3d733b6172ca3996857861c5"
+      },
+      "Purpose": "基于固定模型包的目标对象，询问HF的LFS上传指令/多段能力并仅保存脱敏指令形状。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/Inspect-Moark.ps1",
+        "Bytes": 775,
+        "Sha256": "cfea68dd1cffffc9341c2e6ec7ea46f9e024762a4631665d56428e98b7364e5a"
+      },
+      "Purpose": "通过固定 agent-browser 会话打开组织模型控制台并观察页面，临时设置浏览器输出/超时环境。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_bos_direct.py",
+        "Bytes": 10442,
+        "Sha256": "8568d39e1c4f0404dd801f5cb607e7c8957fc058f6914ca73006e5a758c052b3"
+      },
+      "Purpose": "对固定encoder SHA/大小执行BOS多段上传，校验源和每片ETag/MD5，完成或清理本任务的上传会话。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_bos_forwarder.py",
+        "Bytes": 21063,
+        "Sha256": "5eb7fa40e278b3680db566c9d727f13c2bd720b68dc16e4cd19476636200d9ce"
+      },
+      "Purpose": "建立有限本地HTTP转发器，把gai/Git LFS协议转为固定MoArk/BOS上传、会话与callback，记录真实上游结果。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_bos_preflight.py",
+        "Bytes": 2459,
+        "Sha256": "a51bdf8ea2762be4bae555d7e601f7994a3b1ff74197b33a0ffa2ab3a1284d60"
+      },
+      "Purpose": "用固定个人仓库及对象做BOS/MoArk上传授权预检，保存push响应与有限存储信息。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_browser.py",
+        "Bytes": 5506,
+        "Sha256": "78a30091af3cae2a4cc1341ae0ae8ba2ff3a376a30fd304c4c5718ddac368ff5"
+      },
+      "Purpose": "在固定个人账号检查模型库，按create开关填写并一次提交公开模型表单，再记录网络结果。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_complete_commit.py",
+        "Bytes": 4132,
+        "Sha256": "91307d94665704e1e8bfefc8fafc8e4642e67c635633bdecae5bc5b3ec67f254"
+      },
+      "Purpose": "仅暂存固定发布文档和一段ROADMAP的index blob，创建本地文档完成提交，保留其他index/工作树内容。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_complete_docs.py",
+        "Bytes": 12272,
+        "Sha256": "ea656f1c469f062f7292875f0a810d37715cc12cbf6ecdeba16852086684328a"
+      },
+      "Purpose": "从固定发布/匿名验收/平台身份回执校验完成条件，改写README等限定文档及机器汇总。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_final_registration.py",
+        "Bytes": 3638,
+        "Sha256": "a1456e6100f228cc16b4171f4826dd9256e6639b363285ada8af5b9febfac46e"
+      },
+      "Purpose": "读取固定个人模型的missing-lfs、公开模型和底层仓库，核最终对象注册与身份可见性。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_finish_evidence.py",
+        "Bytes": 3745,
+        "Sha256": "d27a30fcaa00b468d8a1e243205c0ca593080cccb0f193e03f9ba1206a510cde"
+      },
+      "Purpose": "从固定BOS和进程收口回执补齐发布证据SHA与说明，并精确更新证据文档和CHANGELOG。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_git_release.py",
+        "Bytes": 12658,
+        "Sha256": "007e65fb454dd59826cc8605ea5da9a2dfc1a68173fd9ab2af3776b3900b0b8e"
+      },
+      "Purpose": "在固定个人模型仓库准备原始包和LFS属性，配置gai凭据别名，分阶段提交推送或查询平台元数据。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_gitee_identity.py",
+        "Bytes": 2566,
+        "Sha256": "345994f6caf81cdac8bc0aa4a7cffdc0a9b98aa1a7f69f72b12cab7e91d2c8bf"
+      },
+      "Purpose": "分别按当前与旧凭据解码方式读取Gitee token，GET实际账号身份并核个人login，保存编码诊断。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_lfs_schema.py",
+        "Bytes": 2890,
+        "Sha256": "219c829719c3ea410beea55597b44db6c7cd7c8c9450d0f9a97aa2b731f9253f"
+      },
+      "Purpose": "对固定MoArk LFS响应做有深度/节点上限的脱敏schema采样，比较凭据/响应形状。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_publication_docs_commit.py",
+        "Bytes": 3348,
+        "Sha256": "27979183717b8f13e82210a3dbfaa7227926abf3d62e9de4dc173af3b89d647f"
+      },
+      "Purpose": "把固定个人模型存储成功但注册待定的文档路径和部分ROADMAP索引内容提交到本地Git。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_register_correct_path.py",
+        "Bytes": 5624,
+        "Sha256": "69803ede1d80e9ce26d71a773c106208bd19cf5c8d54225ee09cd34b41e9a3c3"
+      },
+      "Purpose": "以已核BOS与精确encoder源为前提，对固定正确路径最多一次callback，再有限查询missing-lfs。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_registration_backend.py",
+        "Bytes": 4949,
+        "Sha256": "d9162081ef8f568e64f6f7b393117f7f88bf16c3ff1f47d1612d7a8703df2cc1"
+      },
+      "Purpose": "只读比较固定MoArk平台missing状态与底层标准LFS download batch的对象可见性和错误。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_registration_readback.py",
+        "Bytes": 3744,
+        "Sha256": "ca5fdb79e9d18aee40c1de6f4444aa05a2d9ab645c0777cfcb82716b74becff5"
+      },
+      "Purpose": "在此前callback ReadTimeout的明确前提下，只做8次有限missing-lfs读回，避免重复写。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_release.py",
+        "Bytes": 5768,
+        "Sha256": "d0d8aee8875a7efa479119b64f65ba64771a1cb19b37ab6db6d6ed77351f6909"
+      },
+      "Purpose": "分阶段获取/核个人MoArk令牌及个人模型身份、已有库和missing-lfs状态，并保存固定发布检查回执。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_resume_alternate.py",
+        "Bytes": 5872,
+        "Sha256": "ce8460988cecfc73606518d68efaa60a77bf0af882e270b63658f53b27b8d25e"
+      },
+      "Purpose": "核固定BOS对象已完整读回后，尝试ai.gitee.com替代入口的单次callback并比较missing状态。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_resume_bos_verify.py",
+        "Bytes": 7406,
+        "Sha256": "18888db448cc9ffdb345a29f28b71b09ac945a82790c46cff3509bc02884fb78"
+      },
+      "Purpose": "通过MoArk/ai.gitee身份与授权查询固定encoder对象，以签名BOS GET流式核完整字节与SHA，保存存储证明。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_resume_browser.py",
+        "Bytes": 3098,
+        "Sha256": "d98ebe0df4a4e0698b499be0085ffe323cf0b44e6da788456703f318fa74223a"
+      },
+      "Purpose": "打开固定个人模型树和新建菜单/上传视图，仅观察DOM与网络并明确不上传文件。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_resume_inspect.py",
+        "Bytes": 4689,
+        "Sha256": "79c5d40a18f6266ab682468ea41bcb84fb411d9738db0d46dd989ab54e2a2c6d"
+      },
+      "Purpose": "查询固定个人库的missing-lfs、quota、仓库身份和匿名ls-remote，生成恢复前只读检查结果。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_resume_push.py",
+        "Bytes": 3997,
+        "Sha256": "7a249e5d39e411b4c2ecc605cf6e6231adfdcbc9e5db69be705ddb2d720dfa08"
+      },
+      "Purpose": "仅在固定注册回执、准备commit和origin匹配时正常Git push并独立查远端ref，保留pre-push hook。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_resume_register.py",
+        "Bytes": 7958,
+        "Sha256": "4ec6ee62c39aab9244e40880bbc0f6440faea56a3c15d80a0617db87df8dfa32"
+      },
+      "Purpose": "在恢复检查、源hash和BOS HEAD匹配后，对固定encoder最多一次平台callback，随后6次missing检查。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_resume_secret_scan.py",
+        "Bytes": 2090,
+        "Sha256": "c2b23c72018d57040022b227be624beabceb439fda1ce8cc854fdb1618ec28e2"
+      },
+      "Purpose": "读取明确保存凭据的实际值，扫描恢复任务限定小文件中是否泄漏这些精确值，保存不含凭据的结果。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_secret_scan.py",
+        "Bytes": 1632,
+        "Sha256": "14f123ba7c373b98e0f4048e508205741c402f352aeebb9fb696b1f7b5e3d2d1"
+      },
+      "Purpose": "对固定个人发布目录限定小文件做精确凭据值泄漏扫描，按100文件/35秒约束保存结果。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_transport_upload.py",
+        "Bytes": 9041,
+        "Sha256": "c814a2840367c4d6916ffea2b6b1ce6074639cf80ae42315a60cc5bcec8bce18"
+      },
+      "Purpose": "对预先完整重组校验的19片运输包，在tiny/full阶段获取BOS授权、上传对象并callback登记。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_update_publication_docs.py",
+        "Bytes": 14354,
+        "Sha256": "2cde59799bf5ae9f7d3ebba44730ad26697db9468eb5ecc37c83c3bea2f9444b"
+      },
+      "Purpose": "将固定个人库已建/存储完成/注册待验的事实写入中英文README、ROADMAP、CHANGELOG及证据JSON/Markdown。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/maikebing_upload_schema.py",
+        "Bytes": 7604,
+        "Sha256": "541cc06f0403b51e626672321f0904e084e321de59ced8c0aa9744192a2391b2"
+      },
+      "Purpose": "建立受限loopback代理观察gai上传事件的provider schema与storage route，转发少量API请求并记录形状。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/moark_docs_commit.py",
+        "Bytes": 2555,
+        "Sha256": "297e2861ddd3863c4d147abd256354f56b4a064d8f0c0647b572cc59b8c6d893"
+      },
+      "Purpose": "把固定组织模型LFS上传受阻的证据文档和部分ROADMAP索引提交到本地源码仓库。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/moark_finalize_receipt.py",
+        "Bytes": 3230,
+        "Sha256": "88b36a5d7edb535d03e09c6174852842caf2f9103fb88c8faf199ab4b71b2ae6"
+      },
+      "Purpose": "对固定组织发布材料做限定文件凭据泄漏检查并结合准备与进程收口回执生成最终历史回执。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/moark_gai_init_probe.py",
+        "Bytes": 2050,
+        "Sha256": "c1d9d62cd8ec97b5a4c4d727b143b66ba35bff7847f1eb57ae58f4db25d90c9c"
+      },
+      "Purpose": "将初始化协议交给固定gai版本，比较moark.com与ai.gitee.com两个API地址的响应和错误。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/moark_gai_object_probe.py",
+        "Bytes": 1939,
+        "Sha256": "d7d76a05b3064027a6e6b3f413e674a39d6e54f6ac107e476142534b4c376413"
+      },
+      "Purpose": "向固定gai发送初始化和单个tokenizer上传事件，记录官方adapter对固定小对象的上传响应。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/moark_gai_setup.py",
+        "Bytes": 2773,
+        "Sha256": "65c2c83843b532b86c0d291d40fd8dc7c8fd596702fba4cf993ca9562fcfb7d7"
+      },
+      "Purpose": "把两个明确安全存储凭据复制为gai要求的别名，并在固定仓库设置gai customtransfer配置。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/moark_gai_transport_probe.py",
+        "Bytes": 4507,
+        "Sha256": "4d27ccb7987a982813932d34f18befec71284576f7016a4c482f209b9f796840"
+      },
+      "Purpose": "启动有限loopback转发proxy并运行gai协议，用固定MoArk接口观察真实transport请求及脱敏响应。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/moark_git_release.py",
+        "Bytes": 7132,
+        "Sha256": "15b061b228162cc315a64c8a4ec777e5f0d36a6d36651b9bf37459c4a1946f28"
+      },
+      "Purpose": "对固定IoTSharp组织模型准备18文件包/LFS属性并提交，按阶段进行dry-run、push或inspect和ref核对。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/moark_lfs_diagnose.py",
+        "Bytes": 2603,
+        "Sha256": "20abefb69aa3f6963aedab33e3b2cb723cc034d77336e7a0f1b09479ba01e5c1"
+      },
+      "Purpose": "比较固定组织权限、大小写owner与匿名LFS请求的响应，用于诊断组织级LFS初始化失败。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/moark_preflight.py",
+        "Bytes": 2267,
+        "Sha256": "ffcbd7a42722318e7d33e50d43f7253536e9736539e81127d0fe989b41fefe44"
+      },
+      "Purpose": "查询固定组织profile、模型与底层仓库等四个目标，按直连/proxy回退记录实际身份与状态。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/moark-gai-probe.py",
+        "Bytes": 895,
+        "Sha256": "1e33262c52d6f076d5ac37946004d54c295e9cdf0679e0660d559d43cf9b387a"
+      },
+      "Purpose": "在固定gai和仓库上运行至多3个dummy配置/帮助探测命令并记录响应。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/moark-login-window.py",
+        "Bytes": 5024,
+        "Sha256": "a5e59e9d3f5e3a5efdbfed46285346b05258570df715b9285f5a917bb133aa2f"
+      },
+      "Purpose": "打开固定组织登录浏览器并有限等待命令文件，支持限定导航、点击、填写以完成交互会话观察。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/moark-model-window.py",
+        "Bytes": 4220,
+        "Sha256": "8e3ebf08cc2cb9539011e89caeb3e4b9895a10ee8139eae097e13a7774e47a15"
+      },
+      "Purpose": "打开固定MoArk模型新建页面并通过有界命令文件执行导航、fill/click/check及快照采集。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/Send-ModelBrowserCommand.ps1",
+        "Bytes": 887,
+        "Sha256": "1c6e4370088eaabf12c0139dabe24e3e7f0c57e5d2a1e61d9e2240729d3d768c"
+      },
+      "Purpose": "把一个JSON命令写给固定浏览器命令文件，最多24轮等待匹配ID的状态或失败。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/model-publishing-20261009-01a12099/Update-MoarkDocs.py",
+        "Bytes": 4735,
+        "Sha256": "276b4a6a90cbd41d2e443fdff79e9e61991957c9044297f0fc63033afe9eb341"
+      },
+      "Purpose": "对固定六份项目文档做精确旧句替换，记录组织模型已建但LFS受阻，并生成部分ROADMAP索引草稿。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/repository-training-moark-full-20261013-001/transport/Close-TransportOffline.ps1",
+        "Bytes": 7301,
+        "Sha256": "e91c81e3f8568dc88fe8f1b3b6f03cdd772dcee3b37dd0ac97569ee8598b3dc3"
+      },
+      "Purpose": "核固定离线运输任务进程身份，清理仅一个明确python缓存文件/目录并冻结交付清单与发布验证器SHA。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/cleanup_old_copies.py",
+        "Bytes": 5700,
+        "Sha256": "c086cba5cd6cb34564d4770c59d66519a7f8b0794c8d20fa492e27f27be88371"
+      },
+      "Purpose": "对旧实例明确命名的固定副本按tiny/preview/apply，核boot/所属标记/进程cwd与文件元数据，备份少量元数据后精确删除旧副本。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/cleanup-apply.sh",
+        "Bytes": 538,
+        "Sha256": "cec7bbe52fd3785d14e7b878e7b1c635f0aeb9023605d98060de8262d63650df"
+      },
+      "Purpose": "核固定旧副本preview的状态与总量后调用cleanup_old_copies.py apply，再输出清理及shm挂载结果。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/cleanup-preview.sh",
+        "Bytes": 245,
+        "Sha256": "7469f570e58e5b7faff10ce2cda7318336016f7ee4fa1b30b775b3a532504da8"
+      },
+      "Purpose": "对固定旧副本先运行tiny再preview并报告shm挂载，保持预览语义。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/cleanup-retired.sh",
+        "Bytes": 114,
+        "Sha256": "e5fff9c8dc857fedbb5854f1da8136ea0fa8cdb629002e5ba68d260fee0b1788"
+      },
+      "Purpose": "运行固定旧实例路径中的remove_retired_roots.py以删除此前明确的退役根。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/initialize-v2.sh",
+        "Bytes": 871,
+        "Sha256": "549643b19fb2cc181f235af786d1e4d9790b9f79d92a123a195d1259ddccd5c9"
+      },
+      "Purpose": "核/data realpath与可用空间，查看三个旧根占用，创建固定新训练根/标记/截止时间并检查PID1/ICU。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/initialize.sh",
+        "Bytes": 867,
+        "Sha256": "dcec88104e99453aa9a7323e9ce63cc356d5b458a69c35ac135d814339e6af6a"
+      },
+      "Purpose": "初始化同一固定训练根并检查磁盘/旧副本大小/PID1/ICU，旧版本以head截取du输出。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/recover-3840-v4.install.sh",
+        "Bytes": 3656,
+        "Sha256": "3cec0cd34950eee0889fae387a7e653f23d891a34401fbd313cd523674601b05"
+      },
+      "Purpose": "对固定boot与3840-update故障状态核对guardian报告/进程退出与四checkpoint哈希，再一次性对账续跑inflight。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/recover-5632-v5.install.sh",
+        "Bytes": 5284,
+        "Sha256": "b5c37b4d9801522e89dc20d03b9e8af42fb2d3c4633b7f2fd07f91482bee62b6"
+      },
+      "Purpose": "对固定5632-update预payload失败核原始guardian状态，安装有限guardian overlay并运行受限探针后对账到旧已核checkpoint。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/repository-training-moark-full-20261013-001/runtime-20261013-042411/remove_retired_roots.py",
+        "Bytes": 3186,
+        "Sha256": "9c31bfa85a4dd99a029f69250ebe1cb6f298eba8c870d5a04c236f87f5ffa0d1"
+      },
+      "Purpose": "核固定boot、当前新根所有权和无进程cwd占用后，盘点并精确删除三个命名旧训练/源码/证据根。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": ".artifacts/repository-training-cadence-20261013-01/install-cadence.sh",
+        "Bytes": 3300,
+        "Sha256": "4542dbec08a4e3fd98e24bb50ed5d2e1105ab1104c6ae3e1bf2d0f346a4481be"
+      },
+      "Purpose": "向固定新cadence目录复制旧运行时，应用两个CLI文件overlay和新清单，核checkpoint_every=4096并受监护运行schedule检查。",
+      "Reason": "独立逐项审阅该用途与行为锚点后，撤销这个固定旧对象或故障阶段配方的当前执行资格；原成功、失败和不确定性保持，所含长期能力由其他迁移门独立承接，不宣称新工具复现该历史配方的全部语义。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/gpu-learnability-20261008/windows-closure-checker.ps1",
+        "Bytes": 19086,
+        "Sha256": "3e2dc97307e5630fe4abcd7a58bd18d549c1280f063945a0b40f54ce172983e0"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 4a62b59ffbc4d3a4e712546aa900eabc6561384f 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/gpu-training-aot-linux-2026-10-08/Invoke-LinuxBoundary.ps1",
+        "Bytes": 1848,
+        "Sha256": "9e5746209baef9a13a0736e3ec6178a71a730a13d3ce78eec581896fbc20c75d"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 325ea3e4488813a5939995faaf2a40a1ef7fe19c 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/gpu-training-aot-linux-2026-10-08/bounded-linux.sh",
+        "Bytes": 11732,
+        "Sha256": "45e0c3a04e63266dce48408d0bf9263404ee4a901c39f13d8d56368d45f0c790"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob bc23b7e0db75edf1d2e1b43b2c319f8cd91d737f 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/independent-aot-linux-2026-10-08/Invoke-LinuxBoundary.ps1",
+        "Bytes": 1842,
+        "Sha256": "e030fba561ff3c700eb33666e2eaab89bb0f58b55895838ce3950fbeadfd1ed0"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob a59576c277d82357a1be97da0c79c4b019c5b5a5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/independent-aot-linux-2026-10-08/bounded-linux.sh",
+        "Bytes": 11732,
+        "Sha256": "ac979a61f98fba71f5d7181fa904b008642ff60a269e947e64844c9fbbd3f255"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob fd4efd795cc79aa2eff681209f779aa105431bb0 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/input-aot-2026-09-26/scripts/audit-linux-processes.py",
+        "Bytes": 1438,
+        "Sha256": "47b5064e342e54a8bfed4b9661d4d6e2a29c20c54bcc193947de426928e78a5a"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 806ea58f59e6b5771d2734cee11de94292cb0bf3 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/input-aot-2026-09-26/scripts/audit-processes.ps1",
+        "Bytes": 2332,
+        "Sha256": "545782ddca029546b10ef71dcef8ac6b3f55b411bbba9b55cba3267d811ba25b"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 52ef48969a7dd89703c4ea978c8c9eff3898e11e 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/input-aot-2026-09-26/scripts/collect-evidence.ps1",
+        "Bytes": 10553,
+        "Sha256": "ed7c9f2d0b6529fbd4537fab3826c7c9282df556f18400284a188cbe88f7becd"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob c830fab46a71627f9f9ded1cc3ed0af04f1ebb69 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/input-aot-2026-09-26/scripts/linux-process.py",
+        "Bytes": 3634,
+        "Sha256": "5acad7d8245ed3ec2c91aedeaaeca925bcf3c51ea445c06eb4429e511cf87e0f"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob d3fa274a04d27d51cb88b4beb199eb999005d9cb 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/input-aot-2026-09-26/scripts/run-capture.ps1",
+        "Bytes": 4628,
+        "Sha256": "28515fecfde9fc3f365c0b78dc9270ce1e053374043aed26af2e4dd0e9f80d41"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 4b3187214d033b2490cb6baeb6330c1d43027b7d 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/label-audit-20261008-final/Build-LabelAuditReport.ps1",
+        "Bytes": 14484,
+        "Sha256": "8e2906a08671cbaebacb637ae19d22dad0c667e4cd7396965c8356ba439c6df9"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob e27b98c4aae4b3483e3bc636fb5fc35e480ad84f 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/label-audit-20261008-final/Invoke-LabelAuditBatch.max-v1.ps1",
+        "Bytes": 15815,
+        "Sha256": "dbdd26a19e2804d98d0ce73e2e952f58bed14bd02d812d13d16e6ba989cc74a0"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob c9bc792916c7d2110ab2779b713aa37785942ddd 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/label-audit-20261008-final/Invoke-LabelAuditBatch.ps1",
+        "Bytes": 14478,
+        "Sha256": "076ae5e6d6292b3a674f2051046f4151811522d7f2c829d4e18b058b33158a1e"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 7fd6b78a550732b69fc58c4c309c707ab753953d 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/label-audit-20261008-final/Invoke-LabelAuditBatch.ultra-v1.ps1",
+        "Bytes": 15055,
+        "Sha256": "a63488a9a803dd21441606a0ad43156df6e7ea48ac92d5cc9f7b3b0e644f7ec6"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob c77b56648afb19f7cc103c4cdc933c42e056c905 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/label-audit-20261008-final/Test-AuditProcessClosure.ps1",
+        "Bytes": 5306,
+        "Sha256": "f91ae3f4859e9705eb08a1000d7176570dd638e35e1b018e364f908368d48a10"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob ab7742c096f7b5871712b69c524fb993c631eb99 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/label-audit-20261008-final/Test-LabelAuditPayload.ps1",
+        "Bytes": 15362,
+        "Sha256": "a71a86a4446ae4255512018636e5b824f9cd68cb27c3295f4e9b283575e7853e"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 57196e9440a06f8e87806b51d4b8329688203969 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-closure/Close-ResumeProcesses.ps1",
+        "Bytes": 6780,
+        "Sha256": "f79e24f2c60d8cbbdb1a0f44580363b7c3ebafee5c195a43dc349a95fd1ebf2e"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob db1972d2605bf5f0c6ec2a5415aa9a35a50f2c2d 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/Archive-Engineering.ps1",
+        "Bytes": 3242,
+        "Sha256": "0b5799714f1f7d73868807e95f3e019a220f6a91a67ee8e7436cd72b0bcd9df6"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob ac5f6714cc28283db38351d9c5104ee1f61ec74a 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/Build-Helpers.ps1",
+        "Bytes": 1469,
+        "Sha256": "1b412bca8e8cfa9bb04a652a1908489a2aca2c40e946b5492afb8da33bd63b86"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 47eff396cc7bc8df39fceca291012dca5fd7db0e 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/Clean-CompilerTemps.ps1",
+        "Bytes": 3461,
+        "Sha256": "bc7b70b7f5f520aa5eaefb026866f23b0b75e691e53e399dc53aed577144b178"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 55ce8451f1d43d6a76fcc172629932087e850bbb 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/Close-LocalProcesses.ps1",
+        "Bytes": 4429,
+        "Sha256": "ba66e3e1b2de9e3ae4a8eac030fa0d51c0e118a9fa9811eb09874df1c2ae16a7"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 194def44a6d6fc81dc1e126bf69e4e5d7a10d365 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/Invoke-BoundedProcess.ps1",
+        "Bytes": 19947,
+        "Sha256": "2e158e527cda1dc5b4ccc8fba913ba3a789ae5190d2e59cab6a6fbc10d867ed5"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 36c3bdf95d818a2ac3ee0617084257d79d2206e7 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/Invoke-Ssh.ps1",
+        "Bytes": 918,
+        "Sha256": "f8b4727cb2b73bc172ff12524894c97b8d1d095263c065739917f614adbbfc86"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 17db3e320bf4930a8c0495bf6dc9a4aadfe8f331 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/Prepare-Inputs.ps1",
+        "Bytes": 2678,
+        "Sha256": "cb099c0daca34eb235b33678711b3f2d1d26aa5e185c56245ceb5879d1f1fc99"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob e3a727aec6aba8173a421bd2f3e64aa0f9aaf21a 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/Prepare-Transfer.ps1",
+        "Bytes": 9496,
+        "Sha256": "a0b9bbd021512d814e594b0765d25c341fde0a2ff9321789373cf31af4099cfc"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 17b3ef8d3cdf0a4531717db1cf774ffbe5808234 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/Publish-Linux.ps1",
+        "Bytes": 3583,
+        "Sha256": "c0df833961f60cc71d68066f6e4b5884d391dbac1b23eaffada0d62544089930"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 33859907c1386dabee6eceacce5e0b30446e20b7 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/Run-CompleteLengths.ps1",
+        "Bytes": 2778,
+        "Sha256": "180e3a411765d92052ecc21d12ea66281bcc71ae22b95cae297d75ae9eb46620"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 1214a75d26f1c15a34126c28de83932d87a79ef7 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/Run-Prechecks.ps1",
+        "Bytes": 3032,
+        "Sha256": "5b7614d57d03e2895af2bb88cfd1d422855715875cca163e2be72b027fbd92fa"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob b2c23b0c5240ca7a68ee6e524dea9c68ef19206a 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/audit-data-validation.ps1",
+        "Bytes": 18246,
+        "Sha256": "05627992b34e98a220df6dd4685d2d8aab49db3094dd100a1792919505154b6a"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob c333fd3e686d43ffb5ea42fdde250385645235d1 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/audit-git-bytes.ps1",
+        "Bytes": 6056,
+        "Sha256": "a2ca1f04354fa99ec7a5ad40cfaba88ac316a6cc54ad1ec9dbe3d9faf322834b"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 940ee6258c10045ced926ac5e7b9fe4a11a091f1 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/remote/Invoke-BoundedLinux.sh",
+        "Bytes": 24910,
+        "Sha256": "32167e8cf7396ac6d1f8f54a8d664dfbfaaef71fccba871433b0fdf73e24f2f1"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob cfef1c8c1284b369a8a8f3da4528a6e9520a5e80 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/remote/bootstrap.sh",
+        "Bytes": 3963,
+        "Sha256": "88b8f6c371ebc838d007cc0ec649712d7224fdc05f83a51e902dec389ba6f1a0"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 51de900103aaec4d5c17e6f12c1080926062da3c 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/remote/capacity.sh",
+        "Bytes": 130,
+        "Sha256": "26d6c8f262aba14a2724038e86efadfcb8aa23508da2ffb06607613f3e40c3d5"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob a540476b01c4b947c2fb8f80f040dea764a7807c 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/remote/final-evidence.sh",
+        "Bytes": 3991,
+        "Sha256": "84664abec6878303799cedf47015517680c9c6638223f3f998498e2e126e4f39"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob e55a02a28612f2a62dfcf9054d1bba5c1384cae9 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/remote/final-status.sh",
+        "Bytes": 924,
+        "Sha256": "fae3ebfadb432af90b73b5d078f18eaaa8b37e5acb830f95a55979b5f2ad642f"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 79a5256e4e099c25616ab8b81c9d427f8ba8f6a1 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/remote/phase-common.sh",
+        "Bytes": 7871,
+        "Sha256": "d270f3a065f95b7c7634269f75f93aab0f93726e21b320bbe24cd1964b625b43"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob f476e21583e462c99061708e4631bd0708958040 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/remote/preflight.sh",
+        "Bytes": 1278,
+        "Sha256": "1d0616e05d1987bc2fada92a8b0194ea5addcef4c457e3c0112591bea40b7850"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 2b1563dff7338b17227dda752016f82086cdef02 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/remote/regress.sh",
+        "Bytes": 129,
+        "Sha256": "dc311131e64bbbd8a2554d2c045dd1a730a3ada1b596a4b93095a70fe0776faa"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob f7f6f84c8ccea4210ca00d46b18bafcebe798681 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/remote/runner-probe.sh",
+        "Bytes": 2108,
+        "Sha256": "97d12d9aeba1d591f6ee59e5e0d277609bdce837a14e85486f50e972559c07fe"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 50d4c6d1de4ede1c684d2b4ca9fac0416e0009b2 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/remote/train.sh",
+        "Bytes": 127,
+        "Sha256": "43c8fce810be2f6bcf74e6dee45fd38245dbf5879e57afc27c1a03f1fbf109d3"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 0f597dbe47f554247c4c0cada79f9a011696a7d3 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/repaired-training-20261009-engineering/remote/validate.sh",
+        "Bytes": 130,
+        "Sha256": "791dd81b0420bbad6f6472d286ffac169cec1440a846c16867cd26d64cd5f992"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 35aba221f1fd676cf5dc40344026be67af6fcf6e 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/s346-continuation-2026-09-26/Archive-Evidence.ps1",
+        "Bytes": 5288,
+        "Sha256": "5a3a045e3a28734e5d226c553be5e916f613074bf27ec1d37271773e9f5c524a"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 2101cce12dce609d140fd84af4d26f624c35ad4a 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/s346-continuation-2026-09-26/Invoke-ProfileRun.ps1",
+        "Bytes": 1406,
+        "Sha256": "a5d986ba9b13abc6a2a898bb3d148f25656d5f25661a5907c1161e2fb6c0aaf6"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 9f3c4b4f27d26c1497e5ee1b89ad5c2070af85ea 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/s346-continuation-2026-09-26/Verify-Results.ps1",
+        "Bytes": 4778,
+        "Sha256": "130ff96c0ce640b5401785722c9bd476ab8f61cf57b86651e179bfe6bfad8dc6"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob ea2488853cdd224e43cc75747fac4e56c4e9be92 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/s5-profile-2026-09-26/aot-gates-final/check-aot-gates.ps1",
+        "Bytes": 10616,
+        "Sha256": "80a1089af1aa7579976acc70772d48787cefc12645153fef92fde13db672f271"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 1251afa4ac598a289548aed3ff24180d0d07b19c 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/s5-profile-2026-09-26/run-cuda-profile.ps1",
+        "Bytes": 7346,
+        "Sha256": "bf3ad5fc7685e1d5a28421a9dc9fe911e3159ec11e2672d229eb9839f43db264"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 9cc6027e4fe6ab5c5be14cff857b43c216d38417 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/teacher-expansion-20261009-complete/Build-ExpansionPackage.ps1",
+        "Bytes": 9250,
+        "Sha256": "e3b7feb78f2fcc3cd4d4e715549384da1bf7d6cc955ea8504092e01f65f6a39d"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob a285285afb3c0f0fa46519a7ca48d7a786474bb2 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/teacher-expansion-20261009-complete/Finalize-TeacherLedger.ps1",
+        "Bytes": 5012,
+        "Sha256": "02a2a680690ee2a2aaae0ea8358a934379e6ee464b9ab92bb7a4841bc6f284ec"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 17c42bd6d7f9fc0fd588e1eb384febe525738e82 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/teacher-expansion-20261009-complete/Invoke-OwnedApiProcess.ps1",
+        "Bytes": 22550,
+        "Sha256": "ef40a536dc4941e657003b32cb1592b3507aafa3664d41f19fdc6f806633491e"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8ddda1fc125de5ed856197027ca5fafc1ac5a976 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/teacher-expansion-20261009-complete/Invoke-TeacherBatch.ps1",
+        "Bytes": 21461,
+        "Sha256": "5240a18d8bf3fd1bf9c751c63953ff2edb4bfc9f7199295d6a106bbaf176245b"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob dec1a1281d870f49022e460983ef4b2c8b83420d 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/teacher-expansion-20261009-complete/Prepare-ReviewRepairs.ps1",
+        "Bytes": 3179,
+        "Sha256": "60fc03ea2d558bc30bd35d6c10abbac83799820c99ae3f07468969286bf82e02"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 719cc6537df689a38c5137fb73c490f0e9093e30 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/teacher-expansion-20261009-complete/Send-TeacherDirect.py",
+        "Bytes": 3918,
+        "Sha256": "4d4c84db9a9268c47fa5af54bc5cca8fa20e18308ad7eea04755d2d5734a89bb"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob fda3bf97c5518f3d3e4910204e1fba2d994b5237 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/teacher-expansion-20261009-complete/Summarize-TeacherReviews.ps1",
+        "Bytes": 2490,
+        "Sha256": "ac99ac2c3cc4ef9ebd22a1127f094d9d7ef09e79bdf80058b194ec6e962bb440"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 4216669975c24c40abaef1f7a218344515021a93 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/teacher-expansion-20261009-complete/Test-LabelAuditPayload.ps1",
+        "Bytes": 15362,
+        "Sha256": "a71a86a4446ae4255512018636e5b824f9cd68cb27c3295f4e9b283575e7853e"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 57196e9440a06f8e87806b51d4b8329688203969 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/teacher-repair-20261009-final/Archive-RepairEvidence.ps1",
+        "Bytes": 3769,
+        "Sha256": "f2356a4672cfdd52aa9df0c2996c3310fac84b6a48a94470ca402d8ca04d8bf8"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 838bef65c3137d0fe1ace1e6be29ac0863aadde4 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/teacher-repair-20261009-final/Build-HttpLedger.ps1",
+        "Bytes": 2151,
+        "Sha256": "67cc29fc6f494fd50e13f1d35c47c0228bf373fde12132b22c28b461a52f1dd4"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 57305495e91d2915fb7e3359ae1de36f3762c972 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/teacher-repair-20261009-final/Build-RepairedPackage.ps1",
+        "Bytes": 13541,
+        "Sha256": "d6ec06d76284bafca6d4bc5b4b92d45d12249c7414a4f9ea6c2805e811ee6ac3"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 472238a601eb5111119ea8ee2abe1aad014dceb5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/teacher-repair-20261009-final/Close-RepairProcesses.ps1",
+        "Bytes": 5094,
+        "Sha256": "3f32fc2f3f3101d6daf6a8eb4fc7c49ce54fb8eaac57686ffda581c93a5efb9e"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob d181026c55e3c341d7f2a24507802e42db7fee74 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/teacher-repair-20261009-final/Invoke-OwnedApiProcess.ps1",
+        "Bytes": 22444,
+        "Sha256": "16b52ee055a7f61b561a98ac6a77be9a52204856ad95daab36f0fe2a75672124"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 66d62fc8c2c437e415085f2c2240f16748d35da6 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/teacher-repair-20261009-final/Invoke-TeacherBatch.ps1",
+        "Bytes": 5198,
+        "Sha256": "cb332ce36eba5867230fb6ab43dc8606b96823206cb616805c2dd8ea4948b2c1"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 1e16c2256caabdfb7d94a7f466463e3bbd78aea0 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/teacher-repair-20261009-final/Prepare-Jobs.ps1",
+        "Bytes": 7510,
+        "Sha256": "e666d797000191ad68fcabf19bd922f423a09f59e5f1fe7d577eeef0ce774881"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 572efd74aa233210f5ac52017c03a87302aecb4e 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/teacher-repair-20261009-final/Send-TeacherDirect.py",
+        "Bytes": 4167,
+        "Sha256": "9f0fbb33132fee188cafef4edaf399aa6d26edd8fad768ea60545706d392f1f8"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob a9324d1a86d2d664662fb852742eb4aa09bdd62c 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/teacher-repair-20261009-final/Test-LabelAuditPayload.ps1",
+        "Bytes": 15362,
+        "Sha256": "a71a86a4446ae4255512018636e5b824f9cd68cb27c3295f4e9b283575e7853e"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 57196e9440a06f8e87806b51d4b8329688203969 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/teacher-repair-20261009-final/Test-RepairPayload.ps1",
+        "Bytes": 4519,
+        "Sha256": "e520126471a0ea7f3c3ab2e0514caed8c124091f3d48365186948f3aeb267ee0"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 9f74d64c24b95f75844cb51d80ec0502331c4cc1 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/teacher-repair-20261009-final/Verify-Package.ps1",
+        "Bytes": 4435,
+        "Sha256": "ca7c0e8d26671ea31de6d54e58478f796ddbef53bf868ad9885964549509997d"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 9c5c9f4f45b79caf3ef1685e5b784e5d2827c55d 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/Apply-BoundaryRevision.ps1",
+        "Bytes": 4905,
+        "Sha256": "728d74adb6d0fa2bd9de47df44f74a080b181163bec4bb3460c3583fb09c487b"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 83ebbf9ff36c785b56ee7348ebe882ba728bad79 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/Apply-PublicationFix.ps1",
+        "Bytes": 7914,
+        "Sha256": "1ea18e90d5cf8cda1100b67bfc0fcb7251a04939f88460dff1ce94c810a797a6"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 024e8140b64e46d84dd7449569643bdb0451dee1 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/Archive-Evidence-v1.ps1",
+        "Bytes": 5320,
+        "Sha256": "2a9522d257ef914ad08e66dd297da22bfb3c7c1908f013e9ff2f63bbd8825c25"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 50f8396982cd2c9acf38d29a436e537e9a9f91a5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/Archive-Evidence-v2.ps1",
+        "Bytes": 5320,
+        "Sha256": "60eab734bb4a4ca44590c0f1de11dc5e3c9b693ee0f28545ed617ee3c7393292"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 1f9b3b82011332990c5d88612e68e4d2c2d0ac4e 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/Archive-Evidence-v3.ps1",
+        "Bytes": 5508,
+        "Sha256": "ea4613b261d11febfb8ea5d6b5856b37c4c91f23f629e46c3b058a86ed4fc78b"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob fdf4da6f435780417a410423b754f91d57cccef2 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/Archive-Evidence.ps1",
+        "Bytes": 5678,
+        "Sha256": "742a22ef00ab41dd4b2e43a217f8a4d17269daa92172c1e341bd20a506759f02"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 370594fda7e97c6acb753c598bb763b07b28fb4b 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/Build-Check.ps1",
+        "Bytes": 3230,
+        "Sha256": "1dce83dd00298d373da91082c1519277cd8fbfa9094f622c8d2236302ae1e30b"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 2a64d376f9c36984dc66dafa8d60c2a1d4c5884a 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/Close-CompilerTemp.ps1",
+        "Bytes": 4019,
+        "Sha256": "234b76bfaa2d089644c506bfa609e61473c026da19b33bd3e35301cd2a3f5e18"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob a20bd63775b82beb6af8aa283aa8d7cbd02b0b3c 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/Close-Local.ps1",
+        "Bytes": 3191,
+        "Sha256": "3e1b6a097d8489556a82d8603f64c1d0cbb8df2a57b3515e425cbb722bf583f1"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob c99f0d4672f9cf9199fa3da7162c40cc90121b61 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/Inspect-Closure-v1.ps1",
+        "Bytes": 4558,
+        "Sha256": "7a6338c26067628fec34559d7e3b10a32be05d1490704a4f94e9ba4869161f70"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 18b3a6fb817ad792a8aae9c50fd3aabf8d737e82 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/Inspect-Closure.ps1",
+        "Bytes": 4792,
+        "Sha256": "cda210a387b03d67c7a572028c6aaac4044afa3b5fca939ca51a1d946eb90032"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob ab966efe1eb1125e6c18d39f95f098996d865c4c 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/Invoke-BoundedProcess.ps1",
+        "Bytes": 19947,
+        "Sha256": "2e158e527cda1dc5b4ccc8fba913ba3a789ae5190d2e59cab6a6fbc10d867ed5"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 36c3bdf95d818a2ac3ee0617084257d79d2206e7 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/Invoke-Ssh.ps1",
+        "Bytes": 917,
+        "Sha256": "e37b31f119469b61532b5a8780d03e44c823bcb3a00a4ec7f4601517a270245d"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob ae609a20ae234e38592f41a3598216dd42762d93 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/Prepare-Transfer.ps1",
+        "Bytes": 9727,
+        "Sha256": "bddbf7a70a3ab92a489c6152b235cc00081d06ad86fe96d930de9f1528685575"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 343cca888bc3c20039b3a673f1b0923ced4f8990 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/Publish-Linux.ps1",
+        "Bytes": 3975,
+        "Sha256": "f9614124b7aa37a224fed74f7f39b6d204e4133376955e54cf24bcd9989f7d9f"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob ba6a87d5ad6cdf238594bb57e95d522d2fc2261e 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/Publish-PublicationFix.ps1",
+        "Bytes": 2128,
+        "Sha256": "67f4a9e2aebd9b17ac687c6ca6e96d6828cb98065374ec3f7e34728aae1dde1e"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 6c8fef59ccdebd591855baa51040b7b961c8f8f1 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/Run-Remote.ps1",
+        "Bytes": 1482,
+        "Sha256": "24f14dca9079c62b77abab95676627480674ca00735a2ae457e09aa5fa56e45f"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 41506afe22313cb0bb159953a2cb7f3dff4e644b 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/Verify-Results.ps1",
+        "Bytes": 4768,
+        "Sha256": "a40f3a9feb7b843c823ffcbe5bbc2bd942f7fc28a38dea08acefe03ce2349c94"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 3e6cfcb6a58bc6c6230f7b2347f32d0a1b0a45e6 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/closure/Complete-Evidence-Index.ps1",
+        "Bytes": 8499,
+        "Sha256": "7105876ea44ada7195575230e25b64a312322cbe6419cc6279e9b223c1733a7e"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 788b307050b9acfc25e80e2bc040a1d16ff289b1 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/closure/Inspect-Closure-Final.ps1",
+        "Bytes": 4777,
+        "Sha256": "d29070b5d7462fe7cd858282b4e98b3eef8619649d037edd4ad19032aa981d38"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 50d008d1a627291f89429a2ae7401673ecdac40e 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/closure/Probe-Tcp-Final.ps1",
+        "Bytes": 1241,
+        "Sha256": "422b6844cef0c22e4720e37974df48bc9164a158c40c6fe95b87b97d32ed8c74"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 4dd91c46936ca0aceddbc2e636cac48693bf02f4 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/closure/Seal-Closure.ps1",
+        "Bytes": 4381,
+        "Sha256": "fcb3d884e69b2a48fe524f44735e6fd0b78923fb06ce6de061b15899dbe47dcd"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 86354906ace57ebc56ccd034d3ab01d3c41164a2 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/closure/remote/reboot-observe-final.sh",
+        "Bytes": 1244,
+        "Sha256": "398a68f9730274ddb7c9d9783f7eb2bbfb32ec516a6e9bae65e3d4648914fd61"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8625eb1c5f318cab951898fc84aaf1ecb511bfc5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/phase-common-before-budget-record.sh",
+        "Bytes": 8776,
+        "Sha256": "a72500fb383ea876ca827650d0bd1a2a293e8730fa2648997e3d051d5336ebf4"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 7966aa99fab55694a6e06da834d8d859121883a9 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/phase-common-before-publication-fix.sh",
+        "Bytes": 8952,
+        "Sha256": "79d8d21089c76cc4ec626366eb2a73202c01513ff1ac1991d0dcaf4ee530e981"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 14dd73617462dc1d14bddba3288dc1f902716873 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/phase-common-before-uuid-revision.sh",
+        "Bytes": 8860,
+        "Sha256": "86a13954fa2834820e8c5df337d2a7ccaed9a6b44a4e324fb52d5032c067665a"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 5d28e1a7a796dadb12992c714ebf743b75681e76 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/postreboot/Commit-Evidence-Final.ps1",
+        "Bytes": 5023,
+        "Sha256": "6ccd1c80fca9b72341a06bb6d70ebd5b550a92265509ccd7452e1bf53ca1adef"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob c83929bbe98e7a6b8217c4681ca7168f5aa67c7b 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/postreboot/Download-PostrebootEvidence-v2.ps1",
+        "Bytes": 3194,
+        "Sha256": "3392f067aa2a90ae5589153f1b399e8e4558bb608b11d7d9158a1aee35890d3c"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 1dafda493cd25815cb11048d2e1a17bde4ede6fc 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/postreboot/Download-PostrebootEvidence.ps1",
+        "Bytes": 3171,
+        "Sha256": "61e40acb2e54e1ec7451c3f0741142b60fdedf65935a0ae1615676e3e9fc34a2"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 33c3e3e35bece3717cc257edb6bf57318e81b6f7 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/postreboot/Finalize-PostReboot.ps1",
+        "Bytes": 16631,
+        "Sha256": "9b01a4fd59062172696eca0f72df4bdf9dbe5333aad1694899cf1c6c9bd05ec0"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 0eed6065292dfed75309b1b0e16240f863368fe4 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/postreboot/Inspect-Closure-PostCommit.ps1",
+        "Bytes": 4782,
+        "Sha256": "54000c8cce36fa4cbf2111d311598eb67d8b60633289ffa500a67dbfaff021ab"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob d6d66af410c210001afeedeed887048ae144fac9 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/postreboot/postreboot-retrieved/.artifacts/stage-postreboot-diagnosis/diagnose.sh",
+        "Bytes": 2250,
+        "Sha256": "2c578e2e905917b3988051a550bc9a1dc6162de0d8d1eddfae69b97a9f3f0e62"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 1f1f17e86dc9949c0a526b162cf94d745b8b2455 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/postreboot/remote/pack-postreboot-diagnosis.sh",
+        "Bytes": 967,
+        "Sha256": "ba14ddd5e9b37f95e991368196d57ff9c5acc0b529ab43af333be898122446d0"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 23522832c7e3410e53ec936ee5fbe0372917f443 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/postreboot/remote/postreboot-diagnosis-payload.sh",
+        "Bytes": 2250,
+        "Sha256": "2c578e2e905917b3988051a550bc9a1dc6162de0d8d1eddfae69b97a9f3f0e62"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 1f1f17e86dc9949c0a526b162cf94d745b8b2455 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/postreboot/remote/postreboot-diagnosis.sh",
+        "Bytes": 4093,
+        "Sha256": "92daa1f95645af1bd792d208eb1f38fa981546446abd9309253b1dd76b1cd632"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 67fffef85e6a6338d30a24a7d619802aa66e6447 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/postreboot/remote/reboot-observe-postcommit.sh",
+        "Bytes": 1244,
+        "Sha256": "398a68f9730274ddb7c9d9783f7eb2bbfb32ec516a6e9bae65e3d4648914fd61"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8625eb1c5f318cab951898fc84aaf1ecb511bfc5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/Invoke-BoundedLinux.sh",
+        "Bytes": 24910,
+        "Sha256": "32167e8cf7396ac6d1f8f54a8d664dfbfaaef71fccba871433b0fdf73e24f2f1"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob cfef1c8c1284b369a8a8f3da4528a6e9520a5e80 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/bootstrap.sh",
+        "Bytes": 5088,
+        "Sha256": "b1169b7716bee8dad8074bcc3701c9d9d3255fe7f434ffc806814799c5648525"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 2e5bd21db888a4858abb1989ff1f3d10cb2d33b4 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/boundary-full.sh",
+        "Bytes": 119,
+        "Sha256": "a79fde18c4e7782959785ce30612617ec48a99495a81046ceb3e13fc1d5f6725"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 2a01386051fd0670458d025b9c561b84d22a101d 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/boundary-real.sh",
+        "Bytes": 119,
+        "Sha256": "6855e03a3e2928313e9a716547e552e55be2377e24b02c2d729e8598ae77c85a"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob a82cfa6279d8a93004b5edc2a2b6c09103f437df 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/boundary-tiny.sh",
+        "Bytes": 119,
+        "Sha256": "8ba948f8774e691287dc6ff317560a70088e7bf0bdaa648627fc575dd9125af5"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 97e84255d7f903173f0acbd4804f4c97c2899b31 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/boundary-tiny2.sh",
+        "Bytes": 120,
+        "Sha256": "7b0e56e560f4f6f410b42c99ad0634e29c068827cfd16dfe37e615f3ba1fb268"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob e7ea865ec7523075b4365cce55ac8817f841d924 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/boundary-uuid-revision.sh",
+        "Bytes": 2894,
+        "Sha256": "356a7c49e963a1988e15462483942957cbe375c9260ef31ab22aeccf847c508f"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob c486c6f4883ce484ac1e1d088f77fe4d68dcc592 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/budget-manifest-correction.sh",
+        "Bytes": 1326,
+        "Sha256": "0105f04795d60d2f36fe76e6ab385a004898db3b3e7ac121d039e58676e6c4e6"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 7da2b554b383620b81ddfb9a3091fb1c1b82643b 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/budget-record-revision.sh",
+        "Bytes": 10444,
+        "Sha256": "cbae5b75c9a753403944a5c34ecd14a670ee3723bba6479685bcc929c01a9790"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob d3a02f52ac8b384502cadbfc904f189835b2a40b 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/capacity.sh",
+        "Bytes": 132,
+        "Sha256": "0c216d924fa8d47ed8e51c97b658264e808cc5f251ecd17695b6b1f9169a7468"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 0db84c1b2bbb0a9b7e418ccc99a2896acad6f49a 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/capacity2.sh",
+        "Bytes": 115,
+        "Sha256": "e466d2c443344edfc8e8c1ba51b89280a0522b61636ae58650e28a57fa8ebe8d"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 7193fcba33ca3bef76651e474213e056af950c75 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/cuda-failure-diagnosis.sh",
+        "Bytes": 1289,
+        "Sha256": "2966685e3631f904200eb7764993580c622e72e6bf082c189aef214f4ef2e839"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 027f6ebd454295aa26c62441543df84d321b77ab 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/cuda-xid.sh",
+        "Bytes": 394,
+        "Sha256": "0d3451a73c4ea7b753ffd53b5247b17292d269cbff48ef643ebb85852b9e40f3"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob c9deae8facd7418037a3c88e2a62f9365235f1eb 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/final-evidence.sh",
+        "Bytes": 4170,
+        "Sha256": "6daf06a62afd3c8b280a05f69e9bce1f9909a3766972802c4bd0dc91b7ccdefb"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob ff08aa65cc3eddd7bd6c0764a5b5cbfcf5f613ab 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/final-status.sh",
+        "Bytes": 925,
+        "Sha256": "d1b6336c72dadbec196ca54d0698d64d2cce4c1934d8c81f8552edb343840dc0"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 4af4e1f553c816ce5b8553a78c1c2800448d0314 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/phase-common.sh",
+        "Bytes": 9206,
+        "Sha256": "ea783c057050d6fa3219aebe4b9ed70744e0424b7034194cac03b2ddefecfd7a"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob ddd32087478259c69eb60d47ae62f85a41fa11d1 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/preflight.sh",
+        "Bytes": 1280,
+        "Sha256": "edd0d554613737cc0971d5337cef62dc741209de2a6b0ce2ffb58c26ee516262"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob a10198126d210742aecce0a120fd609b8cd14ae9 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/progress.sh",
+        "Bytes": 997,
+        "Sha256": "9585bec9028c8f38a52e724188ccc0536521eafe47cc5a9d9834510dd1c3b9d7"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 852aa81ce81809259622a9ec77a4669e0cb67022 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/publication-diagnosis.sh",
+        "Bytes": 521,
+        "Sha256": "8fbd22b90bd7858fd55d69014cdd5b2b5b882d316026d081c1093da08d3cbbae"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob c0c2caa250c80f2cb2c2ad42f50e53cb8923d612 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/publication-fix.sh",
+        "Bytes": 2771,
+        "Sha256": "67674255596b0aee34d87835193b952008d5f8ba5b1e8ce6e87dedc8f15f3512"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob f56c35b828c024b166146e1d14567da6f4b986e2 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/publication.sh",
+        "Bytes": 117,
+        "Sha256": "a6835e858d44bce0a9ccbcc5595c715194d321ffbeecc9067c5161e045eca3d5"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 351bd04d5557c997146de6eb488a184682baa7dc 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/regress.sh",
+        "Bytes": 131,
+        "Sha256": "a0ca9ceaca1899c740d1adf48cdc36e54b639caafb3b10d78397816ca65b8c22"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 2d74fdbceb755acdfdb9ade1848d3a2f13a5c541 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/reset-service-preflight.sh",
+        "Bytes": 1237,
+        "Sha256": "0ed385de25130f4fbf40c39dd7be7054cf9e24ca039836a40c766916307dcc1c"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 5977275577b6893500c7afd6c8d005838303a1ae 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/runner-probe.sh",
+        "Bytes": 2109,
+        "Sha256": "b64a176fad6c7eadd56c2edb8497f17a54be928616308e3c4c5723cbbc5f119b"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob e6a8c4bf4bc082292bb87bba0c15a8ecfe2e15e0 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/train.sh",
+        "Bytes": 129,
+        "Sha256": "058627975fa96e8f98606eb26223129ff657b5343e818b57c931bbce88aa1a60"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 3d8457052b526407849b71842e67dd96b7debdf2 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/remote/validate.sh",
+        "Bytes": 132,
+        "Sha256": "6a783e8ab2c61e227ebdf76241c9bcbeb115e56f8c247e12dc3d4f617e439963"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 29da8258e7a5b13af93365cbce6fa0e93d2aa833 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/retrieved/logs/boundary-uuid-patch/phase-common.sh",
+        "Bytes": 8952,
+        "Sha256": "79d8d21089c76cc4ec626366eb2a73202c01513ff1ac1991d0dcaf4ee530e981"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 14dd73617462dc1d14bddba3288dc1f902716873 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/retrieved/logs/phase-common-before-budget-record.sh",
+        "Bytes": 8776,
+        "Sha256": "a72500fb383ea876ca827650d0bd1a2a293e8730fa2648997e3d051d5336ebf4"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 7966aa99fab55694a6e06da834d8d859121883a9 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/retrieved/logs/phase-common-before-uuid-revision.sh",
+        "Bytes": 8860,
+        "Sha256": "86a13954fa2834820e8c5df337d2a7ccaed9a6b44a4e324fb52d5032c067665a"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 5d28e1a7a796dadb12992c714ebf743b75681e76 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/retrieved/logs/publication-before-fix/remote/phase-common.sh",
+        "Bytes": 8952,
+        "Sha256": "79d8d21089c76cc4ec626366eb2a73202c01513ff1ac1991d0dcaf4ee530e981"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 14dd73617462dc1d14bddba3288dc1f902716873 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/retrieved/logs/publication-patch/remote/phase-common.sh",
+        "Bytes": 9206,
+        "Sha256": "ea783c057050d6fa3219aebe4b9ed70744e0424b7034194cac03b2ddefecfd7a"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob ddd32087478259c69eb60d47ae62f85a41fa11d1 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Download-RecoveryEvidence.ps1",
+        "Bytes": 3146,
+        "Sha256": "9b3228c500acb3b0a7cf0146d6bb4b85de3afca87bfcc32e14887d5402205e2d"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob a4df66a423358055fcc5a45102c8ecd3c661f603 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Finalize-Docs.ps1",
+        "Bytes": 6138,
+        "Sha256": "bbb98ce7f83d63b7d79d716bad874b7707a5feb3bd2d5ae25ea1b4c134f9e5e9"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob a9051d885bb5e630e90aed1bb41432b32046618e 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Finalize-RecoveryDocs.ps1",
+        "Bytes": 6120,
+        "Sha256": "408c0b919328603551cd3f9e07fe7130a399f2665af152c7f6ac6a581fd9d2b5"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 70bbd04ede92e0f1b2a0841f26a2c89c0c0e4081 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Inspect-Closure-before-final.ps1",
+        "Bytes": 4792,
+        "Sha256": "cda210a387b03d67c7a572028c6aaac4044afa3b5fca939ca51a1d946eb90032"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob ab966efe1eb1125e6c18d39f95f098996d865c4c 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Inspect-Closure.ps1",
+        "Bytes": 4792,
+        "Sha256": "39273a711c55c048109fe4a25ad0d044c2d85431a423f2c131c711e6d0a8309e"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8a7589b911af4d12323f563d4e3e900b710cb792 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Prepare-GpuRecovery.ps1",
+        "Bytes": 2726,
+        "Sha256": "6d23ff1be58c7ae79467485a67e3ffaf9f777f8f804324930865177d4f4e590f"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob bc20ef3b0b9640434a82477d5ea6adae828f1def 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Prepare-GpuRecovery2.ps1",
+        "Bytes": 4249,
+        "Sha256": "5e4acdc070587a03219ceec273463f41b2691271b8fdde361fc980f3930ffcfd"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 52523d0ad2f1c80b31b0555a278088e6fd89b7a6 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Prepare-PostRebootValidation.ps1",
+        "Bytes": 3787,
+        "Sha256": "4e97cf301d701d15c75c01def7a5d004ff1cfad9005522ca4ce70689089cadcb"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob c09dcb18c49cf98b91814d3bbd6e61e4f0c5bb74 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Prepare-RecoveryEvidence.ps1",
+        "Bytes": 3857,
+        "Sha256": "708275c872a1732443b6f44e9f0036e563c8aed472629f3637f118890b5620d2"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 51d67eaefd215e49cb0096371cd02a05540ce38b 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Seal-Supplement.ps1",
+        "Bytes": 4153,
+        "Sha256": "1b0940c650275ab84cbb9842e88aead9b8c9552b2677799e5371a9f17ba2c363"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob f22487e1f2acedabc2cc31a27989f30c88827087 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Stage-And-Review.ps1",
+        "Bytes": 5545,
+        "Sha256": "c6517b6c36ab1e516d79a5c0a2e09ae98a67801f165ed2eccdd77502e1bc3330"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob e8daf5c823b6758b2f041084fa05248e1def602a 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Wait-Reboot-Later.ps1",
+        "Bytes": 2116,
+        "Sha256": "f4059e1bac272a6899fc33a585f1cb5f4134454f960187fc0c4e0d426850f97d"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob f22d338005dfe35dd6a83fc3d15ea08a68d7119e 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/Wait-Reboot.ps1",
+        "Bytes": 2388,
+        "Sha256": "122d91c4dc3d04e5ac289e841dd6a2577d8d913e1eec65bd4103078b43550476"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 4e7e3e4a9812cd92c7e40e43528e0bf4004683f0 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/recovery-retrieved/.artifacts/stage-gpu-driver-reload/payload.sh",
+        "Bytes": 5471,
+        "Sha256": "f34a39885170e33e738be37c052a06b1cfbf8be263646b02dbddfbd5baaeaf29"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob ad9c6c2688105dca695e7f91d7a627b0b5b979e4 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/recovery-retrieved/.artifacts/stage-gpu-reset-approved/reset-payload.sh",
+        "Bytes": 6108,
+        "Sha256": "cb310a084e791d94594bcf8510f0f1524a978ffe6df8e7839d104cdfefc0fbac"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob f05c49eb3d7ff64fea1cce2ceb15a057a121e974 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/recovery-retrieved/.artifacts/stage-gpu-reset-approved2/reset-payload.sh",
+        "Bytes": 7206,
+        "Sha256": "485be7c1810f5cb85ac7100740aa49a8345a0ffdb57452c11a1c95b76d6248b9"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 559b3f6bf926927473d5ff4cdcac05872387c78a 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/recovery-retrieved/.artifacts/stage-gpu-reset-command/payload.sh",
+        "Bytes": 1057,
+        "Sha256": "4ab0677c8367fd1fc2ac8f27bd0830525c98632e3c4bf0bffd536b270219c516"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob f79d4b2e0c72d120d064cdb1c3bb4ca0984642be 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/driver-recovery-preflight.sh",
+        "Bytes": 1268,
+        "Sha256": "cbf583080f3c387dee2d1984ea6d2223ad5a32d83e79fa9ed484c2dcd5d996f1"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 9e1a69d3f9948af0b126482ea678fbadc5755407 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/gpu-driver-reload.sh",
+        "Bytes": 6586,
+        "Sha256": "d8ae6de3a47dfd10bdf1dc4d5be34efac8ce42c0aa7f2b7f3d24dc84dd2cb9f9"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 556ec7a9b116513212203878930160146cfa9297 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/gpu-reset-approved.sh",
+        "Bytes": 9664,
+        "Sha256": "f81912911d315f40ac972b3115b2967e5a7e7a0ebc6a9ad102b071de9ea712cc"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob b0426e935be12456dfaa8bc809ea22a4d956cdbb 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/gpu-reset-approved2.sh",
+        "Bytes": 11129,
+        "Sha256": "4ea2a09dd179f99ffeb10977c94fe22cdedc708e759a65543e33fc786ace9052"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 3a9687a117d71a3672436d7e6881e1eaa7b99293 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/gpu-reset-command.sh",
+        "Bytes": 2159,
+        "Sha256": "9a44bcba7b2f7a58e9116abe896b72ae7b784013333808829263936dcbe29baa"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob cc10c0c01b8c4acf8c299c72e881afc9b7087ec1 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/gpu-reset-payload.sh",
+        "Bytes": 6108,
+        "Sha256": "cb310a084e791d94594bcf8510f0f1524a978ffe6df8e7839d104cdfefc0fbac"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob f05c49eb3d7ff64fea1cce2ceb15a057a121e974 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/gpu-reset-payload2.sh",
+        "Bytes": 7206,
+        "Sha256": "485be7c1810f5cb85ac7100740aa49a8345a0ffdb57452c11a1c95b76d6248b9"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 559b3f6bf926927473d5ff4cdcac05872387c78a 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/install-postreboot-validation.sh",
+        "Bytes": 12579,
+        "Sha256": "73a7921d51cb367acf24186786f51b78f86ea8e23a0a71bdddd4a5e2bd043ef5"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 498c3d105a3c4d1a4dab950cf554a9ac3d574d90 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/phase-postreboot.sh",
+        "Bytes": 8957,
+        "Sha256": "94a8470b7f1f130121d0ff9ed1551557aedd0e0ab4d7dd70fc09e80d1c9bc1f7"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 5b6292ea4d418677e947fe1b430ebeaffcb0fe10 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-approved.sh",
+        "Bytes": 2017,
+        "Sha256": "afc381af0e5963ce905792cd0cb26f42e5d9e7dbb3ae214ae28b517e263339d1"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 9e46da091a9d7e3c8f64b55ac68d4cbbd6f04c18 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-02.sh",
+        "Bytes": 1244,
+        "Sha256": "398a68f9730274ddb7c9d9783f7eb2bbfb32ec516a6e9bae65e3d4648914fd61"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8625eb1c5f318cab951898fc84aaf1ecb511bfc5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-03.sh",
+        "Bytes": 1244,
+        "Sha256": "398a68f9730274ddb7c9d9783f7eb2bbfb32ec516a6e9bae65e3d4648914fd61"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8625eb1c5f318cab951898fc84aaf1ecb511bfc5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-04.sh",
+        "Bytes": 1244,
+        "Sha256": "398a68f9730274ddb7c9d9783f7eb2bbfb32ec516a6e9bae65e3d4648914fd61"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8625eb1c5f318cab951898fc84aaf1ecb511bfc5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-05.sh",
+        "Bytes": 1244,
+        "Sha256": "398a68f9730274ddb7c9d9783f7eb2bbfb32ec516a6e9bae65e3d4648914fd61"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8625eb1c5f318cab951898fc84aaf1ecb511bfc5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-06.sh",
+        "Bytes": 1244,
+        "Sha256": "398a68f9730274ddb7c9d9783f7eb2bbfb32ec516a6e9bae65e3d4648914fd61"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8625eb1c5f318cab951898fc84aaf1ecb511bfc5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-07.sh",
+        "Bytes": 1244,
+        "Sha256": "398a68f9730274ddb7c9d9783f7eb2bbfb32ec516a6e9bae65e3d4648914fd61"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8625eb1c5f318cab951898fc84aaf1ecb511bfc5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-08.sh",
+        "Bytes": 1244,
+        "Sha256": "398a68f9730274ddb7c9d9783f7eb2bbfb32ec516a6e9bae65e3d4648914fd61"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8625eb1c5f318cab951898fc84aaf1ecb511bfc5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-09.sh",
+        "Bytes": 1244,
+        "Sha256": "398a68f9730274ddb7c9d9783f7eb2bbfb32ec516a6e9bae65e3d4648914fd61"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8625eb1c5f318cab951898fc84aaf1ecb511bfc5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-10.sh",
+        "Bytes": 1244,
+        "Sha256": "398a68f9730274ddb7c9d9783f7eb2bbfb32ec516a6e9bae65e3d4648914fd61"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8625eb1c5f318cab951898fc84aaf1ecb511bfc5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-11.sh",
+        "Bytes": 1244,
+        "Sha256": "398a68f9730274ddb7c9d9783f7eb2bbfb32ec516a6e9bae65e3d4648914fd61"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8625eb1c5f318cab951898fc84aaf1ecb511bfc5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-12.sh",
+        "Bytes": 1244,
+        "Sha256": "398a68f9730274ddb7c9d9783f7eb2bbfb32ec516a6e9bae65e3d4648914fd61"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8625eb1c5f318cab951898fc84aaf1ecb511bfc5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-later-01.sh",
+        "Bytes": 1244,
+        "Sha256": "398a68f9730274ddb7c9d9783f7eb2bbfb32ec516a6e9bae65e3d4648914fd61"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8625eb1c5f318cab951898fc84aaf1ecb511bfc5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-later-02.sh",
+        "Bytes": 1244,
+        "Sha256": "398a68f9730274ddb7c9d9783f7eb2bbfb32ec516a6e9bae65e3d4648914fd61"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8625eb1c5f318cab951898fc84aaf1ecb511bfc5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-later-03.sh",
+        "Bytes": 1244,
+        "Sha256": "398a68f9730274ddb7c9d9783f7eb2bbfb32ec516a6e9bae65e3d4648914fd61"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8625eb1c5f318cab951898fc84aaf1ecb511bfc5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-later-04.sh",
+        "Bytes": 1244,
+        "Sha256": "398a68f9730274ddb7c9d9783f7eb2bbfb32ec516a6e9bae65e3d4648914fd61"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8625eb1c5f318cab951898fc84aaf1ecb511bfc5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-later-05.sh",
+        "Bytes": 1244,
+        "Sha256": "398a68f9730274ddb7c9d9783f7eb2bbfb32ec516a6e9bae65e3d4648914fd61"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8625eb1c5f318cab951898fc84aaf1ecb511bfc5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-later-06.sh",
+        "Bytes": 1244,
+        "Sha256": "398a68f9730274ddb7c9d9783f7eb2bbfb32ec516a6e9bae65e3d4648914fd61"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8625eb1c5f318cab951898fc84aaf1ecb511bfc5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-later-07.sh",
+        "Bytes": 1244,
+        "Sha256": "398a68f9730274ddb7c9d9783f7eb2bbfb32ec516a6e9bae65e3d4648914fd61"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8625eb1c5f318cab951898fc84aaf1ecb511bfc5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe-later-08.sh",
+        "Bytes": 1244,
+        "Sha256": "398a68f9730274ddb7c9d9783f7eb2bbfb32ec516a6e9bae65e3d4648914fd61"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8625eb1c5f318cab951898fc84aaf1ecb511bfc5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reboot-observe.sh",
+        "Bytes": 1244,
+        "Sha256": "398a68f9730274ddb7c9d9783f7eb2bbfb32ec516a6e9bae65e3d4648914fd61"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 8625eb1c5f318cab951898fc84aaf1ecb511bfc5 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/recovery-final-evidence.sh",
+        "Bytes": 5911,
+        "Sha256": "838c1c67600a96de284f5c76aab51048a873bc99a33b646adb276ab80deb48af"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 82a7e952cd09770f86d8f78d128e99bc5ddf31d9 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/regress-postreboot.sh",
+        "Bytes": 145,
+        "Sha256": "b63367bb508b21037fcdb94b5cae54b99753b96c124af39b42530a4bf6fbe1c7"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob aa39ac1a76b11c18c80e6e2bcfd40f7fad00515f 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reset-blocker-diagnosis.sh",
+        "Bytes": 1388,
+        "Sha256": "42f0d6eb393a01df52d5c51d3e4237e80d3b614b86c468f5316642e44e67448f"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 2826196c6a068d44bd69605b4979ff2679672d52 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/reset-current-identities.sh",
+        "Bytes": 1257,
+        "Sha256": "7a5645f60ebc57254bb09e27aca0f6cfaf94c2213578ade32862316b0fcd46a8"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob e3eed0e6cc839aac364116cf9e8cc816bc88454f 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    },
+    {
+      "Original": {
+        "Path": "docs/evidence/token-limit-20261009-8192-final/supplement/remote/validate-postreboot.sh",
+        "Bytes": 146,
+        "Sha256": "13d0147c6ec0ef870ddf47784f41d19c040371e800f4fdf4ab71eb3c8407af4a"
+      },
+      "Purpose": "已在冻结分类中逐项确定的历史证据脚本，仅保留对应原始验收、失败和诊断追溯。",
+      "Reason": "保留该准确原件及历史状态，撤销当前执行资格。准确Git基线 4d02942704447e34e2a4e9f12b5f47a4ddeb8fb4 与原始blob 57ab65d07867d1cf86df64ebcbadcdcf02ea2a4e 已独立读回；此裁定不代表其运行结果或替代能力已验收。",
+      "IndependentlyVerified": true
+    }
+  ],
+  "Count": 259,
+  "BaselineHistorical": 184,
+  "NewSpecificHistorical": 75,
+  "UnknownOriginalUntrackedBaseline": 5,
+  "UnknownInputsExcluded": true,
+  "CallerScopeComplete": false,
+  "GateActivated": false,
+  "OriginalBytesRead": 1334883,
+  "ReadSeconds": 1.116791
+}
