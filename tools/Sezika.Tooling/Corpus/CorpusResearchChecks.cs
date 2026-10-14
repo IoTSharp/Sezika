@@ -10,18 +10,58 @@ internal static partial class CorpusOperations
     {
         Require(request.Plans.Length is >= 1 and <= 16 && request.Ledgers.Length is >= 1 and <= 32 && request.MaximumFiles is >= 1 and <= 50_000 && request.MaximumLedgerRows is >= 1 and <= 200_000, "Research completeness bounds.");
         var root = Path.GetFullPath(request.Root); SafePaths.NoLinks(root, budget); var plans = new Dictionary<string, JsonElement>(StringComparer.Ordinal); var latest = new Dictionary<string, JsonElement>(StringComparer.Ordinal); var downloaded = new Dictionary<string, JsonElement>(StringComparer.Ordinal);
+        var sourcePlans = new Dictionary<string, SourceResearchPlanEntry>(StringComparer.Ordinal);
+        var sourceDownloads = new Dictionary<string, SourceAcquisitionEntry>(StringComparer.Ordinal);
         static string Field(JsonElement row, string lower, string upper) => row.TryGetProperty(lower, out var value) ? Text(value) : Str(row, upper);
         foreach (var path in request.Plans)
         {
             budget.Check(); var plan = Read(path, budget); Require(plan.ValueKind == JsonValueKind.Array && plan.GetArrayLength() <= request.MaximumFiles, "Research plan row bound.");
-            foreach (var row in plan.EnumerateArray()) { budget.Check(); var url = Field(row, "url", "Url"); Require(Uri.TryCreate(url, UriKind.Absolute, out _), "Research plan absolute URL required."); if (plans.TryGetValue(url, out var existing)) Require(Field(existing, "dataset", "Dataset") == Field(row, "dataset", "Dataset") && Field(existing, "path", "Path") == Field(row, "path", "Path"), "Conflicting research plan URL identity."); plans[url] = row; Require(plans.Count <= request.MaximumFiles, "Combined plan row bound."); }
+            foreach (var row in plan.EnumerateArray())
+            {
+                budget.Check(); var url = Field(row, "url", "Url"); Require(Uri.TryCreate(url, UriKind.Absolute, out _), "Research plan absolute URL required.");
+                var isSourcePlan = row.TryGetProperty("source_acquisition_plan_sha256", out _) || row.TryGetProperty("expected_digest", out _);
+                if (plans.TryGetValue(url, out var existing))
+                {
+                    Require(Field(existing, "dataset", "Dataset") == Field(row, "dataset", "Dataset") && Field(existing, "path", "Path") == Field(row, "path", "Path"), "Conflicting research plan URL identity.");
+                    Require(sourcePlans.ContainsKey(url) == isSourcePlan, "Legacy/source acquisition plan schemas cannot replace one another.");
+                }
+                if (isSourcePlan)
+                {
+                    var sourcePlan = row.Deserialize(SourceAcquisitionJsonContext.Default.SourceResearchPlanEntry) ?? throw new InvalidDataException("Source research plan entry missing.");
+                    AssetTransport.ValidateSha(sourcePlan.SourceAcquisitionPlanSha256); AssetTransport.ValidateContentDigest(sourcePlan.ExpectedDigest);
+                    Require(sourcePlan.ExpectedBytes is > 0 and <= AssetTransport.MaximumFileBytes && sourcePlan.Url == url &&
+                        sourcePlan.ExpectedSha256 == (sourcePlan.ExpectedDigest.Kind == "sha256" ? sourcePlan.ExpectedDigest.Value : null), "Source research trusted expected digest/length differs.");
+                    if (sourcePlans.TryGetValue(url, out var previous)) Require(previous == sourcePlan, "Conflicting source research plan identity.");
+                    sourcePlans[url] = sourcePlan;
+                }
+                plans[url] = row; Require(plans.Count <= request.MaximumFiles, "Combined plan row bound.");
+            }
         }
         var ledgerCount = 0;
         foreach (var path in request.Ledgers)
             foreach (var row in Lines(path, request.MaximumLedgerRows, budget))
             {
-                budget.Check(); Require(++ledgerCount <= request.MaximumLedgerRows, "Combined ledger row bound."); var url = Field(row, "url", "Url"); latest[url] = row;
-                if (Field(row, "status", "Status") is "downloaded" or "PASS_VERIFIED_DOWNLOAD") downloaded[url] = row;
+                budget.Check(); Require(++ledgerCount <= request.MaximumLedgerRows, "Combined ledger row bound.");
+                if (row.TryGetProperty("official_url", out _) || row.TryGetProperty("source_id", out _) || row.TryGetProperty("plan_sha256", out _) || row.TryGetProperty("expected_digest", out _))
+                {
+                    var source = row.Deserialize(SourceAcquisitionJsonContext.Default.SourceAcquisitionEntry) ?? throw new InvalidDataException("Source acquisition receipt missing.");
+                    if (!sourcePlans.TryGetValue(source.OfficialUrl, out var sourcePlan)) throw new InvalidDataException("Source acquisition receipt requires its complete typed research plan.");
+                    Require(source.PlanSha256 == sourcePlan.SourceAcquisitionPlanSha256 && source.Path == sourcePlan.Path && source.SourceId == sourcePlan.Dataset &&
+                        source.Revision == sourcePlan.Revision && source.Split == sourcePlan.Split && source.ExpectedBytes == sourcePlan.ExpectedBytes && source.ExpectedDigest == sourcePlan.ExpectedDigest &&
+                        !source.FormalTrainingAdmitted, "Source acquisition plan SHA/path/source/revision/digest identity differs.");
+                    Require(source.Status is "DOWNLOADED_VERIFIED" or "CACHED_VERIFIED" or "NOT_SELECTED" or "NOT_ATTEMPTED" or "FAILED" or "CANCELLED" or "TIMED_OUT", "Unknown source acquisition receipt status.");
+                    latest[source.OfficialUrl] = row;
+                    if (source.Status is "DOWNLOADED_VERIFIED" or "CACHED_VERIFIED")
+                    {
+                        Require(IsSha(source.ContentSha256) && source.Bytes == sourcePlan.ExpectedBytes, "Completed source acquisition content SHA/bytes differ.");
+                        sourceDownloads[source.OfficialUrl] = source; downloaded[source.OfficialUrl] = row;
+                    }
+                }
+                else
+                {
+                    var url = Field(row, "url", "Url"); Require(!sourcePlans.ContainsKey(url), "Typed source plans require typed source receipt identity."); latest[url] = row;
+                    if (Field(row, "status", "Status") is "downloaded" or "PASS_VERIFIED_DOWNLOAD") downloaded[url] = row;
+                }
             }
         var inventories = new List<CorpusSourceInventory>(); var missing = new List<CorpusSourceMissing>();
         foreach (var item in plans.OrderBy(p => p.Key, StringComparer.Ordinal))
@@ -32,9 +72,15 @@ internal static partial class CorpusOperations
             var expectedHash = Optional(plan, "expected_sha256") ?? Optional(plan, "ExpectedSha256");
             if (downloaded.TryGetValue(item.Key, out var receipt) && File.Exists(path))
             {
-                var sha = Field(receipt, "sha256", "Sha256"); var receiptBytes = receipt.TryGetProperty("bytes", out var b) ? b.GetInt64() : receipt.GetProperty("Bytes").GetInt64();
+                sourceDownloads.TryGetValue(item.Key, out var sourceReceipt);
+                var sha = sourceReceipt is not null ? sourceReceipt.ContentSha256! : Field(receipt, "sha256", "Sha256");
+                var receiptBytes = sourceReceipt is not null ? sourceReceipt.Bytes : receipt.TryGetProperty("bytes", out var b) ? b.GetInt64() : receipt.GetProperty("Bytes").GetInt64();
                 Require(IsSha(sha) && receiptBytes >= 0 && new FileInfo(path).Length == receiptBytes && (!expectedBytes.HasValue || expectedBytes == receiptBytes) && (expectedHash is null || sha == expectedHash), "Downloaded source declared SHA/bytes differs.");
-                if (request.VerifyHashes) Require(FileHash(path, budget) == sha, "Downloaded source independent SHA differs.");
+                if (request.VerifyHashes)
+                {
+                    Require(FileHash(path, budget) == sha, "Downloaded source independent SHA differs.");
+                    if (sourceReceipt is not null) Require(AssetTransport.VerifyDownloadedFile(path, sourceReceipt.ExpectedBytes, sourceReceipt.ExpectedDigest, budget) == sha, "Downloaded source original expected digest differs.");
+                }
                 long? rows = null; string? countSource = null; string? countError = null;
                 try
                 {
@@ -51,9 +97,11 @@ internal static partial class CorpusOperations
             }
             else
             {
-                var partial = path + ".range-partial"; SafePaths.NoLinks(partial, budget); var bytes = File.Exists(partial) ? new FileInfo(partial).Length : 0;
+                long bytes;
+                if (sourcePlans.ContainsKey(item.Key)) bytes = SourceResearchPartialBytes(path, budget);
+                else { var partial = path + ".range-partial"; SafePaths.NoLinks(partial, budget); bytes = File.Exists(partial) ? new FileInfo(partial).Length : 0; }
                 latest.TryGetValue(item.Key, out var attempt); missing.Add(new(dataset, item.Key, relative, expectedBytes, expectedHash, bytes,
-                    attempt.ValueKind == JsonValueKind.Object ? Optional(attempt, "status") ?? Optional(attempt, "Status") : null, attempt.ValueKind == JsonValueKind.Object ? Optional(attempt, "error") ?? Optional(attempt, "Error") : null));
+                    attempt.ValueKind == JsonValueKind.Object ? Optional(attempt, "status") ?? Optional(attempt, "Status") : null, attempt.ValueKind == JsonValueKind.Object ? Optional(attempt, "error") ?? Optional(attempt, "Error") ?? Optional(attempt, "failure_type") : null));
             }
         }
         var groups = plans.Values.GroupBy(row => Field(row, "dataset", "Dataset"), StringComparer.Ordinal).Take(97).ToArray(); Require(groups.Length <= 96, "Research source count.");
@@ -61,6 +109,17 @@ internal static partial class CorpusOperations
         { var complete = inventories.Where(i => i.Dataset == group.Key).ToArray(); var absent = missing.Where(i => i.Dataset == group.Key).ToArray(); return new CorpusSourceCompleteness(group.Key, group.Count(), complete.Length, complete.Sum(i => i.Bytes), absent.Length, absent.Sum(i => i.ExpectedBytes ?? 0), absent.Sum(i => i.PartialBytes), absent.Length == 0); }).ToArray();
         var report = new CorpusResearchCheckReport(missing.Count == 0 ? "COMPLETE_SOURCE_FILES_ONLY" : "PARTIAL_SOURCE_FILES_PRESERVE_LEDGER", plans.Count, inventories.Count, inventories.Sum(i => i.Bytes), inventories.Sum(i => i.Rows ?? 0), inventories.Count(i => i.Rows.HasValue), sources.Count(s => s.Complete), missing.Count, sources, inventories.ToArray(), missing.ToArray(), missing.Count == 0);
         Write(request.Output, report, CorpusJsonContext.Default.CorpusResearchCheckReport, budget); return report;
+    }
+    private static long SourceResearchPartialBytes(string path, Budget budget)
+    {
+        long bytes = 0;
+        foreach (var partial in new[] { path + ".sezika-source-mirror.sezika-part", path + ".sezika-source-official.sezika-part" })
+        {
+            budget.Check(); SafePaths.NoLinks(partial, budget);
+            if (!File.Exists(partial)) continue;
+            RegularFiles.Require(partial, budget); bytes = checked(bytes + new FileInfo(partial).Length);
+        }
+        return bytes;
     }
     internal static CorpusSeedCheckReport CheckSeeds(CorpusSeedCheckRequest request, Budget budget)
     {

@@ -6,6 +6,17 @@ internal sealed record AssetFile(string Path, long Bytes, string Sha256);
 internal sealed record DownloadSpec(string Url, long Bytes, string Sha256, string? ETag = null, long RangeBytes = 16 * 1024 * 1024);
 internal sealed record DownloadReport(string Status, string Path, long Bytes, string Sha256, string ETag, long ResumedBytes, int Requests, bool IndependentlyReadBack);
 internal sealed record DownloadState(int SchemaVersion, string Url, long Bytes, string Sha256, string? ETag);
+// Expected content identity is supplied by a frozen upstream plan. A Git blob
+// digest includes its Git header and is never a content SHA-256.
+internal sealed record ContentDigest(string Kind, string Value);
+internal sealed record DigestDownloadSpec(string Url, long Bytes, ContentDigest ExpectedDigest, string? ETag = null, long RangeBytes = 16 * 1024 * 1024);
+internal sealed record DigestDownloadReport(string Status, string Path, long Bytes, ContentDigest ExpectedDigest, string ContentSha256,
+    string ETag, long ResumedBytes, int Requests, bool IndependentlyReadBack);
+internal sealed record DigestDownloadState(int SchemaVersion, string Url, long Bytes, ContentDigest ExpectedDigest, string? ETag);
+internal sealed class DownloadHttpException(int statusCode) : IOException("Server did not honor bounded HTTP Range with 206.")
+{
+    internal int StatusCode { get; } = statusCode;
+}
 internal sealed record CompletionGates(bool FullCorpusEpochCoverage, bool GlobalUpdatesComplete, bool SourceEofVerifiedByTraining,
     bool CompleteCheckpointVerified, bool AllAdamwMomentsVerified, bool IndependentValidationVerified, bool SourceEofIndividuallyReported = false);
 internal sealed record LogicalManifest(int SchemaVersion, string Kind, string RunId, string Status, string OwnedPrefix, AssetFile[] Files,
@@ -52,6 +63,8 @@ internal sealed record CorpusPublicationBinding(int SchemaVersion, string RunId,
     RespectNullableAnnotations = true, RespectRequiredConstructorParameters = true)]
 [JsonSerializable(typeof(DownloadState))]
 [JsonSerializable(typeof(DownloadReport))]
+[JsonSerializable(typeof(DigestDownloadState))]
+[JsonSerializable(typeof(DigestDownloadReport))]
 [JsonSerializable(typeof(LogicalManifest))]
 [JsonSerializable(typeof(TransportManifest))]
 [JsonSerializable(typeof(TransportPreparationReport))]

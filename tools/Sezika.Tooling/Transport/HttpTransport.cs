@@ -10,10 +10,27 @@ internal static partial class AssetTransport
     internal static async Task<DownloadReport> DownloadAsync(DownloadSpec spec, string destination, Budget budget,
         CancellationToken cancellation, string? bearerToken = null, HttpClient? client = null, AuthenticationHeaderValue? authentication = null)
     {
-        budget.Check(); ValidateSha(spec.Sha256);
+        var result = await DownloadCoreAsync(new(spec.Url, spec.Bytes, new("sha256", spec.Sha256), spec.ETag, spec.RangeBytes),
+            destination, budget, cancellation, bearerToken, client, authentication, legacySha256State: true);
+        return new(result.Status, result.Path, result.Bytes, result.ContentSha256, result.ETag, result.ResumedBytes, result.Requests, result.IndependentlyReadBack);
+    }
+
+    internal static Task<DigestDownloadReport> DownloadDigestAsync(DigestDownloadSpec spec, string destination, Budget budget,
+        CancellationToken cancellation, string? bearerToken = null, HttpClient? client = null, AuthenticationHeaderValue? authentication = null) =>
+        DownloadCoreAsync(spec, destination, budget, cancellation, bearerToken, client, authentication, legacySha256State: false);
+
+    private static async Task<DigestDownloadReport> DownloadCoreAsync(DigestDownloadSpec spec, string destination, Budget budget,
+        CancellationToken cancellation, string? bearerToken, HttpClient? client, AuthenticationHeaderValue? authentication, bool legacySha256State)
+    {
+        budget.Check(); cancellation.ThrowIfCancellationRequested(); ValidateContentDigest(spec.ExpectedDigest);
+        // Both caller cancellation sources govern disk verification as well as HTTP.
+        using var linkedCancellation = CancellationTokenSource.CreateLinkedTokenSource(cancellation, budget.Cancellation);
+        cancellation = linkedCancellation.Token;
+        budget = new Budget(86400, null, cancellation, budget);
         var uri = ValidateUri(spec.Url, allowQuery: false);
         ValidateAuthentication(bearerToken, authentication);
-        if ((bearerToken is not null || authentication is not null) && !uri.IsLoopback && uri.Host is not ("huggingface.co" or "moark.com"))
+        if ((bearerToken is not null || authentication is not null) && !uri.IsLoopback && uri.Host is not ("huggingface.co" or "moark.com") &&
+            (legacySha256State || uri.Host is not ("raw.githubusercontent.com" or "api.github.com")))
             throw new InvalidDataException("Stored model credentials may only be sent to the explicit HF/MoArk endpoint.");
         if (client?.DefaultRequestHeaders.Authorization is not null) throw new InvalidDataException("Shared client authentication headers are forbidden; use per-request scoped authentication.");
         if (spec.Bytes is <= 0 or > MaximumFileBytes || spec.RangeBytes is < 1 or > 64L * 1024 * 1024 ||
@@ -26,21 +43,27 @@ internal static partial class AssetTransport
         var partial = destination + ".sezika-part";
         var statePath = destination + ".sezika-download.json";
         SafePaths.NoLinks(partial, budget); SafePaths.NoLinks(statePath, budget);
-        DownloadState state;
+        DigestDownloadState state;
         if (Path.Exists(partial) || Path.Exists(statePath))
         {
             if (!File.Exists(partial) || !File.Exists(statePath)) throw new InvalidDataException("Incomplete resume ownership state.");
             RegularFiles.Require(partial, budget);
-            state = ReadJson(statePath, TransportJsonContext.Default.DownloadState, budget);
-            if (state.SchemaVersion != 1 || state.Url != spec.Url || state.Bytes != spec.Bytes || state.Sha256 != spec.Sha256 ||
+            if (legacySha256State)
+            {
+                var legacy = ReadJson(statePath, TransportJsonContext.Default.DownloadState, budget);
+                state = new(legacy.SchemaVersion, legacy.Url, legacy.Bytes, new("sha256", legacy.Sha256), legacy.ETag);
+            }
+            else state = ReadJson(statePath, TransportJsonContext.Default.DigestDownloadState, budget);
+            if (state.SchemaVersion != 1 || state.Url != spec.Url || state.Bytes != spec.Bytes || state.ExpectedDigest != spec.ExpectedDigest ||
                 state.ETag is null || (spec.ETag is not null && state.ETag != spec.ETag))
                 throw new InvalidDataException("Resume URL/length/SHA/ETag identity differs.");
             ValidateETag(state.ETag);
         }
-        else state = new(1, spec.Url, spec.Bytes, spec.Sha256, spec.ETag);
+        else state = new(1, spec.Url, spec.Bytes, spec.ExpectedDigest, spec.ETag);
         var resumed = File.Exists(partial) ? new FileInfo(partial).Length : 0;
         if (resumed > spec.Bytes) throw new InvalidDataException("Partial asset exceeds trusted byte length.");
         var requests = 0;
+        string contentSha256;
         HttpClient? owned = null;
         try
         {
@@ -64,7 +87,11 @@ internal static partial class AssetTransport
                     }
                     using (response)
                     {
-                        if (response.StatusCode != HttpStatusCode.PartialContent) throw new InvalidDataException("Server did not honor bounded HTTP Range with 206.");
+                        if (response.StatusCode != HttpStatusCode.PartialContent)
+                        {
+                            if (legacySha256State) throw new InvalidDataException("Server did not honor bounded HTTP Range with 206.");
+                            throw new DownloadHttpException((int)response.StatusCode);
+                        }
                         var contentRange = response.Content.Headers.ContentRange;
                         var count = end - start + 1;
                         if (contentRange is null || contentRange.Unit != "bytes" || contentRange.From != start || contentRange.To != end ||
@@ -77,7 +104,9 @@ internal static partial class AssetTransport
                         if (!File.Exists(statePath))
                         {
                             state = state with { ETag = tag };
-                            WriteJson(statePath, state, TransportJsonContext.Default.DownloadState, budget);
+                            if (legacySha256State)
+                                WriteJson(statePath, new DownloadState(state.SchemaVersion, state.Url, state.Bytes, state.ExpectedDigest.Value, state.ETag), TransportJsonContext.Default.DownloadState, budget);
+                            else WriteJson(statePath, state, TransportJsonContext.Default.DigestDownloadState, budget);
                         }
                         else if (state.ETag != tag) throw new InvalidDataException("Download state ETag differs.");
                         using var requestDeadline = HttpDeadline(budget, cancellation, 1800);
@@ -102,16 +131,60 @@ internal static partial class AssetTransport
                 }
                 if (target.Length != spec.Bytes) throw new InvalidDataException("Download maximum range count reached.");
                 target.Position = 0;
-                if (Hash(target, spec.Bytes, budget) != spec.Sha256) throw new InvalidDataException("Full downloaded asset SHA differs.");
+                contentSha256 = VerifyContentDigest(target, spec.Bytes, spec.ExpectedDigest, budget);
                 target.Flush(flushToDisk: true);
             }
             budget.Check(); SafePaths.NoLinks(destination, budget);
             File.Move(partial, destination, overwrite: false);
-            if (new FileInfo(destination).Length != spec.Bytes || FileHash(destination, budget) != spec.Sha256)
+            if (VerifyDownloadedFile(destination, spec.Bytes, spec.ExpectedDigest, budget) != contentSha256)
                 throw new InvalidDataException("Completed asset independent disk readback differs.");
-            return new("PASS_complete_download_bytes_sha256", destination, spec.Bytes, spec.Sha256, state.ETag!, resumed, requests, true);
+            var status = spec.ExpectedDigest.Kind == "sha256" ? "PASS_complete_download_bytes_sha256" : "PASS_complete_download_bytes_git_blob_sha1";
+            return new(status, destination, spec.Bytes, spec.ExpectedDigest, contentSha256, state.ETag!, resumed, requests, true);
         }
         finally { owned?.Dispose(); }
+    }
+
+    internal static void ValidateContentDigest(ContentDigest digest)
+    {
+        if (digest is null || digest.Value is null) throw new InvalidDataException("Expected content digest is required.");
+        if (digest.Kind == "sha256") ValidateSha(digest.Value);
+        else if (digest.Kind == "git-blob-sha1") ValidateCommit(digest.Value);
+        else throw new InvalidDataException("Expected digest kind must be sha256 or git-blob-sha1.");
+    }
+
+    internal static string VerifyDownloadedFile(string path, long bytes, ContentDigest expected, Budget budget)
+    {
+        budget.Check(); ValidateContentDigest(expected); RegularFiles.Require(path, budget);
+        using var input = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
+        if (input.Length != bytes) throw new InvalidDataException("Completed asset trusted byte length differs.");
+        return VerifyContentDigest(input, bytes, expected, budget);
+    }
+
+    private static string VerifyContentDigest(Stream input, long bytes, ContentDigest expected, Budget budget)
+    {
+        if (bytes is < 0 or > MaximumFileBytes) throw new InvalidDataException("Digest byte bound exceeded.");
+        using var sha256 = IncrementalHash.CreateHash(HashAlgorithmName.SHA256);
+        using var blob = expected.Kind == "git-blob-sha1" ? IncrementalHash.CreateHash(HashAlgorithmName.SHA1) : null;
+        blob?.AppendData(System.Text.Encoding.ASCII.GetBytes("blob " + bytes.ToString(System.Globalization.CultureInfo.InvariantCulture) + '\0'));
+        var buffer = new byte[BlockBytes]; long total = 0;
+        for (long readIndex = 0; readIndex < bytes + 1; readIndex++)
+        {
+            budget.Check();
+            var read = input.Read(buffer, 0, (int)Math.Min(buffer.Length, bytes - total + 1));
+            budget.Check();
+            if (read == 0)
+            {
+                if (total != bytes) throw new InvalidDataException("Digest source truncated.");
+                var contentSha256 = Convert.ToHexStringLower(sha256.GetHashAndReset());
+                var actual = blob is null ? contentSha256 : Convert.ToHexStringLower(blob.GetHashAndReset());
+                if (actual != expected.Value) throw new InvalidDataException("Downloaded bytes differ from the frozen expected digest.");
+                return contentSha256;
+            }
+            total += read;
+            if (total > bytes) throw new InvalidDataException("Digest source grew.");
+            sha256.AppendData(buffer, 0, read); blob?.AppendData(buffer, 0, read);
+        }
+        throw new InvalidDataException("Digest read iteration bound exceeded.");
     }
 
     internal static HttpClient CreateClient(bool useProxy, int seconds = 30)

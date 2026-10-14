@@ -1,0 +1,251 @@
+{
+  "SchemaVersion": 1,
+  "Status": "PASS_source_acquisition_local_source_scope_only",
+  "Module": "source-acquisition",
+  "Scope": "独立计划中的 SHA256/Git blob SHA1、完整选择分母、缓存/partial/取消、认证范围及实际 Research 消费者接线；两平台 full12+6，并完成 Transport25/Corpus38 回归。输出不反填 golden，不代表许可或质量批准。",
+  "SourceManifestSha256": "230130665280ad7d0905c74764c8683f7580d723e52c63002326826d1182dcf3",
+  "Sources": [
+    {
+      "Sha256": "4ff35fca68d310c0b7da0dd4e4e1bf387070856964e3aa0faf70de9cd40fea9e",
+      "Path": "tools/Sezika.Tooling/Corpus/SourceAcquisition.cs",
+      "Bytes": 19860
+    },
+    {
+      "Sha256": "4fac3c0cda731c79efa3e570775dd0100d7ee2ab67c0a0f5ae94e41362f74311",
+      "Path": "tools/Sezika.Tooling/Corpus/SourceAcquisitionContracts.cs",
+      "Bytes": 3039
+    },
+    {
+      "Sha256": "f60ad3dd4aef78692e8a54fe30c8fbf121bbd8c2a99c1b355b47feb033693b96",
+      "Path": "tools/Sezika.Tooling/Transport/HttpTransport.cs",
+      "Bytes": 18921
+    },
+    {
+      "Sha256": "98a836406c296f9def4216b94d63bdc73492d48ee52b733b1c98b0818eea7dba",
+      "Path": "tools/Sezika.Tooling/Transport/TransportContracts.cs",
+      "Bytes": 7456
+    },
+    {
+      "Sha256": "815811df594e96e41b95047e6eddfba7f10c9a4b00258ceab13bbddac9d70852",
+      "Path": "tools/Sezika.Tooling/Corpus/CorpusResearchChecks.cs",
+      "Bytes": 19544
+    },
+    {
+      "Sha256": "1f4b9c54ce1c2198e6ea309139809800257dc76c11d0dfa43ba0459660bc39ce",
+      "Path": "tests/Sezika.Tooling.Tests/SourceAcquisitionChecks.cs",
+      "Bytes": 25935
+    },
+    {
+      "Sha256": "e0a444ece6cdaf45995a1673e90d22f463adaff1467007464c5f65c99f3102ad",
+      "Path": "tests/Sezika.Tooling.Tests/SourceResearchBridgeChecks.cs",
+      "Bytes": 15609
+    }
+  ],
+  "Runs": [
+    {
+      "Name": "05-windows-source-acquisition-tiny",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "windows",
+      "RawSha256": "6f97cfcfda118d239fde531cbcb488e62fe41566b7288f61126f2985832f3da8",
+      "RawResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\requests-v17-prebind\\05-windows-source-acquisition-tiny\\native-execution\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\cases-v17-prebind\\05-windows-source-acquisition-tiny-076b09ad65484f23846d39de788e904b\\checks.txt",
+      "Suite": "source-acquisition",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "8de39c0246a7b3ddf0147675a64322e91865b4f0a959e21458174432aece5caf",
+      "Summary": "PASS checks=1; elapsed=0.061s; platform=Microsoft Windows NT 10.0.26300.0; native_aot=True",
+      "RootPid": 41268,
+      "Checks": 1,
+      "Status": "PASS",
+      "CheckNames": [
+        "source acquisition selected subset retains all source and asset denominators"
+      ]
+    },
+    {
+      "Name": "06-windows-source-acquisition-full",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "windows",
+      "RawSha256": "fbd64c8caa13242f8bcfdc478045d765611d08f2412c227c4d3431187d070d9f",
+      "RawResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\requests-v17-prebind\\06-windows-source-acquisition-full\\native-execution\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\cases-v17-prebind\\06-windows-source-acquisition-full-35141cb002c9420b881e79ef52c4bffe\\checks.txt",
+      "Suite": "source-acquisition",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "2945fe949a1492c273228f4b1fa6b2544f9f401ad1f836894d9db8dba70a39bb",
+      "Summary": "PASS checks=12; elapsed=0.746s; platform=Microsoft Windows NT 10.0.26300.0; native_aot=True",
+      "RootPid": 51904,
+      "Checks": 12,
+      "Status": "PASS",
+      "CheckNames": [
+        "source acquisition selected subset retains all source and asset denominators",
+        "source acquisition Git blob SHA1 is separate from content SHA256 and legacy state",
+        "source acquisition rejects digest-kind substitution before HTTP",
+        "source acquisition wrong trusted digest preserves partial and failed ledger",
+        "source acquisition complete cache is reverified and corrupt cache is preserved",
+        "source acquisition interrupted Range resumes exact same URL ETag and digest",
+        "source acquisition mirror failure has one isolated official fallback",
+        "source acquisition auth disables mirror and never reaches redirected origin or receipts",
+        "source acquisition one credential rejects mixed selected official origins before writes or HTTP",
+        "source acquisition cancellation retains full ledger and prevents official fallback",
+        "source acquisition and legacy download preserve independent Budget token cancellation during HTTP",
+        "source acquisition pinned plan and metadata mismatch prevent all requests"
+      ]
+    },
+    {
+      "Name": "13-windows-source-research-bridge-tiny",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "windows",
+      "RawSha256": "5f2b26681ba06513dcb49fb08ac86749264d7cf91f00df46d74fcf370f76cc02",
+      "RawResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\requests-v17-prebind\\13-windows-source-research-bridge-tiny\\native-execution\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\cases-v17-prebind\\13-windows-source-research-bridge-tiny-0869682d44024209bf6ba1cd0dbbbc52\\checks.txt",
+      "Suite": "source-research-bridge",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "2b4fb5c04b11c80abc7f60c09e15dff95178810e7ff624a4380ec76dcf732925",
+      "Summary": "PASS checks=1; elapsed=0.118s; platform=Microsoft Windows NT 10.0.26300.0; native_aot=True",
+      "RootPid": 72860,
+      "Checks": 1,
+      "Status": "PASS",
+      "CheckNames": [
+        "source research bridge real fake-handler acquisition preserves SHA256 and Git blob pins"
+      ]
+    },
+    {
+      "Name": "14-windows-source-research-bridge-full",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "windows",
+      "RawSha256": "e906f402317d931efbb4994e1b6f74229e8e96b4d0e263db84a89b154643e5f6",
+      "RawResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\requests-v17-prebind\\14-windows-source-research-bridge-full\\native-execution\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\cases-v17-prebind\\14-windows-source-research-bridge-full-5f31aa21058841fa8cdb9c22e1ee8e00\\checks.txt",
+      "Suite": "source-research-bridge",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "be44c5c71bebc9368ac76067a2b361db774900abd578ad2fac8ee65009d6ab3c",
+      "Summary": "PASS checks=6; elapsed=0.637s; platform=Microsoft Windows NT 10.0.26300.0; native_aot=True",
+      "RootPid": 86160,
+      "Checks": 6,
+      "Status": "PASS",
+      "CheckNames": [
+        "source research bridge real fake-handler acquisition preserves SHA256 and Git blob pins",
+        "source research bridge selected subset retains every planned asset and source denominator",
+        "source research bridge partial and wrong digest failures retain physical evidence",
+        "source research bridge cancellation writes complete plan and ledger before rethrow",
+        "source research bridge latest failure preserves earlier success and unknown status rejects",
+        "source research bridge plan SHA path source revision and original digest tampering rejects"
+      ]
+    },
+    {
+      "Name": "05-linux-source-acquisition-tiny",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "linux",
+      "RawSha256": "ec660730981c8e09d5eb226de0d13c59b0f03115ce79402c2da7116bf4db4830",
+      "RawResult": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\requests\\05-linux-source-acquisition-tiny\\native-execution\\result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\cases\\05-linux-source-acquisition-tiny\\checks.txt",
+      "Suite": "source-acquisition",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "6f1ef1ea7e44129fa5db6a6ec7f87d87dcf27daac8caa0556f688f465413105b",
+      "Summary": "PASS checks=1; elapsed=0.027s; platform=Unix 6.6.87.2; native_aot=True",
+      "RootPid": 2401929,
+      "Checks": 1,
+      "Status": "PASS",
+      "CheckNames": [
+        "source acquisition selected subset retains all source and asset denominators"
+      ]
+    },
+    {
+      "Name": "06-linux-source-acquisition-full",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "linux",
+      "RawSha256": "6851dd073e11f3682402e67d38a3e212d5c15ad2ae5cfdd0bd66d982cefaf55a",
+      "RawResult": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\requests\\06-linux-source-acquisition-full\\native-execution\\result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\cases\\06-linux-source-acquisition-full\\checks.txt",
+      "Suite": "source-acquisition",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "567e7823a680e639abeecb1f26c5e8717381f22524cd350e9ae2ae83d31def28",
+      "Summary": "PASS checks=12; elapsed=0.219s; platform=Unix 6.6.87.2; native_aot=True",
+      "RootPid": 2401959,
+      "Checks": 12,
+      "Status": "PASS",
+      "CheckNames": [
+        "source acquisition selected subset retains all source and asset denominators",
+        "source acquisition Git blob SHA1 is separate from content SHA256 and legacy state",
+        "source acquisition rejects digest-kind substitution before HTTP",
+        "source acquisition wrong trusted digest preserves partial and failed ledger",
+        "source acquisition complete cache is reverified and corrupt cache is preserved",
+        "source acquisition interrupted Range resumes exact same URL ETag and digest",
+        "source acquisition mirror failure has one isolated official fallback",
+        "source acquisition auth disables mirror and never reaches redirected origin or receipts",
+        "source acquisition one credential rejects mixed selected official origins before writes or HTTP",
+        "source acquisition cancellation retains full ledger and prevents official fallback",
+        "source acquisition and legacy download preserve independent Budget token cancellation during HTTP",
+        "source acquisition pinned plan and metadata mismatch prevent all requests"
+      ]
+    },
+    {
+      "Name": "13-linux-source-research-bridge-tiny",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "linux",
+      "RawSha256": "79b14b8e3c668f5d4665e224cf84f3289864f6f06639318c95b086418f97e5d8",
+      "RawResult": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\requests\\13-linux-source-research-bridge-tiny\\native-execution\\result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\cases\\13-linux-source-research-bridge-tiny\\checks.txt",
+      "Suite": "source-research-bridge",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "03a44840a1d316088e782dcb4c64504e153a53ad97c849805ea6d69334bdb6aa",
+      "Summary": "PASS checks=1; elapsed=0.038s; platform=Unix 6.6.87.2; native_aot=True",
+      "RootPid": 2402173,
+      "Checks": 1,
+      "Status": "PASS",
+      "CheckNames": [
+        "source research bridge real fake-handler acquisition preserves SHA256 and Git blob pins"
+      ]
+    },
+    {
+      "Name": "14-linux-source-research-bridge-full",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "linux",
+      "RawSha256": "4472f17e909224b6921f4e8d18481c9d81505e6a3eb5025099b5e589bdeff880",
+      "RawResult": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\requests\\14-linux-source-research-bridge-full\\native-execution\\result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\cases\\14-linux-source-research-bridge-full\\checks.txt",
+      "Suite": "source-research-bridge",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "9f633f3164557426c2f315874a29e10012918d918bd5bbec8c1739c4c24c81fa",
+      "Summary": "PASS checks=6; elapsed=0.164s; platform=Unix 6.6.87.2; native_aot=True",
+      "RootPid": 2402203,
+      "Checks": 6,
+      "Status": "PASS",
+      "CheckNames": [
+        "source research bridge real fake-handler acquisition preserves SHA256 and Git blob pins",
+        "source research bridge selected subset retains every planned asset and source denominator",
+        "source research bridge partial and wrong digest failures retain physical evidence",
+        "source research bridge cancellation writes complete plan and ledger before rethrow",
+        "source research bridge latest failure preserves earlier success and unknown status rejects",
+        "source research bridge plan SHA path source revision and original digest tampering rejects"
+      ]
+    }
+  ],
+  "CheckExecutions": 40.0,
+  "Resources": [
+    {
+      "Sha256": "e13c5d76d045f9cec5a209ef1533045b5829206c61b310ac1ca509b033d4b69c",
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\root-final-24-resource-coverage-v17.json"
+    },
+    {
+      "Sha256": "c1b7ffc3c5111f7fcce5e3290db28bc6062cbf21c95de4b92497c8722ec27cf9",
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-linux-modules-v1\\root-final-thirty-resource-coverage-v17.json"
+    }
+  ],
+  "RuntimeWindowsSha256": "cd4bb0cdd95dc5115098ece059125c79f5a689a24e379b19ae14238cd3a8ed89",
+  "RuntimeLinuxSha256": "a9077a77fcf65f3f685ca6feb9269fc20be4b026cdcb61324ea775ab252a0517",
+  "SdkPolicy": "Unpinned project SDK; actual tool identity recorded in raw build receipts",
+  "LocalNativeAot": true,
+  "FinalCallerRetirementAccepted": false,
+  "ServerLiveAcceptance": "NOT_RUN",
+  "FormalTrainingAccepted": false,
+  "ModelOrDataPublicationAccepted": false,
+  "HistoricalFailuresPreserved": true,
+  "Utc": "2026-10-14T22:06:00.8633850+00:00"
+}

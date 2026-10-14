@@ -15,10 +15,12 @@ internal sealed record PublicationUploadRequest(string SourceRoot, string Previe
 internal sealed record PublicationCommitRequest(string SourceRoot, string Preview, string Authorization, string ServiceRoot, string? CredentialTarget = null, string CredentialEncoding = "utf8", string CredentialSource = "auto");
 internal sealed record ModelCardCommandRequest(ModelCardValidationRequest Validation, string? CredentialTarget = null,
     string CredentialEncoding = "utf8", string CredentialSource = "none");
+internal sealed record SourceAcquisitionCommandRequest(SourceAcquisitionRequest Acquisition, string? CredentialTarget = null,
+    string CredentialEncoding = "utf8", string CredentialSource = "none");
 
 internal static class MigrationCommands
 {
-    internal static readonly string[] Commands = ["oracle batches", "inventory review", "git run", "transport download", "transport prepare", "transport verify", "transport reassemble", "publication preview", "publication prepare", "publication upload", "publication commit", "publication validate-card", "task prepare", "task resident", "task snapshot", "bundle inputs", "bundle build", "bundle freeze", "bundle install", "archive pack", "checkpoint verify", "host inspect", "host sample-gpu", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind", "validation profile", "validation summarize", "validation data-admission", "validation language-audit", "validation batch", "validation near-ties"];
+    internal static readonly string[] Commands = ["oracle batches", "inventory review", "git run", "transport download", "transport prepare", "transport verify", "transport reassemble", "publication preview", "publication prepare", "publication upload", "publication commit", "publication validate-card", "task prepare", "task resident", "task snapshot", "source acquire", "bundle inputs", "bundle build", "bundle freeze", "bundle install", "archive pack", "checkpoint verify", "host inspect", "host sample-gpu", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind", "validation profile", "validation summarize", "validation data-admission", "validation language-audit", "validation batch", "validation near-ties"];
     internal static int Run(string command, string requestPath, string output, Budget budget, CancellationToken cancellation)
     {
         if (command.StartsWith("validation ", StringComparison.Ordinal)) return RunValidation(command, requestPath, output, budget);
@@ -31,7 +33,7 @@ internal static class MigrationCommands
         int Save<T>(T result, JsonTypeInfo<T> type)
         {
             budget.Check(); CorpusJson.Write(output, result, type, budget);
-            var status = result switch { CorpusOperationReport report => report.Status, CorpusManifest manifest => manifest.Status, CorpusResearchCheckReport report => report.Status, CorpusSeedCheckReport report => report.Status, GitReceipt report => report.Status, BundleReceipt report => report.Status, ResidentReceipt report => report.Status, RetirementReport report => report.Status, BundleInstallationReport report => report.Status, _ => "" };
+            var status = result switch { CorpusOperationReport report => report.Status, CorpusManifest manifest => manifest.Status, CorpusResearchCheckReport report => report.Status, CorpusSeedCheckReport report => report.Status, SourceAcquisitionReport report => report.Status, GitReceipt report => report.Status, BundleReceipt report => report.Status, ResidentReceipt report => report.Status, RetirementReport report => report.Status, BundleInstallationReport report => report.Status, _ => "" };
             return status.StartsWith("PARTIAL", StringComparison.Ordinal) || status.StartsWith("FAIL", StringComparison.Ordinal) || status.StartsWith("UNKNOWN", StringComparison.Ordinal) || status.StartsWith("PENDING", StringComparison.Ordinal) ? 1 : 0;
         }
         void ProtectOutputRoot(string directory)
@@ -99,6 +101,14 @@ internal static class MigrationCommands
                 var validatedCard = ModelCardValidation.ValidateAsync(card.Validation, cardBudget, cancellation, cardAuthentication?.Parameter).GetAwaiter().GetResult();
                 TaskOperations.WriteNew(output, validatedCard, ModelCardValidationJsonContext.Default.ModelCardValidationReport);
                 return validatedCard.Status == "PASS" ? 0 : 1;
+            case "source acquire":
+                var acquisition = Read(MigrationJsonContext.Default.SourceAcquisitionCommandRequest);
+                ProtectOutputRoot(acquisition.Acquisition.MetadataRoot);
+                ProtectOutputRoot(acquisition.Acquisition.OutputRoot); ProtectOutputRoot(acquisition.Acquisition.ReceiptDirectory);
+                var acquisitionAuthentication = HttpCredentials.Read(acquisition.CredentialSource, acquisition.CredentialTarget, acquisition.CredentialEncoding, "bearer", budget);
+                var acquired = CorpusSourceAcquisition.AcquireAsync(acquisition.Acquisition, budget, cancellation, authentication: acquisitionAuthentication).GetAwaiter().GetResult();
+                TaskOperations.WriteNew(output, acquired, SourceAcquisitionJsonContext.Default.SourceAcquisitionReport);
+                return acquired.AllSelectedAssetsComplete ? 0 : 1;
             case "publication prepare":
                 var publication = Read(MigrationJsonContext.Default.FullPublicationRequest);
                 return Save(AssetTransport.PreparePublication(publication.PackageRoot, publication.Validation, publication.Contract, publication.OutputRoot, publication.ToolRoot, publication.TrainingProof, publication.ValidationProof, budget), TransportJsonContext.Default.LogicalManifest);
@@ -206,5 +216,6 @@ internal static class MigrationCommands
 [JsonSerializable(typeof(PublicationUploadRequest))]
 [JsonSerializable(typeof(PublicationCommitRequest))]
 [JsonSerializable(typeof(ModelCardCommandRequest))]
+[JsonSerializable(typeof(SourceAcquisitionCommandRequest))]
 [JsonSourceGenerationOptions(WriteIndented = true, PropertyNameCaseInsensitive = true, RespectRequiredConstructorParameters = true, RespectNullableAnnotations = true)]
 internal partial class MigrationJsonContext : JsonSerializerContext;
