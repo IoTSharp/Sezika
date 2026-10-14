@@ -17,10 +17,12 @@ internal sealed record ModelCardCommandRequest(ModelCardValidationRequest Valida
     string CredentialEncoding = "utf8", string CredentialSource = "none");
 internal sealed record SourceAcquisitionCommandRequest(SourceAcquisitionRequest Acquisition, string? CredentialTarget = null,
     string CredentialEncoding = "utf8", string CredentialSource = "none");
+internal sealed record ModelMirrorCommandRequest(ModelMirrorRequest Mirror, string? CredentialTarget = null,
+    string CredentialEncoding = "utf8", string CredentialSource = "none");
 
 internal static class MigrationCommands
 {
-    internal static readonly string[] Commands = ["oracle batches", "inventory review", "git run", "transport download", "transport prepare", "transport verify", "transport reassemble", "publication preview", "publication prepare", "publication upload", "publication commit", "publication validate-card", "task prepare", "task resident", "task snapshot", "source acquire", "bundle inputs", "bundle build", "bundle freeze", "bundle install", "archive pack", "checkpoint verify", "host inspect", "host sample-gpu", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind", "validation profile", "validation summarize", "validation data-admission", "validation language-audit", "validation batch", "validation near-ties"];
+    internal static readonly string[] Commands = ["oracle batches", "inventory review", "git run", "transport download", "transport prepare", "transport verify", "transport reassemble", "publication preview", "publication prepare", "publication upload", "publication commit", "publication validate-card", "task prepare", "task resident", "task snapshot", "source acquire", "model mirror", "model verify", "bundle inputs", "bundle build", "bundle freeze", "bundle install", "archive pack", "checkpoint verify", "host inspect", "host sample-gpu", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind", "validation profile", "validation summarize", "validation data-admission", "validation language-audit", "validation batch", "validation near-ties"];
     internal static int Run(string command, string requestPath, string output, Budget budget, CancellationToken cancellation)
     {
         if (command.StartsWith("validation ", StringComparison.Ordinal)) return RunValidation(command, requestPath, output, budget);
@@ -109,6 +111,19 @@ internal static class MigrationCommands
                 var acquired = CorpusSourceAcquisition.AcquireAsync(acquisition.Acquisition, budget, cancellation, authentication: acquisitionAuthentication).GetAwaiter().GetResult();
                 TaskOperations.WriteNew(output, acquired, SourceAcquisitionJsonContext.Default.SourceAcquisitionReport);
                 return acquired.AllSelectedAssetsComplete ? 0 : 1;
+            case "model mirror":
+                var mirror = Read(MigrationJsonContext.Default.ModelMirrorCommandRequest);
+                ProtectOutputRoot(mirror.Mirror.Root);
+                var modelAuthentication = HttpCredentials.Read(mirror.CredentialSource, mirror.CredentialTarget, mirror.CredentialEncoding, "bearer", budget);
+                var mirrored = ModelMirror.MirrorAsync(mirror.Mirror, budget, cancellation, modelAuthentication?.Parameter).GetAwaiter().GetResult();
+                TaskOperations.WriteNew(output, mirrored, ModelMirrorJsonContext.Default.ModelMirrorReport);
+                return mirrored.Verification.AllManifestAssetsVerified ? 0 : 1;
+            case "model verify":
+                var modelVerification = Read(ModelMirrorJsonContext.Default.ModelMirrorVerifyRequest);
+                ProtectOutputRoot(modelVerification.Directory);
+                var verifiedModel = ModelMirror.Verify(modelVerification, budget);
+                TaskOperations.WriteNew(output, verifiedModel, ModelMirrorJsonContext.Default.ModelMirrorVerification);
+                return verifiedModel.AllManifestAssetsVerified ? 0 : 1;
             case "publication prepare":
                 var publication = Read(MigrationJsonContext.Default.FullPublicationRequest);
                 return Save(AssetTransport.PreparePublication(publication.PackageRoot, publication.Validation, publication.Contract, publication.OutputRoot, publication.ToolRoot, publication.TrainingProof, publication.ValidationProof, budget), TransportJsonContext.Default.LogicalManifest);
@@ -217,5 +232,6 @@ internal static class MigrationCommands
 [JsonSerializable(typeof(PublicationCommitRequest))]
 [JsonSerializable(typeof(ModelCardCommandRequest))]
 [JsonSerializable(typeof(SourceAcquisitionCommandRequest))]
+[JsonSerializable(typeof(ModelMirrorCommandRequest))]
 [JsonSourceGenerationOptions(WriteIndented = true, PropertyNameCaseInsensitive = true, RespectRequiredConstructorParameters = true, RespectNullableAnnotations = true)]
 internal partial class MigrationJsonContext : JsonSerializerContext;

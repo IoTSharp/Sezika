@@ -1,0 +1,147 @@
+{
+  "SchemaVersion": 1,
+  "Status": "PASS_model_mirror_local_source_scope_only",
+  "Module": "model-mirror",
+  "Scope": "外部固定 manifest、40位 revision、配置/tokenizer/权重/许可角色、缓存、partial、冻结与核验；两平台 full13。本轮仅 synthetic 本地资产，不执行真实模型下载或发布。",
+  "SourceManifestSha256": "230130665280ad7d0905c74764c8683f7580d723e52c63002326826d1182dcf3",
+  "Sources": [
+    {
+      "Sha256": "33d59df419ec748b069bb6ef20485a9d88d356ca54b619ace810d89b443acce8",
+      "Path": "tools/Sezika.Tooling/ModelAssets/ModelMirrorContracts.cs",
+      "Bytes": 2245
+    },
+    {
+      "Sha256": "27f581c5a4e887031e8503ee1cc5f8a72d270f48d06e2baa7501533163e629df",
+      "Path": "tools/Sezika.Tooling/ModelAssets/ModelMirror.cs",
+      "Bytes": 16500
+    },
+    {
+      "Sha256": "f1b68d930e2d7ebc024b8c1f6349c4918c832e60d24a873f3b840c498dc314be",
+      "Path": "tests/Sezika.Tooling.Tests/ModelMirrorChecks.cs",
+      "Bytes": 16904
+    }
+  ],
+  "Runs": [
+    {
+      "Name": "07-windows-model-mirror-tiny",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "windows",
+      "RawSha256": "b16f259b2cd29412506cc68a73b76964c8d7c77f5c9edd6d6dd45a4e62fab772",
+      "RawResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\requests-v17-prebind\\07-windows-model-mirror-tiny\\native-execution\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\cases-v17-prebind\\07-windows-model-mirror-tiny-cb77f9c608d742bda34d952da117d9d1\\checks.txt",
+      "Suite": "model-mirror",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "23c8efe860cccdce77aa879fbdb7b527c25b494e609afc2addba58dc52427c8d",
+      "Summary": "PASS checks=1; elapsed=0.269s; platform=Microsoft Windows NT 10.0.26300.0; native_aot=True",
+      "RootPid": 25388,
+      "Checks": 1,
+      "Status": "PASS",
+      "CheckNames": [
+        "model mirror tiny composes all four roles through fake ranged HTTP and bundle readback"
+      ]
+    },
+    {
+      "Name": "08-windows-model-mirror-full",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "windows",
+      "RawSha256": "fadc045ec4eb9fb4ce6409f32ed7e3d82bd71c7ee47f0b529a29d630c9b8459c",
+      "RawResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\requests-v17-prebind\\08-windows-model-mirror-full\\native-execution\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\cases-v17-prebind\\08-windows-model-mirror-full-bb34ffe98229492bb04783b21d2d46f7\\checks.txt",
+      "Suite": "model-mirror",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "1493fcd4bab02f8a6470e827ca207856ee5948919a28eddb16dcd82479fb75da",
+      "Summary": "PASS checks=13; elapsed=2.089s; platform=Microsoft Windows NT 10.0.26300.0; native_aot=True",
+      "RootPid": 7520,
+      "Checks": 13,
+      "Status": "PASS",
+      "CheckNames": [
+        "model mirror tiny composes all four roles through fake ranged HTTP and bundle readback",
+        "model mirror complete cache is rehashed and reused without HTTP",
+        "model mirror truncated partial preserves state then resumes exact external pins",
+        "model mirror changed ETag cannot resume a preserved partial",
+        "model mirror wrong downloaded asset SHA cannot become expected provenance",
+        "model mirror external manifest pin and Git blob SHA1 confusion reject before requests",
+        "model mirror duplicate JSON manifest properties reject before mutation",
+        "model mirror unknown manifest fields cannot be copied into cache or bundle",
+        "model mirror mutable revision missing license role and path collisions reject before HTTP",
+        "model mirror cancelled request creates no cache or output",
+        "model mirror cancellation during HTTP preserves owned partial evidence",
+        "model mirror full manifest rejects missing extra and changed files",
+        "model mirror foreign output/cache and escaped scope are preserved"
+      ]
+    },
+    {
+      "Name": "07-linux-model-mirror-tiny",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "linux",
+      "RawSha256": "c855ff28db754ce539ba4353b8623355596cfadbc2fe1ea3986e2f4a270bab07",
+      "RawResult": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\requests\\07-linux-model-mirror-tiny\\native-execution\\result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\cases\\07-linux-model-mirror-tiny\\checks.txt",
+      "Suite": "model-mirror",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "f3369e0c9dcd67ad534c3bca4432a8705e590cf17eba85c483d7e1fddd5797ae",
+      "Summary": "PASS checks=1; elapsed=0.056s; platform=Unix 6.6.87.2; native_aot=True",
+      "RootPid": 2401990,
+      "Checks": 1,
+      "Status": "PASS",
+      "CheckNames": [
+        "model mirror tiny composes all four roles through fake ranged HTTP and bundle readback"
+      ]
+    },
+    {
+      "Name": "08-linux-model-mirror-full",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "linux",
+      "RawSha256": "0c9ee802410a7e7f3d36d961e4960cf8fce6bce25592348efa5b1d3fdfeab479",
+      "RawResult": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\requests\\08-linux-model-mirror-full\\native-execution\\result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\cases\\08-linux-model-mirror-full\\checks.txt",
+      "Suite": "model-mirror",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "fc83805dff86e72e3556a9c5b0f7403794ecbedefd82ea79f0756b4acd28f27e",
+      "Summary": "PASS checks=13; elapsed=0.259s; platform=Unix 6.6.87.2; native_aot=True",
+      "RootPid": 2402020,
+      "Checks": 13,
+      "Status": "PASS",
+      "CheckNames": [
+        "model mirror tiny composes all four roles through fake ranged HTTP and bundle readback",
+        "model mirror complete cache is rehashed and reused without HTTP",
+        "model mirror truncated partial preserves state then resumes exact external pins",
+        "model mirror changed ETag cannot resume a preserved partial",
+        "model mirror wrong downloaded asset SHA cannot become expected provenance",
+        "model mirror external manifest pin and Git blob SHA1 confusion reject before requests",
+        "model mirror duplicate JSON manifest properties reject before mutation",
+        "model mirror unknown manifest fields cannot be copied into cache or bundle",
+        "model mirror mutable revision missing license role and path collisions reject before HTTP",
+        "model mirror cancelled request creates no cache or output",
+        "model mirror cancellation during HTTP preserves owned partial evidence",
+        "model mirror full manifest rejects missing extra and changed files",
+        "model mirror foreign output/cache and escaped scope are preserved"
+      ]
+    }
+  ],
+  "CheckExecutions": 28.0,
+  "Resources": [
+    {
+      "Sha256": "e13c5d76d045f9cec5a209ef1533045b5829206c61b310ac1ca509b033d4b69c",
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\root-final-24-resource-coverage-v17.json"
+    },
+    {
+      "Sha256": "c1b7ffc3c5111f7fcce5e3290db28bc6062cbf21c95de4b92497c8722ec27cf9",
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-linux-modules-v1\\root-final-thirty-resource-coverage-v17.json"
+    }
+  ],
+  "RuntimeWindowsSha256": "cd4bb0cdd95dc5115098ece059125c79f5a689a24e379b19ae14238cd3a8ed89",
+  "RuntimeLinuxSha256": "a9077a77fcf65f3f685ca6feb9269fc20be4b026cdcb61324ea775ab252a0517",
+  "SdkPolicy": "Unpinned project SDK; actual tool identity recorded in raw build receipts",
+  "LocalNativeAot": true,
+  "FinalCallerRetirementAccepted": false,
+  "ServerLiveAcceptance": "NOT_RUN",
+  "FormalTrainingAccepted": false,
+  "ModelOrDataPublicationAccepted": false,
+  "HistoricalFailuresPreserved": true,
+  "Utc": "2026-10-14T22:06:00.9514508+00:00"
+}
