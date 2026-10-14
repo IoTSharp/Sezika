@@ -13,9 +13,12 @@ internal sealed record ReplacementGate(string Id, string WorkPackage, string[] O
 internal sealed record RetirementReviewedLine(string CallerPath, string CallerSha256, int Line, string LineSha256,
     string Category, string Reason, bool IndependentlyVerified);
 internal sealed record RetirementArchiveDecision(ReviewFilePin Original, string Purpose, string Reason, bool IndependentlyVerified);
+internal sealed record CurrentEvidenceRetention(ReviewFilePin Current, string Purpose, string Reason,
+    bool IndependentlyVerified, bool NoCurrentOperationalResponsibility);
 internal sealed record RetirementReviewRequest(string ClassificationPath, string ClassificationSha256, string SourceRoot, ReplacementGate[] Gates,
     RetirementCaller[] CurrentCallers, bool CallerScopeDeclaredComplete, int ExpectedEntries = 466,
-    RetirementReviewedLine[]? ReviewedNonExecutionLines = null, RetirementArchiveDecision[]? HistoricalArchiveDecisions = null);
+    RetirementReviewedLine[]? ReviewedNonExecutionLines = null, RetirementArchiveDecision[]? HistoricalArchiveDecisions = null,
+    CurrentEvidenceRetention[]? CurrentEvidenceRetentions = null);
 internal sealed record RetirementSnapshot(string Path, string Status, long? Bytes, string? Sha256, string? Error);
 internal sealed record RetirementCallerResult(string Path, string Kind, string Status, long? Bytes, string? Sha256);
 internal sealed record RetirementGateResult(string Id, string Status, string CSharpEntry, string[] Reasons, RetirementSnapshot[] Sources, RetirementSnapshot Receipt);
@@ -33,6 +36,9 @@ internal sealed record RetirementReport(string Status, string ClassificationSha2
 {
     public RetirementReviewedLine[] ReviewedNonExecutionLines { get; init; } = [];
     public RetirementArchiveDecision[] HistoricalArchiveDecisions { get; init; } = [];
+    public CurrentEvidenceRetention[] CurrentEvidenceRetentions { get; init; } = [];
+    public int RetainedUnknownHistory { get; init; }
+    public int HistoricalBaselineUnknown { get; init; }
 }
 
 internal static class RetirementReview
@@ -41,7 +47,7 @@ internal static class RetirementReview
     internal const int MaximumCallers = 128;
     internal const long MaximumCallerBytes = 16L * 1024 * 1024;
     internal const long MaximumHashedBytes = 2L * 1024 * 1024 * 1024;
-    private sealed record CallerLine(string Path, int Number, string Kind, string Text, string? Exclusion, string Sha256);
+    private sealed record CallerLine(string Path, int Number, string Kind, string Text, string? Exclusion, string Sha256, bool MixedExecution);
 
     internal static RetirementReport Review(RetirementReviewRequest request, Budget budget)
     {
@@ -49,6 +55,7 @@ internal static class RetirementReview
         void Check() { budget.Check(); if (clock.Elapsed.TotalSeconds >= 180) throw new TimeoutException("Retirement review wall bound180s."); }
         if (request.ExpectedEntries is < 1 or > MaximumEntries || request.Gates.Length > 128 || request.CurrentCallers.Length > MaximumCallers ||
             request.ReviewedNonExecutionLines?.Length > 1024 || request.HistoricalArchiveDecisions?.Length > MaximumEntries ||
+            request.CurrentEvidenceRetentions?.Length > MaximumEntries ||
             !Path.IsPathFullyQualified(request.SourceRoot)) throw new InvalidDataException("Retirement input item/gate/caller/root bounds differ.");
         var root = Path.GetFullPath(request.SourceRoot); SafePaths.NoLinks(root, budget);
         if (!Directory.Exists(root) || root.StartsWith("\\\\", StringComparison.Ordinal)) throw new InvalidDataException("Explicit local SourceRoot required.");
@@ -112,12 +119,26 @@ internal static class RetirementReview
         foreach (var decision in request.HistoricalArchiveDecisions ?? [])
         {
             Check(); Pin(decision.Original);
-            if (!decision.IndependentlyVerified || string.IsNullOrWhiteSpace(decision.Purpose) || string.IsNullOrWhiteSpace(decision.Reason) ||
-                decision.Purpose.Trim().Length < 20 || decision.Purpose.Length > 1024 || decision.Reason.Trim().Length < 20 || decision.Reason.Length > 1024 ||
-                decision.Purpose.Any(char.IsControl) || decision.Reason.Any(char.IsControl) ||
+            if (!decision.IndependentlyVerified || !DecisionText(decision.Purpose) || !DecisionText(decision.Reason) ||
                 !classified.TryGetValue(decision.Original.Path, out var entry) || entry.Tracking is not ("tracked" or "ignored-targeted-sample") ||
                 !archives.TryAdd(decision.Original.Path, decision) || !Matches(Snapshot(decision.Original.Path), decision.Original))
                 throw new InvalidDataException("Historical archive decision requires one independently reviewed, present, exactly pinned local original and its specific purpose/reason.");
+        }
+
+        // Existing user evidence without a trusted historical baseline stays
+        // distinct from both archive retirement and capability replacement.
+        var retentions = new Dictionary<string, CurrentEvidenceRetention>(StringComparer.OrdinalIgnoreCase);
+        foreach (var retention in request.CurrentEvidenceRetentions ?? [])
+        {
+            Check();
+            if (retention is null || retention.Current is null) throw new InvalidDataException("Current evidence retention is incomplete.");
+            Pin(retention.Current);
+            if (!retention.IndependentlyVerified || !retention.NoCurrentOperationalResponsibility ||
+                !DecisionText(retention.Purpose) || !DecisionText(retention.Reason) ||
+                !classified.TryGetValue(retention.Current.Path, out var entry) || entry.Tracking != "untracked-existing" ||
+                archives.ContainsKey(retention.Current.Path) || !retentions.TryAdd(retention.Current.Path, retention) ||
+                !Matches(Snapshot(retention.Current.Path), retention.Current))
+                throw new InvalidDataException("Current evidence retention requires exact present user evidence, independent purpose/reason and no remaining operational responsibility; history remains unknown.");
         }
 
         var callerResults = new List<RetirementCallerResult>(); var lines = new List<CallerLine>(); var callerNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase); long callerBytes = 0;
@@ -149,13 +170,14 @@ internal static class RetirementReview
                 {
                     fence = !fence; fenceScope = fence ? precedingScope ?? (historicalSection ? "HISTORICAL_REFERENCE" : null) : null; continue;
                 }
-                var exclusion = Prohibited(line) ? "PROHIBITED_NOTICE" : Historical(line) && !Execution(line, caller.Kind) || historicalSection || fenceScope == "HISTORICAL_REFERENCE" ? "HISTORICAL_REFERENCE" : fenceScope == "PROHIBITED_NOTICE" ? "PROHIBITED_NOTICE" : null;
+                var mixed = MixedProhibitionExecution(line, caller.Kind);
+                var exclusion = mixed ? null : Prohibited(line) ? "PROHIBITED_NOTICE" : Historical(line) && !Execution(line, caller.Kind) || historicalSection || fenceScope == "HISTORICAL_REFERENCE" ? "HISTORICAL_REFERENCE" : fenceScope == "PROHIBITED_NOTICE" ? "PROHIBITED_NOTICE" : null;
                 if (!fence && trimmed.Length != 0) precedingScope = exclusion;
                 if (HasScriptExtension(line) || SuspectedInterpreterInvocation(line, caller.Kind))
                 {
                     if (lines.Count >= 8192) throw new InvalidDataException("Script-referencing caller line bound8192.");
                     lines.Add(new(caller.File.Path, index, caller.Kind, line.Replace('\\', '/'), exclusion,
-                        Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(line)))));
+                        Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(line))), mixed));
                 }
             }
             if (!eof) throw new InvalidDataException("Caller scan iteration bound exceeded.");
@@ -171,7 +193,7 @@ internal static class RetirementReview
         {
             Check(); TaskOperations.Sha(lineReview.CallerSha256); TaskOperations.Sha(lineReview.LineSha256);
             var key = lineReview.CallerPath + "\0" + lineReview.Line;
-            if (!lineReview.IndependentlyVerified || lineReview.Line is < 1 or > 200000 || lineReview.Reason.Length is < 20 or > 1024 ||
+            if (!lineReview.IndependentlyVerified || lineReview.Line is < 1 or > 200000 || !DecisionText(lineReview.Reason) ||
                 !callerByPath.TryGetValue(lineReview.CallerPath, out var caller) || caller.Status != "VERIFIED" || caller.Sha256 != lineReview.CallerSha256 ||
                 !lineByKey.TryGetValue(key, out var line) || line.Sha256 != lineReview.LineSha256 || !reviewed.TryAdd(key, lineReview))
                 throw new InvalidDataException("Independent non-execution review must bind one unique verified caller and exact line SHA.");
@@ -215,7 +237,7 @@ internal static class RetirementReview
             foreach (var path in gate.OriginalPaths)
             {
                 Check();
-                if (!paths.Add(path) || !classified.TryGetValue(path, out var entry) || entry.WorkPackage != gate.WorkPackage || archives.ContainsKey(path)) throw new InvalidDataException("Gate must name exact distinct classification paths within its work package, separate from historical archive decisions.");
+                if (!paths.Add(path) || !classified.TryGetValue(path, out var entry) || entry.WorkPackage != gate.WorkPackage || archives.ContainsKey(path) || retentions.ContainsKey(path)) throw new InvalidDataException("Gate must name exact distinct classification paths within its work package, separate from archive or current-evidence decisions.");
                 if (!coverage.TryGetValue(path, out var ids)) coverage.Add(path, ids = []); ids.Add(gate.Id);
             }
             gateResults.Add(new(gate.Id, reasons.Count == 0 ? "VERIFIED_EXPLICIT_GATE" : "PENDING", gate.CSharpEntry, reasons.ToArray(), sourcePins.ToArray(), receipt));
@@ -267,7 +289,11 @@ internal static class RetirementReview
                 }
                 if (state is null && line.Kind == "documentation" && MarkdownLink(line.Text) && !Execution(line.Text, line.Kind)) { state = "HISTORICAL_LINK_ONLY"; reason = "link without an execution instruction"; }
                 if (state is null && line.Kind == "code" && Comment(line.Text)) { state = "COMMENT_REFERENCE_ONLY"; reason = "source comment is not an execution statement"; }
-                if (state is null)
+                if (line.MixedExecution)
+                {
+                    state = "REVIEW_REQUIRED"; reason = "mixed prohibition and positive execution clauses require independent review"; ambiguous++;
+                }
+                else if (state is null)
                 {
                     var unresolvedBasename = baseMatch && names[basename] > 1;
                     state = !unresolvedBasename && Execution(line.Text, line.Kind) ? "CURRENT_EXECUTION_REFERENCE" : "REVIEW_REQUIRED";
@@ -280,6 +306,10 @@ internal static class RetirementReview
             if (archives.TryGetValue(entry.Path, out var archive))
             {
                 if (!Matches(current, archive.Original)) reasons.Add("ARCHIVED_ORIGINAL_PIN_CHANGED");
+            }
+            else if (retentions.TryGetValue(entry.Path, out var retention))
+            {
+                if (!Matches(current, retention.Current)) reasons.Add("RETAINED_CURRENT_EVIDENCE_PIN_CHANGED");
             }
             else if (!coverage.TryGetValue(entry.Path, out var ids)) { reasons.Add("EXPLICIT_REPLACEMENT_GATE_MISSING"); gaps.Add(new(entry.Path, entry.WorkPackage, entry.Replacement, "EXPLICIT_REPLACEMENT_GATE_MISSING")); }
             else if (ids.Count != 1) reasons.Add("MULTIPLE_REPLACEMENT_GATES_REQUIRE_REVIEW");
@@ -294,16 +324,36 @@ internal static class RetirementReview
             if (executions != 0) reasons.Add("CURRENT_LEGACY_EXECUTION_REFERENCE");
             if (ambiguous != 0) reasons.Add("AMBIGUOUS_CURRENT_REFERENCE");
             if (unresolved.Count != 0) reasons.Add("UNRESOLVED_CURRENT_SCRIPT_EXPRESSION");
-            var stateName = current.Status != "PRESENT" ? "UNKNOWN" : ambiguous != 0 || reasons.Contains("MULTIPLE_REPLACEMENT_GATES_REQUIRE_REVIEW", StringComparer.Ordinal) ? "REVIEW_REQUIRED" : reasons.Count == 0 ? "READY" : "PENDING";
+            var stateName = current.Status != "PRESENT" ? "UNKNOWN" : ambiguous != 0 || reasons.Contains("MULTIPLE_REPLACEMENT_GATES_REQUIRE_REVIEW", StringComparer.Ordinal) ? "REVIEW_REQUIRED" : reasons.Count == 0 ? retentions.ContainsKey(entry.Path) ? "RETAINED_UNKNOWN_HISTORY" : "READY" : "PENDING";
             if (current.Status != "PRESENT") reasons.Add("ORIGINAL_" + current.Status);
             items.Add(new(entry.Path, entry.Tracking, entry.WorkPackage, entry.Disposition, entry.Replacement, entry.OriginalStatus, current, stateName, gateId, executions, ambiguous, reasons.ToArray(), released)
-            { ReviewBasis = archives.ContainsKey(entry.Path) ? "HISTORICAL_RECIPE_ARCHIVE_DECISION" : "CAPABILITY_REPLACEMENT" });
+            { ReviewBasis = archives.ContainsKey(entry.Path) ? "HISTORICAL_RECIPE_ARCHIVE_DECISION" : retentions.ContainsKey(entry.Path) ? "CURRENT_EVIDENCE_RETENTION_UNKNOWN_HISTORY" : "CAPABILITY_REPLACEMENT" });
         }
         Check();
         var ready = items.Count(item => item.ReviewState == "READY"); var pending = items.Count(item => item.ReviewState == "PENDING"); var review = items.Count(item => item.ReviewState == "REVIEW_REQUIRED"); var unknown = items.Count(item => item.ReviewState == "UNKNOWN");
-        if (ready + pending + review + unknown != inventory.Entries) throw new InvalidDataException("Retirement review lost its frozen denominator.");
-        return new(ready == inventory.Entries ? "READY_review_only_no_mutation" : "PENDING_review_incomplete_no_mutation", request.ClassificationSha256, inventory.SourceSha256, root, inventory.Entries, ready, pending, review, unknown, hashed, scopeComplete, items.ToArray(), gateResults.ToArray(), callerResults.ToArray(), findings.ToArray(), gaps.ToArray())
-        { ReviewedNonExecutionLines = reviewed.Values.ToArray(), HistoricalArchiveDecisions = archives.Values.ToArray() };
+        var retained = items.Count(item => item.ReviewState == "RETAINED_UNKNOWN_HISTORY");
+        if (ready + pending + review + unknown + retained != inventory.Entries) throw new InvalidDataException("Retirement review lost its frozen denominator.");
+        var reportStatus = ready == inventory.Entries ? "READY_review_only_no_mutation" : ready + retained == inventory.Entries
+            ? "READY_current_review_unknown_history_retained_no_mutation" : "PENDING_review_incomplete_no_mutation";
+        return new(reportStatus, request.ClassificationSha256, inventory.SourceSha256, root, inventory.Entries, ready, pending, review, unknown, hashed, scopeComplete, items.ToArray(), gateResults.ToArray(), callerResults.ToArray(), findings.ToArray(), gaps.ToArray())
+        {
+            ReviewedNonExecutionLines = reviewed.Values.ToArray(), HistoricalArchiveDecisions = archives.Values.ToArray(),
+            CurrentEvidenceRetentions = retentions.Values.ToArray(), RetainedUnknownHistory = retained, HistoricalBaselineUnknown = inventory.UserEvidence
+        };
+    }
+    private static bool DecisionText(string? text) => !string.IsNullOrWhiteSpace(text) && text.Trim().Length >= 20 && text.Length <= 1024 &&
+        text.Any(char.IsLetterOrDigit) && !text.Any(value => char.IsControl(value) || char.GetUnicodeCategory(value) == System.Globalization.UnicodeCategory.Format);
+    private static bool MixedProhibitionExecution(string text, string kind)
+    {
+        if (kind == "code" && Comment(text)) return false;
+        if (!Prohibited(text)) return false;
+        // This conservative clause check is not a natural-language/control-flow
+        // parser. Ambiguous mixed statements need an exact independent review.
+        var clauses = text.Replace(" but ", ";", StringComparison.OrdinalIgnoreCase).Replace("但", ";", StringComparison.Ordinal)
+            .Replace("然后", ";", StringComparison.Ordinal)
+            .Split([';', '；', '。', ',', '，'], 65, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+        if (clauses.Length == 65) return true;
+        return clauses.Any(Prohibited) && clauses.Any(clause => !Prohibited(clause) && Execution(clause, kind));
     }
     private static bool HasScriptExtension(string text)
     {
@@ -323,7 +373,14 @@ internal static class RetirementReview
     private static bool Prohibited(string text) => new[] { "禁止", "不得", "不要执行", "不能执行", "不再调用", "不得调用", "do not run", "do not execute", "never run", "never execute", "must not" }.Any(marker => text.Contains(marker, StringComparison.OrdinalIgnoreCase));
     private static bool Historical(string text) => new[] { "历史证据", "历史回执", "原始回执", "仅供追溯", "historical evidence", "historical receipt", "reference only" }.Any(marker => text.Contains(marker, StringComparison.OrdinalIgnoreCase));
     private static bool MarkdownLink(string text) => text.Contains("](", StringComparison.Ordinal) && text.Contains(')');
-    private static bool Comment(string text) { var line = text.TrimStart(); return line.StartsWith("//", StringComparison.Ordinal) || line.StartsWith("/*", StringComparison.Ordinal) || line.StartsWith("* ", StringComparison.Ordinal) || line.StartsWith('#'); }
+    private static bool Comment(string text)
+    {
+        var line = text.TrimStart();
+        if (line.StartsWith("//", StringComparison.Ordinal) || line.StartsWith('#')) return true;
+        if (!line.StartsWith("/*", StringComparison.Ordinal)) return false;
+        var end = line.IndexOf("*/", StringComparison.Ordinal);
+        return end < 0 || string.IsNullOrWhiteSpace(line[(end + 2)..]);
+    }
     private static bool SuspectedInterpreterInvocation(string text, string kind) => kind == "code" && !Comment(text) && Execution(text, kind) &&
         new[] { "pwsh", "powershell", "python", "bash", "cmd.exe", "\"cmd\"", "'cmd'", "\"sh\"", "'sh'", "/bin/sh" }.Any(marker => text.Contains(marker, StringComparison.OrdinalIgnoreCase));
     private static bool Execution(string text, string kind)

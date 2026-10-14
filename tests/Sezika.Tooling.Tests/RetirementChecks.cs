@@ -25,7 +25,7 @@ internal static class RetirementChecks
         }
         Fixture Prepare(string name, string callerText = "当前入口为 C# Replacement.Run。\n", string kind = "documentation", bool original = true, bool external = false)
         {
-            cancellation.Token.ThrowIfCancellationRequested(); if (++fixtures > 20) throw new InvalidDataException("Retirement check fixture bound20.");
+            cancellation.Token.ThrowIfCancellationRequested(); if (++fixtures > 23) throw new InvalidDataException("Retirement check fixture bound23.");
             var directory = Path.GetFullPath(Path.Combine(root, "retirement-" + name)); Directory.CreateDirectory(directory);
             var legacy = external ? Path.GetFullPath(Path.Combine(root, "retirement-external-" + name + ".ps1")) : "tools/old.ps1";
             var old = external ? legacy : Path.Combine(directory, legacy);
@@ -39,6 +39,18 @@ internal static class RetirementChecks
             return new(directory, old, request);
         }
         RetirementReport Review(Fixture fixture, RetirementReviewRequest? request = null) => RetirementReview.Review(request ?? fixture.Request, Limit());
+        Fixture RetainedFixture(string name, string callerText = "Current operation uses the reviewed C# entry only.\n")
+        {
+            var fixture = Prepare(name, callerText);
+            using var input = File.OpenRead(Path.Combine(fixture.Root, "classification.json"));
+            var inventory = JsonSerializer.Deserialize(input, RetirementJson.Default.MigrationInventory)!;
+            input.Dispose();
+            Freeze(fixture.Root, [inventory.Assignments[0] with { Tracking = "untracked-existing", OriginalStatus = "UNKNOWN_trusted_historical_baseline" }]);
+            var retention = new CurrentEvidenceRetention(Pin(fixture.Root, "tools/old.ps1"),
+                "Existing one-off report evidence with no trusted historical source baseline.",
+                "Independent owner retains these current bytes without current execution duties or a claim of recovered history.", true, true);
+            return fixture with { Request = fixture.Request with { Gates = [], ClassificationSha256 = Hash(Path.Combine(fixture.Root, "classification.json")), CurrentEvidenceRetentions = [retention] } };
+        }
         void NoMutation(RetirementReport report) => Assert(!report.RetirementPerformed && !report.OriginalScriptsExecuted && !report.SharedSkillsChanged && report.Status != "DONE", "A review became mutation/implementation acceptance.");
 
         check("Retirement tiny explicit gate and pinned caller yield review readiness only", () =>
@@ -155,7 +167,9 @@ internal static class RetirementChecks
                 Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(Encoding.UTF8.GetBytes(line))),
                 "retired-entry-mapping", "Independent fixture review confirms this is a retired-entry mapping without an execution instruction.", true);
             foreach (var invalid in new[] { review with { IndependentlyVerified = false }, review with { LineSha256 = new string('0', 64) },
-                review with { CallerSha256 = new string('0', 64) }, review with { Line = 2 }, review with { Category = "rejection-fixture" } })
+                review with { CallerSha256 = new string('0', 64) }, review with { Line = 2 }, review with { Category = "rejection-fixture" },
+                review with { Reason = new string(' ', 24) }, review with { Reason = new string('\u200b', 24) },
+                review with { Reason = "reason with forbidden control\ncharacters retained" } })
                 Reject(() => Review(fixture, fixture.Request with { ReviewedNonExecutionLines = [invalid] }));
             Reject(() => Review(fixture, fixture.Request with { ReviewedNonExecutionLines = [review, review] }));
             Write(Path.Combine(fixture.Root, "current.md"), line + " changed\n");
@@ -205,6 +219,68 @@ internal static class RetirementChecks
             report = Review(fixture, request with { CurrentCallers = [new(Pin(fixture.Root, "current.md"), "documentation")], CallerScopeDeclaredComplete = false });
             Assert(report.Ready == 0 && report.Pending == 1 && report.Items.Single().Reasons.Contains("CURRENT_CALLER_SCOPE_NOT_COMPLETE_OR_PINNED"),
                 "Archive disposition replaced complete current caller scope.");
+        });
+        check("Retirement existing evidence is retained separately with unknown history and exact denominator", () =>
+        {
+            var fixture = RetainedFixture("retained-current"); var before = File.ReadAllBytes(fixture.Original);
+            var report = Review(fixture); NoMutation(report);
+            Assert(report.Ready == 0 && report.Pending == 0 && report.Unknown == 0 && report.RetainedUnknownHistory == 1 && report.HistoricalBaselineUnknown == 1 &&
+                report.Ready + report.Pending + report.ReviewRequired + report.Unknown + report.RetainedUnknownHistory == report.Entries &&
+                report.Status == "READY_current_review_unknown_history_retained_no_mutation" &&
+                report.Items.Single().ReviewState == "RETAINED_UNKNOWN_HISTORY" && report.Items.Single().ReviewBasis == "CURRENT_EVIDENCE_RETENTION_UNKNOWN_HISTORY" &&
+                report.Items.Single().OriginalStatus == "UNKNOWN_trusted_historical_baseline" && report.HistoricalArchiveDecisions.Length == 0 &&
+                report.Gates.Length == 0 && report.MissingGates.Length == 0 && File.ReadAllBytes(fixture.Original).SequenceEqual(before),
+                "Current retention became archive READY, recovered history, a capability gate or source mutation.");
+            var omitted = Review(fixture, fixture.Request with { CurrentEvidenceRetentions = [] });
+            Assert(omitted.Pending == 1 && omitted.RetainedUnknownHistory == 0 && omitted.HistoricalBaselineUnknown == 1,
+                "Omitting a retention input erased frozen unknown historical evidence.");
+            var wire = JsonSerializer.SerializeToUtf8Bytes(fixture.Request, RetirementJson.Default.RetirementReviewRequest);
+            var rebound = JsonSerializer.Deserialize(wire, RetirementJson.Default.RetirementReviewRequest)!;
+            Assert(Review(fixture, rebound).RetainedUnknownHistory == 1, "Typed retention contract did not roundtrip.");
+        });
+        check("Retirement evidence retention rejects unapproved operational stale conflicting or non-user inputs", () =>
+        {
+            var fixture = RetainedFixture("retained-rejections"); var request = fixture.Request; var retention = request.CurrentEvidenceRetentions![0];
+            foreach (var invalid in new[] { retention with { IndependentlyVerified = false }, retention with { NoCurrentOperationalResponsibility = false },
+                retention with { Purpose = new string(' ', 24) }, retention with { Purpose = new string('\u200b', 24) },
+                retention with { Reason = "short" }, retention with { Reason = "reason with forbidden control\ncharacters retained" },
+                retention with { Current = retention.Current with { Sha256 = new string('0', 64) } }, retention with { Current = retention.Current with { Bytes = retention.Current.Bytes + 1 } },
+                retention with { Current = retention.Current with { Path = "tools/unclassified.ps1" } } })
+                Reject(() => Review(fixture, request with { CurrentEvidenceRetentions = [invalid] }));
+            Reject(() => Review(fixture, request with { CurrentEvidenceRetentions = [retention, retention] }));
+            Reject(() => Review(fixture, request with { HistoricalArchiveDecisions = [new(retention.Current, retention.Purpose, retention.Reason, true)] }));
+            var gate = new ReplacementGate("retention-conflict", "T3", ["tools/old.ps1"], "Replacement.Run", [Pin(fixture.Root, "src/Replacement.cs")], Pin(fixture.Root, "gate.json"), "PASS_explicit_fixture_gate", true);
+            Reject(() => Review(fixture, request with { Gates = [gate] }));
+            using var stream = File.OpenRead(Path.Combine(fixture.Root, "classification.json"));
+            var inventory = JsonSerializer.Deserialize(stream, RetirementJson.Default.MigrationInventory)!; stream.Dispose();
+            Freeze(fixture.Root, [inventory.Assignments[0] with { Tracking = "tracked" }]);
+            Reject(() => Review(fixture, request with { ClassificationSha256 = Hash(Path.Combine(fixture.Root, "classification.json")) }));
+        });
+        check("Retirement current execution or incomplete scope blocks evidence retention without erasing history unknown", () =>
+        {
+            var fixture = RetainedFixture("retained-callers", "pwsh tools/old.ps1\n");
+            var report = Review(fixture); NoMutation(report);
+            Assert(report.Pending == 1 && report.RetainedUnknownHistory == 0 && report.HistoricalBaselineUnknown == 1 && report.Items.Single().ExecutionReferences == 1,
+                "Retention concealed a current operational caller.");
+            foreach (var text in new[] { "禁止运行 pwsh tools/old.ps1；然后执行 pwsh tools/old.ps1\n",
+                "禁止运行 pwsh tools/old.ps1，但执行 pwsh tools/old.ps1\n", "Do not run old.ps1 but run pwsh tools/old.ps1\n" })
+            {
+                cancellation.Token.ThrowIfCancellationRequested();
+                Write(Path.Combine(fixture.Root, "current.md"), text);
+                var mixed = Review(fixture, fixture.Request with { CurrentCallers = [new(Pin(fixture.Root, "current.md"), "documentation")] });
+                Assert(mixed.ReviewRequired == 1 && mixed.RetainedUnknownHistory == 0 && mixed.HistoricalBaselineUnknown == 1,
+                    "A prohibition on the same line hid its positive execution clause.");
+            }
+            Write(Path.Combine(fixture.Root, "current.md"), "/* historical note */ Process.Start(\"pwsh\", \"tools/old.ps1\");\n");
+            var afterComment = Review(fixture, fixture.Request with { CurrentCallers = [new(Pin(fixture.Root, "current.md"), "code")] });
+            Assert(afterComment.Ready == 0 && afterComment.RetainedUnknownHistory == 0 && afterComment.Items.Single().ExecutionReferences == 1,
+                "An inline block comment concealed following executable source.");
+            Write(Path.Combine(fixture.Root, "current.md"), "Current operation uses the C# entry only.\n");
+            report = Review(fixture, fixture.Request with { CurrentCallers = [new(Pin(fixture.Root, "current.md"), "documentation")], CallerScopeDeclaredComplete = false });
+            Assert(report.Pending == 1 && report.RetainedUnknownHistory == 0 && report.HistoricalBaselineUnknown == 1,
+                "Incomplete caller scope certified current evidence retention.");
+            File.AppendAllText(fixture.Original, "changed\n");
+            Reject(() => Review(fixture));
         });
     }
 }

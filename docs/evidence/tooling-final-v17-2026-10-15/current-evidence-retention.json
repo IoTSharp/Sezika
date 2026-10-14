@@ -1,0 +1,160 @@
+{
+  "SchemaVersion": 1,
+  "Status": "PASS_current_evidence_retention_local_source_scope_only",
+  "Module": "current-evidence-retention",
+  "Scope": "逐字节固定、无当前运行职责的既有材料单列 RETAINED_UNKNOWN_HISTORY，保留历史 UNKNOWN 分母、明确语义和拒绝边界；两平台 full22。模块通过不代表本次466条最终退役检查通过。",
+  "SourceManifestSha256": "230130665280ad7d0905c74764c8683f7580d723e52c63002326826d1182dcf3",
+  "Sources": [
+    {
+      "Sha256": "030d8e8138504bd3a4ac0f1b1376190f9afb0b3adba4eb39e1aa604e0b7215bc",
+      "Path": "tools/Sezika.Tooling/Inventory/RetirementReview.cs",
+      "Bytes": 34053
+    },
+    {
+      "Sha256": "673db50027daec7c743c89a6249cb5b6bab70d3cb696115342f2d414615319a1",
+      "Path": "tests/Sezika.Tooling.Tests/RetirementChecks.cs",
+      "Bytes": 29396
+    }
+  ],
+  "Runs": [
+    {
+      "Name": "07-windows-retirement-tiny",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "windows",
+      "RawSha256": "d0458fed054fd7aee3cd9cc9a7b18719f1b30fe60f84b218bce9fc29512119d5",
+      "RawResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-core-prep-v1\\requests\\07-windows-retirement-tiny\\native-execution\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-core-prep-v1\\cases\\07-windows-retirement-tiny\\checks.txt",
+      "Suite": "retirement",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "0b163291c1bacdf739a1b7b9279db162b88da7d093adae3fcccacdc6ef69bd4c",
+      "Summary": "PASS checks=1; elapsed=0.069s; platform=Microsoft Windows NT 10.0.26300.0; native_aot=True",
+      "RootPid": 62384,
+      "Checks": 1,
+      "Status": "PASS",
+      "CheckNames": [
+        "Retirement tiny explicit gate and pinned caller yield review readiness only"
+      ]
+    },
+    {
+      "Name": "08-windows-retirement-full",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "windows",
+      "RawSha256": "9931766172de5e9fa5153afd86f9a60878b69bc53aa077ee13927efcd08db346",
+      "RawResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-core-prep-v1\\requests\\08-windows-retirement-full\\native-execution\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-core-prep-v1\\cases\\08-windows-retirement-full\\checks.txt",
+      "Suite": "retirement",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "4cc15764c0eae1bf9b0b159030edd325186dac1015bdb386199b8b626e370909",
+      "Summary": "PASS checks=22; elapsed=2.803s; platform=Microsoft Windows NT 10.0.26300.0; native_aot=True",
+      "RootPid": 87860,
+      "Checks": 22,
+      "Status": "PASS",
+      "CheckNames": [
+        "Retirement tiny explicit gate and pinned caller yield review readiness only",
+        "Retirement mapping without an independently verified replacement stays pending",
+        "Retirement current interpreter and direct script commands block readiness",
+        "Retirement explicit historical nested sections links and prohibitions are preserved references",
+        "Retirement historical receipt words cannot hide a current execution instruction",
+        "Retirement unresolved code paths remain review required",
+        "Retirement interpreter invocation with a split extension remains review required",
+        "Retirement missing original retains UNKNOWN NOT_FOUND and the denominator",
+        "Retirement changed replacement source invalidates the explicit gate",
+        "Retirement validation status and malformed receipt cannot certify a replacement",
+        "Retirement external entry records project dependency release while preserving the shared source",
+        "Retirement mismatched or undeclared caller scope cannot produce READY",
+        "Retirement synthetic 466 item fixture retains missing sources and exact gate gaps",
+        "Retirement frozen SHA unknown gate paths and cancellation reject without mutation",
+        "Retirement independently reviewed schema metadata binds full caller and exact line",
+        "Retirement unverified duplicate stale line and wrong-category reviews cannot hide references",
+        "Retirement named historical archive decision preserves bytes without claiming capability equivalence",
+        "Retirement archive decisions reject unverified changed duplicate external or conflicting originals",
+        "Retirement archive disposition cannot override current execution or incomplete caller scope",
+        "Retirement existing evidence is retained separately with unknown history and exact denominator",
+        "Retirement evidence retention rejects unapproved operational stale conflicting or non-user inputs",
+        "Retirement current execution or incomplete scope blocks evidence retention without erasing history unknown"
+      ]
+    },
+    {
+      "Name": "29-linux-retirement-tiny",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "linux",
+      "RawSha256": "59387fa11dbe22f9a8fb4637c2b9edc82c6ec8df4a45d7503135437430344940",
+      "RawResult": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\requests\\29-linux-retirement-tiny\\native-execution\\result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\cases\\29-linux-retirement-tiny\\checks.txt",
+      "Suite": "retirement",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "e51e27bc7ca6aad0ea5644b9a97ffb569f821470b2f9350fb89925d0e4328f3c",
+      "Summary": "PASS checks=1; elapsed=0.009s; platform=Unix 6.6.87.2; native_aot=True",
+      "RootPid": 2402696,
+      "Checks": 1,
+      "Status": "PASS",
+      "CheckNames": [
+        "Retirement tiny explicit gate and pinned caller yield review readiness only"
+      ]
+    },
+    {
+      "Name": "30-linux-retirement-full",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "linux",
+      "RawSha256": "3266e3d698a7bfc1f1660a1c4f7931d5dc7d41813312643ce3299e67eca78f4e",
+      "RawResult": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\requests\\30-linux-retirement-full\\native-execution\\result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\cases\\30-linux-retirement-full\\checks.txt",
+      "Suite": "retirement",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "04bd98aae929a12eeb0513e550238b95476e91e9474381b603fd56dcc4245806",
+      "Summary": "PASS checks=22; elapsed=0.137s; platform=Unix 6.6.87.2; native_aot=True",
+      "RootPid": 2402726,
+      "Checks": 22,
+      "Status": "PASS",
+      "CheckNames": [
+        "Retirement tiny explicit gate and pinned caller yield review readiness only",
+        "Retirement mapping without an independently verified replacement stays pending",
+        "Retirement current interpreter and direct script commands block readiness",
+        "Retirement explicit historical nested sections links and prohibitions are preserved references",
+        "Retirement historical receipt words cannot hide a current execution instruction",
+        "Retirement unresolved code paths remain review required",
+        "Retirement interpreter invocation with a split extension remains review required",
+        "Retirement missing original retains UNKNOWN NOT_FOUND and the denominator",
+        "Retirement changed replacement source invalidates the explicit gate",
+        "Retirement validation status and malformed receipt cannot certify a replacement",
+        "Retirement external entry records project dependency release while preserving the shared source",
+        "Retirement mismatched or undeclared caller scope cannot produce READY",
+        "Retirement synthetic 466 item fixture retains missing sources and exact gate gaps",
+        "Retirement frozen SHA unknown gate paths and cancellation reject without mutation",
+        "Retirement independently reviewed schema metadata binds full caller and exact line",
+        "Retirement unverified duplicate stale line and wrong-category reviews cannot hide references",
+        "Retirement named historical archive decision preserves bytes without claiming capability equivalence",
+        "Retirement archive decisions reject unverified changed duplicate external or conflicting originals",
+        "Retirement archive disposition cannot override current execution or incomplete caller scope",
+        "Retirement existing evidence is retained separately with unknown history and exact denominator",
+        "Retirement evidence retention rejects unapproved operational stale conflicting or non-user inputs",
+        "Retirement current execution or incomplete scope blocks evidence retention without erasing history unknown"
+      ]
+    }
+  ],
+  "CheckExecutions": 46.0,
+  "Resources": [
+    {
+      "Sha256": "79fff045455d28574263239d31753ef76df052668ab13366c7896733d84955b4",
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-core-prep-v1\\root-independent-native-audit-v17.json"
+    },
+    {
+      "Sha256": "c1b7ffc3c5111f7fcce5e3290db28bc6062cbf21c95de4b92497c8722ec27cf9",
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-linux-modules-v1\\root-final-thirty-resource-coverage-v17.json"
+    }
+  ],
+  "RuntimeWindowsSha256": "cd4bb0cdd95dc5115098ece059125c79f5a689a24e379b19ae14238cd3a8ed89",
+  "RuntimeLinuxSha256": "a9077a77fcf65f3f685ca6feb9269fc20be4b026cdcb61324ea775ab252a0517",
+  "SdkPolicy": "Unpinned project SDK; actual tool identity recorded in raw build receipts",
+  "LocalNativeAot": true,
+  "FinalCallerRetirementAccepted": false,
+  "ServerLiveAcceptance": "NOT_RUN",
+  "FormalTrainingAccepted": false,
+  "ModelOrDataPublicationAccepted": false,
+  "HistoricalFailuresPreserved": true,
+  "Utc": "2026-10-14T22:06:01.2158243+00:00"
+}
