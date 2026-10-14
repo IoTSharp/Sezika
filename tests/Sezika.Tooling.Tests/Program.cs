@@ -10,9 +10,9 @@ if (args.Length > 0 && args[0] == "--serve-native-git-http") return await Native
 if (args.Length is not (4 or 6) || args[0] != "--output" || args[2] != "--maximum-checks" || !int.TryParse(args[3], out var maximumChecks) || maximumChecks is < 1 or > 256 || (args.Length == 6 && args[4] != "--suite"))
     throw new ArgumentException("--output <new-owned-directory> --maximum-checks 1..256 [--suite baseline|inventory|all]");
 var suite = args.Length == 6 ? args[5] : "baseline";
-if (suite is not ("baseline" or "inventory" or "execution" or "audit" or "corpus" or "task" or "transport" or "git" or "windows-lifecycle" or "all")) throw new ArgumentException("Unknown suite.");
+if (suite is not ("baseline" or "inventory" or "execution" or "audit" or "corpus" or "task" or "transport" or "git" or "windows-lifecycle" or "validation" or "validation-cli" or "all")) throw new ArgumentException("Unknown suite.");
 var runSuite = suite is "baseline" or "all";
-var suiteSeconds = suite == "windows-lifecycle" ? (maximumChecks == 1 ? 45 : 240) : suite == "git" ? 300 : suite == "execution" ? 90 : 45;
+var suiteSeconds = suite == "windows-lifecycle" ? (maximumChecks == 1 ? 45 : 240) : suite == "git" ? 300 : suite == "execution" ? 90 : (suite is "validation" or "validation-cli") ? 120 : 45;
 using var cancel = new CancellationTokenSource(TimeSpan.FromSeconds(suiteSeconds));
 StartupGate.Wait(cancel.Token);
 var root = Path.GetFullPath(args[1]);
@@ -198,6 +198,10 @@ runSuite = suite is "git" or "all";
 if (runSuite) NativeGitChecks.Run(root, Test);
 runSuite = suite == "windows-lifecycle";
 if (runSuite) WindowsLifecycleChecks.Run(root, Environment.GetEnvironmentVariable("SEZIKA_LIFECYCLE_REPOSITORY") ?? Directory.GetCurrentDirectory(), maximumChecks, Test, cancel.Token);
+runSuite = suite is "validation" or "all";
+if (runSuite) ValidationChecks.Run(root, Test);
+runSuite = suite is "validation-cli";
+if (runSuite) ValidationCliChecks.Run(root, Test);
 if (checks == 0) throw new InvalidOperationException("No checks ran.");
 File.WriteAllLines(Path.Combine(root, "checks.txt"), names.Append($"PASS checks={checks}; elapsed={watch.Elapsed.TotalSeconds:F3}s; platform={Environment.OSVersion}; native_aot={!System.Runtime.CompilerServices.RuntimeFeature.IsDynamicCodeSupported}"));
 Console.WriteLine($"PASS {checks} checks; suite={suite}; seconds={watch.Elapsed.TotalSeconds:F3}; fixtures preserved at {root}");

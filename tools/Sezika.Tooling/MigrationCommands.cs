@@ -14,9 +14,10 @@ internal sealed record PublicationCommitRequest(string SourceRoot, string Previe
 
 internal static class MigrationCommands
 {
-    internal static readonly string[] Commands = ["git run", "transport download", "transport prepare", "transport verify", "transport reassemble", "publication preview", "publication prepare", "publication upload", "publication commit", "task prepare", "bundle freeze", "archive pack", "checkpoint verify", "host inspect", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind"];
+    internal static readonly string[] Commands = ["git run", "transport download", "transport prepare", "transport verify", "transport reassemble", "publication preview", "publication prepare", "publication upload", "publication commit", "task prepare", "bundle freeze", "archive pack", "checkpoint verify", "host inspect", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind", "validation profile", "validation summarize", "validation data-admission", "validation language-audit", "validation batch", "validation near-ties"];
     internal static int Run(string command, string requestPath, string output, Budget budget, CancellationToken cancellation)
     {
+        if (command.StartsWith("validation ", StringComparison.Ordinal)) return RunValidation(command, requestPath, output, budget);
         T Read<T>(JsonTypeInfo<T> type)
         {
             var path = Path.GetFullPath(requestPath); RegularFiles.Require(path, budget);
@@ -89,6 +90,65 @@ internal static class MigrationCommands
             case "corpus estimate": return Save(CorpusOperations.Estimate(Read(CorpusJsonContext.Default.CorpusEstimateRequest), budget), CorpusJsonContext.Default.CorpusEstimateReport);
             case "corpus bind": return Save(CorpusOperations.Bind(Read(CorpusJsonContext.Default.CorpusBindRequest), budget), CorpusJsonContext.Default.CorpusBinding);
             default: throw new ArgumentException("Unsupported corpus migration command.");
+        }
+    }
+    private static int RunValidation(string command, string requestPath, string output, Budget budget)
+    {
+        T Read<T>(JsonTypeInfo<T> type)
+        {
+            var path = Path.GetFullPath(requestPath); RegularFiles.Require(path, budget);
+            if (new FileInfo(path).Length > 4 * 1024 * 1024) throw new InvalidDataException("Validation request exceeds4MiB.");
+            return CorpusJson.Read(path, type, budget);
+        }
+        void Bind(string requested, bool directory)
+        {
+            var expected = Path.GetFullPath(output + (directory ? ".artifacts" : ""));
+            if (!Path.IsPathFullyQualified(requested) || !string.Equals(Path.GetFullPath(requested), expected,
+                    OperatingSystem.IsWindows() ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal))
+                throw new InvalidDataException("Validation request Output differs from the exact CLI report/artifact binding.");
+        }
+        int Finish<T>(T result, string reportPath, JsonTypeInfo<T> type, bool outerReport = false)
+        {
+            var actual = CorpusJson.Read(reportPath, type, budget);
+            if (CorpusJson.Canonical(JsonSerializer.SerializeToElement(result, type)) != CorpusJson.Canonical(JsonSerializer.SerializeToElement(actual, type)))
+                throw new InvalidDataException("Validation report readback differs from the returned typed result.");
+            var exit = actual switch
+            {
+                ProfileValidationReport { Status: "PASS_HISTORICAL_PROFILE_CONSISTENCY_ONLY" } => 0,
+                S5SummaryReport { Status: "PASS_HISTORICAL_S5_REPORT_CONSISTENCY_ONLY" } => 0,
+                LanguageAuditReport { Status: "original_fixture_audit_not_independent_quality_acceptance" } => 0,
+                ValidationBatchReport { Status: "PASS_BOUNDED_NATIVE_VALIDATION" } => 0,
+                ValidationBatchReport { Status: "PARTIAL_OR_FAILED_VALIDATION_PRESERVE_RECEIPTS" } => 1,
+                NearTieReport { Status: "COMPLETE_HISTORICAL_MARGIN_OBSERVATION_ONLY" } => 0,
+                NearTieReport { Status: "PARTIAL_HISTORICAL_MARGIN_OBSERVATION" } => 1,
+                DataAdmissionReport { Status: "blocked" } => 1,
+                DataAdmissionReport { Status: "checks_passed_pending_human_acceptance" } => 3,
+                _ => 2
+            };
+            if (outerReport) CorpusJson.Write(output, actual, type, budget);
+            return exit;
+        }
+        switch (command)
+        {
+            case "validation profile":
+                var profile = Read(ValidationJsonContext.Default.ProfileValidationRequest); Bind(profile.Output, false);
+                return Finish(ValidationOperations.Profile(profile, budget), output, ValidationJsonContext.Default.ProfileValidationReport);
+            case "validation summarize":
+                var summary = Read(ValidationJsonContext.Default.S5SummaryRequest); Bind(summary.Output, false);
+                return Finish(ValidationOperations.Summarize(summary, budget), output, ValidationJsonContext.Default.S5SummaryReport);
+            case "validation data-admission":
+                var admission = Read(ValidationJsonContext.Default.DataAdmissionRequest); Bind(admission.Output, false);
+                return Finish(ValidationOperations.DataAdmission(admission, budget), output, ValidationJsonContext.Default.DataAdmissionReport);
+            case "validation language-audit":
+                var language = Read(ValidationJsonContext.Default.LanguageAuditRequest); Bind(language.Output, true);
+                return Finish(ValidationOperations.LanguageAudit(language, budget), Path.Combine(language.Output, "manifest.json"), ValidationJsonContext.Default.LanguageAuditReport, true);
+            case "validation batch":
+                var batch = Read(ValidationJsonContext.Default.ValidationBatchRequest); Bind(batch.Output, true);
+                return Finish(ValidationOperations.Batch(batch, budget), Path.Combine(batch.Output, "report.json"), ValidationJsonContext.Default.ValidationBatchReport, true);
+            case "validation near-ties":
+                var near = Read(ValidationJsonContext.Default.NearTieRequest); Bind(near.Output, false);
+                return Finish(ValidationOperations.NearTies(near, budget), output, ValidationJsonContext.Default.NearTieReport);
+            default: throw new ArgumentException("Unknown validation command.");
         }
     }
 }
