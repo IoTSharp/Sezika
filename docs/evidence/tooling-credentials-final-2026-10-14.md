@@ -1,0 +1,9 @@
+# T2 Windows 凭据与有界输入通道回归
+
+2026-10-14。测试调用已提交的C#凭据实现，没有读取、枚举或改写用户凭据。Windows只操作最多4个`Sezika.Tooling.Fixture.<随机GUID>`临时generic target：先记精确名字、拒绝碰撞，finally删除自身实际尝试写入的target并重新验证缺失。UTF8、UTF16LE Unicode、错误编码/畸形字节、缺失/畸形target、Dispose后拒绝读取、原buffer清零、日志redaction和有界stdin通道分别验收；secret不进入argv/输出/源码。
+
+`tooling-final-combined-candidate-v1`固定92文件，manifest SHA256 `7123d23ce6b0993456e892e03a6e667550d88a7ac78581c6f4cab8356b07367c`。Windows FDD实际tiny1/full8全部通过，tiny1和full4个target均精确关闭。Linux Native AOT实际tiny1/full5通过，WindowsStoreUnsupported明确保留，不能因此声称Linux支持Windows凭据库。
+
+检查项目仅加`AllowUnsafeBlocks=true`供静态LibraryImport生成绑定；无动态加载、脚本、凭据helper或全局配置修改。完整21运行文件及源码前后不变。组合5组native资源审计Linux16回执73身份与Windows30回执110身份均缺失/复用，live0/unknown0；这些是整个组合分母，不全计为本套件。验收摘要 SHA256 `5616e8ba4c88c94b22d7c16d56b2be0ca688254e174e394dc79d78900b34ee3b`。
+
+本切片只提交专属检查、测试项目必要编译属性及准确测试入口partial。原始失败和其他套件的预期FAIL均保持；真实平台凭据、真实授权发布和现场服务器不在这些fixture验收范围。整体工具迁移仍按ROADMAP继续。
