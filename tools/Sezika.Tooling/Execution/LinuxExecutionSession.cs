@@ -29,7 +29,7 @@ internal static class AncestorAdmission
     {
         var observer = new AdmissionObserver { OutputDirectory = directory, OwnershipId = scope, NativeIdentity = caller };
         Shape(observer);
-        RequireNativeCaller(caller, ProcessObserver.Observe(Environment.ProcessId));
+        RequireNativeCaller(caller, ProcessObserver.Observe(Environment.ProcessId, budget));
         RequireOwnedDirectory(observer, budget);
         WriteNew(Path.Combine(directory, "observer.json"), JsonSerializer.SerializeToUtf8Bytes(observer, ExecutionJsonContext.Default.AdmissionObserver));
         return observer;
@@ -40,7 +40,7 @@ internal static class AncestorAdmission
         if (request.LinuxObservers is null || request.LinuxObservers.Length > 63 - inherited.Length) throw new IOException("Linux observer chain exceeds64 declarations.");
         foreach (var additional in request.LinuxObservers)
         {
-            Shape(additional); RequireNativeCaller(additional.NativeIdentity, ProcessObserver.Observe(Environment.ProcessId));
+            Shape(additional); RequireNativeCaller(additional.NativeIdentity, ProcessObserver.Observe(Environment.ProcessId, budget));
             if (inherited.Length == 0 || !additional.OutputDirectory.StartsWith(inherited[0].OutputDirectory + Path.DirectorySeparatorChar, StringComparison.Ordinal))
                 throw new IOException("Additional Linux observer declarations must be inside this task's inherited owned output.");
         }
@@ -98,7 +98,7 @@ internal static class AncestorAdmission
         // that boundary are not part of this execution's ownership proof.
         for (var depth = 0; depth < 64 && cursor > 0 && remaining.Count > 0 && clock.Elapsed.TotalSeconds < 2; depth++)
         {
-            budget.Check(); var stat = LinuxExecutionSession.TryStat(cursor); if (stat is null) break;
+            budget.Check(); var stat = LinuxExecutionSession.TryStat(cursor, budget); if (stat is null) break;
             if (!ancestors.TryAdd(cursor, stat.Value.Start)) throw new IOException("Linux native ancestor cycle.");
             remaining.Remove(cursor); cursor = stat.Value.Parent;
         }
@@ -109,7 +109,7 @@ internal static class AncestorAdmission
             Shape(observer);
             if (!paths.Add(observer.OutputDirectory) || !scopes.Add(observer.OwnershipId) || !ancestors.TryGetValue(observer.NativeIdentity.Pid, out var birth) || birth != observer.NativeIdentity.StartTicks)
                 throw new IOException("Linux observer duplicate path or non-ancestor declaration.");
-            var actual = ProcessObserver.Observe(observer.NativeIdentity.Pid); RequireNativeCaller(observer.NativeIdentity, actual);
+            var actual = ProcessObserver.Observe(observer.NativeIdentity.Pid, budget); RequireNativeCaller(observer.NativeIdentity, actual);
             RequireOwnedDirectory(observer, budget);
             var path = Path.Combine(observer.OutputDirectory, "observer.json"); RegularFiles.Require(path, budget);
             if (new FileInfo(path).Length > 65536) throw new IOException("Linux observer declaration exceeds64KiB.");
@@ -133,7 +133,7 @@ internal static class AncestorAdmission
             if (session.AdmissionPublished(member)) continue;
             var path = SignalPath(directory, member); SafePaths.NoLinks(path, budget);
             if (File.Exists(path)) continue;
-            if (!SameNative(member, ProcessObserver.Observe(member.Pid)) || LinuxExecutionSession.ExecutionScope(member.Pid) != member.ScopeId) continue;
+            if (!SameNative(member, ProcessObserver.Observe(member.Pid, budget)) || LinuxExecutionSession.ExecutionScope(member.Pid, budget) != member.ScopeId) continue;
             Directory.CreateDirectory(Path.GetDirectoryName(path)!);
             WriteNew(path, JsonSerializer.SerializeToUtf8Bytes(new AdmissionSignal { ObserverOwnershipId = scope, NativeIdentity = member }, ExecutionJsonContext.Default.AdmissionSignal));
             session.AdmissionPublished(member, true);
@@ -147,7 +147,7 @@ internal static class AncestorAdmission
         try { Validate(observers, budget); }
         catch (IOException error) { throw new IOException("Linux ancestor admission stage=" + stage + "; observer validation: " + error.Message, error); }
         catch (TimeoutException error) { throw new TimeoutException("Linux ancestor admission stage=" + stage + "; missing_observers=" + string.Join(',', missing.Order()) + "; declaration validation deadline.", error); }
-        var actual = ProcessObserver.Observe(Environment.ProcessId);
+        var actual = ProcessObserver.Observe(Environment.ProcessId, budget);
         var scope = Environment.GetEnvironmentVariable("SEZIKA_EXECUTION_ID");
         if (actual.State != "Present" || actual.StartTicks is null || string.IsNullOrEmpty(actual.CommandLine) || !Guid.TryParseExact(scope, "N", out _))
             throw new IOException("Linux admission wait lacks complete current native birth/argv/scope.");
@@ -162,7 +162,7 @@ internal static class AncestorAdmission
             {
                 var key = observer.NativeIdentity.Pid.ToString(CultureInfo.InvariantCulture) + "/" + observer.OwnershipId;
                 budget.Check(); if (clock.Elapsed.TotalSeconds >= 2) throw new TimeoutException("Linux ancestor admission stage=" + stage + "; shared2s deadline; missing_observers=" + string.Join(',', missing.Order()));
-                if (!SameNative(observer.NativeIdentity, ProcessObserver.Observe(observer.NativeIdentity.Pid)))
+                if (!SameNative(observer.NativeIdentity, ProcessObserver.Observe(observer.NativeIdentity.Pid, budget)))
                     throw new IOException("Linux ancestor admission stage=" + stage + "; observer=" + observer.NativeIdentity.Pid + " died or changed native identity.");
                 var path = SignalPath(observer.OutputDirectory, member); SafePaths.NoLinks(path, budget);
                 if (!File.Exists(path)) { complete = false; missing.Add(key); continue; }
@@ -368,66 +368,113 @@ internal sealed class LinuxExecutionSession : IExecutionSession
         }
         finally { input?.Dispose(); input = null; }
     }
-    public int[] Members()
+    public int[] Members() => MembersCore(new Budget(2, null, CancellationToken.None), null);
+
+    internal int[] Members(Budget parentBudget, Action<int, ulong, Budget> onOwned)
+    {
+        ArgumentNullException.ThrowIfNull(parentBudget);
+        ArgumentNullException.ThrowIfNull(onOwned);
+        parentBudget.Check();
+        var scanBudget = new Budget(2, null, parentBudget.Cancellation, parentBudget);
+        return MembersCore(scanBudget, onOwned);
+    }
+
+    private int[] MembersCore(Budget? scanBudget, Action<int, ulong, Budget>? onOwned)
     {
         var result = new List<int>(); var clock = Stopwatch.StartNew(); var count = 0;
-        // /proc metadata enumeration only: <=8192 entries and a shared2s wall
-        // bound. Executable/tool discovery never uses this scan.
-        foreach (var directory in Directory.EnumerateDirectories("/proc"))
+        var selected = new HashSet<int>();
+        void ObserveOwned(int pid)
         {
-            if (++count > 8192 || clock.Elapsed.TotalSeconds >= 2) throw new IOException("Linux process inventory bound exceeded.");
-            if (!int.TryParse(Path.GetFileName(directory), NumberStyles.None, CultureInfo.InvariantCulture, out var pid)) continue;
-            var stat = TryStat(pid);
-            if (stat is null) continue;
-            if (births.TryGetValue(pid, out var birth) && birth != stat.Value.Start) continue;
+            scanBudget?.Check();
+            var stat = TryStat(pid, scanBudget);
+            scanBudget?.Check();
+            if (stat is null) return;
+            if (births.TryGetValue(pid, out var birth) && birth != stat.Value.Start) return;
             if (pid == Pid || known.Contains(pid) || stat.Value.Group == Pid || known.Contains(stat.Value.Parent) ||
-                (stat.Value.Parent == Environment.ProcessId && HasOwnershipMarker(pid)))
+                (stat.Value.Parent == Environment.ProcessId && HasOwnershipMarker(pid, scanBudget)))
             {
-                if (result.Count >= maximumProcesses) throw new IOException("Linux owned-process count exceeded.");
-                result.Add(pid); known.Add(pid); births.TryAdd(pid, stat.Value.Start);
+                if (selected.Add(pid))
+                {
+                    if (result.Count >= maximumProcesses) throw new IOException("Linux owned-process count exceeded.");
+                    result.Add(pid); known.Add(pid); births.TryAdd(pid, stat.Value.Start);
+                }
+                if (onOwned is not null)
+                {
+                    scanBudget!.Check();
+                    onOwned(pid, stat.Value.Start, scanBudget);
+                    scanBudget.Check();
+                }
             }
         }
+        // A task-owned PID declaration is only a scheduling hint. The same
+        // selector and complete native registration still apply; no cached
+        // tuple or PID-file value can establish ownership or admission.
+        var watchdog = WatchdogPid(scanBudget);
+        if (watchdog is int declaredWatchdog)
+        {
+            if (++count > 8192 || clock.Elapsed.TotalSeconds >= 2) throw new IOException("Linux process inventory bound exceeded.");
+            ObserveOwned(declaredWatchdog);
+        }
+        // Include the priority lookup in the original8192/shared2s inventory
+        // bound. A repeated PID may be reobserved; owned members are counted once.
+        foreach (var directory in Directory.EnumerateDirectories("/proc"))
+        {
+            scanBudget?.Check();
+            if (++count > 8192 || clock.Elapsed.TotalSeconds >= 2) throw new IOException("Linux process inventory bound exceeded.");
+            if (!int.TryParse(Path.GetFileName(directory), NumberStyles.None, CultureInfo.InvariantCulture, out var pid)) continue;
+            ObserveOwned(pid);
+        }
+        scanBudget?.Check();
         return result.ToArray();
     }
-    internal static (int Parent, int Group, ulong Start, string State)? TryStat(int pid)
+    internal static (int Parent, int Group, ulong Start, string State)? TryStat(int pid, Budget? budget = null)
     {
+        budget?.Check();
         try
         {
-            var text = ReadMetadata("/proc/" + pid.ToString(CultureInfo.InvariantCulture) + "/stat");
+            var text = ReadMetadata("/proc/" + pid.ToString(CultureInfo.InvariantCulture) + "/stat", budget);
             var parsed = ProcessObserver.ParseLinuxStat(text, pid);
             var fields = text[(text.LastIndexOf(')') + 1)..].Split(' ', StringSplitOptions.RemoveEmptyEntries);
             if (!int.TryParse(fields[2], NumberStyles.None, CultureInfo.InvariantCulture, out var group)) throw new IOException("Invalid process group field.");
+            budget?.Check();
             return (parsed.ParentPid, group, parsed.StartTicks, parsed.State);
         }
-        catch (FileNotFoundException) { return null; }
-        catch (DirectoryNotFoundException) { return null; }
+        catch (FileNotFoundException) { budget?.Check(); return null; }
+        catch (DirectoryNotFoundException) { budget?.Check(); return null; }
     }
-    private bool HasOwnershipMarker(int pid)
+    private bool HasOwnershipMarker(int pid, Budget? budget = null)
     {
-        var scope = ExecutionScope(pid);
+        var scope = ExecutionScope(pid, budget);
         return scope is not null && ownershipScopes.Contains(scope);
     }
-    internal static string? ExecutionScope(int pid)
+    internal static string? ExecutionScope(int pid, Budget? budget = null)
     {
+        budget?.Check();
         // Only the task marker is returned. No inherited credential/environment
         // values enter receipts, errors, command lines or public results.
         try
         {
-            var entries = ReadMetadata("/proc/" + pid.ToString(CultureInfo.InvariantCulture) + "/environ").Split('\0');
+            var entries = ReadMetadata("/proc/" + pid.ToString(CultureInfo.InvariantCulture) + "/environ", budget).Split('\0');
             foreach (var entry in entries)
+            {
+                budget?.Check();
                 if (entry.StartsWith("SEZIKA_EXECUTION_ID=", StringComparison.Ordinal) && Guid.TryParseExact(entry[20..], "N", out _)) return entry[20..];
+            }
             return null;
         }
-        catch (IOException) { return null; }
-        catch (UnauthorizedAccessException) { return null; }
+        catch (IOException) { budget?.Check(); return null; }
+        catch (UnauthorizedAccessException) { budget?.Check(); return null; }
     }
-    internal static string ReadMetadata(string path)
+    internal static string ReadMetadata(string path, Budget? budget = null)
     {
+        budget?.Check();
         using var source = File.OpenRead(path); using var output = new MemoryStream();
         var buffer = new byte[1024]; var clock = Stopwatch.StartNew();
         for (var block = 0; block < 65 && clock.Elapsed.TotalSeconds < 1; block++)
         {
+            budget?.Check();
             var size = source.Read(buffer);
+            budget?.Check();
             if (size == 0) return Encoding.UTF8.GetString(output.GetBuffer(), 0, checked((int)output.Length));
             if (output.Length + size > 65536) throw new IOException("Linux process metadata exceeds64KiB.");
             output.Write(buffer, 0, size);
@@ -436,10 +483,11 @@ internal sealed class LinuxExecutionSession : IExecutionSession
     }
     internal static ProcessObservation ObserveRegistrationCandidate(ProcessObservation first, string? inheritedCommandLine, Budget budget)
     {
+        budget.Check();
         if (first.State != "Present" || (!string.IsNullOrEmpty(first.CommandLine) && first.CommandLine != inheritedCommandLine) || first.StartTicks is null ||
             string.IsNullOrEmpty(first.BootId) || first.ParentPid <= 0) return first;
         var clock = Stopwatch.StartNew();
-        var scope = ExecutionScope(first.Pid);
+        var scope = ExecutionScope(first.Pid, budget);
         if (scope is null) return first;
         var actual = first;
         // One shared100ms deadline, at most20 observations and5ms cancellable
@@ -452,11 +500,11 @@ internal sealed class LinuxExecutionSession : IExecutionSession
             if (pause <= 0) break;
             if (budget.Cancellation.WaitHandle.WaitOne(pause)) budget.Check();
             if (clock.Elapsed.TotalMilliseconds >= 100) break;
-            actual = ProcessObserver.Observe(first.Pid);
+            actual = ProcessObserver.Observe(first.Pid, budget);
             budget.Check();
             if (actual.State != "Present") return actual;
             if (actual.ParentPid != first.ParentPid || actual.StartTicks != first.StartTicks || actual.BootId != first.BootId ||
-                ExecutionScope(first.Pid) != scope)
+                ExecutionScope(first.Pid, budget) != scope)
                 return actual with { State = "Unknown", Error = "Native Linux birth/parent/boot/scope changed during bounded argv reobservation." };
             if (clock.Elapsed.TotalMilliseconds >= 100)
                 return actual with { State = "Unknown", Error = "Native Linux argv reobservation exceeded its shared100ms deadline." };
@@ -464,12 +512,15 @@ internal sealed class LinuxExecutionSession : IExecutionSession
         }
         return actual with { State = "Unknown", Error = "Native Linux argv remained empty or exactly inherited at the shared100ms admission deadline." };
     }
-    public void Register(ExecutionIdentity identity)
+    public void Register(ExecutionIdentity identity) => Register(identity, null);
+
+    internal void Register(ExecutionIdentity identity, Budget? budget)
     {
+        budget?.Check();
         if (pidFds.ContainsKey(identity.Pid))
         {
             if (!RetainsBirth(identity)) throw new IOException("Registered pidfd birth identity differs.");
-            BindWatchdogRole(identity);
+            BindWatchdogRole(identity, budget);
             return;
         }
         if (identity.Platform != "linux" || identity.StartTicks is null || string.IsNullOrEmpty(identity.BootId) ||
@@ -477,33 +528,48 @@ internal sealed class LinuxExecutionSession : IExecutionSession
         var opened = ExecutionNative.PidFdOpen(434, identity.Pid, 0);
         if (opened < 0) throw Error("pidfd_open");
         var handle = new ExecutionFd(checked((int)opened));
-        var current = TryStat(identity.Pid);
-        if (current is null || current.Value.Start != identity.StartTicks)
+        var transferred = false;
+        try
         {
-            handle.Dispose(); throw new IOException("Identity changed while acquiring pidfd.");
+            budget?.Check();
+            var current = TryStat(identity.Pid, budget);
+            budget?.Check();
+            if (current is null || current.Value.Start != identity.StartTicks)
+                throw new IOException("Identity changed while acquiring pidfd.");
+            pidFds.Add(identity.Pid, handle);
+            transferred = true;
+            registeredBirths.Add(identity.Pid, (identity.StartTicks.Value, identity.BootId, identity.ParentPid, identity.CommandLine));
+            births[identity.Pid] = identity.StartTicks!.Value;
+            if (identity.ScopeId is not null) ownershipScopes.Add(identity.ScopeId);
+            BindWatchdogRole(identity, budget);
         }
-        pidFds.Add(identity.Pid, handle);
-        registeredBirths.Add(identity.Pid, (identity.StartTicks.Value, identity.BootId, identity.ParentPid, identity.CommandLine));
-        births[identity.Pid] = identity.StartTicks!.Value;
-        if (identity.ScopeId is not null) ownershipScopes.Add(identity.ScopeId);
-        BindWatchdogRole(identity);
+        finally
+        {
+            if (!transferred) handle.Dispose();
+        }
     }
-    internal bool ReadyForRegistration(ExecutionIdentity identity) => identity.CommandLine != watchdogCommandLine || MatchesDeclaredWatchdog(identity);
-    private void BindWatchdogRole(ExecutionIdentity identity)
+    internal bool ReadyForRegistration(ExecutionIdentity identity, Budget? budget = null)
     {
+        budget?.Check();
+        return identity.CommandLine != watchdogCommandLine || MatchesDeclaredWatchdog(identity, budget);
+    }
+    private void BindWatchdogRole(ExecutionIdentity identity, Budget? budget = null)
+    {
+        budget?.Check();
         if (identity.CommandLine != watchdogCommandLine) return;
-        if (!RetainsBirth(identity) || !MatchesDeclaredWatchdog(identity))
+        if (!RetainsBirth(identity) || !MatchesDeclaredWatchdog(identity, budget))
             throw new IOException("Declared watchdog native birth/parent/argv/scope and retained pidfd are not confirmed.");
         // Ownership is fixed before the first immutable registration snapshot.
         identity.Ownership = "linux-watchdog";
     }
-    private bool MatchesDeclaredWatchdog(ExecutionIdentity identity)
+    private bool MatchesDeclaredWatchdog(ExecutionIdentity identity, Budget? budget = null)
     {
-        if (WatchdogPid() != identity.Pid || identity.ParentPid != Pid || identity.ScopeId != ownershipId ||
+        budget?.Check();
+        if (WatchdogPid(budget) != identity.Pid || identity.ParentPid != Pid || identity.ScopeId != ownershipId ||
             identity.CommandLine != watchdogCommandLine) return false;
-        var actual = ProcessObserver.Observe(identity.Pid);
+        var actual = ProcessObserver.Observe(identity.Pid, budget);
         return actual.State == "Present" && actual.StartTicks == identity.StartTicks && actual.BootId == identity.BootId &&
-            actual.ParentPid == Pid && actual.CommandLine == watchdogCommandLine && ExecutionScope(identity.Pid) == ownershipId;
+            actual.ParentPid == Pid && actual.CommandLine == watchdogCommandLine && ExecutionScope(identity.Pid, budget) == ownershipId;
     }
     internal bool RetainsBirth(ExecutionIdentity identity) => pidFds.ContainsKey(identity.Pid) && registeredBirths.TryGetValue(identity.Pid, out var pin) &&
         identity.Platform == "linux" && identity.StartTicks == pin.Ticks && identity.BootId == pin.Boot && identity.ParentPid == pin.Parent &&
@@ -514,14 +580,17 @@ internal sealed class LinuxExecutionSession : IExecutionSession
         if (mark) publishedAdmissions.Add(identity.Pid);
         return publishedAdmissions.Contains(identity.Pid);
     }
-    internal bool HasExitedBirth(ExecutionIdentity identity)
+    internal bool HasExitedBirth(ExecutionIdentity identity, Budget? budget = null)
     {
+        budget?.Check();
         if (!RetainsBirth(identity)) return false;
-        try { if (ReadMetadata("/proc/sys/kernel/random/boot_id").Trim() != identity.BootId) return false; }
+        try { if (ReadMetadata("/proc/sys/kernel/random/boot_id", budget).Trim() != identity.BootId) return false; }
         catch (IOException) { return false; }
         catch (UnauthorizedAccessException) { return false; }
         var descriptor = new ExecutionNative.PollFd { Descriptor = pidFds[identity.Pid].Value, Events = 1 }; // POLLIN
+        budget?.Check();
         var observed = ExecutionNative.poll(ref descriptor, 1, 0);
+        budget?.Check();
         if (observed < 0 || (descriptor.Returned & (8 | 32)) != 0) return false; // POLLERR/POLLNVAL never prove exit
         // The retained descriptor was pinned while native birth/parent/argv
         // were complete. POLLIN proves termination; POLLHUP proves reaping.
@@ -583,18 +652,21 @@ internal sealed class LinuxExecutionSession : IExecutionSession
         }
         return true;
     }
-    private int? WatchdogPid()
+    private int? WatchdogPid(Budget? budget = null)
     {
+        budget?.Check();
         var path = Path.Combine(outputDirectory, "watchdog.pid");
         if (!File.Exists(path)) return null;
         if (new FileInfo(path).Length > 32) throw new IOException("Watchdog PID metadata bound.");
-        return int.TryParse(File.ReadAllText(path), NumberStyles.None, CultureInfo.InvariantCulture, out var pid) && pid > 0 ? pid : null;
+        var text = budget is null ? File.ReadAllText(path) : ReadMetadata(path, budget);
+        return int.TryParse(text, NumberStyles.None, CultureInfo.InvariantCulture, out var pid) && pid > 0 ? pid : null;
     }
-    internal void AcknowledgeWatchdog(IReadOnlyDictionary<int, ExecutionIdentity> records)
+    internal void AcknowledgeWatchdog(IReadOnlyDictionary<int, ExecutionIdentity> records, Budget? budget = null)
     {
-        var pid = WatchdogPid();
+        budget?.Check();
+        var pid = WatchdogPid(budget);
         if (pid is null || !records.TryGetValue(pid.Value, out var identity) || !RetainsBirth(identity) ||
-            identity.Ownership != "linux-watchdog" || !MatchesDeclaredWatchdog(identity)) return;
+            identity.Ownership != "linux-watchdog" || !MatchesDeclaredWatchdog(identity, budget)) return;
         var path = Path.Combine(outputDirectory, "watchdog-registered");
         if (File.Exists(path)) return;
         using (var file = new FileStream(path + ".pending", FileMode.CreateNew, FileAccess.Write, FileShare.Read))
@@ -604,7 +676,7 @@ internal sealed class LinuxExecutionSession : IExecutionSession
     internal bool PrepareTermination(IReadOnlyDictionary<int, ExecutionIdentity> records, Budget budget)
     {
         budget.Check(); cleanupAdmission ??= Stopwatch.StartNew(); AncestorAdmission.Cancel(outputDirectory, ownershipId, budget);
-        var watchdog = WatchdogPid();
+        var watchdog = WatchdogPid(budget);
         if (watchdog is not null && File.Exists(Path.Combine(outputDirectory, "watchdog.ready")) &&
             records.TryGetValue(watchdog.Value, out var identity) && RetainsBirth(identity) && identity.ScopeId == ownershipId &&
             identity.CommandLine == watchdogCommandLine && identity.Ownership == "linux-watchdog") return true;

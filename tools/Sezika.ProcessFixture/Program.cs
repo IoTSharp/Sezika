@@ -278,11 +278,17 @@ internal static class FixtureOuterReceipts
             catch (FileNotFoundException) { return false; }
             catch (DirectoryNotFoundException) { return false; }
         }
-        var matched = new HashSet<int>(); var files = 0;
-        foreach (var receipt in Directory.EnumerateFiles(directory, "registered*.json", SearchOption.TopDirectoryOnly))
+        var matched = new HashSet<int>(); var files = 0; var registrations = 0; var executions = 0;
+        var evidence = Directory.EnumerateFiles(directory, "registered*.json", SearchOption.TopDirectoryOnly)
+            .Concat(Directory.EnumerateFiles(directory, "observed-exec-*.json", SearchOption.TopDirectoryOnly));
+        foreach (var receipt in evidence)
         {
             Check();
-            if (++files > 257 || new FileInfo(receipt).Length > 1048576) throw new IOException("Outer receipt inventory/byte bound.");
+            // At most257 existing registration frames plus one independently
+            // observed exec proof for each of the maximum256 owned members.
+            var afterExec = Path.GetFileName(receipt).StartsWith("observed-exec-", StringComparison.Ordinal);
+            if (++files > 513 || (afterExec ? ++executions > 256 : ++registrations > 257) ||
+                new FileInfo(receipt).Length > 1048576) throw new IOException("Outer receipt inventory/byte bound.");
             using var json = JsonDocument.Parse(Read(receipt, 1048576, Check));
             if (json.RootElement.GetArrayLength() > 256) throw new IOException("Outer receipt identity bound256.");
             foreach (var identity in json.RootElement.EnumerateArray())

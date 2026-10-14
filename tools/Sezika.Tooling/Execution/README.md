@@ -8,20 +8,20 @@ T1b 使用 C# / .NET 10 管理 Windows Job 和 Linux 进程身份、父链、超
 Sezika.Tooling process run --request <execution.json> --output <新的命令回执.json> --timeout-seconds <秒数>
 ```
 
-请求使用 `ExecutionRequest` 的大小写字段，路径必须是实际存在的绝对路径；工作目录必须存在，输出目录必须全新。下面是当前 Ubuntu WSL 工具候选的原生探针配置，执行前须核准工具候选身份、确认输出目录未使用，并将请求保存为新的 JSON 文件：
+请求使用 `ExecutionRequest` 的大小写字段，路径必须是实际存在的绝对路径；工作目录必须存在，输出目录必须全新。下面是 Ubuntu 原生探针的配置模板；先将 broker 路径改为本任务已冻结并部署的 C# 工具，独立核完整运行包身份，再选择新的输出目录。示例路径不表示工具已安装：
 
 ```json
 {
   "Executable": "/usr/bin/true",
   "ArgumentList": [],
   "WorkingDirectory": "/tmp",
-  "OutputDirectory": "/tmp/sezika-execution-probe-20261013-01",
+  "OutputDirectory": "/tmp/sezika-execution-probe-new-run",
   "TimeoutSeconds": 3,
   "CleanupSeconds": 5,
   "MaximumProcesses": 8,
   "MaximumInputBytes": 0,
   "MaximumOutputBytes": 65536,
-  "BrokerExecutable": "/mnt/d/source/Sezika/.artifacts/tooling-migration-20261013-01/linux-cli-v4/Sezika.Tooling"
+  "BrokerExecutable": "/opt/sezika-tools/Sezika.Tooling"
 }
 ```
 
@@ -70,6 +70,12 @@ Job 在 `CreateProcess` 前关联私有 completion port，由一个有界 pump �
 
 Linux 通过 `posix_spawn` 创建独立进程组，在 broker 门后登记 PID/start ticks/boot ID/原始 NUL 分隔 argv，再 `execve` 目标；同一出生身份记录声明和实际 exec 参数。主进程使用 subreaper、pidfd 和真实 `waitpid`，登记逃逸进程组与晚生子树。独立 C# watchdog 在监督器退出后仅向核实归属的 pidfd 发信号；它的 `TERMINATED_PENDING_PARENT_REAP` 只证明终止阶段，不能冒称已经 reap。无完整身份或父链仍失败。
 
+Linux 清单扫描在发现所属成员时立即核完整出生、父链、argv、scope 与 pidfd，并先写登记快照，再发送祖先准入信号。已声明的 watchdog PID 只用于安排观察顺序，仍走相同身份门；优先查询也计入原8192项/2秒清单预算。未能完整登记的短进程仍保留 UNKNOWN，不能从内层成功或后续消失补造身份。原生元数据读取、子预算和登记回调共享调用者期限与取消；取消后的回收使用独立清理预算。
+
+成员数未变化时，首次实际观察到的 Linux `exec` 转换另写 `observed-exec-<PID>.json`，每个成员至多一份。它来自实际完整原生观察，不把声明的预期命令当作已执行。原登记快照保持不可变及原数量/命名，最终审计仍核原登记与最终执行回执；监督器死亡夹具另把该转换证据与当时仍存活的 `/proc` 出生、父边、实际NUL argv及完整登记父链逐项对照。该新路径的运行验收与历史候选分别记录。
+
+Linux 原生取消/STOP文件宜放在任务自己的Linux文件系统，并让所有控制写入者指向同一实际文件；Windows监督者可用准确的WSL UNC映射写入。Windows外层保留独立控制文件。控制路径也是固定运行输入，改变位置须保留旧回执并使用新scope；不能因此延长原压力、执行或清理期限。
+
 新目录保存 `ownership.json`、初始 `registered.json`、有限登记快照、最终 `result.json`、原始流日志及 Linux 门/broker/watchdog 证据。元数据先以独占 `.pending` 写入、flush、关闭后 no-overwrite Move 发布，旧失败回执不覆盖。只关闭本次持有的句柄并回收本次核实归属树；交付物和失败输出保留。
 
 ## 当前调用者与旧入口
@@ -86,7 +92,7 @@ Linux 通过 `posix_spawn` 创建独立进程组，在 broker 门后登记 PID/s
 
 训练的 `ResidentController` 将 STOP 留给 trainer 安全保存，不设置执行器的 `StopFile`；CANCEL 才触发硬终止。真实训练、GPU 长稳与保存期限仍须现场验收。
 
-旧 `tools/Invoke-BoundedProcess.ps1`、`Invoke-BoundedLinuxProcess.ps1`、`Invoke-BoundedLinux.sh`、rental-training 两代 guardian，以及 corpus 的 `bounded_start.py` / `run_guarded.py` 都由本模块提供生命周期替代能力。两个训练技能、旧 bundle/下载/发布调度、工具 README 和外部 MoArk/SSH 技能还有引用，需要随其所属 T2–T7 完成切换或明确退休；历史冻结包和原始回执不能改写。
+历史证据中的 `tools/Invoke-BoundedProcess.ps1`、`Invoke-BoundedLinuxProcess.ps1`、`Invoke-BoundedLinux.sh`、rental-training 两代 guardian，以及 corpus 的 `bounded_start.py` / `run_guarded.py` 均不再调用；本模块承接其生命周期能力。两个训练技能及当前 bundle/下载/发布流程改用 C# 调用合同，逐项范围由 T7 复核；历史冻结包和原始回执保持原字节。
 
 ## 可复现检查与证据边界
 
@@ -94,11 +100,13 @@ Linux 通过 `posix_spawn` 创建独立进程组，在 broker 门后登记 PID/s
 
 ```text
 Sezika.Tooling.Tests --output <新的任务目录> --maximum-checks 1 --suite execution
-Sezika.Tooling.Tests --output <另一个新的任务目录> --maximum-checks <Windows为19，Linux为18> --suite execution
+Sezika.Tooling.Tests --output <另一个新的任务目录> --maximum-checks <Windows为19，Linux为22> --suite execution
 ```
 
-当前 Windows 19 项、Linux 18 项。平台专属项分别是 Windows hidden console、两 Job 独立回收及八个实际快速 native 子查询的外层完整身份观察、Linux 逃逸进程组及显式 nested broker 错 SHA 的实际拒绝。Linux 两个监督器退出正控也绑定 native broker SHA。两 Job 检查要求两个实际 payload 均发布启动标记，先回收第一项后核第二项的原始出生身份/argv 仍然存活，再独立回收第二项；不以串行启动冒称并发通过。其余覆盖实际成功、复杂 argv、非零失败、超时、父先退出、token/CANCEL/STOP、stdout/stderr 超限、stdin/EOF、超限启动前拒绝、解释器/shebang 拒绝、旧证据保护，以及监督器死亡后的普通/晚生树回收。单套有 35 秒取消和 33 秒新增检查界；根检查入口还有 45 秒取消与 40 秒检查段界。
+当前 Windows 19 项、Linux 22 项。平台专属项分别是 Windows hidden console、两 Job 独立回收及八个实际快速 native 子查询的外层完整身份观察；Linux 增加真实 Git 两次/八次压力、三个原生祖先观察器及缺失 ACK 的拒绝，保留逃逸进程组和显式 nested broker 错 SHA 的实际拒绝。Linux 两个监督器退出正控也绑定 native broker SHA。两 Job 检查要求两个实际 payload 均发布启动标记，先回收第一项后核第二项的原始出生身份/argv 仍然存活，再独立回收第二项；不以串行启动冒称并发通过。其余覆盖实际成功、复杂 argv、非零失败、超时、父先退出、token/CANCEL/STOP、stdout/stderr 超限、stdin/EOF、超限启动前拒绝、解释器/shebang 拒绝、旧证据保护，以及监督器死亡后的普通/晚生树回收。执行套件自身为70秒取消、68秒新增检查界；根入口对execution设置90秒期限，原每例3秒等限制保持。
 
 2026-10-13 本机实际回执在 `.artifacts/tooling-migration-20261013-01/`：Windows `execution-hidden/checks.txt` 为 17/17，Linux 新 `linux-execution-v4-tiny/checks.txt` 为 1/1、`linux-execution-v4-full/checks.txt` 为 17/17；对应 `linux-execution-v4-full-host-result.json` 是独立 Windows WSL 驱动 PASS/回收 0。Windows 驱动回收不能替代 Linux 内层归属验收。上述检查为 JIT/self-contained 运行，不能作为最终 Windows/Linux Native AOT 验收；最终源码变更后的平台复验、调用者切换和受控提交由主控记录。
 
-2026-10-14 的 Windows 两 Job 容量及第 18 项检查已由主控在独立 T1b 候选复验；新 Job 早采样及第 19 项快速子树检查仍须新候选实际复跑，旧 18 项成功不升级为新 19 项证据。进程身份与回收通过不替代真实训练、GPU 或其他调用者验收。
+2026-10-14 的 Windows19、Linux22及Windows lifecycle1/8已由主控在准确v12候选实际复验，Linux CLI Native AOT承担broker/watchdog；证据见[最终Linux准入与双平台整合](../../../docs/evidence/tooling-linux-admission-final-2026-10-14.md)。上述2026-10-13旧17项原件保持原义。进程身份与回收通过不替代真实训练、GPU或其他调用者验收。
+
+2026-10-15 v17新增实际 exec 转换证明后，两平台当前进程套件、Linux early7 及 audit17 连同 tiny 合计96次检查执行通过；Root独立核500份原始身份文件和201个已登记birth的完整资源覆盖，当前live=0/unknown=0。详见[本轮生命周期验收](../../../docs/evidence/tooling-final-v17-2026-10-15/process-lifecycle.md)。新scope成功不改写旧PID914484 UNKNOWN、旧失败或2个缺final观察目录的完整性限制；整体调用者与服务器验收另列。

@@ -3,16 +3,18 @@ using System.Security.Cryptography;
 
 namespace Sezika.Tooling;
 
-internal sealed class Budget(int seconds, string? cancelFile, CancellationToken cancellation)
+internal sealed class Budget(int seconds, string? cancelFile, CancellationToken cancellation, Budget? parent = null, Action? guard = null)
 {
     private readonly Stopwatch clock = Stopwatch.StartNew();
     private double nextProgress = 10;
     internal double ElapsedSeconds => clock.Elapsed.TotalSeconds;
-    internal double RemainingSeconds => Math.Max(0, seconds - clock.Elapsed.TotalSeconds);
+    internal double RemainingSeconds => Math.Min(Math.Max(0, seconds - clock.Elapsed.TotalSeconds), parent?.RemainingSeconds ?? double.MaxValue);
     internal CancellationToken Cancellation => cancellation;
 
     internal void Check()
     {
+        parent?.Check();
+        guard?.Invoke();
         cancellation.ThrowIfCancellationRequested();
         if (seconds is < 1 or > 86400) throw new ArgumentOutOfRangeException(nameof(seconds));
         if (cancelFile is not null && File.Exists(cancelFile)) throw new OperationCanceledException("Cancellation file observed.");

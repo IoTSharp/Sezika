@@ -33,6 +33,7 @@ internal static class ProcessExecutor
         var lease = OperatingSystem.IsWindows() ? WindowsLease : SerialLease;
         IExecutionSession? session = null; Task? input = null;
         using var inputCancellation = new CancellationTokenSource();
+        using var executionCancellation = CancellationTokenSource.CreateLinkedTokenSource(cancellation, budget.Cancellation);
         FileStream? stdout = null; FileStream? stderr = null;
         var records = new Dictionary<int, ExecutionIdentity>();
         var pendingRegistrations = new Dictionary<int, string>();
@@ -44,13 +45,41 @@ internal static class ProcessExecutor
             WriteNew(target, JsonSerializer.SerializeToUtf8Bytes(records.Values.ToArray(), ExecutionJsonContext.Default.ExecutionIdentityArray));
             snapshotCount = records.Count;
         }
+        void PublishCompleteLinuxRegistration(ExecutionIdentity member, Budget registrationBudget)
+        {
+            registrationBudget.Check();
+            if (session is not LinuxExecutionSession linuxSession) throw new InvalidOperationException("Linux registration callback requires its native session.");
+            // Persist the complete registration before admitting a waiting child.
+            // The remaining inventory/reobservations may consume its full bound;
+            // they must not delay the watchdog's separate two-second handshake.
+            Snapshot();
+            registrationBudget.Check();
+            AncestorAdmission.Publish(request.OutputDirectory, result.OwnershipId, [member], linuxSession, registrationBudget);
+        }
+        var observedExecProofs = 0;
+        void PublishObservedLinuxExecution(ExecutionIdentity member, Budget observationBudget)
+        {
+            observationBudget.Check();
+            if (session is not LinuxExecutionSession || member.AfterExecCommandLine is null ||
+                member.AfterExecCommandLine != member.ExpectedExecCommandLine)
+                throw new InvalidOperationException("Linux exec proof requires the actual observed declared transition.");
+            if (++observedExecProofs > request.MaximumProcesses) throw new IOException("Linux observed exec proof count exceeded.");
+            // Registration snapshots stay immutable and retain their original
+            // count/naming contract. Publish each actual exec transition once,
+            // even when no new member causes another registration snapshot.
+            var target = Path.Combine(request.OutputDirectory, "observed-exec-" + member.Pid.ToString("D10", CultureInfo.InvariantCulture) + ".json");
+            WriteNew(target, JsonSerializer.SerializeToUtf8Bytes(new[] { member }, ExecutionJsonContext.Default.ExecutionIdentityArray));
+            observationBudget.Check();
+        }
         var outputDone = false; var errorDone = false;
         try
         {
             Validate(request, budget);
+            var executionBudget = new Budget(request.TimeoutSeconds, request.CancelFile, executionCancellation.Token, budget,
+                () => Check(request, budget, executionCancellation.Token, clock));
             for (var attempt = 0; attempt < request.TimeoutSeconds * 10 + 1; attempt++)
             {
-                Check(request, budget, cancellation, clock);
+                Check(request, executionBudget, cancellation, clock);
                 if (await lease.WaitAsync(100, cancellation).ConfigureAwait(false)) { acquired = true; break; }
             }
             if (!acquired) throw new TimeoutException("Execution lease poll budget exhausted.");
@@ -62,14 +91,14 @@ internal static class ProcessExecutor
             WriteNew(Path.Combine(request.OutputDirectory, "ownership.json"), Encoding.UTF8.GetBytes(result.OwnershipId));
             stdout = NewFile(Path.Combine(request.OutputDirectory, "stdout.bin"));
             stderr = NewFile(Path.Combine(request.OutputDirectory, "stderr.bin"));
-            var launcher = ProcessObserver.Observe(Environment.ProcessId);
+            var launcher = ProcessObserver.Observe(Environment.ProcessId, executionBudget);
             result.Launcher = Identity(launcher, [], "launcher");
             var environment = BuildEnvironment(request, result.OwnershipId);
             var gate = Path.Combine(request.OutputDirectory, "start-gate");
             if (OperatingSystem.IsWindows()) session = new WindowsExecutionSession(request, environment);
             else if (OperatingSystem.IsLinux())
             {
-                AncestorAdmission.Attach(request, environment, result.OwnershipId, result.Launcher!, budget);
+                AncestorAdmission.Attach(request, environment, result.OwnershipId, result.Launcher!, executionBudget);
                 Directory.CreateDirectory(gate); environment["SEZIKA_START_GATE"] = gate;
                 var config = Path.Combine(request.OutputDirectory, "broker.json");
                 WriteNew(config, JsonSerializer.SerializeToUtf8Bytes(new BrokerConfiguration
@@ -81,26 +110,28 @@ internal static class ProcessExecutor
             }
             else throw new PlatformNotSupportedException("Execution supports Windows and Linux.");
             result.RootPid = session.Pid;
-            var actual = ProcessObserver.Observe(session.Pid);
+            var actual = ProcessObserver.Observe(session.Pid, executionBudget);
             var registration = Stopwatch.StartNew();
             // posix_spawn may return while /proc exposes the new mm before its
             // argv range is populated. The C# broker remains behind the gate;
             // require complete native metadata before any release.
             for (var attempt = 0; attempt < 100 && registration.Elapsed.TotalSeconds < 2 && !CompleteIdentity(actual); attempt++)
             {
-                Check(request, budget, cancellation, clock);
+                Check(request, executionBudget, cancellation, clock);
                 await Task.Delay(20, cancellation).ConfigureAwait(false);
-                actual = ProcessObserver.Observe(session.Pid);
+                actual = ProcessObserver.Observe(session.Pid, executionBudget);
             }
             if (actual.ParentPid != Environment.ProcessId) throw new IOException("Root process parent identity differs.");
             var root = Identity(actual, [Environment.ProcessId], session.Ownership);
             root.ScopeId = result.OwnershipId;
             if (OperatingSystem.IsLinux()) root.ExpectedExecCommandLine = string.Join('\0', new[] { request.Executable }.Concat(request.ArgumentList)) + '\0';
-            records.Add(root.Pid, root); session.Register(root);
+            records.Add(root.Pid, root);
+            if (session is LinuxExecutionSession initialRegistration) initialRegistration.Register(root, executionBudget);
+            else session.Register(root);
             WriteNew(Path.Combine(request.OutputDirectory, "registered.json"), JsonSerializer.SerializeToUtf8Bytes(records.Values.ToArray(), ExecutionJsonContext.Default.ExecutionIdentityArray));
             snapshotCount = records.Count;
-            if (session is LinuxExecutionSession initialLinux) AncestorAdmission.Publish(request.OutputDirectory, result.OwnershipId, records.Values, initialLinux, budget);
-            Check(request, budget, cancellation, clock);
+            if (session is LinuxExecutionSession initialLinux) AncestorAdmission.Publish(request.OutputDirectory, result.OwnershipId, records.Values, initialLinux, executionBudget);
+            Check(request, executionBudget, cancellation, clock);
             session.Release();
             result.ExecutionStatus = "RUNNING";
             input = session.WriteInputAsync(request.StandardInput, inputCancellation.Token);
@@ -109,22 +140,23 @@ internal static class ProcessExecutor
             // reads additionally cap32 chunks each, with a byte cap checked first.
             for (var poll = 0; poll < request.TimeoutSeconds * 10 + 1; poll++)
             {
-                Check(request, budget, cancellation, clock);
+                Check(request, executionBudget, cancellation, clock);
                 Drain(session, false, stdout, buffer, request.MaximumOutputBytes, ref outputDone, result);
                 Drain(session, true, stderr, buffer, request.MaximumOutputBytes, ref errorDone, result);
                 if (input.IsFaulted) await input.ConfigureAwait(false);
                 if (clock.Elapsed.TotalSeconds >= nextObservation)
                 {
-                    ObserveMembers(session, records, request, budget, errors, pendingRegistrations);
+                    ObserveMembers(session, records, request, executionBudget, errors, pendingRegistrations, PublishCompleteLinuxRegistration, PublishObservedLinuxExecution);
                     Snapshot();
                     if (session is LinuxExecutionSession linux)
-                    { AncestorAdmission.Publish(request.OutputDirectory, result.OwnershipId, records.Values, linux, budget); linux.AcknowledgeWatchdog(records); }
+                    { AncestorAdmission.Publish(request.OutputDirectory, result.OwnershipId, records.Values, linux, executionBudget); linux.AcknowledgeWatchdog(records, executionBudget); }
                     nextObservation = clock.Elapsed.TotalSeconds + .2;
                 }
                 if (session.TryExit(out var code))
                 {
-                    ObserveMembers(session, records, request, budget, errors, pendingRegistrations);
+                    ObserveMembers(session, records, request, executionBudget, errors, pendingRegistrations, PublishCompleteLinuxRegistration, PublishObservedLinuxExecution);
                     Snapshot();
+                    Check(request, executionBudget, executionCancellation.Token, clock);
                     result.ExitCode = code;
                     result.ExecutionStatus = code == 0 ? "SUCCEEDED" : "FAILED";
                     if (code != 0) errors.Add("Process exit code " + code.ToString(CultureInfo.InvariantCulture));
@@ -165,10 +197,10 @@ internal static class ProcessExecutor
                     for (var pass = 0; pass < request.CleanupSeconds * 20 + 1 && cleanup.Elapsed.TotalSeconds < request.CleanupSeconds; pass++)
                     {
                         cleanupBudget.Check();
-                        ObserveMembers(session, records, request, cleanupBudget, errors, pendingRegistrations);
+                        ObserveMembers(session, records, request, cleanupBudget, errors, pendingRegistrations, PublishCompleteLinuxRegistration, PublishObservedLinuxExecution);
                         Snapshot();
                         if (session is LinuxExecutionSession linux)
-                        { AncestorAdmission.Publish(request.OutputDirectory, result.OwnershipId, records.Values, linux, cleanupBudget); linux.AcknowledgeWatchdog(records); }
+                        { AncestorAdmission.Publish(request.OutputDirectory, result.OwnershipId, records.Values, linux, cleanupBudget); linux.AcknowledgeWatchdog(records, cleanupBudget); }
                         if (session is LinuxExecutionSession admissionCleanup && !admissionCleanup.PrepareTermination(records, cleanupBudget))
                         { await Task.Delay(20, CancellationToken.None).ConfigureAwait(false); continue; }
                         session.Terminate();
@@ -351,12 +383,98 @@ internal static class ProcessExecutor
     }
     private static bool CompleteIdentity(ProcessObservation actual) => actual.State == "Present" && !string.IsNullOrEmpty(actual.CommandLine) && actual.ParentPid > 0 &&
         (actual.Platform == "linux" ? actual.StartTicks is not null && !string.IsNullOrEmpty(actual.BootId) : actual.Started is not null);
-    private static void ObserveMembers(IExecutionSession session, Dictionary<int, ExecutionIdentity> records, ExecutionRequest request, Budget budget, List<string> errors, Dictionary<int, string> pendingRegistrations)
+    private static void ObserveMembers(IExecutionSession session, Dictionary<int, ExecutionIdentity> records, ExecutionRequest request, Budget parentBudget, List<string> errors, Dictionary<int, string> pendingRegistrations, Action<ExecutionIdentity, Budget>? onLinuxRegistered = null, Action<ExecutionIdentity, Budget>? onLinuxExecuted = null)
     {
-        var activeMembers = session is WindowsExecutionSession windowsMembers ? windowsMembers.Members(budget) : session.Members(); var clock = Stopwatch.StartNew();
+        var budget = new Budget(3, null, parentBudget.Cancellation, parentBudget);
+        var clock = Stopwatch.StartNew();
+        var scannedBirths = new Dictionary<int, ulong>();
+        bool TryRegisterMember(int pid, ulong? scannedBirth, Budget memberBudget)
+        {
+            memberBudget.Check();
+            if (records.ContainsKey(pid)) return true;
+            var actual = session is WindowsExecutionSession sampledWindows ? sampledWindows.ObserveRegisteredCandidate(pid) : ProcessObserver.Observe(pid, memberBudget);
+            if (actual.State == "Absent")
+            {
+                // A notification or PID alone never supplies missing native metadata.
+                if (session is WindowsExecutionSession incompleteWindows && incompleteWindows.NotifiedPids().Contains(pid)) return false;
+                if (session is LinuxExecutionSession)
+                    pendingRegistrations.TryAdd(pid, "Owned Linux member disappeared before complete native birth/parent/argv registration.");
+                return true;
+            }
+            if (actual.State != "Present") return false;
+            if (scannedBirth is not null && actual.StartTicks != scannedBirth)
+            {
+                errors.Add("UNKNOWN Linux member birth changed after inventory: " + pid);
+                return false;
+            }
+            if (!records.TryGetValue(actual.ParentPid, out var parent)) return false;
+            var liveParent = ProcessObserver.Observe(parent.Pid, memberBudget);
+            // A fully registered Windows parent's retained birth HANDLE
+            // proves exit even when its dying PEB/argv query is UNKNOWN.
+            // Require the signalled exact-birth HANDLE, not just retention;
+            // an unregistered parent or incomplete child stays unproven.
+            var retainedExitedParent = session is WindowsExecutionSession windows && liveParent.State != "Present" && windows.HasExitedBirth(parent);
+            if (!retainedExitedParent && (liveParent.State != "Present" || (parent.Started is not null && parent.Started != liveParent.Started) ||
+                (parent.StartTicks is not null && (parent.StartTicks != liveParent.StartTicks || parent.BootId != liveParent.BootId))))
+                return false;
+            if (session is LinuxExecutionSession)
+            {
+                actual = LinuxExecutionSession.ObserveRegistrationCandidate(actual, liveParent.CommandLine, memberBudget);
+                if (!CompleteIdentity(actual)) return false;
+                if (scannedBirth is not null && actual.StartTicks != scannedBirth)
+                {
+                    errors.Add("UNKNOWN Linux member birth changed during admission: " + pid);
+                    return false;
+                }
+            }
+            if (parent.ParentChain.Length >= 64) throw new IOException("Parent-chain depth exceeded.");
+            var identity = Identity(actual, parent.ParentChain.Append(parent.Pid).ToArray(), session.Ownership);
+            identity.ScopeId = parent.ScopeId;
+            if (OperatingSystem.IsLinux())
+            {
+                try
+                {
+                    var observedScope = LinuxExecutionSession.ExecutionScope(actual.Pid, memberBudget);
+                    identity.ExpectedExecCommandLine = BrokerExecCommandLine(actual, liveParent, request, memberBudget, out var nestedScope);
+                    if (nestedScope is not null)
+                    {
+                        if (observedScope != nestedScope) throw new IOException("Nested broker ownership marker differs from its explicit configuration.");
+                        identity.ScopeId = nestedScope;
+                    }
+                }
+                catch (Exception admission) when (Expected(admission) && admission is not (OperationCanceledException or TimeoutException))
+                {
+                    // Native birth/parent/original argv establish owned
+                    // cleanup membership independently of broker trust.
+                    // Refusal remains permanent evidence, while the exact
+                    // pidfd can still terminate/reap the rejected tree.
+                    identity.ScopeId = parent.ScopeId;
+                    identity.ExpectedExecCommandLine = null;
+                    var refusal = "Nested broker admission rejected: " + admission.GetType().Name + ": " + admission.Message;
+                    errors.Add(refusal); identity.ObservationNotes = [refusal];
+                }
+            }
+            if (session is LinuxExecutionSession registration)
+            {
+                if (!registration.ReadyForRegistration(identity, memberBudget)) return false;
+                registration.Register(identity, memberBudget);
+            }
+            else session.Register(identity);
+            if (pendingRegistrations.Remove(pid, out var previous)) identity.ObservationNotes = ["Later complete native birth/parent/argv registration resolves " + previous];
+            records.Add(pid, identity);
+            if (session is LinuxExecutionSession) onLinuxRegistered?.Invoke(identity, memberBudget);
+            return true;
+        }
+        var activeMembers = session is LinuxExecutionSession linuxMembers
+            ? linuxMembers.Members(budget, (pid, birth, scanBudget) =>
+            {
+                scannedBirths[pid] = birth;
+                _ = TryRegisterMember(pid, birth, scanBudget);
+            })
+            : session is WindowsExecutionSession windowsMembers ? windowsMembers.Members(budget) : session.Members();
         var members = session is WindowsExecutionSession notifiedWindows ? activeMembers.Concat(notifiedWindows.NotifiedPids()).Distinct().ToArray() : activeMembers;
         if (members.Length > request.MaximumProcesses) throw new IOException("Member count bound exceeded.");
-        // Retry ordering only within a bounded snapshot: parent before child.
+        // Parent-first retries retain the original64-depth/3s observation bound.
         var pending = new HashSet<int>(members.Where(pid => !records.ContainsKey(pid)));
         for (var depth = 0; depth < 64 && pending.Count > 0 && clock.Elapsed.TotalSeconds < 3; depth++)
         {
@@ -364,63 +482,8 @@ internal static class ProcessExecutor
             foreach (var pid in pending.ToArray())
             {
                 budget.Check();
-                var actual = session is WindowsExecutionSession sampledWindows ? sampledWindows.ObserveRegisteredCandidate(pid) : ProcessObserver.Observe(pid);
-                if (actual.State == "Absent")
-                {
-                    // A NEW_PROCESS event whose complete identity was never
-                    // observed is still UNKNOWN after exit, not fabricated proof.
-                    if (session is WindowsExecutionSession incompleteWindows && incompleteWindows.NotifiedPids().Contains(pid)) continue;
-                    if (session is LinuxExecutionSession)
-                        pendingRegistrations.TryAdd(pid, "Owned Linux member disappeared before complete native birth/parent/argv registration.");
-                    pending.Remove(pid); progress = true; continue;
-                }
-                if (actual.State != "Present") continue;
-                if (!records.TryGetValue(actual.ParentPid, out var parent)) continue;
-                var liveParent = ProcessObserver.Observe(parent.Pid);
-                // A fully registered Windows parent's retained birth HANDLE
-                // proves exit even when its dying PEB/argv query is UNKNOWN.
-                // Require the signalled exact-birth HANDLE, not just retention;
-                // an unregistered parent or incomplete child stays unproven.
-                var retainedExitedParent = session is WindowsExecutionSession windows && liveParent.State != "Present" && windows.HasExitedBirth(parent);
-                if (!retainedExitedParent && (liveParent.State != "Present" || (parent.Started is not null && parent.Started != liveParent.Started) ||
-                    (parent.StartTicks is not null && (parent.StartTicks != liveParent.StartTicks || parent.BootId != liveParent.BootId))))
-                    continue;
-                if (session is LinuxExecutionSession)
-                {
-                    actual = LinuxExecutionSession.ObserveRegistrationCandidate(actual, liveParent.CommandLine, budget);
-                    if (!CompleteIdentity(actual)) continue;
-                }
-                if (parent.ParentChain.Length >= 64) throw new IOException("Parent-chain depth exceeded.");
-                var identity = Identity(actual, parent.ParentChain.Append(parent.Pid).ToArray(), session.Ownership);
-                identity.ScopeId = parent.ScopeId;
-                if (OperatingSystem.IsLinux())
-                {
-                    try
-                    {
-                        var observedScope = LinuxExecutionSession.ExecutionScope(actual.Pid);
-                        identity.ExpectedExecCommandLine = BrokerExecCommandLine(actual, liveParent, request, budget, out var nestedScope);
-                        if (nestedScope is not null)
-                        {
-                            if (observedScope != nestedScope) throw new IOException("Nested broker ownership marker differs from its explicit configuration.");
-                            identity.ScopeId = nestedScope;
-                        }
-                    }
-                    catch (Exception admission) when (Expected(admission) && admission is not (OperationCanceledException or TimeoutException))
-                    {
-                        // Native birth/parent/original argv establish owned
-                        // cleanup membership independently of broker trust.
-                        // Refusal remains permanent evidence, while the exact
-                        // pidfd can still terminate/reap the rejected tree.
-                        identity.ScopeId = parent.ScopeId;
-                        identity.ExpectedExecCommandLine = null;
-                        var refusal = "Nested broker admission rejected: " + admission.GetType().Name + ": " + admission.Message;
-                        errors.Add(refusal); identity.ObservationNotes = [refusal];
-                    }
-                }
-                if (session is LinuxExecutionSession registration && !registration.ReadyForRegistration(identity)) continue;
-                session.Register(identity);
-                if (pendingRegistrations.Remove(pid, out var previous)) identity.ObservationNotes = ["Later complete native birth/parent/argv registration resolves " + previous];
-                records.Add(pid, identity); pending.Remove(pid); progress = true;
+                if (TryRegisterMember(pid, scannedBirths.TryGetValue(pid, out var birth) ? birth : null, budget))
+                { pending.Remove(pid); progress = true; }
             }
             if (!progress) break;
         }
@@ -435,7 +498,7 @@ internal static class ProcessExecutor
         foreach (var pid in members.Where(records.ContainsKey))
         {
             budget.Check();
-            var actual = ProcessObserver.Observe(pid); var record = records[pid];
+            var actual = ProcessObserver.Observe(pid, budget); var record = records[pid];
             if (actual.State == "Absent")
             {
                 record.State = "EXITED";
@@ -449,14 +512,14 @@ internal static class ProcessExecutor
                 record.PendingObservationError = null;
                 continue;
             }
-            if ((actual.State != "Present" || string.IsNullOrEmpty(actual.CommandLine)) && session is LinuxExecutionSession exitedLinux && exitedLinux.HasExitedBirth(record))
+            if ((actual.State != "Present" || string.IsNullOrEmpty(actual.CommandLine)) && session is LinuxExecutionSession exitedLinux && exitedLinux.HasExitedBirth(record, budget))
             {
                 record.State = "EXITED";
                 record.ExitProof = "Complete registered native birth/parent/argv and retained pidfd termination/reaping signal; observer=" + actual.State + "; detail=" + actual.Error;
                 record.PendingObservationError = null;
                 continue;
             }
-            if (OperatingSystem.IsLinux() && actual.State == "Unknown" && LinuxExecutionSession.TryStat(pid)?.State is "Z" or "X")
+            if (OperatingSystem.IsLinux() && actual.State == "Unknown" && LinuxExecutionSession.TryStat(pid, budget)?.State is "Z" or "X")
             { record.State = "EXITED_PENDING_REAP"; continue; }
             if (actual.State != "Present")
             {
@@ -504,7 +567,13 @@ internal static class ProcessExecutor
                 // The registered Linux broker execs exactly the declared argv;
                 // arbitrary descendant argv changes retain UNKNOWN evidence.
                 if (OperatingSystem.IsLinux() && record.ExpectedExecCommandLine is not null && actual.CommandLine == record.ExpectedExecCommandLine)
-                    record.AfterExecCommandLine = actual.CommandLine;
+                {
+                    if (record.AfterExecCommandLine is null)
+                    {
+                        record.AfterExecCommandLine = actual.CommandLine;
+                        onLinuxExecuted?.Invoke(record, budget);
+                    }
+                }
                 else if (actual.CommandLine != record.AfterExecCommandLine) errors.Add("UNKNOWN member argv changed " + pid + "; actual=" + actual.CommandLine);
             }
             if (record.PendingObservationError is not null && actual.CommandLine == record.CommandLine && actual.Started == record.Started && actual.ParentPid == record.ParentPid)
@@ -538,11 +607,11 @@ internal static class ProcessExecutor
         if (registeredParent.State != "Present" || registeredParent.Pid != actual.ParentPid || launcher is null || broker.ParentPid != actual.ParentPid ||
             launcher.Pid != registeredParent.Pid || launcher.Platform != "linux" || launcher.ParentPid != registeredParent.ParentPid ||
             launcher.StartTicks != registeredParent.StartTicks || launcher.BootId != registeredParent.BootId || launcher.CommandLine != registeredParent.CommandLine ||
-            !Guid.TryParseExact(broker.OwnershipId, "N", out _) || LinuxExecutionSession.ExecutionScope(actual.Pid) != broker.OwnershipId)
+            !Guid.TryParseExact(broker.OwnershipId, "N", out _) || LinuxExecutionSession.ExecutionScope(actual.Pid, budget) != broker.OwnershipId)
             throw new IOException("Nested broker launcher identity differs.");
         ValidateExecutable(broker.Executable, budget); ValidateArguments(broker.ArgumentList);
         var expected = string.Join('\0', new[] { broker.Executable }.Concat(broker.ArgumentList)) + '\0';
-        var after = ProcessObserver.Observe(actual.Pid);
+        var after = ProcessObserver.Observe(actual.Pid, budget);
         if (after.State != "Present" || after.ParentPid != actual.ParentPid || after.StartTicks != actual.StartTicks || after.BootId != actual.BootId ||
             (after.CommandLine != actual.CommandLine && after.CommandLine != expected))
             throw new IOException("Nested broker birth/parent/argv changed during native admission.");

@@ -1,0 +1,167 @@
+{
+  "SchemaVersion": 1,
+  "Status": "PASS_process_lifecycle_v17_local_source_scope_only",
+  "Scope": "Parent budget cancellation; complete native observation; immediate Linux watchdog registration; immutable actually observed exec transition proof; current process lifecycle regression only",
+  "SourceManifestSha256": "230130665280ad7d0905c74764c8683f7580d723e52c63002326826d1182dcf3",
+  "Sources": [
+    {
+      "Path": "tools/Sezika.Tooling/Budget.cs",
+      "Bytes": 4922,
+      "Sha256": "ddbdea9a5179237e3a04dea5ff9a2616ebc7ca6f2be954727a128f100c6469b8"
+    },
+    {
+      "Path": "tools/Sezika.Tooling/ProcessObserver.cs",
+      "Bytes": 7938,
+      "Sha256": "d6b51dc8c076b926d9ec80d678b1becfc594901d09b17cbc327909d2d27ad48f"
+    },
+    {
+      "Path": "tools/Sezika.Tooling/Execution/LinuxExecutionSession.cs",
+      "Bytes": 43809,
+      "Sha256": "254df11a2a0ad1e96dcc27a64ac26f8f46e98834a94a29084b66e67b3ffcb742"
+    },
+    {
+      "Path": "tools/Sezika.Tooling/Execution/ProcessExecutor.cs",
+      "Bytes": 49735,
+      "Sha256": "02a6f0de26ca1901b2a86b857d43a13e8f6d1608dea915fb418248ab2981a988"
+    },
+    {
+      "Path": "tools/Sezika.ProcessFixture/Program.cs",
+      "Bytes": 23371,
+      "Sha256": "68ea6c0c33e8042055016ed78bf3f42a9c6d0b7f2d129a4039fd32f11c132fca"
+    },
+    {
+      "Path": "tests/Sezika.Tooling.Tests/LinuxEarlyRegistrationChecks.cs",
+      "Bytes": 6796,
+      "Sha256": "4749aa2d65347e4f805967fc486aff06126dbf149a8cb29ca992f046829519cf"
+    }
+  ],
+  "Tests": [
+    {
+      "Checks": 1,
+      "Name": "01-windows-execution-tiny",
+      "Raw": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-core-prep-v1\\requests\\01-windows-execution-tiny\\native-execution\\result.json",
+      "Sha256": "940fb31ba5cbc71b521bd15d6483d00d775b57c638e9a9a83e9bffd8ea85377b"
+    },
+    {
+      "Checks": 19,
+      "Name": "02-windows-execution-full",
+      "Raw": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-core-prep-v1\\requests\\02-windows-execution-full\\native-execution\\result.json",
+      "Sha256": "ee8ae1f6eb5781e47ec470b3b15b08d4f9a3d8006c0702ce535f9768c3e9a5ce"
+    },
+    {
+      "Checks": 1,
+      "Name": "03-windows-windows-lifecycle-tiny",
+      "Raw": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-core-prep-v1\\requests\\03-windows-windows-lifecycle-tiny\\native-execution\\result.json",
+      "Sha256": "c8f1c02457c3a8c5ee6431df97b172fdea0a76944778cfc05634f345962533bb"
+    },
+    {
+      "Checks": 8,
+      "Name": "04-windows-windows-lifecycle-full",
+      "Raw": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-core-prep-v1\\requests\\04-windows-windows-lifecycle-full\\native-execution\\result.json",
+      "Sha256": "fe51779a6ff430bdcd3d567bc576f25c9ce87f0ff6d13ed3b68dd6e56e594587"
+    },
+    {
+      "Checks": 1,
+      "Name": "05-windows-audit-tiny",
+      "Raw": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-core-prep-v1\\requests\\05-windows-audit-tiny\\native-execution\\result.json",
+      "Sha256": "94deb74924d52b232508638df59d428c2697b1d878206fff7a1c6cd181d4c903"
+    },
+    {
+      "Checks": 17,
+      "Name": "06-windows-audit-full",
+      "Raw": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-core-prep-v1\\requests\\06-windows-audit-full\\native-execution\\result.json",
+      "Sha256": "14b890514cfd5727eb8323718a6bfbc115bcb10e6ed144fde4754f990e4926bf"
+    },
+    {
+      "Checks": 1,
+      "Name": "25-linux-linux-early-registration-tiny",
+      "Raw": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\requests\\25-linux-linux-early-registration-tiny\\native-execution\\result.json",
+      "Sha256": "1a574c11e5ec1f143ad1c60c7838307e1c64f8ca0a94f64cf45f7ea7868b6eb6"
+    },
+    {
+      "Checks": 7,
+      "Name": "26-linux-linux-early-registration-full",
+      "Raw": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\requests\\26-linux-linux-early-registration-full\\native-execution\\result.json",
+      "Sha256": "258d2cdfabefdbdf19dc2ee216ed0edf7ff22afe8fa3a19256247d4858aff069"
+    },
+    {
+      "Checks": 1,
+      "Name": "27-linux-audit-tiny",
+      "Raw": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\requests\\27-linux-audit-tiny\\native-execution\\result.json",
+      "Sha256": "0fc42e84d6da08179b023634fb8b626a4fef692640ea72f482232fd0615bf41f"
+    },
+    {
+      "Checks": 17,
+      "Name": "28-linux-audit-full",
+      "Raw": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\requests\\28-linux-audit-full\\native-execution\\result.json",
+      "Sha256": "48817f3c2079b0616e547c251cd47fd0352bbfa01eda6ba60f67f8922cd434e1"
+    },
+    {
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-core-git8-v17-3ed152f3af0c4a419b2d6adba3609c3f\\execution-tiny1\\client\\checks.txt",
+      "OuterSha256": "814dd892b497484de53b68a810386e5468348709cb7ae883eb3639d90185d44b",
+      "Checks": 1,
+      "Outer": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\linux-core-git8-v17-prep-v1\\bound-v1\\runs\\execution-tiny1\\outer-result.json",
+      "ChecksSha256": "29a525ccf9b671b0aeb7a8b71b8899e5834b80f2fd86ec5ba6eba1651016ba6d",
+      "Sha256": "7b17281bc6d6626f44832c5db34f973266cb19009c2fa0af5d36cb765df8a899",
+      "Raw": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\linux-core-git8-v17-prep-v1\\bound-v1\\runs\\execution-tiny1\\native-result.json",
+      "Name": "linux-execution-tiny1"
+    },
+    {
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-core-git8-v17-3ed152f3af0c4a419b2d6adba3609c3f\\execution-full22\\client\\checks.txt",
+      "OuterSha256": "fa9fafc8604ef95364c90568a5c4376a91db25260c460e120be4c6db6a1d3318",
+      "Checks": 22,
+      "Outer": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\linux-core-git8-v17-prep-v1\\bound-v1\\runs\\execution-full22\\outer-result.json",
+      "ChecksSha256": "a976af769e0edbb4a0d83c4a20b8c1ce34f2b83a4389948a5f6d1e1127207297",
+      "Sha256": "e5f9e3f4b15e6b5ded89f93d34b16d552b48b75505658745e4bc8548776b885c",
+      "Raw": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\linux-core-git8-v17-prep-v1\\bound-v1\\runs\\execution-full22\\native-result.json",
+      "Name": "linux-execution-full22"
+    }
+  ],
+  "CheckExecutions": 96.0,
+  "ResourceProofs": [
+    {
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\linux-core-git8-v17-prep-v1\\runtime-core-v17-start1\\final-core-git8-runtime-acceptance-v17.json",
+      "Bytes": 9252,
+      "Sha256": "2ebc4f677a61247a5ffdac0fa4b69bc36a518691e66d20f7e84ddfa8b19497e5"
+    },
+    {
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\linux-core-git8-v17-prep-v1\\runtime-core-v17-start1\\two-resource-audits-completion.json",
+      "Bytes": 2409,
+      "Sha256": "620e21d43def73d708c410f77d09f4d04a12d886416033a6059d7167a09d4fb3"
+    },
+    {
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\linux-core-git8-v17-prep-v1\\runtime-core-v17-start1\\root-independent-500-canonical-201-birth-coverage-v17.json",
+      "Bytes": 1025,
+      "Sha256": "4ea881a09323351e2f4028175686aea8e78cc162a2e237531f823173dd769842"
+    },
+    {
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-core-prep-v1\\root-independent-native-audit-v17.json",
+      "Bytes": 26277,
+      "Sha256": "79fff045455d28574263239d31753ef76df052668ab13366c7896733d84955b4"
+    },
+    {
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-linux-modules-v1\\root-final-thirty-resource-coverage-v17.json",
+      "Bytes": 3864,
+      "Sha256": "c1b7ffc3c5111f7fcce5e3290db28bc6062cbf21c95de4b92497c8722ec27cf9"
+    }
+  ],
+  "CurrentRegisteredBirthCoverage": 201,
+  "CurrentNativeCanonicalFiles": 500,
+  "CurrentNativeReceiptDirectories": 84,
+  "CurrentUnknown": 0,
+  "CurrentMatchingLive": 0,
+  "ObservedExecFrames": 43,
+  "SupervisorRelatedObservedExecFrames": 5,
+  "ActualTransitionsPerObservedPidMaximum": 1,
+  "IncompleteFinalObservationDirectories": 2,
+  "IncompleteFinalObservationDirectoriesInterpretation": "Do not invent final receipt completeness; all observed registered identities remain included in exact resource coverage",
+  "Historical914484": "UNKNOWN unchanged",
+  "OldFailures": "All original v14 compile/v15 admission/v16 pressure and supervisor failures retained unchanged",
+  "SharedTestProgramIndexProjectionSha256": "5f153f31f813f4ec5963a4545221012724e9db1bd527ce9f3d74c7cb86305225",
+  "SharedTestProgramProjectionScope": "HEAD test entry plus only LinuxEarlyRegistration routing; production bytes and executed selected methods equal frozen v17",
+  "OverallMigrationComplete": false,
+  "ServerLiveAcceptance": "NOT_RUN",
+  "FormalTraining": false,
+  "ModelDataPublication": false,
+  "Utc": "2026-10-14T22:18:25.0866462+00:00"
+}

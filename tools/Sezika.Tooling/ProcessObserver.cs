@@ -7,21 +7,27 @@ namespace Sezika.Tooling;
 
 internal static class ProcessObserver
 {
-    internal static ProcessObservation Observe(int pid)
+    internal static ProcessObservation Observe(int pid) => Observe(pid, null);
+
+    internal static ProcessObservation Observe(int pid, Budget? budget = null)
     {
+        budget?.Check();
         var platform = OperatingSystem.IsWindows() ? "windows" : OperatingSystem.IsLinux() ? "linux" : "unsupported";
         try
         {
             if (pid <= 0) throw new ArgumentOutOfRangeException(nameof(pid));
-            return platform switch
+            ProcessObservation observation = platform switch
             {
                 "windows" => Windows(pid),
-                "linux" => Linux(pid),
+                "linux" => Linux(pid, budget),
                 _ => new("Unknown", pid, 0, null, null, platform, null, "Unsupported observer platform.")
             };
+            budget?.Check();
+            return observation;
         }
         catch (Exception error) when (error is IOException or InvalidDataException or UnauthorizedAccessException or InvalidOperationException or ArgumentException or OverflowException)
         {
+            budget?.Check();
             return new("Unknown", pid, 0, null, null, platform, null, error.GetType().Name);
         }
     }
@@ -56,20 +62,20 @@ internal static class ProcessObserver
         return new("Present", pid, checked((int)basic.ParentPid), DateTimeOffset.FromFileTime(created).ToUniversalTime(), commandLine, "windows", null);
     }
 
-    private static ProcessObservation Linux(int pid)
+    private static ProcessObservation Linux(int pid, Budget? budget)
     {
         var root = "/proc/" + pid.ToString(CultureInfo.InvariantCulture);
         try
         {
-            var before = ParseLinuxStat(Encoding.UTF8.GetString(ReadBounded(root + "/stat")), pid);
-            var command = Encoding.UTF8.GetString(ReadBounded(root + "/cmdline"));
-            var after = ParseLinuxStat(Encoding.UTF8.GetString(ReadBounded(root + "/stat")), pid);
+            var before = ParseLinuxStat(Encoding.UTF8.GetString(ReadBounded(root + "/stat", budget)), pid);
+            var command = Encoding.UTF8.GetString(ReadBounded(root + "/cmdline", budget));
+            var after = ParseLinuxStat(Encoding.UTF8.GetString(ReadBounded(root + "/stat", budget)), pid);
             if (before.ParentPid != after.ParentPid || before.StartTicks != after.StartTicks)
                 return new("Unknown", pid, after.ParentPid, null, null, "linux", after.StartTicks, "Identity changed during observation.");
             if (after.State is "Z" or "X")
                 return new("Unknown", pid, after.ParentPid, null, null, "linux", after.StartTicks, "Exited/zombie process still has proc metadata; reaping is unverified.");
             // Keep NUL separators: reconstructing a shell command line would lose argv identity.
-            var bootId = Encoding.ASCII.GetString(ReadBounded("/proc/sys/kernel/random/boot_id")).Trim();
+            var bootId = Encoding.ASCII.GetString(ReadBounded("/proc/sys/kernel/random/boot_id", budget)).Trim();
             if (!Guid.TryParse(bootId, out _)) throw new InvalidDataException("Invalid Linux boot identity.");
             return new("Present", pid, after.ParentPid, null, command, "linux", after.StartTicks, BootId: bootId);
         }
@@ -90,16 +96,19 @@ internal static class ProcessObserver
         return (parent, ticks, fields[0]);
     }
 
-    private static byte[] ReadBounded(string path)
+    private static byte[] ReadBounded(string path, Budget? budget)
     {
+        budget?.Check();
         using var stream = File.OpenRead(path);
         var bytes = new byte[65537];
         var count = 0;
         var watch = System.Diagnostics.Stopwatch.StartNew();
         for (var attempt = 0; attempt < 65; attempt++)
         {
+            budget?.Check();
             if (watch.Elapsed.TotalSeconds >= 2) throw new IOException("Process metadata deadline2s.");
             var size = stream.Read(bytes.AsSpan(count, Math.Min(1024, bytes.Length - count)));
+            budget?.Check();
             count += size;
             if (count > 65536) throw new InvalidDataException("Process metadata exceeds 64 KiB.");
             if (size == 0) return bytes[..count];
