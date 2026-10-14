@@ -4,6 +4,8 @@ using System.Text.Json.Serialization.Metadata;
 
 namespace Sezika.Tooling;
 
+internal sealed class ProtectedOutputPathException(string message) : IOException(message);
+
 internal sealed record DownloadRequest(DownloadSpec Asset, string Destination, string? CredentialTarget = null, string CredentialEncoding = "utf8", string CredentialSource = "auto", string AuthenticationProvider = "bearer");
 internal sealed record TransportPrepareRequest(string SourceRoot, string LogicalManifest, string OutputRoot, long ChunkBytes);
 internal sealed record TransportReadbackRequest(string Root, string Destination, string TransportSha256, string AttributesSha256);
@@ -14,7 +16,7 @@ internal sealed record PublicationCommitRequest(string SourceRoot, string Previe
 
 internal static class MigrationCommands
 {
-    internal static readonly string[] Commands = ["oracle batches", "inventory review", "git run", "transport download", "transport prepare", "transport verify", "transport reassemble", "publication preview", "publication prepare", "publication upload", "publication commit", "task prepare", "task resident", "bundle inputs", "bundle build", "bundle freeze", "archive pack", "checkpoint verify", "host inspect", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind", "validation profile", "validation summarize", "validation data-admission", "validation language-audit", "validation batch", "validation near-ties"];
+    internal static readonly string[] Commands = ["oracle batches", "inventory review", "git run", "transport download", "transport prepare", "transport verify", "transport reassemble", "publication preview", "publication prepare", "publication upload", "publication commit", "task prepare", "task resident", "bundle inputs", "bundle build", "bundle freeze", "archive pack", "checkpoint verify", "host inspect", "host sample-gpu", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind", "validation profile", "validation summarize", "validation data-admission", "validation language-audit", "validation batch", "validation near-ties"];
     internal static int Run(string command, string requestPath, string output, Budget budget, CancellationToken cancellation)
     {
         if (command.StartsWith("validation ", StringComparison.Ordinal)) return RunValidation(command, requestPath, output, budget);
@@ -29,6 +31,14 @@ internal static class MigrationCommands
             budget.Check(); CorpusJson.Write(output, result, type, budget);
             var status = result switch { CorpusOperationReport report => report.Status, CorpusManifest manifest => manifest.Status, CorpusResearchCheckReport report => report.Status, CorpusSeedCheckReport report => report.Status, GitReceipt report => report.Status, BundleReceipt report => report.Status, ResidentReceipt report => report.Status, RetirementReport report => report.Status, _ => "" };
             return status.StartsWith("PARTIAL", StringComparison.Ordinal) || status.StartsWith("FAIL", StringComparison.Ordinal) || status.StartsWith("UNKNOWN", StringComparison.Ordinal) || status.StartsWith("PENDING", StringComparison.Ordinal) ? 1 : 0;
+        }
+        void ProtectOutputRoot(string directory)
+        {
+            var root = Path.TrimEndingDirectorySeparator(Path.GetFullPath(directory)); var path = Path.GetFullPath(output);
+            var comparison = OperatingSystem.IsWindows() ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal;
+            var prefix = Path.EndsInDirectorySeparator(root) ? root : root + Path.DirectorySeparatorChar;
+            if (path.Equals(root, comparison) || path.StartsWith(prefix, comparison))
+                throw new ProtectedOutputPathException("Outer receipt must stay outside the protected installation or observation root; no failure receipt is written there.");
         }
         switch (command)
         {
@@ -47,6 +57,12 @@ internal static class MigrationCommands
             case "archive pack": return Save(TaskOperations.Pack(Read(TaskJsonContext.Default.PackRequest), budget), TaskJsonContext.Default.PackReceipt);
             case "checkpoint verify": return Save(TaskOperations.VerifyCheckpoint(Read(TaskJsonContext.Default.CheckpointVerificationRequest), budget), TaskJsonContext.Default.CheckpointVerificationReceipt);
             case "host inspect": return Save(TaskOperations.InspectHost(Read(TaskJsonContext.Default.HostInspectionRequest), budget), TaskJsonContext.Default.HostInspectionReceipt);
+            case "host sample-gpu":
+                var observation = Read(GpuObservationJsonContext.Default.GpuObservationRequest);
+                ProtectOutputRoot(observation.OutputDirectory);
+                var observed = GpuObservation.RunAsync(observation, budget, cancellation).GetAwaiter().GetResult();
+                TaskOperations.WriteNew(output, observed, GpuObservationJsonContext.Default.GpuObservationReport);
+                return observed.Status == "PASS" ? 0 : 1;
             case "transport download":
                 var download = Read(MigrationJsonContext.Default.DownloadRequest);
                 var downloadAuthentication = HttpCredentials.Read(download.CredentialSource, download.CredentialTarget, download.CredentialEncoding, download.AuthenticationProvider, budget);

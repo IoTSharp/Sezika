@@ -1,0 +1,81 @@
+{
+  "ServerAccepted": false,
+  "OriginalCopies": [
+    {
+      "Original": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\root-v8-runtime-recovery-v1\\02\\native-execution\\result.json",
+      "Sha256": "51c7c13b0fd0a8a7027aa9b5e831c7d394fb79667ca4acc0e27c6da501b909cc",
+      "Bytes": 3208,
+      "File": "windows-full20-result.json"
+    },
+    {
+      "Original": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\root-v8-runtime-recovery-v1\\03\\native-execution\\result.json",
+      "Sha256": "ad1b35ae654ddc0fe671aa7b78b896ff34a12dbcbccfb5de081d0197e5ea9b53",
+      "Bytes": 3782,
+      "File": "windows-native-echo1-result.json"
+    },
+    {
+      "Original": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-v8-continuation-v1\\runs\\02\\result.json",
+      "Sha256": "18d8f5e8fdbf36edd2ee7cf1be06d163a05712a03df1e53df5ca0258ac999e0d",
+      "Bytes": 3716,
+      "File": "linux-full20-result.json"
+    },
+    {
+      "Original": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-v8-continuation-v1\\runs\\03\\result.json",
+      "Sha256": "506cf1536266649e627d03622a869de2bac51166383cb4089e73e05c9c4fdc6f",
+      "Bytes": 5198,
+      "File": "linux-native-echo1-result.json"
+    }
+  ],
+  "ActualGpuQueryRun": false,
+  "MigrationOverallComplete": false,
+  "NativeInputEchoPerPlatform": 1,
+  "ChecksPerPlatform": 20,
+  "TrainingAccepted": false,
+  "Utc": "2026-10-14T16:09:33.4308363+00:00",
+  "SyntheticObservation": true,
+  "Status": "PASS_T3_GPU_OBSERVATION_SCOPED_TWO_PLATFORM_AOT",
+  "WindowsChecks": [
+    "GPU observation synthetic tiny9 keeps production argv raw pins and observation-only labels",
+    "GPU observation synthetic two rows keep cadence fixed denominator and statistics",
+    "GPU observation rejects another exact UUID and preserves CSV",
+    "GPU observation rejects NaN and preserves CSV",
+    "GPU observation rejects non-nine-column rows",
+    "GPU observation rejects duplicate or multi-card rows",
+    "GPU observation rejects attached units",
+    "GPU observation rejects unavailable sensor fields",
+    "GPU observation finite physical ranges and used-total relation reject",
+    "GPU observation rejects partial index malformed and zero UUID identities",
+    "GPU observation validates count interval query cleanup and total wall reservation before launch",
+    "GPU observation rejects existing output without overwriting evidence",
+    "GPU observation rejects SHA mismatch and production inert image alias before native query",
+    "GPU observation cancellation before admission creates no query",
+    "GPU observation cancellation between samples preserves the first complete row",
+    "GPU observation preserves original failed native receipt stderr and partial row",
+    "GPU observation rejects unproven output EOF",
+    "GPU observation rejects unknown native cleanup",
+    "GPU observation refuses returned metadata without original native receipt",
+    "GPU observation bounds raw output overflow and JSONL bytes",
+    "PASS checks=20; elapsed=0.491s; platform=Microsoft Windows NT 10.0.26300.0; native_aot=True"
+  ],
+  "Sources": [
+    {
+      "Path": "tools/Sezika.Tooling/Tasks/GpuObservation.cs",
+      "Sha256": "ce77ac4b68c6ade63c2ef703de55b964028fa58964bcd0d3761f52a146e5db3a",
+      "Bytes": 23099
+    },
+    {
+      "Path": "tests/Sezika.Tooling.Tests/GpuObservationChecks.cs",
+      "Sha256": "9177feca2183b3a3fa6924fe71c812e57d85cc17fdf5a9a1cb3e1a5f56f45bd8",
+      "Bytes": 22236
+    }
+  ],
+  "OriginalFailuresPreserved": [
+    "v5 invalid exception classification",
+    "v7 Windows cancel filename case alias",
+    "v7 Linux submillisecond cadence exhaustion"
+  ],
+  "SharedEntryProjection": "GPU-only from exact v8 full source; installation/Git/corpus additions excluded for independent commit",
+  "PerformanceAccepted": false,
+  "LaterWindowsExecutorFix": "Separate v9b candidate, not part of this delivery",
+  "FullBuildManifestSha256": "ab3d882eeb218d6f458ba61951ee7e3403f62b9f47cc9fb9ae371d32fabcfc5c"
+}

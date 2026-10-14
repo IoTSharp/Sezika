@@ -122,6 +122,9 @@ internal static class ToolingCommand
         catch (Exception error) when (error is IOException or InvalidDataException or UnauthorizedAccessException or ArgumentException or JsonException or InvalidOperationException or OperationCanceledException or TimeoutException or FormatException or OverflowException or KeyNotFoundException or System.ComponentModel.Win32Exception or HttpRequestException)
         {
             var timedOut = error is OperationCanceledException or TimeoutException;
+            // A rejected output inside protected data/evidence must not be
+            // created by this fallback error writer either.
+            if (error is ProtectedOutputPathException) outputAvailable = false;
             if (outputAvailable && output is not null && !Path.Exists(output))
                 Write(output, new CommandFailure(timedOut ? "CANCELLED_OR_TIMED_OUT" : "FAIL", error.GetType().Name, error.Message), ToolingJsonContext.Default.CommandFailure);
             Console.Error.WriteLine($"tooling: {error.GetType().Name}: {error.Message}");
