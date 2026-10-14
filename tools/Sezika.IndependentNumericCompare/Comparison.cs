@@ -208,9 +208,64 @@ internal static class Comparison
         var failed = results.Count(t => !t.Passed); var passed = failed == 0 && results.Count == 26;
         return new() { Status = fixture ? "fixture_only_comparison_complete" : "comparison_complete", CaseId = c.CaseId, ActualSha256 = actualHash, ReferenceSha256 = referenceHash,
             ContractSha256 = contractHash, OracleProgramSha256 = options.OracleProgramSha256, UpstreamSourceSha256 = options.UpstreamSourceSha256,
-            FixtureOnly = fixture, Passed = passed, AcceptedIndependentReference = passed && !fixture, ComparedCount = results.Count, FailedComparisons = failed,
+            FixtureOnly = fixture, Passed = passed, AcceptedIndependentReference = passed && !fixture, UpstreamExecuted = !fixture, ComparedCount = results.Count, FailedComparisons = failed,
             ElementDenominator = results.Sum(t => t.ElementCount), FailedElements = results.Sum(t => t.FailedElements), Results = results.ToArray(), StartedUtc = budget.StartedUtc,
             ElapsedSeconds = budget.ElapsedSeconds, Process = budget.Identity() };
+    }
+    internal static ComparisonReport RunPort(Options options, Budget budget)
+    {
+        budget.Check(); Io.NewOutput(options.Output, budget);
+        var actual = Io.Json(options.Actual, CompareJsonContext.Default.ActualCapture, budget, out var actualHash);
+        var reference = Io.Json(options.Reference, PortJson.Default.PortCapture, budget, out var referenceHash);
+        var contract = PortReferenceProof.Contract(options.Contract, options.ContractSha256, budget);
+        PortReferenceProof.Shape(reference, contract);
+        PortReferenceProof.Verify(reference, contract, options, referenceHash, actualHash, budget);
+        var report = PortPayload(actual, reference, contract.Numeric, options, actualHash, referenceHash, budget, false);
+        return report with { AcceptedPortDerivedReference = report.Passed, AcceptedIndependentReference = false };
+    }
+    internal static ComparisonReport PortPayload(ActualCapture actual, PortCapture reference, NumericView c, Options options,
+        string actualHash, string referenceHash, Budget budget, bool fixture)
+    {
+        var actualRoot = Path.GetDirectoryName(Path.GetFullPath(options.Actual))!; var referenceRoot = Path.GetDirectoryName(Path.GetFullPath(options.Reference))!;
+        Require.That(!string.Equals(actualRoot, referenceRoot, StringComparison.OrdinalIgnoreCase), "Actual/reference capture roots must be independent.");
+        Require.That(actual.SchemaVersion == 1 && actual.Status == "cpu_capture_complete" && actual.Kind == "csharp_cpu_capture" && actual.Backend == "csharp_scalar_fp32" && actual.ModelId == "sezika/mmbert-base-independent-s4" && actual.SourceModelId == c.SourceModelId && actual.SourceRevision == c.SourceRevision && actual.Protocol == c.Protocol && actual.LengthPolicy == c.LengthPolicy && actual.CaseId == c.CaseId && !actual.RepresentsUpstreamParity && actual.ExpectedCheckpoints == 267 && actual.IntegerDtype == "I32" && actual.IntegerLayout == "little_endian_contiguous" && (fixture ? actual.FixtureOnly && reference.FixtureOnly : !actual.FixtureOnly && !reference.FixtureOnly), "Actual port comparison identity/status/fixture mismatch.");
+        Require.That(reference.SourceModelId == c.SourceModelId && reference.SourceRevision == c.SourceRevision && reference.CaseId == c.CaseId && reference.ModelId == actual.ModelId && reference.Protocol == c.Protocol && reference.LengthPolicy == c.LengthPolicy && !reference.UpstreamExecuted, "Port numeric payload identity differs.");
+        Require.That(actual.Assets.Length is >= 3 and <= 16 && actual.Assets.All(item => item is not null) && actual.Assets.Select(item => item.Path).Distinct(StringComparer.OrdinalIgnoreCase).Count() == actual.Assets.Length, "Actual port assets invalid/duplicate.");
+        var config = Asset(actual, "source-config.json"); Require.That(Io.SameHash(config.Sha256, c.ConfigSha256), "Actual port config differs."); Io.Artifact(actualRoot, config, 1048576, budget);
+        var package = Io.Parse(Io.Artifact(actualRoot, Asset(actual, "package-manifest.json"), 1048576, budget), CompareJsonContext.Default.PackageManifest, budget);
+        Require.That(package.SchemaVersion == 1 && package.ModelId == actual.ModelId && package.SourceModelId == c.SourceModelId && package.SourceRevision == c.SourceRevision && Io.SameHash(package.SourceWeightsSha256, c.SourceWeightsSha256) && Io.SameHash(package.WeightsSha256, c.ConvertedEncoderSha256) && Io.SameHash(package.TokenizerSha256, c.TokenizerSha256), "Actual port package snapshot differs.");
+        Require.That(Io.SameHash(Asset(actual, "pytorch_model.bin").Sha256, c.SourceWeightsSha256) && Asset(actual, "pytorch_model.bin").Bytes == c.SourceWeightsBytes && Io.SameHash(Asset(actual, "encoder.safetensors").Sha256, c.ConvertedEncoderSha256) && Asset(actual, "encoder.safetensors").Bytes == 1227772549 && Io.SameHash(Asset(actual, "tokenizer/tokenizer.json").Sha256, c.TokenizerSha256) && Asset(actual, "tokenizer/tokenizer.json").Bytes == 17525329, "Actual port loader source differs.");
+        Integers(actualRoot, actual.TokenIds, actual.MarkerPositions, actual.TokenIdsArtifact, actual.MarkerPositionsArtifact, c, budget);
+        Integers(referenceRoot, reference.TokenIds, reference.MarkerPositions, reference.TokenIdsArtifact, reference.MarkerPositionsArtifact, c, budget);
+        Require.That(actual.TokenIds.SequenceEqual(reference.TokenIds) && actual.MarkerPositions.SequenceEqual(reference.MarkerPositions), "Port token/marker arrays differ.");
+        Request(actualRoot, actual.Request, c, budget); Request(referenceRoot, reference.Request, c, budget);
+        Metadata(actual.Tensors, actualRoot, true, budget); Metadata(reference.Tensors, referenceRoot, false, budget);
+        MarkerMetadata(actual.MarkerVectors, actualRoot, budget); MarkerMetadata(reference.MarkerVectors, referenceRoot, budget);
+        Require.That(!actual.Tensors.Any(item => item.Path == actual.MarkerVectors.Path) && !reference.Tensors.Any(item => item.Path == reference.MarkerVectors.Path), "Port marker path aliases checkpoint.");
+        var paths = actual.Tensors.Where(item => c.Checkpoints.Contains(item.Name)).Select(item => Io.Relative(actualRoot, item.Path, budget)).Append(Io.Relative(actualRoot, actual.MarkerVectors.Path, budget)).ToHashSet(StringComparer.OrdinalIgnoreCase);
+        Require.That(reference.Tensors.Select(item => Io.Relative(referenceRoot, item.Path, budget)).Append(Io.Relative(referenceRoot, reference.MarkerVectors.Path, budget)).All(path => !paths.Contains(path)), "Port reference reuses actual tensor paths.");
+        Require.That(Io.SameHash(actual.FinalHiddenSha256, actual.Tensors[^1].Sha256), "Actual port final hidden hash differs.");
+        var results = new List<TensorResult>(26); byte[]? finalA = null, finalR = null; long bytesA = 0, bytesR = 0;
+        for (var index = 0; index < 25; index++)
+        {
+            budget.Check(); var name = c.Checkpoints[index]; var a = actual.Tensors.Single(item => item.Name == name); var r = reference.Tensors[index];
+            var ab = Tensor(actualRoot, a, budget); var rb = Tensor(referenceRoot, r, budget); bytesA += ab.Length; bytesR += rb.Length;
+            Require.That(bytesA <= 4194304 && bytesR <= 4194304, "Port selected payload exceeds4MiB.");
+            results.Add(Values(name, a.Shape, ab, rb, Tolerance(c, name), budget)); if (name == "encoder/final") { finalA = ab; finalR = rb; }
+            Console.Error.WriteLine($"Port compared {index + 1}/26: {name}; failed_elements={results[^1].FailedElements}");
+        }
+        var am = Tensor(actualRoot, actual.MarkerVectors, budget); var rm = Tensor(referenceRoot, reference.MarkerVectors, budget);
+        Require.That(bytesA + am.Length <= 4194304 && bytesR + rm.Length <= 4194304, "Port marker payload exceeds4MiB.");
+        MarkerRows(finalA!, am, c.MarkerPositions, budget); MarkerRows(finalR!, rm, c.MarkerPositions, budget);
+        results.Add(Values(c.MarkerVectorsName, [2, 768], am, rm, Tolerance(c, c.MarkerVectorsName), budget));
+        var failed = results.Count(item => !item.Passed);
+        return new() { SchemaVersion = "sezika.independent-numeric-comparison.port-derived.v2", Status = fixture ? "fixture_only_port_comparison_complete" : "port_comparison_complete",
+            CaseId = c.CaseId, ActualSha256 = actualHash, ReferenceSha256 = referenceHash, ContractSha256 = options.ContractSha256,
+            OracleProgramSha256 = reference.Executable.Sha256, UpstreamSourceSha256 = reference.UpstreamSources[0].Sha256,
+            FixtureOnly = fixture, Passed = failed == 0 && results.Count == 26, AcceptedIndependentReference = false,
+            AcceptedPortDerivedReference = false, ReferenceKind = "independently_ported_original_weights_capture", UpstreamExecuted = false,
+            ComparedCount = results.Count, FailedComparisons = failed, ElementDenominator = results.Sum(item => item.ElementCount), FailedElements = results.Sum(item => item.FailedElements),
+            Results = results.ToArray(), StartedUtc = budget.StartedUtc, ElapsedSeconds = budget.ElapsedSeconds, Process = budget.Identity() };
     }
     private static Artifact Asset(ActualCapture actual, string path) => actual.Assets.SingleOrDefault(a => a.Path == path) ?? throw new InvalidDataException($"Missing {path} source asset.");
     private static void Code(ProgramArtifact artifact, string path, string expectedHash, string root, Budget budget)
@@ -221,10 +276,14 @@ internal static class Comparison
         Require.That(artifact.Bytes == bytes.Length && Io.SameHash(Io.Hash(bytes), expectedHash), "Code file bytes/hash mismatch.");
     }
     private static void Request(string root, Artifact artifact, FrozenContract c, Budget budget)
+        => Request(root, artifact, FromLegacy(c), budget);
+    private static void Request(string root, Artifact artifact, NumericView c, Budget budget)
     {
         Require.That(artifact.Path == "request.json" && Io.SameHash(artifact.Sha256, c.RequestSha256), "Request identity mismatch."); Io.Artifact(root, artifact, 1_048_576, budget);
     }
     private static void Integers(string root, int[] ids, int[] markers, Artifact tokenArtifact, Artifact markerArtifact, FrozenContract c, Budget budget)
+        => Integers(root, ids, markers, tokenArtifact, markerArtifact, FromLegacy(c), budget);
+    private static void Integers(string root, int[] ids, int[] markers, Artifact tokenArtifact, Artifact markerArtifact, NumericView c, Budget budget)
     {
         Require.That(ids.Length == 46 && ids.All(id => id is >= 0 and < 256000) && markers.SequenceEqual(c.MarkerPositions) &&
             tokenArtifact.Path == "token-ids.i32" && markerArtifact.Path == "marker-positions.i32" && Io.SameHash(tokenArtifact.Sha256, c.TokenIdsSha256) && Io.SameHash(markerArtifact.Sha256, c.MarkerPositionsSha256), "Integer input metadata mismatch.");
@@ -265,6 +324,10 @@ internal static class Comparison
         return bytes;
     }
     private static Tolerance Tolerance(FrozenContract c, string name) => c.Tolerances[name.StartsWith("layer/", StringComparison.Ordinal) ? "layer_hidden" : name];
+    private static Tolerance Tolerance(NumericView c, string name) => c.Tolerances[name.StartsWith("layer/", StringComparison.Ordinal) ? "layer_hidden" : name];
+    private static NumericView FromLegacy(FrozenContract c) => new(c.SourceModelId, c.SourceRevision, c.SourceWeightsSha256, c.SourceWeightsBytes, c.ConfigSha256,
+        c.TokenizerSha256, c.ConvertedEncoderSha256, c.CaseId, c.RequestSha256, c.TokenIdsSha256, c.MarkerPositionsSha256, c.Protocol, c.LengthPolicy,
+        c.MarkerPositions, c.Checkpoints, c.MarkerVectorsName, c.Tolerances);
     private static TensorResult Values(string name, int[] shape, byte[] actual, byte[] reference, Tolerance tolerance, Budget budget)
     {
         Require.That(actual.Length == reference.Length, "Tensor byte lengths differ."); long failures = 0, maxIndex = 0; double maxAbsolute = 0, maxRelative = 0;

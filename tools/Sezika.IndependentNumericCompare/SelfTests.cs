@@ -1,6 +1,7 @@
 using System.Buffers.Binary;
 using System.Text;
 using System.Text.Json;
+using Sezika.PortProvenance;
 
 namespace Sezika.IndependentNumericCompare;
 
@@ -90,6 +91,122 @@ internal static class SelfTests
         Console.WriteLine($"Synthetic self-tests passed: {results.Count}/{options.MaximumCases}; output retained for audit; no model execution."); return 0;
     }
     private sealed record FixtureData(ActualCapture Actual, ReferenceCapture Reference, Options Options, string ActualRoot, string ReferenceRoot);
+    internal static int RunPort(Options options, Budget budget)
+    {
+        Io.NewOutput(options.Output, budget); Directory.CreateDirectory(options.Output);
+        var hash = Io.Hash(Io.Read(options.Contract, 1048576, budget));
+        var contract = PortReferenceProof.Contract(options.Contract, hash, budget, true); var results = new List<SelfTestCase>();
+        void Rejected(Action action, string message)
+        {
+            budget.Check(); var rejected = false;
+            try { action(); } catch (Exception error) when (error is InvalidDataException or JsonException) { rejected = true; }
+            Require.That(rejected, message);
+        }
+        string[] names = ["port_fixture_not_accepted", "port_all26_failures_retained", "port_fixture_source_gate_rejected", "upstream_execution_claim_rejected", "port_source_identity_rejected", "port_tolerance_change_rejected", "official_source_change_rejected", "template_program_build_and_request_binding_rejected", "original134_missing_rejected", "duplicate_payload_name_rejected", "integer_array_bytes_disagreement", "port_payload_path_escape_rejected", "port_nan_rejected", "port_duplicate_json_rejected", "port_null_tensors_and_missing_compound_proof_rejected", "existing_port_report_preserved"];
+        for (var index = 0; index < options.MaximumCases; index++)
+        {
+            budget.Check(); var root = Path.Combine(options.Output, "port-case-" + (index + 1).ToString("D2")); Directory.CreateDirectory(root);
+            var data = PortFixture(root, options.Contract, hash, contract, budget); var actual = data.Actual; var reference = data.Reference;
+            if (index == 1) { for (var tensor = 0; tensor < 25; tensor++) reference.Tensors[tensor] = ChangeTensor(reference.Tensors[tensor], data.ReferenceRoot, .5f, budget); reference = reference with { MarkerVectors = ChangeTensor(reference.MarkerVectors, data.ReferenceRoot, .5f, budget) }; }
+            if (index == 9) actual.Tensors[2] = actual.Tensors[2] with { Name = actual.Tensors[0].Name };
+            if (index == 10) reference.TokenIds[0] = 7;
+            if (index == 11) reference.Tensors[0] = reference.Tensors[0] with { Path = "../escaped.f32" };
+            if (index == 12) actual.Tensors[0] = ChangeTensor(actual.Tensors[0], data.ActualRoot, float.NaN, budget);
+            if (index < 2)
+            {
+                var report = Comparison.PortPayload(actual, reference, contract.Numeric, data.Options, "fixture-only", "fixture-only", budget, true);
+                Require.That(report.ComparedCount == 26 && report.ElementDenominator == 884736 && report.FixtureOnly && !report.AcceptedIndependentReference && !report.AcceptedPortDerivedReference && !report.UpstreamExecuted &&
+                    (index == 0 ? report.Passed : !report.Passed && report.FailedComparisons == 26 && report.FailedElements == report.ElementDenominator), "Port fixture numeric denominator/acceptance differs.");
+                Io.WriteNew(data.Options.Output, report, CompareJsonContext.Default.ComparisonReport, budget);
+            }
+            else
+            {
+                Action test = index switch
+                {
+                    2 => () => PortReferenceProof.Shape(reference, contract),
+                    3 => () =>
+                    {
+                        // Shape-only synthetic DTO, never serialized or accepted by full provenance verification.
+                        var baseline = reference with { Status = "complete", Kind = "independently_ported_original_weights_capture", FixtureOnly = false,
+                            Implementation = "transformers-4.57.1-modernbert-eager-csharp-fp32-vector-dot-fp64-norm-statistics-erf-approximation-v1",
+                            OriginalWeightsVerified = true, OriginalTensors = Enumerable.Repeat(new OriginalTensorProof("shape-only", "0", 0, [], 0, new string('0', 64)), 134).ToArray(),
+                            ElapsedSeconds = .1, ObservedPeakBytes = 536870912,
+                            Execution = new("csharp_cpu_fp32_port", 8, "FP32 products and vector-lane reductions", "FP64 population statistics then FP32 output", "erf-form GELU with A&S7.1.26 approximation", "shape-only", "shape-only", "shape-only", ["shape-only"], 1) };
+                        PortReferenceProof.Shape(baseline, contract); PortReferenceProof.Shape(baseline with { UpstreamExecuted = true }, contract);
+                    },
+                    4 => () => PortReferenceProof.ValidateContract(contract with { SourceWeightsSha256 = new string('0', 64) }, budget, true),
+                    5 => () => { var tolerances = new Dictionary<string, Tolerance>(contract.Tolerances); tolerances["layer_hidden"] = new(.002, .0001); PortReferenceProof.ValidateContract(contract with { Tolerances = tolerances }, budget, true); },
+                    6 => () => PortReferenceProof.ValidateContract(contract with { UpstreamSourceSha256 = [new string('0', 64), .. contract.UpstreamSourceSha256[1..]] }, budget, true),
+                    7 => () =>
+                    {
+                        var requestPath = Path.Combine(root, "unexecuted-request-fixture.json");
+                        Require.That(PortReferenceProof.RequestArgument(["capture", "--request", requestPath, "--timeout", "5"], budget) == requestPath,
+                            "Literal request locator assumed the request must be the last argument.");
+                        Rejected(() => PortReferenceProof.RequestArgument(["capture", "--request", requestPath, "--request", requestPath], budget), "Duplicate request pair accepted.");
+                        Rejected(() => PortReferenceProof.RequestArgument(["capture", "--timeout", "5"], budget), "Missing request pair accepted.");
+                        var weak = new PortBuildProof("PASS_INDEPENDENT_REFERENCE_PROGRAM_BINDING", true, [], reference.Executable, null);
+                        Rejected(() => Io.Parse(JsonSerializer.SerializeToUtf8Bytes(weak, PortJson.Default.PortBuildProof), CompiledProgramJson.Default.PortBuildSummary, budget),
+                            "Self-declared weak build proof was parsed as compound actual compiler/PE/PDB/runtime evidence.");
+                        PortReferenceProof.ValidateContract(contract with { ProgramSourceSha256 = [new string('0', 64)] }, budget, true);
+                    },
+                    8 => () => PortReferenceProof.ValidateTensorProofs([], budget),
+                    13 or 14 => () =>
+                    {
+                        var json = JsonSerializer.Serialize(reference, PortJson.Default.PortCapture);
+                        if (index == 14)
+                            foreach (var field in new[] { "build_receipt", "build_execution", "runtime_files", "export_request" })
+                            {
+                                budget.Check(); var missing = json.Replace("\"" + field + "\":", "\"discarded_" + field + "\":", StringComparison.Ordinal);
+                                Rejected(() => Io.Parse(Encoding.UTF8.GetBytes(missing), PortJson.Default.PortCapture, budget), "Missing mandatory compound capture proof field accepted: " + field);
+                            }
+                        json = index == 13 ? json.Replace("\"schema_version\": \"sezika.independent-reference.v2\",", "\"schema_version\": \"sezika.independent-reference.v2\", \"schema_version\": \"sezika.independent-reference.v2\",", StringComparison.Ordinal) : json.Replace("\"tensors\": [", "\"tensors\": null, \"discarded_tensors\": [", StringComparison.Ordinal);
+                        _ = Io.Parse(Encoding.UTF8.GetBytes(json), PortJson.Default.PortCapture, budget);
+                    },
+                    15 => () => { WriteOwned(data.Options.Output, Encoding.ASCII.GetBytes("owned-port-sentinel"), budget); Io.NewOutput(data.Options.Output, budget); },
+                    _ => () => _ = Comparison.PortPayload(actual, reference, contract.Numeric, data.Options, "fixture-only", "fixture-only", budget, true)
+                };
+                var rejected = false; try { test(); } catch (Exception error) when (error is InvalidDataException or JsonException) { rejected = true; }
+                Require.That(rejected, "Invalid port input was accepted: " + names[index]);
+                if (index == 15) Require.That(Encoding.ASCII.GetString(Io.Read(data.Options.Output, 64, budget)) == "owned-port-sentinel", "Port report overwritten.");
+            }
+            results.Add(new(index + 1, names[index], true, index is 7 or 14 ? 5 : 1)); Console.Error.WriteLine($"Port self-test {index + 1}/{options.MaximumCases}: {names[index]}");
+        }
+        Io.WriteNew(Path.Combine(options.Output, "self-test-port.json"), new SelfTestReport("sezika.independent-compare-self-test.port-derived.v2", true, false, results.Count, results.Sum(item => item.AssertionVariants), results.ToArray()), CompareJsonContext.Default.SelfTestReport, budget); return 0;
+    }
+    private sealed record PortFixtureData(ActualCapture Actual, PortCapture Reference, Options Options, string ActualRoot, string ReferenceRoot);
+    private static PortFixtureData PortFixture(string root, string contractPath, string contractHash, PortContract c, Budget budget)
+    {
+        var ar = Path.Combine(root, "actual"); var rr = Path.Combine(root, "reference"); Directory.CreateDirectory(ar); Directory.CreateDirectory(rr);
+        var tokens = new byte[184]; var markers = new byte[8];
+        for (var index = 0; index < 46; index++) { budget.Check(); BinaryPrimitives.WriteInt32LittleEndian(tokens.AsSpan(index * 4, 4), Tokens[index]); }
+        BinaryPrimitives.WriteInt32LittleEndian(markers.AsSpan(0, 4), 25); BinaryPrimitives.WriteInt32LittleEndian(markers.AsSpan(4, 4), 35);
+        var token = Save(ar, "token-ids.i32", tokens, budget); Save(rr, token.Path, tokens, budget);
+        var marker = Save(ar, "marker-positions.i32", markers, budget); Save(rr, marker.Path, markers, budget);
+        var request = Save(ar, "request.json", Encoding.UTF8.GetBytes(RequestText), budget); Save(rr, request.Path, Encoding.UTF8.GetBytes(RequestText), budget);
+        var config = Save(ar, "source-config.json", Convert.FromBase64String(ConfigBase64), budget);
+        var package = new PackageManifest { SchemaVersion = 1, ModelId = "sezika/mmbert-base-independent-s4", SourceModelId = c.SourceModelId, SourceRevision = c.SourceRevision, SourceWeightsSha256 = c.SourceWeightsSha256, WeightsSha256 = c.ConvertedEncoderSha256, TokenizerSha256 = c.TokenizerSha256 };
+        var packageArtifact = Save(ar, "package-manifest.json", JsonSerializer.SerializeToUtf8Bytes(package, CompareJsonContext.Default.PackageManifest), budget);
+        var all = new TensorArtifact[267]; var layerNames = new[] { "norm1", "qkv", "rope_q", "rope_k", "attention", "projected", "residual", "norm2", "up", "gelu", "mlp", "hidden" };
+        for (var index = 0; index < 267; index++)
+        {
+            budget.Check(); var width = 768; string name;
+            if (index < 2) name = Comparison.Checkpoints[index]; else if (index == 266) name = "encoder/final";
+            else { var slot = (index - 2) % 12; name = "layer/" + ((index - 2) / 12) + "/" + layerNames[slot]; width = slot is 1 or 8 ? 2304 : slot == 9 ? 1152 : 768; }
+            all[index] = new(name, "tensor-" + index.ToString("D3") + ".f32", "F32", [46, width], "little_endian_row_major", 46L * width * 4, new string('0', 64));
+            if (Comparison.Checkpoints.Contains(name)) all[index] = ChangeTensor(all[index], ar, .125f, budget);
+        }
+        var selected = new TensorArtifact[25]; for (var index = 0; index < 25; index++) { budget.Check(); selected[index] = ChangeTensor(all.Single(item => item.Name == Comparison.Checkpoints[index]) with { Path = "tensor-" + index.ToString("D3") + ".f32" }, rr, .125f, budget); }
+        var mv = new TensorArtifact("marker-vectors.f32", "marker-vectors.f32", "F32", [2, 768], "little_endian_row_major", 6144, new string('0', 64));
+        var am = ChangeTensor(mv, ar, .125f, budget); var rm = ChangeTensor(mv, rr, .125f, budget);
+        var actual = new ActualCapture { SchemaVersion = 1, Status = "cpu_capture_complete", Kind = "csharp_cpu_capture", ModelId = package.ModelId, SourceModelId = c.SourceModelId, SourceRevision = c.SourceRevision, Protocol = c.Protocol, LengthPolicy = c.LengthPolicy, Backend = "csharp_scalar_fp32", CaseId = c.CaseId, FixtureOnly = true, RepresentsUpstreamParity = false, ExpectedCheckpoints = 267, IntegerDtype = "I32", IntegerLayout = "little_endian_contiguous", TokenIds = (int[])Tokens.Clone(), MarkerPositions = [25, 35], TokenIdsArtifact = token, MarkerPositionsArtifact = marker, Request = request,
+            Assets = [config, packageArtifact, new("pytorch_model.bin", c.SourceWeightsSha256, c.SourceWeightsBytes), new("encoder.safetensors", c.ConvertedEncoderSha256, 1227772549), new("tokenizer/tokenizer.json", c.TokenizerSha256, 17525329)], Tensors = all, MarkerVectors = am, FinalHiddenSha256 = all[^1].Sha256 };
+        var unmeasured = new ProofPin(Path.Combine(root, "unmeasured-fixture.source.txt"), 0, new string('0', 64));
+        var reference = new PortCapture { SchemaVersion = "sezika.independent-reference.v2", Status = "fixture_complete", Kind = "synthetic_numeric_port_fixture", FixtureOnly = true, UpstreamExecuted = false, Implementation = "fixture_only_no_original_execution", SourceModelId = c.SourceModelId, SourceRevision = c.SourceRevision, CaseId = c.CaseId, Protocol = c.Protocol, LengthPolicy = c.LengthPolicy, ModelId = package.ModelId,
+            OriginalWeights = unmeasured, Config = unmeasured, Tokenizer = unmeasured, ActualCapture = unmeasured, Contract = new(contractPath, new FileInfo(contractPath).Length, contractHash), UpstreamSources = [unmeasured], ProgramSources = [], Executable = unmeasured, ManagedAssembly = null,
+            BuildReceipt = unmeasured, BuildExecution = unmeasured, RuntimeFiles = [], ExportRequest = unmeasured, ProcessEvidence = unmeasured,
+            Process = new(0, 0, [], null, null, null, "fixture-only", null, "fixture-only"), TokenIdsArtifact = token, MarkerPositionsArtifact = marker, Request = request, TokenIds = (int[])Tokens.Clone(), MarkerPositions = [25, 35], Tensors = selected, MarkerVectors = rm, OriginalTensors = [], Execution = new("fixture_only", 0, "not_run", "not_run", "not_run", "not_run", "not_run", "not_run", [], 0), StartedUtc = budget.StartedUtc, ElapsedSeconds = 0, ObservedPeakBytes = 0, TerminalError = null, OriginalWeightsVerified = false, RepresentsParity = false, RepresentsQuality = false, RepresentsCalibration = false };
+        return new(actual, reference, new("compare-port", Path.Combine(ar, "capture.json"), Path.Combine(rr, "reference.json"), contractPath, contractHash, "", "", "", "", Path.Combine(root, "comparison-port.json"), 60, null, 16), ar, rr);
+    }
     private static FixtureData Fixture(string root, string contractPath, string contractHash, FrozenContract c, Budget budget)
     {
         var ar = Path.Combine(root, "actual"); var rr = Path.Combine(root, "reference"); Directory.CreateDirectory(ar); Directory.CreateDirectory(rr);
