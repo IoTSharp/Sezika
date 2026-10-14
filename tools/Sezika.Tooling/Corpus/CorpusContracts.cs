@@ -123,7 +123,7 @@ internal sealed record CorpusResearchAsset(string Dataset, string Revision, stri
 internal sealed record CorpusDatasetAsset([property: JsonPropertyName("path")] string Path,
     [property: JsonPropertyName("sha256")] string Sha256, [property: JsonPropertyName("bytes")] long Bytes);
 internal sealed record CorpusResearchSource(string Id, string Verification, string? Revision, JsonElement License, string MetadataSha256,
-    string SourceUrl, string TrainingAdmission = "pending_original_split_and_license_review");
+    string SourceUrl, string TrainingAdmission = "pending_original_split_and_license_review", string? RequestedId = null);
 
 [JsonSourceGenerationOptions(WriteIndented = false, PropertyNameCaseInsensitive = false)]
 [JsonSerializable(typeof(CorpusPrepareRequest))]

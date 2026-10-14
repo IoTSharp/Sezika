@@ -1,0 +1,137 @@
+{
+  "SchemaVersion": 1,
+  "Status": "PASS_research_identity_local_source_scope_only",
+  "Module": "research-identity",
+  "Scope": "来源元数据 canonical id、保留 requested id 与明确 revision 的计划绑定；两平台 full8，不替代来源语义和许可人工判断。",
+  "SourceManifestSha256": "230130665280ad7d0905c74764c8683f7580d723e52c63002326826d1182dcf3",
+  "Sources": [
+    {
+      "Sha256": "3c1249ff1e8de258c436e9f114a42c0e201d73d40bd8a7f3bde2faffc3195ef6",
+      "Path": "tools/Sezika.Tooling/Corpus/CorpusContracts.cs",
+      "Bytes": 14324
+    },
+    {
+      "Sha256": "1b43552ac6e7066f6dac7525efb5340defe22f4404bb0c9568d8e70029b8ffc7",
+      "Path": "tools/Sezika.Tooling/Corpus/CorpusDatasetBuild.cs",
+      "Bytes": 20831
+    },
+    {
+      "Sha256": "43594068d85a3dc17fdd387df70be361f46bfc7428293e0326bdb7b06216028f",
+      "Path": "tests/Sezika.Tooling.Tests/CorpusResearchIdentityChecks.cs",
+      "Bytes": 15714
+    }
+  ],
+  "Runs": [
+    {
+      "Name": "11-windows-corpus-research-identity-tiny",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "windows",
+      "RawSha256": "57c1db1b1e82c2eb8b48902dbf966fed118b7dff65247c410e5020b8138ee5f6",
+      "RawResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\requests-v17-prebind\\11-windows-corpus-research-identity-tiny\\native-execution\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\cases-v17-prebind\\11-windows-corpus-research-identity-tiny-552cb60aec1b4bd9963b478a800a8aa4\\checks.txt",
+      "Suite": "corpus-research-identity",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "043cb701e35a8573e28ace76c3bf9c5bfb9d593ae04a8656e6af8777e1acc130",
+      "Summary": "PASS checks=1; elapsed=0.036s; platform=Microsoft Windows NT 10.0.26300.0; native_aot=True",
+      "RootPid": 6344,
+      "Checks": 1,
+      "Status": "PASS",
+      "CheckNames": [
+        "research identity golden retains revision metadata SHA license and selected URL"
+      ]
+    },
+    {
+      "Name": "12-windows-corpus-research-identity-full",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "windows",
+      "RawSha256": "23f471b8a715b61d694286eeed4185a1a68e3277b67a9d134ab2768381c7d9e6",
+      "RawResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\requests-v17-prebind\\12-windows-corpus-research-identity-full\\native-execution\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\cases-v17-prebind\\12-windows-corpus-research-identity-full-7f40ffe75b1247eb84a8792074c26be3\\checks.txt",
+      "Suite": "corpus-research-identity",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "25772ff6ac254a033810f0994d30b7e0fb5e55e53933f87d406a54a2c84932f9",
+      "Summary": "PASS checks=8; elapsed=0.308s; platform=Microsoft Windows NT 10.0.26300.0; native_aot=True",
+      "RootPid": 26744,
+      "Checks": 8,
+      "Status": "PASS",
+      "CheckNames": [
+        "research identity golden retains revision metadata SHA license and selected URL",
+        "research identity publisher alias keeps requested ID canonical ID and missing identity",
+        "research identity GitHub URLs require full lowercase fixed revision",
+        "research identity independent seed duplicate IDs reject without a report",
+        "research identity independent seed golden and missing evaluation retain evidence scope",
+        "research identity independent seed nonnumeric reference rejects",
+        "research identity independent seed each external pin mismatch rejects before output",
+        "research identity independent reference disagreement and query failures remain counters"
+      ]
+    },
+    {
+      "Name": "11-linux-corpus-research-identity-tiny",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "linux",
+      "RawSha256": "c6bfe3131e283bbaa3210d4a56cc6df2fadfc651c5f11484a765fbdb2582b202",
+      "RawResult": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\requests\\11-linux-corpus-research-identity-tiny\\native-execution\\result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\cases\\11-linux-corpus-research-identity-tiny\\checks.txt",
+      "Suite": "corpus-research-identity",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "73a1d0c11586f72c85ceb5c6f7530cafdaffe7f04cae976fae8b96f795c1392b",
+      "Summary": "PASS checks=1; elapsed=0.018s; platform=Unix 6.6.87.2; native_aot=True",
+      "RootPid": 2402113,
+      "Checks": 1,
+      "Status": "PASS",
+      "CheckNames": [
+        "research identity golden retains revision metadata SHA license and selected URL"
+      ]
+    },
+    {
+      "Name": "12-linux-corpus-research-identity-full",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "linux",
+      "RawSha256": "9fec1aafe175abdd818fac212dd28e9fb122187f8daed8aa832cae026ca0024d",
+      "RawResult": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\requests\\12-linux-corpus-research-identity-full\\native-execution\\result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\cases\\12-linux-corpus-research-identity-full\\checks.txt",
+      "Suite": "corpus-research-identity",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "aca1c9b65f3d703297d57f02177087631938133fc6a2847cef7dc8eced878e3a",
+      "Summary": "PASS checks=8; elapsed=0.065s; platform=Unix 6.6.87.2; native_aot=True",
+      "RootPid": 2402143,
+      "Checks": 8,
+      "Status": "PASS",
+      "CheckNames": [
+        "research identity golden retains revision metadata SHA license and selected URL",
+        "research identity publisher alias keeps requested ID canonical ID and missing identity",
+        "research identity GitHub URLs require full lowercase fixed revision",
+        "research identity independent seed duplicate IDs reject without a report",
+        "research identity independent seed golden and missing evaluation retain evidence scope",
+        "research identity independent seed nonnumeric reference rejects",
+        "research identity independent seed each external pin mismatch rejects before output",
+        "research identity independent reference disagreement and query failures remain counters"
+      ]
+    }
+  ],
+  "CheckExecutions": 18.0,
+  "Resources": [
+    {
+      "Sha256": "e13c5d76d045f9cec5a209ef1533045b5829206c61b310ac1ca509b033d4b69c",
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\root-final-24-resource-coverage-v17.json"
+    },
+    {
+      "Sha256": "c1b7ffc3c5111f7fcce5e3290db28bc6062cbf21c95de4b92497c8722ec27cf9",
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-linux-modules-v1\\root-final-thirty-resource-coverage-v17.json"
+    }
+  ],
+  "RuntimeWindowsSha256": "cd4bb0cdd95dc5115098ece059125c79f5a689a24e379b19ae14238cd3a8ed89",
+  "RuntimeLinuxSha256": "a9077a77fcf65f3f685ca6feb9269fc20be4b026cdcb61324ea775ab252a0517",
+  "SdkPolicy": "Unpinned project SDK; actual tool identity recorded in raw build receipts",
+  "LocalNativeAot": true,
+  "FinalCallerRetirementAccepted": false,
+  "ServerLiveAcceptance": "NOT_RUN",
+  "FormalTrainingAccepted": false,
+  "ModelOrDataPublicationAccepted": false,
+  "HistoricalFailuresPreserved": true,
+  "Utc": "2026-10-14T22:06:01.0331017+00:00"
+}

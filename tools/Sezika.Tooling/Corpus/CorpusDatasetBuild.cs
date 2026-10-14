@@ -122,11 +122,14 @@ internal static partial class CorpusOperations
         {
             budget.Check(); var id = Str(seed, "id"); Require(id.Split('/').Length == 2 && id.Length <= 256, "Source seed identity.");
             var metadataPath = SafePaths.Within(request.MetadataRoot, "metadata/hf/" + id.Replace("/", "--", StringComparison.Ordinal) + ".json", budget);
-            if (!File.Exists(metadataPath)) { sources.Add(new(id, "metadata_unavailable_401_or_missing", null, nullJson.RootElement.Clone(), "", "https://huggingface.co/datasets/" + id)); continue; }
-            var metadata = Read(metadataPath, budget); var actualId = Str(metadata, "id"); if (!observed.Add(actualId)) continue;
+            if (!File.Exists(metadataPath)) { sources.Add(new(id, "metadata_unavailable_401_or_missing", null, nullJson.RootElement.Clone(), "", "https://huggingface.co/datasets/" + id, RequestedId: id)); continue; }
+            var metadata = Read(metadataPath, budget); var actualId = Str(metadata, "id");
+            _ = SafePaths.Relative(actualId); Require(actualId.Split('/').Length == 2 && actualId.Length <= 256, "Canonical source identity must be safe owner/name.");
+            // Publisher aliases may differ from the seed; retain both identities.
+            if (!observed.Add(actualId)) continue;
             var revision = Str(metadata, "sha"); Require(revision.Length is >= 7 and <= 64 && revision.All(char.IsAsciiHexDigit), "Pinned source revision required.");
             var card = metadata.TryGetProperty("cardData", out var cardData) ? cardData : default; var license = card.ValueKind == JsonValueKind.Object && card.TryGetProperty("license", out var terms) ? terms.Clone() : nullJson.RootElement.Clone();
-            sources.Add(new(actualId, "metadata_frozen", revision, license, FileHash(metadataPath, budget), "https://huggingface.co/datasets/" + actualId));
+            sources.Add(new(actualId, "metadata_frozen", revision, license, FileHash(metadataPath, budget), "https://huggingface.co/datasets/" + actualId, RequestedId: id));
             var siblings = metadata.GetProperty("siblings"); Require(siblings.GetArrayLength() <= request.MaximumFiles, "Metadata sibling count.");
             foreach (var sibling in siblings.EnumerateArray())
             {
@@ -139,8 +142,10 @@ internal static partial class CorpusOperations
         }
         foreach (var item in new[] { ("sys1cal-tree.json", "little-g-ai/Sys1Cal-v1", "evaluation-calibration-only", new[] { "README.md", "LICENSE", "hf/Sys1Cal-v1/README.md", "datasets/generated/v0.1.0_tiny_cleanvars_binary.jsonl", "datasets/generated/v0.1.0_tiny_cleanvars_parallel_primitives.jsonl" }), ("s1mb-tree.json", "hotchpotch/S1MB", "evaluation-only", new[] { "README.md", "LICENSE", "evaluator/dataset-source.json" }) })
         {
-            var path = SafePaths.Within(request.MetadataRoot, "metadata/github/" + item.Item1, budget); if (!File.Exists(path)) continue; var tree = Read(path, budget); var entries = tree.GetProperty("tree"); Require(entries.GetArrayLength() <= 50_000, "GitHub tree count.");
-            foreach (var entry in entries.EnumerateArray()) { budget.Check(); var name = Str(entry, "path"); if (!item.Item4.Contains(name, StringComparer.Ordinal)) continue; Require(assets.Count < request.MaximumFiles, "Research total file bound."); var revision = Str(tree, "sha"); assets.Add(new(item.Item2, revision, item.Item3, "https://raw.githubusercontent.com/" + item.Item2 + "/" + revision + "/" + name, "raw/github/" + item.Item2 + "/" + name, entry.GetProperty("size").GetInt64(), null)); }
+            var path = SafePaths.Within(request.MetadataRoot, "metadata/github/" + item.Item1, budget); if (!File.Exists(path)) continue; var tree = Read(path, budget); var revision = Str(tree, "sha");
+            Require(revision.Length == 40 && revision.All(c => char.IsAsciiHexDigit(c) && !char.IsAsciiLetterUpper(c)), "Pinned full lowercase GitHub revision required.");
+            var entries = tree.GetProperty("tree"); Require(entries.GetArrayLength() <= 50_000, "GitHub tree count.");
+            foreach (var entry in entries.EnumerateArray()) { budget.Check(); var name = Str(entry, "path"); if (!item.Item4.Contains(name, StringComparer.Ordinal)) continue; Require(assets.Count < request.MaximumFiles, "Research total file bound."); assets.Add(new(item.Item2, revision, item.Item3, "https://raw.githubusercontent.com/" + item.Item2 + "/" + revision + "/" + name, "raw/github/" + item.Item2 + "/" + name, entry.GetProperty("size").GetInt64(), null)); }
         }
         var output = NewOutput(request.Output, budget); var ordered = assets.OrderBy(a => Documentation(a.Path) ? 0 : 1).ThenBy(a => a.Dataset, StringComparer.Ordinal).ThenBy(a => a.Path, StringComparer.Ordinal).ToArray();
         Write(Path.Combine(output, "source-catalog.json"), sources.ToArray(), CorpusJsonContext.Default.CorpusResearchSourceArray, budget); Write(Path.Combine(output, "raw-download-plan.json"), ordered, CorpusJsonContext.Default.CorpusResearchAssetArray, budget);
