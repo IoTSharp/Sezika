@@ -10,7 +10,7 @@ if (args.Length > 0 && args[0] == "--serve-native-git-http") return await Native
 if (args.Length is not (4 or 6) || args[0] != "--output" || args[2] != "--maximum-checks" || !int.TryParse(args[3], out var maximumChecks) || maximumChecks is < 1 or > 256 || (args.Length == 6 && args[4] != "--suite"))
     throw new ArgumentException("--output <new-owned-directory> --maximum-checks 1..256 [--suite baseline|inventory|all]");
 var suite = args.Length == 6 ? args[5] : "baseline";
-if (suite is not ("baseline" or "inventory" or "execution" or "audit" or "corpus" or "task" or "transport" or "git" or "windows-lifecycle" or "validation" or "validation-cli" or "bundle-inputs" or "controller-review" or "resident" or "retirement" or "oracle" or "credentials" or "gpu-observation" or "gpu-observation-native" or "all")) throw new ArgumentException("Unknown suite.");
+if (suite is not ("baseline" or "inventory" or "execution" or "audit" or "corpus" or "task" or "transport" or "git" or "windows-lifecycle" or "validation" or "validation-cli" or "bundle-inputs" or "controller-review" or "resident" or "retirement" or "oracle" or "credentials" or "installation" or "gpu-observation" or "gpu-observation-native" or "all")) throw new ArgumentException("Unknown suite.");
 var runSuite = suite is "baseline" or "all";
 var suiteSeconds = suite == "resident" ? 180 : suite == "windows-lifecycle" ? (maximumChecks == 1 ? 45 : 240) : suite == "git" ? 300 : suite == "execution" ? 90 : (suite is "validation" or "validation-cli") ? 120 : 45;
 using var cancel = new CancellationTokenSource(TimeSpan.FromSeconds(suiteSeconds));
@@ -214,6 +214,8 @@ runSuite = suite is "oracle" or "all";
 if (runSuite) OracleBatchChecks.Run(root, Test);
 runSuite = suite is "credentials" or "all";
 if (runSuite) CredentialChecks.Run(root, Test);
+runSuite = suite is "installation" or "all";
+if (runSuite) BundleInstallationChecks.Run(root, Test);
 runSuite = suite is "gpu-observation" or "all";
 if (runSuite) GpuObservationChecks.Run(root, Test);
 runSuite = suite == "gpu-observation-native";

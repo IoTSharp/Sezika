@@ -14,6 +14,10 @@ using var fixtureCancellation = new CancellationTokenSource(TimeSpan.FromSeconds
 var mode = args[0];
 switch (mode)
 {
+    case "--help":
+    case "--version":
+        Console.WriteLine("Sezika.ProcessFixture synthetic protocol fixture; no model or training.");
+        return 0;
     case "success":
         Console.WriteLine("fixture-success");
         for (var index = 1; index < args.Length; index++) Console.WriteLine(index + ":" + args[index]);

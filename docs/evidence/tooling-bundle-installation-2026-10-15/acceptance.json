@@ -1,0 +1,54 @@
+{
+  "SharedEntryProjection": "GPU+installation only; Git and corpus increments excluded",
+  "ServerAccepted": false,
+  "Sources": [
+    {
+      "Path": "tools/Sezika.Tooling/Tasks/BundleInstallation.cs",
+      "Sha256": "90e80012c665b9fab90fbd20f638831d5bb0cfd010eb789b45efc67211c241a4",
+      "Bytes": 16084
+    },
+    {
+      "Path": "tests/Sezika.Tooling.Tests/BundleInstallationChecks.cs",
+      "Sha256": "4465873cef854e4d8944a96d4d5459b971a43b40d838f37f7c2ef0bbd31b0d0f",
+      "Bytes": 14511
+    },
+    {
+      "Path": "tools/Sezika.ProcessFixture/Program.cs",
+      "Sha256": "dba421091af2b9c74f60b151780e00f1565d5d29a3a8ccb4f6363c36b3605553",
+      "Bytes": 22842
+    }
+  ],
+  "BuildSnapshotManifestSha256": "8c93c5f0f014dcbcbf86f6c5a747fe976c30c64c180b481581e828724e688c9e",
+  "OriginalCopies": [
+    {
+      "Original": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-current-v7-phase1\\runs\\04\\result.json",
+      "Sha256": "e412ca2f1a3b45ef483c4b10cba642758e7692170eda70bdc9aa45d5a69fb946",
+      "File": "windows-native-result.json",
+      "Bytes": 3854
+    },
+    {
+      "Original": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-current-v7-phase1\\runs\\04\\client\\checks.txt",
+      "Sha256": "45e22f59fa030a44608c5a66d543a6271224d22122daa459c74e77f731eda7f5",
+      "File": "windows-checks.txt",
+      "Bytes": 911
+    },
+    {
+      "Original": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-current-v7-phase1\\runs\\11\\result.json",
+      "Sha256": "188809529fcac75cfaf0130e5db4eaa4d14a3afb7dac5d1b95e46b564578d6bf",
+      "File": "linux-native-result.json",
+      "Bytes": 5127
+    },
+    {
+      "Original": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-final-v7-d9bfacad1f4e\\runtime-phase1\\11\\client\\checks.txt",
+      "Sha256": "fca48714a2757031649d355060e0fc9a83dc2bcc0f1fb6cef181c33bba32a1c9",
+      "File": "linux-checks.txt",
+      "Bytes": 880
+    }
+  ],
+  "SyntheticCasesExplicit": true,
+  "TrainingRun": false,
+  "MigrationOverallComplete": false,
+  "Status": "PASS_T3_INSTALLATION_TWO_PLATFORM_AOT_10",
+  "ChecksPerPlatform": 10,
+  "IncludesGenuineInstalledNativeHelp": true
+}
