@@ -4,13 +4,13 @@
     <IsPackable>false</IsPackable>
     <IsAotCompatible>true</IsAotCompatible>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <InternalsVisibleTo Include="Sezika.Tooling.Tests" />
     <InternalsVisibleTo Include="Sezika.DatasetTool" />
     <InternalsVisibleTo Include="Sezika.RemoteTool" />
-    <InternalsVisibleTo Include="Sezika.RemoteWorker" />
     <InternalsVisibleTo Include="Sezika.SshFixture" />
+    <InternalsVisibleTo Include="Sezika.RemoteWorker" />
+    <InternalsVisibleTo Include="Sezika.ControllerFixture" />
   </ItemGroup>
 </Project>
