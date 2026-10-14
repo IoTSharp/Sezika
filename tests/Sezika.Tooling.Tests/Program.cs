@@ -10,9 +10,9 @@ if (args.Length > 0 && args[0] == "--serve-native-git-http") return await Native
 if (args.Length is not (4 or 6) || args[0] != "--output" || args[2] != "--maximum-checks" || !int.TryParse(args[3], out var maximumChecks) || maximumChecks is < 1 or > 256 || (args.Length == 6 && args[4] != "--suite"))
     throw new ArgumentException("--output <new-owned-directory> --maximum-checks 1..256 [--suite baseline|inventory|all]");
 var suite = args.Length == 6 ? args[5] : "baseline";
-if (suite is not ("baseline" or "inventory" or "execution" or "audit" or "corpus" or "task" or "transport" or "git" or "windows-lifecycle" or "validation" or "validation-cli" or "bundle-inputs" or "controller-review" or "resident" or "retirement" or "oracle" or "credentials" or "installation" or "gpu-observation" or "gpu-observation-native" or "all")) throw new ArgumentException("Unknown suite.");
+if (suite is not ("baseline" or "inventory" or "execution" or "audit" or "corpus" or "corpus-migration" or "corpus-migration-native" or "corpus-migration-internal" or "task" or "transport" or "git" or "windows-lifecycle" or "validation" or "validation-cli" or "bundle-inputs" or "controller-review" or "resident" or "retirement" or "oracle" or "credentials" or "installation" or "gpu-observation" or "gpu-observation-native" or "all")) throw new ArgumentException("Unknown suite.");
 var runSuite = suite is "baseline" or "all";
-var suiteSeconds = suite == "resident" ? 180 : suite == "windows-lifecycle" ? (maximumChecks == 1 ? 45 : 240) : suite == "git" ? 300 : suite == "execution" ? 90 : (suite is "validation" or "validation-cli") ? 120 : 45;
+var suiteSeconds = suite is "corpus-migration" or "corpus-migration-native" ? (maximumChecks == 1 ? 90 : 900) : suite == "resident" ? 180 : suite == "windows-lifecycle" ? (maximumChecks == 1 ? 45 : 240) : suite == "git" ? 300 : suite == "execution" ? 90 : (suite is "validation" or "validation-cli") ? 120 : 45;
 using var cancel = new CancellationTokenSource(TimeSpan.FromSeconds(suiteSeconds));
 StartupGate.Wait(cancel.Token);
 var root = Path.GetFullPath(args[1]);
@@ -220,6 +220,12 @@ runSuite = suite is "gpu-observation" or "all";
 if (runSuite) GpuObservationChecks.Run(root, Test);
 runSuite = suite == "gpu-observation-native";
 if (runSuite) GpuObservationChecks.RunNative(root, Test);
+runSuite = suite == "corpus-migration";
+if (runSuite) CorpusMigrationCoverageChecks.Run(root, Test, cancel.Token);
+runSuite = suite == "corpus-migration-native";
+if (runSuite) CorpusMigrationCoverageChecks.RunNative(root, Test, cancel.Token);
+runSuite = suite == "corpus-migration-internal";
+if (runSuite) CorpusMigrationCoverageChecks.RunInternal(root, Test, cancel.Token);
 if (checks == 0) throw new InvalidOperationException("No checks ran.");
 File.WriteAllLines(Path.Combine(root, "checks.txt"), names.Append($"PASS checks={checks}; elapsed={watch.Elapsed.TotalSeconds:F3}s; platform={Environment.OSVersion}; native_aot={!System.Runtime.CompilerServices.RuntimeFeature.IsDynamicCodeSupported}"));
 Console.WriteLine($"PASS {checks} checks; suite={suite}; seconds={watch.Elapsed.TotalSeconds:F3}; fixtures preserved at {root}");

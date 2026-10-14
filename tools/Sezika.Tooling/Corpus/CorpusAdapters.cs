@@ -190,7 +190,7 @@ internal static class CorpusAdapters
                         using var stream = new MemoryStream(); using (var writer = new Utf8JsonWriter(stream)) { writer.WriteStartArray(); foreach (var item in context) item.WriteTo(writer); writer.WriteEndArray(); }
                         using var json = JsonDocument.Parse(stream.ToArray());
                         result.Add(Question(Canonical(json.RootElement), "Select the single tool used in the next reference call. Arguments are outside this task.", "Choice", tools.EnumerateArray().Select(Canonical).ToArray(), OneHot(toolNames.Length, matches[0].index),
-                            "synthetic_tool_reference", "und", Sha(Canonical(turns[0])), context.Count.ToString(CultureInfo.InvariantCulture), "single_reference_tool_selection_only;arguments_and_generation_unsupported"));
+                            "synthetic_tool_reference", "und", Sha("[" + Canonical(turns[0]) + "]"), context.Count.ToString(CultureInfo.InvariantCulture), "single_reference_tool_selection_only;arguments_and_generation_unsupported"));
                     }
                 }
             }

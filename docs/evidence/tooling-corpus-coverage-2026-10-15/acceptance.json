@@ -1,0 +1,81 @@
+{
+  "GoldenDerivedFromNewOutput": false,
+  "WindowsChecks": [
+    "CLI synthetic Banking77 class identity tiny",
+    "CLI synthetic CLINC explicit out-of-scope class",
+    "CLI synthetic CivilComments seven annotation fractions",
+    "CLI synthetic GoEmotions28 independent original indices",
+    "CLI synthetic clean50k original action object identity",
+    "CLI synthetic MASSIVE bilingual family and genuine TAR member",
+    "CLI synthetic QASC original facts and answer key",
+    "CLI synthetic OpenBook original gold and duplicate-label refusal",
+    "CLI synthetic AFQMC symmetric source pair",
+    "CLI synthetic LCQMC original binary score",
+    "CLI synthetic kaivoss exact original Boolean and Score grammar",
+    "CLI synthetic ToolACE single reference tool excludes future call from state",
+    "CLI synthetic SNLI positive relation preserves invalid-label rejection",
+    "CLI synthetic HH valid paired preference is not objective correctness",
+    "CLI synthetic HelpSteer alias retains five ordinal dimensions",
+    "CLI synthetic pilot frozen draft builds independently specified request",
+    "CLI synthetic Inspect bounded private sample preserves failures and no admission",
+    "CLI synthetic Bind independently pins four files and never grants admission",
+    "CLI synthetic native TeacherTool review layout archives exact references",
+    "CLI synthetic old typed default Boolean and probability boundaries",
+    "PASS checks=20; elapsed=7.927s; platform=Microsoft Windows NT 10.0.26300.0; native_aot=True"
+  ],
+  "OriginalCopies": [
+    {
+      "Original": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\root-v8-runtime-recovery-v1\\04\\native-execution\\result.json",
+      "Sha256": "d707aa9b7caa718716734e98bcf197795e16cf30866d42b7d579c79047728edc",
+      "Bytes": 3176,
+      "File": "windows-internal1-result.json"
+    },
+    {
+      "Original": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\root-v8-runtime-recovery-v1\\06\\native-execution\\result.json",
+      "Sha256": "2c72bc1a130359dbd68cdf8c29bcaf0c4476c116b2493278ca264b5f37f58529",
+      "Bytes": 43671,
+      "File": "windows-native20-result.json"
+    },
+    {
+      "Original": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-v8-continuation-v1\\runs\\04\\result.json",
+      "Sha256": "c25b085251bde281f8763027cbc562b03c6a10a53fddb6ad202d0efdef5c48db",
+      "Bytes": 3509,
+      "File": "linux-internal1-result.json"
+    },
+    {
+      "Original": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-v8-continuation-v1\\runs\\06\\result.json",
+      "Sha256": "adcf473e2af9e8c87cc63c38ec387b558f594c84a776b0ea1d9d1ca8c326b82e",
+      "Bytes": 77698,
+      "File": "linux-native20-result.json"
+    }
+  ],
+  "Status": "PASS_T5_NATIVE20_INTERNAL1_TWO_PLATFORM_AOT",
+  "NativeCarrierCases": 20,
+  "ChecksPerPlatform": 21,
+  "ModelOrTeacherRun": false,
+  "MigrationOverallComplete": false,
+  "OriginalFailuresPreserved": [
+    "v7 state_json carrier mismatch",
+    "dimension-negative caught wrong earlier guard; fixed to target3/options2 exact Target dimension."
+  ],
+  "OpenJevParquetCliAccepted": false,
+  "BuildSnapshotManifestSha256": "ab3d882eeb218d6f458ba61951ee7e3403f62b9f47cc9fb9ae371d32fabcfc5c",
+  "InternalAdaptOnlyCases": 1,
+  "Sources": [
+    {
+      "Path": "tools/Sezika.Tooling/Corpus/CorpusAdapters.cs",
+      "Sha256": "cf025ecb26362d686ca0448ec7190ef1d9c1d265e294e1ac5370796349626a96",
+      "Bytes": 22346
+    },
+    {
+      "Path": "tests/Sezika.Tooling.Tests/CorpusMigrationCoverageChecks.cs",
+      "Sha256": "c6cecd364ba217848e3ed6a6bfa5f0e1ea5f57430486f680f07b99e778775498",
+      "Bytes": 48113
+    },
+    {
+      "Path": "tests/Sezika.Tooling.Tests/Program.cs",
+      "Sha256": "a67e32f11bf8315c0597a34ed2f1049010a02c8dc952412964e448705c62c8e2",
+      "Bytes": 17269
+    }
+  ]
+}
