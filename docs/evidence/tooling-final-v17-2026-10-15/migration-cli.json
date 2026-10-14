@@ -1,0 +1,136 @@
+{
+  "SchemaVersion": 1,
+  "Status": "PASS_migration_cli_local_source_scope_only",
+  "Module": "migration-cli",
+  "Scope": "两平台 full10，实际 ToolingCommand.Run 覆盖类型化请求、合法缓存输入、错误退出及输出保护。其他能力仍按各自证据验收；本轮未执行外部发布或训练。",
+  "SourceManifestSha256": "230130665280ad7d0905c74764c8683f7580d723e52c63002326826d1182dcf3",
+  "Sources": [
+    {
+      "Sha256": "e283a6b4454c382c75bfa2a6e49670924a26d4c50ecfaf37222503d019fd99ba",
+      "Path": "tools/Sezika.Tooling/MigrationCommands.cs",
+      "Bytes": 25282
+    },
+    {
+      "Sha256": "a9e6a921bb278ee2dfbd6b9317e5f4e82e0eeed2c1d007b8eeb52efe58aca869",
+      "Path": "tests/Sezika.Tooling.Tests/NewMigrationCommandChecks.cs",
+      "Bytes": 22679
+    }
+  ],
+  "Runs": [
+    {
+      "Name": "09-windows-migration-commands-tiny",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "windows",
+      "RawSha256": "c229a9f06ec1b1da37c01d6d5cf02572d002a5adc620c98678c53ce5bd460818",
+      "RawResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\requests-v17-prebind\\09-windows-migration-commands-tiny\\native-execution\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\cases-v17-prebind\\09-windows-migration-commands-tiny-1d02d9c2c3fd4df297db0075752198a6\\checks.txt",
+      "Suite": "migration-commands",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "8c27915ce6cb9a0853fb9838cafd465be2ce5a448d1952547b4c1e0b6d45a88b",
+      "Summary": "PASS checks=1; elapsed=0.045s; platform=Microsoft Windows NT 10.0.26300.0; native_aot=True",
+      "RootPid": 69372,
+      "Checks": 1,
+      "Status": "PASS",
+      "CheckNames": [
+        "migration CLI synthetic snapshot preserves exact original failure bytes"
+      ]
+    },
+    {
+      "Name": "10-windows-migration-commands-full",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "windows",
+      "RawSha256": "88658b4eac5b4ea64f3adba7cf3fe7b15d9a02f6831bdc51bd44c58d49416ad3",
+      "RawResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\requests-v17-prebind\\10-windows-migration-commands-full\\native-execution\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\cases-v17-prebind\\10-windows-migration-commands-full-41e7e8c87bc44793b5fcdec41d0ac3e3\\checks.txt",
+      "Suite": "migration-commands",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "a267f192f53306269a993fda45ecb00a090bf8e6388ff564045cb910f7cb8bff",
+      "Summary": "PASS checks=10; elapsed=1.494s; platform=Microsoft Windows NT 10.0.26300.0; native_aot=True",
+      "RootPid": 15664,
+      "Checks": 10,
+      "Status": "PASS",
+      "CheckNames": [
+        "migration CLI synthetic snapshot preserves exact original failure bytes",
+        "migration CLI synthetic snapshot missing second file writes typed partial",
+        "migration CLI synthetic snapshot refuses output under source root",
+        "migration CLI synthetic card wrong SHA writes zero-request typed failure",
+        "migration CLI synthetic card refuses output beside its input",
+        "migration CLI synthetic complete source cache succeeds with full inner ledger",
+        "migration CLI synthetic corrupt source cache keeps typed partial and complete ledger",
+        "migration CLI synthetic source protects metadata cache and receipt roots",
+        "migration CLI synthetic cached model mirror and verify both succeed",
+        "migration CLI synthetic model roots stay protected and bad asset fails verify"
+      ]
+    },
+    {
+      "Name": "09-linux-migration-commands-tiny",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "linux",
+      "RawSha256": "27b4629471bebab5846c9fa0967c1354cc435b2190099379826ac2ac90b77641",
+      "RawResult": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\requests\\09-linux-migration-commands-tiny\\native-execution\\result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\cases\\09-linux-migration-commands-tiny\\checks.txt",
+      "Suite": "migration-commands",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "6950e77fa974307e23e15005ced2f12bddff847f805dc8841d2733134b6f723d",
+      "Summary": "PASS checks=1; elapsed=0.009s; platform=Unix 6.6.87.2; native_aot=True",
+      "RootPid": 2402050,
+      "Checks": 1,
+      "Status": "PASS",
+      "CheckNames": [
+        "migration CLI synthetic snapshot preserves exact original failure bytes"
+      ]
+    },
+    {
+      "Name": "10-linux-migration-commands-full",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "linux",
+      "RawSha256": "f7be40b1aa1118b485f28f4f2294296d9954d13dba9ddc78c5a62a0495f09144",
+      "RawResult": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\requests\\10-linux-migration-commands-full\\native-execution\\result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\cases\\10-linux-migration-commands-full\\checks.txt",
+      "Suite": "migration-commands",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "26e011739c21b07bc02be24bdef46661ff48b5cf47eec3701c130d9cf71f0f33",
+      "Summary": "PASS checks=10; elapsed=0.124s; platform=Unix 6.6.87.2; native_aot=True",
+      "RootPid": 2402080,
+      "Checks": 10,
+      "Status": "PASS",
+      "CheckNames": [
+        "migration CLI synthetic snapshot preserves exact original failure bytes",
+        "migration CLI synthetic snapshot missing second file writes typed partial",
+        "migration CLI synthetic snapshot refuses output under source root",
+        "migration CLI synthetic card wrong SHA writes zero-request typed failure",
+        "migration CLI synthetic card refuses output beside its input",
+        "migration CLI synthetic complete source cache succeeds with full inner ledger",
+        "migration CLI synthetic corrupt source cache keeps typed partial and complete ledger",
+        "migration CLI synthetic source protects metadata cache and receipt roots",
+        "migration CLI synthetic cached model mirror and verify both succeed",
+        "migration CLI synthetic model roots stay protected and bad asset fails verify"
+      ]
+    }
+  ],
+  "CheckExecutions": 22.0,
+  "Resources": [
+    {
+      "Sha256": "e13c5d76d045f9cec5a209ef1533045b5829206c61b310ac1ca509b033d4b69c",
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\root-final-24-resource-coverage-v17.json"
+    },
+    {
+      "Sha256": "c1b7ffc3c5111f7fcce5e3290db28bc6062cbf21c95de4b92497c8722ec27cf9",
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-linux-modules-v1\\root-final-thirty-resource-coverage-v17.json"
+    }
+  ],
+  "RuntimeWindowsSha256": "cd4bb0cdd95dc5115098ece059125c79f5a689a24e379b19ae14238cd3a8ed89",
+  "RuntimeLinuxSha256": "a9077a77fcf65f3f685ca6feb9269fc20be4b026cdcb61324ea775ab252a0517",
+  "SdkPolicy": "Unpinned project SDK; actual tool identity recorded in raw build receipts",
+  "LocalNativeAot": true,
+  "FinalCallerRetirementAccepted": false,
+  "ServerLiveAcceptance": "NOT_RUN",
+  "FormalTrainingAccepted": false,
+  "ModelOrDataPublicationAccepted": false,
+  "HistoricalFailuresPreserved": true,
+  "Utc": "2026-10-14T22:06:01.2990579+00:00"
+}
