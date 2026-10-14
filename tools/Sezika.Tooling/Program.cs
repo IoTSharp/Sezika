@@ -8,6 +8,12 @@ internal static class ToolingCommand
 {
     internal static int Run(string[] args)
     {
+        if (Environment.ProcessPath is { } processPath && Path.GetFileNameWithoutExtension(processPath) == "pre-push")
+        {
+            try { return NativeGitHook.RunAsync(args, CancellationToken.None).GetAwaiter().GetResult(); }
+            catch (Exception error) when (error is IOException or InvalidDataException or ArgumentException or TimeoutException or OperationCanceledException or System.ComponentModel.Win32Exception)
+            { Console.Error.WriteLine($"native-lfs-hook: {error.GetType().Name}"); return 1; }
+        }
         if (args.Length == 3 && args[0] == "process" && args[1] is "broker" or "watchdog")
         {
             var configuration = args[2];

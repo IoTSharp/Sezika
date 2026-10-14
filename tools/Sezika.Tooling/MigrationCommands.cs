@@ -14,7 +14,7 @@ internal sealed record PublicationCommitRequest(string SourceRoot, string Previe
 
 internal static class MigrationCommands
 {
-    internal static readonly string[] Commands = ["transport download", "transport prepare", "transport verify", "transport reassemble", "publication preview", "publication prepare", "publication upload", "publication commit", "task prepare", "bundle freeze", "archive pack", "checkpoint verify", "host inspect", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind"];
+    internal static readonly string[] Commands = ["git run", "transport download", "transport prepare", "transport verify", "transport reassemble", "publication preview", "publication prepare", "publication upload", "publication commit", "task prepare", "bundle freeze", "archive pack", "checkpoint verify", "host inspect", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind"];
     internal static int Run(string command, string requestPath, string output, Budget budget, CancellationToken cancellation)
     {
         T Read<T>(JsonTypeInfo<T> type)
@@ -26,11 +26,12 @@ internal static class MigrationCommands
         int Save<T>(T result, JsonTypeInfo<T> type)
         {
             budget.Check(); CorpusJson.Write(output, result, type, budget);
-            var status = result switch { CorpusOperationReport report => report.Status, CorpusManifest manifest => manifest.Status, CorpusResearchCheckReport report => report.Status, CorpusSeedCheckReport report => report.Status, _ => "" };
+            var status = result switch { CorpusOperationReport report => report.Status, CorpusManifest manifest => manifest.Status, CorpusResearchCheckReport report => report.Status, CorpusSeedCheckReport report => report.Status, GitReceipt report => report.Status, _ => "" };
             return status.StartsWith("PARTIAL", StringComparison.Ordinal) || status.StartsWith("FAIL", StringComparison.Ordinal) || status.StartsWith("UNKNOWN", StringComparison.Ordinal) ? 1 : 0;
         }
         switch (command)
         {
+            case "git run": return Save(NativeGit.RunAsync(Read(GitJsonContext.Default.GitRequest), budget, cancellation).GetAwaiter().GetResult(), GitJsonContext.Default.GitReceipt);
             case "task prepare": return Save(TaskOperations.Prepare(Read(TaskJsonContext.Default.TaskPreparationRequest), budget), TaskJsonContext.Default.PreparedTask);
             case "bundle freeze": return Save(TaskOperations.Freeze(Read(TaskJsonContext.Default.BundleRequest), budget), TaskJsonContext.Default.BundleReceipt);
             case "archive pack": return Save(TaskOperations.Pack(Read(TaskJsonContext.Default.PackRequest), budget), TaskJsonContext.Default.PackReceipt);
