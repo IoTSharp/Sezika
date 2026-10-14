@@ -14,7 +14,7 @@ internal sealed record PublicationCommitRequest(string SourceRoot, string Previe
 
 internal static class MigrationCommands
 {
-    internal static readonly string[] Commands = ["inventory review", "git run", "transport download", "transport prepare", "transport verify", "transport reassemble", "publication preview", "publication prepare", "publication upload", "publication commit", "task prepare", "task resident", "bundle inputs", "bundle build", "bundle freeze", "archive pack", "checkpoint verify", "host inspect", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind", "validation profile", "validation summarize", "validation data-admission", "validation language-audit", "validation batch", "validation near-ties"];
+    internal static readonly string[] Commands = ["oracle batches", "inventory review", "git run", "transport download", "transport prepare", "transport verify", "transport reassemble", "publication preview", "publication prepare", "publication upload", "publication commit", "task prepare", "task resident", "bundle inputs", "bundle build", "bundle freeze", "archive pack", "checkpoint verify", "host inspect", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind", "validation profile", "validation summarize", "validation data-admission", "validation language-audit", "validation batch", "validation near-ties"];
     internal static int Run(string command, string requestPath, string output, Budget budget, CancellationToken cancellation)
     {
         if (command.StartsWith("validation ", StringComparison.Ordinal)) return RunValidation(command, requestPath, output, budget);
@@ -32,6 +32,11 @@ internal static class MigrationCommands
         }
         switch (command)
         {
+            case "oracle batches":
+                var batchRequest = OracleBatchOperations.ReadRequest(Path.GetFullPath(requestPath), budget);
+                var batchReport = OracleBatchOperations.RunAsync(batchRequest, budget, cancellation).GetAwaiter().GetResult();
+                TaskOperations.WriteNew(output, batchReport, OracleJsonContext.Default.OracleBatchReport);
+                return batchReport.Status == "SELECTED_BATCHES_COMPLETE" ? 0 : batchReport.Status == "SELECTED_BATCHES_COMPLETE_WITH_NUMERICAL_DIFFERENCES" ? 1 : 2;
             case "inventory review": return Save(RetirementReview.Review(Read(RetirementJson.Default.RetirementReviewRequest), budget), RetirementJson.Default.RetirementReport);
             case "git run": return Save(NativeGit.RunAsync(Read(GitJsonContext.Default.GitRequest), budget, cancellation).GetAwaiter().GetResult(), GitJsonContext.Default.GitReceipt);
             case "task prepare": return Save(TaskOperations.Prepare(Read(TaskJsonContext.Default.TaskPreparationRequest), budget), TaskJsonContext.Default.PreparedTask);
