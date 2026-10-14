@@ -1,0 +1,141 @@
+{
+  "SchemaVersion": 1,
+  "Status": "PASS_model_card_local_source_scope_only",
+  "Module": "model-card",
+  "Scope": "固定官方 wire 合同的本地协议、认证边界、错误和输出保护；两平台 full10。未访问真实托管平台，不代表模型发布获准。",
+  "SourceManifestSha256": "230130665280ad7d0905c74764c8683f7580d723e52c63002326826d1182dcf3",
+  "Sources": [
+    {
+      "Sha256": "72a9a2490ec2fff9a443c48fff30ebbfb705b97251fbf4b9c797c9d381966be4",
+      "Path": "tools/Sezika.Tooling/Publication/ModelCardValidationContracts.cs",
+      "Bytes": 1416
+    },
+    {
+      "Sha256": "012ed36d47b39fe1c28c76827c6c54b72fef6c97d42720ee7f4286813ab5cbfb",
+      "Path": "tools/Sezika.Tooling/Publication/ModelCardValidation.cs",
+      "Bytes": 13982
+    },
+    {
+      "Sha256": "efa473711b18e35120e1e9a2c7fec21d45802fb5df48a5564d88b7c958168c84",
+      "Path": "tests/Sezika.Tooling.Tests/ModelCardValidationChecks.cs",
+      "Bytes": 16799
+    }
+  ],
+  "Runs": [
+    {
+      "Name": "03-windows-model-card-tiny",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "windows",
+      "RawSha256": "6d42c3c1a39ab588ac62934053cd80d9c23340eb9b2a64e2ea6a6db139a241c0",
+      "RawResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\requests-v17-prebind\\03-windows-model-card-tiny\\native-execution\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\cases-v17-prebind\\03-windows-model-card-tiny-ca79f46fb9a14a5a8529970b57267a9f\\checks.txt",
+      "Suite": "model-card",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "b0206efe0702b2b1af5d38da8c4322cc71273bb4cab70a26977c88d1b3b438fa",
+      "Summary": "PASS checks=1; elapsed=0.011s; platform=Microsoft Windows NT 10.0.26300.0; native_aot=True",
+      "RootPid": 59112,
+      "Checks": 1,
+      "Status": "PASS",
+      "CheckNames": [
+        "model-card synthetic exact UTF8 wire and one scoped POST"
+      ]
+    },
+    {
+      "Name": "04-windows-model-card-full",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "windows",
+      "RawSha256": "cf0f844fef2afa22187f1404284ea07b37a9ecd8e0e39480486de820d11729c3",
+      "RawResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\requests-v17-prebind\\04-windows-model-card-full\\native-execution\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\cases-v17-prebind\\04-windows-model-card-full-a19f840e8c3c46d39ab53b85b3647176\\checks.txt",
+      "Suite": "model-card",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "cfc9d746774c62344f10c46d1e2dd4c649ef2f37b9e52fee99d8a4807361d6ab",
+      "Summary": "PASS checks=10; elapsed=1.171s; platform=Microsoft Windows NT 10.0.26300.0; native_aot=True",
+      "RootPid": 54580,
+      "Checks": 10,
+      "Status": "PASS",
+      "CheckNames": [
+        "model-card synthetic exact UTF8 wire and one scoped POST",
+        "model-card synthetic warning counts preserve no raw messages",
+        "model-card synthetic invalid metadata preserves400 and input",
+        "model-card synthetic HTTP failures never retry or leak bodies",
+        "model-card synthetic malformed response schema fails closed",
+        "model-card synthetic redirects and response host drift rejected",
+        "model-card synthetic input mutation invalidates otherwise valid response",
+        "model-card synthetic cancellation deadline and budget stop requests",
+        "model-card synthetic bounds encoding and trusted identity required",
+        "model-card synthetic endpoint auth response byte caps and no client auth"
+      ]
+    },
+    {
+      "Name": "03-linux-model-card-tiny",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "linux",
+      "RawSha256": "a85f7a6c6b8c5413a6e539cbd91df718ff0dec415b0ed9f7d772b126944f7875",
+      "RawResult": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\requests\\03-linux-model-card-tiny\\native-execution\\result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\cases\\03-linux-model-card-tiny\\checks.txt",
+      "Suite": "model-card",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "ce8724fb57caaddf018b21e2835ef4a26e89e37c9dcd3007eb047f0be5c71863",
+      "Summary": "PASS checks=1; elapsed=0.012s; platform=Unix 6.6.87.2; native_aot=True",
+      "RootPid": 2401859,
+      "Checks": 1,
+      "Status": "PASS",
+      "CheckNames": [
+        "model-card synthetic exact UTF8 wire and one scoped POST"
+      ]
+    },
+    {
+      "Name": "04-linux-model-card-full",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "linux",
+      "RawSha256": "96b460886ab7b29fe95d1d29d1ecc19303b6164f62ca5adb31f2d22483a8e684",
+      "RawResult": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\requests\\04-linux-model-card-full\\native-execution\\result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\cases\\04-linux-model-card-full\\checks.txt",
+      "Suite": "model-card",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "7d68024d7d60439fe19fe2564d703b7adce7a4e1e9e44bcaabc7c61b4dbda992",
+      "Summary": "PASS checks=10; elapsed=1.032s; platform=Unix 6.6.87.2; native_aot=True",
+      "RootPid": 2401894,
+      "Checks": 10,
+      "Status": "PASS",
+      "CheckNames": [
+        "model-card synthetic exact UTF8 wire and one scoped POST",
+        "model-card synthetic warning counts preserve no raw messages",
+        "model-card synthetic invalid metadata preserves400 and input",
+        "model-card synthetic HTTP failures never retry or leak bodies",
+        "model-card synthetic malformed response schema fails closed",
+        "model-card synthetic redirects and response host drift rejected",
+        "model-card synthetic input mutation invalidates otherwise valid response",
+        "model-card synthetic cancellation deadline and budget stop requests",
+        "model-card synthetic bounds encoding and trusted identity required",
+        "model-card synthetic endpoint auth response byte caps and no client auth"
+      ]
+    }
+  ],
+  "CheckExecutions": 22.0,
+  "Resources": [
+    {
+      "Sha256": "e13c5d76d045f9cec5a209ef1533045b5829206c61b310ac1ca509b033d4b69c",
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\root-final-24-resource-coverage-v17.json"
+    },
+    {
+      "Sha256": "c1b7ffc3c5111f7fcce5e3290db28bc6062cbf21c95de4b92497c8722ec27cf9",
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-linux-modules-v1\\root-final-thirty-resource-coverage-v17.json"
+    }
+  ],
+  "RuntimeWindowsSha256": "cd4bb0cdd95dc5115098ece059125c79f5a689a24e379b19ae14238cd3a8ed89",
+  "RuntimeLinuxSha256": "a9077a77fcf65f3f685ca6feb9269fc20be4b026cdcb61324ea775ab252a0517",
+  "SdkPolicy": "Unpinned project SDK; actual tool identity recorded in raw build receipts",
+  "LocalNativeAot": true,
+  "FinalCallerRetirementAccepted": false,
+  "ServerLiveAcceptance": "NOT_RUN",
+  "FormalTrainingAccepted": false,
+  "ModelOrDataPublicationAccepted": false,
+  "HistoricalFailuresPreserved": true,
+  "Utc": "2026-10-14T22:06:00.6567005+00:00"
+}

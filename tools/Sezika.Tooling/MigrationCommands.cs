@@ -13,10 +13,12 @@ internal sealed record PublicationPreviewRequest(string SourceRoot, PublicationP
 internal sealed record FullPublicationRequest(string PackageRoot, string Validation, string Contract, string OutputRoot, string ToolRoot, string TrainingProof, string ValidationProof);
 internal sealed record PublicationUploadRequest(string SourceRoot, string Preview, string Authorization, AssetFile Asset, string ServiceRoot, string? CredentialTarget = null, string CredentialEncoding = "utf8", string? ResumeCandidate = null, string? CheckpointRoot = null, string CredentialSource = "auto");
 internal sealed record PublicationCommitRequest(string SourceRoot, string Preview, string Authorization, string ServiceRoot, string? CredentialTarget = null, string CredentialEncoding = "utf8", string CredentialSource = "auto");
+internal sealed record ModelCardCommandRequest(ModelCardValidationRequest Validation, string? CredentialTarget = null,
+    string CredentialEncoding = "utf8", string CredentialSource = "none");
 
 internal static class MigrationCommands
 {
-    internal static readonly string[] Commands = ["oracle batches", "inventory review", "git run", "transport download", "transport prepare", "transport verify", "transport reassemble", "publication preview", "publication prepare", "publication upload", "publication commit", "task prepare", "task resident", "task snapshot", "bundle inputs", "bundle build", "bundle freeze", "bundle install", "archive pack", "checkpoint verify", "host inspect", "host sample-gpu", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind", "validation profile", "validation summarize", "validation data-admission", "validation language-audit", "validation batch", "validation near-ties"];
+    internal static readonly string[] Commands = ["oracle batches", "inventory review", "git run", "transport download", "transport prepare", "transport verify", "transport reassemble", "publication preview", "publication prepare", "publication upload", "publication commit", "publication validate-card", "task prepare", "task resident", "task snapshot", "bundle inputs", "bundle build", "bundle freeze", "bundle install", "archive pack", "checkpoint verify", "host inspect", "host sample-gpu", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind", "validation profile", "validation summarize", "validation data-admission", "validation language-audit", "validation batch", "validation near-ties"];
     internal static int Run(string command, string requestPath, string output, Budget budget, CancellationToken cancellation)
     {
         if (command.StartsWith("validation ", StringComparison.Ordinal)) return RunValidation(command, requestPath, output, budget);
@@ -89,6 +91,14 @@ internal static class MigrationCommands
             case "publication preview":
                 var preview = Read(MigrationJsonContext.Default.PublicationPreviewRequest);
                 return Save(AssetTransport.Preview(preview.SourceRoot, preview.Plan, budget), TransportJsonContext.Default.PublicationPreview);
+            case "publication validate-card":
+                var card = Read(MigrationJsonContext.Default.ModelCardCommandRequest);
+                ProtectOutputRoot(Path.GetDirectoryName(Path.GetFullPath(card.Validation.CardPath))!);
+                var cardBudget = new Budget(card.Validation.TimeoutSeconds, null, cancellation, budget);
+                var cardAuthentication = HttpCredentials.Read(card.CredentialSource, card.CredentialTarget, card.CredentialEncoding, "huggingface", cardBudget);
+                var validatedCard = ModelCardValidation.ValidateAsync(card.Validation, cardBudget, cancellation, cardAuthentication?.Parameter).GetAwaiter().GetResult();
+                TaskOperations.WriteNew(output, validatedCard, ModelCardValidationJsonContext.Default.ModelCardValidationReport);
+                return validatedCard.Status == "PASS" ? 0 : 1;
             case "publication prepare":
                 var publication = Read(MigrationJsonContext.Default.FullPublicationRequest);
                 return Save(AssetTransport.PreparePublication(publication.PackageRoot, publication.Validation, publication.Contract, publication.OutputRoot, publication.ToolRoot, publication.TrainingProof, publication.ValidationProof, budget), TransportJsonContext.Default.LogicalManifest);
@@ -195,5 +205,6 @@ internal static class MigrationCommands
 [JsonSerializable(typeof(FullPublicationRequest))]
 [JsonSerializable(typeof(PublicationUploadRequest))]
 [JsonSerializable(typeof(PublicationCommitRequest))]
+[JsonSerializable(typeof(ModelCardCommandRequest))]
 [JsonSourceGenerationOptions(WriteIndented = true, PropertyNameCaseInsensitive = true, RespectRequiredConstructorParameters = true, RespectNullableAnnotations = true)]
 internal partial class MigrationJsonContext : JsonSerializerContext;
