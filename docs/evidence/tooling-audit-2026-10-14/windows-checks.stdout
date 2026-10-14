@@ -1,0 +1,18 @@
+PASS 1/17: native audit exact result and registered pair with ordinary EXITED null proof
+PASS 2/17: native audit failing execution remains failing after current absence
+PASS 3/17: native audit original UNKNOWN retained and observer UNKNOWN refuses closure
+PASS 4/17: native audit live exact argv fails and changed argv remains UNKNOWN
+PASS 5/17: native audit PID reuse differs from microsecond rounding
+PASS 6/17: native audit wrong observer PID or foreign platform remains UNKNOWN
+PASS 7/17: native audit wrong result and registration shapes refused
+PASS 8/17: native audit missing fields cannot inherit permissive DTO defaults
+PASS 9/17: native audit duplicate PID births and ambiguous JSON keys refused
+PASS 10/17: native audit final birth argv parent and scope must bind registration
+PASS 11/17: native audit registered snapshots reconcile descendants without duplicate records
+PASS 12/17: native audit final descendant without its unique birth snapshot is refused
+PASS 13/17: native audit contradictory PASS and orphaned registration refused
+PASS 14/17: native audit empty native identities and empty directory remain FAIL
+PASS 15/17: native audit renamed complete and contradictory results cannot become legacy
+PASS 16/17: legacy audit keeps ordinary metadata but refuses native identities and ambiguous fields
+PASS 17/17: native audit Linux exec transition is pinned while boot reuse stays distinct
+PASS 17 checks; suite=audit; seconds=0.290; fixtures preserved at C:\Users\mysti\Documents\Codex\Sezika-tooling-artifacts-20261014\t5-current-core-and-callers-v1\runtime-v3\02\client

@@ -172,6 +172,40 @@ internal static class NativeAuditChecks
             Bound(); var directory = Path.Combine(root, "native-audit-" + (++index).ToString("D2")); Directory.CreateDirectory(directory);
             Rejected(directory);
         });
+        check("native audit renamed complete and contradictory results cannot become legacy", () =>
+        {
+            var directory = Write(Receipt());
+            File.Move(Path.Combine(directory, "result.json"), Path.Combine(directory, "copied.result.json"));
+            File.Delete(Path.Combine(directory, "registered.json"));
+            Rejected(directory);
+            var contradictory = Receipt(); contradictory.ExecutionStatus = "FAILED"; contradictory.ExitCode = 7;
+            directory = Write(contradictory);
+            File.Move(Path.Combine(directory, "result.json"), Path.Combine(directory, "copied.result.json"));
+            File.Delete(Path.Combine(directory, "registered.json"));
+            Rejected(directory);
+        });
+        check("legacy audit keeps ordinary metadata but refuses native identities and ambiguous fields", () =>
+        {
+            Bound(); var directory = Path.Combine(root, "native-audit-" + (++index).ToString("D2")); Directory.CreateDirectory(directory);
+            var legacy = new LegacyReceipt { Processes = [new ProcessRecord { Pid = 111, ParentPid = 110,
+                Started = started, CommandLine = "historical.exe", Platform = "windows" }] };
+            var document = JsonNode.Parse(JsonSerializer.SerializeToUtf8Bytes(legacy, ToolingJsonContext.Default.LegacyReceipt))!.AsObject();
+            document["Status"] = "historical metadata"; document["CleanupStatus"] = "recorded"; document["OutputComplete"] = true;
+            var path = Path.Combine(directory, "historical.result.json"); File.WriteAllText(path, document.ToJsonString());
+            var result = Audit(directory);
+            Assert(result.Receipts == 1 && result.AbsentRecords == 1 && result.NativeReceipts is null,
+                "Ordinary legacy metadata changed its historical identity-only semantics.");
+            document["processes"] = new JsonArray(); File.WriteAllText(path, document.ToJsonString()); Rejected(directory);
+            document.Remove("processes"); document["executionstatus"] = "SUCCEEDED";
+            File.WriteAllText(path, document.ToJsonString()); Rejected(directory);
+            directory = Write(Receipt());
+            document = JsonNode.Parse(File.ReadAllBytes(Path.Combine(directory, "result.json")))!.AsObject();
+            document.Remove("ExecutionStatus"); document.Remove("OwnershipId"); document.Remove("Launcher");
+            document["SchemaVersion"] = 99;
+            File.WriteAllText(Path.Combine(directory, "result.json"), document.ToJsonString());
+            File.Move(Path.Combine(directory, "result.json"), Path.Combine(directory, "copied.result.json"));
+            File.Delete(Path.Combine(directory, "registered.json")); Rejected(directory);
+        });
         check("native audit Linux exec transition is pinned while boot reuse stays distinct", () =>
         {
             var receipt = Receipt(); receipt.Platform = "linux";

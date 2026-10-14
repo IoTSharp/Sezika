@@ -101,7 +101,9 @@ internal static class ProcessAudit
                 SafePaths.NoLinks(path, budget);
                 using var stream = File.OpenRead(path);
                 if (stream.Length > 16 * 1024 * 1024) throw new InvalidDataException("Receipt exceeds 16 MiB.");
-                var receipt = JsonSerializer.Deserialize(stream, ToolingJsonContext.Default.LegacyReceipt) ?? throw new InvalidDataException("Null receipt.");
+                using var document = JsonDocument.Parse(stream);
+                ValidateLegacyReceiptShape(document.RootElement, budget);
+                var receipt = document.RootElement.Deserialize(ToolingJsonContext.Default.LegacyReceipt) ?? throw new InvalidDataException("Null receipt.");
                 receiptCount++;
                 var items = receipt.Processes;
                 if (items is null || items.Length == 0)
@@ -144,6 +146,39 @@ internal static class ProcessAudit
             receiptCount, records.Count, pids.Length, live, unknown, result.Count(r => r.State == "ABSENT"),
             result.Count(r => r.State == "REUSED"), incomplete, budget.ElapsedSeconds, result.ToArray())
         { NativeReceipts = nativeReceipts.Count == 0 ? null : nativeReceipts.ToArray() };
+    }
+
+    private static void ValidateLegacyReceiptShape(JsonElement element, Budget budget, bool identity = false)
+    {
+        if (element.ValueKind != JsonValueKind.Object) throw new InvalidDataException("Legacy receipt or identity must be an object.");
+        var names = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var property in element.EnumerateObject())
+        {
+            budget.Check();
+            if (names.Count >= 256 || !names.Add(property.Name))
+                throw new InvalidDataException("Legacy receipt has ambiguous JSON fields or exceeds 256 fields.");
+            // These fields describe native execution/ownership, not historical
+            // Status, CleanupStatus or other ordinary legacy report metadata.
+            if (property.Name.Equals("ExecutionStatus", StringComparison.OrdinalIgnoreCase) ||
+                property.Name.Equals("OwnershipId", StringComparison.OrdinalIgnoreCase) ||
+                property.Name.Equals("Launcher", StringComparison.OrdinalIgnoreCase) ||
+                property.Name.Equals("Ownership", StringComparison.OrdinalIgnoreCase) ||
+                property.Name.Equals("ScopeId", StringComparison.OrdinalIgnoreCase) ||
+                property.Name.Equals("CommandLineRevisions", StringComparison.OrdinalIgnoreCase) ||
+                property.Name.Equals("ExpectedExecCommandLine", StringComparison.OrdinalIgnoreCase) ||
+                property.Name.Equals("AfterExecCommandLine", StringComparison.OrdinalIgnoreCase))
+                throw new InvalidDataException("Native evidence requires canonical result.json and its original registrations; it cannot be audited as legacy.");
+            if (!identity && property.Name.Equals("Processes", StringComparison.OrdinalIgnoreCase))
+            {
+                if (property.Name != "Processes")
+                    throw new InvalidDataException("Legacy Processes field spelling is ambiguous.");
+                if (property.Value.ValueKind == JsonValueKind.Null) continue;
+                if (property.Value.ValueKind != JsonValueKind.Array || property.Value.GetArrayLength() > 2048)
+                    throw new InvalidDataException("Legacy Processes field is ambiguous or exceeds 2048 identities.");
+                foreach (var process in property.Value.EnumerateArray())
+                    ValidateLegacyReceiptShape(process, budget, identity: true);
+            }
+        }
     }
 
     private static void ReadNative(string directory, List<ProcessRecord> records, HashSet<ProcessRecord> nativeRecords,
