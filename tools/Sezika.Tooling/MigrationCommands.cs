@@ -14,7 +14,7 @@ internal sealed record PublicationCommitRequest(string SourceRoot, string Previe
 
 internal static class MigrationCommands
 {
-    internal static readonly string[] Commands = ["git run", "transport download", "transport prepare", "transport verify", "transport reassemble", "publication preview", "publication prepare", "publication upload", "publication commit", "task prepare", "task resident", "bundle inputs", "bundle build", "bundle freeze", "archive pack", "checkpoint verify", "host inspect", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind", "validation profile", "validation summarize", "validation data-admission", "validation language-audit", "validation batch", "validation near-ties"];
+    internal static readonly string[] Commands = ["inventory review", "git run", "transport download", "transport prepare", "transport verify", "transport reassemble", "publication preview", "publication prepare", "publication upload", "publication commit", "task prepare", "task resident", "bundle inputs", "bundle build", "bundle freeze", "archive pack", "checkpoint verify", "host inspect", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind", "validation profile", "validation summarize", "validation data-admission", "validation language-audit", "validation batch", "validation near-ties"];
     internal static int Run(string command, string requestPath, string output, Budget budget, CancellationToken cancellation)
     {
         if (command.StartsWith("validation ", StringComparison.Ordinal)) return RunValidation(command, requestPath, output, budget);
@@ -27,11 +27,12 @@ internal static class MigrationCommands
         int Save<T>(T result, JsonTypeInfo<T> type)
         {
             budget.Check(); CorpusJson.Write(output, result, type, budget);
-            var status = result switch { CorpusOperationReport report => report.Status, CorpusManifest manifest => manifest.Status, CorpusResearchCheckReport report => report.Status, CorpusSeedCheckReport report => report.Status, GitReceipt report => report.Status, BundleReceipt report => report.Status, ResidentReceipt report => report.Status, _ => "" };
-            return status.StartsWith("PARTIAL", StringComparison.Ordinal) || status.StartsWith("FAIL", StringComparison.Ordinal) || status.StartsWith("UNKNOWN", StringComparison.Ordinal) ? 1 : 0;
+            var status = result switch { CorpusOperationReport report => report.Status, CorpusManifest manifest => manifest.Status, CorpusResearchCheckReport report => report.Status, CorpusSeedCheckReport report => report.Status, GitReceipt report => report.Status, BundleReceipt report => report.Status, ResidentReceipt report => report.Status, RetirementReport report => report.Status, _ => "" };
+            return status.StartsWith("PARTIAL", StringComparison.Ordinal) || status.StartsWith("FAIL", StringComparison.Ordinal) || status.StartsWith("UNKNOWN", StringComparison.Ordinal) || status.StartsWith("PENDING", StringComparison.Ordinal) ? 1 : 0;
         }
         switch (command)
         {
+            case "inventory review": return Save(RetirementReview.Review(Read(RetirementJson.Default.RetirementReviewRequest), budget), RetirementJson.Default.RetirementReport);
             case "git run": return Save(NativeGit.RunAsync(Read(GitJsonContext.Default.GitRequest), budget, cancellation).GetAwaiter().GetResult(), GitJsonContext.Default.GitReceipt);
             case "task prepare": return Save(TaskOperations.Prepare(Read(TaskJsonContext.Default.TaskPreparationRequest), budget), TaskJsonContext.Default.PreparedTask);
             case "task resident": return Save(ResidentController.RunAsync(Read(ResidentJsonContext.Default.ResidentRequest), budget, cancellation).GetAwaiter().GetResult(), ResidentJsonContext.Default.ResidentReceipt);
