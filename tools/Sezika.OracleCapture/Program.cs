@@ -6,6 +6,7 @@ using System.Text.Json;
 using Sezika;
 using Sezika.Cuda;
 using Sezika.OracleCapture;
+using Sezika.OracleProof;
 
 return await CaptureRunner.RunAsync(args);
 
@@ -41,12 +42,14 @@ internal static class CaptureRunner
                 ?? throw new InvalidDataException("Reference capture is null.");
             var manifest = JsonSerializer.Deserialize(casesBytes, CaptureJsonContext.Default.InputManifest)
                 ?? throw new InvalidDataException("Input manifest is null.");
-            using var contract = JsonDocument.Parse(contractBytes);
-            if (contract.RootElement.GetProperty("schema_version").GetString() != "sezika.laya-oracle-contract.v1" ||
+            using var contract = JsonDocument.Parse(contractBytes, new JsonDocumentOptions { AllowDuplicateProperties = false });
+            var portDerived = contract.RootElement.GetProperty("schema_version").GetString() == PortReferenceProof.ContractSchema;
+            if (portDerived) PortReferenceProof.Validate(referenceBytes, contractBytes, token);
+            else if (contract.RootElement.GetProperty("schema_version").GetString() != "sezika.laya-oracle-contract.v1" ||
                 contract.RootElement.GetProperty("output_schema_version").GetString() != "sezika.laya-oracle.v1")
                 throw new InvalidDataException("Unsupported frozen contract.");
             var identity = CreateIdentity(casesBytes, contractBytes);
-            ValidateReference(reference, manifest, identity, token);
+            ValidateReference(reference, manifest, identity, token, portDerived ? PortReferenceProof.ReferenceSchema : "sezika.laya-oracle.v1");
             var selected = Select(reference, options);
             var selectedSet = selected.Select(row => row.Id).ToHashSet(StringComparer.Ordinal);
             if (Directory.Exists(options.Output) || File.Exists(options.Output))
@@ -58,6 +61,7 @@ internal static class CaptureRunner
             using var process = Process.GetCurrentProcess();
             capture = new Capture
             {
+                SchemaVersion = portDerived ? PortReferenceProof.ActualSchema : "sezika.laya-oracle.v1",
                 Provenance = identity, ReferenceSha256 = Hash(referenceBytes), StartedUtc = DateTimeOffset.UtcNow,
                 Implementation = new()
                 {
@@ -70,6 +74,7 @@ internal static class CaptureRunner
                     ManagedHostDetected = managedHostDetected,
                     ProcessId = Environment.ProcessId, ProcessStartedUtc = process.StartTime.ToUniversalTime(),
                     Arguments = Environment.GetCommandLineArgs(), TimeoutSeconds = options.TimeoutSeconds, MaxCases = options.MaxCases,
+                    MaximumResidentBytes = options.MaximumResidentBytes,
                 },
                 SelectedCaseIds = selected.Select(row => row.Id).ToArray(), TotalManifestCases = manifest.Cases.Length,
                 MissingManifestCaseIds = manifest.Cases.Where(row => !selectedSet.Contains(row.Id)).Select(row => row.Id).ToArray(),
@@ -139,7 +144,7 @@ internal static class CaptureRunner
             else backend = new ModernBertDecisionPipeline(model.Encoder, model.Head, token);
             recording = new RecordingPipeline(backend);
             engine = new ModernBertDecisionEngine(model, recording, options.Backend + "-modernbert-marker-head",
-                budget: new DecisionResourceBudget { MaxQuestions = 1, MaxTokens = 1024, MaxResidentBytes = 4L * 1024 * 1024 * 1024,
+                budget: new DecisionResourceBudget { MaxQuestions = 1, MaxTokens = 1024, MaxResidentBytes = options.MaximumResidentBytes,
                     Deadline = TimeSpan.FromMinutes(5) });
             for (var index = 0; index < selected.Length; index++) // <= 46 selected rows, outer cancellation and per-request deadline.
             {
@@ -254,9 +259,9 @@ internal static class CaptureRunner
         MaxLen = 1024, HeadMaxLen = 256, TemperaturePolicy = "checkpoint_fixed_1_no_overrides",
     };
 
-    private static void ValidateReference(ReferenceCapture reference, InputManifest manifest, Identity identity, CancellationToken token)
+    private static void ValidateReference(ReferenceCapture reference, InputManifest manifest, Identity identity, CancellationToken token, string expectedSchema)
     {
-        if (reference.SchemaVersion != "sezika.laya-oracle.v1" || reference.Provenance != identity ||
+        if (reference.SchemaVersion != expectedSchema || reference.Provenance != identity ||
             reference.Cases is null || reference.Cases.Length is < 1 or > 46 || manifest.SchemaVersion != "sezika.laya-oracle-inputs.v1" ||
             manifest.Cases is null || manifest.Cases.Length is < 1 or > 46)
             throw new InvalidDataException("Reference schema, asset/source identity, exact contract/input hashes or case count is invalid.");

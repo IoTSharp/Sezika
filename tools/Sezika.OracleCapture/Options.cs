@@ -3,15 +3,16 @@ using System.Globalization;
 namespace Sezika.OracleCapture;
 
 internal sealed record Options(string Reference, string Model, string Cases, string Contract, string Output,
-    string Backend, PromptLengthPolicy LengthPolicy, int MaxCases, int TimeoutSeconds, string[] CaseIds, bool RequireAot)
+    string Backend, PromptLengthPolicy LengthPolicy, int MaxCases, int TimeoutSeconds, long MaximumResidentBytes,
+    string[] CaseIds, bool RequireAot)
 {
     public static Options Parse(string[] args)
     {
-        if (args.Length is < 10 or > 21)
-            throw new ArgumentException("Usage: Sezika.OracleCapture --reference <capture.json> --model <local-package> --cases <cases.v1.json> --contract <contract.v1.json> --output <new-directory> [--backend scalar|simd|cuda] [--length-policy strict|laya_compatible] [--max-cases 1..46] [--case-ids id,id] [--timeout-seconds 1..1800] [--require-aot]");
+        if (args.Length is < 10 or > 23)
+            throw new ArgumentException("Usage: Sezika.OracleCapture --reference <capture.json> --model <local-package> --cases <cases.v1.json> --contract <contract.v1.json> --output <new-directory> [--backend scalar|simd|cuda] [--length-policy strict|laya_compatible] [--max-cases 1..46] [--case-ids id,id] [--timeout-seconds 1..1800] [--maximum-resident-bytes 1048576..4294967296] [--require-aot]");
         var values = new Dictionary<string, string>(StringComparer.Ordinal);
         var requireAot = false;
-        for (var i = 0; i < args.Length; i++) // At most 21 arguments; each iteration consumes a flag or a pair.
+        for (var i = 0; i < args.Length; i++) // At most 23 arguments; each iteration consumes a flag or a pair.
         {
             if (args[i] == "--require-aot")
             {
@@ -20,7 +21,7 @@ internal sealed record Options(string Reference, string Model, string Cases, str
                 continue;
             }
             if (args[i] is not ("--reference" or "--model" or "--cases" or "--contract" or "--output" or "--backend" or
-                "--length-policy" or "--max-cases" or "--case-ids" or "--timeout-seconds") || i + 1 >= args.Length ||
+                "--length-policy" or "--max-cases" or "--case-ids" or "--timeout-seconds" or "--maximum-resident-bytes") || i + 1 >= args.Length ||
                 args[i + 1].StartsWith("--", StringComparison.Ordinal) || !values.TryAdd(args[i], args[i + 1]))
                 throw new ArgumentException($"Unknown, duplicate or missing-valued option: {args[i]}");
             i++;
@@ -29,6 +30,9 @@ internal sealed record Options(string Reference, string Model, string Cases, str
             ? Path.GetFullPath(value) : throw new ArgumentException($"Missing option {key}.");
         int Number(string key, int fallback, int max) => int.TryParse(values.GetValueOrDefault(key, fallback.ToString(CultureInfo.InvariantCulture)),
             CultureInfo.InvariantCulture, out var n) && n >= 1 && n <= max ? n : throw new ArgumentException($"{key} must be 1..{max}.");
+        long ResidentBytes() => long.TryParse(values.GetValueOrDefault("--maximum-resident-bytes", "4294967296"),
+            NumberStyles.Integer, CultureInfo.InvariantCulture, out var n) && n is >= 1_048_576 and <= 4_294_967_296L
+            ? n : throw new ArgumentException("--maximum-resident-bytes must be an integer in 1048576..4294967296.");
         var backend = values.GetValueOrDefault("--backend", "simd");
         if (backend is not ("scalar" or "simd" or "cuda")) throw new ArgumentException("Backend must be scalar, simd or cuda; quantization is outside the frozen FP32 contract.");
         var lengthPolicy = values.GetValueOrDefault("--length-policy", "laya_compatible") switch
@@ -43,6 +47,6 @@ internal sealed record Options(string Reference, string Model, string Cases, str
             caseIds.Distinct(StringComparer.Ordinal).Count() != caseIds.Length)
             throw new ArgumentException("Explicit case IDs must be unique, nonempty and within --max-cases.");
         return new(Required("--reference"), Required("--model"), Required("--cases"), Required("--contract"), Required("--output"),
-            backend, lengthPolicy, maxCases, Number("--timeout-seconds", 180, 1800), caseIds, requireAot);
+            backend, lengthPolicy, maxCases, Number("--timeout-seconds", 180, 1800), ResidentBytes(), caseIds, requireAot);
     }
 }

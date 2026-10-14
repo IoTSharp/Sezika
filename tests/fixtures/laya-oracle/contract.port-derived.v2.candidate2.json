@@ -1,0 +1,87 @@
+{
+  "schema_version": "sezika.laya-oracle-contract.port-derived.v2",
+  "output_schema_version": "sezika.laya-oracle.port-derived.v2",
+  "status": "frozen_before_port_measurement",
+  "scope": "Fixed original Laya checkpoint and independently ported C# reference versus actual Sezika outputs. This version does not grant the historical real upstream Python evidence gate.",
+  "identity_fields": [
+    "model_id",
+    "model_revision",
+    "weights_sha256",
+    "tokenizer_sha256",
+    "upstream_source_revision",
+    "cases_sha256",
+    "contract_sha256",
+    "max_len",
+    "head_max_len",
+    "temperature_policy"
+  ],
+  "exact_fields": [
+    "id",
+    "primitive",
+    "status",
+    "input",
+    "token_ids",
+    "marker_positions",
+    "candidate_labels"
+  ],
+  "tolerances": {
+    "raw_logits": {
+      "absolute": 0.0005,
+      "relative": 0.0001
+    },
+    "probabilities": {
+      "absolute": 0.0001,
+      "relative": 0.0001
+    },
+    "score": {
+      "absolute": 0.001,
+      "relative": 0.0001
+    },
+    "near_tie_logit_margin": 0.001
+  },
+  "comparison": {
+    "formula": "abs(actual-reference) <= absolute + relative * abs(reference)",
+    "finite_values_required": true,
+    "probability_sum_absolute_tolerance": 2E-06,
+    "choice_and_boolean_predictions": "exact_even_near_ties",
+    "near_tie_handling": "Report separately; a differing label/boolean remains a failed comparison. Do not widen tolerance after seeing measurements without creating a new version.",
+    "boolean_semantic_order": [
+      "false",
+      "true"
+    ],
+    "boolean_threshold": 0.5,
+    "boolean_threshold_equality": true,
+    "score_definition": "sum(index * unrounded_probability), zero-based",
+    "failure_comparison": "Exact normalized stage/type; preserve upstream class/message as evidence. An observed failure is never an answered decision.",
+    "upstream_rounded_answer": "Evidence only; upstream rounds to four decimals. Numerical comparison uses unrounded arrays.",
+    "missing_or_partial_cases": "No full-suite pass; compare only explicitly selected IDs and record coverage."
+  },
+  "limits": {
+    "max_cases": 64,
+    "max_questions_per_case": 1,
+    "max_candidates": 64,
+    "max_fixture_bytes": 1048576,
+    "max_state_characters": 131072,
+    "max_state_tokens": 16384,
+    "max_generated_repetitions": 4096,
+    "max_boundary_probes": 32,
+    "max_timeout_seconds": 1800
+  },
+  "evidence_policy": "Reference values must be computed from independently ported frozen upstream source and original weights with complete source/build/runtime/process pins. upstream_executed, represents_parity, represents_quality and represents_calibration remain false. Reuse of actual numerical tensors or fabrication is prohibited. Original v1 upstream evidence remains separate.",
+  "actual_output_schema_version": "sezika.laya-oracle.actual.v2",
+  "port_reference_policy": {
+    "effective_global_rope_theta": 160000,
+    "build_receipt_status": "PASS_exact_reference_program_source_build_only",
+    "batch_size": 1,
+    "upstream_common_sha256": "4ab41be6a4d9fdbad74eccf4f64c43e2c7404d227988d97ed8233ded8b182cb1",
+    "source_lock_sha256": "901527bdd7da7732c2d12903a45dcc1984ac2187e14214ae780286c585f2e287",
+    "source_independence": "No production encoder/head/tokenizer or actual numeric payload reuse",
+    "encoder_config_sha256": "83f6916d13ef0f556ac461f28308dc2bffa7ebeadee8ec9e2db5812020ea5bb4",
+    "implementation": "laya-4066d5-transformers-4.57.1-csharp-fp32-v2",
+    "agent_config_sha256": "25061739243b617ad88d1219ba6f8a9c86c5881ca28df024fa2d9b3b2fcc30c6",
+    "effective_local_rope_theta": 160000,
+    "kind": "independently_ported_original_laya_weights_capture",
+    "upstream_agent_sha256": "1473ffd335a1becf55bf7aadde6d31f9d6be27862f5deaa5f4ebd3451fa154e3",
+    "tokenizer_config_sha256": "424b69444bf7b5809dc2cd2e36d0bd71b8055124dd24274d6db3c655d38205e7"
+  }
+}

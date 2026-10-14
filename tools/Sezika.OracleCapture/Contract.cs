@@ -85,7 +85,8 @@ internal sealed record ExecutionIdentity
     public required string[] Arguments { get; init; }
     public required int TimeoutSeconds { get; init; }
     public required int MaxCases { get; init; }
-    public string ProcessTreeEvidence { get; init; } = "Run through tools/Invoke-BoundedProcess.ps1 to record the parent chain and reclaim this task's process subtree.";
+    public required long MaximumResidentBytes { get; init; }
+    public string ProcessTreeEvidence { get; init; } = "Use Sezika.Tooling process run with a pinned C# target, structured ExecutionRequest, bounded logs and independent PID/birth/argv/parent-chain cleanup receipts.";
 }
 
 internal sealed record CapturedCase

@@ -6,27 +6,44 @@
 
 ## 有界运行
 
-执行需遵守仓库 `AGENTS.md` 的明确授权要求。使用 `tools/Invoke-BoundedProcess.ps1` 运行构建和导出，以记录 PID、启动时间、命令行和父链，并回收该任务的进程子树。先运行一条，再在通过该极小门槛后扩大到最多 46 条；每次进程最多 1800 秒。
+执行遵守仓库 `AGENTS.md` 与当前任务授权。使用已核验的 C# `Sezika.Tooling process run` 和类型化 `ExecutionRequest` 运行构建及导出，登记 PID、出生、完整命令行和父链，并核输入/输出 EOF、退出码及进程树回收。先运行一条，通过后再扩大到最多 46 条；每次进程最多 1800 秒。Windows 使用 PowerShell 7，调用参数保持结构化。
 
-构建命令及单条运行参数如下。示例没有下载权重、训练、发布或安装依赖的步骤。
+以下是请求结构示例。所有占位符替换为本次已核验的绝对路径，输出目录及回执必须新建。构建固定单个 MSBuild 节点并关闭构建服务器；程序、DLL、源码、模型与合同的 bytes/SHA 由上层任务独立固定。`ExecutionRequest` 自身不提供程序 SHA 准入，不能把宿主 SHA 当作应用身份。
 
-```powershell
-& ./tools/Invoke-BoundedProcess.ps1 -FilePath dotnet -ArgumentList @(
-    'build', 'tools/Sezika.OracleCapture/Sezika.OracleCapture.csproj',
-    '-c', 'Release', '--disable-build-servers', '-p:UseSharedCompilation=false'
-) -TimeoutSeconds 180 -LogName oracle-capture-build
-
-& ./tools/Invoke-BoundedProcess.ps1 -FilePath dotnet -ArgumentList @(
-    'tools/Sezika.OracleCapture/bin/Release/net10.0/Sezika.OracleCapture.dll',
-    '--reference', '.artifacts/laya-oracle-work/smoke-01/capture.json',
-    '--model', '.artifacts/models/laya-mmbert',
-    '--cases', 'tests/fixtures/laya-oracle/cases.v1.json',
-    '--contract', 'tests/fixtures/laya-oracle/contract.v1.json',
-    '--output', '.artifacts/laya-oracle-work/csharp-simd-smoke-01',
-    '--backend', 'simd', '--length-policy', 'laya_compatible',
-    '--max-cases', '1', '--timeout-seconds', '180'
-) -TimeoutSeconds 200 -LogName oracle-capture-smoke
+```json
+{
+  "Executable": "<dotnet绝对路径>",
+  "ArgumentList": ["build", "tools/Sezika.OracleCapture/Sezika.OracleCapture.csproj", "-c", "Release", "--disable-build-servers", "-m:1", "-p:UseSharedCompilation=false"],
+  "WorkingDirectory": "<冻结源码根目录>",
+  "OutputDirectory": "<新构建执行目录>",
+  "TimeoutSeconds": 180,
+  "CleanupSeconds": 10,
+  "MaximumProcesses": 64,
+  "MaximumOutputBytes": 4194304,
+  "Environment": {"DOTNET_CLI_DO_NOT_USE_MSBUILD_SERVER": "1", "MSBUILDDISABLENODEREUSE": "1", "UseSharedCompilation": "false"}
+}
 ```
+
+```json
+{
+  "Executable": "<已核验OracleCapture apphost绝对路径>",
+  "ArgumentList": ["--reference", "<冻结参考capture.json>", "--model", "<固定模型目录>", "--cases", "<固定cases.json>", "--contract", "<与参考版本一致的合同.json>", "--output", "<新capture目录>", "--backend", "simd", "--length-policy", "laya_compatible", "--max-cases", "1", "--timeout-seconds", "180"],
+  "WorkingDirectory": "<本次任务根目录>",
+  "OutputDirectory": "<新推理执行目录>",
+  "TimeoutSeconds": 200,
+  "CleanupSeconds": 10,
+  "MaximumProcesses": 16,
+  "MaximumOutputBytes": 4194304
+}
+```
+
+```text
+Sezika.Tooling process run --request <执行请求.json> --output <新外层回执.json> --timeout-seconds <含回收预留的期限>
+```
+
+Linux 必须声明已核验的 C# `BrokerExecutable`；嵌套执行另按准确路径/SHA 固定 `NestedBrokers`。WSL 同时保留 Windows 外层与 Linux 内层回执，独立检查两者，完整调用合同见[当前工作流](tooling-current-workflow.md)。
+
+新独立 `Sezika.ReferenceTool` 的 Laya 路径使用 `port-derived.v2`：`upstream_executed=false`，原始上游源码只作取证；原 `contract.v1.json` 与上游来源门槛保留。新参考、实际前向、数值比较和评分分别执行。`oracle batches` 协调器固定程序/源码、五项模型资产与输入清单，恢复只接受完整 hash 与执行身份闭合的已完成批次；当前验收状态按 ROADMAP 与独立证据表述。
 
 `--output` 必须是不存在的新目录，且不能位于模型目录内。最终文件为该目录下的 `capture.json`。内部截止时间和 Ctrl+C 可取消运行；已完成行仍保存，未处理的 ID 写入 `unprocessed_case_ids`。外层进程超时应略大于内部截止时间，为资源回收和写入证据留出时间，二者均不得超过授权上限。
 
