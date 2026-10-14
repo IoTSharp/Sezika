@@ -32,6 +32,7 @@ internal static class WindowsLifecycleChecks
         Assert(Path.IsPathFullyQualified(root) && Directory.Exists(root) && Path.IsPathFullyQualified(repositoryDirectory) &&
             Directory.Exists(repositoryDirectory), "Explicit existing case parent and repository directories required.");
         SafePaths.NoLinks(root, budget); SafePaths.NoLinks(repositoryDirectory, budget);
+        VerifyMemberSnapshots(root, budget);
         var reportPath = Path.Combine(root, "windows-lifecycle-report.json");
         Assert(!Path.Exists(reportPath), "Preserve previous lifecycle report; use a fresh run root.");
         var gitPin = Pin(git, budget);
@@ -140,6 +141,67 @@ internal static class WindowsLifecycleChecks
     {
         budget.Check(); var bytes = new FileInfo(path).Length; Assert(bytes is >= 0 and <= 16777216, "Lifecycle pin byte bound16MiB.");
         return new(Path.GetFullPath(path), bytes, CorpusJson.FileHash(path, budget));
+    }
+    private static void VerifyMemberSnapshots(string root, Budget budget)
+    {
+        var reads = 0;
+        var complete = WindowsExecutionSession.ReadCompleteMembers(8,
+            () => ++reads == 1 ? (3U, new[] { 101, 102 }) : (2U, new[] { 101, 102 }), budget);
+        Assert(reads == 2 && complete.SequenceEqual(new[] { 101, 102 }), "An incomplete Job snapshot was accepted or a fresh complete snapshot was lost.");
+        reads = 0; var rejected = false;
+        try { WindowsExecutionSession.ReadCompleteMembers(8, () => { reads++; return (3U, new[] { 101, 102 }); }, budget); }
+        catch (IOException error) when (error.Message.StartsWith("Job member list remained incomplete", StringComparison.Ordinal)) { rejected = true; }
+        Assert(rejected && reads is > 0 and <= 8, "Persistent partial snapshots bypassed the retry bound.");
+        reads = 0; rejected = false;
+        try { WindowsExecutionSession.ReadCompleteMembers(8, () => { reads++; return (9U, new[] { 101 }); }, budget); }
+        catch (IOException) { rejected = true; }
+        Assert(rejected && reads == 1, "Job process cap was relaxed by retrying an over-budget snapshot.");
+        reads = 0; rejected = false;
+        try { WindowsExecutionSession.ReadCompleteMembers(8, () => { reads++; throw new IOException("synthetic native query failure"); }, budget); }
+        catch (IOException error) when (error.Message == "synthetic native query failure") { rejected = true; }
+        Assert(rejected && reads == 1, "A failed native query was hidden or retried.");
+        using var cancellation = new CancellationTokenSource(); reads = 0; rejected = false;
+        try
+        {
+            WindowsExecutionSession.ReadCompleteMembers(8, () => { reads++; cancellation.Cancel(); return (3U, new[] { 101, 102 }); },
+                new Budget(2, null, cancellation.Token));
+        }
+        catch (OperationCanceledException) { rejected = true; }
+        Assert(rejected && reads == 1, "Cancellation failed to stop membership retries.");
+        var cancelFile = Path.Combine(root, "job-snapshot-CANCEL.signal"); reads = 0; rejected = false;
+        Assert(!Path.Exists(cancelFile), "Fresh snapshot cancel signal required.");
+        try
+        {
+            WindowsExecutionSession.ReadCompleteMembers(8, () => { reads++; File.WriteAllText(cancelFile, "synthetic cancellation\n"); return (3U, new[] { 101, 102 }); },
+                new Budget(2, cancelFile, CancellationToken.None));
+        }
+        catch (OperationCanceledException) { rejected = true; }
+        Assert(rejected && reads == 1, "Cancel-file failed to stop membership retries.");
+        using var completeCancellation = new CancellationTokenSource(); reads = 0; rejected = false;
+        try
+        {
+            WindowsExecutionSession.ReadCompleteMembers(8, () => { reads++; completeCancellation.Cancel(); return (2U, new[] { 101, 102 }); },
+                new Budget(2, null, completeCancellation.Token));
+        }
+        catch (OperationCanceledException) { rejected = true; }
+        Assert(rejected && reads == 1, "A complete snapshot bypassed post-query cancellation.");
+        var completeCancelFile = Path.Combine(root, "job-complete-snapshot-CANCEL.signal"); reads = 0; rejected = false;
+        Assert(!Path.Exists(completeCancelFile), "Fresh complete snapshot cancel signal required.");
+        try
+        {
+            WindowsExecutionSession.ReadCompleteMembers(8, () => { reads++; File.WriteAllText(completeCancelFile, "synthetic cancellation\n"); return (2U, new[] { 101, 102 }); },
+                new Budget(2, completeCancelFile, CancellationToken.None));
+        }
+        catch (OperationCanceledException) { rejected = true; }
+        Assert(rejected && reads == 1, "A complete snapshot bypassed post-query cancel-file.");
+        reads = 0; rejected = false;
+        try
+        {
+            WindowsExecutionSession.ReadCompleteMembers(8, () => { reads++; Thread.Sleep(260); return (2U, new[] { 101, 102 }); }, budget);
+        }
+        catch (TimeoutException) { rejected = true; }
+        Assert(rejected && reads == 1, "A complete snapshot bypassed the query wall bound.");
+        File.WriteAllText(Path.Combine(root, "job-snapshot-checks.txt"), "PASS 9 synthetic Job snapshot contract checks; separate from actual Git lifecycle cases\n");
     }
     private static void Assert(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }
 }

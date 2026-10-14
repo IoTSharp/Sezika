@@ -1,0 +1,84 @@
+{
+  "SdkPublishes": [
+    {
+      "Seconds": 63.2473433,
+      "Kind": "cli",
+      "Runtime": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-job-snapshot-v9b-v1\\runtime\\win-x64\\cli",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-job-snapshot-v9b-v1\\runs\\win-x64-cli\\native-execution\\result.json",
+      "Status": "PASS",
+      "RuntimeFiles": 2
+    },
+    {
+      "Seconds": 81.2780612,
+      "Kind": "tests",
+      "Runtime": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-job-snapshot-v9b-v1\\runtime\\win-x64\\tests",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-job-snapshot-v9b-v1\\runs\\win-x64-tests\\native-execution\\result.json",
+      "Status": "PASS",
+      "RuntimeFiles": 5
+    }
+  ],
+  "MigrationOverallComplete": false,
+  "Utc": "2026-10-14T16:18:20.5417925+00:00",
+  "NativeQueryErrorsRetried": false,
+  "RetryDelayMilliseconds": 5,
+  "UnrelatedCrossOriginInner64Failure": "Preserved separately; no full Git case10 acceptance in this delivery",
+  "MaximumSnapshotMilliseconds": 250,
+  "ActualWindowsLifecycleCases": 8,
+  "MaximumFreshQueries": 8,
+  "SourceManifestSha256": "f4cae2886f1d42a93e2b1b427a95e8ef738206a61ef55d9b016b3bf4ab723163",
+  "SyntheticSnapshotChecks": 9,
+  "Sources": [
+    {
+      "Path": "tests/Sezika.Tooling.Tests/WindowsLifecycleChecks.cs",
+      "Bytes": 17252,
+      "Sha256": "64ec2c55cb1a645574992d7bb3960b18487371dc6ccfb5f8bd9f518836303c9a"
+    },
+    {
+      "Path": "tools/Sezika.Tooling/Execution/ProcessExecutor.cs",
+      "Bytes": 45268,
+      "Sha256": "bfc8bd86192fed974e60fb8cc20d106a12865a630114848b018a8941c5440253"
+    },
+    {
+      "Path": "tools/Sezika.Tooling/Execution/WindowsExecutionSession.cs",
+      "Bytes": 17188,
+      "Sha256": "6ddc5d227c08f6ab9b29236c9d82ebb673197aaf3446b08b8151637e776c2db1"
+    }
+  ],
+  "OriginalCopies": [
+    {
+      "Bytes": 19879,
+      "Sha256": "06a61f8d07f0b697b38da619b09d56af941f1f6d544d1069eed181dd3526fad9",
+      "Original": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\root-v8-git-current-v1\\03\\native-execution\\result.json",
+      "File": "original-incomplete-result.json"
+    },
+    {
+      "Bytes": 14767,
+      "Sha256": "1b44f9a8d8de896c4fe61a375a57c4f855fe94bd8d09dde057f41e7de2ecf57f",
+      "Original": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\root-windows-job-v9b-runtime-v1\\02\\native-execution\\result.json",
+      "File": "lifecycle8-result.json"
+    },
+    {
+      "Bytes": 24031,
+      "Sha256": "9b1b3a54ad4e325ba2ebbe1316ed5cda15ad28c1c411db2cab90297a6d55f2d2",
+      "Original": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\root-windows-job-v9b-runtime-v1\\04\\native-execution\\result.json",
+      "File": "execution19-result.json"
+    },
+    {
+      "Bytes": 88,
+      "Sha256": "30a5c8bd35524154d04129ff11d54a5b00014863b898df38549b1429f51567a4",
+      "Original": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\root-windows-job-v9b-runtime-v1\\02\\client\\job-snapshot-checks.txt",
+      "File": "snapshot9-checks.txt"
+    }
+  ],
+  "PartialSnapshotNeverAccepted": true,
+  "Status": "PASS_T1B_WINDOWS_COMPLETE_JOB_SNAPSHOT_RETRY",
+  "ProcessCapChanged": false,
+  "ResourceAudit": {
+    "MatchingLive": 0,
+    "Unknown": 0,
+    "Receipts": 11,
+    "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\root-windows-v9b-resource-audit-v1\\audit.json",
+    "IdentityRecords": 621
+  },
+  "ActualExecutionChecks": 19
+}

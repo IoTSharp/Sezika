@@ -190,21 +190,45 @@ internal sealed class WindowsExecutionSession : IExecutionSession
         }
         finally { input?.Dispose(); input = null; }
     }
-    public unsafe int[] Members()
+    public int[] Members() => Members(new Budget(1, null, CancellationToken.None));
+    internal unsafe int[] Members(Budget budget)
     {
         // JOBOBJECT_BASIC_PROCESS_ID_LIST: two ULONG fields followed by ULONG_PTR.
         var bytes = new byte[8 + (maximumProcesses + 1) * IntPtr.Size];
-        fixed (byte* pointer = bytes)
+        return ReadCompleteMembers(maximumProcesses, Read, budget);
+        (uint Assigned, int[] Members) Read()
         {
-            var queried = ExecutionNative.QueryInformationJobObject(job, 3, pointer, (uint)bytes.Length, out var returned);
-            var assigned = *(uint*)pointer; var count = *(uint*)(pointer + 4);
-            var detail = $"assigned={assigned}; count={count}; maximum={maximumProcesses}; bufferBytes={bytes.Length}; returnedBytes={returned}";
-            if (queried == 0) throw Error("QueryInformationJobObject; " + detail);
-            if (assigned != count || count > maximumProcesses) throw new IOException("Job member list is incomplete or over budget; " + detail);
-            var result = new int[count];
-            for (var i = 0; i < result.Length; i++) result[i] = checked((int)((nuint*)(pointer + 8))[i]);
-            return result;
+            fixed (byte* pointer = bytes)
+            {
+                var queried = ExecutionNative.QueryInformationJobObject(job, 3, pointer, (uint)bytes.Length, out var returned);
+                var assigned = *(uint*)pointer; var count = *(uint*)(pointer + 4);
+                var detail = $"assigned={assigned}; count={count}; maximum={maximumProcesses}; bufferBytes={bytes.Length}; returnedBytes={returned}";
+                if (queried == 0) throw Error("QueryInformationJobObject; " + detail);
+                if (assigned > maximumProcesses || count > maximumProcesses || returned < 8 + count * IntPtr.Size)
+                    throw new IOException("Job member list is over budget or truncated; " + detail);
+                var result = new int[count];
+                for (var i = 0; i < result.Length; i++) result[i] = checked((int)((nuint*)(pointer + 8))[i]);
+                return (assigned, result);
+            }
         }
+    }
+    internal static int[] ReadCompleteMembers(int maximumProcesses, Func<(uint Assigned, int[] Members)> read, Budget budget)
+    {
+        var clock = Stopwatch.StartNew(); uint assigned = 0; var listed = 0;
+        // A query can race process exit. Never accept its partial list: read a
+        // new complete snapshot, preserving notification/HANDLE admission.
+        for (var attempt = 0; attempt < 8 && clock.Elapsed.TotalMilliseconds < 250; attempt++)
+        {
+            budget.Check(); var snapshot = read(); budget.Check();
+            if (clock.Elapsed.TotalMilliseconds >= 250) throw new TimeoutException("Job member snapshot query exceeded250ms.");
+            assigned = snapshot.Assigned; listed = snapshot.Members.Length;
+            if (assigned > maximumProcesses || listed > maximumProcesses || assigned < listed)
+                throw new IOException($"Job member snapshot is inconsistent or over budget; assigned={assigned}; count={listed}; maximum={maximumProcesses}");
+            if (assigned == listed) return snapshot.Members;
+            Task.Delay(5, budget.Cancellation).GetAwaiter().GetResult();
+        }
+        budget.Check();
+        throw new IOException($"Job member list remained incomplete after bounded fresh queries; assigned={assigned}; count={listed}; maximum={maximumProcesses}");
     }
     public void Register(ExecutionIdentity identity)
     {

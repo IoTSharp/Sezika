@@ -353,7 +353,7 @@ internal static class ProcessExecutor
         (actual.Platform == "linux" ? actual.StartTicks is not null && !string.IsNullOrEmpty(actual.BootId) : actual.Started is not null);
     private static void ObserveMembers(IExecutionSession session, Dictionary<int, ExecutionIdentity> records, ExecutionRequest request, Budget budget, List<string> errors, Dictionary<int, string> pendingRegistrations)
     {
-        var activeMembers = session.Members(); var clock = Stopwatch.StartNew();
+        var activeMembers = session is WindowsExecutionSession windowsMembers ? windowsMembers.Members(budget) : session.Members(); var clock = Stopwatch.StartNew();
         var members = session is WindowsExecutionSession notifiedWindows ? activeMembers.Concat(notifiedWindows.NotifiedPids()).Distinct().ToArray() : activeMembers;
         if (members.Length > request.MaximumProcesses) throw new IOException("Member count bound exceeded.");
         // Retry ordering only within a bounded snapshot: parent before child.
