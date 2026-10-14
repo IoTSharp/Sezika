@@ -196,10 +196,11 @@ internal sealed class WindowsExecutionSession : IExecutionSession
         var bytes = new byte[8 + (maximumProcesses + 1) * IntPtr.Size];
         fixed (byte* pointer = bytes)
         {
-            if (ExecutionNative.QueryInformationJobObject(job, 3, pointer, (uint)bytes.Length, out _) == 0)
-                throw Error("QueryInformationJobObject");
+            var queried = ExecutionNative.QueryInformationJobObject(job, 3, pointer, (uint)bytes.Length, out var returned);
             var assigned = *(uint*)pointer; var count = *(uint*)(pointer + 4);
-            if (assigned != count || count > maximumProcesses) throw new IOException("Job member list is incomplete or over budget.");
+            var detail = $"assigned={assigned}; count={count}; maximum={maximumProcesses}; bufferBytes={bytes.Length}; returnedBytes={returned}";
+            if (queried == 0) throw Error("QueryInformationJobObject; " + detail);
+            if (assigned != count || count > maximumProcesses) throw new IOException("Job member list is incomplete or over budget; " + detail);
             var result = new int[count];
             for (var i = 0; i < result.Length; i++) result[i] = checked((int)((nuint*)(pointer + 8))[i]);
             return result;
@@ -257,7 +258,22 @@ internal sealed class WindowsExecutionSession : IExecutionSession
         }
     }
     public void Terminate() { if (ExecutionNative.TerminateJobObject(job, 125) == 0) throw Error("TerminateJobObject"); }
-    public bool Reap() => TryExit(out _) && Members().Length == 0;
+    public bool Reap()
+    {
+        if (!TryExit(out _) || Members().Length != 0) return false;
+        if (registered.Count > maximumProcesses) throw new IOException("Retained task HANDLE count exceeds configured process bound.");
+        // An admitted console host can leave the live Job list before its
+        // retained birth HANDLE signals. The caller owns the one cleanup
+        // deadline/50ms backoff; each HANDLE probe here is nonblocking.
+        foreach (var pair in registered)
+        {
+            if (pair.Value.IsInvalid || pair.Value.IsClosed) throw new IOException("Registered task HANDLE is unavailable for PID " + pair.Key);
+            var wait = ExecutionNative.WaitForSingleObject(pair.Value, 0);
+            if (wait == 258) return false;
+            if (wait != 0) throw Error("WaitForSingleObject(registered task exit), PID " + pair.Key);
+        }
+        return true;
+    }
     public void Dispose()
     {
         // Closing the job is also a kernel-enforced fallback for exceptional paths.
