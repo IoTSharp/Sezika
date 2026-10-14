@@ -3,5 +3,10 @@
     <OutputType>Exe</OutputType>
     <IsPackable>false</IsPackable>
     <IsAotCompatible>true</IsAotCompatible>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../Sezika.ReferenceTool/Provenance/CompiledProgramProof.cs" Link="CompiledProgramProof.cs" />
+    <Compile Include="../Sezika.OracleCapture/PortReferenceProof.cs" Link="PortReferenceProof.cs" />
+  </ItemGroup>
 </Project>

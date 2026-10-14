@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Security.Cryptography;
 using System.Text.Json;
 using Sezika.OracleCompare;
+using Sezika.OracleProof;
 
 return await Comparison.RunAsync(args);
 
@@ -37,13 +38,15 @@ internal static class Comparison
                 ?? throw new InvalidDataException("Actual capture is null.");
             var contract = JsonSerializer.Deserialize(contractBytes, CompareJsonContext.Default.FrozenContract)
                 ?? throw new InvalidDataException("Frozen contract is null.");
-            if (contract.SchemaVersion != "sezika.laya-oracle-contract.v1" || contract.OutputSchemaVersion != "sezika.laya-oracle.v1")
+            var portDerived = contract.SchemaVersion == PortReferenceProof.ContractSchema;
+            if (portDerived) PortReferenceProof.Validate(referenceBytes, contractBytes, token);
+            else if (contract.SchemaVersion != "sezika.laya-oracle-contract.v1" || contract.OutputSchemaVersion != "sezika.laya-oracle.v1")
                 throw new InvalidDataException("Unsupported frozen comparison contract.");
             ValidateTolerances(contract.Tolerances);
             var contractHash = Hash(contractBytes);
             var casesHash = Hash(casesBytes);
-            Validate(reference, contractHash, casesHash, token);
-            Validate(actual, contractHash, casesHash, token);
+            Validate(reference, contractHash, casesHash, token, portDerived ? PortReferenceProof.ReferenceSchema : "sezika.laya-oracle.v1");
+            Validate(actual, contractHash, casesHash, token, portDerived ? PortReferenceProof.ActualSchema : "sezika.laya-oracle.v1");
             var manifest = JsonSerializer.Deserialize(casesBytes, CompareJsonContext.Default.InputManifest)
                 ?? throw new InvalidDataException("Input manifest is null.");
             var manifestCases = ValidateManifest(manifest, token);
@@ -115,6 +118,8 @@ internal static class Comparison
             var missingIds = manifest.Cases.Where(row => !selectedSet.Contains(row.Id)).Select(row => row.Id).ToArray();
             var report = new ComparisonReport
             {
+                ReferenceProvenanceClass = portDerived ? "independent_csharp_port_derived_v2" : "legacy_upstream_contract_v1",
+                HistoricalUpstreamGateAccepted = portDerived ? false : null,
                 StartedUtc = started, ReferenceSha256 = Hash(referenceBytes), ActualSha256 = Hash(actualBytes),
                 ContractSha256 = contractHash, CasesSha256 = casesHash, Identity = reference.Provenance,
                 Tolerances = contract.Tolerances, ReferenceCount = reference.Cases.Length, ActualCount = actual.Cases.Length,
@@ -233,10 +238,10 @@ internal static class Comparison
                 throw new InvalidDataException("Tolerances must be finite and nonnegative.");
     }
 
-    private static void Validate(Capture capture, string contractHash, string casesHash, CancellationToken token)
+    private static void Validate(Capture capture, string contractHash, string casesHash, CancellationToken token, string expectedSchema)
     {
         var identity = capture.Provenance;
-        if (capture.SchemaVersion != "sezika.laya-oracle.v1" || identity is null || capture.Cases is null || capture.Cases.Length is < 1 or > MaxCases)
+        if (capture.SchemaVersion != expectedSchema || identity is null || capture.Cases is null || capture.Cases.Length is < 1 or > MaxCases)
             throw new InvalidDataException("Invalid capture envelope or case count (1..128).");
         if (identity.ModelId != "convaiinnovations/laya-multilingual" ||
             identity.ModelRevision != "052592a15d198d9ad47da779604259b10b47b7aa" ||

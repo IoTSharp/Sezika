@@ -2,7 +2,9 @@
 
 `Sezika.OracleCompare` 是独立 C# / .NET 10 开发工具：读取固定上游 oracle 与待比较实现导出的 `sezika.laya-oracle.v1` JSON，核对同权重、同输入的逐题证据。它不加载模型、不调用推理后端；JSON 使用 source generation。构建、实测和 Native AOT 状态分别以运行证据为准。
 
-参考捕获由 [Laya oracle](../Sezika.LayaOracle/README.md) 生成。C# 实际捕获由 [OracleCapture](../Sezika.OracleCapture/README.md) 使用相同 schema 导出，保留实际 token、marker、候选标签及失败；不能将参考 token/logits 复制成 C# 实测。
+参考可使用 [Laya 历史冻结捕获](../Sezika.LayaOracle/README.md) 的原字节与来源合同，或 [ReferenceTool](../Sezika.ReferenceTool/README.md) 生成的 `port-derived.v2` 捕获。后者使用独立的新合同，须验证来源、编译证明、完整资产身份与 `upstream_executed=false`，不会被判为独立运行上游得到的参考。C# 实际捕获由 [OracleCapture](../Sezika.OracleCapture/README.md) 导出，保留实际 token、marker、候选标签及失败；不能将参考 token/logits 复制成 C# 实测。真实 Laya 完整前向与新合同的深层正控验收仍按本轮证据单独报告。
+
+2026-10-14 已完成真实原 Laya 资产的 Windows managed JIT 单条正控：第7参数显式选择 `choice-en-short`，独立 C# port 与实际 SIMD 捕获均为 answered，比较 `passed=true`、1个 answered pair、issues为空。最大logit误差约1.5404e-6、最大概率误差约9.0005e-10，使用原冻结容差。覆盖仍为1/46，缺45条，`full_manifest_passed=false`、`historical_upstream_gate_accepted=false`。七类深层来源、编译、runtime、进程和producer绑定负控全部命中各自目标；旧四个早期metadata拒绝原件保留。后续Linux单条与Native AOT范围见下方T8追加，全量矩阵尚未验收，见 [最终证据追加](../../docs/evidence/tooling-oracle-capture-final-2026-10-14.md)。
 
 ## 比较规则
 
@@ -16,20 +18,13 @@
 
 ## 有界运行
 
-获准构建和执行后，通过仓库有界进程入口调用：
-
-```powershell
-pwsh -NoProfile -File tools/Invoke-BoundedProcess.ps1 -FilePath dotnet -ArgumentList @(
-  'tools/Sezika.OracleCompare/bin/Release/net10.0/Sezika.OracleCompare.dll',
-  '<reference.json>', '<actual.json>',
-  'tests/fixtures/laya-oracle/contract.v1.json',
-  'tests/fixtures/laya-oracle/cases.v1.json',
-  '<new-report.json>', '60'
-) -TimeoutSeconds 90 -LogName oracle-compare
-```
+当前通过 `Sezika.Tooling process run` 的 `ExecutionRequest` 调用本次已冻结的 C# apphost，或已核代码程序集的 dotnet host。`ArgumentList` 依次为 reference、actual、contract、cases、新报告与内部秒数；声明准确绝对 `Executable`、`WorkingDirectory`、新 `OutputDirectory`、`TimeoutSeconds=90` 和 `CleanupSeconds`。字段与原生入口见 [C# 调用合同](../../docs/tooling-current-workflow.md)。该步骤只比较已有捕获，不生成参考或运行模型。
 
 报告路径的父目录须已存在，文件必须尚不存在；工具用 `CreateNew` 防止覆盖输入或既有证据。退出码：`0` 捕获比较通过；`1` 比较存在差异；`2` 输入无效、身份不符、取消/超时或 I/O 失败。无效输入不会产生可误认通过的完整报告。
 
-需要限定支持范围时，在上述 `60` 参数后添加一个 CSV 字符串，例如 `'choice-en-short,score-en-short,boolean-en-short'`。最多 128 个 ID，每个 1–128 字符；空 ID、重复 ID、未存在于原始清单或任意一份 capture 的 ID 均拒绝。不会自动排除失败行、选取数值相近的行或按推理状态筛选；支持范围清单必须由调用者明确给出，并与完整结果一起保留。
+需要限定支持范围时，在内部秒数参数后添加一个 CSV 字符串，例如 `'choice-en-short,score-en-short,boolean-en-short'`。最多 128 个 ID，每个 1–128 字符；空 ID、重复 ID、未存在于原始清单或任意一份 capture 的 ID 均拒绝。不会自动排除失败行、选取数值相近的行或按推理状态筛选；支持范围清单必须由调用者明确给出，并与完整结果一起保留。
 
 最多 128 个 case、每个 1024 token/64 个参考候选（允许描述超出 Sezika 当前候选限制的上游输入，不表示运行时支持）；每份 JSON 至多 32 MiB、深度 32、500000 个节点。概率和采用合同的 0.000002 容差，Boolean 阈值为 `P(true) >= 0.5`。总墙钟上限可设 1–300 秒，支持 Ctrl+C；每行比较写进度。先以真实导出的 1 条短输入验收工具，再扩展矩阵。
+
+
+2026-10-14 T8 追加：Windows/Linux 三个工具的 Native AOT 发布均已完成。Linux Capture 真实单条 AOT SIMD 与独立 C# port 参考及原生 Compare 通过，覆盖仍1/46；Windows Capture 仅模型前 guard。Windows Numeric真实26项通过，Linux Numeric仅tiny1 fixture、真实26项NOT_RUN。资源审计通过范围为61份完整回执，原MP32 UNKNOWN和严格审计FAIL单列保留。准确范围见[最终证据追加](../../docs/evidence/tooling-oracle-capture-final-2026-10-14.md)。

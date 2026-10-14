@@ -126,6 +126,8 @@ internal sealed record ComparisonReport
     public required bool FullManifestPassed { get; init; }
     public required List<Issue> Issues { get; init; }
     public required double ElapsedMilliseconds { get; init; }
+    public string ReferenceProvenanceClass { get; init; } = "legacy_upstream_contract_v1";
+    public bool? HistoricalUpstreamGateAccepted { get; init; }
     public string Scope { get; init; } = "Offline comparison of the explicitly reported selection only. Original complete file hashes and row counts remain bound to the report. A selected-subset pass is not a full-manifest pass. No inference, dataset quality, Native AOT or performance acceptance. Near ties never waive prediction mismatch. Failed pairs do not establish numerical parity.";
 }
 
