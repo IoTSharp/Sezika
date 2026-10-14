@@ -54,7 +54,10 @@ internal static class MigrationCommands
                 TaskOperations.WriteNew(output, batchReport, OracleJsonContext.Default.OracleBatchReport);
                 return batchReport.Status == "SELECTED_BATCHES_COMPLETE" ? 0 : batchReport.Status == "SELECTED_BATCHES_COMPLETE_WITH_NUMERICAL_DIFFERENCES" ? 1 : 2;
             case "inventory review": return Save(RetirementReview.Review(Read(RetirementJson.Default.RetirementReviewRequest), budget), RetirementJson.Default.RetirementReport);
-            case "git run": return Save(NativeGit.RunAsync(Read(GitJsonContext.Default.GitRequest), budget, cancellation).GetAwaiter().GetResult(), GitJsonContext.Default.GitReceipt);
+            case "git run":
+                var gitRequest = Read(GitJsonContext.Default.GitRequest);
+                if (gitRequest.Operation is "preview" or "commit-only") ProtectOutputRoot(gitRequest.RepositoryDirectory);
+                return Save(NativeGit.RunAsync(gitRequest, budget, cancellation).GetAwaiter().GetResult(), GitJsonContext.Default.GitReceipt);
             case "task prepare": return Save(TaskOperations.Prepare(Read(TaskJsonContext.Default.TaskPreparationRequest), budget), TaskJsonContext.Default.PreparedTask);
             case "task validate-inputs":
                 var inputRequest = Read(CorpusInputAdmissionJsonContext.Default.CorpusInputAdmissionRequest);

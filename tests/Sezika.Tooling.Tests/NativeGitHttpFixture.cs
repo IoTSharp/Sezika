@@ -21,6 +21,31 @@ internal sealed record NativeGitHttpFixtureClientReceipt(string Status, NativeGi
 // freezes the complete runtime/code package and independently audits both trees.
 internal static class NativeGitHttpFixture
 {
+    internal sealed record AuthenticationCounts(int Accepted, int Rejected, int UnexpectedStorageAuthorization);
+    internal sealed class SyntheticAuthentication
+    {
+        private int accepted, rejected, storage;
+        internal AuthenticationCounts Counts => new(Volatile.Read(ref accepted), Volatile.Read(ref rejected), Volatile.Read(ref storage));
+        internal static HttpSecretInput Credential(string name) => new("fixture-secret-" + name, "fixture-user");
+        internal bool Check(string method, string target, string? authorization)
+        {
+            var pieces = target.Split('?', 2)[0].Split('/', StringSplitOptions.RemoveEmptyEntries);
+            var git = pieces.Length >= 2 && pieces[0] == "git";
+            var service = pieces.Length >= 4 && pieces[0] == "lfs" && pieces[^1] is "batch" or "verify";
+            var name = pieces.Length >= 2 ? pieces[1].Replace(".git", "", StringComparison.Ordinal) : "";
+            var required = git && name.StartsWith("stdin-auth-", StringComparison.Ordinal) && target.Contains("service=git-upload-pack", StringComparison.Ordinal);
+            if (authorization is null) { if (required) Interlocked.Increment(ref rejected); return !required; }
+            if (!git && !service) { Interlocked.Increment(ref storage); Interlocked.Increment(ref rejected); return false; }
+            var credential = Credential(name); var bytes = Encoding.UTF8.GetBytes(credential.UserName + ":" + credential.Token);
+            try
+            {
+                var expected = "Basic " + Convert.ToBase64String(bytes);
+                if (!string.Equals(authorization, expected, StringComparison.Ordinal)) { Interlocked.Increment(ref rejected); return false; }
+                Interlocked.Increment(ref accepted); return true;
+            }
+            finally { System.Security.Cryptography.CryptographicOperations.ZeroMemory(bytes); }
+        }
+    }
     internal static async Task<int> RunAsync(string[] args)
     {
         if (!OperatingSystem.IsLinux() || args.Length != 5 || args[0] != "--serve-native-git-http" || args[1] != "--request" || args[3] != "--output")
@@ -52,7 +77,8 @@ internal static class NativeGitHttpFixture
                 if (call > 256 || clock.Elapsed.TotalSeconds >= request.MaximumSeconds) throw new IOException("Separate native CGI count/time bound.");
                 return call;
             }, cancellation.Token);
-            lfs = new(cancellation.Token) { GitHandler = git.Handle };
+            var authentication = new SyntheticAuthentication();
+            lfs = new(cancellation.Token) { GitHandler = git.Handle, RequestAuthorization = authentication.Check };
             foreach (var name in request.RepositoryNames)
             {
                 initial.Check(); var bare = SafePaths.Within(repositories, name + ".git", initial);
@@ -62,6 +88,16 @@ internal static class NativeGitHttpFixture
             lfs.ControlHandler = (message, token) =>
             {
                 token.ThrowIfCancellationRequested();
+                if (message.Method == "GET" && message.Target == "/fixture/" + request.ScopeId + "/auth-status" && message.Body.Length == 0)
+                    return Task.FromResult(new NativeHttpResponse(200, "application/json", JsonSerializer.SerializeToUtf8Bytes(authentication.Counts, NativeGitHttpFixtureJson.Default.AuthenticationCounts)));
+                if (message.Method == "POST" && message.Target == "/fixture/" + request.ScopeId + "/action-origin" && message.Body.Length <= 256)
+                {
+                    var origin = Encoding.UTF8.GetString(message.Body);
+                    if (origin.Length != 0 && (!Uri.TryCreate(origin, UriKind.Absolute, out var uri) || uri.Scheme != "http" || uri.Host != "127.0.0.1" || uri.Port == listener.Port || uri.UserInfo.Length != 0 || uri.AbsolutePath != "/" || uri.Query.Length != 0 || uri.Fragment.Length != 0))
+                        throw new InvalidDataException("Explicit distinct loopback action origin required.");
+                    listener.ObjectActionOrigin = origin.Length == 0 ? null : origin;
+                    return Task.FromResult(new NativeHttpResponse(200, "text/plain", []));
+                }
                 if (message.Method != "GET" || message.Target != "/fixture/" + request.ScopeId + "/status" || message.Body.Length != 0)
                     throw new InvalidDataException("Exact scope read-only fixture status route required.");
                 return Task.FromResult(new NativeHttpResponse(200, "application/json",
@@ -172,6 +208,18 @@ internal static class NativeGitHttpFixture
             if (LastStatus.Port != Ready.Port || LastStatus.Status != "LIVE_fixture_only" || LastStatus.Errors.Length != 0) throw new IOException("External live protocol counter scope/status differs.");
             return LastStatus;
         }
+        internal AuthenticationCounts Authentication(CancellationToken cancellation)
+        {
+            RequireLive(); using var deadline = CancellationTokenSource.CreateLinkedTokenSource(cancellation); deadline.CancelAfter(TimeSpan.FromSeconds(10));
+            var bytes = http.GetByteArrayAsync($"http://127.0.0.1:{Ready.Port}/fixture/{request.ScopeId}/auth-status", deadline.Token).GetAwaiter().GetResult();
+            return JsonSerializer.Deserialize(bytes, NativeGitHttpFixtureJson.Default.AuthenticationCounts) ?? throw new IOException("Authentication counters missing.");
+        }
+        internal void ActionOrigin(string? origin, CancellationToken cancellation)
+        {
+            RequireLive(); using var content = new ByteArrayContent(Encoding.UTF8.GetBytes(origin ?? ""));
+            using var response = http.PostAsync($"http://127.0.0.1:{Ready.Port}/fixture/{request.ScopeId}/action-origin", content, cancellation).GetAwaiter().GetResult();
+            if (!response.IsSuccessStatusCode) throw new IOException("Scoped action override failed.");
+        }
         internal void Cancel(string clientReceipt)
         {
             var recovery = new Budget(10, null, CancellationToken.None); SafePaths.NoLinks(request.CancelFile, recovery);
@@ -199,7 +247,7 @@ internal static class NativeGitHttpFixture
         if (new FileInfo(path).Length is < 2 or > 16384) throw new IOException("Separate HTTP request byte bound16KiB.");
         using var input = File.OpenRead(path); var digest = budget.Hash(input, input.Length); input.Position = 0;
         var request = JsonSerializer.Deserialize(input, NativeGitHttpFixtureJson.Default.NativeGitHttpFixtureRequest) ?? throw new IOException("Missing typed HTTP fixture request.");
-        if (!Guid.TryParseExact(request.ScopeId, "N", out _) || request.MaximumSeconds is < 1 or > 240 || request.RepositoryNames.Length is < 1 or > 6 ||
+        if (!Guid.TryParseExact(request.ScopeId, "N", out _) || request.MaximumSeconds is < 1 or > 240 || request.RepositoryNames.Length is < 1 or > 7 ||
             request.RepositoryNames.Distinct(StringComparer.Ordinal).Count() != request.RepositoryNames.Length) throw new IOException("Explicit HTTP scope/time/repository bounds differ.");
         foreach (var name in request.RepositoryNames)
         {
@@ -253,5 +301,6 @@ internal static class NativeGitHttpFixture
 [JsonSerializable(typeof(NativeGitHttpFixtureReady))]
 [JsonSerializable(typeof(NativeGitHttpFixtureResult))]
 [JsonSerializable(typeof(NativeGitHttpFixtureClientReceipt))]
+[JsonSerializable(typeof(NativeGitHttpFixture.AuthenticationCounts))]
 [JsonSourceGenerationOptions(UnmappedMemberHandling = JsonUnmappedMemberHandling.Disallow)]
 internal partial class NativeGitHttpFixtureJson : JsonSerializerContext;

@@ -36,6 +36,8 @@ internal sealed class NativeLfsServer : IDisposable
     internal string[] Errors { get { lock (errors) return errors.ToArray(); } }
     internal Func<NativeHttpRequest, CancellationToken, Task<NativeHttpResponse>>? GitHandler { get; set; }
     internal Func<NativeHttpRequest, CancellationToken, Task<NativeHttpResponse>>? ControlHandler { get; set; }
+    internal Func<string, string, string?, bool>? RequestAuthorization { get; set; }
+    internal string? ObjectActionOrigin { get; set; }
 
     internal NativeLfsServer(CancellationToken cancellation)
     {
@@ -52,7 +54,7 @@ internal sealed class NativeLfsServer : IDisposable
         SafePaths.NoLinks(bare, new Budget(5, null, stop.Token));
         lock (repositories)
         {
-            if (repositories.Count >= 6 || !repositories.TryAdd(name, bare)) throw new InvalidDataException("LFS fixture repository bound6 or duplicate scope.");
+            if (repositories.Count >= 7 || !repositories.TryAdd(name, bare)) throw new InvalidDataException("LFS fixture repository bound7 or duplicate scope.");
         }
         return $"http://127.0.0.1:{Port}/lfs/{name}";
     }
@@ -127,6 +129,9 @@ internal sealed class NativeLfsServer : IDisposable
                     if (size == 0) throw new EndOfStreamException("HTTP body EOF."); offset += size;
                 }
                 if (offset != body.Length) throw new InvalidDataException("HTTP body read bound1025.");
+                // The predicate observes the actual wire header in memory only. It is never included in traces, DTOs or CGI input.
+                if (RequestAuthorization is { } authorize && !authorize(request[0], request[1], values.GetValueOrDefault("Authorization")))
+                { await Respond(stream, 401, "text/plain", "Synthetic fixture authentication rejected"u8.ToArray(), token).ConfigureAwait(false); return; }
                 if (request[1].StartsWith("/fixture/", StringComparison.Ordinal) && ControlHandler is { } control)
                 {
                     var response = await control(new(request[0], request[1], values.GetValueOrDefault("Content-Type"), values.GetValueOrDefault("Content-Encoding"), values.GetValueOrDefault("Git-Protocol"), body), token).ConfigureAwait(false);
@@ -169,7 +174,10 @@ internal sealed class NativeLfsServer : IDisposable
                         var oid = item.GetProperty("oid").GetString()!; var bytes = item.GetProperty("size").GetInt64(); ValidateObject(oid, bytes);
                         var path = ObjectPath(bare, oid, token); var exists = File.Exists(path);
                         if (exists) Verify(path, oid, bytes, token);
-                        var href = $"http://127.0.0.1:{Port}/lfs/{pieces[1]}/objects/{oid}";
+                        var origin = ObjectActionOrigin ?? $"http://127.0.0.1:{Port}";
+                        if (!Uri.TryCreate(origin, UriKind.Absolute, out var actionOrigin) || actionOrigin.Scheme != "http" || actionOrigin.Host != "127.0.0.1" || actionOrigin.UserInfo.Length != 0 || actionOrigin.AbsolutePath != "/" || actionOrigin.Query.Length != 0 || actionOrigin.Fragment.Length != 0)
+                            throw new InvalidDataException("Fixture action override must be an explicit loopback origin.");
+                        var href = $"{origin.TrimEnd('/')}/lfs/{pieces[1]}/objects/{oid}";
                         if (operation == "download" && !exists) missing++;
                         result.Add(operation == "download" && !exists ? new(oid, bytes, Error: new(404, "Fixture object missing")) :
                             new(oid, bytes, operation == "download" ? new(Download: new(href)) : exists ? null : new(Upload: new(href))));

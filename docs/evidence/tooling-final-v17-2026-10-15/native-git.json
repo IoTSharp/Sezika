@@ -1,0 +1,543 @@
+{
+  "Status": "PASS_both_platforms_all_eleven_native_git_fixture_cases",
+  "Unknown": 0,
+  "Old64IdentityFailure": "UNKNOWN_PRESERVED",
+  "Sources": [
+    {
+      "Path": "tools/Sezika.Tooling/Git/NativeGit.cs",
+      "Frozen": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-final-v17-publish-v1\\source-final\\tools\\Sezika.Tooling\\Git\\NativeGit.cs",
+      "Sha256": "4d666062c33e9944547fe56d592d8fb2818917215e8cdab589ffcf588c7e0a2c",
+      "Bytes": 55984,
+      "ManifestSha256": "230130665280ad7d0905c74764c8683f7580d723e52c63002326826d1182dcf3",
+      "PriorV16Sha256": "4d666062c33e9944547fe56d592d8fb2818917215e8cdab589ffcf588c7e0a2c",
+      "ChangeFromV16": "UNCHANGED",
+      "LegacyV10bMatchCount": 1,
+      "LegacyV10bSha256": "4d666062c33e9944547fe56d592d8fb2818917215e8cdab589ffcf588c7e0a2c",
+      "LegacyV10bUnchanged": true,
+      "Execution": "NOT_RUN"
+    },
+    {
+      "Path": "tools/Sezika.Tooling/Credentials/HttpCredentials.cs",
+      "Frozen": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-final-v17-publish-v1\\source-final\\tools\\Sezika.Tooling\\Credentials\\HttpCredentials.cs",
+      "Sha256": "e270a05efab808330e716e712c925b74fe3df02ae56d3ad7b9725e4201cb0948",
+      "Bytes": 4087,
+      "ManifestSha256": "230130665280ad7d0905c74764c8683f7580d723e52c63002326826d1182dcf3",
+      "PriorV16Sha256": "e270a05efab808330e716e712c925b74fe3df02ae56d3ad7b9725e4201cb0948",
+      "ChangeFromV16": "UNCHANGED",
+      "LegacyV10bMatchCount": 1,
+      "LegacyV10bSha256": "e270a05efab808330e716e712c925b74fe3df02ae56d3ad7b9725e4201cb0948",
+      "LegacyV10bUnchanged": true,
+      "Execution": "NOT_RUN"
+    },
+    {
+      "Path": "tests/Sezika.Tooling.Tests/NativeGitChecks.cs",
+      "Frozen": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-final-v17-publish-v1\\source-final\\tests\\Sezika.Tooling.Tests\\NativeGitChecks.cs",
+      "Sha256": "c3505306a676d3530e895d207ee5bf3c0dd1bd2b9240f4767af93c7a13fc5bc8",
+      "Bytes": 55022,
+      "ManifestSha256": "230130665280ad7d0905c74764c8683f7580d723e52c63002326826d1182dcf3",
+      "PriorV16Sha256": "c3505306a676d3530e895d207ee5bf3c0dd1bd2b9240f4767af93c7a13fc5bc8",
+      "ChangeFromV16": "UNCHANGED",
+      "LegacyV10bMatchCount": 1,
+      "LegacyV10bSha256": "c3505306a676d3530e895d207ee5bf3c0dd1bd2b9240f4767af93c7a13fc5bc8",
+      "LegacyV10bUnchanged": true,
+      "Execution": "NOT_RUN"
+    },
+    {
+      "Path": "tests/Sezika.Tooling.Tests/NativeGitHttpFixture.cs",
+      "Frozen": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-final-v17-publish-v1\\source-final\\tests\\Sezika.Tooling.Tests\\NativeGitHttpFixture.cs",
+      "Sha256": "c30f58bd4db5da1456c5e84058e78241142493d278e2f5693b23109b747661b4",
+      "Bytes": 24744,
+      "ManifestSha256": "230130665280ad7d0905c74764c8683f7580d723e52c63002326826d1182dcf3",
+      "PriorV16Sha256": "c30f58bd4db5da1456c5e84058e78241142493d278e2f5693b23109b747661b4",
+      "ChangeFromV16": "UNCHANGED",
+      "LegacyV10bMatchCount": 1,
+      "LegacyV10bSha256": "c30f58bd4db5da1456c5e84058e78241142493d278e2f5693b23109b747661b4",
+      "LegacyV10bUnchanged": true,
+      "Execution": "NOT_RUN"
+    },
+    {
+      "Path": "tests/Sezika.Tooling.Tests/NativeLfsServer.cs",
+      "Frozen": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-final-v17-publish-v1\\source-final\\tests\\Sezika.Tooling.Tests\\NativeLfsServer.cs",
+      "Sha256": "4caaea367f94aec5fc331d6c36fc92a470fa3126f37eaa242b99e180954856da",
+      "Bytes": 17946,
+      "ManifestSha256": "230130665280ad7d0905c74764c8683f7580d723e52c63002326826d1182dcf3",
+      "PriorV16Sha256": "4caaea367f94aec5fc331d6c36fc92a470fa3126f37eaa242b99e180954856da",
+      "ChangeFromV16": "UNCHANGED",
+      "LegacyV10bMatchCount": 1,
+      "LegacyV10bSha256": "4caaea367f94aec5fc331d6c36fc92a470fa3126f37eaa242b99e180954856da",
+      "LegacyV10bUnchanged": true,
+      "Execution": "NOT_RUN"
+    }
+  ],
+  "Resources": [
+    {
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\final-execution-delivery.json",
+      "Sha256": "9b3be530d573df790b4dfdf0ace1e58d04088ce03f9825a22999352441509f2d"
+    },
+    {
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\final-linux-remaining12-execution-delivery.json",
+      "Sha256": "b1f810b305b626757df3682f725499e4db77c0a50443c32546074d13716b4067"
+    },
+    {
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\linux-core-git8-v17-prep-v1\\runtime-core-v17-start1\\final-core-git8-runtime-acceptance-v17.json",
+      "Sha256": "2ebc4f677a61247a5ffdac0fa4b69bc36a518691e66d20f7e84ddfa8b19497e5"
+    }
+  ],
+  "ActualChecks": 26,
+  "DistinctCasesPerPlatform": 11,
+  "MatchingLive": 0,
+  "ActualClients": 26,
+  "OriginalPartialReceiptsUnchanged": true,
+  "RealHostingPlatform": "NOT_RUN",
+  "Runs": [
+    {
+      "CheckNames": [
+        "Native Git case 10/11 scenario cross-origin (partial): Native commit-only saves exact owned blobs attributes and one parent without remote publication"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "367c9351ee05e85b085ec15e5a918a3406172504848738f2bcdcd9adaa7ad091",
+      "Scenario": "cross-origin",
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\01\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\01\\client\\checks.txt",
+      "Case": 10,
+      "CaseSelection": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\01\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "367c9351ee05e85b085ec15e5a918a3406172504848738f2bcdcd9adaa7ad091",
+      "CaseSelectionSha256": "1dadae7e56615defaccd59671706a23cba3901b1396508490060814877d8e573",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\01\\native-execution\\result.json",
+      "Platform": "windows",
+      "ChecksSha256": "588fa4e1f80d3628916660447a62892a2073b5a59d753da3c2d1af137aa5a769"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 10/11 scenario n20 (partial): Native commit-only saves exact owned blobs attributes and one parent without remote publication"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "97c0803bb2654c22be756f9a203a3d340a2247c90dc7cf9bd0d78f0ff65ed18c",
+      "Scenario": "n20",
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\02\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\02\\client\\checks.txt",
+      "Case": 10,
+      "CaseSelection": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\02\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "97c0803bb2654c22be756f9a203a3d340a2247c90dc7cf9bd0d78f0ff65ed18c",
+      "CaseSelectionSha256": "cbbff5087c498b8ba0e77dc446570421de2cf1064ea4569580f530202c6c28bb",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\02\\native-execution\\result.json",
+      "Platform": "windows",
+      "ChecksSha256": "99d9ad5f841154364e339e0a54fc20c8e048a9c45b74736dd4f2a64c600c21f9"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 10/11 scenario n128-auth (partial): Native commit-only saves exact owned blobs attributes and one parent without remote publication"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "a0d2a5bf9a3614e5f4c36762c3f1bc7648ec7e6e5e2a0d35ebdc40611431c0ab",
+      "Scenario": "n128-auth",
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\03\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\03\\client\\checks.txt",
+      "Case": 10,
+      "CaseSelection": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\03\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "a0d2a5bf9a3614e5f4c36762c3f1bc7648ec7e6e5e2a0d35ebdc40611431c0ab",
+      "CaseSelectionSha256": "c6023ed79f97b3d828baa80f2a2c5b0c2cc83e2ba6bc18528ed2a1ea3bad9133",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\03\\native-execution\\result.json",
+      "Platform": "windows",
+      "ChecksSha256": "2a64ccb0ef87e9b99bbf90ae67d4111520a688bcab04c067ba4e217e3c9ab645"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 9/11: Native preview preserves index refs attributes object stores and unrelated dirty bytes"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "417fc51e7115869f2eab9174338a7c453d44eda0673964f500669e8994cd33cf",
+      "Scenario": null,
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\04\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\04\\client\\checks.txt",
+      "Case": 9,
+      "CaseSelection": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\04\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "417fc51e7115869f2eab9174338a7c453d44eda0673964f500669e8994cd33cf",
+      "CaseSelectionSha256": "686fde6d2668cd0459b2693ff651cacd919ce4300a0b3426ca718dd6e0b802c3",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\04\\native-execution\\result.json",
+      "Platform": "windows",
+      "ChecksSha256": "be438dfcc060ce9bbe3bbe96472bad753e2f9bf35872cf3a61e64823b94bf560"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 11/11: Native local preflight rejects stale parent bad append later filter and foreign index before any write"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "4eef1773546ebf7b2f81dc4094ed7c177e106548e789bd4e5e534f828323e303",
+      "Scenario": null,
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\05\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\05\\client\\checks.txt",
+      "Case": 11,
+      "CaseSelection": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\05\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "4eef1773546ebf7b2f81dc4094ed7c177e106548e789bd4e5e534f828323e303",
+      "CaseSelectionSha256": "8d23711a89525fee1d32f5141569866ad3c897135c03409cf25000224ed3f915",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\05\\native-execution\\result.json",
+      "Platform": "windows",
+      "ChecksSha256": "6fbb811683c6916ca6ae8f6d2ba784ab3e5522661edd6c0e3315b84fc9307f3a"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 1/11: Native Git and LFS tiny real version calls retain complete process receipts"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "673b63e745e191d598ba553ccb99ac2c4c01f3f343eba89df1fe239f399be5e6",
+      "Scenario": null,
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\06\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\06\\client\\checks.txt",
+      "Case": 1,
+      "CaseSelection": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\06\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "673b63e745e191d598ba553ccb99ac2c4c01f3f343eba89df1fe239f399be5e6",
+      "CaseSelectionSha256": "0af41df45a7ab42149727a247ac61a42722abafa7ab9d75535b2520b548b4d83",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\06\\native-execution\\result.json",
+      "Platform": "windows",
+      "ChecksSha256": "3150b26fd8deb588ad3a4547caf6be533c1abb8e9f44f882d1f03026de04127a"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 2/11: Native local ordinary and LFS publication stores exact Git bytes and calls native pre-push"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "0a4625dcbed79c199fe9bffcc9a6dfd1067a9805a490b18357f750a9dd1f839a",
+      "Scenario": null,
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\07\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\07\\client\\checks.txt",
+      "Case": 2,
+      "CaseSelection": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\07\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "0a4625dcbed79c199fe9bffcc9a6dfd1067a9805a490b18357f750a9dd1f839a",
+      "CaseSelectionSha256": "ec82fef831b728df9985a912fdd959b1ed989617bd0948c98ad1f7f0e58aff3a",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\07\\native-execution\\result.json",
+      "Platform": "windows",
+      "ChecksSha256": "362ad92211b51816f0db81c8948b494a8270e1ed77b875ca60fdc0f8a9d5b016"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 3/11: Native fresh ordinary clone verifies pinned actual file bytes"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "87316a9a21e3c5ebf7e031b79957d176f6996701c20f77e1669d84b0e1416433",
+      "Scenario": null,
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\08\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\08\\client\\checks.txt",
+      "Case": 3,
+      "CaseSelection": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\08\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "87316a9a21e3c5ebf7e031b79957d176f6996701c20f77e1669d84b0e1416433",
+      "CaseSelectionSha256": "bb820399a939cc929e0b11aea2b18791232160a7db4f5198afc055f196640484",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\08\\native-execution\\result.json",
+      "Platform": "windows",
+      "ChecksSha256": "494eae87bf0c00d0b7fa666a9a24330bbc45902cfac2e2b36f614819ca285aa2"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 4/11: Native fresh LFS clone hydrates and independently verifies actual bytes"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "7887134ff37a82a8322f1624a6dd742aca71bf10a9cb060e76b015fe54b9ce19",
+      "Scenario": null,
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\09\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\09\\client\\checks.txt",
+      "Case": 4,
+      "CaseSelection": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\09\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "7887134ff37a82a8322f1624a6dd742aca71bf10a9cb060e76b015fe54b9ce19",
+      "CaseSelectionSha256": "08a4f2fa7eb9ce864e9a2babc1cf452e88825d61328db20d63e65cf5bad37cdd",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\09\\native-execution\\result.json",
+      "Platform": "windows",
+      "ChecksSha256": "aeffd13f5fd586dd6707903ca7ac093f148075b91ac9be73ebbbb1f0eec5c756"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 5/11: Native Git isolates inherited directory worktree and index redirection"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "9f217a501bbee9f7d079e05d81be9f84a5766fec0357a6ae39db4a67cc8e9ace",
+      "Scenario": null,
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\10\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\10\\client\\checks.txt",
+      "Case": 5,
+      "CaseSelection": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\10\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "9f217a501bbee9f7d079e05d81be9f84a5766fec0357a6ae39db4a67cc8e9ace",
+      "CaseSelectionSha256": "b6a03792821ee49d6a6ded64721e1b7f5d3868151df69893249db61749125417",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\10\\native-execution\\result.json",
+      "Platform": "windows",
+      "ChecksSha256": "fd5f2280d6ee7a971d67c6662d48db5c703d214c472ea2542accf15f9a32e4e9"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 6/11: Native Git refuses an unknown filter before staging or committing its owned path"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "729062c0b510910552b73feee6929c373a5d97d5897a8f50f765eeeba35070c4",
+      "Scenario": null,
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\11\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\11\\client\\checks.txt",
+      "Case": 6,
+      "CaseSelection": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\11\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "729062c0b510910552b73feee6929c373a5d97d5897a8f50f765eeeba35070c4",
+      "CaseSelectionSha256": "920896a657ba6c38ba2ca57fa2001c5b4ee64cd10b04cc4120c9f3fab4394745",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\11\\native-execution\\result.json",
+      "Platform": "windows",
+      "ChecksSha256": "d3be95f8a14749189d315959c0d0d89ae6ba328f073a223db14cb73e79146a94"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 7/11: Native Git rejects script and additional hook payloads before native calls"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "4b24fc1e4971cbfe6fa2b2c2c4fd7ec9455e4ab50cffa04fae6170a6820c5eb2",
+      "Scenario": null,
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\12\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\12\\client\\checks.txt",
+      "Case": 7,
+      "CaseSelection": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\12\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "4b24fc1e4971cbfe6fa2b2c2c4fd7ec9455e4ab50cffa04fae6170a6820c5eb2",
+      "CaseSelectionSha256": "e876f0c0b488c62f0b6d6321f1491a00d673d78229397dbd494f5a3fca664a94",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\12\\native-execution\\result.json",
+      "Platform": "windows",
+      "ChecksSha256": "0ef99269de49dfa4b5a21e197455704f67e58c131f744f92e0dd4a74748b425b"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 8/11: Native missing LFS object fresh clone fails and retains actual process evidence"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "483581a60ea52607fff4cc1ee32d214be79abce3e2f9fd68f12bf00995b505b1",
+      "Scenario": null,
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\13\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\13\\client\\checks.txt",
+      "Case": 8,
+      "CaseSelection": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\13\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "483581a60ea52607fff4cc1ee32d214be79abce3e2f9fd68f12bf00995b505b1",
+      "CaseSelectionSha256": "b1cf120dd05dc1aff796c1a23b3b15895bc1a680bacad533e7242e5b0c3da99b",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-windows-git-v17-prep-v1\\13\\native-execution\\result.json",
+      "Platform": "windows",
+      "ChecksSha256": "9e2387d3a826c3ac1769a091fc338a3784677499c5c256187d8dc27706c170e2"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 1/11: Native Git and LFS tiny real version calls retain complete process receipts"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "9f24fd1b2bb218e334acf7ae3d99ff2095decfe8ef011e268878e0fa2336af88",
+      "Scenario": null,
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\01\\client-outer-result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\01\\client\\checks.txt",
+      "Case": 1,
+      "CaseSelection": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\01\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "6f9c8dc06e92c94ccadff337bcb5386091ac5c63bd06fe27be047405c3ed2ccc",
+      "CaseSelectionSha256": "0af41df45a7ab42149727a247ac61a42722abafa7ab9d75535b2520b548b4d83",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\01\\client-native-result.json",
+      "Platform": "linux",
+      "ChecksSha256": "c3036b7a94393fe5f13fa32fdb21670666f91acf66cf1a1dc4f741369b43d626"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 2/11: Native local ordinary and LFS publication stores exact Git bytes and calls native pre-push"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "0e49b97af012b1f514f7de6a72a64e7e7794d9e8ad75a61e7a1f2213044c785f",
+      "Scenario": null,
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\02\\client-outer-result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\02\\client\\checks.txt",
+      "Case": 2,
+      "CaseSelection": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\02\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "2181aea5e7a9ff68f0fd5c1e77441b8ecb5935bd06fe5ca920e9e1258d120eef",
+      "CaseSelectionSha256": "fefa96da4a276883b946c8df4f08f909bad94891900d48bc60538370935c9883",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\02\\client-native-result.json",
+      "Platform": "linux",
+      "ChecksSha256": "a34d362ab47cd1827fc8956a2e05f34a29c60a2ff094963e4c4d845a10353db1"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 3/11: Native fresh ordinary clone verifies pinned actual file bytes"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "b0f0bf4958cca9d3e1a275b284e5e8f9edde8facd3013bcdb18cb9acc9142750",
+      "Scenario": null,
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\03\\client-outer-result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\03\\client\\checks.txt",
+      "Case": 3,
+      "CaseSelection": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\03\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "4aea7decbbdeb8071a6e21f3ae44e183de5209ed90bc317b8c69d96245dd7e4b",
+      "CaseSelectionSha256": "941f331da811cebc9518d226aff8c888d7fe9899ef61b5c2b8ce68370e83c925",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\03\\client-native-result.json",
+      "Platform": "linux",
+      "ChecksSha256": "b69b143f2e86775e0428d3b7ffc53440dedc3b312ec526289aba05211831b450"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 4/11: Native fresh LFS clone hydrates and independently verifies actual bytes"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "9e06647efa508bdd666c356115edc04ce5e4a1da389f9d57c394b8eb857b9102",
+      "Scenario": null,
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\04\\client-outer-result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\04\\client\\checks.txt",
+      "Case": 4,
+      "CaseSelection": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\04\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "aefd512ed53e05c2ce6da589d3910350670043c6859696308214c1c72950750c",
+      "CaseSelectionSha256": "903c0a13d33bff63354d34dd365c354357ff06912ca015bdd5f4695d5b00503e",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\04\\client-native-result.json",
+      "Platform": "linux",
+      "ChecksSha256": "d5a8cab12e97b52d0c3b1f55505581c4e8e4d3274195675e8d19a55656cfb28d"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 5/11: Native Git isolates inherited directory worktree and index redirection"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "5a777148329c16040794ee0443ff8c61e5b47872e1ed000e588d915e8ca70253",
+      "Scenario": null,
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\05\\client-outer-result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\05\\client\\checks.txt",
+      "Case": 5,
+      "CaseSelection": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\05\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "7a2f2f69757e14e94930ab7608e12d44b7d1e0bfcf0e1b290decc4caf8254d23",
+      "CaseSelectionSha256": "6ed1cb3976847b8d5110e8dd089fb4ceb0065e4f04e6b1015f9f57e473493bda",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\05\\client-native-result.json",
+      "Platform": "linux",
+      "ChecksSha256": "a7cce9459d5cf6d84e07e0003e24b5bd89e65c0bdbd4546ee479e8d1fed387e4"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 6/11: Native Git refuses an unknown filter before staging or committing its owned path"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "60c1f325d0dc028cc67f9dba2d2c9038660c1519d5984dfaba6585c4f4967f7a",
+      "Scenario": null,
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\06\\client-outer-result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\06\\client\\checks.txt",
+      "Case": 6,
+      "CaseSelection": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\06\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "86a7d8c4265075dd3f57309ba0d93c1b7505ea3c3467066c4f08ce21a6cac84e",
+      "CaseSelectionSha256": "4d7ccb8a129361e5f313d6c7ae189e074207dbf03a5c68666b1669ea083d71e7",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\06\\client-native-result.json",
+      "Platform": "linux",
+      "ChecksSha256": "a522152168487358c72e1b97e4a7833324e56ca4c02cc828ad80924df78ecc97"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 7/11: Native Git rejects script and additional hook payloads before native calls"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "5965304f5298e8f2c13309821ac41dd9d38b6f780025b14fd3488b15b903aee5",
+      "Scenario": null,
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\07\\client-outer-result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\07\\client\\checks.txt",
+      "Case": 7,
+      "CaseSelection": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\07\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "ab82234b8c77eed014995b162e3a939073cb2030d2a7f8fafa518ede1caaca2d",
+      "CaseSelectionSha256": "1e6745f605e7e3e74a745aa0695dae4d59e551ed12c26e7bba63814fa8052daf",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\07\\client-native-result.json",
+      "Platform": "linux",
+      "ChecksSha256": "4beb355a1cc1cef79a675361ef1d230f764440527132d8a6069740cba23966b7"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 9/11: Native preview preserves index refs attributes object stores and unrelated dirty bytes"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "67d17e3b3c05d0f87a2b2e08def1db8c9fe8656e9dfda42d6a1c4b574cefde54",
+      "Scenario": null,
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\08\\client-outer-result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\08\\client\\checks.txt",
+      "Case": 9,
+      "CaseSelection": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\08\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "55a21677ff20b16626e81c1167478f21bc329335a3b1cba5c24eaada61830d5d",
+      "CaseSelectionSha256": "a861f9d57de6a1d9ee25c24d1e2c9c3acd1975383263a1d092c08fcd582a65f4",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\08\\client-native-result.json",
+      "Platform": "linux",
+      "ChecksSha256": "2c555f97c06b6ee5ed8fe20465d572278b1ce84f017d124f4b7c02f2f213e3d0"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 11/11: Native local preflight rejects stale parent bad append later filter and foreign index before any write"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "78d16ea532c20d68366ad89bd91bc805408ba648a838d7adb97ff5a96853de79",
+      "Scenario": null,
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\09\\client-outer-result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\09\\client\\checks.txt",
+      "Case": 11,
+      "CaseSelection": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\09\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "b78cdd30a78e8a96a0f51a4498cb4bb706c3643d0a1fc00d4505ed29a0f9d5fd",
+      "CaseSelectionSha256": "08839339400e829316f13bf2c77e87569ef7d0b607184a3318743d2581a1034f",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\09\\client-native-result.json",
+      "Platform": "linux",
+      "ChecksSha256": "366b181cd68c53c78accedc017ceba1b9d16a21c1b7081ef801d84092dc79be2"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 10/11 scenario n20 (partial): Native commit-only saves exact owned blobs attributes and one parent without remote publication"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "f79606be9941cc6397b6c65d80befb3e136022bafcdf60cc8c20d7e901159c45",
+      "Scenario": "n20",
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\10\\client-outer-result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\10\\client\\checks.txt",
+      "Case": 10,
+      "CaseSelection": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\10\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "14243fbbd07aacd3aa0fcf91c1a36e5008fae10d8f5d44d7a43a83ecc714c551",
+      "CaseSelectionSha256": "3b7c02ff2028b7f83bbe0571dacf516008b7efb1fece69e7c503f19e0ec0635d",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\10\\client-native-result.json",
+      "Platform": "linux",
+      "ChecksSha256": "6d3ca14fe1bba7232f9c4006ddada5ebcb535a3ab23943e2c329be6070e975c2"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 10/11 scenario n128-auth (partial): Native commit-only saves exact owned blobs attributes and one parent without remote publication"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "8d0be92ea96da81ea0c1c9e3ea23353c06cd7489044e6ca6d24c83818c417582",
+      "Scenario": "n128-auth",
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\11\\client-outer-result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\11\\client\\checks.txt",
+      "Case": 10,
+      "CaseSelection": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\11\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "958ec0b61efb3a02812e84cd44d9ad873eb9258c2c11b3113a8b059377d1e62a",
+      "CaseSelectionSha256": "98080788d45d9a36df3018303f10311fe48c51a43a18f3b380a7ebd0bce68870",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\11\\client-native-result.json",
+      "Platform": "linux",
+      "ChecksSha256": "ef9ea9fbcf3217670fab9ea6b79ded15d72a55c3a2723661ba9dd60e3183d271"
+    },
+    {
+      "CheckNames": [
+        "Native Git case 10/11 scenario cross-origin (partial): Native commit-only saves exact owned blobs attributes and one parent without remote publication"
+      ],
+      "ActualChecks": 1,
+      "OuterSha256": "700229768696cdf1851b54e78ab08a7b731424d55449f734e63dd58b21ef06c1",
+      "Scenario": "cross-origin",
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\12\\client-outer-result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\12\\client\\checks.txt",
+      "Case": 10,
+      "CaseSelection": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-git-v17-remaining12-f55b540234834b42817073052f3677f1\\cases\\12\\client\\native-git-checks\\case-selection.json",
+      "RawSha256": "4071f8488b3408a91f3419d209d6eaf7331b42c104097829ebdc3beae53adf22",
+      "CaseSelectionSha256": "9a9240741d59b3feb0175d2826698f3201b5b948f680ce04e8771ed1f653e112",
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-linux-git-v17-remaining12-prep-v1\\clients\\12\\client-native-result.json",
+      "Platform": "linux",
+      "ChecksSha256": "b27c834c8ab290f46e57715d6fe070db70143a500140903d6e5f4dd4e4deb19b"
+    },
+    {
+      "CoreAcceptanceSha256": "2ebc4f677a61247a5ffdac0fa4b69bc36a518691e66d20f7e84ddfa8b19497e5",
+      "ChecksSha256": "e06693e70e695defa6871be4404865efd5c729ec24806af98a2f0c866ce0acba",
+      "OuterResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\linux-core-git8-v17-prep-v1\\bound-v1\\runs\\git-selected8\\outer-result.json",
+      "RawSha256": "071c1c6f41be0b8ebd9e5feeebd7d6bb01f38981d4270ebba5d8fe38fe783d15",
+      "OuterSha256": "bf7a0ed2ea18e51d1c7b8cb8f94d9afb5b0e69efafd6f8446322fdeda490d568",
+      "Platform": "linux",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-linux-core-git8-v17-3ed152f3af0c4a419b2d6adba3609c3f\\git-selected8\\client\\checks.txt",
+      "Case": 8,
+      "CheckNames": [
+        "Native Git case 8/11: Native missing LFS object fresh clone fails and retains actual process evidence"
+      ],
+      "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\linux-core-git8-v17-prep-v1\\bound-v1\\runs\\git-selected8\\native-result.json",
+      "CoreAcceptance": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\linux-core-git8-v17-prep-v1\\runtime-core-v17-start1\\final-core-git8-runtime-acceptance-v17.json",
+      "ActualChecks": 1
+    }
+  ],
+  "Case10ThreeScenariosComplete": true,
+  "SchemaVersion": 1,
+  "Historical914484": "UNKNOWN_PRESERVED",
+  "PublicationAuthorized": false,
+  "FinalT7Accepted": false,
+  "ProjectSdkUnpinned": true,
+  "SourceManifestSha256": "230130665280ad7d0905c74764c8683f7580d723e52c63002326826d1182dcf3",
+  "Utc": "2026-10-14T23:31:21.3829271+00:00"
+}

@@ -10,8 +10,12 @@ internal sealed record HttpSecretInput(string Token, string? UserName = null);
 internal static class HttpCredentials
 {
     internal static AuthenticationHeaderValue? Read(string source, string? target, string encoding, string provider, Budget budget)
+        => Read(source, target, encoding, provider, budget, null);
+
+    internal static AuthenticationHeaderValue? Read(string source, string? target, string encoding, string provider, Budget budget, Stream? credentialInput)
     {
         if (source == "auto") source = target is null ? "none" : "credential-manager";
+        if (credentialInput is not null && source != "stdin") throw new InvalidDataException("Explicit memory input requires the stdin credential source.");
         if (source == "none") { if (target is not null) throw new InvalidDataException("Credential target supplied without its secure-store source."); return null; }
         HttpSecretInput secret;
         if (source == "credential-manager")
@@ -24,7 +28,8 @@ internal static class HttpCredentials
         {
             if (target is not null) throw new InvalidDataException("Memory credentials cannot also name a secure-store target.");
             using var timeout = CancellationTokenSource.CreateLinkedTokenSource(budget.Cancellation); timeout.CancelAfter(TimeSpan.FromSeconds(Math.Max(1, Math.Min(10, budget.RemainingSeconds))));
-            using var input = Console.OpenStandardInput(); var bytes = new byte[16385]; var count = 0;
+            using var ownedInput = credentialInput is null ? Console.OpenStandardInput() : null;
+            var input = credentialInput ?? ownedInput!; var bytes = new byte[16385]; var count = 0;
             try
             {
                 for (var block = 0; block < 18; block++)

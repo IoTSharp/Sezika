@@ -8,20 +8,30 @@ using Sezika.Tooling;
 internal static class NativeGitChecks
 {
     private sealed record Fixture(string Root, string Repository, string Remote, string BareRepository, string LfsEndpoint, string Commit, GitAsset Notes, string? Hooks, string? HookSha256);
+    private sealed record LocalSnapshot(string Index, string Attributes, string Head, string RemoteHead, string Objects, string LfsObjects, string Foreign);
 
     internal static void Run(string root, Action<string, Action> check)
     {
         var selectedText = Environment.GetEnvironmentVariable("SEZIKA_NATIVE_GIT_CASE");
         var selected = 0;
-        if (selectedText is not null && (!int.TryParse(selectedText, System.Globalization.NumberStyles.None, System.Globalization.CultureInfo.InvariantCulture, out selected) || selected is < 1 or > 8))
-            throw new ArgumentException("SEZIKA_NATIVE_GIT_CASE must be an explicit1..8.");
+        if (selectedText is not null && (!int.TryParse(selectedText, System.Globalization.NumberStyles.None, System.Globalization.CultureInfo.InvariantCulture, out selected) || selected is < 1 or > 11))
+            throw new ArgumentException("SEZIKA_NATIVE_GIT_CASE must be an explicit1..11.");
+        var selectedScenario = Environment.GetEnvironmentVariable("SEZIKA_NATIVE_GIT_SCENARIO");
+        if (selectedScenario is not null && (selected != 10 || selectedScenario is not ("n20" or "n128-auth" or "cross-origin")))
+            throw new ArgumentException("SEZIKA_NATIVE_GIT_SCENARIO requires explicit case10 and n20, n128-auth or cross-origin.");
         var rootCheck = check; var caseIndex = 0; var completedCases = 0; var dependencies = new List<string>();
+        var completedScenarios = new List<string>(); var case10Complete = false;
         check = (name, action) =>
         {
             var number = ++caseIndex;
-            if (number > 8) throw new InvalidDataException("Native Git declared case bound8.");
+            if (number > 11) throw new InvalidDataException("Native Git declared case bound11.");
             if (selected != 0 && selected != number) return;
-            rootCheck("Native Git case " + number + "/8: " + name, () => { action(); completedCases++; });
+            var scope = number == 10 && selectedScenario is not null ? " scenario " + selectedScenario + " (partial)" : "";
+            rootCheck("Native Git case " + number + "/11" + scope + ": " + name, () =>
+            {
+                action();
+                if (number != 10 || selectedScenario is null) completedCases++;
+            });
         };
         using var cancellation = new CancellationTokenSource(TimeSpan.FromSeconds(240));
         var clock = Stopwatch.StartNew();
@@ -34,6 +44,7 @@ internal static class NativeGitChecks
         var httpRoot = Path.Combine(owned, "http-repositories");
         NativeGitHttpServer? gitServer = null; NativeLfsServer? lfsServer = null;
         NativeGitHttpFixture.Client? externalServer = null;
+        var syntheticAuthentication = new NativeGitHttpFixture.SyntheticAuthentication();
         Fixture? mixed = null; GitReceipt? published = null; GitAsset[] mixedAssets = [];
         Budget Limit() => new(100, null, cancellation.Token);
         static void Assert(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }
@@ -45,7 +56,7 @@ internal static class NativeGitChecks
         int NativeCall()
         {
             Gate(); var value = Interlocked.Increment(ref calls);
-            if (value + Volatile.Read(ref operationCalls) > 200) throw new InvalidDataException("Combined native Git/CGI call bound200.");
+            if (value + Volatile.Read(ref operationCalls) > 600) throw new InvalidDataException("Combined native Git/CGI call bound600.");
             return value;
         }
         void Own()
@@ -75,7 +86,8 @@ internal static class NativeGitChecks
         {
             var recoveryBudget = new Budget(10, null, CancellationToken.None);
             if (!recovery) Gate();
-            Assert(result.CleanupStatus == "PASS" && result.RemainingProcesses == 0 && result.RootPid is not null && result.Processes.Length is > 0 and <= 64, "Native process cleanup/identity receipt incomplete: " + result.OutputDirectory);
+            var processLimit = OperatingSystem.IsWindows() && string.Equals(result.Executable, Path.GetFullPath(lfs), StringComparison.OrdinalIgnoreCase) ? 128 : 64;
+            Assert(result.CleanupStatus == "PASS" && result.RemainingProcesses == 0 && result.RootPid is not null && result.Processes.Length > 0 && result.Processes.Length <= processLimit, "Native process cleanup/identity receipt incomplete: " + result.OutputDirectory);
             foreach (var identity in result.Processes)
             {
                 if (recovery) recoveryBudget.Check(); else Gate();
@@ -143,7 +155,7 @@ internal static class NativeGitChecks
             lfsServer = new NativeLfsServer(cancellation.Token);
             var backend = Environment.GetEnvironmentVariable("SEZIKA_GIT_HTTP_BACKEND") ?? @"C:\Program Files\Git\ucrt64\libexec\git-core\git-http-backend.exe";
             gitServer = new NativeGitHttpServer(backend, httpRoot, New("http-backend-executions"), emptyHooks, broker, NativeCall, cancellation.Token);
-            lfsServer.GitHandler = gitServer.Handle;
+            lfsServer.GitHandler = gitServer.Handle; lfsServer.RequestAuthorization = syntheticAuthentication.Check;
         }
         (string Path, string Sha256) Hook(string name)
         {
@@ -166,7 +178,7 @@ internal static class NativeGitChecks
         }
         Fixture Prepare(string name, string attributes = "*.bin filter=lfs diff=lfs merge=lfs -text\n", bool hook = false)
         {
-            Gate(); if (++fixtures > 6) throw new InvalidDataException("Native Git fixture repository bound6.");
+            Gate(); if (++fixtures > 7) throw new InvalidDataException("Native Git fixture repository bound7.");
             var directory = New(name); if (Path.Exists(directory)) throw new IOException("Fresh local repository fixture required.");
             Directory.CreateDirectory(directory); var repository = Path.Combine(directory, "work");
             Servers(); var bare = Path.Combine(httpRoot, name + ".git");
@@ -201,15 +213,108 @@ internal static class NativeGitChecks
                 using var stream = File.OpenRead(Path.Combine(directory, "result.json"));
                 var result = JsonSerializer.Deserialize(stream, ExecutionJsonContext.Default.ExecutionResult) ?? throw new InvalidDataException("Native receipt missing.");
                 VerifyCleanup(result);
-                if (Interlocked.Increment(ref operationCalls) + Volatile.Read(ref calls) > 200) throw new InvalidDataException("Combined native Git operation/CGI call bound200.");
+                if (Interlocked.Increment(ref operationCalls) + Volatile.Read(ref calls) > 600) throw new InvalidDataException("Combined native Git operation/CGI call bound600.");
             }
         }
-        GitReceipt Run(GitRequest request)
+        GitReceipt Run(GitRequest request, Stream? credentials = null)
         {
-            Gate(); if (++operations > 8) throw new InvalidDataException("Native Git operation bound8.");
-            try { return NativeGit.RunAsync(request, Limit(), cancellation.Token).GetAwaiter().GetResult(); }
+            Gate(); if (++operations > 20) throw new InvalidDataException("Native Git operation bound20.");
+            try { return NativeGit.RunAsync(request, Limit(), cancellation.Token, credentials).GetAwaiter().GetResult(); }
             finally { AuditOperation(request.OutputDirectory); }
         }
+        string ObjectFingerprint(string directory)
+        {
+            if (!Directory.Exists(directory)) return "MISSING";
+            var pending = new Queue<(string Path, int Depth)>(); pending.Enqueue((directory, 0));
+            var files = new List<string>(); long bytes = 0;
+            for (var index = 0; index < 256 && pending.Count > 0; index++)
+            {
+                Gate(); var next = pending.Dequeue(); SafePaths.NoLinks(next.Path, Limit());
+                var entries = Directory.EnumerateFileSystemEntries(next.Path).Take(129).ToArray();
+                if (entries.Length > 128) throw new InvalidDataException("Local snapshot directory entry bound128.");
+                foreach (var entry in entries)
+                {
+                    Gate(); SafePaths.NoLinks(entry, Limit());
+                    if (Directory.Exists(entry))
+                    {
+                        if (next.Depth >= 3 || pending.Count >= 256) throw new InvalidDataException("Local object snapshot depth/queue bound.");
+                        pending.Enqueue((entry, next.Depth + 1));
+                    }
+                    else
+                    {
+                        RegularFiles.Require(entry, Limit()); bytes = checked(bytes + new FileInfo(entry).Length);
+                        if (files.Count >= 256 || bytes > 32L * 1024 * 1024) throw new InvalidDataException("Local object snapshot file/byte bound.");
+                        files.Add(Path.GetRelativePath(directory, entry) + "=" + Hash(entry));
+                    }
+                }
+            }
+            if (pending.Count != 0) throw new InvalidDataException("Local snapshot directory bound256.");
+            return string.Join('\n', files.Order(StringComparer.Ordinal));
+        }
+        LocalSnapshot Snapshot(Fixture fixture) => new(Hash(Path.Combine(fixture.Repository, ".git", "index")),
+            Hash(Path.Combine(fixture.Repository, ".gitattributes")), GitText(fixture.Repository, "rev-parse", "HEAD"),
+            GitText(fixture.BareRepository, "rev-parse", "refs/heads/master"), ObjectFingerprint(Path.Combine(fixture.Repository, ".git", "objects")),
+            ObjectFingerprint(Path.Combine(fixture.Repository, ".git", "lfs", "objects")), Hash(Path.Combine(fixture.Repository, "foreign.txt")));
+        (Fixture Fixture, GitAsset[] Files, GitAttributeAppend Append) PrepareLocal(string name, bool hook = false, int count = 2)
+        {
+            if (count is < 2 or > 128) throw new InvalidDataException("Local generated payload bound2..128.");
+            var fixture = Prepare(name, "*.bin filter=lfs diff=lfs merge=lfs -text\nlate.bad filter=unreviewed\n", hook);
+            File.WriteAllText(Path.Combine(fixture.Repository, "notes.txt"), "Local-only ordinary bytes 中文\r\n", new UTF8Encoding(false));
+            File.WriteAllBytes(Path.Combine(fixture.Repository, "weights.bin"), [0, 3, 10, 13, 127, 128, 255]);
+            File.WriteAllText(Path.Combine(fixture.Repository, "foreign.txt"), "Foreign dirty sentinel stays unchanged\n", new UTF8Encoding(false));
+            var files = new List<GitAsset> { Asset(fixture.Repository, "notes.txt"), Asset(fixture.Repository, "weights.bin") };
+            Directory.CreateDirectory(Path.Combine(fixture.Repository, "batch"));
+            for (var index = 2; index < count && index < 128; index++)
+            {
+                Gate(); var relative = "batch/file-" + index.ToString("D4") + (index % 2 == 0 ? ".bin" : ".txt");
+                File.WriteAllBytes(Path.Combine(fixture.Repository, relative), Encoding.UTF8.GetBytes("bounded fixture payload " + index)); files.Add(Asset(fixture.Repository, relative));
+            }
+            var before = File.ReadAllBytes(Path.Combine(fixture.Repository, ".gitattributes"));
+            var lfsPaths = files.Where(file => file.Path.EndsWith(".bin", StringComparison.Ordinal)).Select(file => file.Path).ToArray();
+            var verbatim = files.Where(file => !file.Path.EndsWith(".bin", StringComparison.Ordinal)).Select(file => file.Path).ToArray();
+            var append = "\n" + string.Concat(lfsPaths.Select(path => path + " filter=lfs diff=lfs merge=lfs -text\n")) + string.Concat(verbatim.Select(path => path + " -text\n"));
+            var after = before.Concat(Encoding.UTF8.GetBytes(append)).ToArray();
+            return (fixture, files.ToArray(), new(Convert.ToHexStringLower(SHA256.HashData(before)), Convert.ToHexStringLower(SHA256.HashData(after)), lfsPaths, verbatim));
+        }
+        GitReceipt Authenticated(GitRequest request, string repositoryName)
+        {
+            var value = NativeGitHttpFixture.SyntheticAuthentication.Credential(repositoryName);
+            var bytes = JsonSerializer.SerializeToUtf8Bytes(value, HttpCredentialJson.Default.HttpSecretInput);
+            try { using var input = new MemoryStream(bytes, false); return Run(request with { CredentialSource = "stdin", AuthenticationProvider = "moark" }, input); }
+            finally { CryptographicOperations.ZeroMemory(bytes); }
+        }
+        void NoCredentialEvidence(string directory, string repositoryName)
+        {
+            var secret = NativeGitHttpFixture.SyntheticAuthentication.Credential(repositoryName);
+            var needles = new[] { secret.Token, Convert.ToBase64String(Encoding.UTF8.GetBytes(secret.UserName + ":" + secret.Token)) };
+            var pending = new Queue<(string Path, int Depth)>(); pending.Enqueue((directory, 0)); var files = 0; long bytes = 0;
+            for (var index = 0; index < 256 && pending.Count > 0; index++)
+            {
+                Gate(); var current = pending.Dequeue();
+                var entries = Directory.EnumerateFileSystemEntries(current.Path).Take(257).ToArray();
+                if (entries.Length > 256) throw new InvalidDataException("Credential evidence directory entry cap256.");
+                foreach (var path in entries)
+                {
+                    Gate(); SafePaths.NoLinks(path, Limit());
+                    if (Directory.Exists(path)) { if (current.Depth >= 8 || pending.Count >= 256) throw new InvalidDataException("Credential evidence depth/directory cap."); pending.Enqueue((path, current.Depth + 1)); }
+                    else
+                    {
+                        if (++files > 4096 || (bytes += new FileInfo(path).Length) > 32L * 1024 * 1024) throw new InvalidDataException("Credential evidence file/byte cap.");
+                        var content = Encoding.UTF8.GetString(File.ReadAllBytes(path)); Assert(needles.All(needle => !content.Contains(needle, StringComparison.Ordinal)), "Synthetic secret appeared in argv/broker/config/receipt/raw evidence.");
+                    }
+                }
+            }
+            Assert(pending.Count == 0, "Credential evidence directory cap256 exhausted.");
+        }
+        Fixture? previewFixture = null; GitAsset[] previewFiles = []; GitAttributeAppend? previewAppend = null;
+        void PreviewFixture()
+        {
+            if (previewFixture is not null) return;
+            (previewFixture, previewFiles, previewAppend) = PrepareLocal("local-preview");
+            if (selected == 11) dependencies.Add("fresh-local-preview-fixture-not-a-case9-pass");
+        }
+        GitRequest LocalRequest(Fixture fixture, string operation, string name, GitAsset[] files, GitAttributeAppend? append) =>
+            Request(fixture, operation, name, files) with { AttributeChange = append, CommitMessage = "Save exact local fixture only" };
 
         try
         {
@@ -333,6 +438,151 @@ internal static class NativeGitChecks
                 File.Move(withheld, objectPath, false); TaskOperations.VerifyFile(objectPath, asset.Bytes, asset.Sha256, recovery);
             }
         });
+        check("Native preview preserves index refs attributes object stores and unrelated dirty bytes", () =>
+        {
+            PreviewFixture(); var fixture = previewFixture!; var before = Snapshot(fixture);
+            var rejectedInputs = new[] { Encoding.UTF8.GetBytes("{\"Token\":\"first\",\"Token\":\"second\",\"UserName\":\"fixture\"}"), new byte[16385] };
+            foreach (var bytes in rejectedInputs)
+            {
+                Gate(); using var input = new MemoryStream(bytes, false);
+                Reject(() => HttpCredentials.Read("stdin", null, "utf8", "moark", Limit(), input));
+            }
+            using (var input = new MemoryStream("{}"u8.ToArray(), false))
+                Reject(() => HttpCredentials.Read("stdin", "fixture-conflicting-target-must-not-be-read", "utf8", "moark", Limit(), input));
+            using (var cancelled = new CancellationTokenSource())
+            {
+                cancelled.Cancel(); using var input = new MemoryStream("{}"u8.ToArray(), false);
+                Reject(() => HttpCredentials.Read("stdin", null, "utf8", "moark", new Budget(2, null, cancelled.Token), input));
+            }
+            var plain = LocalRequest(fixture, "preview", "local-preview-operation", previewFiles, null);
+            var legacy = JsonSerializer.SerializeToUtf8Bytes(plain, GitJsonContext.Default.GitRequest);
+            Assert(!Encoding.UTF8.GetString(legacy).Contains("\"AttributeChange\"", StringComparison.Ordinal) &&
+                JsonSerializer.Deserialize(legacy, GitJsonContext.Default.GitRequest)?.AttributeChange is null, "Absent optional extension changed legacy request shape.");
+            var request = plain with { AttributeChange = previewAppend };
+            var wire = JsonSerializer.SerializeToUtf8Bytes(request, GitJsonContext.Default.GitRequest);
+            var rebound = JsonSerializer.Deserialize(wire, GitJsonContext.Default.GitRequest) ?? throw new InvalidDataException("Local request roundtrip missing.");
+            Assert(rebound.AttributeChange is { } roundtripped && roundtripped.AfterSha256 == previewAppend!.AfterSha256 && roundtripped.LfsPaths.SequenceEqual(["weights.bin"]), "Typed append contract did not roundtrip.");
+            var batches = lfsServer?.BatchResponses ?? externalServer!.Counters(cancellation.Token).BatchResponses;
+            var uploads = lfsServer?.UploadResponses ?? externalServer!.Counters(cancellation.Token).UploadResponses;
+            var receipt = Run(rebound);
+            Assert(receipt.Status == "PASS_preview_owned_bytes_attributes_and_refs_only" && receipt.PublishedCommit is null && receipt.LocalCommit is null &&
+                receipt.IndependentReadback == "FULL_FRESH_CONTENT_READBACK_NOT_RUN" && receipt.ModelQuality == "NOT_ACCEPTED", "Preview overclaimed local commit, publication or independent content readback.");
+            Assert(Snapshot(fixture) == before, "Read-only preview changed repository index/ref/attributes/object/foreign bytes.");
+            Assert((lfsServer?.BatchResponses ?? externalServer!.Counters(cancellation.Token).BatchResponses) == batches &&
+                (lfsServer?.UploadResponses ?? externalServer!.Counters(cancellation.Token).UploadResponses) == uploads, "Preview reached the LFS upload path.");
+        });
+        check("Native commit-only saves exact owned blobs attributes and one parent without remote publication", () =>
+        {
+            void N20()
+            {
+                var prepared = PrepareLocal("local-commit", hook: true, count: 20); var fixture = prepared.Fixture; var before = Snapshot(fixture);
+                var request = LocalRequest(fixture, "commit-only", "local-commit-operation", prepared.Files, prepared.Append) with
+                    { NativeHookDirectory = fixture.Hooks, NativeHookSha256 = fixture.HookSha256 };
+                var planned = NativeGit.PlanNativeCalls(request, Limit());
+                Assert(planned.MaximumNativeCalls <= 160, "N20 predicted native budget exceeds160.");
+                var batches = lfsServer?.BatchResponses ?? externalServer!.Counters(cancellation.Token).BatchResponses;
+                var uploads = lfsServer?.UploadResponses ?? externalServer!.Counters(cancellation.Token).UploadResponses;
+                var receipt = Run(request); var committed = receipt.LocalCommit;
+                Assert(prepared.Files.Length == 20 && receipt.VerifiedFiles == 20 && receipt.NativeCalls <= planned.MaximumNativeCalls,
+                    "Original N20 boundary did not finish under its prewrite batched native-call plan.");
+                Assert(receipt.Status == "PASS_owned_local_commit_remote_unchanged" && committed is not null && committed != fixture.Commit && receipt.PublishedCommit is null &&
+                    receipt.IndependentReadback == "FULL_FRESH_CONTENT_READBACK_NOT_RUN" && receipt.ModelQuality == "NOT_ACCEPTED", "Commit-only receipt claimed publication/fresh content or omitted local commit.");
+                Assert(GitText(fixture.Repository, "rev-list", "--parents", "-n", "1", committed!) == committed + " " + fixture.Commit, "Local commit has a different parent or extra parents.");
+                Assert(Git(fixture.Repository, "show", committed + ":notes.txt").SequenceEqual(File.ReadAllBytes(Path.Combine(fixture.Repository, "notes.txt"))), "Ordinary committed bytes were normalized or changed.");
+                var pointer = Git(fixture.Repository, "show", committed + ":weights.bin");
+                Assert(pointer.SequenceEqual(NativeLfsFiles.CreatePointer(prepared.Files[1].Bytes, prepared.Files[1].Sha256)), "Local commit LFS pointer differs from actual owned bytes.");
+                var attributes = Git(fixture.Repository, "show", committed + ":.gitattributes");
+                Assert(Convert.ToHexStringLower(SHA256.HashData(attributes)) == prepared.Append.AfterSha256 && Hash(Path.Combine(fixture.Repository, ".gitattributes")) == prepared.Append.AfterSha256, "Owned attribute append was not committed and saved exactly.");
+                var after = Snapshot(fixture);
+                Assert(after.RemoteHead == before.RemoteHead && after.Foreign == before.Foreign && (lfsServer?.BatchResponses ?? externalServer!.Counters(cancellation.Token).BatchResponses) == batches &&
+                    (lfsServer?.UploadResponses ?? externalServer!.Counters(cancellation.Token).UploadResponses) == uploads &&
+                    !Directory.EnumerateDirectories(Path.Combine(request.OutputDirectory, "hooks")).Take(1).Any(), "Commit-only pushed, uploaded, invoked pre-push or changed unrelated work.");
+                Reject(() => Run(request with { OutputDirectory = New("local-commit-stale-parent") }));
+                Assert(Snapshot(fixture) == after, "Reusing an old local parent duplicated a commit or changed partial state.");
+            }
+            void N128Authentication()
+            {
+                var large = PrepareLocal("stdin-auth-large", count: 128);
+                var largeRequest = LocalRequest(large.Fixture, "commit-only", "large-local-commit", large.Files, large.Append);
+                var planned = NativeGit.PlanNativeCalls(largeRequest, Limit());
+                Assert(planned.MaximumNativeCalls <= 160, "N128 predicted native budget exceeds160.");
+                var authenticatedBefore = externalServer?.Authentication(cancellation.Token) ?? syntheticAuthentication.Counts;
+                var largeReceipt = Authenticated(largeRequest, "stdin-auth-large");
+                var authenticatedAfter = externalServer?.Authentication(cancellation.Token) ?? syntheticAuthentication.Counts;
+                Assert(largeReceipt.VerifiedFiles == 128 && largeReceipt.NativeCalls <= planned.MaximumNativeCalls && largeReceipt.NativeCalls <= 160 &&
+                    largeReceipt.PublishedCommit is null && authenticatedAfter.Accepted > authenticatedBefore.Accepted && authenticatedAfter.UnexpectedStorageAuthorization == 0,
+                    "Large batch did not use bounded native calls or actual synthetic authenticated HTTP.");
+                var tree = Encoding.UTF8.GetString(Git(large.Fixture.Repository, "ls-tree", "-r", "-z", largeReceipt.LocalCommit!)).Split('\0', StringSplitOptions.RemoveEmptyEntries).ToHashSet(StringComparer.Ordinal);
+                Assert(tree.Count == 129, "Large committed tree includes foreign paths or missing owned paths.");
+                foreach (var file in large.Files)
+                {
+                    Gate(); var content = file.Path.EndsWith(".bin", StringComparison.Ordinal) ? NativeLfsFiles.CreatePointer(file.Bytes, file.Sha256) : File.ReadAllBytes(Path.Combine(large.Fixture.Repository, file.Path));
+                    var oid = Convert.ToHexStringLower(SHA1.HashData(Encoding.ASCII.GetBytes("blob " + content.Length + '\0').Concat(content).ToArray()));
+                    Assert(tree.Contains("100644 blob " + oid + "\t" + file.Path), "Large batch committed a different ordinary blob or LFS pointer.");
+                }
+                NoCredentialEvidence(largeRequest.OutputDirectory, "stdin-auth-large");
+            }
+            void CrossOrigin()
+            {
+                PublishedMixed();
+                using var foreign = new NativeLfsServer(cancellation.Token); var forwarded = 0;
+                foreign.RequestAuthorization = (_, _, authorization) => { if (authorization is not null) Interlocked.Increment(ref forwarded); return false; };
+                var origin = "http://127.0.0.1:" + foreign.Port;
+                if (externalServer is not null) externalServer.ActionOrigin(origin, cancellation.Token); else lfsServer!.ObjectActionOrigin = origin;
+                var crossRequest = Request(mixed!, "clone", "authenticated-cross-origin-negative", mixedAssets, published!.PublishedCommit,
+                    Path.Combine(mixed!.Root, "fresh-authenticated-cross-origin"));
+                try
+                {
+                    Reject(() => Authenticated(crossRequest, "mixed"));
+                    Assert(foreign.Requests > 0 && forwarded == 0, "Malicious cross-origin LFS action did not reach the negative receiver or forwarded service Authorization.");
+                    NoCredentialEvidence(crossRequest.OutputDirectory, "mixed");
+                }
+                finally { if (externalServer is not null) externalServer.ActionOrigin(null, CancellationToken.None); else lfsServer!.ObjectActionOrigin = null; }
+            }
+            void Scenario(string name, Action action)
+            {
+                if (selectedScenario is not null && selectedScenario != name) return;
+                Gate(); action();
+                if (completedScenarios.Count >= 3 || completedScenarios.Contains(name, StringComparer.Ordinal))
+                    throw new InvalidDataException("Native Git case10 completed scenario bound3.");
+                completedScenarios.Add(name);
+            }
+            Scenario("n20", N20);
+            Scenario("n128-auth", N128Authentication);
+            Scenario("cross-origin", CrossOrigin);
+            // A selected scenario is only one part. Root combines three
+            // separately successful host receipts; it cannot claim this flag.
+            case10Complete = selectedScenario is null && completedScenarios.SequenceEqual(new[] { "n20", "n128-auth", "cross-origin" }, StringComparer.Ordinal);
+        });
+        check("Native local preflight rejects stale parent bad append later filter and foreign index before any write", () =>
+        {
+            PreviewFixture(); var fixture = previewFixture!;
+            File.WriteAllText(Path.Combine(fixture.Repository, "late.bad"), "Owned later filter rejection bytes\n", new UTF8Encoding(false));
+            var requests = new[]
+            {
+                LocalRequest(fixture, "commit-only", "local-reject-parent", previewFiles, previewAppend) with { ExpectedCommit = new string('a', 40) },
+                LocalRequest(fixture, "commit-only", "local-reject-append", previewFiles, previewAppend! with { AfterSha256 = new string('b', 64) }),
+                LocalRequest(fixture, "commit-only", "local-reject-later-filter", [previewFiles[0], Asset(fixture.Repository, "late.bad")], null)
+            };
+            foreach (var request in requests)
+            {
+                Gate(); var before = Snapshot(fixture); Reject(() => Run(request));
+                Assert(Snapshot(fixture) == before, "A rejected local request wrote before validating every owned file/filter/parent/attribute.");
+            }
+            var overrideFixture = fixture;
+            var informationAttributes = Path.Combine(overrideFixture.Repository, ".git", "info", "attributes");
+            SafePaths.NoLinks(informationAttributes, Limit());
+            if (Path.Exists(informationAttributes)) throw new IOException("Fresh fixture information attributes path required.");
+            File.WriteAllText(informationAttributes, "weights.bin -filter\n", new UTF8Encoding(false));
+            var overrideBytes = File.ReadAllBytes(informationAttributes);
+            var overrideState = Snapshot(overrideFixture);
+            Reject(() => Run(LocalRequest(overrideFixture, "preview", "local-reject-info-attributes", previewFiles, previewAppend)));
+            Assert(Snapshot(overrideFixture) == overrideState && File.ReadAllBytes(informationAttributes).SequenceEqual(overrideBytes), "Root append accepted or mutated a Git info/attributes override.");
+            _ = Git(fixture.Repository, "add", "--", "foreign.txt");
+            var staged = Snapshot(fixture);
+            Reject(() => Run(LocalRequest(fixture, "commit-only", "local-reject-foreign-index", previewFiles, previewAppend)));
+            Assert(Snapshot(fixture) == staged, "Foreign staged work was replaced, cleared or committed.");
+        });
         }
         finally
         {
@@ -372,8 +622,9 @@ internal static class NativeGitChecks
                     finally
                     {
                         if (Directory.Exists(owned)) TaskOperations.WriteNew(Path.Combine(owned, "case-selection.json"),
-                            new NativeGitCaseReceipt(selected == 0 ? null : selected, 8, completedCases, dependencies.ToArray(), calls, operationCalls,
-                                externalServer is null ? null : Path.Combine(externalServer.Ready.OwnedRoot, "server-result.json")), NativeGitCaseJson.Default.NativeGitCaseReceipt);
+                            new NativeGitCaseReceipt(selected == 0 ? null : selected, 11, completedCases, dependencies.ToArray(), calls, operationCalls,
+                                externalServer is null ? null : Path.Combine(externalServer.Ready.OwnedRoot, "server-result.json"), selectedScenario,
+                                completedScenarios.ToArray(), case10Complete), NativeGitCaseJson.Default.NativeGitCaseReceipt);
                     }
                 }
             }
@@ -383,6 +634,7 @@ internal static class NativeGitChecks
     }
 }
 
-internal sealed record NativeGitCaseReceipt(int? SelectedCase, int DeclaredCases, int CompletedCases, string[] FreshDependencies, int SetupAndBackendCalls, int OperationCalls, string? SeparateServerReceipt);
+internal sealed record NativeGitCaseReceipt(int? SelectedCase, int DeclaredCases, int CompletedCases, string[] FreshDependencies, int SetupAndBackendCalls, int OperationCalls, string? SeparateServerReceipt,
+    string? SelectedScenario, string[] CompletedScenarios, bool Case10Complete);
 [JsonSerializable(typeof(NativeGitCaseReceipt))]
 internal partial class NativeGitCaseJson : JsonSerializerContext;
