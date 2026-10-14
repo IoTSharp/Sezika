@@ -10,7 +10,7 @@ if (args.Length is not (4 or 6) || args[0] != "--output" || args[2] != "--maximu
 var suite = args.Length == 6 ? args[5] : "baseline";
 if (suite is not ("baseline" or "inventory" or "execution" or "audit" or "corpus" or "task" or "transport" or "windows-lifecycle" or "all")) throw new ArgumentException("Unknown suite.");
 var runSuite = suite is "baseline" or "all";
-var suiteSeconds = suite == "windows-lifecycle" ? (maximumChecks == 1 ? 45 : 240) : 45;
+var suiteSeconds = suite == "windows-lifecycle" ? (maximumChecks == 1 ? 45 : 240) : suite == "execution" ? 90 : 45;
 using var cancel = new CancellationTokenSource(TimeSpan.FromSeconds(suiteSeconds));
 StartupGate.Wait(cancel.Token);
 var root = Path.GetFullPath(args[1]);

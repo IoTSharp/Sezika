@@ -3,8 +3,187 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.Json;
 
 namespace Sezika.Tooling;
+
+internal static class AncestorAdmission
+{
+    internal const string EnvironmentName = "SEZIKA_LINUX_OBSERVERS";
+    internal static void Cancel(string directory, string scope, Budget budget)
+    {
+        var path = Path.Combine(directory, "admission.cancel"); SafePaths.NoLinks(path, budget);
+        if (!File.Exists(path)) WriteNew(path, Encoding.ASCII.GetBytes(scope));
+        RegularFiles.Require(path, budget);
+        if (new FileInfo(path).Length > 64 || File.ReadAllText(path) != scope) throw new IOException("Foreign Linux admission cancellation marker preserved.");
+    }
+    internal static void RequireActive(string directory, string scope, Budget budget)
+    {
+        budget.Check(); var path = Path.Combine(directory, "admission.cancel"); SafePaths.NoLinks(path, budget);
+        if (!File.Exists(path)) return;
+        RegularFiles.Require(path, budget);
+        if (new FileInfo(path).Length > 64 || File.ReadAllText(path) != scope) throw new IOException("Foreign Linux admission cancellation marker preserved.");
+        throw new OperationCanceledException("Scoped Linux admission cancellation prevents payload execution.");
+    }
+    internal static AdmissionObserver Declare(string directory, string scope, ExecutionIdentity caller, Budget budget)
+    {
+        var observer = new AdmissionObserver { OutputDirectory = directory, OwnershipId = scope, NativeIdentity = caller };
+        Shape(observer);
+        RequireNativeCaller(caller, ProcessObserver.Observe(Environment.ProcessId));
+        RequireOwnedDirectory(observer, budget);
+        WriteNew(Path.Combine(directory, "observer.json"), JsonSerializer.SerializeToUtf8Bytes(observer, ExecutionJsonContext.Default.AdmissionObserver));
+        return observer;
+    }
+    internal static void Attach(ExecutionRequest request, Dictionary<string, string> environment, string scope, ExecutionIdentity caller, Budget budget)
+    {
+        var inherited = Read();
+        if (request.LinuxObservers is null || request.LinuxObservers.Length > 63 - inherited.Length) throw new IOException("Linux observer chain exceeds64 declarations.");
+        foreach (var additional in request.LinuxObservers)
+        {
+            Shape(additional); RequireNativeCaller(additional.NativeIdentity, ProcessObserver.Observe(Environment.ProcessId));
+            if (inherited.Length == 0 || !additional.OutputDirectory.StartsWith(inherited[0].OutputDirectory + Path.DirectorySeparatorChar, StringComparison.Ordinal))
+                throw new IOException("Additional Linux observer declarations must be inside this task's inherited owned output.");
+        }
+        var observers = inherited.Concat(request.LinuxObservers).ToArray();
+        Validate(observers, budget);
+        var own = Declare(request.OutputDirectory, scope, caller, budget);
+        var bytes = JsonSerializer.SerializeToUtf8Bytes(observers.Append(own).ToArray(), ExecutionJsonContext.Default.AdmissionObserverArray);
+        if (bytes.Length > 65536) throw new IOException("Linux observer chain exceeds64KiB.");
+        environment[EnvironmentName] = Encoding.UTF8.GetString(bytes);
+    }
+    internal static AdmissionObserver[] Read()
+    {
+        var text = Environment.GetEnvironmentVariable(EnvironmentName);
+        if (string.IsNullOrEmpty(text)) return [];
+        if (Encoding.UTF8.GetByteCount(text) > 65536) throw new IOException("Linux observer chain exceeds64KiB.");
+        var observers = JsonSerializer.Deserialize(text, ExecutionJsonContext.Default.AdmissionObserverArray) ?? throw new IOException("Missing Linux observer chain.");
+        if (observers.Length > 64) throw new IOException("Linux observer chain exceeds64 declarations.");
+        foreach (var observer in observers) Shape(observer);
+        return observers;
+    }
+    private static void RequireOwnedDirectory(AdmissionObserver observer, Budget budget)
+    {
+        Shape(observer);
+        if (!Path.IsPathFullyQualified(observer.OutputDirectory) || Path.GetFullPath(observer.OutputDirectory) != observer.OutputDirectory ||
+            !Guid.TryParseExact(observer.OwnershipId, "N", out _)) throw new IOException("Linux observer path/scope is not exact.");
+        SafePaths.NoLinks(observer.OutputDirectory, budget);
+        var ownership = Path.Combine(observer.OutputDirectory, "ownership.json"); RegularFiles.Require(ownership, budget);
+        if (new FileInfo(ownership).Length > 64 || File.ReadAllText(ownership) != observer.OwnershipId)
+            throw new IOException("Linux observer ownership file differs.");
+    }
+    private static void Shape(AdmissionObserver? observer)
+    {
+        if (observer is null || observer.NativeIdentity is null || string.IsNullOrEmpty(observer.OutputDirectory) || observer.OutputDirectory.Length > 32768 ||
+            observer.OwnershipId is null || observer.NativeIdentity.CommandLine is null || observer.NativeIdentity.CommandLine.Length is < 1 or > 32768 ||
+            observer.NativeIdentity.Platform != "linux" || observer.NativeIdentity.Pid <= 0 || observer.NativeIdentity.ParentPid <= 0 ||
+            observer.NativeIdentity.StartTicks is null || !Guid.TryParse(observer.NativeIdentity.BootId, out _) || observer.NativeIdentity.Ownership != "launcher" ||
+            observer.NativeIdentity.ParentChain is not { Length: 0 } || observer.NativeIdentity.ScopeId is not null)
+            throw new IOException("Linux observer declaration has null, incomplete or oversized fields.");
+    }
+    private static bool SameNative(ExecutionIdentity? identity, ProcessObservation actual) => identity is not null && actual.State == "Present" && identity.Platform == "linux" &&
+        identity.Pid == actual.Pid && identity.ParentPid > 0 && identity.ParentPid == actual.ParentPid && identity.StartTicks is not null &&
+        identity.StartTicks == actual.StartTicks && !string.IsNullOrEmpty(identity.BootId) && identity.BootId == actual.BootId &&
+        !string.IsNullOrEmpty(identity.CommandLine) && identity.CommandLine == actual.CommandLine;
+    private static void RequireNativeCaller(ExecutionIdentity identity, ProcessObservation actual)
+    {
+        if (!SameNative(identity, actual)) throw new IOException("Linux observer " + identity.Pid + " complete live native identity differs.");
+    }
+    private static void Validate(AdmissionObserver[] observers, Budget budget)
+    {
+        if (observers.Length == 0) { budget.Check(); return; }
+        var remaining = new HashSet<int>();
+        foreach (var observer in observers) { Shape(observer); remaining.Add(observer.NativeIdentity.Pid); }
+        var clock = Stopwatch.StartNew(); var ancestors = new Dictionary<int, ulong>(); var cursor = Environment.ProcessId;
+        // Stop at the highest declared task observer; OS/WSL ancestors beyond
+        // that boundary are not part of this execution's ownership proof.
+        for (var depth = 0; depth < 64 && cursor > 0 && remaining.Count > 0 && clock.Elapsed.TotalSeconds < 2; depth++)
+        {
+            budget.Check(); var stat = LinuxExecutionSession.TryStat(cursor); if (stat is null) break;
+            if (!ancestors.TryAdd(cursor, stat.Value.Start)) throw new IOException("Linux native ancestor cycle.");
+            remaining.Remove(cursor); cursor = stat.Value.Parent;
+        }
+        var paths = new HashSet<string>(StringComparer.Ordinal); var scopes = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var observer in observers)
+        {
+            budget.Check(); if (clock.Elapsed.TotalSeconds >= 2) throw new TimeoutException("Linux observer validation shared2s deadline.");
+            Shape(observer);
+            if (!paths.Add(observer.OutputDirectory) || !scopes.Add(observer.OwnershipId) || !ancestors.TryGetValue(observer.NativeIdentity.Pid, out var birth) || birth != observer.NativeIdentity.StartTicks)
+                throw new IOException("Linux observer duplicate path or non-ancestor declaration.");
+            var actual = ProcessObserver.Observe(observer.NativeIdentity.Pid); RequireNativeCaller(observer.NativeIdentity, actual);
+            RequireOwnedDirectory(observer, budget);
+            var path = Path.Combine(observer.OutputDirectory, "observer.json"); RegularFiles.Require(path, budget);
+            if (new FileInfo(path).Length > 65536) throw new IOException("Linux observer declaration exceeds64KiB.");
+            var stored = JsonSerializer.Deserialize(File.ReadAllBytes(path), ExecutionJsonContext.Default.AdmissionObserver) ?? throw new IOException("Missing Linux observer declaration.");
+            Shape(stored);
+            if (stored.OutputDirectory != observer.OutputDirectory || stored.OwnershipId != observer.OwnershipId || !SameNative(stored.NativeIdentity, actual))
+                throw new IOException("Linux observer stored declaration differs from its live native identity.");
+            RequireNativeCaller(observer.NativeIdentity, actual);
+        }
+        if (clock.Elapsed.TotalSeconds >= 2) throw new TimeoutException("Linux observer validation shared2s deadline.");
+    }
+    private static string SignalPath(string directory, ExecutionIdentity member) => Path.Combine(directory, "admissions",
+        member.Pid.ToString(CultureInfo.InvariantCulture) + "-" + member.StartTicks?.ToString(CultureInfo.InvariantCulture) + "-" + member.ScopeId + ".json");
+    internal static void Publish(string directory, string scope, IEnumerable<ExecutionIdentity> records, LinuxExecutionSession session, Budget budget)
+    {
+        var clock = Stopwatch.StartNew(); var count = 0;
+        foreach (var member in records)
+        {
+            budget.Check(); if (++count > 256 || clock.Elapsed.TotalSeconds >= 2) throw new IOException("Linux admission publication256 members/shared2s bound.");
+            if (member.ScopeId is null || !session.RetainsBirth(member)) continue;
+            if (session.AdmissionPublished(member)) continue;
+            var path = SignalPath(directory, member); SafePaths.NoLinks(path, budget);
+            if (File.Exists(path)) continue;
+            if (!SameNative(member, ProcessObserver.Observe(member.Pid)) || LinuxExecutionSession.ExecutionScope(member.Pid) != member.ScopeId) continue;
+            Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+            WriteNew(path, JsonSerializer.SerializeToUtf8Bytes(new AdmissionSignal { ObserverOwnershipId = scope, NativeIdentity = member }, ExecutionJsonContext.Default.AdmissionSignal));
+            session.AdmissionPublished(member, true);
+        }
+    }
+    internal static bool Wait(Budget budget, CancellationToken cancellation, string stage, Func<bool>? ownerExited = null, string? cancelDirectory = null)
+    {
+        if (ownerExited?.Invoke() == true) return false;
+        var clock = Stopwatch.StartNew(); var observers = Read();
+        var missing = observers.Select(observer => observer.NativeIdentity.Pid.ToString(CultureInfo.InvariantCulture) + "/" + observer.OwnershipId).ToHashSet(StringComparer.Ordinal);
+        try { Validate(observers, budget); }
+        catch (IOException error) { throw new IOException("Linux ancestor admission stage=" + stage + "; observer validation: " + error.Message, error); }
+        catch (TimeoutException error) { throw new TimeoutException("Linux ancestor admission stage=" + stage + "; missing_observers=" + string.Join(',', missing.Order()) + "; declaration validation deadline.", error); }
+        var actual = ProcessObserver.Observe(Environment.ProcessId);
+        var scope = Environment.GetEnvironmentVariable("SEZIKA_EXECUTION_ID");
+        if (actual.State != "Present" || actual.StartTicks is null || string.IsNullOrEmpty(actual.CommandLine) || !Guid.TryParseExact(scope, "N", out _))
+            throw new IOException("Linux admission wait lacks complete current native birth/argv/scope.");
+        var member = new ExecutionIdentity { Pid = actual.Pid, Platform = "linux", ParentPid = actual.ParentPid, StartTicks = actual.StartTicks,
+            BootId = actual.BootId, CommandLine = actual.CommandLine, ScopeId = scope };
+        for (var poll = 0; poll < 100 && clock.Elapsed.TotalSeconds < 2; poll++)
+        {
+            budget.Check(); cancellation.ThrowIfCancellationRequested(); if (ownerExited?.Invoke() == true) return false;
+            if (cancelDirectory is not null) RequireActive(cancelDirectory, scope!, budget);
+            var complete = true;
+            foreach (var observer in observers)
+            {
+                var key = observer.NativeIdentity.Pid.ToString(CultureInfo.InvariantCulture) + "/" + observer.OwnershipId;
+                budget.Check(); if (clock.Elapsed.TotalSeconds >= 2) throw new TimeoutException("Linux ancestor admission stage=" + stage + "; shared2s deadline; missing_observers=" + string.Join(',', missing.Order()));
+                if (!SameNative(observer.NativeIdentity, ProcessObserver.Observe(observer.NativeIdentity.Pid)))
+                    throw new IOException("Linux ancestor admission stage=" + stage + "; observer=" + observer.NativeIdentity.Pid + " died or changed native identity.");
+                var path = SignalPath(observer.OutputDirectory, member); SafePaths.NoLinks(path, budget);
+                if (!File.Exists(path)) { complete = false; missing.Add(key); continue; }
+                RegularFiles.Require(path, budget); if (new FileInfo(path).Length > 65536) throw new IOException("Linux admission signal exceeds64KiB.");
+                var signal = JsonSerializer.Deserialize(File.ReadAllBytes(path), ExecutionJsonContext.Default.AdmissionSignal);
+                if (signal?.NativeIdentity is not { } signalled || signal.ObserverOwnershipId != observer.OwnershipId || !SameNative(signalled, actual) || signalled.ScopeId != scope)
+                    throw new IOException("Linux ancestor scheduling signal differs from exact native birth/parent/argv/scope.");
+                missing.Remove(key);
+            }
+            if (clock.Elapsed.TotalSeconds >= 2) throw new TimeoutException("Linux ancestor admission stage=" + stage + "; shared2s deadline; missing_observers=" + string.Join(',', missing));
+            if (complete) return true;
+            if (cancellation.WaitHandle.WaitOne(20)) cancellation.ThrowIfCancellationRequested();
+        }
+        throw new TimeoutException("Linux ancestor native admission stage=" + stage + "; missing_observers=" + string.Join(',', missing) + ";100 polls/shared2 seconds.");
+    }
+    private static void WriteNew(string path, byte[] bytes)
+    {
+        using (var file = new FileStream(path + ".pending", FileMode.CreateNew, FileAccess.Write, FileShare.Read)) { file.Write(bytes); file.Flush(true); }
+        File.Move(path + ".pending", path, false);
+    }
+}
 
 internal sealed class NativeUtf8Vector : IDisposable
 {
@@ -35,13 +214,17 @@ internal sealed class LinuxExecutionSession : IExecutionSession
     private readonly Dictionary<int, ExecutionFd> pidFds = [];
     private readonly Dictionary<int, (ulong Ticks, string Boot, int Parent, string Command)> registeredBirths = [];
     private readonly HashSet<int> known = [];
+    private readonly HashSet<int> publishedAdmissions = [];
     private readonly Dictionary<int, ulong> births = [];
     private readonly int maximumProcesses;
     private readonly HashSet<string> ownershipScopes = new(StringComparer.Ordinal);
     private readonly string gate;
     private readonly string outputDirectory;
+    private readonly string ownershipId;
+    private readonly string watchdogCommandLine;
     private readonly int priorSubreaper;
     private bool restored, reaped;
+    private Stopwatch? cleanupAdmission;
     public int Pid { get; private set; }
     public string Ownership => "linux-process-group-pidfd-subreaper";
     internal LinuxExecutionSession(ExecutionRequest request, Dictionary<string, string> environment, string ownershipId, string gate, string config)
@@ -49,6 +232,9 @@ internal sealed class LinuxExecutionSession : IExecutionSession
         if (!Environment.Is64BitProcess || RuntimeInformation.ProcessArchitecture is not (Architecture.X64 or Architecture.Arm64))
             throw new PlatformNotSupportedException("Linux execution supports x64/arm64 libc ABIs.");
         maximumProcesses = request.MaximumProcesses; this.gate = gate; outputDirectory = request.OutputDirectory;
+        this.ownershipId = ownershipId;
+        watchdogCommandLine = string.Join('\0', new[] { request.BrokerExecutable! }.Concat(request.WatchdogArgumentPrefix)
+            .Append(Path.Combine(outputDirectory, "watchdog.json"))) + '\0';
         ownershipScopes.Add(ownershipId);
         priorSubreaper = ReadSubreaper();
         if (ExecutionNative.prctl(36, 1, 0, 0, 0) != 0) throw Error("PR_SET_CHILD_SUBREAPER");
@@ -248,11 +434,42 @@ internal sealed class LinuxExecutionSession : IExecutionSession
         }
         throw new IOException("Linux process metadata read bound exceeded.");
     }
+    internal static ProcessObservation ObserveRegistrationCandidate(ProcessObservation first, string? inheritedCommandLine, Budget budget)
+    {
+        if (first.State != "Present" || (!string.IsNullOrEmpty(first.CommandLine) && first.CommandLine != inheritedCommandLine) || first.StartTicks is null ||
+            string.IsNullOrEmpty(first.BootId) || first.ParentPid <= 0) return first;
+        var clock = Stopwatch.StartNew();
+        var scope = ExecutionScope(first.Pid);
+        if (scope is null) return first;
+        var actual = first;
+        // One shared100ms deadline, at most20 observations and5ms cancellable
+        // backoff. Empty argv and the exact live parent's pre-exec inherited
+        // argv never establish a child identity or acquire its pidfd.
+        for (var attempt = 0; attempt < 20 && clock.Elapsed.TotalMilliseconds < 100; attempt++)
+        {
+            budget.Check();
+            var pause = Math.Min(5, (int)(100 - clock.Elapsed.TotalMilliseconds));
+            if (pause <= 0) break;
+            if (budget.Cancellation.WaitHandle.WaitOne(pause)) budget.Check();
+            if (clock.Elapsed.TotalMilliseconds >= 100) break;
+            actual = ProcessObserver.Observe(first.Pid);
+            budget.Check();
+            if (actual.State != "Present") return actual;
+            if (actual.ParentPid != first.ParentPid || actual.StartTicks != first.StartTicks || actual.BootId != first.BootId ||
+                ExecutionScope(first.Pid) != scope)
+                return actual with { State = "Unknown", Error = "Native Linux birth/parent/boot/scope changed during bounded argv reobservation." };
+            if (clock.Elapsed.TotalMilliseconds >= 100)
+                return actual with { State = "Unknown", Error = "Native Linux argv reobservation exceeded its shared100ms deadline." };
+            if (!string.IsNullOrEmpty(actual.CommandLine) && actual.CommandLine != inheritedCommandLine) return actual;
+        }
+        return actual with { State = "Unknown", Error = "Native Linux argv remained empty or exactly inherited at the shared100ms admission deadline." };
+    }
     public void Register(ExecutionIdentity identity)
     {
         if (pidFds.ContainsKey(identity.Pid))
         {
             if (!RetainsBirth(identity)) throw new IOException("Registered pidfd birth identity differs.");
+            BindWatchdogRole(identity);
             return;
         }
         if (identity.Platform != "linux" || identity.StartTicks is null || string.IsNullOrEmpty(identity.BootId) ||
@@ -269,11 +486,34 @@ internal sealed class LinuxExecutionSession : IExecutionSession
         registeredBirths.Add(identity.Pid, (identity.StartTicks.Value, identity.BootId, identity.ParentPid, identity.CommandLine));
         births[identity.Pid] = identity.StartTicks!.Value;
         if (identity.ScopeId is not null) ownershipScopes.Add(identity.ScopeId);
-        if (identity.Pid == WatchdogPid()) identity.Ownership = "linux-watchdog";
+        BindWatchdogRole(identity);
+    }
+    internal bool ReadyForRegistration(ExecutionIdentity identity) => identity.CommandLine != watchdogCommandLine || MatchesDeclaredWatchdog(identity);
+    private void BindWatchdogRole(ExecutionIdentity identity)
+    {
+        if (identity.CommandLine != watchdogCommandLine) return;
+        if (!RetainsBirth(identity) || !MatchesDeclaredWatchdog(identity))
+            throw new IOException("Declared watchdog native birth/parent/argv/scope and retained pidfd are not confirmed.");
+        // Ownership is fixed before the first immutable registration snapshot.
+        identity.Ownership = "linux-watchdog";
+    }
+    private bool MatchesDeclaredWatchdog(ExecutionIdentity identity)
+    {
+        if (WatchdogPid() != identity.Pid || identity.ParentPid != Pid || identity.ScopeId != ownershipId ||
+            identity.CommandLine != watchdogCommandLine) return false;
+        var actual = ProcessObserver.Observe(identity.Pid);
+        return actual.State == "Present" && actual.StartTicks == identity.StartTicks && actual.BootId == identity.BootId &&
+            actual.ParentPid == Pid && actual.CommandLine == watchdogCommandLine && ExecutionScope(identity.Pid) == ownershipId;
     }
     internal bool RetainsBirth(ExecutionIdentity identity) => pidFds.ContainsKey(identity.Pid) && registeredBirths.TryGetValue(identity.Pid, out var pin) &&
         identity.Platform == "linux" && identity.StartTicks == pin.Ticks && identity.BootId == pin.Boot && identity.ParentPid == pin.Parent &&
         identity.CommandLine == pin.Command && pin.Command.Length > 0;
+    internal bool AdmissionPublished(ExecutionIdentity identity, bool mark = false)
+    {
+        if (!RetainsBirth(identity)) return false;
+        if (mark) publishedAdmissions.Add(identity.Pid);
+        return publishedAdmissions.Contains(identity.Pid);
+    }
     internal bool HasExitedBirth(ExecutionIdentity identity)
     {
         if (!RetainsBirth(identity)) return false;
@@ -350,15 +590,29 @@ internal sealed class LinuxExecutionSession : IExecutionSession
         if (new FileInfo(path).Length > 32) throw new IOException("Watchdog PID metadata bound.");
         return int.TryParse(File.ReadAllText(path), NumberStyles.None, CultureInfo.InvariantCulture, out var pid) && pid > 0 ? pid : null;
     }
-    internal void AcknowledgeWatchdog()
+    internal void AcknowledgeWatchdog(IReadOnlyDictionary<int, ExecutionIdentity> records)
     {
         var pid = WatchdogPid();
-        if (pid is null || !pidFds.ContainsKey(pid.Value)) return;
+        if (pid is null || !records.TryGetValue(pid.Value, out var identity) || !RetainsBirth(identity) ||
+            identity.Ownership != "linux-watchdog" || !MatchesDeclaredWatchdog(identity)) return;
         var path = Path.Combine(outputDirectory, "watchdog-registered");
         if (File.Exists(path)) return;
         using (var file = new FileStream(path + ".pending", FileMode.CreateNew, FileAccess.Write, FileShare.Read))
         { file.Write(Encoding.ASCII.GetBytes(pid.Value.ToString(CultureInfo.InvariantCulture))); file.Flush(true); }
         File.Move(path + ".pending", path);
+    }
+    internal bool PrepareTermination(IReadOnlyDictionary<int, ExecutionIdentity> records, Budget budget)
+    {
+        budget.Check(); cleanupAdmission ??= Stopwatch.StartNew(); AncestorAdmission.Cancel(outputDirectory, ownershipId, budget);
+        var watchdog = WatchdogPid();
+        if (watchdog is not null && File.Exists(Path.Combine(outputDirectory, "watchdog.ready")) &&
+            records.TryGetValue(watchdog.Value, out var identity) && RetainsBirth(identity) && identity.ScopeId == ownershipId &&
+            identity.CommandLine == watchdogCommandLine && identity.Ownership == "linux-watchdog") return true;
+        var spawning = Path.Combine(outputDirectory, "watchdog.spawning");
+        if (watchdog is null && (!File.Exists(spawning) || File.Exists(Path.Combine(outputDirectory, "watchdog.not-spawned")))) return true;
+        if (cleanupAdmission.Elapsed.TotalSeconds >= 2 || budget.RemainingSeconds <= .1)
+            throw new IOException("UNKNOWN watchdog ancestor admission before the shared cleanup deadline.");
+        return false;
     }
     public void Dispose()
     {

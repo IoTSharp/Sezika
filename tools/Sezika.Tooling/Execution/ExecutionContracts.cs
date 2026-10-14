@@ -24,6 +24,20 @@ internal sealed class ExecutionRequest
     public string[] BrokerArgumentPrefix { get; set; } = ["process", "broker"];
     public string[] WatchdogArgumentPrefix { get; set; } = ["process", "watchdog"];
     public NestedBrokerPin[] NestedBrokers { get; set; } = [];
+    public AdmissionObserver[] LinuxObservers { get; set; } = [];
+}
+
+internal sealed class AdmissionObserver
+{
+    public string OutputDirectory { get; set; } = "";
+    public string OwnershipId { get; set; } = "";
+    public ExecutionIdentity NativeIdentity { get; set; } = new();
+}
+
+internal sealed class AdmissionSignal
+{
+    public string ObserverOwnershipId { get; set; } = "";
+    public ExecutionIdentity NativeIdentity { get; set; } = new();
 }
 
 internal sealed class NestedBrokerPin
@@ -111,6 +125,7 @@ internal sealed class WatchdogResult
     public int RemainingLive { get; set; }
     public int ZombiesPendingReap { get; set; }
     public string[] Errors { get; set; } = [];
+    public string[] RootExitProofs { get; set; } = [];
 }
 
 [JsonSerializable(typeof(ExecutionRequest))]
@@ -119,6 +134,9 @@ internal sealed class WatchdogResult
 [JsonSerializable(typeof(BrokerConfiguration))]
 [JsonSerializable(typeof(WatchdogConfiguration))]
 [JsonSerializable(typeof(WatchdogResult))]
+[JsonSerializable(typeof(AdmissionObserver))]
+[JsonSerializable(typeof(AdmissionObserver[]))]
+[JsonSerializable(typeof(AdmissionSignal))]
 internal partial class ExecutionJsonContext : JsonSerializerContext;
 
 internal sealed class ExecutionStartupException(string message, int pid, bool cleanupProven, Exception inner)

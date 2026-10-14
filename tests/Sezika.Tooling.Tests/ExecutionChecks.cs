@@ -9,7 +9,7 @@ internal static class ExecutionChecks
     {
         var fixture = Environment.GetEnvironmentVariable("SEZIKA_PROCESS_FIXTURE") ?? throw new InvalidOperationException("SEZIKA_PROCESS_FIXTURE must name the separately built native C# fixture apphost.");
         var broker = Environment.GetEnvironmentVariable("SEZIKA_PROCESS_BROKER");
-        using var cancellation = new CancellationTokenSource(TimeSpan.FromSeconds(35));
+        using var cancellation = new CancellationTokenSource(TimeSpan.FromSeconds(70));
         var clock = Stopwatch.StartNew(); var index = 0;
         ExecutionRequest Request(string mode) => new()
         {
@@ -19,7 +19,7 @@ internal static class ExecutionChecks
         };
         ExecutionResult Execute(ExecutionRequest request, CancellationToken? token = null)
         {
-            if (clock.Elapsed.TotalSeconds >= 33) throw new TimeoutException("Execution checks suite deadline35s.");
+            if (clock.Elapsed.TotalSeconds >= 68) throw new TimeoutException("Execution checks suite deadline70s.");
             var actualToken = token ?? cancellation.Token;
             return ProcessExecutor.ExecuteAsync(request, new Budget(10, null, actualToken), actualToken).GetAwaiter().GetResult();
         }
@@ -45,6 +45,99 @@ internal static class ExecutionChecks
             using var json = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(result.OutputDirectory, "result.json")));
             Assert(json.RootElement.GetProperty("Status").GetString() == "PASS", "Execution receipt differs.");
         });
+        void NativeGitBroker(int repetitions, string name)
+        {
+            if (broker is null) throw new InvalidOperationException("Explicit native C# broker required.");
+            var git = Environment.GetEnvironmentVariable("SEZIKA_GIT_EXECUTABLE") ?? "/usr/bin/git";
+            var pressure = Stopwatch.StartNew();
+            using var pressureCancellation = CancellationTokenSource.CreateLinkedTokenSource(cancellation.Token);
+            pressureCancellation.CancelAfter(TimeSpan.FromSeconds(16));
+            for (var repetition = 0; repetition < repetitions && pressure.Elapsed.TotalSeconds < 16; repetition++)
+            {
+                cancellation.Token.ThrowIfCancellationRequested();
+                var request = Request("fast-git-" + name); request.Executable = git;
+                request.WorkingDirectory = root; request.ArgumentList = ["--version"]; request.MaximumProcesses = 8;
+                var result = Execute(request, pressureCancellation.Token); Clean(result);
+                Assert(result.Status == "PASS" && result.OutputComplete && result.InputComplete, string.Join(';', result.Errors));
+                Assert(result.ExitCode == 0 &&
+                    File.ReadAllText(Path.Combine(result.OutputDirectory, "stdout.bin")).StartsWith("git version ", StringComparison.Ordinal),
+                    "Actual fast native Git execution did not complete with EOF and cleanup.");
+                var expected = git + '\0' + "--version" + '\0';
+                var native = result.Processes.SingleOrDefault(identity => identity.Pid == result.RootPid);
+                Assert(native is not null && native.ExpectedExecCommandLine == expected && native.ParentPid == Environment.ProcessId &&
+                    native.ParentChain.SequenceEqual(new[] { Environment.ProcessId }) && native.StartTicks is not null &&
+                    !string.IsNullOrEmpty(native.BootId) && native.CommandLine.Length > 0 && native.ScopeId == result.OwnershipId &&
+                    native.PendingObservationError is null, "Fast Git lacks independently registered native birth/parent/argv/scope evidence.");
+                Assert(result.Processes.Count(identity => identity.CommandLine.Contains("\0process\0watchdog\0", StringComparison.Ordinal)) == 1 &&
+                    result.Processes.All(identity => identity.StartTicks is not null && !string.IsNullOrEmpty(identity.BootId) &&
+                        identity.CommandLine.Length > 0 && identity.ScopeId is not null && identity.ParentChain.Length > 0),
+                    "Actual Git watchdog birth, argv, parent or ownership evidence is incomplete.");
+                var watchdog = JsonSerializer.Deserialize(File.ReadAllBytes(Path.Combine(result.OutputDirectory, "watchdog-result.json")), ExecutionJsonContext.Default.WatchdogResult);
+                Assert(watchdog?.Status == "TERMINATED_PENDING_PARENT_REAP" && watchdog.RemainingLive == 0 && watchdog.Errors.Length == 0,
+                    "Actual fast Git watchdog did not prove bounded termination.");
+                var audit = ProcessAudit.Run([result.OutputDirectory], new Budget(3, null, pressureCancellation.Token));
+                Assert(audit.Status == "PASS_current_recorded_task_identities_absent_or_reused" &&
+                    audit.NativeReceipts is [{ OriginalStatus: "PASS" }],
+                    "Actual fast Git immutable native registrations, final identity or current absence audit failed.");
+                Console.WriteLine($"execution actual fast Git broker/watchdog {name} {repetition + 1}/{repetitions}");
+            }
+            Assert(pressure.Elapsed.TotalSeconds < 16, "Fast Git broker/watchdog pressure shared16s deadline exceeded.");
+        }
+        if (OperatingSystem.IsLinux())
+        {
+            check("execution actual fast native Git broker and watchdog two-case sample", () => NativeGitBroker(2, "small"));
+            check("execution actual fast native Git broker and watchdog eight-case pressure", () => NativeGitBroker(8, "pressure"));
+            check("execution three native observers admit actual nested fast Git and watchdog", () =>
+            {
+                if (broker is null) throw new InvalidOperationException("Explicit native C# broker required.");
+                var git = Environment.GetEnvironmentVariable("SEZIKA_GIT_EXECUTABLE") ?? "/usr/bin/git";
+                var outer = Request("three-observers"); outer.Executable = broker; outer.TimeoutSeconds = 8; outer.MaximumProcesses = 16;
+                var inner = new ExecutionRequest { Executable = git, ArgumentList = ["--version"], WorkingDirectory = root,
+                    OutputDirectory = outer.OutputDirectory + "-git", TimeoutSeconds = 3, CleanupSeconds = 5, MaximumProcesses = 8, BrokerExecutable = broker };
+                var configuration = outer.OutputDirectory + "-git.json";
+                File.WriteAllBytes(configuration, JsonSerializer.SerializeToUtf8Bytes(inner, ExecutionJsonContext.Default.ExecutionRequest));
+                outer.ArgumentList = ["process", "run", "--request", configuration, "--output", inner.OutputDirectory + ".cli.json"];
+                var result = Execute(outer); Clean(result);
+                Assert(result.Status == "PASS", string.Join(';', result.Errors));
+                var nested = JsonSerializer.Deserialize(File.ReadAllBytes(Path.Combine(inner.OutputDirectory, "result.json")), ExecutionJsonContext.Default.ExecutionResult)
+                    ?? throw new IOException("Missing actual three-observer Git receipt.");
+                Clean(nested);
+                Assert(nested.Status == "PASS" && nested.ExitCode == 0 && File.ReadAllText(Path.Combine(inner.OutputDirectory, "stdout.bin")).StartsWith("git version ", StringComparison.Ordinal),
+                    "Three-observer actual Git payload failed.");
+                Assert(result.Processes.Any(identity => identity.Pid == nested.RootPid && identity.ParentPid == result.RootPid &&
+                    identity.StartTicks is not null && identity.CommandLine.Length > 0 && identity.ScopeId == nested.OwnershipId),
+                    "Three-observer Git lacks independent caller native identity.");
+                var audit = ProcessAudit.Run([result.OutputDirectory, nested.OutputDirectory], new Budget(5, null, cancellation.Token));
+                Assert(audit.Status == "PASS_current_recorded_task_identities_absent_or_reused", "Three-observer immutable native audit failed.");
+            });
+            check("execution missing declared ancestor ACK rejects actual native broker before payload", () =>
+            {
+                foreach (var malformed in new AdmissionObserver[][] { null!, [null!], [new()] })
+                {
+                    var invalid = Request("success"); invalid.LinuxObservers = malformed;
+                    var refused = Execute(invalid);
+                    Assert(refused.Status == "FAIL" && refused.RootPid is null && refused.Processes.Length == 0,
+                        "Null or incomplete Linux observer declaration started a native payload.");
+                }
+                var inherited = AncestorAdmission.Read(); Assert(inherited.Length > 0, "Actual outer native observer required for this check.");
+                var directory = Path.Combine(inherited[0].OutputDirectory, "missing-ack-observer");
+                Assert(!Path.Exists(directory), "Foreign missing-ACK fixture directory preserved."); Directory.CreateDirectory(directory);
+                var scope = Guid.NewGuid().ToString("N");
+                using (var marker = new FileStream(Path.Combine(directory, "ownership.json"), FileMode.CreateNew, FileAccess.Write, FileShare.Read))
+                    marker.Write(Encoding.UTF8.GetBytes(scope));
+                var actual = ProcessObserver.Observe(Environment.ProcessId);
+                var caller = new ExecutionIdentity { Pid = actual.Pid, Platform = "linux", ParentPid = actual.ParentPid, StartTicks = actual.StartTicks,
+                    BootId = actual.BootId, CommandLine = actual.CommandLine!, Ownership = "launcher" };
+                var observer = AncestorAdmission.Declare(directory, scope, caller, new Budget(5, null, cancellation.Token));
+                var request = Request("success"); request.LinuxObservers = [observer];
+                var result = Execute(request); Clean(result);
+                var stderr = File.ReadAllText(Path.Combine(result.OutputDirectory, "stderr.bin"));
+                Assert(result.Status == "FAIL" && result.ExitCode != 0 && result.StandardOutputBytes == 0 &&
+                    stderr.Contains("stage=broker", StringComparison.Ordinal) && stderr.Contains("missing_observers=" + Environment.ProcessId + "/" + scope, StringComparison.Ordinal),
+                    "An actual broker executed payload or lost exact missing ancestor failure evidence.");
+                Assert(result.Processes.All(identity => identity.AfterExecCommandLine is null), "Missing ACK broker executed its declared payload.");
+            });
+        }
         check("execution quotes spaces Unicode and literal shell syntax argv", () =>
         {
             var request = Request("success"); request.ArgumentList = ["success", "a b", "quote\"slash\\", "中文", "$HOME $(literal) ; | &&"];

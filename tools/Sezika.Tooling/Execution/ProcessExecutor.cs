@@ -69,6 +69,7 @@ internal static class ProcessExecutor
             if (OperatingSystem.IsWindows()) session = new WindowsExecutionSession(request, environment);
             else if (OperatingSystem.IsLinux())
             {
+                AncestorAdmission.Attach(request, environment, result.OwnershipId, result.Launcher!, budget);
                 Directory.CreateDirectory(gate); environment["SEZIKA_START_GATE"] = gate;
                 var config = Path.Combine(request.OutputDirectory, "broker.json");
                 WriteNew(config, JsonSerializer.SerializeToUtf8Bytes(new BrokerConfiguration
@@ -98,6 +99,7 @@ internal static class ProcessExecutor
             records.Add(root.Pid, root); session.Register(root);
             WriteNew(Path.Combine(request.OutputDirectory, "registered.json"), JsonSerializer.SerializeToUtf8Bytes(records.Values.ToArray(), ExecutionJsonContext.Default.ExecutionIdentityArray));
             snapshotCount = records.Count;
+            if (session is LinuxExecutionSession initialLinux) AncestorAdmission.Publish(request.OutputDirectory, result.OwnershipId, records.Values, initialLinux, budget);
             Check(request, budget, cancellation, clock);
             session.Release();
             result.ExecutionStatus = "RUNNING";
@@ -115,7 +117,8 @@ internal static class ProcessExecutor
                 {
                     ObserveMembers(session, records, request, budget, errors, pendingRegistrations);
                     Snapshot();
-                    if (session is LinuxExecutionSession linux) linux.AcknowledgeWatchdog();
+                    if (session is LinuxExecutionSession linux)
+                    { AncestorAdmission.Publish(request.OutputDirectory, result.OwnershipId, records.Values, linux, budget); linux.AcknowledgeWatchdog(records); }
                     nextObservation = clock.Elapsed.TotalSeconds + .2;
                 }
                 if (session.TryExit(out var code))
@@ -164,7 +167,10 @@ internal static class ProcessExecutor
                         cleanupBudget.Check();
                         ObserveMembers(session, records, request, cleanupBudget, errors, pendingRegistrations);
                         Snapshot();
-                        if (session is LinuxExecutionSession linux) linux.AcknowledgeWatchdog();
+                        if (session is LinuxExecutionSession linux)
+                        { AncestorAdmission.Publish(request.OutputDirectory, result.OwnershipId, records.Values, linux, cleanupBudget); linux.AcknowledgeWatchdog(records); }
+                        if (session is LinuxExecutionSession admissionCleanup && !admissionCleanup.PrepareTermination(records, cleanupBudget))
+                        { await Task.Delay(20, CancellationToken.None).ConfigureAwait(false); continue; }
                         session.Terminate();
                         Drain(session, false, stdout!, buffer, request.MaximumOutputBytes, ref outputDone, result, false);
                         Drain(session, true, stderr!, buffer, request.MaximumOutputBytes, ref errorDone, result, false);
@@ -271,8 +277,10 @@ internal static class ProcessExecutor
         {
             budget.Check();
             if (pair.Key.Length is < 1 or > 256 || pair.Key.Contains('=') || pair.Key.Contains('\0') || (pair.Value?.Length ?? 0) > 65536 || pair.Value?.Contains('\0') == true ||
-                pair.Key is "SEZIKA_START_GATE" or "SEZIKA_EXECUTION_ID") throw new ArgumentException("Unsafe or reserved environment overlay.");
+                pair.Key is "SEZIKA_START_GATE" or "SEZIKA_EXECUTION_ID" or AncestorAdmission.EnvironmentName) throw new ArgumentException("Unsafe or reserved environment overlay.");
         }
+        if (request.LinuxObservers is null || request.LinuxObservers.Length > 64 || (!OperatingSystem.IsLinux() && request.LinuxObservers.Length != 0))
+            throw new ArgumentException("Linux observers require Linux and at most64 explicit declarations.");
         foreach (var path in new[] { request.CancelFile, request.StopFile })
             if (path is not null) { if (!Path.IsPathFullyQualified(path)) throw new ArgumentException("Absolute cancellation/STOP paths required."); SafePaths.NoLinks(path, budget); }
         if (request.NestedBrokers.Length > 4) throw new ArgumentException("Nested broker allowlist bound4.");
@@ -362,6 +370,8 @@ internal static class ProcessExecutor
                     // A NEW_PROCESS event whose complete identity was never
                     // observed is still UNKNOWN after exit, not fabricated proof.
                     if (session is WindowsExecutionSession incompleteWindows && incompleteWindows.NotifiedPids().Contains(pid)) continue;
+                    if (session is LinuxExecutionSession)
+                        pendingRegistrations.TryAdd(pid, "Owned Linux member disappeared before complete native birth/parent/argv registration.");
                     pending.Remove(pid); progress = true; continue;
                 }
                 if (actual.State != "Present") continue;
@@ -375,6 +385,11 @@ internal static class ProcessExecutor
                 if (!retainedExitedParent && (liveParent.State != "Present" || (parent.Started is not null && parent.Started != liveParent.Started) ||
                     (parent.StartTicks is not null && (parent.StartTicks != liveParent.StartTicks || parent.BootId != liveParent.BootId))))
                     continue;
+                if (session is LinuxExecutionSession)
+                {
+                    actual = LinuxExecutionSession.ObserveRegistrationCandidate(actual, liveParent.CommandLine, budget);
+                    if (!CompleteIdentity(actual)) continue;
+                }
                 if (parent.ParentChain.Length >= 64) throw new IOException("Parent-chain depth exceeded.");
                 var identity = Identity(actual, parent.ParentChain.Append(parent.Pid).ToArray(), session.Ownership);
                 identity.ScopeId = parent.ScopeId;
@@ -402,6 +417,7 @@ internal static class ProcessExecutor
                         errors.Add(refusal); identity.ObservationNotes = [refusal];
                     }
                 }
+                if (session is LinuxExecutionSession registration && !registration.ReadyForRegistration(identity)) continue;
                 session.Register(identity);
                 if (pendingRegistrations.Remove(pid, out var previous)) identity.ObservationNotes = ["Later complete native birth/parent/argv registration resolves " + previous];
                 records.Add(pid, identity); pending.Remove(pid); progress = true;
@@ -412,7 +428,9 @@ internal static class ProcessExecutor
         {
             if (session is WindowsExecutionSession diagnostics)
                 foreach (var pid in pending) pendingRegistrations[pid] = diagnostics.NotificationDetail(pid);
-            else errors.Add("UNKNOWN parent chain/argv for owned members: " + string.Join(',', pending.Order()));
+            else
+                foreach (var pid in pending)
+                    pendingRegistrations.TryAdd(pid, "Linux owned member lacks complete independently observed native birth/parent/argv admission.");
         }
         foreach (var pid in members.Where(records.ContainsKey))
         {
@@ -578,7 +596,10 @@ internal static class ProcessExecutor
             throw new IOException("Broker parent death protection or identity failed.");
         ValidateExecutable(config.Executable, budget); ValidateArguments(config.ArgumentList);
         StartupGate.Wait(cancellation);
+        AncestorAdmission.RequireActive(config.OutputDirectory, config.OwnershipId, budget);
+        _ = AncestorAdmission.Wait(budget, cancellation, "broker", cancelDirectory: config.OutputDirectory);
         LinuxWatchdog.Start(config, budget, cancellation);
+        AncestorAdmission.RequireActive(config.OutputDirectory, config.OwnershipId, budget);
         var environment = Environment.GetEnvironmentVariables().Cast<DictionaryEntry>().Select(e => (string)e.Key + "=" + (string?)e.Value).ToArray();
         using var argv = new NativeUtf8Vector(new[] { config.Executable }.Concat(config.ArgumentList));
         using var env = new NativeUtf8Vector(environment);

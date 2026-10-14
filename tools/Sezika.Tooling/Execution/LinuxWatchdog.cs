@@ -15,6 +15,7 @@ internal static class LinuxWatchdog
     internal static unsafe void Start(BrokerConfiguration broker, Budget budget, CancellationToken cancellation)
     {
         budget.Check();
+        AncestorAdmission.RequireActive(broker.OutputDirectory, broker.OwnershipId, budget);
         ProcessExecutor.ValidateExecutable(broker.WatchdogExecutable, budget);
         var observation = ProcessObserver.Observe(Environment.ProcessId);
         if (observation.State != "Present" || observation.StartTicks is null || observation.ParentPid != broker.ParentPid)
@@ -31,7 +32,8 @@ internal static class LinuxWatchdog
         var descriptor = checked((int)nullFile.SafeFileHandle.DangerousGetHandle());
         var actions = stackalloc byte[512]; var attributes = stackalloc byte[512];
         new Span<byte>(actions, 512).Clear(); new Span<byte>(attributes, 512).Clear();
-        var actionsReady = false; var attributesReady = false;
+        var actionsReady = false; var attributesReady = false; var spawned = false;
+        Write(Path.Combine(broker.OutputDirectory, "watchdog.spawning"), Encoding.ASCII.GetBytes(broker.OwnershipId));
         try
         {
             Check(ExecutionNative.posix_spawn_file_actions_init(actions)); actionsReady = true;
@@ -45,9 +47,16 @@ internal static class LinuxWatchdog
             fixed (nint* arguments = argv.Pointers)
             fixed (nint* environment = env.Pointers)
             {
+                AncestorAdmission.RequireActive(broker.OutputDirectory, broker.OwnershipId, budget);
                 Check(ExecutionNative.posix_spawn(out var pid, broker.WatchdogExecutable, actions, attributes, arguments, environment));
+                spawned = true;
                 Write(Path.Combine(broker.OutputDirectory, "watchdog.pid"), Encoding.ASCII.GetBytes(pid.ToString(CultureInfo.InvariantCulture)));
             }
+        }
+        catch
+        {
+            if (!spawned) Write(Path.Combine(broker.OutputDirectory, "watchdog.not-spawned"), Encoding.ASCII.GetBytes(broker.OwnershipId));
+            throw;
         }
         finally
         {
@@ -67,13 +76,13 @@ internal static class LinuxWatchdog
     internal static int Run(string configurationPath, CancellationToken cancellation)
     {
         if (!OperatingSystem.IsLinux()) throw new PlatformNotSupportedException("Linux ownership watchdog.");
-        var errors = new List<string>(); var clock = Stopwatch.StartNew();
+        var errors = new List<string>(); var rootExitProofs = new List<string>(); var clock = Stopwatch.StartNew();
         var configPath = Path.GetFullPath(configurationPath);
         if (new FileInfo(configPath).Length > 262144) throw new InvalidDataException("Watchdog configuration byte bound exceeded.");
         var config = JsonSerializer.Deserialize(File.ReadAllBytes(configPath), ExecutionJsonContext.Default.WatchdogConfiguration) ?? throw new InvalidDataException("Missing watchdog configuration.");
         var broker = config.Broker;
         if (broker.OwnershipId != Environment.GetEnvironmentVariable("SEZIKA_EXECUTION_ID") || broker.MaximumSeconds is < 1 or > 86400 ||
-            broker.CleanupSeconds is < 1 or > 30 || broker.MaximumProcesses is < 1 or > 256 || config.Root.StartTicks is null)
+            broker.CleanupSeconds is < 1 or > 30 || broker.MaximumProcesses is < 1 or > 256 || config.Root is null || config.Root.StartTicks is null)
             throw new InvalidDataException("Watchdog ownership or bounds differ.");
         if (ExecutionNative.prctl(1, 0, 0, 0, 0) != 0) throw new IOException("Watchdog must survive parent death.");
         var result = new WatchdogResult { Pid = Environment.ProcessId };
@@ -90,15 +99,25 @@ internal static class LinuxWatchdog
                 var actual = LinuxExecutionSession.TryStat(broker.ParentPid);
                 if (actual is null || actual.Value.Start != broker.Launcher?.StartTicks) { parent.Dispose(); parent = null; }
             }
-            Register(config.Root, descriptors);
-            Write(Path.Combine(broker.OutputDirectory, "watchdog.ready"), Encoding.ASCII.GetBytes(Environment.ProcessId.ToString(CultureInfo.InvariantCulture)));
+            Register(config.Root, descriptors, requireNativeRoot: true);
+            rootExitProofs.Add("FULL_NATIVE_ROOT_PINNED pid=" + config.Root.Pid + ";ticks=" + config.Root.StartTicks + ";boot=" + config.Root.BootId +
+                ";parent=" + config.Root.ParentPid + ";scope=" + config.Root.ScopeId + ";argv_sha256=" +
+                Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(Encoding.UTF8.GetBytes(config.Root.CommandLine))));
             ready = true;
+            var admitted = false;
+            try { admitted = AncestorAdmission.Wait(new Budget(5, null, cancellation), cancellation, "watchdog",
+                () => parent is null || Exited(parent) || Exited(descriptors[config.Root.Pid])); }
+            catch (Exception admission) when (admission is IOException or UnauthorizedAccessException or InvalidDataException or JsonException or InvalidOperationException or TimeoutException or OperationCanceledException)
+            { result.Reason = "ANCESTOR_ADMISSION_FAILED"; errors.Add(admission.GetType().Name + ": " + admission.Message); }
+            if (admitted)
+                Write(Path.Combine(broker.OutputDirectory, "watchdog.ready"), Encoding.ASCII.GetBytes(Environment.ProcessId.ToString(CultureInfo.InvariantCulture)));
             // <=864,051 polls AND<=86,405 seconds,100ms backoff and cancellation.
-            for (var poll = 0; poll < (broker.MaximumSeconds + 5) * 10 + 1 && clock.Elapsed.TotalSeconds < broker.MaximumSeconds + 5; poll++)
+            for (var poll = 0; poll < (broker.MaximumSeconds + 5) * 10 + 1 && clock.Elapsed.TotalSeconds < broker.MaximumSeconds + 5 && result.Reason.Length == 0; poll++)
             {
                 if (cancellation.IsCancellationRequested) { result.Reason = "WATCHDOG_CANCELLED"; break; }
                 if (parent is null || Exited(parent)) { result.Reason = "SUPERVISOR_EXITED"; break; }
-                if (Exited(descriptors[config.Root.Pid])) { result.Reason = "ROOT_EXITED"; break; }
+                if (Exited(descriptors[config.Root.Pid], out var events))
+                { result.Reason = "ROOT_EXITED"; RootExitProof(config.Root, events, 0, "root-exit-poll", rootExitProofs); break; }
                 if (cancellation.WaitHandle.WaitOne(100)) { result.Reason = "WATCHDOG_CANCELLED"; break; }
             }
             if (result.Reason.Length == 0) result.Reason = "WATCHDOG_DEADLINE";
@@ -109,7 +128,7 @@ internal static class LinuxWatchdog
                 for (var discovery = 0; discovery < Math.Min(64, broker.MaximumProcesses) && cleanup.Elapsed.TotalSeconds < broker.CleanupSeconds; discovery++)
                 {
                     var before = descriptors.Count;
-                    Discover(config, identities, descriptors, errors, cleanup);
+                    Discover(config, identities, descriptors, errors, rootExitProofs, cleanup);
                     if (discovery > 0 && before == descriptors.Count) { stable = true; break; }
                 }
                 if (!stable) throw new IOException("Stopped ownership inventory did not stabilize within count/time bounds.");
@@ -125,7 +144,7 @@ internal static class LinuxWatchdog
                 result.RemainingLive = 0; result.ZombiesPendingReap = 0;
                 foreach (var identity in identities.Values)
                 {
-                    var actual = LinuxExecutionSession.TryStat(identity.Pid);
+                    var actual = RegisteredRootStat(config, descriptors, identity.Pid, "remaining-inventory", rootExitProofs);
                     if (actual is null || actual.Value.Start != identity.StartTicks) continue;
                     if (actual.Value.State is "Z" or "X") result.ZombiesPendingReap++; else result.RemainingLive++;
                 }
@@ -133,19 +152,20 @@ internal static class LinuxWatchdog
                 Thread.Sleep(100);
             }
         }
-        catch (Exception error) when (error is IOException or UnauthorizedAccessException or InvalidDataException or JsonException or InvalidOperationException)
+        catch (Exception error) when (error is IOException or UnauthorizedAccessException or InvalidDataException or JsonException or InvalidOperationException or TimeoutException or OperationCanceledException)
         { errors.Add(error.GetType().Name + ": " + error.Message); }
         finally
         {
             parent?.Dispose(); foreach (var descriptor in descriptors.Values) descriptor.Dispose();
             result.Errors = errors.Distinct(StringComparer.Ordinal).ToArray();
+            result.RootExitProofs = rootExitProofs.Distinct(StringComparer.Ordinal).ToArray();
             if (ready) Write(Path.Combine(broker.OutputDirectory, "watchdog-result.json"), JsonSerializer.SerializeToUtf8Bytes(result, ExecutionJsonContext.Default.WatchdogResult));
         }
         return result.Status == "TERMINATED_PENDING_PARENT_REAP" ? 0 : 1;
     }
 
     private static void Discover(WatchdogConfiguration config, Dictionary<int, ExecutionIdentity> identities, Dictionary<int, ExecutionFd> descriptors,
-        List<string> errors, Stopwatch cleanup)
+        List<string> errors, List<string> rootExitProofs, Stopwatch cleanup)
     {
         var count = 0; var scan = Stopwatch.StartNew();
         foreach (var path in Directory.EnumerateFiles(config.Broker.OutputDirectory, "registered*.json", SearchOption.TopDirectoryOnly))
@@ -166,7 +186,7 @@ internal static class LinuxWatchdog
         {
             if (++count > 8192 || scan.Elapsed.TotalSeconds >= 2 || cleanup.Elapsed.TotalSeconds >= config.Broker.CleanupSeconds) throw new IOException("Watchdog process inventory bound.");
             if (!int.TryParse(Path.GetFileName(directory), out var pid) || pid == Environment.ProcessId) continue;
-            var stat = LinuxExecutionSession.TryStat(pid);
+            var stat = RegisteredRootStat(config, descriptors, pid, "discovery-stat", rootExitProofs);
             if (stat is null) continue;
             var alreadyKnown = identities.TryGetValue(pid, out var recorded) && stat.Value.Start == recorded.StartTicks;
             if (!alreadyKnown)
@@ -199,8 +219,18 @@ internal static class LinuxWatchdog
                     errors.Add("pidfd stop failed: " + pid);
         }
     }
-    private static void Register(ExecutionIdentity identity, Dictionary<int, ExecutionFd> descriptors)
+    private static void Register(ExecutionIdentity identity, Dictionary<int, ExecutionFd> descriptors, bool requireNativeRoot = false)
     {
+        if (requireNativeRoot)
+        {
+            var actual = ProcessObserver.Observe(identity.Pid);
+            if (identity.Platform != "linux" || identity.StartTicks is null || !Guid.TryParse(identity.BootId, out _) || identity.ParentPid <= 0 ||
+                identity.ParentChain is null || identity.ParentChain.Length is < 1 or > 64 || identity.ParentChain[^1] != identity.ParentPid ||
+                string.IsNullOrEmpty(identity.CommandLine) || !Guid.TryParseExact(identity.ScopeId, "N", out _) || actual.State != "Present" ||
+                actual.StartTicks != identity.StartTicks || actual.BootId != identity.BootId || actual.ParentPid != identity.ParentPid ||
+                actual.CommandLine != identity.CommandLine || LinuxExecutionSession.ExecutionScope(identity.Pid) != identity.ScopeId)
+                throw new IOException("Watchdog root complete native birth/parent/argv/scope differs before retained pidfd registration.");
+        }
         var opened = ExecutionNative.PidFdOpen(434, identity.Pid, 0);
         if (opened < 0) throw new IOException("Watchdog pidfd acquisition failed.");
         var descriptor = new ExecutionFd(checked((int)opened));
@@ -208,12 +238,35 @@ internal static class LinuxWatchdog
         if (stat is null || stat.Value.Start != identity.StartTicks) { descriptor.Dispose(); throw new IOException("Watchdog PID birth changed while acquiring pidfd."); }
         descriptors.Add(identity.Pid, descriptor);
     }
-    private static bool Exited(ExecutionFd descriptor)
+    private static (int Parent, int Group, ulong Start, string State)? RegisteredRootStat(WatchdogConfiguration config,
+        Dictionary<int, ExecutionFd> descriptors, int pid, string stage, List<string> proofs)
+    {
+        try { return LinuxExecutionSession.TryStat(pid); }
+        catch (IOException error) when (error.HResult == 3 && pid == config.Root.Pid && descriptors.TryGetValue(pid, out var retained) && Exited(retained))
+        {
+            // ESRCH is native errno3 in IOException.HResult. Only this exact
+            // fully registered root's retained pidfd proves termination here;
+            // it never proves the independent parent's reaping completed.
+            _ = Exited(descriptors[pid], out var events); RootExitProof(config.Root, events, error.HResult, stage, proofs);
+            return null;
+        }
+    }
+    private static void RootExitProof(ExecutionIdentity root, short events, int errno, string stage, List<string> proofs)
+    {
+        if (proofs.Count >= 16) return;
+        var proof = "REGISTERED_ROOT_EXIT_NOT_PARENT_REAP_PROOF stage=" + stage + ";pid=" + root.Pid + ";ticks=" + root.StartTicks +
+            ";boot=" + root.BootId + ";parent=" + root.ParentPid + ";scope=" + root.ScopeId + ";pidfd_events=" + events + ";errno=" + errno;
+        if (!proofs.Contains(proof, StringComparer.Ordinal)) proofs.Add(proof);
+    }
+    private static bool Exited(ExecutionFd descriptor) => Exited(descriptor, out _);
+    private static bool Exited(ExecutionFd descriptor, out short events)
     {
         var poll = new ExecutionNative.PollFd { Descriptor = descriptor.Value, Events = 1 };
         var result = ExecutionNative.poll(ref poll, 1, 0);
         if (result < 0) throw new IOException("Watchdog pidfd poll failed.");
-        return result != 0;
+        if ((poll.Returned & (8 | 32)) != 0) throw new IOException("Watchdog pidfd poll is invalid or failed.");
+        events = checked((short)(poll.Returned & (1 | 16)));
+        return result > 0 && events != 0;
     }
     private static void Write(string path, byte[] bytes)
     {
