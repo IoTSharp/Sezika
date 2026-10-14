@@ -1,0 +1,250 @@
+{
+  "SchemaVersion": 1,
+  "Status": "PASS_input_admission_local_source_scope_only",
+  "Module": "input-admission",
+  "Scope": "完整 corpus 资产、policy/complete-scan/严格长度/父图与底座 readback，只读固定计划和实际摘要；真实 resident 在 GPU 启动前强制同计划及独立 profile 匹配。两平台 full14，包括真实 CLI 与 resident 共用 helper；没有运行真实 RunCore/GPU。不重算不可用的历史 scan-plan/chunk payload，不授予训练、许可、质量或发布批准。",
+  "SourceManifestSha256": "230130665280ad7d0905c74764c8683f7580d723e52c63002326826d1182dcf3",
+  "Sources": [
+    {
+      "Sha256": "2d95f0dcc62d454c5f1fc5a46202d8e60c321ebfb6e9b3d8c20cb9ba7461bf3c",
+      "Path": "tools/Sezika.Tooling/Tasks/CorpusInputAdmissionContracts.cs",
+      "Bytes": 2549
+    },
+    {
+      "Sha256": "50673bde50ef24b4ad7fcd98a27d303e0a198cfe86a4460cc1f1fb09fef8dc1d",
+      "Path": "tools/Sezika.Tooling/Tasks/CorpusInputAdmission.cs",
+      "Bytes": 36784
+    },
+    {
+      "Sha256": "b5a30ccaded45918cebf7753c4a593bb187c0faf23e7c4113f84f6d1b4c280bd",
+      "Path": "tools/Sezika.Tooling/Tasks/ResidentController.cs",
+      "Bytes": 21364
+    },
+    {
+      "Sha256": "abb40e099de5fc16e8c4a2ab9fdefe84725226fd0cdb739894d593acc98f4f0f",
+      "Path": "tests/Sezika.Tooling.Tests/CorpusInputAdmissionChecks.cs",
+      "Bytes": 31486
+    }
+  ],
+  "Runs": [
+    {
+      "Name": "23-windows-corpus-input-admission-tiny",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "windows",
+      "RawSha256": "9609b2f1c855d63ebf172cf580bb32a4d4d4e1b25a1a7b7e4ef158c1c1da4351",
+      "RawResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\requests-v17-prebind\\23-windows-corpus-input-admission-tiny\\native-execution\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\cases-v17-prebind\\23-windows-corpus-input-admission-tiny-32e781e669dc446baa27edc522f617ab\\checks.txt",
+      "Suite": "corpus-input-admission",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "1508f569a3e6a152aa649d0491dc7bf07451538bd4e4b4e142176b011e2f3282",
+      "Summary": "PASS checks=1; elapsed=0.250s; platform=Microsoft Windows NT 10.0.26300.0; native_aot=True",
+      "RootPid": 69280,
+      "Checks": 1,
+      "Status": "PASS",
+      "CheckNames": [
+        "input admission verifies the complete literal preparation graph"
+      ]
+    },
+    {
+      "Name": "24-windows-corpus-input-admission-full",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "windows",
+      "RawSha256": "138e0832532f189a541d2ffa8d6c1352e25027de5c488bdf5dfc8ccdc847c50e",
+      "RawResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\requests-v17-prebind\\24-windows-corpus-input-admission-full\\native-execution\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\cases-v17-prebind\\24-windows-corpus-input-admission-full-b504e942d08b42d3969b4fc73a11def9\\checks.txt",
+      "Suite": "corpus-input-admission",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "a418f171add198e6f24064b90052f9dc4afcb05f27fd5e6e4cdc49c29181080d",
+      "Summary": "PASS checks=14; elapsed=4.415s; platform=Microsoft Windows NT 10.0.26300.0; native_aot=True",
+      "RootPid": 71608,
+      "Checks": 14,
+      "Status": "PASS",
+      "CheckNames": [
+        "input admission verifies the complete literal preparation graph",
+        "input admission accepts legacy omitted false and zero defaults",
+        "input admission requires actual requested policy bytes",
+        "input admission rejects policy pin and policy schema changes",
+        "input admission rejects policy-less complete-scan bypass",
+        "input admission binds scan inputs to this tokenizer and parent",
+        "input admission retains complete denominator for a missing shard",
+        "input admission rejects changed base bytes and model commit",
+        "input admission is read only with an occupied cache directory",
+        "input admission propagates parent token and cancellation file",
+        "input admission preserves deadline and explicit resource bounds",
+        "input admission rejects duplicate unsafe absolute and falsely typed metadata",
+        "input admission CLI writes typed success and protects original inputs",
+        "resident admission caller binds independently pinned corpus and base identities"
+      ]
+    },
+    {
+      "Name": "23-linux-corpus-input-admission-tiny",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "linux",
+      "RawSha256": "6cf5f701db3c974a8b4c614afbff927d82a93e438c19f3e12d55d7948abfd939",
+      "RawResult": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\requests\\23-linux-corpus-input-admission-tiny\\native-execution\\result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\cases\\23-linux-corpus-input-admission-tiny\\checks.txt",
+      "Suite": "corpus-input-admission",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "de6c31a916922affe826b95a52efd9946f651a40552a0e1eae2b4fdbd3e8cc60",
+      "Summary": "PASS checks=1; elapsed=0.015s; platform=Unix 6.6.87.2; native_aot=True",
+      "RootPid": 2402514,
+      "Checks": 1,
+      "Status": "PASS",
+      "CheckNames": [
+        "input admission verifies the complete literal preparation graph"
+      ]
+    },
+    {
+      "Name": "24-linux-corpus-input-admission-full",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "linux",
+      "RawSha256": "365ba6bb8f1f82b978da3537ad9b603f67e4dfe3df2f2a66453389ca0df8603d",
+      "RawResult": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\requests\\24-linux-corpus-input-admission-full\\native-execution\\result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\cases\\24-linux-corpus-input-admission-full\\checks.txt",
+      "Suite": "corpus-input-admission",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "16764fb0c07cc926ee0d5b87ce861e596f0d09a80c69810dbed68f82f6f771c8",
+      "Summary": "PASS checks=14; elapsed=0.159s; platform=Unix 6.6.87.2; native_aot=True",
+      "RootPid": 2402544,
+      "Checks": 14,
+      "Status": "PASS",
+      "CheckNames": [
+        "input admission verifies the complete literal preparation graph",
+        "input admission accepts legacy omitted false and zero defaults",
+        "input admission requires actual requested policy bytes",
+        "input admission rejects policy pin and policy schema changes",
+        "input admission rejects policy-less complete-scan bypass",
+        "input admission binds scan inputs to this tokenizer and parent",
+        "input admission retains complete denominator for a missing shard",
+        "input admission rejects changed base bytes and model commit",
+        "input admission is read only with an occupied cache directory",
+        "input admission propagates parent token and cancellation file",
+        "input admission preserves deadline and explicit resource bounds",
+        "input admission rejects duplicate unsafe absolute and falsely typed metadata",
+        "input admission CLI writes typed success and protects original inputs",
+        "resident admission caller binds independently pinned corpus and base identities"
+      ]
+    }
+  ],
+  "CheckExecutions": 30.0,
+  "Resources": [
+    {
+      "Sha256": "e13c5d76d045f9cec5a209ef1533045b5829206c61b310ac1ca509b033d4b69c",
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\root-final-24-resource-coverage-v17.json"
+    },
+    {
+      "Sha256": "c1b7ffc3c5111f7fcce5e3290db28bc6062cbf21c95de4b92497c8722ec27cf9",
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-linux-modules-v1\\root-final-thirty-resource-coverage-v17.json"
+    }
+  ],
+  "RuntimeWindowsSha256": "cd4bb0cdd95dc5115098ece059125c79f5a689a24e379b19ae14238cd3a8ed89",
+  "RuntimeLinuxSha256": "a9077a77fcf65f3f685ca6feb9269fc20be4b026cdcb61324ea775ab252a0517",
+  "SdkPolicy": "Unpinned project SDK; actual tool identity recorded in raw build receipts",
+  "LocalNativeAot": true,
+  "FinalCallerRetirementAccepted": false,
+  "ServerLiveAcceptance": "NOT_RUN",
+  "FormalTrainingAccepted": false,
+  "ModelOrDataPublicationAccepted": false,
+  "HistoricalFailuresPreserved": true,
+  "Utc": "2026-10-14T22:06:01.1223107+00:00",
+  "ResidentSimulationRegression": {
+    "ActualClients": 4,
+    "Runs": [
+      {
+        "NativeSha256": "2000059e66d2e5e24b44c9a8d9787b1ad232290e4940b66eb2511063f032e1fe",
+        "ActualChecks": 1,
+        "Receipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-dataset-resident-v17-prep-v1\\cpu12-emitter-actual-v17-v1\\cpu-01-accepted.json",
+        "Checks": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-dataset-resident-v17-prep-v1\\cases\\01-windows-resident-tiny1-e1b43dac43b84151a6224b9ea1901e36\\checks.txt",
+        "ChecksSha256": "26f6340e8b1085c1ef6d7fa207f46a6e77f4f71237dfa7dec163590add778830",
+        "CheckNames": [
+          "Simulation tiny native CPU query has explicit labels and complete process cleanup"
+        ],
+        "Name": "cpu-01-accepted.json",
+        "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-dataset-resident-v17-prep-v1\\native-execution\\01-windows-resident-tiny1\\result.json",
+        "ReceiptSha256": "18913b9c1181c896331251043622fdfc06cf2341fc87705582624cb1d182f48d"
+      },
+      {
+        "NativeSha256": "7dd37d56608d8019b7b2cba3df6e98021167403442c8a4567269175f6dad8919",
+        "ActualChecks": 8,
+        "Receipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-dataset-resident-v17-prep-v1\\cpu12-emitter-actual-v17-v1\\cpu-02-accepted.json",
+        "Checks": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-dataset-resident-v17-prep-v1\\cases\\02-windows-resident-full8-5393f3d8e58845ea9f67fdaa9c4b2439\\checks.txt",
+        "ChecksSha256": "151a832cb9e8ee03521c13dc3acff7efa2351a80e35abb825df9b6ebccac5400",
+        "CheckNames": [
+          "Simulation tiny native CPU query has explicit labels and complete process cleanup",
+          "Simulation prepared first save restores exact inputs and reaches only the synthetic global cursor",
+          "Simulation source model dataset and prepared time mismatch reject before native launch",
+          "Simulation wrong profile and production admission refuse synthetic evidence",
+          "Simulation bad saved checkpoint bytes are rejected after a clean native exit",
+          "Simulation bad report input contract and missing simulation flag are rejected",
+          "Simulation human STOP permits a safe save and is preserved without hard termination",
+          "Simulation human CANCEL preserves failed receipts and reclaims the exact native tree"
+        ],
+        "Name": "cpu-02-accepted.json",
+        "NativeResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-dataset-resident-v17-prep-v1\\native-execution\\02-windows-resident-full8\\result.json",
+        "ReceiptSha256": "6874e72298460f9c75b73196169b7ceee83b0e3bcc397a6b1452509015fcafd5"
+      },
+      {
+        "NativeSha256": "fb844fb63efa47282530c84a82617fa59c5bd96a2fdcd1bcf4372a10c5cd241a",
+        "ActualChecks": 1,
+        "Receipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-dataset-resident-v17-prep-v1\\cpu12-emitter-actual-v17-v1\\cpu-07-accepted.json",
+        "Checks": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-dataset-resident-v17-ed9fdca73818488ebf98d8c55589f892\\cases\\13-linux-resident-tiny1-cb75ff94c158441cb1f8260c109f38d8\\checks.txt",
+        "ChecksSha256": "ae1a97bb5ee9ebd5f18fe17f186381186e373f035737725bb4c8b812d088b43e",
+        "CheckNames": [
+          "Simulation tiny native CPU query has explicit labels and complete process cleanup"
+        ],
+        "Name": "cpu-07-accepted.json",
+        "NativeResult": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-dataset-resident-v17-ed9fdca73818488ebf98d8c55589f892\\native-execution\\13-linux-resident-tiny1\\result.json",
+        "ReceiptSha256": "f261c6b81a2d6fa5dfac51be0ab66b00546841c0f4c6372c7d3b993fbea796de"
+      },
+      {
+        "NativeSha256": "71b4b84844b2e523990e60f9d743575bd6140080ea751906db89606ef025ae52",
+        "ActualChecks": 8,
+        "Receipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-dataset-resident-v17-prep-v1\\cpu12-emitter-actual-v17-v1\\cpu-08-accepted.json",
+        "Checks": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-dataset-resident-v17-ed9fdca73818488ebf98d8c55589f892\\cases\\14-linux-resident-full8-10a30418d7c64f41a26ed17f098dbf11\\checks.txt",
+        "ChecksSha256": "832e19ea8efb75067f4bf48a21d864727950a74da45eace4d78e530770570901",
+        "CheckNames": [
+          "Simulation tiny native CPU query has explicit labels and complete process cleanup",
+          "Simulation prepared first save restores exact inputs and reaches only the synthetic global cursor",
+          "Simulation source model dataset and prepared time mismatch reject before native launch",
+          "Simulation wrong profile and production admission refuse synthetic evidence",
+          "Simulation bad saved checkpoint bytes are rejected after a clean native exit",
+          "Simulation bad report input contract and missing simulation flag are rejected",
+          "Simulation human STOP permits a safe save and is preserved without hard termination",
+          "Simulation human CANCEL preserves failed receipts and reclaims the exact native tree"
+        ],
+        "Name": "cpu-08-accepted.json",
+        "NativeResult": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-dataset-resident-v17-ed9fdca73818488ebf98d8c55589f892\\native-execution\\14-linux-resident-full8\\result.json",
+        "ReceiptSha256": "d132cb2f040e2b40631ec2a2601e3a59c1a715f8938afbd9d58cad45c793ec4c"
+      }
+    ],
+    "ActualChecks": 18,
+    "Resources": [
+      {
+        "Sha256": "802d1302fd51692010d59b26c616724d768d95bb5b75a2de4d28ef465fc596eb",
+        "MatchingLive": 0,
+        "IdentityRecords": 65,
+        "Unknown": 0,
+        "Receipts": 12,
+        "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-dataset-resident-v17-prep-v1\\cpu12-emitter-actual-v17-v1\\resource-audits\\01-windows-cpu-report.json"
+      },
+      {
+        "Sha256": "64eeb6ea615043d100b0e9cda644fec29ca9923634652546488cbe8839d2a90c",
+        "MatchingLive": 0,
+        "IdentityRecords": 58,
+        "Unknown": 0,
+        "Receipts": 6,
+        "Path": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-dataset-resident-v17-ed9fdca73818488ebf98d8c55589f892\\resource-audits\\02-linux-cpu-report.json"
+      }
+    ],
+    "OriginalCpu01SummaryMisreadPreserved": true,
+    "OriginalAudit02OuterArgumentCountFailurePreserved": true,
+    "RealGpuOrTraining": "NOT_RUN",
+    "NestedPhysicalIdentityCoverage": "Separate PID/birth/parent proof; domain-specific scope/argv differences retained",
+    "Status": "PASS_18_NATIVE_AOT_RESIDENT_CPU_SIMULATION_CHECKS",
+    "Cpu01Reruns": 0
+  }
+}

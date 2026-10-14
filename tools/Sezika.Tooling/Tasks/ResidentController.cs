@@ -5,7 +5,10 @@ using System.Text.Json.Serialization;
 
 namespace Sezika.Tooling;
 
-internal sealed record ResidentRequest(string TaskDirectory, string TrainerExecutable, string TrainerSha256, string PlanPath, string PlanSha256, string ProfilePath, string ProfileSha256, string GpuUuid, string NvidiaSmiExecutable, string NvidiaSmiSha256, long StageUpdates, int MaximumSeconds, int CheckpointEvery, string? ResumeDirectory = null, CheckpointVerificationRequest? ResumeIdentity = null, string? BrokerExecutable = null);
+internal sealed record ResidentRequest(string TaskDirectory, string TrainerExecutable, string TrainerSha256, string PlanPath, string PlanSha256, string ProfilePath, string ProfileSha256, string GpuUuid, string NvidiaSmiExecutable, string NvidiaSmiSha256, long StageUpdates, int MaximumSeconds, int CheckpointEvery, string? ResumeDirectory = null, CheckpointVerificationRequest? ResumeIdentity = null, string? BrokerExecutable = null)
+{
+    public CorpusInputAdmissionRequest? InputAdmission { get; init; }
+}
 internal sealed record ResidentReceipt(string Status, string RunId, long CompletedUpdates, long GlobalUpdates, string StopReason, string ProcessReceipt, string CheckpointDirectory, string CheckpointSha256, string CursorSha256, bool FullEpochCoverage, bool ModelQualityAccepted = false, bool Calibrated = false, bool Published = false, bool ControllerSimulation = false);
 
 internal static class ResidentController
@@ -15,6 +18,26 @@ internal static class ResidentController
     // No command-line route exposes the simulation entry. Tests exercise the
     // same controller/process/checkpoint code with explicitly synthetic assets.
     internal static Task<ResidentReceipt> RunSimulationAsync(ResidentRequest request, Budget budget, CancellationToken cancellation) => RunCoreAsync(request, budget, cancellation, true);
+
+    internal static CorpusInputAdmissionReport ValidateInputAdmission(ResidentRequest request, CheckpointInputContract independentInputs, Budget budget)
+    {
+        budget.Check();
+        var admission = request.InputAdmission ?? throw new InvalidDataException("Real resident launch requires explicit full corpus input admission.");
+        var pathComparison = OperatingSystem.IsWindows() ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal;
+        if (!Path.GetFullPath(admission.PlanPath).Equals(Path.GetFullPath(request.PlanPath), pathComparison) ||
+            admission.PlanSha256 != request.PlanSha256)
+            throw new InvalidDataException("Full corpus input admission must bind the same resident plan and SHA.");
+        var admitted = CorpusInputAdmission.Validate(admission, budget);
+        if (admitted.Status != "PASS_full_corpus_inputs_only")
+            throw new InvalidDataException("Full corpus input admission did not pass: " + admitted.Failure);
+        if (!string.Equals(admitted.PlanSha256, independentInputs.PlanSha256, StringComparison.OrdinalIgnoreCase) ||
+            !string.Equals(admitted.CorpusManifestSha256, independentInputs.DataManifestSha256, StringComparison.OrdinalIgnoreCase) ||
+            !string.Equals(admitted.RecordsSha256, independentInputs.RecordsSha256, StringComparison.OrdinalIgnoreCase) ||
+            !string.Equals(admitted.BaseEncoderSha256, independentInputs.BaseEncoderSha256, StringComparison.OrdinalIgnoreCase) ||
+            !string.Equals(admitted.TokenizerSha256, independentInputs.TokenizerSha256, StringComparison.OrdinalIgnoreCase))
+            throw new InvalidDataException("Actual admitted corpus/base/tokenizer identity differs from the independently pinned profile.");
+        return admitted;
+    }
 
     private static async Task<ResidentReceipt> RunCoreAsync(ResidentRequest request, Budget budget, CancellationToken cancellation, bool simulation)
     {
@@ -53,6 +76,7 @@ internal static class ResidentController
         }
         else if (request.ResumeIdentity is not null) throw new InvalidDataException("Resume identity supplied without a predecessor.");
         if (initial >= global || request.StageUpdates > global - initial) throw new InvalidDataException("Resident stage cannot alter or exceed the remaining immutable plan.");
+        if (!simulation) _ = ValidateInputAdmission(request, independentInputs, budget);
         var output = Path.Combine(root, "resident-" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(output);
         var leaseDirectory = Path.GetFullPath(simulation ? Path.Combine(root, "simulation-leases") : Path.Combine(Path.GetTempPath(), "sezika-gpu-leases"));

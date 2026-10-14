@@ -22,7 +22,7 @@ internal sealed record ModelMirrorCommandRequest(ModelMirrorRequest Mirror, stri
 
 internal static class MigrationCommands
 {
-    internal static readonly string[] Commands = ["oracle batches", "inventory review", "git run", "transport download", "transport prepare", "transport verify", "transport reassemble", "publication preview", "publication prepare", "publication upload", "publication commit", "publication validate-card", "task prepare", "task resident", "task snapshot", "source acquire", "model mirror", "model verify", "bundle inputs", "bundle build", "bundle freeze", "bundle install", "archive pack", "checkpoint verify", "host inspect", "host sample-gpu", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind", "validation profile", "validation summarize", "validation data-admission", "validation language-audit", "validation batch", "validation near-ties"];
+    internal static readonly string[] Commands = ["oracle batches", "inventory review", "git run", "transport download", "transport prepare", "transport verify", "transport reassemble", "publication preview", "publication prepare", "publication upload", "publication commit", "publication validate-card", "task prepare", "task validate-inputs", "task resident", "task snapshot", "source acquire", "model mirror", "model verify", "bundle inputs", "bundle build", "bundle freeze", "bundle install", "archive pack", "checkpoint verify", "host inspect", "host sample-gpu", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind", "validation profile", "validation summarize", "validation data-admission", "validation language-audit", "validation batch", "validation near-ties"];
     internal static int Run(string command, string requestPath, string output, Budget budget, CancellationToken cancellation)
     {
         if (command.StartsWith("validation ", StringComparison.Ordinal)) return RunValidation(command, requestPath, output, budget);
@@ -56,6 +56,16 @@ internal static class MigrationCommands
             case "inventory review": return Save(RetirementReview.Review(Read(RetirementJson.Default.RetirementReviewRequest), budget), RetirementJson.Default.RetirementReport);
             case "git run": return Save(NativeGit.RunAsync(Read(GitJsonContext.Default.GitRequest), budget, cancellation).GetAwaiter().GetResult(), GitJsonContext.Default.GitReceipt);
             case "task prepare": return Save(TaskOperations.Prepare(Read(TaskJsonContext.Default.TaskPreparationRequest), budget), TaskJsonContext.Default.PreparedTask);
+            case "task validate-inputs":
+                var inputRequest = Read(CorpusInputAdmissionJsonContext.Default.CorpusInputAdmissionRequest);
+                ProtectOutputRoot(Path.GetDirectoryName(Path.GetFullPath(inputRequest.PlanPath))!);
+                ProtectOutputRoot(Path.GetDirectoryName(Path.GetFullPath(inputRequest.SourcePolicyPath))!);
+                ProtectOutputRoot(Path.GetDirectoryName(Path.GetFullPath(inputRequest.ModelReadbackReceiptPath))!);
+                var inputAdmission = CorpusInputAdmission.Validate(inputRequest, budget);
+                if (!string.IsNullOrWhiteSpace(inputAdmission.CorpusRoot)) ProtectOutputRoot(inputAdmission.CorpusRoot);
+                if (!string.IsNullOrWhiteSpace(inputAdmission.BaseModelRoot)) ProtectOutputRoot(inputAdmission.BaseModelRoot);
+                TaskOperations.WriteNew(output, inputAdmission, CorpusInputAdmissionJsonContext.Default.CorpusInputAdmissionReport);
+                return inputAdmission.Status == "PASS_full_corpus_inputs_only" ? 0 : 1;
             case "task resident": return Save(ResidentController.RunAsync(Read(ResidentJsonContext.Default.ResidentRequest), budget, cancellation).GetAwaiter().GetResult(), ResidentJsonContext.Default.ResidentReceipt);
             case "task snapshot":
                 var snapshot = Read(ReceiptSnapshotJson.Default.ReceiptSnapshotRequest);
