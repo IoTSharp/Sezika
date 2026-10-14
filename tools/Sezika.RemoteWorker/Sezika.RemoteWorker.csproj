@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <IsAotCompatible>true</IsAotCompatible>
+    <PublishAot>true</PublishAot>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Sezika.Tooling/Sezika.Tooling.csproj" />
+    <Compile Include="../Sezika.RemoteTool/RemoteContracts.cs" Link="RemoteContracts.cs" />
+    <Compile Include="../Sezika.RemoteTool/RemotePaths.cs" Link="RemotePaths.cs" />
+    <Compile Include="../Sezika.RemoteTool/BundleProof.cs" Link="BundleProof.cs" />
+    <Compile Include="../Sezika.RemoteTool/RemoteWorker.cs" Link="RemoteWorker.cs" />
+  </ItemGroup>
+  <Target Name="ExcludeReferencedToolingMetadataFromNativePublish" AfterTargets="ComputeFilesToPublish" Condition="'$(PublishAot)' == 'true'">
+    <ItemGroup>
+      <!-- Tooling code is compiled into the native image; these referenced-exe JIT metadata files are not worker runtime assets. -->
+      <ResolvedFileToPublish Remove="@(ResolvedFileToPublish->WithMetadataValue('RelativePath', 'Sezika.Tooling.pdb'))" />
+      <ResolvedFileToPublish Remove="@(ResolvedFileToPublish->WithMetadataValue('RelativePath', 'Sezika.Tooling.runtimeconfig.json'))" />
+    </ItemGroup>
+  </Target>
+</Project>

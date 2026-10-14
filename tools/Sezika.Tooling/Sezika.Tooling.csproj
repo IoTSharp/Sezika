@@ -9,5 +9,8 @@
   <ItemGroup>
     <InternalsVisibleTo Include="Sezika.Tooling.Tests" />
     <InternalsVisibleTo Include="Sezika.DatasetTool" />
+    <InternalsVisibleTo Include="Sezika.RemoteTool" />
+    <InternalsVisibleTo Include="Sezika.RemoteWorker" />
+    <InternalsVisibleTo Include="Sezika.SshFixture" />
   </ItemGroup>
 </Project>

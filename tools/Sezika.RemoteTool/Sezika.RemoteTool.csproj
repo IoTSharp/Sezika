@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <IsAotCompatible>false</IsAotCompatible>
+    <PublishAot>false</PublishAot>
+  </PropertyGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Sezika.SshFixture" />
+    <PackageReference Include="SSH.NET" Version="2026.0.0" />
+    <ProjectReference Include="../Sezika.Tooling/Sezika.Tooling.csproj" />
+  </ItemGroup>
+</Project>
