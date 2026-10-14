@@ -1,0 +1,131 @@
+{
+  "SchemaVersion": 1,
+  "Status": "PASS_receipt_snapshot_local_source_scope_only",
+  "Module": "receipt-snapshot",
+  "Scope": "只读具名小文件、原字节 Base64/SHA 和部分完成分母；Windows full7、Linux full8。快照不声称生产者原子性。",
+  "SourceManifestSha256": "230130665280ad7d0905c74764c8683f7580d723e52c63002326826d1182dcf3",
+  "Sources": [
+    {
+      "Sha256": "624ec866ea058b8f6da31a24e06620e96c0706d5a9c459994898da8f8b9b1193",
+      "Path": "tools/Sezika.Tooling/Tasks/ReceiptSnapshot.cs",
+      "Bytes": 6344
+    },
+    {
+      "Sha256": "47bfa1a9a07f92fd43e2737bd72f305a263d4e5bce022ee3d283087986c3d56a",
+      "Path": "tests/Sezika.Tooling.Tests/ReceiptSnapshotChecks.cs",
+      "Bytes": 6349
+    }
+  ],
+  "Runs": [
+    {
+      "Name": "01-windows-receipt-snapshot-tiny",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "windows",
+      "RawSha256": "d10b684d864629b427b5c40e0ba76efd53d90e4b922d5d1de38d47ad86583309",
+      "RawResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\requests-v17-prebind\\01-windows-receipt-snapshot-tiny\\native-execution\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\cases-v17-prebind\\01-windows-receipt-snapshot-tiny-20509a17fa0246cab24e707e6db2b27d\\checks.txt",
+      "Suite": "receipt-snapshot",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "d6586a421d80db34cc719f9f780753e08435afa6dd553045485c2702b149f4a8",
+      "Summary": "PASS checks=1; elapsed=0.007s; platform=Microsoft Windows NT 10.0.26300.0; native_aot=True",
+      "RootPid": 49784,
+      "Checks": 1,
+      "Status": "PASS",
+      "CheckNames": [
+        "receipt snapshot known abc bytes SHA256 and Base64 tiny"
+      ]
+    },
+    {
+      "Name": "02-windows-receipt-snapshot-full",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "windows",
+      "RawSha256": "a72fd426ea619d80e962022f559a3d3c5cc30731d8ab67ba149cf03f0dff11b6",
+      "RawResult": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\requests-v17-prebind\\02-windows-receipt-snapshot-full\\native-execution\\result.json",
+      "ChecksReceipt": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\cases-v17-prebind\\02-windows-receipt-snapshot-full-acc96507111c4b2e8ad8b619d32544b4\\checks.txt",
+      "Suite": "receipt-snapshot",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "09d25ec78b00e57b94a495b05b79822ea498b4542c8ac0497265595d51cb79c6",
+      "Summary": "PASS checks=7; elapsed=0.051s; platform=Microsoft Windows NT 10.0.26300.0; native_aot=True",
+      "RootPid": 13108,
+      "Checks": 7,
+      "Status": "PASS",
+      "CheckNames": [
+        "receipt snapshot known abc bytes SHA256 and Base64 tiny",
+        "receipt snapshot keeps original failed state bytes and source unchanged",
+        "receipt snapshot missing later input retains completed denominator",
+        "receipt snapshot rejects traversal script duplicate and invalid resource bounds",
+        "receipt snapshot per-file and total byte caps fail without false completion",
+        "receipt snapshot complete expected pins detect changed source",
+        "receipt snapshot parent cancellation precedes source reads"
+      ]
+    },
+    {
+      "Name": "01-linux-receipt-snapshot-tiny",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "linux",
+      "RawSha256": "308e5229784fb75e143142ad34f946e90042e8ec730dc242f1711d66a79f15b7",
+      "RawResult": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\requests\\01-linux-receipt-snapshot-tiny\\native-execution\\result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\cases\\01-linux-receipt-snapshot-tiny\\checks.txt",
+      "Suite": "receipt-snapshot",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "ad4264ff81cb82e61a8cdb3c03dc5179a077aff2428268c0162371961d0e81e5",
+      "Summary": "PASS checks=1; elapsed=0.010s; platform=Unix 6.6.87.2; native_aot=True",
+      "RootPid": 2401798,
+      "Checks": 1,
+      "Status": "PASS",
+      "CheckNames": [
+        "receipt snapshot known abc bytes SHA256 and Base64 tiny"
+      ]
+    },
+    {
+      "Name": "02-linux-receipt-snapshot-full",
+      "ExitCode": 0,
+      "RemainingProcesses": 0,
+      "Platform": "linux",
+      "RawSha256": "711e4361a89885b46b1d79df6400af035eb0ee44fa1a801aebb623ca52cc13bc",
+      "RawResult": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\requests\\02-linux-receipt-snapshot-full\\native-execution\\result.json",
+      "ChecksReceipt": "\\\\wsl.localhost\\Ubuntu\\tmp\\sezika-modules-v17-1db6474123094b2a9923b82be02edfc3\\cases\\02-linux-receipt-snapshot-full\\checks.txt",
+      "Suite": "receipt-snapshot",
+      "CleanupStatus": "PASS",
+      "ChecksSha256": "ae36a8f88ec1c1f4320fe09a129a2072d1d777e3f5ae279edbfd1c80353cbb57",
+      "Summary": "PASS checks=8; elapsed=0.016s; platform=Unix 6.6.87.2; native_aot=True",
+      "RootPid": 2401829,
+      "Checks": 8,
+      "Status": "PASS",
+      "CheckNames": [
+        "receipt snapshot known abc bytes SHA256 and Base64 tiny",
+        "receipt snapshot keeps original failed state bytes and source unchanged",
+        "receipt snapshot missing later input retains completed denominator",
+        "receipt snapshot rejects traversal script duplicate and invalid resource bounds",
+        "receipt snapshot per-file and total byte caps fail without false completion",
+        "receipt snapshot complete expected pins detect changed source",
+        "receipt snapshot parent cancellation precedes source reads",
+        "receipt snapshot rejects actual filesystem symbolic link"
+      ]
+    }
+  ],
+  "CheckExecutions": 17.0,
+  "Resources": [
+    {
+      "Sha256": "e13c5d76d045f9cec5a209ef1533045b5829206c61b310ac1ca509b033d4b69c",
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-windows-modules-v1\\root-final-24-resource-coverage-v17.json"
+    },
+    {
+      "Sha256": "c1b7ffc3c5111f7fcce5e3290db28bc6062cbf21c95de4b92497c8722ec27cf9",
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-runtime-v17-linux-modules-v1\\root-final-thirty-resource-coverage-v17.json"
+    }
+  ],
+  "RuntimeWindowsSha256": "cd4bb0cdd95dc5115098ece059125c79f5a689a24e379b19ae14238cd3a8ed89",
+  "RuntimeLinuxSha256": "a9077a77fcf65f3f685ca6feb9269fc20be4b026cdcb61324ea775ab252a0517",
+  "SdkPolicy": "Unpinned project SDK; actual tool identity recorded in raw build receipts",
+  "LocalNativeAot": true,
+  "FinalCallerRetirementAccepted": false,
+  "ServerLiveAcceptance": "NOT_RUN",
+  "FormalTrainingAccepted": false,
+  "ModelOrDataPublicationAccepted": false,
+  "HistoricalFailuresPreserved": true,
+  "Utc": "2026-10-14T22:06:00.5344837+00:00"
+}

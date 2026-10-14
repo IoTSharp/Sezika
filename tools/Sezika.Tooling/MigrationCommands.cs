@@ -16,7 +16,7 @@ internal sealed record PublicationCommitRequest(string SourceRoot, string Previe
 
 internal static class MigrationCommands
 {
-    internal static readonly string[] Commands = ["oracle batches", "inventory review", "git run", "transport download", "transport prepare", "transport verify", "transport reassemble", "publication preview", "publication prepare", "publication upload", "publication commit", "task prepare", "task resident", "bundle inputs", "bundle build", "bundle freeze", "bundle install", "archive pack", "checkpoint verify", "host inspect", "host sample-gpu", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind", "validation profile", "validation summarize", "validation data-admission", "validation language-audit", "validation batch", "validation near-ties"];
+    internal static readonly string[] Commands = ["oracle batches", "inventory review", "git run", "transport download", "transport prepare", "transport verify", "transport reassemble", "publication preview", "publication prepare", "publication upload", "publication commit", "task prepare", "task resident", "task snapshot", "bundle inputs", "bundle build", "bundle freeze", "bundle install", "archive pack", "checkpoint verify", "host inspect", "host sample-gpu", "corpus prepare", "corpus compose", "corpus queue", "corpus collect", "corpus admission", "corpus dataset", "corpus research", "corpus research-check", "corpus seed-check", "corpus inspect", "corpus estimate", "corpus bind", "validation profile", "validation summarize", "validation data-admission", "validation language-audit", "validation batch", "validation near-ties"];
     internal static int Run(string command, string requestPath, string output, Budget budget, CancellationToken cancellation)
     {
         if (command.StartsWith("validation ", StringComparison.Ordinal)) return RunValidation(command, requestPath, output, budget);
@@ -51,6 +51,12 @@ internal static class MigrationCommands
             case "git run": return Save(NativeGit.RunAsync(Read(GitJsonContext.Default.GitRequest), budget, cancellation).GetAwaiter().GetResult(), GitJsonContext.Default.GitReceipt);
             case "task prepare": return Save(TaskOperations.Prepare(Read(TaskJsonContext.Default.TaskPreparationRequest), budget), TaskJsonContext.Default.PreparedTask);
             case "task resident": return Save(ResidentController.RunAsync(Read(ResidentJsonContext.Default.ResidentRequest), budget, cancellation).GetAwaiter().GetResult(), ResidentJsonContext.Default.ResidentReceipt);
+            case "task snapshot":
+                var snapshot = Read(ReceiptSnapshotJson.Default.ReceiptSnapshotRequest);
+                ProtectOutputRoot(snapshot.SourceRoot);
+                var captured = ReceiptSnapshot.Capture(snapshot, budget);
+                TaskOperations.WriteNew(output, captured, ReceiptSnapshotJson.Default.ReceiptSnapshotReport);
+                return captured.Status.StartsWith("PASS", StringComparison.Ordinal) ? 0 : 1;
             case "bundle inputs": return Save(BundleBuild.InspectInputs(Read(BundleBuildJson.Default.BundleInputRequest), budget), BundleBuildJson.Default.BundleInputReceipt);
             case "bundle build": return Save(BundleBuild.BuildAsync(Read(BundleBuildJson.Default.BundleBuildRequest), budget, cancellation).GetAwaiter().GetResult(), TaskJsonContext.Default.BundleReceipt);
             case "bundle freeze": return Save(TaskOperations.Freeze(Read(TaskJsonContext.Default.BundleRequest), budget), TaskJsonContext.Default.BundleReceipt);
