@@ -1,0 +1,259 @@
+{
+  "Status": "PASS_COMPILED_PROOF_FIXTURE_ONLY",
+  "Planned": 8,
+  "Completed": 8,
+  "Passed": 8,
+  "Failed": 0,
+  "NotRun": 0,
+  "Cases": [
+    {
+      "Name": "real-pinned-source-build-positive-control",
+      "Status": "PASS",
+      "Steps": [
+        {
+          "Name": "shared-verifier-positive",
+          "Status": "PASS",
+          "ExpectedGate": "SOURCE_BUILD_ONLY",
+          "ObservedGate": "SOURCE_BUILD_ONLY",
+          "TargetPath": null,
+          "FixturePin": null
+        }
+      ],
+      "Reason": null
+    },
+    {
+      "Name": "undeclared-real-handwritten-source-rejected",
+      "Status": "PASS",
+      "Steps": [
+        {
+          "Name": "omitted-laya-forward-source",
+          "Status": "PASS",
+          "ExpectedGate": "PDB compiled C# source is undeclared or duplicate: /home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Laya/LayaForward.cs",
+          "ObservedGate": "PDB compiled C# source is undeclared or duplicate: /home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Laya/LayaForward.cs",
+          "TargetPath": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Laya/LayaForward.cs",
+          "FixturePin": null
+        }
+      ],
+      "Reason": null
+    },
+    {
+      "Name": "undeclared-real-generated-source-rejected",
+      "Status": "PASS",
+      "Steps": [
+        {
+          "Name": "omitted-real-generated-source",
+          "Status": "PASS",
+          "ExpectedGate": "PDB compiled C# source is undeclared or duplicate: /home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/obj/Release/net10.0/Sezika.ReferenceTool.GlobalUsings.g.cs",
+          "ObservedGate": "PDB compiled C# source is undeclared or duplicate: /home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/obj/Release/net10.0/Sezika.ReferenceTool.GlobalUsings.g.cs",
+          "TargetPath": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/obj/Release/net10.0/Sezika.ReferenceTool.GlobalUsings.g.cs",
+          "FixturePin": null
+        }
+      ],
+      "Reason": null
+    },
+    {
+      "Name": "omitted-real-build-input-rejected",
+      "Status": "PASS",
+      "Steps": [
+        {
+          "Name": "omitted-real-build-input",
+          "Status": "PASS",
+          "ExpectedGate": "Actual snapshot build input is omitted: /home/maikebing/sezika-t8-proof-v3b-20261014/source/Directory.Build.props",
+          "ObservedGate": "Actual snapshot build input is omitted: /home/maikebing/sezika-t8-proof-v3b-20261014/source/Directory.Build.props",
+          "TargetPath": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/Directory.Build.props",
+          "FixturePin": null
+        }
+      ],
+      "Reason": null
+    },
+    {
+      "Name": "real-managed-pe-guid-only-copy-rejected",
+      "Status": "PASS",
+      "Steps": [
+        {
+          "Name": "real-codeview-guid-only-one-byte-mutation",
+          "Status": "PASS",
+          "ExpectedGate": "Only1 byte in the actual16-byte CodeView GUID changes",
+          "ObservedGate": "offset=1157160; original=12d8ffef-fc21-4864-97bb-f49511f6f9c8; mutant=12d8ffee-fc21-4864-97bb-f49511f6f9c8; original PDB pin retained",
+          "TargetPath": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/bin/Release/net10.0/proof-guid-2a38c94bed8b4f8d9b24d0a607c85266/Sezika.ReferenceTool.dll",
+          "FixturePin": {
+            "Path": "/home/maikebing/sezika-t8-proof-v3b-20261014/proof-full8-fixtures/Sezika.ReferenceTool.guid-only-mutant.dll",
+            "Bytes": 1160192,
+            "Sha256": "8b5287924698cccdd87b25d18d89b7066b75957be0e738ad0f2d3867ef2de881"
+          }
+        },
+        {
+          "Name": "real-pe-guid-only-mutant-retains-original-pdb",
+          "Status": "PASS",
+          "ExpectedGate": "Pinned PE CodeView GUID/stamp does not bind this Portable PDB.",
+          "ObservedGate": "Pinned PE CodeView GUID/stamp does not bind this Portable PDB.",
+          "TargetPath": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/bin/Release/net10.0/proof-guid-2a38c94bed8b4f8d9b24d0a607c85266/Sezika.ReferenceTool.dll",
+          "FixturePin": {
+            "Path": "/home/maikebing/sezika-t8-proof-v3b-20261014/proof-full8-fixtures/Sezika.ReferenceTool.guid-only-mutant.dll",
+            "Bytes": 1160192,
+            "Sha256": "8b5287924698cccdd87b25d18d89b7066b75957be0e738ad0f2d3867ef2de881"
+          }
+        }
+      ],
+      "Reason": null
+    },
+    {
+      "Name": "actual-compiler-and-project-execution-binding-required",
+      "Status": "PASS",
+      "Steps": [
+        {
+          "Name": "compiler-pin-does-not-bind-actual-execution",
+          "Status": "PASS",
+          "ExpectedGate": "Exact successful build execution/request/compiler/root/cleanup binding absent.",
+          "ObservedGate": "Exact successful build execution/request/compiler/root/cleanup binding absent.",
+          "TargetPath": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/bin/Release/net10.0/Sezika.ReferenceTool",
+          "FixturePin": null
+        },
+        {
+          "Name": "project-argv-claim-does-not-bind-actual-execution",
+          "Status": "PASS",
+          "ExpectedGate": "Exact successful build execution/request/compiler/root/cleanup binding absent.",
+          "ObservedGate": "Exact successful build execution/request/compiler/root/cleanup binding absent.",
+          "TargetPath": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Laya/LayaForward.cs",
+          "FixturePin": {
+            "Path": "/home/maikebing/sezika-t8-proof-v3b-20261014/proof-full8-fixtures/fixture-mutated-build-request.json",
+            "Bytes": 907,
+            "Sha256": "b1f0fefb131e12f747ae6c68d66848607b199537dd1cdbf81c13d85ae8bf4dd7"
+          }
+        }
+      ],
+      "Reason": null
+    },
+    {
+      "Name": "incomplete-real-runtime-inventory-rejected",
+      "Status": "PASS",
+      "Steps": [
+        {
+          "Name": "omitted-mandatory-runtime-member",
+          "Status": "PASS",
+          "ExpectedGate": "Mandatory framework-dependent runtime file missing: Sezika.ReferenceTool.runtimeconfig.json",
+          "ObservedGate": "Mandatory framework-dependent runtime file missing: Sezika.ReferenceTool.runtimeconfig.json",
+          "TargetPath": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/bin/Release/net10.0/Sezika.ReferenceTool.runtimeconfig.json",
+          "FixturePin": null
+        }
+      ],
+      "Reason": null
+    },
+    {
+      "Name": "genuine-linux-post-exec-and-native-identity-required",
+      "Status": "PASS",
+      "Steps": [
+        {
+          "Name": "missing-observed-post-exec",
+          "Status": "PASS",
+          "ExpectedGate": "Linux compiled build requires observed post-exec argv equal to its registered expectation.",
+          "ObservedGate": "Linux compiled build requires observed post-exec argv equal to its registered expectation.",
+          "TargetPath": null,
+          "FixturePin": null
+        },
+        {
+          "Name": "post-exec-expectation-mismatch",
+          "Status": "PASS",
+          "ExpectedGate": "Linux compiled build requires observed post-exec argv equal to its registered expectation.",
+          "ObservedGate": "Linux compiled build requires observed post-exec argv equal to its registered expectation.",
+          "TargetPath": null,
+          "FixturePin": null
+        },
+        {
+          "Name": "missing-native-birth",
+          "Status": "PASS",
+          "ExpectedGate": "Successful build root lacks exact PID/birth/parent/scope/exit evidence.",
+          "ObservedGate": "Successful build root lacks exact PID/birth/parent/scope/exit evidence.",
+          "TargetPath": null,
+          "FixturePin": null
+        },
+        {
+          "Name": "foreign-old-scope",
+          "Status": "PASS",
+          "ExpectedGate": "Successful build root lacks exact PID/birth/parent/scope/exit evidence.",
+          "ObservedGate": "Successful build root lacks exact PID/birth/parent/scope/exit evidence.",
+          "TargetPath": null,
+          "FixturePin": null
+        },
+        {
+          "Name": "unknown-generated-checksum-algorithm",
+          "Status": "PASS",
+          "ExpectedGate": "Declared generated PDB checksum metadata differs: /home/maikebing/sezika-t8-proof-v3b-20261014/source/obj/compiler-generated/Microsoft.Interop.LibraryImportGenerator/Microsoft.Interop.LibraryImportGenerator/LibraryImports.g.cs",
+          "ObservedGate": "Declared generated PDB checksum metadata differs: /home/maikebing/sezika-t8-proof-v3b-20261014/source/obj/compiler-generated/Microsoft.Interop.LibraryImportGenerator/Microsoft.Interop.LibraryImportGenerator/LibraryImports.g.cs",
+          "TargetPath": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/obj/compiler-generated/Microsoft.Interop.LibraryImportGenerator/Microsoft.Interop.LibraryImportGenerator/LibraryImports.g.cs",
+          "FixturePin": null
+        },
+        {
+          "Name": "wrong-generated-checksum-length",
+          "Status": "PASS",
+          "ExpectedGate": "Declared generated PDB checksum metadata differs: /home/maikebing/sezika-t8-proof-v3b-20261014/source/obj/compiler-generated/Microsoft.Interop.LibraryImportGenerator/Microsoft.Interop.LibraryImportGenerator/LibraryImports.g.cs",
+          "ObservedGate": "Declared generated PDB checksum metadata differs: /home/maikebing/sezika-t8-proof-v3b-20261014/source/obj/compiler-generated/Microsoft.Interop.LibraryImportGenerator/Microsoft.Interop.LibraryImportGenerator/LibraryImports.g.cs",
+          "TargetPath": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/obj/compiler-generated/Microsoft.Interop.LibraryImportGenerator/Microsoft.Interop.LibraryImportGenerator/LibraryImports.g.cs",
+          "FixturePin": null
+        },
+        {
+          "Name": "wrong-generated-checksum-bytes",
+          "Status": "PASS",
+          "ExpectedGate": "Declared generated PDB checksum metadata differs: /home/maikebing/sezika-t8-proof-v3b-20261014/source/obj/compiler-generated/Microsoft.Interop.LibraryImportGenerator/Microsoft.Interop.LibraryImportGenerator/LibraryImports.g.cs",
+          "ObservedGate": "Declared generated PDB checksum metadata differs: /home/maikebing/sezika-t8-proof-v3b-20261014/source/obj/compiler-generated/Microsoft.Interop.LibraryImportGenerator/Microsoft.Interop.LibraryImportGenerator/LibraryImports.g.cs",
+          "TargetPath": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/obj/compiler-generated/Microsoft.Interop.LibraryImportGenerator/Microsoft.Interop.LibraryImportGenerator/LibraryImports.g.cs",
+          "FixturePin": null
+        },
+        {
+          "Name": "wrong-generated-strong-source-pin",
+          "Status": "PASS",
+          "ExpectedGate": "Provenance source/artifact SHA differs: /home/maikebing/sezika-t8-proof-v3b-20261014/source/obj/compiler-generated/Microsoft.Interop.LibraryImportGenerator/Microsoft.Interop.LibraryImportGenerator/LibraryImports.g.cs",
+          "ObservedGate": "Provenance source/artifact SHA differs: /home/maikebing/sezika-t8-proof-v3b-20261014/source/obj/compiler-generated/Microsoft.Interop.LibraryImportGenerator/Microsoft.Interop.LibraryImportGenerator/LibraryImports.g.cs",
+          "TargetPath": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/obj/compiler-generated/Microsoft.Interop.LibraryImportGenerator/Microsoft.Interop.LibraryImportGenerator/LibraryImports.g.cs",
+          "FixturePin": null
+        }
+      ],
+      "Reason": null
+    }
+  ],
+  "Request": {
+    "Path": "/home/maikebing/sezika-t8-proof-v3b-20261014/proof-full8-request.json",
+    "Bytes": 408,
+    "Sha256": "58bff37608708f808e1f0b322efaa51e577159accc739dda520d38515bd3527b"
+  },
+  "BuildSummary": {
+    "Path": "/home/maikebing/sezika-t8-proof-v3b-20261014/build-summary.json",
+    "Bytes": 155702,
+    "Sha256": "a044caea144313b192233a40d8b556418405eb955687a840ec1c079ac59de634"
+  },
+  "PositiveControl": {
+    "Status": "SOURCE_BUILD_ONLY",
+    "AssemblyMvid": "403526f7-0b13-4506-b299-b5894e379ea9",
+    "PdbGuid": "12d8ffef-fc21-4864-97bb-f49511f6f9c8",
+    "PdbStamp": 4231581748,
+    "SourceDocuments": 244,
+    "RuntimeFiles": 5
+  },
+  "FixtureDirectory": "/home/maikebing/sezika-t8-proof-v3b-20261014/proof-full8-fixtures",
+  "FixtureFiles": [
+    {
+      "Path": "/home/maikebing/sezika-t8-proof-v3b-20261014/proof-full8-fixtures/Sezika.ReferenceTool.guid-only-mutant.dll",
+      "Bytes": 1160192,
+      "Sha256": "8b5287924698cccdd87b25d18d89b7066b75957be0e738ad0f2d3867ef2de881"
+    },
+    {
+      "Path": "/home/maikebing/sezika-t8-proof-v3b-20261014/proof-full8-fixtures/fixture-mutated-build-request.json",
+      "Bytes": 907,
+      "Sha256": "b1f0fefb131e12f747ae6c68d66848607b199537dd1cdbf81c13d85ae8bf4dd7"
+    }
+  ],
+  "FixtureBytes": 1161099,
+  "ElapsedSeconds": 1.3822934,
+  "ObservedPeakBytes": 64942080,
+  "CleanupStatus": "PASS_no_child_processes_owned_fixture_evidence_retained",
+  "FixtureArtifactsRetained": true,
+  "fixture_only": true,
+  "UpstreamExecuted": false,
+  "RepresentsParity": false,
+  "RepresentsQuality": false,
+  "RepresentsCalibration": false,
+  "NativeAotVerified": false,
+  "ExecutionReceiptsMutated": false,
+  "ChildProcessesStarted": 0,
+  "ExactCodeViewGuidNegative": "PASS_real_managed_pe_guid_only_copy_rejected_by_exact_production_gate"
+}

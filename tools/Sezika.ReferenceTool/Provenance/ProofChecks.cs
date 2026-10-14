@@ -8,7 +8,7 @@ namespace Sezika.ReferenceTool.Provenance;
 
 internal sealed record ProofChecksProbe(FilePin BuildRequest, FilePin BuildExecution, FilePin CompilerExecutable);
 internal sealed record ProofChecksRequest(FilePin BuildSummary, string FixtureDirectory,
-    ProofChecksProbe? OptionalProbe = null, string? CancelFile = null);
+    ProofChecksProbe? OptionalProbe = null, string? CancelFile = null, bool LinuxExecChecks = false);
 internal sealed record ProofCheckStep(string Name, string Status, string ExpectedGate, string? ObservedGate,
     string? TargetPath = null, FilePin? FixturePin = null);
 internal sealed record ProofCheckCase(string Name, string Status, ProofCheckStep[] Steps, string? Reason = null);
@@ -82,7 +82,8 @@ internal static class ProofChecks
                 for (var index = 1; index < maximum && index < 8; index++)
                 {
                     Check();
-                    var result = RunCase(index, summary, build, request.OptionalProbe, fixture, budget, Check, deadline.Token);
+                    var result = RunCase(index, summary, build, request.OptionalProbe, fixture, budget, Check, deadline.Token,
+                        request.LinuxExecChecks);
                     cases.Add(result);
                     Console.WriteLine("proof-check " + (index + 1) + "/" + maximum + " " + result.Name + " status=" + result.Status);
                 }
@@ -139,7 +140,8 @@ internal static class ProofChecks
     }
 
     private static ProofCheckCase RunCase(int index, PortBuildSummary summary, ProgramBuildRequest build,
-        ProofChecksProbe? probe, OwnedFixtures fixture, Budget budget, Action check, CancellationToken cancellation)
+        ProofChecksProbe? probe, OwnedFixtures fixture, Budget budget, Action check, CancellationToken cancellation,
+        bool linuxExecChecks)
     {
         switch (index)
         {
@@ -200,6 +202,7 @@ internal static class ProofChecks
             }
             case 7:
             {
+                if (linuxExecChecks) return LinuxExecutionNegatives(summary, build, budget, check, cancellation);
                 if (probe is null) return new(CaseName(index), "NOT_RUN", [], "No separately pinned genuine native probe execution was supplied.");
                 var nativeRequest = budget.Read(probe.BuildRequest, CompiledProgramJson.Default.ProgramBuildRequest, 4194304);
                 _ = budget.Read(probe.BuildExecution, CompiledProgramJson.Default.ProgramBuildExecution, 20971520);
@@ -216,6 +219,60 @@ internal static class ProofChecks
             }
             default: throw new ArgumentOutOfRangeException(nameof(index));
         }
+    }
+
+    private static ProofCheckCase LinuxExecutionNegatives(PortBuildSummary summary, ProgramBuildRequest build,
+        Budget budget, Action check, CancellationToken cancellation)
+    {
+        const string name = "genuine-linux-post-exec-and-native-identity-required";
+        const string execGate = "Linux compiled build requires observed post-exec argv equal to its registered expectation.";
+        const string identityGate = "Successful build root lacks exact PID/birth/parent/scope/exit evidence.";
+        var execution = budget.Read(Local(summary.BuildExecution), CompiledProgramJson.Default.ProgramBuildExecution, 20971520);
+        if (execution.Platform != "linux") return new(name, "NOT_RUN", [], "A genuine native Linux build receipt is required.");
+        var root = execution.Processes.Single(item => item.Pid == execution.RootPid);
+        var mutants = new (string Name, ProgramBuildProcess Root, string Expected)[]
+        {
+            ("missing-observed-post-exec", root with { AfterExecCommandLine = null }, execGate),
+            ("post-exec-expectation-mismatch", root with { ExpectedExecCommandLine = root.ExpectedExecCommandLine + "unexpected\0" }, execGate),
+            ("missing-native-birth", root with { StartTicks = null }, identityGate),
+            ("foreign-old-scope", root with { ScopeId = new string('0', 32) }, identityGate),
+        };
+        var steps = new List<ProofCheckStep>(8);
+        foreach (var mutant in mutants) // Four in-memory negatives; existing wall/cancellation applies.
+        {
+            check();
+            var altered = execution with { Processes = execution.Processes.Select(item => item.Pid == root.Pid ? mutant.Root : item).ToArray() };
+            try
+            {
+                CompiledProgramProof.VerifyNativeBuildExecution(summary, build, altered, cancellation, check);
+                steps.Add(new(mutant.Name, "FAIL", mutant.Expected, "Unexpectedly accepted negative in-memory receipt metadata."));
+            }
+            catch (InvalidDataException error)
+            {
+                steps.Add(new(mutant.Name, error.Message == mutant.Expected ? "PASS" : "FAIL", mutant.Expected, error.Message));
+            }
+        }
+        var generated = summary.GeneratedSources.FirstOrDefault(item =>
+            item.PdbChecksumAlgorithm == new Guid("ff1816ec-aa5e-4d10-87f7-6f4963833460"));
+        if (generated is null)
+            return new(name, "FAIL", steps.ToArray(), "A genuinely bound generated SHA1 document is required by these Linux checks.");
+        var generatedGate = "Declared generated PDB checksum metadata differs: " + generated.DocumentPath;
+        foreach (var variant in new[]
+        {
+            ("unknown-generated-checksum-algorithm", generated with { PdbChecksumAlgorithm = Guid.Empty }, generatedGate),
+            ("wrong-generated-checksum-length", generated with { PdbChecksum = "00" }, generatedGate),
+            ("wrong-generated-checksum-bytes", generated with { PdbChecksum = new string('0', 40) }, generatedGate),
+            ("wrong-generated-strong-source-pin", generated with { Source = generated.Source with { Sha256 = new string('0', 64) } },
+                "Provenance source/artifact SHA differs: " + generated.Source.Path),
+        }) // Four negative metadata copies; original exported bytes and receipts stay unchanged.
+        {
+            check();
+            var mutant = summary with { GeneratedSources = summary.GeneratedSources.Select(item =>
+                SamePath(item.DocumentPath, generated.DocumentPath) ? variant.Item2 : item).ToArray() };
+            steps.Add(Reject(variant.Item1, mutant, variant.Item3, check, cancellation, generated.DocumentPath));
+        }
+        budget.Verify(Local(summary.BuildExecution), 20971520);
+        return new(name, steps.All(step => step.Status == "PASS") ? "PASS" : "FAIL", steps.ToArray());
     }
 
     private static ProofCheckStep Reject(string name, PortBuildSummary mutant, string expected, Action check,

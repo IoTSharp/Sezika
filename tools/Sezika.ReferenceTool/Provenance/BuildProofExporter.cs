@@ -65,7 +65,8 @@ internal static class BuildProofExporter
             if (!Within(document.Path, request.SourceRoot)) throw new InvalidDataException("Actual compiled PDB document must belong to this exact source snapshot: " + document.Path);
             if (handwritten.TryGetValue(path, out var source))
             {
-                if (source.Sha256 != document.Sha256) throw new InvalidDataException("Handwritten source differs from actual compiled PDB checksum: " + document.Path);
+                if (!CompiledProgramProof.DocumentChecksumMatches(document, source, false, cancellation, budget.Check))
+                    throw new InvalidDataException("Handwritten source differs from actual compiled PDB checksum: " + document.Path);
                 continue;
             }
             ProgramFilePin selected;
@@ -75,12 +76,14 @@ internal static class BuildProofExporter
                 if (generatedDirectory is null) throw new InvalidDataException("Virtual PDB source has no actual compiler generated-output argument: " + document.Path);
                 exported ??= EnumerateFiles(generatedDirectory, budget, 2048, 512, 8).Where(file => Extension(file, ".cs"))
                     .Select(file => Pin(file, budget, 4194304)).ToArray();
-                var matches = exported.Where(pin => Paths.Equals(Path.GetFileName(pin.Path), Path.GetFileName(document.Path)) && pin.Sha256 == document.Sha256).ToArray();
+                var matches = exported.Where(pin => Paths.Equals(Path.GetFileName(pin.Path), Path.GetFileName(document.Path)) &&
+                    CompiledProgramProof.DocumentChecksumMatches(document, pin, true, cancellation, budget.Check)).ToArray();
                 if (matches.Length != 1) throw new InvalidDataException("Virtual PDB source requires exactly one real leafname/full-SHA generated-file match: " + document.Path);
                 selected = matches[0];
             }
-            if (selected.Sha256 != document.Sha256) throw new InvalidDataException("Real generated source bytes differ from compiled PDB checksum: " + document.Path);
-            generated.Add(new(document.Path, selected));
+            if (!CompiledProgramProof.DocumentChecksumMatches(document, selected, true, cancellation, budget.Check))
+                throw new InvalidDataException("Real generated source bytes differ from compiled PDB checksum: " + document.Path);
+            generated.Add(new(document.Path, selected, document.ChecksumAlgorithm, document.Checksum, document.Sha256));
             if (generated.Count > 512) throw new InvalidDataException("Generated source count bound512.");
         }
         var summary = new PortBuildSummary("PASS_exact_reference_program_source_build_only", sourcePins,

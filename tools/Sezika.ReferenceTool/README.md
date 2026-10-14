@@ -32,14 +32,16 @@ Sezika.ReferenceTool laya-input-checks --request <partial-check-request.json> --
 
 ## 独立检查与验收
 
+当前 Linux 编译证明已支持真实观察到的 broker→exec argv，以及生成文档明确声明的 SHA1/SHA256 校验和；所有源文件仍独立固定完整 SHA256，手写文档只接受 SHA256。`ProofChecksRequest.LinuxExecChecks=true` 在第8项使用真实 Linux 证明增加 exec/birth/scope 和生成校验和八个定向负控；Windows 原 probe 模式保持。实际 Ubuntu genuine proof8 已通过，旧 SHA1 拒绝和 `/mnt/c` 超时原件保留，见[Linux证明兼容修复](../../docs/evidence/tooling-reference-linux-proof-2026-10-14.md)。该开关不生成成功回执，也不省略真实正控。
+
 8个self-test使用手工固定的解析结果，覆盖矩阵方向、population norm、half-split rotation、erf GELU、稳定softmax、global/local attention及非有限拒绝；不调用生产数学、不加载权重。先1项tiny，再完整8项，输出明确`fixture_only=true`、`original_weights_verified=false`、`represents_parity=false`。
 
 2026-10-14 的冻结 v10 已实际完成 JIT 构建（0警告／0错误）、生产 `build-proof`、genuine proof1／proof8（1／1、8／8），包括真实 PE 的单字节 CodeView GUID 负例和真实非构建 probe 拒绝。原始 v9 compiler pin 当前不一致的正控 FAIL 原件保留；v10 没有重写旧证明。
 
 v10 实际从原始 mmBERT 权重导出25个checkpoint、验证134个原tensor，再由 `compare-port` 完成26／26比较、884736元素、零失败；`accepted_port_derived_reference=true`，`accepted_independent_reference=false`，`upstream_executed=false`。这是固定小规模 CPU 数值参考，不是训练、质量、上游 Python 或 Native AOT 验收。
 
-Laya 接口已接线：`laya-input-checks` 在 v10 实际完成 tiny1＋1、full 输入46／46及历史logits decoder42／42；`tokenizer` 完成 tiny1和完整267／267 golden crosscheck。局部报告 `fixture_only=true`、`original_weights_verified=false`；它们不生成新的神经logits。真实 Laya 原权重仍缺失，完整 encoder／head／scorer／act_head forward 和原权重 port 数值正控保持 NOT_RUN。`laya` 的实现入口不代表该完整模型已验收。
+Laya 输入与tokenizer阶段保持原证据：`laya-input-checks` 在 v10 完成 tiny1＋1、full 输入46／46及历史logits decoder42／42；`tokenizer` 完成 tiny1和267／267 golden crosscheck。这些fixture不生成神经logits。2026-10-14后续核实原始五资产，原ModelTool生成170个tensor清单；独立C# `laya` 与Windows typed SIMD各真实前向 `choice-en-short` 一条，并由OracleCompare显式该ID完成1个answered pair的冻结容差比较。覆盖1/46、缺45条，full_manifest_passed=false、upstream_executed=false；全46条与跨平台/AOT仍未验收，见[当前正控追加](../../docs/evidence/tooling-oracle-capture-final-2026-10-14.md)。
 
-最终 `Sezika.OracleCompare` 消费者已独立编译并执行4个早期metadata拒绝；没有真实Laya正控的七类深层来源／runtime／process动态负例仍 NOT_RUN。`Sezika.OracleCapture` 主项目及其CUDA依赖的最终编译为 UNKNOWN／本轮未执行，不能由 OracleCompare 编译或共享helper编译替代。
+后续Windows managed JIT的OracleCapture已独立fresh build并绑定135文件、3组PE/PDB、90个手写文档与9个runtime文件；真实单条显式2GiB，属于typed预算合同而非OS硬cap。OracleCompare原四个早期metadata拒绝保留，真实单条正控通过后另完成七类深层来源／编译／runtime／process／producer目标拒绝；六项实际资源参数拒绝也完成。19份真实native回执和25条身份记录的当前审计live/unknown均0，13份预期FAIL原件不改。Linux producer需要Ubuntu原生JIT与新的真实编译证明，Windows绝对路径/PDB不能改写复用；Native AOT、全46条和质量/校准/性能仍未验收。
 
 本轮原生回执保留PID／birth／argv／父链、输入输出和cleanup证据。2026-10-14 11:59 的 Windows 系统SDK关键依赖缺失观察保留为当时的 NOT_READY；此后主集成者按用户授权，在任务独立目录完成微软官方SDK下载、SHA512、解包及实际版本核验，回执为 `windows-sdk-recovery-v1/installation-verification.json`。项目不固定SDK版本，`global.json`仅排除预览版，构建记录实际选用版本；原v10构建输入、证明和数值结果均不回写。准确源码清单、原件SHA和各项范围见[最终证据](../../docs/evidence/tooling-reference-final-2026-10-14.md)。

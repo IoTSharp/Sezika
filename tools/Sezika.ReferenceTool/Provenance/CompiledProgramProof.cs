@@ -12,7 +12,8 @@ using System.Xml.Linq;
 namespace Sezika.PortProvenance;
 
 internal sealed record ProgramFilePin(string Path, long Bytes, string Sha256);
-internal sealed record ProgramGeneratedSource(string DocumentPath, ProgramFilePin Source);
+internal sealed record ProgramGeneratedSource(string DocumentPath, ProgramFilePin Source,
+    Guid? PdbChecksumAlgorithm = null, string? PdbChecksum = null, string? PdbChecksumSha256 = null);
 internal sealed record PortBuildSummary(string Status, ProgramFilePin[] ProgramSources,
     ProgramFilePin RuntimeExecutable, ProgramFilePin? RuntimeAssembly, ProgramFilePin BuildExecution,
     ProgramFilePin BuildRequest, ProgramFilePin CompilerExecutable, ProgramFilePin[] ProgramBuildInputs,
@@ -21,12 +22,13 @@ internal sealed record PortBuildSummary(string Status, ProgramFilePin[] ProgramS
     ProgramGeneratedSource[] GeneratedSources);
 internal sealed record PortCompiledProofResult(string Status, Guid AssemblyMvid, Guid PdbGuid,
     uint PdbStamp, int SourceDocuments, int RuntimeFiles);
-internal sealed record ProgramSourceDocument(string Path, string Sha256);
+internal sealed record ProgramSourceDocument(string Path, string? Sha256, Guid ChecksumAlgorithm, string Checksum);
 internal sealed record ProgramBuildRequest(string Executable, string[] ArgumentList, string WorkingDirectory,
     string OutputDirectory, int TimeoutSeconds, int CleanupSeconds, int MaximumProcesses,
     long MaximumOutputBytes, Dictionary<string, string> Environment);
 internal sealed record ProgramBuildProcess(int Pid, int ParentPid, int[] ParentChain, DateTimeOffset? Started,
-    ulong? StartTicks, string? BootId, string CommandLine, string State, string Ownership, string? ScopeId);
+    ulong? StartTicks, string? BootId, string CommandLine, string State, string Ownership, string? ScopeId,
+    string? AfterExecCommandLine = null, string? ExpectedExecCommandLine = null, string? ExitProof = null);
 internal sealed record ProgramBuildExecution(int SchemaVersion, string Status, string ExecutionStatus, string CleanupStatus,
     int? ExitCode, int RootPid, string Platform, string Executable, string[] ArgumentList,
     string WorkingDirectory, string OutputDirectory, string OwnershipId, bool InputComplete,
@@ -45,6 +47,7 @@ internal partial class CompiledProgramJson : JsonSerializerContext;
 internal static partial class CompiledProgramProof
 {
     private static readonly Guid Sha256Document = new("8829d00f-11b8-4213-878b-770e8597ac16");
+    private static readonly Guid Sha1Document = new("ff1816ec-aa5e-4d10-87f7-6f4963833460");
     private static readonly Guid CSharpDocument = new("3f5162f8-07c6-11d3-9053-00c04fa302a1");
 
     internal static PortCompiledProofResult Verify(PortBuildSummary summary, CancellationToken cancellation,
@@ -105,12 +108,23 @@ internal static partial class CompiledProgramProof
                 throw new InvalidDataException("Generated-source document alias must be unique C# with independently pinned exported bytes.");
         }
         var observed = new HashSet<string>(PathComparer);
+        var generatedByDocument = summary.GeneratedSources.ToDictionary(item => Canonical(item.DocumentPath), PathComparer);
         foreach (var document in ReadSourceDocuments(pdb, budget.Check))
         {
             budget.Check(); var path = Canonical(document.Path);
             if (!observed.Add(path) || !expected.TryGetValue(path, out var pin))
                 throw new InvalidDataException("PDB compiled C# source is undeclared or duplicate: " + document.Path);
-            if (!document.Sha256.Equals(pin.Sha256, StringComparison.OrdinalIgnoreCase))
+            var isGenerated = generatedByDocument.TryGetValue(path, out var generated);
+            if (isGenerated)
+            {
+                var declared = generated!;
+                var hasMetadata = declared.PdbChecksumAlgorithm is not null || declared.PdbChecksum is not null || declared.PdbChecksumSha256 is not null;
+                if (document.ChecksumAlgorithm == Sha1Document && !hasMetadata || hasMetadata &&
+                    (declared.PdbChecksumAlgorithm != document.ChecksumAlgorithm || declared.PdbChecksum != document.Checksum ||
+                     declared.PdbChecksumSha256 != document.Sha256))
+                    throw new InvalidDataException("Declared generated PDB checksum metadata differs: " + document.Path);
+            }
+            if (!DocumentChecksumMatches(document, pin, isGenerated, cancellation, budget.Check))
                 throw new InvalidDataException("Actual PDB source checksum differs from its source pin: " + document.Path);
         }
         if (!observed.SetEquals(expected.Keys))
@@ -130,13 +144,31 @@ internal static partial class CompiledProgramProof
         {
             check(); var document = pdb.GetDocument(handle); var name = pdb.GetString(document.Name); ProofBudget.Safe(name);
             if (!Extension(name, ".cs") || document.Language.IsNil || pdb.GetGuid(document.Language) != CSharpDocument ||
-                document.HashAlgorithm.IsNil || pdb.GetGuid(document.HashAlgorithm) != Sha256Document || !names.Add(Canonical(name)))
-                throw new InvalidDataException("Every unique PDB document must be an absolute C# source with SHA256 checksum.");
+                document.HashAlgorithm.IsNil || !names.Add(Canonical(name)))
+                throw new InvalidDataException("Every unique PDB document must be an absolute C# source with a declared checksum.");
+            var algorithm = pdb.GetGuid(document.HashAlgorithm);
             var checksum = pdb.GetBlobBytes(document.Hash);
-            if (checksum.Length != 32) throw new InvalidDataException("PDB C# source checksum must contain32 bytes.");
-            documents.Add(new(name, Convert.ToHexStringLower(checksum)));
+            if (algorithm != Sha256Document && algorithm != Sha1Document ||
+                checksum.Length != (algorithm == Sha256Document ? 32 : 20))
+                throw new InvalidDataException("PDB C# source checksum algorithm/length is not admitted.");
+            var value = Convert.ToHexStringLower(checksum);
+            documents.Add(new(name, algorithm == Sha256Document ? value : null, algorithm, value));
         }
         return documents.ToArray();
+    }
+
+    internal static bool DocumentChecksumMatches(ProgramSourceDocument document, ProgramFilePin source,
+        bool generated, CancellationToken cancellation, Action check)
+    {
+        if (document.ChecksumAlgorithm == Sha256Document)
+            return document.Sha256 is not null && document.Sha256.Equals(source.Sha256, StringComparison.OrdinalIgnoreCase);
+        if (!generated || document.ChecksumAlgorithm != Sha1Document)
+            throw new InvalidDataException("Handwritten PDB sources require SHA256; SHA1 is generated-only.");
+        // Open independently verifies the complete SHA256 file pin before reading
+        // the declared generated-document checksum from these same real bytes.
+        using var stream = new ProofBudget(cancellation, check).Open(source, 4194304);
+        var actual = Convert.ToHexStringLower(SHA1.HashData(stream)); check();
+        return actual == document.Checksum;
     }
 
     private static void ValidateBuild(PortBuildSummary summary, ProgramFilePin project, ProgramBuildRequest request,
@@ -215,10 +247,27 @@ internal static partial class CompiledProgramProof
             execution.Platform == "linux" && (root.StartTicks is null || string.IsNullOrWhiteSpace(root.BootId)) ||
             execution.Platform is not ("windows" or "linux"))
             throw new InvalidDataException("Successful build root lacks exact PID/birth/parent/scope/exit evidence.");
-        var actualArguments = RegisteredArguments(root.CommandLine, execution.Platform, budget);
+        var command = root.CommandLine;
+        if (execution.Platform == "linux")
+        {
+            if (string.IsNullOrEmpty(root.AfterExecCommandLine) ||
+                root.AfterExecCommandLine != root.ExpectedExecCommandLine)
+                throw new InvalidDataException("Linux compiled build requires observed post-exec argv equal to its registered expectation.");
+            command = root.AfterExecCommandLine;
+        }
+        var actualArguments = RegisteredArguments(command, execution.Platform, budget);
         if (actualArguments.Length != request.ArgumentList.Length + 1 || !SamePath(actualArguments[0], request.Executable) ||
             !actualArguments.Skip(1).SequenceEqual(request.ArgumentList))
             throw new InvalidDataException("Actual registered build root argv differs from exact compiler/build request.");
+    }
+
+    // The genuine-proof checker supplies only in-memory negative copies of its pinned
+    // native receipt to this same production gate; no successful receipt is fabricated.
+    internal static void VerifyNativeBuildExecution(PortBuildSummary summary, ProgramBuildRequest request,
+        ProgramBuildExecution execution, CancellationToken cancellation, Action check)
+    {
+        var project = summary.ProgramSources.Single(pin => Extension(pin.Path, ".csproj"));
+        ValidateBuild(summary, project, request, execution, new ProofBudget(cancellation, check));
     }
 
     private static string[] RegisteredArguments(string command, string platform, ProofBudget budget)
