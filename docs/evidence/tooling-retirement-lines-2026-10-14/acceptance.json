@@ -1,0 +1,50 @@
+{
+  "Status": "PASS_SCOPED_TWO_PLATFORM_NATIVE_AOT_CHECKS",
+  "Utc": "2026-10-14T12:46:12.8286135+00:00",
+  "Suite": "retirement-lines",
+  "ChecksPerPlatform": 16,
+  "Frozen90ManifestSha256": "ce98854e652c618a3be07f191a5d35fcdb21cabbe22c367cb0c1bca6dfb74a9f",
+  "Sources": [
+    {
+      "Path": "tools/Sezika.Tooling/Inventory/RetirementReview.cs",
+      "Sha256": "5d45d3a7f32da4bc8f705ee1e7bc9d0c3fdc3832381ccb8f8838ad7689e97ded",
+      "FrozenCandidate": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\t5-current-core-and-callers-v1\\final-current-source-v3\\tools\\Sezika.Tooling\\Inventory\\RetirementReview.cs",
+      "Bytes": 27908
+    },
+    {
+      "Path": "tests/Sezika.Tooling.Tests/RetirementChecks.cs",
+      "Sha256": "de59a9c1e3add03dbd56fedbc7c918fd89c56c7c6da4bc3fe3cea542a0845b63",
+      "FrozenCandidate": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\t5-current-core-and-callers-v1\\final-current-source-v3\\tests\\Sezika.Tooling.Tests\\RetirementChecks.cs",
+      "Bytes": 16966
+    }
+  ],
+  "OriginalReceipts": [
+    {
+      "Original": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\t5-current-core-and-callers-v1\\runtime-v3\\06\\result.json",
+      "Sha256": "314f8c2a1bad22a04f23d759167768c9508b9b804cfc39b2b59e4dbdf5e17772",
+      "File": "windows-native-result.json",
+      "Bytes": 2771
+    },
+    {
+      "Original": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\t5-current-core-and-callers-v1\\runtime-v3\\06\\original-business.stdout",
+      "Sha256": "efe00b1eee208326b66151a7f5c29a476fa4920ca4586e56f4fc363e83642c50",
+      "File": "windows-checks.stdout",
+      "Bytes": 1657
+    },
+    {
+      "Original": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\t5-current-core-and-callers-v1\\runtime-v3\\32\\result.json",
+      "Sha256": "587dd736b4f640524f053e86d2551c0619d17ff1792f3d03e1c4d0cc7bb729e4",
+      "File": "linux-native-result.json",
+      "Bytes": 3200
+    },
+    {
+      "Original": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\t5-current-core-and-callers-v1\\runtime-v3\\32\\original-business.stdout",
+      "Sha256": "d14f4cdd31e927ba2345dc4f6016530f5100f1ce08934717437a528f51e7e6e6",
+      "File": "linux-checks.stdout",
+      "Bytes": 1569
+    }
+  ],
+  "MigrationOverallComplete": false,
+  "OriginalFailuresPreserved": true,
+  "EvidenceScope": "Exact two sources and corresponding Windows/Linux AOT checks; frozen90 overall PARTIAL remains unchanged; no live-server acceptance"
+}

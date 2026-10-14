@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -9,8 +10,11 @@ internal sealed record ReviewFilePin(string Path, long Bytes, string Sha256);
 internal sealed record RetirementCaller(ReviewFilePin File, string Kind);
 internal sealed record ReplacementGate(string Id, string WorkPackage, string[] OriginalPaths, string CSharpEntry, ReviewFilePin[] Sources,
     ReviewFilePin Receipt, string ExpectedReceiptStatus, bool IndependentlyVerified, bool ProjectExternalDependencyReleased = false);
+internal sealed record RetirementReviewedLine(string CallerPath, string CallerSha256, int Line, string LineSha256,
+    string Category, string Reason, bool IndependentlyVerified);
 internal sealed record RetirementReviewRequest(string ClassificationPath, string ClassificationSha256, string SourceRoot, ReplacementGate[] Gates,
-    RetirementCaller[] CurrentCallers, bool CallerScopeDeclaredComplete, int ExpectedEntries = 466);
+    RetirementCaller[] CurrentCallers, bool CallerScopeDeclaredComplete, int ExpectedEntries = 466,
+    RetirementReviewedLine[]? ReviewedNonExecutionLines = null);
 internal sealed record RetirementSnapshot(string Path, string Status, long? Bytes, string? Sha256, string? Error);
 internal sealed record RetirementCallerResult(string Path, string Kind, string Status, long? Bytes, string? Sha256);
 internal sealed record RetirementGateResult(string Id, string Status, string CSharpEntry, string[] Reasons, RetirementSnapshot[] Sources, RetirementSnapshot Receipt);
@@ -21,7 +25,10 @@ internal sealed record RetirementGateGap(string Path, string WorkPackage, string
 internal sealed record RetirementReport(string Status, string ClassificationSha256, string SourceInventorySha256, string SourceRoot, int Entries,
     int Ready, int Pending, int ReviewRequired, int Unknown, long HashedBytes, bool CallerScopeDeclaredComplete, RetirementItem[] Items,
     RetirementGateResult[] Gates, RetirementCallerResult[] Callers, RetirementCallerFinding[] Findings, RetirementGateGap[] MissingGates,
-    bool RetirementPerformed = false, bool OriginalScriptsExecuted = false, bool SharedSkillsChanged = false, string Scope = "supplied_current_callers_and_explicitly_verified_gates_only");
+    bool RetirementPerformed = false, bool OriginalScriptsExecuted = false, bool SharedSkillsChanged = false, string Scope = "supplied_current_callers_and_explicitly_verified_gates_only")
+{
+    public RetirementReviewedLine[] ReviewedNonExecutionLines { get; init; } = [];
+}
 
 internal static class RetirementReview
 {
@@ -29,13 +36,14 @@ internal static class RetirementReview
     internal const int MaximumCallers = 128;
     internal const long MaximumCallerBytes = 16L * 1024 * 1024;
     internal const long MaximumHashedBytes = 2L * 1024 * 1024 * 1024;
-    private sealed record CallerLine(string Path, int Number, string Kind, string Text, string? Exclusion);
+    private sealed record CallerLine(string Path, int Number, string Kind, string Text, string? Exclusion, string Sha256);
 
     internal static RetirementReport Review(RetirementReviewRequest request, Budget budget)
     {
         var clock = Stopwatch.StartNew(); long hashed = 0; var findingsCount = 0;
         void Check() { budget.Check(); if (clock.Elapsed.TotalSeconds >= 180) throw new TimeoutException("Retirement review wall bound180s."); }
-        if (request.ExpectedEntries is < 1 or > MaximumEntries || request.Gates.Length > 128 || request.CurrentCallers.Length > MaximumCallers || !Path.IsPathFullyQualified(request.SourceRoot)) throw new InvalidDataException("Retirement input item/gate/caller/root bounds differ.");
+        if (request.ExpectedEntries is < 1 or > MaximumEntries || request.Gates.Length > 128 || request.CurrentCallers.Length > MaximumCallers ||
+            request.ReviewedNonExecutionLines?.Length > 1024 || !Path.IsPathFullyQualified(request.SourceRoot)) throw new InvalidDataException("Retirement input item/gate/caller/root bounds differ.");
         var root = Path.GetFullPath(request.SourceRoot); SafePaths.NoLinks(root, budget);
         if (!Directory.Exists(root) || root.StartsWith("\\\\", StringComparison.Ordinal)) throw new InvalidDataException("Explicit local SourceRoot required.");
         string Resolve(string path, bool external = false)
@@ -126,12 +134,35 @@ internal static class RetirementReview
                 if (HasScriptExtension(line) || SuspectedInterpreterInvocation(line, caller.Kind))
                 {
                     if (lines.Count >= 8192) throw new InvalidDataException("Script-referencing caller line bound8192.");
-                    lines.Add(new(caller.File.Path, index, caller.Kind, line.Replace('\\', '/'), exclusion));
+                    lines.Add(new(caller.File.Path, index, caller.Kind, line.Replace('\\', '/'), exclusion,
+                        Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(line)))));
                 }
             }
             if (!eof) throw new InvalidDataException("Caller scan iteration bound exceeded.");
             input.Position = 0; if (Hash(input, input.Length) != caller.File.Sha256) throw new InvalidDataException("Current caller changed while scanning.");
         }
+        // Explicit independent reviews bind both the entire caller and the exact
+        // UTF-8 line body (without its newline). They are recorded decisions, not
+        // automatic C# control-flow analysis or an exemption inferred from a word.
+        var reviewed = new Dictionary<string, RetirementReviewedLine>(StringComparer.OrdinalIgnoreCase);
+        var callerByPath = callerResults.ToDictionary(caller => caller.Path, StringComparer.OrdinalIgnoreCase);
+        var lineByKey = lines.ToDictionary(line => line.Path + "\0" + line.Number, StringComparer.OrdinalIgnoreCase);
+        foreach (var lineReview in request.ReviewedNonExecutionLines ?? [])
+        {
+            Check(); TaskOperations.Sha(lineReview.CallerSha256); TaskOperations.Sha(lineReview.LineSha256);
+            var key = lineReview.CallerPath + "\0" + lineReview.Line;
+            if (!lineReview.IndependentlyVerified || lineReview.Line is < 1 or > 200000 || lineReview.Reason.Length is < 20 or > 1024 ||
+                !callerByPath.TryGetValue(lineReview.CallerPath, out var caller) || caller.Status != "VERIFIED" || caller.Sha256 != lineReview.CallerSha256 ||
+                !lineByKey.TryGetValue(key, out var line) || line.Sha256 != lineReview.LineSha256 || !reviewed.TryAdd(key, lineReview))
+                throw new InvalidDataException("Independent non-execution review must bind one unique verified caller and exact line SHA.");
+            var admitted = line.Kind == "documentation"
+                ? lineReview.Category is "historical-record" or "retired-entry-mapping" or "prohibited-notice"
+                : line.Kind == "code"
+                    ? lineReview.Category is "rejection-fixture" or "classification-rule" or "schema-metadata"
+                    : lineReview.Category == "schema-metadata";
+            if (!admitted) throw new InvalidDataException("Non-execution review category differs from the caller kind.");
+        }
+        bool IndependentlyReviewed(CallerLine line) => reviewed.ContainsKey(line.Path + "\0" + line.Number);
         var scopeComplete = request.CallerScopeDeclaredComplete && request.CurrentCallers.Length > 0 && callerResults.All(caller => caller.Status == "VERIFIED");
         var gateResults = new List<RetirementGateResult>(); var gateById = new Dictionary<string, ReplacementGate>(StringComparer.Ordinal); var coverage = new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase);
         foreach (var gate in request.Gates)
@@ -176,6 +207,13 @@ internal static class RetirementReview
         foreach (var line in lines)
         {
             Check();
+            if (IndependentlyReviewed(line))
+            {
+                var lineReview = reviewed[line.Path + "\0" + line.Number];
+                if (++findingsCount > 8192) throw new InvalidDataException("Retirement caller finding bound8192.");
+                findings.Add(new("*", line.Path, line.Number, "INDEPENDENT_NON_EXECUTION_REVIEW", lineReview.Category, lineReview.Reason));
+                continue;
+            }
             if (line.Kind == "code" && Comment(line.Text) || !Execution(line.Text, line.Kind) || line.Exclusion is not null && line.Kind != "code") continue;
             var matched = false;
             foreach (var entry in inventory.Assignments)
@@ -197,6 +235,7 @@ internal static class RetirementReview
             foreach (var line in lines)
             {
                 Check();
+                if (IndependentlyReviewed(line)) continue;
                 var exact = line.Text.Contains(original, StringComparison.OrdinalIgnoreCase); var baseMatch = !exact && line.Text.Contains(basename, StringComparison.OrdinalIgnoreCase);
                 if (!exact && !baseMatch) continue;
                 if (++findingsCount > 8192) throw new InvalidDataException("Retirement caller finding bound8192.");
@@ -238,7 +277,8 @@ internal static class RetirementReview
         Check();
         var ready = items.Count(item => item.ReviewState == "READY"); var pending = items.Count(item => item.ReviewState == "PENDING"); var review = items.Count(item => item.ReviewState == "REVIEW_REQUIRED"); var unknown = items.Count(item => item.ReviewState == "UNKNOWN");
         if (ready + pending + review + unknown != inventory.Entries) throw new InvalidDataException("Retirement review lost its frozen denominator.");
-        return new(ready == inventory.Entries ? "READY_review_only_no_mutation" : "PENDING_review_incomplete_no_mutation", request.ClassificationSha256, inventory.SourceSha256, root, inventory.Entries, ready, pending, review, unknown, hashed, scopeComplete, items.ToArray(), gateResults.ToArray(), callerResults.ToArray(), findings.ToArray(), gaps.ToArray());
+        return new(ready == inventory.Entries ? "READY_review_only_no_mutation" : "PENDING_review_incomplete_no_mutation", request.ClassificationSha256, inventory.SourceSha256, root, inventory.Entries, ready, pending, review, unknown, hashed, scopeComplete, items.ToArray(), gateResults.ToArray(), callerResults.ToArray(), findings.ToArray(), gaps.ToArray())
+        { ReviewedNonExecutionLines = reviewed.Values.ToArray() };
     }
     private static bool HasScriptExtension(string text)
     {

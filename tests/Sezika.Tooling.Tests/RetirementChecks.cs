@@ -132,5 +132,34 @@ internal static class RetirementChecks
             Reject(() => RetirementReview.Review(fixture.Request, new Budget(10, null, new CancellationToken(canceled: true))));
             Assert(File.ReadAllBytes(fixture.Original).SequenceEqual(before), "Rejected review mutated the inert original.");
         });
+        check("Retirement independently reviewed schema metadata binds full caller and exact line", () =>
+        {
+            const string line = "var metadata = new { upstream_executed = false, source = \"tools/old.ps1\" };";
+            var fixture = Prepare("reviewed-schema", line + "\n", "code");
+            Assert(Review(fixture).Ready == 0, "Unreviewed schema metadata silently became READY.");
+            var caller = fixture.Request.CurrentCallers[0].File;
+            var review = new RetirementReviewedLine(caller.Path, caller.Sha256, 1,
+                Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(Encoding.UTF8.GetBytes(line))),
+                "schema-metadata", "Independent fixture review: the source path is inert provenance metadata; no process is invoked.", true);
+            var report = Review(fixture, fixture.Request with { ReviewedNonExecutionLines = [review] }); NoMutation(report);
+            Assert(report.Ready == 1 && report.ReviewedNonExecutionLines.Single() == review &&
+                report.Findings.Single().State == "INDEPENDENT_NON_EXECUTION_REVIEW", "Explicit review was lost or presented as automatic execution analysis.");
+            var noGate = Review(fixture, fixture.Request with { ReviewedNonExecutionLines = [review], Gates = [] });
+            Assert(noGate.Ready == 0 && noGate.Pending == 1, "A line review replaced the independent capability gate.");
+        });
+        check("Retirement unverified duplicate stale line and wrong-category reviews cannot hide references", () =>
+        {
+            const string line = "旧入口 tools/old.ps1 仅作迁移对应表。";
+            var fixture = Prepare("review-pins", line + "\n"); var caller = fixture.Request.CurrentCallers[0].File;
+            var review = new RetirementReviewedLine(caller.Path, caller.Sha256, 1,
+                Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(Encoding.UTF8.GetBytes(line))),
+                "retired-entry-mapping", "Independent fixture review confirms this is a retired-entry mapping without an execution instruction.", true);
+            foreach (var invalid in new[] { review with { IndependentlyVerified = false }, review with { LineSha256 = new string('0', 64) },
+                review with { CallerSha256 = new string('0', 64) }, review with { Line = 2 }, review with { Category = "rejection-fixture" } })
+                Reject(() => Review(fixture, fixture.Request with { ReviewedNonExecutionLines = [invalid] }));
+            Reject(() => Review(fixture, fixture.Request with { ReviewedNonExecutionLines = [review, review] }));
+            Write(Path.Combine(fixture.Root, "current.md"), line + " changed\n");
+            Reject(() => Review(fixture, fixture.Request with { CurrentCallers = [new(Pin(fixture.Root, "current.md"), "documentation")], ReviewedNonExecutionLines = [review] }));
+        });
     }
 }
