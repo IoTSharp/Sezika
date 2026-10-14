@@ -23,9 +23,13 @@ dotnet tests/Sezika.Tooling.Tests/bin/Release/net10.0/Sezika.Tooling.Tests.dll -
 Sezika.Tooling process audit --log-directory <logs> --output <new-audit.json> --timeout-seconds 90
 ```
 
-`--log-directory` 最多重复 12 次；每目录最多 256 个顶层 `*.result.json`，最多 2,048 个身份和 1,024 个 PID，每文件最多 16 MiB。不递归枚举，不扫描全机进程。
+`--log-directory` 最多重复 12 次；每目录最多 256 个顶层回执及登记文件，最多 2,048 个身份和 1,024 个 PID，每文件最多 16 MiB。不递归枚举，不扫描全机进程。
 
 兼容旧 Windows 回执的 `Processes[]` / 根 `Pid`、`Started`、`CreationDate`、`ParentPid`、`CommandLine`。零回执或无 PID 的回执拒绝。Windows 使用只读进程句柄；Linux 使用 `/proc` start ticks、boot ID、父 PID 和带 NUL 分隔符的原始 argv。Windows 回执不能在 Linux 上证明回收。
+
+当前 C# 执行目录使用 `result.json`、`registered.json` 和可选 `registered-NNN.json` 快照。审计严格绑定最终身份与累计出生登记的双向覆盖、平台、父链、scope 和原始 argv；缺失子进程登记、歧义 JSON 字段及互相矛盾的 PASS 结论拒绝。报告的 `NativeReceipts` 保留原 `Status`、`ExecutionStatus`、`CleanupStatus`、退出码和错误；当前进程已退出不能把旧 FAIL/UNKNOWN 提升为执行成功。
+
+原生回执检查使用 `--suite audit`：先 1 项，再完整 15 项；原 32 项 baseline 独立保留。Windows/Linux 检查和两个平台的实际 Native AOT 审计见[验收证据](../../docs/evidence/tooling-native-audit-2026-10-14.md)。调用者切换仍按 ROADMAP 验收。
 
 缺字段、访问被拒和身份不一致保持 UNKNOWN；创建身份不同为 REUSED。报告仅保存 command line 的 SHA。LIVE 或 UNKNOWN 时退出 1，记录均已退出或 PID 已复用才退出 0。历史未观测根回执数量保留，不回写旧失败记录。
 

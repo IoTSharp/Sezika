@@ -8,7 +8,7 @@ using Sezika.Tooling;
 if (args.Length is not (4 or 6) || args[0] != "--output" || args[2] != "--maximum-checks" || !int.TryParse(args[3], out var maximumChecks) || maximumChecks is < 1 or > 256 || (args.Length == 6 && args[4] != "--suite"))
     throw new ArgumentException("--output <new-owned-directory> --maximum-checks 1..256 [--suite baseline|inventory|all]");
 var suite = args.Length == 6 ? args[5] : "baseline";
-if (suite is not ("baseline" or "inventory" or "execution" or "corpus" or "task" or "transport" or "all")) throw new ArgumentException("Unknown suite.");
+if (suite is not ("baseline" or "inventory" or "execution" or "audit" or "corpus" or "task" or "transport" or "all")) throw new ArgumentException("Unknown suite.");
 var runSuite = suite is "baseline" or "all";
 var suiteSeconds = 45;
 using var cancel = new CancellationTokenSource(TimeSpan.FromSeconds(suiteSeconds));
@@ -184,6 +184,8 @@ runSuite = suite is "inventory" or "all";
 InventoryChecks.Run(root, Test);
 runSuite = suite is "execution" or "all";
 if (runSuite) ExecutionChecks.Run(root, Test);
+runSuite = suite is "audit" or "all";
+if (runSuite) NativeAuditChecks.Run(root, Test);
 runSuite = suite is "corpus" or "all";
 if (runSuite) CorpusChecks.Run(root, Test);
 runSuite = suite is "task" or "all";
