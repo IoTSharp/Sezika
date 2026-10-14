@@ -1,0 +1,262 @@
+{
+  "Status": "PASS_INDEPENDENT_LINUX_REAL_NUMERIC26_EVIDENCE_CLOSURE",
+  "SummaryScope": "Existing single46-token original-weight CSharp port-derived CPU reference and actual native AOT comparator; current independent file/tensor hashes and recorded process scope",
+  "CompletedUtc": "2026-10-14T16:03:21.2323127+00:00",
+  "ActualRuntimeResult": {
+    "CaseId": "independent-smoke-46-v1",
+    "ComparedCount": 26,
+    "ComparisonDenominator": 26,
+    "ElementDenominator": 884736,
+    "RecomputedElementCount": 884736.0,
+    "FailedComparisons": 0,
+    "FailedElements": 0,
+    "RecomputedFailedElements": 0.0,
+    "FixtureOnly": false,
+    "Passed": true,
+    "AcceptedPortDerivedReference": true,
+    "AcceptedIndependentReference": false,
+    "UpstreamExecuted": false,
+    "ReferenceKind": "independently_ported_original_weights_capture",
+    "ActualSha256": "681497C6B6F1A599804CAC492B3A1094C623F825341563020B8C6F534A44DFA9",
+    "ReferenceSha256": "0F113D6BE7BEF80DE8383CDD68EAF8AD5CB1C1B9DD060B582D2F746C91320977",
+    "ContractSha256": "76d16ac08a967c33d210015cab8e5e0fbdcbe4da5c8dd8a3ad01a55c32c9d8ca",
+    "OriginalReferenceSeconds": 22.171715,
+    "OriginalObservedReferencePeakBytes": 95244288,
+    "OriginalComparisonSeconds": 18.1636068,
+    "OriginalCheckpointCount": 25,
+    "OriginalTensorProofCount": 134,
+    "ProducerBuildKind": "managed_jit_source_build_only",
+    "ProducerNumericalThreads": 1,
+    "FixedTolerancesChanged": false
+  },
+  "CurrentHashReadback": {
+    "Status": "PASS_CURRENT_COMPLETE_391_FILES_AND_ORIGINAL134_HASH_READBACK",
+    "StartedUtc": "2026-10-14T15:54:19.3985732+00:00",
+    "CompletedUtc": "2026-10-14T15:54:24.3985928+00:00",
+    "PhysicalFiles": 391,
+    "Original301Files": 301,
+    "AdditionalProofFiles": 90,
+    "Original301Drift": 0,
+    "AllFixedHashMismatchCount": 0,
+    "OriginalModelContainerSha256": "8ea64ec1ea4eb8fca0fc14b69a2ae571de6bfbc25fd214bb932dd4aba6a3a04e",
+    "OriginalTensorRanges": 134,
+    "OriginalTensorBytes": 1227758592.0,
+    "AggregateBytesReadIncludingTiny": 2514439239,
+    "MaximumBytes": 4294967296,
+    "MaximumSeconds": 60,
+    "ElapsedSeconds": 5.0272357,
+    "NewCSharpAuditOrHashClientsRun": 0,
+    "ModelRuns": 0,
+    "SdkCalls": 0,
+    "GpuOperations": 0,
+    "OldEvidenceMutated": false
+  },
+  "CurrentOriginalPacketBinding": {
+    "Status": "PASS_INDEPENDENT_EXISTING_NUMERIC26_PACKET_BINDING",
+    "ObservedUtc": "2026-10-14T15:57:07.4007903+00:00",
+    "ProgramSources": 24,
+    "GeneratedSources": 221,
+    "RuntimeFiles": 5,
+    "AllExplicitPortProofPinsMatchCurrentFiles": true,
+    "OriginalModelWholeContainerAnd134RangesRehashedNow": true
+  },
+  "CurrentRecordedProcessScope": {
+    "ObservedUtc": "2026-10-14T15:59:49.1929024+00:00",
+    "OriginalNumericIdentityRecords": 45,
+    "MatchingLive": 0,
+    "Unknown": 0,
+    "CompletedInspectionMatchingLive": 0,
+    "CurrentDirectChildrenOfCompletedInspectionPids": 0,
+    "NewCSharpNativeClientRuns": 0,
+    "NewPersistentProcesses": 0,
+    "TerminationPerformed": false
+  },
+  "HistoricalBoundaries": {
+    "OriginalDeadlineUtc": "2026-10-14T14:30:00Z",
+    "OriginalResourceReadbackUtc": "2026-10-14T14:31:07.5196582Z",
+    "OriginalOverrunSeconds": 67.5196582,
+    "OriginalFinalFullHashAtCutoff": "NOT_RUN",
+    "OriginalFinalSummaryAtCutoff": "NOT_CREATED",
+    "NewFullHashIsSeparateWork": true,
+    "OriginalWindowsProofOrContractChanged": false,
+    "OriginalRetainedRootsChanged": false,
+    "OriginalFailures": [
+      {
+        "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\linux-real-numeric26-execution-v1\\preparation-host-variable-failure.json",
+        "CurrentSha256": "5e9922ee01a464ed24a374e2425b96de1ebe1137f5c4cdeff288b161ef930fd2",
+        "OriginalStatus": "FAIL_PREPARATION_BEFORE_MODEL",
+        "Content": {
+          "Status": "FAIL_PREPARATION_BEFORE_MODEL",
+          "Cause": "Read-only PowerShell Host parameter name in pin helper",
+          "ExistingOwnedFiles": [
+            "ownership.json",
+            "inputs/run-contract.json"
+          ],
+          "ReferenceRuns": 0,
+          "CompareRuns": 0,
+          "Fix": "Rename helper parameter only; preserve immutable written run-contract",
+          "HistoricalFailurePreserved": true
+        },
+        "Preserved": true
+      },
+      {
+        "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\linux-real-numeric26-execution-v1\\preparation-snake-case-reader-failure.json",
+        "CurrentSha256": "80ad92ffd82ea8d23f53d59cf6d9f65dd8558b05e11b069ab0b66e07920cd9d7",
+        "OriginalStatus": "FAIL_LOCAL_RECEIPT_READBACK_BEFORE_COMPARE",
+        "Content": {
+          "Status": "FAIL_LOCAL_RECEIPT_READBACK_BEFORE_COMPARE",
+          "Cause": "Preparation reader used OriginalTensors rather than actual snake_case original_tensors",
+          "ReferenceRuns": 1,
+          "CompareRuns": 0,
+          "NoBusinessRetry": true,
+          "Fix": "Read exact existing JSON field; preserve capture bytes and original failure"
+        },
+        "Preserved": true
+      },
+      {
+        "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\linux-real-numeric26-execution-v1\\audit-stage-failure.json",
+        "CurrentSha256": "e6cb21df34a3bbf704b10472ce70215c71568edb151735950bfbc31118fbb50b",
+        "OriginalStatus": [
+          null,
+          null
+        ],
+        "Content": [
+          {
+            "Stage": 1,
+            "Name": "producer",
+            "ExitCode": 0,
+            "LogDirectories": 1,
+            "ObservedUtc": "2026-10-14T14:18:02.3252053+00:00"
+          },
+          {
+            "Stage": 2,
+            "Name": "comparator",
+            "ExitCode": 1,
+            "LogDirectories": 1,
+            "ObservedUtc": "2026-10-14T14:18:03.8935901+00:00"
+          }
+        ],
+        "Preserved": true
+      },
+      {
+        "Path": "\\\\wsl.localhost\\Ubuntu\\home\\maikebing\\sezika-linux-real-numeric26-v1-20261014\\comparator-audit.json",
+        "OriginalStatus": "FAIL",
+        "OriginalMessage": "Could not find a part of the path '/home/maikebing/sezika-linux-real-numeric26-v1-20261014/capture-execution /home/maikebing/sezika-linux-real-numeric26-v1-20261014/compare-execution /home/maikebing/sezika-linux-real-numeric26-v1-20261014/producer-audit-execution'.",
+        "Preserved": true,
+        "CorrectedSuccessIsSeparate": "comparator-audit-v2.json"
+      }
+    ]
+  },
+  "DiagnosticIdentityLimitation": {
+    "HistoricalUnknown": "First read-only rg child PID/birth not individually captured",
+    "Evidence": "Initial synchronous PowerShell task exited0; exact old parent PID has no current direct children; this historical UNKNOWN is retained",
+    "RecordedNumericRuntimeIdentitiesCompleteAndClean": true,
+    "NotClaimed": "All diagnostic subprocess historical birth records complete"
+  },
+  "NewOperations": {
+    "CaptureRuns": 0,
+    "CompareRuns": 0,
+    "SdkCalls": 0,
+    "GpuQueriesOrRuns": 0,
+    "ServerOperations": 0,
+    "NetworkOrCredentialsAccessed": false,
+    "CanonicalOrGitEdits": 0,
+    "NewCSharpAuditOrHashClients": 0
+  },
+  "AcceptanceLimits": {
+    "NewActualSezikaForward": false,
+    "FullLaya46Accepted": false,
+    "LayaStatusUnchanged": "1/46,missing45,full=false,upstream=false",
+    "FullOperatorParity": false,
+    "LanguageQuality": false,
+    "Training": false,
+    "Calibration": false,
+    "PerformanceBenchmark": false,
+    "ProductionDeployment": false
+  },
+  "EvidenceIndex": [
+    {
+      "Name": "Fixed actual",
+      "Path": "D:\\source\\Sezika\\.artifacts\\supervision-20261008\\capture-original-46-v1\\capture.json",
+      "Bytes": 90902,
+      "Sha256": "681497c6b6f1a599804cac492b3a1094c623f825341563020b8c6f534a44dfa9",
+      "ExactFields": "/actual_sha256",
+      "ReadNowUtc": "2026-10-14T15:54:22.5348005+00:00"
+    },
+    {
+      "Name": "Fresh Linux reference",
+      "Path": "\\\\wsl.localhost\\Ubuntu\\home\\maikebing\\sezika-linux-real-numeric26-v1-20261014\\reference\\capture.json",
+      "Bytes": 58679,
+      "Sha256": "0f113d6be7bef80de8383cdd68eaf8ad5cb1c1b9dd060b582d2f746c91320977",
+      "ExactFields": "/reference_sha256",
+      "ReadNowUtc": "2026-10-14T15:54:22.6371794+00:00"
+    },
+    {
+      "Name": "Linux run contract",
+      "Path": "\\\\wsl.localhost\\Ubuntu\\home\\maikebing\\sezika-linux-real-numeric26-v1-20261014\\inputs\\run-contract.json",
+      "Bytes": 6346,
+      "Sha256": "76d16ac08a967c33d210015cab8e5e0fbdcbe4da5c8dd8a3ad01a55c32c9d8ca",
+      "ExactFields": "/contract_sha256",
+      "ReadNowUtc": "2026-10-14T15:54:22.6227495+00:00"
+    },
+    {
+      "Name": "Explicit Linux port proof",
+      "Path": "\\\\wsl.localhost\\Ubuntu\\home\\maikebing\\sezika-linux-real-numeric26-v1-20261014\\inputs\\port-proof.json",
+      "Bytes": 11524,
+      "Sha256": "41be0cd39123d1215d8bc56adf71f5cdd766058eee3286355b52840716bd45d2",
+      "ExactFields": "all typed proof fields",
+      "ReadNowUtc": "2026-10-14T15:54:22.6205266+00:00"
+    },
+    {
+      "Name": "Original weights ZIP container",
+      "Path": "D:\\source\\Sezika\\.artifacts\\models\\mmbert-independent\\source\\pytorch_model.bin",
+      "Bytes": 1231188142,
+      "Sha256": "8ea64ec1ea4eb8fca0fc14b69a2ae571de6bfbc25fd214bb932dd4aba6a3a04e",
+      "ExactFields": "/original_weights",
+      "ReadNowUtc": "2026-10-14T15:54:22.5152283+00:00"
+    },
+    {
+      "Name": "Linux native AOT Numeric",
+      "Path": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\oracle-numeric-t8-candidate-v4\\linux-x64\\numeric\\Sezika.IndependentNumericCompare",
+      "Bytes": 10357528,
+      "Sha256": "aa5be70cc5ba6e91766116eba5a70dec26080b8f84168ba68a29e889c5089bfc",
+      "ExactFields": "original compare-native.Executable",
+      "ReadNowUtc": "2026-10-14T15:54:21.2074512+00:00"
+    },
+    {
+      "Name": "Original Linux comparison report",
+      "Path": "\\\\wsl.localhost\\Ubuntu\\home\\maikebing\\sezika-linux-real-numeric26-v1-20261014\\comparison.json",
+      "Bytes": 10890,
+      "Sha256": "f8173aa0f7c0f1f08fd446f6e8625c3c4ac4be8ed17304ef8961d60ef6f60071",
+      "ExactFields": "/compared_count,/element_denominator,/results",
+      "ReadNowUtc": "2026-10-14T15:54:22.6076684+00:00"
+    },
+    {
+      "Name": "Original Linux capture native execution",
+      "Path": "\\\\wsl.localhost\\Ubuntu\\home\\maikebing\\sezika-linux-real-numeric26-v1-20261014\\capture-native.json",
+      "Bytes": 4620,
+      "Sha256": "af9532658295489ee6a741c04003b1e2be1dcba601de184d79911a21a5ab0387",
+      "ExactFields": "/Processes,/Launcher,/InputComplete,/OutputComplete,/CleanupStatus",
+      "ReadNowUtc": "2026-10-14T15:54:22.5712934+00:00"
+    },
+    {
+      "Name": "Original Linux compare native execution",
+      "Path": "\\\\wsl.localhost\\Ubuntu\\home\\maikebing\\sezika-linux-real-numeric26-v1-20261014\\compare-native.json",
+      "Bytes": 5898,
+      "Sha256": "c0f5004d379fc32b582f799664233fc83f9299e8ea7247fc3ae976aaeb7d1e3b",
+      "ExactFields": "/Processes,/Launcher,/InputComplete,/OutputComplete,/CleanupStatus",
+      "ReadNowUtc": "2026-10-14T15:54:22.6058031+00:00"
+    },
+    {
+      "Name": "Retained Linux source/build proof",
+      "Path": "\\\\wsl.localhost\\Ubuntu\\home\\maikebing\\sezika-t8-proof-v3b-20261014\\build-summary.json",
+      "Bytes": 155702,
+      "Sha256": "a044caea144313b192233a40d8b556418405eb955687a840ec1c079ac59de634",
+      "ExactFields": "/ProgramSources,/GeneratedSources,/RuntimeFiles,/BuildExecution",
+      "ReadNowUtc": "2026-10-14T15:54:20.3810706+00:00"
+    }
+  ],
+  "ClosureResources": "current-exact-process-and-resource-readback.json",
+  "CandidateMarkdown": "tooling-linux-real-numeric26-2026-10-14.candidate.md",
+  "CurrentForegroundSummaryShellPendingToolExit": true
+}

@@ -1,0 +1,378 @@
+{
+  "schema_version": "sezika.independent-numeric-comparison.port-derived.v2",
+  "status": "port_comparison_complete",
+  "case_id": "independent-smoke-46-v1",
+  "actual_sha256": "681497C6B6F1A599804CAC492B3A1094C623F825341563020B8C6F534A44DFA9",
+  "reference_sha256": "0F113D6BE7BEF80DE8383CDD68EAF8AD5CB1C1B9DD060B582D2F746C91320977",
+  "contract_sha256": "76d16ac08a967c33d210015cab8e5e0fbdcbe4da5c8dd8a3ad01a55c32c9d8ca",
+  "oracle_program_sha256": "0c1a3d71483cf7f57c51bbd1a9400e701d4d41b0c5367bb4ee43ba38748a7d60",
+  "upstream_source_sha256": "1b23db2f59d3f80bd9af89fb6df3ce15affd90b5ffc09925e732450e694868ff",
+  "fixture_only": false,
+  "passed": true,
+  "accepted_independent_reference": false,
+  "accepted_port_derived_reference": true,
+  "reference_kind": "independently_ported_original_weights_capture",
+  "upstream_executed": false,
+  "comparison_denominator": 26,
+  "compared_count": 26,
+  "failed_comparisons": 0,
+  "element_denominator": 884736,
+  "failed_elements": 0,
+  "results": [
+    {
+      "name": "embedding/raw",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 0,
+      "maximum_relative_error": 0,
+      "maximum_absolute_error_index": 0,
+      "passed": true
+    },
+    {
+      "name": "embedding/norm",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 5.7220458984375E-06,
+      "maximum_relative_error": 0.0014162895140806357,
+      "maximum_absolute_error_index": 530,
+      "passed": true
+    },
+    {
+      "name": "layer/0/hidden",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 2.09808349609375E-05,
+      "maximum_relative_error": 0.2647058823529412,
+      "maximum_absolute_error_index": 34322,
+      "passed": true
+    },
+    {
+      "name": "layer/1/hidden",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 1.9073486328125E-05,
+      "maximum_relative_error": 0.06696571611662928,
+      "maximum_absolute_error_index": 3602,
+      "passed": true
+    },
+    {
+      "name": "layer/2/hidden",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 1.71661376953125E-05,
+      "maximum_relative_error": 0.02566371681415929,
+      "maximum_absolute_error_index": 14354,
+      "passed": true
+    },
+    {
+      "name": "layer/3/hidden",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 2.6702880859375E-05,
+      "maximum_relative_error": 0.06246418338108883,
+      "maximum_absolute_error_index": 6674,
+      "passed": true
+    },
+    {
+      "name": "layer/4/hidden",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 2.6702880859375E-05,
+      "maximum_relative_error": 0.28225806451612906,
+      "maximum_absolute_error_index": 6674,
+      "passed": true
+    },
+    {
+      "name": "layer/5/hidden",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 2.6702880859375E-05,
+      "maximum_relative_error": 0.6937541974479516,
+      "maximum_absolute_error_index": 12818,
+      "passed": true
+    },
+    {
+      "name": "layer/6/hidden",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 3.0517578125E-05,
+      "maximum_relative_error": 0.03996983408748114,
+      "maximum_absolute_error_index": 12818,
+      "passed": true
+    },
+    {
+      "name": "layer/7/hidden",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 2.6702880859375E-05,
+      "maximum_relative_error": 0.0779467680608365,
+      "maximum_absolute_error_index": 12818,
+      "passed": true
+    },
+    {
+      "name": "layer/8/hidden",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 3.0517578125E-05,
+      "maximum_relative_error": 0.03851444291609354,
+      "maximum_absolute_error_index": 12818,
+      "passed": true
+    },
+    {
+      "name": "layer/9/hidden",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 3.4332275390625E-05,
+      "maximum_relative_error": 0.12782440284054228,
+      "maximum_absolute_error_index": 12818,
+      "passed": true
+    },
+    {
+      "name": "layer/10/hidden",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 3.0517578125E-05,
+      "maximum_relative_error": 0.3094262295081967,
+      "maximum_absolute_error_index": 12818,
+      "passed": true
+    },
+    {
+      "name": "layer/11/hidden",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 0.00732421875,
+      "maximum_relative_error": 0.021370967741935483,
+      "maximum_absolute_error_index": 488,
+      "passed": true
+    },
+    {
+      "name": "layer/12/hidden",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 0.00732421875,
+      "maximum_relative_error": 0.048247809762202755,
+      "maximum_absolute_error_index": 488,
+      "passed": true
+    },
+    {
+      "name": "layer/13/hidden",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 0.00732421875,
+      "maximum_relative_error": 0.03227796052631579,
+      "maximum_absolute_error_index": 488,
+      "passed": true
+    },
+    {
+      "name": "layer/14/hidden",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 0.00732421875,
+      "maximum_relative_error": 0.17092337917485265,
+      "maximum_absolute_error_index": 488,
+      "passed": true
+    },
+    {
+      "name": "layer/15/hidden",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 0.00732421875,
+      "maximum_relative_error": 0.1326949384404925,
+      "maximum_absolute_error_index": 488,
+      "passed": true
+    },
+    {
+      "name": "layer/16/hidden",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 0.00732421875,
+      "maximum_relative_error": 0.02180065784441215,
+      "maximum_absolute_error_index": 488,
+      "passed": true
+    },
+    {
+      "name": "layer/17/hidden",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 0.00732421875,
+      "maximum_relative_error": 0.11685823754789272,
+      "maximum_absolute_error_index": 488,
+      "passed": true
+    },
+    {
+      "name": "layer/18/hidden",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 0.00732421875,
+      "maximum_relative_error": 0.021282255919127427,
+      "maximum_absolute_error_index": 488,
+      "passed": true
+    },
+    {
+      "name": "layer/19/hidden",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 0.00732421875,
+      "maximum_relative_error": 0.00844648775793863,
+      "maximum_absolute_error_index": 488,
+      "passed": true
+    },
+    {
+      "name": "layer/20/hidden",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 0.00732421875,
+      "maximum_relative_error": 0.09105082631743062,
+      "maximum_absolute_error_index": 488,
+      "passed": true
+    },
+    {
+      "name": "layer/21/hidden",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 0.00732421875,
+      "maximum_relative_error": 0.2988505747126437,
+      "maximum_absolute_error_index": 488,
+      "passed": true
+    },
+    {
+      "name": "encoder/final",
+      "shape": [
+        46,
+        768
+      ],
+      "element_count": 35328,
+      "failed_elements": 0,
+      "maximum_absolute_error": 2.765655517578125E-05,
+      "maximum_relative_error": 0.009272370349121548,
+      "maximum_absolute_error_index": 5138,
+      "passed": true
+    },
+    {
+      "name": "marker-vectors.f32",
+      "shape": [
+        2,
+        768
+      ],
+      "element_count": 1536,
+      "failed_elements": 0,
+      "maximum_absolute_error": 1.2258067727088928E-05,
+      "maximum_relative_error": 0.00254329779929638,
+      "maximum_absolute_error_index": 1275,
+      "passed": true
+    }
+  ],
+  "started_utc": "2026-10-14T14:15:50.0720636+00:00",
+  "elapsed_seconds": 18.1636068,
+  "process": {
+    "pid": 584252,
+    "started_utc": "2026-10-14T14:15:49.5613421Z",
+    "command_line": "/mnt/c/Users/mysti/Documents/Codex/Sezika-tooling-artifacts-20261014/oracle-numeric-t8-candidate-v4/linux-x64/numeric/Sezika.IndependentNumericCompare compare-port --actual /mnt/d/source/Sezika/.artifacts/supervision-20261008/capture-original-46-v1/capture.json --reference /home/maikebing/sezika-linux-real-numeric26-v1-20261014/reference/capture.json --contract /home/maikebing/sezika-linux-real-numeric26-v1-20261014/inputs/run-contract.json --contract-sha256 76d16ac08a967c33d210015cab8e5e0fbdcbe4da5c8dd8a3ad01a55c32c9d8ca --port-proof /home/maikebing/sezika-linux-real-numeric26-v1-20261014/inputs/port-proof.json --output /home/maikebing/sezika-linux-real-numeric26-v1-20261014/comparison.json --timeout-seconds 60 --cancel-file /home/maikebing/sezika-linux-real-numeric26-v1-20261014/CANCEL",
+    "parent_evidence": "Use outer bounded runner PID/start/command/parent-chain evidence."
+  },
+  "relative_error_denominator_floor": 1E-12,
+  "represents_full_operator_parity": false,
+  "represents_tokenizer_oracle": false,
+  "represents_model_quality": false,
+  "represents_training": false,
+  "represents_calibration": false,
+  "represents_aot": false,
+  "represents_benchmark": false,
+  "scope": "One realized 46-token independently ported C# reference; 25 checkpoints plus marker vectors; no upstream Python execution or old upstream-reference gate acceptance."
+}

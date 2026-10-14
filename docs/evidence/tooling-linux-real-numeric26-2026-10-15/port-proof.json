@@ -1,0 +1,243 @@
+{
+  "template_contract": {
+    "path": "/mnt/d/source/Sezika/tests/fixtures/independent-oracle/contract.port-derived.v2.json",
+    "bytes": 4485,
+    "sha256": "9f8fcfd3b8169edb9a0e8acb07ab70c1e7e23b65a8e893240b066f2db014228a"
+  },
+  "run_contract": {
+    "path": "/home/maikebing/sezika-linux-real-numeric26-v1-20261014/inputs/run-contract.json",
+    "bytes": 6346,
+    "sha256": "76d16ac08a967c33d210015cab8e5e0fbdcbe4da5c8dd8a3ad01a55c32c9d8ca"
+  },
+  "reference": {
+    "path": "/home/maikebing/sezika-linux-real-numeric26-v1-20261014/reference/capture.json",
+    "bytes": 58679,
+    "sha256": "0f113d6be7bef80de8383cdd68eaf8ad5cb1c1b9dd060b582d2f746c91320977"
+  },
+  "actual": {
+    "path": "/mnt/d/source/Sezika/.artifacts/supervision-20261008/capture-original-46-v1/capture.json",
+    "bytes": 90902,
+    "sha256": "681497c6b6f1a599804cac492b3a1094c623f825341563020b8c6f534a44dfa9"
+  },
+  "original_weights": {
+    "path": "/mnt/d/source/Sezika/.artifacts/models/mmbert-independent/source/pytorch_model.bin",
+    "bytes": 1231188142,
+    "sha256": "8ea64ec1ea4eb8fca0fc14b69a2ae571de6bfbc25fd214bb932dd4aba6a3a04e"
+  },
+  "config": {
+    "path": "/mnt/d/source/Sezika/.artifacts/models/mmbert-independent/source/config.json",
+    "bytes": 1188,
+    "sha256": "47b40fd2e1df8299426dd5f4bb18c28f028cfafcb51b73645f83e596d187eb37"
+  },
+  "tokenizer": {
+    "path": "/mnt/d/source/Sezika/.artifacts/models/mmbert-independent/source/tokenizer.json",
+    "bytes": 17525329,
+    "sha256": "197d4cc5406ee12cc50c8b5511f2393cc32d9db321545979ce041c1199178356"
+  },
+  "upstream_sources": [
+    {
+      "path": "/mnt/c/Users/mysti/Documents/Codex/Sezika-tooling-artifacts-20261014/reference-mmbert-20261014-032132/modeling_modernbert.v4.57.1.source.txt",
+      "bytes": 67793,
+      "sha256": "1b23db2f59d3f80bd9af89fb6df3ce15affd90b5ffc09925e732450e694868ff"
+    },
+    {
+      "path": "/mnt/c/Users/mysti/Documents/Codex/Sezika-tooling-artifacts-20261014/reference-mmbert-20261014-032132/modeling_rope_utils.v4.57.1.source.txt",
+      "bytes": 43192,
+      "sha256": "55cc0c8cb76f592ab178b4662adcbdf4ad5012bb0b4249c0a96603141f18e9ac"
+    },
+    {
+      "path": "/mnt/c/Users/mysti/Documents/Codex/Sezika-tooling-artifacts-20261014/reference-mmbert-20261014-032132/activations.v4.57.1.source.txt",
+      "bytes": 13109,
+      "sha256": "3dd5a81b1e5e0c5371256f00efec19df52255420318737db1e03430a98cf4264"
+    }
+  ],
+  "program_sources": [
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Budget.cs",
+      "bytes": 5431,
+      "sha256": "f398202851559f4bddb27d0dec09da29fe04e3b72d1e3ab188dcd847d7eb8f2a"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Contracts.cs",
+      "bytes": 5876,
+      "sha256": "72fb0f741edecbafe0d6b3daf37f2ec2c7a52dccd4ff11cafa5d0a501a9e1cc8"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Exporter.cs",
+      "bytes": 20387,
+      "sha256": "800215524686c0f410ed427d4a7497c34ccf07115a46bd7a9fcf25ae405449c8"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Laya/LayaCases.cs",
+      "bytes": 5251,
+      "sha256": "1808202b6dcbf51db2ed8c5ffddee50a212d0f0cfe12b8c3033269e6b47d4906"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Laya/LayaContracts.cs",
+      "bytes": 5645,
+      "sha256": "38fe0a8a107e961a1692d689b409e981477d45ece6dc7c1808dc015ab68c4eb8"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Laya/LayaExporter.cs",
+      "bytes": 12744,
+      "sha256": "3c808ed6d0816eb77d7d79a2eca0bfb6b9d1db1a56c55a6f2786d95e80934e8a"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Laya/LayaForward.cs",
+      "bytes": 6312,
+      "sha256": "55002b528d7acfcf93f8af9d2ae661c53897bcce6f8cd5bec89ec1386ecd1a57"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Laya/LayaInputChecks.cs",
+      "bytes": 29833,
+      "sha256": "e789bfe68b795c6b04fdb3b2969eb031fdbcd0a296bb268853920ba901c509d2"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Laya/LayaQuestion.cs",
+      "bytes": 11629,
+      "sha256": "ba8101196b96ec9be2f06e9e00e5ca0e11506164bab87c6a2d66b7f795c7578b"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Laya/LayaSequence.cs",
+      "bytes": 5514,
+      "sha256": "20410b747f2c770f44ce891750c6b79d941039e590747e69a01b830a7f708c9d"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Laya/LayaWeights.cs",
+      "bytes": 6191,
+      "sha256": "23f5bb843391637287af534ada163d39812e1ad5cae496fd831b1c5661b77dae"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Laya/PortProof.cs",
+      "bytes": 7851,
+      "sha256": "5e4ed8e5f201978b3005d473a56cf15b2eff41a683d2ec10d7263582537be75a"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/ModernBertReference.cs",
+      "bytes": 10770,
+      "sha256": "d26c42e788dee7d958650da28465f8901072c08a018535f9739796166c9e1bdb"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/OriginalWeights.cs",
+      "bytes": 6012,
+      "sha256": "5beb1d6f82dd2085008db1ba88bd922fb8c759e44882ba72c7c0b078b38066ca"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Program.cs",
+      "bytes": 10383,
+      "sha256": "5da0d0121a931e20b42aeb9635fe66f7721929f324954dee68f6ac1c3eb27063"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Provenance/BuildProofExporter.cs",
+      "bytes": 13675,
+      "sha256": "732fcb602b6b8906e07f766e6ec75f8c6951142426e8d52475e90075b5042077"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Provenance/CompiledProgramProof.cs",
+      "bytes": 41031,
+      "sha256": "2fb45280f00b2ba1927148b6f994ebec3191f98c16568342674605f17fec58ba"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Provenance/ProofChecks.cs",
+      "bytes": 32132,
+      "sha256": "f15b039112ac5bbbf451b82215ce08a932afd3c12c7f973cc82c458a8afa2087"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/RestrictedPickle.cs",
+      "bytes": 9297,
+      "sha256": "eb8a0157e8c3e7472993cd73518044b013ccb239f70be54866b420e4f9c262a2"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Sezika.ReferenceTool.csproj",
+      "bytes": 367,
+      "sha256": "1bc91fba5f777cde48d1e5bcc8762527014bd90edf9a0f31ec6beabe6d0acb5e"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Tokenization/BpeModel.cs",
+      "bytes": 7133,
+      "sha256": "eedfbd7935eaca923bbecc6a91e6400d729d4aa9c152663d581e251d02cf5096"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Tokenization/FrozenTokenizer.cs",
+      "bytes": 8047,
+      "sha256": "7e4101fa137a28b2cf485c8f827e0abc9a231adda438929111826756c12a3199"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Tokenization/TokenizerContracts.cs",
+      "bytes": 1904,
+      "sha256": "93c8ad919c148adc92e60366281caa6c10afce2840ae462e8bcaf7919a0f0286"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/Tokenization/TokenizerExport.cs",
+      "bytes": 5935,
+      "sha256": "c450128729e16447e5874642d9f371367a564ee5fd87b6ae9ab5bb0c5657cb98"
+    }
+  ],
+  "executable": {
+    "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/bin/Release/net10.0/Sezika.ReferenceTool",
+    "bytes": 79832,
+    "sha256": "0c1a3d71483cf7f57c51bbd1a9400e701d4d41b0c5367bb4ee43ba38748a7d60"
+  },
+  "managed_assembly": {
+    "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/bin/Release/net10.0/Sezika.ReferenceTool.dll",
+    "bytes": 1160192,
+    "sha256": "12a9c3f241a5ead74867be20b88c96950c220dd7516d60551ab485192cafb4db"
+  },
+  "process_registration": {
+    "path": "/home/maikebing/sezika-linux-real-numeric26-v1-20261014/capture-execution/registered.json",
+    "bytes": 1155,
+    "sha256": "ca4aebd0726eeedaf7a4bdadf4d7064d96374691ca0d0cb19e4cf234f2b48e0b"
+  },
+  "executor_receipt": {
+    "path": "/home/maikebing/sezika-linux-real-numeric26-v1-20261014/capture-native.json",
+    "bytes": 4620,
+    "sha256": "af9532658295489ee6a741c04003b1e2be1dcba601de184d79911a21a5ab0387"
+  },
+  "export_receipt": {
+    "path": "/home/maikebing/sezika-linux-real-numeric26-v1-20261014/export-receipt.json",
+    "bytes": 424,
+    "sha256": "354447f5cd1f90a14ae28bc8c18e91b2ad5d110e93d91d22ec4f731c3287c4a3"
+  },
+  "build_receipt": {
+    "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/build-summary.json",
+    "bytes": 155702,
+    "sha256": "a044caea144313b192233a40d8b556418405eb955687a840ec1c079ac59de634"
+  },
+  "export_request": {
+    "path": "/home/maikebing/sezika-linux-real-numeric26-v1-20261014/inputs/export-request.json",
+    "bytes": 8966,
+    "sha256": "c8e1b5ffda36b589e19d3ea1175c665d329d246ad8e2954e619cc93521a79df3"
+  },
+  "build_execution": {
+    "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/build-execution/result.json",
+    "bytes": 4859,
+    "sha256": "de77a476ec43509fecaeed0137f2f4767e3afd50fd842f009c537c5403951ace"
+  },
+  "runtime_files": [
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/bin/Release/net10.0/Sezika.ReferenceTool",
+      "bytes": 79832,
+      "sha256": "0c1a3d71483cf7f57c51bbd1a9400e701d4d41b0c5367bb4ee43ba38748a7d60"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/bin/Release/net10.0/Sezika.ReferenceTool.deps.json",
+      "bytes": 440,
+      "sha256": "3e2da74b7b06d42f04aff905a71cc206dae0e2b19566c664e314b20e56684f04"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/bin/Release/net10.0/Sezika.ReferenceTool.dll",
+      "bytes": 1160192,
+      "sha256": "12a9c3f241a5ead74867be20b88c96950c220dd7516d60551ab485192cafb4db"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/bin/Release/net10.0/Sezika.ReferenceTool.pdb",
+      "bytes": 541820,
+      "sha256": "02de29a6b8cd20939a0420152768832a991ba0010626c3def14c9ea07dd4f540"
+    },
+    {
+      "path": "/home/maikebing/sezika-t8-proof-v3b-20261014/source/tools/Sezika.ReferenceTool/bin/Release/net10.0/Sezika.ReferenceTool.runtimeconfig.json",
+      "bytes": 512,
+      "sha256": "00b154a6d148a5da4e79efa58fb8ae53883b3198ca3e8f2c1dd40159ed35f7c1"
+    }
+  ]
+}
