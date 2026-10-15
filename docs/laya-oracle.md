@@ -1,4 +1,6 @@
-# 固定 Laya oracle 导出合同
+# 固定 Laya oracle 历史证据与导出合同
+
+本页保存旧上游导出器的历史证据和格式合同；下列旧程序与命令不再执行。当前采用[C#参考工具](../tools/Sezika.ReferenceTool/README.md)及[当前工作流](tooling-current-workflow.md)，明确port-derived、upstream_executed=false；真实Laya新路径覆盖1/46、缺45，不能据旧46条捕获宣称新实现全量通过。原v1参考及原运行回执保持原字节。
 
 S3-08 已在固定源码、现有权重与隔离 Python 环境中完成 1 条极小验证及完整 46 条真实参考捕获：42 条 answered，4 条 validate/invalid_question。版本化 [reference.cpu-fp32.v1.json](../tests/fixtures/laya-oracle/reference.cpu-fp32.v1.json) 保留原始字节；命令、版本、哈希、进程和环境边界见[执行证据](evidence/laya-oracle-2026-09-25.md)。参考捕获与 C# 数值门槛分别报告，唯一阶段计划仍在 [ROADMAP](../ROADMAP.md)。
 

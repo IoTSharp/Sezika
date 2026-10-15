@@ -12,6 +12,16 @@
 
 报告采用 `FileMode.CreateNew` 写入，现有输出和输入不会被覆盖。致命错误退出码 1；取消/超时退出码 124。循环以字节数、最多 33 次记录读取及总墙钟双重限制，Ctrl+C 取消；无自动重试或联网。
 
+## 当前 C# 调度
+
+现行入口是 `MigrationCommands.RunValidation` 的 `validation batch`／`ValidationOperations.Batch`，请求使用 [ValidationBatchRequest](../tools/Sezika.Tooling/Validation/ValidationContracts.cs)。每个 `ValidationCase` 必须用 `Name` 命名一项实际正/负例，固定真实 `Sezika.TeacherTool` 程序的 `Executable`、`ExecutableSha256` 和结构化 `Arguments`；若用 `dotnet`，还须固定 `ManagedAssembly` 与其 SHA。`Inputs` 逐项固定 `Source`、`RelativePath`、`Sha256`；负例以具名的已冻结输入及 `Mutations` 明确 `RelativePath`、`JsonPath`、`Kind`、`Value`（需要重绑摘要时再给 `ReferencedFile`），只修改任务内复制件。`ExpectedExitCode`、有针对性的 `ExpectedStandardError`／JSON 拒绝输出及 `Outputs` 必须与该例对应；先取得实际成功的正向 control，再调度负例，保留所有失败/未执行分母、程序输出和进程清理读回。
+
+`MaximumCases` 和每例 `TimeoutSeconds` 等使用当前类型的边界，完整矩阵需要显式列出所有原案例及原期待值，不能把旧 `-MaximumCases` 等开关改名后直接当新 schema。批次输出与 CLI report/artifacts 绑定见[当前工作流](tooling-current-workflow.md)。此处只更正调度合同，没有新跑原 24 组合、真实教师或模型，也不产生许可、人审标签或质量批准；原版/修正版的历史状态以原回执和[校验说明](../tools/Sezika.Tooling/Validation/README.md)分别保留。
+
+## 历史证据：原 24 组合检查合同
+
+以下旧入口、参数与期限只记录原检查配方，不得作为当前执行命令：
+
 针对性验证入口是 `tools/Sezika.TeacherTool/Verify-Contract.ps1`。先执行 `-MaximumCases 1` 极小试运行，再执行完整 24 组合成合同案例；外部工具进程每次最多 10 秒、工具预算 3 秒，验证脚本最多 32 项/240 秒，复用 `Invoke-BoundedProcess.ps1` 记录进程身份和清理结果。只使用合成字段和虚构审核 ID，完全不代表真实许可、人工批准或教师质量。脚本删除本次 GUID 目录内临时输入，保留 `.artifacts/teacher-contract-*` 下审计日志/报告。
 
 本工具没有执行网络调用。候选本机安装、实际接口、错误语义、响应格式、许可和资源预算仍是 S4-10 的阻塞条件；完成工具构建不代表教师可用或任何质量结果已验收。

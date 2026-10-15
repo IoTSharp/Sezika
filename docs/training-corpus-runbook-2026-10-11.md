@@ -95,7 +95,7 @@ dotnet Sezika.RepositoryTrainer.dll train-corpus `
 
 `C:\Users\mysti\.codex\artifacts\sezika-corpus-20261011-01a12b4c\stream-training-agent`
 
-每次构建/测试使用现有 `Invoke-BoundedProcess.ps1`，记录 PID、创建时间、argv、父链、超时、输出和最终资源闭环。失败回执保留，不用后一次成功覆盖。最终整棵修改树的编译、全语料严格长度、新实例 profile、真实完整训练恢复以及独立 GPU 验证仍分别需要相应回执。
+每次构建/测试使用 C# `ProcessExecutor.ExecuteAsync`／`process run` 的类型化 `ExecutionRequest`，明确原生程序、结构化参数、目录、数量/墙钟及取消边界，记录 PID、创建时间、argv、父链、输出和最终本任务资源闭环；接线见[当前工作流](tooling-current-workflow.md)。失败回执保留，不用后一次成功覆盖。最终整棵修改树的编译、全语料严格长度、新实例 profile、真实完整训练恢复以及独立 GPU 验证仍分别需要相应回执。
 
 2026-10-11 的本子任务构建 `corpus-workflow-build-v4` 零警告/错误，`scheduler-v2.json` 通过 31 项小型 CPU/gzip/负面检查。检查包括全部 12 个跨 epoch 恢复位置、heldout 与冲突排除、文件 SHA 和计划身份变更拒绝、缺失/仅 pending cursor 拒绝、AdamW moment 文件篡改拒绝，以及 deadline 后释放所有活动来源 reader；没有运行真实 GPU optimizer 恢复。
 
@@ -118,6 +118,16 @@ dotnet Sezika.RepositoryTrainer.dll train-corpus `
 补充的 `source-provenance-compatibility-v3.json` 检查原 manifest 的全部 353 个分片路径字符串，反斜杠路径数为零；未读取分片内容。`corpus-workflow-build-v8-platform-contract` 零警告/错误，`scheduler-v4.json` 保留原 39 项检查并追加三项，总计 42 项：Windows 反斜杠转换为主机无关 `/` 的明确合同、`SOURCE_LICENSES.md` 的原字节/SHA/历史反斜杠路径映射，以及许可原字节篡改拒绝。basename 判别不依赖主机的 `Path.GetFileName` 规则。这个合同检查避免仅依靠 Windows 原生同时兼容两种分隔符而得到假通过；它仍不是 Linux 进程或真实 GPU 打包验收。
 
 ## 已闭合语料的组合
+
+### 当前 C# 组合请求
+
+现行 `corpus compose` 由 `MigrationCommands.Run` 调用 `CorpusOperations.Compose`，使用 [CorpusComposeRequest / CorpusInput](../tools/Sezika.Tooling/Corpus/CorpusContracts.cs) 与 [CorpusComposition](../tools/Sezika.Tooling/Corpus/CorpusComposition.cs) 的实际合同：请求包含 `Inputs`、全新 `Output`、`MaximumRecords`、`RowsPerShard`，每个输入只含 `Root` 和 `ManifestSha256`。每个 root 必须是已关闭的 `COMPLETE_PREPARATION_ONLY`，固定 manifest、shard、source-assets/source-rights 的字节与摘要，保留 exclusions 和原始 train/development 身份；历史 manifest 的 `corpus-bindings.json` 在导入时按原 manifest/exclusions/assets/rights 身份核验，原元数据与 notices 逐字节归档，不改写旧输入或把旧 guardian 失败补成完成。
+
+这是有意的 schema/实现差异：当前合同允许 1–8 个输入；旧配方的四输入、`bindings_sha256` 和首输入 `dedup_sha256` 不能作为顶层参数直接搬入新请求。C# 组合通过现有 `CorpusWriter` 重新记录排除/去重/冲突及新分片身份，不把旧 SQLite 去重索引直接当作新输出的验收；旧输入及其冻结绑定仍按上面的导入规则保留。当前请求路径与输出接线见[当前工作流](tooling-current-workflow.md)，文档更正不表示重新组合全量语料或取得正式训练/质量准入。
+
+### 历史证据：原组合配方与结果
+
+以下旧配置、命令和既有结果仅供追溯，不得作为当前执行入口；旧输入及原分母不因本次文档更正而改变：
 
 `tools/corpus/compose_corpora.py` 仅整理离线数据，最多组合四个 `COMPLETE_PREPARATION_ONLY` 输入 root。配置文件是 JSON 数组，每项包含 `root`、`manifest_sha256`、`bindings_sha256`，第一项可额外固定 `dedup_sha256`。第一个 root 的 `dedup-index.sqlite` 必须已关闭、无 WAL/journal，且索引物理分母与 manifest 一致；主转换仍在写入时不得组合。
 

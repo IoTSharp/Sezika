@@ -69,7 +69,7 @@ prediction 完整字节 hash 填 `records_sha256`；calibration/sealed_test spli
 ## 命令与验证边界
 
 ```powershell
-# 使用固定 PowerShell 7+，由监督者通过 Invoke-BoundedProcess.ps1 记录进程。
+# 当前由监督者使用 C# ProcessExecutor / process run 的结构化 ExecutionRequest 记录进程；固定 PowerShell 7+ 仅作交互终端。
 dotnet tools/Sezika.IndependentPredict/bin/Release/net10.0/Sezika.IndependentPredict.dll export `
   --manifest <export-manifest.json> --manifest-sha256 <SHA-256> `
   --package <independent-package> --head <head.asset> --output <new-directory> `

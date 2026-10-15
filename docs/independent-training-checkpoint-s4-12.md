@@ -64,4 +64,4 @@ v2 评估适配保留完整报告，通过公共 `BindIdentity` 将七项 `Marke
 
 v2 评估回归直接消费上述实际 workflow 生成的报告，把 `hidden_size:2` 改成仍符合语法范围的 `hidden_size:1`，验证 parser保留该字段而公共 `BindIdentity` 在生产 head 加载前拒绝；同时覆盖 protocol 和 length policy 不匹配。该检查没有构造假 encoder，也不新增替代推理路径。
 
-主监督者负责串行构建和运行共享测试入口，长命令通过 `tools/Invoke-BoundedProcess.ps1`，日志归 `.artifacts/supervision-20261007/training`；具体通过数和运行记录以监督者实际验证日志为准。本文件记录工具合同，不预先声明构建/运行通过。
+主监督者负责串行构建和运行共享测试入口，长命令通过 C# `ProcessExecutor.ExecuteAsync`／`process run` 的 `ExecutionRequest` 明确原生程序、结构化 `ArgumentList`、工作/新输出目录、数量/墙钟与取消边界，日志归 `.artifacts/supervision-20261007/training`；具体接线见[当前工作流](tooling-current-workflow.md)，通过数和运行记录以监督者实际验证日志为准。本文件记录工具合同，不预先声明构建/运行通过。

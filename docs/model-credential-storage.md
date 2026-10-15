@@ -1,5 +1,11 @@
 # Windows 模型发布凭据
 
+当前C#入口通过 `HttpCredentials` 读取准确具名目标，请求声明 `CredentialSource="credential-manager"`、`CredentialTarget` 和对应 `CredentialEncoding`；有界stdin使用独立的 `CredentialSource="stdin"`，不同时指定目标。未认证的请求明确使用 `none`。原生缓冲区及时清零，托管字符串的全内存擦除不作保证；凭据不进入argv、Git、回执或持久环境。
+
+下面保存操作、账号核验和HTTP结果均为2026-10-09至10日的历史证据，本次迁移未重新读取真实凭据或确认其当前有效性。旧Python读取/发布桥仅供追溯，不再调用；当前上传或发布还须当轮准确授权和独立读回，详见[C#工作流](tooling-current-workflow.md)。
+
+## 历史证据：保存与平台探针
+
 Hugging Face 发布令牌按用户 2026-10-09 的明确要求，保存于当前 Windows 用户的 **凭据管理器 → Windows 凭据 → 普通凭据**。
 
 - 目标名：`Codex:HuggingFace:IoTSharp:Sezika`。

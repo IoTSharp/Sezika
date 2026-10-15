@@ -61,50 +61,28 @@
 
 所有新增矩阵/采样循环使用 `<` 比较并受明确数量上限约束：最多 3 个长度、3 个问题数、9 行、每请求最多 32 问、每题 2 候选；每行最多 1 次 discovery、5 次 warmup、30 个正式样本、1 次 instrumented 请求，CPU 额外最多 32 次 split。hash 循环保留最多 8192 token 的保护上界，当前实际每序列受 1024 总预算限制。全部继承现有 1–1800 秒运行取消期限与 Ctrl+C，长阶段前后及逐题检查 token，并输出行/预热/样本/分项进度。共享 builder 另有单次 10 秒期限，并把取消传入 tokenizer；外部硬墙钟期限与进程树回收仍由既有 runner 负责。
 
-画像模式需要独立的极小输入及矩阵验证。执行对应授权范围时，先用 `--lengths short --questions 1 --samples 1 --warmup 0 --cycles 1` 完成极小验证，再分别运行所需后端/长度/题数，不在单次调用中无界重试。旧 `Summarize-S5.ps1` 未修改，不把旧矩阵汇总器当作 S5-06 验收器。
+画像模式需要独立的极小输入及矩阵验证。执行对应授权范围时，先用 `--lengths short --questions 1 --samples 1 --warmup 0 --cycles 1` 完成极小验证，再分别运行所需后端/长度/题数，不在单次调用中无界重试。旧矩阵汇总脚本仅保留历史证据，不再调用；当前画像使用C# `validation profile`。
 
-2026-09-26 tokenizer 预检实测单题长度为 short 36/40/37、medium 116/120/117、long 516/520/517（依次 Choice/Score/Boolean）；无截断，32 问 long 请求的 token 总和为 16566。正式性能仍需在其他 AOT/oracle 重负载结束后按顺序采集。当前构建输出可按以下两次有界调用先小后大执行 CUDA；每次都创建独立报告，模型无需下载：
+2026-09-26 tokenizer 预检实测单题长度为 short 36/40/37、medium 116/120/117、long 516/520/517（依次 Choice/Score/Boolean）；无截断，32 问 long 请求的 token 总和为 16566。正式性能仍需在其他 AOT/oracle 重负载结束后按顺序采集。当前构建输出由 [C# 有界进程工具](tooling-current-workflow.md) 按两个独立 `ExecutionRequest` 先小后大执行；请求固定已核 SHA 的 Benchmarks apphost 或准确 dotnet host加DLL、完整模型输入和新报告路径。本次迁移不启动性能测量；CUDA实测仍须当轮授权与真实资源准入。
 
-```powershell
-$profileDll = '.artifacts/build/s5-profile-20260926/bin/Sezika.Benchmarks/release/Sezika.Benchmarks.dll'
-& tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\Program Files\dotnet\dotnet.exe' -TimeoutSeconds 180 -LogName 's5-profile-cuda-smoke' -ArgumentList @(
-    $profileDll, '--mode', 'profile', '--backend', 'cuda', '--model', '.artifacts/models/laya-mmbert',
-    '--lengths', 'short', '--questions', '1', '--samples', '1', '--warmup', '0', '--cycles', '1',
-    '--timeout-seconds', '150', '--cpu', '13th Gen Intel(R) Core(TM) i9-13900HX', '--environment', 'windows-local',
-    '--output', '.artifacts/s5-profile-20260926/cuda-smoke.json'
-)
-# Only after checking the smoke report and returned resources.
-& tools/Invoke-BoundedProcess.ps1 -FilePath 'C:\Program Files\dotnet\dotnet.exe' -TimeoutSeconds 1750 -LogName 's5-profile-cuda-matrix' -ArgumentList @(
-    $profileDll, '--mode', 'profile', '--backend', 'cuda', '--model', '.artifacts/models/laya-mmbert',
-    '--lengths', 'short,medium,long', '--questions', '1,8,32', '--samples', '3', '--warmup', '1', '--cycles', '1',
-    '--timeout-seconds', '1700', '--cpu', '13th Gen Intel(R) Core(TM) i9-13900HX', '--environment', 'windows-local',
-    '--output', '.artifacts/s5-profile-20260926/cuda-matrix.json'
-)
+```text
+Sezika.Tooling process run --request <profile-smoke-request.json> --output <new-smoke-receipt.json> --timeout-seconds 215
+Sezika.Tooling process run --request <profile-matrix-request.json> --output <new-matrix-receipt.json> --timeout-seconds 1785
 ```
 
+两请求的执行期限分别为180/1750秒，另留最多30秒清理。`ArgumentList` 共同包含 `--mode profile --backend cuda --model <固定模型目录> --cycles 1 --cpu <准确CPU> --environment <准确环境> --output <新报告>`，每个标志和值分别占一项。tiny另含 `--lengths short --questions 1 --samples 1 --warmup 0 --timeout-seconds 150`；矩阵另含 `--lengths short,medium,long --questions 1,8,32 --samples 3 --warmup 1 --timeout-seconds 1700`。先核tiny实际报告和所属树回收，再开始矩阵；原历史实测目录与参数仍在原证据内。
 SIMD 可将第一条命令改为 `--backend simd` 和独立的 `simd-smoke.json`。其完整矩阵宜用第二条命令按单一长度、单一问题数拆为最多九次独立调用，每次仍为 3 正式样本、1 预热、1 生命周期，内部 1700 秒、外部 1750 秒；先按 smoke 实际耗时决定下一行，整个批次应另设不超过九项、最多 4.5 小时的墙钟预算。每请求 300 秒依然有效，若某行超时保留失败及进度，不提高预算来改写覆盖结论。上述最大预算用于执行控制，不是预计延迟，也不是性能测量结果。
 
 静态审阅核对 source-generated JSON、输入哈希编码、真实 pipeline 转发、循环上限、取消与进度、原始异常保留、分项 unavailable、显存/工作区清理与改动范围；`git diff --check` 仅用于空白检查，不表示构建或推理通过。S3-09/10 已使渲染版本改变，后续必须按 v2 在同条件重采集并保留旧报告；不能从本工具迁移推导优化收益、质量或长输入 AOT 通过。
 
-新增的 `tools/Validate-S5Profile.ps1` 是只读的 schema/计时一致性检查器。它逐个校验最多 32 份、每份不超过 4 MiB 的 schema-1 `passed/complete` 报告、schema-3 画像计划、拒绝分母、原始 E2E 样本以及最近秩 p50/p95/p99，并输出源文件 SHA-256 汇总。它不会运行模型，也不产生性能、质量、校准或 AOT 结论；校验自身受 1–60 秒墙钟上限约束。示例（PowerShell 7）：
+当前只读校验入口为 `Sezika.Tooling validation profile`，请求 `ProfileValidationRequest` 明确提供 `ReportPaths` 和全新的 `Output`。它逐个校验最多32份、每份不超过4MiB的 schema-1报告、schema-3画像计划、拒绝分母、原始E2E样本和最近秩p50/p95/p99，保留实际来源SHA；不运行模型或产生性能、质量、校准、AOT结论。
 
-```powershell
-pwsh -NoProfile -File .\tools\Validate-S5Profile.ps1 `
-  -ReportPaths @('.\docs\evidence\s346-continuation-2026-09-26\profile-simd-short1.json', '.\docs\evidence\s346-continuation-2026-09-26\profile-cuda-long32.json') `
-  -OutputPath .\.artifacts\s5-profile-validation.json -TimeoutSeconds 30
+```text
+Sezika.Tooling validation profile --request <profile-validation.json> --output <new-validation-command-receipt.json> --timeout-seconds 30
 ```
-
 当前校验器另外要求所选长度/题数唯一、每行恰好覆盖声明矩阵，拒绝字符串/Boolean 冒充数值；重算 min/max、request/question throughput、执行覆盖率和问题数分母。测量行必须具备匹配的真实 token/hash/marker 及全部 discovery 完成数；`full` 要有独立 stage forward 完成数，`end_to_end` 明确不包含分项。合法拒绝仅为 token 预算/长度错误，且不能携带正式样本或测量吞吐。校验后的汇总保留模型、tokenizer、manifest、应用程序集/可执行文件 hash、输入 hash、渲染版本、detail、预算、采样设置和硬件环境；它不读取已归档运行的旧本地程序集路径，也不把报告自述的 `native_aot` 当作新的 AOT 验收。
 
-JSON 原始 byte snapshot 使用严格 UTF-8 和 `JsonDocument` 检查重复成员；逐对象以 Ordinal 比较转义解码后的 property name，所有嵌套对象和数组均检查，最大深度 64、最多 131072 节点且受同一墙钟取消约束。后续 PowerShell 解析不能靠覆盖同名属性改变判定。
+JSON 原始 byte snapshot 使用严格 UTF-8 和 `JsonDocument` 检查重复成员；逐对象以 Ordinal 比较转义解码后的 property name，所有嵌套对象和数组均检查，最大深度 64、最多 131072 节点且受同一墙钟取消约束。后续解析不能靠覆盖同名属性改变判定。
 
-`tools/Sezika.Benchmarks/ValidateProfileChecks.ps1` 用既有四份真实报告和明确标为篡改的非法 fixture 回归上述门槛。最多 32 项对象变异及 3 项原始重复字段负例、30 秒默认总期限、单次校验使用剩余时间；先一份 smoke 再批次，支持 PowerShell 取消及进度。临时 GUID 目录仅由本次创建并在 `finally` 核实绝对路径后删除，结果在删除成功后才写入。使用新的输出路径运行：
-
-```powershell
-& .\tools\Invoke-BoundedProcess.ps1 -FilePath 'C:\Program Files\PowerShell\7\pwsh.exe' -TimeoutSeconds 40 -LogName 's5-profile-validator-checks' -ArgumentList @(
-  '-NoProfile', '-File', 'tools/Sezika.Benchmarks/ValidateProfileChecks.ps1',
-  '-OutputPath', '.artifacts/s5-profile-validator-checks.json', '-TimeoutSeconds', '30'
-)
-```
-
+当前检查使用 `Sezika.Tooling.Tests --suite validation` 和 `--suite validation-cli`，先各一项，再按准确检查清单运行全部适用项。由C# `process run` 固定原生测试程序、fixture、独占输出、执行及清理预算，核实际正控与非法字段、分母、原始重复属性等负控。旧脚本检查配方仅保留历史证据，不再调用；新套件的适用范围与真实运行回执分别见根ROADMAP和分项证据。
 上述 `passed` 仅代表证据结构与算术一致。S5-07 仍须对应权重的数值/质量门槛、同输入与同资源预算的真实逐项消融、取消/卸载及两 RID AOT 回归。旧 Laya 画像不能替代独立 head 的证据，也不能把单样本分位数写成稳定尾延迟或性能改善。

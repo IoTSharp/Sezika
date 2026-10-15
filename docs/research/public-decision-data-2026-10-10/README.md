@@ -47,18 +47,19 @@
 
 GitHub 令牌已验证为 maikebing，并安全保存在 Windows Credential Manager 的 Codex:GitHub:maikebing。模力方舟仓库通过专用网页登录会话创建，数据集 ID 46105，底层仓库 ID 50739386，maikebing/public-decision-data，public=true，默认分支 master。首个表单提交返回 200，但监测代码等待了错误的接口路径而超时；随后只读查询确认实际创建成功，没有重复提交。保存的 Gitee Git 凭据已核身份为 maikebing。官方 gai 回调返回 true 但对象仍缺失，原失败回执保留；标准 Git LFS 完成上传，实际提交、缺失数和匿名完整回读均通过后，已审查公开子集的 moark_published 才改为 true。密钥值不进入文档、数据或上传包。
 
-## 可复用执行入口
+## 当前 C# 入口与历史配方
 
-- `Collect-Sources.ps1`：固定来源下载，逐文件长度/SHA 校验，失败事件和取消回执。
-- `Collect-RangedFiles.ps1`：大文件 HTTP Range 接续，验证 Content-Range、总长度和上游 SHA；partial 与来源身份绑定。
-- `Summarize-Collection.ps1`：从 ledger 汇总文件与物理行数；footer-only Parquet 统计不执行远端数据加载代码。
-- `Build-CollectionPlan.ps1`：根据已固定元数据生成完整结构化文件与文档计划。
-- `Check-SourceCompleteness.ps1`：按固定下载计划核对每个来源的完整性；历史失败与最终缺失分别表述。
-- `Validate-SeedDatasets.ps1`：Sys1Cal 发行文件数量、gold 归一化及跨 primitive 一致性；S1MB manifest 与声明题库文件完整性。
-- `Build-UploadBundle.ps1`：初始许可明确来源的不可变 NTFS hard-link 上传目录、逐文件 SHA 和逐源许可清单。
-- `Build-UploadBundle.ps1 -Extended -BundleName moark-public-decision-v2 -VerifyHashes`：扩展逐源审查包；Open-Jev 仅含十个原生控件，保留全部公开 split。
-- `Publish-MoarkDataset.py`：独立数据 Git 目录的冻结提交和上传；push-standard 使用已核验的标准 LFS。
-- `Verify-MoarkDataset.py`：匿名 Git clone、固定提交和路径集合校验、标准 LFS batch、全部资产流式 SHA256/长度验收。
-- `Finalize-MoarkPublication.py`：发布验收回执，匿名核对其父提交、唯一变更路径、回执字节和保持不变的资产清单。
+当前调用合同见[工具工作流](../../tooling-current-workflow.md)。原脚本、原始下载/发布回执和当时失败均保留为历史证据，不再执行旧配方。下列入口承接显式输入的当前职责；不自动重放本目录的账号、日期、公开可见性或旧授权，实际模型/数据发布仍须当轮明确范围。
 
+| 当前工作 | C# 入口与边界 |
+| --- | --- |
+| 固定元数据生成完整计划 | `corpus research`；保留requested/canonical身份、固定revision、split和未知摘要 |
+| 多来源采集、缓存及Range恢复 | `source acquire`；固定metadata/plan SHA，区分SHA256与Git blob SHA1，保留全部计划和partial/失败分母 |
+| 来源完整性与ledger统计 | `corpus research-check`；消费采集产生的research-download-plan与source-ledger，独立核实际hash及原digest |
+| Sys1Cal/S1MB冻结种子检查 | `corpus seed-check`；核题库结构、声明分母及跨primitive一致性 |
+| 审查包构造与独立读回 | `transport prepare/verify/reassemble`、`publication prepare/preview`；完整资产与逐源许可另核，不推定未知许可可发布 |
+| 已授权的Git/LFS运输 | `git run`；固定父提交、准确所属路径、原生pre-push与fresh内容读回 |
+| 真实平台提交 | `publication upload/commit`；绑定当前授权、manifest、private/public声明和独立读回；本次迁移仅验协议fixture |
+
+固定历史发布回执生成和旧数据集创建配方已撤销重放职责，不宣称上表复现其全部历史语义。来源许可、准入、教师、人审、质量和公开发布分别验收。
 本轮发现记录覆盖 GitHub API、Hugging Face 名称检索/仓库元数据、模力方舟三个相关类别的全部已见分页及普通网页搜索。Google 返回 JavaScript/challenge 页面，未作为已审核搜索结果计数。此记录不宣称全网穷尽。

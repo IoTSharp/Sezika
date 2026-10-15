@@ -60,18 +60,13 @@
 
 [极小示例](../datasets/s4-05/README.md) 有 5 条公开原创记录：三个同家族中英/反事实开发样本、一个校准槽位和一个未封存测试槽位。已审阅循环比较条件（记录行 `<= MaxRecords + 1` 用于拒绝第 1001 行、配对 `right = left + 1; right < count`、父链 `depth < count`），并在本轮明确授权后实际运行：5条记录、10个配对、10项问题，按预期退出 `3`；未把待人工批准的样例自动改成通过。
 
-复现时仍按仓库规则获得相应执行授权，并经 [有界进程工具](../tools/Invoke-BoundedProcess.ps1) 记录 PID、启动时间、命令行、父链、超时、日志和子树回收。以下是命令模板；本轮实际采用的隔离构建路径和新报告路径见执行证据：
+复现采用 [C# 有界进程合同](tooling-current-workflow.md)：构建请求固定本机已发现的 SDK 绝对路径与结构化参数，记录实际版本；审计请求固定已构建的 DatasetTool apphost 和完整运行包身份。两个请求使用不同的新执行目录，分别设置180秒和75秒执行期限，另留清理时间；核 PID、出生、argv、父链、原始日志与完整子树回收。历史实际构建目录和报告路径保持在原执行证据中。
 
-```powershell
-& ./tools/Invoke-BoundedProcess.ps1 -FilePath dotnet -ArgumentList @(
-  'build', 'tools/Sezika.DatasetTool/Sezika.DatasetTool.csproj', '-c', 'Release', '-v', 'minimal'
-) -TimeoutSeconds 180 -LogName 's4-05-build'
-
-& ./tools/Invoke-BoundedProcess.ps1 -FilePath dotnet -ArgumentList @(
-  'tools/Sezika.DatasetTool/bin/Release/net10.0/Sezika.DatasetTool.dll',
-  'audit-splits', 'datasets/s4-05/example-manifest.json',
-  '.artifacts/s4-05-example-audit.json'
-) -TimeoutSeconds 75 -LogName 's4-05-example-audit'
+```text
+Sezika.Tooling process run --request <dataset-build-request.json> --output <new-build-receipt.json> --timeout-seconds 215
+Sezika.Tooling process run --request <dataset-audit-request.json> --output <new-audit-receipt.json> --timeout-seconds 110
 ```
+
+审计请求的 `ArgumentList` 为 `["audit-splits", "<固定清单的绝对路径>", "<新报告的绝对路径>"]`；如使用准确 dotnet host，首参数另加已核 SHA 的 DatasetTool DLL。示例阻断预期仍为退出3，不能仅以外层退出码认定通过。以上只是执行合同，本次工具迁移不重跑真实数据准入。
 
 后续验收还需要独立的坏 hash、重复 JSON 属性、超限/取消、家族/实体/近重复跨 split、衍生父环、已查看来源改名/祖先暴露、封存绑定不符等用例，并完成真实许可、人工审核与封存流程。当前源码、固定格式和极小示例阻断证据不能据此宣称“无泄漏数据集已建成”。

@@ -52,30 +52,24 @@
 
 下面目录均须是尚不存在的目标，父目录先由监督者在其任务证据根中准备。构建、极小试运行和完整自检由监督者占用构建/运行槽；实现子智能体未运行这些命令。
 
-```powershell
-& 'C:\Program Files\PowerShell\7\pwsh.exe' -NoProfile -Command '$PSVersionTable.PSVersion'
+当前调度使用 [C# ExecutionRequest](tooling-current-workflow.md)，固定准确 SDK 或已构建 capture apphost 的绝对路径、完整运行包 SHA 与结构化参数。构建记录实际 SDK，不固定项目 SDK 版本。三次执行独占不同输出目录，执行期限分别为120、40、40秒，另外保留最多30秒清理预算。
 
-& './tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\Program Files\dotnet\dotnet.exe' `
-  -ArgumentList @('build','tools/Sezika.IndependentNumericCapture/Sezika.IndependentNumericCapture.csproj','-c','Release','--nologo','-v','minimal') `
-  -TimeoutSeconds 120 -LogName 'independent-numeric-capture-build'
-
-& './tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\Program Files\dotnet\dotnet.exe' `
-  -ArgumentList @('tools/Sezika.IndependentNumericCapture/bin/Release/net10.0/Sezika.IndependentNumericCapture.dll','self-test','--output','D:\explicit-evidence\capture-self-test-1','--maximum-cases','1','--timeout-seconds','20') `
-  -TimeoutSeconds 40 -LogName 'independent-numeric-capture-tiny'
-
-& './tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\Program Files\dotnet\dotnet.exe' `
-  -ArgumentList @('tools/Sezika.IndependentNumericCapture/bin/Release/net10.0/Sezika.IndependentNumericCapture.dll','self-test','--output','D:\explicit-evidence\capture-self-test-8','--maximum-cases','8','--timeout-seconds','20') `
-  -TimeoutSeconds 40 -LogName 'independent-numeric-capture-self-test'
+```text
+Sezika.Tooling process run --request <capture-build-request.json> --output <new-build-receipt.json> --timeout-seconds 155
+Sezika.Tooling process run --request <capture-tiny-request.json> --output <new-tiny-receipt.json> --timeout-seconds 75
+Sezika.Tooling process run --request <capture-checks-request.json> --output <new-checks-receipt.json> --timeout-seconds 75
 ```
+
+两次自检的 `ArgumentList` 分别为 `["self-test", "--output", "<新目录>", "--maximum-cases", "1或8", "--timeout-seconds", "20"]`，实际请求中使用明确的1或8。若选择准确 dotnet host，首参数另加固定 SHA 的 capture DLL。先核 tiny 的实际结果及回收，再进入完整八项；不能继续调用旧脚本调度器。
 
 最多八个 meaningful cases 覆盖：实际非零 tiny encoder 的27项有序完整trace/最终hash/marker提取；NaN与Inf在写张量前拒绝；未知名称、错形状与重复checkpoint拒绝；缺checkpoint阻断完整manifest与发布；目标在发布窗口出现及预先存在时不覆盖；最终metadata之后收到取消信号时不发布；已经实际完成move之后取消时回退目录并移除complete manifest；保持超限的合成不可逆peak传感值在恢复窗口内不变时，仍写出小型失败审计并移除complete manifest。peak检查是internal synthetic sensor，没有真实分配4GiB，finally只重置合成传感器；不改变真实进程的high-water事实。所有数据明确synthetic/fixture-only，tiny直接IDs不调用真实tokenizer，不形成模型输出或质量证据。负向case保留各自如实partial审计；冲突case的sentinel也是本工具创建的合成证据。
 
 真实 capture 需监督者另外验收并采用新输出目录：
 
-```powershell
-& './tools/Invoke-BoundedProcess.ps1' -FilePath 'C:\Program Files\dotnet\dotnet.exe' `
-  -ArgumentList @('tools/Sezika.IndependentNumericCapture/bin/Release/net10.0/Sezika.IndependentNumericCapture.dll','capture','--package','D:\source\Sezika\.artifacts\models\mmbert-independent\converted','--output','D:\explicit-evidence\capture-original-46','--timeout-seconds','120') `
-  -TimeoutSeconds 150 -LogName 'independent-numeric-capture-original-46'
+```text
+Sezika.Tooling process run --request <capture-original-request.json> --output <new-capture-receipt.json> --timeout-seconds 185
 ```
+
+该请求执行期限为150秒，capture 参数为 `["capture", "--package", "<已独立核身份的package目录>", "--output", "<新目录>", "--timeout-seconds", "120"]`。原始资产身份、来源许可与完整输入清单必须先核；实际运行和数值验收独立于此调用合同。
 
 `--source-config`默认指向package同级的 `source/config.json`，其他布局必须显式指定。exit0表示本次capture完整或synthetic self-test完成；exit124表示取消/deadline；其他拒绝/失败为exit1。`capture.json`始终将 upstream parity、quality、calibration、benchmark、license approval标为false。独立上游张量/冻结数值容差、原始tokenizer边界、多语言质量、自有head、CUDA与两RID AOT各有后续验收，不能由这份CPU capture关闭。

@@ -1,4 +1,6 @@
-# 全量训练的离线交付与新实例绑定（2026-10-12）
+# 2026-10-12 离线交付历史证据与配置合同
+
+本页保留2026-10-12准备器的历史证据与旧配置语义，下列脚本和旧Specification不能作为当前执行入口。现行流程见[C#工作流](tooling-current-workflow.md)：先独立核完整corpus/政策/严格长度和资产身份，再用corpus bind、bundle build/freeze、task prepare及具名运输操作组合固定输入，最后由resident绑定独立profile与四文件断点。各入口使用自己的类型化请求；task prepare只生成配置，不能独自代替资产、严格长度或GPU准入。原JSON骨架与数值只说明旧合同，不作为现行请求或新验收。
 
 `tools/repository-training/Prepare-FullCorpusDelivery.ps1` 只读核验声明的资产，生成私有训练输入、运输清单、待绑定计划和准备状态。它不连接服务器、不租机、不训练、不调用教师、不发布或复制数据，也不修改现有输入。全部声明文件的大小与 SHA 都通过才生成完整运输清单；失败输出和已检查的文件保留为部分证据。
 

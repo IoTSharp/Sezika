@@ -21,4 +21,4 @@ CPU/CUDA 公开 pipeline 在 gate 内再次检查关闭状态，避免 gate 外�
 
 fixture 模型来源明确 `synthetic/*`，手工 hash 是合同夹具身份，不能冒充真实来源权重 hash。监督者已完成核心190项、CUDA完整59项、CLI41项及预测导出11项回归；Windows Native AOT 独立 CPU18项、CUDA实卡17项通过。首次fixture合同及共享入口接线失败均保留，修复后的结果和资源范围见[实际验收证据](evidence/independent-pipeline-2026-10-08.md)。该证据不关闭真实 mmBERT/自有 head 数值、linux-x64 AOT、质量、校准或性能门槛。既有 CLI/训练/预测导出默认 CPU 入口未接入 CUDA；显式产品命令接线归后续独立任务。
 
-所有检查临时 tokenizer 使用唯一 CreateNew 文件，finally 核对绝对路径/前缀后只清本次文件；长期证据由监督者保留在 `.artifacts/supervision-20261008/cuda`，进程经 `tools/Invoke-BoundedProcess.ps1` 记录身份并回收任务子树。
+所有检查临时 tokenizer 使用唯一 CreateNew 文件，finally 核对绝对路径/前缀后只清本次文件；长期证据由监督者保留在 `.artifacts/supervision-20261008/cuda`。现行进程监护使用 C# `ProcessExecutor.ExecuteAsync`／`process run`：以 `ExecutionRequest` 明确原生程序的绝对路径、结构化 `ArgumentList`、工作目录、新输出目录、数量/墙钟及取消边界，记录身份并回收本任务子树。具体接线见[当前工作流](tooling-current-workflow.md)；本段更正不新增 CUDA 实测或改写原回执。

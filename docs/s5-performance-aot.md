@@ -8,7 +8,7 @@
 - `EncoderKernelMode.QuantizedInt8`：encoder/head/scorer 的 W8A32 逐输出行对称权重量化；读取 int8 权重执行点积，FP32 activation/accumulation，非线性及 embedding/norm 不量化。原始 FP32 张量仍保留供 oracle/CUDA 使用，额外量化张量内存单独记账。
 - `IMarkerDecisionPipeline`：CPU/CUDA 共用 `ModernBertDecisionEngine` 的提示词、token/问题预算、温度、概率、legend 与拒答语义。session 接管注入 pipeline 的所有权，清理异常也继续卸载 model/gate；CUDA encoder/device 由调用方按顺序管理。
 - `CudaDevice`：设备/Driver 身份、owned/current/peak 显存、module 计数和释放错误；默认关闭 profiling，独立开启时记录 H2D/D2H、module load 墙钟和 CUDA event kernel 时间。没有 runtime ILGPU、cuBLAS/cuDNN 或其他 native 数值库。
-- `tools/Invoke-BoundedProcess.ps1`：任务进程身份、外部期限、异常输出和已核实任务子树清理；WSL 另用 Linux `timeout`。`tools/Summarize-S5.ps1` 验证并汇总原始报告。
+- 现行任务监护使用 C# `ProcessExecutor.ExecuteAsync`／`process run`，以 `ExecutionRequest` 固定原生程序、结构化参数、目录、期限、取消及本任务进程身份/清理；已有 S5 报告的一致性核验使用 `MigrationCommands.RunValidation` 的 `validation summarize`／`ValidationOperations.Summarize`，按实际 `S5SummaryRequest` 固定报告身份，各 RID/backend/run 分开。接线见[当前工作流](tooling-current-workflow.md)。本页下文保留原 S5 测量条件和数值，不能把文档入口更正当作新性能、AOT 或运行验收。
 
 参数、完整运行示例及计时口径见[基准工具说明](../tools/Sezika.Benchmarks/README.md)。基准不下载模型、不训练、不拟合校准、不发布到外部服务。
 

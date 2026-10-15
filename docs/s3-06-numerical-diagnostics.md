@@ -36,6 +36,14 @@ checkpoint 必须全部出现、不能重复，元素数量须严格符合模型
 
 本轮全量 PAWS/Nimble 参考捕获也作为预先固定的边界观测集合：保持完整 574 题分母和来源顺序，沿用 `top-two raw-logit margin <= 0.001`，记录全部命中及失败，不调整阈值或提示。若有命中，按来源顺序取最多 18 条用于额外三后端诊断；这是已公开审计集上的数值边界定位，不是语言质量或新的封存测试。零命中仍记未测，不能以扩大样本量代替真实边界证据。
 
+### 当前只读观察入口
+
+现行 `validation near-ties` 由 `MigrationCommands.RunValidation` 调用 `ValidationOperations.NearTies`，请求按 [NearTieRequest](../tools/Sezika.Tooling/Validation/ValidationContracts.cs) 填写 `Plan`、`PlanSha256`、`InputRoot`、`RunDirectories`、`Output` 和 `MaximumObservedRows`。`RunDirectories` 必须恰有两个元素并与冻结 plan 的 `sources_in_order` 一一对应；缺失来源用 `null`，不改为旧脚本的具名开关。`MaximumObservedRows=1` 用于极小只读观察，上限 574；plan 固定原 574 分母、0.001 margin 与前 18 follow-up，参考索引、batch plan、capture/manifest 及来源摘要均须匹配。请求/报告路径接线见[当前工作流](tooling-current-workflow.md)。这只观察已有独立历史 logits，不运行模型或生成新的上游参考；外层期限与取消由 `Budget`／C# 进程合同承担，不沿用旧脚本的 30 秒参数。
+
+### 历史证据：原近并列观察工具合同
+
+以下保留旧观察配方的准确参数与分母供追溯，不得作为当前执行入口：
+
 `tools/Sezika.NumericParity/Observe-QualityNearTies.ps1` 接收 `PawsRunDirectory`、可选 `NimbleRunDirectory` 和全新 `OutputPath`，读取冻结观察计划及 hash 绑定参考索引。默认最多观察 574 条、两来源各最多 8 批，每批最多 46 条，30 秒内部期限；`MaxObservedRows=1` 用于极小正例，完整分母仍为 574。报告保留每条 margin、失败/未处理数量与最多 18 条固定顺序后续项。
 
 近并列依然采用参考 top-two raw-logit margin ≤ 0.001。预测变更始终失败，即便每个 logit 的误差仍在容差内。报告真实近并列数量，数量为 0 时明确 `not_measured`，不会把非最大候选的接近、固定标签、合成 logits 或 reference 自比较当作真实边界样本。
@@ -46,7 +54,7 @@ checkpoint 必须全部出现、不能重复，元素数量须严格符合模型
 
 每个 case 只保留 scalar snapshots，预估字节数为 `(encoderLayers + headLayers + 2) * tokens * hiddenSize * 4 + tokens * 4`，上限 128 MiB；在启动推理前拒绝超限维度。当前后端回调的临时数组、CUDA 读回、模型权重与推理工作区不计入这项快照预算，也不能从该预算推导进程峰值内存。
 
-每个 checkpoint 在回调时检查取消，张量计算和哈希每 4096 元素检查一次；最多 18 case × 3 backend，整体期限 1–1800 秒、单请求最多 300 秒。使用 `tools/Invoke-BoundedProcess.ps1` 保留 PID、启动时间、命令、父链、外层期限与任务子树回收。输出路径必须新建，失败或取消保存明确 incomplete 的部分报告；stdout/stderr 仍保留已知失败阶段。
+每个 checkpoint 在回调时检查取消，张量计算和哈希每 4096 元素检查一次；最多 18 case × 3 backend，整体期限 1–1800 秒、单请求最多 300 秒。现行监护使用 C# `ProcessExecutor.ExecuteAsync`／`process run`，以结构化 `ExecutionRequest` 保留 PID、启动时间、参数、父链、外层期限与本任务子树回收，接线见[当前工作流](tooling-current-workflow.md)。输出路径必须新建，失败或取消保存明确 incomplete 的部分报告；stdout/stderr 仍保留已知失败阶段。
 
 `--trace-self-test` 不加载模型，使用明确的合成诊断值检查冻结公式、近并列预测翻转、坏概率、形状/非有限错误、未知/重复 checkpoint、已知辅助 trace、快照隔离与上限、固定覆盖、失败重试汇总、取消、source-generated JSON 以及跨报告的 core ID、complete/incomplete 和 backend 清单合同。它证明工具拒绝错误输入的能力，不证明模型数值或语言质量。当前自检共 29 项；该数量随合同自检增补同步更新。
 
