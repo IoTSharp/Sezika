@@ -17,7 +17,7 @@ schema v2 报告绑定模型/revision、权重/tokenizer SHA-256、输入渲染�
 
 `DatasetTotal` 是完整题集分母，`Processed` 是明确选择的前缀条数；`Coverage=Answered/Processed`，`FullDatasetProcessed` 必须另看。只跑 1/250 条且这一条回答成功时，不能宣称整套题集覆盖率 100%。已查看的 PAWS/Nimble 只用于审计，不用于训练、选提示、调阈值、校准或新的封存测试。
 
-单次最多 10000 条、来源文件最多 64 MiB、每行最多 1 MiB/65536 JSON nodes、深度 32、每行只允许一个 `decision` 问题。总期限 1–1800 秒，Ctrl+C 可取消，真实推理使用原有每请求 30 秒期限；每 10 条输出进度。通过仓库 `Invoke-BoundedProcess.ps1` 保存进程 PID、父链、argv 和清理证据。每行结果不是性能 benchmark：计时包括诊断装饰器，可能存在其他验证负载。
+单次最多 10000 条、来源文件最多 64 MiB、每行最多 1 MiB/65536 JSON nodes、深度 32、每行只允许一个 `decision` 问题。总期限 1–1800 秒，Ctrl+C 可取消，真实推理使用原有每请求 30 秒期限；每 10 条输出进度。通过 `Sezika.Tooling process run` / `ExecutionRequest` 保存进程 PID、出生身份、父链、argv 和清理证据，字段见 [C# 调用合同](../../docs/tooling-current-workflow.md)。每行结果不是性能 benchmark：计时包括诊断装饰器，可能存在其他验证负载。
 
 输出使用 `CreateNew`。真实评测在开始前保留输出路径，中途加载失败、取消或 deadline 可能留下空文件；空文件和不完整 JSON 都不能作为有效测量，只能结合 runner 日志认定这次执行失败。成功输出前再次检查来源 hash。既有报告不覆盖。
 
@@ -33,7 +33,7 @@ Sezika.Evaluation --verify-baseline <baseline-plan.json> <new-report.json> <seco
 
 这是 `archived_evidence_verification_no_inference`：不加载模型，不重新计算原始逐题标签或概率，不改变历史报告。用户已确认原始捕获和模型被清理，因此报告明确保留 `raw_capture_revalidation=not_performed`。归档验收只能闭合既有同权重审计基线，代表性语言质量、独立封存测试和校准继续按 S4-05/S4-08 验收。旧 strict 结果不并入 compatible 配对基线。
 
-单次最多8套数据、每套256份比较、总输入256 MiB；重复属性、部分覆盖、断开的 hash 链、混合策略/构建和指标分母错误均失败。Ctrl+C和总期限取消，逐数据集报告进度，输出使用 `CreateNew`。负向回归由 `Verify-BaselineChecks.ps1` 创建明确标记的软件测试副本，检查精确错误消息和失败不产生验收报告；这些副本不属于模型测量。
+单次最多8套数据、每套256份比较、总输入256 MiB；重复属性、部分覆盖、断开的 hash 链、混合策略/构建和指标分母错误均失败。Ctrl+C和总期限取消，逐数据集报告进度，输出使用 `CreateNew`。当前负向回归使用 `Sezika.Tooling validation batch` / `ValidationBatchRequest`：先声明未修改输入的成功基线，再只变异任务目录中的副本，逐项声明准确退出码、错误消息和报告存在条件，独立核对进程回收。这些副本不属于模型测量。
 
 新增全量分批入口，原单捕获命令保持可用：
 
@@ -46,15 +46,17 @@ Sezika.Evaluation --score-captures <eval.jsonl> <sha256> <dataset-total>
 
 准备操作保持来源顺序，生成完整、不重叠、含尾批的清单，每批最多 46 题、总计最多 256 批；`batches.json` 保存来源身份、偏移、每批 ID 和 manifest hash，全部准备完才写出索引。PAWS 250 题为 6 批，Nimble 324 题为 8 批。每个 manifest 继续受 1 MiB 上限约束，数据准备不执行模型。
 
-`Invoke-OracleBatches.ps1` 在显式本地 Python、上游源码、模型和构建路径下，按固定清单顺序执行独立参考 → C# CUDA capture → 冻结数值比较，不自动安装、下载或重试。先以单条输入验证，再扩大范围。参数 `MaxBatches` 默认 1，`BatchOffset` 可选择预定区间，整批期限最多 1740 秒，每个子进程通过仓库 runner 记录身份并回收；外层也应使用 runner 并预留清理时间。`CancelFile` 支持批次间和 Python 参考内的取消，Ctrl+C/外层 runner 负责整体取消。输出目录必须新建，`run.json` 保留未完成状态与完整计划分母。数值差异保留对应比较报告并继续固定计划，捕获仍进入评分索引，整轮标为 complete_with_differences；输入/身份无效、执行失败或清理失败则中止。未处理项保留在完整数据集分母，不通过排除数值差异挑选有利样本。
+当前可用路径按固定清单消费既有、独立生成并冻结的参考，由 `process run` 分别运行 C# `OracleCapture`、`OracleCompare` 与离线评分命令。实际捕获仍重新执行模型，不能复制参考 tokens/logits 形成实测。每次声明完整计划分母、所选批区间、新输出目录、取消路径和有界清理，先验证单条再扩大范围。数值差异保留在完整分母和独立报告中；输入、身份、执行或清理失败必须中止，不能通过排除失败批挑选有利样本。
+
+当前 `Sezika.Tooling oracle batches` / `OracleBatchRequest` 已接线独立 C# `ReferenceTool laya`、实际 `OracleCapture` 和 `OracleCompare`，固定原始资产、各程序的源码/完整运行包、编译来源证明及逐批输入身份；失败与恢复保留完整计划分母。新参考明确为 `port-derived.v2`、`upstream_executed=false`，不等同于旧上游程序执行。调度合同和实际验收见 [Oracle 工具](../Sezika.Tooling/Oracle/README.md)及根 ROADMAP；本机模拟、真实单条前向与完整清单分别记录。`validation batch` 只调度已准入的固定验证命令，不生成模型参考。
 
 评分索引 schema 为 `sezika.evaluation-captures.v1`，`batches` 各项包含 `capture`、`capture_sha256`、`manifest`、`manifest_sha256`，路径相对索引文件解析。读取总量最多 256 MiB。逐捕获沿用原始输入/预测/概率/失败校验，并要求完整覆盖对应 manifest 的有序 ID；跨批次重复 ID、不同 backend/长度策略/实现程序集/参考环境均拒绝。报告保存各批来源，不把汇总器自己的程序集当作历史推理程序集。缺批时 `Unprocessed` 和完整数据集分母保留，`DatasetAnswerCoverage=Answered/DatasetTotal`；`Coverage=Answered/Processed` 的既有含义不变。汇总评分本身不证明数值对齐，须同时审核每批比较报告。
 
-已有完整独立参考可通过 `ReferenceIndexPath` 复用：逐批核对 manifest 和 capture hash，参考数值仍只交给独立比较器；C# capture 继续重新执行模型。此模式可在 tokenizer/实现修复后重测，保留原失败报告，避免重新生成参考造成基线漂移。索引在执行后再次核对；所选批缺少参考时直接失败，不回退下载或生成。
+复用已有完整独立参考时，调用方须逐批核对固定索引、manifest 和 capture hash，参考数值仍只交给独立比较器；C# capture 继续重新执行模型。此路径可在 tokenizer/实现修复后重测，保留原失败报告，避免基线漂移。索引在执行后再次核对；所选批缺少参考时直接失败。旧入口的 `ReferenceIndexPath` 不是新 C# 调度器已接线的证明。
 
 报告另含 `ByLanguageAndType`，语言及其他分组增加覆盖率、按全部处理题的准确率、Boolean 指标、Brier/NLL/ECE 和 Score MAE。没有显式语言仍为 `unspecified`，非法元数据直接拒绝。
 
-`Prepare-LanguageAudit.ps1` 仅适配既有 S4-02 的 12 条中英 test fixture，不读取 calibration：保留 state、说明、标签和顺序，仅将旧 Boolean 字段名转为当前合同，保留每个源文件 SHA-256。先 `MaxRecords=1` 验证，再 `MaxRecords=12`；输出及许可见 [语言审计数据](../../datasets/s4-04/language-audit-v1/README.md)。这是原始小型 fixture 的真实推理审计，不能充当新封存测试或统计充分的语言质量证明。
+`Sezika.Tooling validation language-audit` / `LanguageAuditRequest` 仅适配既有 S4-02 的 12 条中英 test fixture，不读取 calibration：声明准确 `Root`、`Sources`、新 `Output` 和 `MaximumRecords`，保留 state、说明、标签和顺序，仅将旧 Boolean 字段名转为当前合同，保留每个源文件 SHA-256。先 `MaximumRecords=1` 验证，再至多12条；输出及许可见 [语言审计数据](../../datasets/s4-04/language-audit-v1/README.md)。该命令只准备原始小型 fixture，不运行模型，也不构成新封存测试或语言质量证明。
 
 先从固定来源准备最多 46 条原始审计输入，不进行模型运行：
 
@@ -63,9 +65,9 @@ Sezika.Evaluation --prepare-oracle <eval.jsonl> <sha256> <dataset-total>
   <first-records:1..46> <new-manifest.json> <seconds:1..300>
 ```
 
-该 manifest 可传给已有离线 Python exporter 的 `--cases` 参数。使用其固定源码、隔离依赖、现有权重和原冻结数值合同；导出执行仍须使用仓库有界进程工具。manifest 和原始 capture 含外部题文，保存在本地忽略目录，不能将它们当作本项目原创 fixture 提交。`authorship` 字段明确保留原来源许可边界。
+该 manifest 用于绑定固定输入和参考。新的 C# 参考由上述 `oracle batches` 调用 `ReferenceTool`，独立核来源证明并明确 port-derived 合同；完整清单的新前向仍按实际分母验收，不能借已有参考或单条通过推定。manifest 和原始 capture 含外部题文，保存在本地忽略目录，不能将它们当作本项目原创 fixture 提交。`authorship` 字段明确保留原来源许可边界。
 
-参考 capture 生成后，通过 `Sezika.OracleCapture` 执行相同输入的真实 C# 推理，再由 `Sezika.OracleCompare` 核对输入身份、tokens、markers、候选、logits、概率及预测。不要把一个任意的 capture 文件当作数值已对齐的证明。
+独立参考通过来源与合同核验后，通过 `Sezika.OracleCapture` 执行相同输入的真实 C# 推理，再由 `Sezika.OracleCompare` 核对输入身份、tokens、markers、候选、logits、概率及预测。不要把一个任意的 capture 文件当作数值已对齐的证明。
 
 以下命令只给**已有真实 capture**计算目标标签指标，不重新执行模型：
 
@@ -76,6 +78,6 @@ Sezika.Evaluation --score-capture <eval.jsonl> <sha256> <dataset-total>
 
 离线评分核对固定模型、源码 revision、冻结合同、256/1024 预算，捕获完成状态及选中数量，并逐行重建原始输入。候选的顺序必须一致。重复字段/ID、未知输入、非有限数组、概率与温度 1 softmax 不符、预测与分布不符均拒绝；来源和 capture 哈希在读取/评分后再次核对。报告保存原始 provenance、capture hash、manifest/contract hash 和完整/选中数量，`MeasurementOrigin` 明确标记离线评分；`ForwardCalls=null`，不会伪装成这次评分执行了 encoder。只有相应原始捕获、进程记录和独立数值比较合起来，才能构成实测证据。
 
-`Invoke-CaptureChecks.ps1` 先对未修改的真实 Boolean capture 执行一次成功基线，核对离线评分来源、处理数量与题集身份，再对本地副本执行 8 个负向用例：改概率、改预测、未完成状态、数量不符、选中 ID 被替换、失败行携带数值、成功行携带失败，以及重复 JSON 属性。每个负向用例必须以 exit 1 和该校验对应的精确 `InvalidDataException` 消息结束，且不产生评分报告；无关的路径、hash、依赖或启动失败不能充当测试通过。
+捕获评分回归使用 `validation batch` 的固定 C# `Sezika.Evaluation --score-capture` 入口：先对未修改的真实 Boolean capture 执行一次成功基线，核对离线评分来源、处理数量与题集身份，再对任务副本执行 8 个负向用例：改概率、改预测、未完成状态、数量不符、选中 ID 被替换、失败行携带数值、成功行携带失败，以及重复 JSON 属性。每个负向用例须声明 exit 1、该校验对应的精确 `InvalidDataException` 消息及不存在评分报告；无关的路径、hash、依赖或启动失败不能充当测试通过。
 
-变异文件只作软件测试，不能混入真实推理数据。总计最多 9 次，每次内部至多 30 秒、外部至多 40 秒，按 360 秒批次剩余时间缩短，并预留 runner 清理时间；不足以再执行时直接中止。每次进度直接显示，日志分置于输出目录的 `processes/<case>`，最多枚举四个 runner 文件；`checks.json` 保留实际进程结果、身份、路径与预期/观察错误消息。所有文件保留，不自动删除。
+变异文件只作软件测试，不能混入真实推理数据。请求为每个 case 固定 `Executable`/SHA、`Arguments`、`Inputs`、`Mutations`、`Outputs`、`ExpectedExitCode`、`ExpectedStandardError` 与 `TimeoutSeconds`；dotnet 模式另固定 `ManagedAssembly`/SHA。上述回归计划最多9次、单项30秒，外层显式声明总期限并预留清理；`MaximumCases` 是上限，不能把未运行项当通过。批次回执保留 Planned/Completed/Passed/Failed/Unprocessed、每项实际退出与 CleanupStatus，以及独立输出 SHA；原始捕获、失败和回执保留。

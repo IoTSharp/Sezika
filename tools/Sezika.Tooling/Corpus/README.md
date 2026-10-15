@@ -17,7 +17,9 @@ Parquet 与 XZ 由 JIT 的 DatasetTool 解码，依赖方向为 DatasetTool → 
 - 教师逐项账本先写 POST 意图，再保留原始响应和 SHA。已完成项独立从原响应与冻结 reference 重验。丢失 annotation 可恢复；没有确定响应的 POST 保持 UNKNOWN，禁止自动重发。localhost / 注入 handler 标为 `SyntheticTransport`，外部 `ActualTeacherCalled=false`，请求分母另列 `HttpRequestsIssued`。
 - 参考一致只表示 answerability 与 argmax 一致。分布未校准；human review / formal training admission 不由教师结果自动批准。development / test / calibration / ood 的用途保持 reference-only。
 
-## tools/corpus 逐入口归属
+## 历史证据：tools/corpus 旧入口的能力归属
+
+下表追溯迁移关系，不再调用表内旧脚本。新任务使用本文开头的 C# 命令；旧运行配方和回执保留原字节。
 
 | 旧入口 | 新归属 / 退役范围 |
 | --- | --- |
@@ -26,7 +28,7 @@ Parquet 与 XZ 由 JIT 的 DatasetTool 解码，依赖方向为 DatasetTool → 
 | `bind_corpus.py` | `Bind`；manifest / exclusions / rights / assets 固定 SHA，明确不准入 |
 | `audit_coverage.py` | `CheckResearch` 的来源完整性/原物理行分母；重复镜像和任务适配结论仍来自冻结审核材料，不能由行数推断新题数 |
 | `estimate_compute_budget.py` | `Estimate`；三份固定历史回执、相同 run/input/GPU 身份和固定数学场景，不作为当前吞吐/收敛/费用预算 |
-| `fetch_question_sources.py` | `BuildResearchPlan` 产生固定 revision/载体计划；实际 HTTP/Range 拉取归 T4 transport，原四来源/日期限定列表退役 |
+| `fetch_question_sources.py` | `BuildResearchPlan` 产生固定 revision/载体计划；`source acquire` 按原metadata及显式digest-kind执行Range、cache/partial与完整ledger；原四来源/日期限定列表退役 |
 | `inspect_sources.py`、`inspect_extra.py` | `Inspect`；固定资产 SHA、小样本、私有 raw sample、适配失败保留；没有标签质量或正式训练声明 |
 | `build_teacher_queue.py`、`question_queue.py`、`question_templates.py` | `BuildQueue`、`CorpusSyntheticTasks`；七结构、五变体、双语、候选轮转与十二阈值域，或固定 24 Score pilot |
 | `question_queue_checks.py`、`test_corpus.py` | `CorpusChecks`：冻结语义、原 SHA、NFC/冲突/轮转、24/21/3、CSV、恢复与资源边界的本地检查 |
@@ -39,7 +41,7 @@ Parquet 与 XZ 由 JIT 的 DatasetTool 解码，依赖方向为 DatasetTool → 
 | `source-review-semantics.py`、`source-review-interpret-supplement.py` | 固定目录的审核汇总配方退役；审核规则/结论保持冻结材料，后续 `Inspect` 只报告实际读取结果，不自动批准许可、语义或标签 |
 | `bounded_start.py`、`run_guarded.py` | T1b 的 StartupGate / ProcessExecutor；本模块不保留 interpreter 执行器 |
 
-## datasets 与 research 逐入口归属
+## 历史证据：datasets 与 research 旧入口的能力归属
 
 | 旧入口 | 新归属 / 退役范围 |
 | --- | --- |
@@ -49,7 +51,7 @@ Parquet 与 XZ 由 JIT 的 DatasetTool 解码，依赖方向为 DatasetTool → 
 | `Build-CollectionPlan.ps1`、`Extend-CollectionPlan.ps1` | `BuildResearchPlan`；配置输入 source-seeds + 冻结 HF/GitHub metadata，原 hardcoded additions 改为 seeds 数据 |
 | `Check-SourceCompleteness.ps1`、`Summarize-Collection.ps1` | `CheckResearch`；显式 plans/ledgers，独立 SHA/bytes、partial/failed 分母、静态 C# Parquet footer 或 JSONL 物理行数 |
 | `Validate-SeedDatasets.ps1` | `CheckSeeds`；固定 Sys1Cal outcomes[0]→True 配对概率和 S1MB 评测载体核查，明确不重算 gold、不校准、不训练准入 |
-| `Collect-Sources.ps1`、`Collect-RangedFiles.ps1` | 来源计划由本模块固定；传输/续传归 T4，凭据读取归 T2；本地源码存在不等于真实服务器拉取验收 |
+| `Collect-Sources.ps1`、`Collect-RangedFiles.ps1` | `source acquire` 固定来源/metadata/revision/license/完整资产分母，区分SHA256与Git blob SHA1，传输/续传复用T4、凭据读取归T2；本地fixture不等于真实服务器拉取验收 |
 | `Build-UploadBundle.ps1` | 本模块的资产/权利/notice 约束与 T4 publication preview/transport；原固定来源列表是冻结审核输入，不作为新的许可自动批准规则 |
 | `Publish-MoarkDataset.py`、`Verify-MoarkDataset.py`、`Finalize-MoarkPublication.py` | T4 的明确 private/public 发布合同及独立读回；原 UI/状态恢复参数和历史回执不改，不宣称本模块实际发布 |
 | `Inspect-Moark.ps1`、`Inspect-SavedMoarkSession.ps1`、`moark_dataset_browser.py` | 一次性浏览器/session 探针退役；需要的当前操作由 T2/T4 明确 API/身份合同承担，不读取旧 cookie 作为执行入口 |

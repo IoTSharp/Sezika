@@ -10,7 +10,7 @@ dotnet tools/Sezika.NumericParity/bin/Release/net10.0/Sezika.NumericParity.dll <
 
 工具通过当前生产引擎复用 `PromptSequenceBuilder`，明确使用 `strict`，凡需要 instruction、option 或 state 截断的输入均拒绝；不会为取得长样本悄悄切换兼容截断。报告 schema v2 写入 `RenderingVersion=sezika.prompt.laya-4066d5d5.v2`、长度策略和 256/1024 两种预算，旧输入渲染版本的测量不能替代本次结果。候选 logits 以标签关联比较；本工具比较 Sezika 后端内部一致性，独立 Laya 数值验收仍使用 oracle。
 
-整体期限 1–1800 秒、每次请求 30 秒，最多 64 条、跳过与读取累计最多 10000 条，支持 Ctrl+C 与逐题进度。运行时须通过 `tools/Invoke-BoundedProcess.ps1` 设置外层墙钟超时并记录进程身份；比较结果需与模型、题集、数值容差及参考实现 oracle 一起审核。
+整体期限 1–1800 秒、每次请求 30 秒，最多 64 条、跳过与读取累计最多 10000 条，支持 Ctrl+C 与逐题进度。当前使用 `Sezika.Tooling process run` 和 `ExecutionRequest` 设置外层墙钟、结构化 argv 与独占日志，核实际进程身份及回收；请求字段见 [C# 调用合同](../../docs/tooling-current-workflow.md)。比较结果需与模型、题集、数值容差及冻结参考一起审核。
 
 ## 固定 oracle 的逐层诊断
 

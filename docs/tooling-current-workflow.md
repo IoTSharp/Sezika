@@ -76,7 +76,7 @@
 
 RepositoryTrainer 的 `profile-corpus`、`train-corpus`、`validate-corpus` 使用固定 `CorpusRunPlan`。每次换卡重新核实际 UUID、driver、容量、消费者及最长完整序列前向/反向 profile。`--stage-updates` 只推进同一 AdamW/global cursor。resident 将 STOP 留给 trainer 保存，CANCEL 是执行器硬取消；不把两者混称。
 
-当前全量路线增加独立 `CorpusInputAdmissionRequest`：固定 `PlanPath`/`PlanSha256`、`SourcePolicyPath`/`SourcePolicySha256`、`ModelReadbackReceiptPath`/`ModelReadbackReceiptSha256` 和文件/字节上限。`task validate-inputs` 只读核完整资产及三方绑定，报告只代表实际输入检查，不授予训练、许可或质量批准。真实 `ResidentRequest.InputAdmission` 必须存在并绑定同一个计划路径和SHA；resident在GPU预检/启动前调用同一准入器。CPU内部模拟保持独立，不能借模拟结果绕过此门。旧的无policy长度路线仍可解释历史材料，不能成为当前全量准入；新增路径尚须本机正负例和调用者验收后才标PASS。
+当前全量路线增加独立 `CorpusInputAdmissionRequest`：固定 `PlanPath`/`PlanSha256`、`SourcePolicyPath`/`SourcePolicySha256`、`ModelReadbackReceiptPath`/`ModelReadbackReceiptSha256` 和文件/字节上限。`task validate-inputs` 只读核完整资产及三方绑定，报告只代表实际输入检查，不授予训练、许可或质量批准。真实 `ResidentRequest.InputAdmission` 必须存在并绑定同一个计划路径和SHA；resident在GPU预检/启动前调用同一准入器。CPU内部模拟保持独立，不能借模拟结果绕过此门。旧的无policy长度路线仍可解释历史材料，不能成为当前全量准入；两平台本机正负例及调用接线范围见 [输入准入证据](evidence/tooling-final-v17-2026-10-15/input-admission.md)，真实服务器/GPU仍为NOT_RUN。
 
 断点必须同时包含 `weights.safetensors`、`moments.safetensors`、`checkpoint.json`、`corpus-cursor.json`。核完整 Inputs、SHA、调度结构、全局游标及计划，cursor 是完成标记。新 checkpoint 的自报 Inputs 不能作为唯一预期：使用独立 profile/前驱合同。全局完成与所有来源 EOF 单独验收；CPU controller simulation、进程退出0或四文件 SHA通过均不是 GPU 训练、optimizer 实际加载、模型质量或校准证据。
 

@@ -40,75 +40,29 @@
 
 完整设计及报告字段口径见 [S5-06 工具准备记录](../../docs/performance-profile-s5-06.md)。画像输入集为 `sezika.performance-inputs.v1`，当前渲染版本为 `sezika.prompt.laya-4066d5d5.v2`，与修正后的生产引擎共用 `PromptSequenceBuilder`。`short`、`medium`、`long` 分别把 `The device is ready.` 以空格连接重复 4、20、100 次；完整 JSON、SHA-256、每题渲染长度/marker/token hash 保存在报告中，不能拿重复次数充当 token 长度。
 
-在获得运行授权并产生对应构建物后，可在以下 Windows runner 示例的参数中增加 `--mode profile --lengths short,medium,long`，并为 `--output` 选择独立的新文件；首次极小试运行使用 `--lengths short --questions 1 --samples 1 --warmup 0 --cycles 1`，核对后再扩大矩阵。[2026-09-26 预检](../../docs/evidence/s5-profile-2026-09-26.md)已完成构建/自检和不加载权重的 token 矩阵核对，真实画像运行及其结果单独记录。
+在获得运行授权并产生对应构建物后，可在以下 C# 执行合同的 `ArgumentList` 中增加 `--mode profile --lengths short,medium,long`，并为 `--output` 选择独立的新文件；首次极小试运行使用 `--lengths short --questions 1 --samples 1 --warmup 0 --cycles 1`，核对后再扩大矩阵。[2026-09-26 预检](../../docs/evidence/s5-profile-2026-09-26.md)已完成构建/自检和不加载权重的 token 矩阵核对，真实画像运行及其结果单独记录。
 
 当前 runtime 区分 256-token 前缀内容预算与 1024-token 完整序列预算。工具先按兼容策略离线计算拟保留序列及截断诊断，真实请求仍使用默认 strict；需要裁剪的请求记录 `rejected`、原始错误码、失败阶段和计时，仍进入覆盖率分母。没有进入真实 pipeline 的长度不能写成实际推理 token：`rendered_sequences` 与 `actual_sequences` 分开保留；成功请求必须逐 token、marker、type 与共享构造器结果一致，差异直接失败。旧渲染报告继续单独保留，不能作为当前路径的性能证据。
 
 正式 E2E 样本关闭分项 instrumentation；独立采集一次 tokenizer/渲染、一次真实 encoder/head 合并与 CUDA event 请求，以及 CPU 的独立 `Encode` / `ScoreEncoded` 分项。CPU head 分项包含保护性 hidden-state 复制；CUDA resident encoder/head 无独立计时边界，拆分字段为 `null` 并注明 `unavailable`，不借 host hidden-state 路径冒充 resident 性能。独立阶段计时不能相加或从 E2E 相减。`complete_with_rejections` 表示采集完成但矩阵有运行拒绝；顶层 `passed` 只表示工具及原有 smoke/回收检查通过，不表示所有长度都能推理。
 
-画像保持原有 cold 三题请求、数值 smoke 和生命周期检查，因此 `--warmup 0` 不会跳过发现输入的真实请求。每行额外保留 working-set 前后快照及进程生命周期高水位、CUDA owned/free/total 快照、托管分配；这些字段都不是隔离稳态峰值。旧 `Summarize-S5.ps1 -VerifyMatrix` 只面向旧 `requests` 报告，不用于验收画像模式。
+画像保持原有 cold 三题请求、数值 smoke 和生命周期检查，因此 `--warmup 0` 不会跳过发现输入的真实请求。每行额外保留 working-set 前后快照及进程生命周期高水位、CUDA owned/free/total 快照、托管分配；这些字段都不是隔离稳态峰值。当前 `validation summarize` 只核历史 schema1 的 `requests` 报告；画像模式使用 `validation profile`，二者不能混用。
 
 输入计划在模型身份检查、加载、CUDA 初始化和 cold 请求之前登记；覆盖率分母由参数选择的完整矩阵固定，前置失败仍保存计划并标记 `profile.status=incomplete`。RSS/CUDA 观测错误独立记在每行 `resource_observation_errors`，缺失数值为 `null`；后置快照失败不会覆盖原始推理错误，推理完成但资源观测失败的行也不计成功覆盖率。
 
-## Windows：通过有界 runner 运行
+## 通过 C# 进程合同运行
 
-在 PowerShell 7 中操作，先核对版本。以下普通 .NET 示例使用已有 Release DLL，不隐式构建或恢复依赖；将 CPU 标签改为实机型号，并选用尚不存在的报告文件名。
+当前统一使用 `Sezika.Tooling process run` / `ExecutionRequest`，字段见 [C# 调用合同](../../docs/tooling-current-workflow.md)。Windows 终端使用固定 PowerShell 7 路径并先核版本。选择已有的本次冻结 apphost；普通 JIT 也可声明准确的 dotnet 路径，把已核 DLL 作为首个结构化参数，不隐式构建或恢复依赖。每次报告和执行日志目录均须新建，CPU 型号与环境标签由实际环境确定。
 
-```powershell
-& 'C:\Program Files\PowerShell\7\pwsh.exe' -NoProfile
-$PSVersionTable.PSVersion
-Set-Location 'D:\source\Sezika'
-& '.\tools\Invoke-BoundedProcess.ps1' -FilePath 'C:\Program Files\dotnet\dotnet.exe' -TimeoutSeconds 1250 -LogName 'benchmark-simd' -ArgumentList @(
-    'tools/Sezika.Benchmarks/bin/Release/net10.0/Sezika.Benchmarks.dll',
-    '--model', '.artifacts/models/laya-mmbert',
-    '--backend', 'simd', '--samples', '5', '--warmup', '1', '--cycles', '2',
-    '--questions', '1,8,32', '--timeout-seconds', '1200',
-    '--cpu', '填写实际CPU型号', '--environment', 'windows-local',
-    '--output', '.artifacts/s5/windows-simd-run01.json'
-)
-```
+`ArgumentList` 保留本工具已有的 `--model`、`--backend`、`--samples`、`--warmup`、`--cycles`、`--questions`、`--timeout-seconds`、`--cpu`、`--environment`、`--output` 参数。首次使用短输入、1题、1样本、无预热、1轮；核实际输出及原生进程回收后才扩大矩阵。外层 `TimeoutSeconds` 需容纳内部推理期限和有界清理，`OutputDirectory` 保留 stdout/stderr、PID/出生/argv/父链及最终 `result.json`；失败或 UNKNOWN 不被后续成功覆盖。
 
-Native AOT 运行应改为直接启动已发布的原生可执行文件，并添加 `--require-aot`，不要通过 `dotnet` 执行它。例如下列路径只是发布位置示例，需替换为本次实际产物路径：
+Native AOT 验收须把准确 native image 作为 `Executable` 并加入 `--require-aot`。JIT 构建、native image 与实际模型/AOT运行分别记录；通过 dotnet 执行 DLL 不能作为 Native AOT 证据。
 
-```powershell
-$benchmarkExe = 'D:\source\Sezika\.artifacts\s5\win-x64\Sezika.Benchmarks.exe'
-& '.\tools\Invoke-BoundedProcess.ps1' -FilePath $benchmarkExe -TimeoutSeconds 1250 -LogName 'benchmark-aot-cuda' -ArgumentList @(
-    '--model', 'D:\source\Sezika\.artifacts\models\laya-mmbert',
-    '--backend', 'cuda', '--require-aot',
-    '--samples', '5', '--warmup', '1', '--cycles', '2',
-    '--questions', '1,8,32', '--timeout-seconds', '1200',
-    '--cpu', '填写实际CPU型号', '--environment', 'windows-local',
-    '--output', 'D:\source\Sezika\.artifacts\s5\windows-aot-cuda-run01.json'
-)
-```
-
-runner 在 `.artifacts/processes` 保存 stdout、stderr、根进程身份和结果 JSON，失败或超时也保留已有输出。它支持 `-LogDirectory` 指定独立日志盘、`-WorkingDirectory`、`-Environment @{ NAME = 'value' }`，并默认禁用 MSBuild 节点/编译服务器复用。其执行期限之外还有有界的身份采集、清理及输出排空时间。
-
-runner 按 PID、创建时间、命令行与父链核验任务进程，只终止匹配对象。全机进程快照在开始、结束及至少三秒间隔时采集，root/期限检查间隔为 500 ms；快照间存活时间极短的中间进程可能使后代逃过追踪。性能报告应记录所用 runner，因为监控本身也消耗宿主资源。
-
-## Linux / WSL：同时使用 Linux 超时
-
-Windows 进程树不能证明 Linux 子进程已经退出。WSL 必须在发行版内使用 `timeout`，并使 Windows runner 的期限大于 Linux 的 TERM/KILL 总窗口。示例使用已知 `Ubuntu` 发行版及已有 Linux Native AOT 产物；产物路径仍需按实际发布位置调整。
-
-```powershell
-& '.\tools\Invoke-BoundedProcess.ps1' -FilePath 'C:\Windows\System32\wsl.exe' -TimeoutSeconds 1280 -LogName 'benchmark-wsl-aot-simd' -ArgumentList @(
-    '-d', 'Ubuntu', '--cd', '/mnt/d/source/Sezika', '--exec',
-    'timeout', '--signal=TERM', '--kill-after=10s', '1250s',
-    '/mnt/d/source/Sezika/.artifacts/s5/linux-x64/Sezika.Benchmarks',
-    '--model', '/mnt/d/source/Sezika/.artifacts/models/laya-mmbert',
-    '--backend', 'simd', '--require-aot',
-    '--samples', '5', '--warmup', '1', '--cycles', '2',
-    '--questions', '1,8,32', '--timeout-seconds', '1200',
-    '--cpu', '填写实际CPU型号', '--environment', 'wsl-ubuntu',
-    '--output', '/mnt/d/source/Sezika/.artifacts/s5/wsl-aot-simd-run01.json'
-)
-```
-
-在 Linux 终端可直接执行同一 `timeout --signal=TERM --kill-after=10s 1250s` 及其后面的程序和参数。普通 .NET 模式将程序替换为已知路径的 `dotnet` 和已构建 DLL，移除 `--require-aot`。WSL 与原生 Linux、Windows 的报告必须保留独立环境标签，不能据一个环境的通过状态推断另一个环境也通过。
+Linux 使用目标系统内的 C# Tooling 与 `BrokerExecutable`，由原生 broker/watchdog 登记和回收 Linux PID。WSL 的 Windows 父进程回执不能代替内层 Linux 回执；两层期限、产物与工作目录分别声明。WSL、裸机 Linux 与 Windows 报告保留独立标签，不能跨环境推断通过。
 
 ## 构建 Native AOT 与汇总
 
-在目标系统使用已配置的 .NET 10 SDK 与 native 工具链编译。以下为本轮使用的关键 publish 参数；外层仍使用上述 bounded runner / Linux `timeout`，每次 publish 上限 600 秒。Windows 与 Linux 使用各自独立的 `--artifacts-path`，避免共享 `obj` 冲突。输出目录可放到有足够空间的磁盘，模型目录独立传入。
+在目标系统使用已配置的 .NET 10 SDK 与 native 工具链编译。以下为 publish 参数合同；外层以独立 `ExecutionRequest` 声明每次600秒上限。Windows 与 Linux 使用各自独立的 `--artifacts-path`，避免共享 `obj` 冲突。输出目录可放到有足够空间的磁盘，模型目录独立传入。
 
 ```text
 dotnet publish tools/Sezika.Benchmarks/Sezika.Benchmarks.csproj -c Release -r win-x64 --self-contained true -p:PublishAot=true -p:StripSymbols=true -p:IlcMaxDegreeOfParallelism=2 --artifacts-path <windows-build-directory> -o <windows-output-directory> --disable-build-servers -m:1 -nr:false -p:UseSharedCompilation=false
@@ -118,16 +72,9 @@ dotnet publish tools/Sezika.Benchmarks/Sezika.Benchmarks.csproj -c Release -r wi
 
 `--require-aot` 的实测结果与程序 hash 写入报告。`native_aot` 同时检查 `managed_host_detected`、`is_dynamic_code_supported`、`is_dynamic_code_compiled`：只要存在托管宿主或任一动态代码能力，结果就是 false；`--require-aot` 在加载模型前拒绝该进程，与 `--self-test` 同时传入时也不会绕过检查。PublishAot 的中间 runtimeconfig 可关闭动态代码开关，但通过 dotnet 执行对应 DLL 仍不算原生程序。最终原生目录不包含模型权重；ILGPU 只存在于独立构建工具，不进入此程序的项目引用路径。
 
-全部运行结束后，汇总原始 JSON：
+全部运行结束后，对历史 schema1 的原始 JSON 生成 `S5SummaryRequest`（准确 `ReportPaths`、新 `Output`、`VerifyMatrix`），通过 `Sezika.Tooling validation summarize` 写新回执。当前画像报告使用 `ProfileValidationRequest` 和 `validation profile`；原始各运行的样本仍分开保留，不混合汇总。
 
-```powershell
-& '.\tools\Summarize-S5.ps1' -ReportPaths @(
-    '<win-scalar.json>', '<win-simd.json>', '<win-int8.json>', '<win-cuda.json>',
-    '<linux-simd.json>', '<linux-cuda.json>'
-) -OutputPath '<new-summary.json>' -VerifyMatrix -TimeoutSeconds 30
-```
-
-汇总器最多读取 32 个、各不超过 4 MiB 的报告；校验通过状态、模型/input hash 一致性、原始样本与最近秩分位数、数值门槛及资源归还后才创建新的汇总文件。`-VerifyMatrix` 要求 Windows 四后端各有至少 5 个正式样本和 1/8/32 问，以及 Linux SIMD/CUDA 的真实模型 AOT smoke。额外 RID 或后端仍保留为独立行，不合并不同环境的样本。此开关只验证已有证据，不代替运行模型。
+汇总器最多读取 32 个、各不超过 4 MiB 的报告；校验通过状态、模型/input hash 一致性、原始样本与最近秩分位数、数值门槛及资源归还后才创建新的汇总文件。`VerifyMatrix=true` 要求 Windows 四后端各有至少 5 个正式样本和 1/8/32 问，以及 Linux SIMD/CUDA 的真实模型 AOT smoke。额外 RID 或后端仍保留为独立行，不合并不同环境的样本。该字段只验证已有证据，不代替运行模型。
 
 ## 计时与证据解读
 

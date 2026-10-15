@@ -18,4 +18,4 @@ schema v2 的 `RenderingVersion=sezika.prompt.laya-4066d5d5.v2` 与旧结果不�
 dotnet tools/Sezika.Coverage/bin/Release/net10.0/Sezika.Coverage.dll <model-dir> <eval.jsonl> <output.json> <dataset-sha256> <records> <timeout-seconds> [strict|laya_compatible]
 ```
 
-末参默认 `strict`，显式覆盖该次诊断的策略口径，不读取题集中的策略字段。最多 10000 条，整体期限 1–1800 秒，Ctrl+C 取消，逐条检查取消并每 10 条报告进度；每次 builder 还有独立 10 秒上限。运行必须经 `tools/Invoke-BoundedProcess.ps1` 设置外层墙钟超时并记录进程身份。先用 `records=1` 核对输出，再在相同固定题集上运行完整记录数。题集和模型文件来源、版本由调用者独立记录；此工具不会自动下载文件。
+末参默认 `strict`，显式覆盖该次诊断的策略口径，不读取题集中的策略字段。最多 10000 条，整体期限 1–1800 秒，Ctrl+C 取消，逐条检查取消并每 10 条报告进度；每次 builder 还有独立 10 秒上限。当前通过 `Sezika.Tooling process run` 的 `ExecutionRequest` 声明准确程序路径、结构化 argv、外层墙钟和独占日志目录，并核实际 PID、出生、命令行、父链及回收回执；请求字段见 [C# 调用合同](../../docs/tooling-current-workflow.md)。先用 `records=1` 核对输出，再在相同固定题集上运行完整记录数。题集和模型文件来源、版本由调用者独立记录；此工具不会自动下载文件。

@@ -28,7 +28,11 @@
 
 候选 v4 新增结构化非零退出兼容：原13项操作检查保留，新增2项（总15），覆盖无目标stderr的精确exit3／JSON计数／布尔输出，以及错误数值类型、数值、布尔类型、布尔值和同时声明的错误stderr。候选 v5 已用恢复的私有 Windows SDK 构建并实际通过 tiny1、操作15、CLI4及 baseline32；项目不锁SDK版本，回执记录实际工具身份。操作检查仍使用明确synthetic transport与实际写出的输出文件，不能冒充native TeacherTool执行。此前 `validation-normal-directory-v1` 的真实CliChecks正控在其原第12项失败，失败原件保留，不改无关CliChecks、不计为通过。
 
-旧 `Verify-Contract.ps1` 实际有24项。实际矩阵保留 `v1-original24` 的原夹具／期望，并另列 `v2-corrected24`：仅将第20／21项synthetic catalog的model值由 `qwen35-9b-q4km` 更正为当前明确合同要求 `qwen3.5-9b-q4-k-m`，保存前后bytes／SHA与理由；id、status和independently_verified=false语义不改。两版均 `StopOnFailure=false`，先tiny1再24项；原版实跑22 PASS／2 FAIL，修正版24 PASS。目标为已固定SHA的既有 TeacherTool DLL，这不代表从当前源码重新构建，也没有调用真实教师或模型。原版两项失败与全部回执保持，不构成模型许可或人工标签批准。
+旧 `Verify-Contract.ps1` 的历史证据包含24项；不再调用该脚本。实际矩阵保留 `v1-original24` 的原夹具／期望，并另列 `v2-corrected24`：仅将第20／21项synthetic catalog的model值由 `qwen35-9b-q4km` 更正为当前明确合同要求 `qwen3.5-9b-q4-k-m`，保存前后bytes／SHA与理由；id、status和independently_verified=false语义不改。两版均 `StopOnFailure=false`，先tiny1再24项；原版实跑22 PASS／2 FAIL，修正版24 PASS。目标为已固定SHA的既有 TeacherTool DLL，这不代表从当前源码重新构建，也没有调用真实教师或模型。原版两项失败与全部回执保持，不构成模型许可或人工标签批准。
+
+## 历史证据：旧校验入口的能力归属
+
+下表只追溯对应能力，不再调用表内旧脚本；当前命令与实际回执范围见上文。
 
 | inventory 中的旧校验入口 | 新实现与证据边界 |
 | --- | --- |
@@ -44,6 +48,8 @@
 | `Validate-S4Data.ps1` | `DataAdmission`，固定 source/raw/evidence SHA、许可与人工审核、来源 exposure、family/entity/近重复/衍生 ancestry、sealed test；问题是 blocked，审批不是自动发生 |
 | `Validate-S5Profile.ps1` | `Profile`，原 schema3 matrix/拒绝分母/输入 SHA/测量数值/marker/token/独立 stage/coverage 完整校验；只是历史报告一致性 |
 
+## 当前 C# 批次合同
+
 `ValidationBatch` 执行固定项目白名单的 C# native apphost，或固定 SHA 的 dotnet + managed assembly；不允许 interpreter 或 Python Oracle。负例必须先有实际成功的 positive control；无对照的独立模型负向 asset-preflight 仅在显式 `AssetPreflightOnly` 下允许。非零 `ExpectedExitCode` 预检必须有非空targeted `ExpectedStandardError`，或显式 `MustExist=true` 输出的精确JSON状态／字段约束；空泛stdout、只给exit、空字典和声明不存在的输出均不能成为结构化拒绝目标。所有已声明的stderr及JSON检查都须通过，JSON不会兜底放行错误stderr；asset-preflight继续强制targeted stderr。每个 case 最多256个 argv、1024个冻结输入、128次 JSON 数据突变、128个声明输出和1..1800秒；总case<=64、复制字节<=512MiB。复制字节按整个 batch 累计，不会在下一个 case 归零；ProcessExecutor负责身份/子树回收。
 
 `ValidationOutput` 在原四个参数末尾增加可选 `JsonEquals` 字典（旧请求无需改动），约束同一个required输出JSON的顶层字面字段名。非null时必须1..32字段，每个key非空且不超过256字符，值必须为已定义JSON。比较同时要求准确JSON类型和值，数值字符串不能冒充数值，字符串 `"false"` 不能冒充Boolean false。已有 `JsonStatusProperty/JsonStatusValue`、输出存在性、字节界、SHA读回、native exit／cleanup／EOF均保留。例如：
@@ -56,4 +62,4 @@
 
 注入的 protocol/schema executor 只用于显式 synthetic fixture，报告 `SyntheticTransport=true`。真实 native batch 必须有 PID、launcher、process records、cleanup 与实际输出读回，不能由 synthetic pass 代替。模型回执与独立参考来源保持历史 SHA；Python exporter 与历史 evidence 原件保留并退出执行，不改旧 SHA、不伪造新 reference。
 
-以下四个历史入口退出当前执行：`Sezika.IndependentOracle/export_oracle.py`、`Sezika.LayaOracle/Invoke-LayaOracle.ps1`、`Sezika.LayaOracle/export_oracle.py`、`Sezika.LayaOracle/export_tokenizer_boundaries.py`。对应 requirements、source-lock、contract、capture/tokenizer fixture 及历史来源记录继续保留为原始数据和证据。新的独立 C# 参考生成使用 [Sezika.ReferenceTool](../../Sezika.ReferenceTool/README.md)，明确标记 `port-derived`、`upstream_executed=false`；本验证批次本身不生成参考，生产推理不能冒称独立来源，模型质量与完整数值对齐另行验收。
+不得调用以下四个历史入口：`Sezika.IndependentOracle/export_oracle.py`、`Sezika.LayaOracle/Invoke-LayaOracle.ps1`、`Sezika.LayaOracle/export_oracle.py`、`Sezika.LayaOracle/export_tokenizer_boundaries.py`。对应 requirements、source-lock、contract、capture/tokenizer fixture 及历史来源记录继续保留为原始数据和证据。新的独立 C# 参考生成使用 [Sezika.ReferenceTool](../../Sezika.ReferenceTool/README.md)，明确标记 `port-derived`、`upstream_executed=false`；本验证批次本身不生成参考，生产推理不能冒称独立来源，模型质量与完整数值对齐另行验收。
