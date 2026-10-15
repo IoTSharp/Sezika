@@ -1,0 +1,49 @@
+{
+  "RuntimeFiles": 400,
+  "SchemaVersion": 1,
+  "Problem": "Post-open redundant enable_external_access SET rejected by DuckDB",
+  "PreparedRowsPerPlatform": 2,
+  "FinalRawIndex": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\tooling-dataset-v18-reader-fix-prep-v1\\actual-client14-v18-v1\\v18-dataset14-final-source-runtime-semantic-resource-index.json",
+  "MatchingLive": 0,
+  "ExactNegativeClients": 8,
+  "SourceManifestSha256": "3ee05be788268f79fbff79a991e25732d40942c8c09d39f983cf40b2bfd9473e",
+  "OriginalV17FailureAndPartialOutputsPreserved": true,
+  "FinalCallerRetirementAccepted": false,
+  "Status": "PASS_dataset_reader_local_two_platform_actual_cli_scope",
+  "CanonicalLiteralRows": 2,
+  "PositiveClients": 6,
+  "XzChecksPerPlatform": 5,
+  "Change": "Remove only the redundant SET; retain threads/memory/deadline/cancellation",
+  "Sources": [
+    {
+      "Bytes": 1583,
+      "Sha256": "4ce76fe68dd8c00fe845aa5773355f33287e74e52d103b697637cc65c1da2992",
+      "Path": "tools/Sezika.DatasetTool/CorpusRowReader.cs"
+    },
+    {
+      "Bytes": 286,
+      "Sha256": "a578c2001b7b9e5382ed41b043571b02dfdd3c3c291e550dd953f82c8b30e799",
+      "Path": "tests/Sezika.DatasetFixture/Sezika.DatasetFixture.csproj"
+    },
+    {
+      "Bytes": 11286,
+      "Sha256": "e0eaeebf429ae24f5c9c8d6a3d2413e4b69495f4b668e3baa99addfb30808ca3",
+      "Path": "tests/Sezika.DatasetFixture/Program.cs"
+    }
+  ],
+  "RootIndependentProof": "C:\\Users\\mysti\\Documents\\Codex\\Sezika-tooling-artifacts-20261014\\root-reentry-v17\\dataset-v18-independent-245-evidence-21-native-and-four-canonical-rows.json",
+  "Unknown": 0,
+  "CancellationScope": "Managed XZ pre-cancel only",
+  "QuarantinedPerPlatform": 0,
+  "Utc": "2026-10-15T00:25:57.7372419+00:00",
+  "ActualClients": 14,
+  "ExportedRowsPerPlatform": 2,
+  "ImplicitSdkNetworkAbsence": "UNKNOWN_UNMEASURED",
+  "FinalRawIndexSha256": "8128ef5e60e11986e04bf0250fbd17fdf3a7762379ef6574e44d3dfec73a66ae",
+  "SourcegenFiles": 1116,
+  "RootIndependentProofSha256": "2a727578e96262050a45d78805193a2b697de58e82f6be8ef3466982105e62e3",
+  "RawNegative": "FAIL/FAILED/exit1 preserved",
+  "CurrentResourceAudits": 4,
+  "NativeAotInferenceAccepted": false,
+  "ServerGpuTeacherTrainingAndPublication": "NOT_RUN"
+}
