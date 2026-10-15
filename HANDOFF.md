@@ -1,3 +1,22 @@
+# 2026-10-15 工具迁移当前批次交接
+
+用户最新范围为“这一批完成后提交代码并推送，然后剩余工作放到路线图中”。本批验收已完成；只收口通过项及既有已验收提交，最多一次普通推送既有 origin/main，独立核远端SHA后暂停 sezika-4，不展开下一批。整体工具迁移和 T8-code 仍未完成。
+
+本批分项提交：fe65e1f 为 T2 上传预检重构及 Windows10应用/35检查；23d00cc 为当前 Native AOT Windows11应用/102检查（含tiny重复1项）。Root分别核35与76项原始pin、全部具名检查和native退出/EOF/cleanup。SSH三组新负控覆盖拒绝覆盖、恢复后sidecar回收和真实虚拟SFTP partial/state链接；512帧/32MiB/64KiB保持，原native9端到端FAIL不改。
+
+Windows SSH一次资源审计10目录/10身份，live0/unknown0，另16个控制器/辅助出生身份关闭。工具补验一次审计12目录/32身份，原31 ABSENT、live0、UNKNOWN1和exit1/FAIL保留；独立CIM证明PID6244已由不同出生进程复用，未触碰该无关进程。另21包装器关闭。四个GUID合成凭据目标为3写/删并核absent、1never-written，未枚举用户凭据。
+
+Ubuntu从boot 3886496e-f6af-4081-8e38-0c2a9d73d1f1变为d783bbb8-4095-4ff3-bb46-e0e09803f916，当前/tmp运行包、请求和部分原件丢失。历史实际通过按原日期保留，当前可用性/原件持久性未验；没有复建旧路径或重跑旧通过。当前SSH剩19应用（Linux10、native9、production capture4、crossOS4），工具补验Linux10/98均NOT_RUN，先恢复新持久运行根再执行，具体见ROADMAP。
+
+剩余依次为Linux恢复与受影响回归、T7的102能力门终签、最终caller字节冻结、真实466项inventory review及T8-code整体收口。分区仍为270 archive+191 replacement paths/102 gates+5 retained historical UNKNOWN=466；Root49/106路径、corpus30/32路径、transport23/53路径。PREPARE和汇总检查数不是逐门签署；旧transport60/旧600行标签不套用新候选。
+
+此前已验收提交包括c5dc19f、e602522、c501df1、314e601、f83e47a、37411ba、621dc97、c89b5bc、e741f92、8a3f736和c1b03b8；其后787220d接18份调用文档，bcad478接8份技能并保存原始快照，5934fc4接工具README。项目不锁.NET SDK；global.json仅allowPrerelease=false，net10.0/C#14不变；Windows10.0.401和Ubuntu10.0.112只是本次实际构建身份，不倒改冻结证明。
+
+证据见docs/evidence/tooling-batch-close-2026-10-15的两份Markdown/JSON；完整原件在C:\Users\mysti\Documents\Codex\Sezika-tooling-artifacts-20261014，Root本次独核在root-reentry-v21，较早过程读root-reentry-v20/v19和CONTINUATION-v18.md。源码push/远端读回以对应Git提交及独立回执为准；本批交付后heartbeat暂停，后续工作需用户重新指定。
+
+唯一Root串行Git，既有corpus/executor已交付并idle，无新工作者。foreign CUDA/Kernel/RepositoryTrainer、文章、原脚本及用户材料不纳入；本节以下历史/foreign后缀77867字节SHA256继续为58d8d8fdb73c44e0ae17cfc60efda23cd0f2d51a1a39cc97eeb1911cca0ebcad，提交仅使用HEAD-based projection。任务专属temp因自动审批阻止删除而保留，无删除重试；进程回收与文件删除分别记录。租机、服务器实测、实际GPU、正式训练、批量教师和模型/数据发布均NOT_RUN。禁止Graphify。
+
+<!-- 以下历史/foreign后缀保持原始字节，旧脚本、日期和授权仅供追溯，不再执行。 -->
 # Sezika 监督交接
 
 2026-10-13 全量编码监督交接：用户授权先提交推送，再创建新会话，由主智能体监督最多3个子智能体并行完成 ROADMAP 的 T0–T7/T8-code，每个验收任务单独提交、每30分钟检查推送，所有迁移编码完成才结束。T1a 已提交 `4d02942`，后续 Git 状态以实际远端读回为准。[新会话执行合同](docs/tooling-migration-supervision-2026-10-13.md)是本轮授权和归属说明；T8-live、正式训练、租机和模型发布仍为本次范围外。旧训练/巡检自动化保持暂停；以下是先前阶段记录。

@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- 2026-10-15按用户要求收口当前工具迁移批次：fe65e1f的T2上传预检重构通过Windows10应用/35检查；23d00cc补当前Native AOT Windows11应用/102检查，保留原审计UNKNOWN及独立PID复用补证。项目不锁SDK；18份调用文档、8份技能和工具README已切C#。Ubuntu重启后当前Linux材料缺失、native9/crossOS等未验及102门/caller/466检查器列ROADMAP；本批普通源码推送后暂停定时接续，全迁移未完成，服务器/训练/教师/发布仍NOT_RUN。见[SSH验收](docs/evidence/tooling-batch-close-2026-10-15/ssh-upload-preflight.md)和[Windows补验](docs/evidence/tooling-batch-close-2026-10-15/windows-supplement.md)。
+
+- 2026-10-15分项交付C#工具迁移：T3有界GPU观察（两平台AOT20与native echo1，合成观测）、完整归档安装（两平台AOT10与真实installed native help）；T1b完整Windows Job快照重读（9项synthetic边界、实际lifecycle8/execution19）；T5 ToolACE数组family修复及双平台native20/internal1；T6 Linux真实Numeric26/884736元素的port-derived独立证据收口。原FAIL/UNKNOWN和Laya1/46边界保持，全量T7/T8-code仍待后续，未训练/租机/发布模型或数据。见[观察](docs/evidence/tooling-gpu-observation-2026-10-15.md)、[安装](docs/evidence/tooling-bundle-installation-2026-10-15.md)、[Windows修复](docs/evidence/tooling-windows-job-snapshot-2026-10-15.md)、[语料](docs/evidence/tooling-corpus-coverage-2026-10-15.md)、[Linux数值](docs/evidence/tooling-linux-real-numeric26-2026-10-15.md)。
+
+- 2026-10-14补齐T1a原生回执降级保护与T7准确调用者/行SHA独立裁定，分别通过Windows/Ubuntu Native AOT各17项和16项，并独立提交。历史元数据保持原语义，裁定不能替代迁移能力门或完整调用范围；本次没有改写原失败或宣称全量迁移完成。见[审计保护](docs/evidence/tooling-audit-guard-2026-10-14.md)、[逐行裁定](docs/evidence/tooling-retirement-lines-2026-10-14.md)。
+
 - 2026-10-13启动长期工具 C# / .NET 10 迁移；训练/构建工具不强制 AOT，PTX 继续构建期生成。新增 Sezika.Tooling 的进程回执只读核查与完整 SHA TAR 解包，Windows/Ubuntu WSL 各32项检查通过，Windows AOT 两命令实测通过；旧执行器、SSH及完整上传/训练链待按ROADMAP迁移。见[首批证据](docs/evidence/tooling-csharp-migration-2026-10-13.md)。
 
 - 2026-10-13精简项目首页与路线图，明确全量训练暂停、剩余GPU训练预算约3,800–4,100元及未验收范围；补充维护者微信赞助与IoTSharp企业微信群入口，保留历史任务快照和估算依据。

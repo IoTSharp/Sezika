@@ -44,6 +44,8 @@
 
 新增命令的认证来自具名凭据存储或有界stdin，默认 `CredentialSource="none"`；请求和回执不得夹带token。`source acquire` 的CLI包裹字段为 `Acquisition`，计划/ledger本体使用snake_case；明确区分 `sha256` 与含blob header的 `git-blob-sha1`，实际内容另记SHA256。单个凭据只允许一个selected official origin，带认证禁镜像，跨origin重定向不携带认证；公开多来源计划保持支持。取消先保存完整planned ledger再抛出，外层失败不覆盖内层分母。采集完成不等于已准入训练。
 
+`GitRequest` 的平台白名单为 MoArk、Hugging Face 和 GitHub；Gitee Git 当前不支持，本项目解除对旧 Gitee credential helper 的运行依赖，机器技能原件保持。Git 的 `auto` 加具名 Windows 目标保留 MoArk Basic 合同，其他 provider 必须显式使用 stdin；store 读取与 Basic 回环的组合证明不等于真实平台认证通过。平台权限、发布 ref 与完整 fresh 内容读回仍须现场分别验收。
+
 采集回执目录另含完整 `research-download-plan.json`。将它作为 `corpus research-check` 的 `Plans`，同目录的 `source-ledger.jsonl` 作为 `Ledgers`，`Root` 指采集的 `OutputRoot`。即使只选择部分资产，两个文件仍保留全部计划分母。检查器明确绑定新ledger的plan SHA、source/path/revision/split和原digest；`VerifyHashes=true`独立重验实际SHA256及原digest。Git blob预期值不填入 `ExpectedSha256`，也不从下载输出生成预期。新partial分别核镜像/official实际文件；旧ledger与旧partial语义继续保留。该接线的实测状态仍见分项证据。
 
 `model mirror` 的CLI包裹字段为 `Mirror`，model manifest和verify请求使用snake_case。它在任务自己的文件系统组合调用者固定的完整资产集合；现有typed worker/SFTP可运输这些结果，远端部署、模型质量、推理和公开Git/LFS发布分别验收。`task snapshot`仅接受具名小型文本/metadata文件并拒脚本与链接，逐文件重开核字节；它不声明跨文件原子保存或恢复历史可信基线。四项新能力的运行状态仍以分项验收证据为准。
