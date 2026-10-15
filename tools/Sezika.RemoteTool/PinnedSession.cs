@@ -112,24 +112,67 @@ internal sealed class PinnedSession : IDisposable
         throw new InvalidDataException("Remote path depth cap exceeded.");
     }
 
+    internal async Task<UploadPreflightAttributes> UploadAttributesAsync(string destination, string partial, string state,
+        Budget budget, CancellationToken cancellation)
+    {
+        string[] paths = [destination, partial, state];
+        foreach (var path in paths)
+        {
+            budget.Check(); RemotePaths.Absolute(path);
+            if (path == "/" || path[1..].Split('/').Length > 64) throw new InvalidDataException("Remote path depth cap exceeded.");
+        }
+        var separator = destination.LastIndexOf('/'); var parent = separator == 0 ? "/" : destination[..separator];
+        if (partial[..partial.LastIndexOf('/')] != (separator == 0 ? "" : parent) ||
+            state[..state.LastIndexOf('/')] != (separator == 0 ? "" : parent))
+            throw new InvalidDataException("Upload preflight targets must have one exact parent.");
+        // This snapshot belongs only to the upload preflight. Later I/O stages retain their fresh ancestry and SHA checks.
+        if (parent != "/")
+        {
+            var attributes = await AttributesAsync(parent, false, budget, cancellation);
+            if (attributes is null || !attributes.IsDirectory) throw new InvalidDataException("Remote path parent is not a directory.");
+        }
+        var names = paths.Select(path => path[(path.LastIndexOf('/') + 1)..]).ToArray();
+        var found = await RawChildrenAsync(parent, names, true, budget, cancellation);
+        return new(found[0], found[1], found[2]);
+    }
+
     private async Task<SftpFileAttributes?> RawChildAsync(string verifiedParent, string name, bool allowMissing, Budget budget, CancellationToken cancellation)
     {
-        using var deadline = Deadline(budget, cancellation, 30); ISftpFile? found = null; var entries = 0;
+        var found = await RawChildrenAsync(verifiedParent, [name], allowMissing, budget, cancellation);
+        return found[0];
+    }
+
+    private async Task<SftpFileAttributes?[]> RawChildrenAsync(string verifiedParent, string[] names, bool allowMissing,
+        Budget budget, CancellationToken cancellation)
+    {
+        if (names.Length is < 1 or > 3 || names.Distinct(StringComparer.Ordinal).Count() != names.Length)
+            throw new InvalidDataException("Remote child lookup requires one to three distinct targets.");
+        using var deadline = Deadline(budget, cancellation, 30); var found = new ISftpFile?[names.Length]; var entries = 0;
         await foreach (var item in Sftp.ListDirectoryAsync(verifiedParent, deadline.Token))
         {
             budget.Check(); if (++entries > Configuration.MaximumDirectoryEntries) throw new InvalidDataException("Remote directory entry cap exceeded.");
-            if (item.Name != name) continue;
-            if (found is not null) throw new InvalidDataException("Remote directory contains duplicate target entries."); found = item;
+            for (var index = 0; index < names.Length; index++)
+            {
+                if (item.Name != names[index]) continue;
+                if (found[index] is not null) throw new InvalidDataException("Remote directory contains duplicate target entries.");
+                found[index] = item;
+            }
         }
-        if (found is null)
+        var result = new SftpFileAttributes?[names.Length];
+        for (var index = 0; index < names.Length; index++)
         {
-            if (allowMissing) return null;
-            throw new DirectoryNotFoundException("Explicit remote path ancestor/asset is absent.");
+            budget.Check();
+            if (found[index] is null)
+            {
+                if (allowMissing) continue;
+                throw new DirectoryNotFoundException("Explicit remote path ancestor/asset is absent.");
+            }
+            var attributes = found[index]!.Attributes;
+            if (attributes.IsSymbolicLink || attributes.IsSocket || attributes.IsNamedPipe || attributes.IsBlockDevice || attributes.IsCharacterDevice ||
+                (!attributes.IsRegularFile && !attributes.IsDirectory)) throw new InvalidDataException("Remote links, devices, sockets and FIFOs are rejected.");
+            result[index] = attributes;
         }
-        var attributes = found.Attributes;
-        if (attributes.IsSymbolicLink || attributes.IsSocket || attributes.IsNamedPipe || attributes.IsBlockDevice || attributes.IsCharacterDevice ||
-            (!attributes.IsRegularFile && !attributes.IsDirectory)) throw new InvalidDataException("Remote links, devices, sockets and FIFOs are rejected.");
-        return attributes;
+        return result;
     }
 
     internal async Task CreateDirectoriesAsync(string path, Budget budget, CancellationToken cancellation)
@@ -156,3 +199,5 @@ internal sealed class PinnedSession : IDisposable
         finally { try { Sftp.Dispose(); } finally { privateKey?.Dispose(); } }
     }
 }
+
+internal sealed record UploadPreflightAttributes(SftpFileAttributes? Destination, SftpFileAttributes? Partial, SftpFileAttributes? State);

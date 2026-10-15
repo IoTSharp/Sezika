@@ -68,6 +68,48 @@ internal partial class CrossOsJson : JsonSerializerContext;
 // Root owns launchers, native process trees, new immutable builds, and the final outer audit.
 internal static class Checks
 {
+    internal static async Task CheckUploadPreflightAsync(int selected, PinnedSession session, string root, string original,
+        byte[] bytes, string sha, Budget budget, CancellationToken cancellation)
+    {
+        if (selected is not (1 or 3 or 6)) return;
+        async Task RejectUpload(TransferRequest request, string expectedMessage, bool invalidData)
+        {
+            var rejected = false;
+            try { _ = await SftpTransfers.UploadAsync(session, request, original, budget, cancellation); }
+            catch (InvalidDataException error) when (invalidData && error.Message == expectedMessage) { rejected = true; }
+            catch (IOException error) when (!invalidData && error.Message == expectedMessage) { rejected = true; }
+            Require(rejected, "Actual upload preflight expected rejection is absent or differs.");
+        }
+        if (selected is 1 or 3)
+        {
+            var name = selected == 1 ? "model.bin" : "resume.bin";
+            var operation = "fixture-preflight-existing-" + selected;
+            var request = new TransferRequest(1, operation, "case-data/" + name, bytes.Length, sha);
+            await RejectUpload(request, "Remote completed destination exists; preserve it.", false);
+            var actual = Path.Combine(root, "case-data", name);
+            Require(File.ReadAllBytes(actual).SequenceEqual(bytes), "Existing completed upload bytes changed after rejection.");
+            Require(!Path.Exists(actual + "." + operation + ".sezika-part") && !Path.Exists(actual + "." + operation + ".sezika-sftp.json"),
+                "Rejected overwrite created or replaced upload state.");
+            if (selected == 3)
+                Require(!Path.Exists(actual + ".fixture-resume-upload.sezika-part") && !Path.Exists(actual + ".fixture-resume-upload.sezika-sftp.json"),
+                    "Successful upload resume retained a promoted partial or its state.");
+            return;
+        }
+        // Existing case6 already owns real virtual symlinks; these two additional leaves exercise the batched upload preflight.
+        for (var index = 0; index < 2; index++)
+        {
+            budget.Check(); var kind = index == 0 ? "partial" : "state";
+            var operation = "fixture-preflight-link-" + kind; var name = "preflight-link-" + kind + ".bin";
+            var request = new TransferRequest(1, operation, "case-data/" + name, bytes.Length, sha);
+            var remote = RemotePaths.Within(session.Configuration.Root, request.Path);
+            var suffix = index == 0 ? ".sezika-part" : ".sezika-sftp.json";
+            session.Sftp.SymbolicLink(RemotePaths.Within(session.Configuration.Root, "case-data/model.bin"), remote + "." + operation + suffix);
+            await RejectUpload(request, "Remote links, devices, sockets and FIFOs are rejected.", true);
+            Require(!File.Exists(Path.Combine(root, "case-data", name)) && File.ReadAllBytes(Path.Combine(root, "case-data/model.bin")).SequenceEqual(bytes),
+                "Upload link rejection promoted a destination or changed the link target.");
+        }
+    }
+
     private const string MetadataGate = "Bundle schema/count/entry/complete-manifest SHA differs.";
 
     internal static async Task<int> ServeAsync(string requestPath, string outputPath, CancellationToken cancellation)

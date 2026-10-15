@@ -59,12 +59,12 @@ internal static class SftpTransfers
             !(session.Configuration.WorkerPath == remote && session.Configuration.WorkerSha256 == request.Sha256))
             throw new InvalidDataException("Executable upload is outside the frozen native allowlist.");
         var parent = remote[..remote.LastIndexOf('/')]; await session.CreateDirectoriesAsync(parent, budget, cancellation);
-        if (await session.AttributesAsync(remote, true, budget, cancellation) is not null) throw new IOException("Remote completed destination exists; preserve it.");
         var partial = remote + "." + request.OperationId + ".sezika-part"; var statePath = remote + "." + request.OperationId + ".sezika-sftp.json";
+        var preflight = await session.UploadAttributesAsync(remote, partial, statePath, budget, cancellation);
+        if (preflight.Destination is not null) throw new IOException("Remote completed destination exists; preserve it.");
         var expected = new RemoteTransferState(1, request.OperationId, session.Configuration.HostName, session.Configuration.Port,
             session.Configuration.HostKeySha256, remote, request.Bytes, request.Sha256, sourceInfo.LastWriteTimeUtc);
-        var partAttributes = await session.AttributesAsync(partial, true, budget, cancellation);
-        var stateAttributes = await session.AttributesAsync(statePath, true, budget, cancellation); long resumed = 0;
+        var partAttributes = preflight.Partial; var stateAttributes = preflight.State; long resumed = 0;
         if (partAttributes is not null || stateAttributes is not null)
         {
             if (partAttributes is null || stateAttributes is null || !partAttributes.IsRegularFile || !stateAttributes.IsRegularFile || stateAttributes.Size > 65536)

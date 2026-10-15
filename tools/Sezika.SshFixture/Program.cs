@@ -125,6 +125,7 @@ try
             Assert(report.IndependentReadback && server.PublicKeyAccepted > 0 && File.ReadAllBytes(path).SequenceEqual(bytes), "Actual SSH public-key authentication/readback differs."); break;
         }
     }
+    await Sezika.SshFixture.Checks.CheckUploadPreflightAsync(selected, session, root, original, bytes, sha, budget, cancellation.Token);
     actual = "PASS_actual_Csharp_loopback_ssh_sftp_case";
 }
 catch (Exception error)
